@@ -1,0 +1,289 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.login-container{
+    display:flex;
+    justify-content: center;  
+    padding-top: 8%; 
+}
+.inputs{
+    height:25px;
+}
+#role{
+    width:100%;
+    height:38px;
+    border-radius:10px;
+}
+.continue{
+    height: 35px;
+    border-radius: 5px;
+}
+body{
+    height: 100vh;    
+    position: relative;
+}
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    height: 100%;
+}
+
+#center{
+    width: 20%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    position: relative;
+   
+}
+#center h2:nth-child(2){
+    margin-bottom: 1em;
+}
+#logo{
+   width: 100%;
+   text-align: center;
+}
+#logo img{
+    width: 50%;
+}
+.img{
+    width:20px;
+}
+h2{
+   font-family: sans-serif;
+   font-size: 1.3em;
+    text-align: left;
+    width: 100%;
+   
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.label_n_inp{
+    margin-bottom: 1em;
+}
+.label_n_inp h4{
+    font-size: .85em;
+}
+.label_n_inp > div{
+    position: relative;
+    width:100%;
+    
+}
+
+.label_n_inp div img{
+    position: absolute;
+    top: .5em;
+    left: .4em;
+    
+}
+
+.label_n_inp > div> input{
+    padding: .5em 0  .5em 10%;
+    border-radius: 10px;
+    width: 90%;
+    
+}
+h3{
+    margin-bottom: 1em;    
+}
+h3 a{
+    text-decoration: none;
+    font-size: .8em;
+    color: darkblue;
+    margin-bottom: 1em;
+}
+
+#pop_up{
+    padding: 1em;    
+    display: none;
+    flex-direction: column;
+    background-color: #e7e7e7;   
+    border-radius: 20px;
+    position: absolute;
+    width:100%;
+    bottom: 15%;  
+    
+}
+#close,#close2{
+    text-align: end;
+    width: 100%;
+}
+#close2{
+    
+    
+}
+#pop_up h2{
+    font-family: sans-serif;
+}
+#pop_up h3{
+    margin-top: 1em;
+    font-family: sans-serif;
+    font-size: 1em;
+}
+#pop_up form{    
+    margin-top: 1em;
+    align-items: center;    
+    
+}
+
+#pop_up input{
+   width: 1.8em;
+   padding: .4em;
+   background-color: #d35a9ccc;
+   margin-right: .5em;
+   text-align: center;
+    font-size: 1em;
+    border: none;
+    
+    
+}
+#pop_up input:focus{
+    outline: none;
+}
+
+#pop_up form div{   
+    display: flex;
+    
+    margin-bottom: 1em;
+    
+}
+
+#pop_up form button{
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: .2em 0;
+    cursor: pointer;
+}
+
+
+
+#submit_div{
+    text-align: center;
+    margin-bottom: .5em;
+    width: 100%;
+}
+#submit_div button{
+    width: 100%;
+    padding: .2em 0;
+    background-color: black;
+    color: white;
+    font-size: 1em;
+    line-height: 1;
+    cursor: pointer;
+}
+
+#signup{
+    font-family: sans-serif;
+    font-size: .80em;
+}
+#signup a{
+    text-decoration: none;
+    color: red;
+    font-size: inherit;
+}
+
+#req_otp{
+    padding: 1em;    
+    display: none;
+    flex-direction: column;
+    background-color: #e7e7e7;   
+    border-radius: 20px;
+    position: absolute;
+    width:100%;
+    bottom: 15%;  ;
+}
+
+#req_otp form{   
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;    
+    border-radius: 20px;
+
+}
+#req_otp form h2{
+    margin-bottom: 1em;
+}
+
+#req_otp label{
+    font-size: 1em;
+}
+
+#req_otp input{
+    margin-bottom: 1em;
+    padding: .5em .3em;
+    border-radius: 10px;  
+    font-size: 1em;
+    
+}
+
+#req_otp button{
+    padding: .5em 1em;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+@media only screen and (max-width:982px){
+    #center{
+        width: 25%;
+    }   
+}
+
+@media only screen and (max-width:832px){
+    #center{
+        width: 30%;
+    }   
+}
+
+@media only screen and (max-width:662px){
+    #center{
+        width: 35%;
+    }   
+}
+
+@media only screen and (max-width:550px){
+    #center{
+        width: 45%;
+    }   
+}
+
+@media only screen and (max-width:448px){
+    body{
+        height: unset;
+    }
+    #center{
+        width: 85%;
+    }  
+    
+    #logo img{
+        width: 40%;
+    }
+    .info{
+        flex-direction: column;
+    }
+    #pop_up input{
+        width: 70%;
+    }
+    #pop_up form div{
+        width: 70%;
+    }
+    #req_otp form{
+        width: 90%;
+    }
+}
