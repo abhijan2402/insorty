@@ -45,6 +45,21 @@ const Login = () => {
                     </div>
                   </div>
 
+                  <div className="form-control loginFromControl my-2">
+                    <label className="label">
+                      <span className="label-text font-bold">Role</span>
+                    </label>
+
+                    <select className="select select-bordered w-full inputFild">
+                      <option disabled selected>
+                        Select Your Role
+                      </option>
+                      <option>User</option>
+                      <option>Admin</option>
+                      <option>Sub Admin</option>
+                    </select>
+                  </div>
+
                   <div className="form-control loginFromControl mt-4">
                     <Link className="label-text-alt link link-hover">
                       Forgot password?
