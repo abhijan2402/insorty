@@ -55,7 +55,6 @@ const FontPage = () => {
             <h5>Bar</h5>
           </Link>
         </div>
-        
 
         <div id="continue">
           <form method="post" action="#">
