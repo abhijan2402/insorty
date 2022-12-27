@@ -8,7 +8,7 @@ import {
   FaUnlock,
   FaUserAlt,
 } from "react-icons/fa";
-import "./Register.scss";
+import "../Styles/Auth.scss";
 import { Link } from "react-router-dom";
 
 const Register = () => {
@@ -74,6 +74,7 @@ const Register = () => {
                         <input type="password" placeholder="Confirm Password" />
                       </div>
                     </div>
+
                     <div className="form-control">
                       <label className="label">
                         <span className="label-text font-bold">Address</span>
@@ -83,6 +84,7 @@ const Register = () => {
                         <input type="text" placeholder="Address" />
                       </div>
                     </div>
+
                     <div className="flex xs:flex-col gap-4">
                       <div className="form-control">
                         <label className="label">
@@ -107,13 +109,13 @@ const Register = () => {
                   </Box>
 
                   <div className="flex justify-center items-center my-4">
-                    <button className="btn btn-block">CONTINUE</button>
+                    <button className="btn btn-block" type="submit">CONTINUE</button>
                   </div>
 
                   <div>
                     <h3>
-                      Already have an account ?
-                      <Link to="/login" className="btn btn-link btn-error">
+                      Already have an account ? &nbsp;
+                      <Link to="/login" className="font-bold text-red-500">
                         Login
                       </Link>
                     </h3>

@@ -55,7 +55,6 @@ const FontPage = () => {
             <h5>Bar</h5>
           </Link>
         </div>
-        
 
         <div id="continue">
           <form method="post" action="#">
@@ -65,6 +64,7 @@ const FontPage = () => {
             {/* //handleAccountType?() */}
           </form>
         </div>
+        
         <h4>
           Already Have An Account&#63;<i></i>
           <Link to="/login">Login</Link>{" "}
