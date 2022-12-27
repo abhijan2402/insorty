@@ -5,7 +5,7 @@ import { Box } from "@mui/system";
 import InstoryLogo from "../../images/insorty.png";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const AuthHome = () => {
   return (
     <>
       <section>
@@ -72,11 +72,13 @@ const Home = () => {
                 <div className="form-control loginFromControl">
                   <div className="flex justify-center items-center my-4">
                     <form action="">
-                      <button className="btn btn-block" type="submit">CONTINUE</button>
+                      <button className="btn w-full" type="submit">
+                        CONTINUE
+                      </button>
                     </form>
                   </div>
                 </div>
-                <div>
+                <div className="text-center">
                   <h3>
                     Already have an account ? &nbsp;
                     <Link to="/login" className="font-bold text-red-500">
@@ -93,4 +95,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AuthHome;

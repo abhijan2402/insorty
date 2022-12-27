@@ -6,9 +6,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { Navigate } from "react-router-dom";
-
 import "./Login.css";
-import { Container } from "@mui/system";
+
 const Login = () => {
   const [userData, setuserData] = useState();
   const navigate = useNavigate();
@@ -86,7 +85,7 @@ const Login = () => {
             <div>
               {/* <img className='img' src={user} alt="" /> */}
               {/* <input className='inputs' type="text" id="name" autofocus required pattern="[a-zA-z]{3,15}" title="your name should contain only capital letters(A-Z) and/or small letters(a-z) of min-length 3 and max-length 15"/> */}
-              <select name="select" id="role">
+              <select name="select" id="role" >
                 <option value="admin">Admin</option>
                 <option value="SunAdmin">SuB Admin</option>
                 <option value="user">User</option>
