@@ -4,6 +4,7 @@ import "../Styles/Auth.scss";
 import InstoryLogo from "../../images/insorty.png";
 import { FaUnlock, FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import LoginModal from "../../Components/LoginModal/LoginModal";
 
 const Login = () => {
   return (
@@ -68,7 +69,9 @@ const Login = () => {
 
                   <div className="form-control loginFromControl">
                     <div className="flex justify-center items-center my-4">
-                      <button className="btn btn-block">CONTINUE</button>
+                      <label htmlFor="loginModal" className="btn btn-block">
+                        CONTINUE
+                      </label>
                     </div>
                   </div>
 
@@ -85,6 +88,7 @@ const Login = () => {
             </div>
           </Box>
         </Container>
+        <LoginModal></LoginModal>
       </section>
     </>
   );

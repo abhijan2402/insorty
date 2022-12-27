@@ -109,7 +109,7 @@ const Register = () => {
                   </Box>
 
                   <div className="flex justify-center items-center my-4">
-                    <button className="btn btn-block">CONTINUE</button>
+                    <button className="btn btn-block" type="submit">CONTINUE</button>
                   </div>
 
                   <div>

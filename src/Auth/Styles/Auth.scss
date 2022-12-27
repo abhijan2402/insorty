@@ -32,3 +32,20 @@ input {
     width: 420px;
 }
 
+.loginModalContainer {
+    width: 287px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputOTP {
+    background: #AA237A;
+    height: 44px;
+    width: 44px;
+    left: 129px;
+    text-align: center;
+    top: 194px;
+    border-radius: 7.295243740081787px;
+}

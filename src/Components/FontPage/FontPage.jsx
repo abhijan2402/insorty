@@ -64,6 +64,7 @@ const FontPage = () => {
             {/* //handleAccountType?() */}
           </form>
         </div>
+        
         <h4>
           Already Have An Account&#63;<i></i>
           <Link to="/login">Login</Link>{" "}

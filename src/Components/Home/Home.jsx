@@ -71,7 +71,9 @@ const Home = () => {
               <Box>
                 <div className="form-control loginFromControl">
                   <div className="flex justify-center items-center my-4">
-                    <button className="btn btn-block">CONTINUE</button>
+                    <form action="">
+                      <button className="btn btn-block" type="submit">CONTINUE</button>
+                    </form>
                   </div>
                 </div>
                 <div>
