@@ -1,6 +1,7 @@
 import React from "react";
+import "../Style/DailyReport.scss";
 
-const FristFrom = () => {
+const BackFristFrom = () => {
   return (
     <>
       <div className="overflow-x-auto">
@@ -1072,4 +1073,4 @@ const FristFrom = () => {
   );
 };
 
-export default FristFrom;
+export default BackFristFrom;

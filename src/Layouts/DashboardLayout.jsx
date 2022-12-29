@@ -22,11 +22,15 @@ const DashboardLayout = () => {
         )}
       </div>
 
-      <div className="flex">
-        <div className={side ? "lg:w-[340px] md:w-48 w-full" : "hidden"}>
+      <div className="flex gap-2">
+        <div className={side ? "lg:w-[300px] md:w-48 w-full" : "hidden"}>
           <SideNav></SideNav>
         </div>
-        <div className="w-full">
+        <div
+          style={{
+            width: "78%",
+          }}
+        >
           <Outlet></Outlet>
         </div>
       </div>
