@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useState } from "react";
+import "./LayoutStyle.scss"
 
 const DashboardLayout = () => {
   const [side, setSide] = useState(true);
@@ -26,11 +27,7 @@ const DashboardLayout = () => {
         <div className={side ? "lg:w-[300px] md:w-48 w-full" : "hidden"}>
           <SideNav></SideNav>
         </div>
-        <div
-          style={{
-            width: "78%",
-          }}
-        >
+        <div className="md:w-[calc(100%-300px)] w-full DashboardLayoutOutlate ">
           <Outlet></Outlet>
         </div>
       </div>

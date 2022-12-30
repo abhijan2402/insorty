@@ -44,7 +44,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -52,13 +59,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -69,7 +69,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -77,13 +84,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -96,7 +96,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -104,13 +111,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -122,7 +122,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -130,13 +137,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -148,7 +148,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -156,13 +163,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -173,7 +173,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -181,13 +188,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -198,7 +198,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -206,13 +213,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -223,7 +223,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -231,13 +238,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -248,7 +248,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -256,13 +263,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -273,7 +273,14 @@ const BackFristFrom = () => {
                 <div className="flex gap-2">
                   <div class="form-control">
                     <label class="label">
-                      <span class="label-text">750ml</span>
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>
@@ -281,13 +288,6 @@ const BackFristFrom = () => {
                   <div class="form-control">
                     <label class="label">
                       <span class="label-text">330ml</span>
-                    </label>
-                    <input type="number" class="smallinput" />
-                  </div>
-
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">180ml</span>
                     </label>
                     <input type="number" class="smallinput" />
                   </div>

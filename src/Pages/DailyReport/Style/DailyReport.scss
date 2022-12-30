@@ -60,3 +60,37 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.DailyReportContainer {}
+
+@media screen and (max-width: 768px) {
+    .DailyReportContainer {
+        width: 100% !important;
+        margin-right: 1rem !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .DailyReportContainer {
+        width: 100%;
+        margin-right: 1rem;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .DailyReportContainer {
+        width: 100%;
+        margin-right: 1rem;
+        margin: 0 auto;
+    }
+}
+
+.titleText {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 27px;
+    margin-bottom: 0.7rem;
+    color: #AA237A;
+}

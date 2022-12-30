@@ -4,7 +4,7 @@ import SecondFrom from "./SecondFrom";
 
 const FronteDailyReport = () => {
   return (
-    <>
+    <section className="mx-2">
       <div className="my-4">
         <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
       </div>
@@ -32,7 +32,7 @@ const FronteDailyReport = () => {
           <button className="dailyReportBtn">ADD 1</button>
         </div>
       </div>
-    </>
+    </section>
   );
 };
 
