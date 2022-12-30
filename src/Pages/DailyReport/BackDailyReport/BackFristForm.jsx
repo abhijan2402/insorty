@@ -10,10 +10,11 @@ const BackFristFrom = () => {
             <tr>
               <th>S.no</th>
               <th>Brand Name/ ब्राण्ड</th>
-              <th>MRP</th>
+              <th>Average Rate</th>
               <th>प्रारम्भिक स्टॉक</th>
               <th>आमद (खरीद)-दु.</th>
               <th>आमद (खरीद)-बा.</th>
+              <th>खरीद रेट - दु</th>
               <th>आमद (उधारी)</th>
               <th>भेजान</th>
               <th>योग/शेष</th>
@@ -142,6 +143,33 @@ const BackFristFrom = () => {
                   </div>
                 </div>
               </td>
+
+              {/* ============ खरीद रेट - दु ============ */}
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">330ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
+
               {/* ======== आमद (उधारी) ========= */}
 
               <td>
@@ -394,6 +422,33 @@ const BackFristFrom = () => {
                   </div>
                 </div>
               </td>
+
+              {/* ============ खरीद रेट - दु ============ */}
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">330ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
+
               {/* ======== आमद (उधारी) ========= */}
 
               <td>
@@ -581,6 +636,33 @@ const BackFristFrom = () => {
                   </div>
                 </div>
               </td>
+
+              {/* ============ खरीद रेट - दु ============ */}
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">330ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
+
               {/* ======== आमद (उधारी) ========= */}
 
               <td>
@@ -768,6 +850,33 @@ const BackFristFrom = () => {
                   </div>
                 </div>
               </td>
+
+              {/* ============ खरीद रेट - दु ============ */}
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">330ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
+
               {/* ======== आमद (उधारी) ========= */}
 
               <td>
@@ -956,6 +1065,33 @@ const BackFristFrom = () => {
                   </div>
                 </div>
               </td>
+
+              {/* ============ खरीद रेट - दु ============ */}
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">650ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">550ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">330ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
+
               {/* ======== आमद (उधारी) ========= */}
 
               <td>

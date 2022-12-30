@@ -9,7 +9,7 @@ const RmlFrom = () => {
             <tr>
               <th>S.no</th>
               <th>Brand Name/ ब्राण्ड</th>
-              <th>MRP</th>
+              <th>Average Rate</th>
               <th>प्रारम्भिक स्टॉक</th>
               <th>आमद (खरीद)-दु.</th>
               <th>आमद (खरीद)-बा.</th>
@@ -26,20 +26,17 @@ const RmlFrom = () => {
             <tr>
               <th>1</th>
 
-              {/* ======== MRP Input ========= */}
               <td>
                 <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== प्रारम्भिक स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
+                  <input type="text" className="semiSmallInput" />
                 </div>
               </td>
 
-              {/* ======== आमद (खरीद)-दु. ========= */}
+              <td>
+                <div className="form-control">
+                  <input type="number" className="semiSmallInput" />
+                </div>
+              </td>
 
               <td>
                 <div className="form-control">
@@ -105,7 +102,7 @@ const RmlFrom = () => {
               {/* ======== MRP Input ========= */}
               <td>
                 <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
+                  <input type="text" className="semiSmallInput" />
                 </div>
               </td>
               {/* ======== प्रारम्भिक स्टॉक ========= */}
@@ -181,7 +178,7 @@ const RmlFrom = () => {
               {/* ======== MRP Input ========= */}
               <td>
                 <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
+                  <input type="text" className="semiSmallInput" />
                 </div>
               </td>
               {/* ======== प्रारम्भिक स्टॉक ========= */}
@@ -257,7 +254,7 @@ const RmlFrom = () => {
               {/* ======== MRP Input ========= */}
               <td>
                 <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
+                  <input type="text" className="semiSmallInput" />
                 </div>
               </td>
               {/* ======== प्रारम्भिक स्टॉक ========= */}
@@ -333,7 +330,6 @@ const RmlFrom = () => {
               {/* ======== MRP Input ========= */}
               <td>
                 <div className="form-control">
-                  {/* <input type="number" className="semiSmallInput" /> */}
                   <h1 className="font-bold font-2xl">Total</h1>
                 </div>
               </td>

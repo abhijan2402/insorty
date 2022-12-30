@@ -1,12 +1,19 @@
 import React from "react";
 import FristFrom from "./FristFrom";
 import SecondFrom from "./SecondFrom";
+import { Link } from "react-router-dom";
 
 const FronteDailyReport = () => {
   return (
     <section className="mx-2">
-      <div className="my-4">
+      <div className="my-4 flex gap-4 items-center">
         <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
+        <Link
+          to="/backDailyReport"
+          className="btn btn-error text-white font-bold"
+        >
+          Back
+        </Link>
       </div>
       <div className="flex gap-4 ">
         <h1 className="font-bold ">सेल्समेन का नाम </h1>
