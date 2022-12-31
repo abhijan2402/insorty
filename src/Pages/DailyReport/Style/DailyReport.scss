@@ -1,7 +1,7 @@
 .dailyReportInput {
     width: 232px;
     padding: 0.3rem;
-    height: 41px;
+    height: 40px;
     background: rgba(253, 249, 250, 0.5);
     border: 0.2px solid #000000;
     border-radius: 8px
@@ -9,22 +9,88 @@
 
 .semiSmallInput {
     width: 164px;
-    height: 41px;
+    height: 40px;
     padding: 0.3rem;
     background: rgba(253, 249, 250, 0.5);
     border: 0.2px solid #000000;
     border-radius: 8px
 }
 
-
-
 .smallinput {
     box-sizing: border-box;
-    width: 43px;
-    height: 41px;
+    width: 40px;
+    height: 40px;
     left: 0px;
+    text-align: center;
     top: 0px;
     background: rgba(253, 249, 250, 0.5);
     border: 0.2px solid #000000;
     border-radius: 8px;
+}
+
+.dailyReportBtnSubmit {
+    width: 180px;
+    height: 41px;
+    background: #AA237A;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
+
+.dailyReportBtn {
+    width: 180px;
+    height: 41px;
+    background: transparent;
+    border: 1px solid #AA237A;
+    border-radius: 5px;
+    transition: 0.6s all ease-in-out;
+
+    &:hover {
+        background: #AA237A;
+        color: #fff;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.DailyReportContainer {}
+
+@media screen and (max-width: 768px) {
+    .DailyReportContainer {
+        width: 100% !important;
+        margin-right: 1rem !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .DailyReportContainer {
+        width: 100%;
+        margin-right: 1rem;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .DailyReportContainer {
+        width: 100%;
+        margin-right: 1rem;
+        margin: 0 auto;
+    }
+}
+
+.titleText {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 27px;
+    margin-bottom: 0.7rem;
+    color: #AA237A;
 }

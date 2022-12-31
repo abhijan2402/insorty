@@ -1,0 +1,12 @@
+.DashboardLayoutOutlate {
+    width: "78%";
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+    .DashboardLayoutOutlate {
+        width: 100%;
+        margin-right: 1rem;
+        margin: 0 auto;
+    }
+}
