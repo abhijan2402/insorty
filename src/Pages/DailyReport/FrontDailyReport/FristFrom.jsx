@@ -9,13 +9,12 @@ const FristFrom = () => {
             <tr>
               <th>S.no</th>
               <th>Brand Name/ ब्राण्ड</th>
-              <th>MRP</th>
+              <th>Average Rate</th>
               <th>प्रारम्भिक स्टॉक</th>
               <th>आमद (खरीद)-दु.</th>
+              <th>खरीद रेट - दु</th>
               <th>आमद (खरीद)-बा.</th>
-
               <th>खरीद रेट - बा.</th>
-
               <th>आमद (उधारी)</th>
               <th>भेजान</th>
               <th>योग/शेष</th>
@@ -92,7 +91,30 @@ const FristFrom = () => {
                 </div>
               </td>
 
-              {/* ======== आमद (खरीद)-दु. ========= */}
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">750ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">330ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <label class="label">
+                      <span class="label-text">180ml</span>
+                    </label>
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
 
               <td>
                 <div className="flex gap-2">
@@ -118,7 +140,6 @@ const FristFrom = () => {
                   </div>
                 </div>
               </td>
-              {/* ======== आमद (खरीद)-बा. ========= */}
 
               <td>
                 <div className="flex gap-2">
@@ -406,6 +427,23 @@ const FristFrom = () => {
                   </div>
                 </div>
               </td>
+
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
+
               {/* ======== आमद (खरीद)-बा. ========= */}
 
               <td>
@@ -595,6 +633,22 @@ const FristFrom = () => {
               </td>
 
               {/* ======== आमद (खरीद)-दु. ========= */}
+
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
 
               <td>
                 <div className="flex gap-2">
@@ -816,6 +870,22 @@ const FristFrom = () => {
                   </div>
                 </div>
               </td>
+
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
               {/* ======== आमद (खरीद)-बा. ========= */}
 
               <td>
@@ -1007,6 +1077,21 @@ const FristFrom = () => {
 
               {/* ======== आमद (खरीद)-दु. ========= */}
 
+              <td>
+                <div className="flex gap-2">
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+
+                  <div class="form-control">
+                    <input type="number" class="smallinput" />
+                  </div>
+                </div>
+              </td>
               <td>
                 <div className="flex gap-2">
                   <div class="form-control">

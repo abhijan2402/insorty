@@ -21,13 +21,16 @@ const FronteDailyReport = () => {
       </div>
 
       <div className="py-6">
-        <form>
-          <FristFrom></FristFrom>
+        <div>
+          <form>
+            <FristFrom></FristFrom>
+          </form>
           <div className="mt-4 flex gap-4">
             <button className="dailyReportBtn">ADD 5</button>
             <button className="dailyReportBtn">ADD 1</button>
           </div>
-        </form>
+        </div>
+
         <div className="mt-6">
           <form>
             <SecondFrom></SecondFrom>
