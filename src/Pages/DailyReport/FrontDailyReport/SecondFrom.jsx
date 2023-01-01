@@ -39,6 +39,16 @@ const SecondFrom = () => {
                 <input type="number" className="semiSmallInput" />
               </div>
             </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
             {/* ======== प्रारम्भिक स्टॉक ========= */}
             <td>
               <div className="form-control">
@@ -125,6 +135,16 @@ const SecondFrom = () => {
                 <input type="number" className="semiSmallInput" />
               </div>
             </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
             {/* ======== प्रारम्भिक स्टॉक ========= */}
             <td>
               <div className="form-control">
@@ -198,13 +218,23 @@ const SecondFrom = () => {
           </tr>
           {/* ============= 3 =============== */}
           <tr>
-            <th>1</th>
+            <th>3</th>
             <td>
               <div className="form-control">
                 <h1 className="font-bold">90ml</h1>
               </div>
             </td>
             {/* ======== MRP Input ========= */}
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
             <td>
               <div className="form-control">
                 <input type="number" className="semiSmallInput" />
@@ -295,6 +325,16 @@ const SecondFrom = () => {
                 <input type="number" className="semiSmallInput" />
               </div>
             </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
             {/* ======== प्रारम्भिक स्टॉक ========= */}
             <td>
               <div className="form-control">
@@ -380,6 +420,16 @@ const SecondFrom = () => {
                 <input type="number" className="semiSmallInput" />
               </div>
             </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
             {/* ======== प्रारम्भिक स्टॉक ========= */}
             <td>
               <div className="form-control">
@@ -460,6 +510,16 @@ const SecondFrom = () => {
               </div>
             </td>
             {/* ======== MRP Input ========= */}
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
+            <td>
+              <div className="form-control">
+                <input type="number" className="semiSmallInput" />
+              </div>
+            </td>
             <td>
               <div className="form-control">
                 <input type="number" className="semiSmallInput" />
