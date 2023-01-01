@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import FristFrom from "./FristFrom";
-import SecondFrom from "./SecondFrom";
+import FristFrom from "./FirstForm/FristFrom";
+import SecondFrom from "./SecondForm/SecondFrom";
 import { Link } from "react-router-dom";
+import AddOneSecondForm from "./SecondForm/AddOneSecondForm/AddOneSecondForm";
+import AddOneFristForm from "./FirstForm/AddOneFristForm/AddOneFristForm";
 
 const FronteDailyReport = () => {
+  // ================ add five first form ================
   const addFiveFristForm = {
     brandName: "",
     averageRate: "",
@@ -21,17 +24,71 @@ const FronteDailyReport = () => {
     total: "",
     grandTotal: "",
   };
-
   const [frontDailyReport, setFrontDailyReport] = useState([addFiveFristForm]);
-  const [addOne, setAddOne] = useState([addFiveFristForm]);
 
   const addFive = () => {
-    setFrontDailyReport([...frontDailyReport, addFiveFristForm]);
+    const addFiveData = setFrontDailyReport([
+      ...frontDailyReport,
+      addFiveFristForm,
+    ]);
+    console.log(addFiveData);
   };
 
-  const addOneForm = () => {
-    setAddOne([...addOne, addFiveFristForm]);
+  const addOneFristForm = {
+    brandName: "",
+    averageRate: "",
+    startingStock: "",
+    incomingPurchase: "",
+    buyRate: "",
+    incomePurchase: "",
+    purchaseRate: "",
+    inflowCredit: "",
+    sending: "",
+    sumRemainder: "",
+    closingStock: "",
+    sales: "",
+    mainRate: "",
+    total: "",
+    grandTotal: "",
   };
+
+  const [addOneFristFormState, setAddOneFristFormState] = useState([
+    addOneFristForm,
+  ]);
+
+  const addOneFristFormHandler = () => {
+    setAddOneFristFormState([...addOneFristFormState, addOneFristForm]);
+  };
+
+  // ================ add five first form ================
+
+  //=============== add One second form ================
+  const addOneSecondForm = {
+    averageRate: "",
+    startingStock: "",
+    incomingPurchase: "",
+    buyRate: "",
+    incomePurchase: "",
+    purchaseRate: "",
+    inflowCredit: "",
+    sending: "",
+    sumRemainder: "",
+    closingStock: "",
+    sales: "",
+    mainRate: "",
+    total: "",
+    grandTotal: "",
+  };
+
+  const [addOneSecondFormState, setAddOneSecondFormState] = useState([
+    addOneSecondForm,
+  ]);
+
+  const addOneSecondFormHandler = () => {
+    setAddOneSecondFormState([...addOneSecondFormState, addOneSecondForm]);
+  };
+
+  //=============== add One second form ================
 
   return (
     <section className="mx-2">
@@ -74,6 +131,7 @@ const FronteDailyReport = () => {
                     <th>कुल योग</th>
                   </tr>
                 </thead>
+
                 <tbody>
                   <tr>
                     <th>1</th>
@@ -569,7 +627,16 @@ const FronteDailyReport = () => {
                     return <FristFrom key={index} item={item} index={index} />;
                   })}
 
-                  
+                  {addOneFristFormState.map((item, index) => {
+                    return (
+                      <AddOneFristForm
+                        key={index}
+                        item={item}
+                        index={index}
+                      ></AddOneFristForm>
+                    );
+                  })}
+
                   <tr>
                     <th></th>
                     <td>
@@ -950,25 +1017,72 @@ const FronteDailyReport = () => {
               </table>
             </div>
           </form>
+
           <div className="mt-4 flex gap-4">
             <button className="dailyReportBtn" onClick={() => addFive()}>
-              ADD 3
+              ADD 5
             </button>
-            <button className="dailyReportBtn" onClick={() => addOneForm()}>
+            <button
+              className="dailyReportBtn"
+              onClick={() => addOneFristFormHandler()}
+            >
               ADD 1
             </button>
           </div>
         </div>
 
-        <div className="mt-6">
+        <div>
           <form>
-            <SecondFrom></SecondFrom>
+            <div className="mt-6">
+              <div className="overflow-x-auto">
+                <table className="table w-full">
+                  <thead>
+                    <tr>
+                      <th>S.no</th>
+                      <th>Total ml</th>
+                      <th>Average Rate</th>
+                      <th>प्रारम्भिक स्टॉक</th>
+                      <th>आमद (खरीद)-दु.</th>
+                      <th>खरीद रेट - दु</th>
+                      <th>आमद (खरीद)-बा.</th>
+                      <th>खरीद रेट - बा.</th>
+                      <th>आमद (उधारी)</th>
+                      <th>भेजान</th>
+                      <th>योग/शेष</th>
+                      <th>अन्तिम स्टॉक</th>
+                      <th>बिक्री</th>
+                      <th>रेट</th>
+                      <th>योग</th>
+                      <th>कुल योग</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <SecondFrom></SecondFrom>
+                    {addOneSecondFormState.map((item, index) => {
+                      return (
+                        <AddOneSecondForm
+                          key={index}
+                          index={index}
+                          item={item}
+                        ></AddOneSecondForm>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </form>
         </div>
 
         <div className="mt-4 flex gap-4">
           <button className="dailyReportBtnSubmit">Submit</button>
-          <button className="dailyReportBtn">ADD 1</button>
+          <button
+            className="dailyReportBtn"
+            onClick={() => addOneSecondFormHandler()}
+          >
+            ADD 1
+          </button>
         </div>
       </div>
     </section>

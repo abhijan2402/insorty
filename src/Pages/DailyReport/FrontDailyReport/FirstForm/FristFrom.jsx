@@ -1,11 +1,12 @@
 import React from "react";
 
 const FristFrom = ({ index }) => {
+  const SerialNo = index + 2;
   return (
     <>
       {/* 02 */}
       <tr>
-        <th>{index + 2}</th>
+        <th>{SerialNo}</th>
         <td>
           <div className="form-control">
             <input type="text" className="dailyReportInput " name="brandName" />
@@ -31,15 +32,27 @@ const FristFrom = ({ index }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
           </div>
         </td>
@@ -49,15 +62,27 @@ const FristFrom = ({ index }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
           </div>
         </td>
@@ -83,15 +108,27 @@ const FristFrom = ({ index }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
           </div>
         </td>
@@ -227,7 +264,7 @@ const FristFrom = ({ index }) => {
       {/* 03 */}
 
       <tr>
-        <th>{index + 3}</th>
+        <th>{SerialNo + 1}</th>
         <td>
           <div className="form-control">
             <input type="text" className="dailyReportInput " name="brandName" />
@@ -253,15 +290,27 @@ const FristFrom = ({ index }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
           </div>
         </td>
@@ -271,15 +320,27 @@ const FristFrom = ({ index }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
           </div>
         </td>
@@ -305,15 +366,27 @@ const FristFrom = ({ index }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
           </div>
         </td>
@@ -449,7 +522,7 @@ const FristFrom = ({ index }) => {
       {/* 04 */}
 
       <tr>
-        <th>{index + 4}</th>
+        <th>{SerialNo + 2}</th>
         <td>
           <div className="form-control">
             <input type="text" className="dailyReportInput " name="brandName" />
@@ -475,15 +548,27 @@ const FristFrom = ({ index }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
           </div>
         </td>
@@ -493,15 +578,27 @@ const FristFrom = ({ index }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
           </div>
         </td>
@@ -527,15 +624,27 @@ const FristFrom = ({ index }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
           </div>
         </td>

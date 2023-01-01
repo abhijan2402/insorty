@@ -1,10 +1,11 @@
 import React from "react";
 
-const AddOneForm = () => {
+const AddOneFristForm = ({ index }) => {
+  const SerialNo = index + 5;
   return (
     <>
       <tr>
-        <th></th>
+        <th>{SerialNo}</th>
         <td>
           <div className="form-control">
             <input type="text" className="dailyReportInput " name="brandName" />
@@ -30,15 +31,27 @@ const AddOneForm = () => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="startingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="startingStock"
+              />
             </div>
           </div>
         </td>
@@ -48,15 +61,27 @@ const AddOneForm = () => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomingPurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomingPurchase"
+              />
             </div>
           </div>
         </td>
@@ -82,15 +107,27 @@ const AddOneForm = () => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="incomePurchase" />
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase"
+              />
             </div>
           </div>
         </td>
@@ -222,9 +259,8 @@ const AddOneForm = () => {
           </div>
         </td>
       </tr>
-
     </>
   );
 };
 
-export default AddOneForm;
+export default AddOneFristForm;
