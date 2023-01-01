@@ -1,16 +1,16 @@
 import React from "react";
-import BackFristFrom from "./BackFristForm";
 import "../Style/DailyReport.scss";
-import RmlFrom from "./RmlFrom";
+import RmlFrom from "./RmlForm/RmlFrom";
 import { Link } from "react-router-dom";
-import PurchaseOutSideFrom from "./PurchaseOutSideFrom";
-import CommissionForm from "./CommissionForm";
-import CashReciveForm from "./CashReciveForm";
-import InflowBorrowingRML from "../InflowBorrowingBack/InflowBorrowingRML";
-import ShippingForm from "../InflowBorrowingBack/ShippingForm";
-import CreditDabitForm from "../InflowBorrowingBack/CreditDabitForm";
-import FinalReport from "../FinalReport/FinalReport";
-import Comment from "../Comment/Comment";
+import FristFormBack from "./FristFormBack/BackFristForm";
+import PurchaseOutSideFrom from "./PurchaseOutSideForm/PurchaseOutSideFrom";
+import CommissionForm from "./CommissonForm/CommissionForm";
+import CashReciveForm from "./CashReciveForm/CashReciveForm";
+import ShippingForm from "./InflowBorrowingBack/ShippingForm/ShippingForm";
+import InflowBorrowingRML from "./InflowBorrowingBack/InflowBorrowingRML/InflowBorrowingRML";
+import CreditDabitForm from "./InflowBorrowingBack/CraditDabitForm.jsx/CreditDabitForm";
+import FinalReport from "./FinalReport/FinalReport";
+import Comment from "./Comment/Comment";
 
 const BackDailyReport = () => {
   return (
@@ -36,7 +36,7 @@ const BackDailyReport = () => {
 
         <div className="py-6">
           <form action="">
-            <BackFristFrom></BackFristFrom>
+            <FristFormBack></FristFormBack>
             <div className="mt-4 flex gap-4">
               <button className="dailyReportBtn">ADD 5</button>
               <button className="dailyReportBtn">ADD 1</button>

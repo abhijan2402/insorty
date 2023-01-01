@@ -1,5 +1,5 @@
 import React from "react";
-import "../Style/DailyReport.scss";
+import "../../Style/DailyReport.scss";
 
 const BackFristFrom = () => {
   return (
@@ -26,21 +26,33 @@ const BackFristFrom = () => {
                 <label className="label">
                   <span className="label-text">750ml</span>
                 </label>
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">330ml</span>
                 </label>
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">180ml</span>
                 </label>
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
             </div>
           </td>
@@ -51,21 +63,33 @@ const BackFristFrom = () => {
                 <label className="label">
                   <span className="label-text">750ml</span>
                 </label>
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">330ml</span>
                 </label>
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">180ml</span>
                 </label>
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
             </div>
           </td>
@@ -138,21 +162,33 @@ const BackFristFrom = () => {
                 <label className="label">
                   <span className="label-text">750ml</span>
                 </label>
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">330ml</span>
                 </label>
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">180ml</span>
                 </label>
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
             </div>
           </td>
@@ -164,21 +200,33 @@ const BackFristFrom = () => {
                 <label className="label">
                   <span className="label-text">750ml</span>
                 </label>
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">330ml</span>
                 </label>
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">180ml</span>
                 </label>
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
             </div>
           </td>
@@ -191,21 +239,33 @@ const BackFristFrom = () => {
                 <label className="label">
                   <span className="label-text">750ml</span>
                 </label>
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">330ml</span>
                 </label>
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">180ml</span>
                 </label>
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
             </div>
           </td>
@@ -242,21 +302,33 @@ const BackFristFrom = () => {
                 <label className="label">
                   <span className="label-text">750ml</span>
                 </label>
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">330ml</span>
                 </label>
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">180ml</span>
                 </label>
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
             </div>
           </td>
@@ -267,21 +339,33 @@ const BackFristFrom = () => {
                 <label className="label">
                   <span className="label-text">750ml</span>
                 </label>
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">330ml</span>
                 </label>
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">180ml</span>
                 </label>
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
             </div>
           </td>
@@ -379,15 +463,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
             </div>
           </td>
@@ -395,15 +491,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
             </div>
           </td>
@@ -459,15 +567,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
             </div>
           </td>
@@ -476,15 +596,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
             </div>
           </td>
@@ -494,15 +626,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
             </div>
           </td>
@@ -526,15 +670,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
             </div>
           </td>
@@ -542,15 +698,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
             </div>
           </td>
@@ -617,15 +785,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
             </div>
           </td>
@@ -633,15 +813,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
             </div>
           </td>
@@ -697,15 +889,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
             </div>
           </td>
@@ -714,15 +918,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
             </div>
           </td>
@@ -732,15 +948,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
             </div>
           </td>
@@ -764,15 +992,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
             </div>
           </td>
@@ -780,15 +1020,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
             </div>
           </td>
@@ -855,15 +1107,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
             </div>
           </td>
@@ -871,15 +1135,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
             </div>
           </td>
@@ -935,15 +1211,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
             </div>
           </td>
@@ -952,15 +1240,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
             </div>
           </td>
@@ -970,15 +1270,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
             </div>
           </td>
@@ -1002,15 +1314,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
             </div>
           </td>
@@ -1018,15 +1342,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
             </div>
           </td>
@@ -1093,15 +1429,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="averageRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="averageRate"
+                />
               </div>
             </div>
           </td>
@@ -1109,15 +1457,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="startingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="startingStock"
+                />
               </div>
             </div>
           </td>
@@ -1173,15 +1533,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="incomePurchase" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="incomePurchase"
+                />
               </div>
             </div>
           </td>
@@ -1190,15 +1562,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="purchaseRate" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="purchaseRate"
+                />
               </div>
             </div>
           </td>
@@ -1208,15 +1592,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="inflowCredit" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="inflowCredit"
+                />
               </div>
             </div>
           </td>
@@ -1240,15 +1636,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="sumRemainder" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="sumRemainder"
+                />
               </div>
             </div>
           </td>
@@ -1256,15 +1664,27 @@ const BackFristFrom = () => {
           <td>
             <div className="flex gap-2">
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
 
               <div className="form-control">
-                <input type="number" className="smallinput" name="closingStock" />
+                <input
+                  type="number"
+                  className="smallinput"
+                  name="closingStock"
+                />
               </div>
             </div>
           </td>
