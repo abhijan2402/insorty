@@ -4,7 +4,6 @@ const FristFrom = ({ index }) => {
   const SerialNo = index + 2;
   return (
     <>
-      {/* 02 */}
       <tr>
         <th>{SerialNo}</th>
         <td>

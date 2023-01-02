@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../Style/DailyReport.scss";
 import RmlFrom from "./RmlForm/RmlFrom";
 import { Link } from "react-router-dom";
@@ -12,64 +12,48 @@ import CreditDabitForm from "./InflowBorrowingBack/CraditDabitForm.jsx/CreditDab
 import FinalReport from "./FinalReport/FinalReport";
 import Comment from "./Comment/Comment";
 import AddOneFristFromBack from "./FristFormBack/AddOneFristFromBack/AddOneFristFromBack";
+import TotalRML from "./RmlForm/TotalRML";
+import useRmlAdd from "../../../Hooks/useRmlAdd";
+import AddOneRmlForm from "./RmlForm/AddOneRmlForm/AddOneRmlForm";
+import useFristFormAdd from "../../../Hooks/useFristFormAdd";
+import usePurchesOutSideAdd from "../../../Hooks/usePurchesOutSideAdd";
+import AddOnePurchaseOutSideFrom from "../BackDailyReport/PurchaseOutSideForm/AddOnePurchesOutSide/AddOnePurchesOutSide";
+import useCommissonAdd from "../../../Hooks/useCommissonAdd";
+import AddOneCommissionForm from "../BackDailyReport/CommissonForm/AddOneCommisson/AddOneCommisson";
 
 const BackDailyReport = () => {
-  // ======================== add five in frist form ========================
-  const addFiveInFristFormObj = {
-    brandName: "",
-    averageRate: "",
-    startingStock: "",
-    incomingPurchase: "",
-    buyRate: "",
-    incomePurchase: "",
-    purchaseRate: "",
-    inflowCredit: "",
-    sending: "",
-    sumRemainder: "",
-    closingStock: "",
-    sales: "",
-    mainRate: "",
-    total: "",
-    grandTotal: "",
-  };
+  // ================== Frist Form============
+  const {
+    addFiveInFristForm,
+    addFiveInFristFormHandler,
+    addOneInFristForm,
+    addOneInFristFormHandler,
+  } = useFristFormAdd();
 
-  const [addFiveInFristForm, setAddFiveInFristForm] = useState([
-    addFiveInFristFormObj,
-  ]);
+  // ================== Rml Form============
+  const {
+    addFiveInRmlState,
+    addOneInRmlState,
+    handelAddFiveInRml,
+    handelAddOneInRml,
+  } = useRmlAdd();
 
-  const addFiveInFristFormHandler = () => {
-    setAddFiveInFristForm([...addFiveInFristForm, addFiveInFristFormObj]);
-  };
-  // ======================== add five in frist form ========================
+  // ================== Purchase OutSide Form============
+  const {
+    AddFivePurchesOutSideState,
+    AddOnePurchesOutSideState,
+    handelAddFivePurchesOutSide,
+    handelAddOnePurchesOutSide,
+  } = usePurchesOutSideAdd();
 
-  // ======================== add One in frist form ========================
-  const addOneInFristFormObj = {
-    brandName: "",
-    averageRate: "",
-    startingStock: "",
-    incomingPurchase: "",
-    buyRate: "",
-    incomePurchase: "",
-    purchaseRate: "",
-    inflowCredit: "",
-    sending: "",
-    sumRemainder: "",
-    closingStock: "",
-    sales: "",
-    mainRate: "",
-    total: "",
-    grandTotal: "",
-  };
+  // ================== Commission Form============
 
-  const [addOneInFristForm, setAddOneInFristForm] = useState([
-    addOneInFristFormObj,
-  ]);
-
-  const addOneInFristFormHandler = () => {
-    setAddOneInFristForm([...addOneInFristForm, addOneInFristFormObj]);
-  };
-
-  // ======================== add One in frist form ========================
+  const {
+    addFiveCommissonState,
+    addOneCommissonState,
+    handelAddFiveCommison,
+    handelAddOneCommison,
+  } = useCommissonAdd();
 
   return (
     <>
@@ -1024,46 +1008,171 @@ const BackDailyReport = () => {
         </div>
 
         <div className="py-6">
+          <h1 className="my-4">
+            <span className="font-bold titleText">RML / आरएमएल</span>
+          </h1>
+
           <form action="">
-            <h1 className="my-4">
-              <span className="font-bold titleText">RML / आरएमएल</span>
-            </h1>
-            <RmlFrom></RmlFrom>
-            <div className="mt-4 flex gap-4">
-              <button className="dailyReportBtn">ADD 5</button>
-              <button className="dailyReportBtn">ADD 1</button>
+            <div className="overflow-x-auto">
+              <table className="table w-full">
+                <thead>
+                  <tr>
+                    <th>S.no</th>
+                    <th>Brand Name/ ब्राण्ड</th>
+                    <th>Average Rate</th>
+                    <th>प्रारम्भिक स्टॉक</th>
+                    <th>आमद (खरीद)-दु.</th>
+                    <th>आमद (खरीद)-बा.</th>
+                    <th>आमद (उधारी)</th>
+                    <th>भेजान</th>
+                    <th>योग/शेष</th>
+                    <th>बिक्री</th>
+                    <th>रेट</th>
+                    <th>रकम</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {addFiveInRmlState.map((item, index) => {
+                    return (
+                      <RmlFrom key={index} item={item} index={index}></RmlFrom>
+                    );
+                  })}
+                  {addOneInRmlState.map((item, index) => {
+                    return (
+                      <AddOneRmlForm
+                        key={index}
+                        item={item}
+                        index={index}
+                      ></AddOneRmlForm>
+                    );
+                  })}
+                  <TotalRML></TotalRML>
+                </tbody>
+              </table>
+            </div>
+          </form>
+          <div className="mt-4 flex gap-4">
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddFiveInRml()}
+            >
+              ADD 5
+            </button>
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddOneInRml()}
+            >
+              ADD 1
+            </button>
+          </div>
+        </div>
+
+        <div className="py-6">
+          <h1 className="my-4">
+            <span className="font-bold titleText">
+              अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
+            </span>
+          </h1>
+          <form action="">
+            <div className="overflow-x-auto">
+              <table className="table w-full">
+                <thead>
+                  <tr>
+                    <th>Party Name/ पार्टी का नाम</th>
+                    <th>Brand Name/ ब्राण्ड</th>
+                    <th>संख्या</th>
+                    <th>टिप्पणी</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {AddFivePurchesOutSideState.map((item, index) => {
+                    return (
+                      <PurchaseOutSideFrom
+                        key={index}
+                        item={item}
+                        index={index}
+                      ></PurchaseOutSideFrom>
+                    );
+                  })}
+                  {AddOnePurchesOutSideState.map((item, index) => {
+                    return (
+                      <AddOnePurchaseOutSideFrom
+                        key={index}
+                        item={item}
+                        index={index}
+                      ></AddOnePurchaseOutSideFrom>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </form>
+          <div className="mt-4 flex gap-4 mx-4">
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddFivePurchesOutSide()}
+            >
+              ADD 5
+            </button>
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddOnePurchesOutSide()}
+            >
+              ADD 1
+            </button>
+          </div>
+        </div>
+
+        <div className="py-6">
+          <h1 className="my-4">
+            <span className="font-bold titleText">
+              कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
+            </span>
+          </h1>
+          <form action="">
+            <div className="overflow-x-auto">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Reason / विवरण</th>
+                    <th>रकम</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {addFiveCommissonState.map((item, index) => {
+                    return (
+                      <CommissionForm
+                        key={index}
+                        item={item}
+                        index={index}
+                      ></CommissionForm>
+                    );
+                  })}
+                  {addOneCommissonState.map((item, index) => {
+                    return <AddOneCommissionForm></AddOneCommissionForm>;
+                  })}
+                </tbody>
+              </table>
             </div>
           </form>
         </div>
 
-        <div className="py-6">
-          <form action="">
-            <h1 className="my-4">
-              <span className="font-bold titleText">
-                अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
-              </span>
-            </h1>
-            <PurchaseOutSideFrom></PurchaseOutSideFrom>
-            <div className="mt-4 flex gap-4 mx-4">
-              <button className="dailyReportBtn">ADD 5</button>
-              <button className="dailyReportBtn">ADD 1</button>
-            </div>
-          </form>
-        </div>
-
-        <div className="py-6">
-          <form action="">
-            <h1 className="my-4">
-              <span className="font-bold titleText">
-                कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
-              </span>
-            </h1>
-            <CommissionForm></CommissionForm>
-            <div className="mt-4 flex gap-4 mx-4">
-              <button className="dailyReportBtn">ADD 5</button>
-              <button className="dailyReportBtn">ADD 1</button>
-            </div>
-          </form>
+        
+        <div className="mt-4 flex gap-4 mx-4">
+          <button
+            className="dailyReportBtn"
+            onClick={() => handelAddFiveCommison()}
+          >
+            ADD 5
+          </button>
+          <button
+            className="dailyReportBtn"
+            onClick={() => handelAddOneCommison()}
+          >
+            ADD 1
+          </button>
         </div>
 
         <div className="py-6">

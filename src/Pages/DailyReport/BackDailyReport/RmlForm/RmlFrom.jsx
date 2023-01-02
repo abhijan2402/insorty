@@ -1,408 +1,394 @@
 import React from "react";
 
-const RmlFrom = () => {
+const RmlFrom = ({ index }) => {
+  const serialNo = index + 1;
   return (
-    <section className="mx-2">
-      <div className="overflow-x-auto">
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th>S.no</th>
-              <th>Brand Name/ ब्राण्ड</th>
-              <th>Average Rate</th>
-              <th>प्रारम्भिक स्टॉक</th>
-              <th>आमद (खरीद)-दु.</th>
-              <th>आमद (खरीद)-बा.</th>
-              <th>आमद (उधारी)</th>
-              <th>भेजान</th>
-              <th>योग/शेष</th>
-              <th>बिक्री</th>
-              <th>रेट</th>
-              <th>रकम</th>
-            </tr>
-          </thead>
+    <>
+      <tr>
+        <th>{serialNo}</th>
+        <td>
+          <div className="form-control">
+            <input type="text" className="semiSmallInput" name="brandName" />
+          </div>
+        </td>
 
-          <tbody>
-            <tr>
-              <th>1</th>
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="averageRate"
+            />
+          </div>
+        </td>
 
-              <td>
-                <div className="form-control">
-                  <input type="text" className="semiSmallInput" />
-                </div>
-              </td>
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="openingStock"
+            />
+          </div>
+        </td>
+        {/* ======== आमद (खरीद)-बा. ========= */}
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="incomingPurchase"
+            />
+          </div>
+        </td>
+        {/* ======== आमद (उधारी) ========= */}
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (खरीद)-बा. ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="incomePurchase"
+            />
+          </div>
+        </td>
+        {/* ======== भेजान ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="inflowCredit"
+            />
+          </div>
+        </td>
+        {/* ======== योग/शेष ========= */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="sending" />
+          </div>
+        </td>
+        {/* ======== अन्तिम स्टॉक ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="sumRemainder"
+            />
+          </div>
+        </td>
+        {/* ============= बिक्री ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="sales" />
+          </div>
+        </td>
+        {/* ============= रेट ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="rate" />
+          </div>
+        </td>
+        {/* ============= योग ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="cost" />
+          </div>
+        </td>
+        {/* ============= कुल योग ================ */}
+      </tr>
+      {/* 02 */}
+      <tr>
+        <th>{serialNo + 1}</th>
+        <td>
+          <div className="form-control">
+            <input type="text" className="semiSmallInput" name="brandName" />
+          </div>
+        </td>
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (उधारी) ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="averageRate"
+            />
+          </div>
+        </td>
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== भेजान ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== योग/शेष ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== अन्तिम स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= बिक्री ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= रेट ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= योग ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= कुल योग ================ */}
-            </tr>
-            {/* 02 */}
-            <tr>
-              <th>2</th>
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="openingStock"
+            />
+          </div>
+        </td>
+        {/* ======== आमद (खरीद)-बा. ========= */}
 
-              {/* ======== MRP Input ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="text" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== प्रारम्भिक स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="incomingPurchase"
+            />
+          </div>
+        </td>
+        {/* ======== आमद (उधारी) ========= */}
 
-              {/* ======== आमद (खरीद)-दु. ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="incomePurchase"
+            />
+          </div>
+        </td>
+        {/* ======== भेजान ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="inflowCredit"
+            />
+          </div>
+        </td>
+        {/* ======== योग/शेष ========= */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="sending" />
+          </div>
+        </td>
+        {/* ======== अन्तिम स्टॉक ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="sumRemainder"
+            />
+          </div>
+        </td>
+        {/* ============= बिक्री ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="sales" />
+          </div>
+        </td>
+        {/* ============= रेट ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="rate" />
+          </div>
+        </td>
+        {/* ============= योग ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="cost" />
+          </div>
+        </td>
+        {/* ============= कुल योग ================ */}
+      </tr>
+      {/* 03 */}
+      <tr>
+        <th>{serialNo + 2}</th>
+        <td>
+          <div className="form-control">
+            <input type="text" className="semiSmallInput" name="brandName" />
+          </div>
+        </td>
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (खरीद)-बा. ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="averageRate"
+            />
+          </div>
+        </td>
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (उधारी) ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="openingStock"
+            />
+          </div>
+        </td>
+        {/* ======== आमद (खरीद)-बा. ========= */}
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== भेजान ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== योग/शेष ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== अन्तिम स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= बिक्री ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= रेट ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= योग ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= कुल योग ================ */}
-            </tr>
-            {/* 03 */}
-            <tr>
-              <th>3</th>
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="incomingPurchase"
+            />
+          </div>
+        </td>
+        {/* ======== आमद (उधारी) ========= */}
 
-              {/* ======== MRP Input ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="text" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== प्रारम्भिक स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="incomePurchase"
+            />
+          </div>
+        </td>
+        {/* ======== भेजान ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="inflowCredit"
+            />
+          </div>
+        </td>
+        {/* ======== योग/शेष ========= */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="sending" />
+          </div>
+        </td>
+        {/* ======== अन्तिम स्टॉक ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="sumRemainder"
+            />
+          </div>
+        </td>
+        {/* ============= बिक्री ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="sales" />
+          </div>
+        </td>
+        {/* ============= रेट ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="rate" />
+          </div>
+        </td>
+        {/* ============= योग ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="cost" />
+          </div>
+        </td>
+        {/* ============= कुल योग ================ */}
+      </tr>
+      {/* 04 */}
+      <tr>
+        <th>{serialNo + 3}</th>
+        <td>
+          <div className="form-control">
+            <input type="text" className="semiSmallInput" name="brandName" />
+          </div>
+        </td>
 
-              {/* ======== आमद (खरीद)-दु. ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="averageRate"
+            />
+          </div>
+        </td>
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (खरीद)-बा. ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="openingStock"
+            />
+          </div>
+        </td>
+        {/* ======== आमद (खरीद)-बा. ========= */}
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (उधारी) ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="incomingPurchase"
+            />
+          </div>
+        </td>
+        {/* ======== आमद (उधारी) ========= */}
 
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== भेजान ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== योग/शेष ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== अन्तिम स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= बिक्री ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= रेट ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= योग ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= कुल योग ================ */}
-            </tr>
-            {/* 04 */}
-            <tr>
-              <th>4</th>
-
-              {/* ======== MRP Input ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="text" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== प्रारम्भिक स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-
-              {/* ======== आमद (खरीद)-दु. ========= */}
-
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (खरीद)-बा. ========= */}
-
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (उधारी) ========= */}
-
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== भेजान ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== योग/शेष ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== अन्तिम स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= बिक्री ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= रेट ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= योग ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= कुल योग ================ */}
-            </tr>
-            {/* 05 */}
-            <tr>
-              <th></th>
-
-              {/* ======== MRP Input ========= */}
-              <td>
-                <div className="form-control">
-                  <h1 className="font-bold font-2xl">Total</h1>
-                </div>
-              </td>
-              {/* ======== प्रारम्भिक स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-
-              {/* ======== आमद (खरीद)-दु. ========= */}
-
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (खरीद)-बा. ========= */}
-
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== आमद (उधारी) ========= */}
-
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== भेजान ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== योग/शेष ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ======== अन्तिम स्टॉक ========= */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= बिक्री ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= रेट ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= योग ================ */}
-              <td>
-                <div className="form-control">
-                  <input type="number" className="semiSmallInput" />
-                </div>
-              </td>
-              {/* ============= कुल योग ================ */}
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="incomePurchase"
+            />
+          </div>
+        </td>
+        {/* ======== भेजान ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="inflowCredit"
+            />
+          </div>
+        </td>
+        {/* ======== योग/शेष ========= */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="sending" />
+          </div>
+        </td>
+        {/* ======== अन्तिम स्टॉक ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="sumRemainder"
+            />
+          </div>
+        </td>
+        {/* ============= बिक्री ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="sales" />
+          </div>
+        </td>
+        {/* ============= रेट ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="rate" />
+          </div>
+        </td>
+        {/* ============= योग ================ */}
+        <td>
+          <div className="form-control">
+            <input type="number" className="semiSmallInput" name="cost" />
+          </div>
+        </td>
+        {/* ============= कुल योग ================ */}
+      </tr>
+      {/* 05 */}
+    </>
   );
 };
 
