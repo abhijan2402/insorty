@@ -1,9 +1,10 @@
 import React from "react";
 
-const ShippingForm = () => {
+const ShippingForm = ({ index }) => {
   return (
     <>
       <tr>
+        <th>{index + 1}</th>
         <td>
           <div className="form-control">
             <input type="text" className="semiSmallInput" name="partyName" />

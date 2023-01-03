@@ -3,8 +3,6 @@ import "../Style/DailyReport.scss";
 import RmlFrom from "./RmlForm/RmlFrom";
 import { Link } from "react-router-dom";
 import PurchaseOutSideFrom from "./PurchaseOutSideForm/PurchaseOutSideFrom";
-import CommissionForm from "./CommissonForm/CommissionForm";
-import CashReciveForm from "./CashReciveForm/CashReciveForm";
 import ShippingForm from "./InflowBorrowingBack/ShippingForm/ShippingForm";
 import InflowBorrowingRML from "./InflowBorrowingBack/InflowBorrowingRML/InflowBorrowingRML";
 import FinalReport from "./FinalReport/FinalReport";
@@ -66,6 +64,33 @@ const BackDailyReport = () => {
     handelAddFiveCarditDabit,
     handelAddOneCarditDabit,
   } = useCarditDabit();
+
+  // ********************************* add five button handler *********************************
+  const addFiveBtnHandler = () => {
+    handelAddFiveInRml();
+    handelAddFivePurchesOutSide();
+    handelAddFiveCommison();
+    handelAddFiveCashRecive();
+  };
+
+  const addOneBtnHandler = () => {
+    handelAddOneInRml();
+    handelAddOnePurchesOutSide();
+    handelAddOneCommison();
+    handelAddOneCashRecive();
+  };
+
+  const addFiveShippingBtnHandler = () => {
+    handelAddFiveShipping();
+    handelAddFiveBorrowingRml();
+    handelAddFiveCarditDabit();
+  };
+
+  const addOneShippingBtnHandler = () => {
+    handelAddOneShipping();
+    handelAddOneBorrowingRml();
+    handelAddOneCarditDabit();
+  };
 
   return (
     <>
@@ -1053,13 +1078,13 @@ const BackDailyReport = () => {
               <div className="mt-4 flex gap-4">
                 <button
                   className="dailyReportBtn"
-                  onClick={() => addFiveInFristFormHandler()}
+                  onClick={() => addFiveBtnHandler()}
                 >
                   ADD 5
                 </button>
                 <button
                   className="dailyReportBtn"
-                  onClick={() => addOneInFristFormHandler()}
+                  onClick={() => addOneBtnHandler()}
                 >
                   ADD 1
                 </button>
@@ -1090,6 +1115,7 @@ const BackDailyReport = () => {
                     {purchesOutSideState.map((item, index) => {
                       return (
                         <PurchaseOutSideFrom
+                          item={item}
                           key={index}
                           index={index}
                           purchesOutSideState={purchesOutSideState}
@@ -1179,6 +1205,7 @@ const BackDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
+                      <th>S.No</th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>संख्या</th>
@@ -1200,19 +1227,27 @@ const BackDailyReport = () => {
                 </table>
               </div>
             </form>
+
             <div className="mt-4 flex gap-4 mx-4">
               <button
                 className="dailyReportBtn"
-                onClick={() => handelAddFiveBorrowingRml()}
+                onClick={() => addFiveShippingBtnHandler()}
               >
                 ADD 5
               </button>
               <button
                 className="dailyReportBtn"
-                onClick={() => handelAddOneBorrowingRml()}
+                onClick={() => addOneShippingBtnHandler()}
               >
                 ADD 1
               </button>
+
+              {/* ************ Submit button ***************** */}
+              <div className="mt-4 flex gap-4 mx-4">
+                <button className="dailyReportBtn" type="submit">
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
 
@@ -1299,12 +1334,6 @@ const BackDailyReport = () => {
                 <span className="font-bold titleText">रफ जगह</span>
               </h1>
               <Comment></Comment>
-
-              <div className="mt-4 flex gap-4 mx-4">
-                <button className="dailyReportBtn" type="submit">
-                  Submit
-                </button>
-              </div>
             </form>
           </div>
         </div>
