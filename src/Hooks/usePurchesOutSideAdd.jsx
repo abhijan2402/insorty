@@ -1,44 +1,34 @@
 import { useState } from "react";
 
 const usePurchesOutSideAdd = () => {
-  const addFivePurchesOutSideForm = {
+  const purchesOutSideAdd = {
     partyName: "",
     brandName: "",
     theNumber: "",
     comment: "",
   };
 
-  const addOnePurchesOutSideForm = {
-    partyName: "",
-    brandName: "",
-    theNumber: "",
-    comment: "",
-  };
-  const [AddFivePurchesOutSideState, setAddFivePurchesOutSideState] = useState([
-    addFivePurchesOutSideForm,
-  ]);
-
-  const [AddOnePurchesOutSideState, setAddOnePurchesOutSideState] = useState([
-    addOnePurchesOutSideForm,
+  const [purchesOutSideState, setPurchesOutSideState] = useState([
+    purchesOutSideAdd,
   ]);
 
   const handelAddOnePurchesOutSide = () => {
-    setAddOnePurchesOutSideState([
-      ...AddOnePurchesOutSideState,
-      addOnePurchesOutSideForm,
-    ]);
+    setPurchesOutSideState([...purchesOutSideState, purchesOutSideAdd]);
   };
 
   const handelAddFivePurchesOutSide = () => {
-    setAddFivePurchesOutSideState([
-      ...AddFivePurchesOutSideState,
-      addFivePurchesOutSideForm,
+    setPurchesOutSideState([
+      ...purchesOutSideState,
+      purchesOutSideAdd,
+      purchesOutSideAdd,
+      purchesOutSideAdd,
+      purchesOutSideAdd,
+      purchesOutSideAdd,
     ]);
   };
 
   return {
-    AddFivePurchesOutSideState,
-    AddOnePurchesOutSideState,
+    purchesOutSideState,
     handelAddFivePurchesOutSide,
     handelAddOnePurchesOutSide,
   };

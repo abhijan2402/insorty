@@ -1,35 +1,30 @@
 import React from "react";
 
 const useCommissonAdd = () => {
-  const addFiveCommissonForm = {
+  const commissonForm = {
     reason: "",
     amount: "",
   };
 
-  const addOneCommissonForm = {
-    reason: "",
-    amount: "",
-  };
-
-  const [addFiveCommissonState, setAddFiveCommissonState] = React.useState([
-    addFiveCommissonForm,
-  ]);
-
-  const [addOneCommissonState, setAddOneCommissonState] = React.useState([
-    addOneCommissonForm,
-  ]);
+  const [commissonState, setCommissonState] = React.useState([commissonForm]);
 
   const handelAddFiveCommison = () => {
-    setAddFiveCommissonState([...addFiveCommissonState, addFiveCommissonForm]);
+    setCommissonState([
+      ...commissonState,
+      commissonForm,
+      commissonForm,
+      commissonForm,
+      commissonForm,
+      commissonForm,
+    ]);
   };
 
   const handelAddOneCommison = () => {
-    setAddOneCommissonState([...addOneCommissonState, addOneCommissonForm]);
+    setCommissonState([...commissonState, commissonForm]);
   };
 
   return {
-    addFiveCommissonState,
-    addOneCommissonState,
+    commissonState,
     handelAddFiveCommison,
     handelAddOneCommison,
   };

@@ -1,43 +1,31 @@
 import { useState } from "react";
 
 const useCarditDabit = () => {
-  const addFiveCarditDabitForm = {
-    partyName: "",
-    ammount: "",
-    note: "",
-  };
-  const addOneCarditDabitForm = {
+  const craditDabitForm = {
     partyName: "",
     ammount: "",
     note: "",
   };
 
-  const [
-    addFiveCarditDabitFormState,
-    setAddFiveCarditDabitFormState,
-  ] = useState([addFiveCarditDabitForm]);
-
-  const [addOneCraditDabitFomeState, setAddOneCraditDabitFomeState] = useState([
-    addOneCarditDabitForm,
-  ]);
+  const [craditDabitState, setCraditDabitState] = useState([craditDabitForm]);
 
   const handelAddFiveCarditDabit = () => {
-    setAddFiveCarditDabitFormState([
-      ...addFiveCarditDabitFormState,
-      addFiveCarditDabitForm,
+    setCraditDabitState([
+      ...craditDabitState,
+      craditDabitForm,
+      craditDabitForm,
+      craditDabitForm,
+      craditDabitForm,
+      craditDabitForm,
     ]);
   };
 
   const handelAddOneCarditDabit = () => {
-    setAddOneCraditDabitFomeState([
-      ...addOneCraditDabitFomeState,
-      addOneCarditDabitForm,
-    ]);
+    setCraditDabitState([...craditDabitState, craditDabitForm]);
   };
 
   return {
-    addFiveCarditDabitFormState,
-    addOneCraditDabitFomeState,
+    craditDabitState,
     handelAddFiveCarditDabit,
     handelAddOneCarditDabit,
   };

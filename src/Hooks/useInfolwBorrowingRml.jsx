@@ -1,42 +1,37 @@
 import { useState } from "react";
 
 const useInfolwBorrowingRml = () => {
-  const addFiveInfolwBorring = {
+  const infolwBorrwingForm = {
     partyName: "",
     brandName: "",
     theNumber: "",
     comments: "",
   };
-  const addOneInfolwBorring = {
-    partyName: "",
-    brandName: "",
-    theNumber: "",
-    comments: "",
-  };
-  const [addFiveInfolwBorringState, setAddFiveInfolwBorringState] = useState([
-    addFiveInfolwBorring,
-  ]);
-  const [addOneInfolwBorringState, setAddOneInfolwBorringState] = useState([
-    addOneInfolwBorring,
+
+  const [infolwBorrwingFormState, setInfolwBorrwingFormState] = useState([
+    infolwBorrwingForm,
   ]);
 
   const handelAddFiveBorrowingRml = () => {
-    setAddFiveInfolwBorringState([
-      ...addFiveInfolwBorringState,
-      addFiveInfolwBorring,
+    setInfolwBorrwingFormState([
+      ...infolwBorrwingFormState,
+      infolwBorrwingForm,
+      infolwBorrwingForm,
+      infolwBorrwingForm,
+      infolwBorrwingForm,
+      infolwBorrwingForm,
     ]);
   };
 
   const handelAddOneBorrowingRml = () => {
-    setAddOneInfolwBorringState([
-      ...addOneInfolwBorringState,
-      addOneInfolwBorring,
+    setInfolwBorrwingFormState([
+      ...infolwBorrwingFormState,
+      infolwBorrwingForm,
     ]);
   };
 
   return {
-    addFiveInfolwBorringState,
-    addOneInfolwBorringState,
+    infolwBorrwingFormState,
     handelAddFiveBorrowingRml,
     handelAddOneBorrowingRml,
   };

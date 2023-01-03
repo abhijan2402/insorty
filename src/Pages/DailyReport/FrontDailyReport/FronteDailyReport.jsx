@@ -16,14 +16,6 @@ const FronteDailyReport = () => {
   // setReturned(updatedProduct);
   // }
 
-  const [addOneSecondFormState, setAddOneSecondFormState] = useState([
-    addOneSecondForm,
-  ]);
-
-  const addOneSecondFormHandler = () => {
-    setAddOneSecondFormState([...addOneSecondFormState, addOneSecondForm]);
-  };
-
   const addOneFristForm = {
     brandName: "",
     averageRate: {
@@ -102,11 +94,10 @@ const FronteDailyReport = () => {
   // sales = sumRemainder - closingStock  ---> saledone
   // total = mainRate*sales  ---> totalIndividual
   // grandTotal = total of 750 + total of 330 + total of 180  ---> allTotal
-  const [avgState, setAvgState] = useState(addOneFristForm.averageRate);
 
   const avg = (a, b, c) => {
-    setAvgState((c = (a + b) / 2));
-    // c = (a + b) / 2;
+    // setAvgState((c = (a + b) / 2));
+    c = (a + b) / 2;
   };
 
   const yog = (a, b, c, f, d, e) => {
@@ -125,23 +116,22 @@ const FronteDailyReport = () => {
     d = a + b + c;
   };
 
-  const allFildTotal = () => {
-    let total = 0;
-    for (let i = 0; i < addOneFristFormState.length; i++) {
-      total = total + addOneFristForm.total[i];
-    }
-    return total;
-  };
+  // const allFildTotal = () => {
+  //   let total = 0;
+  //   for (let i = 0; i < addOneFristFormState.length; i++) {
+  //     total = total + addOneFristForm.total[i];
+  //   }
+  //   return total;
+  // };
 
   // add reduce method for all fild total value
-  const addReduceAllFildTotal = addOneFristFormState.reduce(function (
-    accumulator,
-    currentValue
-  ) {
-    return accumulator + currentValue;
-  },
-  0);
-
+  // const addReduceAllFildTotal = addOneFristFormState.reduce(function (
+  //   accumulator,
+  //   currentValue
+  // ) {
+  //   return accumulator + currentValue;
+  // },
+  // 0);
 
   // const totalStock=()=>{
   //   const totalA =
@@ -152,10 +142,6 @@ const FronteDailyReport = () => {
 
   //     console.log(totalA)
   // }
-
-
- 
-
 
   // **********************formulae******************
 
@@ -248,6 +234,7 @@ const FronteDailyReport = () => {
   // ================ add five first form ================
 
   //=============== add One second form ================
+
   const addOneSecondForm = {
     averageRate: "",
     startingStock: "",
@@ -265,9 +252,13 @@ const FronteDailyReport = () => {
     grandTotal: "",
   };
 
-  
+  const [addOneSecondFormState, setAddOneSecondFormState] = useState([
+    addOneSecondForm,
+  ]);
 
-  
+  const addOneSecondFormHandler = () => {
+    setAddOneSecondFormState([...addOneSecondFormState, addOneSecondForm]);
+  };
 
   const addFive = () => {
     setAddOneFristFormState([
@@ -815,17 +806,12 @@ const FronteDailyReport = () => {
                     </td>
                   </tr>
 
-                  {/* {frontDailyReport.map((item, index) => {
-                    return <FristFrom key={index} item={item} index={index} />;
-                  })} */}
-
                   {addOneFristFormState.map((item, index) => {
                     return (
                       <AddOneFristForm
                         key={index}
                         item={item}
                         index={index}
-                        avgState={avgState}
                       ></AddOneFristForm>
                     );
                   })}

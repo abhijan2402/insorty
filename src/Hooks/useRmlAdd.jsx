@@ -1,8 +1,7 @@
 import { useState } from "react";
 
 const useRmlAdd = () => {
-
-  const addFiveFormInRml = {
+  const addRmlForm = {
     brandName: "",
     averageRate: "",
     openingStock: "",
@@ -16,37 +15,25 @@ const useRmlAdd = () => {
     cost: "",
   };
 
-  const addOneFormInRml = {
-    brandName: "",
-    averageRate: "",
-    openingStock: "",
-    incomingPurchase: "",
-    incomePurchase: "",
-    inflowCredit: "",
-    sending: "",
-    sumRemainder: "",
-    sales: "",
-    rate: "",
-    cost: "",
-  };
-  
-
-  const [addFiveInRmlState, setAddFiveInRmlState] = useState([
-    addFiveFormInRml,
-  ]);
-  const [addOneInRmlState, setAddOneInRmlState] = useState([addOneFormInRml]);
+  const [addRmlState, setAddRmlState] = useState([addRmlForm]);
 
   const handelAddFiveInRml = () => {
-    setAddFiveInRmlState([...addFiveInRmlState, addFiveFormInRml]);
+    setAddRmlState([
+      ...addRmlState,
+      addRmlForm,
+      addRmlForm,
+      addRmlForm,
+      addRmlForm,
+      addRmlForm,
+    ]);
   };
 
   const handelAddOneInRml = () => {
-    setAddOneInRmlState([...addOneInRmlState, addOneFormInRml]);
+    setAddRmlState([...addRmlState, addRmlForm]);
   };
 
   return {
-    addFiveInRmlState,
-    addOneInRmlState,
+    addRmlState,
     handelAddFiveInRml,
     handelAddOneInRml,
   };

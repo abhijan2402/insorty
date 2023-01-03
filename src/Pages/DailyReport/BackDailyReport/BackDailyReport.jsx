@@ -7,26 +7,21 @@ import CommissionForm from "./CommissonForm/CommissionForm";
 import CashReciveForm from "./CashReciveForm/CashReciveForm";
 import ShippingForm from "./InflowBorrowingBack/ShippingForm/ShippingForm";
 import InflowBorrowingRML from "./InflowBorrowingBack/InflowBorrowingRML/InflowBorrowingRML";
-import CreditDabitForm from "./InflowBorrowingBack/CraditDabitForm.jsx/CreditDabitForm";
 import FinalReport from "./FinalReport/FinalReport";
 import Comment from "./Comment/Comment";
 import AddOneFristFromBack from "./FristFormBack/AddOneFristFromBack/AddOneFristFromBack";
 import TotalRML from "./RmlForm/TotalRML";
 import useRmlAdd from "../../../Hooks/useRmlAdd";
-import AddOneRmlForm from "./RmlForm/AddOneRmlForm/AddOneRmlForm";
 import useFristFormAdd from "../../../Hooks/useFristFormAdd";
 import usePurchesOutSideAdd from "../../../Hooks/usePurchesOutSideAdd";
-import AddOnePurchaseOutSideFrom from "../BackDailyReport/PurchaseOutSideForm/AddOnePurchesOutSide/AddOnePurchesOutSide";
 import useCommissonAdd from "../../../Hooks/useCommissonAdd";
-import AddOneCommissionForm from "../BackDailyReport/CommissonForm/AddOneCommisson/AddOneCommisson";
 import useCashReciveAdd from "../../../Hooks/useCashReciveAdd";
-import AddOneCashRecive from "./CashReciveForm/AddOneCashRecive/AddOneCashRecive";
+import CashReciveFrom from "./CashReciveForm/CashReciveForm";
 import useShippingAdd from "../../../Hooks/useShippingAdd";
-import AddOneShipping from "./InflowBorrowingBack/ShippingForm/AddOneShipping/AddOneShipping";
 import useInfolwBorrowingRml from "../../../Hooks/useInfolwBorrowingRml";
-import AddOneInflowBorrowingRml from "./InflowBorrowingBack/InflowBorrowingRML/AddOneInfolwBorrowingRml/AddOneBorrwingRml";
 import useCarditDabit from "../../../Hooks/useCarditDabit";
-import AddOneCreditDabitForm from "../BackDailyReport/InflowBorrowingBack/CraditDabitForm.jsx/AddOneCaraditDabite/AddOneCaraditDabite";
+import CraditDabitForm from "../BackDailyReport/InflowBorrowingBack/CraditDabitForm.jsx/CreditDabitForm";
+import CommissonFrom from "./CommissonForm/CommissionForm";
 
 const BackDailyReport = () => {
   // ================== Frist Form============
@@ -37,57 +32,37 @@ const BackDailyReport = () => {
   } = useFristFormAdd();
 
   // ================== Rml Form============
-  const {
-    addFiveInRmlState,
-    addOneInRmlState,
-    handelAddFiveInRml,
-    handelAddOneInRml,
-  } = useRmlAdd();
+  const { addRmlState, handelAddFiveInRml, handelAddOneInRml } = useRmlAdd();
 
   // ================== Purchase OutSide Form============
   const {
-    AddFivePurchesOutSideState,
-    AddOnePurchesOutSideState,
+    purchesOutSideState,
     handelAddFivePurchesOutSide,
     handelAddOnePurchesOutSide,
   } = usePurchesOutSideAdd();
 
   // ================== Commission Form============
-  const {
-    addFiveCommissonState,
-    addOneCommissonState,
-    handelAddFiveCommison,
-    handelAddOneCommison,
-  } = useCommissonAdd();
+  const { commissonState, handelAddFiveCommison, handelAddOneCommison } =
+    useCommissonAdd();
 
   // ================== Cash Recive Form============
-  const {
-    addFiveCashReciveState,
-    addOneCashReciveState,
-    handelAddFiveCashRecive,
-    handelAddOneCashRecive,
-  } = useCashReciveAdd();
+  const { cashReciveState, handelAddFiveCashRecive, handelAddOneCashRecive } =
+    useCashReciveAdd();
 
   // ================== Shipping Form============
-  const {
-    addFiveShippingState,
-    addOneShippingState,
-    handelAddFiveShipping,
-    handelAddOneShipping,
-  } = useShippingAdd();
+  const { addShippingState, handelAddFiveShipping, handelAddOneShipping } =
+    useShippingAdd();
 
   // ================== Inflow Borrowing RML Form============
   const {
-    addFiveInfolwBorringState,
-    addOneInfolwBorringState,
+    infolwBorrwingFormState,
     handelAddFiveBorrowingRml,
     handelAddOneBorrowingRml,
   } = useInfolwBorrowingRml();
 
   // ================== Credit Dabit Form============
   const {
-    addFiveCarditDabitFormState,
-    addOneCraditDabitFomeState,
+    craditDabitState,
     handelAddFiveCarditDabit,
     handelAddOneCarditDabit,
   } = useCarditDabit();
@@ -644,16 +619,7 @@ const BackDailyReport = () => {
 
                       <tr>
                         <th></th>
-                        <td>
-                          {/* <div className="form-control">
-                  <input
-                    type="text"
-                    className="dailyReportInput "
-                    name="brandName"
-                  />
-                </div> */}
-                          Total
-                        </td>
+                        <td>Total</td>
                         {/* ======== MRP Input ========= */}
                         <td>
                           <div className="flex gap-2">
@@ -1022,7 +988,6 @@ const BackDailyReport = () => {
                   </table>
                 </div>
               </form>
-
               <div className="mt-4 flex gap-4">
                 <button
                   className="dailyReportBtn"
@@ -1069,22 +1034,13 @@ const BackDailyReport = () => {
                   </thead>
 
                   <tbody>
-                    {addFiveInRmlState.map((item, index) => {
+                    {addRmlState.map((item, index) => {
                       return (
                         <RmlFrom
                           key={index}
-                          item={item}
                           index={index}
+                          addRmlState={addRmlState}
                         ></RmlFrom>
-                      );
-                    })}
-                    {addOneInRmlState.map((item, index) => {
-                      return (
-                        <AddOneRmlForm
-                          key={index}
-                          item={item}
-                          index={index}
-                        ></AddOneRmlForm>
                       );
                     })}
                     <TotalRML></TotalRML>
@@ -1092,6 +1048,24 @@ const BackDailyReport = () => {
                 </table>
               </div>
             </form>
+            {/******************** Add Button   ********************/}
+            <div>
+              <div className="mt-4 flex gap-4">
+                <button
+                  className="dailyReportBtn"
+                  onClick={() => addFiveInFristFormHandler()}
+                >
+                  ADD 5
+                </button>
+                <button
+                  className="dailyReportBtn"
+                  onClick={() => addOneInFristFormHandler()}
+                >
+                  ADD 1
+                </button>
+              </div>
+            </div>
+            {/******************** Add Button   ********************/}
           </div>
 
           <div className="py-6">
@@ -1113,22 +1087,13 @@ const BackDailyReport = () => {
                   </thead>
 
                   <tbody>
-                    {AddFivePurchesOutSideState.map((item, index) => {
+                    {purchesOutSideState.map((item, index) => {
                       return (
                         <PurchaseOutSideFrom
                           key={index}
-                          item={item}
                           index={index}
+                          purchesOutSideState={purchesOutSideState}
                         ></PurchaseOutSideFrom>
-                      );
-                    })}
-                    {AddOnePurchesOutSideState.map((item, index) => {
-                      return (
-                        <AddOnePurchaseOutSideFrom
-                          key={index}
-                          item={item}
-                          index={index}
-                        ></AddOnePurchaseOutSideFrom>
                       );
                     })}
                   </tbody>
@@ -1153,17 +1118,14 @@ const BackDailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {addFiveCommissonState.map((item, index) => {
+                    {commissonState.map((item, index) => {
                       return (
-                        <CommissionForm
+                        <CommissonFrom
                           key={index}
-                          item={item}
                           index={index}
-                        ></CommissionForm>
+                          commissonState={commissonState}
+                        ></CommissonFrom>
                       );
-                    })}
-                    {addOneCommissonState.map((item, index) => {
-                      return <AddOneCommissionForm></AddOneCommissionForm>;
                     })}
                   </tbody>
                 </table>
@@ -1187,46 +1149,23 @@ const BackDailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {addFiveCashReciveState.map((item, index) => {
+                    {cashReciveState.map((item, index) => {
                       return (
-                        <CashReciveForm
+                        <CashReciveFrom
                           key={index}
-                          item={item}
-                        ></CashReciveForm>
-                      );
-                    })}
-                    {addOneCashReciveState.map((item, index) => {
-                      return (
-                        <AddOneCashRecive
-                          key={index}
-                          item={item}
-                        ></AddOneCashRecive>
+                          index={index}
+                          cashReciveState={cashReciveState}
+                        ></CashReciveFrom>
                       );
                     })}
                   </tbody>
                 </table>
               </div>
             </form>
-            <div className="mt-4 flex gap-4 mx-4">
-              <button
-                className="dailyReportBtn"
-                onClick={() => handelAddFiveCashRecive()}
-              >
-                ADD 5
-              </button>
-              <button
-                className="dailyReportBtn"
-                onClick={() => handelAddOneCashRecive()}
-              >
-                ADD 1
-              </button>
-            </div>
           </div>
         </div>
         {/* *********************************************************BREAK*********************************************************  */}
-       
-       
-       
+
         <div className="flex overflow-x-auto">
           <div className="py-6">
             <h1 className="my-4">
@@ -1234,6 +1173,7 @@ const BackDailyReport = () => {
                 अंग्रेजी/बीयर/देशी/RML का भेजान
               </span>
             </h1>
+
             <form action="">
               <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -1246,61 +1186,14 @@ const BackDailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {addFiveShippingState.map((item, index) => {
+                    {addShippingState.map((item, index) => {
                       return (
-                        <ShippingForm key={index} item={item}></ShippingForm>
-                      );
-                    })}
-                    {addOneShippingState.map((item, index) => {
-                      return (
-                        <AddOneShipping
-                          key={index}
-                          item={item}
-                        ></AddOneShipping>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </form>
-          </div>
-
-          <div className="py-6">
-            <h1 className="my-4">
-              <span className="font-bold titleText">
-                अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
-              </span>
-            </h1>
-            <form action="">
-              <div className="overflow-x-auto">
-                <table className="table w-full">
-                  <thead>
-                    <tr>
-                      <th>S.no</th>
-                      <th>Party Name/ पार्टी का नाम</th>
-                      <th>Brand Name/ ब्राण्ड</th>
-                      <th>संख्या</th>
-                      <th>टिप्पणी</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {addFiveInfolwBorringState.map((item, index) => {
-                      return (
-                        <InflowBorrowingRML
+                        <ShippingForm
                           key={index}
                           item={item}
                           index={index}
-                        ></InflowBorrowingRML>
-                      );
-                    })}
-                    {addOneInfolwBorringState.map((item, index) => {
-                      return (
-                        <AddOneInflowBorrowingRml
-                          item={item}
-                          key={index}
-                          index={index}
-                        ></AddOneInflowBorrowingRml>
+                          addShippingState={addShippingState}
+                        ></ShippingForm>
                       );
                     })}
                   </tbody>
@@ -1325,8 +1218,44 @@ const BackDailyReport = () => {
 
           <div className="py-6">
             <h1 className="my-4">
+              <span className="font-bold titleText">
+                अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
+              </span>
+            </h1>
+            <form action="">
+              <div className="overflow-x-auto">
+                <table className="table w-full">
+                  <thead>
+                    <tr>
+                      <th>S.no</th>
+                      <th>Party Name/ पार्टी का नाम</th>
+                      <th>Brand Name/ ब्राण्ड</th>
+                      <th>संख्या</th>
+                      <th>टिप्पणी</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {infolwBorrwingFormState.map((item, index) => {
+                      return (
+                        <InflowBorrowingRML
+                          key={index}
+                          item={item}
+                          index={index}
+                        ></InflowBorrowingRML>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          </div>
+
+          <div className="py-6">
+            <h1 className="my-4">
               <span className="font-bold titleText">उधारी/नामे</span>
             </h1>
+
             <form action="">
               <div className="overflow-x-auto">
                 <table className="table w-full">
@@ -1340,42 +1269,19 @@ const BackDailyReport = () => {
                   </thead>
 
                   <tbody>
-                    {addFiveCarditDabitFormState.map((item, index) => {
+                    {craditDabitState.map((item, index) => {
                       return (
-                        <CreditDabitForm
+                        <CraditDabitForm
                           key={index}
                           item={item}
                           index={index}
-                        ></CreditDabitForm>
-                      );
-                    })}
-                    {addOneCraditDabitFomeState.map((item, index) => {
-                      return (
-                        <AddOneCreditDabitForm
-                          key={index}
-                          item={item}
-                          index={index}
-                        ></AddOneCreditDabitForm>
+                        ></CraditDabitForm>
                       );
                     })}
                   </tbody>
                 </table>
               </div>
             </form>
-            <div className="mt-4 flex gap-4 mx-4">
-              <button
-                className="dailyReportBtn"
-                onClick={() => handelAddFiveCarditDabit()}
-              >
-                ADD 5
-              </button>
-              <button
-                className="dailyReportBtn"
-                onClick={() => handelAddOneCarditDabit()}
-              >
-                ADD 1
-              </button>
-            </div>
           </div>
 
           <div className="py-6">

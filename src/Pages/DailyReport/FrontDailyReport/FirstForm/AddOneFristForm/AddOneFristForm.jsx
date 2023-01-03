@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddOneFristForm = ({ index, getFristFormDataState, avgState }) => {
+const AddOneFristForm = ({ index, getFristFormDataState }) => {
   const SerialNo = index + 1;
 
   return (

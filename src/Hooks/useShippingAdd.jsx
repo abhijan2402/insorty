@@ -1,39 +1,32 @@
 import { useState } from "react";
 
 const useShippingAdd = () => {
-  const addFiveShippingForm = {
+  const addShippingForm = {
     partyName: "",
     brandName: "",
     theNumber: "",
     comment: "",
   };
 
-  const addOneShippingForm = {
-    partyName: "",
-    brandName: "",
-    theNumber: "",
-    comment: "",
-  };
-
-  const [addFiveShippingState, setAddFiveShippingState] = useState([
-    addFiveShippingForm,
-  ]);
-
-  const [addOneShippingState, setAddOneShippingState] = useState([
-    addOneShippingForm,
-  ]);
+  const [addShippingState, setAddShippingState] = useState([addShippingForm]);
 
   const handelAddFiveShipping = () => {
-    setAddFiveShippingState([...addFiveShippingState, addFiveShippingForm]);
+    setAddShippingState([
+      ...addShippingState,
+      addShippingForm,
+      addShippingForm,
+      addShippingForm,
+      addShippingForm,
+      addShippingForm,
+    ]);
   };
 
   const handelAddOneShipping = () => {
-    setAddOneShippingState([...addOneShippingState, addOneShippingForm]);
+    setAddShippingState([...addShippingState, addShippingForm]);
   };
 
   return {
-    addFiveShippingState,
-    addOneShippingState,
+    addShippingState,
     handelAddFiveShipping,
     handelAddOneShipping,
   };

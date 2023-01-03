@@ -1,37 +1,30 @@
 import { useState } from "react";
 
 const useCashReciveAdd = () => {
-  const addFiveCashReciveForm = {
-    reson: "",
-    amount: "",
-  };
-  const addOneCashReciveForm = {
+  const cashReciveForm = {
     reson: "",
     amount: "",
   };
 
-  const [addFiveCashReciveState, setAddFiveCashReciveState] = useState([
-    addFiveCashReciveForm,
-  ]);
-
-  const [addOneCashReciveState, setAddOneCashReciveState] = useState([
-    addOneCashReciveForm,
-  ]);
+  const [cashReciveState, setCashReciveState] = useState([cashReciveForm]);
 
   const handelAddFiveCashRecive = () => {
-    setAddFiveCashReciveState([
-      ...addFiveCashReciveState,
-      addFiveCashReciveForm,
+    setCashReciveState([
+      ...cashReciveState,
+      cashReciveForm,
+      cashReciveForm,
+      cashReciveForm,
+      cashReciveForm,
+      cashReciveForm,
     ]);
   };
 
   const handelAddOneCashRecive = () => {
-    setAddOneCashReciveState([...addOneCashReciveState, addOneCashReciveForm]);
+    setCashReciveState([...cashReciveState, cashReciveForm]);
   };
 
   return {
-    addFiveCashReciveState,
-    addOneCashReciveState,
+    cashReciveState,
     handelAddFiveCashRecive,
     handelAddOneCashRecive,
   };
