@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const useRmlAdd = () => {
+
   const addFiveFormInRml = {
     brandName: "",
     averageRate: "",
@@ -28,6 +29,7 @@ const useRmlAdd = () => {
     rate: "",
     cost: "",
   };
+  
 
   const [addFiveInRmlState, setAddFiveInRmlState] = useState([
     addFiveFormInRml,

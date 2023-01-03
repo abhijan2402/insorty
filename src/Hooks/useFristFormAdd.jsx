@@ -2,67 +2,104 @@ import { useState } from "react";
 
 const useFristFormAdd = () => {
   // ======================== add five in frist form ========================
-  const addFiveInFristFormObj = {
+  const fristFormObj = {
     brandName: "",
-    averageRate: "",
-    startingStock: "",
-    incomingPurchase: "",
-    buyRate: "",
-    incomePurchase: "",
-    purchaseRate: "",
-    inflowCredit: "",
-    sending: "",
-    sumRemainder: "",
-    closingStock: "",
-    sales: "",
-    mainRate: "",
-    total: "",
+    averageRate: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    startingStock: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    incomingPurchase: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    buyRate: {
+      a: 0,
+      550: 0,
+      330: 0,
+    },
+    incomePurchase: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    purchaseRate: {
+      a: 0,
+      550: 0,
+      330: 0,
+    },
+
+    inflowCredit: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    sending: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    sumRemainder: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    closingStock: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    sales: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    mainRate: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
+    total: {
+      650: 0,
+      550: 0,
+      330: 0,
+    },
     grandTotal: "",
   };
 
-  const [addFiveInFristForm, setAddFiveInFristForm] = useState([
-    addFiveInFristFormObj,
-  ]);
+  const [fristFormState, setFristFormState] = useState([fristFormObj]);
 
   const addFiveInFristFormHandler = () => {
-    setAddFiveInFristForm([...addFiveInFristForm, addFiveInFristFormObj]);
+    setFristFormState([
+      ...fristFormState,
+      fristFormObj,
+      fristFormObj,
+      fristFormObj,
+      fristFormObj,
+      fristFormObj,
+    ]);
   };
+
   // ======================== add five in frist form ========================
 
   // ======================== add One in frist form ========================
-  const addOneInFristFormObj = {
-    brandName: "",
-    averageRate: "",
-    startingStock: "",
-    incomingPurchase: "",
-    buyRate: "",
-    incomePurchase: "",
-    purchaseRate: "",
-    inflowCredit: "",
-    sending: "",
-    sumRemainder: "",
-    closingStock: "",
-    sales: "",
-    mainRate: "",
-    total: "",
-    grandTotal: "",
-  };
-
-  const [addOneInFristForm, setAddOneInFristForm] = useState([
-    addOneInFristFormObj,
-  ]);
 
   const addOneInFristFormHandler = () => {
-    setAddOneInFristForm([...addOneInFristForm, addOneInFristFormObj]);
+    setFristFormState([...fristFormState, fristFormObj]);
   };
 
   // ======================== add One in frist form ========================
 
   return {
-    addFiveInFristForm,
     addFiveInFristFormHandler,
-    addOneInFristForm,
     addOneInFristFormHandler,
+    fristFormState,
   };
 };
 

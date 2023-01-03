@@ -10,7 +10,8 @@ const FristFrom = ({ index }) => {
         <th>{SerialNo}</th>
         <td>
           <div className="form-control">
-            <input type="text" className="dailyReportInput " name="brandName" />
+            <input type="text" className="dailyReportInput " name="brandName"
+            />
           </div>
         </td>
         {/* ======== MRP Input ========= */}

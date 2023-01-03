@@ -1,7 +1,7 @@
 import React from "react";
 
 const AddOneFristFromBack = ({ index }) => {
-  const SerialNo = index + 5;
+  const SerialNo = index + 1;
 
   return (
     <>

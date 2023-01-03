@@ -7,6 +7,10 @@
     border-radius: 8px
 }
 
+.specialwidth {
+    width: 600px;
+}
+
 .semiSmallInput {
     width: 164px;
     height: 40px;
@@ -61,7 +65,7 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-.DailyReportContainer {}
+
 
 @media screen and (max-width: 768px) {
     .DailyReportContainer {
@@ -93,4 +97,6 @@ input[type=number] {
     line-height: 27px;
     margin-bottom: 0.7rem;
     color: #AA237A;
+
 }
+
