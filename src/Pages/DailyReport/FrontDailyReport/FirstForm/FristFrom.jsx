@@ -1,7 +1,9 @@
 import React from "react";
 
 const FristFrom = ({ index }) => {
+  console.log(index);
   const SerialNo = index + 2;
+
   return (
     <>
       <tr>
@@ -775,6 +777,7 @@ const FristFrom = ({ index }) => {
           </div>
         </td>
       </tr>
+
       {/* 05 */}
     </>
   );

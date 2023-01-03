@@ -26,16 +26,10 @@ const FronteDailyReport = () => {
   };
 
   const [frontDailyReport, setFrontDailyReport] = useState([addFiveFristForm]);
+  console.log(frontDailyReport);
 
   const addFive = () => {
-    for (let index = 0; index < 5; index++) {
-      const addFiveData = setFrontDailyReport([
-        ...frontDailyReport,
-        addFiveFristForm,
-      ]);
-
-      return addFiveData;
-    }
+    setFrontDailyReport([addFiveFristForm, ...frontDailyReport]);
   };
 
   const addOneFristForm = {

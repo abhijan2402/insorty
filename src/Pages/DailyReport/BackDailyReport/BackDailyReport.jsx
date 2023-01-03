@@ -20,6 +20,14 @@ import usePurchesOutSideAdd from "../../../Hooks/usePurchesOutSideAdd";
 import AddOnePurchaseOutSideFrom from "../BackDailyReport/PurchaseOutSideForm/AddOnePurchesOutSide/AddOnePurchesOutSide";
 import useCommissonAdd from "../../../Hooks/useCommissonAdd";
 import AddOneCommissionForm from "../BackDailyReport/CommissonForm/AddOneCommisson/AddOneCommisson";
+import useCashReciveAdd from "../../../Hooks/useCashReciveAdd";
+import AddOneCashRecive from "./CashReciveForm/AddOneCashRecive/AddOneCashRecive";
+import useShippingAdd from "../../../Hooks/useShippingAdd";
+import AddOneShipping from "./InflowBorrowingBack/ShippingForm/AddOneShipping/AddOneShipping";
+import useInfolwBorrowingRml from "../../../Hooks/useInfolwBorrowingRml";
+import AddOneInflowBorrowingRml from "./InflowBorrowingBack/InflowBorrowingRML/AddOneInfolwBorrowingRml/AddOneBorrwingRml";
+import useCarditDabit from "../../../Hooks/useCarditDabit";
+import AddOneCreditDabitForm from "../BackDailyReport/InflowBorrowingBack/CraditDabitForm.jsx/AddOneCaraditDabite/AddOneCaraditDabite";
 
 const BackDailyReport = () => {
   // ================== Frist Form============
@@ -47,13 +55,44 @@ const BackDailyReport = () => {
   } = usePurchesOutSideAdd();
 
   // ================== Commission Form============
-
   const {
     addFiveCommissonState,
     addOneCommissonState,
     handelAddFiveCommison,
     handelAddOneCommison,
   } = useCommissonAdd();
+
+  // ================== Cash Recive Form============
+  const {
+    addFiveCashReciveState,
+    addOneCashReciveState,
+    handelAddFiveCashRecive,
+    handelAddOneCashRecive,
+  } = useCashReciveAdd();
+
+  // ================== Shipping Form============
+  const {
+    addFiveShippingState,
+    addOneShippingState,
+    handelAddFiveShipping,
+    handelAddOneShipping,
+  } = useShippingAdd();
+
+  // ================== Inflow Borrowing RML Form============
+  const {
+    addFiveInfolwBorringState,
+    addOneInfolwBorringState,
+    handelAddFiveBorrowingRml,
+    handelAddOneBorrowingRml,
+  } = useInfolwBorrowingRml();
+
+  // ================== Credit Dabit Form============
+  const {
+    addFiveCarditDabitFormState,
+    addOneCraditDabitFomeState,
+    handelAddFiveCarditDabit,
+    handelAddOneCarditDabit,
+  } = useCarditDabit();
 
   return (
     <>
@@ -1157,81 +1196,233 @@ const BackDailyReport = () => {
               </table>
             </div>
           </form>
-        </div>
 
-        
-        <div className="mt-4 flex gap-4 mx-4">
-          <button
-            className="dailyReportBtn"
-            onClick={() => handelAddFiveCommison()}
-          >
-            ADD 5
-          </button>
-          <button
-            className="dailyReportBtn"
-            onClick={() => handelAddOneCommison()}
-          >
-            ADD 1
-          </button>
-        </div>
-
-        <div className="py-6">
-          <form action="">
-            <h1 className="my-4">
-              <span className="font-bold titleText">
-                पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
-              </span>
-            </h1>
-            <CashReciveForm></CashReciveForm>
-            <div className="mt-4 flex gap-4 mx-4">
-              <button className="dailyReportBtn">ADD 5</button>
-              <button className="dailyReportBtn">ADD 1</button>
-            </div>
-          </form>
+          <div className="mt-4 flex gap-4 mx-4">
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddFiveCommison()}
+            >
+              ADD 5
+            </button>
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddOneCommison()}
+            >
+              ADD 1
+            </button>
+          </div>
         </div>
 
         <div className="py-6">
+          <h1 className="my-4">
+            <span className="font-bold titleText">
+              पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
+            </span>
+          </h1>
           <form action="">
-            <h1 className="my-4">
-              <span className="font-bold titleText">
-                अंग्रेजी/बीयर/देशी/RML का भेजान
-              </span>
-            </h1>
-            <ShippingForm></ShippingForm>
-            <div className="mt-4 flex gap-4 mx-4">
-              <button className="dailyReportBtn">ADD 5</button>
-              <button className="dailyReportBtn">ADD 1</button>
+            <div className="overflow-x-auto">
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Reason / विवरण</th>
+                    <th>रकम</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {addFiveCashReciveState.map((item, index) => {
+                    return (
+                      <CashReciveForm key={index} item={item}></CashReciveForm>
+                    );
+                  })}
+                  {addOneCashReciveState.map((item, index) => {
+                    return (
+                      <AddOneCashRecive
+                        key={index}
+                        item={item}
+                      ></AddOneCashRecive>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           </form>
+          <div className="mt-4 flex gap-4 mx-4">
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddFiveCashRecive()}
+            >
+              ADD 5
+            </button>
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddOneCashRecive()}
+            >
+              ADD 1
+            </button>
+          </div>
         </div>
 
         <div className="py-6">
+          <h1 className="my-4">
+            <span className="font-bold titleText">
+              अंग्रेजी/बीयर/देशी/RML का भेजान
+            </span>
+          </h1>
           <form action="">
-            <h1 className="my-4">
-              <span className="font-bold titleText">
-                अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
-              </span>
-            </h1>
-            <InflowBorrowingRML></InflowBorrowingRML>
-            <div className="mt-4 flex gap-4 mx-4">
-              <button className="dailyReportBtn">ADD 5</button>
-              <button className="dailyReportBtn">ADD 1</button>
+            <div className="overflow-x-auto">
+              <table className="table w-full">
+                <thead>
+                  <tr>
+                    <th>Party Name/ पार्टी का नाम</th>
+                    <th>Brand Name/ ब्राण्ड</th>
+                    <th>संख्या</th>
+                    <th>टिप्पणी</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {addFiveShippingState.map((item, index) => {
+                    return (
+                      <ShippingForm key={index} item={item}></ShippingForm>
+                    );
+                  })}
+                  {addOneShippingState.map((item, index) => {
+                    return (
+                      <AddOneShipping key={index} item={item}></AddOneShipping>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           </form>
+          <div className="mt-4 flex gap-4 mx-4">
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddFiveShipping()}
+            >
+              ADD 5
+            </button>
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddOneShipping()}
+            >
+              ADD 1
+            </button>
+          </div>
         </div>
 
         <div className="py-6">
+          <h1 className="my-4">
+            <span className="font-bold titleText">
+              अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
+            </span>
+          </h1>
           <form action="">
-            <h1 className="my-4">
-              <span className="font-bold titleText">उधारी/नामे</span>
-            </h1>
-            <CreditDabitForm></CreditDabitForm>
-            <div className="mt-4 flex gap-4 mx-4">
-              <button className="dailyReportBtn">ADD 5</button>
-              <button className="dailyReportBtn">ADD 1</button>
+            <div className="overflow-x-auto">
+              <table className="table w-full">
+                <thead>
+                  <tr>
+                    <th>S.no</th>
+                    <th>Party Name/ पार्टी का नाम</th>
+                    <th>Brand Name/ ब्राण्ड</th>
+                    <th>संख्या</th>
+                    <th>टिप्पणी</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {addFiveInfolwBorringState.map((item, index) => {
+                    return (
+                      <InflowBorrowingRML
+                        key={index}
+                        item={item}
+                        index={index}
+                      ></InflowBorrowingRML>
+                    );
+                  })}
+                  {addOneInfolwBorringState.map((item, index) => {
+                    return (
+                      <AddOneInflowBorrowingRml
+                        item={item}
+                        key={index}
+                        index={index}
+                      ></AddOneInflowBorrowingRml>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           </form>
+          <div className="mt-4 flex gap-4 mx-4">
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddFiveBorrowingRml()}
+            >
+              ADD 5
+            </button>
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddOneBorrowingRml()}
+            >
+              ADD 1
+            </button>
+          </div>
         </div>
+
+        <div className="py-6">
+          <h1 className="my-4">
+            <span className="font-bold titleText">उधारी/नामे</span>
+          </h1>
+          <form action="">
+            <div className="overflow-x-auto">
+              <table className="table w-full">
+                <thead>
+                  <tr>
+                    <th>S.no</th>
+                    <th>Party Name/ पार्टी का नाम</th>
+                    <th>Amount / रकम</th>
+                    <th>टिप्पणी</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {addFiveCarditDabitFormState.map((item, index) => {
+                    return (
+                      <CreditDabitForm
+                        key={index}
+                        item={item}
+                        index={index}
+                      ></CreditDabitForm>
+                    );
+                  })}
+                  {addOneCraditDabitFomeState.map((item, index) => {
+                    return (
+                      <AddOneCreditDabitForm
+                        key={index}
+                        item={item}
+                        index={index}
+                      ></AddOneCreditDabitForm>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </form>
+          <div className="mt-4 flex gap-4 mx-4">
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddFiveCarditDabit()}
+            >
+              ADD 5
+            </button>
+            <button
+              className="dailyReportBtn"
+              onClick={() => handelAddOneCarditDabit()}
+            >
+              ADD 1
+            </button>
+          </div>
+        </div>
+
         <div className="py-6">
           <form action="">
             <h1 className="my-4">
@@ -1251,8 +1442,6 @@ const BackDailyReport = () => {
               <button className="dailyReportBtn" type="submit">
                 Submit
               </button>
-              <button className="dailyReportBtn">ADD 5</button>
-              <button className="dailyReportBtn">ADD 1</button>
             </div>
           </form>
         </div>
