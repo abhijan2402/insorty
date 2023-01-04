@@ -3,7 +3,7 @@ import { useState } from "react";
 const useCashReciveAdd = () => {
   const cashReciveForm = {
     reson: "",
-    amount: "",
+    amount: 0,
   };
 
   const [cashReciveState, setCashReciveState] = useState([cashReciveForm]);
@@ -23,10 +23,28 @@ const useCashReciveAdd = () => {
     setCashReciveState([...cashReciveState, cashReciveForm]);
   };
 
+  const onChangeCashRecive = (e, index) => {
+    const cashReciveHandel = cashReciveState.map((returned, i) => {
+      if (index === i) {
+        return Object.assign(returned, { [e.target.name]: e.target.value });
+      } else {
+        return returned;
+      }
+    });
+    setCashReciveState(cashReciveHandel);
+  };
+
+  const handelSubmitCashRecive = (e) => {
+    const handelCashRecive = Object.assign({}, cashReciveState);
+    console.log(handelCashRecive);
+  };
+
   return {
     cashReciveState,
     handelAddFiveCashRecive,
     handelAddOneCashRecive,
+    onChangeCashRecive,
+    handelSubmitCashRecive,
   };
 };
 

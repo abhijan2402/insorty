@@ -32,10 +32,24 @@ const useRmlAdd = () => {
     setAddRmlState([...addRmlState, addRmlForm]);
   };
 
+  const onChangeRmlHandler = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...addRmlState];
+    list[index][name] = value;
+    setAddRmlState(list);
+  };
+
+  const handelSubmitRml = (e) => {
+    const addRmlForm = Object.assign({}, addRmlState);
+    console.log(addRmlForm);
+  };
+
   return {
     addRmlState,
     handelAddFiveInRml,
     handelAddOneInRml,
+    handelSubmitRml,
+    onChangeRmlHandler,
   };
 };
 

@@ -27,10 +27,24 @@ const usePurchesOutSideAdd = () => {
     ]);
   };
 
+  const onChangePurchesOutSide = (e, index) => {
+    const { name, value } = e.target;
+    const list = [...purchesOutSideState];
+    list[index][name] = value;
+    setPurchesOutSideState(list);
+  };
+
+  const handelSubmitPurchesOutSide = (e) => {
+    const addPurcheshOut = Object.assign({}, purchesOutSideState);
+    console.log(addPurcheshOut);
+  };
+
   return {
     purchesOutSideState,
     handelAddFivePurchesOutSide,
     handelAddOnePurchesOutSide,
+    onChangePurchesOutSide,
+    handelSubmitPurchesOutSide,
   };
 };
 

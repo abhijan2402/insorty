@@ -27,25 +27,45 @@ const BackDailyReport = () => {
     addFiveInFristFormHandler,
     addOneInFristFormHandler,
     fristFormState,
+    handelSubmitFristFormBack,
+    onChangeFristBackFormHandler,
   } = useFristFormAdd();
 
   // ================== Rml Form============
-  const { addRmlState, handelAddFiveInRml, handelAddOneInRml } = useRmlAdd();
+  const {
+    addRmlState,
+    handelAddFiveInRml,
+    handelAddOneInRml,
+    handelSubmitRml,
+    onChangeRmlHandler,
+  } = useRmlAdd();
 
   // ================== Purchase OutSide Form============
   const {
     purchesOutSideState,
     handelAddFivePurchesOutSide,
     handelAddOnePurchesOutSide,
+    onChangePurchesOutSide,
+    handelSubmitPurchesOutSide,
   } = usePurchesOutSideAdd();
 
   // ================== Commission Form============
-  const { commissonState, handelAddFiveCommison, handelAddOneCommison } =
-    useCommissonAdd();
+  const {
+    commissonState,
+    handelAddFiveCommison,
+    handelAddOneCommison,
+    onChangeCommisson,
+    handelSubmitCommisson,
+  } = useCommissonAdd();
 
   // ================== Cash Recive Form============
-  const { cashReciveState, handelAddFiveCashRecive, handelAddOneCashRecive } =
-    useCashReciveAdd();
+  const {
+    cashReciveState,
+    handelAddFiveCashRecive,
+    handelAddOneCashRecive,
+    onChangeCashRecive,
+    handelSubmitCashRecive,
+  } = useCashReciveAdd();
 
   // ================== Shipping Form============
   const { addShippingState, handelAddFiveShipping, handelAddOneShipping } =
@@ -183,7 +203,7 @@ const BackDailyReport = () => {
 
                             <div className="form-control">
                               <label className="label">
-                                <span className="label-text">550ml</span>
+                                <span className="label-text">330ml</span>
                               </label>
                               {/* <input
                             type="number"
@@ -220,7 +240,7 @@ const BackDailyReport = () => {
 
                             <div className="form-control">
                               <label className="label">
-                                <span className="label-text">550ml</span>
+                                <span className="label-text">330ml</span>
                               </label>
                               {/* <input
                             type="number"
@@ -257,7 +277,7 @@ const BackDailyReport = () => {
 
                             <div className="form-control">
                               <label className="label">
-                                <span className="label-text">550ml</span>
+                                <span className="label-text">330ml</span>
                               </label>
                               {/* <input
                             type="number"
@@ -636,6 +656,10 @@ const BackDailyReport = () => {
                         return (
                           <AddOneFristFromBack
                             key={index}
+                            onChangeFristBackFormHandler={
+                              onChangeFristBackFormHandler
+                            }
+                            fristFormState={fristFormState}
                             item={items}
                             index={index}
                           ></AddOneFristFromBack>
@@ -1026,6 +1050,12 @@ const BackDailyReport = () => {
                 >
                   ADD 1
                 </button>
+                <button
+                  className="dailyReportBtn"
+                  onClick={() => handelSubmitCommisson()}
+                >
+                  Submit
+                </button>
               </div>
             </div>
           </div>
@@ -1064,6 +1094,7 @@ const BackDailyReport = () => {
                         <RmlFrom
                           key={index}
                           index={index}
+                          onChangeRmlHandler={onChangeRmlHandler}
                           addRmlState={addRmlState}
                         ></RmlFrom>
                       );
@@ -1087,6 +1118,13 @@ const BackDailyReport = () => {
                   onClick={() => addOneBtnHandler()}
                 >
                   ADD 1
+                </button>
+
+                <button
+                  className="dailyReportBtn"
+                  onClick={() => handelSubmitCommisson()}
+                >
+                  Submit
                 </button>
               </div>
             </div>
@@ -1115,6 +1153,7 @@ const BackDailyReport = () => {
                     {purchesOutSideState.map((item, index) => {
                       return (
                         <PurchaseOutSideFrom
+                          onChangePurchesOutSide={onChangePurchesOutSide}
                           item={item}
                           key={index}
                           index={index}
@@ -1150,6 +1189,7 @@ const BackDailyReport = () => {
                           key={index}
                           index={index}
                           commissonState={commissonState}
+                          onChangeCommisson={onChangeCommisson}
                         ></CommissonFrom>
                       );
                     })}
@@ -1180,6 +1220,7 @@ const BackDailyReport = () => {
                         <CashReciveFrom
                           key={index}
                           index={index}
+                          onChangeCashRecive={onChangeCashRecive}
                           cashReciveState={cashReciveState}
                         ></CashReciveFrom>
                       );

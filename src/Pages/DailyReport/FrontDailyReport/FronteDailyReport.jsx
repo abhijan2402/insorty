@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import SecondFrom from "./SecondForm/SecondFrom";
 import { Link } from "react-router-dom";
 import AddOneSecondForm from "./SecondForm/AddOneSecondForm/AddOneSecondForm";
@@ -7,77 +7,69 @@ import AddOneFristForm from "./FirstForm/AddOneFristForm/AddOneFristForm";
 const FronteDailyReport = () => {
   // ================ add five first form ================
 
+
+
   const addOneFristForm = {
     brandName: "",
-    averageRate: {
-      750: 0,
-      330: 0,
-      180: 0,
-    },
-    startingStock: {
-      750: 2,
-      330: 0,
-      180: 0,
-    },
-    incomingPurchase: {
-      750: 0,
-      330: 0,
-      180: 0,
-    },
-    buyRate: {
-      750: 0,
-      330: 0,
-      180: 0,
-    },
-    incomePurchase: {
-      750: 0,
-      330: 0,
-      180: 0,
-    },
-    purchaseRate: {
-      750: 0,
-      330: 0,
-      180: 0,
-    },
 
-    inflowCredit: {
-      750: 0,
-      330: 0,
-      180: 0,
-    },
-    sending: {
-      750: 0,
-      330: 0,
-      180: 0,
-    },
-    sumRemainder: {
-      750: 0,
-      330: 0,
-      180: 0,
-    },
-    closingStock: {
-      750: 0,
-      330: 0,
-      180: 0,
-    },
-    sales: {
-      750: 2,
-      330: 3,
-      180: 4,
-    },
-    mainRate: {
-      750: 10,
-      330: 20,
-      180: 30,
-    },
-    total: {
-      750: 20,
-      330: 60,
-      180: 120,
-    },
-    grandTotal: 200,
+    startingStock750: 0,
+    startingStock330: 0,
+    startingStock180: 0,
+
+    incomingPurchase750: 0,
+    incomingPurchase330: 0,
+    incomingPurchase180: 0,
+
+    buyRate750: 0,
+    buyRate330: 0,
+    buyRate180: 0,
+
+    incomePurchase750: 0,
+    incomePurchase330: 0,
+    incomePurchase180: 0,
+
+    purchaseRate750: 0,
+    purchaseRate330: 0,
+    purchaseRate180: 0,
+
+    inflowCredit750: 0,
+    inflowCredit330: 0,
+    inflowCredit180: 0,
+
+    sending750: 0,
+    sending330: 0,
+    sending180: 0,
+
+    sumRemainder750: 0,
+    sumRemainder330: 0,
+    sumRemainder180: 0,
+
+    closingStock750: 0,
+    closingStock330: 0,
+    closingStock180: 0,
+
+    sales750: 0,
+    sales330: 0,
+    sales180: 0,
+
+    mainRate750: 0,
+    mainRate330: 0,
+    mainRate180: 0,
+
+    total750: 0,
+    total330: 0,
+    total180: 0,
+
+    grandTotal: 0,
+
+    averageRate750: 0,
+    averageRate330: 0,
+    averageRate180: 0,
   };
 
+ const calValues = {
+  avg750 : Number(addOneFristForm.buyRate750) + Number(addOneFristForm.purchaseRate750)
+ }
   // **********************formulae******************
 
   // averageRate = (buyRate + purchaseRate)/2  ---> avg
@@ -88,7 +80,7 @@ const FronteDailyReport = () => {
 
   const avg = (a, b, c) => {
     // setAvgState((c = (a + b) / 2));
-    c = (a + b) / 2;
+    c = ((Number(a) + Number(b)) / 2) ;
   };
 
   const yog = (a, b, c, f, d, e) => {
@@ -136,82 +128,79 @@ const FronteDailyReport = () => {
 
   // **********************formulae******************
 
-  avg(
-    addOneFristForm.buyRate[750],
-    addOneFristForm.purchaseRate[750],
-    addOneFristForm.averageRate[750]
-  );
-  avg(
-    addOneFristForm.buyRate[330],
-    addOneFristForm.purchaseRate[330],
-    addOneFristForm.averageRate[330]
-  );
-  avg(
-    addOneFristForm.buyRate[180],
-    addOneFristForm.purchaseRate[180],
-    addOneFristForm.averageRate[180]
-  );
+  
 
-  yog(
-    addOneFristForm.startingStock[750],
-    addOneFristForm.incomePurchase[750],
-    addOneFristForm.inflowCredit[750],
-    addOneFristForm.incomingPurchase[750],
-    addOneFristForm.sumRemainder[750]
-  );
-  yog(
-    addOneFristForm.startingStock[330],
-    addOneFristForm.incomePurchase[330],
-    addOneFristForm.inflowCredit[330],
-    addOneFristForm.incomingPurchase[330],
-    addOneFristForm.sumRemainder[330]
-  );
-  yog(
-    addOneFristForm.startingStock[180],
-    addOneFristForm.incomePurchase[180],
-    addOneFristForm.inflowCredit[180],
-    addOneFristForm.incomingPurchase[180],
-    addOneFristForm.sumRemainder[180]
-  );
+  // avg(
+  //   addOneFristForm.buyRate330,
+  //   addOneFristForm.purchaseRate330,
+  //   addOneFristForm.averageRate330
+  // );
+  // avg(
+  //   addOneFristForm.buyRate180,
+  //   addOneFristForm.purchaseRate180,
+  //   addOneFristForm.averageRate180
+  // );
 
-  saleDone(
-    addOneFristForm.sumRemainder[750],
-    addOneFristForm.closingStock[750],
-    addOneFristForm.sales[750]
-  );
-  saleDone(
-    addOneFristForm.sumRemainder[330],
-    addOneFristForm.closingStock[330],
-    addOneFristForm.sales[330]
-  );
-  saleDone(
-    addOneFristForm.sumRemainder[180],
-    addOneFristForm.closingStock[180],
-    addOneFristForm.sales[180]
-  );
+  // yog(
+  //   addOneFristForm.startingStock[750],
+  //   addOneFristForm.incomePurchase[750],
+  //   addOneFristForm.inflowCredit[750],
+  //   addOneFristForm.incomingPurchase[750],
+  //   addOneFristForm.sumRemainder[750]
+  // );
+  // yog(
+  //   addOneFristForm.startingStock[330],
+  //   addOneFristForm.incomePurchase[330],
+  //   addOneFristForm.inflowCredit[330],
+  //   addOneFristForm.incomingPurchase[330],
+  //   addOneFristForm.sumRemainder[330]
+  // );
+  // yog(
+  //   addOneFristForm.startingStock[180],
+  //   addOneFristForm.incomePurchase[180],
+  //   addOneFristForm.inflowCredit[180],
+  //   addOneFristForm.incomingPurchase[180],
+  //   addOneFristForm.sumRemainder[180]
+  // );
 
-  totalIndividual(
-    addOneFristForm.mainRate[750],
-    addOneFristForm.sales[750],
-    addOneFristForm.total[750]
-  );
-  totalIndividual(
-    addOneFristForm.mainRate[330],
-    addOneFristForm.sales[330],
-    addOneFristForm.total[330]
-  );
-  totalIndividual(
-    addOneFristForm.mainRate[180],
-    addOneFristForm.sales[180],
-    addOneFristForm.total[180]
-  );
+  // saleDone(
+  //   addOneFristForm.sumRemainder[750],
+  //   addOneFristForm.closingStock[750],
+  //   addOneFristForm.sales[750]
+  // );
+  // saleDone(
+  //   addOneFristForm.sumRemainder[330],
+  //   addOneFristForm.closingStock[330],
+  //   addOneFristForm.sales[330]
+  // );
+  // saleDone(
+  //   addOneFristForm.sumRemainder[180],
+  //   addOneFristForm.closingStock[180],
+  //   addOneFristForm.sales[180]
+  // );
 
-  allTotal(
-    addOneFristForm.total[750],
-    addOneFristForm.total[330],
-    addOneFristForm.total[180],
-    addOneFristForm.grandTotal
-  );
+  // totalIndividual(
+  //   addOneFristForm.mainRate[750],
+  //   addOneFristForm.sales[750],
+  //   addOneFristForm.total[750]
+  // );
+  // totalIndividual(
+  //   addOneFristForm.mainRate[330],
+  //   addOneFristForm.sales[330],
+  //   addOneFristForm.total[330]
+  // );
+  // totalIndividual(
+  //   addOneFristForm.mainRate[180],
+  //   addOneFristForm.sales[180],
+  //   addOneFristForm.total[180]
+  // );
+
+  // allTotal(
+  //   addOneFristForm.total[750],
+  //   addOneFristForm.total[330],
+  //   addOneFristForm.total[180],
+  //   addOneFristForm.grandTotal
+  // );
 
   const [addOneFristFormState, setAddOneFristFormState] = useState([
     addOneFristForm,
@@ -219,45 +208,7 @@ const FronteDailyReport = () => {
 
   const addOneFristFormHandler = () => {
     setAddOneFristFormState([...addOneFristFormState, addOneFristForm]);
-    console.log(addOneFristForm);
-  };
-
-  //==================== formula object ====================
-  const formula = {
-    avg,
-    yog,
-    saleDone,
-    totalIndividual,
-    allTotal,
-  };
-
-  // ================ add five first form ================
-
-  //=============== add One second form ================
-
-  const addOneSecondForm = {
-    averageRate: "",
-    startingStock: "",
-    incomingPurchase: "",
-    buyRate: "",
-    incomePurchase: "",
-    purchaseRate: "",
-    inflowCredit: "",
-    sending: "",
-    sumRemainder: "",
-    closingStock: "",
-    sales: "",
-    mainRate: "",
-    total: "",
-    grandTotal: "",
-  };
-
-  const [addOneSecondFormState, setAddOneSecondFormState] = useState([
-    addOneSecondForm,
-  ]);
-
-  const addOneSecondFormHandler = () => {
-    setAddOneSecondFormState([...addOneSecondFormState, addOneSecondForm]);
+    
   };
 
   const addFive = () => {
@@ -269,6 +220,57 @@ const FronteDailyReport = () => {
       addOneFristForm,
       addOneFristForm,
     ]);
+  };
+
+  //==================== formula object ====================
+  const formula = {
+    avg,
+    yog,
+    saleDone,
+    totalIndividual,
+    allTotal,
+  };
+
+  //=============== add One second form ================
+
+  const addOneSecondForm = {
+    averageRate: 0,
+    startingStock: 0,
+    incomingPurchase: 0,
+    buyRate: 0,
+    incomePurchase: 0,
+    purchaseRate: 0,
+    inflowCredit: 0,
+    sending: 0,
+    sumRemainder: 0,
+    closingStock: 0,
+    sales: 0,
+    mainRate: 0,
+    total: 0,
+    grandTotal: 0,
+    selectStockVarient: 90,
+  };
+
+  const [addOneSecondFormState, setAddOneSecondFormState] = useState([
+    addOneSecondForm,
+  ]);
+
+  const addOneSecondFormHandler = () => {
+    setAddOneSecondFormState([...addOneSecondFormState, addOneSecondForm]);
+  };
+
+  const handelSeconFormOnChange = (e, index) => {
+    const secondFormHandel = addOneSecondFormState.map((returned, i) =>
+      index === i
+        ? Object.assign(returned, { [e.target.name]: e.target.value })
+        : returned
+    );
+    setAddOneSecondFormState(secondFormHandel);
+  };
+
+  const hadelSubmitOnSecondForm = (e) => {
+    const addFristForm = Object.assign({}, addOneSecondFormState);
+    console.log(addFristForm);
   };
 
   //=============== add One second form ================
@@ -297,7 +299,19 @@ const FronteDailyReport = () => {
   const hendelSubmit = (event) => {
     const addFristForm = Object.assign({}, addOneFristFormState);
     console.log(addFristForm);
+
+    for (const elem of addOneFristFormState) {
+      elem.averageRate750 = Number(elem.buyRate750) + Number(elem.purchaseRate750)
+    }
+
+   
   };
+
+
+
+
+  
+
 
   return (
     <section className="mx-2">
@@ -832,6 +846,7 @@ const FronteDailyReport = () => {
                     </td>
                   </tr>
 
+                  {/* ============ ============== */}
                   {addOneFristFormState.map((item, index) => {
                     return (
                       <AddOneFristForm
@@ -844,6 +859,8 @@ const FronteDailyReport = () => {
                       ></AddOneFristForm>
                     );
                   })}
+
+                  {/* ============ =========== */}
 
                   <tr>
                     <th></th>
@@ -1302,10 +1319,16 @@ const FronteDailyReport = () => {
                   </thead>
 
                   <tbody>
-                    <SecondFrom></SecondFrom>
+                    {/* <SecondFrom
+                      handelSeconFormOnChange={handelSeconFormOnChange}
+                      addOneSecondFormState={addOneSecondFormState}
+                    ></SecondFrom> */}
+
                     {addOneSecondFormState.map((item, index) => {
                       return (
                         <AddOneSecondForm
+                          handelSeconFormOnChange={handelSeconFormOnChange}
+                          addOneSecondFormState={addOneSecondFormState}
                           key={index}
                           index={index}
                           item={item}
@@ -1320,7 +1343,12 @@ const FronteDailyReport = () => {
         </div>
 
         <div className="mt-4 flex gap-4">
-          <button className="dailyReportBtnSubmit">Submit</button>
+          <button
+            className="dailyReportBtnSubmit"
+            onClick={() => hadelSubmitOnSecondForm()}
+          >
+            Submit
+          </button>
           <button
             className="dailyReportBtn"
             onClick={() => addOneSecondFormHandler()}

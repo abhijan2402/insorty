@@ -1,0 +1,76 @@
+<input name="brandName" value={addOneFristForm.brandName} onChange={(e) => handelFristFormOnChange(e, index)} />
+
+<input name="750" value={addOneFristForm.averageRate[750]} onChange={(e) => handelFristFormOnChange(e, index)} />
+<input name="330" value={addOneFristForm.averageRate[330]} onChange={(e) => handelFristFormOnChange(e, index)} />
+<input name="180" value={addOneFristForm.averageRate[180]} onChange={(e) => handelFristFormOnChange(e, index)} />
+
+<input name="750" value={addOneFristForm.startingStock[750]} onChange={(e) => handelFristFormOnChange(e, index)} />
+<input name="330" value={addOneFristForm.startingStock[330]} onChange={(e) => handelFristFormOnChange(e, index)} />
+<input name="180" value={addOneFristForm.startingStock[180]} onChange={(e) => handelFristFormOnChange(e, index)} />
+
+...
+
+
+  const handelSubmitSecondForm = (e) => {
+    const secondFormSubmit = addOneSecondFormState.map((returned) =>
+      Object.assign(returned, {
+        averageRate: formula.avg(
+          returned.buyRate,
+          returned.purchaseRate,
+          returned.averageRate
+        ),
+        startingStock: formula.yog(
+          returned.startingStock,
+          returned.incomePurchase,
+          returned.inflowCredit,
+          returned.incomingPurchase,
+          returned.sumRemainder
+        ),
+        sumRemainder: formula.saleDone(
+          returned.sumRemainder,
+          returned.closingStock,
+          returned.sales
+        ),
+        total: formula.totalIndividual(
+          returned.mainRate,
+          returned.sales,
+          returned.total
+        ),
+        grandTotal: formula.allTotal(
+          returned.total,
+          returned.total,
+          returned.total,
+          returned.grandTotal
+        ),
+      })
+    );
+  };
+
+
+
+
+const obj = {
+  a: 0,
+  b: 1,
+  d: 3,
+  c: function() {
+    return this.d - this.a + this.b;
+  }
+  
+}
+
+
+
+
+Admin                                     SubAdmin                                      Shop/User(current)
+
+Create SubAdmin
+Create User                               Create User                                   Daily Report 
+Manage Subadmin                           manage User                                   Other Important Screens
+                                                                                        Partners
+                                                                                        Screen with details  
+
+
+
+
+

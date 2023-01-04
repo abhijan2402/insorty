@@ -1,6 +1,6 @@
 import React from "react";
 
-const CommissionForm = () => {
+const CommissionForm = ({ onChangeCommisson, commissonState }) => {
   return (
     <>
       <tr>
@@ -10,6 +10,8 @@ const CommissionForm = () => {
               type="text"
               className="dailyReportInput"
               name="reason"
+              value={commissonState.reason}
+              onChange={(e) => onChangeCommisson(e)}
               style={{
                 width: "443px",
               }}
@@ -19,9 +21,11 @@ const CommissionForm = () => {
 
         <td>
           <input
-            type="text"
+            type="number"
             className="semiSmallInput"
             name="amount"
+            value={commissonState.amount}
+            onChange={(e) => onChangeCommisson(e)}
             style={{
               width: "100%",
             }}
