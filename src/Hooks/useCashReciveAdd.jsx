@@ -40,10 +40,10 @@ const useCashReciveAdd = () => {
   };
 
   return {
-    cashReciveState,
     handelAddFiveCashRecive,
     handelAddOneCashRecive,
     onChangeCashRecive,
+    cashReciveState,
     handelSubmitCashRecive,
   };
 };

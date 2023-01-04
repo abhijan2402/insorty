@@ -20,6 +20,7 @@ import useInfolwBorrowingRml from "../../../Hooks/useInfolwBorrowingRml";
 import useCarditDabit from "../../../Hooks/useCarditDabit";
 import CraditDabitForm from "../BackDailyReport/InflowBorrowingBack/CraditDabitForm.jsx/CreditDabitForm";
 import CommissonFrom from "./CommissonForm/CommissionForm";
+import useComment from "../../../Hooks/useComment";
 
 const BackDailyReport = () => {
   // ================== Frist Form============
@@ -54,7 +55,7 @@ const BackDailyReport = () => {
     commissonState,
     handelAddFiveCommison,
     handelAddOneCommison,
-    onChangeCommisson,
+    onChangeCommison,
     handelSubmitCommisson,
   } = useCommissonAdd();
 
@@ -68,12 +69,19 @@ const BackDailyReport = () => {
   } = useCashReciveAdd();
 
   // ================== Shipping Form============
-  const { addShippingState, handelAddFiveShipping, handelAddOneShipping } =
-    useShippingAdd();
+  const {
+    addShippingState,
+    onChangeShipping,
+    handelSubmitShipping,
+    handelAddFiveShipping,
+    handelAddOneShipping,
+  } = useShippingAdd();
 
   // ================== Inflow Borrowing RML Form============
   const {
     infolwBorrwingFormState,
+    onChangeBorrowingRml,
+    handelSubmitBorrowingRml,
     handelAddFiveBorrowingRml,
     handelAddOneBorrowingRml,
   } = useInfolwBorrowingRml();
@@ -81,6 +89,8 @@ const BackDailyReport = () => {
   // ================== Credit Dabit Form============
   const {
     craditDabitState,
+    onChangeCarditDabit,
+    handelSubmitCarditDabit,
     handelAddFiveCarditDabit,
     handelAddOneCarditDabit,
   } = useCarditDabit();
@@ -111,6 +121,9 @@ const BackDailyReport = () => {
     handelAddOneBorrowingRml();
     handelAddOneCarditDabit();
   };
+
+  const { commentState, handelSubimtComment, handleChangeComment } =
+    useComment();
 
   return (
     <>
@@ -1050,12 +1063,12 @@ const BackDailyReport = () => {
                 >
                   ADD 1
                 </button>
-                <button
+                {/* <button
                   className="dailyReportBtn"
-                  onClick={() => handelSubmitCommisson()}
+                  onClick={() =>  handelSubmitCashRecive()}
                 >
                   Submit
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
@@ -1120,12 +1133,12 @@ const BackDailyReport = () => {
                   ADD 1
                 </button>
 
-                <button
+                {/* <button
                   className="dailyReportBtn"
-                  onClick={() => handelSubmitCommisson()}
+                  onClick={() => handelSubmitCashRecive()}
                 >
                   Submit
-                </button>
+                </button> */}
               </div>
             </div>
             {/******************** Add Button   ********************/}
@@ -1188,8 +1201,9 @@ const BackDailyReport = () => {
                         <CommissonFrom
                           key={index}
                           index={index}
+                          item={item}
                           commissonState={commissonState}
-                          onChangeCommisson={onChangeCommisson}
+                          onChangeCommison={onChangeCommison}
                         ></CommissonFrom>
                       );
                     })}
@@ -1261,6 +1275,7 @@ const BackDailyReport = () => {
                           item={item}
                           index={index}
                           addShippingState={addShippingState}
+                          onChangeShipping={onChangeShipping}
                         ></ShippingForm>
                       );
                     })}
@@ -1282,13 +1297,6 @@ const BackDailyReport = () => {
               >
                 ADD 1
               </button>
-
-              {/* ************ Submit button ***************** */}
-              <div className="mt-4 flex gap-4 mx-4">
-                <button className="dailyReportBtn" type="submit">
-                  Submit
-                </button>
-              </div>
             </div>
           </div>
 
@@ -1315,6 +1323,8 @@ const BackDailyReport = () => {
                     {infolwBorrwingFormState.map((item, index) => {
                       return (
                         <InflowBorrowingRML
+                          infolwBorrwingFormState={infolwBorrwingFormState}
+                          onChangeBorrowingRml={onChangeBorrowingRml}
                           key={index}
                           item={item}
                           index={index}
@@ -1350,6 +1360,8 @@ const BackDailyReport = () => {
                         <CraditDabitForm
                           key={index}
                           item={item}
+                          craditDabitState={craditDabitState}
+                          onChangeCarditDabit={onChangeCarditDabit}
                           index={index}
                         ></CraditDabitForm>
                       );
@@ -1359,26 +1371,42 @@ const BackDailyReport = () => {
               </div>
             </form>
           </div>
-
-          <div className="py-6">
-            <form action="">
-              <h1 className="my-4">
-                <span className="font-bold titleText">फाईनल रिपोर्ट</span>
-              </h1>
-              <FinalReport></FinalReport>
-            </form>
-          </div>
-
-          <div className="py-6">
-            <form action="">
-              <h1 className="my-4">
-                <span className="font-bold titleText">रफ जगह</span>
-              </h1>
-              <Comment></Comment>
-            </form>
-          </div>
         </div>
         {/* *********************************************************BREAK*********************************************************  */}
+
+        <div className="py-6">
+          <form action="">
+            <h1 className="my-4">
+              <span className="font-bold titleText">फाईनल रिपोर्ट</span>
+            </h1>
+            <FinalReport></FinalReport>
+          </form>
+        </div>
+
+        <div className="py-6 ">
+          <form action="">
+            <h1 className="my-4">
+              <span className="font-bold titleText">रफ जगह</span>
+            </h1>
+            <Comment
+              commentState={commentState}
+              handleCommentChange={handleChangeComment}
+            ></Comment>
+          </form>
+        </div>
+
+        {/* *********************************************************BREAK*********************************************************  */}
+
+        {/* ************ Submit button ***************** */}
+        <div className="flex my-6 mx-4">
+          <button
+            className="dailyReportBtn"
+            type="submit"
+            onClick={() => handelSubimtComment()}
+          >
+            Submit
+          </button>
+        </div>
       </section>
     </>
   );

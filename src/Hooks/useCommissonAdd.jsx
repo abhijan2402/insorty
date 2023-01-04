@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 
 const useCommissonAdd = () => {
   const commissonForm = {
@@ -6,7 +6,7 @@ const useCommissonAdd = () => {
     amount: 0,
   };
 
-  const [commissonState, setCommissonState] = React.useState([commissonForm]);
+  const [commissonState, setCommissonState] = useState([commissonForm]);
 
   const handelAddFiveCommison = () => {
     setCommissonState([
@@ -23,25 +23,25 @@ const useCommissonAdd = () => {
     setCommissonState([...commissonState, commissonForm]);
   };
 
-  const onChangeCommisson = (e, index) => {
-    const handelCommison = commissonState.map((returned, i) =>
+  const onChangeCommison = (event, index) => {
+    const handelCommisson = commissonState.map((commison, i) =>
       index === i
-        ? Object.assign(returned, { [e.target.name]: e.target.value })
-        : returned
+        ? Object.assign(commison, { [event.target.name]: event.target.value })
+        : commison
     );
-    setCommissonState(handelCommison);
+    setCommissonState(handelCommisson);
   };
 
-  const handelSubmitCommisson = (e) => {
+  const handelSubmitCommisson = () => {
     const handelCommisson = Object.assign({}, commissonState);
     console.log(handelCommisson);
   };
 
   return {
-    commissonState,
     handelAddFiveCommison,
     handelAddOneCommison,
-    onChangeCommisson,
+    onChangeCommison,
+    commissonState,
     handelSubmitCommisson,
   };
 };

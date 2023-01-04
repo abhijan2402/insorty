@@ -1,11 +1,19 @@
 import React from "react";
 
-const Comment = () => {
+const Comment = ({ handleCommentChange, commentState }) => {
   return (
-    <section>
+    <section
+      style={{
+        wdith: "100%",
+      }}
+    >
       <textarea
         className="textarea textarea-accent"
-        placeholder="Bio"
+        placeholder="Write your comment here..."
+        name="comment"
+        typeof="text"
+        value={commentState.comment}
+        onClick={(e) => handleCommentChange(e)}
         style={{
           width: "80%",
           height: "150px",

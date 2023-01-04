@@ -1,9 +1,10 @@
 import { useState } from "react";
 
 const useCarditDabit = () => {
+
   const craditDabitForm = {
     partyName: "",
-    ammount: "",
+    ammount: 0,
     note: "",
   };
 
@@ -24,8 +25,26 @@ const useCarditDabit = () => {
     setCraditDabitState([...craditDabitState, craditDabitForm]);
   };
 
+  const onChangeCarditDabit = (e, index) => {
+    const dabitCarditHandel = craditDabitState.map((craditDabit, i) => {
+      if (index === i) {
+        return Object.assign(craditDabit, { [e.target.name]: e.target.value });
+      } else {
+        return craditDabit;
+      }
+    });
+    setCraditDabitState(dabitCarditHandel);
+  };
+
+  const handelSubmitCarditDabit = (e) => {
+    const handelCraditDabit = Object.assign({}, craditDabitState);
+    console.log(handelCraditDabit);
+  };
+
   return {
     craditDabitState,
+    onChangeCarditDabit,
+    handelSubmitCarditDabit,
     handelAddFiveCarditDabit,
     handelAddOneCarditDabit,
   };
