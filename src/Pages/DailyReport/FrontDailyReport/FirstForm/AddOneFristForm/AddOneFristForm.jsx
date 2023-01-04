@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const AddOneFristForm = ({ index, getFristFormDataState }) => {
+const AddOneFristForm = ({
+  index,
+  handelFristFormOnChange,
+  formula,
+  addOneFristFormState,
+}) => {
   const SerialNo = index + 1;
+  const { avg, yog, saleDone, totalIndividual, allTotal } = formula;
+
+  const [avgValue, setAvgValue] = useState(avg);
+  const [yogValue, setYogValue] = useState(yog);
+  const [saleDoneValue, setSaleDoneValue] = useState(saleDone);
+  const [totalIndividualValue, setTotalIndividualValue] =
+    useState(totalIndividual);
+  const [allTotalValue, setAllTotalValue] = useState(allTotal);
+
+  useEffect(() => {
+    setAvgValue(avg);
+    setYogValue(yog);
+    setSaleDoneValue(saleDone);
+    setTotalIndividualValue(totalIndividual);
+    setAllTotalValue(allTotal);
+  }, [allTotal, avg, saleDone, totalIndividual, yog]);
 
   return (
     <>
@@ -9,22 +30,46 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
         <th>{SerialNo}</th>
         <td>
           <div className="form-control">
-            <input type="text" className="dailyReportInput " name="brandName" />
+            <input
+              type="text"
+              className="dailyReportInput "
+              name="brandName"
+              value={addOneFristFormState.brandName}
+              onChange={(event) => handelFristFormOnChange(event, index)}
+            />
           </div>
         </td>
         {/* ======== MRP Input ========= */}
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="averageRate" />
+              <input
+                type="number"
+                className="smallinput"
+                value={avgValue}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="averageRate"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="averageRate" />
+              <input
+                type="number"
+                className="smallinput"
+                value={avgValue}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="averageRate"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="averageRate" />
+              <input
+                type="number"
+                className="smallinput"
+                value={avgValue}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="averageRate"
+              />
             </div>
           </div>
         </td>
@@ -36,6 +81,8 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
                 type="number"
                 className="smallinput"
                 name="startingStock"
+                value={addOneFristFormState.startingStock}
+                onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
 
@@ -44,6 +91,8 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
                 type="number"
                 className="smallinput"
                 name="startingStock"
+                value={addOneFristFormState.startingStock}
+                onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
 
@@ -52,6 +101,8 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
                 type="number"
                 className="smallinput"
                 name="startingStock"
+                value={addOneFristFormState.startingStock}
+                onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
           </div>
@@ -66,6 +117,8 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
                 type="number"
                 className="smallinput"
                 name="incomingPurchase"
+                value={addOneFristFormState.incomingPurchase}
+                onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
 
@@ -74,6 +127,8 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
                 type="number"
                 className="smallinput"
                 name="incomingPurchase"
+                value={addOneFristFormState.incomingPurchase}
+                onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
 
@@ -82,6 +137,8 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
                 type="number"
                 className="smallinput"
                 name="incomingPurchase"
+                value={addOneFristFormState.incomingPurchase}
+                onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
           </div>
@@ -90,15 +147,33 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="buyRate" />
+              <input
+                type="number"
+                className="smallinput"
+                name="buyRate"
+                value={addOneFristFormState.buyRate}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="buyRate" />
+              <input
+                type="number"
+                className="smallinput"
+                name="buyRate"
+                value={addOneFristFormState.buyRate}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="buyRate" />
+              <input
+                type="number"
+                className="smallinput"
+                name="buyRate"
+                value={addOneFristFormState.buyRate}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
           </div>
         </td>
@@ -112,6 +187,8 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
                 type="number"
                 className="smallinput"
                 name="incomePurchase"
+                value={addOneFristFormState.incomePurchase}
+                onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
 
@@ -120,6 +197,8 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
                 type="number"
                 className="smallinput"
                 name="incomePurchase"
+                value={addOneFristFormState.incomePurchase}
+                onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
 
@@ -128,6 +207,8 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
                 type="number"
                 className="smallinput"
                 name="incomePurchase"
+                value={addOneFristFormState.incomePurchase}
+                onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
           </div>
@@ -137,15 +218,33 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="purchaseRate" />
+              <input
+                type="number"
+                className="smallinput"
+                name="purchaseRate"
+                value={addOneFristFormState.purchaseRate}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="purchaseRate" />
+              <input
+                type="number"
+                className="smallinput"
+                name="purchaseRate"
+                value={addOneFristFormState.purchaseRate}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="purchaseRate" />
+              <input
+                type="number"
+                className="smallinput"
+                name="purchaseRate"
+                value={addOneFristFormState.purchaseRate}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
           </div>
         </td>
@@ -155,31 +254,68 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="inflowCredit" />
+              <input
+                type="number"
+                className="smallinput"
+                name="inflowCredit"
+                value={addOneFristFormState.inflowCredit}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="inflowCredit" />
+              <input
+                type="number"
+                className="smallinput"
+                name="inflowCredit"
+                value={addOneFristFormState.inflowCredit}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="inflowCredit" />
+              <input
+                type="number"
+                className="smallinput"
+                name="inflowCredit"
+                value={addOneFristFormState.inflowCredit}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
           </div>
         </td>
+
         {/* ======== भेजान ========= */}
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="sending" />
+              <input
+                type="number"
+                className="smallinput"
+                name="sending"
+                value={addOneFristFormState.sending}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="sending" />
+              <input
+                type="number"
+                className="smallinput"
+                name="sending"
+                value={addOneFristFormState.sending}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="sending" />
+              <input
+                type="number"
+                className="smallinput"
+                name="sending"
+                value={addOneFristFormState.sending}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
           </div>
         </td>
@@ -187,15 +323,33 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="sumRemainder" />
+              <input
+                type="number"
+                className="smallinput"
+                name="sumRemainder"
+                value={addOneFristFormState.sumRemainder}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="sumRemainder" />
+              <input
+                type="number"
+                className="smallinput"
+                name="sumRemainder"
+                value={addOneFristFormState.sumRemainder}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="sumRemainder" />
+              <input
+                type="number"
+                className="smallinput"
+                name="sumRemainder"
+                value={addOneFristFormState.sumRemainder}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
           </div>
         </td>
@@ -203,15 +357,33 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="closingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="closingStock"
+                value={addOneFristFormState.closingStock}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="closingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="closingStock"
+                value={addOneFristFormState.closingStock}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="closingStock" />
+              <input
+                type="number"
+                className="smallinput"
+                name="closingStock"
+                value={addOneFristFormState.closingStock}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
           </div>
         </td>
@@ -219,15 +391,33 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="sales" />
+              <input
+                type="number"
+                className="smallinput"
+                name="sales"
+                value={addOneFristFormState.sales}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="sales" />
+              <input
+                type="number"
+                className="smallinput"
+                name="sales"
+                value={addOneFristFormState.sales}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="sales" />
+              <input
+                type="number"
+                className="smallinput"
+                name="sales"
+                value={addOneFristFormState.sales}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
           </div>
         </td>
@@ -235,28 +425,58 @@ const AddOneFristForm = ({ index, getFristFormDataState }) => {
         <td>
           <div className="flex gap-2">
             <div className="form-control">
-              <input type="number" className="smallinput" name="mainRate" />
+              <input
+                type="number"
+                className="smallinput"
+                name="mainRate"
+                value={addOneFristFormState.mainRate}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="mainRate" />
+              <input
+                type="number"
+                className="smallinput"
+                name="mainRate"
+                value={addOneFristFormState.mainRate}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="mainRate" />
+              <input
+                type="number"
+                className="smallinput"
+                name="mainRate"
+                value={addOneFristFormState.mainRate}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
             </div>
           </div>
         </td>
         {/* ============= योग ================ */}
         <td>
           <div className="form-control">
-            <input type="text" className="semiSmallInput" name="total" />
+            <input
+              type="text"
+              className="semiSmallInput"
+              name="total"
+              value={addOneFristFormState.total}
+              onChange={(event) => handelFristFormOnChange(event, index)}
+            />
           </div>
         </td>
         {/* ============= कुल योग ================ */}
         <td>
           <div className="form-control">
-            <input type="text" className="semiSmallInput" name="grandTotal" />
+            <input
+              type="text"
+              className="semiSmallInput"
+              name="grandTotal"
+              value={allTotalValue}
+              onChange={(event) => handelFristFormOnChange(event, index)}
+            />
           </div>
         </td>
       </tr>
