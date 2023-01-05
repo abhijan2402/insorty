@@ -44,7 +44,7 @@ const AddOneFristForm = ({
           <div className="flex gap-2">
             <div className="form-control">
               <input
-                type="number"
+                // type="number"
                 className="smallinput"
                 value={addOneFristFormState.averageRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -59,7 +59,7 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type="number"
+                // type="number"
                 className="smallinput"
                 value={addOneFristFormState.averageRate330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -74,7 +74,7 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type="number"
+                // type="number"
                 className="smallinput"
                 value={addOneFristFormState.averageRate180}
                 onChange={(event) => handelFristFormOnChange(event, index)}

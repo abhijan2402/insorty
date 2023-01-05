@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 // import SecondFrom from "./SecondForm/SecondFrom";
 import { Link } from "react-router-dom";
 import AddOneSecondForm from "./SecondForm/AddOneSecondForm/AddOneSecondForm";
@@ -78,9 +78,9 @@ const FronteDailyReport = () => {
   // total = mainRate*sales  ---> totalIndividual
   // grandTotal = total of 750 + total of 330 + total of 180  ---> allTotal
 
-  const avg = (a, b, c) => {
+  const avg = (a, b) => {
     // setAvgState((c = (a + b) / 2));
-    c = (Number(a) + Number(b)) / 2;
+   return (Number(a) + Number(b)) / 2 ;
   };
 
   const yog = (a, b, c, f, d, e) => {
@@ -106,6 +106,14 @@ const FronteDailyReport = () => {
     }
     return total;
   };
+
+  // function updateAverageRate750(form) {
+  //   form.averageRate750 = avg(form.buyRate750,form.purchaseRate750);
+  // }
+
+  // useEffect(() => {
+  //   updateAverageRate750(addOneFristForm);
+  // }, [addOneFristForm]);
 
   // add reduce method for all fild total value
   // const addReduceAllFildTotal = addOneFristFormState.reduce(function (
@@ -291,16 +299,32 @@ const FronteDailyReport = () => {
         : returned
     );
     setAddOneFristFormState(firstFormHandel);
+
+    const handelavg = addOneFristFormState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (e.target.name === 'purchaseRate750' || e.target.name === 'buyRate750') {
+          console.log(obj.averageRate750)
+          obj.averageRate750 = ((Number(obj.purchaseRate750) + Number(obj.buyRate750))/2).toString();
+          console.log(obj.averageRate750)
+        }
+        return obj;
+      } else return returned;
+    }
+    );
+    setAddOneFristFormState(handelavg);
+
+    
   };
 
   const hendelSubmit = (event) => {
     const addFristForm = Object.assign({}, addOneFristFormState);
     console.log(addFristForm);
 
-    for (const elem of addOneFristFormState) {
-      elem.averageRate750 =
-        Number(elem.buyRate750) + Number(elem.purchaseRate750);
-    }
+    // for (const elem of addOneFristFormState) {
+    //   elem.averageRate750 =
+    //     Number(elem.buyRate750) + Number(elem.purchaseRate750);
+    // }
   };
 
   return (
@@ -308,7 +332,7 @@ const FronteDailyReport = () => {
       <div className="my-4 flex gap-4 items-center">
         <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
         <Link
-          to="/backDailyReport"
+          to="/user/dailyreport/back"
           className="btn btn-error text-white font-bold"
         >
           Back

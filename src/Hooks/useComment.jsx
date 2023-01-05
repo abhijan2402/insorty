@@ -18,6 +18,7 @@ const useComment = () => {
   const handelSubimtComment = (e) => {
     const handelComment = Object.assign({}, commentState);
     console.log(handelComment);
+    
   };
 
   return {
