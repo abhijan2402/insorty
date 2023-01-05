@@ -14,7 +14,7 @@ const AdminSideNav = () => {
         <nav>
           <Link
             className="flex items-center px-4 py-2  bg-gray-100 rounded-md "
-            to="/"
+            to="/admin/createuser"
           >
             <FaUserEdit />
             <span className="mx-4 font-medium">Create User </span>
@@ -22,7 +22,7 @@ const AdminSideNav = () => {
 
           <Link
             className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
-            to="/"
+            to="/admin/createsubadmin"
           >
             <FaUserEdit />
             <span className="mx-4 font-medium">Create SubAdmin</span>
@@ -30,7 +30,7 @@ const AdminSideNav = () => {
 
           <Link
             className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
-            to="/"
+            to="/admin/manegsubadmin"
           >
             <FaUserCog />
             <span className="mx-4 font-medium">Manage Subadmin </span>
