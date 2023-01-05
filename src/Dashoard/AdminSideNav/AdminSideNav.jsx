@@ -1,8 +1,7 @@
 import React from "react";
 import Logo from "../../images/insorty.png";
 import { Link } from "react-router-dom";
-import { FaChartLine, FaFileInvoiceDollar, FaPowerOff } from "react-icons/fa";
-import { TbParking } from "react-icons/tb";
+import { FaPowerOff, FaUserCog, FaUserEdit } from "react-icons/fa";
 
 const AdminSideNav = () => {
   return (
@@ -17,7 +16,7 @@ const AdminSideNav = () => {
             className="flex items-center px-4 py-2  bg-gray-100 rounded-md "
             to="/"
           >
-            <FaChartLine />
+            <FaUserEdit />
             <span className="mx-4 font-medium">Create User </span>
           </Link>
 
@@ -25,7 +24,7 @@ const AdminSideNav = () => {
             className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             to="/"
           >
-            <FaFileInvoiceDollar />
+            <FaUserEdit />
             <span className="mx-4 font-medium">Create SubAdmin</span>
           </Link>
 
@@ -33,7 +32,7 @@ const AdminSideNav = () => {
             className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             to="/"
           >
-            <TbParking />
+            <FaUserCog />
             <span className="mx-4 font-medium">Manage Subadmin </span>
           </Link>
 

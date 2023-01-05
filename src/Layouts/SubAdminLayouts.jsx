@@ -1,5 +1,5 @@
 import React from "react";
-import UserSideNav from "../Dashoard/UserSideNav/UserSideNav";
+import SubAdminSideNav from "../Dashoard/SubAdminSideNav/SubAdminSideNav";
 import { Outlet } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
@@ -25,7 +25,7 @@ const SubAdminLayout = () => {
 
       <div className="flex gap-2">
         <div className={side ? "lg:w-[300px] md:w-48 w-full" : "hidden"}>
-          <UserSideNav></UserSideNav>
+          <SubAdminSideNav></SubAdminSideNav>
         </div>
         <div className="md:w-[calc(100%-300px)] w-full DashboardLayoutOutlate ">
           <Outlet></Outlet>
