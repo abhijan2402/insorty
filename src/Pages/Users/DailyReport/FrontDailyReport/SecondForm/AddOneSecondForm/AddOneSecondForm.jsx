@@ -2,7 +2,7 @@ import React from "react";
 
 const AddOneSecondForm = ({
   index,
-  addOneSecondFormState,
+  item,
   handelSeconFormOnChange,
 }) => {
   const SerialNo = index + 1;
@@ -16,7 +16,7 @@ const AddOneSecondForm = ({
             <select
               className="select"
               name="selectStockVarient"
-              value={addOneSecondFormState.selectStockVarient}
+              value={item.selectStockVarient}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             >
               <option>90</option>
@@ -29,7 +29,7 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-              value={addOneSecondFormState.averageRate}
+              value={item.averageRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               className="semiSmallInput"
               name="averageRate"
@@ -42,7 +42,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="startingStock"
-              value={addOneSecondFormState.startingStock}
+              value={item.startingStock}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -53,7 +53,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="incomingPurchase"
-              value={addOneSecondFormState.incomingPurchase}
+              value={item.incomingPurchase}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -65,7 +65,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="buyRate"
-              value={addOneSecondFormState.buyRate}
+              value={item.buyRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -79,7 +79,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="incomePurchase"
-              value={addOneSecondFormState.incomePurchase}
+              value={item.incomePurchase}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -92,7 +92,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="purchaseRate"
-              value={addOneSecondFormState.purchaseRate}
+              value={item.purchaseRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -105,7 +105,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="inflowCredit"
-              value={addOneSecondFormState.inflowCredit}
+              value={item.inflowCredit}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -117,7 +117,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="sending"
-              value={addOneSecondFormState.sending}
+              value={item.sending}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -129,7 +129,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="sumRemainder"
-              value={addOneSecondFormState.sumRemainder}
+              value={item.sumRemainder}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -141,7 +141,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="closingStock"
-              value={addOneSecondFormState.closingStock}
+              value={item.closingStock}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -153,7 +153,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="sales"
-              value={addOneSecondFormState.sales}
+              value={item.sales}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -165,7 +165,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="mainRate"
-              value={addOneSecondFormState.mainRate}
+              value={item.mainRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -177,7 +177,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="total"
-              value={addOneSecondFormState.total}
+              value={item.total}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
@@ -189,7 +189,7 @@ const AddOneSecondForm = ({
               type="number"
               className="semiSmallInput"
               name="grandTotal"
-              value={addOneSecondFormState.grandTotal}
+              value={item.grandTotal}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />
           </div>
