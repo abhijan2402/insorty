@@ -1,13 +1,26 @@
 import React from "react";
 import SubAdminSideNav from "../Dashoard/SubAdminSideNav/SubAdminSideNav";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useState } from "react";
 import "./LayoutStyle.scss";
+import jwtDecode from "jwt-decode";
 
 const SubAdminLayout = () => {
   const [side, setSide] = useState(true);
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (token) {
+    const decode = jwtDecode(token);
+    if (decode.role !== "subadmin") {
+      return <Navigate to="/login" replace />;
+    }
+  }
 
   return (
     <>

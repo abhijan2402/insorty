@@ -9,18 +9,18 @@ import FinalReport from "./FinalReport/FinalReport";
 import Comment from "./Comment/Comment";
 import AddOneFristFromBack from "./FristFormBack/AddOneFristFromBack/AddOneFristFromBack";
 import TotalRML from "./RmlForm/TotalRML";
-import useRmlAdd from "../../../Hooks/useRmlAdd";
-import useFristFormAdd from "../../../Hooks/useFristFormAdd";
-import usePurchesOutSideAdd from "../../../Hooks/usePurchesOutSideAdd";
-import useCommissonAdd from "../../../Hooks/useCommissonAdd";
-import useCashReciveAdd from "../../../Hooks/useCashReciveAdd";
+import useRmlAdd from "../../../../Hooks/useRmlAdd";
+import useFristFormAdd from "../../../../Hooks/useFristFormAdd";
+import usePurchesOutSideAdd from "../../../../Hooks/usePurchesOutSideAdd";
+import useCommissonAdd from "../../../../Hooks/useCommissonAdd";
+import useCashReciveAdd from "../../../../Hooks/useCashReciveAdd";
 import CashReciveFrom from "./CashReciveForm/CashReciveForm";
-import useShippingAdd from "../../../Hooks/useShippingAdd";
-import useInfolwBorrowingRml from "../../../Hooks/useInfolwBorrowingRml";
-import useCarditDabit from "../../../Hooks/useCarditDabit";
+import useShippingAdd from "../../../../Hooks/useShippingAdd";
+import useInfolwBorrowingRml from "../../../../Hooks/useInfolwBorrowingRml";
+import useCarditDabit from "../../../../Hooks/useCarditDabit";
 import CraditDabitForm from "../BackDailyReport/InflowBorrowingBack/CraditDabitForm.jsx/CreditDabitForm";
 import CommissonFrom from "./CommissonForm/CommissionForm";
-import useComment from "../../../Hooks/useComment";
+import useComment from "../../../../Hooks/useComment";
 
 const BackDailyReport = () => {
   // ================== Frist Form============

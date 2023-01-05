@@ -1,13 +1,26 @@
 import React from "react";
 import UserSideNav from "../Dashoard/UserSideNav/UserSideNav";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useState } from "react";
 import "./LayoutStyle.scss";
+import jwtDecode from "jwt-decode";
 
 const DashboardLayout = () => {
   const [side, setSide] = useState(true);
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (token) {
+    const decode = jwtDecode(token);
+    if (decode.role !== "shop") {
+      return <Navigate to="/login" replace />;
+    }
+  }
 
   return (
     <>
