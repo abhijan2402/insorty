@@ -1,13 +1,11 @@
-import React, { useState,useEffect } from "react";
-import SecondFrom from "./SecondForm/SecondFrom";
+import React, { useState } from "react";
+// import SecondFrom from "./SecondForm/SecondFrom";
 import { Link } from "react-router-dom";
 import AddOneSecondForm from "./SecondForm/AddOneSecondForm/AddOneSecondForm";
 import AddOneFristForm from "./FirstForm/AddOneFristForm/AddOneFristForm";
 
 const FronteDailyReport = () => {
   // ================ add five first form ================
-
-
 
   const addOneFristForm = {
     brandName: "",
@@ -67,9 +65,11 @@ const FronteDailyReport = () => {
     averageRate180: 0,
   };
 
- const calValues = {
-  avg750 : Number(addOneFristForm.buyRate750) + Number(addOneFristForm.purchaseRate750)
- }
+  const calValues = {
+    avg750:
+      Number(addOneFristForm.buyRate750) +
+      Number(addOneFristForm.purchaseRate750),
+  };
   // **********************formulae******************
 
   // averageRate = (buyRate + purchaseRate)/2  ---> avg
@@ -80,7 +80,7 @@ const FronteDailyReport = () => {
 
   const avg = (a, b, c) => {
     // setAvgState((c = (a + b) / 2));
-    c = ((Number(a) + Number(b)) / 2) ;
+    c = (Number(a) + Number(b)) / 2;
   };
 
   const yog = (a, b, c, f, d, e) => {
@@ -127,8 +127,6 @@ const FronteDailyReport = () => {
   // }
 
   // **********************formulae******************
-
-  
 
   // avg(
   //   addOneFristForm.buyRate330,
@@ -208,7 +206,6 @@ const FronteDailyReport = () => {
 
   const addOneFristFormHandler = () => {
     setAddOneFristFormState([...addOneFristFormState, addOneFristForm]);
-    
   };
 
   const addFive = () => {
@@ -301,17 +298,10 @@ const FronteDailyReport = () => {
     console.log(addFristForm);
 
     for (const elem of addOneFristFormState) {
-      elem.averageRate750 = Number(elem.buyRate750) + Number(elem.purchaseRate750)
+      elem.averageRate750 =
+        Number(elem.buyRate750) + Number(elem.purchaseRate750);
     }
-
-   
   };
-
-
-
-
-  
-
 
   return (
     <section className="mx-2">

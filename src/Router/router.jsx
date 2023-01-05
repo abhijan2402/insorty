@@ -1,31 +1,43 @@
 import { createBrowserRouter } from "react-router-dom";
 import DailyReport from "../Pages/DailyReport/DailyReport";
-import DashboardLayout from "../Layouts/DashboardLayout";
+import UserLayouts from "../Layouts/UserLayouts";
 import FronteDailyReport from "../Pages/DailyReport/FrontDailyReport/FronteDailyReport";
 import BackDailyReport from "../Pages/DailyReport/BackDailyReport/BackDailyReport";
+import Login from "../Auth/Login/Login";
+import AdminLayout from "../Layouts/AdminLayout";
+import SubAdminLayout from "../Layouts/SubAdminLayouts";
 
 const router = createBrowserRouter([
   // Home Routes
   {
     path: "/",
-    element: (
-      <div>
-        <DashboardLayout></DashboardLayout>
-      </div>
-    ),
+    element: <Login />,
+  },
+
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+  },
+  {
+    path: "/subadmin",
+    element: <SubAdminLayout />,
+  },
+  {
+    path: "/user",
+    element: <UserLayouts />,
     children: [
       {
-        path: "/dailyReport",
-        element: <DailyReport></DailyReport>,
+        path: "/user/dailyreport",
+        element: <DailyReport />,
       },
       {
-        path: "/forntDailyReport",
-        element: <FronteDailyReport></FronteDailyReport>,
+        path: "/user/dailyreport/front",
+        element: <FronteDailyReport />,
       },
       {
-        path: "/backDailyReport",
-        element: <BackDailyReport></BackDailyReport>,
-      }
+        path: "/user/dailyreport/back",
+        element: <BackDailyReport />,
+      },
     ],
   },
 ]);
