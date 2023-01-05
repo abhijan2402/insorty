@@ -3,7 +3,7 @@ import React from "react";
 const PurchaseOutSideFrom = ({
   index,
   onChangePurchesOutSide,
-  purchesOutSideState,
+  item,
 }) => {
   return (
     <>
@@ -14,7 +14,7 @@ const PurchaseOutSideFrom = ({
               type="text"
               className="semiSmallInput"
               name="partyName"
-              value={purchesOutSideState.partyName}
+              value={item.partyName}
               onChange={(e) => onChangePurchesOutSide(e, index)}
             />
           </div>
@@ -26,7 +26,7 @@ const PurchaseOutSideFrom = ({
               type="text"
               className="semiSmallInput"
               name="brandName"
-              value={purchesOutSideState.brandName}
+              value={item.brandName}
               onChange={(e) => onChangePurchesOutSide(e, index)}
             />
           </div>
@@ -40,7 +40,7 @@ const PurchaseOutSideFrom = ({
               type="number"
               className="semiSmallInput"
               name="theNumer"
-              value={purchesOutSideState.theNumer}
+              value={item.theNumer}
               onChange={(e) => onChangePurchesOutSide(e, index)}
             />
           </div>
@@ -53,7 +53,7 @@ const PurchaseOutSideFrom = ({
               type="text"
               className="semiSmallInput"
               name="comment"
-              value={purchesOutSideState.comment}
+              value={item.comment}
               onChange={(e) => onChangePurchesOutSide(e, index)}
             />
           </div>

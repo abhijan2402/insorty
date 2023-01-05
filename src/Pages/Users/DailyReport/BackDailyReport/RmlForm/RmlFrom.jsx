@@ -1,6 +1,6 @@
 import React from "react";
 
-const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
+const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
   const serialNo = index + 1;
   return (
     <>
@@ -12,7 +12,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="text"
               className="semiSmallInput"
               name="brandName"
-              value={addRmlState.brandName}
+              value={item.brandName}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -24,7 +24,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="averageRate"
-              value={addRmlState.averageRate}
+              value={item.averageRate}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -36,7 +36,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="openingStock"
-              value={addRmlState.openingStock}
+              value={item.openingStock}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -49,7 +49,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="incomingPurchase"
-              value={addRmlState.incomingPurchase}
+              value={item.incomingPurchase}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -62,7 +62,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="incomePurchase"
-              value={addRmlState.incomePurchase}
+              value={item.incomePurchase}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -74,7 +74,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="inflowCredit"
-              value={addRmlState.inflowCredit}
+              value={item.inflowCredit}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -86,7 +86,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="sending"
-              value={addRmlState.sending}
+              value={item.sending}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -98,7 +98,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="sumRemainder"
-              value={addRmlState.sumRemainder}
+              value={item.sumRemainder}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -110,7 +110,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="sales"
-              value={addRmlState.sales}
+              value={item.sales}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -122,7 +122,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="rate"
-              value={addRmlState.rate}
+              value={item.rate}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -134,7 +134,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, addRmlState }) => {
               type="number"
               className="semiSmallInput"
               name="cost"
-              value={addRmlState.cost}
+              value={item.cost}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>

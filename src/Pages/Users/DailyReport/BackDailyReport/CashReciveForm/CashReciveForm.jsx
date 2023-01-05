@@ -1,6 +1,6 @@
 import React from "react";
 
-const CashReciveForm = ({ index, onChangeCashRecive, cashReciveState }) => {
+const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
   return (
     <>
       <tr>
@@ -10,7 +10,7 @@ const CashReciveForm = ({ index, onChangeCashRecive, cashReciveState }) => {
               type="text"
               className="dailyReportInput"
               name="reson"
-              value={cashReciveState.reson}
+              value={item.reson}
               onChange={(e) => onChangeCashRecive(e, index)}
               style={{
                 width: "443px",
@@ -23,7 +23,7 @@ const CashReciveForm = ({ index, onChangeCashRecive, cashReciveState }) => {
           <input
             type="number"
             name="amount"
-            value={cashReciveState.amount}
+            value={item.amount}
             onChange={(e) => onChangeCashRecive(e, index)}
             className="semiSmallInput"
             style={{

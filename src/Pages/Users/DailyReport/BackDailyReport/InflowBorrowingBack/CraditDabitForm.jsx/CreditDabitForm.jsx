@@ -1,6 +1,10 @@
 import React from "react";
 
-const CreditDabitForm = ({ index, craditDabitState, onChangeCarditDabit }) => {
+const CreditDabitForm = ({
+  item,
+  index,
+  onChangeCarditDabit,
+}) => {
   return (
     <tr>
       <th>{index + 1}</th>
@@ -10,7 +14,7 @@ const CreditDabitForm = ({ index, craditDabitState, onChangeCarditDabit }) => {
             type="text"
             className="semiSmallInput"
             name="partyName"
-            value={craditDabitState.partyName}
+            value={item.partyName}
             onChange={(e) => onChangeCarditDabit(e, index)}
           />
         </div>
@@ -22,7 +26,7 @@ const CreditDabitForm = ({ index, craditDabitState, onChangeCarditDabit }) => {
             type="number"
             className="semiSmallInput"
             name="ammount"
-            value={craditDabitState.ammount}
+            value={item.ammount}
             onChange={(e) => onChangeCarditDabit(e, index)}
           />
         </div>
@@ -34,7 +38,7 @@ const CreditDabitForm = ({ index, craditDabitState, onChangeCarditDabit }) => {
             type="text"
             className="semiSmallInput"
             name="note"
-            value={craditDabitState.note}
+            value={item.note}
             onChange={(e) => onChangeCarditDabit(e, index)}
           />
         </div>

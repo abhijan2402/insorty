@@ -133,7 +133,7 @@ const BackDailyReport = () => {
 
           <div className="my-4">
             <Link
-              to="/forntDailyReport"
+              to="/user/dailyreport/front"
               className="btn btn-error text-white font-bold"
             >
               Front
@@ -665,7 +665,7 @@ const BackDailyReport = () => {
                         </td>
                       </tr>
 
-                      {fristFormState.map((items, index) => {
+                      {fristFormState.map((item, index) => {
                         return (
                           <AddOneFristFromBack
                             key={index}
@@ -673,7 +673,7 @@ const BackDailyReport = () => {
                               onChangeFristBackFormHandler
                             }
                             fristFormState={fristFormState}
-                            item={items}
+                            item={item}
                             index={index}
                           ></AddOneFristFromBack>
                         );
@@ -1106,6 +1106,7 @@ const BackDailyReport = () => {
                       return (
                         <RmlFrom
                           key={index}
+                          item={item}
                           index={index}
                           onChangeRmlHandler={onChangeRmlHandler}
                           addRmlState={addRmlState}
@@ -1233,6 +1234,7 @@ const BackDailyReport = () => {
                       return (
                         <CashReciveFrom
                           key={index}
+                          item={item}
                           index={index}
                           onChangeCashRecive={onChangeCashRecive}
                           cashReciveState={cashReciveState}

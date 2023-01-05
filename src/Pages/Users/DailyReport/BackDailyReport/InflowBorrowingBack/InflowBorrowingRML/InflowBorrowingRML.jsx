@@ -3,7 +3,7 @@ import React from "react";
 const InflowBorrowingRML = ({
   index,
   onChangeBorrowingRml,
-  infolwBorrwingFormState,
+  item,
 }) => {
   return (
     <>
@@ -15,7 +15,7 @@ const InflowBorrowingRML = ({
               type="text"
               className="semiSmallInput"
               name="partyName"
-              value={infolwBorrwingFormState.partyName}
+              value={item.partyName}
               onChange={(e) => onChangeBorrowingRml(e, index)}
             />
           </div>
@@ -27,7 +27,7 @@ const InflowBorrowingRML = ({
               type="text"
               className="semiSmallInput"
               name="brandName"
-              value={infolwBorrwingFormState.brandName}
+              value={item.brandName}
               onChange={(e) => onChangeBorrowingRml(e, index)}
             />
           </div>
@@ -39,7 +39,7 @@ const InflowBorrowingRML = ({
               type="number"
               className="semiSmallInput"
               name="theNumber"
-              value={infolwBorrwingFormState.theNumber}
+              value={item.theNumber}
               onChange={(e) => onChangeBorrowingRml(e, index)}
             />
           </div>
@@ -51,7 +51,7 @@ const InflowBorrowingRML = ({
               type="text"
               className="semiSmallInput"
               name="comments"
-              value={infolwBorrwingFormState.comments}
+              value={item.comments}
               onChange={(e) => onChangeBorrowingRml(e, index)}
             />
           </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ShippingForm = ({ index, onChangeShipping, addShippingState }) => {
+const ShippingForm = ({ index, onChangeShipping, item }) => {
   return (
     <>
       <tr>
@@ -11,7 +11,7 @@ const ShippingForm = ({ index, onChangeShipping, addShippingState }) => {
               type="text"
               className="semiSmallInput"
               name="partyName"
-              value={addShippingState.partyName}
+              value={item.partyName}
               onChange={(e) => onChangeShipping(e, index)}
             />
           </div>
@@ -23,7 +23,7 @@ const ShippingForm = ({ index, onChangeShipping, addShippingState }) => {
               type="text"
               className="semiSmallInput"
               name="brandName"
-              value={addShippingState.brandName}
+              value={item.brandName}
               onChange={(e) => onChangeShipping(e, index)}
             />
           </div>
@@ -35,7 +35,7 @@ const ShippingForm = ({ index, onChangeShipping, addShippingState }) => {
               type="number"
               className="semiSmallInput"
               name="theNumber"
-              value={addShippingState.theNumber}
+              value={item.theNumber}
               onChange={(e) => onChangeShipping(e, index)}
             />
           </div>
@@ -47,7 +47,7 @@ const ShippingForm = ({ index, onChangeShipping, addShippingState }) => {
               type="text"
               className="semiSmallInput"
               name="comment"
-              value={addShippingState.comment}
+              value={item.comment}
               onChange={(e) => onChangeShipping(e, index)}
             />
           </div>
