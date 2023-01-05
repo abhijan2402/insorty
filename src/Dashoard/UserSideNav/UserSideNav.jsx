@@ -17,7 +17,7 @@ const SideNav = () => {
         <nav>
           <Link
             className="flex items-center px-4 py-2  bg-gray-100 rounded-md "
-            to="/dailyReport"
+            to="/user/dailyreport"
           >
             <FaChartLine />
             <span className="mx-4 font-medium">
@@ -26,7 +26,7 @@ const SideNav = () => {
           </Link>
 
           <Link
-            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 hover:text-gray-700"
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             to="/"
           >
             <FaFileInvoiceDollar />
@@ -34,7 +34,7 @@ const SideNav = () => {
           </Link>
 
           <Link
-            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 hover:text-gray-700"
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             to="/"
           >
             <TbParking />
@@ -42,7 +42,7 @@ const SideNav = () => {
           </Link>
 
           <Link
-            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 hover:text-gray-700"
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             to="/"
           >
             <AiOutlineStock />
@@ -50,7 +50,7 @@ const SideNav = () => {
           </Link>
 
           <Link
-            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 hover:text-gray-700"
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             to="/"
           >
             <MdPayment />
@@ -67,7 +67,7 @@ const SideNav = () => {
           </Link>
 
           <Link
-            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 hover:text-gray-700"
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             to="/"
           >
             <FaPowerOff />

@@ -1,5 +1,5 @@
 import { Box, Container } from "@mui/system";
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "../Styles/Auth.scss";
 import InstoryLogo from "../../images/insorty.png";
 import { FaUnlock, FaUserAlt } from "react-icons/fa";
@@ -8,9 +8,11 @@ import LoginModal from "../../Components/LoginModal/LoginModal";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Login = () => {
-  const [userData, setuserData] = useState();
+  const { userData, setuserData } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -19,9 +21,10 @@ const Login = () => {
     const form = event.target;
     const name = form.name.value;
     const role = form.select.value;
+
     const password = form.password.value;
     await axios
-      .post("https://beer-shop.onrender.com/auth/login", {
+      .post("https://insorty-api.onrender.com/auth/login", {
         role: role,
         accountId: name,
         password,
@@ -29,17 +32,23 @@ const Login = () => {
       .then((response) => {
         setuserData(response.data);
         console.log(response.data);
+        console.log("from user data", userData);
+
         if (response.data.success) {
+          // const role = response.data.data.role;
+          console.log(response.data.data.role);
+          console.log(role)
           if (role === "admin") {
             navigate("/admin");
           } else if (role === "subadmin") {
             navigate("/subadmin");
-          } else if (role === "user") {
+          } else if (role === "shop") {
             navigate("/user");
           }
         }
+
         localStorage.setItem("token", response.data.data.token);
-        console.log(userData);
+
         Swal.fire("Succesfully Login!", "You clicked the button!", "success");
       })
       .catch((err) => {
@@ -49,7 +58,7 @@ const Login = () => {
           title: "Error!",
           text: error,
           icon: "error",
-          confirmButtonText: "Cool",
+          confirmButtonText: "Oky !",
         });
       });
   };
@@ -60,7 +69,7 @@ const Login = () => {
       return <Navigate to="/admin" replace />;
     } else if (tokenData.role === "subadmin") {
       return <Navigate to="/subadmin" replace />;
-    } else if (tokenData.role === "user") {
+    } else if (tokenData.role === "shop") {
       return <Navigate to="/user" replace />;
     }
   }
@@ -119,16 +128,11 @@ const Login = () => {
                       <option disabled selected>
                         Select Your Role
                       </option>
-                      <option value="user">User</option>
+                      {/* <option value="user">User</option> */}
+                      <option value="shop">User</option>
                       <option value="admin">Admin</option>
                       <option value="subadmin">Sub Admin</option>
                     </select>
-                  </div>
-
-                  <div className="form-control loginFromControl mt-4">
-                    <Link className="label-text-alt link link-hover">
-                      Forgot password?
-                    </Link>
                   </div>
 
                   <div className="form-control loginFromControl">
@@ -142,7 +146,7 @@ const Login = () => {
                     </div>
                   </div>
 
-                  <div className="form-control loginFromControl">
+                  <div className="form-control text-center loginFromControl">
                     <h3>
                       Don´t have on account.{" "}
                       <Link to="/register" className="font-bold text-red-500">

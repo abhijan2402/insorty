@@ -1,12 +1,12 @@
 import React from "react";
-import SideNav from "../Dashoard/SideNav/SideNav";
+import SubAdminSideNav from "../Dashoard/SubAdminSideNav/SubAdminSideNav";
 import { Outlet } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useState } from "react";
-import "./LayoutStyle.scss"
+import "./LayoutStyle.scss";
 
-const DashboardLayout = () => {
+const SubAdminLayout = () => {
   const [side, setSide] = useState(true);
 
   return (
@@ -25,7 +25,7 @@ const DashboardLayout = () => {
 
       <div className="flex gap-2">
         <div className={side ? "lg:w-[300px] md:w-48 w-full" : "hidden"}>
-          <SideNav></SideNav>
+          <SubAdminSideNav></SubAdminSideNav>
         </div>
         <div className="md:w-[calc(100%-300px)] w-full DashboardLayoutOutlate ">
           <Outlet></Outlet>
@@ -35,4 +35,4 @@ const DashboardLayout = () => {
   );
 };
 
-export default DashboardLayout;
+export default SubAdminLayout;
