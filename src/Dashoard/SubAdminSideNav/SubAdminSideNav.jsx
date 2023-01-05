@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../../images/insorty.png";
 import { Link } from "react-router-dom";
-import { FaChartLine, FaFileInvoiceDollar, FaPowerOff, FaUserCog, FaUserEdit } from "react-icons/fa";
+import { FaPowerOff, FaUserCog, FaUserEdit } from "react-icons/fa";
 
 const SubAdminSideNav = () => {
   return (
