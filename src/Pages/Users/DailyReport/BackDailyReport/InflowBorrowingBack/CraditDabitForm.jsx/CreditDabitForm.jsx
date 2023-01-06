@@ -8,12 +8,12 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
       <td>
         <div className="form-control">
           <select
-            className="select select-bordered w-full"
+            className="select select-bordered"
             name="partyType"
             value={item.partyType}
             onChange={(e) => onChangeCarditDabit(e, index)}
           >
-            <option value="Partner " selected>
+            <option value="Partner" selected>
               Partner
             </option>
             <option value="Party">Party</option>
