@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const SalaryForm = () => {
   const {
     salaryState,
-    setSalaryState,
     addOneSalary,
     addFiveSalary,
     handelSelaryOnChange,
