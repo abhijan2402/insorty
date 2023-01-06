@@ -122,8 +122,11 @@ const BackDailyReport = () => {
     handelAddOneCarditDabit();
   };
 
-  const { commentState, handelSubimtComment, handleChangeComment } =
-    useComment();
+  const {
+    commentState,
+    handelSubimtComment,
+    handleChangeComment,
+  } = useComment();
 
   return (
     <>
@@ -986,6 +989,9 @@ const BackDailyReport = () => {
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>संख्या</th>
+                      <th>Quantity</th>
+                      <th>रेट</th>
+                      <th>योग</th>
                       <th>टिप्पणी</th>
                     </tr>
                   </thead>
@@ -1076,7 +1082,7 @@ const BackDailyReport = () => {
         </div>
         {/* *********************************************************BREAK*********************************************************  */}
 
-        <div className="flex overflow-x-auto">
+        <div className="flex overflow-x-auto ">
           <div className="py-6">
             <h1 className="my-4">
               <span className="font-bold titleText">
@@ -1144,6 +1150,9 @@ const BackDailyReport = () => {
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>संख्या</th>
+                      <th>Quantity</th>
+                      <th>रेट</th>
+                      <th>योग</th>
                       <th>टिप्पणी</th>
                     </tr>
                   </thead>
@@ -1177,8 +1186,8 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th>S.no</th>
-                      <th>Party Name/ पार्टी का नाम</th>
-                      <th>Amount / रकम</th>
+                      <th>पार्टी का नाम</th>
+                      <th>रकम</th>
                       <th>टिप्पणी</th>
                     </tr>
                   </thead>

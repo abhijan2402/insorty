@@ -34,14 +34,12 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
               />
             </div>
 
-             <div className="form-control">
+            <div className="form-control">
               <input
-
                 // type="number"
 
                 type="number"
                 disabled
-
                 className="smallinput"
                 value={item.averageRate550}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -463,6 +461,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
+
             <div className="form-control">
               <input
                 type="text"
@@ -472,6 +471,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
+
             <div className="form-control">
               <input
                 type="text"
@@ -481,19 +481,8 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
-
-          <div className="form-control">
-            <input
-              type="text"
-              
-              className="semiSmallInput"
-              name="total"
-              value={item.total}
-              onChange={(e) => onChangeFristBackFormHandler(e, index)}
-            />
           </div>
         </td>
-        {/* ============= कुल योग ================ */}
 
         <td>
           <div className="form-control">

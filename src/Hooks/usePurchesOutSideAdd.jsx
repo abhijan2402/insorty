@@ -4,8 +4,11 @@ const usePurchesOutSideAdd = () => {
   const purchesOutSideAdd = {
     partyName: "",
     brandName: "",
-    theNumber: "",
-    comment: "",
+    theNumber: 0,
+    quantity: 0,
+    total: 0,
+    rate: 0,
+    reason: "",
   };
 
   const [purchesOutSideState, setPurchesOutSideState] = useState([

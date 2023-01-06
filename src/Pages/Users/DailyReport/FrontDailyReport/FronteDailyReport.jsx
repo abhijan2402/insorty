@@ -1354,6 +1354,8 @@ const FronteDailyReport = () => {
                           name="total"
                         />
                       </div>
+                      
+                      </div>
                     </td>
                     {/* ============= कुल योग ================ */}
                     <td>
