@@ -22,6 +22,7 @@ const AddOneFristFromBack = ({
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="averageRate650"
                 value={item.averageRate650}
@@ -32,6 +33,7 @@ const AddOneFristFromBack = ({
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="averageRate550"
                 value={item.averageRate550}
@@ -42,6 +44,7 @@ const AddOneFristFromBack = ({
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="averageRate330"
                 value={item.averageRate330}
@@ -301,6 +304,7 @@ const AddOneFristFromBack = ({
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sumRemainder650"
                 value={item.sumRemainder650}
@@ -311,6 +315,7 @@ const AddOneFristFromBack = ({
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sumRemainder550"
                 value={item.sumRemainder550}
@@ -321,6 +326,7 @@ const AddOneFristFromBack = ({
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sumRemainder330"
                 value={item.sumRemainder330}
@@ -369,6 +375,7 @@ const AddOneFristFromBack = ({
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sales650"
                 value={item.sales650}
@@ -379,6 +386,7 @@ const AddOneFristFromBack = ({
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sales550"
                 value={item.sales550}
@@ -389,6 +397,7 @@ const AddOneFristFromBack = ({
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sales330"
                 value={item.sales330}
@@ -436,6 +445,7 @@ const AddOneFristFromBack = ({
           <div className="form-control">
             <input
               type="text"
+              
               className="semiSmallInput"
               name="total"
               value={item.total}
@@ -448,6 +458,7 @@ const AddOneFristFromBack = ({
           <div className="form-control">
             <input
               type="text"
+              disabled
               className="semiSmallInput"
               name="grandTotal"
               value={item.grandTotal}
