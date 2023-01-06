@@ -490,21 +490,21 @@ const AddOneFristForm = ({
               <input
                 type="text"
                 className="smallinput"
-                name="total750"
+                name="total180"
                 value={item.total180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
 
             <div className="form-control">
-              <input
+              {/* <input
                 type="text"
                 className="semiSmallInput"
                 name="total750"
                 disabled
-                value={item.total750}
+                value={item.total330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
-              />
+              /> */}
             </div>
           </div>
         </td>

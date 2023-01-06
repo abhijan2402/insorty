@@ -1347,12 +1347,12 @@ const FronteDailyReport = () => {
                         </div>
 
                       <div className="form-control">
-                        <input
+                        {/* <input
                           disabled
                           type="text"
                           className="semiSmallInput"
                           name="total"
-                        />
+                        /> */}
                       </div>
                       
                       </div>
@@ -1362,7 +1362,6 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          type="text"
                           disabled
                           className="semiSmallInput"
                           name="grandTotal"

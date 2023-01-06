@@ -234,7 +234,7 @@ const useFormulasFristFormFront = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
-          e.target.name === "sumremainder750" ||
+          e.target.name === "sumRemainder750" ||
           e.target.name === "closingStock750"
         ) {
           obj.sales750 =
@@ -250,7 +250,7 @@ const useFormulasFristFormFront = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
-          e.target.name === "sumremainder330" ||
+          e.target.name === "sumRemainder330" ||
           e.target.name === "closingStock330"
         ) {
           obj.sales330 =
@@ -266,7 +266,7 @@ const useFormulasFristFormFront = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
-          e.target.name === "sumremainder180" ||
+          e.target.name === "sumRemainder180" ||
           e.target.name === "closingStock180"
         ) {
           obj.sales180 =
@@ -293,7 +293,7 @@ const useFormulasFristFormFront = () => {
     const saleTotal330 = addOneFristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales330" || e.target.name === "mainrate330") {
+        if (e.target.name === "sales330" || e.target.name === "mainRate330") {
           obj.total330 = Number(obj.sales330) * Number(obj.mainRate330);
         }
         return obj;
@@ -305,8 +305,8 @@ const useFormulasFristFormFront = () => {
     const saleTotal180 = addOneFristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales180" || e.target.name === "mainrate180") {
-          obj.total750 = Number(obj.sales180) * Number(obj.mainRate180);
+        if (e.target.name === "sales180" || e.target.name === "mainRate180") {
+          obj.total180 = Number(obj.sales180) * Number(obj.mainRate180);
         }
         return obj;
       } else return returned;
@@ -318,12 +318,12 @@ const useFormulasFristFormFront = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
-          e.target.name === "total&50" ||
+          e.target.name === "total750" ||
           e.target.name === "total330" ||
           e.target.name === "total180"
         ) {
           obj.grandTotal =
-            Number(obj.total750) + Number(obj.total180) + Number(obj.total180);
+            Number(obj.total750) + Number(obj.tota330) + Number(obj.total180);
         }
         return obj;
       } else return returned;
