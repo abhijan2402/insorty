@@ -111,6 +111,7 @@ const useFormulasFristFormFront = () => {
         : returned
     );
     setAddOneFristFormState(firstFormHandel);
+    
     //************* Formula **************** */
 
     const handelavg750 = addOneFristFormState.map((returned, i) => {

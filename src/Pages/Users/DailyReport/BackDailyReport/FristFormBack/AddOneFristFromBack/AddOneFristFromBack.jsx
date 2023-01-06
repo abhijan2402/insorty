@@ -1,10 +1,6 @@
 import React from "react";
 
-const AddOneFristFromBack = ({
-  index,
-  item,
-  onChangeFristBackFormHandler,
-}) => {
+const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
   const SerialNo = index + 1;
 
   return (
@@ -13,7 +9,13 @@ const AddOneFristFromBack = ({
         <th>{SerialNo}</th>
         <td>
           <div className="form-control">
-            <input type="text" className="dailyReportInput " name="brandName" />
+            <input
+              type="text"
+              className="dailyReportInput"
+              name="brandName"
+              value={item.brandName}
+              onChange={(event) => onChangeFristBackFormHandler(event, index)}
+            />
           </div>
         </td>
         {/* ======== MRP Input ========= */}
@@ -21,34 +23,42 @@ const AddOneFristFromBack = ({
           <div className="flex gap-2">
             <div className="form-control">
               <input
+                // type="number"
+
                 type="number"
                 disabled
                 className="smallinput"
-                name="averageRate650"
                 value={item.averageRate650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
+                name="averageRate650"
               />
             </div>
 
-            <div className="form-control">
+             <div className="form-control">
               <input
+
+                // type="number"
+
                 type="number"
                 disabled
+
                 className="smallinput"
-                name="averageRate550"
                 value={item.averageRate550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
+                name="averageRate550"
               />
             </div>
 
             <div className="form-control">
               <input
+                // type="number"
+
                 type="number"
                 disabled
                 className="smallinput"
-                name="averageRate330"
                 value={item.averageRate330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
+                name="averageRate330"
               />
             </div>
           </div>
@@ -62,7 +72,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="startingStock650"
                 value={item.startingStock650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -72,7 +82,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="startingStock550"
                 value={item.startingStock550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -82,7 +92,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="startingStock330"
                 value={item.startingStock330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
@@ -98,7 +108,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="incomingPurchase650"
                 value={item.incomingPurchase650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -108,7 +118,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="incomingPurchase550"
                 value={item.incomingPurchase550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -118,7 +128,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="incomingPurchase330"
                 value={item.incomingPurchase330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
@@ -132,7 +142,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="buyRate650"
                 value={item.buyRate650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -142,7 +152,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="buyRate550"
                 value={item.buyRate550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -152,7 +162,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="buyRate330"
                 value={item.buyRate330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
@@ -168,7 +178,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="incomePurchase650"
                 value={item.incomePurchase650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -178,7 +188,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="incomePurchase550"
                 value={item.incomePurchase550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -188,7 +198,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="incomePurchase330"
                 value={item.incomePurchase330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
@@ -203,7 +213,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="purchaseRate650"
                 value={item.purchaseRate650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -213,7 +223,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="purchaseRate550"
                 value={item.purchaseRate550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -223,7 +233,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="purchaseRate330"
                 value={item.purchaseRate330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
@@ -239,7 +249,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="inflowCredit650"
                 value={item.inflowCredit650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -249,7 +259,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="inflowCredit550"
                 value={item.inflowCredit550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -259,11 +269,12 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="inflowCredit330"
                 value={item.inflowCredit330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
         </td>
+
         {/* ======== भेजान ========= */}
         <td>
           <div className="flex gap-2">
@@ -273,7 +284,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="sending650"
                 value={item.sending650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -283,7 +294,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="sending550"
                 value={item.sending550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -293,7 +304,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="sending330"
                 value={item.sending330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
@@ -308,7 +319,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="sumRemainder650"
                 value={item.sumRemainder650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -319,7 +330,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="sumRemainder550"
                 value={item.sumRemainder550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -330,7 +341,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="sumRemainder330"
                 value={item.sumRemainder330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
@@ -344,7 +355,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="closingStock650"
                 value={item.closingStock650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -354,7 +365,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="closingStock550"
                 value={item.closingStock550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -364,7 +375,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="closingStock330"
                 value={item.closingStock330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
@@ -379,7 +390,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="sales650"
                 value={item.sales650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -390,7 +401,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="sales550"
                 value={item.sales550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -401,7 +412,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="sales330"
                 value={item.sales330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
@@ -415,7 +426,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="mainRate650"
                 value={item.mainRate650}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -425,7 +436,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="mainRate550"
                 value={item.mainRate550}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
 
@@ -435,13 +446,42 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="mainRate330"
                 value={item.mainRate330}
-                onChange={(e) => onChangeFristBackFormHandler(e, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
         </td>
         {/* ============= योग ================ */}
         <td>
+          <div className="flex gap-2">
+            <div className="form-control">
+              <input
+                type="text"
+                className="smallinput"
+                name="total650"
+                value={item.total650}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                className="smallinput"
+                name="total550"
+                value={item.total550}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                className="smallinput"
+                name="total650"
+                value={item.total330}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
+              />
+            </div>
+
           <div className="form-control">
             <input
               type="text"
@@ -454,6 +494,7 @@ const AddOneFristFromBack = ({
           </div>
         </td>
         {/* ============= कुल योग ================ */}
+
         <td>
           <div className="form-control">
             <input
@@ -462,7 +503,7 @@ const AddOneFristFromBack = ({
               className="semiSmallInput"
               name="grandTotal"
               value={item.grandTotal}
-              onChange={(e) => onChangeFristBackFormHandler(e, index)}
+              onChange={(event) => onChangeFristBackFormHandler(event, index)}
             />
           </div>
         </td>

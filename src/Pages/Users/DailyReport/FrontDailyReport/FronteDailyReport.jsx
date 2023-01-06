@@ -111,13 +111,13 @@ const FronteDailyReport = () => {
     totalState
   } = useFormulasFristFormFront();
 
-  const allFildTotal = () => {
-    let total = 0;
-    for (let i = 0; i < addOneFristFormState.length; i++) {
-      total = total + addOneFristFormState.total[i];
-    }
-    return total;
-  };
+  // const allFildTotal = () => {
+  //   let total = 0;
+  //   for (let i = 0; i < addOneFristFormState.length; i++) {
+  //     total = total + addOneFristFormState.total[i];
+  //   }
+  //   return total;
+  // };
 
   // const [addOneFristFormState, setAddOneFristFormState] = useState([
   //   addOneFristForm,
@@ -838,18 +838,27 @@ const FronteDailyReport = () => {
                       </div>
                     </td>
                     {/* ============= योग ================ */}
+
                     <td>
-                      <div className="form-control">
-                        {/* <input
-                          type="text"
-                          className="semiSmallInput"
-                          name="total"
-                          style={{
-                            marginTop: "2rem",
-                          }}
-                        /> */}
+                      <div className="flex flex-2">
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">750ml</span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">330ml</span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">180ml</span>
+                          </label>
+                        </div>
                       </div>
                     </td>
+
                     {/* ============= कुल योग ================ */}
                     <td>
                       <div className="form-control">
@@ -1314,6 +1323,29 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ============= योग ================ */}
                     <td>
+                      <div className="flex gap-2">
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="total750"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="total330"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="total180"
+                          />
+                        </div>
+
                       <div className="form-control">
                         <input
                           disabled
@@ -1327,6 +1359,7 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control">
                         <input
+                          type="number"
                           type="text"
                           disabled
                           className="semiSmallInput"
