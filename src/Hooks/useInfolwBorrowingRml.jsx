@@ -5,7 +5,10 @@ const useInfolwBorrowingRml = () => {
     partyName: "",
     brandName: "",
     theNumber: "",
-    comments: "",
+    quantity: 0,
+    total: 0,
+    rate: 0,
+    reason: "",
   };
 
   const [infolwBorrwingFormState, setInfolwBorrwingFormState] = useState([

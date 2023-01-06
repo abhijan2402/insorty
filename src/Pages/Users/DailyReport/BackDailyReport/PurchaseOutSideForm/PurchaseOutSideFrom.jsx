@@ -1,10 +1,6 @@
 import React from "react";
 
-const PurchaseOutSideFrom = ({
-  index,
-  onChangePurchesOutSide,
-  item,
-}) => {
+const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
   return (
     <>
       <tr>
@@ -35,7 +31,7 @@ const PurchaseOutSideFrom = ({
         {/* ======== आमद (खरीद)-दु. ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control ">
             <input
               type="number"
               className="semiSmallInput"
@@ -48,12 +44,55 @@ const PurchaseOutSideFrom = ({
         {/* ======== आमद (खरीद)-बा. ========= */}
 
         <td>
+          <div className="form-control ">
+            <select
+              className="select select-bordered"
+              name="quantity"
+              value={item.quantity}
+              onChange={(e) => onChangePurchesOutSide(e, index)}
+            >
+              <option value={650} selected>
+                650ml
+              </option>
+              <option value={550}>550ml</option>
+              <option value={330}>330ml</option>
+              <option value={90}>90ml</option>
+              <option value={60}>60ml</option>
+            </select>
+          </div>
+        </td>
+
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="total"
+              value={item.total}
+              onChange={(e) => onChangePurchesOutSide(e, index)}
+            />
+          </div>
+        </td>
+        
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="rate"
+              value={item.rate}
+              onChange={(e) => onChangePurchesOutSide(e, index)}
+            />
+          </div>
+        </td>
+
+        <td>
           <div className="form-control">
             <input
               type="text"
               className="semiSmallInput"
-              name="comment"
-              value={item.comment}
+              name="reason"
+              value={item.reason}
               onChange={(e) => onChangePurchesOutSide(e, index)}
             />
           </div>

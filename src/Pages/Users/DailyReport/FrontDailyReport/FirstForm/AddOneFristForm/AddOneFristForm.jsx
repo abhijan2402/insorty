@@ -8,7 +8,6 @@ const AddOneFristForm = ({
   addOneFristFormState,
 }) => {
   const SerialNo = index + 1;
- 
 
   return (
     <>
@@ -468,7 +467,6 @@ const AddOneFristForm = ({
         </td>
         {/* ============= योग ================ */}
         <td>
-
           <div className="flex gap-2">
             <div className="form-control">
               <input
@@ -498,16 +496,16 @@ const AddOneFristForm = ({
               />
             </div>
 
-          <div className="form-control">
-            <input
-              type="text"
-              className="semiSmallInput"
-              name="total750"
-              disabled
-              value={item.total750}
-              onChange={(event) => handelFristFormOnChange(event, index)}
-            />
-
+            <div className="form-control">
+              <input
+                type="text"
+                className="semiSmallInput"
+                name="total750"
+                disabled
+                value={item.total750}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
+            </div>
           </div>
         </td>
         {/* ============= कुल योग ================ */}
