@@ -36,6 +36,7 @@ const AddOneFristForm = ({
                 value={item.averageRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
                 name="averageRate750"
+                disabled
               />
               {/* <input
                 name="750"
@@ -51,6 +52,7 @@ const AddOneFristForm = ({
                 value={item.averageRate330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
                 name="averageRate330"
+                disabled
               />
               {/* <input
                 name="330"
@@ -66,6 +68,7 @@ const AddOneFristForm = ({
                 value={item.averageRate180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
                 name="averageRate180"
+                disabled
               />
               {/* <input
                 name="180"
@@ -331,6 +334,7 @@ const AddOneFristForm = ({
                 name="sumRemainder750"
                 value={item.sumRemainder750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
+                disabled
               />
             </div>
 
@@ -341,6 +345,7 @@ const AddOneFristForm = ({
                 name="sumRemainder330"
                 value={item.sumRemainder330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
+                disabled
               />
             </div>
 
@@ -351,6 +356,7 @@ const AddOneFristForm = ({
                 name="sumRemainder180"
                 value={item.sumRemainder180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
+                disabled
               />
             </div>
           </div>
@@ -397,6 +403,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 name="sales750"
+                disabled
                 value={item.sales750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -407,6 +414,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 name="sales330"
+                disabled
                 value={item.sales330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -417,6 +425,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 name="sales180"
+                disabled
                 value={item.sales180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -459,6 +468,7 @@ const AddOneFristForm = ({
         </td>
         {/* ============= योग ================ */}
         <td>
+
           <div className="flex gap-2">
             <div className="form-control">
               <input
@@ -487,6 +497,17 @@ const AddOneFristForm = ({
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
+
+          <div className="form-control">
+            <input
+              type="text"
+              className="semiSmallInput"
+              name="total750"
+              disabled
+              value={item.total750}
+              onChange={(event) => handelFristFormOnChange(event, index)}
+            />
+
           </div>
         </td>
         {/* ============= कुल योग ================ */}
@@ -497,6 +518,7 @@ const AddOneFristForm = ({
               type="text"
               className="semiSmallInput"
               name="grandTotal"
+              disabled
               value={item.grandTotal}
               onChange={(event) => handelFristFormOnChange(event, index)}
             />

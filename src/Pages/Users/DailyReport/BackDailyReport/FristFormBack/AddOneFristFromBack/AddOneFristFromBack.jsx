@@ -25,6 +25,8 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
               <input
                 // type="number"
 
+                type="number"
+                disabled
                 className="smallinput"
                 value={item.averageRate650}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -32,9 +34,14 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
               />
             </div>
 
-            <div className="form-control">
+             <div className="form-control">
               <input
+
                 // type="number"
+
+                type="number"
+                disabled
+
                 className="smallinput"
                 value={item.averageRate550}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -45,6 +52,9 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
             <div className="form-control">
               <input
                 // type="number"
+
+                type="number"
+                disabled
                 className="smallinput"
                 value={item.averageRate330}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -305,6 +315,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sumRemainder650"
                 value={item.sumRemainder650}
@@ -315,6 +326,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sumRemainder550"
                 value={item.sumRemainder550}
@@ -325,6 +337,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sumRemainder330"
                 value={item.sumRemainder330}
@@ -373,6 +386,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sales650"
                 value={item.sales650}
@@ -383,6 +397,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sales550"
                 value={item.sales550}
@@ -393,6 +408,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
             <div className="form-control">
               <input
                 type="number"
+                disabled
                 className="smallinput"
                 name="sales330"
                 value={item.sales330}
@@ -465,6 +481,16 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
+
+          <div className="form-control">
+            <input
+              type="text"
+              
+              className="semiSmallInput"
+              name="total"
+              value={item.total}
+              onChange={(e) => onChangeFristBackFormHandler(e, index)}
+            />
           </div>
         </td>
         {/* ============= कुल योग ================ */}
@@ -473,6 +499,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
           <div className="form-control">
             <input
               type="text"
+              disabled
               className="semiSmallInput"
               name="grandTotal"
               value={item.grandTotal}

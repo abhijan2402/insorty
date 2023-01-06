@@ -57,11 +57,51 @@ const useFormulasFristFormFront = () => {
     averageRate750: 0,
     averageRate330: 0,
     averageRate180: 0,
+
+  
   };
 
   const [addOneFristFormState, setAddOneFristFormState] = useState([
     addOneFristForm,
   ]);
+
+  const [totalState,setTotalState] = useState({
+     startingStock750Total : 0,
+    startingStock330Total : 0,
+    startingStock180Total : 0,
+    incomingPurchase750Total : 0,
+    incomingPurchase330Total : 0,
+    incomingPurchase180Total : 0,
+    incomePurchase750Total : 0,
+    incomePurchase330Total : 0,
+    incomePurchase180Total : 0,
+    inflowCredit750Total : 0,
+    inflowCredit330Total : 0,
+    inflowCredit180Total : 0,
+
+    sending750Total : 0,
+    sending330Total : 0,
+    sending180Total : 0,
+
+    sumRemainder750Total : 0,
+    sumRemainder330Total : 0,
+    sumRemainder180Total : 0,
+
+    closingStock750Total : 0,
+    closingStock330Total : 0,
+    closingStock180Total : 0,
+
+    sales750Total : 0,
+    sales330Total : 0,
+    sales180Total : 0,
+
+    
+
+    total750Total : 0,
+    total330Total : 0,
+    total180Total : 0,
+
+    allGrandTotal : 0,})
 
   const handelFristFormOnChange = (e, index) => {
     //************* Formula **************** */
@@ -214,7 +254,7 @@ const useFormulasFristFormFront = () => {
           e.target.name === "closingStock330"
         ) {
           obj.sales330 =
-            Number(obj.sumRemainder180) - Number(obj.closingStock180);
+            Number(obj.sumRemainder180) - Number(obj.closingStock330);
         }
         return obj;
       } else return returned;
@@ -291,50 +331,216 @@ const useFormulasFristFormFront = () => {
 
     setAddOneFristFormState(grandT);
 
-    const startingStock750Total = addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.startingStock750),
+    let obj1=totalState
+    obj1.startingStock750Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.startingStock750)),
       0
     );
+    setTotalState(obj1)
 
-    const startingStock330Total = addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.startingStock330),
+    let obj2 = totalState
+    obj2.startingStock330Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.startingStock330)),
       0
     );
+    setTotalState(obj2)
 
-    const startingStock180Total = addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.startingStock180),
-      0
-    );
 
-    const incomingPurchase750Total = addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomingPurchase750),
+    let obj3 = totalState
+    obj3.startingStock180Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.startingStock180)),
       0
     );
+    setTotalState(obj3)
 
-    const incomingPurchase330Total = addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomingPurchase330),
-      0
-    );
 
-    const incomingPurchase180Total = addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomingPurchase180),
+    let obj4 = totalState
+    obj4.incomingPurchase750Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomingPurchase750)),
       0
     );
+    setTotalState(obj4)
 
-    const incomePurchase750Total = addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomePurchase750),
-      0
-    );
 
-    const incomePurchase330Total = addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomePurchase330),
+    let obj5 = totalState
+    obj5.incomingPurchase330Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomingPurchase330)),
       0
     );
+    setTotalState(obj5)
 
-    const incomePurchase180Total = addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomePurchase180),
+
+    let obj6 = totalState
+    obj6.incomingPurchase180Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomingPurchase180)),
       0
     );
+    setTotalState(obj6)
+
+
+    let obj7 = totalState
+    obj7.incomePurchase750Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomePurchase750)),
+      0
+    );
+    setTotalState(obj7)
+
+
+    let obj8 = totalState
+    obj8.incomePurchase330Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomePurchase330)),
+      0
+    );
+    setTotalState(obj8)
+
+
+    let obj9 = totalState
+    obj9.incomePurchase180Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomePurchase180)),
+      0
+    );
+    setTotalState(obj9)
+
+
+    let obj10 = totalState
+    obj10.inflowCredit750Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.inflowCredit750)),
+      0
+    );
+    setTotalState(obj10)
+
+
+    let obj11 = totalState
+    obj11.inflowCredit330Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.inflowCredit330)),
+      0
+    );
+    setTotalState(obj11)
+
+
+    let obj12 = totalState
+    obj12.inflowCredit180Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.inflowCredit180)),
+      0
+    );
+    setTotalState(obj12)
+    
+    
+    let obj13 = totalState
+    obj13.sending750Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sending750)),
+      0
+      );
+      setTotalState(obj13)
+      
+      let obj14 = totalState
+      obj14.sending330Total = addOneFristFormState.reduce(
+        (total, currentItem) => (total = total + Number(currentItem.sending330)),
+        0
+        );
+        setTotalState(obj14)
+        
+        let obj15 = totalState
+        obj15.sending180Total = addOneFristFormState.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.sending180)),
+          0
+          );
+          setTotalState(obj15)
+          
+          let obj16 = totalState
+          obj16.sumRemainder750Total = addOneFristFormState.reduce(
+            (total, currentItem) => (total = total + Number(currentItem.sumRemainder750)),
+            0
+            );
+    setTotalState(obj16)
+    
+    let obj17 = totalState
+    obj17.sumRemainder330Total = addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sumRemainder330)),
+      0
+      );
+      setTotalState(obj17)
+      
+      let obj18 = totalState
+      obj18.sumRemainder180Total = addOneFristFormState.reduce(
+        (total, currentItem) => (total = total + Number(currentItem.sumRemainder180)),
+        0
+        );
+        setTotalState(obj18)
+        
+        
+        let obj19 = totalState
+        obj19.closingStock750Total = addOneFristFormState.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.closingStock750)),
+          0
+          );
+          setTotalState(obj19)
+          
+          let obj20 = totalState
+          obj20.closingStock330Total = addOneFristFormState.reduce(
+            (total, currentItem) => (total = total + Number(currentItem.closingStock330)),
+            0
+            );
+            setTotalState(obj20)
+            
+            let obj21=totalState
+            obj21.closingStock180Total = addOneFristFormState.reduce(
+              (total, currentItem) => (total = total + Number(currentItem.closingStock180)),
+              0
+              );
+              setTotalState(obj21)
+              
+              let obj22=totalState
+              obj22.sales750Total = addOneFristFormState.reduce(
+                (total, currentItem) => (total = total + Number(currentItem.sales750)),
+                0
+                );
+                setTotalState(obj22)
+                
+                let obj23=totalState
+                obj23.sales330Total = addOneFristFormState.reduce(
+                  (total, currentItem) => (total = total + Number(currentItem.sales330)),
+                  0
+                  );
+                  setTotalState(obj23)
+                  
+                  let obj24=totalState
+                  obj24.sales180Total = addOneFristFormState.reduce(
+                    (total, currentItem) => (total = total + Number(currentItem.sales180)),
+                    0
+                    );
+                    setTotalState(obj24)
+                    
+                    let obj25=totalState
+                    obj25.total750Total = addOneFristFormState.reduce(
+                      (total, currentItem) => (total = total + Number(currentItem.total750)),
+                      0
+                      );
+                      setTotalState(obj25)
+                      
+                      let obj26=totalState
+                      obj26.total330Total = addOneFristFormState.reduce(
+                        (total, currentItem) => (total = total + Number(currentItem.total330)),
+                        0
+                        );
+                        setTotalState(obj26)
+                        
+                        let obj27=totalState
+                        obj27.total180Total = addOneFristFormState.reduce(
+                          (total, currentItem) => (total = total + Number(currentItem.total180)),
+                          0
+                          );
+                          setTotalState(obj27)
+                          
+                          let obj28=totalState
+                          obj28.allGrandTotal = addOneFristFormState.reduce(
+                            (total, currentItem) => (total = total + Number(currentItem.grandTotal)),
+                            0
+                            );
+                            setTotalState(obj28)
+
+
+   
   };
 
   const addFive = () => {
@@ -352,12 +558,19 @@ const useFormulasFristFormFront = () => {
     setAddOneFristFormState([...addOneFristFormState, addOneFristForm]);
   };
 
+  
+
+
+
+
   return {
     addOneFristFormState,
     setAddOneFristFormState,
     handelFristFormOnChange,
     addOneFristFormHandler,
     addFive,
+    totalState
+   
   };
 };
 

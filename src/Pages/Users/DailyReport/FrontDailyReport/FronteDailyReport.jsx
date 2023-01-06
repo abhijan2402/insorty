@@ -108,6 +108,7 @@ const FronteDailyReport = () => {
     addOneFristFormHandler,
     handelFristFormOnChange,
     addFive,
+    totalState
   } = useFormulasFristFormFront();
 
   // const allFildTotal = () => {
@@ -896,6 +897,7 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
                             name="averageRate"
@@ -904,6 +906,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
                             name="averageRate"
@@ -912,6 +915,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
                             name="averageRate"
@@ -924,7 +928,10 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                          value={totalState.startingStock750Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             className="smallinput"
+                            disabled
                             type="number"
                             name="startingStock"
                           />
@@ -932,16 +939,22 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <input
+                            value={totalState.startingStock330Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
+                            disabled
                             name="startingStock"
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.startingStock180Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
+                            disabled
                             name="startingStock"
                           />
                         </div>
@@ -954,7 +967,10 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                            value={totalState.incomingPurchase750Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
+                            disabled
                             className="smallinput"
                             name="incomingPurchase"
                           />
@@ -962,16 +978,22 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <input
+                            value={totalState.incomingPurchase330Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
+                            disabled
                             name="incomingPurchase"
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.incomingPurchase180Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
+                            disabled
                             name="incomingPurchase"
                           />
                         </div>
@@ -983,8 +1005,20 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="buyRate"
+                          
+                          />
+                        </div>
+
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            disabled
+                            className="smallinput"
+                            name="buyRate"
+                            
                           />
                         </div>
 
@@ -993,14 +1027,7 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="buyRate"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="buyRate"
+                            disabled
                           />
                         </div>
                       </div>
@@ -1012,25 +1039,34 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                            value={totalState.incomePurchase750Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
+                            name="incomePurchase"
+                            disabled
+                          />
+                        </div>
+
+                        <div className="form-control">
+                          <input
+                            value={totalState.incomePurchase330Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
+                            type="number"
+                            className="smallinput"
+                            disabled
                             name="incomePurchase"
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.incomePurchase180Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="incomePurchase"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="incomePurchase"
+                            disabled
                           />
                         </div>
                       </div>
@@ -1044,6 +1080,7 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="purchaseRate"
+                            disabled
                           />
                         </div>
 
@@ -1052,6 +1089,7 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="purchaseRate"
+                            disabled
                           />
                         </div>
 
@@ -1060,6 +1098,7 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="purchaseRate"
+                            disabled
                           />
                         </div>
                       </div>
@@ -1071,25 +1110,34 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                            value={totalState.inflowCredit750Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="inflowCredit"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.inflowCredit330Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="inflowCredit"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.inflowCredit180Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="inflowCredit"
+                            disabled
                           />
                         </div>
                       </div>
@@ -1099,23 +1147,32 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                            value={totalState.sending750Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="sending"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.sending330Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="sending"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.sending180Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
+                            disabled
                             className="smallinput"
                             name="sending"
                           />
@@ -1127,25 +1184,34 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                            value={totalState.sumRemainder750Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="sumRemainder"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.sumRemainder330Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="sumRemainder"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.sumRemainder180Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="sumRemainder"
+                            disabled
                           />
                         </div>
                       </div>
@@ -1155,25 +1221,34 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                            value={totalState.closingStock750Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="closingStock"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.closingStock330Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="closingStock"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.closingStock180Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="closingStock"
+                            disabled
                           />
                         </div>
                       </div>
@@ -1183,25 +1258,34 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                            value={totalState.sales750Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="sales"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.sales330Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="sales"
+                            disabled
                           />
                         </div>
 
                         <div className="form-control">
                           <input
+                            value={totalState.sales180Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                             type="number"
                             className="smallinput"
                             name="sales"
+                            disabled
                           />
                         </div>
                       </div>
@@ -1211,6 +1295,7 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
                             name="mainRate"
@@ -1219,6 +1304,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
                             name="mainRate"
@@ -1227,6 +1313,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
                             name="mainRate"
@@ -1258,6 +1345,14 @@ const FronteDailyReport = () => {
                             name="total180"
                           />
                         </div>
+
+                      <div className="form-control">
+                        <input
+                          disabled
+                          type="text"
+                          className="semiSmallInput"
+                          name="total"
+                        />
                       </div>
                     </td>
                     {/* ============= कुल योग ================ */}
@@ -1265,6 +1360,8 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
+                          type="text"
+                          disabled
                           className="semiSmallInput"
                           name="grandTotal"
                         />
