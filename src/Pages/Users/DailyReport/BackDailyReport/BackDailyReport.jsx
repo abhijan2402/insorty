@@ -178,16 +178,7 @@ const BackDailyReport = () => {
                       <tr>
                         <th></th>
                         <td>
-                          <div className="form-control">
-                            {/* <input
-                          type="text"
-                          name="brandName"
-                          className="dailyReportInput "
-                          style={{
-                            marginTop: "2rem",
-                          }}
-                        /> */}
-                          </div>
+                          <div className="form-control"></div>
                         </td>
                         {/* ======== MRP Input ========= */}
                         <td>
@@ -196,33 +187,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -233,33 +209,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="startingStock"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="startingStock"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="startingStock"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -270,33 +231,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomingPurchase"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomingPurchase"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomingPurchase"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -307,33 +253,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="buyRate"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="buyRate"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="buyRate"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -344,33 +275,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomePurchase"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomePurchase"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomePurchase"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -382,33 +298,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -421,33 +322,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="inflowCredit"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="inflowCredit"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="inflowCredit"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -459,33 +345,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sending"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sending"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sending"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -496,33 +367,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sumRemainder"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sumRemainder"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sumRemainder"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -533,33 +389,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="closingStock"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="closingStock"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="closingStock"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -570,33 +411,18 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sales"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sales"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sales"
-                          /> */}
                             </div>
                           </div>
                         </td>
@@ -607,61 +433,46 @@ const BackDailyReport = () => {
                               <label className="label">
                                 <span className="label-text">650ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="mainRate"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">550ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="mainRate"
-                          /> */}
                             </div>
 
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">330ml</span>
                               </label>
-                              {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="mainRate"
-                          /> */}
                             </div>
                           </div>
                         </td>
                         {/* ============= योग ================ */}
                         <td>
-                          <div className="form-control">
-                            {/* <input
-                          type="text"
-                          className="semiSmallInput"
-                          name="total"
-                          style={{
-                            marginTop: "2rem",
-                          }}
-                        /> */}
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
                           </div>
                         </td>
                         {/* ============= कुल योग ================ */}
                         <td>
-                          <div className="form-control">
-                            {/* <input
-                          type="text"
-                          className="semiSmallInput"
-                          name="grandTotal"
-                          style={{
-                            marginTop: "2rem",
-                          }}
-                        /> */}
-                          </div>
+                          <div className="form-control"></div>
                         </td>
                       </tr>
 
@@ -1027,12 +838,28 @@ const BackDailyReport = () => {
                         </td>
                         {/* ============= योग ================ */}
                         <td>
-                          <div className="form-control">
-                            <input
-                              type="text"
-                              className="semiSmallInput"
-                              name="total"
-                            />
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="total650"
+                              />
+                            </div>
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="total550"
+                              />
+                            </div>
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="total330"
+                              />
+                            </div>
                           </div>
                         </td>
                         {/* ============= कुल योग ================ */}

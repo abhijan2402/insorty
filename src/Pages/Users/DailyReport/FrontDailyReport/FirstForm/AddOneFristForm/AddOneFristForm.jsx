@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const AddOneFristForm = ({
   index,
@@ -8,21 +8,7 @@ const AddOneFristForm = ({
   addOneFristFormState,
 }) => {
   const SerialNo = index + 1;
-  // const { avg, yog, saleDone, totalIndividual, allTotal } = formula;
-  // const [avgValue, setAvgValue] = useState(avg);
-  // const [yogValue, setYogValue] = useState(yog);
-  // const [saleDoneValue, setSaleDoneValue] = useState(saleDone);
-  // const [totalIndividualValue, setTotalIndividualValue] =
-  //   useState(totalIndividual);
-  // const [allTotalValue, setAllTotalValue] = useState(allTotal);
-
-  // useEffect(() => {
-  //   setAvgValue(avg);
-  //   setYogValue(yog);
-  //   setSaleDoneValue(saleDone);
-  //   setTotalIndividualValue(totalIndividual);
-  //   setAllTotalValue(allTotal);
-  // }, [allTotal, avg, saleDone, totalIndividual, yog]);
+ 
 
   return (
     <>
@@ -473,17 +459,38 @@ const AddOneFristForm = ({
         </td>
         {/* ============= योग ================ */}
         <td>
-          <div className="form-control">
-            <input
-              type="text"
-              className="semiSmallInput"
-              name="total750"
-              value={item.total750}
-              onChange={(event) => handelFristFormOnChange(event, index)}
-            />
+          <div className="flex gap-2">
+            <div className="form-control">
+              <input
+                type="text"
+                className="smallinput"
+                name="total750"
+                value={item.total750}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                className="smallinput"
+                name="total330"
+                value={item.total330}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="text"
+                className="smallinput"
+                name="total750"
+                value={item.total180}
+                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
+            </div>
           </div>
         </td>
         {/* ============= कुल योग ================ */}
+
         <td>
           <div className="form-control">
             <input
