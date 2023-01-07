@@ -11,8 +11,6 @@ const AuthProvider = ({ children }) => {
     setLoading,
   };
 
-  console.log("Console form auth", userData);
-
   return (
     <AuthContext.Provider value={userInfo}> {children}</AuthContext.Provider>
   );

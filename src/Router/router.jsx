@@ -11,6 +11,15 @@ import CreateUser from "../Pages/Admin/CreateUser/CreateUser";
 import ManegSubAdmin from "../Pages/Admin/ManegSubAdmin/ManegSubAdmin";
 import ManegUser from "../Pages/SubAdmin/ManegUser/ManegUser";
 import CreateUserSubAdmin from "../Pages/SubAdmin/CreateUser/CreateUser";
+import Branch from "../Pages/Users/Branch/BranchName/BranchName";
+import BranchFrom from "../Pages/Users/Branch/BranchForm/BranchFrom";
+import Commision from "../Pages/Users/Commision/Commision/Commision";
+import Borrow from "../Pages/Users/Borrow/Borrow/Borrow";
+import FinalReport from "../Pages/Users/FinalReport/FinalReport/FinalReport";
+import Partnar from "../Pages/Users/Partners/Partners/Partners";
+import Payments from "../Pages/Users/Payments/Payments";
+import Salary from "../Pages/Users/Salary/SalaryList/SalaryList";
+import SalaryForm from "../Pages/Users/Salary/SalaryForm/SalaryForm";
 
 const router = createBrowserRouter([
   // Home Routes
@@ -66,6 +75,42 @@ const router = createBrowserRouter([
       {
         path: "/user/dailyreport/back",
         element: <BackDailyReport />,
+      },
+      {
+        path: "/user/branch",
+        element: <Branch />,
+      },
+      {
+        path: "/user/branch/from",
+        element: <BranchFrom />,
+      },
+      {
+        path: "/user/commision",
+        element: <Commision />,
+      },
+      {
+        path: "/user/borrow",
+        element: <Borrow />,
+      },
+      {
+        path: "/user/finalreport",
+        element: <FinalReport />,
+      },
+      {
+        path: "/user/partners",
+        element: <Partnar />,
+      },
+      {
+        path: "/user/payments",
+        element: <Payments />,
+      },
+      {
+        path: "/user/salary",
+        element: <Salary />,
+      },
+      {
+        path: "/user/salary/from",
+        element: <SalaryForm />,
       },
     ],
   },
