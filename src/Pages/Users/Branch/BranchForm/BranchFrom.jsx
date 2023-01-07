@@ -48,7 +48,7 @@ const BranchFrom = () => {
         <div className="divider my-2"></div>
       </div>
 
-      {/* ************************ all sealy data************** */}
+      {/* ************************ all branch data************** */}
       <div>
         <form action="">
           <div className="overflow-x-auto">
@@ -159,7 +159,7 @@ const BranchFrom = () => {
           </div>
         </div>
       </div>
-      {/* ************************ all sealy data************** */}
+      {/* ************************ all branch data************** */}
     </section>
   );
 };
