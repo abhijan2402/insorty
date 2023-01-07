@@ -5,7 +5,7 @@ const useSalary = () => {
     salary_monthYear: "",
     salary_price: "",
     payment_date: "",
-    payment_price: "",
+    payment_price: 0,
     reason: "",
   };
   const [salaryState, setSalaryState] = useState([salaryFormValue]);
@@ -26,14 +26,14 @@ const useSalary = () => {
   };
 
   const handelSelaryOnChange = (e, index) => {
-    const dabitCarditHandel = salaryState.map((craditDabit, i) => {
+    const salaryHandel = salaryState.map((Salary, i) => {
       if (index === i) {
-        return Object.assign(craditDabit, { [e.target.name]: e.target.value });
+        return Object.assign(Salary, { [e.target.name]: e.target.value });
       } else {
-        return craditDabit;
+        return Salary;
       }
     });
-    setSalaryState(dabitCarditHandel);
+    setSalaryState(salaryHandel);
   };
 
   const handelSalaryOnSubmit = (e) => {
