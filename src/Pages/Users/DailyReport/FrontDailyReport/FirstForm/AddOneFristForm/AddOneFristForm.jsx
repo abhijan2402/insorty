@@ -473,6 +473,7 @@ const AddOneFristForm = ({
                 type="text"
                 className="smallinput"
                 name="total750"
+                disabled
                 value={item.total750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -481,6 +482,7 @@ const AddOneFristForm = ({
               <input
                 type="text"
                 className="smallinput"
+                disabled
                 name="total330"
                 value={item.total330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -489,8 +491,9 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="text"
-                className="smallinput"
                 name="total180"
+                className="smallinput"
+                disabled
                 value={item.total180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -517,7 +520,7 @@ const AddOneFristForm = ({
               className="semiSmallInput"
               name="grandTotal"
               disabled
-              value={item.grandTotal}
+              value={Number(item.total750) + Number(item.total330) + Number(item.total180)}
               onChange={(event) => handelFristFormOnChange(event, index)}
             />
           </div>

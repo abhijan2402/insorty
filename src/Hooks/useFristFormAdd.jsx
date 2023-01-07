@@ -63,14 +63,68 @@ const useFristFormAdd = () => {
   const [fristFormState, setFristFormState] = useState([fristFormObj]);
 
   const addFiveInFristFormHandler = () => {
-    setFristFormState([
-      ...fristFormState,
-      fristFormObj,
-      fristFormObj,
-      fristFormObj,
-      fristFormObj,
-      fristFormObj,
-    ]);
+    let data = fristFormState
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        brandName: "",
+
+        averageRate650: 0,
+        averageRate550: 0,
+        averageRate330: 0,
+
+        startingStock650: 0,
+        startingStock550: 0,
+        startingStock330: 0,
+
+        incomingPurchase650: 0,
+        incomingPurchase550: 0,
+        incomingPurchase330: 0,
+
+        buyRate650: 0,
+        buyRate550: 0,
+        buyRate330: 0,
+
+        incomePurchase650: 0,
+        incomePurchase550: 0,
+        incomePurchase330: 0,
+
+        purchaseRate650: 0,
+        purchaseRate550: 0,
+        purchaseRate330: 0,
+
+        inflowCredit650: 0,
+        inflowCredit550: 0,
+        inflowCredit330: 0,
+
+        sending650: 0,
+        sending550: 0,
+        sending330: 0,
+
+        sumRemainder650: 0,
+        sumRemainder550: 0,
+        sumRemainder330: 0,
+
+        closingStock650: 0,
+        closingStock550: 0,
+        closingStock330: 0,
+
+        sales650: 0,
+        sales550: 0,
+        sales330: 0,
+
+        mainRate650: 0,
+        mainRate550: 0,
+        mainRate330: 0,
+
+        total650: 0,
+        total550: 0,
+        total330: 0,
+
+        grandTotal: "",
+      }]
+      
+    }
+    setFristFormState(data)
   };
 
   // ======================== add five in frist form ========================
@@ -78,7 +132,63 @@ const useFristFormAdd = () => {
   // ======================== add One in frist form ========================
 
   const addOneInFristFormHandler = () => {
-    setFristFormState([...fristFormState, fristFormObj]);
+    setFristFormState([...fristFormState, {
+      brandName: "",
+
+      averageRate650: 0,
+      averageRate550: 0,
+      averageRate330: 0,
+
+      startingStock650: 0,
+      startingStock550: 0,
+      startingStock330: 0,
+
+      incomingPurchase650: 0,
+      incomingPurchase550: 0,
+      incomingPurchase330: 0,
+
+      buyRate650: 0,
+      buyRate550: 0,
+      buyRate330: 0,
+
+      incomePurchase650: 0,
+      incomePurchase550: 0,
+      incomePurchase330: 0,
+
+      purchaseRate650: 0,
+      purchaseRate550: 0,
+      purchaseRate330: 0,
+
+      inflowCredit650: 0,
+      inflowCredit550: 0,
+      inflowCredit330: 0,
+
+      sending650: 0,
+      sending550: 0,
+      sending330: 0,
+
+      sumRemainder650: 0,
+      sumRemainder550: 0,
+      sumRemainder330: 0,
+
+      closingStock650: 0,
+      closingStock550: 0,
+      closingStock330: 0,
+
+      sales650: 0,
+      sales550: 0,
+      sales330: 0,
+
+      mainRate650: 0,
+      mainRate550: 0,
+      mainRate330: 0,
+
+      total650: 0,
+      total550: 0,
+      total330: 0,
+
+      grandTotal: "",
+    }]);
   };
 
   // ======================== add One in frist f0orm ========================

@@ -11,18 +11,27 @@ const useShippingAdd = () => {
   const [addShippingState, setAddShippingState] = useState([addShippingForm]);
 
   const handelAddFiveShipping = () => {
-    setAddShippingState([
-      ...addShippingState,
-      addShippingForm,
-      addShippingForm,
-      addShippingForm,
-      addShippingForm,
-      addShippingForm,
-    ]);
+    let data = addShippingState
+
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        partyName: "",
+        brandName: "",
+        theNumber: "",
+        comment: "",
+      }]
+
+    }
+    setAddShippingState(data)
   };
 
   const handelAddOneShipping = () => {
-    setAddShippingState([...addShippingState, addShippingForm]);
+    setAddShippingState([...addShippingState, {
+      partyName: "",
+      brandName: "",
+      theNumber: "",
+      comment: "",
+    }]);
   };
 
   const onChangeShipping = (e, index) => {

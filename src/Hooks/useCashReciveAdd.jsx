@@ -9,18 +9,23 @@ const useCashReciveAdd = () => {
   const [cashReciveState, setCashReciveState] = useState([cashReciveForm]);
 
   const handelAddFiveCashRecive = () => {
-    setCashReciveState([
-      ...cashReciveState,
-      cashReciveForm,
-      cashReciveForm,
-      cashReciveForm,
-      cashReciveForm,
-      cashReciveForm,
-    ]);
+    let data = cashReciveState
+
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        reson: "",
+        amount: 0,
+      }]
+
+    }
+    setCashReciveState(data)
   };
 
   const handelAddOneCashRecive = () => {
-    setCashReciveState([...cashReciveState, cashReciveForm]);
+    setCashReciveState([...cashReciveState,{
+      reson: "",
+      amount: 0,
+    }]);
   };
 
   const onChangeCashRecive = (e, index) => {

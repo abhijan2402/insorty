@@ -18,18 +18,40 @@ const useRmlAdd = () => {
   const [addRmlState, setAddRmlState] = useState([addRmlForm]);
 
   const handelAddFiveInRml = () => {
-    setAddRmlState([
-      ...addRmlState,
-      addRmlForm,
-      addRmlForm,
-      addRmlForm,
-      addRmlForm,
-      addRmlForm,
-    ]);
+    let data = addRmlState
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        brandName: "",
+        averageRate: "",
+        openingStock: "",
+        incomingPurchase: "",
+        incomePurchase: "",
+        inflowCredit: "",
+        sending: "",
+        sumRemainder: "",
+        sales: "",
+        rate: "",
+        cost: "",
+      }];
+      
+    }
+    setAddRmlState(data)
   };
 
   const handelAddOneInRml = () => {
-    setAddRmlState([...addRmlState, addRmlForm]);
+    setAddRmlState([...addRmlState, {
+      brandName: "",
+      averageRate: "",
+      openingStock: "",
+      incomingPurchase: "",
+      incomePurchase: "",
+      inflowCredit: "",
+      sending: "",
+      sumRemainder: "",
+      sales: "",
+      rate: "",
+      cost: "",
+    }]);
   };
 
   const onChangeRmlHandler = (e, index) => {

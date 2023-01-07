@@ -9,18 +9,23 @@ const useCommissonAdd = () => {
   const [commissonState, setCommissonState] = useState([commissonForm]);
 
   const handelAddFiveCommison = () => {
-    setCommissonState([
-      ...commissonState,
-      commissonForm,
-      commissonForm,
-      commissonForm,
-      commissonForm,
-      commissonForm,
-    ]);
+    let data = commissonState
+
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        reason: "",
+        amount: 0,
+      }]
+
+    }
+    setCommissonState(data)
   };
 
   const handelAddOneCommison = () => {
-    setCommissonState([...commissonState, commissonForm]);
+    setCommissonState([...commissonState, {
+      reason: "",
+      amount: 0,
+    }]);
   };
 
   const onChangeCommison = (event, index) => {

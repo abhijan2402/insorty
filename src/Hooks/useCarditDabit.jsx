@@ -11,18 +11,25 @@ const useCarditDabit = () => {
   const [craditDabitState, setCraditDabitState] = useState([craditDabitForm]);
 
   const handelAddFiveCarditDabit = () => {
-    setCraditDabitState([
-      ...craditDabitState,
-      craditDabitForm,
-      craditDabitForm,
-      craditDabitForm,
-      craditDabitForm,
-      craditDabitForm,
-    ]);
+    let data = craditDabitState
+
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        partyName: "",
+        ammount: 0,
+        note: "",
+      }]
+
+    }
+    setCraditDabitState(data)
   };
 
   const handelAddOneCarditDabit = () => {
-    setCraditDabitState([...craditDabitState, craditDabitForm]);
+    setCraditDabitState([...craditDabitState, {
+      partyName: "",
+      ammount: 0,
+      note: "",
+    }]);
   };
 
   const onChangeCarditDabit = (e, index) => {

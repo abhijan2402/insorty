@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useFormulasFristFormFront = () => {
-  const addOneFristForm = {
+  let addOneFristForm = {
     brandName: "",
 
     startingStock750: 0,
@@ -66,7 +66,7 @@ const useFormulasFristFormFront = () => {
   ]);
 
   const [totalState,setTotalState] = useState({
-     startingStock750Total : 0,
+     startingStock750Total : "",
     startingStock330Total : 0,
     startingStock180Total : 0,
     incomingPurchase750Total : 0,
@@ -94,8 +94,6 @@ const useFormulasFristFormFront = () => {
     sales750Total : 0,
     sales330Total : 0,
     sales180Total : 0,
-
-    
 
     total750Total : 0,
     total330Total : 0,
@@ -323,7 +321,7 @@ const useFormulasFristFormFront = () => {
           e.target.name === "total180"
         ) {
           obj.grandTotal =
-            Number(obj.total750) + Number(obj.tota330) + Number(obj.total180);
+            Number(obj.total750) + Number(obj.total330) + Number(obj.total180);
         }
         return obj;
       } else return returned;
@@ -534,7 +532,7 @@ const useFormulasFristFormFront = () => {
                           
                           let obj28=totalState
                           obj28.allGrandTotal = addOneFristFormState.reduce(
-                            (total, currentItem) => (total = total + Number(currentItem.grandTotal)),
+                            (total, currentItem) => (total = total + currentItem.grandTotal),
                             0
                             );
                             setTotalState(obj28)
@@ -543,22 +541,138 @@ const useFormulasFristFormFront = () => {
    
   };
 
-  const addFive = () => {
-    setAddOneFristFormState([
-      ...addOneFristFormState,
-      addOneFristForm,
-      addOneFristForm,
-      addOneFristForm,
-      addOneFristForm,
-      addOneFristForm,
-    ]);
-  };
+  
 
   const addOneFristFormHandler = () => {
-    setAddOneFristFormState([...addOneFristFormState, addOneFristForm]);
+    setAddOneFristFormState([...addOneFristFormState, {
+      brandName: "",
+
+      startingStock750: 0,
+      startingStock330: 0,
+      startingStock180: 0,
+
+      incomingPurchase750: 0,
+      incomingPurchase330: 0,
+      incomingPurchase180: 0,
+
+      buyRate750: 0,
+      buyRate330: 0,
+      buyRate180: 0,
+
+      incomePurchase750: 0,
+      incomePurchase330: 0,
+      incomePurchase180: 0,
+
+      purchaseRate750: 0,
+      purchaseRate330: 0,
+      purchaseRate180: 0,
+
+      inflowCredit750: 0,
+      inflowCredit330: 0,
+      inflowCredit180: 0,
+
+      sending750: 0,
+      sending330: 0,
+      sending180: 0,
+
+      sumRemainder750: 0,
+      sumRemainder330: 0,
+      sumRemainder180: 0,
+
+      closingStock750: 0,
+      closingStock330: 0,
+      closingStock180: 0,
+
+      sales750: 0,
+      sales330: 0,
+      sales180: 0,
+
+      mainRate750: 0,
+      mainRate330: 0,
+      mainRate180: 0,
+
+      total750: 0,
+      total330: 0,
+      total180: 0,
+
+      grandTotal: 0,
+
+      averageRate750: 0,
+      averageRate330: 0,
+      averageRate180: 0,
+
+
+    }]);
   };
 
   
+
+  const addFive = () => {
+    let data = addOneFristFormState
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        brandName: "",
+
+        startingStock750: 0,
+        startingStock330: 0,
+        startingStock180: 0,
+
+        incomingPurchase750: 0,
+        incomingPurchase330: 0,
+        incomingPurchase180: 0,
+
+        buyRate750: 0,
+        buyRate330: 0,
+        buyRate180: 0,
+
+        incomePurchase750: 0,
+        incomePurchase330: 0,
+        incomePurchase180: 0,
+
+        purchaseRate750: 0,
+        purchaseRate330: 0,
+        purchaseRate180: 0,
+
+        inflowCredit750: 0,
+        inflowCredit330: 0,
+        inflowCredit180: 0,
+
+        sending750: 0,
+        sending330: 0,
+        sending180: 0,
+
+        sumRemainder750: 0,
+        sumRemainder330: 0,
+        sumRemainder180: 0,
+
+        closingStock750: 0,
+        closingStock330: 0,
+        closingStock180: 0,
+
+        sales750: 0,
+        sales330: 0,
+        sales180: 0,
+
+        mainRate750: 0,
+        mainRate330: 0,
+        mainRate180: 0,
+
+        total750: 0,
+        total330: 0,
+        total180: 0,
+
+        grandTotal: 0,
+
+        averageRate750: 0,
+        averageRate330: 0,
+        averageRate180: 0,
+
+
+      }]
+      
+    }
+    setAddOneFristFormState(data)
+  };
 
 
 

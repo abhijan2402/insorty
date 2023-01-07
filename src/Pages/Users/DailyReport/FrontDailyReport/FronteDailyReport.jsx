@@ -165,7 +165,23 @@ const FronteDailyReport = () => {
   ]);
 
   const addOneSecondFormHandler = () => {
-    setAddOneSecondFormState([...addOneSecondFormState, addOneSecondForm]);
+    setAddOneSecondFormState([...addOneSecondFormState, {
+      averageRate: 0,
+      startingStock: 0,
+      incomingPurchase: 0,
+      buyRate: 0,
+      incomePurchase: 0,
+      purchaseRate: 0,
+      inflowCredit: 0,
+      sending: 0,
+      sumRemainder: 0,
+      closingStock: 0,
+      sales: 0,
+      mainRate: 0,
+      total: 0,
+      grandTotal: 0,
+      selectStockVarient: 90,
+    }]);
   };
 
   const handelSeconFormOnChange = (e, index) => {
@@ -325,6 +341,10 @@ const FronteDailyReport = () => {
   const hendelSubmit = (event) => {
     const addFristForm = Object.assign({}, addOneFristFormState);
     console.log(addFristForm);
+    console.log(`total is ${addOneFristFormState.reduce(
+      (total, currentItem) => (total = total + currentItem.grandTotal),
+      0
+    ) }`)
 
     // for (const elem of addOneFristFormState) {
     //   elem.averageRate750 =
@@ -1329,6 +1349,8 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="total750"
+                            value={totalState.total750Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                           />
                         </div>
                         <div className="form-control">
@@ -1336,6 +1358,8 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="total330"
+                            value={totalState.total330Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                           />
                         </div>
                         <div className="form-control">
@@ -1343,6 +1367,8 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="total180"
+                            value={totalState.total180Total}
+                            onChange={(event) => handelFristFormOnChange(event)}
                           />
                         </div>
 
@@ -1365,6 +1391,8 @@ const FronteDailyReport = () => {
                           disabled
                           className="semiSmallInput"
                           name="grandTotal"
+                          value={totalState.allGrandTotal}
+                          onChange={(event) => handelFristFormOnChange(event)}
                         />
                       </div>
                     </td>
