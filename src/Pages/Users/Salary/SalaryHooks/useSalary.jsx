@@ -11,18 +11,33 @@ const useSalary = () => {
   const [salaryState, setSalaryState] = useState([salaryFormValue]);
 
   const addOneSalary = () => {
-    setSalaryState([...salaryState, salaryFormValue]);
+    setSalaryState([
+      ...salaryState,
+      {
+        salary_monthYear: "",
+        salary_price: "",
+        payment_date: "",
+        payment_price: 0,
+        reason: "",
+      },
+    ]);
   };
 
   const addFiveSalary = () => {
-    setSalaryState([
-      ...salaryState,
-      salaryFormValue,
-      salaryFormValue,
-      salaryFormValue,
-      salaryFormValue,
-      salaryFormValue,
-    ]);
+    let data = salaryState;
+    for (let i = 0; i < 5; i++) {
+      data = [
+        ...data,
+        {
+          salary_monthYear: "",
+          salary_price: "",
+          payment_date: "",
+          payment_price: 0,
+          reason: "",
+        },
+      ];
+    }
+    setSalaryState(data);
   };
 
   const handelSelaryOnChange = (e, index) => {
