@@ -16,18 +16,33 @@ const usePurchesOutSideAdd = () => {
   ]);
 
   const handelAddOnePurchesOutSide = () => {
-    setPurchesOutSideState([...purchesOutSideState, purchesOutSideAdd]);
+    setPurchesOutSideState([...purchesOutSideState, {
+      partyName: "",
+      brandName: "",
+      theNumber: 0,
+      quantity: 0,
+      total: 0,
+      rate: 0,
+      reason: "",
+    }]);
   };
 
   const handelAddFivePurchesOutSide = () => {
-    setPurchesOutSideState([
-      ...purchesOutSideState,
-      purchesOutSideAdd,
-      purchesOutSideAdd,
-      purchesOutSideAdd,
-      purchesOutSideAdd,
-      purchesOutSideAdd,
-    ]);
+    let data = purchesOutSideState
+
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        partyName: "",
+        brandName: "",
+        theNumber: 0,
+        quantity: 0,
+        total: 0,
+        rate: 0,
+        reason: "",
+      }]
+      
+    }
+    setPurchesOutSideState(data)
   };
 
   const onChangePurchesOutSide = (e, index) => {

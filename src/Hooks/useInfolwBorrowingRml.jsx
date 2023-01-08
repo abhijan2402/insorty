@@ -16,20 +16,35 @@ const useInfolwBorrowingRml = () => {
   ]);
 
   const handelAddFiveBorrowingRml = () => {
-    setInfolwBorrwingFormState([
-      ...infolwBorrwingFormState,
-      infolwBorrwingForm,
-      infolwBorrwingForm,
-      infolwBorrwingForm,
-      infolwBorrwingForm,
-      infolwBorrwingForm,
-    ]);
+    let data = infolwBorrwingFormState
+
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        partyName: "",
+        brandName: "",
+        theNumber: "",
+        quantity: 0,
+        total: 0,
+        rate: 0,
+        reason: "",
+      }]
+
+    }
+    setInfolwBorrwingFormState(data)
   };
 
   const handelAddOneBorrowingRml = () => {
     setInfolwBorrwingFormState([
       ...infolwBorrwingFormState,
-      infolwBorrwingForm,
+      {
+        partyName: "",
+        brandName: "",
+        theNumber: "",
+        quantity: 0,
+        total: 0,
+        rate: 0,
+        reason: "",
+      },
     ]);
   };
   const onChangeBorrowingRml = (e, index) => {

@@ -63,14 +63,68 @@ const useFristFormAdd = () => {
   const [fristFormState, setFristFormState] = useState([fristFormObj]);
 
   const addFiveInFristFormHandler = () => {
-    setFristFormState([
-      ...fristFormState,
-      fristFormObj,
-      fristFormObj,
-      fristFormObj,
-      fristFormObj,
-      fristFormObj,
-    ]);
+    let data = fristFormState
+    for (let i = 0; i < 5; i++) {
+      data = [...data, {
+        brandName: "",
+
+        averageRate650: 0,
+        averageRate550: 0,
+        averageRate330: 0,
+
+        startingStock650: 0,
+        startingStock550: 0,
+        startingStock330: 0,
+
+        incomingPurchase650: 0,
+        incomingPurchase550: 0,
+        incomingPurchase330: 0,
+
+        buyRate650: 0,
+        buyRate550: 0,
+        buyRate330: 0,
+
+        incomePurchase650: 0,
+        incomePurchase550: 0,
+        incomePurchase330: 0,
+
+        purchaseRate650: 0,
+        purchaseRate550: 0,
+        purchaseRate330: 0,
+
+        inflowCredit650: 0,
+        inflowCredit550: 0,
+        inflowCredit330: 0,
+
+        sending650: 0,
+        sending550: 0,
+        sending330: 0,
+
+        sumRemainder650: 0,
+        sumRemainder550: 0,
+        sumRemainder330: 0,
+
+        closingStock650: 0,
+        closingStock550: 0,
+        closingStock330: 0,
+
+        sales650: 0,
+        sales550: 0,
+        sales330: 0,
+
+        mainRate650: 0,
+        mainRate550: 0,
+        mainRate330: 0,
+
+        total650: 0,
+        total550: 0,
+        total330: 0,
+
+        grandTotal: "",
+      }]
+      
+    }
+    setFristFormState(data)
   };
 
   // ======================== add five in frist form ========================
@@ -78,8 +132,103 @@ const useFristFormAdd = () => {
   // ======================== add One in frist form ========================
 
   const addOneInFristFormHandler = () => {
-    setFristFormState([...fristFormState, fristFormObj]);
+    setFristFormState([...fristFormState, {
+      brandName: "",
+
+      averageRate650: 0,
+      averageRate550: 0,
+      averageRate330: 0,
+
+      startingStock650: 0,
+      startingStock550: 0,
+      startingStock330: 0,
+
+      incomingPurchase650: 0,
+      incomingPurchase550: 0,
+      incomingPurchase330: 0,
+
+      buyRate650: 0,
+      buyRate550: 0,
+      buyRate330: 0,
+
+      incomePurchase650: 0,
+      incomePurchase550: 0,
+      incomePurchase330: 0,
+
+      purchaseRate650: 0,
+      purchaseRate550: 0,
+      purchaseRate330: 0,
+
+      inflowCredit650: 0,
+      inflowCredit550: 0,
+      inflowCredit330: 0,
+
+      sending650: 0,
+      sending550: 0,
+      sending330: 0,
+
+      sumRemainder650: 0,
+      sumRemainder550: 0,
+      sumRemainder330: 0,
+
+      closingStock650: 0,
+      closingStock550: 0,
+      closingStock330: 0,
+
+      sales650: 0,
+      sales550: 0,
+      sales330: 0,
+
+      mainRate650: 0,
+      mainRate550: 0,
+      mainRate330: 0,
+
+      total650: 0,
+      total550: 0,
+      total330: 0,
+
+      grandTotal: "",
+    }]);
   };
+
+
+
+  const [totalState, setTotalState] = useState({
+    startingStock650Total: "",
+    startingStock550Total: 0,
+    startingStock330Total: 0,
+    incomingPurchase650Total: 0,
+    incomingPurchase550Total: 0,
+    incomingPurchase330Total: 0,
+    incomePurchase650Total: 0,
+    incomePurchase550Total: 0,
+    incomePurchase330Total: 0,
+    inflowCredit650Total: 0,
+    inflowCredit550Total: 0,
+    inflowCredit330Total: 0,
+
+    sending650Total: 0,
+    sending550Total: 0,
+    sending330Total: 0,
+
+    sumRemainder650Total: 0,
+    sumRemainder550Total: 0,
+    sumRemainder330Total: 0,
+
+    closingStock650Total: 0,
+    closingStock550Total: 0,
+    closingStock330Total: 0,
+
+    sales650Total: 0,
+    sales550Total: 0,
+    sales330Total: 0,
+
+    total650Total: 0,
+    total550Total: 0,
+    total330Total: 0,
+
+    allGrandTotal: 0,
+  })
 
   // ======================== add One in frist f0orm ========================
 
@@ -233,11 +382,11 @@ const useFristFormAdd = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
-          e.target.name === "sumremainder550" ||
+          e.target.name === "sumRemainder550" ||
           e.target.name === "closingStock550"
         ) {
           obj.sales550 =
-            Number(obj.sumRemainder330) - Number(obj.closingStock330);
+            Number(obj.sumRemainder650) - Number(obj.closingStock650);
         }
         return obj;
       } else return returned;
@@ -249,11 +398,11 @@ const useFristFormAdd = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
-          e.target.name === "sumremainder330" ||
+          e.target.name === "sumRemainder330" ||
           e.target.name === "closingStock330"
         ) {
           obj.sales330 =
-            Number(obj.sumRemainder330) - Number(obj.closingStock330);
+            Number(obj.sumRemainder550) - Number(obj.closingStock550);
         }
         return obj;
       } else return returned;
@@ -276,7 +425,7 @@ const useFristFormAdd = () => {
     const saleTotal550 = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales550" || e.target.name === "mainrate550") {
+        if (e.target.name === "sales550" || e.target.name === "mainRate550") {
           obj.total550 = Number(obj.sales550) * Number(obj.mainRate550);
         }
         return obj;
@@ -288,8 +437,8 @@ const useFristFormAdd = () => {
     const saleTotal330 = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales330" || e.target.name === "mainrate330") {
-          obj.total650 = Number(obj.sales330) * Number(obj.mainRate330);
+        if (e.target.name === "sales330" || e.target.name === "mainRate330") {
+          obj.total330 = Number(obj.sales330) * Number(obj.mainRate330);
         }
         return obj;
       } else return returned;
@@ -301,12 +450,12 @@ const useFristFormAdd = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
-          e.target.name === "total&50" ||
-          e.target.name === "total550" ||
-          e.target.name === "total330"
+          e.target.name === "sales650" || e.target.name === "mainRate650" ||
+          e.target.name === "sales550" || e.target.name === "mainRate550" ||
+          e.target.name === "sales330" || e.target.name === "mainRate330"
         ) {
           obj.grandTotal =
-            Number(obj.total650) + Number(obj.total330) + Number(obj.total330);
+            (Number(obj.sales650) * Number(obj.mainRate650)) + (Number(obj.sales550) * Number(obj.mainRate550)) + (Number(obj.sales330) * Number(obj.mainRate330));
         }
         return obj;
       } else return returned;
@@ -314,50 +463,216 @@ const useFristFormAdd = () => {
 
     setFristFormState(grandT);
 
-    const startingStock650Total = fristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.startingStock650),
+    let obj1 = totalState
+    obj1.startingStock650Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.startingStock650)),
       0
     );
+    setTotalState(obj1)
 
-    const startingStock550Total = fristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.startingStock550),
+    let obj2 = totalState
+    obj2.startingStock550Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.startingStock550)),
       0
     );
+    setTotalState(obj2)
 
-    const startingStock330Total = fristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.startingStock330),
-      0
-    );
 
-    const incomingPurchase650Total = fristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomingPurchase650),
+    let obj3 = totalState
+    obj3.startingStock330Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.startingStock330)),
       0
     );
+    setTotalState(obj3)
 
-    const incomingPurchase550Total = fristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomingPurchase550),
-      0
-    );
 
-    const incomingPurchase330Total = fristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomingPurchase330),
+    let obj4 = totalState
+    obj4.incomingPurchase650Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomingPurchase650)),
       0
     );
+    setTotalState(obj4)
 
-    const incomePurchase650Total = fristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomePurchase650),
-      0
-    );
 
-    const incomePurchase550Total = fristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomePurchase550),
+    let obj5 = totalState
+    obj5.incomingPurchase550Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomingPurchase550)),
       0
     );
+    setTotalState(obj5)
 
-    const incomePurchase330Total = fristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.incomePurchase330),
+
+    let obj6 = totalState
+    obj6.incomingPurchase330Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomingPurchase330)),
       0
     );
+    setTotalState(obj6)
+
+
+    let obj7 = totalState
+    obj7.incomePurchase650Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomePurchase650)),
+      0
+    );
+    setTotalState(obj7)
+
+
+    let obj8 = totalState
+    obj8.incomePurchase550Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomePurchase550)),
+      0
+    );
+    setTotalState(obj8)
+
+
+    let obj9 = totalState
+    obj9.incomePurchase330Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.incomePurchase330)),
+      0
+    );
+    setTotalState(obj9)
+
+
+    let obj10 = totalState
+    obj10.inflowCredit650Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.inflowCredit650)),
+      0
+    );
+    setTotalState(obj10)
+
+
+    let obj11 = totalState
+    obj11.inflowCredit550Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.inflowCredit550)),
+      0
+    );
+    setTotalState(obj11)
+
+
+    let obj12 = totalState
+    obj12.inflowCredit330Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.inflowCredit330)),
+      0
+    );
+    setTotalState(obj12)
+
+
+    let obj13 = totalState
+    obj13.sending650Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sending650)),
+      0
+    );
+    setTotalState(obj13)
+
+    let obj14 = totalState
+    obj14.sending550Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sending550)),
+      0
+    );
+    setTotalState(obj14)
+
+    let obj15 = totalState
+    obj15.sending330Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sending330)),
+      0
+    );
+    setTotalState(obj15)
+
+    let obj16 = totalState
+    obj16.sumRemainder650Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sumRemainder650)),
+      0
+    );
+    setTotalState(obj16)
+
+    let obj17 = totalState
+    obj17.sumRemainder550Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sumRemainder550)),
+      0
+    );
+    setTotalState(obj17)
+
+    let obj18 = totalState
+    obj18.sumRemainder330Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sumRemainder330)),
+      0
+    );
+    setTotalState(obj18)
+
+
+    let obj19 = totalState
+    obj19.closingStock650Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.closingStock650)),
+      0
+    );
+    setTotalState(obj19)
+
+    let obj20 = totalState
+    obj20.closingStock550Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.closingStock550)),
+      0
+    );
+    setTotalState(obj20)
+
+    let obj21 = totalState
+    obj21.closingStock330Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.closingStock330)),
+      0
+    );
+    setTotalState(obj21)
+
+    let obj22 = totalState
+    obj22.sales650Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sales650)),
+      0
+    );
+    setTotalState(obj22)
+
+    let obj23 = totalState
+    obj23.sales550Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sales550)),
+      0
+    );
+    setTotalState(obj23)
+
+    let obj24 = totalState
+    obj24.sales330Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.sales330)),
+      0
+    );
+    setTotalState(obj24)
+
+    let obj25 = totalState
+    obj25.total650Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.total650)),
+      0
+    );
+    setTotalState(obj25)
+
+    let obj26 = totalState
+    obj26.total550Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.total550)),
+      0
+    );
+    setTotalState(obj26)
+
+    let obj27 = totalState
+    obj27.total330Total = fristFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.total330)),
+      0
+    );
+    setTotalState(obj27)
+
+    let obj28 = totalState
+    obj28.allGrandTotal = fristFormState.reduce(
+      (total, currentItem) => (total = total + currentItem.grandTotal),
+      0
+    );
+    setTotalState(obj28)
+
+
+
   };
 
   const handelSubmitFristFormBack = (e) => {
@@ -373,6 +688,7 @@ const useFristFormAdd = () => {
     fristFormState,
     handelSubmitFristFormBack,
     onChangeFristBackFormHandler,
+    totalState
   };
 };
 
