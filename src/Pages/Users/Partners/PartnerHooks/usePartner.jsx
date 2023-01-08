@@ -11,18 +11,33 @@ const usePartner = () => {
   const [partnerState, setPartnerState] = useState([partnerFormData]);
 
   const addOnePartner = () => {
-    setPartnerState([...partnerState, partnerFormData]);
+    setPartnerState([
+      ...partnerState,
+      {
+        partnerName: "",
+        debit: 0,
+        deposit: "",
+        remaining_debit: 0,
+        remaining: 0,
+      },
+    ]);
   };
 
   const addFivePartner = () => {
-    setPartnerState([
-      ...partnerState,
-      partnerFormData,
-      partnerFormData,
-      partnerFormData,
-      partnerFormData,
-      partnerFormData,
-    ]);
+    let data = partnerState;
+    for (let i = 0; i < 5; i++) {
+      data = [
+        ...data,
+        {
+          partnerName: "",
+          debit: 0,
+          deposit: "",
+          remaining_debit: 0,
+          remaining: 0,
+        },
+      ];
+    }
+    setPartnerState(data);
   };
 
   const handelOnChangePartner = (e, index) => {

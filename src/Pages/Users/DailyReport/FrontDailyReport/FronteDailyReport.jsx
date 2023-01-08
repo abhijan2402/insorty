@@ -108,7 +108,7 @@ const FronteDailyReport = () => {
     addOneFristFormHandler,
     handelFristFormOnChange,
     addFive,
-    totalState
+    totalState,
   } = useFormulasFristFormFront();
 
   // const allFildTotal = () => {
@@ -928,7 +928,7 @@ const FronteDailyReport = () => {
                       <div className="flex gap-2">
                         <div className="form-control">
                           <input
-                          value={totalState.startingStock750Total}
+                            value={totalState.startingStock750Total}
                             onChange={(event) => handelFristFormOnChange(event)}
                             className="smallinput"
                             disabled
@@ -1008,7 +1008,6 @@ const FronteDailyReport = () => {
                             disabled
                             className="smallinput"
                             name="buyRate"
-                          
                           />
                         </div>
 
@@ -1018,7 +1017,6 @@ const FronteDailyReport = () => {
                             disabled
                             className="smallinput"
                             name="buyRate"
-                            
                           />
                         </div>
 
@@ -1346,15 +1344,14 @@ const FronteDailyReport = () => {
                           />
                         </div>
 
-                      <div className="form-control">
-                        <input
-                          disabled
-                          type="text"
-                          className="semiSmallInput"
-                          name="total"
-                        />
-                      </div>
-                      
+                        <div className="form-control">
+                          <input
+                            disabled
+                            type="text"
+                            className="semiSmallInput"
+                            name="total"
+                          />
+                        </div>
                       </div>
                     </td>
                     {/* ============= कुल योग ================ */}
@@ -1362,7 +1359,6 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          type="text"
                           disabled
                           className="semiSmallInput"
                           name="grandTotal"

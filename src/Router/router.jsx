@@ -17,7 +17,7 @@ import Commision from "../Pages/Users/Commision/Commision/Commision";
 import Borrow from "../Pages/Users/Borrow/Borrow/Borrow";
 import FinalReport from "../Pages/Users/FinalReport/FinalReport/FinalReport";
 import Partnar from "../Pages/Users/Partners/Partners/Partners";
-import Payments from "../Pages/Users/Payments/Payments";
+import Payments from "../Pages/Users/Payments/Payment/Payments";
 import Salary from "../Pages/Users/Salary/SalaryList/SalaryList";
 import SalaryForm from "../Pages/Users/Salary/SalaryForm/SalaryForm";
 

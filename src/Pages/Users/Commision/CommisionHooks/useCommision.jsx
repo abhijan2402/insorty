@@ -9,18 +9,29 @@ const useCommision = () => {
   const [commisionState, setCommisionState] = useState([commisionFormData]);
 
   const addFiveCommision = () => {
-    setCommisionState([
-      ...commisionState,
-      commisionFormData,
-      commisionFormData,
-      commisionFormData,
-      commisionFormData,
-      commisionFormData,
-    ]);
+    let data = commisionState;
+    for (let i = 0; i < 5; i++) {
+      data = [
+        ...data,
+        {
+          description: "",
+          amount: 0,
+          comment: "",
+        },
+      ];
+    }
+    setCommisionState(data);
   };
 
   const addOneCommision = () => {
-    setCommisionState([...commisionState, commisionFormData]);
+    setCommisionState([
+      ...commisionState,
+      {
+        description: "",
+        amount: 0,
+        comment: "",
+      },
+    ]);
   };
 
   const handelOnChangeCommision = (e, index) => {
