@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
+const  AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
   const SerialNo = index + 1;
 
   return (
@@ -457,6 +457,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
                 type="text"
                 className="smallinput"
                 name="total650"
+                disabled
                 value={item.total650}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
@@ -467,6 +468,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
                 type="text"
                 className="smallinput"
                 name="total550"
+                disabled
                 value={item.total550}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
@@ -477,6 +479,7 @@ const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
                 type="text"
                 className="smallinput"
                 name="total650"
+                disabled
                 value={item.total330}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />

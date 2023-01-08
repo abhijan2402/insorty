@@ -316,12 +316,12 @@ const useFormulasFristFormFront = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
-          e.target.name === "total750" ||
-          e.target.name === "total330" ||
-          e.target.name === "total180"
+          e.target.name === "sales750" || e.target.name === "mainRate750" ||
+          e.target.name === "sales330" || e.target.name === "mainRate330" ||
+          e.target.name === "sales180" || e.target.name === "mainRate180"
         ) {
           obj.grandTotal =
-            Number(obj.total750) + Number(obj.total330) + Number(obj.total180);
+            (Number(obj.sales180) * Number(obj.mainRate180)) + (Number(obj.sales330) * Number(obj.mainRate330)) + (obj.total180 = Number(obj.sales750) * Number(obj.mainRate750));
         }
         return obj;
       } else return returned;

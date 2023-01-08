@@ -54,6 +54,19 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
             />
           </div>
         </td>
+        {/* ======== आमद (खरीद)-बा. rate ========= */}
+
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="buyRate"
+              value={item.buyRate}
+              onChange={(e) => onChangeRmlHandler(e, index)}
+            />
+          </div>
+        </td>
         {/* ======== आमद (उधारी) ========= */}
 
         <td>
@@ -63,6 +76,17 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
               className="semiSmallInput"
               name="incomePurchase"
               value={item.incomePurchase}
+              onChange={(e) => onChangeRmlHandler(e, index)}
+            />
+          </div>
+        </td>
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="purchaseRate"
+              value={item.purchaseRate}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>

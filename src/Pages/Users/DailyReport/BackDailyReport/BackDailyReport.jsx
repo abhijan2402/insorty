@@ -30,6 +30,7 @@ const BackDailyReport = () => {
     fristFormState,
     handelSubmitFristFormBack,
     onChangeFristBackFormHandler,
+    totalState
   } = useFristFormAdd();
 
   // ================== Rml Form============
@@ -504,6 +505,7 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="averageRate"
+                                disabled
                               />
                             </div>
 
@@ -512,6 +514,7 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="averageRate"
+                                disabled
                               />
                             </div>
 
@@ -520,6 +523,7 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="averageRate"
+                                disabled
                               />
                             </div>
                           </div>
@@ -532,6 +536,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="startingStock"
+                                disabled
+                               value={totalState.startingStock650Total}
+                               onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -540,6 +547,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="startingStock"
+                                disabled
+                                value={totalState.startingStock550Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -548,6 +558,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="startingStock"
+                                disabled
+                                value={totalState.startingStock330Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                           </div>
@@ -562,6 +575,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="incomingPurchase"
+                                disabled
+                                value={totalState.incomingPurchase650Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -570,6 +586,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="incomingPurchase"
+                                disabled
+                                value={totalState.incomingPurchase550Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -578,6 +597,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="incomingPurchase"
+                                disabled
+                                value={totalState.incomingPurchase330Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                           </div>
@@ -590,6 +612,8 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="buyRate"
+                                disabled
+                                
                               />
                             </div>
 
@@ -598,6 +622,8 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="buyRate"
+                                disabled
+                                
                               />
                             </div>
 
@@ -606,6 +632,8 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="buyRate"
+                                disabled
+                                
                               />
                             </div>
                           </div>
@@ -620,6 +648,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="incomePurchase"
+                                disabled
+                                value={totalState.incomePurchase650Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -628,6 +659,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="incomePurchase"
+                                disabled
+                                value={totalState.incomePurchase550Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -636,6 +670,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="incomePurchase"
+                                disabled
+                                value={totalState.incomePurchase330Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                           </div>
@@ -649,6 +686,8 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="purchaseRate"
+                                disabled
+                                
                               />
                             </div>
 
@@ -657,6 +696,7 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="purchaseRate"
+                                disabled
                               />
                             </div>
 
@@ -665,6 +705,7 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="purchaseRate"
+                                disabled
                               />
                             </div>
                           </div>
@@ -679,6 +720,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="inflowCredit"
+                                disabled
+                                value={totalState.inflowCredit650Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -687,6 +731,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="inflowCredit"
+                                disabled
+                                value={totalState.inflowCredit550Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -695,6 +742,10 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="inflowCredit"
+
+                                disabled
+                                value={totalState.inflowCredit330Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                           </div>
@@ -707,6 +758,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="sending"
+                                disabled
+                                value={totalState.sending650Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -715,6 +769,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="sending"
+                                disabled
+                                value={totalState.sending550Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -723,6 +780,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="sending"
+                                disabled
+                                value={totalState.sending330Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                           </div>
@@ -735,6 +795,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="sumRemainder"
+                                disabled
+                                value={totalState.sumRemainder650Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -743,6 +806,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="sumRemainder"
+                                disabled
+                                value={totalState.sumRemainder550Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -751,6 +817,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="sumRemainder"
+                                disabled
+                                value={totalState.sumRemainder330Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                           </div>
@@ -763,6 +832,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="closingStock"
+                                disabled
+                                value={totalState.closingStock650Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -771,6 +843,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="closingStock"
+                                disabled
+                                value={totalState.closingStock550Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -779,6 +854,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="closingStock"
+                                disabled
+                                value={totalState.closingStock330Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                           </div>
@@ -791,6 +869,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="sales"
+                                disabled
+                                value={totalState.sales650Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -799,6 +880,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="sales"
+                                disabled
+                                value={totalState.sales550Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -807,6 +891,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="sales"
+                                disabled
+                                value={totalState.sales330Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                           </div>
@@ -819,6 +906,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="mainRate"
+                                disabled
+                               
+                                
                               />
                             </div>
 
@@ -827,6 +917,8 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="mainRate"
+                                disabled
+                                
                               />
                             </div>
 
@@ -835,6 +927,8 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="mainRate"
+                                disabled
+                               
                               />
                             </div>
                           </div>
@@ -847,6 +941,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="total650"
+                                disabled
+                                value={totalState.total650Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                             <div className="form-control">
@@ -854,6 +951,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="total550"
+                                disabled
+                                value={totalState.total550Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                             <div className="form-control">
@@ -861,6 +961,9 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="total330"
+                                disabled
+                                value={totalState.total330Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
                           </div>
@@ -872,6 +975,9 @@ const BackDailyReport = () => {
                               type="text"
                               className="semiSmallInput"
                               name="grandTotal"
+                              disabled
+                              value={totalState.allGrandTotal}
+                              onChange={onChangeFristBackFormHandler}
                             />
                           </div>
                         </td>
@@ -921,7 +1027,9 @@ const BackDailyReport = () => {
                       <th>Average Rate</th>
                       <th>प्रारम्भिक स्टॉक</th>
                       <th>आमद (खरीद)-दु.</th>
+                      <th>खरीद रेट - दु</th>
                       <th>आमद (खरीद)-बा.</th>
+                      <th>खरीद रेट - बा.</th>
                       <th>आमद (उधारी)</th>
                       <th>भेजान</th>
                       <th>योग/शेष</th>
