@@ -5,106 +5,10 @@ import AddOneFristForm from "./FirstForm/AddOneFristForm/AddOneFristForm";
 import useFormulasFristFormFront from "../../../../Hooks/useFormulas/useFormulasFristFormFront";
 
 const FronteDailyReport = () => {
-  // ================ add five first form ================
-
-  // const addOneFristForm = {
-  //   brandName: "",
-
-  //   startingStock750: 0,
-  //   startingStock330: 0,
-  //   startingStock180: 0,
-
-  //   incomingPurchase750: 0,
-  //   incomingPurchase330: 0,
-  //   incomingPurchase180: 0,
-
-  //   buyRate750: 0,
-  //   buyRate330: 0,
-  //   buyRate180: 0,
-
-  //   incomePurchase750: 0,
-  //   incomePurchase330: 0,
-  //   incomePurchase180: 0,
-
-  //   purchaseRate750: 0,
-  //   purchaseRate330: 0,
-  //   purchaseRate180: 0,
-
-  //   inflowCredit750: 0,
-  //   inflowCredit330: 0,
-  //   inflowCredit180: 0,
-
-  //   sending750: 0,
-  //   sending330: 0,
-  //   sending180: 0,
-
-  //   sumRemainder750: 0,
-  //   sumRemainder330: 0,
-  //   sumRemainder180: 0,
-
-  //   closingStock750: 0,
-  //   closingStock330: 0,
-  //   closingStock180: 0,
-
-  //   sales750: 0,
-  //   sales330: 0,
-  //   sales180: 0,
-
-  //   mainRate750: 0,
-  //   mainRate330: 0,
-  //   mainRate180: 0,
-
-  //   total750: 0,
-  //   total330: 0,
-  //   total180: 0,
-
-  //   grandTotal: 0,
-
-  //   averageRate750: 0,
-  //   averageRate330: 0,
-  //   averageRate180: 0,
-  // };
-
-  // **********************formulae******************
-
-  // averageRate = (buyRate + purchaseRate)/2  ---> avg
-  // sumRemainder = startingStock + incomingPurchase + inflowCredit +  incomePurchase - sending  ---> yog
-  // sales = sumRemainder - closingStock  ---> saledone
-  // total = mainRate*sales  ---> totalIndividual
-  // grandTotal = total of 750 + total of 330 + total of 180  ---> allTotal
-
-  // function updateAverageRate750(form) {
-  //   form.averageRate750 = avg(form.buyRate750,form.purchaseRate750);
-  // }
-
-  // useEffect(() => {
-  //   updateAverageRate750(addOneFristForm);
-  // }, [addOneFristForm]);
-
-  // add reduce method for all fild total value
-  // const addReduceAllFildTotal = addOneFristFormState.reduce(function (
-  //   accumulator,
-  //   currentValue
-  // ) {
-  //   return accumulator + currentValue;
-  // },
-  // 0);
-
-  // const totalStock=()=>{
-  //   const totalA =
-  //     addOneFristFormState.reduce(
-  //       (total, currentItem) => (total = total + currentItem.startingStock[750]),
-  //       0
-  //     )
-
-  //     console.log(totalA)
-  // }
-
   // **********************formulae******************
 
   const {
     addOneFristFormState,
-    setAddOneFristFormState,
     addOneFristFormHandler,
     handelFristFormOnChange,
     addFive,
@@ -165,23 +69,26 @@ const FronteDailyReport = () => {
   ]);
 
   const addOneSecondFormHandler = () => {
-    setAddOneSecondFormState([...addOneSecondFormState, {
-      averageRate: 0,
-      startingStock: 0,
-      incomingPurchase: 0,
-      buyRate: 0,
-      incomePurchase: 0,
-      purchaseRate: 0,
-      inflowCredit: 0,
-      sending: 0,
-      sumRemainder: 0,
-      closingStock: 0,
-      sales: 0,
-      mainRate: 0,
-      total: 0,
-      grandTotal: 0,
-      selectStockVarient: 90,
-    }]);
+    setAddOneSecondFormState([
+      ...addOneSecondFormState,
+      {
+        averageRate: 0,
+        startingStock: 0,
+        incomingPurchase: 0,
+        buyRate: 0,
+        incomePurchase: 0,
+        purchaseRate: 0,
+        inflowCredit: 0,
+        sending: 0,
+        sumRemainder: 0,
+        closingStock: 0,
+        sales: 0,
+        mainRate: 0,
+        total: 0,
+        grandTotal: 0,
+        selectStockVarient: 90,
+      },
+    ]);
   };
 
   const handelSeconFormOnChange = (e, index) => {
@@ -198,158 +105,17 @@ const FronteDailyReport = () => {
     console.log(addFristForm);
   };
 
-  //=============== add One second form ================
-
-  // ================ handel frist form onchange ================
-  // const handelFristFormOnChange = (e, index) => {
-  //   const firstFormHandel = getFristFormDataState.map((returned, i) =>
-  //   index === i
-  //     ? Object.assign(getFristFormDataState, { [event.target.name]: event.target.value })
-  //     : returned
-  // );
-  // setReturned(updatedProduct);
-  // }
-
-  // set formula in input field
-
-  // const handelFristFormOnChange = (e, index) => {
-  //   const firstFormHandel = addOneFristFormState.map((returned, i) =>
-  //     index === i
-  //       ? Object.assign(returned, { [e.target.name]: e.target.value })
-  //       : returned
-  //   );
-  //   setAddOneFristFormState(firstFormHandel);
-  //   //************* Formula **************** */
-
-  //   const handelavg750 = addOneFristFormState.map((returned, i) => {
-  //     if (index === i) {
-  //       let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-  //       if (
-  //         e.target.name === "purchaseRate750" ||
-  //         e.target.name === "buyRate750"
-  //       ) {
-  //         console.log(obj.averageRate750);
-  //         obj.averageRate750 =
-  //           (Number(obj.purchaseRate750) + Number(obj.buyRate750)) / 2;
-  //         console.log(obj.averageRate750);
-  //       }
-  //       return obj;
-  //     } else return returned;
-  //   });
-  //   setAddOneFristFormState(handelavg750);
-
-  //   const handelavg330 = addOneFristFormState.map((returned, i) => {
-  //     if (index === i) {
-  //       let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-  //       if (
-  //         e.target.name === "purchaseRate330" ||
-  //         e.target.name === "buyRate330"
-  //       ) {
-  //         obj.averageRate330 =
-  //           (Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 2;
-  //       }
-  //       return obj;
-  //     } else return returned;
-  //   });
-  //   setAddOneFristFormState(handelavg330);
-
-  //   const handelavg180 = addOneFristFormState.map((returned, i) => {
-  //     if (index === i) {
-  //       let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-  //       if (
-  //         e.target.name === "purchaseRate180" ||
-  //         e.target.name === "buyRate180"
-  //       ) {
-  //         obj.averageRate180 =
-  //           (Number(obj.purchaseRate180) + Number(obj.buyRate180)) / 2;
-  //       }
-  //       return obj;
-  //     } else return returned;
-  //   });
-  //   setAddOneFristFormState(handelavg180);
-
-  //   const yog750 = addOneFristFormState.map((returned, i) => {
-  //     if (index === i) {
-  //       let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-  //       if (
-  //         e.target.name === "startingStock750" ||
-  //         e.target.name === "incomingPurchase750" ||
-  //         e.target.name === "inflowCredit750" ||
-  //         e.target.name === "incomePurchase750" ||
-  //         e.target.name === "sending750"
-  //       ) {
-  //         obj.sumRemainder750 =
-  //           Number(obj.startingStock750) +
-  //           Number(obj.incomingPurchase750) +
-  //           Number(obj.inflowCredit750) +
-  //           Number(obj.incomePurchase750) -
-  //           Number(obj.sending750);
-  //       }
-  //       return obj;
-  //     } else return returned;
-  //   });
-
-  //   setAddOneFristFormState(yog750);
-
-  //   const yog330 = addOneFristFormState.map((returned, i) => {
-  //     if (index === i) {
-  //       let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-  //       if (
-  //         e.target.name === "startingStock330" ||
-  //         e.target.name === "incomingPurchase330" ||
-  //         e.target.name === "inflowCredit330" ||
-  //         e.target.name === "incomePurchase330" ||
-  //         e.target.name === "sending330"
-  //       ) {
-  //         obj.sumRemainder330 =
-  //           Number(obj.startingStock330) +
-  //           Number(obj.incomingPurchase330) +
-  //           Number(obj.inflowCredit330) +
-  //           Number(obj.incomePurchase330) -
-  //           Number(obj.sending330);
-  //       }
-  //       return obj;
-  //     } else return returned;
-  //   });
-
-  //   setAddOneFristFormState(yog330);
-
-  //   const yog180 = addOneFristFormState.map((returned, i) => {
-  //     if (index === i) {
-  //       let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-  //       if (
-  //         e.target.name === "startingStock180" ||
-  //         e.target.name === "incomingPurchase180" ||
-  //         e.target.name === "inflowCredit180" ||
-  //         e.target.name === "incomePurchase180" ||
-  //         e.target.name === "sending180"
-  //       ) {
-  //         obj.sumRemainder180 =
-  //           Number(obj.startingStock180) +
-  //           Number(obj.incomingPurchase180) +
-  //           Number(obj.inflowCredit180) +
-  //           Number(obj.incomePurchase180) -
-  //           Number(obj.sending180);
-  //       }
-  //       return obj;
-  //     } else return returned;
-  //   });
-
-  //   setAddOneFristFormState(yog180);
-  // };
+  //=============== add One second form =================
 
   const hendelSubmit = (event) => {
     const addFristForm = Object.assign({}, addOneFristFormState);
     console.log(addFristForm);
-    console.log(`total is ${addOneFristFormState.reduce(
-      (total, currentItem) => (total = total + currentItem.grandTotal),
-      0
-    ) }`)
-
-    // for (const elem of addOneFristFormState) {
-    //   elem.averageRate750 =
-    //     Number(elem.buyRate750) + Number(elem.purchaseRate750);
-    // }
+    console.log(
+      `total is ${addOneFristFormState.reduce(
+        (total, currentItem) => (total = total + currentItem.grandTotal),
+        0
+      )}`
+    );
   };
 
   return (
@@ -398,16 +164,7 @@ const FronteDailyReport = () => {
                   <tr>
                     <th></th>
                     <td>
-                      <div className="form-control">
-                        {/* <input
-                          type="text"
-                          name="brandName"
-                          className="dailyReportInput "
-                          style={{
-                            marginTop: "2rem",
-                          }}
-                        /> */}
-                      </div>
+                      <div className="form-control"></div>
                     </td>
                     {/* ======== MRP Input ========= */}
                     <td>
@@ -416,33 +173,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -453,33 +195,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="startingStock"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="startingStock"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="startingStock"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -490,33 +217,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomingPurchase"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomingPurchase"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomingPurchase"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -527,33 +239,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="buyRate"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="buyRate"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="buyRate"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -564,33 +261,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomePurchase"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomePurchase"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="incomePurchase"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -602,33 +284,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -641,33 +308,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="inflowCredit"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="inflowCredit"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="inflowCredit"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -679,33 +331,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sending"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sending"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sending"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -716,33 +353,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sumRemainder"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sumRemainder"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sumRemainder"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -753,33 +375,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="closingStock"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="closingStock"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="closingStock"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -790,33 +397,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sales"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sales"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="sales"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -827,33 +419,18 @@ const FronteDailyReport = () => {
                           <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="mainRate"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">330ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="mainRate"
-                          /> */}
                         </div>
 
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
                           </label>
-                          {/* <input
-                            type="number"
-                            className="smallinput"
-                            name="mainRate"
-                          /> */}
                         </div>
                       </div>
                     </td>
@@ -881,16 +458,7 @@ const FronteDailyReport = () => {
 
                     {/* ============= कुल योग ================ */}
                     <td>
-                      <div className="form-control">
-                        {/* <input
-                          type="text"
-                          className="semiSmallInput"
-                          name="grandTotal"
-                          style={{
-                            marginTop: "2rem",
-                          }}
-                        /> */}
-                      </div>
+                      <div className="form-control"></div>
                     </td>
                   </tr>
 
@@ -1369,25 +937,6 @@ const FronteDailyReport = () => {
                             onChange={(event) => handelFristFormOnChange(event)}
                           />
                         </div>
-
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="text"
-                            className="semiSmallInput"
-                            name="total"
-                          />
-                        </div>
-
-                      <div className="form-control">
-                        {/* <input
-                          disabled
-                          type="text"
-                          className="semiSmallInput"
-                          name="total"
-                        /> */}
-                      </div>
-                      
                       </div>
                     </td>
                     {/* ============= कुल योग ================ */}
@@ -1456,11 +1005,6 @@ const FronteDailyReport = () => {
                   </thead>
 
                   <tbody>
-                    {/* <SecondFrom
-                      handelSeconFormOnChange={handelSeconFormOnChange}
-                      addOneSecondFormState={addOneSecondFormState}
-                    ></SecondFrom> */}
-
                     {addOneSecondFormState.map((item, index) => {
                       return (
                         <AddOneSecondForm
