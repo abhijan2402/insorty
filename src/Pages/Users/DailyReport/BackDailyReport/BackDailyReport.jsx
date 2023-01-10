@@ -819,7 +819,7 @@ const BackDailyReport = () => {
                                 name="sumRemainder"
                                 disabled
                                 value={totalState.sumRemainder330Total}
-                                onChange={onChangeFristBackFormHandler}
+
                               />
                             </div>
                           </div>
@@ -1033,6 +1033,7 @@ const BackDailyReport = () => {
                       <th>आमद (उधारी)</th>
                       <th>भेजान</th>
                       <th>योग/शेष</th>
+                      <th>अन्तिम स्टॉक	</th>
                       <th>बिक्री</th>
                       <th>रेट</th>
                       <th>रकम</th>

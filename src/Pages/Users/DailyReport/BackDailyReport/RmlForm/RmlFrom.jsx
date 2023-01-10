@@ -26,6 +26,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
               name="averageRate"
               value={item.averageRate}
               onChange={(e) => onChangeRmlHandler(e, index)}
+              disabled
             />
           </div>
         </td>
@@ -67,7 +68,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
             />
           </div>
         </td>
-        {/* ======== आमद (उधारी) ========= */}
+        {/* ======== khareed bahar ========= */}
 
         <td>
           <div className="form-control">
@@ -80,6 +81,8 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
             />
           </div>
         </td>
+
+        {/* ======== khareed rate bahar ========= */}
         <td>
           <div className="form-control">
             <input
@@ -91,7 +94,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
             />
           </div>
         </td>
-        {/* ======== भेजान ========= */}
+        {/* ======== udhari ========= */}
         <td>
           <div className="form-control">
             <input
@@ -103,7 +106,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
             />
           </div>
         </td>
-        {/* ======== योग/शेष ========= */}
+        {/* ======== bhejan ========= */}
         <td>
           <div className="form-control">
             <input
@@ -115,7 +118,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
             />
           </div>
         </td>
-        {/* ======== अन्तिम स्टॉक ========= */}
+        {/* ======== योग/शेष ========= */}
         <td>
           <div className="form-control">
             <input
@@ -123,6 +126,19 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
               className="semiSmallInput"
               name="sumRemainder"
               value={item.sumRemainder}
+              onChange={(e) => onChangeRmlHandler(e, index)}
+              disabled
+            />
+          </div>
+        </td>
+        {/* ======== अन्तिम स्टॉक ========= */}
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="closingStock"
+              value={item.closingStock}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
           </div>
@@ -136,6 +152,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
               name="sales"
               value={item.sales}
               onChange={(e) => onChangeRmlHandler(e, index)}
+              disabled
             />
           </div>
         </td>
@@ -160,6 +177,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
               name="cost"
               value={item.cost}
               onChange={(e) => onChangeRmlHandler(e, index)}
+              disabled
             />
           </div>
         </td>

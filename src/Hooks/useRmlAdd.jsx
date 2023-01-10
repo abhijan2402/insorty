@@ -12,6 +12,7 @@ const useRmlAdd = () => {
     inflowCredit: 0,
     sending: 0,
     sumRemainder: 0,
+    closingStock: 0,
     sales: 0,
     rate: 0,
     cost: 0,
@@ -27,11 +28,13 @@ const useRmlAdd = () => {
         averageRate: 0,
         openingStock: 0,
         incomingPurchase: 0,
+        buyRate: 0,
         incomePurchase: 0,
         purchaseRate: 0,
         inflowCredit: 0,
         sending: 0,
         sumRemainder: 0,
+        closingStock: 0,
         sales: 0,
         rate: 0,
         cost: 0,
@@ -53,11 +56,26 @@ const useRmlAdd = () => {
       inflowCredit: 0,
       sending: 0,
       sumRemainder: 0,
+      closingStock: 0,
       sales: 0,
       rate: 0,
       cost: 0,
     }]);
   };
+
+  const [total,setTotal] = useState({
+    totalOpening: 0,
+    totalIncomingStock: 0,
+    totalIncomeStock: 0,
+    totalInflow: 0,
+    totalSending: 0,
+    totalRemainder: 0,
+    totalClosing:0,
+    totalSales:0,
+    totalCost:0,
+  })
+
+ 
 
   const onChangeRmlHandler = (e, index) => {
     const { name, value } = e.target;
@@ -91,7 +109,7 @@ const useRmlAdd = () => {
           e.target.name === "sending"
         ) {
           obj.sumRemainder =
-            Number(obj.startingStock) +
+            Number(obj.openingStock) +
             Number(obj.incomingPurchase) +
             Number(obj.inflowCredit) +
             Number(obj.incomePurchase) -
@@ -102,6 +120,43 @@ const useRmlAdd = () => {
     });
 
     setAddRmlState(yog);
+
+    const sale = addRmlState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (
+          e.target.name === "sumRemainder" ||
+          e.target.name === "closingStock"
+        ) {
+          obj.sales =
+            Number(obj.sumRemainder) - Number(obj.closingStock);
+        }
+        return obj;
+      } else return returned;
+    });
+
+    setAddRmlState(sale);
+
+    const saleTotal = addRmlState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (e.target.name === "sales" || e.target.name === "rate") {
+          obj.cost = Number(obj.sales) * Number(obj.rate);
+        }
+        return obj;
+      } else return returned;
+    });
+
+    setAddRmlState(saleTotal);
+
+    let obj1 = total
+    obj1.totalOpening = addRmlState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.openingStock)),
+      0
+    );
+    setTotal(obj1)
+    console.log(total.totalOpening)
+
 
   };
 
@@ -116,6 +171,7 @@ const useRmlAdd = () => {
     handelAddOneInRml,
     handelSubmitRml,
     onChangeRmlHandler,
+    total
   };
 };
 
