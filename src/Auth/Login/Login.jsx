@@ -21,8 +21,8 @@ const Login = () => {
     const form = event.target;
     const name = form.name.value;
     const role = form.select.value;
-
     const password = form.password.value;
+
     await axios
       .post("https://insorty-api.onrender.com/auth/login", {
         role: role,

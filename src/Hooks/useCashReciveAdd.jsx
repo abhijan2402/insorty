@@ -1,9 +1,10 @@
 import { useState } from "react";
+// borrowCashReturnData
 
 const useCashReciveAdd = () => {
   const cashReciveForm = {
-    reson: "",
-    amount: 0,
+    reson: "", //comment
+    amount: 0, //cash
   };
 
   const [cashReciveState, setCashReciveState] = useState([cashReciveForm]);

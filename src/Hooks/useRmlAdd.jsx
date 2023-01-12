@@ -1,20 +1,22 @@
 import { useState } from "react";
 
+// backPageRmlData
+
 const useRmlAdd = () => {
   const addRmlForm = {
-    brandName: "",
-    averageRate: 0,
-    openingStock: 0,
-    incomingPurchase: 0,
-    buyRate: 0,
-    incomePurchase: 0,
-    purchaseRate: 0,
-    inflowCredit: 0,
-    sending: 0,
+    brandName: "", //brandName
+    averageRate: 0, 
+    openingStock: 0, //initialStock
+    incomingPurchase: 0,  //purchaseShop.purchaseShopNum
+    buyRate: 0,  //purchaseShop.purchaseShopRate
+    incomePurchase: 0, //purchaseOutSide.purchaseOutSideNum
+    purchaseRate: 0, //purchaseOutSide.purchaseOutSideRate
+    inflowCredit: 0, //purchaseBorrow
+    sending: 0, //sendingBhejan
     sumRemainder: 0,
-    closingStock: 0,
+    closingStock: 0, //lastStock
     sales: 0,
-    rate: 0,
+    rate: 0, //soldRate
     cost: 0,
   };
 

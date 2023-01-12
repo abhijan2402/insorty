@@ -1,6 +1,8 @@
 import { useState } from "react";
+import jwtDecode from "jwt-decode";
 
 const useSalary = () => {
+  const token = localStorage.getItem("cookie_token");
   const salaryFormValue = {
     salary_monthYear: "",
     salary_price: "",
@@ -78,6 +80,7 @@ const useSalary = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(salaryData),
     })

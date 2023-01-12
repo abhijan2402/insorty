@@ -1,57 +1,57 @@
 import { useState } from "react";
 
 const useFristFormAdd = () => {
-  // ======================== add five in frist form ========================
+  // ======================== add five in frist form ======================== backPageReportData
   const fristFormObj = {
-    brandName: "",
+    brandName: "", //brandName
 
     averageRate650: 0,
     averageRate550: 0,
     averageRate330: 0,
 
-    startingStock650: 0,
-    startingStock550: 0,
-    startingStock330: 0,
+    startingStock650: 0, //initialStock750  750=650 330=550 180=330
+    startingStock550: 0, //initialStock330
+    startingStock330: 0, //initialStock180
 
-    incomingPurchase650: 0,
-    incomingPurchase550: 0,
-    incomingPurchase330: 0,
+    incomingPurchase650: 0, //purchaseShop.purchaseShop750
+    incomingPurchase550: 0,  //purchaseShop.purchaseShop330
+    incomingPurchase330: 0, //purchaseShop.purchaseShop180
 
-    buyRate650: 0,
-    buyRate550: 0,
-    buyRate330: 0,
+    buyRate650: 0, //purchaseShop.purchaseShopRate750
+    buyRate550: 0, //purchaseShop.purchaseShopRate330
+    buyRate330: 0, //purchaseShop.purchaseShopRate180
 
-    incomePurchase650: 0,
-    incomePurchase550: 0,
-    incomePurchase330: 0,
+    incomePurchase650: 0, //purchaseOutSide.purchaseOutSide750
+    incomePurchase550: 0, //purchaseOutSide.purchaseOutSide330
+    incomePurchase330: 0, //purchaseOutSide.purchaseOutSide180
 
-    purchaseRate650: 0,
-    purchaseRate550: 0,
-    purchaseRate330: 0,
+    purchaseRate650: 0, //purchaseOutSide.purchaseShopRate750
+    purchaseRate550: 0, //purchaseOutSide.purchaseShopRate330
+    purchaseRate330: 0, //purchaseOutSide.purchaseShopRate180
 
-    inflowCredit650: 0,
-    inflowCredit550: 0,
-    inflowCredit330: 0,
+    inflowCredit650: 0, //purchaseBorrow/purchaseBorrow750
+    inflowCredit550: 0, //purchaseBorrow.purchaseBorrow330
+    inflowCredit330: 0, //purchaseBorrow.purchaseBorrow180
 
-    sending650: 0,
-    sending550: 0,
-    sending330: 0,
+    sending650: 0, //sendingBhejan.sendingBhejan750
+    sending550: 0, //sendingBhejan.sendingBhejan330
+    sending330: 0, //sendingBhejan.sendingBhejan180
 
-    sumRemainder650: 0,
-    sumRemainder550: 0,
-    sumRemainder330: 0,
+    sumRemainder650: 0, 
+    sumRemainder550: 0, 
+    sumRemainder330: 0, 
 
-    closingStock650: 0,
-    closingStock550: 0,
-    closingStock330: 0,
+    closingStock650: 0,  //lastStock.lastStock750
+    closingStock550: 0,  //lastStock.lastStock330
+    closingStock330: 0,  //lastStock.lastStock180
 
-    sales650: 0,
+    sales650: 0,  
     sales550: 0,
     sales330: 0,
 
-    mainRate650: 0,
-    mainRate550: 0,
-    mainRate330: 0,
+    mainRate650: 0, //soldRate.soldRate750
+    mainRate550: 0, //soldRate.soldRate330
+    mainRate330: 0, //soldRate.soldRate180
 
     total650: 0,
     total550: 0,
