@@ -60,8 +60,6 @@ const obj = {
 }
 
 
-
-
 Admin                                     SubAdmin                                      Shop/User(current)
 
 Create SubAdmin
@@ -75,3 +73,5 @@ tasks:
   1. useRmlAdd
   2.useCashReciveAdd
   3.useFristFormAdd
+
+  ==>

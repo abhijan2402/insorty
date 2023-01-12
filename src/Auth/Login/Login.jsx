@@ -31,13 +31,13 @@ const Login = () => {
       })
       .then((response) => {
         setuserData(response.data);
-        console.log(response.data);
-        console.log("from user data", userData);
+        // console.log(response.data);
+        // console.log("from user data", userData);
 
         if (response.data.success) {
           // const role = response.data.data.role;
           console.log(response.data.data.role);
-          console.log(role)
+          console.log(role);
           if (role === "admin") {
             navigate("/admin");
           } else if (role === "subadmin") {

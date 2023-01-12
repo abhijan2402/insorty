@@ -21,6 +21,7 @@ import useCarditDabit from "../../../../Hooks/useCarditDabit";
 import CraditDabitForm from "../BackDailyReport/InflowBorrowingBack/CraditDabitForm.jsx/CreditDabitForm";
 import CommissonFrom from "./CommissonForm/CommissionForm";
 import useComment from "../../../../Hooks/useComment";
+import Swal from "sweetalert2";
 
 const BackDailyReport = () => {
   // ================== Frist Form============
@@ -30,7 +31,7 @@ const BackDailyReport = () => {
     fristFormState,
     handelSubmitFristFormBack,
     onChangeFristBackFormHandler,
-    totalState
+    totalState,
   } = useFristFormAdd();
 
   // ================== Rml Form============
@@ -123,11 +124,32 @@ const BackDailyReport = () => {
     handelAddOneCarditDabit();
   };
 
-  const {
-    commentState,
-    handelSubimtComment,
-    handleChangeComment,
-  } = useComment();
+  const { commentState, handelSubimtComment, handleChangeComment } =
+    useComment();
+  // ********************************* submit mulitple api in handelSubmit  *********************************
+  const handelSubmit = () => {
+    // display swl alert
+
+    try {
+      handelSubmitRml();
+      handelSubmitPurchesOutSide();
+      handelSubmitCommisson();
+      handelSubmitCashRecive();
+      handelSubmitShipping();
+      handelSubmitBorrowingRml();
+      handelSubmitCarditDabit();
+      handelSubimtComment();
+     
+    } catch (error) {
+      console.log(error);
+      Swal({
+        title: "Error!",
+        text: "Something went wrong!",
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
+    }
+  };
 
   return (
     <>
@@ -537,8 +559,8 @@ const BackDailyReport = () => {
                                 className="smallinput"
                                 name="startingStock"
                                 disabled
-                               value={totalState.startingStock650Total}
-                               onChange={onChangeFristBackFormHandler}
+                                value={totalState.startingStock650Total}
+                                onChange={onChangeFristBackFormHandler}
                               />
                             </div>
 
@@ -613,7 +635,6 @@ const BackDailyReport = () => {
                                 className="smallinput"
                                 name="buyRate"
                                 disabled
-                                
                               />
                             </div>
 
@@ -623,7 +644,6 @@ const BackDailyReport = () => {
                                 className="smallinput"
                                 name="buyRate"
                                 disabled
-                                
                               />
                             </div>
 
@@ -633,7 +653,6 @@ const BackDailyReport = () => {
                                 className="smallinput"
                                 name="buyRate"
                                 disabled
-                                
                               />
                             </div>
                           </div>
@@ -687,7 +706,6 @@ const BackDailyReport = () => {
                                 className="smallinput"
                                 name="purchaseRate"
                                 disabled
-                                
                               />
                             </div>
 
@@ -742,7 +760,6 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput"
                                 name="inflowCredit"
-
                                 disabled
                                 value={totalState.inflowCredit330Total}
                                 onChange={onChangeFristBackFormHandler}
@@ -819,7 +836,6 @@ const BackDailyReport = () => {
                                 name="sumRemainder"
                                 disabled
                                 value={totalState.sumRemainder330Total}
-
                               />
                             </div>
                           </div>
@@ -907,8 +923,6 @@ const BackDailyReport = () => {
                                 className="smallinput"
                                 name="mainRate"
                                 disabled
-                               
-                                
                               />
                             </div>
 
@@ -918,7 +932,6 @@ const BackDailyReport = () => {
                                 className="smallinput"
                                 name="mainRate"
                                 disabled
-                                
                               />
                             </div>
 
@@ -928,7 +941,6 @@ const BackDailyReport = () => {
                                 className="smallinput"
                                 name="mainRate"
                                 disabled
-                               
                               />
                             </div>
                           </div>
@@ -999,12 +1011,12 @@ const BackDailyReport = () => {
                 >
                   ADD 1
                 </button>
-                {/* <button
+                <button
                   className="dailyReportBtn"
-                  onClick={() =>  handelSubmitCashRecive()}
+                  onClick={() => handelSubmitFristFormBack()}
                 >
                   Submit
-                </button> */}
+                </button>
               </div>
             </div>
           </div>
@@ -1033,7 +1045,7 @@ const BackDailyReport = () => {
                       <th>आमद (उधारी)</th>
                       <th>भेजान</th>
                       <th>योग/शेष</th>
-                      <th>अन्तिम स्टॉक	</th>
+                      <th>अन्तिम स्टॉक </th>
                       <th>बिक्री</th>
                       <th>रेट</th>
                       <th>रकम</th>
@@ -1349,7 +1361,7 @@ const BackDailyReport = () => {
           <button
             className="dailyReportBtn"
             type="submit"
-            onClick={() => handelSubimtComment()}
+            onClick={() => handelSubmit()}
           >
             Submit
           </button>
