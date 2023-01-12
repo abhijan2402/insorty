@@ -53,7 +53,36 @@ const useSalary = () => {
 
   const handelSalaryOnSubmit = (e) => {
     const handelSalary = Object.assign({}, salaryState);
-    console.log(handelSalary);
+    const salary_monthYear = handelSalary.salary_monthYear;
+    const salary_price = handelSalary.salary_price;
+    const payment_date = handelSalary.payment_date;
+    const payment_price = handelSalary.payment_price;
+    const reason = handelSalary.reason;
+    // post the data in the database
+
+    const salaryData = [
+      {
+        salary: {
+          month: salary_monthYear,
+          price: salary_price,
+        },
+        payment: {
+          date: payment_date,
+          price: payment_price,
+        },
+        comments: reason,
+      },
+    ];
+
+    fetch("https://insorty-api.onrender.com/shop/empSalaryData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(salaryData),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   return {
