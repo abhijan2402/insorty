@@ -15,40 +15,11 @@ const FronteDailyReport = () => {
     totalState,
   } = useFormulasFristFormFront();
 
-  // const allFildTotal = () => {
-  //   let total = 0;
-  //   for (let i = 0; i < addOneFristFormState.length; i++) {
-  //     total = total + addOneFristFormState.total[i];
-  //   }
-  //   return total;
-  // };
-
-  // const [addOneFristFormState, setAddOneFristFormState] = useState([
-  //   addOneFristForm,
-  // ]);
-
-  // const addOneFristFormHandler = () => {
-  //   setAddOneFristFormState([...addOneFristFormState, addOneFristForm]);
-  // };
-
-  // const addFive = () => {
-  //   setAddOneFristFormState([
-  //     ...addOneFristFormState,
-  //     addOneFristForm,
-  //     addOneFristForm,
-  //     addOneFristForm,
-  //     addOneFristForm,
-  //     addOneFristForm,
-  //   ]);
-  // };
-
-  //==================== formula object ====================
-
   //=============== add One second form ================
 
   const addOneSecondForm = {
     averageRate: 0,
-    startingStock: 0,
+    startingStock: 0, //
     incomingPurchase: 0,
     buyRate: 0,
     incomePurchase: 0,
@@ -73,7 +44,7 @@ const FronteDailyReport = () => {
       ...addOneSecondFormState,
       {
         averageRate: 0,
-        startingStock: 0,
+        startingStock: 0, // openingStock
         incomingPurchase: 0,
         buyRate: 0,
         incomePurchase: 0,
@@ -98,6 +69,81 @@ const FronteDailyReport = () => {
         : returned
     );
     setAddOneSecondFormState(secondFormHandel);
+    // **********************formula******************
+
+    /* 
+   
+     const saleTotal = addRmlState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (e.target.name === "sales" || e.target.name === "rate") {
+          obj.cost = Number(obj.sales) * Number(obj.rate);
+        }
+        return obj;
+      } else return returned;
+    });
+
+    */
+
+    const handelavg = addOneSecondFormState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+
+        if (e.target.name === "purchaseRate" || e.target.name === "buyRate") {
+          obj.averageRate =
+            (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
+        }
+        return obj;
+      } else return returned;
+    });
+    setAddOneSecondFormState(handelavg);
+
+    const yog = addOneSecondFormState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (
+          e.target.name === "startingStock" ||
+          e.target.name === "incomingPurchase" ||
+          e.target.name === "inflowCredit" ||
+          e.target.name === "incomePurchase" ||
+          e.target.name === "sending"
+        ) {
+          obj.sumRemainder =
+            Number(obj.startingStock) +
+            Number(obj.incomingPurchase) +
+            Number(obj.inflowCredit) +
+            Number(obj.incomePurchase) -
+            Number(obj.sending);
+        }
+        return obj;
+      } else return returned;
+    });
+    setAddOneSecondFormState(yog);
+
+    const sales = addOneSecondFormState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (
+          e.target.name === "sumRemainder" ||
+          e.target.name === "closingStock"
+        ) {
+          obj.sales = Number(obj.sumRemainder) - Number(obj.closingStock);
+        }
+        return obj;
+      } else return returned;
+    });
+    setAddOneSecondFormState(sales);
+
+    const total = addOneSecondFormState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (e.target.name === "sales" || e.target.name === "mainRate") {
+          obj.total = Number(obj.sales) * Number(obj.mainRate);
+        }
+        return obj;
+      } else return returned;
+    });
+    setAddOneSecondFormState(total);
   };
 
   const hadelSubmitOnSecondForm = (e) => {
