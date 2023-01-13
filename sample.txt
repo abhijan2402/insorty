@@ -70,8 +70,8 @@ Manage Subadmin                           manage User                           
 
 
 tasks: 
-  1. useRmlAdd
-  2.useCashReciveAdd
-  3.useFristFormAdd
+  1. useRmlAdd 
+  2.useCashReciveAdd **
+  3.useFristFormAdd ** Done
 
   ==>

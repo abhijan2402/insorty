@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Swal from "sweetalert2";
-import axios from "axios";
 
 const useSalary = () => {
+  const token = localStorage.getItem("token");
+
   const salaryFormValue = {
     salary_monthYear: "",
     salary_price: "",
@@ -77,57 +78,19 @@ const useSalary = () => {
 
     // post data in the database with cookies and jwt token with axios
 
-    const token = localStorage.getItem("token");
-
-    // fetch("https://insorty-api.onrender.com/shop/empSalaryData", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     // authorization: `Bearer ${localStorage.getItem("token")}`,
-    //     // authorization: `Bearer ${token}`,
-    //     authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    //   body: JSON.stringify(salaryData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     const message = data.message;
-    //     if (data.success === true) {
-    //       Swal.fire({
-    //         icon: "success",
-    //         title: "Success",
-    //         text: "Salary added successfully",
-    //       });
-    //     } else {
-    //       Swal.fire({
-    //         icon: "error",
-    //         title: "Oops...",
-    //         text: message,
-    //       });
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     const message = err.response.data.message;
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Oops...",
-    //       text: message,
-    //     });
-    //   });
-
-    await axios
-      .post("https://insorty-api.onrender.com/shop/empSalaryData", salaryData, {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: token,
-          // authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => {
-        const message = res.message;
-        if (res.success === true) {
+    fetch("https://insorty-api.onrender.com/shop/empSalaryData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+      body: JSON.stringify(salaryData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const message = data.message;
+        if (data.success === true) {
           Swal.fire({
             icon: "success",
             title: "Success",
@@ -140,6 +103,15 @@ const useSalary = () => {
             text: message,
           });
         }
+      })
+      .catch((err) => {
+        console.log(err);
+        const message = err.response.data.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: message,
+        });
       });
   };
 

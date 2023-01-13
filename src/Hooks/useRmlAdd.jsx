@@ -1,14 +1,17 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 // backPageRmlData
 
 const useRmlAdd = () => {
+  const token = localStorage.getItem("token");
+
   const addRmlForm = {
     brandName: "", //brandName
-    averageRate: 0, 
+    averageRate: 0,
     openingStock: 0, //initialStock
-    incomingPurchase: 0,  //purchaseShop.purchaseShopNum
-    buyRate: 0,  //purchaseShop.purchaseShopRate
+    incomingPurchase: 0, //purchaseShop.purchaseShopNum
+    buyRate: 0, //purchaseShop.purchaseShopRate
     incomePurchase: 0, //purchaseOutSide.purchaseOutSideNum
     purchaseRate: 0, //purchaseOutSide.purchaseOutSideRate
     inflowCredit: 0, //purchaseBorrow
@@ -20,14 +23,39 @@ const useRmlAdd = () => {
     cost: 0,
   };
 
-  // 
-
+  //
   const [addRmlState, setAddRmlState] = useState([addRmlForm]);
 
   const handelAddFiveInRml = () => {
-    let data = addRmlState
+    let data = addRmlState;
     for (let i = 0; i < 5; i++) {
-      data = [...data, {
+      data = [
+        ...data,
+        {
+          brandName: "",
+          averageRate: 0,
+          openingStock: 0,
+          incomingPurchase: 0,
+          buyRate: 0,
+          incomePurchase: 0,
+          purchaseRate: 0,
+          inflowCredit: 0,
+          sending: 0,
+          sumRemainder: 0,
+          closingStock: 0,
+          sales: 0,
+          rate: 0,
+          cost: 0,
+        },
+      ];
+    }
+    setAddRmlState(data);
+  };
+
+  const handelAddOneInRml = () => {
+    setAddRmlState([
+      ...addRmlState,
+      {
         brandName: "",
         averageRate: 0,
         openingStock: 0,
@@ -42,44 +70,21 @@ const useRmlAdd = () => {
         sales: 0,
         rate: 0,
         cost: 0,
-      }];
-      
-    }
-    setAddRmlState(data)
+      },
+    ]);
   };
 
-  const handelAddOneInRml = () => {
-    setAddRmlState([...addRmlState, {
-      brandName: "",
-      averageRate: 0,
-      openingStock: 0,
-      incomingPurchase: 0,
-      buyRate: 0,
-      incomePurchase: 0,
-      purchaseRate: 0,
-      inflowCredit: 0,
-      sending: 0,
-      sumRemainder: 0,
-      closingStock: 0,
-      sales: 0,
-      rate: 0,
-      cost: 0,
-    }]);
-  };
-
-  const [total,setTotal] = useState({
+  const [total, setTotal] = useState({
     totalOpening: 0,
     totalIncomingStock: 0,
     totalIncomeStock: 0,
     totalInflow: 0,
     totalSending: 0,
     totalRemainder: 0,
-    totalClosing:0,
-    totalSales:0,
-    totalCost:0,
-  })
-
- 
+    totalClosing: 0,
+    totalSales: 0,
+    totalCost: 0,
+  });
 
   const onChangeRmlHandler = (e, index) => {
     const { name, value } = e.target;
@@ -90,10 +95,7 @@ const useRmlAdd = () => {
     const handelavg = addRmlState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (
-          e.target.name === "purchaseRate" ||
-          e.target.name === "buyRate"
-        ) {
+        if (e.target.name === "purchaseRate" || e.target.name === "buyRate") {
           obj.averageRate =
             (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
         }
@@ -132,8 +134,7 @@ const useRmlAdd = () => {
           e.target.name === "sumRemainder" ||
           e.target.name === "closingStock"
         ) {
-          obj.sales =
-            Number(obj.sumRemainder) - Number(obj.closingStock);
+          obj.sales = Number(obj.sumRemainder) - Number(obj.closingStock);
         }
         return obj;
       } else return returned;
@@ -153,20 +154,80 @@ const useRmlAdd = () => {
 
     setAddRmlState(saleTotal);
 
-    let obj1 = total
+    let obj1 = total;
     obj1.totalOpening = addRmlState.reduce(
-      (total, currentItem) => (total = total + Number(currentItem.openingStock)),
+      (total, currentItem) =>
+        (total = total + Number(currentItem.openingStock)),
       0
     );
-    setTotal(obj1)
-    console.log(total.totalOpening)
-
-
+    setTotal(obj1);
+    console.log(total.totalOpening);
   };
 
-  const handelSubmitRml = (e) => {
-    const addRmlForm = Object.assign({}, addRmlState);
-    console.log(addRmlForm);
+  const brandName = addRmlState.map((items) => items.brandName);
+  const initialStock = addRmlState.map((items) => items.openingStock);
+  const purchaseShopNum = addRmlState.map((items) => items.incomingPurchase);
+  const purchaseShopRate = addRmlState.map((items) => items.buyRate);
+  const purchaseOutSideNum = addRmlState.map((items) => items.incomePurchase);
+  const purchaseOutSideRate = addRmlState.map((items) => items.purchaseRate);
+  const purchaseBorrow = addRmlState.map((items) => items.inflowCredit);
+  const sendingBhejan = addRmlState.map((items) => items.sending);
+  const lastStock = addRmlState.map((items) => items.closingStock);
+  const soldRate = addRmlState.map((items) => items.rate);
+
+  const dataDetails = [
+    {
+      brandName: brandName,
+      initialStock: initialStock,
+      purchaseShop: {
+        purchaseShopNum: purchaseShopNum,
+        purchaseShopRate: purchaseShopRate,
+      },
+      purchaseOutSide: {
+        purchaseOutSideNum: purchaseOutSideNum,
+        purchaseOutSideRate: purchaseOutSideRate,
+      },
+      purchaseBorrow: purchaseBorrow,
+      sendingBhejan: sendingBhejan,
+      lastStock: lastStock,
+      soldRate: soldRate,
+    },
+  ];
+
+  const handelSubmitRml = async (e) => {
+    // fatch data from api
+    e.preventDefault();
+    fetch("https://insorty-api.onrender.com/shop/backPageRmlData", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+      body: JSON.stringify({
+        dataDetails,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Data Added Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {
+        const error = err.response.data;
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: error,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
 
   return {
@@ -175,7 +236,7 @@ const useRmlAdd = () => {
     handelAddOneInRml,
     handelSubmitRml,
     onChangeRmlHandler,
-    total
+    total,
   };
 };
 

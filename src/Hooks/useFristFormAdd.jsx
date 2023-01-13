@@ -697,14 +697,14 @@ const useFristFormAdd = () => {
 
     const brandName = addFristFormHandel.map((item) => item.brandName);
 
-    const initialStock650 = addFristFormHandel.map(
-      (item) => item.initialStock650
+    const initialStock650Data = addFristFormHandel.map(
+      (item) => item.startingStock650
     );
-    const initialStock550 = addFristFormHandel.map(
-      (item) => item.initialStock550
+    const initialStock550Data = addFristFormHandel.map(
+      (item) => item.startingStock550
     );
-    const initialStock330 = addFristFormHandel.map(
-      (item) => item.initialStock330
+    const initialStock330Data = addFristFormHandel.map(
+      (item) => item.startingStock330
     );
 
     const purchaseShop650 = addFristFormHandel.map(
@@ -773,9 +773,9 @@ const useFristFormAdd = () => {
       {
         brandName: brandName,
         initialStock: {
-          initialStock650: initialStock650,
-          initialStock550: initialStock550,
-          initialStock330: initialStock330,
+          initialStock650: initialStock650Data,
+          initialStock550: initialStock550Data,
+          initialStock330: initialStock330Data,
         },
         purchaseShop: {
           purchaseShop650: purchaseShop650,
@@ -817,16 +817,14 @@ const useFristFormAdd = () => {
         },
       },
     ];
+    // console.log(dataDetails);
 
     fetch("https://insorty-api.onrender.com/shop/backPageReportData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // authorization: `header ${localStorage.getItem("token")}`,
-        // authorization: token,
-        authorization: `bearer ${token}`,
+        cookie_token: token,
       },
-
       body: JSON.stringify(dataDetails),
     })
       .then((res) => res.json())
