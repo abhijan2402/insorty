@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
+  const [isLoading, setIsLoading] = useState(false);
 
   // ======================== add five in frist form ======================== backPageReportData
   const fristFormObj = {
@@ -690,164 +691,95 @@ const useFristFormAdd = () => {
     setTotalState(obj28);
   };
 
-  const handelSubmitFristFormBack = (e) => {
-    // const addFristForm = Object.assign({}, fristFormState);
-    const addFristFormHandel = fristFormState;
-    // get the data form addFristForm and
+  const handelSubmitFristFormBack = async (e) => {
+    setIsLoading(true);
 
-    const brandName = addFristFormHandel.map((item) => item.brandName);
+    const dataDetails = [];
 
-    const initialStock650Data = addFristFormHandel.map(
-      (item) => item.startingStock650
-    );
-    const initialStock550Data = addFristFormHandel.map(
-      (item) => item.startingStock550
-    );
-    const initialStock330Data = addFristFormHandel.map(
-      (item) => item.startingStock330
-    );
-
-    const purchaseShop650 = addFristFormHandel.map(
-      (item) => item.incomingPurchase650
-    );
-    const purchaseShop550 = addFristFormHandel.map(
-      (item) => item.incomingPurchase550
-    );
-    const purchaseShop330 = addFristFormHandel.map(
-      (item) => item.incomingPurchase330
-    );
-
-    const purchaseShopRate650 = addFristFormHandel.map(
-      (item) => item.buyRate650
-    );
-    const purchaseShopRate550 = addFristFormHandel.map(
-      (item) => item.buyRate550
-    );
-    const purchaseShopRate330 = addFristFormHandel.map(
-      (item) => item.buyRate330
-    );
-
-    const purchaseOutSide650 = addFristFormHandel.map(
-      (item) => item.incomePurchase650
-    );
-    const purchaseOutSide550 = addFristFormHandel.map(
-      (item) => item.incomePurchase550
-    );
-    const purchaseOutSide330 = addFristFormHandel.map(
-      (item) => item.incomePurchase330
-    );
-
-    const purchaseOutSideRate650 = addFristFormHandel.map(
-      (item) => item.purchaseRate650
-    );
-    const purchaseOutSideRate550 = addFristFormHandel.map(
-      (item) => item.purchaseRate550
-    );
-    const purchaseOutSideRate330 = addFristFormHandel.map(
-      (item) => item.purchaseRate330
-    );
-
-    const purchaseBorrow650 = addFristFormHandel.map(
-      (item) => item.inflowCredit650
-    );
-    const purchaseBorrow550 = addFristFormHandel.map(
-      (item) => item.inflowCredit550
-    );
-    const purchaseBorrow330 = addFristFormHandel.map(
-      (item) => item.inflowCredit330
-    );
-
-    const sendingBhejan650 = addFristFormHandel.map((item) => item.sending650);
-    const sendingBhejan550 = addFristFormHandel.map((item) => item.sending550);
-    const sendingBhejan330 = addFristFormHandel.map((item) => item.sending330);
-
-    const lastStock650 = addFristFormHandel.map((item) => item.closingStock650);
-    const lastStock550 = addFristFormHandel.map((item) => item.closingStock550);
-    const lastStock330 = addFristFormHandel.map((item) => item.closingStock330);
-
-    const soldRate650 = addFristFormHandel.map((item) => item.mainRate650);
-    const soldRate550 = addFristFormHandel.map((item) => item.mainRate550);
-    const soldRate330 = addFristFormHandel.map((item) => item.mainRate330);
-
-    const dataDetails = [
-      {
-        brandName: brandName,
+    for (let index = 0; index < fristFormState.length; index++) {
+      const element = fristFormState[index];
+      dataDetails.push({
+        brandName: element.brandName,
         initialStock: {
-          initialStock650: initialStock650Data,
-          initialStock550: initialStock550Data,
-          initialStock330: initialStock330Data,
+          initialStock650: element.startingStock650,
+          initialStock550: element.startingStock550,
+          initialStock330: element.startingStock330,
         },
         purchaseShop: {
-          purchaseShop650: purchaseShop650,
-          purchaseShop550: purchaseShop550,
-          purchaseShop330: purchaseShop330,
-          purchaseShopRate650: purchaseShopRate650,
-          purchaseShopRate550: purchaseShopRate550,
-          purchaseShopRate330: purchaseShopRate330,
+          purchaseShop650: element.incomingPurchase650,
+          purchaseShop550: element.incomingPurchase550,
+          purchaseShop330: element.incomingPurchase330,
+          purchaseShopRate650: element.buyRate650,
+          purchaseShopRate550: element.buyRate550,
+          purchaseShopRate330: element.buyRate330,
         },
 
         purchaseOutSide: {
-          purchaseOutSide650: purchaseOutSide650,
-          purchaseOutSide550: purchaseOutSide550,
-          purchaseOutSide330: purchaseOutSide330,
-          purchaseOutSideRate650: purchaseOutSideRate650,
-          purchaseOutSideRate550: purchaseOutSideRate550,
-          purchaseOutSideRate330: purchaseOutSideRate330,
+          purchaseOutSide650: element.incomePurchase650,
+          purchaseOutSide550: element.incomePurchase550,
+          purchaseOutSide330: element.incomePurchase330,
+          purchaseOutSideRate650: element.purchaseRate650,
+          purchaseOutSideRate550: element.purchaseRate550,
+          purchaseOutSideRate330: element.purchaseRate330,
         },
+
         purchaseBorrow: {
-          purchaseBorrow650: purchaseBorrow650,
-          purchaseBorrow550: purchaseBorrow550,
-          purchaseBorrow330: purchaseBorrow330,
+          purchaseBorrow650: element.inflowCredit650,
+          purchaseBorrow550: element.inflowCredit550,
+          purchaseBorrow330: element.inflowCredit330,
         },
 
         sendingBhejan: {
-          sendingBhejan650: sendingBhejan650,
-          sendingBhejan550: sendingBhejan550,
-          sendingBhejan330: sendingBhejan330,
+          sendingBhejan650: element.sending650,
+          sendingBhejan550: element.sending550,
+          sendingBhejan330: element.sending330,
         },
+
         lastStock: {
-          lastStock650: lastStock650,
-          lastStock550: lastStock550,
-          lastStock330: lastStock330,
+          lastStock650: element.closingStock650,
+          lastStock550: element.closingStock550,
+          lastStock330: element.closingStock330,
         },
+
         soldRate: {
-          soldRate650: soldRate650,
-          soldRate550: soldRate550,
-          soldRate330: soldRate330,
+          soldRate650: element.mainRate650,
+          soldRate550: element.mainRate550,
+          soldRate330: element.mainRate330,
         },
-      },
-    ];
-    // console.log(dataDetails);
-
-    fetch("https://insorty-api.onrender.com/shop/backPageReportData", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        cookie_token: token,
-      },
-      body: JSON.stringify(dataDetails),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        const message = data.message;
-
-        if (data.success === false) {
-          Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: message,
-          });
-        } else {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: message,
-            showConfirmButton: false,
-            timer: 1000,
-          });
-        }
       });
+    }
+
+    try {
+      const response = await fetch(
+        "https://insorty-api.onrender.com/shop/backPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ dataDetails }),
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+      if (data.success === true) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Added successfully",
+        });
+      }
+    } catch (error) {
+      const errorMessage = error.message;
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // ======>
@@ -861,6 +793,7 @@ const useFristFormAdd = () => {
     handelSubmitFristFormBack,
     onChangeFristBackFormHandler,
     totalState,
+    isLoading,
   };
 };
 

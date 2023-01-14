@@ -67,6 +67,7 @@ const SalaryFormData = ({ salary, index, handelSelaryOnChange }) => {
             </div>
           </div>
         </td>
+
         {/* ============= कुल योग ================ */}
       </tr>
     </>

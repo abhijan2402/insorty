@@ -18,13 +18,13 @@ const DailyReport = () => {
 
       <div className="flex gap-4">
         <Link
-          to="/user/dailyreport/back"
+          to="/user/dailyreport/front"
           className="btn btn-error text-white font-bold"
         >
           Front
         </Link>
         <Link
-          to="/user/dailyreport/front"
+          to="/user/dailyreport/back"
           className="btn btn-error text-white font-bold"
         >
           Back
