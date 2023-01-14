@@ -29,23 +29,63 @@ const useHandelSubmitBackAPI = () => {
   const dataDetails = [];
 
   for (let index = 0; index < addRmlState.length; index++) {
+    const element = addRmlState[index];
     dataDetails.push({
-      brandName: addRmlState[index].brandName,
-      initialStock: addRmlState[index].openingStock,
+      brandName: element.brandName,
+      initialStock: element.openingStock,
       purchaseShop: {
-        purchaseShopNum: addRmlState[index].incomingPurchase,
-        purchaseShopRate: addRmlState[index].buyRate,
+        purchaseShopNum: element.incomingPurchase,
+        purchaseShopRate: element.buyRate,
       },
       purchaseOutSide: {
-        purchaseOutSideNum: addRmlState[index].incomePurchase,
-        purchaseOutSideRate: addRmlState[index].purchaseRate,
+        purchaseOutSideNum: element.incomePurchase,
+        purchaseOutSideRate: element.purchaseRate,
       },
-      purchaseBorrow: addRmlState[index].inflowCredit,
-      sendingBhejan: addRmlState[index].sending,
-      lastStock: addRmlState[index].closingStock,
-      soldRate: addRmlState[index].rate,
+      purchaseBorrow: element.inflowCredit,
+      sendingBhejan: element.sending,
+      lastStock: element.closingStock,
+      soldRate: element.rate,
     });
   }
+
+  // const dataDetails = [
+  //   //   {
+  //   //     brandName: brandName,
+  //   //     initialStock: initialStock,
+  //   //     purchaseShop: {
+  //   //       purchaseShopNum: purchaseShopNum,
+  //   //       purchaseShopRate: purchaseShopRate,
+  //   //     },
+  //   //     purchaseOutSide: {
+  //   //       purchaseOutSideNum: purchaseOutSideNum,
+  //   //       purchaseOutSideRate: purchaseOutSideRate,
+  //   //     },
+  //   //     purchaseBorrow: purchaseBorrow,
+  //   //     sendingBhejan: sendingBhejan,
+  //   //     lastStock: lastStock,
+  //   //     soldRate: soldRate,
+  //   //   },
+  //   // ];
+
+  // for (let index = 0; index < addRmlState.length; index++) {
+  //   const element = addRmlState[index];
+  //   dataDetails.push({
+  //     brandName: addRmlState[index].brandName,
+  //     initialStock: addRmlState[index].openingStock,
+  //     purchaseShop: {
+  //       purchaseShopNum: addRmlState[index].incomingPurchase,
+  //       purchaseShopRate: addRmlState[index].buyRate,
+  //     },
+  //     purchaseOutSide: {
+  //       purchaseOutSideNum: addRmlState[index].incomePurchase,
+  //       purchaseOutSideRate: addRmlState[index].purchaseRate,
+  //     },
+  //     purchaseBorrow: addRmlState[index].inflowCredit,
+  //     sendingBhejan: addRmlState[index].sending,
+  //     lastStock: addRmlState[index].closingStock,
+  //     soldRate: addRmlState[index].rate,
+  //   });
+  // }
 
   // add Rml
 
@@ -53,19 +93,19 @@ const useHandelSubmitBackAPI = () => {
     setIsLoading(true);
     try {
       const [handelSubmitCashRecive, handelSubmitRml] = await Promise.all([
+        fetch("https://insorty-api.onrender.com/shop/backPageRmlData", {
+          method: "POST",
+          body: JSON.stringify({ dataDetails }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }),
         fetch("https://insorty-api.onrender.com/shop/borrowCashReturnData", {
           method: "POST",
           body: JSON.stringify({ borrowCashReturnData }),
           headers: { "Content-Type": "application/json", cookie_token: token },
         }),
-        fetch("https://insorty-api.onrender.com/shop/backPageRmlDataL", {
-          method: "POST",
-          body: JSON.stringify({ dataDetails }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }),
       ]);
-      const CashReciveData = await handelSubmitCashRecive.json();
       const Rmldata = await handelSubmitRml.json();
+      const CashReciveData = await handelSubmitCashRecive.json();
       const totalResponse = CashReciveData + Rmldata;
 
       console.log(Rmldata);

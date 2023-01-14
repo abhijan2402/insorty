@@ -25,7 +25,7 @@ import useComment from "../../../../Hooks/useComment";
 import useHandelSubmitBackAPI from "../../../../Hooks/useHandelSubmitBackAPI/useHandelSubmitBackAPI";
 
 const BackDailyReport = () => {
-  const { handleSubmit } = useHandelSubmitBackAPI();
+  const { handleSubmit, isLoadingSubmit } = useHandelSubmitBackAPI();
 
   // ================== Frist Form============
   const {
@@ -1373,7 +1373,7 @@ const BackDailyReport = () => {
 
         {/* ************ Submit button ***************** */}
         <div className="flex my-6 mx-4">
-          {isLoading ? (
+          {isLoadingSubmit ? (
             <>
               <button
                 type="button"
