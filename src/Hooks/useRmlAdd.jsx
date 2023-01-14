@@ -1,10 +1,9 @@
 import { useState } from "react";
-import Swal from "sweetalert2";
 
 // backPageRmlData
 
 const useRmlAdd = () => {
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
 
   const addRmlForm = {
     brandName: "", //brandName
@@ -164,77 +163,67 @@ const useRmlAdd = () => {
     console.log(total.totalOpening);
   };
 
-  const brandName = addRmlState.map((items) => items.brandName);
-  const initialStock = addRmlState.map((items) => items.openingStock);
-  const purchaseShopNum = addRmlState.map((items) => items.incomingPurchase);
-  const purchaseShopRate = addRmlState.map((items) => items.buyRate);
-  const purchaseOutSideNum = addRmlState.map((items) => items.incomePurchase);
-  const purchaseOutSideRate = addRmlState.map((items) => items.purchaseRate);
-  const purchaseBorrow = addRmlState.map((items) => items.inflowCredit);
-  const sendingBhejan = addRmlState.map((items) => items.sending);
-  const lastStock = addRmlState.map((items) => items.closingStock);
-  const soldRate = addRmlState.map((items) => items.rate);
+  // const dataDetails = [
+  //   {
+  //     brandName: brandName,
+  //     initialStock: initialStock,
+  //     purchaseShop: {
+  //       purchaseShopNum: purchaseShopNum,
+  //       purchaseShopRate: purchaseShopRate,
+  //     },
+  //     purchaseOutSide: {
+  //       purchaseOutSideNum: purchaseOutSideNum,
+  //       purchaseOutSideRate: purchaseOutSideRate,
+  //     },
+  //     purchaseBorrow: purchaseBorrow,
+  //     sendingBhejan: sendingBhejan,
+  //     lastStock: lastStock,
+  //     soldRate: soldRate,
+  //   },
+  // ];
 
-  const dataDetails = [
-    {
-      brandName: brandName,
-      initialStock: initialStock,
-      purchaseShop: {
-        purchaseShopNum: purchaseShopNum,
-        purchaseShopRate: purchaseShopRate,
-      },
-      purchaseOutSide: {
-        purchaseOutSideNum: purchaseOutSideNum,
-        purchaseOutSideRate: purchaseOutSideRate,
-      },
-      purchaseBorrow: purchaseBorrow,
-      sendingBhejan: sendingBhejan,
-      lastStock: lastStock,
-      soldRate: soldRate,
-    },
-  ];
+  // const handelSubmitRml = async (e) => {
+  //   // fatch data from api
+  //   e.preventDefault();
+  //   fetch("https://insorty-api.onrender.com/shop/backPageRmlData", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       cookie_token: token,
+  //     },
+  //     body: JSON.stringify({
+  //       dataDetails,
+  //     }),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       Swal.fire({
+  //         position: "center",
+  //         icon: "success",
+  //         title: "Data Added Successfully",
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       const error = err.response.data;
+  //       Swal.fire({
+  //         position: "center",
+  //         icon: "error",
+  //         title: error,
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+  //     });
+  // };
 
-  const handelSubmitRml = async (e) => {
-    // fatch data from api
-    e.preventDefault();
-    fetch("https://insorty-api.onrender.com/shop/backPageRmlData", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        cookie_token: token,
-      },
-      body: JSON.stringify({
-        dataDetails,
-      }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Data Added Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      })
-      .catch((err) => {
-        const error = err.response.data;
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: error,
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      });
-  };
+  //
 
   return {
     addRmlState,
     handelAddFiveInRml,
     handelAddOneInRml,
-    handelSubmitRml,
     onChangeRmlHandler,
     total,
   };

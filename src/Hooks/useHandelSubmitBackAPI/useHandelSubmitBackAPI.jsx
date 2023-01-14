@@ -1,12 +1,15 @@
+import { useState } from "react";
 import useCashReciveAdd from "../useCashReciveAdd";
-import useFristFormAdd from "../useFristFormAdd";
+// import useFristFormAdd from "../useFristFormAdd";
 import useRmlAdd from "../useRmlAdd";
+import Swal from "sweetalert2";
 
 const useHandelSubmitBackAPI = () => {
   const token = localStorage.getItem("token");
+  const [isLoadingSubmit, setIsLoading] = useState(false);
 
   const { cashReciveState } = useCashReciveAdd();
-  const { fristFormState } = useFristFormAdd();
+  // const { fristFormState } = useFristFormAdd();
   const { addRmlState } = useRmlAdd();
 
   // use cashReciveState to send data to API
@@ -23,34 +26,78 @@ const useHandelSubmitBackAPI = () => {
 
   // add Rml
 
-  
+  const dataDetails = [];
+
+  for (let index = 0; index < addRmlState.length; index++) {
+    dataDetails.push({
+      brandName: addRmlState[index].brandName,
+      initialStock: addRmlState[index].openingStock,
+      purchaseShop: {
+        purchaseShopNum: addRmlState[index].incomingPurchase,
+        purchaseShopRate: addRmlState[index].buyRate,
+      },
+      purchaseOutSide: {
+        purchaseOutSideNum: addRmlState[index].incomePurchase,
+        purchaseOutSideRate: addRmlState[index].purchaseRate,
+      },
+      purchaseBorrow: addRmlState[index].inflowCredit,
+      sendingBhejan: addRmlState[index].sending,
+      lastStock: addRmlState[index].closingStock,
+      soldRate: addRmlState[index].rate,
+    });
+  }
+
   // add Rml
 
-  const handelSubmitBackAPI = async () => {
-    const handelSubmitCashRecive = fetch(
-      "https://insorty-api.onrender.com/shop/borrowCashReturnData",
-      {
-        method: "POST",
-        body: JSON.stringify(borrowCashReturnData),
-        headers: { "Content-Type": "application/json", cookie_token: token },
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    try {
+      const [handelSubmitCashRecive, handelSubmitRml] = await Promise.all([
+        fetch("https://insorty-api.onrender.com/shop/borrowCashReturnData", {
+          method: "POST",
+          body: JSON.stringify({ borrowCashReturnData }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }),
+        fetch("https://insorty-api.onrender.com/shop/backPageRmlDataL", {
+          method: "POST",
+          body: JSON.stringify({ dataDetails }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }),
+      ]);
+      const CashReciveData = await handelSubmitCashRecive.json();
+      const Rmldata = await handelSubmitRml.json();
+      const totalResponse = CashReciveData + Rmldata;
+
+      console.log(Rmldata);
+      console.log(CashReciveData);
+      console.log(totalResponse);
+
+      if (totalResponse) {
+        Swal.fire({
+          title: "Success",
+          text: "Data has been saved",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
       }
-    ).then((response) => response.json());
-
-    const api2Promise = fetch("API2_URL", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    }).then((response) => response.json());
-
-    Promise.all([api1Promise, api2Promise])
-      .then(([result1, result2]) => {
-        console.log(result1);
-        console.log(result2);
-      })
-      .catch((error) => console.error("Error:", error));
+    } catch (error) {
+      console.error(error);
+      const errors = error.response.data;
+      Swal.fire({
+        title: "Error",
+        text: errors,
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  return {};
+  return {
+    handleSubmit,
+    isLoadingSubmit,
+  };
 };
 
 export default useHandelSubmitBackAPI;
