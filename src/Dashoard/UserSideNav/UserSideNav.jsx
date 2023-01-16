@@ -88,6 +88,56 @@ const SideNav = () => {
             <span className="mx-4 font-medium">Final report / हिसाब</span>
           </Link>
 
+          {/* ============= */}
+
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/selfbill"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">
+              Self Bill / दुकान बिल का फोर्मेट
+            </span>
+          </Link>
+
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/outbill"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">
+              Out Bill / बाहर के बिल का फोर्मेट
+            </span>
+          </Link>
+
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/extra"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">Extra /राशन सब्जी आदि खरीद</span>
+          </Link>
+
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/englishbear"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">English Bear अंग्रेजी शराब</span>
+          </Link>
+
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/maininvestment"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">
+              Main Investment / मुख्य इन्वेस्ट
+            </span>
+          </Link>
+
+          {/* ============= */}
+
           <hr className="mt-4 mb-2" />
 
           <Link>
