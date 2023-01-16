@@ -1079,7 +1079,188 @@ const BackDailyReport = () => {
                         ></RmlFrom>
                       );
                     })}
-                    <TotalRML></TotalRML>
+
+
+                    <tr>
+                      <th></th>
+                      <td>
+                        <div className="form-control">Total</div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="averageRate"
+                            disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            // type="number"
+                            className="semiSmallInput"
+                            name="openingStock"
+                            value={addRmlState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.openingStock)),
+                              0
+                            )}
+                            onChange={(e) => onChangeRmlHandler(e)}
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ======== आमद (खरीद)-बा. ========= */}
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="incomingPurchase"
+                            value={addRmlState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.incomingPurchase)),
+                              0
+                            )}
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ======== आमद (खरीद)-बा. ========= */}
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="buyRate"
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ======== आमद (उधारी) ========= */}
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="incomePurchase"
+                            value={addRmlState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.incomePurchase)),
+                              0
+                            )}
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="purchaserRate"
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ======== भेजान ========= */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="inflowCredit"
+                            value={addRmlState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.inflowCredit)),
+                              0
+                            )}
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ======== योग/शेष ========= */}
+                      <td>
+                        <div className="form-control">
+                          <input type="number" className="semiSmallInput" name="sending" value={addRmlState.reduce(
+                            (total, currentItem) =>
+                              (total = total + Number(currentItem.sending)),
+                            0
+                          )}
+                            disabled />
+                        </div>
+                      </td>
+                      {/* ======== अन्तिम स्टॉक ========= */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="sumRemainder"
+                            value={addRmlState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.sumRemainder)),
+                              0
+                            )}
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="closingStock"
+                            value={addRmlState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.closingStock)),
+                              0
+                            )}
+                            disabled
+                          />
+                        </div>
+                      </td>
+
+                      {/* ============= बिक्री ================ */}
+                      <td>
+                        <div className="form-control">
+                          <input type="number" className="semiSmallInput" name="sales" value={addRmlState.reduce(
+                            (total, currentItem) =>
+                              (total = total + Number(currentItem.sales)),
+                            0
+                          )}
+                            disabled />
+                        </div>
+                      </td>
+                      {/* ============= रेट ================ */}
+                      <td>
+                        <div className="form-control">
+                          <input type="number" className="semiSmallInput" name="rate" disabled />
+                        </div>
+                      </td>
+                      {/* ============= योग ================ */}
+                      <td>
+                        <div className="form-control">
+                          <input type="number" className="semiSmallInput" name="cost" value={addRmlState.reduce(
+                            (total, currentItem) =>
+                              (total = total + Number(currentItem.cost)),
+                            0
+                          )}
+                            disabled />
+                        </div>
+                      </td>
+                      {/* ============= कुल योग ================ */}
+                    </tr>
+
+
                   </tbody>
                 </table>
               </div>
@@ -1144,6 +1325,108 @@ const BackDailyReport = () => {
                         ></PurchaseOutSideFrom>
                       );
                     })}
+
+                    <tr>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="partyName"
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ======== प्रारम्भिक स्टॉक ========= */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="brandName"
+                            disabled
+                          />
+                        </div>
+                      </td>
+
+                      {/* ======== आमद (खरीद)-दु. ========= */}
+
+                      <td>
+                        <div className="form-control ">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="theNumber"
+                            value={purchesOutSideState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.theNumber)),
+                              0
+                            )}
+                           disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ======== आमद (खरीद)-बा. ========= */}
+
+                      <td>
+                        <div className="form-control ">
+                          <select
+                            className="select select-bordered"
+                            name="quantity"
+                            disabled
+                          >
+                            <option value={650} selected>
+                              650ml
+                            </option>
+                            <option value={550}>550ml</option>
+                            <option value={330}>330ml</option>
+                            <option value={90}>90ml</option>
+                            <option value={60}>60ml</option>
+                          </select>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="rate"
+                            
+                           disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="total"
+                            value={purchesOutSideState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.total)),
+                              0
+                            ) }
+                           disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="reason"
+                           disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ======== आमद (उधारी) ========= */}
+                    </tr>
+
                   </tbody>
                 </table>
               </div>
@@ -1177,6 +1460,40 @@ const BackDailyReport = () => {
                         ></CommissonFrom>
                       );
                     })}
+
+                    <tr>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="dailyReportInput"
+                            name="reason"
+                            disabled
+                            style={{
+                              width: "443px",
+                            }}
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <input
+                          type="number"
+                          className="semiSmallInput"
+                          name="amount"
+                          value={commissonState.reduce(
+                            (total, currentItem) =>
+                              (total = total + Number(currentItem.amount)),
+                            0
+                          )}
+                          disabled
+                          style={{
+                            width: "100%",
+                          }}
+                        />
+                      </td>
+                    </tr>
+
                   </tbody>
                 </table>
               </div>
@@ -1210,6 +1527,40 @@ const BackDailyReport = () => {
                         ></CashReciveFrom>
                       );
                     })}
+
+                    <tr>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="dailyReportInput"
+                            name="reson"
+                           disabled
+                            style={{
+                              width: "443px",
+                            }}
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <input
+                          type="number"
+                          name="amount"
+                          value={cashReciveState.reduce(
+                            (total, currentItem) =>
+                              (total = total + Number(currentItem.amount)),
+                            0
+                          )}
+                         disabled
+                          className="semiSmallInput"
+                          style={{
+                            width: "100%",
+                          }}
+                        />
+                      </td>
+                    </tr>
+                    
                   </tbody>
                 </table>
               </div>
@@ -1250,6 +1601,58 @@ const BackDailyReport = () => {
                         ></ShippingForm>
                       );
                     })}
+
+                    <tr>
+                      <th>Total</th>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="partyName"
+                            disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="brandName"
+                           disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="theNumber"
+                            value={addShippingState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.theNumber)),
+                              0
+                            )}
+                           disabled
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="comment"
+                            disabled
+                          />
+                        </div>
+                      </td>
+                    </tr>
+
                   </tbody>
                 </table>
               </div>

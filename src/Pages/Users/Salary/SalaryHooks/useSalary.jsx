@@ -176,6 +176,7 @@ const useSalary = () => {
           title: "Success",
           text: "Salary added successfully",
         });
+        console.log(data)
       } else {
         Swal.fire({
           icon: "error",

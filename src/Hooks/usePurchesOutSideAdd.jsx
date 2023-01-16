@@ -6,8 +6,8 @@ const usePurchesOutSideAdd = () => {
     brandName: "",
     theNumber: 0,
     quantity: 0,
-    total: 0,
     rate: 0,
+    total: 0,
     reason: "",
   };
 
@@ -21,8 +21,8 @@ const usePurchesOutSideAdd = () => {
       brandName: "",
       theNumber: 0,
       quantity: 0,
-      total: 0,
       rate: 0,
+      total: 0,
       reason: "",
     }]);
   };
@@ -36,8 +36,8 @@ const usePurchesOutSideAdd = () => {
         brandName: "",
         theNumber: 0,
         quantity: 0,
-        total: 0,
         rate: 0,
+        total: 0,
         reason: "",
       }]
       
@@ -50,6 +50,19 @@ const usePurchesOutSideAdd = () => {
     const list = [...purchesOutSideState];
     list[index][name] = value;
     setPurchesOutSideState(list);
+
+    const yog = purchesOutSideState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (e.target.name === "theNumber" || e.target.name === "rate") {
+          obj.total =
+            (Number(obj.theNumber) * Number(obj.rate));
+        }
+        return obj;
+      } else return returned;
+    });
+    setPurchesOutSideState(yog);
+
   };
 
   const handelSubmitPurchesOutSide = (e) => {

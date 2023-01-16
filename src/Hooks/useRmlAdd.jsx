@@ -153,14 +153,7 @@ const useRmlAdd = () => {
 
     setAddRmlState(saleTotal);
 
-    let obj1 = total;
-    obj1.totalOpening = addRmlState.reduce(
-      (total, currentItem) =>
-        (total = total + Number(currentItem.openingStock)),
-      0
-    );
-    setTotal(obj1);
-    console.log(total.totalOpening);
+    
   };
 
   // const dataDetails = [

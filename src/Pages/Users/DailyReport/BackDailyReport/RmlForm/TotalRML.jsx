@@ -33,8 +33,12 @@ const TotalRML = () => {
             <input
               // type="number"
               className="semiSmallInput"
-              name="totalOpening"
-              value={total.totalOpening}
+              name="openingStock"
+              value={addRmlState.reduce(
+                (total, currentItem) =>
+                  (total = total + Number(currentItem.openingStock)),
+                0
+              )}
               onChange={(e) => onChangeRmlHandler(e)}
               disabled
             />

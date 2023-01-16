@@ -35,8 +35,8 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
             <input
               type="number"
               className="semiSmallInput"
-              name="theNumer"
-              value={item.theNumer}
+              name="theNumber"
+              value={item.theNumber}
               onChange={(e) => onChangePurchesOutSide(e, index)}
             />
           </div>
@@ -67,8 +67,8 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
             <input
               type="number"
               className="semiSmallInput"
-              name="total"
-              value={item.total}
+              name="rate"
+              value={item.rate}
               onChange={(e) => onChangePurchesOutSide(e, index)}
             />
           </div>
@@ -79,8 +79,9 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
             <input
               type="number"
               className="semiSmallInput"
-              name="rate"
-              value={item.rate}
+              name="total"
+              disabled
+              value={item.total}
               onChange={(e) => onChangePurchesOutSide(e, index)}
             />
           </div>
