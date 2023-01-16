@@ -1,6 +1,8 @@
 import React from "react";
 
-const FinalReport = () => {
+
+const FinalReport = ({ beerTotal, rmlTotal, cashTotal, udhaariTotal, commisionTotal }) => {
+  
   return (
     <section>
       <div className="overflow-x-auto">
@@ -9,7 +11,7 @@ const FinalReport = () => {
             <tr>
               <th>S.No</th>
               <th>Reason / विवरण</th>
-              <th>रकम</th>
+              <th>total</th>
             </tr>
           </thead>
 
@@ -17,33 +19,33 @@ const FinalReport = () => {
             <tr>
               <th>1</th>
               <td>अंग्रेजी</td>
-              <td>500</td>
+              <td>0</td>
             </tr>
 
             {/* 02 */}
             <tr>
               <th>2</th>
               <td>बीयर</td>
-              <td>500</td>
+              <td>{beerTotal}</td>
             </tr>
 
             {/* 03 */}
             <tr>
               <th>3</th>
               <td>देशी/RML</td>
-              <td>500</td>
+              <td>{rmlTotal}</td>
             </tr>
             {/* 04 */}
             <tr>
               <th>4</th>
               <td>कुल बिक्री</td>
-              <td>500</td>
+              <td>{rmlTotal + beerTotal}</td>
             </tr>
             {/* 05 */}
             <tr>
               <th>5</th>
               <td>पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति</td>
-              <td>500</td>
+              <td>{cashTotal}</td>
             </tr>
             {/* 06 */}
             <tr>
@@ -55,13 +57,13 @@ const FinalReport = () => {
             <tr>
               <th>7</th>
               <td>उधारी/नामे</td>
-              <td>500</td>
+              <td>{udhaariTotal}</td>
             </tr>
             {/* 08 */}
             <tr>
               <th>8</th>
               <td>कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
-              <td>500</td>
+              <td>{commisionTotal}</td>
             </tr>
             {/* 09 */}
             <tr>

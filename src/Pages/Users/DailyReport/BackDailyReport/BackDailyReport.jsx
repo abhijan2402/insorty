@@ -1708,6 +1708,104 @@ const BackDailyReport = () => {
                         ></InflowBorrowingRML>
                       );
                     })}
+
+                    <tr>
+                      <th>Total</th>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="partyName"
+                           disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="brandName"
+                            disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="theNumber"
+                            value={infolwBorrwingFormState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.theNumber)),
+                              0
+                            )}
+                            disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control ">
+                          <select
+                            className="select select-bordered"
+                            name="quantity"
+                           disabled
+                          >
+                            <option value={650} selected>
+                              650ml
+                            </option>
+                            <option value={550}>550ml</option>
+                            <option value={330}>330ml</option>
+                            <option value={90}>90ml</option>
+                            <option value={60}>60ml</option>
+                          </select>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="rate"
+                           
+                           disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="total"
+                            value={infolwBorrwingFormState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.total)),
+                              0
+                            )}
+                            disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="reason"
+                           disabled
+                          />
+                        </div>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -1726,6 +1824,7 @@ const BackDailyReport = () => {
                     <tr>
                       <th>S.no</th>
                       <th>पार्टी का नाम</th>
+                      <th>पार्टी/पार्टनर</th>
                       <th>रकम</th>
                       <th>टिप्पणी</th>
                     </tr>
@@ -1743,6 +1842,64 @@ const BackDailyReport = () => {
                         ></CraditDabitForm>
                       );
                     })}
+
+                    <tr>
+                      <th>Total</th>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="amount"
+                            disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <select
+                            className="select select-bordered"
+                            name="partyType"
+                            disabled
+                          >
+                            <option value="Partner" selected>
+                              Partner
+                            </option>
+                            <option value="Party">Party</option>
+                          </select>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="amount"
+                            value={craditDabitState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.amount)),
+                              0
+                            )}
+                            disabled
+                          />
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="note"
+                            disabled
+                          />
+                        </div>
+                      </td>
+                    </tr>
+
                   </tbody>
                 </table>
               </div>
@@ -1756,7 +1913,35 @@ const BackDailyReport = () => {
             <h1 className="my-4">
               <span className="font-bold titleText">फाईनल रिपोर्ट</span>
             </h1>
-            <FinalReport></FinalReport>
+
+
+            <FinalReport beerTotal={totalState.allGrandTotal} rmlTotal = {addRmlState.reduce(
+                (total, currentItem) =>
+                  (total = total + Number(currentItem.cost)),
+                0
+              )
+            } 
+            cashTotal={
+                craditDabitState.reduce(
+                  (total, currentItem) =>
+                    (total = total + Number(currentItem.amount)),
+                  0
+                )
+              }
+
+              udhaariTotal={craditDabitState.reduce(
+                (total, currentItem) =>
+                  (total = total + Number(currentItem.amount)),
+                0
+              )}
+              commisionTotal={commissonState.reduce(
+                (total, currentItem) =>
+                  (total = total + Number(currentItem.amount)),
+                0
+              )}
+              ></FinalReport>
+
+            
           </form>
         </div>
 

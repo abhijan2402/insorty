@@ -65,8 +65,8 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
             <input
               type="number"
               className="semiSmallInput"
-              name="total"
-              value={item.total}
+              name="rate"
+              value={item.rate}
               onChange={(e) => onChangeBorrowingRml(e, index)}
             />
           </div>
@@ -77,8 +77,8 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
             <input
               type="number"
               className="semiSmallInput"
-              name="rate"
-              value={item.rate}
+              name="total"
+              value={item.total}
               onChange={(e) => onChangeBorrowingRml(e, index)}
             />
           </div>

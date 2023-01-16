@@ -4,7 +4,8 @@ const useCarditDabit = () => {
 
   const craditDabitForm = {
     partyName: "",
-    ammount: 0,
+    partyType:"",
+    amount: 0,
     note: "",
   };
 
@@ -16,7 +17,8 @@ const useCarditDabit = () => {
     for (let i = 0; i < 5; i++) {
       data = [...data, {
         partyName: "",
-        ammount: 0,
+        partyType:'',
+        amount: 0,
         note: "",
       }]
 
@@ -27,7 +29,8 @@ const useCarditDabit = () => {
   const handelAddOneCarditDabit = () => {
     setCraditDabitState([...craditDabitState, {
       partyName: "",
-      ammount: 0,
+      partyType: '',
+      amount: 0,
       note: "",
     }]);
   };

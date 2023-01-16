@@ -6,8 +6,8 @@ const useInfolwBorrowingRml = () => {
     brandName: "",
     theNumber: "",
     quantity: 0,
-    total: 0,
     rate: 0,
+    total: 0,
     reason: "",
   };
 
@@ -24,8 +24,8 @@ const useInfolwBorrowingRml = () => {
         brandName: "",
         theNumber: "",
         quantity: 0,
-        total: 0,
         rate: 0,
+        total: 0,
         reason: "",
       }]
 
@@ -41,8 +41,8 @@ const useInfolwBorrowingRml = () => {
         brandName: "",
         theNumber: "",
         quantity: 0,
-        total: 0,
         rate: 0,
+        total: 0,
         reason: "",
       },
     ]);
@@ -60,6 +60,23 @@ const useInfolwBorrowingRml = () => {
       }
     );
     setInfolwBorrwingFormState(borrowingRmlHandler);
+
+    const handelavg650 = infolwBorrwingFormState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (
+          e.target.name === "theNumber" ||
+          e.target.name === "rate"
+        ) {
+          
+          obj.total =
+            Number(obj.theNumber) * Number(obj.rate);
+         
+        }
+        return obj;
+      } else return returned;
+    });
+    setInfolwBorrwingFormState(handelavg650);
   };
 
   const handelSubmitBorrowingRml = (e) => {

@@ -7,6 +7,18 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
 
       <td>
         <div className="form-control">
+          <input
+            type="text"
+            className="semiSmallInput"
+            name="partyName"
+            value={item.partyName}
+            onChange={(e) => onChangeCarditDabit(e, index)}
+          />
+        </div>
+      </td>
+
+      <td>
+        <div className="form-control">
           <select
             className="select select-bordered"
             name="partyType"
@@ -26,8 +38,8 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
           <input
             type="number"
             className="semiSmallInput"
-            name="ammount"
-            value={item.ammount}
+            name="amount"
+            value={item.amount}
             onChange={(e) => onChangeCarditDabit(e, index)}
           />
         </div>
