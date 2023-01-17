@@ -1,52 +1,53 @@
 import { useState } from "react";
+// frontPageData brandWise[]
 
 const useFormulasFristFormFront = () => {
   let addOneFristForm = {
-    brandName: "",
+    brandName: "", //brandName
 
-    startingStock750: 0,
-    startingStock330: 0,
-    startingStock180: 0,
+    startingStock750: 0, //initialStock
+    startingStock330: 0, //initialStock
+    startingStock180: 0, //initialStock
 
-    incomingPurchase750: 0,
-    incomingPurchase330: 0,
-    incomingPurchase180: 0,
+    incomingPurchase750: 0, //purchaseShop.purchaseShop750
+    incomingPurchase330: 0, //purchaseShop330
+    incomingPurchase180: 0, //purchaseShop180
 
-    buyRate750: 0,
-    buyRate330: 0,
-    buyRate180: 0,
+    buyRate750: 0, //purchaseShop.purchaseShopRate750
+    buyRate330: 0, //purchaseShopRate330
+    buyRate180: 0, //purchaseShopRate180
 
-    incomePurchase750: 0,
-    incomePurchase330: 0,
-    incomePurchase180: 0,
+    incomePurchase750: 0, //purchaseOutSide.purchaseOutSide750
+    incomePurchase330: 0, //purchaseOutSide330
+    incomePurchase180: 0, //purchaseOutSide180
 
-    purchaseRate750: 0,
-    purchaseRate330: 0,
-    purchaseRate180: 0,
+    purchaseRate750: 0, //purchaseOutSide.purchaseOutSideRate750
+    purchaseRate330: 0, //purchaseOutSideRate330
+    purchaseRate180: 0, //purchaseOutSideRate180
 
-    inflowCredit750: 0,
-    inflowCredit330: 0,
-    inflowCredit180: 0,
+    inflowCredit750: 0, //purchaseBorrow
+    inflowCredit330: 0, //purchaseBorrow
+    inflowCredit180: 0, //purchaseBorrow
 
-    sending750: 0,
-    sending330: 0,
-    sending180: 0,
+    sending750: 0, //sendingBhejan
+    sending330: 0, //sendingBhejan
+    sending180: 0, //sendingBhejan
 
     sumRemainder750: 0,
     sumRemainder330: 0,
     sumRemainder180: 0,
 
-    closingStock750: 0,
-    closingStock330: 0,
-    closingStock180: 0,
+    closingStock750: 0, //lastStock
+    closingStock330: 0, //lastStock
+    closingStock180: 0, //lastStock
 
     sales750: 0,
     sales330: 0,
     sales180: 0,
 
-    mainRate750: 0,
-    mainRate330: 0,
-    mainRate180: 0,
+    mainRate750: 0, //soldRate
+    mainRate330: 0, //soldRate
+    mainRate180: 0, //soldRate
 
     total750: 0,
     total330: 0,
@@ -714,13 +715,226 @@ const useFormulasFristFormFront = () => {
     setAddOneFristFormState(data);
   };
 
+  /* 
+  
+         "brandWise": [
+            {
+                "brandName": "rjx",
+                "initialStock": {
+                    "initialStock750": 0,
+                    "initialStock330": 1,
+                    "initialStock180": 2
+                },
+                "purchaseShop": {
+                    "purchaseShop750": 1,
+                    "purchaseShop330": 2,
+                    "purchaseShop180": 3,
+                    "purchaseShopRate750": 1,
+                    "purchaseShopRate330": 2,
+                    "purchaseShopRate180": 3
+                },
+                "purchaseOutSide": {
+                    "purchaseOutSide750": 1,
+                    "purchaseOutSide330": 2,
+                    "purchaseOutSide180": 3,
+                    "purchaseOutSideRate750": 1,
+                    "purchaseOutSideRate330": 2,
+                    "purchaseOutSideRate180": 3
+                },
+                "purchaseAVG": {
+                    "purchaseAVG750": 0,
+                    "purchaseAVG330": 0,
+                    "purchaseAVG180": 0
+                },
+                "purchaseBorrow": {
+                    "purchaseBorrow750": 1,
+                    "purchaseBorrow330": 2,
+                    "purchaseBorrow180": 3
+                },
+                "sendingBhejan": {
+                    "sendingBhejan750": 1,
+                    "sendingBhejan330": 2,
+                    "sendingBhejan180": 3
+                },
+                "AddRemainder": {
+                    "AddRemainder750": 0,
+                    "AddRemainder330": 0,
+                    "AddRemainder180": 0
+                },
+                "lastStock": {
+                    "lastStock750": 1,
+                    "lastStock330": 2,
+                    "lastStock180": 3
+                },
+                "sold": {
+                    "sold750": 0,
+                    "sold330": 0,
+                    "sold180": 0
+                },
+                "soldRate": {
+                    "soldRate750": 1,
+                    "soldRate330": 2,
+                    "soldRate180": 3
+                },
+                "finalTotal": {
+                    "finalTotal750": 0,
+                    "finalTotal330": 0,
+                    "finalTotal180": 0
+                },
+                "finalSum": 0,
+                "_id": "63bd695d3d2826950f2bbf40"
+            },
+            {
+                "brandName": "ramsung",
+                "initialStock": {
+                    "initialStock750": 0,
+                    "initialStock330": 1,
+                    "initialStock180": 2
+                },
+                "purchaseShop": {
+                    "purchaseShop750": 1,
+                    "purchaseShop330": 2,
+                    "purchaseShop180": 3,
+                    "purchaseShopRate750": 1,
+                    "purchaseShopRate330": 2,
+                    "purchaseShopRate180": 3
+                },
+                "purchaseOutSide": {
+                    "purchaseOutSide750": 1,
+                    "purchaseOutSide330": 2,
+                    "purchaseOutSide180": 3,
+                    "purchaseOutSideRate750": 1,
+                    "purchaseOutSideRate330": 2,
+                    "purchaseOutSideRate180": 3
+                },
+                "purchaseAVG": {
+                    "purchaseAVG750": 0,
+                    "purchaseAVG330": 0,
+                    "purchaseAVG180": 0
+                },
+                "purchaseBorrow": {
+                    "purchaseBorrow750": 1,
+                    "purchaseBorrow330": 2,
+                    "purchaseBorrow180": 3
+                },
+                "sendingBhejan": {
+                    "sendingBhejan750": 1,
+                    "sendingBhejan330": 2,
+                    "sendingBhejan180": 3
+                },
+                "AddRemainder": {
+                    "AddRemainder750": 0,
+                    "AddRemainder330": 0,
+                    "AddRemainder180": 0
+                },
+                "lastStock": {
+                    "lastStock750": 1,
+                    "lastStock330": 2,
+                    "lastStock180": 3
+                },
+                "sold": {
+                    "sold750": 0,
+                    "sold330": 0,
+                    "sold180": 0
+                },
+                "soldRate": {
+                    "soldRate750": 1,
+                    "soldRate330": 2,
+                    "soldRate180": 3
+                },
+                "finalTotal": {
+                    "finalTotal750": 0,
+                    "finalTotal330": 0,
+                    "finalTotal180": 0
+                },
+                "finalSum": 0,
+                "_id": "63bd695d3d2826950f2bbf41"
+            }
+        ],
+  */
+
+  const handelSubmitFristFormFront = (e) => {
+    const brandWise = [];
+
+    for (let index = 0; index < addOneFristFormState.length; index++) {
+      const element = addOneFristFormState[index];
+      brandWise.push({
+        brandName: element.brandName,
+
+        initialStock: {
+          initialStock750: element.initialStock750,
+          initialStock330: element.initialStock330,
+          initialStock180: element.initialStock180,
+        },
+
+        purchaseShop: {
+          purchaseShop750: element.purchaseShop750,
+          purchaseShop330: element.purchaseShop330,
+          purchaseShop180: element.purchaseShop180,
+          purchaseShopRate750: element.purchaseShopRate750,
+          purchaseShopRate330: element.purchaseShopRate330,
+          purchaseShopRate180: element.purchaseShopRate180,
+        },
+        purchaseOutSide: {
+          purchaseOutSide750: element.purchaseOutSide750,
+          purchaseOutSide330: element.purchaseOutSide330,
+          purchaseOutSide180: element.purchaseOutSide180,
+          purchaseOutSideRate750: element.purchaseOutSideRate750,
+          purchaseOutSideRate330: element.purchaseOutSideRate330,
+          purchaseOutSideRate180: element.purchaseOutSideRate180,
+        },
+        purchaseAVG: {
+          purchaseAVG750: element.purchaseAVG750,
+          purchaseAVG330: element.purchaseAVG330,
+          purchaseAVG180: element.purchaseAVG180,
+        },
+        purchaseBorrow: {
+          purchaseBorrow750: element.purchaseBorrow750,
+          purchaseBorrow330: element.purchaseBorrow330,
+          purchaseBorrow180: element.purchaseBorrow180,
+        },
+        sendingBhejan: {
+          sendingBhejan750: element.sendingBhejan750,
+          sendingBhejan330: element.sendingBhejan330,
+          sendingBhejan180: element.sendingBhejan180,
+        },
+        AddRemainder: {
+          AddRemainder750: element.AddRemainder750,
+          AddRemainder330: element.AddRemainder330,
+          AddRemainder180: element.AddRemainder180,
+        },
+        lastStock: {
+          lastStock750: element.lastStock750,
+          lastStock330: element.lastStock330,
+          lastStock180: element.lastStock180,
+        },
+        sold: {
+          sold750: element.sold750,
+          sold330: element.sold330,
+          sold180: element.sold180,
+        },
+        soldRate: {
+          soldRate750: element.soldRate750,
+          soldRate330: element.soldRate330,
+          soldRate180: element.soldRate180,
+        },
+        finalTotal: {
+          finalTotal750: element.finalTotal750,
+          finalTotal330: element.finalTotal330,
+          finalTotal180: element.finalTotal180,
+        },
+        finalSum: element.finalSum,
+      });
+    }
+  };
+
   return {
+    totalState,
     addOneFristFormState,
     setAddOneFristFormState,
     handelFristFormOnChange,
     addOneFristFormHandler,
     addFive,
-    totalState,
   };
 };
 

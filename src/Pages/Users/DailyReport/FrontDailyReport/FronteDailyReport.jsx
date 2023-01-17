@@ -4,6 +4,8 @@ import AddOneSecondForm from "./SecondForm/AddOneSecondForm/AddOneSecondForm";
 import AddOneFristForm from "./FirstForm/AddOneFristForm/AddOneFristForm";
 import useFormulasFristFormFront from "../../../../Hooks/useFormulas/useFormulasFristFormFront";
 
+//frontPageData mlWise
+
 const FronteDailyReport = () => {
   // **********************formulae******************
 
@@ -19,20 +21,20 @@ const FronteDailyReport = () => {
 
   const addOneSecondForm = {
     averageRate: 0,
-    startingStock: 0, //
-    incomingPurchase: 0,
-    buyRate: 0,
-    incomePurchase: 0,
-    purchaseRate: 0,
-    inflowCredit: 0,
-    sending: 0,
+    startingStock: 0, //initialStock
+    incomingPurchase: 0, //purchaseShop.purchaseShopNum
+    buyRate: 0, //purchaseShop.purchaseShopRate
+    incomePurchase: 0, //purchaseOutSide.purchaseOutSideNum
+    purchaseRate: 0,  //purchaseOutSide.purchaseOutSideRate
+    inflowCredit: 0,  //purchaseBorrow
+    sending: 0, //sendingBhejan
     sumRemainder: 0,
-    closingStock: 0,
+    closingStock: 0, //lastStock
     sales: 0,
-    mainRate: 0,
+    mainRate: 0, //soldRate
     total: 0,
     grandTotal: 0,
-    selectStockVarient: 90,
+    selectStockVarient: 90, //ml
   };
 
   const [addOneSecondFormState, setAddOneSecondFormState] = useState([
@@ -57,7 +59,7 @@ const FronteDailyReport = () => {
         mainRate: 0,
         total: 0,
         grandTotal: 0,
-        selectStockVarient: 90,
+        selectStockVarient: 90, 
       },
     ]);
   };

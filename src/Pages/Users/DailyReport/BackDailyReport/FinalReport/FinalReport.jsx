@@ -1,8 +1,15 @@
-import React from "react";
+import { useContext } from "react";
+import { DataContextApi } from "../../../../../Context/DataContext";
 
+const FinalReport = ({
+  beerTotal,
+  rmlTotal,
+  cashTotal,
+  udhaariTotal,
+  commisionTotal,
+}) => {
+  const { totalState } = useContext(DataContextApi);
 
-const FinalReport = ({ beerTotal, rmlTotal, cashTotal, udhaariTotal, commisionTotal }) => {
-  
   return (
     <section>
       <div className="overflow-x-auto">
@@ -19,7 +26,7 @@ const FinalReport = ({ beerTotal, rmlTotal, cashTotal, udhaariTotal, commisionTo
             <tr>
               <th>1</th>
               <td>अंग्रेजी</td>
-              <td>0</td>
+              <td>{totalState.allGrandTotal}</td>
             </tr>
 
             {/* 02 */}

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./Styles/index.scss";
 import App from "./App";
 import AuthProvider from "./Context/AuthProvider";
-
+import DataContext from "./Context/DataContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
@@ -13,7 +13,9 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <App />
+        <DataContext>
+          <App />
+        </DataContext>
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>
