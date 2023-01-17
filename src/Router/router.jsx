@@ -20,6 +20,11 @@ import Partnar from "../Pages/Users/Partners/Partners/Partners";
 import Payments from "../Pages/Users/Payments/Payment/Payments";
 import Salary from "../Pages/Users/Salary/SalaryList/SalaryList";
 import SalaryForm from "../Pages/Users/Salary/SalaryForm/SalaryForm";
+import OutBill from "../Pages/Users/OutBill/OutBill/OutBill";
+import SelfBill from "../Pages/Users/SelfBill/SelfBill/SelfBill";
+import Extra from "../Pages/Users/Extra/Extra/Extra";
+import MainInvestment from "../Pages/Users/MainInvestment/MainInvestment/MainInvestment";
+import EnglishBear from "../Pages/Users/EnglishBear/EnglishBear/EnglishBear";
 
 const router = createBrowserRouter([
   // Home Routes
@@ -111,6 +116,26 @@ const router = createBrowserRouter([
       {
         path: "/user/salary/from",
         element: <SalaryForm />,
+      },
+      {
+        path: "/user/outbill",
+        element: <OutBill />,
+      },
+      {
+        path: "/user/selfbill",
+        element: <SelfBill />,
+      },
+      {
+        path: "/user/extra",
+        element: <Extra />,
+      },
+      {
+        path: "/user/maininvestment",
+        element: <MainInvestment />,
+      },
+      {
+        path: "/user/englishbear",
+        element: <EnglishBear />,
       },
     ],
   },

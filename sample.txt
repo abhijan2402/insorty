@@ -75,3 +75,18 @@ tasks:
   3.useFristFormAdd ** Done
 
   ==>
+
+  Daily Report / दैनिक रिपोर्ट 
+Partners / पार्टनर
+Branch / ब्रांच
+Salary / वेतन
+Payments दुकान/बार पेमेंट  
+Commision / कमीशन  
+Borrow / उधारी  
+Final report / हिसाब
+self Bill / दुकान बिल का फोर्मेट
+Out Bill / बाहर के बिल का फोर्मेट
+Extra /राशन सब्जी आदि खरीद
+Log out
+Jai Wine Shop 
+A4 ss colony Merta city Raj.  
