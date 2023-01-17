@@ -3,31 +3,31 @@ import useCashReciveAdd from "../useCashReciveAdd";
 // import useFristFormAdd from "../useFristFormAdd";
 import useRmlAdd from "../useRmlAdd";
 import Swal from "sweetalert2";
+import usePurchesOutSideAdd from "../usePurchesOutSideAdd";
 
 const useHandelSubmitBackAPI = () => {
   const token = localStorage.getItem("token");
   const [isLoadingSubmit, setIsLoading] = useState(false);
-
   const { cashReciveState } = useCashReciveAdd();
   // const { fristFormState } = useFristFormAdd();
   const { addRmlState } = useRmlAdd();
+  const { purchesOutSideState } = usePurchesOutSideAdd();
 
-  // use cashReciveState to send data to API
-  const borrowCashReturnData = {};
+  // use cashReciveState to send data to API ======================
+  const borrowCashReturnData = [];
+
   for (let index = 0; index < cashReciveState.length; index++) {
-    borrowCashReturnData[`comment${index}`] = cashReciveState[index].reson;
-    borrowCashReturnData[`cash${index}`] = cashReciveState[index].amount;
+    const element = cashReciveState[index];
+
+    borrowCashReturnData.push({
+      cash: element.amount,
+      comments: element.reson,
+    });
   }
-  // use cashReciveState to send data to API
+  // use cashReciveState to send data to API ======================
 
-  // fristFormState  State api
-
-  // fristFormState  State api
-
-  // add Rml
-
+  // add Rml ======================
   const dataDetails = [];
-
   for (let index = 0; index < addRmlState.length; index++) {
     const element = addRmlState[index];
     dataDetails.push({
@@ -47,92 +47,152 @@ const useHandelSubmitBackAPI = () => {
       soldRate: element.rate,
     });
   }
+  // add Rml ======================
 
-  // const dataDetails = [
-  //   //   {
-  //   //     brandName: brandName,
-  //   //     initialStock: initialStock,
-  //   //     purchaseShop: {
-  //   //       purchaseShopNum: purchaseShopNum,
-  //   //       purchaseShopRate: purchaseShopRate,
-  //   //     },
-  //   //     purchaseOutSide: {
-  //   //       purchaseOutSideNum: purchaseOutSideNum,
-  //   //       purchaseOutSideRate: purchaseOutSideRate,
-  //   //     },
-  //   //     purchaseBorrow: purchaseBorrow,
-  //   //     sendingBhejan: sendingBhejan,
-  //   //     lastStock: lastStock,
-  //   //     soldRate: soldRate,
-  //   //   },
-  //   // ];
+  // purchesOutSideState ======================
 
-  // for (let index = 0; index < addRmlState.length; index++) {
-  //   const element = addRmlState[index];
-  //   dataDetails.push({
-  //     brandName: addRmlState[index].brandName,
-  //     initialStock: addRmlState[index].openingStock,
-  //     purchaseShop: {
-  //       purchaseShopNum: addRmlState[index].incomingPurchase,
-  //       purchaseShopRate: addRmlState[index].buyRate,
-  //     },
-  //     purchaseOutSide: {
-  //       purchaseOutSideNum: addRmlState[index].incomePurchase,
-  //       purchaseOutSideRate: addRmlState[index].purchaseRate,
-  //     },
-  //     purchaseBorrow: addRmlState[index].inflowCredit,
-  //     sendingBhejan: addRmlState[index].sending,
-  //     lastStock: addRmlState[index].closingStock,
-  //     soldRate: addRmlState[index].rate,
-  //   });
-  // }
+  const purchaseOutSideData = [];
+  // {
+  //     "brandName": "rjx",
+  //     "partyName": "hgv",
+  //     "number": 23,
+  //     "ml": 12,
+  //     "rate": 2230,
+  //     "total": 24225,
+  //     "comments": "no",
+  //     "_id": "63c2db6c6d60ea379368edd8"
+  // },
 
-  // add Rml
+  for (let index = 0; index < purchesOutSideState.length; index++) {
+    const element = purchesOutSideState[index];
+    purchaseOutSideData.push({
+      brandName: element.brandName,
+      partyName: element.partyName,
+      number: element.theNumber,
+      ml: element.quantity,
+      rate: element.rate,
+      total: element.total,
+      comments: element.reason,
+    });
+  }
+  // purchesOutSideState ======================
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     setIsLoading(true);
+
     try {
-      const [handelSubmitCashRecive, handelSubmitRml] = await Promise.all([
-        fetch("https://insorty-api.onrender.com/shop/backPageRmlData", {
+      const api1 = fetch(
+        "https://insorty-api.onrender.com/shop/purchaseOutSideData",
+        {
           method: "POST",
-          body: JSON.stringify({ dataDetails }),
+          body: JSON.stringify(purchaseOutSideData),
           headers: { "Content-Type": "application/json", cookie_token: token },
-        }),
-        fetch("https://insorty-api.onrender.com/shop/borrowCashReturnData", {
+        }
+      );
+
+      const api2 = fetch(
+        "https://insorty-api.onrender.com/shop/borrowCashReturnData",
+        {
           method: "POST",
           body: JSON.stringify({ borrowCashReturnData }),
           headers: { "Content-Type": "application/json", cookie_token: token },
-        }),
-      ]);
-      const Rmldata = await handelSubmitRml.json();
-      const CashReciveData = await handelSubmitCashRecive.json();
-      const totalResponse = CashReciveData + Rmldata;
+        }
+      );
 
-      console.log(Rmldata);
-      console.log(CashReciveData);
-      console.log(totalResponse);
-
-      if (totalResponse) {
-        Swal.fire({
-          title: "Success",
-          text: "Data has been saved",
-          icon: "success",
-          confirmButtonText: "OK",
+      Promise.all([api1, api2])
+        .then((responses) => Promise.all(responses.map((res) => res.json())))
+        .then((data) => {
+          console.log(data);
+          if (data[0].success === true && data[1].success === true) {
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              text: "Data Saved Successfully",
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+            });
+          }
         });
-      }
     } catch (error) {
-      console.error(error);
-      const errors = error.response.data;
+      const errorMessage = error.message;
       Swal.fire({
-        title: "Error",
-        text: errors,
         icon: "error",
-        confirmButtonText: "OK",
+        title: "Oops...",
+        text: errorMessage,
       });
     } finally {
       setIsLoading(false);
     }
   };
+
+  // const handleSubmit = async () => {
+  //   setIsLoading(true);
+  //   try {
+  //     const [
+  //       // handelSubmitRml,
+  //       handelSubmitCashRecive,
+  //       handelSubmitPurchesOutSide,
+  //     ] = await Promise.all([
+  //       // fetch("https://insorty-api.onrender.com/shop/backPageRmlData", {
+  //       //   method: "POST",
+  //       //   body: JSON.stringify({ dataDetails }),
+  //       //   headers: { "Content-Type": "application/json", cookie_token: token },
+  //       // }),
+
+  //       fetch("https://insorty-api.onrender.com/shop/borrowCashReturnData", {
+  //         method: "POST",
+  //         body: JSON.stringify({ borrowCashReturnData }),
+  //         headers: { "Content-Type": "application/json", cookie_token: token },
+  //       }),
+
+  //       fetch("https://insorty-api.onrender.com/shop/purchaseOutSideData", {
+  //         method: "POST",
+  //         body: JSON.stringify({ dataDetailsPurchesOutSide }),
+  //         headers: { "Content-Type": "application/json", cookie_token: token },
+  //       }),
+  //     ]);
+  //     // const Rmldata = await handelSubmitRml.json();
+  //     const CashReciveData = await handelSubmitCashRecive.json();
+  //     const purchesOutSideData = await handelSubmitPurchesOutSide.json();
+  //     const totalResponse = CashReciveData + purchesOutSideData;
+
+  //     // console.log(Rmldata);
+  //     console.log(CashReciveData);
+  //     console.log(purchesOutSideData);
+  //     console.log(totalResponse);
+
+  //     if (totalResponse.success === true) {
+  //       Swal.fire({
+  //         title: "Success",
+  //         text: "Data has been saved",
+  //         icon: "success",
+  //         confirmButtonText: "OK",
+  //       });
+  //     } else {
+  //       Swal.fire({
+  //         title: "Error",
+  //         text: "Something went wrong",
+  //         icon: "error",
+  //         confirmButtonText: "OK",
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     const errors = error.response.data;
+  //     Swal.fire({
+  //       title: "Error",
+  //       text: errors,
+  //       icon: "error",
+  //       confirmButtonText: "OK",
+  //     });
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return {
     handleSubmit,

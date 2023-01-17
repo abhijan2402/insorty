@@ -90,3 +90,16 @@ Extra /राशन सब्जी आदि खरीद
 Log out
 Jai Wine Shop 
 A4 ss colony Merta city Raj.  
+
+
+/shop/purchaseOutSideData  अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
+
+पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति bowwocash retun data https://restless-escape-458382.postman.co/workspace/Team-Workspace~bbe8a7e3-6f2f-49b8-8562-33b814a1a8c8/request/19459280-08d553ba-1caa-4630-98e5-9a32d39d3d36
+
+/shop/soldData अंग्रेजी/बीयर/देशी/RML का भेजान
+
+
+
+
+
+/shop/totalExpensesData  कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
