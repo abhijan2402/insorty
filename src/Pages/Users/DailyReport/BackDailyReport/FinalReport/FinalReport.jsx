@@ -8,7 +8,9 @@ const FinalReport = ({
   udhaariTotal,
   commisionTotal,
 }) => {
-  const { totalState } = useContext(DataContextApi);
+  // const { totalState } = useContext(DataContextApi);
+
+  const firstformData = JSON.parse(localStorage.getItem('firstFrontTotal'))
 
   return (
     <section>
@@ -26,7 +28,7 @@ const FinalReport = ({
             <tr>
               <th>1</th>
               <td>अंग्रेजी</td>
-              <td>{totalState.allGrandTotal}</td>
+              <td>{firstformData}</td>
             </tr>
 
             {/* 02 */}

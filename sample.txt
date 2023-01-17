@@ -103,3 +103,15 @@ A4 ss colony Merta city Raj.
 
 
 /shop/totalExpensesData  कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
+
+
+
+file -> api
+PurchaseOutSideFrom -> purchaseOutSideData 
+CommissonFrom -> totalExpensesData
+CashReciveFrom -> borrowCashReturnData
+ShippingForm -> purchaseBorrowData
+InflowBorrowingRML -> Bhejan
+craditDabitState -> borrowedData
+
+credit, creditTotal, 

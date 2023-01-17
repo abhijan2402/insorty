@@ -689,6 +689,9 @@ const useFristFormAdd = () => {
       0
     );
     setTotalState(obj28);
+
+    localStorage.setItem('firstBack',JSON.stringify(fristFormState))
+    localStorage.setItem('totalFirstBack', JSON.stringify(totalState.allGrandTotal))
   };
 
   const handelSubmitFristFormBack = async (e) => {

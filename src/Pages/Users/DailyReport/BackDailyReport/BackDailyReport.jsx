@@ -1596,7 +1596,7 @@ const BackDailyReport = () => {
           <div className="py-6">
             <h1 className="my-4">
               <span className="font-bold titleText">
-                अंग्रेजी/बीयर/देशी/RML का भेजान
+                अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
               </span>
             </h1>
 
@@ -1699,7 +1699,7 @@ const BackDailyReport = () => {
           <div className="py-6">
             <h1 className="my-4">
               <span className="font-bold titleText">
-                अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
+                अंग्रेजी/बीयर/देशी/RML का भेजान
               </span>
             </h1>
             <form action="">

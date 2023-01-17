@@ -47,6 +47,12 @@ const useCashReciveAdd = () => {
       }
     });
     setCashReciveState(cashReciveHandel);
+
+    localStorage.setItem('paymentRecieved',JSON.stringify(cashReciveState))
+    localStorage.setItem('totalPaymentsRecieved', JSON.stringify(cashReciveState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.amount)),
+      0
+    )))
   };
 
   // const handelSubmitCashRecive = (e) => {

@@ -44,6 +44,14 @@ const useCarditDabit = () => {
       }
     });
     setCraditDabitState(dabitCarditHandel);
+
+    localStorage.setItem('credit',JSON.stringify(craditDabitState))
+    
+    localStorage.setItem('creditTotal', JSON.stringify(craditDabitState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.amount)),
+      0
+    )))
+
   };
 
   const handelSubmitCarditDabit = (e) => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 // frontPageData brandWise[]
 
 const useFormulasFristFormFront = () => {
@@ -63,6 +63,14 @@ const useFormulasFristFormFront = () => {
   const [addOneFristFormState, setAddOneFristFormState] = useState([
     addOneFristForm,
   ]);
+
+  const prevdata = JSON.parse(localStorage.getItem('firstFront'))
+
+  useEffect(() => {
+    if(prevdata){
+    setAddOneFristFormState(prevdata)
+  }
+  }, []);
 
   const [totalState, setTotalState] = useState({
     startingStock750Total: 0,
@@ -583,6 +591,10 @@ const useFormulasFristFormFront = () => {
       0
     );
     setTotalState(obj28);
+
+   
+    localStorage.setItem('firstFront',JSON.stringify(addOneFristFormState))
+    localStorage.setItem('firstFrontTotal', JSON.stringify(totalState.allGrandTotal))
   };
 
   const addOneFristFormHandler = () => {
@@ -926,6 +938,7 @@ const useFormulasFristFormFront = () => {
         finalSum: element.finalSum,
       });
     }
+    localStorage.removeItem('firstFront')
   };
 
   return {

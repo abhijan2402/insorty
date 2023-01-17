@@ -43,6 +43,8 @@ const useShippingAdd = () => {
       }
     });
     setAddShippingState(shipingHandler);
+
+    localStorage.setItem('bhejan',JSON.stringify(addShippingState))
   };
 
   const handelSubmitShipping = (e) => {

@@ -153,7 +153,11 @@ const useRmlAdd = () => {
 
     setAddRmlState(saleTotal);
 
-    
+    localStorage.setItem('rml',JSON.stringify(addRmlState))
+    localStorage.setItem('rmlTotal', JSON.stringify(addRmlState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.cost)),
+      0
+    )))
   };
 
   // const dataDetails = [

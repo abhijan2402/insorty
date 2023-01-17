@@ -36,6 +36,12 @@ const useCommissonAdd = () => {
         : commison
     );
     setCommissonState(handelCommisson);
+
+    localStorage.setItem('expenses',JSON.stringify(commissonState))
+    localStorage.setItem('totalExpenses', JSON.stringify(commissonState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.amount)),
+      0
+    )))
   };
 
   const handelSubmitCommisson = () => {

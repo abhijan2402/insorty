@@ -65,6 +65,12 @@ const usePurchesOutSideAdd = () => {
     });
     setPurchesOutSideState(yog);
 
+    localStorage.setItem('purchases',JSON.stringify(purchesOutSideState))
+    localStorage.setItem('purchasesTotal', JSON.stringify(purchesOutSideState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.total)),
+      0
+    )))
+
   };
 
   const handelSubmitPurchesOutSide = (e) => {

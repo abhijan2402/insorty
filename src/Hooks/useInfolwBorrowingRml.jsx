@@ -77,6 +77,12 @@ const useInfolwBorrowingRml = () => {
       } else return returned;
     });
     setInfolwBorrwingFormState(handelavg650);
+
+    localStorage.setItem('borrow',JSON.stringify(infolwBorrwingFormState))
+    localStorage.setItem('totalBorrow', JSON.stringify(infolwBorrwingFormState.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.total)),
+      0
+    )))
   };
 
   const handelSubmitBorrowingRml = (e) => {
