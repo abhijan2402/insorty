@@ -43,7 +43,7 @@ const BackDailyReport = () => {
     addRmlState,
     handelAddFiveInRml,
     handelAddOneInRml,
-    handelSubmitRml,
+    // handelSubmitRml,
     onChangeRmlHandler,
   } = useRmlAdd();
 
@@ -53,7 +53,7 @@ const BackDailyReport = () => {
     handelAddFivePurchesOutSide,
     handelAddOnePurchesOutSide,
     onChangePurchesOutSide,
-    handelSubmitPurchesOutSide,
+    // handelSubmitPurchesOutSide,
   } = usePurchesOutSideAdd();
 
   // ================== Commission Form============
@@ -62,7 +62,7 @@ const BackDailyReport = () => {
     handelAddFiveCommison,
     handelAddOneCommison,
     onChangeCommison,
-    handelSubmitCommisson,
+    // handelSubmitCommisson,
   } = useCommissonAdd();
 
   // ================== Cash Recive Form============
@@ -71,14 +71,14 @@ const BackDailyReport = () => {
     handelAddFiveCashRecive,
     handelAddOneCashRecive,
     onChangeCashRecive,
-    handelSubmitCashRecive,
+    // handelSubmitCashRecive,
   } = useCashReciveAdd();
 
   // ================== Shipping Form============
   const {
     addShippingState,
     onChangeShipping,
-    handelSubmitShipping,
+    // handelSubmitShipping,
     handelAddFiveShipping,
     handelAddOneShipping,
   } = useShippingAdd();
@@ -87,7 +87,7 @@ const BackDailyReport = () => {
   const {
     infolwBorrwingFormState,
     onChangeBorrowingRml,
-    handelSubmitBorrowingRml,
+    // handelSubmitBorrowingRml,
     handelAddFiveBorrowingRml,
     handelAddOneBorrowingRml,
   } = useInfolwBorrowingRml();
@@ -96,7 +96,7 @@ const BackDailyReport = () => {
   const {
     craditDabitState,
     onChangeCarditDabit,
-    handelSubmitCarditDabit,
+    // handelSubmitCarditDabit,
     handelAddFiveCarditDabit,
     handelAddOneCarditDabit,
   } = useCarditDabit();
@@ -128,8 +128,11 @@ const BackDailyReport = () => {
     handelAddOneCarditDabit();
   };
 
-  const { commentState, handelSubimtComment, handleChangeComment } =
-    useComment();
+  const {
+    commentState,
+    // handelSubimtComment,
+    handleChangeComment,
+  } = useComment();
   // ********************************* submit mulitple api in handelSubmit  *********************************
 
   return (
@@ -979,6 +982,7 @@ const BackDailyReport = () => {
                   </table>
                 </div>
               </form>
+
               <div className="mt-4 flex gap-4">
                 <button
                   className="dailyReportBtn"
@@ -1080,7 +1084,6 @@ const BackDailyReport = () => {
                       );
                     })}
 
-
                     <tr>
                       <th></th>
                       <td>
@@ -1106,7 +1109,8 @@ const BackDailyReport = () => {
                             name="openingStock"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                                (total = total + Number(currentItem.openingStock)),
+                                (total =
+                                  total + Number(currentItem.openingStock)),
                               0
                             )}
                             onChange={(e) => onChangeRmlHandler(e)}
@@ -1124,7 +1128,8 @@ const BackDailyReport = () => {
                             name="incomingPurchase"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                                (total = total + Number(currentItem.incomingPurchase)),
+                                (total =
+                                  total + Number(currentItem.incomingPurchase)),
                               0
                             )}
                             disabled
@@ -1153,7 +1158,8 @@ const BackDailyReport = () => {
                             name="incomePurchase"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                                (total = total + Number(currentItem.incomePurchase)),
+                                (total =
+                                  total + Number(currentItem.incomePurchase)),
                               0
                             )}
                             disabled
@@ -1179,7 +1185,8 @@ const BackDailyReport = () => {
                             name="inflowCredit"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                                (total = total + Number(currentItem.inflowCredit)),
+                                (total =
+                                  total + Number(currentItem.inflowCredit)),
                               0
                             )}
                             disabled
@@ -1189,12 +1196,17 @@ const BackDailyReport = () => {
                       {/* ======== योग/शेष ========= */}
                       <td>
                         <div className="form-control">
-                          <input type="number" className="semiSmallInput" name="sending" value={addRmlState.reduce(
-                            (total, currentItem) =>
-                              (total = total + Number(currentItem.sending)),
-                            0
-                          )}
-                            disabled />
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="sending"
+                            value={addRmlState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.sending)),
+                              0
+                            )}
+                            disabled
+                          />
                         </div>
                       </td>
                       {/* ======== अन्तिम स्टॉक ========= */}
@@ -1206,7 +1218,8 @@ const BackDailyReport = () => {
                             name="sumRemainder"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                                (total = total + Number(currentItem.sumRemainder)),
+                                (total =
+                                  total + Number(currentItem.sumRemainder)),
                               0
                             )}
                             disabled
@@ -1221,7 +1234,8 @@ const BackDailyReport = () => {
                             name="closingStock"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                                (total = total + Number(currentItem.closingStock)),
+                                (total =
+                                  total + Number(currentItem.closingStock)),
                               0
                             )}
                             disabled
@@ -1232,35 +1246,48 @@ const BackDailyReport = () => {
                       {/* ============= बिक्री ================ */}
                       <td>
                         <div className="form-control">
-                          <input type="number" className="semiSmallInput" name="sales" value={addRmlState.reduce(
-                            (total, currentItem) =>
-                              (total = total + Number(currentItem.sales)),
-                            0
-                          )}
-                            disabled />
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="sales"
+                            value={addRmlState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.sales)),
+                              0
+                            )}
+                            disabled
+                          />
                         </div>
                       </td>
                       {/* ============= रेट ================ */}
                       <td>
                         <div className="form-control">
-                          <input type="number" className="semiSmallInput" name="rate" disabled />
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="rate"
+                            disabled
+                          />
                         </div>
                       </td>
                       {/* ============= योग ================ */}
                       <td>
                         <div className="form-control">
-                          <input type="number" className="semiSmallInput" name="cost" value={addRmlState.reduce(
-                            (total, currentItem) =>
-                              (total = total + Number(currentItem.cost)),
-                            0
-                          )}
-                            disabled />
+                          <input
+                            type="number"
+                            className="semiSmallInput"
+                            name="cost"
+                            value={addRmlState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.cost)),
+                              0
+                            )}
+                            disabled
+                          />
                         </div>
                       </td>
                       {/* ============= कुल योग ================ */}
                     </tr>
-
-
                   </tbody>
                 </table>
               </div>
@@ -1362,7 +1389,7 @@ const BackDailyReport = () => {
                                 (total = total + Number(currentItem.theNumber)),
                               0
                             )}
-                           disabled
+                            disabled
                           />
                         </div>
                       </td>
@@ -1392,8 +1419,7 @@ const BackDailyReport = () => {
                             type="number"
                             className="semiSmallInput"
                             name="rate"
-                            
-                           disabled
+                            disabled
                           />
                         </div>
                       </td>
@@ -1408,8 +1434,8 @@ const BackDailyReport = () => {
                               (total, currentItem) =>
                                 (total = total + Number(currentItem.total)),
                               0
-                            ) }
-                           disabled
+                            )}
+                            disabled
                           />
                         </div>
                       </td>
@@ -1420,13 +1446,12 @@ const BackDailyReport = () => {
                             type="text"
                             className="semiSmallInput"
                             name="reason"
-                           disabled
+                            disabled
                           />
                         </div>
                       </td>
                       {/* ======== आमद (उधारी) ========= */}
                     </tr>
-
                   </tbody>
                 </table>
               </div>
@@ -1493,7 +1518,6 @@ const BackDailyReport = () => {
                         />
                       </td>
                     </tr>
-
                   </tbody>
                 </table>
               </div>
@@ -1535,7 +1559,7 @@ const BackDailyReport = () => {
                             type="text"
                             className="dailyReportInput"
                             name="reson"
-                           disabled
+                            disabled
                             style={{
                               width: "443px",
                             }}
@@ -1552,7 +1576,7 @@ const BackDailyReport = () => {
                               (total = total + Number(currentItem.amount)),
                             0
                           )}
-                         disabled
+                          disabled
                           className="semiSmallInput"
                           style={{
                             width: "100%",
@@ -1560,7 +1584,6 @@ const BackDailyReport = () => {
                         />
                       </td>
                     </tr>
-                    
                   </tbody>
                 </table>
               </div>
@@ -1621,7 +1644,7 @@ const BackDailyReport = () => {
                             type="text"
                             className="semiSmallInput"
                             name="brandName"
-                           disabled
+                            disabled
                           />
                         </div>
                       </td>
@@ -1637,7 +1660,7 @@ const BackDailyReport = () => {
                                 (total = total + Number(currentItem.theNumber)),
                               0
                             )}
-                           disabled
+                            disabled
                           />
                         </div>
                       </td>
@@ -1652,7 +1675,6 @@ const BackDailyReport = () => {
                         </div>
                       </td>
                     </tr>
-
                   </tbody>
                 </table>
               </div>
