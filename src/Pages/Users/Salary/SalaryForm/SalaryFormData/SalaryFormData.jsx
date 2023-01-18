@@ -1,6 +1,11 @@
 import React from "react";
 
-const SalaryFormData = ({ salary, index, handelSelaryOnChange }) => {
+const SalaryFormData = ({
+  salary,
+  index,
+  handelSelaryOnChange,
+  employeeData,
+}) => {
   return (
     <>
       <tr>
@@ -10,11 +15,11 @@ const SalaryFormData = ({ salary, index, handelSelaryOnChange }) => {
           <div className="flex gap-4">
             <div className="form-control">
               <input
-                type="number"
+                type="text"
                 name="salary_monthYear"
                 value={salary.salary_monthYear}
                 onChange={(e) => handelSelaryOnChange(e, index)}
-                className="commonSmallForm"
+                className="semiSmallInput"
               />
             </div>
 

@@ -26,6 +26,7 @@ import Extra from "../Pages/Users/Extra/Extra/Extra";
 import MainInvestment from "../Pages/Users/MainInvestment/MainInvestment/MainInvestment";
 import EnglishBear from "../Pages/Users/EnglishBear/EnglishBear/EnglishBear";
 
+const token = localStorage.getItem("token");
 const router = createBrowserRouter([
   // Home Routes
   {
@@ -113,8 +114,20 @@ const router = createBrowserRouter([
         path: "/user/salary",
         element: <Salary />,
       },
+
       {
-        path: "/user/salary/from",
+        path: "/user/salary/from/:employeeId",
+        loader: ({ params }) =>
+          fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
+            method: "POST",
+            body: JSON.stringify({
+              employeeId: params.employeeId,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }),
         element: <SalaryForm />,
       },
       {
