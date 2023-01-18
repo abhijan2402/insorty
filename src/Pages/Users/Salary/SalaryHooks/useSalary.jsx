@@ -59,15 +59,29 @@ const useSalary = () => {
     const handelSalary = salaryState;
     const salaryData = [];
 
+    /*
+     "salary": {
+                "month": 2,
+                "price": 24000
+            },
+            "payment": {
+                "month": 2,
+                "price": 12000
+            },
+            "comment": "15 din moj maari ladke ne."
+
+    */
+
     for (let index = 0; index < handelSalary.length; index++) {
       const element = handelSalary[index];
+
       salaryData.push({
         salary: {
           month: parseInt(element.salary_monthYear),
           price: parseInt(element.salary_price),
         },
         payment: {
-          date: parseInt(element.payment_date),
+          month: parseInt(element.payment_date),
           price: parseInt(element.payment_price),
         },
         comments: element.reason,
@@ -80,11 +94,11 @@ const useSalary = () => {
         "https://insorty-api.onrender.com/shop/addEmployeeSalaryData",
         {
           method: "POST",
+          body: JSON.stringify({ salaryData }),
           headers: {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ salaryData }),
         }
       );
       const data = await response.json();
@@ -92,7 +106,7 @@ const useSalary = () => {
         Swal.fire({
           icon: "success",
           title: "Success",
-          text: "Salary added successfully",
+          text: data.message,
         });
         console.log(data);
       } else {

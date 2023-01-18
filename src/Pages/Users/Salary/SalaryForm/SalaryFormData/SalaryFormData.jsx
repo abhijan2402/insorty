@@ -10,12 +10,11 @@ const SalaryFormData = ({
     <>
       <tr>
         <th>{index + 1}</th>
-
         <td>
           <div className="flex gap-4">
             <div className="form-control">
               <input
-                type="text"
+                type="date"
                 name="salary_monthYear"
                 value={salary.salary_monthYear}
                 onChange={(e) => handelSelaryOnChange(e, index)}
@@ -39,11 +38,11 @@ const SalaryFormData = ({
           <div className="flex gap-4">
             <div className="form-control">
               <input
-                type="number"
+                type="date"
                 name="payment_date"
                 value={salary.payment_date}
                 onChange={(e) => handelSelaryOnChange(e, index)}
-                className="commonSmallForm"
+                className="semiSmallInput"
               />
             </div>
 

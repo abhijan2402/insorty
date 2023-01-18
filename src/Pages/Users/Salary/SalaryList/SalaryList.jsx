@@ -10,7 +10,11 @@ import Loader from "../../../../Components/Loader/Loader";
 const SalaryList = () => {
   const token = localStorage.getItem("token");
 
-  const { data: salaryData, isLoading, refetch } = useQuery({
+  const {
+    data: salaryData,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["salaryData"],
     queryFn: async () => {
       const res = await fetch(
