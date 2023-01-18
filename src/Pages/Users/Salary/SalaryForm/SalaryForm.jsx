@@ -1,9 +1,11 @@
 import React from "react";
 import SalaryFormData from "./SalaryFormData/SalaryFormData";
 import useSalary from "../SalaryHooks/useSalary";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const SalaryForm = () => {
+  const salaryData = useLoaderData();
+  const employeeData = salaryData?.data;
   const {
     salaryState,
     isLoading,
@@ -18,7 +20,7 @@ const SalaryForm = () => {
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">
           कर्माचीरी का नाम / Name{" "}
-          <span className="titleStyle">Rahul / राहुल</span>
+          <span className="titleStyle">{employeeData?.name}</span>
         </h2>
 
         <div className="flex gap-4 items-center my-4">
@@ -52,6 +54,36 @@ const SalaryForm = () => {
                         </label>
                       </div>
 
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text"></span>
+                        </label>
+                      </div>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text"></span>
+                        </label>
+                      </div>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text"></span>
+                        </label>
+                      </div>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text"></span>
+                        </label>
+                      </div>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text"></span>
+                        </label>
+                      </div>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text"></span>
+                        </label>
+                      </div>
                       <div className="form-control">
                         <label className="label">
                           <span className="label-text"> रकम</span>
@@ -89,6 +121,7 @@ const SalaryForm = () => {
                 {salaryState.map((salary, index) => {
                   return (
                     <SalaryFormData
+                      key={index}
                       salary={salary}
                       index={index}
                       handelSelaryOnChange={handelSelaryOnChange}
@@ -147,7 +180,10 @@ const SalaryForm = () => {
             <button className="dailyReportBtn" onClick={() => addOneSalary()}>
               ADD 1
             </button>
-            <Link className="dailyReportBtn text-center flex justify-center items-center">
+            <Link
+              to="/user/salary"
+              className="dailyReportBtn text-center flex justify-center items-center"
+            >
               सूची
             </Link>
           </div>

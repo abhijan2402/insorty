@@ -865,20 +865,8 @@ const useFormulasFristFormFront = () => {
         ],
   */
 
-  const handelSubmitFristFormFront = (e) => {
-    const brandWise = [];
 
-    for (let index = 0; index < addOneFristFormState.length; index++) {
-      const element = addOneFristFormState[index];
-      brandWise.push({
-        brandName: element.brandName,
-
-        initialStock: {
-          initialStock750: element.initialStock750,
-          initialStock330: element.initialStock330,
-          initialStock180: element.initialStock180,
-        },
-
+<<<<<<< HEAD
         purchaseShop: {
           purchaseShop750: element.purchaseShop750,
           purchaseShop330: element.purchaseShop330,
@@ -940,6 +928,8 @@ const useFormulasFristFormFront = () => {
     }
     localStorage.removeItem('firstFront')
   };
+=======
+>>>>>>> 5efa28bb32d0db9150039e50cb1c72654ef72794
 
   return {
     totalState,
