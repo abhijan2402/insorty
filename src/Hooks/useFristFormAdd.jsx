@@ -1,5 +1,5 @@
 // import axios from "axios";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Swal from "sweetalert2";
 
 const useFristFormAdd = () => {
@@ -66,6 +66,15 @@ const useFristFormAdd = () => {
   };
 
   const [fristFormState, setFristFormState] = useState([fristFormObj]);
+
+  const prevdata = JSON.parse(localStorage.getItem('firstBack'))
+
+  useEffect(() => {
+    if (prevdata) {
+      setFristFormState(prevdata)
+    }
+  }, []);
+
 
   const addFiveInFristFormHandler = () => {
     let data = fristFormState;

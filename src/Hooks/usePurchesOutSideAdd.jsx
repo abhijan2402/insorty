@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const usePurchesOutSideAdd = () => {
   const purchesOutSideAdd = {
@@ -16,6 +16,16 @@ const usePurchesOutSideAdd = () => {
   const [purchesOutSideState, setPurchesOutSideState] = useState([
     purchesOutSideAdd,
   ]);
+
+
+  const prevdata = JSON.parse(localStorage.getItem('purchases'))
+
+  useEffect(() => {
+    if (prevdata) {
+      setPurchesOutSideState(prevdata)
+    }
+  }, []);
+
 
   const handelAddOnePurchesOutSide = () => {
     setPurchesOutSideState([...purchesOutSideState, {

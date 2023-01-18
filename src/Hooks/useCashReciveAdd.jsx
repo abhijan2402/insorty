@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 // borrowCashReturnData
 
 const useCashReciveAdd = () => {
@@ -10,6 +10,16 @@ const useCashReciveAdd = () => {
   };
 
   const [cashReciveState, setCashReciveState] = useState([cashReciveForm]);
+
+
+  const prevdata = JSON.parse(localStorage.getItem('paymentRecieved'))
+
+  useEffect(() => {
+    if (prevdata) {
+      setCashReciveState(prevdata)
+    }
+  }, []);
+
 
   const handelAddFiveCashRecive = () => {
     let data = cashReciveState;

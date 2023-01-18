@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const useInfolwBorrowingRml = () => {
   const infolwBorrwingForm = {
@@ -14,6 +14,14 @@ const useInfolwBorrowingRml = () => {
   const [infolwBorrwingFormState, setInfolwBorrwingFormState] = useState([
     infolwBorrwingForm,
   ]);
+
+  const prevdata = JSON.parse(localStorage.getItem('borrow'))
+
+  useEffect(() => {
+    if (prevdata) {
+      setInfolwBorrwingFormState(prevdata)
+    }
+  }, []);
 
   const handelAddFiveBorrowingRml = () => {
     let data = infolwBorrwingFormState

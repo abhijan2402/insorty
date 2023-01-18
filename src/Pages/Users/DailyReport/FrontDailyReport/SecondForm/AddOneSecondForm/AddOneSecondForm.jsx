@@ -33,6 +33,7 @@ const AddOneSecondForm = ({
               onChange={(e) => handelSeconFormOnChange(e, index)}
               className="semiSmallInput"
               name="averageRate"
+              disabled
             />
           </div>
         </td>
@@ -131,6 +132,7 @@ const AddOneSecondForm = ({
               name="sumRemainder"
               value={item.sumRemainder}
               onChange={(e) => handelSeconFormOnChange(e, index)}
+              disabled
             />
           </div>
         </td>
@@ -155,6 +157,7 @@ const AddOneSecondForm = ({
               name="sales"
               value={item.sales}
               onChange={(e) => handelSeconFormOnChange(e, index)}
+              disabled
             />
           </div>
         </td>
@@ -179,6 +182,7 @@ const AddOneSecondForm = ({
               name="total"
               value={item.total}
               onChange={(e) => handelSeconFormOnChange(e, index)}
+              disabled
             />
           </div>
         </td>
@@ -191,6 +195,7 @@ const AddOneSecondForm = ({
               name="grandTotal"
               value={item.grandTotal}
               onChange={(e) => handelSeconFormOnChange(e, index)}
+              disabled
             />
           </div>
         </td>

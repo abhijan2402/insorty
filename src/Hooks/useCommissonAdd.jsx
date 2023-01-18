@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 // commissionData
 
 const useCommissonAdd = () => {
@@ -8,6 +8,14 @@ const useCommissonAdd = () => {
   };
 
   const [commissonState, setCommissonState] = useState([commissonForm]);
+
+  const prevdata = JSON.parse(localStorage.getItem('expenses'))
+
+  useEffect(() => {
+    if (prevdata) {
+      setCommissonState(prevdata)
+    }
+  }, []);
 
   const handelAddFiveCommison = () => {
     let data = commissonState

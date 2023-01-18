@@ -11,6 +11,7 @@ const FinalReport = ({
   // const { totalState } = useContext(DataContextApi);
 
   const firstformData = JSON.parse(localStorage.getItem('firstFrontTotal'))
+  const secondFront = JSON.parse(localStorage.getItem('mlFormTotal'))
 
   return (
     <section>
@@ -28,7 +29,7 @@ const FinalReport = ({
             <tr>
               <th>1</th>
               <td>अंग्रेजी</td>
-              <td>{firstformData}</td>
+              <td>{firstformData + secondFront}</td>
             </tr>
 
             {/* 02 */}
@@ -48,7 +49,7 @@ const FinalReport = ({
             <tr>
               <th>4</th>
               <td>कुल बिक्री</td>
-              <td>{rmlTotal + beerTotal}</td>
+              <td>{rmlTotal + beerTotal + firstformData + secondFront}</td>
             </tr>
             {/* 05 */}
             <tr>

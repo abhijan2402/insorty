@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 // backPageRmlData
 
@@ -24,6 +24,14 @@ const useRmlAdd = () => {
 
   //
   const [addRmlState, setAddRmlState] = useState([addRmlForm]);
+
+  const prevdata = JSON.parse(localStorage.getItem('rml'))
+
+  useEffect(() => {
+    if (prevdata) {
+      setAddRmlState(prevdata)
+    }
+  }, []);
 
   const handelAddFiveInRml = () => {
     let data = addRmlState;

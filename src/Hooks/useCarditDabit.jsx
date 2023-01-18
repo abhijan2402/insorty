@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const useCarditDabit = () => {
 
@@ -10,6 +10,14 @@ const useCarditDabit = () => {
   };
 
   const [craditDabitState, setCraditDabitState] = useState([craditDabitForm]);
+
+  const prevdata = JSON.parse(localStorage.getItem('credit'))
+
+  useEffect(() => {
+    if (prevdata) {
+      setCraditDabitState(prevdata)
+    }
+  }, []);
 
   const handelAddFiveCarditDabit = () => {
     let data = craditDabitState

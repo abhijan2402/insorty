@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const useShippingAdd = () => {
   const addShippingForm = {
@@ -9,6 +9,14 @@ const useShippingAdd = () => {
   };
 
   const [addShippingState, setAddShippingState] = useState([addShippingForm]);
+
+  const prevdata = JSON.parse(localStorage.getItem('bhejan'))
+
+  useEffect(() => {
+    if (prevdata) {
+      setAddShippingState(prevdata)
+    }
+  }, []);
 
   const handelAddFiveShipping = () => {
     let data = addShippingState

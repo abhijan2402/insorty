@@ -104,11 +104,30 @@ const useHandelSubmitBackAPI = () => {
         .then((data) => {
           console.log(data);
           if (data[0].success === true && data[1].success === true) {
+            
             Swal.fire({
               icon: "success",
               title: "Success",
               text: "Data Saved Successfully",
             });
+
+            localStorage.removeItem('firstBack')
+            localStorage.removeItem('totalFirstBack')
+            localStorage.removeItem('rml')
+            localStorage.removeItem('rmlTotal')
+            localStorage.removeItem('purchases')
+            localStorage.removeItem('purchasesTotal')
+            localStorage.removeItem('expenses')
+            localStorage.removeItem('totalExpenses')
+            localStorage.removeItem('paymentRecieved')
+            localStorage.removeItem('totalPaymentsRecieved')
+            localStorage.removeItem('bhejan')
+            localStorage.removeItem('borrow')
+            localStorage.removeItem('totalBorrow')
+            localStorage.removeItem('credit')
+            localStorage.removeItem('creditTotal')
+            localStorage.removeItem('firstFront')
+            localStorage.removeItem('firstFrontTotal')
           } else {
             Swal.fire({
               icon: "error",

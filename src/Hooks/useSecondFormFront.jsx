@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
 const useSecondFormFront = () => {
   const addOneSecondForm = {
@@ -22,6 +22,15 @@ const useSecondFormFront = () => {
   const [addOneSecondFormState, setAddOneSecondFormState] = useState([
     addOneSecondForm,
   ]);
+
+
+  const prevdata = JSON.parse(localStorage.getItem('mlForm'))
+
+  useEffect(() => {
+    if (prevdata) {
+      setAddOneSecondFormState(prevdata)
+    }
+  }, []);
 
   const addOneSecondFormHandler = () => {
     setAddOneSecondFormState([
@@ -118,7 +127,7 @@ const useSecondFormFront = () => {
     });
     setAddOneSecondFormState(sales);
 
-    const total = addOneSecondFormState.map((returned, i) => {
+    const totals = addOneSecondFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (e.target.name === "sales" || e.target.name === "mainRate") {
@@ -127,9 +136,18 @@ const useSecondFormFront = () => {
         return obj;
       } else return returned;
     });
-    setAddOneSecondFormState(total);
+    setAddOneSecondFormState(totals);
+
+    localStorage.setItem("mlForm",JSON.stringify(addOneSecondFormState))
+    localStorage.setItem("mlFormTotal", JSON.stringify(addOneSecondFormState.reduce(
+      (totals, currentItem) =>
+        (totals = totals + Number(currentItem.total)),
+      0
+    )))
   };
 
+
+  
   return {
     addOneSecondFormState,
     addOneSecondFormHandler,
