@@ -15,7 +15,7 @@ import {
 
 const SideNav = () => {
   return (
-    <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r ">
+    <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r sticky  left-0 ">
       <div className="text-3xl flex justify-center items-center font-semibold  text-white">
         <img src={Logo} alt="Instory Logo" style={{ width: "60%" }} />
       </div>
