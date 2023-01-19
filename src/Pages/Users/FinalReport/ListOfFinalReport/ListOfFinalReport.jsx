@@ -48,6 +48,56 @@ const ListOfFinalReport = () => {
               <td className="commonText">बचत</td>
               <td className="price">500</td>
             </tr>
+            <tr>
+              <th className="commonText">8</th>
+              <td className="commonText">उधारी/नामे बढ़त</td>
+              <td className="price">500</td>
+            </tr>
+            <tr>
+              <th className="commonText">9</th>
+              <td className="commonText">शुद्ध बचत</td>
+              <td className="price">500</td>
+            </tr>
+            <tr>
+              <th className="commonText">10</th>
+              <td className="commonText">उधारी/नामे कमी (रिकवरी) चालू वर्ष</td>
+              <td className="price">500</td>
+            </tr>
+            <tr>
+              <th className="commonText">11</th>
+              <td className="commonText">रिफंड/रिकवरी पुरानी</td>
+              <td className="price">500</td>
+            </tr>
+            <tr>
+              <th className="commonText">12</th>
+              <td className="commonText">कुल बचत</td>
+              <td className="price">500</td>
+            </tr>
+            <tr>
+              <th className="commonText">13</th>
+              <td className="commonText">अधिक नामे</td>
+              <td className="price">500</td>
+            </tr>
+            <tr>
+              <th className="commonText">14</th>
+              <td className="commonText">अधिक जमा</td>
+              <td className="price">500</td>
+            </tr>
+            <tr>
+              <th className="commonText">15</th>
+              <td className="commonText">कैश ऑन हैण्ड</td>
+              <td className="price">500</td>
+            </tr>
+            <tr>
+              <th className="commonText">16</th>
+              <td className="commonText">रिजर्व रकम</td>
+              <td className="price">500</td>
+            </tr>
+            <tr>
+              <th className="commonText">17</th>
+              <td className="commonText">शेष रकम</td>
+              <td className="price">500</td>
+            </tr>
           </tbody>
         </table>
       </div>

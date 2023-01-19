@@ -1,11 +1,6 @@
 import React from "react";
 
-const SalaryFormData = ({
-  salary,
-  index,
-  handelSelaryOnChange,
-  employeeData,
-}) => {
+const SalaryFormData = ({ index }) => {
   return (
     <>
       <tr>
@@ -14,10 +9,10 @@ const SalaryFormData = ({
           <div className="flex gap-4">
             <div className="form-control">
               <input
-                type="date"
+                type="text"
+                value={new Date().toLocaleDateString()}
+                disabled
                 name="salary_monthYear"
-                value={salary.salary_monthYear}
-                onChange={(e) => handelSelaryOnChange(e, index)}
                 className="semiSmallInput"
               />
             </div>
@@ -26,8 +21,8 @@ const SalaryFormData = ({
               <input
                 type="number"
                 name="salary_price"
-                value={salary.salary_price}
-                onChange={(e) => handelSelaryOnChange(e, index)}
+                value={67867}
+                disabled
                 className="semiSmallInput"
               />
             </div>
@@ -40,8 +35,8 @@ const SalaryFormData = ({
               <input
                 type="date"
                 name="payment_date"
-                value={salary.payment_date}
-                onChange={(e) => handelSelaryOnChange(e, index)}
+                disabled
+                value={new Date().toLocaleDateString()}
                 className="semiSmallInput"
               />
             </div>
@@ -50,8 +45,8 @@ const SalaryFormData = ({
               <input
                 type="number"
                 name="payment_price"
-                value={salary.payment_price}
-                onChange={(e) => handelSelaryOnChange(e, index)}
+                value={78979}
+                disabled
                 className="semiSmallInput"
               />
             </div>
@@ -64,8 +59,8 @@ const SalaryFormData = ({
               <input
                 type="text"
                 name="reason"
-                value={salary.reason}
-                onChange={(e) => handelSelaryOnChange(e, index)}
+                disabled
+                value={"hello"}
                 className="semiSmallInput"
               />
             </div>

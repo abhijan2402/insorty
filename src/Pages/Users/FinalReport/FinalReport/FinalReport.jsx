@@ -1,6 +1,5 @@
 import React from "react";
 import ListOfFinalReport from "../ListOfFinalReport/ListOfFinalReport";
-import { Link } from "react-router-dom";
 import useFinalReport from "../FinalReportHooks/useFinalReport";
 import FinalReportForm from "../FinalReportForm/FinalReportForm";
 import FinalReportStockExcessForm from "../FinalReportStockExcessForm/FinalReportStockExcessForm";
@@ -42,7 +41,7 @@ const FinalReport = () => {
                   <tr>
                     <th>S.no</th>
                     <th>पार्टी का नाम</th>
-                    <th>राण्ड</th>
+                    <th>Brand / ब्राण्ड</th>
                     <th>संख्या</th>
                   </tr>
                 </thead>
@@ -76,9 +75,6 @@ const FinalReport = () => {
               >
                 ADD 1
               </button>
-              <Link className="dailyReportBtn text-center flex justify-center items-center">
-                सूची
-              </Link>
             </div>
           </div>
         </div>
@@ -96,7 +92,7 @@ const FinalReport = () => {
                   <tr>
                     <th>S.no</th>
                     <th>पार्टी का नाम</th>
-                    <th>राण्ड</th>
+                    <th>Brand / ब्राण्ड</th>
                     <th>संख्या</th>
                   </tr>
                 </thead>
@@ -137,9 +133,6 @@ const FinalReport = () => {
               >
                 ADD 1
               </button>
-              <Link className="dailyReportBtn text-center flex justify-center items-center">
-                सूची
-              </Link>
             </div>
           </div>
         </div>
