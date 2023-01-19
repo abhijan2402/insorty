@@ -3,12 +3,72 @@ import SalaryFormData from "./SalaryFormData/SalaryFormData";
 import useSalary from "../SalaryHooks/useSalary";
 import { Link, useLoaderData } from "react-router-dom";
 import SalaryModal from "../SalaryModal/SalaryModal";
+import Swal from "sweetalert2";
 
 const SalaryForm = () => {
+  const token = localStorage.getItem("token");
   const salaryData = useLoaderData();
   const employeeData = salaryData?.data;
-  const { salaryState, isLoading, handelSelaryOnChange, handelSalaryOnSubmit } =
+  const { salaryState, isLoading, handelSelaryOnChange, setIsLoading } =
     useSalary();
+
+  const handelSalaryOnSubmit = async () => {
+    const handelSalary = salaryState;
+    const salaryData = [];
+
+    for (let index = 0; index < handelSalary.length; index++) {
+      const element = handelSalary[index];
+
+      salaryData.push({
+        salary: {
+          month: element.salary_monthYear,
+          price: element.salary_price,
+        },
+        payment: {
+          month: element.payment_date,
+          price: element.payment_price,
+        },
+        comments: element.reason,
+      });
+    }
+
+    setIsLoading(true);
+    try {
+      const response = await fetch(
+        "https://insorty-api.onrender.com/shop/addEmployeeSalaryData",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            employeeId: employeeData._id,
+            salaryData,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+        }
+      );
+      const data = await response.json();
+      if (data.success === true) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: data.message,
+        });
+        console.log(data);
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: data.message,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <section className="px-2 py-6">
@@ -20,7 +80,7 @@ const SalaryForm = () => {
 
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">Year</h2>
-          <input type="text" name="year" className="semiSmallInput" />
+          <input type="text" className="semiSmallInput" />
         </div>
       </div>
       {/* ************************ all sealy data************** */}

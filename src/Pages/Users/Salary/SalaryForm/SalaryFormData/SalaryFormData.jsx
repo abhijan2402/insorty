@@ -12,7 +12,6 @@ const SalaryFormData = ({ index }) => {
                 type="text"
                 value={new Date().toLocaleDateString()}
                 disabled
-                name="salary_monthYear"
                 className="semiSmallInput"
               />
             </div>
@@ -20,7 +19,6 @@ const SalaryFormData = ({ index }) => {
             <div className="form-control">
               <input
                 type="number"
-                name="salary_price"
                 value={67867}
                 disabled
                 className="semiSmallInput"
@@ -34,7 +32,6 @@ const SalaryFormData = ({ index }) => {
             <div className="form-control">
               <input
                 type="date"
-                name="payment_date"
                 disabled
                 value={new Date().toLocaleDateString()}
                 className="semiSmallInput"
@@ -44,7 +41,6 @@ const SalaryFormData = ({ index }) => {
             <div className="form-control">
               <input
                 type="number"
-                name="payment_price"
                 value={78979}
                 disabled
                 className="semiSmallInput"
