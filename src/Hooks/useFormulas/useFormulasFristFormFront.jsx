@@ -1,7 +1,9 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 // frontPageData brandWise[]
 
 const useFormulasFristFormFront = () => {
+  const token = localStorage.getItem("token");
+
   let addOneFristForm = {
     brandName: "", //brandName
 
@@ -60,16 +62,28 @@ const useFormulasFristFormFront = () => {
     averageRate180: 0,
   };
 
+  const [myOptions, setMyOptions] = useState([]);
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    fetch("https://insorty-api.onrender.com/shop/getAllLiquors", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", cookie_token: token },
+    })
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, [token]);
+
   const [addOneFristFormState, setAddOneFristFormState] = useState([
     addOneFristForm,
   ]);
 
-  const prevdata = JSON.parse(localStorage.getItem('firstFront'))
+  const prevdata = JSON.parse(localStorage.getItem("firstFront"));
 
   useEffect(() => {
-    if(prevdata){
-    setAddOneFristFormState(prevdata)
-  }
+    if (prevdata) {
+      setAddOneFristFormState(prevdata);
+    }
   }, []);
 
   const [totalState, setTotalState] = useState({
@@ -109,44 +123,17 @@ const useFormulasFristFormFront = () => {
     allGrandTotal: 0,
   });
 
-  // const [totalState,setTotalState] = useState({
-  //    startingStock750Total : "",
-  //   startingStock330Total : 0,
-  //   startingStock180Total : 0,
-  //   incomingPurchase750Total : 0,
-  //   incomingPurchase330Total : 0,
-  //   incomingPurchase180Total : 0,
-  //   incomePurchase750Total : 0,
-  //   incomePurchase330Total : 0,
-  //   incomePurchase180Total : 0,
-  //   inflowCredit750Total : 0,
-  //   inflowCredit330Total : 0,
-  //   inflowCredit180Total : 0,
-
-  //   sending750Total : 0,
-  //   sending330Total : 0,
-  //   sending180Total : 0,
-
-  //   sumRemainder750Total : 0,
-  //   sumRemainder330Total : 0,
-  //   sumRemainder180Total : 0,
-
-  //   closingStock750Total : 0,
-  //   closingStock330Total : 0,
-  //   closingStock180Total : 0,
-
-  //   sales750Total : 0,
-  //   sales330Total : 0,
-  //   sales180Total : 0,
-
-  //   total750Total : 0,
-  //   total330Total : 0,
-  //   total180Total : 0,
-
-  //   allGrandTotal : 0,})
-
   const handelFristFormOnChange = (e, index) => {
     //************* Formula **************** */
+    const getDataFromAPI = () => {
+      const res = data;
+      for (var i = 0; i < res.data.length; i++) {
+        myOptions.push(res.data[i]?.brandName);
+      }
+      setMyOptions(myOptions);
+    };
+    getDataFromAPI();
+
     const firstFormHandel = addOneFristFormState.map((firstFormFront, i) =>
       index === i
         ? Object.assign(firstFormFront, { [e.target.name]: e.target.value })
@@ -592,9 +579,11 @@ const useFormulasFristFormFront = () => {
     );
     setTotalState(obj28);
 
-   
-    localStorage.setItem('firstFront',JSON.stringify(addOneFristFormState))
-    localStorage.setItem('firstFrontTotal', JSON.stringify(totalState.allGrandTotal))
+    localStorage.setItem("firstFront", JSON.stringify(addOneFristFormState));
+    localStorage.setItem(
+      "firstFrontTotal",
+      JSON.stringify(totalState.allGrandTotal)
+    );
   };
 
   const addOneFristFormHandler = () => {
@@ -727,146 +716,6 @@ const useFormulasFristFormFront = () => {
     setAddOneFristFormState(data);
   };
 
-  /* 
-  
-         "brandWise": [
-            {
-                "brandName": "rjx",
-                "initialStock": {
-                    "initialStock750": 0,
-                    "initialStock330": 1,
-                    "initialStock180": 2
-                },
-                "purchaseShop": {
-                    "purchaseShop750": 1,
-                    "purchaseShop330": 2,
-                    "purchaseShop180": 3,
-                    "purchaseShopRate750": 1,
-                    "purchaseShopRate330": 2,
-                    "purchaseShopRate180": 3
-                },
-                "purchaseOutSide": {
-                    "purchaseOutSide750": 1,
-                    "purchaseOutSide330": 2,
-                    "purchaseOutSide180": 3,
-                    "purchaseOutSideRate750": 1,
-                    "purchaseOutSideRate330": 2,
-                    "purchaseOutSideRate180": 3
-                },
-                "purchaseAVG": {
-                    "purchaseAVG750": 0,
-                    "purchaseAVG330": 0,
-                    "purchaseAVG180": 0
-                },
-                "purchaseBorrow": {
-                    "purchaseBorrow750": 1,
-                    "purchaseBorrow330": 2,
-                    "purchaseBorrow180": 3
-                },
-                "sendingBhejan": {
-                    "sendingBhejan750": 1,
-                    "sendingBhejan330": 2,
-                    "sendingBhejan180": 3
-                },
-                "AddRemainder": {
-                    "AddRemainder750": 0,
-                    "AddRemainder330": 0,
-                    "AddRemainder180": 0
-                },
-                "lastStock": {
-                    "lastStock750": 1,
-                    "lastStock330": 2,
-                    "lastStock180": 3
-                },
-                "sold": {
-                    "sold750": 0,
-                    "sold330": 0,
-                    "sold180": 0
-                },
-                "soldRate": {
-                    "soldRate750": 1,
-                    "soldRate330": 2,
-                    "soldRate180": 3
-                },
-                "finalTotal": {
-                    "finalTotal750": 0,
-                    "finalTotal330": 0,
-                    "finalTotal180": 0
-                },
-                "finalSum": 0,
-                "_id": "63bd695d3d2826950f2bbf40"
-            },
-            {
-                "brandName": "ramsung",
-                "initialStock": {
-                    "initialStock750": 0,
-                    "initialStock330": 1,
-                    "initialStock180": 2
-                },
-                "purchaseShop": {
-                    "purchaseShop750": 1,
-                    "purchaseShop330": 2,
-                    "purchaseShop180": 3,
-                    "purchaseShopRate750": 1,
-                    "purchaseShopRate330": 2,
-                    "purchaseShopRate180": 3
-                },
-                "purchaseOutSide": {
-                    "purchaseOutSide750": 1,
-                    "purchaseOutSide330": 2,
-                    "purchaseOutSide180": 3,
-                    "purchaseOutSideRate750": 1,
-                    "purchaseOutSideRate330": 2,
-                    "purchaseOutSideRate180": 3
-                },
-                "purchaseAVG": {
-                    "purchaseAVG750": 0,
-                    "purchaseAVG330": 0,
-                    "purchaseAVG180": 0
-                },
-                "purchaseBorrow": {
-                    "purchaseBorrow750": 1,
-                    "purchaseBorrow330": 2,
-                    "purchaseBorrow180": 3
-                },
-                "sendingBhejan": {
-                    "sendingBhejan750": 1,
-                    "sendingBhejan330": 2,
-                    "sendingBhejan180": 3
-                },
-                "AddRemainder": {
-                    "AddRemainder750": 0,
-                    "AddRemainder330": 0,
-                    "AddRemainder180": 0
-                },
-                "lastStock": {
-                    "lastStock750": 1,
-                    "lastStock330": 2,
-                    "lastStock180": 3
-                },
-                "sold": {
-                    "sold750": 0,
-                    "sold330": 0,
-                    "sold180": 0
-                },
-                "soldRate": {
-                    "soldRate750": 1,
-                    "soldRate330": 2,
-                    "soldRate180": 3
-                },
-                "finalTotal": {
-                    "finalTotal750": 0,
-                    "finalTotal330": 0,
-                    "finalTotal180": 0
-                },
-                "finalSum": 0,
-                "_id": "63bd695d3d2826950f2bbf41"
-            }
-        ],
-  */
-
-
-
   return {
     totalState,
     addOneFristFormState,
@@ -874,6 +723,7 @@ const useFormulasFristFormFront = () => {
     handelFristFormOnChange,
     addOneFristFormHandler,
     addFive,
+    myOptions,
   };
 };
 

@@ -136,6 +136,14 @@ const SideNav = () => {
             </span>
           </Link>
 
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/stocklanding"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">Stock Landing</span>
+          </Link>
+
           {/* ============= */}
 
           <hr className="mt-4 mb-2" />

@@ -81,31 +81,6 @@ const useFristFormSubmitAPIFront = () => {
     });
   }
 
-  /*
-              {
-                "ml": 90,
-                "initialStock": 0,
-                "purchaseShop": {
-                    "purchaseShopNum": 2,
-                    "purchaseShopRate": 3
-                },
-                "purchaseOutSide": {
-                    "purchaseOutSideNum": 2,
-                    "purchaseOutSideRate": 3
-                },
-                "purchaseAVG": 0,
-                "purchaseBorrow": 3,
-                "sendingBhejan": 4,
-                "AddRemainder": 0,
-                "lastStock": 4,
-                "sold": 0,
-                "soldRate": 2,
-                "finalTotal": 0,
-                "finalSum": 0,
-                "_id": "63bd695d3d2826950f2bbf42"
-            },
-  */
-
   const mlWise = [];
   for (let index = 0; index < addOneSecondFormState.length; index++) {
     const element = addOneSecondFormState[index];
@@ -131,6 +106,29 @@ const useFristFormSubmitAPIFront = () => {
       finalSum: element.finalSum,
     });
   }
+
+  /*
+          {
+            "liquor": null,
+            "brandName": "Brand name",
+            "quantityInML": 750,
+            "openingStock": 1,
+            "purchaseShop": 1,
+            "purchaseShopRate": 100,
+            "purchaseOutSide": 1,
+            "purchaseOutSideRate": 100,
+            "credits": 1,
+            "send": 1,
+            "remaining": 1,
+            "closingStock": 1,
+            "sales": 1,
+            "total": 10
+        }
+  
+  */
+
+  // const entries = [];
+  for (let index = 0; index < addOneSecondFormState.length; index++) {}
 
   const submitFristFormHandler = async (e) => {
     try {
