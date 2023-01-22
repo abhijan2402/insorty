@@ -4,14 +4,17 @@ import useCashReciveAdd from "../useCashReciveAdd";
 import useRmlAdd from "../useRmlAdd";
 import Swal from "sweetalert2";
 import usePurchesOutSideAdd from "../usePurchesOutSideAdd";
+import useCommissonAdd from "../useCommissonAdd";
+import useCarditDabit from "../useCarditDabit";
 
 const useHandelSubmitBackAPI = () => {
   const token = localStorage.getItem("token");
   const [isLoadingSubmit, setIsLoading] = useState(false);
   const { cashReciveState } = useCashReciveAdd();
-  // const { fristFormState } = useFristFormAdd();
   const { addRmlState } = useRmlAdd();
   const { purchesOutSideState } = usePurchesOutSideAdd();
+  const { commissonState } = useCommissonAdd();
+  const { craditDabitState } = useCarditDabit();
 
   // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
@@ -52,16 +55,6 @@ const useHandelSubmitBackAPI = () => {
   // purchesOutSideState ======================
 
   const purchaseOutSideData = [];
-  // {
-  //     "brandName": "rjx",
-  //     "partyName": "hgv",
-  //     "number": 23,
-  //     "ml": 12,
-  //     "rate": 2230,
-  //     "total": 24225,
-  //     "comments": "no",
-  //     "_id": "63c2db6c6d60ea379368edd8"
-  // },
 
   for (let index = 0; index < purchesOutSideState.length; index++) {
     const element = purchesOutSideState[index];
@@ -77,57 +70,66 @@ const useHandelSubmitBackAPI = () => {
   }
   // purchesOutSideState ======================
 
+  // CommissonFrom -> totalExpensesData ==============
+  const entries = [];
+
+  for (let index = 0; index < commissonState.length; index++) {
+    const element = commissonState[index];
+    entries.push({
+      cash: element.amount,
+      description: element.reason,
+    });
+  }
+  // CommissonFrom -> totalExpensesData ==============
+
+  // craditDabitState -> borrowedData ================
+
+  const entriesCradit = [];
+
+  for (let index = 0; index < craditDabitState.length; index++) {
+    const element = craditDabitState[index];
+    entriesCradit.push({
+      type: element.partyType,
+      partyName: element.partyName,
+      amount: element.amount,
+      comment: element.note,
+    });
+  }
+
+  // craditDabitState -> borrowedData ================
+
   const handleSubmit = () => {
     setIsLoading(true);
 
     try {
       const api1 = fetch(
-        "https://insorty-api.onrender.com/shop/purchaseOutSideData",
+        "https://insorty-api.onrender.com/shop/addTotalExpensesData",
         {
           method: "POST",
-          body: JSON.stringify(purchaseOutSideData),
+          body: JSON.stringify({ entries }),
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
 
-      const api2 = fetch(
-        "https://insorty-api.onrender.com/shop/borrowCashReturnData",
-        {
-          method: "POST",
-          body: JSON.stringify({ borrowCashReturnData }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
+      // const api2 = fetch(
+      //   "https://insorty-api.onrender.com/shop/addBorrowedData",
+      //   {
+      //     method: "POST",
+      //     body: JSON.stringify({ entriesCradit }),
+      //     headers: { "Content-Type": "application/json", cookie_token: token },
+      //   }
+      // );
 
-      Promise.all([api1, api2])
+      Promise.all([api1])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
           if (data[0].success === true && data[1].success === true) {
-            
             Swal.fire({
               icon: "success",
               title: "Success",
               text: "Data Saved Successfully",
             });
-
-            localStorage.removeItem('firstBack')
-            localStorage.removeItem('totalFirstBack')
-            localStorage.removeItem('rml')
-            localStorage.removeItem('rmlTotal')
-            localStorage.removeItem('purchases')
-            localStorage.removeItem('purchasesTotal')
-            localStorage.removeItem('expenses')
-            localStorage.removeItem('totalExpenses')
-            localStorage.removeItem('paymentRecieved')
-            localStorage.removeItem('totalPaymentsRecieved')
-            localStorage.removeItem('bhejan')
-            localStorage.removeItem('borrow')
-            localStorage.removeItem('totalBorrow')
-            localStorage.removeItem('credit')
-            localStorage.removeItem('creditTotal')
-            localStorage.removeItem('firstFront')
-            localStorage.removeItem('firstFrontTotal')
           } else {
             Swal.fire({
               icon: "error",

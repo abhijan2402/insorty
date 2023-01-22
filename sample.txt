@@ -108,10 +108,13 @@ A4 ss colony Merta city Raj.
 
 file -> api
 PurchaseOutSideFrom -> purchaseOutSideData 
+
 CommissonFrom -> totalExpensesData
+craditDabitState -> borrowedData
+
+
 CashReciveFrom -> borrowCashReturnData
 ShippingForm -> purchaseBorrowData
 InflowBorrowingRML -> Bhejan
-craditDabitState -> borrowedData
 
 credit, creditTotal, 
