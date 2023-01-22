@@ -21,11 +21,16 @@ import useCarditDabit from "../../../../Hooks/useCarditDabit";
 import CraditDabitForm from "../BackDailyReport/InflowBorrowingBack/CraditDabitForm.jsx/CreditDabitForm";
 import CommissonFrom from "./CommissonForm/CommissionForm";
 import useComment from "../../../../Hooks/useComment";
+
 // import Swal from "sweetalert2";
 import useHandelSubmitBackAPI from "../../../../Hooks/useHandelSubmitBackAPI/useHandelSubmitBackAPI";
 
 const BackDailyReport = () => {
   const { handleSubmit, isLoadingSubmit } = useHandelSubmitBackAPI();
+  
+
+  
+
 
   // ================== Frist Form============
   const {
@@ -36,7 +41,11 @@ const BackDailyReport = () => {
     onChangeFristBackFormHandler,
     totalState,
     isLoading,
+    brands,
+    brandsLoaded,
+    liquors
   } = useFristFormAdd();
+  console.log(liquors)
 
   // ================== Rml Form============
   const {
@@ -134,6 +143,8 @@ const BackDailyReport = () => {
     handleChangeComment,
   } = useComment();
   // ********************************* submit mulitple api in handelSubmit  *********************************
+
+  console.log(fristFormState)
 
   return (
     <>
@@ -496,6 +507,9 @@ const BackDailyReport = () => {
                             fristFormState={fristFormState}
                             item={item}
                             index={index}
+                            brands={brands}
+                            liquors={liquors}
+                          brandsLoaded = { brandsLoaded }
                           ></AddOneFristFromBack>
                         );
                       })}

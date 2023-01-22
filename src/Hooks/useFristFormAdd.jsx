@@ -1,13 +1,19 @@
 // import axios from "axios";
 import { useState,useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+
 import Swal from "sweetalert2";
 
 const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(false);
+  // const [brandsLoaded, setBrandsLoaded] = useState(false)
+  let brands 
+
 
   // ======================== add five in frist form ======================== backPageReportData
   const fristFormObj = {
+    liquorID:"",
     brandName: "", //brandName
 
     averageRate650: 0,
@@ -65,9 +71,39 @@ const useFristFormAdd = () => {
     grandTotal: "",
   };
 
+
   const [fristFormState, setFristFormState] = useState([fristFormObj]);
 
   const prevdata = JSON.parse(localStorage.getItem('firstBack'))
+
+  const {
+    data: liquors,
+    isLoading: brandsLoaded,
+    refetch,
+  } = useQuery({
+    queryKey: ["liquors"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllLiquors",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+
+    },
+  });
+
+  if (liquors) {
+    let brandSet = new Set()
+    liquors.map((item) => {
+      brandSet.add(item.brandName)
+    })
+    brands=[...brandSet]
+  }
+  
 
   useEffect(() => {
     if (prevdata) {
@@ -82,6 +118,7 @@ const useFristFormAdd = () => {
       data = [
         ...data,
         {
+          liquorID: "",
           brandName: "",
 
           averageRate650: 0,
@@ -151,6 +188,7 @@ const useFristFormAdd = () => {
     setFristFormState([
       ...fristFormState,
       {
+        liquorID: "",
         brandName: "",
 
         averageRate650: 0,
@@ -474,6 +512,7 @@ const useFristFormAdd = () => {
           e.target.name === "sales330" ||
           e.target.name === "mainRate330"
         ) {
+         
           obj.grandTotal =
             Number(obj.sales650) * Number(obj.mainRate650) +
             Number(obj.sales550) * Number(obj.mainRate550) +
@@ -484,6 +523,27 @@ const useFristFormAdd = () => {
     });
 
     setFristFormState(grandT);
+
+    const liqID = fristFormState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+        if (
+          e.target.name === "brandName"
+        ) { 
+          
+          const liq=liquors.filter((name)=>{
+            if (name === obj.brandName){
+              return name._id
+            }
+          })
+          obj.liquorID = liq._id
+        }
+        console.log(obj.liqID)
+        return obj;
+      } else return returned;
+    });
+
+    setFristFormState(liqID);
 
     let obj1 = totalState;
     obj1.startingStock650Total = fristFormState.reduce(
@@ -794,6 +854,8 @@ const useFristFormAdd = () => {
     }
   };
 
+  
+
   // ======>
 
   // ======================== onChange  ========================
@@ -806,6 +868,9 @@ const useFristFormAdd = () => {
     onChangeFristBackFormHandler,
     totalState,
     isLoading,
+    brands,
+    brandsLoaded, 
+    liquors
   };
 };
 
