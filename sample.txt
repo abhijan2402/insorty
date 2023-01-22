@@ -76,29 +76,22 @@ tasks:
 
   ==>
 
-  Daily Report / दैनिक रिपोर्ट 
-Partners / पार्टनर
-Branch / ब्रांच
-Salary / वेतन
-Payments दुकान/बार पेमेंट  
-Commision / कमीशन  
-Borrow / उधारी  
-Final report / हिसाब
-self Bill / दुकान बिल का फोर्मेट
-Out Bill / बाहर के बिल का फोर्मेट
-Extra /राशन सब्जी आदि खरीद
-Log out
-Jai Wine Shop 
-A4 ss colony Merta city Raj.  
-
-
-/shop/purchaseOutSideData  अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
-
-पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति bowwocash retun data https://restless-escape-458382.postman.co/workspace/Team-Workspace~bbe8a7e3-6f2f-49b8-8562-33b814a1a8c8/request/19459280-08d553ba-1caa-4630-98e5-9a32d39d3d36
-
-/shop/soldData अंग्रेजी/बीयर/देशी/RML का भेजान
-
-
+ // const handleDelete = (employeeId) => {
+  //   fetch(`https://insorty-api.onrender.com/shop/deleteEmployee`, {
+  //     method: "POST",
+  //     body: JSON.stringify({ employeeId }),
+  //     headers: { "Content-Type": "application/json", cookie_token: token },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.success) {
+  //         Swal.fire("Deleted!", "Your file has been deleted.", "success");
+  //         refetch();
+  //       } else {
+  //         Swal.fire("Failed!", "Your file has not been deleted.", "error");
+  //       }
+  //     });
+  // };
 
 
 
@@ -115,3 +108,9 @@ InflowBorrowingRML -> Bhejan
 craditDabitState -> borrowedData
 
 credit, creditTotal, 
+
+{{url}}/shop/totalExpensesData
+
+{{url}}/shop/borrowedData
+
+{{url}}/shop/finalReportEntry

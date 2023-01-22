@@ -1,6 +1,6 @@
 import React from "react";
 
-const StockFormData = ({ index }) => {
+const StockFormData = ({ index, handelOnChangeStockLanding, stock }) => {
   return (
     <tr>
       <th>{index + 1}</th>
@@ -9,17 +9,9 @@ const StockFormData = ({ index }) => {
           <div className="form-control">
             <input
               type="text"
-              value={new Date().toLocaleDateString()}
-              disabled
-              className="semiSmallInput"
-            />
-          </div>
-
-          <div className="form-control">
-            <input
-              type="number"
-              value={67867}
-              disabled
+              name="brandName"
+              value={stock.brandName}
+              onChange={(e) => handelOnChangeStockLanding(e, index)}
               className="semiSmallInput"
             />
           </div>
@@ -30,19 +22,55 @@ const StockFormData = ({ index }) => {
         <div className="flex gap-4">
           <div className="form-control">
             <input
-              type="date"
-              disabled
-              value={new Date().toLocaleDateString()}
-              className="semiSmallInput"
+              type="number"
+              name="sizeMl"
+              value={stock.sizeMl}
+              onChange={(e) => handelOnChangeStockLanding(e, index)}
+              className="commonSmallForm "
             />
           </div>
-
           <div className="form-control">
             <input
               type="number"
-              value={78979}
-              disabled
-              className="semiSmallInput"
+              name="inflowNumber"
+              value={stock.inflowNumber}
+              onChange={(e) => handelOnChangeStockLanding(e, index)}
+              className="commonSmallForm "
+            />
+          </div>
+          <div className="form-control">
+            <input
+              type="text"
+              name="inflowComment"
+              value={stock.inflowComment}
+              onChange={(e) => handelOnChangeStockLanding(e, index)}
+              className="semiSmallInput "
+            />
+          </div>
+        </div>
+      </td>
+
+      <td>
+        <div className="flex gap-4">
+          <div className="form-control">
+            <input
+              type="number"
+              name="sendNumber"
+              value={stock.sendNumber}
+              onChange={(e) => handelOnChangeStockLanding(e, index)}
+              className="commonSmallForm "
+            />
+          </div>
+          <div className="form-control">
+            <input type="text" name="sendComment" className="semiSmallInput" />
+          </div>
+          <div className="form-control">
+            <input
+              type="number"
+              name="sendDeposit"
+              value={stock.sendDeposit}
+              onChange={(e) => handelOnChangeStockLanding(e, index)}
+              className="semiSmallInput "
             />
           </div>
         </div>
@@ -53,9 +81,9 @@ const StockFormData = ({ index }) => {
           <div className="form-control">
             <input
               type="text"
-              name="reason"
-              disabled
-              value={"hello"}
+              name="debit"
+              value={stock.debit}
+              onChange={(e) => handelOnChangeStockLanding(e, index)}
               className="semiSmallInput"
             />
           </div>

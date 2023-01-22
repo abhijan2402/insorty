@@ -1,9 +1,18 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import StockFormData from "../StockLandingForm/StockFormData/StockFormData";
+import useStockHooks from "../StockHooks/useStockHooks";
 
 const StockLandingForm = () => {
   const sotckLandignUserData = useLoaderData();
   const employeeData = sotckLandignUserData?.data;
+
+  const {
+    handelOnSubmitStockLanding,
+    handelOnChangeStockLanding,
+    addOneStockLandingStock,
+    stockLandingStocks,
+  } = useStockHooks();
 
   return (
     <section className="px-2 py-6">
@@ -19,6 +28,7 @@ const StockLandingForm = () => {
         </div>
       </div>
       {/* ************************ all sealy data************** */}
+
       <div>
         <form action="">
           <div className="overflow-x-auto">
@@ -26,9 +36,9 @@ const StockLandingForm = () => {
               <thead>
                 <tr>
                   <th>S.no</th>
-                  <th>Salary / वेतन</th>
-                  <th>Payment / भुगतान</th>
-                  <th>reason /टिप्पणी</th>
+                  <th>आमद/Inflow</th>
+                  <th>भेजान/ Send </th>
+                  <th>शेष/Remaining</th>
                 </tr>
               </thead>
 
@@ -40,43 +50,29 @@ const StockLandingForm = () => {
                     <div className="flex gap-2">
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">Month Year</span>
+                          <span className="label-text">Brand Name</span>
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td>
+                    <div className="flex gap-2">
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">साईज/ml</span>
                         </label>
                       </div>
 
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text"></span>
+                          <span className="label-text">संख्या/Number</span>
                         </label>
                       </div>
+
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"> रकम</span>
+                          <span className="label-text">टिप्पणी/Comment</span>
                         </label>
                       </div>
                     </div>
@@ -86,39 +82,19 @@ const StockLandingForm = () => {
                     <div className="flex gap-4">
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">दिनांक</span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
+                          <span className="label-text">संख्या/Number</span>
                         </label>
                       </div>
 
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">रकम</span>
+                          <span className="label-text">टिप्पणी/Comment</span>
                         </label>
+                      </div>
+                      <div className="flex gap-4">
+                        <div className="form-control">
+                          <label className="label">जमा/Deposit</label>
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -126,20 +102,21 @@ const StockLandingForm = () => {
                   <td>
                     <div className="flex gap-4">
                       <div className="form-control">
-                        <label className="label"></label>
+                        <label className="label">नामे/ Debit</label>
                       </div>
                     </div>
                   </td>
+
                   {/* ============= कुल योग ================ */}
                 </tr>
-
-                {salaryState.map((salary, index) => {
+                {stockLandingStocks.map((stock, index) => {
                   return (
-                    <SalaryFormData
+                    <StockFormData
                       key={index}
-                      salary={salary}
                       index={index}
-                    ></SalaryFormData>
+                      stock={stock}
+                      handelOnChangeStockLanding={handelOnChangeStockLanding}
+                    ></StockFormData>
                   );
                 })}
               </tbody>
@@ -148,9 +125,19 @@ const StockLandingForm = () => {
         </form>{" "}
         <div>
           <div className="mt-4 flex gap-4">
-            <label htmlFor="addData" className="btn bg-[#AA237A]">
-              Add Now 5
-            </label>
+            <button
+              className="dailyReportBtnSubmit"
+              type="submit"
+              onClick={handelOnSubmitStockLanding}
+            >
+              Submit
+            </button>
+            <button
+              className="dailyReportBtnSubmit"
+              onClick={addOneStockLandingStock}
+            >
+              Add 1
+            </button>
 
             <Link
               to="/user/stocklanding"
@@ -161,6 +148,7 @@ const StockLandingForm = () => {
           </div>
         </div>
       </div>
+
       {/* ************************ all sealy data************** */}
     </section>
   );
