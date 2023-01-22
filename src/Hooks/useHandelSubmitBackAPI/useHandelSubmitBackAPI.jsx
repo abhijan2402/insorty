@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useCashReciveAdd from "../useCashReciveAdd";
 // import useFristFormAdd from "../useFristFormAdd";
 import useRmlAdd from "../useRmlAdd";
@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import usePurchesOutSideAdd from "../usePurchesOutSideAdd";
 import useCommissonAdd from "../useCommissonAdd";
 import useCarditDabit from "../useCarditDabit";
+import { DataContextApi } from "../../Context/DataContext";
 
 const useHandelSubmitBackAPI = () => {
   const token = localStorage.getItem("token");
@@ -15,6 +16,7 @@ const useHandelSubmitBackAPI = () => {
   const { purchesOutSideState } = usePurchesOutSideAdd();
   const { commissonState } = useCommissonAdd();
   const { craditDabitState } = useCarditDabit();
+  const { intoAccountState } = useContext(DataContextApi);
 
   // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
@@ -71,11 +73,11 @@ const useHandelSubmitBackAPI = () => {
   // purchesOutSideState ======================
 
   // CommissonFrom -> totalExpensesData ==============
-  const entries = [];
+  const entriesExpances = [];
 
   for (let index = 0; index < commissonState.length; index++) {
     const element = commissonState[index];
-    entries.push({
+    entriesExpances.push({
       cash: element.amount,
       description: element.reason,
     });
@@ -84,19 +86,43 @@ const useHandelSubmitBackAPI = () => {
 
   // craditDabitState -> borrowedData ================
 
-  const entriesCradit = [];
+  const entriesBorrow = [];
 
   for (let index = 0; index < craditDabitState.length; index++) {
     const element = craditDabitState[index];
-    entriesCradit.push({
-      type: element.partyType,
+    entriesBorrow.push({
       partyName: element.partyName,
+      type: element.partyType,
       amount: element.amount,
       comment: element.note,
     });
   }
 
   // craditDabitState -> borrowedData ================
+
+  // {{url}}/shop/addFinalReportData =================
+
+  const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
+  const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
+  const thirdFront = JSON.parse(localStorage.getItem("beerFormTotal"));
+  const fourthFront = JSON.parse(localStorage.getItem("rmlTotal"));
+  const fifthFront = JSON.parse(localStorage.getItem("cashTotal"));
+  const sixthFront = JSON.parse(localStorage.getItem("udhaariTotal"));
+  const seventhFront = JSON.parse(localStorage.getItem("commisionTotal"));
+
+  const english = firstformData + secondFront;
+  const beer = 0;
+  const rmlData = fourthFront;
+  const totalSell = fourthFront + thirdFront + firstformData + secondFront;
+  const borrowedCashReturn = fifthFront;
+  const intoAccount = intoAccountState;
+  const borrowed = sixthFront;
+  const commission = seventhFront;
+  const previousDues = 0;
+  const todaysPayment = 0;
+  const restAmount = 0;
+
+  // {{url}}/shop/addFinalReportData =================
 
   const handleSubmit = () => {
     setIsLoading(true);
@@ -106,24 +132,46 @@ const useHandelSubmitBackAPI = () => {
         "https://insorty-api.onrender.com/shop/addTotalExpensesData",
         {
           method: "POST",
-          body: JSON.stringify({ entries }),
+          body: JSON.stringify({ entries: entriesExpances }),
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
 
-      // const api2 = fetch(
-      //   "https://insorty-api.onrender.com/shop/addBorrowedData",
-      //   {
-      //     method: "POST",
-      //     body: JSON.stringify({ entriesCradit }),
-      //     headers: { "Content-Type": "application/json", cookie_token: token },
-      //   }
-      // );
+      const api2 = fetch(
+        "https://insorty-api.onrender.com/shop/addBorrowedData",
+        {
+          method: "POST",
+          body: JSON.stringify({ entries: entriesBorrow }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
 
-      Promise.all([api1])
+      const api3 = fetch(
+        "https://insorty-api.onrender.com/shop/addFinalReportData",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            english: english,
+            beer: beer,
+            RML: rmlData,
+            totalSell: totalSell,
+            borrowedCashReturn: borrowedCashReturn,
+            intoAccount: intoAccount,
+            borrowed: borrowed,
+            commission: commission,
+            previousDues: previousDues,
+            todaysPayment: todaysPayment,
+            restAmount: restAmount,
+          }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+
+      Promise.all([api1, api2, api3])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
+
           if (data[0].success === true && data[1].success === true) {
             Swal.fire({
               icon: "success",

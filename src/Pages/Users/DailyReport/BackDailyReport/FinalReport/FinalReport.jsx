@@ -8,10 +8,17 @@ const FinalReport = ({
   udhaariTotal,
   commisionTotal,
 }) => {
-  // const { totalState } = useContext(DataContextApi);
+  const { intoAccountState, setintoAccountState } = useContext(DataContextApi);
+  // how to set data in local storage beerTotal and all data
 
-  const firstformData = JSON.parse(localStorage.getItem('firstFrontTotal'))
-  const secondFront = JSON.parse(localStorage.getItem('mlFormTotal'))
+  localStorage.setItem("beerTotal", JSON.stringify(beerTotal));
+  localStorage.setItem("rmlTotal", JSON.stringify(rmlTotal));
+  localStorage.setItem("cashTotal", JSON.stringify(cashTotal));
+  localStorage.setItem("udhaariTotal", JSON.stringify(udhaariTotal));
+  localStorage.setItem("commisionTotal", JSON.stringify(commisionTotal));
+
+  const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
+  const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
 
   return (
     <section>
@@ -61,7 +68,15 @@ const FinalReport = ({
             <tr>
               <th>6</th>
               <td>खाते में (फोन पे आदि)</td>
-              <td>500</td>
+              <td>
+                <input
+                  type="number"
+                  className="commonSmallForm"
+                  name="intoAccountState"
+                  value={intoAccountState}
+                  onChange={(e) => setintoAccountState(e.target.value)}
+                />
+              </td>
             </tr>
             {/* 07 */}
             <tr>

@@ -1,9 +1,19 @@
 import React from "react";
-import MainInvestmentList from "../MainInvestmentList/MainInvestmentList";
 import Refund from "../Refund/Refund";
 import Reserve from "../Reserve/Reserve";
+import InvestmentForm from "../InvestmentForm/InvestmentForm";
+import useMainInvestmentHooks from "../MainInvestmentHooks/useMainInvestmentHooks";
+import RefundDetailsData from "../Refund/RefundDetailsData";
+import ResurvedDataDetails from "../Reserve/ResurvedDataDetails";
 
 const MainInvestment = () => {
+  const {
+    addOneMainInvestment,
+    mainInvestmentState,
+    handelOnChangeMainInvestment,
+    handelOnSubmitMainInvestment,
+  } = useMainInvestmentHooks();
+
   return (
     <section className="my-2">
       <div className="title">
@@ -12,26 +22,58 @@ const MainInvestment = () => {
       </div>
 
       <div>
-        <div className="overflow-x-auto">
-          <table className="table w-full">
-            <thead>
-              <tr>
-                <th>S.No</th>
-                <th>ब्राण्ड/ Brand Name </th>
-                <th>दिनांक / Date</th>
-                <th>रकम/ price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <MainInvestmentList></MainInvestmentList>
-              <tr>
+        <form>
+          <div className="overflow-x-auto">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>ब्राण्ड/ Brand Name </th>
+                  <th>दिनांक / Date</th>
+                  <th>रकम/ price</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {mainInvestmentState.map((mainInvestment, index) => {
+                  return (
+                    <InvestmentForm
+                      key={index}
+                      index={index}
+                      mainInvestment={mainInvestment}
+                      mainInvestmentState={mainInvestmentState}
+                      handelOnChangeMainInvestment={
+                        handelOnChangeMainInvestment
+                      }
+                    ></InvestmentForm>
+                  );
+                })}
+
+                {/* <MainInvestmentList></MainInvestmentList> */}
+                {/* <tr>
                 <td></td>
                 <td></td>
                 <td className="commonText">Total</td>
                 <td className="price">162,000</td>
-              </tr>
-            </tbody>
-          </table>
+              </tr> */}
+              </tbody>
+            </table>
+          </div>
+        </form>
+        <div className="my-4 flex gap-4">
+          <button
+            className="dailyReportBtnSubmit"
+            onClick={() => handelOnSubmitMainInvestment()}
+            type="submit"
+          >
+            Submit
+          </button>
+          <button
+            className="dailyReportBtn"
+            onClick={() => addOneMainInvestment()}
+          >
+            ADD 1
+          </button>
         </div>
       </div>
 
@@ -54,7 +96,24 @@ const MainInvestment = () => {
             <tbody>
               <Refund></Refund>
               <tr>
-                <td></td>
+                <td>
+                  <div>
+                    <label
+                      htmlFor="RefundData"
+                      style={{
+                        cursor: "pointer",
+                        backgroundColor: "#AA237A",
+                        padding: "0.6rem 1.5rem",
+                        borderRadius: "0.5rem",
+                        color: "black",
+
+                        fontSize: "1rem",
+                      }}
+                    >
+                      Add Refund
+                    </label>
+                  </div>
+                </td>
                 <td></td>
                 <td className="commonText">Total</td>
                 <td className="price">162,000</td>
@@ -82,8 +141,26 @@ const MainInvestment = () => {
             </thead>
             <tbody>
               <Reserve></Reserve>
+
               <tr>
-                <td></td>
+                <td>
+                  <div>
+                    <label
+                      htmlFor="ResurvedData"
+                      style={{
+                        cursor: "pointer",
+                        backgroundColor: "#AA237A",
+                        padding: "0.6rem 1.5rem",
+                        borderRadius: "0.5rem",
+                        color: "black",
+
+                        fontSize: "1rem",
+                      }}
+                    >
+                      Add Reserve
+                    </label>
+                  </div>
+                </td>
                 <td></td>
                 <td className="commonText">Total</td>
                 <td className="price">162,000</td>
@@ -98,6 +175,8 @@ const MainInvestment = () => {
           </table>
         </div>
       </div>
+      <RefundDetailsData></RefundDetailsData>
+      <ResurvedDataDetails></ResurvedDataDetails>
     </section>
   );
 };
