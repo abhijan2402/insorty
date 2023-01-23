@@ -31,7 +31,7 @@ const useRmlAdd = () => {
     if (prevdata) {
       setAddRmlState(prevdata)
     }
-  }, []);
+  },[]);
 
   const handelAddFiveInRml = () => {
     let data = addRmlState;

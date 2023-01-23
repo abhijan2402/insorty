@@ -51,6 +51,8 @@ const BackDailyReport = () => {
     onChangeRmlHandler,
   } = useRmlAdd();
 
+  console.log(addRmlState)
+
   // ================== Purchase OutSide Form============
   const {
     purchesOutSideState,

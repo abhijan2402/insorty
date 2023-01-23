@@ -11,11 +11,13 @@ const AddOneFristFromBack = ({
   index,
   item,
   onChangeFristBackFormHandler,
-  brands,
+  // brands,
   brandsLoaded,
   liquors
 }) => {
   const SerialNo = index + 1;
+
+  const brands =['a','b','c','d']
 
   if (brandsLoaded) {
     return (
@@ -39,8 +41,9 @@ const AddOneFristFromBack = ({
             /> */}
             <Autocomplete
               options={brands}
-              value = {item.brandName}
+              value={item.brandName}
               onChange={(event) => {
+                onChangeFristBackFormHandler(event, index) 
                 item.brandName = event.target.outerText
                 item.liquorID = liquors.filter((liq)=>{
                   if (liq.brandName === event.target.outerText){
@@ -51,10 +54,12 @@ const AddOneFristFromBack = ({
               }}
               renderInput={(params) => (
                 <TextField
+                
                   {...params}
                   className="dailyReportInput"
                   value={item.brandName}
                   onChange={(event) => {
+                    onChangeFristBackFormHandler(event,index)
                     item.brandName= event.target.value
                     item.liquorID = null
                     console.log(event.target.value)
