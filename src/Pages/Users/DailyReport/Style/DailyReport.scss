@@ -54,6 +54,23 @@
     }
 }
 
+.dropdownContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+}
+
+.dropdownContainer:empty {
+    border: none;
+}
+
+.dropdown-rows {
+    cursor: pointer;
+    text-align: start;
+    margin: 2px 0;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -99,4 +116,3 @@ input[type=number] {
     color: #AA237A;
 
 }
-

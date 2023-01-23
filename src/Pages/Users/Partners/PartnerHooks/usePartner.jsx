@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const usePartner = () => {
+  
   const partnerFormData = {
     partnerName: "",
     debit: 0,

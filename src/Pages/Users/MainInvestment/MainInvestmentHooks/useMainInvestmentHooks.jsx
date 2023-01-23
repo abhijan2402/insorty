@@ -2,6 +2,8 @@ import { useState } from "react";
 
 const useMainInvestmentHooks = () => {
   const toDate = new Date();
+
+  const mainInvestmentForm = {
   const mainInvevstmentData = {
     brandName: "",
     theDate: toDate,
@@ -9,6 +11,8 @@ const useMainInvestmentHooks = () => {
   };
 
   const [mainInvestmentState, setMainInvestmentState] = useState([
+    mainInvestmentForm,
+  ]);
     mainInvevstmentData,
   ]);
   const [refundDetailsState, setRefundDetailsState] = useState([]);

@@ -1,20 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AddOneSecondForm from "./SecondForm/AddOneSecondForm/AddOneSecondForm";
 import AddOneFristForm from "./FirstForm/AddOneFristForm/AddOneFristForm";
 import useFormulasFristFormFront from "../../../../Hooks/useFormulas/useFormulasFristFormFront";
 import useSecondFormFront from "../../../../Hooks/useSecondFormFront";
+import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 
 //frontPageData mlWise
 
 const FronteDailyReport = () => {
+  const token = localStorage.getItem("token");
+
   // **********************formulae******************
 
   const {
     addOneFristFormState,
     addOneFristFormHandler,
     handelFristFormOnChange,
+    setAddOneFristFormState,
     addFive,
+    myOptions,
     totalState,
   } = useFormulasFristFormFront();
 
@@ -39,6 +45,41 @@ const FronteDailyReport = () => {
       )}`
     );
   };
+
+  const { data: sujestedData, isLoading, refetch } = useQuery({
+    queryKey: ["sujestedData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllLiquors",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  // console.log(sujestedData);
+
+  // console.log(isLoading);
+
+  // const [value, setValue] = useState("");
+
+  // const onChange = (event) => {
+  //   setValue(event.target.value);
+  // };
+
+  const onSearch = (searchTerm) => {
+    setAddOneFristFormState(searchTerm);
+    // our api to fetch the search result
+    console.log("search ", searchTerm);
+  };
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <section className="mx-2">
@@ -385,12 +426,16 @@ const FronteDailyReport = () => {
                   </tr>
 
                   {/* ============ ============== */}
-                  {addOneFristFormState.map((item, index) => {
+                  {addOneFristFormState.map((addOneFirst, index) => {
                     return (
                       <AddOneFristForm
                         key={index}
-                        item={item}
+                        addOneFirst={addOneFirst}
                         index={index}
+                        myOptions={myOptions}
+                        onSearch={onSearch}
+                        sujestedData={sujestedData}
+                        setAddOneFristFormState={setAddOneFristFormState}
                         addOneFristFormState={addOneFristFormState}
                         handelFristFormOnChange={handelFristFormOnChange}
                       ></AddOneFristForm>
