@@ -31,12 +31,20 @@ const AddOneFristForm = ({
 
           <Autocomplete
             options={myOptions}
+            onChange={(event) => {
+              addOneFirst.brandName = event.target.outerText
+              console.log(addOneFristFormState)
+            }}
             renderInput={(params) => (
               <TextField
                 {...params}
                 className="dailyReportInput"
                 value={addOneFirst.brandName}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                
+                
+                onChange={(event) => {handelFristFormOnChange(event, index)
+                console.log(event.target.value)
+                }}
               />
             )}
           />

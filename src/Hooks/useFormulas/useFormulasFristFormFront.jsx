@@ -6,7 +6,7 @@ const useFormulasFristFormFront = () => {
 
   let addOneFristForm = {
     brandName: "", //brandName
-
+    liquorID: "",
     startingStock750: 0, //initialStock
     startingStock330: 0, //initialStock
     startingStock180: 0, //initialStock
