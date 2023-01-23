@@ -8,7 +8,7 @@ import InflowBorrowingRML from "./InflowBorrowingBack/InflowBorrowingRML/InflowB
 import FinalReport from "./FinalReport/FinalReport";
 import Comment from "./Comment/Comment";
 import AddOneFristFromBack from "./FristFormBack/AddOneFristFromBack/AddOneFristFromBack";
-import TotalRML from "./RmlForm/TotalRML";
+// import TotalRML from "./RmlForm/TotalRML";
 import useRmlAdd from "../../../../Hooks/useRmlAdd";
 import useFristFormAdd from "../../../../Hooks/useFristFormAdd";
 import usePurchesOutSideAdd from "../../../../Hooks/usePurchesOutSideAdd";
@@ -21,12 +21,12 @@ import useCarditDabit from "../../../../Hooks/useCarditDabit";
 import CraditDabitForm from "../BackDailyReport/InflowBorrowingBack/CraditDabitForm.jsx/CreditDabitForm";
 import CommissonFrom from "./CommissonForm/CommissionForm";
 import useComment from "../../../../Hooks/useComment";
+
 // import Swal from "sweetalert2";
 import useHandelSubmitBackAPI from "../../../../Hooks/useHandelSubmitBackAPI/useHandelSubmitBackAPI";
 
 const BackDailyReport = () => {
   const { handleSubmit, isLoadingSubmit } = useHandelSubmitBackAPI();
-
   // ================== Frist Form============
   const {
     addFiveInFristFormHandler,
@@ -36,7 +36,11 @@ const BackDailyReport = () => {
     onChangeFristBackFormHandler,
     totalState,
     isLoading,
+    brands,
+    brandsLoaded,
+    liquors,
   } = useFristFormAdd();
+  console.log(liquors);
 
   // ================== Rml Form============
   const {
@@ -134,6 +138,8 @@ const BackDailyReport = () => {
     handleChangeComment,
   } = useComment();
   // ********************************* submit mulitple api in handelSubmit  *********************************
+
+  console.log(fristFormState);
 
   return (
     <>
@@ -496,6 +502,9 @@ const BackDailyReport = () => {
                             fristFormState={fristFormState}
                             item={item}
                             index={index}
+                            brands={brands}
+                            liquors={liquors}
+                            brandsLoaded={brandsLoaded}
                           ></AddOneFristFromBack>
                         );
                       })}
@@ -1739,7 +1748,7 @@ const BackDailyReport = () => {
                             type="text"
                             className="semiSmallInput"
                             name="partyName"
-                           disabled
+                            disabled
                           />
                         </div>
                       </td>
@@ -1776,7 +1785,7 @@ const BackDailyReport = () => {
                           <select
                             className="select select-bordered"
                             name="quantity"
-                           disabled
+                            disabled
                           >
                             <option value={650} selected>
                               650ml
@@ -1795,8 +1804,7 @@ const BackDailyReport = () => {
                             type="number"
                             className="semiSmallInput"
                             name="rate"
-                           
-                           disabled
+                            disabled
                           />
                         </div>
                       </td>
@@ -1823,7 +1831,7 @@ const BackDailyReport = () => {
                             type="text"
                             className="semiSmallInput"
                             name="reason"
-                           disabled
+                            disabled
                           />
                         </div>
                       </td>
@@ -1921,7 +1929,6 @@ const BackDailyReport = () => {
                         </div>
                       </td>
                     </tr>
-
                   </tbody>
                 </table>
               </div>
@@ -1936,21 +1943,18 @@ const BackDailyReport = () => {
               <span className="font-bold titleText">फाईनल रिपोर्ट</span>
             </h1>
 
-
-            <FinalReport beerTotal={totalState.allGrandTotal} rmlTotal = {addRmlState.reduce(
+            <FinalReport
+              beerTotal={totalState.allGrandTotal}
+              rmlTotal={addRmlState.reduce(
                 (total, currentItem) =>
                   (total = total + Number(currentItem.cost)),
                 0
-              )
-            } 
-            cashTotal={
-                craditDabitState.reduce(
-                  (total, currentItem) =>
-                    (total = total + Number(currentItem.amount)),
-                  0
-                )
-              }
-
+              )}
+              cashTotal={craditDabitState.reduce(
+                (total, currentItem) =>
+                  (total = total + Number(currentItem.amount)),
+                0
+              )}
               udhaariTotal={craditDabitState.reduce(
                 (total, currentItem) =>
                   (total = total + Number(currentItem.amount)),
@@ -1961,9 +1965,7 @@ const BackDailyReport = () => {
                   (total = total + Number(currentItem.amount)),
                 0
               )}
-              ></FinalReport>
-
-            
+            ></FinalReport>
           </form>
         </div>
 

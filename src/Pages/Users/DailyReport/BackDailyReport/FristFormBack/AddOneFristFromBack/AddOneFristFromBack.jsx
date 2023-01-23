@@ -1,20 +1,56 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
+// import Typeahead from "react-typeahead/lib/typeahead";
+import {Typeahead} from "react-bootstrap-typeahead";
+// Import as a module in your JS
+import 'react-bootstrap-typeahead/css/Typeahead.css';
+import Loader from "../../../../../../Components/Loader/Loader";
 
-const  AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
+const AddOneFristFromBack = ({
+  index,
+  item,
+  onChangeFristBackFormHandler,
+  brands,
+  brandsLoaded,
+  fristFormState,
+  liquors
+}) => {
   const SerialNo = index + 1;
 
+  if (brandsLoaded) {
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
+  }
   return (
     <>
       <tr>
         <th>{SerialNo}</th>
         <td>
           <div className="form-control">
-            <input
+            {/* <input
               type="text"
               className="dailyReportInput"
               name="brandName"
               value={item.brandName}
               onChange={(event) => onChangeFristBackFormHandler(event, index)}
+            /> */}
+            <Typeahead
+              options={brands}
+            
+              selected={item.brandName}
+              onChange={(event) => {item.brandName=event[0]
+                const liq = liquors.filter((name) => {
+                  if (name.brandName === item.brandName) {
+                    return name
+                  }
+                })
+                item.liquorID = liq[0]._id
+              console.log(fristFormState)}}
+              name="brandName"
+              
+              id="brands"
             />
           </div>
         </td>

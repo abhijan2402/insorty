@@ -4,6 +4,9 @@ import Reserve from "../Reserve/Reserve";
 import InvestmentForm from "../InvestmentForm/InvestmentForm";
 import useMainInvestmentHooks from "../MainInvestmentHooks/useMainInvestmentHooks";
 
+import RefundDetailsData from "../Refund/RefundDetailsData";
+import ResurvedDataDetails from "../Reserve/ResurvedDataDetails";
+
 const MainInvestment = () => {
   const {
     addOneMainInvestment,
@@ -94,7 +97,24 @@ const MainInvestment = () => {
             <tbody>
               <Refund></Refund>
               <tr>
-                <td></td>
+                <td>
+                  <div>
+                    <label
+                      htmlFor="RefundData"
+                      style={{
+                        cursor: "pointer",
+                        backgroundColor: "#AA237A",
+                        padding: "0.6rem 1.5rem",
+                        borderRadius: "0.5rem",
+                        color: "black",
+
+                        fontSize: "1rem",
+                      }}
+                    >
+                      Add Refund
+                    </label>
+                  </div>
+                </td>
                 <td></td>
                 <td className="commonText">Total</td>
                 <td className="price">162,000</td>
@@ -122,8 +142,26 @@ const MainInvestment = () => {
             </thead>
             <tbody>
               <Reserve></Reserve>
+
               <tr>
-                <td></td>
+                <td>
+                  <div>
+                    <label
+                      htmlFor="ResurvedData"
+                      style={{
+                        cursor: "pointer",
+                        backgroundColor: "#AA237A",
+                        padding: "0.6rem 1.5rem",
+                        borderRadius: "0.5rem",
+                        color: "black",
+
+                        fontSize: "1rem",
+                      }}
+                    >
+                      Add Reserve
+                    </label>
+                  </div>
+                </td>
                 <td></td>
                 <td className="commonText">Total</td>
                 <td className="price">162,000</td>
@@ -138,6 +176,8 @@ const MainInvestment = () => {
           </table>
         </div>
       </div>
+      <RefundDetailsData></RefundDetailsData>
+      <ResurvedDataDetails></ResurvedDataDetails>
     </section>
   );
 };

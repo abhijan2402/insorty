@@ -16,7 +16,7 @@ const useShippingAdd = () => {
     if (prevdata) {
       setAddShippingState(prevdata)
     }
-  }, []);
+  }, [prevdata]);
 
   const handelAddFiveShipping = () => {
     let data = addShippingState
