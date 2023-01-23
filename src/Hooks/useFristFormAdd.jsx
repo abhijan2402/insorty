@@ -12,7 +12,9 @@ const useFristFormAdd = () => {
 
 
   // ======================== add five in frist form ======================== backPageReportData
+
   const fristFormObj = {
+    // quantityInML 550
     liquorID:"",
     brandName: "", //brandName
 
@@ -20,9 +22,9 @@ const useFristFormAdd = () => {
     averageRate550: 0,
     averageRate330: 0,
 
-    startingStock650: 0, //initialStock650  650=650 330=550 180=330
-    startingStock550: 0, //initialStock330
-    startingStock330: 0, //initialStock180  /done
+    startingStock650: 0, //openingStock  650=650 330=550 180=330
+    startingStock550: 0, //openingStock
+    startingStock330: 0, //openingStock  /done
 
     incomingPurchase650: 0, //purchaseShop.purchaseShop650
     incomingPurchase550: 0, //purchaseShop.purchaseShop330
@@ -48,7 +50,7 @@ const useFristFormAdd = () => {
     sending550: 0, //sendingBhejan.sendingBhejan330
     sending330: 0, //sendingBhejan.sendingBhejan180
 
-    sumRemainder650: 0,
+    sumRemainder650: 0, //remaining
     sumRemainder550: 0,
     sumRemainder330: 0,
 

@@ -4,6 +4,8 @@ import {Typeahead} from "react-bootstrap-typeahead";
 // Import as a module in your JS
 import 'react-bootstrap-typeahead/css/Typeahead.css';
 import Loader from "../../../../../../Components/Loader/Loader";
+import { Autocomplete, TextField } from "@mui/material";
+
 
 const AddOneFristFromBack = ({
   index,
@@ -11,7 +13,6 @@ const AddOneFristFromBack = ({
   onChangeFristBackFormHandler,
   brands,
   brandsLoaded,
-  fristFormState,
   liquors
 }) => {
   const SerialNo = index + 1;
@@ -36,21 +37,30 @@ const AddOneFristFromBack = ({
               value={item.brandName}
               onChange={(event) => onChangeFristBackFormHandler(event, index)}
             /> */}
-            <Typeahead
+            <Autocomplete
               options={brands}
-            
-              selected={item.brandName}
-              onChange={(event) => {item.brandName=event[0]
-                const liq = liquors.filter((name) => {
-                  if (name.brandName === item.brandName) {
-                    return name
+              value = {item.brandName}
+              onChange={(event) => {
+                item.brandName = event.target.outerText
+                item.liquorID = liquors.filter((liq)=>{
+                  if (liq.brandName === event.target.outerText){
+                    return liq._id
                   }
                 })
-                item.liquorID = liq[0]._id
-              console.log(fristFormState)}}
-              name="brandName"
-              
-              id="brands"
+                console.log(AddOneFristFromBack)
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className="dailyReportInput"
+                  value={item.brandName}
+                  onChange={(event) => {
+                    item.brandName= event.target.value
+                    item.liquorID = null
+                    console.log(event.target.value)
+                  }}
+                />
+              )}
             />
           </div>
         </td>

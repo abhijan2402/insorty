@@ -40,7 +40,7 @@ const BackDailyReport = () => {
     brandsLoaded,
     liquors,
   } = useFristFormAdd();
-  console.log(liquors);
+  
 
   // ================== Rml Form============
   const {
@@ -139,7 +139,7 @@ const BackDailyReport = () => {
   } = useComment();
   // ********************************* submit mulitple api in handelSubmit  *********************************
 
-  console.log(fristFormState);
+  // console.log(fristFormState);
 
   return (
     <>
