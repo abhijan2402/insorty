@@ -43,7 +43,6 @@ const AddOneFristFromBack = ({
               options={brands}
               value={item.brandName}
               onChange={(event) => {
-                onChangeFristBackFormHandler(event, index) 
                 item.brandName = event.target.outerText
                 item.liquorID = liquors.filter((liq)=>{
                   if (liq.brandName === event.target.outerText){
@@ -51,6 +50,7 @@ const AddOneFristFromBack = ({
                   }
                 })
                 console.log(AddOneFristFromBack)
+                onChangeFristBackFormHandler(event, index) 
               }}
               renderInput={(params) => (
                 <TextField

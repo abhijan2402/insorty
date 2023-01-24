@@ -116,4 +116,12 @@ credit, creditTotal,
 
 {{url}}/shop/borrowedData
 
-{{url}}/shop/finalReportEntry
+{{url}}/shop/
+
+
+24/1/2023
+useRMl --> addBackPageRMLData
+usePurchase --> addPurchaseOutsideData
+useCashReciveAdd --> borrowCashReturnData
+fix sidebar on scroll
+set size of input fields according to input given automatically
