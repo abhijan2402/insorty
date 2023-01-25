@@ -1,26 +1,21 @@
-import { useState,useEffect } from "react";
-// borrowCashReturnData
+import { useState, useEffect } from "react";
 
 const useCashReciveAdd = () => {
-  // const token = localStorage.getItem("token");
-
   const cashReciveForm = {
-    amount: 0, //cash
-    reson: "", //comment
+    amount: 0,
+    reson: "",
   };
 
   const [cashReciveState, setCashReciveState] = useState([cashReciveForm]);
 
-
-  const prevdata = JSON.parse(localStorage.getItem('paymentRecieved'))
+  const prevdata = JSON.parse(localStorage.getItem("paymentRecieved"));
 
   useEffect(() => {
     if (prevdata) {
-      setCashReciveState(prevdata)
+      setCashReciveState(prevdata);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   const handelAddFiveCashRecive = () => {
     let data = cashReciveState;
@@ -59,44 +54,23 @@ const useCashReciveAdd = () => {
     });
     setCashReciveState(cashReciveHandel);
 
-    localStorage.setItem('paymentRecieved',JSON.stringify(cashReciveState))
-    localStorage.setItem('totalPaymentsRecieved', JSON.stringify(cashReciveState.reduce(
-      (total, currentItem) => (total = total + Number(currentItem.amount)),
-      0
-    )))
+    localStorage.setItem("paymentRecieved", JSON.stringify(cashReciveState));
+    localStorage.setItem(
+      "totalPaymentsRecieved",
+      JSON.stringify(
+        cashReciveState.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.amount)),
+          0
+        )
+      )
+    );
   };
-
-  // const handelSubmitCashRecive = (e) => {
-  //   const handelCashRecive = Object.assign({}, cashReciveState);
-
-  //   const comment = handelCashRecive.map((cashRecive) => {
-  //     return cashRecive.reson;
-  //   });
-  //   const cash = handelCashRecive.map((cashRecive) => {
-  //     return cashRecive.amount;
-  //   });
-
-  //   const borrowCashReturnData = {
-  //     cash: cash,
-  //     comment: comment,
-  //   };
-
-  //   fetch("https://insorty-api.onrender.com/shop/borrowCashReturnData", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       cookie_token: token,
-  //     },
-  //     body: JSON.stringify(borrowCashReturnData),
-  //   });
-  // };
 
   return {
     handelAddFiveCashRecive,
     handelAddOneCashRecive,
     onChangeCashRecive,
     cashReciveState,
-    // handelSubmitCashRecive,
   };
 };
 

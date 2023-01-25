@@ -16,6 +16,7 @@ const useShippingAdd = () => {
     if (prevdata) {
       setAddShippingState(prevdata)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handelAddFiveShipping = () => {

@@ -9,7 +9,6 @@ const FinalReport = ({
   commisionTotal,
 }) => {
   const { intoAccountState, setintoAccountState } = useContext(DataContextApi);
-  // how to set data in local storage beerTotal and all data
 
   localStorage.setItem("beerTotal", JSON.stringify(beerTotal));
   localStorage.setItem("rmlTotal", JSON.stringify(rmlTotal));

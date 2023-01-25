@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { Autocomplete, TextField } from "@mui/material";
 
@@ -19,60 +19,24 @@ const AddOneFristForm = ({
       <tr>
         <th>{SerialNo}</th>
         <td>
-          {/* <div className="form-control">
-            <input
-              type="text"
-              className="dailyReportInput"
-              name="brandName"
-              value={addOneFirst.brandName}
-              onChange={(event) => handelFristFormOnChange(event, index)}
-            />
-          </div> */}
-
           <Autocomplete
             options={myOptions}
             onChange={(event) => {
-              addOneFirst.brandName = event.target.outerText
-              console.log(addOneFristFormState)
+              addOneFirst.brandName = event.target.outerText;
+              console.log(addOneFristFormState);
             }}
             renderInput={(params) => (
               <TextField
                 {...params}
                 className="dailyReportInput"
                 value={addOneFirst.brandName}
-                
-                
-                onChange={(event) => {handelFristFormOnChange(event, index)
-                console.log(event.target.value)
+                onChange={(event) => {
+                  handelFristFormOnChange(event, index);
+                  console.log(event.target.value);
                 }}
               />
             )}
           />
-
-          {/* <div className="dropdownContainer">
-              {sujestedLiquer
-                .filter((addOneFirst) => {
-                  const searchTerm = addOneFristFormState;
-                  const brandName = addOneFirst.brandName.toLowerCase();
-
-                  return (
-                    searchTerm &&
-                    brandName.startsWith(searchTerm) &&
-                    brandName !== searchTerm
-                  );
-                })
-                .slice(0, 10)
-                .map((addOneFirst) => (
-                  <div
-                    onClick={() => onSearch(addOneFirst.brandName)}
-                    className="dropdown-rows"
-                    key={addOneFirst.brandName}
-                  >
-                    {addOneFirst.brandName}
-                  </div>
-                ))}
-            </div> */}
-          {/* </div> */}
         </td>
         {/* ======== MRP Input ========= */}
         <td>
@@ -87,11 +51,6 @@ const AddOneFristForm = ({
                 name="averageRate750"
                 disabled
               />
-              {/* <input
-                name="750"
-                value={addOneFirst.averageRate[750]}
-                onChange={(e) => handelFristFormOnChange(e, index)}
-              /> */}
             </div>
 
             <div className="form-control">
@@ -103,11 +62,6 @@ const AddOneFristForm = ({
                 name="averageRate330"
                 disabled
               />
-              {/* <input
-                name="330"
-                value={addOneFirst.averageRate[330]}
-                onChange={(e) => handelFristFormOnChange(e, index)}
-              /> */}
             </div>
 
             <div className="form-control">
@@ -119,11 +73,6 @@ const AddOneFristForm = ({
                 name="averageRate180"
                 disabled
               />
-              {/* <input
-                name="180"
-                value={addOneFirst.averageRate[180]}
-                onChange={(e) => handelFristFormOnChange(e, index)}
-              /> */}
             </div>
           </div>
         </td>
@@ -549,16 +498,7 @@ const AddOneFristForm = ({
               />
             </div>
 
-            <div className="form-control">
-              {/* <input
-                type="text"
-                className="semiSmallInput"
-                name="total750"
-                disabled
-                value={addOneFirst.total330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              /> */}
-            </div>
+            <div className="form-control"></div>
           </div>
         </td>
         {/* ============= कुल योग ================ */}

@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import useCashReciveAdd from "../useCashReciveAdd";
-// import useFristFormAdd from "../useFristFormAdd";
 import useRmlAdd from "../useRmlAdd";
 import Swal from "sweetalert2";
 import usePurchesOutSideAdd from "../usePurchesOutSideAdd";
@@ -82,9 +81,7 @@ const useHandelSubmitBackAPI = () => {
       comments: element.reason,
     });
   }
-  // purchesOutSideState ======================
 
-  // CommissonFrom -> totalExpensesData ==============
   const entriesExpances = [];
 
   for (let index = 0; index < commissonState.length; index++) {
@@ -94,26 +91,18 @@ const useHandelSubmitBackAPI = () => {
       description: element.reason,
     });
   }
-  // CommissonFrom -> totalExpensesData ==============
-
-  // craditDabitState -> borrowedData ================
 
   const entriesBorrow = [];
 
   for (let index = 0; index < craditDabitState.length; index++) {
     const element = craditDabitState[index];
     entriesBorrow.push({
-      // brandName: element.brandName,
       type: element.partyType,
       partyName: element.partyName,
       amount: element.amount,
       comment: element.note,
     });
   }
-
-  // craditDabitState -> borrowedData ================
-
-  // {{url}}/shop/addFinalReportData =================
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
@@ -134,8 +123,6 @@ const useHandelSubmitBackAPI = () => {
   const previousDues = 0;
   const todaysPayment = 0;
   const restAmount = 0;
-
-  // {{url}}/shop/addFinalReportData =================
 
   const handleSubmit = () => {
     setIsLoading(true);

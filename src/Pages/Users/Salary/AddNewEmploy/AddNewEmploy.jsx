@@ -3,7 +3,6 @@ import React from "react";
 const AddNewEmploy = ({ handelSubmitAddNewEmploy }) => {
   return (
     <>
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="addNewEmploy" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">

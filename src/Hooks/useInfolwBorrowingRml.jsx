@@ -21,6 +21,7 @@ const useInfolwBorrowingRml = () => {
     if (prevdata) {
       setInfolwBorrwingFormState(prevdata)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handelAddFiveBorrowingRml = () => {

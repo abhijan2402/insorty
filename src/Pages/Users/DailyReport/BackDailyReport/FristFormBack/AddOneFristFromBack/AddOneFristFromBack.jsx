@@ -1,23 +1,18 @@
-import React, { useEffect,useState } from "react";
-// import Typeahead from "react-typeahead/lib/typeahead";
-import {Typeahead} from "react-bootstrap-typeahead";
-// Import as a module in your JS
-import 'react-bootstrap-typeahead/css/Typeahead.css';
+import React from "react";
+import "react-bootstrap-typeahead/css/Typeahead.css";
 import Loader from "../../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
-
 
 const AddOneFristFromBack = ({
   index,
   item,
   onChangeFristBackFormHandler,
-  // brands,
   brandsLoaded,
-  liquors
+  liquors,
 }) => {
   const SerialNo = index + 1;
 
-  const brands =['a','b','c','d']
+  const brands = ["a", "b", "c", "d"];
 
   if (brandsLoaded) {
     return (
@@ -32,37 +27,30 @@ const AddOneFristFromBack = ({
         <th>{SerialNo}</th>
         <td>
           <div className="form-control">
-            {/* <input
-              type="text"
-              className="dailyReportInput"
-              name="brandName"
-              value={item.brandName}
-              onChange={(event) => onChangeFristBackFormHandler(event, index)}
-            /> */}
             <Autocomplete
               options={brands}
               value={item.brandName}
               onChange={(event) => {
-                item.brandName = event.target.outerText
-                item.liquorID = liquors.filter((liq)=>{
-                  if (liq.brandName === event.target.outerText){
-                    return liq._id
+                item.brandName = event.target.outerText;
+                // eslint-disable-next-line array-callback-return
+                item.liquorID = liquors.filter((liq) => {
+                  if (liq.brandName === event.target.outerText) {
+                    return liq._id;
                   }
-                })
-                console.log(AddOneFristFromBack)
-                onChangeFristBackFormHandler(event, index) 
+                });
+                console.log(AddOneFristFromBack);
+                onChangeFristBackFormHandler(event, index);
               }}
               renderInput={(params) => (
                 <TextField
-                
                   {...params}
                   className="dailyReportInput"
                   value={item.brandName}
                   onChange={(event) => {
-                    onChangeFristBackFormHandler(event,index)
-                    item.brandName= event.target.value
-                    item.liquorID = null
-                    console.log(event.target.value)
+                    onChangeFristBackFormHandler(event, index);
+                    item.brandName = event.target.value;
+                    item.liquorID = null;
+                    console.log(event.target.value);
                   }}
                 />
               )}

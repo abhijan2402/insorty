@@ -148,8 +148,6 @@ const StockLandingForm = () => {
           </div>
         </div>
       </div>
-
-      {/* ************************ all sealy data************** */}
     </section>
   );
 };

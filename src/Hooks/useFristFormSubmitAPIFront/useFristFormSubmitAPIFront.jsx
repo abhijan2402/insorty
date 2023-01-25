@@ -107,27 +107,6 @@ const useFristFormSubmitAPIFront = () => {
     });
   }
 
-  /*
-          {
-            "liquor": null,
-            "brandName": "Brand name",
-            "quantityInML": 750,
-            "openingStock": 1,
-            "purchaseShop": 1,
-            "purchaseShopRate": 100,
-            "purchaseOutSide": 1,
-            "purchaseOutSideRate": 100,
-            "credits": 1,
-            "send": 1,
-            "remaining": 1,
-            "closingStock": 1,
-            "sales": 1,
-            "total": 10
-        }
-  
-  */
-
-  // const entries = [];
   for (let index = 0; index < addOneSecondFormState.length; index++) {}
 
   const submitFristFormHandler = async (e) => {

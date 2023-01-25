@@ -1,35 +1,35 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const useSecondFormFront = () => {
   const addOneSecondForm = {
     averageRate: 0,
-    startingStock: 0, //initialStock
-    incomingPurchase: 0, //purchaseShop.purchaseShopNum
-    buyRate: 0, //purchaseShop.purchaseShopRate
-    incomePurchase: 0, //purchaseOutSide.purchaseOutSideNum
-    purchaseRate: 0, //purchaseOutSide.purchaseOutSideRate
-    inflowCredit: 0, //purchaseBorrow
-    sending: 0, //sendingBhejan
+    startingStock: 0,
+    incomingPurchase: 0,
+    buyRate: 0,
+    incomePurchase: 0,
+    purchaseRate: 0,
+    inflowCredit: 0,
+    sending: 0,
     sumRemainder: 0,
-    closingStock: 0, //lastStock
+    closingStock: 0,
     sales: 0,
-    mainRate: 0, //soldRate
+    mainRate: 0,
     total: 0,
     grandTotal: 0,
-    selectStockVarient: 90, //ml
+    selectStockVarient: 90,
   };
 
   const [addOneSecondFormState, setAddOneSecondFormState] = useState([
     addOneSecondForm,
   ]);
 
-
-  const prevdata = JSON.parse(localStorage.getItem('mlForm'))
+  const prevdata = JSON.parse(localStorage.getItem("mlForm"));
 
   useEffect(() => {
     if (prevdata) {
-      setAddOneSecondFormState(prevdata)
+      setAddOneSecondFormState(prevdata);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addOneSecondFormHandler = () => {
@@ -63,20 +63,6 @@ const useSecondFormFront = () => {
     );
     setAddOneSecondFormState(secondFormHandel);
     // **********************formula******************
-
-    /* 
-       
-         const saleTotal = addRmlState.map((returned, i) => {
-          if (index === i) {
-            let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-            if (e.target.name === "sales" || e.target.name === "rate") {
-              obj.cost = Number(obj.sales) * Number(obj.rate);
-            }
-            return obj;
-          } else return returned;
-        });
-    
-        */
 
     const handelavg = addOneSecondFormState.map((returned, i) => {
       if (index === i) {
@@ -138,16 +124,19 @@ const useSecondFormFront = () => {
     });
     setAddOneSecondFormState(totals);
 
-    localStorage.setItem("mlForm",JSON.stringify(addOneSecondFormState))
-    localStorage.setItem("mlFormTotal", JSON.stringify(addOneSecondFormState.reduce(
-      (totals, currentItem) =>
-        (totals = totals + Number(currentItem.total)),
-      0
-    )))
+    localStorage.setItem("mlForm", JSON.stringify(addOneSecondFormState));
+    localStorage.setItem(
+      "mlFormTotal",
+      JSON.stringify(
+        addOneSecondFormState.reduce(
+          (totals, currentItem) =>
+            (totals = totals + Number(currentItem.total)),
+          0
+        )
+      )
+    );
   };
 
-
-  
   return {
     addOneSecondFormState,
     addOneSecondFormHandler,

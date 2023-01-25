@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 
-// backPageRmlData
-
 const useRmlAdd = () => {
-  // const token = localStorage.getItem("token");
-
   const addRmlForm = {
     brandName: "", //brandName
     averageRate: 0,
@@ -31,6 +27,7 @@ const useRmlAdd = () => {
     if (prevdata) {
       setAddRmlState(prevdata);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handelAddFiveInRml = () => {
@@ -39,21 +36,20 @@ const useRmlAdd = () => {
       data = [
         ...data,
         {
-          //addBackPageRMLData --> api
-          brandName: "", //brandName
+          brandName: "",
           averageRate: 0,
-          openingStock: 0, //openingStock
-          incomingPurchase: 0, //purchaseShop
-          buyRate: 0, //purchaseShopRate
-          incomePurchase: 0, //purchaseOutSide
-          purchaseRate: 0, //purchaseOutSideRate
-          inflowCredit: 0, //credits
-          sending: 0, //send
-          sumRemainder: 0, //remaining
-          closingStock: 0, //closingStock
-          sales: 0, //sales
+          openingStock: 0,
+          incomingPurchase: 0,
+          buyRate: 0,
+          incomePurchase: 0,
+          purchaseRate: 0,
+          inflowCredit: 0,
+          sending: 0,
+          sumRemainder: 0,
+          closingStock: 0,
+          sales: 0,
           rate: 0,
-          cost: 0, //total
+          cost: 0,
         },
       ];
     }
@@ -82,6 +78,7 @@ const useRmlAdd = () => {
     ]);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const [total, setTotal] = useState({
     totalOpening: 0,
     totalIncomingStock: 0,

@@ -1,4 +1,3 @@
-// import axios from "axios";
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
@@ -7,63 +6,61 @@ import Swal from "sweetalert2";
 const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(false);
-  // const [brandsLoaded, setBrandsLoaded] = useState(false)
   let brands;
 
-  // ======================== add five in frist form ======================== backPageReportData
+  // ======================== add five in frist form ========================
 
   const fristFormObj = {
-    // quantityInML 550
     liquorID: "",
-    brandName: "", //brandName
+    brandName: "",
 
     averageRate650: 0,
     averageRate550: 0,
     averageRate330: 0,
 
-    startingStock650: 0, //openingStock  650=650 330=550 180=330
-    startingStock550: 0, //openingStock
-    startingStock330: 0, //openingStock  /done
+    startingStock650: 0,
+    startingStock550: 0,
+    startingStock330: 0,
 
-    incomingPurchase650: 0, //purchaseShop.purchaseShop650
-    incomingPurchase550: 0, //purchaseShop.purchaseShop330
-    incomingPurchase330: 0, //purchaseShop.purchaseShop180 /done
+    incomingPurchase650: 0,
+    incomingPurchase550: 0,
+    incomingPurchase330: 0,
 
-    buyRate650: 0, //purchaseShop.purchaseShopRate650
-    buyRate550: 0, //purchaseShop.purchaseShopRate330
-    buyRate330: 0, //purchaseShop.purchaseShopRate180  /done
+    buyRate650: 0,
+    buyRate550: 0,
+    buyRate330: 0,
 
-    incomePurchase650: 0, //purchaseOutSide.purchaseOutSide650
-    incomePurchase550: 0, //purchaseOutSide.purchaseOutSide330
-    incomePurchase330: 0, //purchaseOutSide.purchaseOutSide180
+    incomePurchase650: 0,
+    incomePurchase550: 0,
+    incomePurchase330: 0,
 
-    purchaseRate650: 0, //purchaseOutSide.purchaseShopRate650
-    purchaseRate550: 0, //purchaseOutSide.purchaseShopRate330
-    purchaseRate330: 0, //purchaseOutSide.purchaseShopRate180
+    purchaseRate650: 0,
+    purchaseRate550: 0,
+    purchaseRate330: 0,
 
-    inflowCredit650: 0, //purchaseBorrow/purchaseBorrow650
-    inflowCredit550: 0, //purchaseBorrow.purchaseBorrow330
-    inflowCredit330: 0, //purchaseBorrow.purchaseBorrow180
+    inflowCredit650: 0,
+    inflowCredit550: 0,
+    inflowCredit330: 0,
 
-    sending650: 0, //sendingBhejan.sendingBhejan650
-    sending550: 0, //sendingBhejan.sendingBhejan330
-    sending330: 0, //sendingBhejan.sendingBhejan180
+    sending650: 0,
+    sending550: 0,
+    sending330: 0,
 
-    sumRemainder650: 0, //remaining
+    sumRemainder650: 0,
     sumRemainder550: 0,
     sumRemainder330: 0,
 
-    closingStock650: 0, //lastStock.lastStock650
-    closingStock550: 0, //lastStock.lastStock330
-    closingStock330: 0, //lastStock.lastStock180
+    closingStock650: 0,
+    closingStock550: 0,
+    closingStock330: 0,
 
     sales650: 0,
     sales550: 0,
     sales330: 0,
 
-    mainRate650: 0, //soldRate.soldRate650
-    mainRate550: 0, //soldRate.soldRate330
-    mainRate330: 0, //soldRate.soldRate180
+    mainRate650: 0,
+    mainRate550: 0,
+    mainRate330: 0,
 
     total650: 0,
     total550: 0,
@@ -104,6 +101,7 @@ const useFristFormAdd = () => {
     if (prevdata) {
       setFristFormState(prevdata);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const addFiveInFristFormHandler = () => {
@@ -278,8 +276,6 @@ const useFristFormAdd = () => {
 
     allGrandTotal: 0,
   });
-
-  // console.log(liquors?.[0].shopId, "liquors?.[0]?._id");
 
   // ======================== add One in frist f0orm ========================
 
@@ -523,6 +519,7 @@ const useFristFormAdd = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (e.target.name === "brandName") {
+          // eslint-disable-next-line array-callback-return
           const liq = liquors.filter((name) => {
             if (name === obj.brandName) {
               return name._id;

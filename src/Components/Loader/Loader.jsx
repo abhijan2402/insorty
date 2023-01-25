@@ -4,7 +4,7 @@ const Loader = () => {
   return (
     <div>
       <div
-        class="flex items-center justify-center"
+        className="flex items-center justify-center"
         style={{
           position: "fixed",
           top: "0",
@@ -14,7 +14,7 @@ const Loader = () => {
         }}
       >
         <div
-          class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+          className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
           role="status"
         ></div>
       </div>

@@ -8,8 +8,6 @@ const SalaryModal = ({
 }) => {
   return (
     <>
-      {/* Put this part before </body> tag */}
-
       <input type="checkbox" id="addData" className="modal-toggle" />
 
       <div className="modal">

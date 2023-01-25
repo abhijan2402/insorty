@@ -1,55 +1,54 @@
 import { useState, useEffect } from "react";
-// frontPageData brandWise[]
 
 const useFormulasFristFormFront = () => {
   const token = localStorage.getItem("token");
 
   let addOneFristForm = {
-    brandName: "", //brandName
+    brandName: "",
     liquorID: "",
-    startingStock750: 0, //initialStock
-    startingStock330: 0, //initialStock
-    startingStock180: 0, //initialStock
+    startingStock750: 0,
+    startingStock330: 0,
+    startingStock180: 0,
 
-    incomingPurchase750: 0, //purchaseShop.purchaseShop750
-    incomingPurchase330: 0, //purchaseShop330
-    incomingPurchase180: 0, //purchaseShop180
+    incomingPurchase750: 0,
+    incomingPurchase330: 0,
+    incomingPurchase180: 0,
 
-    buyRate750: 0, //purchaseShop.purchaseShopRate750
-    buyRate330: 0, //purchaseShopRate330
-    buyRate180: 0, //purchaseShopRate180
+    buyRate750: 0,
+    buyRate330: 0,
+    buyRate180: 0,
 
-    incomePurchase750: 0, //purchaseOutSide.purchaseOutSide750
-    incomePurchase330: 0, //purchaseOutSide330
-    incomePurchase180: 0, //purchaseOutSide180
+    incomePurchase750: 0,
+    incomePurchase330: 0,
+    incomePurchase180: 0,
 
-    purchaseRate750: 0, //purchaseOutSide.purchaseOutSideRate750
-    purchaseRate330: 0, //purchaseOutSideRate330
-    purchaseRate180: 0, //purchaseOutSideRate180
+    purchaseRate750: 0,
+    purchaseRate330: 0,
+    purchaseRate180: 0,
 
-    inflowCredit750: 0, //purchaseBorrow
-    inflowCredit330: 0, //purchaseBorrow
-    inflowCredit180: 0, //purchaseBorrow
+    inflowCredit750: 0,
+    inflowCredit330: 0,
+    inflowCredit180: 0,
 
-    sending750: 0, //sendingBhejan
-    sending330: 0, //sendingBhejan
-    sending180: 0, //sendingBhejan
+    sending750: 0,
+    sending330: 0,
+    sending180: 0,
 
     sumRemainder750: 0,
     sumRemainder330: 0,
     sumRemainder180: 0,
 
-    closingStock750: 0, //lastStock
-    closingStock330: 0, //lastStock
-    closingStock180: 0, //lastStock
+    closingStock750: 0,
+    closingStock330: 0,
+    closingStock180: 0,
 
     sales750: 0,
     sales330: 0,
     sales180: 0,
 
-    mainRate750: 0, //soldRate
-    mainRate330: 0, //soldRate
-    mainRate180: 0, //soldRate
+    mainRate750: 0,
+    mainRate330: 0,
+    mainRate180: 0,
 
     total750: 0,
     total330: 0,
@@ -84,6 +83,7 @@ const useFormulasFristFormFront = () => {
     if (prevdata) {
       setAddOneFristFormState(prevdata);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [totalState, setTotalState] = useState({

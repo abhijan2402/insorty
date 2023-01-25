@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import AddOneSecondForm from "./SecondForm/AddOneSecondForm/AddOneSecondForm";
 import AddOneFristForm from "./FirstForm/AddOneFristForm/AddOneFristForm";
 import useFormulasFristFormFront from "../../../../Hooks/useFormulas/useFormulasFristFormFront";
 import useSecondFormFront from "../../../../Hooks/useSecondFormFront";
 import { useQuery } from "@tanstack/react-query";
-// import { useQuery } from "@tanstack/react-query";
-
-//frontPageData mlWise
 
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
-
-  // **********************formulae******************
 
   const {
     addOneFristFormState,
@@ -46,7 +41,7 @@ const FronteDailyReport = () => {
     );
   };
 
-  const { data: sujestedData, isLoading, refetch } = useQuery({
+  const { data: sujestedData, isLoading } = useQuery({
     queryKey: ["sujestedData"],
     queryFn: async () => {
       const res = await fetch(
@@ -61,19 +56,8 @@ const FronteDailyReport = () => {
     },
   });
 
-  // console.log(sujestedData);
-
-  // console.log(isLoading);
-
-  // const [value, setValue] = useState("");
-
-  // const onChange = (event) => {
-  //   setValue(event.target.value);
-  // };
-
   const onSearch = (searchTerm) => {
     setAddOneFristFormState(searchTerm);
-    // our api to fetch the search result
     console.log("search ", searchTerm);
   };
 
