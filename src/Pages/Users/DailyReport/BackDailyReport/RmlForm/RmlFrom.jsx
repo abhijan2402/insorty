@@ -1,19 +1,53 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Autocomplete, TextField } from "@mui/material";
+import { DataContextApi } from "../../../../../Context/DataContext";
 
 const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
   const serialNo = index + 1;
+  const { liquors } = useContext(DataContextApi);
+
+  const brands = ["a", "b", "c", "d"];
+
   return (
     <>
       <tr>
         <th>{serialNo}</th>
         <td>
           <div className="form-control">
-            <input
+            {/* <input
               type="text"
               className="semiSmallInput"
               name="brandName"
               value={item.brandName}
               onChange={(e) => onChangeRmlHandler(e, index)}
+            /> */}
+
+            <Autocomplete
+              options={brands}
+              value={item.brandName}
+              onChange={(event) => {
+                item.brandName = event.target.outerText;
+                item.liquorID = liquors.filter((liq) => {
+                  if (liq.brandName === event.target.outerText) {
+                    return liq._id;
+                  }
+                });
+
+                onChangeRmlHandler(event, index);
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className="dailyReportInput"
+                  value={item.brandName}
+                  onChange={(event) => {
+                    onChangeRmlHandler(event, index);
+                    item.brandName = event.target.value;
+                    item.liquorID = null;
+                    console.log(event.target.value);
+                  }}
+                />
+              )}
             />
           </div>
         </td>

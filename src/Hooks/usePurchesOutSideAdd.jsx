@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const usePurchesOutSideAdd = () => {
   const purchesOutSideAdd = {
@@ -11,39 +11,26 @@ const usePurchesOutSideAdd = () => {
     reason: "",
   };
 
-  // 
+  // purchesOutSideState ======================
+  
 
   const [purchesOutSideState, setPurchesOutSideState] = useState([
     purchesOutSideAdd,
   ]);
 
-
-  const prevdata = JSON.parse(localStorage.getItem('purchases'))
+  const prevdata = JSON.parse(localStorage.getItem("purchases"));
 
   useEffect(() => {
     if (prevdata) {
-      setPurchesOutSideState(prevdata)
+      setPurchesOutSideState(prevdata);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   const handelAddOnePurchesOutSide = () => {
-    setPurchesOutSideState([...purchesOutSideState, {
-      partyName: "",
-      brandName: "",
-      theNumber: 0,
-      quantity: 0,
-      rate: 0,
-      total: 0,
-      reason: "",
-    }]);
-  };
-
-  const handelAddFivePurchesOutSide = () => {
-    let data = purchesOutSideState
-
-    for (let i = 0; i < 5; i++) {
-      data = [...data, {
+    setPurchesOutSideState([
+      ...purchesOutSideState,
+      {
         partyName: "",
         brandName: "",
         theNumber: 0,
@@ -51,10 +38,28 @@ const usePurchesOutSideAdd = () => {
         rate: 0,
         total: 0,
         reason: "",
-      }]
-      
+      },
+    ]);
+  };
+
+  const handelAddFivePurchesOutSide = () => {
+    let data = purchesOutSideState;
+
+    for (let i = 0; i < 5; i++) {
+      data = [
+        ...data,
+        {
+          partyName: "",
+          brandName: "",
+          theNumber: 0,
+          quantity: 0,
+          rate: 0,
+          total: 0,
+          reason: "",
+        },
+      ];
     }
-    setPurchesOutSideState(data)
+    setPurchesOutSideState(data);
   };
 
   const onChangePurchesOutSide = (e, index) => {
@@ -67,20 +72,23 @@ const usePurchesOutSideAdd = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (e.target.name === "theNumber" || e.target.name === "rate") {
-          obj.total =
-            (Number(obj.theNumber) * Number(obj.rate));
+          obj.total = Number(obj.theNumber) * Number(obj.rate);
         }
         return obj;
       } else return returned;
     });
     setPurchesOutSideState(yog);
 
-    localStorage.setItem('purchases',JSON.stringify(purchesOutSideState))
-    localStorage.setItem('purchasesTotal', JSON.stringify(purchesOutSideState.reduce(
-      (total, currentItem) => (total = total + Number(currentItem.total)),
-      0
-    )))
-
+    localStorage.setItem("purchases", JSON.stringify(purchesOutSideState));
+    localStorage.setItem(
+      "purchasesTotal",
+      JSON.stringify(
+        purchesOutSideState.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.total)),
+          0
+        )
+      )
+    );
   };
 
   const handelSubmitPurchesOutSide = (e) => {

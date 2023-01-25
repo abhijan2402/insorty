@@ -1,51 +1,3 @@
-<input name="brandName" value={addOneFristForm.brandName} onChange={(e) => handelFristFormOnChange(e, index)} />
-
-<input name="750" value={addOneFristForm.averageRate[750]} onChange={(e) => handelFristFormOnChange(e, index)} />
-<input name="330" value={addOneFristForm.averageRate[330]} onChange={(e) => handelFristFormOnChange(e, index)} />
-<input name="180" value={addOneFristForm.averageRate[180]} onChange={(e) => handelFristFormOnChange(e, index)} />
-
-<input name="750" value={addOneFristForm.startingStock[750]} onChange={(e) => handelFristFormOnChange(e, index)} />
-<input name="330" value={addOneFristForm.startingStock[330]} onChange={(e) => handelFristFormOnChange(e, index)} />
-<input name="180" value={addOneFristForm.startingStock[180]} onChange={(e) => handelFristFormOnChange(e, index)} />
-
-...
-
-
-  const handelSubmitSecondForm = (e) => {
-    const secondFormSubmit = addOneSecondFormState.map((returned) =>
-      Object.assign(returned, {
-        averageRate: formula.avg(
-          returned.buyRate,
-          returned.purchaseRate,
-          returned.averageRate
-        ),
-        startingStock: formula.yog(
-          returned.startingStock,
-          returned.incomePurchase,
-          returned.inflowCredit,
-          returned.incomingPurchase,
-          returned.sumRemainder
-        ),
-        sumRemainder: formula.saleDone(
-          returned.sumRemainder,
-          returned.closingStock,
-          returned.sales
-        ),
-        total: formula.totalIndividual(
-          returned.mainRate,
-          returned.sales,
-          returned.total
-        ),
-        grandTotal: formula.allTotal(
-          returned.total,
-          returned.total,
-          returned.total,
-          returned.grandTotal
-        ),
-      })
-    );
-  };
-
 
 
 
@@ -74,29 +26,6 @@ tasks:
   2.useCashReciveAdd **
   3.useFristFormAdd ** Done
 
-  ==>
-
- // const handleDelete = (employeeId) => {
-  //   fetch(`https://insorty-api.onrender.com/shop/deleteEmployee`, {
-  //     method: "POST",
-  //     body: JSON.stringify({ employeeId }),
-  //     headers: { "Content-Type": "application/json", cookie_token: token },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.success) {
-  //         Swal.fire("Deleted!", "Your file has been deleted.", "success");
-  //         refetch();
-  //       } else {
-  //         Swal.fire("Failed!", "Your file has not been deleted.", "error");
-  //       }
-  //     });
-  // };
-
-
-
-/shop/totalExpensesData  कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
-
 
 
 file -> api
@@ -120,6 +49,7 @@ credit, creditTotal,
 
 
 24/1/2023
+
 useRMl --> addBackPageRMLData
 usePurchase --> addPurchaseOutsideData
 useCashReciveAdd --> borrowCashReturnData

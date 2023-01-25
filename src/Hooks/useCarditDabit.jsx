@@ -1,46 +1,51 @@
-import { useState,useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from "react";
 
 const useCarditDabit = () => {
-
   const craditDabitForm = {
     partyName: "",
-    partyType:"",
+    partyType: "",
     amount: 0,
     note: "",
   };
 
   const [craditDabitState, setCraditDabitState] = useState([craditDabitForm]);
 
-  const prevdata = JSON.parse(localStorage.getItem('credit'))
+  const prevdata = JSON.parse(localStorage.getItem("credit"));
 
   useEffect(() => {
     if (prevdata) {
-      setCraditDabitState(prevdata)
+      setCraditDabitState(prevdata);
     }
   }, []);
 
   const handelAddFiveCarditDabit = () => {
-    let data = craditDabitState
+    let data = craditDabitState;
 
     for (let i = 0; i < 5; i++) {
-      data = [...data, {
-        partyName: "",
-        partyType:'',
-        amount: 0,
-        note: "",
-      }]
-
+      data = [
+        ...data,
+        {
+          partyName: "",
+          partyType: "",
+          amount: 0,
+          note: "",
+        },
+      ];
     }
-    setCraditDabitState(data)
+    setCraditDabitState(data);
   };
 
   const handelAddOneCarditDabit = () => {
-    setCraditDabitState([...craditDabitState, {
-      partyName: "",
-      partyType: '',
-      amount: 0,
-      note: "",
-    }]);
+    setCraditDabitState([
+      ...craditDabitState,
+      {
+        partyName: "",
+        partyType: "",
+        amount: 0,
+        note: "",
+      },
+    ]);
   };
 
   const onChangeCarditDabit = (e, index) => {
@@ -53,13 +58,17 @@ const useCarditDabit = () => {
     });
     setCraditDabitState(dabitCarditHandel);
 
-    localStorage.setItem('credit',JSON.stringify(craditDabitState))
-    
-    localStorage.setItem('creditTotal', JSON.stringify(craditDabitState.reduce(
-      (total, currentItem) => (total = total + Number(currentItem.amount)),
-      0
-    )))
+    localStorage.setItem("credit", JSON.stringify(craditDabitState));
 
+    localStorage.setItem(
+      "creditTotal",
+      JSON.stringify(
+        craditDabitState.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.amount)),
+          0
+        )
+      )
+    );
   };
 
   const handelSubmitCarditDabit = (e) => {

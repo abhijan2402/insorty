@@ -26,10 +26,10 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
             value={item.partyType}
             onChange={(e) => onChangeCarditDabit(e, index)}
           >
-            <option selected value={`PARTNER`}>
+            <option selected value="PARTNER">
               PARTNER
             </option>
-            <option value={`PARTY`}>PARTY</option>
+            <option value="PARTY">PARTY</option>
           </select>
         </div>
       </td>

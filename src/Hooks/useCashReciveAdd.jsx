@@ -5,8 +5,8 @@ const useCashReciveAdd = () => {
   // const token = localStorage.getItem("token");
 
   const cashReciveForm = {
-    reson: "", //comment
     amount: 0, //cash
+    reson: "", //comment
   };
 
   const [cashReciveState, setCashReciveState] = useState([cashReciveForm]);
@@ -18,6 +18,7 @@ const useCashReciveAdd = () => {
     if (prevdata) {
       setCashReciveState(prevdata)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

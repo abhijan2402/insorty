@@ -16,7 +16,8 @@ const useHandelSubmitBackAPI = () => {
   const { purchesOutSideState } = usePurchesOutSideAdd();
   const { commissonState } = useCommissonAdd();
   const { craditDabitState } = useCarditDabit();
-  const { intoAccountState } = useContext(DataContextApi);
+  const { intoAccountState, liquerState } = useContext(DataContextApi);
+  const liquerData = liquerState?.data;
 
   // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
@@ -26,30 +27,41 @@ const useHandelSubmitBackAPI = () => {
 
     borrowCashReturnData.push({
       cash: element.amount,
-      comments: element.reson,
+      description: element.reson,
     });
   }
+
   // use cashReciveState to send data to API ======================
 
   // add Rml ======================
-  const dataDetails = [];
+  const addRmlData = [];
+  const currentStock = (liquerData ?? [])[0]?.currentStock;
+  const typeData = (liquerData ?? [])[0]?.type;
+  const quantityInMLData = (liquerData ?? [])[0]?.quantityInML;
+  const rateData = (liquerData ?? [])[0]?.rate;
+  const liquerId = (liquerData ?? [])[0]?._id;
+
   for (let index = 0; index < addRmlState.length; index++) {
     const element = addRmlState[index];
-    dataDetails.push({
-      brandName: element.brandName,
-      initialStock: element.openingStock,
-      purchaseShop: {
-        purchaseShopNum: element.incomingPurchase,
-        purchaseShopRate: element.buyRate,
+    addRmlData.push({
+      liquor: {
+        brandName: element.brandName,
+        currentStock: currentStock,
+        type: typeData,
+        quantityInML: quantityInMLData,
+        rate: rateData,
       },
-      purchaseOutSide: {
-        purchaseOutSideNum: element.incomePurchase,
-        purchaseOutSideRate: element.purchaseRate,
-      },
-      purchaseBorrow: element.inflowCredit,
-      sendingBhejan: element.sending,
-      lastStock: element.closingStock,
-      soldRate: element.rate,
+      openingStock: element.openingStock,
+      purchaseShop: element.incomingPurchase,
+      purchaseShopRate: element.buyRate,
+      purchaseOutSide: element.incomePurchase,
+      purchaseOutSideRate: element.purchaseRate,
+      credits: element.inflowCredit,
+      send: element.sending,
+      remaining: element.closingStock,
+      closingStock: element.closingStock,
+      sales: element.sales,
+      amount: element.amount,
     });
   }
   // add Rml ======================
@@ -57,10 +69,10 @@ const useHandelSubmitBackAPI = () => {
   // purchesOutSideState ======================
 
   const purchaseOutSideData = [];
-
   for (let index = 0; index < purchesOutSideState.length; index++) {
     const element = purchesOutSideState[index];
     purchaseOutSideData.push({
+      liquor: liquerId,
       brandName: element.brandName,
       partyName: element.partyName,
       number: element.theNumber,
@@ -91,8 +103,9 @@ const useHandelSubmitBackAPI = () => {
   for (let index = 0; index < craditDabitState.length; index++) {
     const element = craditDabitState[index];
     entriesBorrow.push({
-      partyName: element.partyName,
+      // brandName: element.brandName,
       type: element.partyType,
+      partyName: element.partyName,
       amount: element.amount,
       comment: element.note,
     });
@@ -126,9 +139,16 @@ const useHandelSubmitBackAPI = () => {
 
   const handleSubmit = () => {
     setIsLoading(true);
-
     try {
       const api1 = fetch(
+        "https://insorty-api.onrender.com/shop/getBackPageRMLData",
+        {
+          method: "POST",
+          body: JSON.stringify({ entries: addRmlData }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const api2 = fetch(
         "https://insorty-api.onrender.com/shop/addTotalExpensesData",
         {
           method: "POST",
@@ -137,16 +157,16 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      const api2 = fetch(
-        "https://insorty-api.onrender.com/shop/addBorrowedData",
-        {
-          method: "POST",
-          body: JSON.stringify({ entries: entriesBorrow }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
+      // const api3 = fetch(
+      //   "https://insorty-api.onrender.com/shop/addBorrowedData",
+      //   {
+      //     method: "POST",
+      //     body: JSON.stringify({ entries: entriesBorrow }),
+      //     headers: { "Content-Type": "application/json", cookie_token: token },
+      //   }
+      // );
 
-      const api3 = fetch(
+      const api4 = fetch(
         "https://insorty-api.onrender.com/shop/addFinalReportData",
         {
           method: "POST",
@@ -167,7 +187,25 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      Promise.all([api1, api2, api3])
+      const api5 = fetch(
+        "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
+        {
+          method: "POST",
+          body: JSON.stringify({ entries: purchaseOutSideData }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+
+      const api6 = fetch(
+        "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
+        {
+          method: "POST",
+          body: JSON.stringify({ entries: borrowCashReturnData }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+
+      Promise.all([api1, api2, api4, api5, api6])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
@@ -197,71 +235,6 @@ const useHandelSubmitBackAPI = () => {
       setIsLoading(false);
     }
   };
-
-  // const handleSubmit = async () => {
-  //   setIsLoading(true);
-  //   try {
-  //     const [
-  //       // handelSubmitRml,
-  //       handelSubmitCashRecive,
-  //       handelSubmitPurchesOutSide,
-  //     ] = await Promise.all([
-  //       // fetch("https://insorty-api.onrender.com/shop/backPageRmlData", {
-  //       //   method: "POST",
-  //       //   body: JSON.stringify({ dataDetails }),
-  //       //   headers: { "Content-Type": "application/json", cookie_token: token },
-  //       // }),
-
-  //       fetch("https://insorty-api.onrender.com/shop/borrowCashReturnData", {
-  //         method: "POST",
-  //         body: JSON.stringify({ borrowCashReturnData }),
-  //         headers: { "Content-Type": "application/json", cookie_token: token },
-  //       }),
-
-  //       fetch("https://insorty-api.onrender.com/shop/purchaseOutSideData", {
-  //         method: "POST",
-  //         body: JSON.stringify({ dataDetailsPurchesOutSide }),
-  //         headers: { "Content-Type": "application/json", cookie_token: token },
-  //       }),
-  //     ]);
-  //     // const Rmldata = await handelSubmitRml.json();
-  //     const CashReciveData = await handelSubmitCashRecive.json();
-  //     const purchesOutSideData = await handelSubmitPurchesOutSide.json();
-  //     const totalResponse = CashReciveData + purchesOutSideData;
-
-  //     // console.log(Rmldata);
-  //     console.log(CashReciveData);
-  //     console.log(purchesOutSideData);
-  //     console.log(totalResponse);
-
-  //     if (totalResponse.success === true) {
-  //       Swal.fire({
-  //         title: "Success",
-  //         text: "Data has been saved",
-  //         icon: "success",
-  //         confirmButtonText: "OK",
-  //       });
-  //     } else {
-  //       Swal.fire({
-  //         title: "Error",
-  //         text: "Something went wrong",
-  //         icon: "error",
-  //         confirmButtonText: "OK",
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //     const errors = error.response.data;
-  //     Swal.fire({
-  //       title: "Error",
-  //       text: errors,
-  //       icon: "error",
-  //       confirmButtonText: "OK",
-  //     });
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
 
   return {
     handleSubmit,

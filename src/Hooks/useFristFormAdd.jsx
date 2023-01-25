@@ -101,7 +101,7 @@ const useFristFormAdd = () => {
   if (liquors) {
     let brandSet = new Set()
     liquors.map((item) => {
-      brandSet.add(item.brandName)
+     return brandSet.add(item.brandName)
     })
     brands=[...brandSet]
   }
