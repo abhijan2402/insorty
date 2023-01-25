@@ -1,5 +1,5 @@
 // import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import Swal from "sweetalert2";
@@ -8,14 +8,13 @@ const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(false);
   // const [brandsLoaded, setBrandsLoaded] = useState(false)
-  let brands 
-
+  let brands;
 
   // ======================== add five in frist form ======================== backPageReportData
 
   const fristFormObj = {
     // quantityInML 550
-    liquorID:"",
+    liquorID: "",
     brandName: "", //brandName
 
     averageRate650: 0,
@@ -73,16 +72,11 @@ const useFristFormAdd = () => {
     grandTotal: "",
   };
 
-
   const [fristFormState, setFristFormState] = useState([fristFormObj]);
 
-  const prevdata = JSON.parse(localStorage.getItem('firstBack'))
+  const prevdata = JSON.parse(localStorage.getItem("firstBack"));
 
-  const {
-    data: liquors,
-    isLoading: brandsLoaded,
-    refetch,
-  } = useQuery({
+  const { data: liquors, isLoading: brandsLoaded } = useQuery({
     queryKey: ["liquors"],
     queryFn: async () => {
       const res = await fetch(
@@ -93,26 +87,24 @@ const useFristFormAdd = () => {
         }
       );
       const data = await res.json();
+      console.log(data.data, "data.data");
       return data.data;
-
     },
   });
 
   if (liquors) {
-    let brandSet = new Set()
+    let brandSet = new Set();
     liquors.map((item) => {
-     return brandSet.add(item.brandName)
-    })
-    brands=[...brandSet]
+      return brandSet.add(item.brandName);
+    });
+    brands = [...brandSet];
   }
-  
 
   useEffect(() => {
     if (prevdata) {
-      setFristFormState(prevdata)
+      setFristFormState(prevdata);
     }
   }, []);
-
 
   const addFiveInFristFormHandler = () => {
     let data = fristFormState;
@@ -286,6 +278,8 @@ const useFristFormAdd = () => {
 
     allGrandTotal: 0,
   });
+
+  // console.log(liquors?.[0].shopId, "liquors?.[0]?._id");
 
   // ======================== add One in frist f0orm ========================
 
@@ -514,7 +508,6 @@ const useFristFormAdd = () => {
           e.target.name === "sales330" ||
           e.target.name === "mainRate330"
         ) {
-         
           obj.grandTotal =
             Number(obj.sales650) * Number(obj.mainRate650) +
             Number(obj.sales550) * Number(obj.mainRate550) +
@@ -529,18 +522,15 @@ const useFristFormAdd = () => {
     const liqID = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (
-          e.target.name === "brandName"
-        ) { 
-          
-          const liq=liquors.filter((name)=>{
-            if (name === obj.brandName){
-              return name._id
+        if (e.target.name === "brandName") {
+          const liq = liquors.filter((name) => {
+            if (name === obj.brandName) {
+              return name._id;
             }
-          })
-          obj.liquorID = liq._id
+          });
+          obj.liquorID = liq._id;
         }
-        console.log(obj.liqID)
+        console.log(obj.liqID);
         return obj;
       } else return returned;
     });
@@ -761,89 +751,128 @@ const useFristFormAdd = () => {
     );
     setTotalState(obj28);
 
-    localStorage.setItem('firstBack',JSON.stringify(fristFormState))
-    localStorage.setItem('totalFirstBack', JSON.stringify(totalState.allGrandTotal))
+    localStorage.setItem("firstBack", JSON.stringify(fristFormState));
+    localStorage.setItem(
+      "totalFirstBack",
+      JSON.stringify(totalState.allGrandTotal)
+    );
   };
 
   const handelSubmitFristFormBack = async (e) => {
     setIsLoading(true);
 
-    const dataDetails = [];
+    const dataDetails650 = [];
 
     for (let index = 0; index < fristFormState.length; index++) {
       const element = fristFormState[index];
-      dataDetails.push({
+      dataDetails650.push({
+        liquor: liquors?.[0]?._id,
         brandName: element.brandName,
-        initialStock: {
-          initialStock650: element.startingStock650,
-          initialStock550: element.startingStock550,
-          initialStock330: element.startingStock330,
-        },
-        purchaseShop: {
-          purchaseShop650: element.incomingPurchase650,
-          purchaseShop550: element.incomingPurchase550,
-          purchaseShop330: element.incomingPurchase330,
-          purchaseShopRate650: element.buyRate650,
-          purchaseShopRate550: element.buyRate550,
-          purchaseShopRate330: element.buyRate330,
-        },
+        quantityInML: 650,
+        openingStock: element.startingStock650,
+        purchaseShop: element.incomingPurchase650,
+        purchaseShopRate: element.buyRate650,
+        purchaseOutSide: element.incomePurchase650,
+        purchaseOutSideRate: element.purchaseRate650,
+        credits: element.inflowCredit650,
+        send: element.sending650,
+        remaining: element.sumRemainder650,
+        closingStock: element.closingStock650,
+        sales: element.mainRate650,
+        amount: element.grandTotal,
+      });
+    }
 
-        purchaseOutSide: {
-          purchaseOutSide650: element.incomePurchase650,
-          purchaseOutSide550: element.incomePurchase550,
-          purchaseOutSide330: element.incomePurchase330,
-          purchaseOutSideRate650: element.purchaseRate650,
-          purchaseOutSideRate550: element.purchaseRate550,
-          purchaseOutSideRate330: element.purchaseRate330,
-        },
+    const dataDetails550 = [];
+    for (let index = 0; index < fristFormState.length; index++) {
+      const element = fristFormState[index];
+      dataDetails550.push({
+        liquor: liquors?.[0]?._id,
+        brandName: element.brandName,
+        quantityInML: 550,
+        openingStock: element.startingStock550,
+        purchaseShop: element.incomingPurchase550,
+        purchaseShopRate: element.buyRate550,
+        purchaseOutSide: element.incomePurchase550,
+        purchaseOutSideRate: element.purchaseRate550,
+        credits: element.inflowCredit550,
+        send: element.sending550,
+        remaining: element.sumRemainder550,
+        closingStock: element.closingStock550,
+        sales: element.mainRate550,
+        amount: element.grandTotal,
+      });
+    }
 
-        purchaseBorrow: {
-          purchaseBorrow650: element.inflowCredit650,
-          purchaseBorrow550: element.inflowCredit550,
-          purchaseBorrow330: element.inflowCredit330,
-        },
-
-        sendingBhejan: {
-          sendingBhejan650: element.sending650,
-          sendingBhejan550: element.sending550,
-          sendingBhejan330: element.sending330,
-        },
-
-        lastStock: {
-          lastStock650: element.closingStock650,
-          lastStock550: element.closingStock550,
-          lastStock330: element.closingStock330,
-        },
-
-        soldRate: {
-          soldRate650: element.mainRate650,
-          soldRate550: element.mainRate550,
-          soldRate330: element.mainRate330,
-        },
+    const dataDetails330 = [];
+    for (let index = 0; index < fristFormState.length; index++) {
+      const element = fristFormState[index];
+      dataDetails330.push({
+        liquor: liquors?.[0]?._id,
+        brandName: element.brandName,
+        quantityInML: 330,
+        openingStock: element.startingStock330,
+        purchaseShop: element.incomingPurchase330,
+        purchaseShopRate: element.buyRate330,
+        purchaseOutSide: element.incomePurchase330,
+        purchaseOutSideRate: element.purchaseRate330,
+        credits: element.inflowCredit330,
+        send: element.sending330,
+        remaining: element.sumRemainder330,
+        closingStock: element.closingStock330,
+        sales: element.mainRate330,
+        amount: element.grandTotal,
       });
     }
 
     try {
-      const response = await fetch(
-        "https://insorty-api.onrender.com/shop/backPageReportData",
+      const api1 = await fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ dataDetails }),
+          body: JSON.stringify({ entries: dataDetails650 }),
         }
       );
-      const data = await response.json();
-      console.log(data);
-      if (data.success === true) {
-        Swal.fire({
-          icon: "success",
-          title: "Success",
-          text: "Added successfully",
+
+      const api2 = await fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ entries: dataDetails550 }),
+        }
+      );
+      const api3 = await fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ entries: dataDetails330 }),
+        }
+      );
+
+      Promise.all([api1, api2, api3])
+        .then((responses) => Promise.all(responses.map((res) => res.json())))
+        .then((data) => {
+          console.log(data);
+          if (data.success === true) {
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              text: "Added successfully",
+            });
+          }
         });
-      }
     } catch (error) {
       const errorMessage = error.message;
       Swal.fire({
@@ -855,8 +884,6 @@ const useFristFormAdd = () => {
       setIsLoading(false);
     }
   };
-
-  
 
   // ======>
 
@@ -871,8 +898,8 @@ const useFristFormAdd = () => {
     totalState,
     isLoading,
     brands,
-    brandsLoaded, 
-    liquors
+    brandsLoaded,
+    liquors,
   };
 };
 

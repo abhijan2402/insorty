@@ -30,7 +30,6 @@ import StockLandingForm from "../Pages/Users/StockLanding/StockLandingForm/Stock
 
 const token = localStorage.getItem("token");
 const router = createBrowserRouter([
-  // Home Routes
   {
     path: "/",
     element: <Login />,
