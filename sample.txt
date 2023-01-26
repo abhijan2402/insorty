@@ -61,3 +61,5 @@ set size of input fields according to input given automatically
 useInflow --> addPurchaseBorrowData
 useShipping --> addSendData
 front daily report --> addFrontPageData
+
+//

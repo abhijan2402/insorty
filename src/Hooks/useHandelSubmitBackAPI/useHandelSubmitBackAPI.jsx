@@ -6,6 +6,8 @@ import usePurchesOutSideAdd from "../usePurchesOutSideAdd";
 import useCommissonAdd from "../useCommissonAdd";
 import useCarditDabit from "../useCarditDabit";
 import { DataContextApi } from "../../Context/DataContext";
+import useInfolwBorrowingRml from "../useInfolwBorrowingRml";
+import useShippingAdd from "../useShippingAdd";
 
 const useHandelSubmitBackAPI = () => {
   const token = localStorage.getItem("token");
@@ -15,6 +17,8 @@ const useHandelSubmitBackAPI = () => {
   const { purchesOutSideState } = usePurchesOutSideAdd();
   const { commissonState } = useCommissonAdd();
   const { craditDabitState } = useCarditDabit();
+  const { infolwBorrwingFormState } = useInfolwBorrowingRml();
+  const { addShippingState } = useShippingAdd();
   const { intoAccountState, liquerState } = useContext(DataContextApi);
   const liquerData = liquerState?.data;
 
@@ -124,6 +128,38 @@ const useHandelSubmitBackAPI = () => {
   const todaysPayment = 0;
   const restAmount = 0;
 
+  const addSendingData = [];
+  for (let index = 0; index < addShippingState.length; index++) {
+    const element = addShippingState[index];
+    addSendingData.push({
+      liquor: liquerId,
+      partyName: element.partyName,
+      brandName: element.brandName,
+      number: element.theNumber,
+      total: element.total,
+      comment: element.comment,
+    });
+  }
+
+  const addPurchesBorrowData = [];
+  for (let index = 0; index < infolwBorrwingFormState.length; index++) {
+    const element = infolwBorrwingFormState[index];
+    addPurchesBorrowData.push({
+      liquor: liquerId,
+      partyName: element.partyName,
+      brandName: element.brandName,
+    });
+  }
+
+  // partyName: string;
+  // brandName: string;
+  // theNumber: string;
+  // quantity: number;
+  // rate: number;
+  // total: number;
+  // reason: string;
+
+
   const handleSubmit = () => {
     setIsLoading(true);
     try {
@@ -203,7 +239,13 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      Promise.all([api1, api2, api3, api4, api5, api6])
+      const api7 = fetch("https://insorty-api.onrender.com/shop/addSendData", {
+        method: "POST",
+        body: JSON.stringify({ entries: addSendingData }),
+        headers: { "Content-Type": "application/json", cookie_token: token },
+      });
+
+      Promise.all([api1, api2, api3, api4, api5, api6, api7])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
