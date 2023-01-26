@@ -55,3 +55,9 @@ usePurchase --> addPurchaseOutsideData
 useCashReciveAdd --> borrowCashReturnData
 fix sidebar on scroll
 set size of input fields according to input given automatically
+
+
+26/1/2023
+useInflow --> addPurchaseBorrowData
+useShipping --> addSendData
+front daily report --> addFrontPageData
