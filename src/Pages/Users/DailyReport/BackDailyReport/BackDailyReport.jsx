@@ -40,17 +40,14 @@ const BackDailyReport = () => {
     brandsLoaded,
     liquors,
   } = useFristFormAdd();
-  
 
   // ================== Rml Form============
   const {
     addRmlState,
     handelAddFiveInRml,
     handelAddOneInRml,
-    // handelSubmitRml,
     onChangeRmlHandler,
   } = useRmlAdd();
-
 
   // ================== Purchase OutSide Form============
   const {
@@ -58,7 +55,6 @@ const BackDailyReport = () => {
     handelAddFivePurchesOutSide,
     handelAddOnePurchesOutSide,
     onChangePurchesOutSide,
-    // handelSubmitPurchesOutSide,
   } = usePurchesOutSideAdd();
 
   // ================== Commission Form============
@@ -67,7 +63,6 @@ const BackDailyReport = () => {
     handelAddFiveCommison,
     handelAddOneCommison,
     onChangeCommison,
-    // handelSubmitCommisson,
   } = useCommissonAdd();
 
   // ================== Cash Recive Form============
@@ -76,14 +71,12 @@ const BackDailyReport = () => {
     handelAddFiveCashRecive,
     handelAddOneCashRecive,
     onChangeCashRecive,
-    // handelSubmitCashRecive,
   } = useCashReciveAdd();
 
   // ================== Shipping Form============
   const {
     addShippingState,
     onChangeShipping,
-    // handelSubmitShipping,
     handelAddFiveShipping,
     handelAddOneShipping,
   } = useShippingAdd();

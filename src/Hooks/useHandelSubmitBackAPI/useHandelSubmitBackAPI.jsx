@@ -148,6 +148,11 @@ const useHandelSubmitBackAPI = () => {
       liquor: liquerId,
       partyName: element.partyName,
       brandName: element.brandName,
+      number: element.theNumber,
+      comment: element.comment,
+      total: element.total,
+      quantity: element.quantity,
+      rate: element.rate,
     });
   }
 
@@ -158,7 +163,6 @@ const useHandelSubmitBackAPI = () => {
   // rate: number;
   // total: number;
   // reason: string;
-
 
   const handleSubmit = () => {
     setIsLoading(true);
@@ -245,7 +249,16 @@ const useHandelSubmitBackAPI = () => {
         headers: { "Content-Type": "application/json", cookie_token: token },
       });
 
-      Promise.all([api1, api2, api3, api4, api5, api6, api7])
+      const api8 = fetch(
+        "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
+        {
+          method: "POST",
+          body: JSON.stringify({ entries: addPurchesBorrowData }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+
+      Promise.all([api1, api2, api3, api4, api5, api6, api7, api8])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
