@@ -6,6 +6,7 @@ import useFormulasFristFormFront from "../../../../Hooks/useFormulas/useFormulas
 import useSecondFormFront from "../../../../Hooks/useSecondFormFront";
 import { useQuery } from "@tanstack/react-query";
 import useFristFormSubmitAPIFront from "../../../../Hooks/useFristFormSubmitAPIFront/useFristFormSubmitAPIFront";
+import Loader from "../../../../Components/Loader/Loader";
 
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
@@ -26,7 +27,6 @@ const FronteDailyReport = () => {
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
-    hadelSubmitOnSecondForm,
   } = useSecondFormFront();
 
   const {
@@ -36,16 +36,16 @@ const FronteDailyReport = () => {
 
   //=============== add One second form =================
 
-  const hendelSubmit = (event) => {
-    const addFristForm = Object.assign({}, addOneFristFormState);
-    console.log(addFristForm);
-    console.log(
-      `total is ${addOneFristFormState.reduce(
-        (total, currentItem) => (total = total + currentItem.grandTotal),
-        0
-      )}`
-    );
-  };
+  // const hendelSubmit = (event) => {
+  //   const addFristForm = Object.assign({}, addOneFristFormState);
+  //   console.log(addFristForm);
+  //   console.log(
+  //     `total is ${addOneFristFormState.reduce(
+  //       (total, currentItem) => (total = total + currentItem.grandTotal),
+  //       0
+  //     )}`
+  //   );
+  // };
 
   const { data: sujestedData, isLoading } = useQuery({
     queryKey: ["sujestedData"],
@@ -68,7 +68,7 @@ const FronteDailyReport = () => {
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader></Loader>;
   }
 
   return (
