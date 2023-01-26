@@ -2,17 +2,33 @@ import React from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import Loader from "../../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
+import useLiquors from "../../../../../../Hooks/useLiquors";
 
 const AddOneFristFromBack = ({
   index,
   item,
   onChangeFristBackFormHandler,
-  brandsLoaded,
-  liquors,
 }) => {
   const SerialNo = index + 1;
 
-  const brands = ["a", "b", "c", "d"];
+  const {
+    brands,
+    brandsLoaded,
+    checkLiquor,
+    liquors
+  } = useLiquors()
+
+  if(!brandsLoaded){
+    console.log(checkLiquor("b").filter((item)=>{
+      if (item.quantityInML === 50){
+        return item
+      }
+    }))
+  }
+  
+
+
+  // const brands = ["a", "b", "c", "d"];
 
   if (brandsLoaded) {
     return (

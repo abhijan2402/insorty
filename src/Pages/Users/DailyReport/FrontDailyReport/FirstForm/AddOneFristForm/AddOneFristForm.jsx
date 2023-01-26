@@ -2,6 +2,7 @@ import React from "react";
 
 import { Autocomplete, TextField } from "@mui/material";
 
+
 const AddOneFristForm = ({
   index,
   handelFristFormOnChange,
@@ -13,6 +14,8 @@ const AddOneFristForm = ({
   setAddOneFristFormState,
 }) => {
   const SerialNo = index + 1;
+  const brands = ["a", "b", "c", "d"];
+  const liquors = ["ac", "bc", "cc", "dc"];
 
   return (
     <>
@@ -20,10 +23,18 @@ const AddOneFristForm = ({
         <th>{SerialNo}</th>
         <td>
           <Autocomplete
-            options={myOptions}
+            options={brands}
+            value={addOneFirst.brandName}
             onChange={(event) => {
               addOneFirst.brandName = event.target.outerText;
+              // eslint-disable-next-line array-callback-return
+              addOneFirst.liquorID = liquors.filter((liq) => {
+                if (liq.brandName === event.target.outerText) {
+                  return liq._id;
+                }
+              });
               console.log(addOneFristFormState);
+              handelFristFormOnChange(event, index);
             }}
             renderInput={(params) => (
               <TextField
@@ -32,6 +43,8 @@ const AddOneFristForm = ({
                 value={addOneFirst.brandName}
                 onChange={(event) => {
                   handelFristFormOnChange(event, index);
+                  addOneFirst.brandName = event.target.value;
+                  addOneFirst.liquorID = null;
                   console.log(event.target.value);
                 }}
               />

@@ -73,29 +73,29 @@ const useFristFormAdd = () => {
 
   const prevdata = JSON.parse(localStorage.getItem("firstBack"));
 
-  const { data: liquors, isLoading: brandsLoaded } = useQuery({
-    queryKey: ["liquors"],
-    queryFn: async () => {
-      const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllLiquors",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
-      const data = await res.json();
-      console.log(data.data, "data.data");
-      return data.data;
-    },
-  });
+  // const { data: liquors, isLoading: brandsLoaded } = useQuery({
+  //   queryKey: ["liquors"],
+  //   queryFn: async () => {
+  //     const res = await fetch(
+  //       "https://insorty-api.onrender.com/shop/getAllParentLiquors",
+  //       {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json", cookie_token: token },
+  //       }
+  //     );
+  //     const data = await res.json();
+  //     console.log(data.data, "data.data");
+  //     return data.data;
+  //   },
+  // });
 
-  if (liquors) {
-    let brandSet = new Set();
-    liquors.map((item) => {
-      return brandSet.add(item.brandName);
-    });
-    brands = [...brandSet];
-  }
+  // if (liquors) {
+  //   let brandSet = new Set();
+  //   liquors.map((item) => {
+  //     return brandSet.add(item.brandName);
+  //   });
+  //   brands = [...brandSet];
+  // }
 
   useEffect(() => {
     if (prevdata) {
@@ -515,24 +515,24 @@ const useFristFormAdd = () => {
 
     setFristFormState(grandT);
 
-    const liqID = fristFormState.map((returned, i) => {
-      if (index === i) {
-        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "brandName") {
-          // eslint-disable-next-line array-callback-return
-          const liq = liquors.filter((name) => {
-            if (name === obj.brandName) {
-              return name._id;
-            }
-          });
-          obj.liquorID = liq._id;
-        }
-        console.log(obj.liqID);
-        return obj;
-      } else return returned;
-    });
+    // const liqID = fristFormState.map((returned, i) => {
+    //   if (index === i) {
+    //     let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+    //     if (e.target.name === "brandName") {
+    //       // eslint-disable-next-line array-callback-return
+    //       const liq = liquors.filter((name) => {
+    //         if (name === obj.brandName) {
+    //           return name._id;
+    //         }
+    //       });
+    //       obj.liquorID = liq._id;
+    //     }
+    //     console.log(obj.liqID);
+    //     return obj;
+    //   } else return returned;
+    // });
 
-    setFristFormState(liqID);
+    // setFristFormState(liqID);
 
     let obj1 = totalState;
     obj1.startingStock650Total = fristFormState.reduce(
@@ -763,7 +763,8 @@ const useFristFormAdd = () => {
     for (let index = 0; index < fristFormState.length; index++) {
       const element = fristFormState[index];
       dataDetails650.push({
-        liquor: liquors?.[0]?._id,
+        // liquor: liquors?.[0]?._id,
+        liquor: element.liquorID,
         brandName: element.brandName,
         quantityInML: 650,
         openingStock: element.startingStock650,
@@ -784,7 +785,8 @@ const useFristFormAdd = () => {
     for (let index = 0; index < fristFormState.length; index++) {
       const element = fristFormState[index];
       dataDetails550.push({
-        liquor: liquors?.[0]?._id,
+        // liquor: liquors?.[0]?._id,
+        liquor: element.liquorID,
         brandName: element.brandName,
         quantityInML: 550,
         openingStock: element.startingStock550,
@@ -805,7 +807,8 @@ const useFristFormAdd = () => {
     for (let index = 0; index < fristFormState.length; index++) {
       const element = fristFormState[index];
       dataDetails330.push({
-        liquor: liquors?.[0]?._id,
+        // liquor: liquors?.[0]?._id,
+        liquor: element.liquorID,
         brandName: element.brandName,
         quantityInML: 330,
         openingStock: element.startingStock330,
@@ -895,8 +898,8 @@ const useFristFormAdd = () => {
     totalState,
     isLoading,
     brands,
-    brandsLoaded,
-    liquors,
+    // brandsLoaded,
+    // liquors,
   };
 };
 

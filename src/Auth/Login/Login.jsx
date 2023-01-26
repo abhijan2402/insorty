@@ -13,6 +13,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { userData, setuserData } = useContext(AuthContext);
+  console.log(userData)
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
