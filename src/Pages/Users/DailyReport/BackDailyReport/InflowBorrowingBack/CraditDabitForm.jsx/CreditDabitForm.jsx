@@ -20,7 +20,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
       <td>
         <div className="form-control">
           <select
-            type="enum"
+            type="text"
             className="select select-bordered"
             name="partyType"
             value={item.partyType}

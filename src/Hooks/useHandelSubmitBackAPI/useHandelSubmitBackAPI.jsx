@@ -144,14 +144,25 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      // const api3 = fetch(
-      //   "https://insorty-api.onrender.com/shop/addBorrowedData",
-      //   {
-      //     method: "POST",
-      //     body: JSON.stringify({ entries: entriesBorrow }),
-      //     headers: { "Content-Type": "application/json", cookie_token: token },
-      //   }
-      // );
+      const api3 = fetch(
+        "https://insorty-api.onrender.com/shop/addBorrowedData",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            salesmen: "Deepak",
+            entries: [
+              {
+                type: "PARTNER",
+                name: "abcd",
+                balance: 234,
+                amount: 23,
+                comment: "no",
+              },
+            ],
+          }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
 
       const api4 = fetch(
         "https://insorty-api.onrender.com/shop/addFinalReportData",
@@ -192,7 +203,7 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      Promise.all([api1, api2, api4, api5, api6])
+      Promise.all([api1, api2, api3, api4, api5, api6])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
