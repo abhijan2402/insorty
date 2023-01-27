@@ -4,13 +4,42 @@ import useSalary from "../SalaryHooks/useSalary";
 import { Link, useLoaderData } from "react-router-dom";
 import SalaryModal from "../SalaryModal/SalaryModal";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../../Components/Loader/Loader";
 
 const SalaryForm = () => {
   const token = localStorage.getItem("token");
   const salaryData = useLoaderData();
   const employeeData = salaryData?.data;
-  const { salaryState, isLoading, handelSelaryOnChange, setIsLoading } =
-    useSalary();
+  const {
+    salaryState,
+    isLoading,
+    handelSelaryOnChange,
+    setIsLoading,
+  } = useSalary();
+
+  const {
+    data: salareyDataList,
+    isLoading: salareyDataLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["salareyDataList"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getEmployeeSalaryData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ employeeId: employeeData._id }),
+        }
+      );
+      const data = await res.json();
+      return data?.data?.salaryData;
+    },
+  });
 
   const handelSalaryOnSubmit = async () => {
     const handelSalary = salaryState;
@@ -56,6 +85,7 @@ const SalaryForm = () => {
           text: data.message,
         });
         console.log(data);
+        refetch();
       } else {
         Swal.fire({
           icon: "error",
@@ -69,6 +99,12 @@ const SalaryForm = () => {
       setIsLoading(false);
     }
   };
+
+  // console.log(salareyDataList, "salareyData");
+
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
 
   return (
     <section className="px-2 py-6">
@@ -198,10 +234,11 @@ const SalaryForm = () => {
                   {/* ============= कुल योग ================ */}
                 </tr>
 
-                {salaryState.map((salary, index) => {
+                {salareyDataList?.map((salary, index) => {
                   return (
                     <SalaryFormData
                       key={index}
+                      salareyDataLoading={salareyDataLoading}
                       salary={salary}
                       index={index}
                     ></SalaryFormData>

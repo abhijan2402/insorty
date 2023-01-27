@@ -31,7 +31,7 @@ const SalaryModal = ({
 
                 <div className="input-group">
                   <input
-                    type="number"
+                    type="date"
                     name="salary_monthYear"
                     value={salaryState.salary_monthYear}
                     onChange={(e) => handelSelaryOnChange(e)}
@@ -79,7 +79,7 @@ const SalaryModal = ({
 
                 <div>
                   <input
-                    type="number"
+                    type="date"
                     name="payment_price"
                     value={salaryState.payment_price}
                     onChange={(e) => handelSelaryOnChange(e)}
