@@ -1,7 +1,8 @@
 import React from "react";
 
 import { Autocomplete, TextField } from "@mui/material";
-
+import useLiquors from "../../../../../../Hooks/useLiquors";
+import Loader from "../../../../../../Components/Loader/Loader";
 
 const AddOneFristForm = ({
   index,
@@ -14,8 +15,31 @@ const AddOneFristForm = ({
   setAddOneFristFormState,
 }) => {
   const SerialNo = index + 1;
-  const brands = ["a", "b", "c", "d"];
-  const liquors = ["ac", "bc", "cc", "dc"];
+  const {
+    brands,
+    brandsLoaded,
+    checkLiquor,
+    liquors
+  } = useLiquors()
+
+  if (!brandsLoaded) {
+    console.log(liquors.filter((item)=>{
+      if (item.brandName === "mac"){
+        return item
+      }
+     
+    }))
+    // console.log(brands)
+  }
+  
+
+  if (brandsLoaded) {
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
+  }
 
   return (
     <>

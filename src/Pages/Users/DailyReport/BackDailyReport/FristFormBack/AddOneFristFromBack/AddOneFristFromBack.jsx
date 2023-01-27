@@ -19,11 +19,12 @@ const AddOneFristFromBack = ({
   } = useLiquors()
 
   if(!brandsLoaded){
-    console.log(checkLiquor("b").filter((item)=>{
-      if (item.quantityInML === 50){
-        return item
-      }
-    }))
+    // console.log(checkLiquor("b").filter((item)=>{
+    //   if (item.quantityInML === 650){
+    //     return item
+    //   }
+    // }))
+    console.log(brands)
   }
   
 
