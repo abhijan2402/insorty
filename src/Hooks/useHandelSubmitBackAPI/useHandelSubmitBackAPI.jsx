@@ -156,14 +156,6 @@ const useHandelSubmitBackAPI = () => {
     });
   }
 
-  // partyName: string;
-  // brandName: string;
-  // theNumber: string;
-  // quantity: number;
-  // rate: number;
-  // total: number;
-  // reason: string;
-
   const handleSubmit = () => {
     setIsLoading(true);
     try {

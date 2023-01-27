@@ -37,7 +37,14 @@ const DashboardLayout = () => {
       </div>
 
       <div className="flex gap-2">
-        <div className={side ? "lg:w-[300px] md:w-48 w-full" : "hidden"}>
+        <div
+          className={side ? "lg:w-[300px] md:w-48 w-full" : "hidden"}
+          style={{
+            position: "sticky",
+            top: "0",
+            zIndex: "1000",
+          }}
+        >
           <UserSideNav></UserSideNav>
         </div>
         <div className="md:w-[calc(100%-300px)] w-full DashboardLayoutOutlate ">

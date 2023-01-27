@@ -29,6 +29,13 @@ const DailyReport = () => {
         >
           Back
         </Link>
+
+        <Link
+          to="/user/frontdailyreport/details"
+          className="btn btn-error text-white font-bold"
+        >
+          Al Details
+        </Link>
       </div>
     </section>
   );
