@@ -4,9 +4,9 @@ const useSalary = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const salaryFormValue = {
-    salary_monthYear: 0,
+    salary_monthYear: "",
     salary_price: 0,
-    payment_date: 0,
+    payment_date: "",
     payment_price: 0,
     reason: "",
   };

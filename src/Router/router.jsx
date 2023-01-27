@@ -27,6 +27,8 @@ import MainInvestment from "../Pages/Users/MainInvestment/MainInvestment/MainInv
 import EnglishBear from "../Pages/Users/EnglishBear/EnglishBear/EnglishBear";
 import StockLanding from "../Pages/Users/StockLanding/StockLanding/StockLanding";
 import StockLandingForm from "../Pages/Users/StockLanding/StockLandingForm/StockLandingForm";
+import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FrontDetailsReport/FrontDetailsReport";
+import BackDetailsReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
 
 const token = localStorage.getItem("token");
 const router = createBrowserRouter([
@@ -169,6 +171,14 @@ const router = createBrowserRouter([
         //     },
         //   }),
         element: <StockLandingForm />,
+      },
+      {
+        path: "/user/frontdailyreport/details",
+        element: <FrontDetailsReport />,
+      },
+      {
+        path: "/user/dailyreport/details",
+        element: <BackDetailsReport />,
       },
     ],
   },

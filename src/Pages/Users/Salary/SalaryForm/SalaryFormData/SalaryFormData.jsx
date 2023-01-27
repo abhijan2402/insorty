@@ -1,6 +1,13 @@
 import React from "react";
+import Loader from "../../../../../Components/Loader/Loader";
 
-const SalaryFormData = ({ index }) => {
+const SalaryFormData = ({ index, salary, salareyDataLoading }) => {
+  const { salary: salaryData, payment, comment } = salary;
+
+  if (salareyDataLoading) {
+    return <Loader></Loader>;
+  }
+
   return (
     <>
       <tr>
@@ -9,8 +16,7 @@ const SalaryFormData = ({ index }) => {
           <div className="flex gap-4">
             <div className="form-control">
               <input
-                type="text"
-                value={new Date().toLocaleDateString()}
+                value={salaryData?.month}
                 disabled
                 className="semiSmallInput"
               />
@@ -19,7 +25,7 @@ const SalaryFormData = ({ index }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={67867}
+                value={salaryData?.price}
                 disabled
                 className="semiSmallInput"
               />
@@ -33,7 +39,7 @@ const SalaryFormData = ({ index }) => {
               <input
                 type="date"
                 disabled
-                value={new Date().toLocaleDateString()}
+                value={payment?.month}
                 className="semiSmallInput"
               />
             </div>
@@ -41,7 +47,7 @@ const SalaryFormData = ({ index }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={78979}
+                value={payment?.price}
                 disabled
                 className="semiSmallInput"
               />
@@ -56,7 +62,7 @@ const SalaryFormData = ({ index }) => {
                 type="text"
                 name="reason"
                 disabled
-                value={"hello"}
+                value={comment}
                 className="semiSmallInput"
               />
             </div>
