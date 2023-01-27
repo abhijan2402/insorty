@@ -34,7 +34,7 @@ const SalaryModal = ({
                     type="date"
                     name="salary_monthYear"
                     value={salaryState.salary_monthYear}
-                    onChange={(e) => handelSelaryOnChange(e)}
+                    onChange={handelSelaryOnChange}
                     className="input input-bordered input-accent w-full"
                     style={{
                       border: "1px solid #000",
@@ -53,7 +53,7 @@ const SalaryModal = ({
                     type="number"
                     name="salary_price"
                     value={salaryState.salary_price}
-                    onChange={(e) => handelSelaryOnChange(e)}
+                    onChange={handelSelaryOnChange}
                     className="input input-bordered input-accent w-full"
                     style={{
                       border: "1px solid #000",
@@ -80,9 +80,9 @@ const SalaryModal = ({
                 <div>
                   <input
                     type="date"
-                    name="payment_price"
-                    value={salaryState.payment_price}
-                    onChange={(e) => handelSelaryOnChange(e)}
+                    name="payment_date"
+                    value={salaryState.payment_date}
+                    onChange={handelSelaryOnChange}
                     className="input input-bordered input-accent w-full"
                     style={{
                       border: "1px solid #000",
@@ -101,7 +101,7 @@ const SalaryModal = ({
                     type="number"
                     name="payment_price"
                     value={salaryState.payment_price}
-                    onChange={(e) => handelSelaryOnChange(e)}
+                    onChange={handelSelaryOnChange}
                     className="input input-bordered input-accent w-full"
                     style={{
                       border: "1px solid #000",
@@ -122,7 +122,7 @@ const SalaryModal = ({
                     type="text"
                     name="reason"
                     value={salaryState.reason}
-                    onChange={(e) => handelSelaryOnChange(e)}
+                    onChange={handelSelaryOnChange}
                     className="input input-bordered input-accent w-full"
                     style={{
                       border: "1px solid #000",

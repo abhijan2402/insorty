@@ -43,23 +43,36 @@ const SalaryForm = () => {
 
   const handelSalaryOnSubmit = async () => {
     const handelSalary = salaryState;
-    const salaryData = [];
+    // const salaryData = [];
+    // for (let index = 0; index < handelSalary.length; index++) {
+    //   const element = handelSalary[index];
 
-    for (let index = 0; index < handelSalary.length; index++) {
-      const element = handelSalary[index];
+    //   salaryData.push({
+    //     salary: {
+    //       month: element.salary_monthYear,
+    //       price: element.salary_price,
+    //     },
+    //     payment: {
+    //       month: element.payment_date,
+    //       price: element.payment_price,
+    //     },
+    //     comments: element.reason,
+    //   });
+    // }
 
-      salaryData.push({
+    const salaryData = [
+      {
         salary: {
-          month: element.salary_monthYear,
-          price: element.salary_price,
+          month: handelSalary?.salary_monthYear,
+          price: handelSalary?.salary_price,
         },
         payment: {
-          month: element.payment_date,
-          price: element.payment_price,
+          date: handelSalary?.payment_date,
+          price: handelSalary?.payment_price,
         },
-        comments: element.reason,
-      });
-    }
+        comment: handelSalary?.reason,
+      },
+    ];
 
     setIsLoading(true);
     try {
@@ -99,8 +112,6 @@ const SalaryForm = () => {
       setIsLoading(false);
     }
   };
-
-  // console.log(salareyDataList, "salareyData");
 
   if (isLoading) {
     return <Loader></Loader>;
