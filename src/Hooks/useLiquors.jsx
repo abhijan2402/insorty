@@ -1,7 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 
-import React from 'react'
 
 
 function useLiquors() {
@@ -37,6 +35,7 @@ function useLiquors() {
 
     const checkLiquor=(name)=>{
        
+           // eslint-disable-next-line array-callback-return
            let liq =  liquors.filter((item)=>{
                 if(item.brandName===name){
                     return item

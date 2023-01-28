@@ -1,15 +1,16 @@
 import React from "react";
 
-const OutBillList = () => {
+const OutBillList = ({ outBill, index }) => {
+  const { averageRate, total, number, liquor } = outBill;
   return (
     <>
       <tr>
-        <th>1</th>
-        <td>mac</td>
-        <td>180ml</td>
-        <td>180</td>
-        <td>180</td>
-        <td>32,400</td>
+        <th>{index + 1}</th>
+        <td></td>
+        <td>{liquor?.quantityInML}</td>
+        <td>{number}</td>
+        <td>{averageRate}</td>
+        <td>{total}</td>
       </tr>
     </>
   );

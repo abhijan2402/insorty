@@ -36,9 +36,25 @@ const DataContext = ({ children }) => {
     },
   });
 
+  const { data: liquorsParentData } = useQuery({
+    queryKey: ["liquors"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllParentLiquors",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
   const dataInfo = {
     totalState,
     intoAccountState,
+    liquorsParentData,
     setintoAccountState,
     liquerState,
     liquors,
