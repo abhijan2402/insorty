@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 const usePurchesOutSideAdd = () => {
   const purchesOutSideAdd = {
+    partyId:"",
+    liquorID:"",
     partyName: "",
     brandName: "",
     theNumber: 0,
@@ -31,6 +33,8 @@ const usePurchesOutSideAdd = () => {
     setPurchesOutSideState([
       ...purchesOutSideState,
       {
+        partyId: "",
+        liquorID: "",
         partyName: "",
         brandName: "",
         theNumber: 0,
@@ -49,6 +53,8 @@ const usePurchesOutSideAdd = () => {
       data = [
         ...data,
         {
+          partyId: "",
+          liquorID: "",
           partyName: "",
           brandName: "",
           theNumber: 0,

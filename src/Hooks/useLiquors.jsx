@@ -22,7 +22,7 @@ function useLiquors() {
                 }
             );
             const data = await res.json();
-            console.log(data.data);
+            // console.log(data.data);
             return data.data;
         },
     });
@@ -86,6 +86,8 @@ function useLiquors() {
         }
     }
     }
+
+    
 
   return {
 brands,

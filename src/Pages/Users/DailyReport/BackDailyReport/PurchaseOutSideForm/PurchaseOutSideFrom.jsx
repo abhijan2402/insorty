@@ -1,29 +1,114 @@
 import React from "react";
+import useLiquors from "../../../../../Hooks/useLiquors";
+import { Autocomplete, TextField } from "@mui/material";
+import Loader from "../../../../../Components/Loader/Loader";
+import usePartyNames from "../../../../../Hooks/usePartyNames";
+
 
 const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
+
+  const {
+    brands,
+    brandsLoaded,
+    checkLiquor,
+    liquors
+  } = useLiquors()
+
+  const { parties, partyLoaded } = usePartyNames()
+
+  if (brandsLoaded || partyLoaded) {
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
+  }
+
+
   return (
     <>
       <tr>
         <td>
           <div className="form-control">
-            <input
+            {/* <input
               type="text"
               className="semiSmallInput"
               name="partyName"
               value={item.partyName}
-              onChange={(e) => onChangePurchesOutSide(e, index)}
+              onChange={(e) => onChangePurchesOutSide(e, index)} /> */}
+            <Autocomplete
+              options={parties}
+              freeSolo
+              getOptionLabel={(option) => option ? option.partyName : ""}
+              // item.brandName = event.target.outerText;
+              // // eslint-disable-next-line array-callback-return
+              // const liq = liquors.filter((liq) => {
+              //   if (liq.brandName === event.target.outerText) {
+              //     return liq;
+              //   }
+              // });
+              // item.liquorID = liq._id
+              // handelFristFormOnChange(event, index);
+              onChange={(event, value) => {
+                item.partyName = value.partyName
+                item.liquorID = value._id
+                onChangePurchesOutSide(event, index)
+                console.log(item)
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className="dailyReportInput"
+                  value={item.partyName}
+                  inputProps={{ ...params.inputProps, value: item.partyName }}
+
+                  onChange={(event) => {
+                    item.brandName = event.target.value;
+                    item.liquorID = null;
+                    onChangePurchesOutSide(event, index)
+                  }}
+                />
+              )}
             />
+            
           </div>
         </td>
         {/* ======== प्रारम्भिक स्टॉक ========= */}
         <td>
           <div className="form-control">
-            <input
-              type="text"
-              className="semiSmallInput"
-              name="brandName"
-              value={item.brandName}
-              onChange={(e) => onChangePurchesOutSide(e, index)}
+            <Autocomplete
+              options={liquors}
+              freeSolo
+              getOptionLabel={(option) => option ? option.brandName : ""}
+              // item.brandName = event.target.outerText;
+              // // eslint-disable-next-line array-callback-return
+              // const liq = liquors.filter((liq) => {
+              //   if (liq.brandName === event.target.outerText) {
+              //     return liq;
+              //   }
+              // });
+              // item.liquorID = liq._id
+              // handelFristFormOnChange(event, index);
+              onChange={(event, value) => {
+                item.brandName = value.brandName
+                item.liquorID = value._id
+                onChangePurchesOutSide(event, index)
+                console.log(item)
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className="dailyReportInput"
+                  value={item.brandName}
+                  inputProps={{ ...params.inputProps, value: item.brandName }}
+
+                  onChange={(event) => {
+                    item.brandName = event.target.value;
+                    item.liquorID = null;
+                    onChangePurchesOutSide(event, index)
+                  }}
+                />
+              )}
             />
           </div>
         </td>
