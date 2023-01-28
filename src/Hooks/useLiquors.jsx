@@ -22,7 +22,7 @@ function useLiquors() {
                 }
             );
             const data = await res.json();
-            console.log(data, "data.data");
+            console.log(data.data);
             return data.data;
         },
     });
@@ -43,17 +43,56 @@ function useLiquors() {
                 }
               
             })
+            if(liq.length>0){
+        return liq[0]._id
+       }
+       else{
+        return null
+       }
+    }
 
-        return liq[0].sizes
+    const GetLiqId=(id,ml)=>{
+        let size,liq
+        if(id===null){
+            return null
+        }
 
-       
+        else{
+         liq=liquors.filter((item)=>{
+            if(item.type==="WINE"){
+                return item
+            }
+           if(liq.length===1){
+           liq = liq.filter((item)=>{
+                if(item._id===id){
+                    return item
+                }
+            })
+           }
+        })
+
+        if(liq.length === 1){
+         size=liq.filter((item)=>{
+            if (item.quantityInML===ml){
+                return item
+            }
+        })
+}
+        if(size.length===1){
+            return size._id
+        }
+        else{
+            return null
+        }
+    }
     }
 
   return {
 brands,
 liquors,
 brandsLoaded,
-checkLiquor
+checkLiquor,
+GetLiqId
   }
 }
 

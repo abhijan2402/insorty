@@ -3,6 +3,7 @@ import useFormulasFristFormFront from "../useFormulas/useFormulasFristFormFront"
 import useSecondFormFront from "../useSecondFormFront";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../../Context/DataContext";
+import useLiquors from "../useLiquors";
 
 const useFristFormSubmitAPIFront = () => {
   const token = localStorage.getItem("token");
@@ -10,6 +11,7 @@ const useFristFormSubmitAPIFront = () => {
   const { addOneFristFormState } = useFormulasFristFormFront();
   const { addOneSecondFormState } = useSecondFormFront();
   const { liquors } = useContext(DataContextApi);
+  const { GetLiqId } = useLiquors()
 
   const submitFristFormHandler = async (e) => {
     setIsLoadingSubmit(true);
@@ -19,7 +21,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; index < addOneFristFormState.length; index++) {
       const element = addOneFristFormState[index];
       dataDetails650.push({
-        liquor: liquors?.[0]?._id,
+        liquor: GetLiqId(element.liquorID,750),
         brandName: element.brandName,
         quantityInML: 750,
         openingStock: element.startingStock750,
@@ -40,7 +42,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; index < addOneFristFormState.length; index++) {
       const element = addOneFristFormState[index];
       dataDetails550.push({
-        liquor: liquors?.[0]?._id,
+        liquor: GetLiqId(element.liquorID, 180),
         brandName: element.brandName,
         quantityInML: 180,
         openingStock: element.startingStock180,
@@ -61,7 +63,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; index < addOneFristFormState.length; index++) {
       const element = addOneFristFormState[index];
       dataDetails330.push({
-        liquor: liquors?.[0]?._id,
+        liquor: GetLiqId(element.liquorID, 3300),
         brandName: element.brandName,
         quantityInML: 330,
         openingStock: element.startingStock330,
@@ -97,6 +99,9 @@ const useFristFormSubmitAPIFront = () => {
         amount: element.finalSum,
       });
     }
+    console.log(dataDetails330)
+    console.log(dataDetails650)
+    console.log(dataDetails550)
 
     try {
       const api1 = await fetch(

@@ -3,6 +3,7 @@ import React from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import Loader from "../../../../../../Components/Loader/Loader";
+import { Liquor } from "@mui/icons-material";
 
 const AddOneFristForm = ({
   index,
@@ -22,15 +23,16 @@ const AddOneFristForm = ({
     liquors
   } = useLiquors()
 
-  if (!brandsLoaded) {
-    console.log(liquors.filter((item)=>{
-      if (item.brandName === "mac"){
-        return item
-      }
+  // if (!brandsLoaded) {
+  //   console.log(liquors.filter((addOneFirst)=>{
+  //     if (addOneFirst.brandName === "mac"){
+  //       return addOneFirst
+  //     }
      
-    }))
-    // console.log(brands)
-  }
+  //   }))
+ 
+  // }
+  console.log(addOneFirst)
   
 
   if (brandsLoaded) {
@@ -47,29 +49,35 @@ const AddOneFristForm = ({
         <th>{SerialNo}</th>
         <td>
           <Autocomplete
-            options={brands}
-            value={addOneFirst.brandName}
-            onChange={(event) => {
-              addOneFirst.brandName = event.target.outerText;
-              // eslint-disable-next-line array-callback-return
-              addOneFirst.liquorID = liquors.filter((liq) => {
-                if (liq.brandName === event.target.outerText) {
-                  return liq._id;
-                }
-              });
-              console.log(addOneFristFormState);
-              handelFristFormOnChange(event, index);
+            options={liquors}
+            freeSolo
+            getOptionLabel={(option) => option ? option.brandName : ""}
+              // addOneFirst.brandName = event.target.outerText;
+              // // eslint-disable-next-line array-callback-return
+              // const liq = liquors.filter((liq) => {
+              //   if (liq.brandName === event.target.outerText) {
+              //     return liq;
+              //   }
+              // });
+              // addOneFirst.liquorID = liq._id
+              // handelFristFormOnChange(event, index);
+            onChange={(event,value) => {
+              addOneFirst.brandName = value.brandName
+              addOneFirst.liquorID = value._id
+              handelFristFormOnChange(event, index)
+              console.log(addOneFirst)
             }}
             renderInput={(params) => (
               <TextField
                 {...params}
                 className="dailyReportInput"
                 value={addOneFirst.brandName}
+                inputProps={{ ...params.inputProps, value: addOneFirst.brandName }}
+
                 onChange={(event) => {
-                  handelFristFormOnChange(event, index);
                   addOneFirst.brandName = event.target.value;
                   addOneFirst.liquorID = null;
-                  console.log(event.target.value);
+                  handelFristFormOnChange(event,index)
                 }}
               />
             )}

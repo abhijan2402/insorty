@@ -1,12 +1,18 @@
 import React, { useContext } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { DataContextApi } from "../../../../../Context/DataContext";
+import useLiquors from "../../../../../Hooks/useLiquors";
 
 const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
   const serialNo = index + 1;
-  const { liquors } = useContext(DataContextApi);
+  // const { liquors } = useContext(DataContextApi);
+  const {
+    brands,
+    brandsLoaded,
+    checkLiquor,
+    liquors
+  } = useLiquors()
 
-  const brands = ["a", "b", "c", "d"];
 
   return (
     <>
@@ -23,28 +29,35 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
             /> */}
 
             <Autocomplete
-              options={brands}
-              value={item.brandName}
-              onChange={(event) => {
-                item.brandName = event.target.outerText;
-                item.liquorID = liquors.filter((liq) => {
-                  if (liq.brandName === event.target.outerText) {
-                    return liq._id;
-                  }
-                });
-
-                onChangeRmlHandler(event, index);
+              options={liquors}
+              freeSolo
+              getOptionLabel={(option) => option ? option.brandName : ""}
+              // item.brandName = event.target.outerText;
+              // // eslint-disable-next-line array-callback-return
+              // const liq = liquors.filter((liq) => {
+              //   if (liq.brandName === event.target.outerText) {
+              //     return liq;
+              //   }
+              // });
+              // item.liquorID = liq._id
+              // handelFristFormOnChange(event, index);
+              onChange={(event, value) => {
+                item.brandName = value.brandName
+                item.liquorID = value._id
+                onChangeRmlHandler(event, index)
+                console.log(item)
               }}
               renderInput={(params) => (
                 <TextField
                   {...params}
                   className="dailyReportInput"
                   value={item.brandName}
+                  inputProps={{ ...params.inputProps, value: item.brandName }}
+
                   onChange={(event) => {
-                    onChangeRmlHandler(event, index);
                     item.brandName = event.target.value;
                     item.liquorID = null;
-                    console.log(event.target.value);
+                    onChangeRmlHandler(event, index)
                   }}
                 />
               )}
