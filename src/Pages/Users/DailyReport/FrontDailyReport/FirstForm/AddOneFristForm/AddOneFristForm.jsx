@@ -49,7 +49,11 @@ const AddOneFristForm = ({
         <th>{SerialNo}</th>
         <td>
           <Autocomplete
-            options={liquors}
+            options={liquors.filter((brand)=>{
+              if(brand.type==="WINE"){
+                return brand
+              }
+            })}
             freeSolo
             getOptionLabel={(option) => option ? option.brandName : ""}
               // addOneFirst.brandName = event.target.outerText;
@@ -62,8 +66,13 @@ const AddOneFristForm = ({
               // addOneFirst.liquorID = liq._id
               // handelFristFormOnChange(event, index);
             onChange={(event,value) => {
-              addOneFirst.brandName = value.brandName
-              addOneFirst.liquorID = value._id
+              if (value) {
+                addOneFirst.brandName = value.brandName
+                addOneFirst.liquorID = value._id
+              } else {
+                addOneFirst.brandName = ""
+                addOneFirst.liquorID = ""
+              }
               handelFristFormOnChange(event, index)
               console.log(addOneFirst)
             }}

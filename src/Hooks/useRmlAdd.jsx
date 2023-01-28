@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const useRmlAdd = () => {
   const addRmlForm = {
+    liquorID:"",
     brandName: "", //brandName
     averageRate: 0,
     openingStock: 0, //initialStock
@@ -36,6 +37,7 @@ const useRmlAdd = () => {
       data = [
         ...data,
         {
+          liquorID: "",
           brandName: "",
           averageRate: 0,
           openingStock: 0,
@@ -60,6 +62,7 @@ const useRmlAdd = () => {
     setAddRmlState([
       ...addRmlState,
       {
+        liquorID: "",
         brandName: "",
         averageRate: 0,
         openingStock: 0,

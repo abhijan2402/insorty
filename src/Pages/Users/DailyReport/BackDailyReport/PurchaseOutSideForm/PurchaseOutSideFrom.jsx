@@ -50,8 +50,14 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
               // item.liquorID = liq._id
               // handelFristFormOnChange(event, index);
               onChange={(event, value) => {
-                item.partyName = value.partyName
-                item.liquorID = value._id
+                if (value) {
+                  item.partyName = value.partyName
+                  item.liquorID = value._id
+                } else {
+                  item.partyName = ""
+                  item.liquorID = ""
+                }
+                
                 onChangePurchesOutSide(event, index)
                 console.log(item)
               }}
@@ -63,7 +69,7 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
                   inputProps={{ ...params.inputProps, value: item.partyName }}
 
                   onChange={(event) => {
-                    item.brandName = event.target.value;
+                    item.partyName = event.target.value;
                     item.liquorID = null;
                     onChangePurchesOutSide(event, index)
                   }}
@@ -90,8 +96,13 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
               // item.liquorID = liq._id
               // handelFristFormOnChange(event, index);
               onChange={(event, value) => {
-                item.brandName = value.brandName
-                item.liquorID = value._id
+                if (value) {
+                  item.brandName = value.brandName
+                  item.liquorID = value._id
+                } else {
+                  item.brandName = ""
+                  item.liquorID = ""
+                }
                 onChangePurchesOutSide(event, index)
                 console.log(item)
               }}

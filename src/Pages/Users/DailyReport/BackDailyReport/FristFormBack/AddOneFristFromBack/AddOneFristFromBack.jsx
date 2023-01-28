@@ -58,8 +58,13 @@ const AddOneFristFromBack = ({
               // item.liquorID = liq._id
               // handelFristFormOnChange(event, index);
               onChange={(event, value) => {
-                item.brandName = value.brandName
-                item.liquorID = value._id
+                if (value) {
+                  item.brandName = value.brandName
+                  item.liquorID = value._id
+                } else {
+                  item.brandName = ""
+                  item.liquorID = ""
+                }
                 onChangeFristBackFormHandler(event, index)
                 console.log(item)
               }}

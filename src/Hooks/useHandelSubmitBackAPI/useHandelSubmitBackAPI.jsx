@@ -8,6 +8,7 @@ import useCarditDabit from "../useCarditDabit";
 import { DataContextApi } from "../../Context/DataContext";
 import useInfolwBorrowingRml from "../useInfolwBorrowingRml";
 import useShippingAdd from "../useShippingAdd";
+import useLiquors from "../useLiquors";
 
 const useHandelSubmitBackAPI = () => {
   const token = localStorage.getItem("token");
@@ -21,6 +22,8 @@ const useHandelSubmitBackAPI = () => {
   const { addShippingState } = useShippingAdd();
   const { intoAccountState, liquerState } = useContext(DataContextApi);
   const liquerData = liquerState?.data;
+  const { GetLiqId } = useLiquors()
+
 
   // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
@@ -47,13 +50,7 @@ const useHandelSubmitBackAPI = () => {
   for (let index = 0; index < addRmlState.length; index++) {
     const element = addRmlState[index];
     addRmlData.push({
-      liquor: {
-        brandName: element.brandName,
-        currentStock: currentStock,
-        type: typeData,
-        quantityInML: quantityInMLData,
-        rate: rateData,
-      },
+      liquor: element.liquorID, //to be updated
       openingStock: element.openingStock,
       purchaseShop: element.incomingPurchase,
       purchaseShopRate: element.buyRate,
@@ -75,7 +72,7 @@ const useHandelSubmitBackAPI = () => {
   for (let index = 0; index < purchesOutSideState.length; index++) {
     const element = purchesOutSideState[index];
     purchaseOutSideData.push({
-      liquor: liquerId,
+      liquor: element.liquorID, //to be updated
       brandName: element.brandName,
       partyName: element.partyName,
       number: element.theNumber,
@@ -100,13 +97,25 @@ const useHandelSubmitBackAPI = () => {
 
   for (let index = 0; index < craditDabitState.length; index++) {
     const element = craditDabitState[index];
-    entriesBorrow.push({
-      type: element.partyType,
-      partyName: element.partyName,
-      amount: element.amount,
-      comment: element.note,
+    if(element.partyType==="PARTNER"){
+      entriesBorrow.push({
+    type: element.partyType,
+    partnertName: element.partyName,
+        amount: element.amount,
+          comment: element.note,
     });
+    }
+    else{
+      entriesBorrow.push({
+        type: element.partyType,
+        partyName: element.partyName,
+        amount: element.amount,
+        comment: element.note,
+      });
+    }
   }
+
+  // 
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));

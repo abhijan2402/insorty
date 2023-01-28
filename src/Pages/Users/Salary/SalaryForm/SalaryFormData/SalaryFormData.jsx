@@ -1,5 +1,6 @@
 import React from "react";
 import Loader from "../../../../../Components/Loader/Loader";
+import moment from "moment/moment";
 
 const SalaryFormData = ({ index, salary, salareyDataLoading }) => {
   const { salary: salaryData, payment, comment } = salary;
@@ -7,6 +8,8 @@ const SalaryFormData = ({ index, salary, salareyDataLoading }) => {
   if (salareyDataLoading) {
     return <Loader></Loader>;
   }
+
+  console.log(salary)
 
   return (
     <>
@@ -16,7 +19,7 @@ const SalaryFormData = ({ index, salary, salareyDataLoading }) => {
           <div className="flex gap-4">
             <div className="form-control">
               <input
-                value={salaryData?.month}
+                value={moment(salaryData?.month).format("DD/MM/YYYY")}
                 disabled
                 className="semiSmallInput"
               />
@@ -37,9 +40,8 @@ const SalaryFormData = ({ index, salary, salareyDataLoading }) => {
           <div className="flex gap-4">
             <div className="form-control">
               <input
-                type="date"
                 disabled
-                value={payment?.month}
+                value={moment(payment?.date).format("DD/MM/YYYY")}
                 className="semiSmallInput"
               />
             </div>
