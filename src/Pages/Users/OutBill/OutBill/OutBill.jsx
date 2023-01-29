@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import OutBillList from "../OutBillList/OutBillList";
