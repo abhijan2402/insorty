@@ -14,7 +14,7 @@ const useFristFormSubmitAPIFront = () => {
   const { GetLiqId } = useLiquors()
 
   const submitFristFormHandler = async (e) => {
-    setIsLoadingSubmit(true);
+    // setIsLoadingSubmit(true);
 
     const dataDetails650 = [];
 
@@ -33,8 +33,8 @@ const useFristFormSubmitAPIFront = () => {
         send: element.sending750,
         remaining: element.sumRemainder750,
         closingStock: element.closingStock750,
-        sales: element.mainRate750,
-        amount: element.grandTotal,
+        sales: element.sales750,
+        amount: Number(element.mainRate750) * Number(element.sales750),
       });
     }
 
@@ -54,8 +54,8 @@ const useFristFormSubmitAPIFront = () => {
         send: element.sending180,
         remaining: element.sumRemainder180,
         closingStock: element.closingStock180,
-        sales: element.mainRate180,
-        amount: element.grandTotal,
+        sales: element.sales180,
+        amount: Number(element.mainRate180) * Number(element.sales180),
       });
     }
 
@@ -75,8 +75,8 @@ const useFristFormSubmitAPIFront = () => {
         send: element.sending330,
         remaining: element.sumRemainder330,
         closingStock: element.closingStock330,
-        sales: element.mainRate330,
-        amount: element.grandTotal,
+        sales: element.sales330,
+        amount: Number(element.mainRate330) * Number(element.sales330),
       });
     }
 
@@ -99,9 +99,8 @@ const useFristFormSubmitAPIFront = () => {
         amount: element.finalSum,
       });
     }
-    console.log(dataDetails330)
-    console.log(dataDetails650)
-    console.log(dataDetails550)
+    
+    
 
     try {
       const api1 = await fetch(

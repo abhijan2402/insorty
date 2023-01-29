@@ -180,6 +180,7 @@ const useRmlAdd = () => {
     handelAddOneInRml,
     onChangeRmlHandler,
     total,
+    setAddRmlState
   };
 };
 

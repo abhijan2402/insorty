@@ -2,11 +2,14 @@ import React, { useContext } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { DataContextApi } from "../../../../../Context/DataContext";
 import useLiquors from "../../../../../Hooks/useLiquors";
+import useRmlAdd from "../../../../../Hooks/useRmlAdd";
 import Loader from "../../../../../Components/Loader/Loader";
 
-const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
+const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
   const serialNo = index + 1;
+  const {setAddRmlState} = useRmlAdd()
   // const { liquors } = useContext(DataContextApi);
+  let rmlData = addRmlState
   const {
     brands,
     brandsLoaded,
@@ -22,11 +25,6 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
     );
   }
 
-  console.log(liquors.filter((brand) => {
-    if (brand.type === 'RML') {
-      return brand
-    }
-  }))
 
 
   return (
@@ -44,7 +42,11 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
             /> */}
 
             <Autocomplete
-              options={liquors}
+              options={liquors.filter((brand) => {
+                if (brand.type === 'RML') {
+                  return brand
+                }
+              })}
               freeSolo
               getOptionLabel={(option) => option  ? option.brandName : ""}
 
@@ -61,23 +63,29 @@ const RmlFrom = ({ index, onChangeRmlHandler, item }) => {
                 if (value) {
                   item.brandName = value.brandName
                   item.liquorID = value._id
+                  
                 } else {
                   item.brandName = ""
                   item.liquorID = ""
                 }
+                setAddRmlState(addRmlState)
                 onChangeRmlHandler(event, index)
+                
+                console.log(addRmlState)
+                
               }}
               renderInput={(params) => (
                 <TextField
                   {...params}
                   className="dailyReportInput"
-                  defaultValue={item.brandName}
+                  value={item.brandName}
                   inputProps={{ ...params.inputProps, value: item.brandName  }}
-
+                  name='brandName'
                   onChange={(event) => {
                     item.brandName = event.target.value ;
                     item.liquorID = null;
                     onChangeRmlHandler(event, index)
+                    console.log(event.target.name)
                   }}
                 />
               )}

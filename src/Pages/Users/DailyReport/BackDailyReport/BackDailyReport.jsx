@@ -47,6 +47,7 @@ const BackDailyReport = () => {
     handelAddFiveInRml,
     handelAddOneInRml,
     onChangeRmlHandler,
+    setAddRmlState
   } = useRmlAdd();
 
   // ================== Purchase OutSide Form============
@@ -1083,6 +1084,7 @@ const BackDailyReport = () => {
                           index={index}
                           onChangeRmlHandler={onChangeRmlHandler}
                           addRmlState={addRmlState}
+                          setAddRmlState={setAddRmlState}
                         ></RmlFrom>
                       );
                     })}
