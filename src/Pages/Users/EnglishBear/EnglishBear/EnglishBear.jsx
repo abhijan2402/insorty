@@ -1,8 +1,42 @@
+/* eslint-disable no-sequences */
 import React from "react";
-import EnglishBearForm from "../EnglishBearForm/EnglishBearForm";
-import EnglishBearMlData from "../EnglishBearMlData/EnglishBearMlData";
+import EnglishBearDataDisplay from "../EnglishBearDataDisplay/EnglishBearDataDisplay";
+import { useQuery } from "@tanstack/react-query";
+// import EnglishBearForm from "../EnglishBearForm/EnglishBearForm";
+// import EnglishBearMlData from "../EnglishBearMlData/EnglishBearMlData";
+import Loader from "../../../../Components/Loader/Loader";
 
 const EnglishBear = () => {
+  const token = localStorage.getItem("token");
+  const { data: englishBearData, isLoading } = useQuery({
+    queryKey: ["englishBearData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllLiquors",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  const totalAmountData = englishBearData?.map((item) => {
+    return Number(item.currentStock) * Number(item.rate) || 0;
+  });
+
+  const totalAmount = Number(
+    totalAmountData?.reduce((a, b) => Number(a) + Number(b), 0)
+  );
+
+  console.log(totalAmount);
+
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
+
   return (
     <section>
       <div className="title my-2">
@@ -15,37 +49,47 @@ const EnglishBear = () => {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>S.No</th>
               <th>ब्राण्ड/ Brand Name </th>
-              <th>स्टॉक / stock</th>
+              <th>साईज / ml</th>
+              <th>Number / संख्या</th>
               <th>Rate / रेट</th>
-              <th>Total / योग</th>
-              <th>कुल योग/ Amount</th>
+              <th>Amount / रकम</th>
             </tr>
           </thead>
           <tbody>
-            <EnglishBearForm></EnglishBearForm>
+            {englishBearData.map((englishBear, index) => {
+              return (
+                <EnglishBearDataDisplay
+                  key={index}
+                  englishBear={englishBear}
+                  index={index}
+                ></EnglishBearDataDisplay>
+              );
+            })}
+
+            {/* <EnglishBearForm></EnglishBearForm> */}
             <tr>
               <th></th>
               <td></td>
               <td></td>
               <td></td>
               <td className="commonText">Total</td>
-              <td className="price">162,000</td>
+              <td className="price">{totalAmount}</td>
             </tr>
 
-            <EnglishBearMlData></EnglishBearMlData>
-            <tr>
+            {/* <EnglishBearMlData></EnglishBearMlData> */}
+            {/* <tr>
               <th></th>
               <td></td>
               <td></td>
               <td></td>
               <td className="commonText">Total</td>
               <td className="price">162,000</td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>
