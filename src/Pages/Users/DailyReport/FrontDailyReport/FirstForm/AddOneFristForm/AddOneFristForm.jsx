@@ -32,7 +32,6 @@ const AddOneFristForm = ({
   //   }))
  
   // }
-  console.log(addOneFirst)
   
 
   if (brandsLoaded) {
@@ -547,7 +546,7 @@ const AddOneFristForm = ({
                 name="total180"
                 className="smallinput"
                 disabled
-                value={addOneFirst.total180}
+                value={Number(addOneFirst.sales180)*Number(addOneFirst.mainRate180)}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>

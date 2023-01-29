@@ -4,22 +4,24 @@ import { FaCalendarAlt } from "react-icons/fa";
 import OutBillList from "../OutBillList/OutBillList";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import useLiquors from "../../../../Hooks/useLiquors";
 
 const OutBill = () => {
   const token = localStorage.getItem("token");
   const [liquorsParentData, setLiquorsParentData] = React.useState([]);
+  const {brandsLoaded} = useLiquors()
 
-  useEffect(() => {
-    fetch("https://insorty-api.onrender.com/shop/getAllParentLiquors", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        cookie_token: localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setLiquorsParentData(data.data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://insorty-api.onrender.com/shop/getAllParentLiquors", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       cookie_token: localStorage.getItem("token"),
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setLiquorsParentData(data.data));
+  // }, []);
 
   const { data: OutBill, isLoading } = useQuery({
     queryKey: ["OutBill"],
@@ -54,7 +56,7 @@ const OutBill = () => {
 
   console.log(brandName);
 
-  if (isLoading) {
+  if (isLoading && brandsLoaded) {
     return <Loader></Loader>;
   }
 

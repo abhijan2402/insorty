@@ -86,6 +86,137 @@ const useFormulasFristFormFront = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
+  const addOneFristFormHandler = () => {
+    setAddOneFristFormState([
+      ...addOneFristFormState,
+      {
+        brandName: "",
+
+        startingStock750: 0,
+        startingStock330: 0,
+        startingStock180: 0,
+
+        incomingPurchase750: 0,
+        incomingPurchase330: 0,
+        incomingPurchase180: 0,
+
+        buyRate750: 0,
+        buyRate330: 0,
+        buyRate180: 0,
+
+        incomePurchase750: 0,
+        incomePurchase330: 0,
+        incomePurchase180: 0,
+
+        purchaseRate750: 0,
+        purchaseRate330: 0,
+        purchaseRate180: 0,
+
+        inflowCredit750: 0,
+        inflowCredit330: 0,
+        inflowCredit180: 0,
+
+        sending750: 0,
+        sending330: 0,
+        sending180: 0,
+
+        sumRemainder750: 0,
+        sumRemainder330: 0,
+        sumRemainder180: 0,
+
+        closingStock750: 0,
+        closingStock330: 0,
+        closingStock180: 0,
+
+        sales750: 0,
+        sales330: 0,
+        sales180: 0,
+
+        mainRate750: 0,
+        mainRate330: 0,
+        mainRate180: 0,
+
+        total750: 0,
+        total330: 0,
+        total180: 0,
+
+        grandTotal: 0,
+
+        averageRate750: 0,
+        averageRate330: 0,
+        averageRate180: 0,
+      },
+    ]);
+  };
+
+  const addFive = () => {
+    let data = addOneFristFormState;
+    for (let i = 0; i < 5; i++) {
+      data = [
+        ...data,
+        {
+          brandName: "",
+
+          startingStock750: 0,
+          startingStock330: 0,
+          startingStock180: 0,
+
+          incomingPurchase750: 0,
+          incomingPurchase330: 0,
+          incomingPurchase180: 0,
+
+          buyRate750: 0,
+          buyRate330: 0,
+          buyRate180: 0,
+
+          incomePurchase750: 0,
+          incomePurchase330: 0,
+          incomePurchase180: 0,
+
+          purchaseRate750: 0,
+          purchaseRate330: 0,
+          purchaseRate180: 0,
+
+          inflowCredit750: 0,
+          inflowCredit330: 0,
+          inflowCredit180: 0,
+
+          sending750: 0,
+          sending330: 0,
+          sending180: 0,
+
+          sumRemainder750: 0,
+          sumRemainder330: 0,
+          sumRemainder180: 0,
+
+          closingStock750: 0,
+          closingStock330: 0,
+          closingStock180: 0,
+
+          sales750: 0,
+          sales330: 0,
+          sales180: 0,
+
+          mainRate750: 0,
+          mainRate330: 0,
+          mainRate180: 0,
+
+          total750: 0,
+          total330: 0,
+          total180: 0,
+
+          grandTotal: 0,
+
+          averageRate750: 0,
+          averageRate330: 0,
+          averageRate180: 0,
+        },
+      ];
+    }
+    setAddOneFristFormState(data);
+  };
+
   const [totalState, setTotalState] = useState({
     startingStock750Total: 0,
     startingStock330Total: 0,
@@ -324,6 +455,7 @@ const useFormulasFristFormFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (e.target.name === "sales330" || e.target.name === "mainRate330") {
           obj.total330 = Number(obj.sales330) * Number(obj.mainRate330);
+          console.log("ended 330")
         }
         return obj;
       } else return returned;
@@ -332,16 +464,24 @@ const useFormulasFristFormFront = () => {
     setAddOneFristFormState(saleTotal330);
 
     const saleTotal180 = addOneFristFormState.map((returned, i) => {
+     
       if (index === i) {
+      
+
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (e.target.name === "sales180" || e.target.name === "mainRate180") {
-          obj.total180 = Number(obj.sales180) * Number(obj.mainRate180);
+
+         obj.total180 = Number(obj.mainRate180) * Number(obj.sales180)
+         console.log(`total is ${obj.total180}`)
         }
+        
+
         return obj;
       } else return returned;
     });
 
     setAddOneFristFormState(saleTotal180);
+
 
     const grandT = addOneFristFormState.map((returned, i) => {
       if (index === i) {
@@ -586,135 +726,7 @@ const useFormulasFristFormFront = () => {
     );
   };
 
-  const addOneFristFormHandler = () => {
-    setAddOneFristFormState([
-      ...addOneFristFormState,
-      {
-        brandName: "",
-
-        startingStock750: 0,
-        startingStock330: 0,
-        startingStock180: 0,
-
-        incomingPurchase750: 0,
-        incomingPurchase330: 0,
-        incomingPurchase180: 0,
-
-        buyRate750: 0,
-        buyRate330: 0,
-        buyRate180: 0,
-
-        incomePurchase750: 0,
-        incomePurchase330: 0,
-        incomePurchase180: 0,
-
-        purchaseRate750: 0,
-        purchaseRate330: 0,
-        purchaseRate180: 0,
-
-        inflowCredit750: 0,
-        inflowCredit330: 0,
-        inflowCredit180: 0,
-
-        sending750: 0,
-        sending330: 0,
-        sending180: 0,
-
-        sumRemainder750: 0,
-        sumRemainder330: 0,
-        sumRemainder180: 0,
-
-        closingStock750: 0,
-        closingStock330: 0,
-        closingStock180: 0,
-
-        sales750: 0,
-        sales330: 0,
-        sales180: 0,
-
-        mainRate750: 0,
-        mainRate330: 0,
-        mainRate180: 0,
-
-        total750: 0,
-        total330: 0,
-        total180: 0,
-
-        grandTotal: 0,
-
-        averageRate750: 0,
-        averageRate330: 0,
-        averageRate180: 0,
-      },
-    ]);
-  };
-
-  const addFive = () => {
-    let data = addOneFristFormState;
-    for (let i = 0; i < 5; i++) {
-      data = [
-        ...data,
-        {
-          brandName: "",
-
-          startingStock750: 0,
-          startingStock330: 0,
-          startingStock180: 0,
-
-          incomingPurchase750: 0,
-          incomingPurchase330: 0,
-          incomingPurchase180: 0,
-
-          buyRate750: 0,
-          buyRate330: 0,
-          buyRate180: 0,
-
-          incomePurchase750: 0,
-          incomePurchase330: 0,
-          incomePurchase180: 0,
-
-          purchaseRate750: 0,
-          purchaseRate330: 0,
-          purchaseRate180: 0,
-
-          inflowCredit750: 0,
-          inflowCredit330: 0,
-          inflowCredit180: 0,
-
-          sending750: 0,
-          sending330: 0,
-          sending180: 0,
-
-          sumRemainder750: 0,
-          sumRemainder330: 0,
-          sumRemainder180: 0,
-
-          closingStock750: 0,
-          closingStock330: 0,
-          closingStock180: 0,
-
-          sales750: 0,
-          sales330: 0,
-          sales180: 0,
-
-          mainRate750: 0,
-          mainRate330: 0,
-          mainRate180: 0,
-
-          total750: 0,
-          total330: 0,
-          total180: 0,
-
-          grandTotal: 0,
-
-          averageRate750: 0,
-          averageRate330: 0,
-          averageRate180: 0,
-        },
-      ];
-    }
-    setAddOneFristFormState(data);
-  };
+  
 
   return {
     totalState,

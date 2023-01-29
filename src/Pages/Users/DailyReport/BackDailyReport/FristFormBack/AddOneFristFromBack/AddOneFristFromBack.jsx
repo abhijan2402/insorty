@@ -24,7 +24,7 @@ const AddOneFristFromBack = ({
     //     return item
     //   }
     // }))
-    console.log(brands)
+    // console.log(brands)
   }
   
 
