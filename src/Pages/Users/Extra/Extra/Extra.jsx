@@ -1,13 +1,48 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import Loader from "../../../../Components/Loader/Loader";
 
 const Extra = () => {
+  const token = localStorage.getItem("token");
+
+  const { data: extraData, isLoading } = useQuery({
+    queryKey: ["extraData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getExtraThings",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+  // get the entries from the extraData and map over them to get the date, price and details
+  const entriesMainData = extraData?.map((entry) => {
+    return entry?.entries;
+  });
+  console.log(entriesMainData);
+
+  if (isLoading) return <Loader></Loader>;
+
   return (
     <section className="my-2">
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">Extra /राशन सब्जी आदि खरीद</h2>
         <div className="flex gap-8 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">सेल्समेन का नाम</h2>
-          <h2 className="font-bold text-[1.5rem]">12/12/2022</h2>
+          <h2 className="font-bold text-[1.5rem]">
+            <input
+              type="text"
+              value={new Date().toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            />
+          </h2>
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -23,40 +58,41 @@ const Extra = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th>1</th>
-                <td>
-                  <input
-                    type="text"
-                    name="date"
-                    readOnly
-                    className="semiSmallInput"
-                    value={new Date().toLocaleDateString("en-GB", {
-                      day: "numeric",
-                      month: "short",
-                      year: "numeric",
-                    })}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    name="price"
-                    readOnly
-                    className="semiSmallInput"
-                    value={4574748}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    name="details"
-                    readOnly
-                    className="dailyReportInput"
-                    value="बाहर के बिल का फोर्मेट"
-                  />
-                </td>
-              </tr>
+              {entriesMainData[0].map((entry, index) => {
+                const { date, cash, comments } = entry;
+                return (
+                  <tr key={index}>
+                    <th>{index + 1}</th>
+                    <td>
+                      <input
+                        type="text"
+                        name="date"
+                        value={date}
+                        readOnly
+                        className="dailyReportInput"
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        name="price"
+                        readOnly
+                        className="semiSmallInput"
+                        value={cash}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="text"
+                        name="details"
+                        readOnly
+                        className="dailyReportInput"
+                        value={comments}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
