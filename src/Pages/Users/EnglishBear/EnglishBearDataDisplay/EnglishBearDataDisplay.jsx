@@ -1,7 +1,9 @@
 import React from "react";
+import useLiquors from '../../../../Hooks/useLiquors'
 
 const EnglishBearDataDisplay = ({ englishBear, index }) => {
-  const { quantityInML, currentStock, brandName, rate } = englishBear;
+  const { quantityInML, currentStock, brandName, rate,_id } = englishBear;
+  const {getNameByID} = useLiquors()
 
   const Total = Number(currentStock * rate);
 
@@ -9,7 +11,7 @@ const EnglishBearDataDisplay = ({ englishBear, index }) => {
     <>
       <tr>
         <th>{index + 1}</th>
-        <td>{brandName ? brandName : "Not Available Brand Name  "}</td>
+        <td>{brandName ? brandName : getNameByID(_id)}</td>
         <td>{quantityInML}</td>
         <td>{currentStock}</td>
         <td>{rate}</td>

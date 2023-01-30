@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Loader from "../../../../Components/Loader/Loader";
+import moment from "moment/moment";
 
 const Extra = () => {
   const token = localStorage.getItem("token");
@@ -67,7 +68,7 @@ const Extra = () => {
                       <input
                         type="text"
                         name="date"
-                        value={date}
+                        value={moment(date).format("DD/MM/YYYY")}
                         readOnly
                         className="dailyReportInput"
                       />
