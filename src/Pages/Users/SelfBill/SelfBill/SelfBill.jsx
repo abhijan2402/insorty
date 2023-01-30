@@ -3,12 +3,15 @@ import React, { useEffect } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import SelfBillList from "../SelfBillList/SelfBillList";
 import { useQuery } from "@tanstack/react-query";
+import useLiquors from "../../../../Hooks/useLiquors";
 import Loader from "../../../../Components/Loader/Loader";
 
 const SelfBill = () => {
   const token = localStorage.getItem("token");
   // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
   const [refundDataList, setRefundDataList] = React.useState(0);
+  const { brandsLoaded, loading } = useLiquors()
+
 
   // useEffect(() => {
   //   fetch("https://insorty-api.onrender.com/shop/getAllParentLiquors", {
@@ -45,7 +48,7 @@ const SelfBill = () => {
   const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
   const netPaidAmount = totalAmount - refundDataList;
 
-  if (isLoading) {
+  if (isLoading || brandsLoaded || loading ) {
     return <Loader></Loader>;
   }
 

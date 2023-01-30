@@ -9,7 +9,7 @@ import useLiquors from "../../../../Hooks/useLiquors";
 const OutBill = () => {
   const token = localStorage.getItem("token");
   // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
-  const {brandsLoaded} = useLiquors()
+  const {brandsLoaded,loading} = useLiquors()
 
   // useEffect(() => {
   //   fetch("https://insorty-api.onrender.com/shop/getAllParentLiquors", {
@@ -38,6 +38,8 @@ const OutBill = () => {
     },
   });
 
+  
+
   const totalAmountData = OutBill?.map((item) => {
     return item.total;
   });
@@ -56,7 +58,7 @@ const OutBill = () => {
 
   // console.log(brandName);
 
-  if (isLoading && brandsLoaded) {
+  if (isLoading || brandsLoaded || loading) {
     return <Loader></Loader>;
   }
 

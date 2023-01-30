@@ -3,8 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 
 
 function useLiquors() {
-
-    let brands;
+    let loading = true
+    let brands = [];
     
     const token = localStorage.getItem("token");
 
@@ -25,14 +25,18 @@ function useLiquors() {
         },
     });
 
-    // if (liquors) {
-    //     let brandSet = new Set();
-    //     liquors.map((item) => {
-    //         return brandSet.add(item.brandName);
-    //     });
-    //     brands = [...brandSet];
-    // }
-    console.log(liquors)
+    if (!brandsLoaded) {
+        liquors.map((item)=>{
+            if(item.sizes){
+                item.sizes.map((brand)=>{
+                    let obj = {id: brand._id, name: item.brandName}
+                    brands.push(obj)
+                })
+            }
+        })
+        loading = false
+    }
+    // console.log(liquors)
 
     const checkLiquor=(name)=>{
         let liq 
@@ -95,7 +99,6 @@ function useLiquors() {
 
             liquors.map((item)=>{
                 if (item._id === id && item.type === type) {
-                    console.log(ml)
                    size= item.sizes.filter((brand)=>{
                         // console.log(brand)
                         if (brand.quantityInML === ml) {
@@ -117,26 +120,15 @@ else return null
     }
 
     const getNameByID=(id)=>{
-        let name,sizeData
-        if(!brandsLoaded){
-            sizeData=liquors.filter((item)=>{
-                if(item.sizes){
-                    return item
-                }
-            })
-
-            if(sizeData.length>0){
-                sizeData.map((item)=>{
-                    item.sizes.map((brand)=>{
-                        if(brand._id===id){
-                            name = item.brandName
-                            return 0
-                        }
-                    })
-                })
+        let name ="multi ID"
+        if(brands.length>0){
+        brands.map((item)=>{
+            if(item.id===id){
+                name = item.name
+                return 0
             }
-        }
-
+        })
+    }
         return name
 
     }
@@ -149,7 +141,8 @@ liquors,
 brandsLoaded,
 checkLiquor,
 GetLiqId,
-getNameByID
+getNameByID,
+loading
   }
 }
 

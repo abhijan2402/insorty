@@ -5,9 +5,9 @@ import Loader from "../../../../Components/Loader/Loader";
 
 const SelfBillList = ({ index, billsData, isLoading }) => {
   const { averageRate, total, number, liquor } = billsData;
-  const { getNameByID,brandsLoaded } = useLiquors()
+  const { getNameByID, loading, brandsLoaded } = useLiquors()
 
-  if (brandsLoaded ) {
+  if (brandsLoaded || loading ) {
     return (
       <div>
         <Loader></Loader>
