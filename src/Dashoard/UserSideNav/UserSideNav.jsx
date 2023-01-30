@@ -123,7 +123,7 @@ const SideNav = () => {
             to="/user/englishbear"
           >
             <FaFileContract />
-            <span className="mx-4 font-medium">English Bear अंग्रेजी शराब</span>
+            <span className="mx-4 font-medium">English Beer अंग्रेजी शराब</span>
           </Link>
 
           <Link
@@ -141,7 +141,7 @@ const SideNav = () => {
             to="/user/stocklanding"
           >
             <FaFileContract />
-            <span className="mx-4 font-medium">Stock Landing</span>
+            <span className="mx-4 font-medium">Stock Lending</span>
           </Link>
 
           {/* ============= */}

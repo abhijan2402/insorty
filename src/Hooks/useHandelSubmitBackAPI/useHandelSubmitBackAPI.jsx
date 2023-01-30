@@ -128,7 +128,7 @@ const useHandelSubmitBackAPI = () => {
   const fifthFront = JSON.parse(localStorage.getItem("totalPaymentsRecieved"));
   const sixthFront = JSON.parse(localStorage.getItem("udhaariTotal"));
   const seventhFront = JSON.parse(localStorage.getItem("commisionTotal"));
-  const pichlaBakaya = JSON.parse(localStorage.getItem("pichlaBakaya"));
+  const pichlaBakaya =  0;
   
 
   const english = firstformData + secondFront;

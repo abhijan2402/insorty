@@ -18,6 +18,7 @@ const FinalReport = ({
   // localStorage.setItem("cashTotal", JSON.stringify(Number(localStorage.getItem('totalPaymentsRecieved'))));
   localStorage.setItem("udhaariTotal", JSON.stringify(udhaariTotal));
   localStorage.setItem("commisionTotal", JSON.stringify(commisionTotal));
+  localStorage.setItem('pichlaBakaya', JSON.stringify(0))
 
   // localStorage.setItem("paymentRecieved", JSON.stringify(paymentRecieved));
   
