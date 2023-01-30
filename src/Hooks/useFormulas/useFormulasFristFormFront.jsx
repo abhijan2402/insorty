@@ -722,7 +722,14 @@ const useFormulasFristFormFront = () => {
     localStorage.setItem("firstFront", JSON.stringify(addOneFristFormState));
     localStorage.setItem(
       "firstFrontTotal",
-      JSON.stringify(totalState.allGrandTotal)
+      JSON.stringify(addOneFristFormState.reduce(
+        (total, currentItem) =>
+        (total =
+          total + (Number(currentItem.sales750) * Number(currentItem.mainRate750)) +
+          (Number(currentItem.sales330) * Number(currentItem.mainRate330)) +
+          (Number(currentItem.sales180) * Number(currentItem.mainRate180))),
+        0
+      ))
     );
   };
 

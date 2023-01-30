@@ -526,7 +526,7 @@ const AddOneFristForm = ({
                 className="smallinput"
                 name="total750"
                 disabled
-                value={addOneFirst.total750}
+                value={Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750)}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
@@ -536,7 +536,7 @@ const AddOneFristForm = ({
                 className="smallinput"
                 disabled
                 name="total330"
-                value={addOneFirst.total330}
+                value={Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330)}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
@@ -564,9 +564,9 @@ const AddOneFristForm = ({
               name="grandTotal"
               disabled
               value={
-                Number(addOneFirst.total750) +
-                Number(addOneFirst.total330) +
-                Number(addOneFirst.total180)
+               ( Number(addOneFirst.sales750)*Number(addOneFirst.mainRate750)) +
+                (Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330)) +
+                (Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180))
               }
               onChange={(event) => handelFristFormOnChange(event, index)}
             />

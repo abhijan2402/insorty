@@ -6,6 +6,7 @@ export const DataContextApi = createContext();
 const DataContext = ({ children }) => {
   const { totalState } = useFormulasFristFormFront();
   const [intoAccountState, setintoAccountState] = useState(0);
+  const [paidDues,setPaidDues] = useState(0)
   const [liquerState, setLiquerState] = useState([]);
   const token = localStorage.getItem("token");
 
@@ -54,6 +55,8 @@ const DataContext = ({ children }) => {
   const dataInfo = {
     totalState,
     intoAccountState,
+    paidDues,
+    setPaidDues,
     liquorsParentData,
     setintoAccountState,
     liquerState,

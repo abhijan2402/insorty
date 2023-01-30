@@ -1,23 +1,52 @@
 import { useContext } from "react";
 import { DataContextApi } from "../../../../../Context/DataContext";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../../../Components/Loader/Loader";
 
 const FinalReport = ({
   beerTotal,
   rmlTotal,
-  cashTotal,
   udhaariTotal,
   commisionTotal,
 }) => {
   const { intoAccountState, setintoAccountState } = useContext(DataContextApi);
+  const { paidDues,setPaidDues } = useContext(DataContextApi);
+  const token = localStorage.getItem('token')
 
   localStorage.setItem("beerTotal", JSON.stringify(beerTotal));
   localStorage.setItem("rmlTotal", JSON.stringify(rmlTotal));
-  localStorage.setItem("cashTotal", JSON.stringify(cashTotal));
+  // localStorage.setItem("cashTotal", JSON.stringify(Number(localStorage.getItem('totalPaymentsRecieved'))));
   localStorage.setItem("udhaariTotal", JSON.stringify(udhaariTotal));
   localStorage.setItem("commisionTotal", JSON.stringify(commisionTotal));
 
+  // localStorage.setItem("paymentRecieved", JSON.stringify(paymentRecieved));
+  
+
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
+
+  const { data: leftDues, isLoading } = useQuery({
+    queryKey: ["extraData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getFinalReportData",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+
+
+  if (isLoading) return <Loader></Loader>;
+
+  const len = leftDues.length
+  localStorage.setItem('pichlaBakaya',JSON.stringify(leftDues[len-1].restAmount))
+
 
   return (
     <section>
@@ -42,7 +71,7 @@ const FinalReport = ({
             <tr>
               <th>2</th>
               <td>बीयर</td>
-              <td>{beerTotal}</td>
+              <td>{Number(localStorage.getItem('totalFirstBack'))}</td>
             </tr>
 
             {/* 03 */}
@@ -55,13 +84,13 @@ const FinalReport = ({
             <tr>
               <th>4</th>
               <td>कुल बिक्री</td>
-              <td>{rmlTotal + beerTotal + firstformData + secondFront}</td>
+              <td>{rmlTotal + Number(localStorage.getItem('totalFirstBack')) + firstformData + secondFront}</td>
             </tr>
             {/* 05 */}
             <tr>
               <th>5</th>
               <td>पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति</td>
-              <td>{cashTotal}</td>
+              <td>{Number(localStorage.getItem('totalPaymentsRecieved'))}</td>
             </tr>
             {/* 06 */}
             <tr>
@@ -93,19 +122,31 @@ const FinalReport = ({
             <tr>
               <th>9</th>
               <td>पिछला बकाया</td>
-              <td>500</td>
+              <td>{leftDues[len-1].restAmount}</td>
             </tr>
             {/* 10 */}
+
             <tr>
               <th>10</th>
+              <td>total</td>
+              <td>{rmlTotal + Number(localStorage.getItem('totalFirstBack')) + firstformData + secondFront + Number(localStorage.getItem('totalPaymentsRecieved')) - intoAccountState - udhaariTotal - commisionTotal + leftDues[len - 1].restAmount}</td>
+            </tr>
+            <tr>
+              <th>11</th>
               <td>आज भुगतान</td>
-              <td>500</td>
+              <td><input
+                type="number"
+                className="commonSmallForm"
+                name="intoAccountState"
+                value={paidDues}
+                onChange={(e) => setPaidDues(e.target.value)}
+              /></td>
             </tr>
             {/* 11 */}
             <tr>
-              <th>11</th>
+              <th>12</th>
               <td>शेष रकम</td>
-              <td>500</td>
+              <td>{rmlTotal + Number(localStorage.getItem('totalFirstBack')) + firstformData + secondFront + Number(localStorage.getItem('totalPaymentsRecieved')) - Number(intoAccountState) - udhaariTotal - commisionTotal + leftDues[len - 1].restAmount - Number(paidDues)}</td>
             </tr>
           </tbody>
         </table>

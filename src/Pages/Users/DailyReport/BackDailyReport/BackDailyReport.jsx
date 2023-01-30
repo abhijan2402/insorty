@@ -1545,7 +1545,7 @@ const BackDailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {cashReciveState.map((item, index) => {
+                    {cashReciveState?.map((item, index) => {
                       return (
                         <CashReciveFrom
                           key={index}
