@@ -7,20 +7,20 @@ import Loader from "../../../../Components/Loader/Loader";
 
 const SelfBill = () => {
   const token = localStorage.getItem("token");
-  const [liquorsParentData, setLiquorsParentData] = React.useState([]);
+  // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
   const [refundDataList, setRefundDataList] = React.useState(0);
 
-  useEffect(() => {
-    fetch("https://insorty-api.onrender.com/shop/getAllParentLiquors", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        cookie_token: localStorage.getItem("token"),
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setLiquorsParentData(data.data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://insorty-api.onrender.com/shop/getAllParentLiquors", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       cookie_token: localStorage.getItem("token"),
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setLiquorsParentData(data.data));
+  // }, []);
 
   const { data: SelfBillData, isLoading } = useQuery({
     queryKey: ["SelfBillData"],

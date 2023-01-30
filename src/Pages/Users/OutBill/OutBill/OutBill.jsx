@@ -8,7 +8,7 @@ import useLiquors from "../../../../Hooks/useLiquors";
 
 const OutBill = () => {
   const token = localStorage.getItem("token");
-  const [liquorsParentData, setLiquorsParentData] = React.useState([]);
+  // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
   const {brandsLoaded} = useLiquors()
 
   // useEffect(() => {
@@ -43,18 +43,18 @@ const OutBill = () => {
   });
   const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
 
-  const liquerId = OutBill?.map((item) => {
-    return item.liquor._id;
-  });
+  // const liquerId = OutBill?.map((item) => {
+  //   return item.liquor._id;
+  // });
 
   // Get brandName through liquor ID from liquorsParentData array
-  const brandName = liquorsParentData.filter((item) => {
-    if (item.sizes._id === liquerId) {
-      return item.brandName;
-    }
-  });
+  // const brandName = liquorsParentData.filter((item) => {
+  //   if (item.sizes._id === liquerId) {
+  //     return item.brandName;
+  //   }
+  // });
 
-  console.log(brandName);
+  // console.log(brandName);
 
   if (isLoading && brandsLoaded) {
     return <Loader></Loader>;

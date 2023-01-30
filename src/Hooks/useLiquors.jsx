@@ -117,22 +117,27 @@ else return null
     }
 
     const getNameByID=(id)=>{
-        let name
-        if (!brandsLoaded) {
-            liquors.map((item)=>{
-                if (item.sizes) {
-                    
-                    item.sizes.map((getName)=>{
-                        if(getName._id== id){
-                            name = item.brandName
-                            console.log(item.brandName)
-                        }
-                    })
+        let name,sizeData
+        if(!brandsLoaded){
+            sizeData=liquors.filter((item)=>{
+                if(item.sizes){
+                    return item
                 }
             })
- 
-return name
-}
+
+            if(sizeData.length>0){
+                sizeData.map((item)=>{
+                    item.sizes.map((brand)=>{
+                        if(brand._id===id){
+                            name = item.brandName
+                            return 0
+                        }
+                    })
+                })
+            }
+        }
+
+        return name
 
     }
 
