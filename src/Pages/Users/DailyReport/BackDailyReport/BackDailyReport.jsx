@@ -505,483 +505,623 @@ const BackDailyReport = () => {
                       })}
 
                       <tr>
-                        <th></th>
-                        <td>Total</td>
-                        {/* ======== MRP Input ========= */}
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="averageRate"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="averageRate"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="averageRate"
-                                disabled
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ======== प्रारम्भिक स्टॉक ========= */}
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="startingStock"
-                                disabled
-                                value={totalState.startingStock650Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="startingStock"
-                                disabled
-                                value={totalState.startingStock550Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="startingStock"
-                                disabled
-                                value={totalState.startingStock330Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                          </div>
-                        </td>
-
-                        {/* ======== आमद (खरीद)-दु. ========= */}
-
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="incomingPurchase"
-                                disabled
-                                value={totalState.incomingPurchase650Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="incomingPurchase"
-                                disabled
-                                value={totalState.incomingPurchase550Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="incomingPurchase"
-                                disabled
-                                value={totalState.incomingPurchase330Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                          </div>
-                        </td>
-
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="buyRate"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="buyRate"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="buyRate"
-                                disabled
-                              />
-                            </div>
-                          </div>
-                        </td>
-
-                        {/* ======== आमद (खरीद)-बा. ========= */}
-
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="incomePurchase"
-                                disabled
-                                value={totalState.incomePurchase650Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="incomePurchase"
-                                disabled
-                                value={totalState.incomePurchase550Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="incomePurchase"
-                                disabled
-                                value={totalState.incomePurchase330Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                          </div>
-                        </td>
-
-                        {/*================ खरीद रेट - बा. ==================  */}
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="purchaseRate"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="purchaseRate"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="purchaseRate"
-                                disabled
-                              />
-                            </div>
-                          </div>
-                        </td>
-
-                        {/* ======== आमद (उधारी) ========= */}
-
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="inflowCredit"
-                                disabled
-                                value={totalState.inflowCredit650Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="inflowCredit"
-                                disabled
-                                value={totalState.inflowCredit550Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="inflowCredit"
-                                disabled
-                                value={totalState.inflowCredit330Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ======== भेजान ========= */}
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="sending"
-                                disabled
-                                value={totalState.sending650Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="sending"
-                                disabled
-                                value={totalState.sending550Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="sending"
-                                disabled
-                                value={totalState.sending330Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ======== योग/शेष ========= */}
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="sumRemainder"
-                                disabled
-                                value={totalState.sumRemainder650Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="sumRemainder"
-                                disabled
-                                value={totalState.sumRemainder550Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="sumRemainder"
-                                disabled
-                                value={totalState.sumRemainder330Total}
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ======== अन्तिम स्टॉक ========= */}
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="closingStock"
-                                disabled
-                                value={totalState.closingStock650Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="closingStock"
-                                disabled
-                                value={totalState.closingStock550Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="closingStock"
-                                disabled
-                                value={totalState.closingStock330Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= बिक्री ================ */}
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="sales"
-                                disabled
-                                value={totalState.sales650Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="sales"
-                                disabled
-                                value={totalState.sales550Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="sales"
-                                disabled
-                                value={totalState.sales330Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= रेट ================ */}
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="mainRate"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="mainRate"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="mainRate"
-                                disabled
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= योग ================ */}
-                        <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="total650"
-                                disabled
-                                value={totalState.total650Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="total550"
-                                disabled
-                                value={totalState.total550Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="total330"
-                                disabled
-                                value={totalState.total330Total}
-                                onChange={onChangeFristBackFormHandler}
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= कुल योग ================ */}
-                        <td>
+                      <th></th>
+                      <td>Total</td>
+                      {/* ======== MRP Input ========= */}
+                      <td>
+                        <div className="flex gap-2">
                           <div className="form-control">
                             <input
-                              type="text"
-                              className="semiSmallInput"
-                              name="grandTotal"
                               disabled
-                              value={totalState.allGrandTotal}
-                              onChange={onChangeFristBackFormHandler}
+                              type="number"
+                              className="smallinput"
+                              name="averageRate"
                             />
                           </div>
-                        </td>
-                      </tr>
+
+                          <div className="form-control">
+                            <input
+                              disabled
+                              type="number"
+                              className="smallinput"
+                              name="averageRate"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              disabled
+                              type="number"
+                              className="smallinput"
+                              name="averageRate"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      {/* ======== प्रारम्भिक स्टॉक ========= */}
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.startingStock650)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              className="smallinput"
+                              disabled
+                              type="number"
+                              name="startingStock"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.startingStock550)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              disabled
+                              name="startingStock"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.startingStock330)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              disabled
+                              name="startingStock"
+                            />
+                          </div>
+                        </div>
+                      </td>
+
+                      {/* ======== आमद (खरीद)-दु. ========= */}
+
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.incomingPurchase650)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              disabled
+                              className="smallinput"
+                              name="incomingPurchase"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.incomingPurchase550)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              disabled
+                              name="incomingPurchase"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.incomingPurchase330)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              disabled
+                              name="incomingPurchase"
+                            />
+                          </div>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              disabled
+                              className="smallinput"
+                              name="buyRate"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              disabled
+                              className="smallinput"
+                              name="buyRate"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              className="smallinput"
+                              name="buyRate"
+                              disabled
+                            />
+                          </div>
+                        </div>
+                      </td>
+
+                      {/* ======== आमद (खरीद)-बा. ========= */}
+
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.incomePurchase650)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="incomePurchase"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.incomePurchase550)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              disabled
+                              name="incomePurchase"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.incomePurchase330)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="incomePurchase"
+                              disabled
+                            />
+                          </div>
+                        </div>
+                      </td>
+
+                      {/*================ खरीद रेट - बा. ==================  */}
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              className="smallinput"
+                              name="purchaseRate"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              className="smallinput"
+                              name="purchaseRate"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              className="smallinput"
+                              name="purchaseRate"
+                              disabled
+                            />
+                          </div>
+                        </div>
+                      </td>
+
+                      {/* ======== आमद (उधारी) ========= */}
+
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.inflowCredit650)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="inflowCredit"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.inflowCredit550)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="inflowCredit"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.inflowCredit330)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="inflowCredit"
+                              disabled
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      {/* ======== भेजान ========= */}
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.sending650)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="sending"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.sending550)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="sending"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.sending330)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              disabled
+                              className="smallinput"
+                              name="sending"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      {/* ======== योग/शेष ========= */}
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + currentItem.sumRemainder650),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="sumRemainder"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + currentItem.sumRemainder550),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="sumRemainder"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + currentItem.sumRemainder330),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="sumRemainder"
+                              disabled
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      {/* ======== अन्तिम स्टॉक ========= */}
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.closingStock650)),
+                                0
+                              )}
+                              type="number"
+                              className="smallinput"
+                              name="closingStock"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.closingStock550)),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="closingStock"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.closingStock330)),
+                                0
+                              )}
+                              type="number"
+                              className="smallinput"
+                              name="closingStock"
+                              disabled
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      {/* ============= बिक्री ================ */}
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + currentItem.sales650),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="sales"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + currentItem.sales550),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="sales"
+                              disabled
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + currentItem.sales330),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              type="number"
+                              className="smallinput"
+                              name="sales"
+                              disabled
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      {/* ============= रेट ================ */}
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              disabled
+                              type="number"
+                              className="smallinput"
+                              name="mainRate"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              disabled
+                              type="number"
+                              className="smallinput"
+                              name="mainRate"
+                            />
+                          </div>
+
+                          <div className="form-control">
+                            <input
+                              disabled
+                              type="number"
+                              className="smallinput"
+                              name="mainRate"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      {/* ============= योग ================ */}
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              className="smallinput"
+                              name="total650"
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + (Number(currentItem.sales650) * Number(currentItem.mainRate650))),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                            />
+                          </div>
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              className="smallinput"
+                              name="total330"
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + (Number(currentItem.sales550) * Number(currentItem.mainRate550))),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                            />
+                          </div>
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              className="smallinput"
+                              name="total330"
+                              value={fristFormState.reduce(
+                                (total, currentItem) =>
+                                (total =
+                                  total + (Number(currentItem.sales330) * Number(currentItem.mainRate330))),
+                                0
+                              )}
+                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      {/* ============= कुल योग ================ */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            disabled
+                            className="semiSmallInput"
+                            name="grandTotal"
+                            value={fristFormState.reduce(
+                              (total, currentItem) =>
+                              (total =
+                                total + (Number(currentItem.sales650) * Number(currentItem.mainRate650)) +
+                                (Number(currentItem.sales550) * Number(currentItem.mainRate550)) +
+                                (Number(currentItem.sales330) * Number(currentItem.mainRate330))),
+                              0
+                            )}
+                            onChange={(event) => onChangeFristBackFormHandler(event)}
+                          />
+                        </div>
+                      </td>
+                    </tr>
                     </tbody>
                   </table>
                 </div>
