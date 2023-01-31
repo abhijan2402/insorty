@@ -1,5 +1,5 @@
 import React from "react";
-import "../../UserStyle/UserStyle.scss";
+import "../../WineShopUserStyle/UserStyle.scss";
 import { Link } from "react-router-dom";
 import useMainInvestmentHooks from "../WineShopMainInvestmentHooks/useWineShopMainInvestmentHooks";
 
