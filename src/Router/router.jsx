@@ -29,6 +29,28 @@ import StockLanding from "../Pages/Users/StockLanding/StockLanding/StockLanding"
 import StockLandingForm from "../Pages/Users/StockLanding/StockLandingForm/StockLandingForm";
 import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FrontDetailsReport/FrontDetailsReport";
 import BackDetailsReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
+import WineShopLayout from "../Layouts/WinShopLayouts";
+import routerImport from "./routerImport";
+
+const {
+  WineShopBranch,
+  WineShopBranchForm,
+  WineShopCommison,
+  WineShopBorrow,
+  WineShopFinalReport,
+  WineShopPartners,
+  WineShopPayments,
+  WineShopSalary,
+  WineShopSalaryForm,
+  WineShopOutbill,
+  WineShopSelfBill,
+  WineShopExtra,
+  WineShopMainInvestment,
+  WineShopEnglishBear,
+  WineShopStockLanding,
+  WineShopStockLandingForm,
+  WineShopMainInvestmentForm,
+} = routerImport();
 
 const token = localStorage.getItem("token");
 const router = createBrowserRouter([
@@ -183,6 +205,99 @@ const router = createBrowserRouter([
       {
         path: "/user/dailyreport/details",
         element: <BackDetailsReport />,
+      },
+    ],
+  },
+  {
+    path: "/user/wineshop",
+    element: <WineShopLayout />,
+    children: [
+      {
+        path: "/user/wineshop/branch",
+        element: <WineShopBranch />,
+      },
+      {
+        path: "/user/wineshop/branch/from",
+        element: <WineShopBranchForm />,
+      },
+      {
+        path: "/user/wineshop/commision",
+        element: <WineShopCommison />,
+      },
+      {
+        path: "/user/wineshop/borrow",
+        element: <WineShopBorrow />,
+      },
+      {
+        path: "/user/wineshop/finalreport",
+        element: <WineShopFinalReport />,
+      },
+      {
+        path: "/user/wineshop/partners",
+        element: <WineShopPartners />,
+      },
+      {
+        path: "/user/wineshop/payments",
+        element: <WineShopPayments />,
+      },
+      {
+        path: "/user/wineshop/salary",
+        element: <WineShopSalary />,
+      },
+
+      {
+        path: "/user/wineshop/salary/from/:employeeId",
+        loader: ({ params }) =>
+          fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
+            method: "POST",
+            body: JSON.stringify({
+              employeeId: params.employeeId,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }),
+        element: <WineShopSalaryForm />,
+      },
+      {
+        path: "/user/wineshop/outbill",
+        element: <WineShopOutbill />,
+      },
+      {
+        path: "/user/wineshop/selfbill",
+        element: <WineShopSelfBill />,
+      },
+      {
+        path: "/user/wineshop/extra",
+        element: <WineShopExtra />,
+      },
+      {
+        path: "/user/wineshop/maininvestment",
+        element: <WineShopMainInvestment />,
+      },
+      {
+        path: "/user/wineshop/englishbear",
+        element: <WineShopEnglishBear />,
+      },
+      {
+        path: "/user/wineshop/stocklanding",
+        element: <WineShopStockLanding />,
+      },
+      {
+        path: "/user/wineshop/stocklanding/form",
+        // loader: ({ params }) =>
+        //   fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //       employeeId: params.employeeId,
+        //     }),
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       cookie_token: token,
+        //     },
+        //   }),
+        element: <WineShopStockLandingForm />,
       },
     ],
   },
