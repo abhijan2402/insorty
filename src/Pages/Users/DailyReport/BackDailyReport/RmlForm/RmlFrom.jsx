@@ -7,7 +7,7 @@ import Loader from "../../../../../Components/Loader/Loader";
 
 const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
   const serialNo = index + 1;
-  const {setAddRmlState} = useRmlAdd()
+  const { setAddRmlState } = useRmlAdd()
   // const { liquors } = useContext(DataContextApi);
   let rmlData = addRmlState
   const {
@@ -42,13 +42,13 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
             /> */}
 
             <Autocomplete
-              options={liquors.filter((brand) => {
+              options={liquors.length > 0 ? liquors.filter((brand) => {
                 if (brand.type === 'RML') {
                   return brand
                 }
-              })}
+              }) : ['no options']}
               freeSolo
-              getOptionLabel={(option) => option  ? option.brandName : ""}
+              getOptionLabel={(option) => option ? option.brandName : ""}
 
               // item.brandName = event.target.outerText;
               // // eslint-disable-next-line array-callback-return
@@ -63,26 +63,26 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
                 if (value) {
                   item.brandName = value.brandName
                   item.liquorID = value._id
-                  
+
                 } else {
                   item.brandName = ""
                   item.liquorID = ""
                 }
                 setAddRmlState(addRmlState)
                 onChangeRmlHandler(event, index)
-                
+
                 console.log(addRmlState)
-                
+
               }}
               renderInput={(params) => (
                 <TextField
                   {...params}
                   className="dailyReportInput"
                   value={item.brandName}
-                  inputProps={{ ...params.inputProps, value: item.brandName  }}
+                  inputProps={{ ...params.inputProps, value: item.brandName }}
                   name='brandName'
                   onChange={(event) => {
-                    item.brandName = event.target.value ;
+                    item.brandName = event.target.value;
                     item.liquorID = null;
                     onChangeRmlHandler(event, index)
                     console.log(event.target.name)

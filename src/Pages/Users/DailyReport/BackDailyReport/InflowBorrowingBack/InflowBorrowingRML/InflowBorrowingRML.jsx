@@ -29,7 +29,7 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
         <td>
           <div className="form-control">
             <Autocomplete
-              options={parties}
+              options={parties.length > 0 ? parties : ['no options']}
               freeSolo
               getOptionLabel={(option) => option ? option.partyName : ""}
               // item.brandName = event.target.outerText;
@@ -73,7 +73,7 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
         <td>
           <div className="form-control">
             <Autocomplete
-              options={liquors}
+              options={liquors.length > 0 ? liquors : ['no options']}
               freeSolo
               getOptionLabel={(option) => option ? option.brandName : ""}
               // item.brandName = event.target.outerText;

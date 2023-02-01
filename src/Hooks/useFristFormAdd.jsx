@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-
+import useLiquors from "./useLiquors";
 import Swal from "sweetalert2";
 
 const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(false);
   let brands;
+  const { GetLiqId } = useLiquors()
+  const backData = JSON.parse(localStorage.getItem('firstBack'))
 
   // ======================== add five in frist form ========================
 
@@ -756,7 +758,7 @@ const useFristFormAdd = () => {
   };
 
   const handelSubmitFristFormBack = async (e) => {
-    setIsLoading(true);
+    // setIsLoading(true);
 
     const dataDetails650 = [];
 
@@ -764,7 +766,7 @@ const useFristFormAdd = () => {
       const element = fristFormState[index];
       dataDetails650.push({
         // liquor: liquors?.[0]?._id,
-        liquor: element.liquorID,
+        liquor: GetLiqId(element.liquorID, 650, 'BEER'),
         brandName: element.brandName,
         quantityInML: 650,
         openingStock: element.startingStock650,
@@ -776,7 +778,7 @@ const useFristFormAdd = () => {
         send: element.sending650,
         remaining: element.sumRemainder650,
         closingStock: element.closingStock650,
-        sales: element.mainRate650,
+        sales: element.sales650,
         amount: element.grandTotal,
       });
     }
@@ -786,7 +788,7 @@ const useFristFormAdd = () => {
       const element = fristFormState[index];
       dataDetails550.push({
         // liquor: liquors?.[0]?._id,
-        liquor: element.liquorID,
+        liquor: GetLiqId(element.liquorID, 550, 'BEER'),
         brandName: element.brandName,
         quantityInML: 550,
         openingStock: element.startingStock550,
@@ -798,7 +800,7 @@ const useFristFormAdd = () => {
         send: element.sending550,
         remaining: element.sumRemainder550,
         closingStock: element.closingStock550,
-        sales: element.mainRate550,
+        sales: element.sales550,
         amount: element.grandTotal,
       });
     }
@@ -808,7 +810,7 @@ const useFristFormAdd = () => {
       const element = fristFormState[index];
       dataDetails330.push({
         // liquor: liquors?.[0]?._id,
-        liquor: element.liquorID,
+        liquor: GetLiqId(element.liquorID, 330, 'BEER'),
         brandName: element.brandName,
         quantityInML: 330,
         openingStock: element.startingStock330,
@@ -820,69 +822,73 @@ const useFristFormAdd = () => {
         send: element.sending330,
         remaining: element.sumRemainder330,
         closingStock: element.closingStock330,
-        sales: element.mainRate330,
+        sales: element.sales330,
         amount: element.grandTotal,
       });
     }
 
-    try {
-      const api1 = await fetch(
-        "https://insorty-api.onrender.com/shop/addBackPageReportData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({ entries: dataDetails650 }),
-        }
-      );
+    // try {
+    //   const api1 = await fetch(
+    //     "https://insorty-api.onrender.com/shop/addBackPageReportData",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         cookie_token: token,
+    //       },
+    //       body: JSON.stringify({ entries: dataDetails650 }),
+    //     }
+    //   );
 
-      const api2 = await fetch(
-        "https://insorty-api.onrender.com/shop/addBackPageReportData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({ entries: dataDetails550 }),
-        }
-      );
-      const api3 = await fetch(
-        "https://insorty-api.onrender.com/shop/addBackPageReportData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({ entries: dataDetails330 }),
-        }
-      );
+    //   const api2 = await fetch(
+    //     "https://insorty-api.onrender.com/shop/addBackPageReportData",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         cookie_token: token,
+    //       },
+    //       body: JSON.stringify({ entries: dataDetails550 }),
+    //     }
+    //   );
+    //   const api3 = await fetch(
+    //     "https://insorty-api.onrender.com/shop/addBackPageReportData",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         cookie_token: token,
+    //       },
+    //       body: JSON.stringify({ entries: dataDetails330 }),
+    //     }
+    //   );
 
-      Promise.all([api1, api2, api3])
-        .then((responses) => Promise.all(responses.map((res) => res.json())))
-        .then((data) => {
-          console.log(data);
-          if (data.success === true) {
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: "Added successfully",
-            });
-          }
-        });
-    } catch (error) {
-      const errorMessage = error.message;
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: errorMessage,
-      });
-    } finally {
-      setIsLoading(false);
-    }
+    //   Promise.all([api1, api2, api3])
+    //     .then((responses) => Promise.all(responses.map((res) => res.json())))
+    //     .then((data) => {
+    //       console.log(data);
+    //       if (data.success === true) {
+    //         Swal.fire({
+    //           icon: "success",
+    //           title: "Success",
+    //           text: "Added successfully",
+    //         });
+    //       }
+    //     });
+    // } catch (error) {
+    //   const errorMessage = error.message;
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: errorMessage,
+    //   });
+    // } finally {
+    //   setIsLoading(false);
+    // }
+    console.log(dataDetails330)
+    console.log(dataDetails550)
+    console.log(dataDetails650)
+    console.log(backData)
   };
 
   // ======>

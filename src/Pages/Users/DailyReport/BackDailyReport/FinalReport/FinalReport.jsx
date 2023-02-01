@@ -10,7 +10,7 @@ const FinalReport = ({
   commisionTotal,
 }) => {
   const { intoAccountState, setintoAccountState } = useContext(DataContextApi);
-  const { paidDues,setPaidDues } = useContext(DataContextApi);
+  const { paidDues, setPaidDues } = useContext(DataContextApi);
   const token = localStorage.getItem('token')
 
   localStorage.setItem("beerTotal", JSON.stringify(beerTotal));
@@ -21,7 +21,7 @@ const FinalReport = ({
   localStorage.setItem('pichlaBakaya', JSON.stringify(0))
 
   // localStorage.setItem("paymentRecieved", JSON.stringify(paymentRecieved));
-  
+
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
@@ -46,7 +46,8 @@ const FinalReport = ({
   if (isLoading) return <Loader></Loader>;
 
   const len = leftDues.length
-  localStorage.setItem('pichlaBakaya',JSON.stringify(leftDues[len-1].restAmount))
+  const pichla = leftDues.length > 0 ? leftDues[len - 1].restAmount : 0
+  localStorage.setItem('pichlaBakaya', JSON.stringify(pichla))
 
 
   return (
@@ -123,14 +124,14 @@ const FinalReport = ({
             <tr>
               <th>9</th>
               <td>पिछला बकाया</td>
-              <td>{leftDues[len-1].restAmount}</td>
+              <td>{pichla}</td>
             </tr>
             {/* 10 */}
 
             <tr>
               <th>10</th>
               <td>total</td>
-              <td>{rmlTotal + Number(localStorage.getItem('totalFirstBack')) + firstformData + secondFront + Number(localStorage.getItem('totalPaymentsRecieved')) - intoAccountState - udhaariTotal - commisionTotal + leftDues[len - 1].restAmount}</td>
+              <td>{rmlTotal + Number(localStorage.getItem('totalFirstBack')) + firstformData + secondFront + Number(localStorage.getItem('totalPaymentsRecieved')) - intoAccountState - udhaariTotal - commisionTotal + pichla}</td>
             </tr>
             <tr>
               <th>11</th>
@@ -147,7 +148,7 @@ const FinalReport = ({
             <tr>
               <th>12</th>
               <td>शेष रकम</td>
-              <td>{rmlTotal + Number(localStorage.getItem('totalFirstBack')) + firstformData + secondFront + Number(localStorage.getItem('totalPaymentsRecieved')) - Number(intoAccountState) - udhaariTotal - commisionTotal + leftDues[len - 1].restAmount - Number(paidDues)}</td>
+              <td>{rmlTotal + Number(localStorage.getItem('totalFirstBack')) + firstformData + secondFront + Number(localStorage.getItem('totalPaymentsRecieved')) - Number(intoAccountState) - udhaariTotal - commisionTotal + pichla - Number(paidDues)}</td>
             </tr>
           </tbody>
         </table>

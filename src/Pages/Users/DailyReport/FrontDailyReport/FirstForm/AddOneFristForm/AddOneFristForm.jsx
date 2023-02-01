@@ -48,11 +48,11 @@ const AddOneFristForm = ({
         <th>{SerialNo}</th>
         <td>
           <Autocomplete
-            options={liquors.filter((brand)=>{
-              if(brand.type==="WINE"){
+            options={liquors.length > 0 ? liquors.filter((brand) => {
+              if (brand.type === 'WINE') {
                 return brand
               }
-            })}
+            }) : ['no options']}
             freeSolo
             getOptionLabel={(option) => option ? option.brandName : ""}
               // addOneFirst.brandName = event.target.outerText;

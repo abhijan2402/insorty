@@ -45,7 +45,11 @@ const AddOneFristFromBack = ({
         <td>
           <div className="form-control">
             <Autocomplete
-              options={liquors}
+              options={liquors.length > 0 ? liquors.filter((brand) => {
+                if (brand.type === 'BEER') {
+                  return brand
+                }
+              }) : ['no options']}
               freeSolo
               getOptionLabel={(option) => option ? option.brandName : ""}
               // item.brandName = event.target.outerText;

@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 function useLiquors() {
     let loading = true
     let brands = [];
-    
+
     const token = localStorage.getItem("token");
 
 
@@ -25,11 +25,11 @@ function useLiquors() {
         },
     });
 
-    if (!brandsLoaded) {
-        liquors.map((item)=>{
-            if(item.sizes){
-                item.sizes.map((brand)=>{
-                    let obj = {id: brand._id, name: item.brandName}
+    if (!brandsLoaded && liquors.length > 0) {
+        liquors.map((item) => {
+            if (item.sizes) {
+                item.sizes.map((brand) => {
+                    let obj = { id: brand._id, name: item.brandName }
                     brands.push(obj)
                 })
             }
@@ -38,9 +38,9 @@ function useLiquors() {
     }
     // console.log(liquors)
 
-    const checkLiquor=(name)=>{
-        let liq 
-        if(!brandsLoaded){
+    const checkLiquor = (name) => {
+        let liq
+        if (!brandsLoaded && liquors.length > 0) {
             liq = liquors.filter((item) => {
                 if (item.brandName === name) {
                     return item
@@ -54,14 +54,14 @@ function useLiquors() {
                 return null
             }
         }
-           // eslint-disable-next-line array-callback-return
-           
+        // eslint-disable-next-line array-callback-return
+
     }
 
-    const GetLiqId=(id,ml,type)=>{
+    const GetLiqId = (id, ml, type) => {
 
-        let size,liq
-        if (!brandsLoaded) {
+        let size, liq
+        if (!brandsLoaded && liquors.length > 0) {
             if (id === null) {
                 return null
             }
@@ -79,7 +79,7 @@ function useLiquors() {
             //                 }
             //             })
             //         }
-                    
+
             //     })
 
             //     if (liq.length === 1) {
@@ -97,53 +97,53 @@ function useLiquors() {
             //     }
             // }
 
-            liquors.map((item)=>{
+            liquors.map((item) => {
                 if (item._id === id && item.type === type) {
-                   size= item.sizes.filter((brand)=>{
+                    size = item.sizes.filter((brand) => {
                         // console.log(brand)
                         if (brand.quantityInML === ml) {
                             // console.log(brand)
                             return brand
-                            
+
                         }
                     })
                 }
             })
             // console.log(size)
-            if(size && size.length>0){
-            return size[0]._id
-}
-else return null
+            if (size && size.length > 0) {
+                return size[0]._id
+            }
+            else return null
         }
-       
-       
+
+
     }
 
-    const getNameByID=(id)=>{
-        let name ="multi ID"
-        if(brands.length>0){
-        brands.map((item)=>{
-            if(item.id===id){
-                name = item.name
-                return 0
-            }
-        })
-    }
+    const getNameByID = (id) => {
+        let name = "multi ID"
+        if (brands.length > 0) {
+            brands.map((item) => {
+                if (item.id === id) {
+                    name = item.name
+                    return 0
+                }
+            })
+        }
         return name
 
     }
 
-    
 
-  return {
-brands,
-liquors,
-brandsLoaded,
-checkLiquor,
-GetLiqId,
-getNameByID,
-loading
-  }
+
+    return {
+        brands,
+        liquors,
+        brandsLoaded,
+        checkLiquor,
+        GetLiqId,
+        getNameByID,
+        loading
+    }
 }
 
 export default useLiquors
