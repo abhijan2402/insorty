@@ -1,8 +1,8 @@
 import React from "react";
-import SalaryFormData from "./SalaryFormData/SalaryFormData";
-import useSalary from "../SalaryHooks/useSalary";
+import SalaryFormData from "./BearShopSalaryFormData/BearShopSalaryFormData";
+import useSalary from "../BearShopSalaryHooks/useBearShopSalary";
 import { Link, useLoaderData } from "react-router-dom";
-import SalaryModal from "../SalaryModal/SalaryModal";
+import SalaryModal from "../BearShopSalaryModal/BearShopSalaryModal";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
@@ -43,6 +43,22 @@ const SalaryForm = () => {
 
   const handelSalaryOnSubmit = async () => {
     const handelSalary = salaryState;
+    // const salaryData = [];
+    // for (let index = 0; index < handelSalary.length; index++) {
+    //   const element = handelSalary[index];
+
+    //   salaryData.push({
+    //     salary: {
+    //       month: element.salary_monthYear,
+    //       price: element.salary_price,
+    //     },
+    //     payment: {
+    //       month: element.payment_date,
+    //       price: element.payment_price,
+    //     },
+    //     comments: element.reason,
+    //   });
+    // }
 
     const salaryData = [
       {
@@ -229,23 +245,16 @@ const SalaryForm = () => {
                   {/* ============= कुल योग ================ */}
                 </tr>
 
-                {(salareyDataList &&
-                  salareyDataList?.map((salary, index) => {
-                    return (
-                      <SalaryFormData
-                        key={index}
-                        salareyDataLoading={salareyDataLoading}
-                        salary={salary}
-                        index={index}
-                      ></SalaryFormData>
-                    );
-                  })) || (
-                  <>
-                    <p>
-                      <span className="text-red-500">No Data Found</span>
-                    </p>
-                  </>
-                )}
+                {salareyDataList?.map((salary, index) => {
+                  return (
+                    <SalaryFormData
+                      key={index}
+                      salareyDataLoading={salareyDataLoading}
+                      salary={salary}
+                      index={index}
+                    ></SalaryFormData>
+                  );
+                })}
               </tbody>
             </table>
           </div>

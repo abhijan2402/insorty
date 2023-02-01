@@ -1,5 +1,5 @@
 import React from "react";
-import "../../UserStyle/UserStyle.scss";
+import "../../BearShopUserStyle/UserStyle.scss";
 import { Link } from "react-router-dom";
 import { FaRegTrashAlt } from "react-icons/fa";
 import AddNewEmploy from "../AddNewEmploy/AddNewEmploy";
@@ -10,7 +10,11 @@ import Loader from "../../../../Components/Loader/Loader";
 const SalaryList = () => {
   const token = localStorage.getItem("token");
 
-  const { data: salaryData, isLoading, refetch } = useQuery({
+  const {
+    data: salaryData,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["salaryData"],
     queryFn: async () => {
       const res = await fetch(
@@ -82,37 +86,30 @@ const SalaryList = () => {
         <div className="overflow-x-auto">
           <table className="table w-full">
             <tbody>
-              {(salaryData &&
-                salaryData?.map((salary, index) => {
-                  return (
-                    <tr key={salary?._id}>
-                      <th>{index + 1}</th>
-                      <td>
-                        <Link
-                          className="font-bold text-[1rem]"
-                          to={`/user/salary/from/${salary?._id}`}
-                        >
-                          {salary?.name}
-                        </Link>
-                      </td>
-                      <td>
-                        <Link
-                          className="font-3xl font-bold"
-                          style={{ color: "#AA237A" }}
-                          onClick={() => handleDelete(salary?._id)}
-                        >
-                          <FaRegTrashAlt></FaRegTrashAlt>
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })) || (
-                <>
-                  <p>
-                    <span className="text-red-500">No Data Found</span>
-                  </p>
-                </>
-              )}
+              {salaryData?.map((salary, index) => {
+                return (
+                  <tr key={salary?._id}>
+                    <th>{index + 1}</th>
+                    <td>
+                      <Link
+                        className="font-bold text-[1rem]"
+                        to={`/user/salary/from/${salary?._id}`}
+                      >
+                        {salary?.name}
+                      </Link>
+                    </td>
+                    <td>
+                      <Link
+                        className="font-3xl font-bold"
+                        style={{ color: "#AA237A" }}
+                        onClick={() => handleDelete(salary?._id)}
+                      >
+                        <FaRegTrashAlt></FaRegTrashAlt>
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
 
               <tr>
                 <label htmlFor="addNewEmploy" className="btn btn-sm my-4">

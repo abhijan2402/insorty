@@ -9,6 +9,8 @@ const SalaryFormData = ({ index, salary, salareyDataLoading }) => {
     return <Loader></Loader>;
   }
 
+  console.log(salary)
+
   return (
     <>
       <tr>

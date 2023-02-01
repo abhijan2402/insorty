@@ -29,6 +29,28 @@ import StockLanding from "../Pages/Users/StockLanding/StockLanding/StockLanding"
 import StockLandingForm from "../Pages/Users/StockLanding/StockLandingForm/StockLandingForm";
 import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FrontDetailsReport/FrontDetailsReport";
 import BackDetailsReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
+import BearShopLayout from "../Layouts/BearShopLayouts";
+import routerImport from "./routerImport";
+
+const {
+  BearShopBranch,
+  BearShopBranchForm,
+  BearShopCommison,
+  BearShopBorrow,
+  BearShopFinalReport,
+  BearShopPartners,
+  BearShopPayments,
+  BearShopSalary,
+  BearShopSalaryForm,
+  BearShopOutbill,
+  BearShopSelfBill,
+  BearShopExtra,
+  BearShopMainInvestment,
+  // BearShopMainInvestmentForm,
+  BearShopEnglishBear,
+  BearShopStockLanding,
+  BearShopStockLandingForm,
+} = routerImport();
 
 const token = localStorage.getItem("token");
 const router = createBrowserRouter([
@@ -183,6 +205,99 @@ const router = createBrowserRouter([
       {
         path: "/user/dailyreport/details",
         element: <BackDetailsReport />,
+      },
+    ],
+  },
+  {
+    path: "/user/bearshop",
+    element: <BearShopLayout />,
+    children: [
+      {
+        path: "/user/bearshop/branch",
+        element: <BearShopBranch />,
+      },
+      {
+        path: "/user/bearshop/branch/from",
+        element: <BearShopBranchForm />,
+      },
+      {
+        path: "/user/bearshop/commision",
+        element: <BearShopCommison />,
+      },
+      {
+        path: "/user/bearshop/borrow",
+        element: <BearShopBorrow />,
+      },
+      {
+        path: "/user/bearshop/finalreport",
+        element: <BearShopFinalReport />,
+      },
+      {
+        path: "/user/bearshop/partners",
+        element: <BearShopPartners />,
+      },
+      {
+        path: "/user/bearshop/payments",
+        element: <BearShopPayments />,
+      },
+      {
+        path: "/user/bearshop/salary",
+        element: <BearShopSalary />,
+      },
+
+      {
+        path: "/user/bearshop/salary/from/:employeeId",
+        loader: ({ params }) =>
+          fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
+            method: "POST",
+            body: JSON.stringify({
+              employeeId: params.employeeId,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }),
+        element: <BearShopSalaryForm />,
+      },
+      {
+        path: "/user/bearshop/outbill",
+        element: <BearShopOutbill />,
+      },
+      {
+        path: "/user/bearshop/selfbill",
+        element: <BearShopSelfBill />,
+      },
+      {
+        path: "/user/bearshop/extra",
+        element: <BearShopExtra />,
+      },
+      {
+        path: "/user/bearshop/maininvestment",
+        element: <BearShopMainInvestment />,
+      },
+      {
+        path: "/user/bearshop/englishbear",
+        element: <BearShopEnglishBear />,
+      },
+      {
+        path: "/user/bearshop/stocklanding",
+        element: <BearShopStockLanding />,
+      },
+      {
+        path: "/user/bearshop/stocklanding/form",
+        // loader: ({ params }) =>
+        //   fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
+        //     method: "POST",
+        //     body: JSON.stringify({
+        //       employeeId: params.employeeId,
+        //     }),
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //       cookie_token: token,
+        //     },
+        //   }),
+        element: <BearShopStockLandingForm />,
       },
     ],
   },

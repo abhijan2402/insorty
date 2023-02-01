@@ -1,14 +1,13 @@
 /* eslint-disable array-callback-return */
 import React from "react";
 import { FaCalendarAlt } from "react-icons/fa";
-import OutBillList from "../OutBillList/OutBillList";
+import OutBillList from "../BearShopOutBillList/BearShopOutBillList";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import useLiquors from "../../../../Hooks/useLiquors";
 
 const OutBill = () => {
   const token = localStorage.getItem("token");
-  // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
   const { brandsLoaded, loading } = useLiquors();
 
   const { data: OutBill, isLoading } = useQuery({
@@ -30,6 +29,19 @@ const OutBill = () => {
     return item.total;
   });
   const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
+
+  // const liquerId = OutBill?.map((item) => {
+  //   return item.liquor._id;
+  // });
+
+  // Get brandName through liquor ID from liquorsParentData array
+  // const brandName = liquorsParentData.filter((item) => {
+  //   if (item.sizes._id === liquerId) {
+  //     return item.brandName;
+  //   }
+  // });
+
+  // console.log(brandName);
 
   if (isLoading || brandsLoaded || loading) {
     return <Loader></Loader>;
@@ -64,22 +76,15 @@ const OutBill = () => {
               </tr>
             </thead>
             <tbody>
-              {(OutBill &&
-                OutBill?.map((outBill, index) => {
-                  return (
-                    <OutBillList
-                      key={index}
-                      outBill={outBill}
-                      index={index}
-                    ></OutBillList>
-                  );
-                })) || (
-                <>
-                  <p>
-                    <span className="text-red-500">No Data Found</span>
-                  </p>
-                </>
-              )}
+              {OutBill?.map((outBill, index) => {
+                return (
+                  <OutBillList
+                    key={index}
+                    outBill={outBill}
+                    index={index}
+                  ></OutBillList>
+                );
+              })}
 
               <tr>
                 <th></th>

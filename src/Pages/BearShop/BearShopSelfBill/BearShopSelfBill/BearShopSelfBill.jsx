@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 import React from "react";
 import { FaCalendarAlt } from "react-icons/fa";
-import SelfBillList from "../SelfBillList/SelfBillList";
+import SelfBillList from "../BearShopSelfBillList/BearShopSelfBillList";
 import { useQuery } from "@tanstack/react-query";
 import useLiquors from "../../../../Hooks/useLiquors";
 import Loader from "../../../../Components/Loader/Loader";
@@ -73,23 +73,16 @@ const SelfBill = () => {
               </tr>
             </thead>
             <tbody>
-              {(SelfBillData &&
-                SelfBillData?.map((billsData, index) => {
-                  return (
-                    <SelfBillList
-                      key={index}
-                      index={index}
-                      billsData={billsData}
-                      isLoading={isLoading}
-                    ></SelfBillList>
-                  );
-                })) || (
-                <>
-                  <p>
-                    <span className="text-red-500">No Data Found</span>
-                  </p>
-                </>
-              )}
+              {SelfBillData?.map((billsData, index) => {
+                return (
+                  <SelfBillList
+                    key={index}
+                    index={index}
+                    billsData={billsData}
+                    isLoading={isLoading}
+                  ></SelfBillList>
+                );
+              })}
 
               <tr>
                 <th></th>
