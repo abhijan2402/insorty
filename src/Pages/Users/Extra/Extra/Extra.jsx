@@ -20,7 +20,6 @@ const Extra = () => {
       return data.data;
     },
   });
-  // get the entries from the extraData and map over them to get the date, price and details
   const entriesMainData = extraData?.map((entry) => {
     return entry?.entries;
   });
@@ -59,41 +58,48 @@ const Extra = () => {
               </tr>
             </thead>
             <tbody>
-              {entriesMainData[0].map((entry, index) => {
-                const { date, cash, comments } = entry;
-                return (
-                  <tr key={index}>
-                    <th>{index + 1}</th>
-                    <td>
-                      <input
-                        type="text"
-                        name="date"
-                        value={moment(date).format("DD/MM/YYYY")}
-                        readOnly
-                        className="dailyReportInput"
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="price"
-                        readOnly
-                        className="semiSmallInput"
-                        value={cash}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        type="text"
-                        name="details"
-                        readOnly
-                        className="dailyReportInput"
-                        value={comments}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
+              {(entriesMainData[0] &&
+                entriesMainData[0].map((entry, index) => {
+                  const { date, cash, comments } = entry;
+                  return (
+                    <tr key={index}>
+                      <th>{index + 1}</th>
+                      <td>
+                        <input
+                          type="text"
+                          name="date"
+                          value={moment(date).format("DD/MM/YYYY")}
+                          readOnly
+                          className="dailyReportInput"
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          name="price"
+                          readOnly
+                          className="semiSmallInput"
+                          value={cash}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          name="details"
+                          readOnly
+                          className="dailyReportInput"
+                          value={comments}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })) || (
+                <>
+                  <p>
+                    <span className="text-red-500">No Data Found</span>
+                  </p>
+                </>
+              )}
             </tbody>
           </table>
         </div>

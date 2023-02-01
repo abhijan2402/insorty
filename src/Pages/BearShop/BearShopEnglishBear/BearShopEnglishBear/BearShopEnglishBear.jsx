@@ -1,7 +1,9 @@
 /* eslint-disable no-sequences */
 import React from "react";
-import EnglishBearDataDisplay from "../EnglishBearDataDisplay/EnglishBearDataDisplay";
+import EnglishBearDataDisplay from "../BearShopEnglishBearDataDisplay/BearShopEnglishBearDataDisplay";
 import { useQuery } from "@tanstack/react-query";
+// import EnglishBearForm from "../EnglishBearForm/EnglishBearForm";
+// import EnglishBearMlData from "../EnglishBearMlData/EnglishBearMlData";
 import Loader from "../../../../Components/Loader/Loader";
 
 const EnglishBear = () => {
@@ -59,21 +61,17 @@ const EnglishBear = () => {
             </tr>
           </thead>
           <tbody>
-            {(englishBearData &&
-              englishBearData.map((englishBear, index) => {
-                return (
-                  <EnglishBearDataDisplay
-                    key={index}
-                    englishBear={englishBear}
-                    index={index}
-                  ></EnglishBearDataDisplay>
-                );
-              })) || (
-              <p>
-                <span className="text-red-500">No Data Found</span>
-              </p>
-            )}
+            {englishBearData.map((englishBear, index) => {
+              return (
+                <EnglishBearDataDisplay
+                  key={index}
+                  englishBear={englishBear}
+                  index={index}
+                ></EnglishBearDataDisplay>
+              );
+            })}
 
+            {/* <EnglishBearForm></EnglishBearForm> */}
             <tr>
               <th></th>
               <td></td>
@@ -82,6 +80,16 @@ const EnglishBear = () => {
               <td className="commonText">Total</td>
               <td className="price">{totalAmount}</td>
             </tr>
+
+            {/* <EnglishBearMlData></EnglishBearMlData> */}
+            {/* <tr>
+              <th></th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td className="commonText">Total</td>
+              <td className="price">162,000</td>
+            </tr> */}
           </tbody>
         </table>
       </div>

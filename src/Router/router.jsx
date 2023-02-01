@@ -29,27 +29,27 @@ import StockLanding from "../Pages/Users/StockLanding/StockLanding/StockLanding"
 import StockLandingForm from "../Pages/Users/StockLanding/StockLandingForm/StockLandingForm";
 import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FrontDetailsReport/FrontDetailsReport";
 import BackDetailsReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
-import WineShopLayout from "../Layouts/WinShopLayouts";
+import BearShopLayout from "../Layouts/BearShopLayouts";
 import routerImport from "./routerImport";
 
 const {
-  WineShopBranch,
-  WineShopBranchForm,
-  WineShopCommison,
-  WineShopBorrow,
-  WineShopFinalReport,
-  WineShopPartners,
-  WineShopPayments,
-  WineShopSalary,
-  WineShopSalaryForm,
-  WineShopOutbill,
-  WineShopSelfBill,
-  WineShopExtra,
-  WineShopMainInvestment,
-  WineShopEnglishBear,
-  WineShopStockLanding,
-  WineShopStockLandingForm,
-  WineShopMainInvestmentForm,
+  BearShopBranch,
+  BearShopBranchForm,
+  BearShopCommison,
+  BearShopBorrow,
+  BearShopFinalReport,
+  BearShopPartners,
+  BearShopPayments,
+  BearShopSalary,
+  BearShopSalaryForm,
+  BearShopOutbill,
+  BearShopSelfBill,
+  BearShopExtra,
+  BearShopMainInvestment,
+  // BearShopMainInvestmentForm,
+  BearShopEnglishBear,
+  BearShopStockLanding,
+  BearShopStockLandingForm,
 } = routerImport();
 
 const token = localStorage.getItem("token");
@@ -209,44 +209,44 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/user/wineshop",
-    element: <WineShopLayout />,
+    path: "/user/bearshop",
+    element: <BearShopLayout />,
     children: [
       {
-        path: "/user/wineshop/branch",
-        element: <WineShopBranch />,
+        path: "/user/bearshop/branch",
+        element: <BearShopBranch />,
       },
       {
-        path: "/user/wineshop/branch/from",
-        element: <WineShopBranchForm />,
+        path: "/user/bearshop/branch/from",
+        element: <BearShopBranchForm />,
       },
       {
-        path: "/user/wineshop/commision",
-        element: <WineShopCommison />,
+        path: "/user/bearshop/commision",
+        element: <BearShopCommison />,
       },
       {
-        path: "/user/wineshop/borrow",
-        element: <WineShopBorrow />,
+        path: "/user/bearshop/borrow",
+        element: <BearShopBorrow />,
       },
       {
-        path: "/user/wineshop/finalreport",
-        element: <WineShopFinalReport />,
+        path: "/user/bearshop/finalreport",
+        element: <BearShopFinalReport />,
       },
       {
-        path: "/user/wineshop/partners",
-        element: <WineShopPartners />,
+        path: "/user/bearshop/partners",
+        element: <BearShopPartners />,
       },
       {
-        path: "/user/wineshop/payments",
-        element: <WineShopPayments />,
+        path: "/user/bearshop/payments",
+        element: <BearShopPayments />,
       },
       {
-        path: "/user/wineshop/salary",
-        element: <WineShopSalary />,
+        path: "/user/bearshop/salary",
+        element: <BearShopSalary />,
       },
 
       {
-        path: "/user/wineshop/salary/from/:employeeId",
+        path: "/user/bearshop/salary/from/:employeeId",
         loader: ({ params }) =>
           fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
             method: "POST",
@@ -258,34 +258,34 @@ const router = createBrowserRouter([
               cookie_token: token,
             },
           }),
-        element: <WineShopSalaryForm />,
+        element: <BearShopSalaryForm />,
       },
       {
-        path: "/user/wineshop/outbill",
-        element: <WineShopOutbill />,
+        path: "/user/bearshop/outbill",
+        element: <BearShopOutbill />,
       },
       {
-        path: "/user/wineshop/selfbill",
-        element: <WineShopSelfBill />,
+        path: "/user/bearshop/selfbill",
+        element: <BearShopSelfBill />,
       },
       {
-        path: "/user/wineshop/extra",
-        element: <WineShopExtra />,
+        path: "/user/bearshop/extra",
+        element: <BearShopExtra />,
       },
       {
-        path: "/user/wineshop/maininvestment",
-        element: <WineShopMainInvestment />,
+        path: "/user/bearshop/maininvestment",
+        element: <BearShopMainInvestment />,
       },
       {
-        path: "/user/wineshop/englishbear",
-        element: <WineShopEnglishBear />,
+        path: "/user/bearshop/englishbear",
+        element: <BearShopEnglishBear />,
       },
       {
-        path: "/user/wineshop/stocklanding",
-        element: <WineShopStockLanding />,
+        path: "/user/bearshop/stocklanding",
+        element: <BearShopStockLanding />,
       },
       {
-        path: "/user/wineshop/stocklanding/form",
+        path: "/user/bearshop/stocklanding/form",
         // loader: ({ params }) =>
         //   fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
         //     method: "POST",
@@ -297,7 +297,7 @@ const router = createBrowserRouter([
         //       cookie_token: token,
         //     },
         //   }),
-        element: <WineShopStockLandingForm />,
+        element: <BearShopStockLandingForm />,
       },
     ],
   },
