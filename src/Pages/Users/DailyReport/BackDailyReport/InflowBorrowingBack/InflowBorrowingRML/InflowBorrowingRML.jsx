@@ -44,7 +44,7 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
               onChange={(event, value) => {
                 if (value) {
                   item.partyName = value.partyName
-                  item.liquorID = value._id
+                  // item.liquorID = value._id
                 } else {
                   item.partyName = ""
                   item.liquorID = ""

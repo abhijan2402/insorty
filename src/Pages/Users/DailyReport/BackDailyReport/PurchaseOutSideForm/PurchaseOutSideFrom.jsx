@@ -37,7 +37,7 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
               value={item.partyName}
               onChange={(e) => onChangePurchesOutSide(e, index)} /> */}
             <Autocomplete
-              options={parties}
+              options={parties.length>0 ? parties : ['no options']}
               freeSolo
               getOptionLabel={(option) => option ? option.partyName : ""}
               // item.brandName = event.target.outerText;

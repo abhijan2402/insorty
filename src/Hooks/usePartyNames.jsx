@@ -30,7 +30,7 @@ function usePartyNames() {
       if (party.length > 0) {
         return party[0]._id;
       } else {
-        return nulll;
+        return null;
       }
 
     }

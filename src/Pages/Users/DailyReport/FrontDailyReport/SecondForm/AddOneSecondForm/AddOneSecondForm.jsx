@@ -1,4 +1,6 @@
 import React from "react";
+import useLiquors from "../../../../../../Hooks/useLiquors";
+import Loader from "../../../../../../Components/Loader/Loader";
 
 const AddOneSecondForm = ({
   index,
@@ -6,6 +8,16 @@ const AddOneSecondForm = ({
   handelSeconFormOnChange,
 }) => {
   const SerialNo = index + 1;
+
+  const {liquors,brandsLoaded} = useLiquors()
+
+  if (brandsLoaded) {
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -17,10 +29,18 @@ const AddOneSecondForm = ({
               className="select"
               name="selectStockVarient"
               value={item.selectStockVarient}
-              onChange={(e) => handelSeconFormOnChange(e, index)}
+              onChange={(e) =>{
+                const liq = liquors.filter((brand)=>{
+                  if(item.name === brand.brandName){
+                    return brand
+                  }
+                })
+                item.liquorID = liq.length>0 ? liq._id : null
+                 handelSeconFormOnChange(e, index)
+              }}
             >
-              <option>90</option>
-              <option>60</option>
+              <option value="mlWine">90</option>
+              <option value=''>60</option>
             </select>
           </div>
         </td>

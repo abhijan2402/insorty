@@ -31,7 +31,7 @@ const ShippingForm = ({ index, onChangeShipping, item }) => {
         <td>
           <div className="form-control">
             <Autocomplete
-              options={parties}
+              options={parties.length>0 ? parties : ['no options']}
               freeSolo
               getOptionLabel={(option) => option ? option.partyName : ""}
               // item.brandName = event.target.outerText;

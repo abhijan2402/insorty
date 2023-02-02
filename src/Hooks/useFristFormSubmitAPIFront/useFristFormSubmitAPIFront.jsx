@@ -10,6 +10,9 @@ const useFristFormSubmitAPIFront = () => {
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const { addOneFristFormState } = useFormulasFristFormFront();
   const { addOneSecondFormState } = useSecondFormFront();
+  const firstFront = JSON.parse(localStorage.getItem('firstFront'))
+  const mlForm = JSON.parse(localStorage.getItem('mlForm'))
+
   const { liquors } = useContext(DataContextApi);
   const { GetLiqId } = useLiquors()
 
@@ -18,10 +21,10 @@ const useFristFormSubmitAPIFront = () => {
 
     const dataDetails650 = [];
 
-    for (let index = 0; index < addOneFristFormState.length; index++) {
-      const element = addOneFristFormState[index];
+    for (let index = 0; firstFront? index < firstFront.length : 0; index++) {
+      const element = firstFront[index];
       dataDetails650.push({
-        liquor: GetLiqId(element.liquorID,750),
+        liquor: GetLiqId(element.liquorID,750,'WINE'),
         brandName: element.brandName,
         quantityInML: 750,
         openingStock: element.startingStock750,
@@ -39,10 +42,10 @@ const useFristFormSubmitAPIFront = () => {
     }
 
     const dataDetails550 = [];
-    for (let index = 0; index < addOneFristFormState.length; index++) {
-      const element = addOneFristFormState[index];
+    for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
+      const element = firstFront[index];
       dataDetails550.push({
-        liquor: GetLiqId(element.liquorID, 180),
+        liquor: GetLiqId(element.liquorID, 180, 'WINE'),
         brandName: element.brandName,
         quantityInML: 180,
         openingStock: element.startingStock180,
@@ -60,10 +63,10 @@ const useFristFormSubmitAPIFront = () => {
     }
 
     const dataDetails330 = [];
-    for (let index = 0; index < addOneFristFormState.length; index++) {
-      const element = addOneFristFormState[index];
+    for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
+      const element = firstFront[index];
       dataDetails330.push({
-        liquor: GetLiqId(element.liquorID, 3300),
+        liquor: GetLiqId(element.liquorID,330, 'WINE'),
         brandName: element.brandName,
         quantityInML: 330,
         openingStock: element.startingStock330,
@@ -81,8 +84,8 @@ const useFristFormSubmitAPIFront = () => {
     }
 
     const addSecondFormData = [];
-    for (let index = 0; index < addOneSecondFormState.length; index++) {
-      const element = addOneSecondFormState[index];
+    for (let index = 0; mlForm ? index < mlForm.length : 0; index++) {
+      const element = mlForm[index];
       addSecondFormData.push({
         liquor: liquors?.[0]?._id,
         quantityInML: element.ml,
@@ -102,81 +105,86 @@ const useFristFormSubmitAPIFront = () => {
     
     
 
-    try {
-      const api1 = await fetch(
-        "https://insorty-api.onrender.com/shop/addFrontPageData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({ entries: dataDetails650 }),
-        }
-      );
+    // try {
+    //   const api1 = await fetch(
+    //     "https://insorty-api.onrender.com/shop/addFrontPageData",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         cookie_token: token,
+    //       },
+    //       body: JSON.stringify({ entries: dataDetails650 }),
+    //     }
+    //   );
 
-      const api2 = await fetch(
-        "https://insorty-api.onrender.com/shop/addFrontPageData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({ entries: dataDetails550 }),
-        }
-      );
-      const api3 = await fetch(
-        "https://insorty-api.onrender.com/shop/addFrontPageData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({ entries: dataDetails330 }),
-        }
-      );
+    //   const api2 = await fetch(
+    //     "https://insorty-api.onrender.com/shop/addFrontPageData",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         cookie_token: token,
+    //       },
+    //       body: JSON.stringify({ entries: dataDetails550 }),
+    //     }
+    //   );
+    //   const api3 = await fetch(
+    //     "https://insorty-api.onrender.com/shop/addFrontPageData",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         cookie_token: token,
+    //       },
+    //       body: JSON.stringify({ entries: dataDetails330 }),
+    //     }
+    //   );
 
-      const api4 = await fetch(
-        "https://insorty-api.onrender.com/shop/addFrontPageData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({ entries: addSecondFormData }),
-        }
-      );
+    //   const api4 = await fetch(
+    //     "https://insorty-api.onrender.com/shop/addFrontPageData",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         cookie_token: token,
+    //       },
+    //       body: JSON.stringify({ entries: addSecondFormData }),
+    //     }
+    //   );
 
-      Promise.all([api1, api2, api3, api4])
-        .then((responses) => Promise.all(responses.map((res) => res.json())))
-        .then((data) => {
-          console.log(data);
-          if (
-            data[0].success &&
-            data[1].success &&
-            data[2].success &&
-            data[3].success
-          ) {
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: "Data Added Successfully",
-            });
-          }
-        });
-    } catch (error) {
-      const errorMessage = error.message;
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: errorMessage,
-      });
-    } finally {
-      setIsLoadingSubmit(false);
-    }
+    //   Promise.all([api1, api2, api3, api4])
+    //     .then((responses) => Promise.all(responses.map((res) => res.json())))
+    //     .then((data) => {
+    //       console.log(data);
+    //       if (
+    //         data[0].success &&
+    //         data[1].success &&
+    //         data[2].success &&
+    //         data[3].success
+    //       ) {
+    //         Swal.fire({
+    //           icon: "success",
+    //           title: "Success",
+    //           text: "Data Added Successfully",
+    //         });
+    //       }
+    //     });
+    // } catch (error) {
+    //   const errorMessage = error.message;
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: errorMessage,
+    //   });
+    // } finally {
+    //   setIsLoadingSubmit(false);
+    // }
+    console.log(dataDetails330)
+    console.log(dataDetails550)
+    console.log(dataDetails650)
+    console.log(addSecondFormData)
+    console.log(firstFront)
   };
 
   return {
