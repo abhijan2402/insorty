@@ -1,6 +1,18 @@
 import React from "react";
 
-const StockFormData = ({ index, handelOnChangeStockLanding, stock }) => {
+const StockFormData = ({ index, stockData }) => {
+  const { inflow, inflowComment, liquor, send, sendComment } = stockData;
+
+  const restBalance = Number(inflow - send);
+
+  // how to place  if restblance is negative then this will be go debit and if positive then this will be go deposit
+
+  if (restBalance < 0) {
+    // this will be go debit
+  } else {
+    // this will be go deposit
+  }
+
   return (
     <tr>
       <th>{index + 1}</th>
@@ -9,11 +21,13 @@ const StockFormData = ({ index, handelOnChangeStockLanding, stock }) => {
           <div className="form-control">
             <input
               type="text"
-              name="brandName"
-              value={stock.brandName}
-              onChange={(e) => handelOnChangeStockLanding(e, index)}
-              className="semiSmallInput"
+              className="dailyReportInput"
+              value={liquor?.brandName}
             />
+          </div>
+
+          <div className="form-control">
+            <input type="number" className="commonSmallForm " />
           </div>
         </div>
       </td>
@@ -23,18 +37,8 @@ const StockFormData = ({ index, handelOnChangeStockLanding, stock }) => {
           <div className="form-control">
             <input
               type="number"
-              name="sizeMl"
-              value={stock.sizeMl}
-              onChange={(e) => handelOnChangeStockLanding(e, index)}
-              className="commonSmallForm "
-            />
-          </div>
-          <div className="form-control">
-            <input
-              type="number"
               name="inflowNumber"
-              value={stock.inflowNumber}
-              onChange={(e) => handelOnChangeStockLanding(e, index)}
+              value={inflow}
               className="commonSmallForm "
             />
           </div>
@@ -42,8 +46,7 @@ const StockFormData = ({ index, handelOnChangeStockLanding, stock }) => {
             <input
               type="text"
               name="inflowComment"
-              value={stock.inflowComment}
-              onChange={(e) => handelOnChangeStockLanding(e, index)}
+              value={inflowComment}
               className="semiSmallInput "
             />
           </div>
@@ -56,21 +59,16 @@ const StockFormData = ({ index, handelOnChangeStockLanding, stock }) => {
             <input
               type="number"
               name="sendNumber"
-              value={stock.sendNumber}
-              onChange={(e) => handelOnChangeStockLanding(e, index)}
+              value={send}
               className="commonSmallForm "
             />
           </div>
           <div className="form-control">
-            <input type="text" name="sendComment" className="semiSmallInput" />
-          </div>
-          <div className="form-control">
             <input
-              type="number"
-              name="sendDeposit"
-              value={stock.sendDeposit}
-              onChange={(e) => handelOnChangeStockLanding(e, index)}
-              className="semiSmallInput "
+              type="text"
+              name="sendComment"
+              value={sendComment}
+              className="semiSmallInput"
             />
           </div>
         </div>
@@ -80,10 +78,18 @@ const StockFormData = ({ index, handelOnChangeStockLanding, stock }) => {
         <div className="flex gap-4">
           <div className="form-control">
             <input
+              type="number"
+              name="sendDeposit"
+              value={restBalance < 0 ? restBalance : 0} // show the positive amount for deposit
+              className="semiSmallInput "
+            />
+          </div>
+          <div className="form-control">
+            <input
               type="text"
               name="debit"
-              value={stock.debit}
-              onChange={(e) => handelOnChangeStockLanding(e, index)}
+              // show the negative amount for debit
+              value={restBalance > 0 ? restBalance : 0}
               className="semiSmallInput"
             />
           </div>

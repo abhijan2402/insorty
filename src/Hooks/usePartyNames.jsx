@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
 function usePartyNames() {
-
   const token = localStorage.getItem("token");
-
   const { data: parties, isLoading: partyLoaded } = useQuery({
     queryKey: ["parties"],
     queryFn: async () => {
@@ -15,7 +13,6 @@ function usePartyNames() {
         }
       );
       const data = await res.json();
-      console.log(data.data);
       return data.data;
     },
   });
@@ -26,40 +23,35 @@ function usePartyNames() {
         if (item.partyName === name) {
           return item;
         }
-      })
+      });
       if (party.length > 0) {
         return party[0]._id;
       } else {
         return null;
       }
-
     }
-  }
-
+  };
 
   const getPartyName = (id) => {
-
     if (!partyLoaded && parties.length > 0) {
       let party = parties.filter((item) => {
         if (item._id === id) {
           return item;
         }
-      })
+      });
       if (party.length > 0) {
         return party[0].partyName;
       } else {
         return null;
       }
-
     }
-  }
-
+  };
 
   return {
     parties,
     partyLoaded,
     getPartyId,
-    getPartyName
+    getPartyName,
   };
 }
 

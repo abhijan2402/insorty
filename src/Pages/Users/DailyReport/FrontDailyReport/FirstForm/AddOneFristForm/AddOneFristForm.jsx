@@ -1,9 +1,7 @@
 import React from "react";
-
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import Loader from "../../../../../../Components/Loader/Loader";
-import { Liquor } from "@mui/icons-material";
 
 const AddOneFristForm = ({
   index,
@@ -16,23 +14,7 @@ const AddOneFristForm = ({
   setAddOneFristFormState,
 }) => {
   const SerialNo = index + 1;
-  const {
-    brands,
-    brandsLoaded,
-    checkLiquor,
-    liquors
-  } = useLiquors()
-
-  // if (!brandsLoaded) {
-  //   console.log(liquors.filter((addOneFirst)=>{
-  //     if (addOneFirst.brandName === "mac"){
-  //       return addOneFirst
-  //     }
-     
-  //   }))
- 
-  // }
-  
+  const { brandsLoaded, liquors } = useLiquors();
 
   if (brandsLoaded) {
     return (
@@ -48,44 +30,41 @@ const AddOneFristForm = ({
         <th>{SerialNo}</th>
         <td>
           <Autocomplete
-            options={liquors.length > 0 ? liquors.filter((brand) => {
-              if (brand.type === 'WINE') {
-                return brand
-              }
-            }) : ['no options']}
+            options={
+              liquors.length > 0
+                ? liquors.filter((brand) => {
+                    if (brand.type === "WINE") {
+                      return brand;
+                    }
+                  })
+                : ["no options"]
+            }
             freeSolo
-            getOptionLabel={(option) => option ? option.brandName : ""}
-              // addOneFirst.brandName = event.target.outerText;
-              // // eslint-disable-next-line array-callback-return
-              // const liq = liquors.filter((liq) => {
-              //   if (liq.brandName === event.target.outerText) {
-              //     return liq;
-              //   }
-              // });
-              // addOneFirst.liquorID = liq._id
-              // handelFristFormOnChange(event, index);
-            onChange={(event,value) => {
+            getOptionLabel={(option) => (option ? option.brandName : "")}
+            onChange={(event, value) => {
               if (value) {
-                addOneFirst.brandName = value.brandName
-                addOneFirst.liquorID = value._id
+                addOneFirst.brandName = value.brandName;
+                addOneFirst.liquorID = value._id;
               } else {
-                addOneFirst.brandName = ""
-                addOneFirst.liquorID = ""
+                addOneFirst.brandName = "";
+                addOneFirst.liquorID = "";
               }
-              handelFristFormOnChange(event, index)
-              console.log(addOneFirst)
+              handelFristFormOnChange(event, index);
+              console.log(addOneFirst);
             }}
             renderInput={(params) => (
               <TextField
                 {...params}
                 className="dailyReportInput"
                 value={addOneFirst.brandName}
-                inputProps={{ ...params.inputProps, value: addOneFirst.brandName }}
-
+                inputProps={{
+                  ...params.inputProps,
+                  value: addOneFirst.brandName,
+                }}
                 onChange={(event) => {
                   addOneFirst.brandName = event.target.value;
                   addOneFirst.liquorID = null;
-                  handelFristFormOnChange(event,index)
+                  handelFristFormOnChange(event, index);
                 }}
               />
             )}
@@ -526,7 +505,9 @@ const AddOneFristForm = ({
                 className="smallinput"
                 name="total750"
                 disabled
-                value={Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750)}
+                value={
+                  Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750)
+                }
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
@@ -536,7 +517,9 @@ const AddOneFristForm = ({
                 className="smallinput"
                 disabled
                 name="total330"
-                value={Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330)}
+                value={
+                  Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330)
+                }
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
@@ -546,7 +529,9 @@ const AddOneFristForm = ({
                 name="total180"
                 className="smallinput"
                 disabled
-                value={Number(addOneFirst.sales180)*Number(addOneFirst.mainRate180)}
+                value={
+                  Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180)
+                }
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
@@ -564,9 +549,9 @@ const AddOneFristForm = ({
               name="grandTotal"
               disabled
               value={
-               ( Number(addOneFirst.sales750)*Number(addOneFirst.mainRate750)) +
-                (Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330)) +
-                (Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180))
+                Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750) +
+                Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330) +
+                Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180)
               }
               onChange={(event) => handelFristFormOnChange(event, index)}
             />

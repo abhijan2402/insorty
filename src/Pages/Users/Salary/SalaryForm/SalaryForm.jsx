@@ -231,6 +231,8 @@ const SalaryForm = () => {
 
                 {(salareyDataList &&
                   salareyDataList?.map((salary, index) => {
+                    console.log(salary, ":salary+++++++++++++");
+
                     return (
                       <SalaryFormData
                         key={index}
@@ -241,9 +243,11 @@ const SalaryForm = () => {
                     );
                   })) || (
                   <>
-                    <p>
-                      <span className="text-red-500">No Data Found</span>
-                    </p>
+                    <tr>
+                      <td>
+                        <span className="text-red-500">No Data Found</span>
+                      </td>
+                    </tr>
                   </>
                 )}
               </tbody>
