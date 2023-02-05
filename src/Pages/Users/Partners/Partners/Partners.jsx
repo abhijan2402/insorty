@@ -141,25 +141,15 @@ const Partners = () => {
                   </td>
                 </tr>
 
-                {partnarData && partnarData.length === 0 ? (
-                  <>
-                    <tr>
-                      <td className="text-center text-red-500 font-bold">
-                        No Data Available
-                      </td>
-                    </tr>
-                  </>
-                ) : (
-                  partnarData.map((partner, index) => {
-                    return (
-                      <PartnerForm
-                        partner={partner}
-                        index={index}
-                        handelOnChangePartner={handelOnChangePartner}
-                      ></PartnerForm>
-                    );
-                  })
-                )}
+                {partnarData.map((partner, index) => {
+                  return (
+                    <PartnerForm
+                      key={index}
+                      partner={partner}
+                      index={index}
+                    ></PartnerForm>
+                  );
+                })}
               </tbody>
             </table>
           </div>

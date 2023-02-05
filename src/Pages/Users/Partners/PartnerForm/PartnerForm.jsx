@@ -1,96 +1,84 @@
 import React from "react";
 
-const PartnerForm = ({ partner, index, handelOnChangePartner }) => {
-  const { transactions } = partner;
-  console.log(transactions);
-
+const PartnerForm = ({
+  partner,
+  transaction,
+  index,
+  handelOnChangePartner,
+}) => {
   // get partner name from partner object and store it in
-
-  const partnerId = partner._id;
-  const partnerNameId = transactions.map((transaction) => transaction.partner);
-
-  const partnerName = partnerNameId.filter((name) => name === partnerId);
-
-  console.log(partnerName);
 
   return (
     <>
       <tr>
         <th>{index + 1}</th>
+        {partner.transactions.map((transaction, index) => {
+          // get the name form the transaction object partner name id from partner object filter by transaction partner id
+          const partnerName =
+            partner.id === transaction.name ? partner.name : "";
+          const { deposit, debit } = transaction;
+          const remaining_debit = debit - deposit;
 
-        <td>
-          <div className="form-control">
-            <input
-              type="text"
-              name="partnerName"
-              value={partner.name}
-              className="dailyReportInput"
-            />
-          </div>
-        </td>
+          return (
+            <>
+              <td key={index}>
+                <div className="form-control">
+                  <input
+                    type="text"
+                    name="partnerName"
+                    value={partnerName}
+                    className="dailyReportInput"
+                  />
+                </div>
+              </td>
 
-        <td>
-          <div className="form-control">
-            {transactions.map((transaction) => {
-              return (
-                <input
-                  type="number"
-                  name="debit"
-                  value={transaction?.debit}
-                  onChange={(e) => handelOnChangePartner(e, index)}
-                  className="dailyReportInput"
-                />
-              );
-            })}
-          </div>
-        </td>
+              <td>
+                <div className="form-control">
+                  <input
+                    type="number"
+                    value={debit}
+                    className="dailyReportInput"
+                  />
+                </div>
+              </td>
 
-        <td>
-          <div className="form-control">
-            {transactions.map((transaction) => {
-              return (
-                <input
-                  type="number"
-                  name="credit"
-                  value={transaction?.credit}
-                  onChange={(e) => handelOnChangePartner(e, index)}
-                  className="dailyReportInput"
-                />
-              );
-            })}
-            {/* 
-            <input
-              type="number"
-              name="deposit"
-              value={partner?.deposit}
-              onChange={(e) => handelOnChangePartner(e, index)}
-              className="commonSmallForm"
-            /> */}
-          </div>
-        </td>
+              <td>
+                <div className="form-control">
+                  <input
+                    type="number"
+                    value={deposit}
+                    className="dailyReportInput"
+                  />
+                </div>
+              </td>
 
-        <td>
-          <div className="flex gap-4">
-            <div className="form-control">
-              <input
-                type="text"
-                name="remaining_debit"
-                value={partner.remaining_debit}
-                onChange={(e) => handelOnChangePartner(e, index)}
-                className="commonSmallForm"
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="number"
-                name="remaining"
-                value={partner.remaining}
-                onChange={(e) => handelOnChangePartner(e, index)}
-                className="commonSmallForm"
-              />
-            </div>
-          </div>
-        </td>
+              <td>
+                <div className="flex gap-4">
+                  <div className="form-control">
+                    <input
+                      type="text"
+                      name="remaining_debit"
+                      // if vale is less than 0 then show in remaining debit
+                      value={remaining_debit < 0 ? remaining_debit : ""}
+
+                      className="commonSmallForm"
+                    />
+                  </div>
+                  <div className="form-control">
+                    <input
+                      type="number"
+                      name="remaining"
+                      // if vale is greater than 0 then show in remaining
+                      value={remaining_debit > 0 ? remaining_debit : ""}
+                      className="commonSmallForm"
+                    />
+                  </div>
+                </div>
+              </td>
+            </>
+          );
+        })}
+
         {/* ============= कुल योग ================ */}
       </tr>
     </>

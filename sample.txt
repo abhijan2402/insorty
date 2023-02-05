@@ -63,3 +63,70 @@ useShipping --> addSendData
 front daily report --> addFrontPageData
 
 //
+
+
+        <th>{index + 1}</th>
+
+        <td>
+          <div className="form-control">
+            <input
+              type="text"
+              name="partnerName"
+              value={transaction.name}
+              className="dailyReportInput"
+            />
+          </div>
+        </td>
+
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              name="debit"
+              value={transaction?.debit}
+              onChange={(e) => handelOnChangePartner(e, index)}
+              className="dailyReportInput"
+            />
+          </div>
+        </td>
+
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              name="credit"
+              value={transaction?.credit}
+              onChange={(e) => handelOnChangePartner(e, index)}
+              className="dailyReportInput"
+            />
+            {/* 
+            <input
+              type="number"
+              name="deposit"
+              value={partner?.deposit}
+              onChange={(e) => handelOnChangePartner(e, index)}
+              className="commonSmallForm"
+            /> */}
+          </div>
+        </td>
+
+        <td>
+          <div className="flex gap-4">
+            <div className="form-control">
+              <input
+                type="text"
+                name="remaining_debit"
+                value={transaction}
+                className="commonSmallForm"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                name="remaining"
+                value={transaction}
+                className="commonSmallForm"
+              />
+            </div>
+          </div>
+        </td>
