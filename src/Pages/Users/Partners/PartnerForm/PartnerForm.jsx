@@ -1,6 +1,18 @@
 import React from "react";
 
 const PartnerForm = ({ partner, index, handelOnChangePartner }) => {
+  const { transactions } = partner;
+  console.log(transactions);
+
+  // get partner name from partner object and store it in
+
+  const partnerId = partner._id;
+  const partnerNameId = transactions.map((transaction) => transaction.partner);
+
+  const partnerName = partnerNameId.filter((name) => name === partnerId);
+
+  console.log(partnerName);
+
   return (
     <>
       <tr>
@@ -11,8 +23,7 @@ const PartnerForm = ({ partner, index, handelOnChangePartner }) => {
             <input
               type="text"
               name="partnerName"
-              value={partner.partnerName}
-              onChange={(e) => handelOnChangePartner(e, index)}
+              value={partner.name}
               className="dailyReportInput"
             />
           </div>
@@ -20,25 +31,41 @@ const PartnerForm = ({ partner, index, handelOnChangePartner }) => {
 
         <td>
           <div className="form-control">
-            <input
-              type="number"
-              name="debit"
-              value={partner.debit}
-              onChange={(e) => handelOnChangePartner(e, index)}
-              className="dailyReportInput"
-            />
+            {transactions.map((transaction) => {
+              return (
+                <input
+                  type="number"
+                  name="debit"
+                  value={transaction?.debit}
+                  onChange={(e) => handelOnChangePartner(e, index)}
+                  className="dailyReportInput"
+                />
+              );
+            })}
           </div>
         </td>
 
         <td>
           <div className="form-control">
+            {transactions.map((transaction) => {
+              return (
+                <input
+                  type="number"
+                  name="credit"
+                  value={transaction?.credit}
+                  onChange={(e) => handelOnChangePartner(e, index)}
+                  className="dailyReportInput"
+                />
+              );
+            })}
+            {/* 
             <input
               type="number"
               name="deposit"
-              value={partner.deposit}
+              value={partner?.deposit}
               onChange={(e) => handelOnChangePartner(e, index)}
               className="commonSmallForm"
-            />
+            /> */}
           </div>
         </td>
 
