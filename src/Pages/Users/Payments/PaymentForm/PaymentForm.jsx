@@ -1,6 +1,8 @@
 import React from "react";
 
-const PaymentForm = ({ index, payment, handelOnChangePayment }) => {
+const PaymentForm = ({ index, payment }) => {
+  console.log("PaymentForm -> payment", payment);
+
   return (
     <>
       <tr>
@@ -12,7 +14,6 @@ const PaymentForm = ({ index, payment, handelOnChangePayment }) => {
                 type="number"
                 name="debit_amount"
                 value={payment.debit_amount}
-                onChange={(e) => handelOnChangePayment(e, index)}
                 className="commonSmallForm"
               />
             </div>
@@ -22,7 +23,6 @@ const PaymentForm = ({ index, payment, handelOnChangePayment }) => {
                 type="text"
                 name="debit_month"
                 value={payment.debit_month}
-                onChange={(e) => handelOnChangePayment(e, index)}
                 className="commonSmallForm"
               />
             </div>
@@ -36,7 +36,6 @@ const PaymentForm = ({ index, payment, handelOnChangePayment }) => {
                 type="number"
                 name="deposit_amount"
                 value={payment.deposit_amount}
-                onChange={(e) => handelOnChangePayment(e, index)}
                 className="commonSmallForm"
               />
             </div>
@@ -46,7 +45,6 @@ const PaymentForm = ({ index, payment, handelOnChangePayment }) => {
                 type="text"
                 name="deposit_date"
                 value={payment.deposit_date}
-                onChange={(e) => handelOnChangePayment(e, index)}
                 className="commonSmallForm"
               />
             </div>
@@ -59,7 +57,6 @@ const PaymentForm = ({ index, payment, handelOnChangePayment }) => {
               type="number"
               name="current_balance_debit"
               value={payment.current_balance_debit}
-              onChange={(e) => handelOnChangePayment(e, index)}
               className="semiSmallInput"
             />
           </div>
@@ -72,7 +69,6 @@ const PaymentForm = ({ index, payment, handelOnChangePayment }) => {
                 type="text"
                 name="description"
                 value={payment.description}
-                onChange={(e) => handelOnChangePayment(e, index)}
                 className="semiSmallInput"
               />
             </div>

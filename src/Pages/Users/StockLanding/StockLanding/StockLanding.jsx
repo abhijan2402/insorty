@@ -1,40 +1,42 @@
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
-// import Loader from "../../../../Components/Loader/Loader";
+import Loader from "../../../../Components/Loader/Loader";
 // import Swal from "sweetalert2";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 const StockLanding = () => {
   const todayDate = new Date(new Date());
-  // const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
-  // const { data: salaryData, isLoading, refetch } = useQuery({
-  //   queryKey: ["salaryData"],
-  //   queryFn: async () => {
-  //     const res = await fetch(
-  //       "https://insorty-api.onrender.com/shop/getAllEmployees",
-  //       {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json", cookie_token: token },
-  //       }
-  //     );
-  //     const data = await res.json();
-  //     return data.data;
-  //   },
-  // });
+  const { data: PartyInfo, isLoading } = useQuery({
+    queryKey: ["PartyInfo"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllParties",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
 
-  // if (isLoading) {
-  //   return (
-  //     <div>
-  //       <Loader></Loader>
-  //     </div>
-  //   );
-  // }
+  console.log(PartyInfo);
 
-  // if (!salaryData) {
-  //   return <div>No Stock Landing</div>;
-  // }
+  if (isLoading) {
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
+  }
+
+  if (!PartyInfo) {
+    return <div>No Stock Landing</div>;
+  }
 
   return (
     <section className="p-6">
@@ -60,52 +62,29 @@ const StockLanding = () => {
         <div className="overflow-x-auto">
           <table className="table w-full">
             <tbody>
-              <tr>
-                <th>1</th>
-                <td>
-                  <Link
-                    className="font-bold text-[1rem]"
-                    to={`/user/stocklanding/form`}
-                  >
-                    {/* {salary?.name} */}
-                    Rahul
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    className="font-3xl font-bold"
-                    style={{ color: "#AA237A" }}
-                    // onClick={() => handleDelete(salary?._id)}
-                  >
-                    <FaRegTrashAlt></FaRegTrashAlt>
-                  </Link>
-                </td>
-              </tr>
-
-              {/* {salaryData?.map((salary, index) => {
+              {PartyInfo?.map((party, index) => {
                 return (
-                  <tr key={salary?._id}>
+                  <tr key={party?._id}>
                     <th>{index + 1}</th>
                     <td>
                       <Link
                         className="font-bold text-[1rem]"
-                        to={`/user/stocklanding/form/${salary?._id}`}
+                        to={`/user/stocklanding/form/${party?._id}`}
                       >
-                        {salary?.name}
+                        {party?.partyName}
                       </Link>
                     </td>
                     <td>
                       <Link
                         className="font-3xl font-bold"
                         style={{ color: "#AA237A" }}
-                        onClick={() => handleDelete(salary?._id)}
                       >
                         <FaRegTrashAlt></FaRegTrashAlt>
                       </Link>
                     </td>
                   </tr>
                 );
-              })} */}
+              })}
 
               <tr>
                 <label htmlFor="addNewEmploy" className="btn btn-sm my-4">

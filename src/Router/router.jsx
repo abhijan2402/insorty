@@ -184,18 +184,7 @@ const router = createBrowserRouter([
         element: <StockLanding />,
       },
       {
-        path: "/user/stocklanding/form",
-        // loader: ({ params }) =>
-        //   fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
-        //     method: "POST",
-        //     body: JSON.stringify({
-        //       employeeId: params.employeeId,
-        //     }),
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       cookie_token: token,
-        //     },
-        //   }),
+        path: "/user/stocklanding/form/:partyId",
         element: <StockLandingForm />,
       },
       {

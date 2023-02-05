@@ -6,7 +6,7 @@ export const DataContextApi = createContext();
 const DataContext = ({ children }) => {
   const { totalState } = useFormulasFristFormFront();
   const [intoAccountState, setintoAccountState] = useState(0);
-  const [paidDues,setPaidDues] = useState(0)
+  const [paidDues, setPaidDues] = useState(0);
   const [liquerState, setLiquerState] = useState([]);
   const token = localStorage.getItem("token");
 
@@ -15,7 +15,7 @@ const DataContext = ({ children }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        cookie_token: localStorage.getItem("token"),
+        cookie_token: token,
       },
     })
       .then((res) => res.json())
