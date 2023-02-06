@@ -1,17 +1,51 @@
 import React from "react";
 import { FaCalendarAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import usePartner from "../PartnerHooks/usePartner";
 import PartnerForm from "../PartnerForm/PartnerForm";
+import AddPartner from "../AddPartner/AddPartner";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../../Components/Loader/Loader";
 
 const Partners = () => {
+  const token = localStorage.getItem("token");
   const {
     partnerState,
-    addOnePartner,
-    addFivePartner,
+    // addOnePartner,
+    // addFivePartner,
     handelOnChangePartner,
-    handelOnSubmitPartner,
+    // handelOnSubmitPartner,
   } = usePartner();
+
+  const handelPartnerSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      partnerName: "",
+      debit: "",
+      deposit: "",
+      remianingDebit: "",
+      remaining: "",
+    };
+  };
+
+  const { data: partnarData, isLoading } = useQuery({
+    queryKey: ["partnarData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllPartners",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  // console.log(partnarData.transactions, "partnarData");
+
+  if (isLoading) return <Loader></Loader>;
 
   return (
     <section className="py-4">
@@ -94,18 +128,25 @@ const Partners = () => {
                         <label className="label">नामे </label>
                       </div>
                       <div className="form-control">
+                        <label className="label"> </label>
+                      </div>
+                      <div className="form-control">
+                        <label className="label"> </label>
+                      </div>
+
+                      <div className="form-control">
                         <label className="label">शेष</label>
                       </div>
                     </div>
                   </td>
                 </tr>
 
-                {partnerState.map((partner, index) => {
+                {partnarData.map((partner, index) => {
                   return (
                     <PartnerForm
+                      key={index}
                       partner={partner}
                       index={index}
-                      handelOnChangePartner={handelOnChangePartner}
                     ></PartnerForm>
                   );
                 })}
@@ -115,26 +156,31 @@ const Partners = () => {
         </form>{" "}
         <div>
           <div className="mt-4 flex gap-4">
-            <button
+            {/* <button
               className="dailyReportBtnSubmit"
               onClick={() => handelOnSubmitPartner()}
               type="submit"
             >
               Submit
-            </button>
-            <button className="dailyReportBtn" onClick={() => addFivePartner()}>
-              ADD 5
-            </button>
-            <button className="dailyReportBtn" onClick={() => addOnePartner()}>
+            </button> */}
+            <label htmlFor="addPartner" className="btn bg-[#AA237A]">
+              Add Partner
+            </label>
+            {/* <button className="dailyReportBtn" onClick={() => addOnePartner()}>
               ADD 1
             </button>
             <Link className="dailyReportBtn text-center flex justify-center items-center">
               सूची
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
       {/* ************************ all sealy data************** */}
+
+      <div>
+        <div className="divider my-4"></div>
+      </div>
+      <AddPartner handelPartnerSubmit={handelPartnerSubmit}></AddPartner>
     </section>
   );
 };
