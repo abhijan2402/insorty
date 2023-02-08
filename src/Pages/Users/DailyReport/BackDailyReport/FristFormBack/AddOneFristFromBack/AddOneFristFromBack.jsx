@@ -50,7 +50,7 @@ const AddOneFristFromBack = ({
                   return brand
                 }
               }) : ['no options']}
-              freeSolo
+              
               getOptionLabel={(option) => option ? option.brandName : ""}
               // item.brandName = event.target.outerText;
               // // eslint-disable-next-line array-callback-return
@@ -76,14 +76,14 @@ const AddOneFristFromBack = ({
                 <TextField
                   {...params}
                   className="dailyReportInput"
-                  value={item.brandName}
-                  inputProps={{ ...params.inputProps, value: item.brandName }}
+                  // value={item.brandName}
+                  // inputProps={{ ...params.inputProps, value: item.brandName }}
 
-                  onChange={(event) => {
-                    item.brandName = event.target.value;
-                    item.liquorID = null;
-                    onChangeFristBackFormHandler(event, index)
-                  }}
+                  // onChange={(event) => {
+                  //   item.brandName = event.target.value;
+                  //   item.liquorID = null;
+                  //   onChangeFristBackFormHandler(event, index)
+                  // }}
                 />
               )}
             />

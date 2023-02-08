@@ -6,7 +6,7 @@ const CommissionForm = ({ index, onChangeCommison, item }) => {
       <tr>
         <td>
           <div className="form-control">
-            <input
+            {/* <input
               type="text"
               className="dailyReportInput"
               name="reason"
@@ -15,7 +15,12 @@ const CommissionForm = ({ index, onChangeCommison, item }) => {
               style={{
                 width: "443px",
               }}
-            />
+            /> */}
+            <select name="type" className="semiSmallInput">
+              <option value="commission">Commission</option>
+              <option value="expenditure">expenditure</option>
+              <option value="panalty">penalty</option>
+            </select>
           </div>
         </td>
 
@@ -25,6 +30,18 @@ const CommissionForm = ({ index, onChangeCommison, item }) => {
             className="semiSmallInput"
             name="amount"
             value={item.amount}
+            onChange={(e) => onChangeCommison(e, index)}
+            style={{
+              width: "100%",
+            }}
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            className="semiSmallInput"
+            name="amount"
+            // value={item.comment}
             onChange={(e) => onChangeCommison(e, index)}
             style={{
               width: "100%",

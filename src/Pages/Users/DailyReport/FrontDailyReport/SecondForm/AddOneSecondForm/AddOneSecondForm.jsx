@@ -1,6 +1,7 @@
 import React from "react";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import Loader from "../../../../../../Components/Loader/Loader";
+import { Autocomplete,TextField } from "@mui/material";
 
 const AddOneSecondForm = ({
   index,
@@ -23,25 +24,66 @@ const AddOneSecondForm = ({
     <>
       <tr>
         <th>{SerialNo}</th>
+       
         <td>
           <div className="form-control">
-            <select
-              className="select"
-              name="selectStockVarient"
-              value={item.selectStockVarient}
-              onChange={(e) =>{
-                const liq = liquors.filter((brand)=>{
-                  if(item.name === brand.brandName){
-                    return brand
-                  }
-                })
-                item.liquorID = liq.length>0 ? liq._id : null
-                 handelSeconFormOnChange(e, index)
+            <Autocomplete
+              options={liquors.length > 0 ? liquors.filter((brand) => {
+                if (brand.type === 'BEER') {
+                  return brand
+                }
+              }) : ['no options']}
+
+              getOptionLabel={(option) => option ? option.brandName : ""}
+              // item.brandName = event.target.outerText;
+              // // eslint-disable-next-line array-callback-return
+              // const liq = liquors.filter((liq) => {
+              //   if (liq.brandName === event.target.outerText) {
+              //     return liq;
+              //   }
+              // });
+              // item.liquorID = liq._id
+              // handelFristFormOnChange(event, index);
+              onChange={(event, value) => {
+                if (value) {
+                  item.brandName = value.brandName
+                  item.liquorID = value._id
+                } else {
+                  item.brandName = ""
+                  item.liquorID = ""
+                }
+                handelSeconFormOnChange(event, index)
+                console.log(item)
               }}
-            >
-              <option value="mlWine">90</option>
-              <option value=''>60</option>
-            </select>
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className="dailyReportInput"
+                // value={item.brandName}
+                // inputProps={{ ...params.inputProps, value: item.brandName }}
+
+                // onChange={(event) => {
+                //   item.brandName = event.target.value;
+                //   item.liquorID = null;
+                //   onChangeFristBackFormHandler(event, index)
+                // }}
+                />
+              )}
+            />
+          </div>
+        </td>
+        <td>
+          <div className="form-control">
+
+
+            <input
+              type="number"
+              value={item.selectStockVarient}
+              onChange={(e) => handelSeconFormOnChange(e, index)}
+              className="SmallInput"
+              name="selectStockVarient"
+
+            />
           </div>
         </td>
         {/* ======== MRP Input ========= */}

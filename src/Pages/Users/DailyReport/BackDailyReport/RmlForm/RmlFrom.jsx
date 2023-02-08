@@ -47,7 +47,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
                   return brand
                 }
               }) : ['no options']}
-              freeSolo
+              
               getOptionLabel={(option) => option ? option.brandName : ""}
 
               // item.brandName = event.target.outerText;
@@ -78,21 +78,33 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
                 <TextField
                   {...params}
                   className="dailyReportInput"
-                  value={item.brandName}
-                  inputProps={{ ...params.inputProps, value: item.brandName }}
-                  name='brandName'
-                  onChange={(event) => {
-                    item.brandName = event.target.value;
-                    item.liquorID = null;
-                    onChangeRmlHandler(event, index)
-                    console.log(event.target.name)
-                  }}
+                  // value={item.brandName}
+                  // inputProps={{ ...params.inputProps, value: item.brandName }}
+                  // name='brandName'
+                  // onChange={(event) => {
+                  //   item.brandName = event.target.value;
+                  //   item.liquorID = null;
+                  //   onChangeRmlHandler(event, index)
+                  //   console.log(event.target.name)
+                  // }}
                 />
               )}
             />
           </div>
         </td>
 
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="smallInput"
+              name="averageRate"
+              // value={item.averageRate}
+              // onChange={(e) => onChangeRmlHandler(e, index)}
+              
+            />
+          </div>
+        </td>
         <td>
           <div className="form-control">
             <input

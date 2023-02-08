@@ -1199,6 +1199,7 @@ const BackDailyReport = () => {
                     <tr>
                       <th>S.no</th>
                       <th>Brand Name/ ब्राण्ड</th>
+                      <th>ml</th>
                       <th>Average Rate</th>
                       <th>प्रारम्भिक स्टॉक</th>
                       <th>आमद (खरीद)-दु.</th>
@@ -1234,6 +1235,19 @@ const BackDailyReport = () => {
                       <td>
                         <div className="form-control">Total</div>
                       </td>
+                      
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallInput"
+                            name="averageRate"
+                            // value={item.averageRate}
+                            // onChange={(e) => onChangeRmlHandler(e, index)}
+                            disabled
+                          />
+                        </div>
+                      </td>
 
                       <td>
                         <div className="form-control">
@@ -1245,6 +1259,8 @@ const BackDailyReport = () => {
                           />
                         </div>
                       </td>
+
+                      
 
                       <td>
                         <div className="form-control">
@@ -1616,6 +1632,7 @@ const BackDailyReport = () => {
                     <tr>
                       <th>Reason / विवरण</th>
                       <th>रकम</th>
+                      <th>Description</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1636,12 +1653,10 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="text"
-                            className="dailyReportInput"
+                            className="semiSmallInput"
                             name="reason"
                             disabled
-                            style={{
-                              width: "443px",
-                            }}
+                           
                           />
                         </div>
                       </td>
@@ -1656,6 +1671,18 @@ const BackDailyReport = () => {
                               (total = total + Number(currentItem.amount)),
                             0
                           )}
+                          disabled
+                          style={{
+                            width: "100%",
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="number"
+                          className="semiSmallInput"
+                          name="amount"
+                          
                           disabled
                           style={{
                             width: "100%",
@@ -1680,7 +1707,8 @@ const BackDailyReport = () => {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th>Reason / विवरण</th>
+                      <th>Name</th>
+                      <th>Type</th>
                       <th>रकम</th>
                     </tr>
                   </thead>
@@ -1702,12 +1730,21 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="text"
-                            className="dailyReportInput"
+                            className="semiSmallInput"
                             name="reson"
                             disabled
-                            style={{
-                              width: "443px",
-                            }}
+                           
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="reson"
+                            disabled
+                           
                           />
                         </div>
                       </td>
@@ -1723,9 +1760,7 @@ const BackDailyReport = () => {
                           )}
                           disabled
                           className="semiSmallInput"
-                          style={{
-                            width: "100%",
-                          }}
+                         
                         />
                       </td>
                     </tr>

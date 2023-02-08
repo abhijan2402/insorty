@@ -22,7 +22,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
         <div className="form-control">
           <Autocomplete
             options={parties}
-            freeSolo
+            
             getOptionLabel={(option) => option ? option.partyName : ""}
             // item.brandName = event.target.outerText;
             // // eslint-disable-next-line array-callback-return
@@ -48,14 +48,14 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
               <TextField
                 {...params}
                 className="dailyReportInput"
-                value={item.partyName}
-                inputProps={{ ...params.inputProps, value: item.partyName }}
+                // value={item.partyName}
+                // inputProps={{ ...params.inputProps, value: item.partyName }}
 
-                onChange={(event) => {
-                  item.brandName = event.target.value;
-                  item.liquorID = null;
-                  onChangeCarditDabit(event, index)
-                }}
+                // onChange={(event) => {
+                //   item.brandName = event.target.value;
+                //   item.liquorID = null;
+                //   onChangeCarditDabit(event, index)
+                // }}
               />
             )}
           />

@@ -17,7 +17,7 @@ const OutBillList = ({ outBill, index }) => {
         <td>{getNameByID(liquor._id)}</td>
         <td>{liquor?.quantityInML}</td>
         <td>{number}</td>
-        <td>{averageRate}</td>
+        <td>{averageRate.$numberDecimal}</td>
         <td>{total}</td>
       </tr>
     </>

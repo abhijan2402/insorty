@@ -39,7 +39,7 @@ const AddOneFristForm = ({
                   })
                 : ["no options"]
             }
-            freeSolo
+            
             getOptionLabel={(option) => (option ? option.brandName : "")}
             onChange={(event, value) => {
               if (value) {
@@ -56,16 +56,16 @@ const AddOneFristForm = ({
               <TextField
                 {...params}
                 className="dailyReportInput"
-                value={addOneFirst.brandName}
-                inputProps={{
-                  ...params.inputProps,
-                  value: addOneFirst.brandName,
-                }}
-                onChange={(event) => {
-                  addOneFirst.brandName = event.target.value;
-                  addOneFirst.liquorID = null;
-                  handelFristFormOnChange(event, index);
-                }}
+                // value={addOneFirst.brandName}
+                // inputProps={{
+                //   ...params.inputProps,
+                //   value: addOneFirst.brandName,
+                // }}
+                // onChange={(event) => {
+                //   addOneFirst.brandName = event.target.value;
+                //   addOneFirst.liquorID = null;
+                //   handelFristFormOnChange(event, index);
+                // }}
               />
             )}
           />

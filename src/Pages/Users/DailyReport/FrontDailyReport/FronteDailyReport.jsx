@@ -1085,6 +1085,7 @@ const FronteDailyReport = () => {
                   <thead>
                     <tr>
                       <th>S.no</th>
+                      <th>Brand Name/ ब्राण्ड</th>
                       <th>Total ml</th>
                       <th>Average Rate</th>
                       <th>प्रारम्भिक स्टॉक</th>

@@ -32,7 +32,7 @@ const ShippingForm = ({ index, onChangeShipping, item }) => {
           <div className="form-control">
             <Autocomplete
               options={parties.length>0 ? parties : ['no options']}
-              freeSolo
+              
               getOptionLabel={(option) => option ? option.partyName : ""}
               // item.brandName = event.target.outerText;
               // // eslint-disable-next-line array-callback-return
@@ -58,14 +58,14 @@ const ShippingForm = ({ index, onChangeShipping, item }) => {
                 <TextField
                   {...params}
                   className="dailyReportInput"
-                  value={item.partyName}
-                  inputProps={{ ...params.inputProps, value: item.partyName }}
+                  // value={item.partyName}
+                  // inputProps={{ ...params.inputProps, value: item.partyName }}
 
-                  onChange={(event) => {
-                    item.partyName = event.target.value;
-                    item.liquorID = null;
-                    onChangeShipping(event, index)
-                  }}
+                  // onChange={(event) => {
+                  //   item.partyName = event.target.value;
+                  //   item.liquorID = null;
+                  //   onChangeShipping(event, index)
+                  // }}
                 />
               )}
             />
@@ -76,7 +76,7 @@ const ShippingForm = ({ index, onChangeShipping, item }) => {
           <div className="form-control">
             <Autocomplete
               options={liquors}
-              freeSolo
+              
               getOptionLabel={(option) => option ? option.brandName : ""}
               // item.brandName = event.target.outerText;
               // // eslint-disable-next-line array-callback-return
@@ -102,14 +102,14 @@ const ShippingForm = ({ index, onChangeShipping, item }) => {
                 <TextField
                   {...params}
                   className="dailyReportInput"
-                  value={item.brandName}
-                  inputProps={{ ...params.inputProps, value: item.brandName }}
+                  // value={item.brandName}
+                  // inputProps={{ ...params.inputProps, value: item.brandName }}
 
-                  onChange={(event) => {
-                    item.brandName = event.target.value;
-                    item.liquorID = null;
-                    onChangeShipping(event, index)
-                  }}
+                  // onChange={(event) => {
+                  //   item.brandName = event.target.value;
+                  //   item.liquorID = null;
+                  //   onChangeShipping(event, index)
+                  // }}
                 />
               )}
             />
