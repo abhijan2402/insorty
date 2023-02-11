@@ -2,10 +2,12 @@ import { useState,useEffect } from "react";
 
 const useInfolwBorrowingRml = () => {
   const infolwBorrwingForm = {
+    liquorId:"",
+    partyId:"",
     partyName: "",
     brandName: "",
     theNumber: "",
-    quantity: 0,
+    quantity: 750,
     rate: 0,
     total: 0,
     reason: "",
@@ -30,10 +32,12 @@ const useInfolwBorrowingRml = () => {
 
     for (let i = 0; i < 5; i++) {
       data = [...data, {
+        liquorId: "",
+        partyId: "",
         partyName: "",
         brandName: "",
         theNumber: "",
-        quantity: 0,
+        quantity: 750,
         rate: 0,
         total: 0,
         reason: "",
@@ -47,10 +51,12 @@ const useInfolwBorrowingRml = () => {
     setInfolwBorrwingFormState([
       ...infolwBorrwingFormState,
       {
+        liquorId: "",
+        partyId: "",
         partyName: "",
         brandName: "",
         theNumber: "",
-        quantity: 0,
+        quantity: 750,
         rate: 0,
         total: 0,
         reason: "",

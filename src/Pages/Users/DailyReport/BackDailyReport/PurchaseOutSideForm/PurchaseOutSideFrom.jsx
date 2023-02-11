@@ -115,7 +115,7 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
 
                   onChange={(event) => {
                     item.brandName = event.target.value;
-                    item.liquorID = null;
+                    // item.liquorID = null;
                     // onChangePurchesOutSide(event, index)
                   }}
                 />

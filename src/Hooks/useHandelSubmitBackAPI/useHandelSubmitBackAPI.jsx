@@ -27,6 +27,8 @@ const useHandelSubmitBackAPI = () => {
   const purchaseOutside = JSON.parse(localStorage.getItem("purchases"));
   const expenses = JSON.parse(localStorage.getItem("expenses"));
   const paymentRecieved = JSON.parse(localStorage.getItem("paymentRecieved"));
+  const borrow = JSON.parse(localStorage.getItem("bhejan"));
+  const send = JSON.parse(localStorage.getItem("borrow"));
   
 
   const { GetLiqId } = useLiquors()
@@ -152,30 +154,28 @@ const useHandelSubmitBackAPI = () => {
   const restAmount = fourthFront + beerTotal + firstformData + secondFront + fifthFront - Number(intoAccountState) - sixthFront - seventhFront + pichlaBakaya - paidDues;
 
   const addSendingData = [];
-  for (let index = 0; index < addShippingState.length; index++) {
-    const element = addShippingState[index];
+  for (let index = 0; send ? index < send.length : 0; index++) {
+    const element = send[index];
     addSendingData.push({
-      liquor: liquerId,
+      liquor: GetLiqId(element.liquorId, Number(element.quantity), null),
+      party:element.partyId,
       partyName: element.partyName,
       brandName: element.brandName,
       number: element.theNumber,
       total: element.total,
-      comment: element.comment,
+      comment: element.reason,
     });
   }
 
   const addPurchesBorrowData = [];
-  for (let index = 0; index < infolwBorrwingFormState.length; index++) {
-    const element = infolwBorrwingFormState[index];
+  for (let index = 0; borrow ? index < borrow.length : 0; index++) {
+    const element = borrow[index];
     addPurchesBorrowData.push({
-      liquor: liquerId,
-      partyName: element.partyName,
-      brandName: element.brandName,
+      liquor: GetLiqId(element.liquorID, Number(element.quantity), null),
+      party: element.partyId,
       number: element.theNumber,
       comment: element.comment,
-      total: element.total,
-      quantity: element.quantity,
-      rate: element.rate,
+      
     });
   }
 
@@ -302,8 +302,8 @@ const useHandelSubmitBackAPI = () => {
     // } finally {
     //   setIsLoading(false);
     // }
-    console.log(paymentRecieved)
-    console.log(borrowCashReturnData)
+    console.log(send)
+    console.log(addSendingData)
   };
 
   return {

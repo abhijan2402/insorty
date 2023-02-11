@@ -36,10 +36,10 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
             onChange={(event, value) => {
               if (value) {
                 item.partyName = value.partyName
-                item.liquorID = value._id
+                item.partyId = value._id
               } else {
                 item.partyName = ""
-                item.liquorID = ""
+                item.partyId = ""
               }
               onChangeCarditDabit(event, index)
               console.log(item)
@@ -49,13 +49,13 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
                 {...params}
                 className="dailyReportInput"
                 // value={item.partyName}
-                // inputProps={{ ...params.inputProps, value: item.partyName }}
+                inputProps={{ ...params.inputProps, value: item.partyName }}
 
-                // onChange={(event) => {
-                //   item.brandName = event.target.value;
-                //   item.liquorID = null;
-                //   onChangeCarditDabit(event, index)
-                // }}
+                onChange={(event) => {
+                  item.partyName = event.target.value;
+                  // item.liquorID = null;
+                  // onChangeCarditDabit(event, index)
+                }}
               />
             )}
           />
@@ -75,6 +75,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
               PARTNER
             </option>
             <option value="PARTY">PARTY</option>
+            <option value="BRANCH">BRANCH</option>
           </select>
         </div>
       </td>

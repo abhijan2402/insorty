@@ -7,7 +7,7 @@ const usePurchesOutSideAdd = () => {
     partyName: "",
     brandName: "",
     theNumber: 0,
-    quantity: 0,
+    quantity: 750,
     rate: 0,
     total: 0,
     reason: "",

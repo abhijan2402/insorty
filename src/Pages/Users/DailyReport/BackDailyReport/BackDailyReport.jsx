@@ -1803,6 +1803,7 @@ const BackDailyReport = () => {
                       <th>S.No</th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
+                      <th>Size</th>
                       <th>संख्या</th>
                       <th>टिप्पणी</th>
                     </tr>
@@ -1833,6 +1834,17 @@ const BackDailyReport = () => {
                         </div>
                       </td>
 
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="brandName"
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      
                       <td>
                         <div className="form-control">
                           <input
