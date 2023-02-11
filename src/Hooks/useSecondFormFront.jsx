@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 const useSecondFormFront = () => {
   const addOneSecondForm = {
+    liquor:"",
+    brandName:"",
     averageRate: 0,
     startingStock: 0,
     incomingPurchase: 0,

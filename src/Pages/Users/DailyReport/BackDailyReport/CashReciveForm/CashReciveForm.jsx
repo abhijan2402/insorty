@@ -43,11 +43,11 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
               // handelFristFormOnChange(event, index);
               onChange={(event, value) => {
                 if (value) {
-                  item.partyName = value.partyName
-                  item.liquorID = value._id
+                  item.name = value.partyName
+                  item.id = value._id
                 } else {
-                  item.partyName = ""
-                  item.liquorID = ""
+                  item.name = ""
+                  item.id = ""
                 }
 
                 // onChangePurchesOutSide(event, index)
@@ -60,11 +60,11 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
                 // value={item.partyName}
                 // inputProps={{ ...params.inputProps, value: item.partyName }}
 
-                // onChange={(event) => {
-                //   item.partyName = event.target.value;
-                //   item.liquorID = null;
-                //   onChangePurchesOutSide(event, index)
-                // }}
+                onChange={(event) => {
+                  item.name = event.target.value;
+                  // item.liquorID = null;
+                  // onChangePurchesOutSide(event, index)
+                }}
                 />
               )}
             />
@@ -73,11 +73,11 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
         
         <td>
           <div className="form-control">
-            <select className="semiSmallInput" name="" id="">
+            <select className="semiSmallInput" name="type" value={item.type} onChange={(e) => onChangeCashRecive(e, index)} id="">
               <option value="Party">Party</option>
-              <option value="Party">Partner</option>
-              <option value="Party">Branch</option>
-              <option value="Party">Other</option>
+              <option value="Partner">Partner</option>
+              <option value="Branch">Branch</option>
+              <option value="Other">Other</option>
             </select>
           </div>
         </td>

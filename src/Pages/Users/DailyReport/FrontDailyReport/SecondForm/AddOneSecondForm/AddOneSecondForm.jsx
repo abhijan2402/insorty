@@ -29,7 +29,7 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <Autocomplete
               options={liquors.length > 0 ? liquors.filter((brand) => {
-                if (brand.type === 'BEER') {
+                if (brand.type === 'WINE') {
                   return brand
                 }
               }) : ['no options']}
@@ -53,6 +53,7 @@ const AddOneSecondForm = ({
                   item.liquorID = ""
                 }
                 handelSeconFormOnChange(event, index)
+              
                 console.log(item)
               }}
               renderInput={(params) => (
@@ -60,7 +61,7 @@ const AddOneSecondForm = ({
                   {...params}
                   className="dailyReportInput"
                 // value={item.brandName}
-                // inputProps={{ ...params.inputProps, value: item.brandName }}
+                inputProps={{ ...params.inputProps, value: item.brandName }}
 
                 // onChange={(event) => {
                 //   item.brandName = event.target.value;

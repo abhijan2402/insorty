@@ -9,6 +9,8 @@ const DataContext = ({ children }) => {
   const [paidDues, setPaidDues] = useState(0);
   const [liquerState, setLiquerState] = useState([]);
   const token = localStorage.getItem("token");
+  const [drDate, setDrDate] = useState("")
+  const [salesMan,setSalesMan] = useState("")
 
   useEffect(() => {
     fetch("https://insorty-api.onrender.com/shop/getAllLiquors", {
@@ -20,6 +22,17 @@ const DataContext = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => setLiquerState(data));
+
+    // const salesman = localStorage.getItem('salesMan')
+    //  console.log(salesMan)
+    if (localStorage.getItem('salesMan')){
+      setSalesMan(localStorage.getItem('salesMan'))
+     }
+    if (localStorage.getItem('drDate')){
+      setDrDate(localStorage.getItem('drDate'))
+     }
+    console.log(localStorage.getItem('drDate'))
+
   }, []);
 
   const { data: liquors, isLoading: brandsLoaded, refetch } = useQuery({
@@ -63,6 +76,10 @@ const DataContext = ({ children }) => {
     liquors,
     brandsLoaded,
     refetch,
+    salesMan, 
+    setSalesMan,
+    drDate, 
+    setDrDate
   };
 
   return (
