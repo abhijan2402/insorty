@@ -52,6 +52,57 @@ const DataContext = ({ children }) => {
     },
   });
 
+  // /shop/getPurchaseOutsideData
+
+  const { data: purchaseOutsideData } = useQuery({
+    queryKey: ["purchaseOutsideData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getPurchaseOutsideData",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  // /shop/getTotalExpensesData
+
+  const { data: totalExpensesData, isLoading } = useQuery({
+    queryKey: ["totalExpensesData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getTotalExpensesData",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  // /shop/getBorrowedCashReturnData
+
+  const { data: borrowedCashReturnData } = useQuery({
+    queryKey: ["borrowedCashReturnData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getBorrowedCashReturnData",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
   const dataInfo = {
     totalState,
     intoAccountState,
@@ -63,6 +114,11 @@ const DataContext = ({ children }) => {
     liquors,
     brandsLoaded,
     refetch,
+
+    purchaseOutsideData,
+    totalExpensesData,
+    borrowedCashReturnData,
+    isLoading,
   };
 
   return (
