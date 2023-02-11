@@ -251,6 +251,9 @@ const BackDetailsReport = () => {
               <td className="tg-0lax" />
               <td className="tg-0lax" />
             </tr>
+
+
+            
             <tr>
               <td className="tg-0lax" colSpan={36} />
             </tr>
