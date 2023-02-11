@@ -27,10 +27,11 @@ import MainInvestment from "../Pages/Users/MainInvestment/MainInvestment/MainInv
 import EnglishBear from "../Pages/Users/EnglishBear/EnglishBear/EnglishBear";
 import StockLanding from "../Pages/Users/StockLanding/StockLanding/StockLanding";
 import StockLandingForm from "../Pages/Users/StockLanding/StockLandingForm/StockLandingForm";
-import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FrontDetailsReport/FrontDetailsReport";
-import BackDetailsReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
+import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FullDetailsReport/FrontDetailsReport/FrontDetailsReport/FrontDetailsReport";
 import BearShopLayout from "../Layouts/BearShopLayouts";
 import routerImport from "./routerImport";
+import BackDetailReport from "../Pages/Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/BackDetailsReport/BackDetailReport";
+import BackReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
 
 const {
   BearShopBranch,
@@ -193,8 +194,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/dailyreport/details",
-        element: <BackDetailsReport />,
+        element: <BackDetailReport />,
       },
+      {
+        path: "/user/dailyreport/backdetailsreport",
+        element: <BackReport />,
+      }
     ],
   },
   {
