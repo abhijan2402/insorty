@@ -317,6 +317,7 @@ const BackDetailsReport = () => {
               </td>
               <td className="tg-0lax">रकम</td>
             </tr>
+            
             <tr>
               <td className="tg-0lax">1</td>
               <td className="tg-0lax">data</td>

@@ -62,71 +62,18 @@ useInflow --> addPurchaseBorrowData
 useShipping --> addSendData
 front daily report --> addFrontPageData
 
-//
-
-
-        <th>{index + 1}</th>
-
-        <td>
-          <div className="form-control">
-            <input
-              type="text"
-              name="partnerName"
-              value={transaction.name}
-              className="dailyReportInput"
-            />
-          </div>
-        </td>
-
-        <td>
-          <div className="form-control">
-            <input
-              type="number"
-              name="debit"
-              value={transaction?.debit}
-              onChange={(e) => handelOnChangePartner(e, index)}
-              className="dailyReportInput"
-            />
-          </div>
-        </td>
-
-        <td>
-          <div className="form-control">
-            <input
-              type="number"
-              name="credit"
-              value={transaction?.credit}
-              onChange={(e) => handelOnChangePartner(e, index)}
-              className="dailyReportInput"
-            />
-            {/* 
-            <input
-              type="number"
-              name="deposit"
-              value={partner?.deposit}
-              onChange={(e) => handelOnChangePartner(e, index)}
-              className="commonSmallForm"
-            /> */}
-          </div>
-        </td>
-
-        <td>
-          <div className="flex gap-4">
-            <div className="form-control">
-              <input
-                type="text"
-                name="remaining_debit"
-                value={transaction}
-                className="commonSmallForm"
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="number"
-                name="remaining"
-                value={transaction}
-                className="commonSmallForm"
-              />
-            </div>
-          </div>
-        </td>
+  <td className="tg-0lax" colSpan={10}>
+              <span style={{ fontWeight: "bold" }}>
+                अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
+              </span>
+            </td>
+            <td className="tg-0lax" colSpan={6}>
+              <span style={{ fontWeight: "bold" }}>
+                कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
+              </span>
+            </td>
+            <td className="tg-0lax" colSpan={5}>
+              <span style={{ fontWeight: "bold" }}>
+                पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
+              </span>
+            </td>
