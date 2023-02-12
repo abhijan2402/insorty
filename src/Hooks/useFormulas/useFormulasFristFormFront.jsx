@@ -84,31 +84,32 @@ const useFormulasFristFormFront = () => {
   const prevdata = JSON.parse(localStorage.getItem("firstFront"));
 
   useEffect(() => {
-    // if (prevdata) {
-    //   setAddOneFristFormState(prevdata);
-    if(!brandsLoaded){
+    if (prevdata) {
+      setAddOneFristFormState(prevdata);
+    }
+    let firstFormData = addOneFristFormState
+
+    if(!prevdata && !brandsLoaded && liquors.length>0){
       console.log("started")
       const liq = liquors.filter((item)=>item.type="WINE")
-      for (let index = 0; index < liq.length-1; index++) {
-        let firstFormData = addOneFristFormState
+      for (let index = 0; index < liq.length; index++) {
         const quan750 = liq[index].sizes.find((elem) => elem.quantityInML===750)
         const quan330 = liq[index].sizes.find((elem) => elem.quantityInML===330)
         const quan180 = liq[index].sizes.find((elem) => elem.quantityInML===180)
-        
-        if(firstFormData[index] && quan750 && quan330 && quan180 ){
+       
+        if (firstFormData[firstFormData.length - 1] && quan750 && quan330 && quan180 ){
         firstFormData[firstFormData.length-1].brandName = liq[index].brandName
           firstFormData[firstFormData.length - 1].liquorID = liq[index]._id
           firstFormData[firstFormData.length - 1].startingStock750 = quan750.currentStock
           firstFormData[firstFormData.length - 1].startingStock330 = quan330.currentStock
           firstFormData[firstFormData.length - 1].startingStock180 = quan180.currentStock
-                    
           firstFormData = [...firstFormData,addOneFristForm]
-          setAddOneFristFormState(firstFormData)
-      }
+          setAddOneFristFormState([...firstFormData, addOneFristForm])
+        }
         
       }
     }
-    // }
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);
   
