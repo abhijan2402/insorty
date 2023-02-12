@@ -93,7 +93,7 @@ const useFormulasFristFormFront = () => {
 
     if(!prevdata && !brandsLoaded && liquors.length>0){
       console.log("started")
-      const liq = liquors.filter((item)=>item.type="WINE")
+      const liq = liquors.filter((item)=>item.type==="WINE")
       for (let index = 0; index < liq.length; index++) {
         const quan750 = liq[index].sizes.find((elem) => elem.quantityInML===750)
         const quan330 = liq[index].sizes.find((elem) => elem.quantityInML===330)

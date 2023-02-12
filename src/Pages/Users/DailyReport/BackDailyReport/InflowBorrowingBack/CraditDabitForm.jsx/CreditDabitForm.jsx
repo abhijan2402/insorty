@@ -5,9 +5,14 @@ import { Autocomplete, TextField } from "@mui/material";
 
 
 const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
-  const { parties, partyLoaded } = usePartyNames()
+  const { parties,
+    partyLoaded,
+    partners,
+    partnerLoaded,
+    branches,
+    branchLoaded } = usePartyNames()
 
-  if (partyLoaded) {
+  if (partyLoaded || partnerLoaded || branchLoaded) {
     return (
       <div>
         <Loader></Loader>
@@ -21,8 +26,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
       <td>
         <div className="form-control">
           <Autocomplete
-            options={parties}
-            
+            options={parties.length > 0 ? parties : ['no options']}
             getOptionLabel={(option) => option ? option.partyName : ""}
             // item.brandName = event.target.outerText;
             // // eslint-disable-next-line array-callback-return
@@ -33,6 +37,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
             // });
             // item.liquorID = liq._id
             // handelFristFormOnChange(event, index);
+            className={item.partyType === "PARTY" ? '' : 'displayHidden'}
             onChange={(event, value) => {
               if (value) {
                 item.partyName = value.partyName
@@ -41,7 +46,8 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
                 item.partyName = ""
                 item.partyId = ""
               }
-              onChangeCarditDabit(event, index)
+
+              // onChangePurchesOutSide(event, index)
               console.log(item)
             }}
             renderInput={(params) => (
@@ -49,12 +55,98 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
                 {...params}
                 className="dailyReportInput"
                 // value={item.partyName}
-                inputProps={{ ...params.inputProps, value: item.partyName }}
+                // inputProps={{ ...params.inputProps, value: item.partyName }}
 
                 onChange={(event) => {
                   item.partyName = event.target.value;
                   // item.liquorID = null;
-                  // onChangeCarditDabit(event, index)
+                  // onChangePurchesOutSide(event, index)
+                }}
+              />
+            )}
+          />
+
+          <Autocomplete
+            options={partners.length > 0 ? partners : ['no options']}
+            getOptionLabel={(option) => option ? option.name : ""}
+            className={item.partyType === "PARTNER" ? '' : 'displayHidden'}
+                
+            // item.brandName = event.target.outerText;
+            // // eslint-disable-next-line array-callback-return
+            // const liq = liquors.filter((liq) => {
+            //   if (liq.brandName === event.target.outerText) {
+            //     return liq;
+            //   }
+            // });
+            // item.liquorID = liq._id
+            // handelFristFormOnChange(event, index);
+
+            onChange={(event, value) => {
+              if (value) {
+                item.partyName = value.name
+                item.partyId = value._id
+              } else {
+                item.partyName = ""
+                item.partyId = ""
+              }
+
+              // onChangePurchesOutSide(event, index)
+              console.log(item)
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                className="dailyReportInput"
+                // value={item.partyName}
+                // inputProps={{ ...params.inputProps, value: item.partyName }}
+
+                onChange={(event) => {
+                  item.partyName = event.target.value;
+                  // item.liquorID = null;
+                  // onChangePurchesOutSide(event, index)
+                }}
+              />
+            )}
+          />
+
+          <Autocomplete
+            options={branches.length > 0 ? branches : ['no options']}
+            getOptionLabel={(option) => option ? option.branchName : ""}
+            className={item.partyType === "BRANCH" ? '' : 'displayHidden'}
+
+            // item.brandName = event.target.outerText;
+            // // eslint-disable-next-line array-callback-return
+            // const liq = liquors.filter((liq) => {
+            //   if (liq.brandName === event.target.outerText) {
+            //     return liq;
+            //   }
+            // });
+            // item.liquorID = liq._id
+            // handelFristFormOnChange(event, index);
+
+            onChange={(event, value) => {
+              if (value) {
+                item.partyName = value.branchName
+                item.partyId = value._id
+              } else {
+                item.partyName = ""
+                item.partyId = ""
+              }
+
+              // onChangePurchesOutSide(event, index)
+              console.log(branches)
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                className="dailyReportInput"
+                // value={item.partyName}
+                // inputProps={{ ...params.inputProps, value: item.partyName }}
+
+                onChange={(event) => {
+                  item.partyName = event.target.value;
+                  // item.liquorID = null;
+                  // onChangePurchesOutSide(event, index)
                 }}
               />
             )}

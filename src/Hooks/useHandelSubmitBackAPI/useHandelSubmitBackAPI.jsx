@@ -41,9 +41,9 @@ const useHandelSubmitBackAPI = () => {
     const element = paymentRecieved[index];
 
     borrowCashReturnData.push({
-      name: element.name,
-      id: element.id,
-      amount: element.amount,
+      
+      from: element.id,
+      cash: element.amount,
       type: element.type
     });
   }
@@ -102,8 +102,8 @@ const useHandelSubmitBackAPI = () => {
     const element = expenses[index];
     entriesExpances.push({
       amount: element.amount,
-      description: element.desc,
-      comment: element.type
+      comment: element.desc,
+      type: element.type
     });
   }
 
@@ -111,22 +111,15 @@ const useHandelSubmitBackAPI = () => {
 
   for (let index = 0; index < craditDabitState.length; index++) {
     const element = craditDabitState[index];
-    if(element.partyType==="PARTNER"){
+    
       entriesBorrow.push({
     type: element.partyType,
-    partnertName: element.partyName,
+    from: element.partyId,
         amount: element.amount,
           comment: element.note,
     });
-    }
-    else{
-      entriesBorrow.push({
-        type: element.partyType,
-        partyName: element.partyName,
-        amount: element.amount,
-        comment: element.note,
-      });
-    }
+    
+   
   }
 
   // 
@@ -159,8 +152,6 @@ const useHandelSubmitBackAPI = () => {
     addSendingData.push({
       liquor: GetLiqId(element.liquorId, Number(element.quantity), null),
       party:element.partyId,
-      partyName: element.partyName,
-      brandName: element.brandName,
       number: element.theNumber,
       total: element.total,
       comment: element.reason,

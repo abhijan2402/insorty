@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
+import useLiquors from "./useLiquors";
 
 const useSecondFormFront = () => {
+  const { liquors, brandsLoaded } = useLiquors();
+
   const addOneSecondForm = {
-    liquor:"",
-    brandName:"",
+    liquor: "",
+    brandName: "",
     averageRate: 0,
     startingStock: 0,
     incomingPurchase: 0,
@@ -31,9 +34,41 @@ const useSecondFormFront = () => {
     if (prevdata) {
       setAddOneSecondFormState(prevdata);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
+    let firstFormData = addOneSecondFormState;
+
+    if (!prevdata && !brandsLoaded && liquors.length > 0) {
+      console.log("started");
+      const liq = liquors.filter((item) => {
+        if (item.type === "WINE") {
+          return item;
+        }
+      });
+      
+      liq.map((parent) => {
+        parent.sizes.map((item) => {
+          if (
+            item.quantityInML !== 750 &&
+            item.quantityInML !== 330 &&
+            item.quantityInML !== 180
+            ) {
+              console.log(parent)
+            const newFormData = { ...addOneSecondForm };
+
+            newFormData.brandName = parent.brandName
+          newFormData.liquorID = parent._id
+        newFormData.selectStockVarient = item.quantityInML
+        newFormData.startingStock = item.currentStock
+        firstFormData = [newFormData, ...firstFormData]
+          setAddOneSecondFormState(firstFormData)          }
+        });
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [brandsLoaded]);
+
+  
   const addOneSecondFormHandler = () => {
     setAddOneSecondFormState([
       ...addOneSecondFormState,

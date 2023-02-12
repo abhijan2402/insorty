@@ -5,7 +5,7 @@ const useCarditDabit = () => {
   const craditDabitForm = {
     partyId:"",
     partyName: "",
-    partyType: "",
+    partyType: "PARTNER",
     amount: 0,
     note: "",
   };
@@ -29,7 +29,7 @@ const useCarditDabit = () => {
         {
           partyId: "",
           partyName: "",
-          partyType: "",
+          partyType: "PARTNER",
           amount: 0,
           note: "",
         },
@@ -44,7 +44,7 @@ const useCarditDabit = () => {
       {
         partyId: "",
         partyName: "",
-        partyType: "",
+        partyType: "PARTNER",
         amount: 0,
         note: "",
       },

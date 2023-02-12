@@ -47,7 +47,6 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
                   return brand
                 }
               }) : ['no options']}
-              
               getOptionLabel={(option) => option ? option.brandName : ""}
 
               // item.brandName = event.target.outerText;

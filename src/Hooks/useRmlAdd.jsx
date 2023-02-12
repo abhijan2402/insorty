@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import useLiquors from "./useLiquors";
 
 const useRmlAdd = () => {
+  const { liquors, brandsLoaded } = useLiquors();
+
   const addRmlForm = {
     liquorID:"",
     brandName: "", //brandName
@@ -28,9 +31,38 @@ const useRmlAdd = () => {
   useEffect(() => {
     if (prevdata) {
       setAddRmlState(prevdata);
+
+      let firstFormData = addRmlState;
+
+      if (!prevdata && !brandsLoaded && liquors.length > 0) {
+        console.log("started");
+        const liq = liquors.filter((item) => {
+          if (item.type === "RML" || item.type ==='DESHIRML') {
+            return item;
+          }
+        });
+
+        liq.map((parent) => {
+          parent.sizes.map((item) => {
+            
+              console.log(parent)
+              const newFormData = { ...addRmlForm };
+
+              newFormData.brandName = parent.brandName
+              newFormData.liquorID = parent._id
+              newFormData.ml = item.quantityInML
+              newFormData.startingStock = item.currentStock
+              firstFormData = [newFormData, ...firstFormData]
+              setAddRmlState(firstFormData)
+            
+          });
+        });
+      }
+
+
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [brandsLoaded]);
 
   const handelAddFiveInRml = () => {
     let data = addRmlState;

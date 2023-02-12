@@ -1,13 +1,22 @@
-import React from "react";
+import React,{useState} from "react";
 import usePartyNames from "../../../../../Hooks/usePartyNames";
 import Loader from "../../../../../Components/Loader/Loader";
 import { Autocomplete,TextField } from "@mui/material";
 
+
 const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
-  const { parties, partyLoaded } = usePartyNames()
+
+  // const {type,setType} = useState("PARTY")
+
+  const { parties,
+    partyLoaded,
+    partners,
+    partnerLoaded,
+    branches,
+    branchLoaded } = usePartyNames()
 
 
-  if (partyLoaded) {
+  if (partyLoaded || partnerLoaded || branchLoaded) {
     return (
       <div>
         <Loader></Loader>
@@ -30,7 +39,6 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
             /> */}
             <Autocomplete
               options={parties.length > 0 ? parties : ['no options']}
-
               getOptionLabel={(option) => option ? option.partyName : ""}
               // item.brandName = event.target.outerText;
               // // eslint-disable-next-line array-callback-return
@@ -41,6 +49,7 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
               // });
               // item.liquorID = liq._id
               // handelFristFormOnChange(event, index);
+              className={item.type === "PARTY" ? '' :'displayHidden'}
               onChange={(event, value) => {
                 if (value) {
                   item.name = value.partyName
@@ -68,16 +77,102 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
                 />
               )}
             />
+
+            <Autocomplete
+              options={partners.length > 0 ? partners : ['no options']}
+              getOptionLabel={(option) => option ? option.name : ""}
+              className={item.type === "PARTNER" ? '' : 'displayHidden'}
+
+              // item.brandName = event.target.outerText;
+              // // eslint-disable-next-line array-callback-return
+              // const liq = liquors.filter((liq) => {
+              //   if (liq.brandName === event.target.outerText) {
+              //     return liq;
+              //   }
+              // });
+              // item.liquorID = liq._id
+              // handelFristFormOnChange(event, index);
+
+              onChange={(event, value) => {
+                if (value) {
+                  item.name = value.name
+                  item.id = value._id
+                } else {
+                  item.name = ""
+                  item.id = ""
+                }
+
+                // onChangePurchesOutSide(event, index)
+                console.log(item)
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className="dailyReportInput"
+                  // value={item.partyName}
+                  // inputProps={{ ...params.inputProps, value: item.partyName }}
+
+                  onChange={(event) => {
+                    item.name = event.target.value;
+                    // item.liquorID = null;
+                    // onChangePurchesOutSide(event, index)
+                  }}
+                />
+              )}
+            />
+
+            <Autocomplete
+              options={branches.length > 0 ? branches : ['no options']}
+              getOptionLabel={(option) => option ? option.branchName : ""}
+              className={item.type === "BRANCH" ? '' : 'displayHidden'}
+
+              // item.brandName = event.target.outerText;
+              // // eslint-disable-next-line array-callback-return
+              // const liq = liquors.filter((liq) => {
+              //   if (liq.brandName === event.target.outerText) {
+              //     return liq;
+              //   }
+              // });
+              // item.liquorID = liq._id
+              // handelFristFormOnChange(event, index);
+
+              onChange={(event, value) => {
+                if (value) {
+                  item.name = value.branchName
+                  item.id = value._id
+                } else {
+                  item.name = ""
+                  item.id = ""
+                }
+
+                // onChangePurchesOutSide(event, index)
+                console.log(branches)
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className="dailyReportInput"
+                  // value={item.partyName}
+                  // inputProps={{ ...params.inputProps, value: item.partyName }}
+
+                  onChange={(event) => {
+                    item.name = event.target.value;
+                    // item.liquorID = null;
+                    // onChangePurchesOutSide(event, index)
+                  }}
+                />
+              )}
+            />
           </div>
         </td>
         
         <td>
           <div className="form-control">
-            <select className="semiSmallInput" name="type" value={item.type} onChange={(e) => onChangeCashRecive(e, index)} id="">
-              <option value="Party">Party</option>
-              <option value="Partner">Partner</option>
-              <option value="Branch">Branch</option>
-              <option value="Other">Other</option>
+            <select className="semiSmallInput" name="type" value={item.type} onChange={(e) => {onChangeCashRecive(e, index)}} id="">
+              <option value="PARTY">Party</option>
+              <option value="PARTNER">Partner</option>
+              <option value="BRANCH">Branch</option>
+              <option value="OTHER">Other</option>
             </select>
           </div>
         </td>

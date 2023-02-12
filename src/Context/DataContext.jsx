@@ -95,7 +95,7 @@ const DataContext = ({ children }) => {
         }
       );
       const data = await res.json();
-      return data.data;
+      return data.data; 
     },
   });
 
