@@ -2,8 +2,11 @@ import { useState,useEffect } from "react";
 
 const useShippingAdd = () => {
   const addShippingForm = {
+    liquorId:"",
+    partyId:"",
     partyName: "",
     brandName: "",
+    quantity:750,
     theNumber: "",
     comment: "",
   };
@@ -24,8 +27,11 @@ const useShippingAdd = () => {
 
     for (let i = 0; i < 5; i++) {
       data = [...data, {
+        liquorId: "",
+        partyId: "",
         partyName: "",
         brandName: "",
+        quantity: 750,
         theNumber: "",
         comment: "",
       }]
@@ -36,8 +42,11 @@ const useShippingAdd = () => {
 
   const handelAddOneShipping = () => {
     setAddShippingState([...addShippingState, {
+      liquorId: "",
+      partyId: "",
       partyName: "",
       brandName: "",
+      quantity: 750,
       theNumber: "",
       comment: "",
     }]);

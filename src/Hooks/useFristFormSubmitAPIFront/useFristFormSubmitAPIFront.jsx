@@ -10,21 +10,27 @@ const useFristFormSubmitAPIFront = () => {
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const { addOneFristFormState } = useFormulasFristFormFront();
   const { addOneSecondFormState } = useSecondFormFront();
-  const firstFront = JSON.parse(localStorage.getItem('firstFront'))
-  const mlForm = JSON.parse(localStorage.getItem('mlForm'))
+  const firstFront = JSON.parse(localStorage.getItem("firstFront"));
+  const mlForm = JSON.parse(localStorage.getItem("mlForm"));
 
   const { liquors } = useContext(DataContextApi);
-  const { GetLiqId } = useLiquors()
+  const { GetLiqId } = useLiquors();
+
+  const {
+    salesMan,
+
+    drDate,
+  } = useContext(DataContextApi);
 
   const submitFristFormHandler = async (e) => {
     // setIsLoadingSubmit(true);
 
     const dataDetails650 = [];
 
-    for (let index = 0; firstFront? index < firstFront.length : 0; index++) {
+    for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
       const element = firstFront[index];
       dataDetails650.push({
-        liquor: GetLiqId(element.liquorID,750,'WINE'),
+        liquor: GetLiqId(element.liquorID, 750, "WINE"),
         brandName: element.brandName,
         quantityInML: 750,
         openingStock: element.startingStock750,
@@ -45,7 +51,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
       const element = firstFront[index];
       dataDetails550.push({
-        liquor: GetLiqId(element.liquorID, 180, 'WINE'),
+        liquor: GetLiqId(element.liquorID, 180, "WINE"),
         brandName: element.brandName,
         quantityInML: 180,
         openingStock: element.startingStock180,
@@ -66,7 +72,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
       const element = firstFront[index];
       dataDetails330.push({
-        liquor: GetLiqId(element.liquorID,330, 'WINE'),
+        liquor: GetLiqId(element.liquorID, 330, "WINE"),
         brandName: element.brandName,
         quantityInML: 330,
         openingStock: element.startingStock330,
@@ -87,23 +93,22 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; mlForm ? index < mlForm.length : 0; index++) {
       const element = mlForm[index];
       addSecondFormData.push({
-        liquor: liquors?.[0]?._id,
-        quantityInML: element.ml,
-        openingStock: element.initialStock,
-        purchaseShop: element.purchaseShopNum,
-        purchaseShopRate: element.purchaseShopRate,
-        purchaseOutSide: element.purchaseOutSideNum,
-        purchaseOutSideRate: element.purchaseOutSideRate,
-        credits: element.purchaseBorrow,
-        send: element.sendingBhejan,
-        remaining: element.AddRemainder,
-        closingStock: element.lastStock,
-        sales: element.sold,
-        amount: element.finalSum,
+        liquor: GetLiqId(element.liquor, element.selectStockVarient, "WINE"),
+        brandName: element.brandName,
+        quantityInML: element.selectStockVarient,
+        openingStock: element.startingStock,
+        purchaseShop: element.incomePurchase,
+        purchaseShopRate: element.buyRate,
+        purchaseOutSide: element.incomingPurchase,
+        purchaseOutSideRate: element.purchaseRate,
+        credits: element.inflowCredit,
+        send: element.sending,
+        remaining: element.sumRemainder,
+        closingStock: element.closingStock,
+        sales: element.sales,
+        amount: element.total,
       });
     }
-    
-    
 
     // try {
     //   const api1 = await fetch(
@@ -114,7 +119,7 @@ const useFristFormSubmitAPIFront = () => {
     //         "Content-Type": "application/json",
     //         cookie_token: token,
     //       },
-    //       body: JSON.stringify({ entries: dataDetails650 }),
+    //       body: JSON.stringify({ date: drDate, salesmen:salesMan, entries: dataDetails650 }),
     //     }
     //   );
 
@@ -126,7 +131,7 @@ const useFristFormSubmitAPIFront = () => {
     //         "Content-Type": "application/json",
     //         cookie_token: token,
     //       },
-    //       body: JSON.stringify({ entries: dataDetails550 }),
+    //       body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails550 }),
     //     }
     //   );
     //   const api3 = await fetch(
@@ -137,7 +142,7 @@ const useFristFormSubmitAPIFront = () => {
     //         "Content-Type": "application/json",
     //         cookie_token: token,
     //       },
-    //       body: JSON.stringify({ entries: dataDetails330 }),
+    //       body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails330 }),
     //     }
     //   );
 
@@ -149,7 +154,7 @@ const useFristFormSubmitAPIFront = () => {
     //         "Content-Type": "application/json",
     //         cookie_token: token,
     //       },
-    //       body: JSON.stringify({ entries: addSecondFormData }),
+    //       body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: addSecondFormData }),
     //     }
     //   );
 
@@ -180,11 +185,10 @@ const useFristFormSubmitAPIFront = () => {
     // } finally {
     //   setIsLoadingSubmit(false);
     // }
-    console.log(dataDetails330)
-    console.log(dataDetails550)
     console.log(dataDetails650)
     console.log(addSecondFormData)
-    console.log(firstFront)
+    console.log(dataDetails550)
+    console.log(dataDetails330)
   };
 
   return {

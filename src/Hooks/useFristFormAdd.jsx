@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useLiquors from "./useLiquors";
 import Swal from "sweetalert2";
+import { DataContextApi } from "../Context/DataContext";
 
 const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
@@ -9,6 +10,11 @@ const useFristFormAdd = () => {
   let brands;
   const { GetLiqId } = useLiquors()
   const backData = JSON.parse(localStorage.getItem('firstBack'))
+  const {
+    salesMan,
+
+    drDate,
+  } = useContext(DataContextApi);
 
   // ======================== add five in frist form ========================
 
@@ -827,64 +833,64 @@ const useFristFormAdd = () => {
       });
     }
 
-    // try {
-    //   const api1 = await fetch(
-    //     "https://insorty-api.onrender.com/shop/addBackPageReportData",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         cookie_token: token,
-    //       },
-    //       body: JSON.stringify({ entries: dataDetails650 }),
-    //     }
-    //   );
+    try {
+      const api1 = await fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails650 }),
+        }
+      );
 
-    //   const api2 = await fetch(
-    //     "https://insorty-api.onrender.com/shop/addBackPageReportData",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         cookie_token: token,
-    //       },
-    //       body: JSON.stringify({ entries: dataDetails550 }),
-    //     }
-    //   );
-    //   const api3 = await fetch(
-    //     "https://insorty-api.onrender.com/shop/addBackPageReportData",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         cookie_token: token,
-    //       },
-    //       body: JSON.stringify({ entries: dataDetails330 }),
-    //     }
-    //   );
+      const api2 = await fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails550 }),
+        }
+      );
+      const api3 = await fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails330 }),
+        }
+      );
 
-    //   Promise.all([api1, api2, api3])
-    //     .then((responses) => Promise.all(responses.map((res) => res.json())))
-    //     .then((data) => {
-    //       console.log(data);
-    //       if (data.success === true) {
-    //         Swal.fire({
-    //           icon: "success",
-    //           title: "Success",
-    //           text: "Added successfully",
-    //         });
-    //       }
-    //     });
-    // } catch (error) {
-    //   const errorMessage = error.message;
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: errorMessage,
-    //   });
-    // } finally {
-    //   setIsLoading(false);
-    // }
+      Promise.all([api1, api2, api3])
+        .then((responses) => Promise.all(responses.map((res) => res.json())))
+        .then((data) => {
+          console.log(data);
+          if (data.success === true) {
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              text: "Added successfully",
+            });
+          }
+        });
+    } catch (error) {
+      const errorMessage = error.message;
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
+    } finally {
+      setIsLoading(false);
+    }
     console.log(dataDetails330)
     console.log(dataDetails550)
     console.log(dataDetails650)

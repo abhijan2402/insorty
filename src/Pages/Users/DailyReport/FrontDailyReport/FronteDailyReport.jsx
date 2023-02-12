@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Link } from "react-router-dom";
 import AddOneSecondForm from "./SecondForm/AddOneSecondForm/AddOneSecondForm";
 import AddOneFristForm from "./FirstForm/AddOneFristForm/AddOneFristForm";
@@ -7,9 +7,15 @@ import useSecondFormFront from "../../../../Hooks/useSecondFormFront";
 import { useQuery } from "@tanstack/react-query";
 import useFristFormSubmitAPIFront from "../../../../Hooks/useFristFormSubmitAPIFront/useFristFormSubmitAPIFront";
 import Loader from "../../../../Components/Loader/Loader";
+import { DataContextApi } from "../../../../Context/DataContext";
 
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
+  
+  const { salesMan,
+    setSalesMan,
+    drDate,
+    setDrDate } = useContext(DataContextApi)
 
   const {
     addOneFristFormState,
@@ -83,8 +89,17 @@ const FronteDailyReport = () => {
         </Link>
       </div>
       <div className="flex gap-4 ">
-        <h1 className="font-bold ">सेल्समेन का नाम </h1>
-        <h1 className="font-bold ">12/12/2022 </h1>
+        <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
+        <input type="text" value={salesMan}
+          onChange={(e) => {
+            setSalesMan(e.target.value);
+            localStorage.setItem('salesMan', e.target.value)
+          }}
+          className="semiSmallInput" />
+        <input type="date" value={drDate} onChange={(e) => {
+          setDrDate(e.target.value)
+          localStorage.setItem('drDate', e.target.value)
+        }} name="" id="" className="semiSmallInput" />
       </div>
 
       <div className="py-6">

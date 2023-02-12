@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 const useCarditDabit = () => {
   const craditDabitForm = {
+    partyId:"",
     partyName: "",
     partyType: "",
     amount: 0,
@@ -26,6 +27,7 @@ const useCarditDabit = () => {
       data = [
         ...data,
         {
+          partyId: "",
           partyName: "",
           partyType: "",
           amount: 0,
@@ -40,6 +42,7 @@ const useCarditDabit = () => {
     setCraditDabitState([
       ...craditDabitState,
       {
+        partyId: "",
         partyName: "",
         partyType: "",
         amount: 0,

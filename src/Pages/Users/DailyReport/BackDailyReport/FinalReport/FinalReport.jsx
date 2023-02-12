@@ -46,7 +46,7 @@ const FinalReport = ({
   if (isLoading) return <Loader></Loader>;
 
   const len = leftDues.length
-  const pichla = leftDues.length > 0 ? leftDues[len - 1].restAmount.$numberDecimal : 0
+  const pichla = Number(leftDues.length > 0 ? leftDues[len - 1].restAmount.$numberDecimal : 0)
   localStorage.setItem('pichlaBakaya', JSON.stringify(pichla))
 
 

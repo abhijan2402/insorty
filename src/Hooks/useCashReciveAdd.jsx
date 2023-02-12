@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 
 const useCashReciveAdd = () => {
   const cashReciveForm = {
+    type: "",
     amount: 0,
-    reson: "",
+    desc: ""
   };
 
   const [cashReciveState, setCashReciveState] = useState([cashReciveForm]);
@@ -24,8 +25,10 @@ const useCashReciveAdd = () => {
       data = [
         ...data,
         {
-          reson: "",
+          name:'',
+          id:'',
           amount: 0,
+          type:""
         },
       ];
     }
@@ -36,8 +39,9 @@ const useCashReciveAdd = () => {
     setCashReciveState([
       ...cashReciveState,
       {
-        reson: "",
+        type: "",
         amount: 0,
+        desc: ""
       },
     ]);
   };

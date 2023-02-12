@@ -69,6 +69,15 @@ function useLiquors() {
             }
           });
         }
+        if (item._id === id && type === null){
+          size = item.sizes.filter((brand) => {
+            // console.log(brand)
+            if (brand.quantityInML === ml) {
+              // console.log(brand)
+              return brand;
+            }
+          });
+        }
       });
       // console.log(size)
       if (size && size.length > 0) {

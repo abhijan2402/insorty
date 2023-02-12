@@ -57,10 +57,10 @@ const AddOneFristForm = ({
                 {...params}
                 className="dailyReportInput"
                 // value={addOneFirst.brandName}
-                // inputProps={{
-                //   ...params.inputProps,
-                //   value: addOneFirst.brandName,
-                // }}
+                inputProps={{
+                  ...params.inputProps,
+                  value: addOneFirst.brandName,
+                }}
                 // onChange={(event) => {
                 //   addOneFirst.brandName = event.target.value;
                 //   addOneFirst.liquorID = null;

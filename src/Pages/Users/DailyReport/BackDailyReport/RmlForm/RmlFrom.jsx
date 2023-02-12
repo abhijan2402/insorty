@@ -79,14 +79,14 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
                   {...params}
                   className="dailyReportInput"
                   // value={item.brandName}
-                  // inputProps={{ ...params.inputProps, value: item.brandName }}
+                  inputProps={{ ...params.inputProps, value: item.brandName }}
                   // name='brandName'
-                  // onChange={(event) => {
-                  //   item.brandName = event.target.value;
-                  //   item.liquorID = null;
-                  //   onChangeRmlHandler(event, index)
-                  //   console.log(event.target.name)
-                  // }}
+                  onChange={(event) => {
+                    item.brandName = event.target.value;
+                    // item.liquorID = null;
+                    // onChangeRmlHandler(event, index)
+                    // console.log(event.target)
+                  }}
                 />
               )}
             />
@@ -98,9 +98,9 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
             <input
               type="number"
               className="smallInput"
-              name="averageRate"
-              // value={item.averageRate}
-              // onChange={(e) => onChangeRmlHandler(e, index)}
+              name="ml"
+              value={item.ml}
+              onChange={(e) => onChangeRmlHandler(e, index)}
               
             />
           </div>

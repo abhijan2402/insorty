@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../Style/BackReport.module.scss";
 
+
+
 const BackDetailsReport = () => {
   return (
     <section className="p-6">

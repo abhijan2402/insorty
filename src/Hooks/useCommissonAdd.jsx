@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 
 const useCommissonAdd = () => {
   const commissonForm = {
-    reason: "",
+    type: "",
     amount: 0,
+    desc: ""
   };
 
   const [commissonState, setCommissonState] = useState([commissonForm]);
@@ -24,8 +25,9 @@ const useCommissonAdd = () => {
       data = [
         ...data,
         {
-          reason: "",
+          type: "",
           amount: 0,
+          desc: ""
         },
       ];
     }
@@ -36,8 +38,9 @@ const useCommissonAdd = () => {
     setCommissonState([
       ...commissonState,
       {
-        reason: "",
+        type: "",
         amount: 0,
+        desc: ""
       },
     ]);
   };

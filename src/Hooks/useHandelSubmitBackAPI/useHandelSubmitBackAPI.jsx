@@ -24,6 +24,12 @@ const useHandelSubmitBackAPI = () => {
   const liquerData = liquerState?.data;
   const rmlFieldsData = JSON.parse(localStorage.getItem("rml"));
   const beerTotal = JSON.parse(localStorage.getItem("totalFirstBack"));
+  const purchaseOutside = JSON.parse(localStorage.getItem("purchases"));
+  const expenses = JSON.parse(localStorage.getItem("expenses"));
+  const paymentRecieved = JSON.parse(localStorage.getItem("paymentRecieved"));
+  const borrow = JSON.parse(localStorage.getItem("bhejan"));
+  const send = JSON.parse(localStorage.getItem("borrow"));
+  
 
   const { GetLiqId } = useLiquors()
 
@@ -31,12 +37,14 @@ const useHandelSubmitBackAPI = () => {
   // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
 
-  for (let index = 0; index < cashReciveState.length; index++) {
-    const element = cashReciveState[index];
+  for (let index = 0; paymentRecieved ? index < paymentRecieved.length : 0; index++) {
+    const element = paymentRecieved[index];
 
     borrowCashReturnData.push({
-      cash: element.amount,
-      description: element.reson,
+      name: element.name,
+      id: element.id,
+      amount: element.amount,
+      type: element.type
     });
   }
 
@@ -53,19 +61,19 @@ const useHandelSubmitBackAPI = () => {
   for (let index = 0; rmlFieldsData ? index < rmlFieldsData.length :  0; index++) {
     const element = rmlFieldsData[index];
     addRmlData.push({
-      liquor: GetLiqId(element.liquorID,750,'RML'), //to be updated
+      liquor: GetLiqId(element.liquorID, Number(element.ml),'RML'), //to be updated
       openingStock: element.openingStock,
       purchaseShop: element.incomingPurchase,
       purchaseShopRate: element.buyRate,
       purchaseOutSide: element.incomePurchase,
-      quantityInML : 250,
+      quantityInML : element.ml,
       purchaseOutSideRate: element.purchaseRate,
       credits: element.inflowCredit,
       send: element.sending,
       remaining: element.closingStock,
       closingStock: element.closingStock,
       sales: element.sales,
-      amount: element.amount,
+      amount: element.cost,
     });
   }
   // add Rml ======================
@@ -73,10 +81,11 @@ const useHandelSubmitBackAPI = () => {
   // purchesOutSideState ======================
 
   const purchaseOutSideData = [];
-  for (let index = 0; index < purchesOutSideState.length; index++) {
-    const element = purchesOutSideState[index];
+  for (let index = 0; purchaseOutside ? index < purchaseOutside.length : 0; index++) {
+    const element = purchaseOutside[index];
     purchaseOutSideData.push({
-      liquor: element.liquorID, //to be updated
+      liquor: GetLiqId(element.liquorID, Number(element.quantity),null), //to be updated
+      party: element.partyId,
       brandName: element.brandName,
       partyName: element.partyName,
       number: element.theNumber,
@@ -89,11 +98,12 @@ const useHandelSubmitBackAPI = () => {
 
   const entriesExpances = [];
 
-  for (let index = 0; index < commissonState.length; index++) {
-    const element = commissonState[index];
+  for (let index = 0; expenses ? index < expenses.length : 0; index++) {
+    const element = expenses[index];
     entriesExpances.push({
       amount: element.amount,
-      description: element.reason,
+      description: element.desc,
+      comment: element.type
     });
   }
 
@@ -144,169 +154,156 @@ const useHandelSubmitBackAPI = () => {
   const restAmount = fourthFront + beerTotal + firstformData + secondFront + fifthFront - Number(intoAccountState) - sixthFront - seventhFront + pichlaBakaya - paidDues;
 
   const addSendingData = [];
-  for (let index = 0; index < addShippingState.length; index++) {
-    const element = addShippingState[index];
+  for (let index = 0; send ? index < send.length : 0; index++) {
+    const element = send[index];
     addSendingData.push({
-      liquor: liquerId,
+      liquor: GetLiqId(element.liquorId, Number(element.quantity), null),
+      party:element.partyId,
       partyName: element.partyName,
       brandName: element.brandName,
       number: element.theNumber,
       total: element.total,
-      comment: element.comment,
+      comment: element.reason,
     });
   }
 
   const addPurchesBorrowData = [];
-  for (let index = 0; index < infolwBorrwingFormState.length; index++) {
-    const element = infolwBorrwingFormState[index];
+  for (let index = 0; borrow ? index < borrow.length : 0; index++) {
+    const element = borrow[index];
     addPurchesBorrowData.push({
-      liquor: liquerId,
-      partyName: element.partyName,
-      brandName: element.brandName,
+      liquor: GetLiqId(element.liquorID, Number(element.quantity), null),
+      party: element.partyId,
       number: element.theNumber,
       comment: element.comment,
-      total: element.total,
-      quantity: element.quantity,
-      rate: element.rate,
+      
     });
   }
 
   const handleSubmit = () => {
-    setIsLoading(true);
-    try {
-      const api1 = fetch(
-        "https://insorty-api.onrender.com/shop/getBackPageRMLData",
-        {
-          method: "POST",
-          body: JSON.stringify({ entries: addRmlData }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
-      const api2 = fetch(
-        "https://insorty-api.onrender.com/shop/addTotalExpensesData",
-        {
-          method: "POST",
-          body: JSON.stringify({ entries: entriesExpances }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
+    // setIsLoading(true);
+    // try {
+    //   const api1 = fetch(
+    //     "https://insorty-api.onrender.com/shop/getBackPageRMLData",
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify({ entries: addRmlData }),
+    //       headers: { "Content-Type": "application/json", cookie_token: token },
+    //     }
+    //   );
+    //   const api2 = fetch(
+    //     "https://insorty-api.onrender.com/shop/addTotalExpensesData",
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify({ entries: entriesExpances }),
+    //       headers: { "Content-Type": "application/json", cookie_token: token },
+    //     }
+    //   );
 
-      const api3 = fetch(
-        "https://insorty-api.onrender.com/shop/addBorrowedData",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            salesmen: "Deepak",
-            entries: [
-              {
-                type: "PARTNER",
-                name: "abcd",
-                balance: 234,
-                amount: 23,
-                comment: "no",
-              },
-            ],
-          }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
+    //   const api3 = fetch(
+    //     "https://insorty-api.onrender.com/shop/addBorrowedData",
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify({
+    //         salesmen: "Deepak",
+    //         entries: [
+    //           {
+    //             type: "PARTNER",
+    //             name: "abcd",
+    //             balance: 234,
+    //             amount: 23,
+    //             comment: "no",
+    //           },
+    //         ],
+    //       }),
+    //       headers: { "Content-Type": "application/json", cookie_token: token },
+    //     }
+    //   );
 
-      const api4 = fetch(
-        "https://insorty-api.onrender.com/shop/addFinalReportData",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            english: english,
-            beer: beer,
-            RML: rmlData,
-            totalSell: totalSell,
-            borrowedCashReturn: borrowedCashReturn,
-            intoAccount: intoAccount,
-            borrowed: borrowed,
-            commission: commission,
-            previousDues: previousDues,
-            todaysPayment: todaysPayment,
-            restAmount: restAmount,
-          }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
+    //   const api4 = fetch(
+    //     "https://insorty-api.onrender.com/shop/addFinalReportData",
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify({
+    //         english: english,
+    //         beer: beer,
+    //         RML: rmlData,
+    //         totalSell: totalSell,
+    //         borrowedCashReturn: borrowedCashReturn,
+    //         intoAccount: intoAccount,
+    //         borrowed: borrowed,
+    //         commission: commission,
+    //         previousDues: previousDues,
+    //         todaysPayment: todaysPayment,
+    //         restAmount: restAmount,
+    //       }),
+    //       headers: { "Content-Type": "application/json", cookie_token: token },
+    //     }
+    //   );
 
-      const api5 = fetch(
-        "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
-        {
-          method: "POST",
-          body: JSON.stringify({ entries: purchaseOutSideData }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
+    //   const api5 = fetch(
+    //     "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify({ entries: purchaseOutSideData }),
+    //       headers: { "Content-Type": "application/json", cookie_token: token },
+    //     }
+    //   );
 
-      const api6 = fetch(
-        "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
-        {
-          method: "POST",
-          body: JSON.stringify({ entries: borrowCashReturnData }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
+    //   const api6 = fetch(
+    //     "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify({ entries: borrowCashReturnData }),
+    //       headers: { "Content-Type": "application/json", cookie_token: token },
+    //     }
+    //   );
 
-      const api7 = fetch("https://insorty-api.onrender.com/shop/addSendData", {
-        method: "POST",
-        body: JSON.stringify({ entries: addSendingData }),
-        headers: { "Content-Type": "application/json", cookie_token: token },
-      });
+    //   const api7 = fetch("https://insorty-api.onrender.com/shop/addSendData", {
+    //     method: "POST",
+    //     body: JSON.stringify({ entries: addSendingData }),
+    //     headers: { "Content-Type": "application/json", cookie_token: token },
+    //   });
 
-      const api8 = fetch(
-        "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
-        {
-          method: "POST",
-          body: JSON.stringify({ entries: addPurchesBorrowData }),
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
+    //   const api8 = fetch(
+    //     "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
+    //     {
+    //       method: "POST",
+    //       body: JSON.stringify({ entries: addPurchesBorrowData }),
+    //       headers: { "Content-Type": "application/json", cookie_token: token },
+    //     }
+    //   );
 
-      Promise.all([api1, api2, api3, api4, api5, api6, api7, api8])
-        .then((responses) => Promise.all(responses.map((res) => res.json())))
-        .then((data) => {
-          console.log(data);
+    //   Promise.all([api1, api2, api3, api4, api5, api6, api7, api8])
+    //     .then((responses) => Promise.all(responses.map((res) => res.json())))
+    //     .then((data) => {
+    //       console.log(data);
 
-          if (data[0].success === true && data[1].success === true) {
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: "Data Saved Successfully",
-            });
-          } else {
-            Swal.fire({
-              icon: "error",
-              title: "Oops...",
-              text: "Something went wrong!",
-            });
-          }
-        });
-    } catch (error) {
-      const errorMessage = error.message;
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: errorMessage,
-      });
-    } finally {
-      setIsLoading(false);
-    }
-    console.log({
-      english: english,
-      beer: beer,
-      RML: rmlData,
-      totalSell: totalSell,
-      borrowedCashReturn: borrowedCashReturn,
-      intoAccount: intoAccount,
-      borrowed: borrowed,
-      commission: commission,
-      previousDues: previousDues,
-      todaysPayment: todaysPayment,
-      restAmount: restAmount,
-})
+    //       if (data[0].success === true && data[1].success === true) {
+    //         Swal.fire({
+    //           icon: "success",
+    //           title: "Success",
+    //           text: "Data Saved Successfully",
+    //         });
+    //       } else {
+    //         Swal.fire({
+    //           icon: "error",
+    //           title: "Oops...",
+    //           text: "Something went wrong!",
+    //         });
+    //       }
+    //     });
+    // } catch (error) {
+    //   const errorMessage = error.message;
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: errorMessage,
+    //   });
+    // } finally {
+    //   setIsLoading(false);
+    // }
+    console.log(send)
+    console.log(addSendingData)
   };
 
   return {
