@@ -3,10 +3,10 @@ import React from "react";
 const CommisonExpence = ({ expences, index, entries }) => {
   return (
     <>
-      <tr>
+      {/* <tr>
         <td>{index + 1}</td>
         <td colSpan={8}>{expences?.salesmen}</td>
-      </tr>
+      </tr> */}
       {entries?.map((entry, index) => {
         console.log(entry?.amount);
 

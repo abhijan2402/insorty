@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useRef } from "react";
 import { Link } from "react-router-dom";
 import FristFormBack from "../FirstFormBack/FristFormBack";
 import BackRmlDetailsData from "../BackRmlDetails/BackRmlDetailsData";
@@ -7,6 +7,7 @@ import CommisonExpence from "../CommisonExpence/CommisonExpence";
 import CashReciveData from "../CashReciveData/CashReciveData";
 import { DataContextApi } from "../../../../../../../Context/DataContext";
 import Loader from "../../../../../../../Components/Loader/Loader";
+import { useReactToPrint } from "react-to-print";
 
 const BackDetailReport = () => {
   const {
@@ -14,14 +15,20 @@ const BackDetailReport = () => {
     totalExpensesData,
     borrowedCashReturnData,
     isLoading,
-  } = useContext(DataContextApi);
+  } = useContext(DataContextApi)
+  
+  const container = useRef(null);
 
   // console.log(purchaseOutsideData, "purchaseOutsideData");
   console.log(totalExpensesData, "totalExpensesData");
-
+  
+  const handlePrint = useReactToPrint({
+    content: () => container.current,
+  });
   if (isLoading) {
     return <Loader></Loader>;
   }
+
 
   return (
     <section className="my-4">
@@ -34,7 +41,13 @@ const BackDetailReport = () => {
           Front Details Report
         </Link>
       </div>
+
+      <button className="btn btn-error text-white font-bold" onClick={handlePrint}
+>PRINT</button>
+
       <div className="divider"></div>
+
+    <div ref={container}>
 
       <div className="overflow-x-auto m-4 p-4 ">
         <FristFormBack></FristFormBack>
@@ -238,6 +251,7 @@ const BackDetailReport = () => {
             </tr>
           </tbody>
         </table>
+        </div>
       </div>
     </section>
   );

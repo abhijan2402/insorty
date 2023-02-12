@@ -15,6 +15,8 @@ const useFristFormAdd = () => {
 
     drDate,
   } = useContext(DataContextApi);
+  const { liquors,
+    brandsLoaded, } = useLiquors()
 
   // ======================== add five in frist form ========================
 
@@ -109,8 +111,35 @@ const useFristFormAdd = () => {
     if (prevdata) {
       setFristFormState(prevdata);
     }
+    let firstFormData = fristFormState
+
+
+    if (!prevdata && !brandsLoaded && liquors.length > 0) {
+      console.log("started")
+      const liq = liquors.filter((item) => item.type = "BEER")
+      for (let index = 0; index < liq.length; index++) {
+        const quan750 = liq[index].sizes.find((elem) => elem.quantityInML === 650)
+        const quan330 = liq[index].sizes.find((elem) => elem.quantityInML === 550)
+        const quan180 = liq[index].sizes.find((elem) => elem.quantityInML === 330)
+
+        if (quan750 && quan330 && quan180) {
+          const newFormData = { ...fristFormObj }
+          newFormData.brandName = liq[index].brandName
+          newFormData.liquorID = liq[index]._id
+          newFormData.startingStock650 = quan750.currentStock
+          newFormData.startingStock550 = quan330.currentStock
+          newFormData.startingStock330 = quan180.currentStock
+          firstFormData = [newFormData, ...firstFormData]
+          console.log(firstFormData)
+          setFristFormState(firstFormData)
+
+        }
+
+      }
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [brandsLoaded]);
 
   const addFiveInFristFormHandler = () => {
     let data = fristFormState;

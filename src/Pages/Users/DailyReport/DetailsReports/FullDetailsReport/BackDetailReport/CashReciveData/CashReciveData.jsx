@@ -13,10 +13,10 @@ const CashReciveData = ({ borrwedCashReturn, index, entries }) => {
     // </tr>
 
     <>
-      <tr>
+      {/* <tr>
         <td>{index + 1}</td>
         <td colSpan={8}>{borrwedCashReturn?.salesmen}</td>
-      </tr>
+      </tr> */}
 
       {entries?.map((entry, index) => {
         const { description, cash } = entry;

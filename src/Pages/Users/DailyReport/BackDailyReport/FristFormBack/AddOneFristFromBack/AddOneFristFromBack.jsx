@@ -77,13 +77,13 @@ const AddOneFristFromBack = ({
                   {...params}
                   className="dailyReportInput"
                   // value={item.brandName}
-                  // inputProps={{ ...params.inputProps, value: item.brandName }}
+                  inputProps={{ ...params.inputProps, value: item.brandName }}
 
-                  // onChange={(event) => {
-                  //   item.brandName = event.target.value;
-                  //   item.liquorID = null;
-                  //   onChangeFristBackFormHandler(event, index)
-                  // }}
+                  onChange={(event) => {
+                    item.brandName = event.target.value;
+                    // item.liquorID = null;
+                    // onChangeFristBackFormHandler(event, index)
+                  }}
                 />
               )}
             />
