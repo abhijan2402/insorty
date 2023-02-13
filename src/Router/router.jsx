@@ -31,7 +31,8 @@ import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FullDe
 import BearShopLayout from "../Layouts/BearShopLayouts";
 import routerImport from "./routerImport";
 import BackDetailReport from "../Pages/Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/BackDetailsReport/BackDetailReport";
-import BackReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
+// import BackReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
+import FrontDetailsReport2 from "../Pages/Users/DailyReport/DetailsReports/FrontDetailsReport/FrontDetailsReport";
 
 const {
   BearShopBranch,
@@ -198,8 +199,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/dailyreport/backdetailsreport",
-        element: <BackReport />,
-      }
+        element: <FrontDetailsReport2 />,
+      },
     ],
   },
   {
