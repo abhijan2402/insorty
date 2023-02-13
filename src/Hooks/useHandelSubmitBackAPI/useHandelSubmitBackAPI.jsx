@@ -41,7 +41,7 @@ const useHandelSubmitBackAPI = () => {
     const element = paymentRecieved[index];
 
     borrowCashReturnData.push({
-      
+      comment:element.comment,
       from: element.id,
       cash: element.amount,
       type: element.type
@@ -86,8 +86,6 @@ const useHandelSubmitBackAPI = () => {
     purchaseOutSideData.push({
       liquor: GetLiqId(element.liquorID, Number(element.quantity),null), //to be updated
       party: element.partyId,
-      brandName: element.brandName,
-      partyName: element.partyName,
       number: element.theNumber,
       ml: element.quantity,
       rate: element.rate,

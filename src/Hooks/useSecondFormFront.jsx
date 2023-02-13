@@ -37,7 +37,7 @@ const useSecondFormFront = () => {
 
     let firstFormData = addOneSecondFormState;
 
-    if (!prevdata && !brandsLoaded && liquors.length > 0) {
+    if (!brandsLoaded && liquors.length > 0) {
       console.log("started");
       const liq = liquors.filter((item) => {
         if (item.type === "WINE") {

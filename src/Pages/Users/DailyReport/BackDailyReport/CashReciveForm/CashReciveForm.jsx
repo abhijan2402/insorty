@@ -189,6 +189,18 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
             }}
           />
         </td>
+        <td>
+          <input
+            type="text"
+            name="comment"
+            value={item.comment}
+            onChange={(e) => onChangeCashRecive(e, index)}
+            className="semiSmallInput"
+            style={{
+              width: "100%",
+            }}
+          />
+        </td>
       </tr>
     </>
   );

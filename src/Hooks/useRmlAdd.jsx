@@ -31,17 +31,18 @@ const useRmlAdd = () => {
   useEffect(() => {
     if (prevdata) {
       setAddRmlState(prevdata);
-
+      
+    }
       let firstFormData = addRmlState;
 
-      if (!prevdata && !brandsLoaded && liquors.length > 0) {
+    if (!prevdata && !brandsLoaded && liquors.length > 0) {
         console.log("started");
         const liq = liquors.filter((item) => {
           if (item.type === "RML" || item.type ==='DESHIRML') {
             return item;
           }
         });
-
+console.log(liq)
         liq.map((parent) => {
           parent.sizes.map((item) => {
             
@@ -60,7 +61,7 @@ const useRmlAdd = () => {
       }
 
 
-    }
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);
 

@@ -1725,6 +1725,8 @@ const BackDailyReport = () => {
                       <th>Name</th>
                       <th>Type</th>
                       <th>रकम</th>
+                      <th>comment</th>
+
                     </tr>
                   </thead>
                   <tbody>
@@ -1777,6 +1779,17 @@ const BackDailyReport = () => {
                           className="semiSmallInput"
 
                         />
+                      </td>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="text"
+                            className="semiSmallInput"
+                            name="comment"
+                            disabled
+
+                          />
+                        </div>
                       </td>
                     </tr>
                   </tbody>
