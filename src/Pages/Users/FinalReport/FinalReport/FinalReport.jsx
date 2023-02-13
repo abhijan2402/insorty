@@ -3,6 +3,8 @@ import ListOfFinalReport from "../ListOfFinalReport/ListOfFinalReport";
 import useFinalReport from "../FinalReportHooks/useFinalReport";
 import FinalReportForm from "../FinalReportForm/FinalReportForm";
 import FinalReportStockExcessForm from "../FinalReportStockExcessForm/FinalReportStockExcessForm";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../../Components/Loader/Loader";
 
 const FinalReport = () => {
   const {
@@ -17,8 +19,31 @@ const FinalReport = () => {
     addFiveStockExcess,
   } = useFinalReport();
 
+  const token = localStorage.getItem("token");
+
+  const { data: monthlyFinalReport, isLoading } = useQuery({
+    queryKey: ["monthlyFinalReport"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getMonthlyFinalReport",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  console.log(monthlyFinalReport);
+
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
+
   return (
-    <section className="py-4">
+    <section className="py-4 px-4">
       <div className="title">
         <h2 className="font-bold text-[1.5rem] titleStyle">
           बचत व नकदी का हिसाब
@@ -26,7 +51,9 @@ const FinalReport = () => {
         <div className="divider my-2"></div>
       </div>
       <div>
-        <ListOfFinalReport></ListOfFinalReport>
+        <ListOfFinalReport
+          monthlyFinalReport={monthlyFinalReport}
+        ></ListOfFinalReport>
       </div>
 
       <div className="my-4">
