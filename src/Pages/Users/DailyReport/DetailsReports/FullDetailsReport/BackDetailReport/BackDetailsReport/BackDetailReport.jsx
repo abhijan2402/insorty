@@ -14,7 +14,7 @@ import FinalReport from "../FinalReport/FinalReport";
 
 const BackDetailReport = () => {
   const {
-    purchaseOutsideData,
+    // purchaseOutsideData,
     totalExpensesData,
     borrowedCashReturnData,
     isLoading,

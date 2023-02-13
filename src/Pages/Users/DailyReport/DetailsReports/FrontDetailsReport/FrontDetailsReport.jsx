@@ -86,6 +86,7 @@ const FrontDetailsReport = () => {
                 कुल योग{" "}
               </td>
             </tr>
+
             <tr>
               <td className="tg-0lax">
                 <span style={{ fontWeight: "bold" }}>750ml</span>
@@ -187,6 +188,7 @@ const FrontDetailsReport = () => {
                 <span style={{ fontWeight: "bold" }}>180ml</span>
               </td>
             </tr>
+
             <tr>
               <td className="tg-0lax">1</td>
               <td className="tg-0lax">data</td>
@@ -285,6 +287,7 @@ const FrontDetailsReport = () => {
                 </span>
               </td>
             </tr>
+            
             <tr>
               <td className="tg-0lax" colSpan={5}>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total
