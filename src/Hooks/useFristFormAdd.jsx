@@ -450,7 +450,7 @@ const useFristFormAdd = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
-          e.target.name === "sumremainder650" ||
+          e.target.name === "sumRemainder650" ||
           e.target.name === "closingStock650"
         ) {
           obj.sales650 =
@@ -470,7 +470,7 @@ const useFristFormAdd = () => {
           e.target.name === "closingStock550"
         ) {
           obj.sales550 =
-            Number(obj.sumRemainder650) - Number(obj.closingStock650);
+            Number(obj.sumRemainder550) - Number(obj.closingStock550);
         }
         return obj;
       } else return returned;
@@ -486,7 +486,7 @@ const useFristFormAdd = () => {
           e.target.name === "closingStock330"
         ) {
           obj.sales330 =
-            Number(obj.sumRemainder550) - Number(obj.closingStock550);
+            Number(obj.sumRemainder330) - Number(obj.closingStock330);
         }
         return obj;
       } else return returned;

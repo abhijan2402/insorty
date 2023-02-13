@@ -176,6 +176,7 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
               className="semiSmallInput"
               name="total"
               value={item.total}
+              disabled
               onChange={(e) => onChangeBorrowingRml(e, index)}
             />
           </div>

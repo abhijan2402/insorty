@@ -1115,7 +1115,7 @@ const FronteDailyReport = () => {
                       <th>बिक्री</th>
                       <th>रेट</th>
                       <th>योग</th>
-                      <th>कुल योग</th>
+                      {/* <th>कुल योग</th> */}
                     </tr>
                   </thead>
 

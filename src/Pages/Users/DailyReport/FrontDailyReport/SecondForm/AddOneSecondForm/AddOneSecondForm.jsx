@@ -250,18 +250,7 @@ const AddOneSecondForm = ({
           </div>
         </td>
         {/* ============= कुल योग ================ */}
-        <td>
-          <div className="form-control">
-            <input
-              type="number"
-              className="semiSmallInput"
-              name="grandTotal"
-              value={item.grandTotal}
-              onChange={(e) => handelSeconFormOnChange(e, index)}
-              disabled
-            />
-          </div>
-        </td>
+       
       </tr>
     </>
   );
