@@ -24,10 +24,16 @@ const CashReciveData = ({ borrwedCashReturn, index, entries }) => {
           <tr key={index}>
             <td className="tg-0lax">{index + 1}</td>
             <td className="tg-0lax" colSpan={4}>
-              {description}
+            Name
+            </td>
+            <td className="tg-0lax" colSpan={4}>
+              Type
             </td>
             <td className="tg-0lax" colSpan={4}>
               {cash}
+            </td>
+            <td className="tg-0lax" colSpan={4}>
+              {description}
             </td>
           </tr>
         );

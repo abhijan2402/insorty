@@ -17,9 +17,13 @@ const CommissionForm = ({ index, onChangeCommison, item }) => {
               }}
             /> */}
             <select value={item.type} onChange={(e) => onChangeCommison(e, index)} name="type" className="semiSmallInput">
-              <option value="commission">Commission</option>
-              <option value="expenditure">expenditure</option>
-              <option value="panalty">penalty</option>
+              <option value="COMMISSION">COMMISSION</option>
+              <option value="FUT">FUT</option>
+              <option value="KHARCHA">KHARCHA</option>
+              <option value="PENALTY">PENALTY</option>
+              <option value="BEGAR">BEGAR</option>
+              <option value="MONTHLY">MONTHLY</option>
+              <option value="OTHERS">OTHERS</option>
             </select>
           </div>
         </td>

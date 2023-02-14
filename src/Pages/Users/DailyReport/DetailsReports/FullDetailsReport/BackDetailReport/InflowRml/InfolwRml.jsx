@@ -5,17 +5,25 @@ const InfolwRml = () => {
     <tr>
       <td className="tg-0lax">1</td>
       <td className="tg-0lax" colSpan={4}>
-        data 1
-      </td>
-
-      <td className="tg-0lax" colSpan={4}>
-        data 2
+        party
       </td>
       <td className="tg-0lax" colSpan={4}>
-        data 3
+        Brand
       </td>
       <td className="tg-0lax" colSpan={4}>
-        data 4
+        Number
+      </td>
+      <td className="tg-0lax" colSpan={4}>
+        Size
+      </td>
+      <td className="tg-0lax" colSpan={4}>
+        Rate
+      </td>
+      <td className="tg-0lax" colSpan={4}>
+        Total
+      </td>
+      <td className="tg-0lax" colSpan={4}>
+        Comment
       </td>
     </tr>
   );

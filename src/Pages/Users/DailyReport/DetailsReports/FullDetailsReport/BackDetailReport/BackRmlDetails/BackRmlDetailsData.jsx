@@ -4,43 +4,22 @@ const BackRmlDetailsData = () => {
   return (
     <>
       <tr>
-        <td className="tg-0lax">1</td>
-        <td className="tg-0lax" colSpan={4}>
-          data 1
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 2
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 3
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 4
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 5
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 6
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 7
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 8
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 9
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 10
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 11
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          data 12
-        </td>
+        <td>S.no</td>
+        <td>Brand Name/ ब्राण्ड</td>
+        <td>ml</td>
+        <td>Average Rate</td>
+        <td>प्रारम्भिक स्टॉक</td>
+        <td>आमद (खरीद)-दु.</td>
+        <td>खरीद रेट - दु</td>
+        <td>आमद (खरीद)-बा.</td>
+        <td>खरीद रेट - बा.</td>
+        <td>आमद (उधारी)</td>
+        <td>भेजान</td>
+        <td>योग/शेष</td>
+        <td>अन्तिम स्टॉक </td>
+        <td>बिक्री</td>
+        <td>रेट</td>
+        <td>रकम</td>
       </tr>
     </>
   );

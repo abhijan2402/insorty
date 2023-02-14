@@ -68,6 +68,7 @@ const useHandelSubmitBackAPI = () => {
     const element = rmlFieldsData[index];
     addRmlData.push({
       liquor: GetLiqId(element.liquorID, Number(element.ml),'RML'), //to be updated
+      brandName:element.brandName,
       openingStock: element.openingStock,
       purchaseShop: element.incomingPurchase,
       purchaseShopRate: element.buyRate,

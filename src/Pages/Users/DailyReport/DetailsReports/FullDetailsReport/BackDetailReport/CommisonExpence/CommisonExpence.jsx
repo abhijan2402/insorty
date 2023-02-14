@@ -14,6 +14,9 @@ const CommisonExpence = ({ expences, index, entries }) => {
           <tr key={index}>
             <td className="tg-0lax">{index + 1}</td>
             <td className="tg-0lax" colSpan={4}>
+              {entry?.type}
+            </td>
+            <td className="tg-0lax" colSpan={4}>
               {entry?.description}
             </td>
             <td className="tg-0lax" colSpan={4}>

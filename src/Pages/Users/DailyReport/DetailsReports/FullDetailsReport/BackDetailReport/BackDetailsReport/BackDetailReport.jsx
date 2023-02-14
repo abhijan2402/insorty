@@ -68,43 +68,22 @@ const BackDetailReport = () => {
               </tr>
 
               <tr>
-                <td className="tg-baqh">क्र.सं.</td>
-                <td className="tg-baqh" colSpan={4}>
-                  ब्राण्ड
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  MRP
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  प्रारम्भिक स्टॉक
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  आमद (खरीद)-दु.
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  आमद (खरीद)-बा.
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  आमद (उधारी)
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  भेजान
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  योग/ शेष
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  अन्तिम स्टॉक
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  बिक्री
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  रेट{" "}
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  रकम
-                </td>
+                <th>S.no</th>
+                <th>Brand Name/ ब्राण्ड</th>
+                <th>ml</th>
+                <th>Average Rate</th>
+                <th>प्रारम्भिक स्टॉक</th>
+                <th>आमद (खरीद)-दु.</th>
+                <th>खरीद रेट - दु</th>
+                <th>आमद (खरीद)-बा.</th>
+                <th>खरीद रेट - बा.</th>
+                <th>आमद (उधारी)</th>
+                <th>भेजान</th>
+                <th>योग/शेष</th>
+                <th>अन्तिम स्टॉक </th>
+                <th>बिक्री</th>
+                <th>रेट</th>
+                <th>रकम</th>
               </tr>
             </thead>
             <tbody>
@@ -114,17 +93,20 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax"  />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
               </tr>
             </tbody>
           </table>
@@ -152,6 +134,15 @@ const BackDetailReport = () => {
                   संख्या
                 </td>
                 <td className="tg-0lax" colSpan={4}>
+                  Size
+                </td>
+                <td className="tg-0lax" colSpan={4}>
+                  Rate
+                </td>
+                <td className="tg-0lax" colSpan={4}>
+                  Total
+                </td>
+                <td className="tg-0lax" colSpan={4}>
                   टिप्पणी
                 </td>
               </tr>
@@ -161,6 +152,8 @@ const BackDetailReport = () => {
 
               <tr>
                 <td className="tg-0lax">Total</td>
+                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4} />
@@ -180,6 +173,9 @@ const BackDetailReport = () => {
               </tr>
               <tr>
                 <td className="tg-0lax">क्र.सं.</td>
+                <td className="tg-0lax" colSpan={4}>
+                  type
+                </td>
                 <td className="tg-0lax" colSpan={4}>
                   विवरण
                 </td>
@@ -221,10 +217,16 @@ const BackDetailReport = () => {
               <tr>
                 <td className="tg-0lax">क्र.सं.</td>
                 <td className="tg-0lax" colSpan={4}>
-                  विवरण
+                  Name
+                </td>
+                <td className="tg-0lax" colSpan={4}>
+                  Type
                 </td>
                 <td className="tg-0lax" colSpan={4}>
                   रकम
+                </td>
+                <td className="tg-0lax" colSpan={4}>
+                  विवरण
                 </td>
               </tr>
             </thead>
