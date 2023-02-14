@@ -139,7 +139,7 @@ const Payments = () => {
 
               <tbody>
                 <tr>
-                  <th></th>
+                  <td></td>
 
                   <td>
                     <div className="flex gap-2">
@@ -190,14 +190,14 @@ const Payments = () => {
 
                   {/* ============= कुल योग ================ */}
                 </tr>
-                {paymentDetails && paymentDetails.length === 0 ? (
+                {paymentData && paymentData.length === 0 ? (
                   <tr>
                     <td className="font-bold font-2xl text-red-600 text-center">
                       No Payment Data Found
                     </td>
                   </tr>
                 ) : (
-                  paymentDetails.map((payment, index) => {
+                  paymentData.map((payment, index) => {
                     return (
                       <PaymentForm
                         key={index}

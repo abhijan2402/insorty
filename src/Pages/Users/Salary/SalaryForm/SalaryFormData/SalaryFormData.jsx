@@ -9,8 +9,22 @@ const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList }) =
     return <Loader></Loader>;
   }
 
-  console.log(salareyDataList[index - 1] ? ((salareyDataList[index - 1].salary.price)-(salareyDataList[index - 1].payment.price)+salaryData.price) : 0 )
-  console.log(salareyDataList[index - 1] ? salareyDataList[index - 1].salary.price : 0 )
+  let shesh = salareyDataList.slice(0,index).reduce(
+    (total, currentItem) => (total = total + currentItem.salary.price),
+    0
+  );
+  let totalPaid = salareyDataList.slice(0,index).reduce(
+    (total, currentItem) => (total = total + currentItem.payment.price),
+    0
+  );
+
+
+// console.log(`shesh is ${shesh} at ${index}`)
+
+// console.log(totalPaid)
+
+  // console.log(salareyDataList[index - 1] ? ((salareyDataList[index - 1].salary.price)-(salareyDataList[index - 1].payment.price)+salaryData.price) : 0 )
+  // console.log(salareyDataList[index - 1] ? salareyDataList[index - 1].salary.price : 0 )
   // console.log((salaryData?.price)-(payment?.price))
   // console.log(salary)
 
@@ -31,8 +45,8 @@ const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList }) =
             <div className="form-control">
               <input
                 type="number"
-                // value={salaryData?.price}
-                value={salareyDataList[index - 1] ? ((salareyDataList[index - 1].salary.price) - (salareyDataList[index - 1].payment.price) + salaryData.price) : salaryData.price}
+                value={shesh-totalPaid+salaryData?.price}
+                // value={salareyDataList[index - 1] ? ((salareyDataList[index - 1].salary.price) - (salareyDataList[index - 1].payment.price) + salaryData.price) : salaryData.price}
                 disabled
                 className="semiSmallInput"
               />
@@ -68,7 +82,7 @@ const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList }) =
                 type="text"
                 name="reason"
                 disabled
-                value={(salareyDataList[index - 1] ? ((salareyDataList[index - 1].salary.price) - (salareyDataList[index - 1].payment.price) + salaryData.price) : salaryData.price) - (payment?.price)}
+                value={shesh - totalPaid + salaryData?.price - (payment?.price)}
                 className="semiSmallInput"
               />
             </div>

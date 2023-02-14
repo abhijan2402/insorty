@@ -125,7 +125,7 @@ const Partners = () => {
                   <td>
                     <div className="flex gap-4">
                       <div className="form-control">
-                        <label className="label">नामे </label>
+                        {/* <label className="label">नामे </label> */}
                       </div>
                       <div className="form-control">
                         <label className="label"> </label>
@@ -135,7 +135,7 @@ const Partners = () => {
                       </div>
 
                       <div className="form-control">
-                        <label className="label">शेष</label>
+                        {/* <label className="label">शेष</label> */}
                       </div>
                     </div>
                   </td>
@@ -147,6 +147,7 @@ const Partners = () => {
                       key={index}
                       partner={partner}
                       index={index}
+                      partnerData={partnarData}
                     ></PartnerForm>
                   );
                 })}
