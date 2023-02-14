@@ -1,20 +1,33 @@
 import React from "react";
-import useCommision from "../CommisionHooks/useCommision";
 import { FaCalendarAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import CommisionForm from "../CommisionForm/CommisionForm";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../../Components/Loader/Loader";
 
 const Commision = () => {
-  const {
-    commisionState,
-    addFiveCommision,
-    addOneCommision,
-    handelOnChangeCommision,
-    handelOnSubmitCommision,
-  } = useCommision();
+  const token = localStorage.getItem("token");
+
+  const { data: commitsonData, isLoading } = useQuery({
+    queryKey: ["commitsonData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getTotalExpensesData",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
 
   return (
-    <section className="py-4">
+    <section className="py-4 px-4">
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">कमीशन</h2>
 
@@ -59,13 +72,12 @@ const Commision = () => {
               </thead>
 
               <tbody>
-                {commisionState.map((commision, index) => {
+                {commitsonData.map((commison, index) => {
                   return (
                     <CommisionForm
                       key={index}
                       index={index}
-                      commision={commision}
-                      handelOnChangeCommision={handelOnChangeCommision}
+                      commison={commison}
                     ></CommisionForm>
                   );
                 })}
@@ -73,32 +85,6 @@ const Commision = () => {
             </table>
           </div>
         </form>{" "}
-        <div>
-          <div className="mt-4 flex gap-4">
-            <button
-              className="dailyReportBtnSubmit"
-              onClick={() => handelOnSubmitCommision()}
-              type="submit"
-            >
-              Submit
-            </button>
-            <button
-              className="dailyReportBtn"
-              onClick={() => addFiveCommision()}
-            >
-              ADD 5
-            </button>
-            <button
-              className="dailyReportBtn"
-              onClick={() => addOneCommision()}
-            >
-              ADD 1
-            </button>
-            <Link className="dailyReportBtn text-center flex justify-center items-center">
-              सूची
-            </Link>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -1,46 +1,63 @@
 import React from "react";
 
-const CommisionForm = ({ index, commision, handelOnChangeCommision }) => {
+const CommisionForm = ({ index, commison }) => {
+  const { entries } = commison;
+
+  // filter the type of commision form entries arry and return the type of commision form
+
+  const filterCommisionForm = (type) => {
+    let filtered = entries.filter((item) => {
+      return item.type === "COMMISSION";
+    });
+    return filtered;
+  };
+  const commisionForm = filterCommisionForm("COMMISSION");
+
   return (
     <>
-      <tr>
-        <th>{index + 1}</th>
-        <td>
-          <div className="form-control">
-            <input
-              type="text"
-              name="description"
-              value={commision.description}
-              onChange={(e) => handelOnChangeCommision(e, index)}
-              className="dailyReportInput"
-            />
-          </div>
-        </td>
+      {commisionForm.map((item, index) => {
+        const { description, amount, comment } = item;
 
-        <td>
-          <div className="form-control">
-            <input
-              type="number"
-              name="amount"
-              value={commision.amount}
-              onChange={(e) => handelOnChangeCommision(e, index)}
-              className="commonSmallForm"
-            />
-          </div>
-        </td>
+        console.log(item);
 
-        <td>
-          <div className="form-control">
-            <input
-              type="text"
-              name="comment"
-              value={commision.comment}
-              onChange={(e) => handelOnChangeCommision(e, index)}
-              className="dailyReportInput"
-            />
-          </div>
-        </td>
-      </tr>
+        return (
+          <tr key={index}>
+            <th>1</th>
+            <td>
+              <div className="form-control">
+                <input
+                  type="text"
+                  value={description}
+                  className="dailyReportInput"
+                  disabled
+                />
+              </div>
+            </td>
+
+            <td>
+              <div className="form-control">
+                <input
+                  type="number"
+                  value={amount?.$numberDecimal}
+                  className="commonSmallForm"
+                  disabled
+                />
+              </div>
+            </td>
+
+            <td>
+              <div className="form-control">
+                <input
+                  type="text"
+                  value={comment}
+                  className="dailyReportInput"
+                  disabled
+                />
+              </div>
+            </td>
+          </tr>
+        );
+      })}
     </>
   );
 };
