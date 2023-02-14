@@ -82,7 +82,7 @@ const SalaryList = () => {
         <div className="overflow-x-auto">
           <table className="table w-full">
             <tbody>
-              {(salaryData &&
+              {(salaryData.length > 0 &&
                 salaryData?.map((salary, index) => {
                   return (
                     <tr key={salary?._id}>

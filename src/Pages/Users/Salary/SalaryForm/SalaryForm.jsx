@@ -124,6 +124,7 @@ const SalaryForm = () => {
                   <th>S.no</th>
                   <th>Salary / वेतन</th>
                   <th>Payment / भुगतान</th>
+                  <th>Shesh </th>
                   <th>reason /टिप्पणी</th>
                 </tr>
               </thead>
@@ -226,6 +227,13 @@ const SalaryForm = () => {
                       </div>
                     </div>
                   </td>
+                  <td>
+                    <div className="flex gap-4">
+                      <div className="form-control">
+                        <label className="label"></label>
+                      </div>
+                    </div>
+                  </td>
                   {/* ============= कुल योग ================ */}
                 </tr>
 
@@ -237,6 +245,7 @@ const SalaryForm = () => {
                       <SalaryFormData
                         key={index}
                         salareyDataLoading={salareyDataLoading}
+                        salareyDataList = {salareyDataList}
                         salary={salary}
                         index={index}
                       ></SalaryFormData>

@@ -2,12 +2,17 @@ import React from "react";
 import Loader from "../../../../../Components/Loader/Loader";
 import moment from "moment/moment";
 
-const SalaryFormData = ({ index, salary, salareyDataLoading }) => {
+const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList }) => {
   const { salary: salaryData, payment, comment } = salary;
 
   if (salareyDataLoading) {
     return <Loader></Loader>;
   }
+
+  console.log(salareyDataList[index - 1] ? ((salareyDataList[index - 1].salary.price)-(salareyDataList[index - 1].payment.price)+salaryData.price) : 0 )
+  console.log(salareyDataList[index - 1] ? salareyDataList[index - 1].salary.price : 0 )
+  // console.log((salaryData?.price)-(payment?.price))
+  // console.log(salary)
 
   return (
     <>
@@ -26,7 +31,8 @@ const SalaryFormData = ({ index, salary, salareyDataLoading }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={salaryData?.price}
+                // value={salaryData?.price}
+                value={salareyDataList[index - 1] ? ((salareyDataList[index - 1].salary.price) - (salareyDataList[index - 1].payment.price) + salaryData.price) : salaryData.price}
                 disabled
                 className="semiSmallInput"
               />
@@ -55,6 +61,19 @@ const SalaryFormData = ({ index, salary, salareyDataLoading }) => {
           </div>
         </td>
 
+        <td>
+          <div className="flex gap-4">
+            <div className="form-control">
+              <input
+                type="text"
+                name="reason"
+                disabled
+                value={(salareyDataList[index - 1] ? ((salareyDataList[index - 1].salary.price) - (salareyDataList[index - 1].payment.price) + salaryData.price) : salaryData.price) - (payment?.price)}
+                className="semiSmallInput"
+              />
+            </div>
+          </div>
+        </td>
         <td>
           <div className="flex gap-4">
             <div className="form-control">

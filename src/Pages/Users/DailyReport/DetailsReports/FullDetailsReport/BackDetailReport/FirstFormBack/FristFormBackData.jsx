@@ -40,6 +40,12 @@ const FristFormBackData = () => {
         <td className="tg-0lax">data 33</td>
         <td className="tg-0lax">data 34</td>
         <td className="tg-0lax">data 35</td>
+        <td className="tg-0lax">data 36</td>
+        <td className="tg-0lax">data 37</td>
+        <td className="tg-0lax">data 38</td>
+        <td className="tg-0lax">data 39</td>
+        <td className="tg-0lax">data 40</td>
+        <td className="tg-0lax">data 41</td>
       </tr>
     </>
   );

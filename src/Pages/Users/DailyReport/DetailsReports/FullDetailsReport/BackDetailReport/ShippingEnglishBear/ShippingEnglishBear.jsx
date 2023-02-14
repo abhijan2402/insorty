@@ -4,16 +4,14 @@ const ShippingEnglishBear = () => {
   return (
     <>
       <tr>
-        <td className="tg-0lax">1</td>
-        <td className="tg-0lax" colSpan={4}>
-          Data 1
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          Data 2
-        </td>
-        <td className="tg-0lax" colSpan={4}>
-          Data 3
-        </td>
+        <td>S.no</td>
+        <td>Party Name/ पार्टी का नाम</td>
+        <td>Brand Name/ ब्राण्ड</td>
+        <td>संख्या</td>
+        <td>Quantity</td>
+        <td>रेट</td>
+        <td>योग</td>
+        <td>टिप्पणी</td>
       </tr>
     </>
   );

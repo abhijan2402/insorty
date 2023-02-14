@@ -11,6 +11,7 @@ import { useReactToPrint } from "react-to-print";
 import InflowBorrow from "../InflowBorrow/InflowBorrow";
 import ShippingEnglishBear from "../ShippingEnglishBear/ShippingEnglishBear";
 import FinalReport from "../FinalReport/FinalReport";
+import Borrowed from "../Borrrowed/Borrowed";
 
 const BackDetailReport = () => {
   const {
@@ -273,18 +274,11 @@ const BackDetailReport = () => {
 
               <tr>
                 <td className="tg-baqh">क्र.सं.</td>
-                <td className="tg-baqh" colSpan={4}>
-                  पार्टी का नाम
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  ब्राण्ड
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  संख्या
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  टिप्पणी
-                </td>
+                <th>Party Name/ पार्टी का नाम</th>
+                <th>Brand Name/ ब्राण्ड</th>
+                <th>Size</th>
+                <th>संख्या</th>
+                <th>टिप्पणी</th>
               </tr>
             </thead>
             <tbody>
@@ -294,9 +288,11 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+               
               </tr>
             </tbody>
           </table>
@@ -313,18 +309,13 @@ const BackDetailReport = () => {
 
               <tr>
                 <td className="tg-baqh">क्र.सं.</td>
-                <td className="tg-baqh" colSpan={4}>
-                  पार्टी का नाम
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  ब्राण्ड
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  संख्या
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  टिप्पणी
-                </td>
+                <th>Party Name/ पार्टी का नाम</th>
+                <th>Brand Name/ ब्राण्ड</th>
+                <th>संख्या</th>
+                <th>Quantity</th>
+                <th>रेट</th>
+                <th>योग</th>
+                <th>टिप्पणी</th>
               </tr>
             </thead>
             <tbody>
@@ -334,9 +325,12 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax"  />
+                <td className="tg-0lax"  />
+                <td className="tg-0lax"  />
+                <td className="tg-0lax"  />
+                <td className="tg-0lax"  />
+                <td className="tg-0lax"  />
               </tr>
             </tbody>
           </table>
@@ -350,27 +344,22 @@ const BackDetailReport = () => {
               </tr>
 
               <tr>
-                <td className="tg-baqh">क्र.सं.</td>
-                <td className="tg-baqh" colSpan={4}>
-                  नाम
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  रकम
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  टिप्पणी
-                </td>
+                <th>S.no</th>
+                <th>पार्टी का नाम</th>
+                <th>पार्टी/पार्टनर</th>
+                <th>रकम</th>
+                <th>टिप्पणी</th>
               </tr>
             </thead>
             <tbody>
-              <ShippingEnglishBear></ShippingEnglishBear>
-
+                  <Borrowed/>
               <tr>
                 <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax"  />
+                <td className="tg-0lax"  />
+                <td className="tg-0lax"  />
               </tr>
             </tbody>
           </table>
