@@ -33,6 +33,12 @@ const useHandelSubmitBackAPI = () => {
 
   const { GetLiqId } = useLiquors()
 
+  const {
+    salesMan,
+
+    drDate,
+  } = useContext(DataContextApi);
+
 
   // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
@@ -169,128 +175,121 @@ const useHandelSubmitBackAPI = () => {
   }
 
   const handleSubmit = () => {
-    // setIsLoading(true);
-    // try {
-    //   const api1 = fetch(
-    //     "https://insorty-api.onrender.com/shop/getBackPageRMLData",
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify({ entries: addRmlData }),
-    //       headers: { "Content-Type": "application/json", cookie_token: token },
-    //     }
-    //   );
-    //   const api2 = fetch(
-    //     "https://insorty-api.onrender.com/shop/addTotalExpensesData",
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify({ entries: entriesExpances }),
-    //       headers: { "Content-Type": "application/json", cookie_token: token },
-    //     }
-    //   );
+    setIsLoading(true);
+    try {
+      const api1 = fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageRMLData",
+        {
+          method: "POST",
+          body: JSON.stringify({ date: drDate, salesmen: salesMan,entries: addRmlData }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const api2 = fetch(
+        "https://insorty-api.onrender.com/shop/addTotalExpensesData",
+        {
+          method: "POST",
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: entriesExpances }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
 
-    //   const api3 = fetch(
-    //     "https://insorty-api.onrender.com/shop/addBorrowedData",
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify({
-    //         salesmen: "Deepak",
-    //         entries: [
-    //           {
-    //             type: "PARTNER",
-    //             name: "abcd",
-    //             balance: 234,
-    //             amount: 23,
-    //             comment: "no",
-    //           },
-    //         ],
-    //       }),
-    //       headers: { "Content-Type": "application/json", cookie_token: token },
-    //     }
-    //   );
+      const api3 = fetch(
+        "https://insorty-api.onrender.com/shop/addBorrowedData",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            date: drDate, salesmen: salesMan,
+            entries: entriesBorrow,
+          }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
 
-    //   const api4 = fetch(
-    //     "https://insorty-api.onrender.com/shop/addFinalReportData",
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify({
-    //         english: english,
-    //         beer: beer,
-    //         RML: rmlData,
-    //         totalSell: totalSell,
-    //         borrowedCashReturn: borrowedCashReturn,
-    //         intoAccount: intoAccount,
-    //         borrowed: borrowed,
-    //         commission: commission,
-    //         previousDues: previousDues,
-    //         todaysPayment: todaysPayment,
-    //         restAmount: restAmount,
-    //       }),
-    //       headers: { "Content-Type": "application/json", cookie_token: token },
-    //     }
-    //   );
+      const api4 = fetch(
+        "https://insorty-api.onrender.com/shop/addFinalReportData",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            date: drDate, salesmen: salesMan,
+            english: english,
+            beer: beer,
+            RML: rmlData,
+            totalSell: totalSell,
+            borrowedCashReturn: borrowedCashReturn,
+            intoAccount: intoAccount,
+            borrowed: borrowed,
+            commission: commission,
+            previousDues: previousDues,
+            todaysPayment: todaysPayment,
+            restAmount: restAmount,
+          }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
 
-    //   const api5 = fetch(
-    //     "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify({ entries: purchaseOutSideData }),
-    //       headers: { "Content-Type": "application/json", cookie_token: token },
-    //     }
-    //   );
+      const api5 = fetch(
+        "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
+        {
+          method: "POST",
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: purchaseOutSideData }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
 
-    //   const api6 = fetch(
-    //     "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify({ entries: borrowCashReturnData }),
-    //       headers: { "Content-Type": "application/json", cookie_token: token },
-    //     }
-    //   );
+      const api6 = fetch(
+        "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
+        {
+          method: "POST",
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: borrowCashReturnData }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
 
-    //   const api7 = fetch("https://insorty-api.onrender.com/shop/addSendData", {
-    //     method: "POST",
-    //     body: JSON.stringify({ entries: addSendingData }),
-    //     headers: { "Content-Type": "application/json", cookie_token: token },
-    //   });
+      const api7 = fetch("https://insorty-api.onrender.com/shop/addSendData", {
+        method: "POST",
+        body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: addSendingData }),
+        headers: { "Content-Type": "application/json", cookie_token: token },
+      });
 
-    //   const api8 = fetch(
-    //     "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
-    //     {
-    //       method: "POST",
-    //       body: JSON.stringify({ entries: addPurchesBorrowData }),
-    //       headers: { "Content-Type": "application/json", cookie_token: token },
-    //     }
-    //   );
+      const api8 = fetch(
+        "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
+        {
+          method: "POST",
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: addPurchesBorrowData }),
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
 
-    //   Promise.all([api1, api2, api3, api4, api5, api6, api7, api8])
-    //     .then((responses) => Promise.all(responses.map((res) => res.json())))
-    //     .then((data) => {
-    //       console.log(data);
+      Promise.all([api1, api2, api3, api4, api5, api6, api7, api8])
+        .then((responses) => Promise.all(responses.map((res) => res.json())))
+        .then((data) => {
+          console.log(data);
 
-    //       if (data[0].success === true && data[1].success === true) {
-    //         Swal.fire({
-    //           icon: "success",
-    //           title: "Success",
-    //           text: "Data Saved Successfully",
-    //         });
-    //       } else {
-    //         Swal.fire({
-    //           icon: "error",
-    //           title: "Oops...",
-    //           text: "Something went wrong!",
-    //         });
-    //       }
-    //     });
-    // } catch (error) {
-    //   const errorMessage = error.message;
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: errorMessage,
-    //   });
-    // } finally {
-    //   setIsLoading(false);
-    // }
+          if (data[0].success === true && data[1].success === true) {
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              text: "Data Saved Successfully",
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Something went wrong!",
+            });
+          }
+        });
+    } catch (error) {
+      const errorMessage = error.message;
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
+    } finally {
+      setIsLoading(false);
+    }
     console.log(send)
     console.log(addSendingData)
   };

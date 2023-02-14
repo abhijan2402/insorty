@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const useCommissonAdd = () => {
   const commissonForm = {
-    type: "",
+    type: "COMMISSION",
     amount: 0,
     desc: ""
   };
@@ -25,7 +25,7 @@ const useCommissonAdd = () => {
       data = [
         ...data,
         {
-          type: "",
+          type: "COMMISSION",
           amount: 0,
           desc: ""
         },
@@ -38,7 +38,7 @@ const useCommissonAdd = () => {
     setCommissonState([
       ...commissonState,
       {
-        type: "",
+        type: "COMMISSION",
         amount: 0,
         desc: ""
       },

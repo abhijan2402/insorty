@@ -110,83 +110,82 @@ const useFristFormSubmitAPIFront = () => {
       });
     }
 
-    // try {
-    //   const api1 = await fetch(
-    //     "https://insorty-api.onrender.com/shop/addFrontPageData",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         cookie_token: token,
-    //       },
-    //       body: JSON.stringify({ date: drDate, salesmen:salesMan, entries: dataDetails650 }),
-    //     }
-    //   );
+    try {
+      const api1 = await fetch(
+        "https://insorty-api.onrender.com/shop/addFrontPageData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen:salesMan, entries: dataDetails650 }),
+        }
+      );
 
-    //   const api2 = await fetch(
-    //     "https://insorty-api.onrender.com/shop/addFrontPageData",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         cookie_token: token,
-    //       },
-    //       body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails550 }),
-    //     }
-    //   );
-    //   const api3 = await fetch(
-    //     "https://insorty-api.onrender.com/shop/addFrontPageData",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         cookie_token: token,
-    //       },
-    //       body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails330 }),
-    //     }
-    //   );
+      const api2 = await fetch(
+        "https://insorty-api.onrender.com/shop/addFrontPageData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails550 }),
+        }
+      );
+      const api3 = await fetch(
+        "https://insorty-api.onrender.com/shop/addFrontPageData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails330 }),
+        }
+      );
 
-    //   const api4 = await fetch(
-    //     "https://insorty-api.onrender.com/shop/addFrontPageData",
-    //     {
-    //       method: "POST",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         cookie_token: token,
-    //       },
-    //       body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: addSecondFormData }),
-    //     }
-    //   );
+      const api4 = await fetch(
+        "https://insorty-api.onrender.com/shop/addFrontPageData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: addSecondFormData }),
+        }
+      );
 
-    //   Promise.all([api1, api2, api3, api4])
-    //     .then((responses) => Promise.all(responses.map((res) => res.json())))
-    //     .then((data) => {
-    //       console.log(data);
-    //       if (
-    //         data[0].success &&
-    //         data[1].success &&
-    //         data[2].success &&
-    //         data[3].success
-    //       ) {
-    //         Swal.fire({
-    //           icon: "success",
-    //           title: "Success",
-    //           text: "Data Added Successfully",
-    //         });
-    //       }
-    //     });
-    // } catch (error) {
-    //   const errorMessage = error.message;
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: errorMessage,
-    //   });
-    // } finally {
-    //   setIsLoadingSubmit(false);
-    // }
+      Promise.all([api1, api2, api3, api4])
+        .then((responses) => Promise.all(responses.map((res) => res.json())))
+        .then((data) => {
+          console.log(data);
+          if (
+            data[0].success &&
+            data[1].success &&
+            data[2].success &&
+            data[3].success
+          ) {
+            Swal.fire({
+              icon: "success",
+              title: "Success",
+              text: "Data Added Successfully",
+            });
+          }
+        });
+    } catch (error) {
+      const errorMessage = error.message;
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
+    } finally {
+      setIsLoadingSubmit(false);
+    }
     console.log(dataDetails650)
-    console.log(addSecondFormData)
     console.log(dataDetails550)
     console.log(dataDetails330)
   };
