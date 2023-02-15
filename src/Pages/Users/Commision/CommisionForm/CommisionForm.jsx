@@ -25,34 +25,19 @@ const CommisionForm = ({ index, commison }) => {
             <th>1</th>
             <td>
               <div className="form-control">
-                <input
-                  type="text"
-                  value={description}
-                  className="dailyReportInput"
-                  disabled
-                />
+                {description}
               </div>
             </td>
 
             <td>
               <div className="form-control">
-                <input
-                  type="number"
-                  value={amount?.$numberDecimal}
-                  className="commonSmallForm"
-                  disabled
-                />
+                {amount?.$numberDecimal}
               </div>
             </td>
 
             <td>
               <div className="form-control">
-                <input
-                  type="text"
-                  value={comment}
-                  className="dailyReportInput"
-                  disabled
-                />
+                {comment}
               </div>
             </td>
           </tr>

@@ -1,7 +1,7 @@
 import React from "react";
 import ListOfFinalReport from "../ListOfFinalReport/ListOfFinalReport";
 import useFinalReport from "../FinalReportHooks/useFinalReport";
-import FinalReportForm from "../FinalReportForm/FinalReportForm";
+import BorrowedBottles from "../BorrowedBottles/BorrowedBottles.jsx";
 import FinalReportStockExcessForm from "../FinalReportStockExcessForm/FinalReportStockExcessForm";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
@@ -21,26 +21,29 @@ const FinalReport = () => {
 
   const token = localStorage.getItem("token");
 
-  const { data: monthlyFinalReport, isLoading } = useQuery({
-    queryKey: ["monthlyFinalReport"],
+  // const monthlyFinalReport = {}, 
+  //   borrowedBottles = [], 
+  //   extraBottles = []; 
+  const { data, isLoading } = useQuery({
+  // const { data , isLoading } = useQuery({
+    queryKey: ["monthlyFinalReport", "borrowedBottles", "extraBottles"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getMonthlyFinalReport",
+        "http://localhost/shop/getMonthlyFinalReport",
         {
           method: "POST",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
       const data = await res.json();
+      console.log(data)
       return data.data;
     },
   });
-
-  console.log(monthlyFinalReport);
-
   if (isLoading) {
     return <Loader></Loader>;
   }
+  const {monthlyFinalReport, borrowedBottles, extraBottles} = data;
 
   return (
     <section className="py-4 px-4">
@@ -69,47 +72,31 @@ const FinalReport = () => {
                     <th>S.no</th>
                     <th>पार्टी का नाम</th>
                     <th>Brand / ब्राण्ड</th>
+                    <th>Size / ml</th>
                     <th>संख्या</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  {finalReportState.map((finalReport, index) => {
+                  {borrowedBottles.map((borrowedBottle, index) => {
                     return (
-                      <FinalReportForm
+                      <BorrowedBottles
                         key={index}
                         index={index}
-                        finalReport={finalReport}
-                        handelOnChangeFinalReport={handelOnChangeFinalReport}
-                      ></FinalReportForm>
+                        borrowedBottle={borrowedBottle}
+                      ></BorrowedBottles>
                     );
                   })}
                 </tbody>
               </table>
             </div>
-          </form>{" "}
-          <div>
-            <div className="mt-4 flex gap-4">
-              <button
-                className="dailyReportBtn"
-                onClick={() => addFiveFinalReeport()}
-              >
-                ADD 5
-              </button>
-              <button
-                className="dailyReportBtn"
-                onClick={() => addOneFinalReport()}
-              >
-                ADD 1
-              </button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
 
       <div className="my-4">
         <div>
-          <h2 className="font-bold text-[1.5rem] titleStyle">माल नामे</h2>
+          <h2 className="font-bold text-[1.5rem] titleStyle">माल अधिक जमा</h2>
         </div>
         <div>
           <form action="">
@@ -120,48 +107,25 @@ const FinalReport = () => {
                     <th>S.no</th>
                     <th>पार्टी का नाम</th>
                     <th>Brand / ब्राण्ड</th>
+                    <th>Size / ml</th>
                     <th>संख्या</th>
                   </tr>
                 </thead>
 
                 <tbody>
-                  {finalReportSockExcessState.map((StockExcess, index) => {
+                  {extraBottles.map((StockExcess, index) => {
                     return (
                       <FinalReportStockExcessForm
                         key={index}
                         index={index}
                         StockExcess={StockExcess}
-                        handelOnChangeStockExcess={handelOnChangeStockExcess}
                       ></FinalReportStockExcessForm>
                     );
                   })}
                 </tbody>
               </table>
             </div>
-          </form>{" "}
-          <div>
-            <div className="mt-4 flex gap-4">
-              <button
-                className="dailyReportBtnSubmit"
-                onClick={() => handelOnSubmitFinalReport()}
-                type="submit"
-              >
-                Submit
-              </button>
-              <button
-                className="dailyReportBtn"
-                onClick={() => addFiveStockExcess()}
-              >
-                ADD 5
-              </button>
-              <button
-                className="dailyReportBtn"
-                onClick={() => addOneStockExcess()}
-              >
-                ADD 1
-              </button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </section>
