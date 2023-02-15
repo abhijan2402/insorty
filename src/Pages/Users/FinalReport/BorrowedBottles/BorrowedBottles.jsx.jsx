@@ -1,34 +1,31 @@
 import React from "react";
 
-const StockExcessStockExcessForm = ({
-  index,
-  StockExcess,
-}) => {
+const BorrowedBottles = ({ index, handelOnChangeFinalReport, borrowedBottle }) => {
   return (
     <>
       <tr>
         <th>{index + 1}</th>
         <td>
           <div className="form-control">
-            {StockExcess.partyName}
+            {borrowedBottle.partyName}
           </div>
         </td>
 
         <td>
           <div className="form-control">
-            {StockExcess.brandName}
+            {borrowedBottle.brandName}
           </div>
         </td>
 
         <td>
           <div className="form-control">
-            {StockExcess.quantityInML}
+            {borrowedBottle.quantityInML}
           </div>
         </td>
 
         <td>
           <div className="form-control">
-            {StockExcess.number}
+            {borrowedBottle.number}
           </div>
         </td>
       </tr>
@@ -36,4 +33,4 @@ const StockExcessStockExcessForm = ({
   );
 };
 
-export default StockExcessStockExcessForm;
+export default BorrowedBottles;
