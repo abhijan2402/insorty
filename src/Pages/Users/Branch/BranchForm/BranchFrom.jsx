@@ -1,24 +1,54 @@
 import React from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import useBranch from "../BranchHooks/useBranch";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import BranchFormData from "./BranchFormData/BranchFormData";
+import { useQuery } from "@tanstack/react-query";
+import { Loader } from "react-bootstrap-typeahead";
 
 const BranchFrom = () => {
+  const token = localStorage.getItem("token");
+  const branchResponse = useLoaderData();
+  const branchData = branchResponse?.data;
   const {
     branchState,
-    addOneBranch,
-    addFiveBranch,
-    handelBranchOnChange,
-    handelBranchSubmit,
+    isLoading,
+    setIsLoading,
   } = useBranch();
+
+  const {
+    data: transactions,
+    isLoading: branchDataLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["transactions"],
+    queryFn: async () => {
+      const res = await fetch(
+        "http://localhost/shop/getBranchTransactions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ branchId: branchData._id }),
+        }
+      );
+      const data = await res.json();
+      return data.data.transactions;
+    },
+  });
+
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
 
   return (
     <section className="p-4">
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">
           Branch Name / ब्रांच नाम
-          <span className="titleStyle"> Rahul wine shop / राहुल</span>
+          <span className="titleStyle"> {branchData.branchName}</span>
         </h2>
 
         <div className="flex gap-4 items-center my-4">
@@ -59,107 +89,33 @@ const BranchFrom = () => {
                   <th>Date / दिनांक</th>
                   <th>debit / नामे </th>
                   <th>Deposit / जमा</th>
-                  <th>Reamining /शेष</th>
+                  <th>Running Balance / चालू शेष जमा</th>
                 </tr>
               </thead>
 
               <tbody>
-                <tr>
-                  <th></th>
-                  <td>
-                    <div className="flex gap-4">
-                      <div className="form-control">
-                        <label className="label"></label>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className="flex gap-2">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">माल पेटे</span>
-                        </label>
-                      </div>
-
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">नकद</span>
-                        </label>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className="flex gap-4">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">माल पेटे</span>
-                        </label>
-                      </div>
-
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">नकद</span>
-                        </label>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className="flex gap-4">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">चालू नामे</span>
-                        </label>
-                      </div>
-
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">चालू जमा</span>
-                        </label>
-                      </div>
-                    </div>
-                  </td>
-
-                  {/* ============= कुल योग ================ */}
-                </tr>
-                {branchState.map((branch, index) => {
+                {(transactions && transactions.map(((current_sum => (transaction, index) => {
                   return (
                     <BranchFormData
                       key={index}
                       index={index}
-                      branch={branch}
-                      handelBranchOnChange={handelBranchOnChange}
+                      transaction={{...transaction, current_balance: (current_sum += (transaction.deposit - transaction.debit))}}
                     ></BranchFormData>
                   );
-                })}
+                }))(0))) || (
+                  <>
+                    <tr>
+                      <td>
+                        <span className="text-red-500">No Data Found</span>
+                      </td>
+                    </tr>
+                  </>
+                )}
               </tbody>
             </table>
           </div>
         </form>{" "}
-        <div>
-          <div className="mt-4 flex gap-4">
-            <button
-              className="dailyReportBtnSubmit"
-              onClick={() => handelBranchSubmit()}
-              type="submit"
-            >
-              Submit
-            </button>
-            <button className="dailyReportBtn" onClick={() => addFiveBranch()}>
-              ADD 5
-            </button>
-            <button className="dailyReportBtn" onClick={() => addOneBranch()}>
-              ADD 1
-            </button>
-            <Link className="dailyReportBtn text-center flex justify-center items-center">
-              सूची
-            </Link>
-          </div>
-        </div>
       </div>
-      {/* ************************ all branch data************** */}
     </section>
   );
 };
