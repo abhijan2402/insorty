@@ -118,7 +118,18 @@ const router = createBrowserRouter([
         element: <Branch />,
       },
       {
-        path: "/user/branch/from",
+        path: "/user/branch/from/:branchId",
+        loader: ({ params }) =>
+          fetch(`http://localhost/shop/getBranchTransactions`, {
+            method: "POST",
+            body: JSON.stringify({
+                branchId: params.branchId,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+        }),
         element: <BranchFrom />,
       },
       {

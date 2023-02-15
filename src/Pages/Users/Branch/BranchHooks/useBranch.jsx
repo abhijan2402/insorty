@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 const useBranch = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const branchFormData = {
     date: "",
     debit_price: 0,
@@ -70,6 +72,8 @@ const useBranch = () => {
 
   return {
     branchState,
+    isLoading,
+    setIsLoading,
     addOneBranch,
     addFiveBranch,
     handelBranchOnChange,
