@@ -24,7 +24,7 @@ const BranchFrom = () => {
     queryKey: ["transactions"],
     queryFn: async () => {
       const res = await fetch(
-        "http://localhost/shop/getBranchTransactions",
+        "https://insorty-api.onrender.com/shop/getBranchTransactions",
         {
           method: "POST",
           headers: {
