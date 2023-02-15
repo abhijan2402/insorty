@@ -2,28 +2,30 @@ import React from "react";
 
 const PartnerForm = ({
   partner,
-  transaction,
+  StartDate,
   index,
   partnerData,
-  handelOnChangePartner,
+  EndDate,
 }) => {
   // get partner name from partner object and store it in
-  console.log(partner.transactions.reduce(
+  
+  let transact = partner.transactions.filter((item)=>{
+    if(!StartDate || !EndDate){
+      return item
+    }
+    if(item.date >= StartDate && item.date <= EndDate){
+      return item
+    }
+  })
+
+
+  let remaining_debit = transact.reduce(
     (total, currentItem) => (total = total + currentItem.deposit),
     0
-  ))
-  console.log(partner.transactions.reduce(
-    (total, currentItem) => (total = total + currentItem.debit),
-    0
-  ))
-  let remaining_debit = partner.transactions.reduce(
-    (total, currentItem) => (total = total + currentItem.deposit),
-    0
-  ) - partner.transactions.reduce(
+  ) - transact.reduce(
     (total, currentItem) => (total = total + currentItem.debit),
     0
   )
-  console.log(partner)
 
 
   return (
@@ -54,7 +56,7 @@ const PartnerForm = ({
                 <div className="form-control">
                   <input
                     type="number"
-                value={partner.transactions.reduce(
+                value={transact.reduce(
                   (total, currentItem) => (total = total + currentItem.debit),
                   0
                 )}
@@ -67,7 +69,7 @@ const PartnerForm = ({
                 <div className="form-control">
                   <input
                     type="number"
-                value={partner.transactions.reduce(
+                value={transact.reduce(
                   (total, currentItem) => (total = total + currentItem.deposit),
                   0
                 )}

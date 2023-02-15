@@ -1,11 +1,15 @@
 /* eslint-disable no-sequences */
 import React from "react";
 import EnglishBearDataDisplay from "../EnglishBearDataDisplay/EnglishBearDataDisplay";
+import EnglishBearForm from "../EnglishBearForm/EnglishBearForm";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import useLiquors from "../../../../Hooks/useLiquors";
 
 const EnglishBear = () => {
   const token = localStorage.getItem("token");
+  const { liquors,brandsLoaded} = useLiquors()
+  const total = 0
   const { data: englishBearData, isLoading } = useQuery({
     queryKey: ["englishBearData"],
     queryFn: async () => {
@@ -25,13 +29,13 @@ const EnglishBear = () => {
     return Number(item.currentStock) * Number(item.rate) || 0;
   });
 
-  const totalAmount = Number(
-    totalAmountData?.reduce((a, b) => Number(a) + Number(b), 0)
-  );
+  // const totalAmount = Number(
+  //   totalAmountData?.reduce((a, b) => Number(a) + Number(b), 0)
+  // );
 
-  console.log(totalAmount);
+  // console.log(totalAmount);
 
-  if (isLoading) {
+  if (isLoading || brandsLoaded) {
     return <Loader></Loader>;
   }
 
@@ -52,21 +56,31 @@ const EnglishBear = () => {
             <tr>
               <th>S.No</th>
               <th>ब्राण्ड/ Brand Name </th>
-              <th>साईज / ml</th>
-              <th>Number / संख्या</th>
-              <th>Rate / रेट</th>
+              <th>स्टॉक / stock</th>
+              <th>Avg. Rate/ रेट</th>
+              <th>Total/ योग</th>
               <th>Amount / रकम</th>
             </tr>
           </thead>
           <tbody>
-            {(englishBearData &&
-              englishBearData.map((englishBear, index) => {
+            {(liquors &&
+              liquors.filter((brand) => {
+                if (brand.type === "WINE") {
+                  return brand
+                }
+              }).map((englishBear, index) => {
                 return (
-                  <EnglishBearDataDisplay
+                  <EnglishBearForm
                     key={index}
                     englishBear={englishBear}
+                    liquors={liquors.filter((brand)=>{
+                      if(brand.type==="WINE"){
+                        return brand
+                      }
+                    })}
                     index={index}
-                  ></EnglishBearDataDisplay>
+                    total ={total}
+                  ></EnglishBearForm>
                 );
               })) || (
               <p>
@@ -80,7 +94,7 @@ const EnglishBear = () => {
               <td></td>
               <td></td>
               <td className="commonText">Total</td>
-              <td className="price">{totalAmount}</td>
+              <td className="price">{total}</td>
             </tr>
           </tbody>
         </table>

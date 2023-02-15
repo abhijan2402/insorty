@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 import usePartner from "../PartnerHooks/usePartner";
@@ -6,9 +6,12 @@ import PartnerForm from "../PartnerForm/PartnerForm";
 import AddPartner from "../AddPartner/AddPartner";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import moment from "moment/moment";
 
 const Partners = () => {
   const token = localStorage.getItem("token");
+  const [StartDate, setStartDate] = useState();
+  const [EndDate, setEndDate] = useState();
   const {
     partnerState,
     // addOnePartner,
@@ -58,8 +61,11 @@ const Partners = () => {
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <input
-              type="text"
-              value={"12 Dec 2022 "}
+              type="date"
+              value={StartDate}
+              onChange={(e)=>{setStartDate(e.target.value)
+              console.log(StartDate)
+              }}
               name="year"
               className="semiSmallInput"
             />
@@ -69,9 +75,13 @@ const Partners = () => {
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <input
-              type="text"
-              value={"07 January 2023 "}
+              type="date"
+              value={EndDate}
               name="year"
+              onChange={(e) => {
+                setEndDate(e.target.value)
+                console.log(EndDate)
+              }}
               className="semiSmallInput"
             />
           </div>
@@ -148,6 +158,8 @@ const Partners = () => {
                       partner={partner}
                       index={index}
                       partnerData={partnarData}
+                      StartDate={StartDate}
+                      EndDate={EndDate}
                     ></PartnerForm>
                   );
                 })}
