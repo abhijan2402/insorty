@@ -61,11 +61,11 @@ const AddOneFristForm = ({
                   ...params.inputProps,
                   value: addOneFirst.brandName,
                 }}
-                // onChange={(event) => {
-                //   addOneFirst.brandName = event.target.value;
-                //   addOneFirst.liquorID = null;
-                //   handelFristFormOnChange(event, index);
-                // }}
+                onChange={(event) => {
+                  addOneFirst.brandName = event.target.value;
+                  // addOneFirst.liquorID = null;
+                  // handelFristFormOnChange(event, index);
+                }}
               />
             )}
           />

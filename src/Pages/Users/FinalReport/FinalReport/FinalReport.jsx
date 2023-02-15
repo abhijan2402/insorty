@@ -29,7 +29,7 @@ const FinalReport = () => {
     queryKey: ["monthlyFinalReport", "borrowedBottles", "extraBottles"],
     queryFn: async () => {
       const res = await fetch(
-        "http://localhost/shop/getMonthlyFinalReport",
+        "https://insorty-api.onrender.com/shop/getMonthlyFinalReport",
         {
           method: "POST",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -43,6 +43,7 @@ const FinalReport = () => {
   if (isLoading) {
     return <Loader></Loader>;
   }
+  
   const {monthlyFinalReport, borrowedBottles, extraBottles} = data;
 
   return (

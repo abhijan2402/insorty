@@ -24,6 +24,7 @@ import useComment from "../../../../Hooks/useComment";
 import { DataContextApi } from "../../../../Context/DataContext";
 // import Swal from "sweetalert2";
 import useHandelSubmitBackAPI from "../../../../Hooks/useHandelSubmitBackAPI/useHandelSubmitBackAPI";
+import AddOneSecondFormBack from "./FristFormBack/AddOneFristFromBack/AddOneSecondFormBack";
 
 const BackDailyReport = () => {
   const { handleSubmit, isLoadingSubmit } = useHandelSubmitBackAPI();
@@ -39,6 +40,9 @@ const BackDailyReport = () => {
     brands,
     brandsLoaded,
     liquors,
+    addOneSecondFormState,
+    addOneSecondFormHandler,
+    handelSeconFormOnChange,
   } = useFristFormAdd();
 
   // ================== Rml Form============
@@ -1155,6 +1159,12 @@ const BackDailyReport = () => {
                 >
                   ADD 1
                 </button>
+
+                            
+                
+
+
+
                 {isLoading ? (
                   <>
                     <button
@@ -1196,6 +1206,64 @@ const BackDailyReport = () => {
                   </>
                 )}
               </div>
+
+              <div className="overflow-x-auto">
+                <div className="mt-6">
+                  <div className="overflow-x-auto">
+                    <form>
+                      <table className="table w-full">
+                        <thead>
+                          <tr>
+                            <th>S.no</th>
+                            <th>Brand Name/ ब्राण्ड</th>
+                            <th>Total ml</th>
+                            <th>Average Rate</th>
+                            <th>प्रारम्भिक स्टॉक</th>
+                            <th>आमद (खरीद)-दु.</th>
+                            <th>खरीद रेट - दु</th>
+                            <th>आमद (खरीद)-बा.</th>
+                            <th>खरीद रेट - बा.</th>
+                            <th>आमद (उधारी)</th>
+                            <th>भेजान</th>
+                            <th>योग/शेष</th>
+                            <th>अन्तिम स्टॉक</th>
+                            <th>बिक्री</th>
+                            <th>रेट</th>
+                            <th>योग</th>
+                            {/* <th>कुल योग</th> */}
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          {addOneSecondFormState.map((item, index) => {
+                            return (
+                              <AddOneSecondFormBack
+                                handelSeconFormOnChange={handelSeconFormOnChange}
+                                addOneSecondFormState={addOneSecondFormState}
+                                key={index}
+                                index={index}
+                                item={item}
+                              ></AddOneSecondFormBack>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 flex gap-4">
+
+              <button
+                className="dailyReportBtn mx-4"
+                onClick={() => addOneSecondFormHandler()}
+              >
+                ADD 1
+              </button>    
+
+              </div>                      
+
             </div>
           </div>
         </div>
