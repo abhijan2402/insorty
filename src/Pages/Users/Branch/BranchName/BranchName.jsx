@@ -13,7 +13,7 @@ const BranchName = () => {
     queryKey: ["branches"],
     queryFn: async () => {
       const res = await fetch(
-        "http://localhost/shop/getAllBranches",
+        "https://insorty-api.onrender.com/shop/getAllBranches",
         {
           method: "POST",
           headers: { "Content-Type": "application/json", cookie_token: token },

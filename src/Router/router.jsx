@@ -120,7 +120,7 @@ const router = createBrowserRouter([
       {
         path: "/user/branch/from/:branchId",
         loader: ({ params }) =>
-          fetch(`http://localhost/shop/getBranchTransactions`, {
+          fetch(`https://insorty-api.onrender.com/shop/getBranchTransactions`, {
             method: "POST",
             body: JSON.stringify({
                 branchId: params.branchId,
