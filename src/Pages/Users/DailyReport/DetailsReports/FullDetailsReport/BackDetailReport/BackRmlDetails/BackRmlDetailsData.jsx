@@ -1,26 +1,58 @@
 import React from "react";
+import useLiquors from "../../../../../../../Hooks/useLiquors";
 
-const BackRmlDetailsData = () => {
+const BackRmlDetailsData = ({RmlData, index}) => {
+  // const { entries } = RmlData;
+  // const { getNameByID } = useLiquors();
+  // console.log(RmlData, "++++++");
+
   return (
     <>
-      <tr>
-        <td>S.no</td>
-        <td>Brand Name/ ब्राण्ड</td>
-        <td>ml</td>
-        <td>Average Rate</td>
-        <td>प्रारम्भिक स्टॉक</td>
-        <td>आमद (खरीद)-दु.</td>
-        <td>खरीद रेट - दु</td>
-        <td>आमद (खरीद)-बा.</td>
-        <td>खरीद रेट - बा.</td>
-        <td>आमद (उधारी)</td>
-        <td>भेजान</td>
-        <td>योग/शेष</td>
-        <td>अन्तिम स्टॉक </td>
-        <td>बिक्री</td>
-        <td>रेट</td>
-        <td>रकम</td>
-      </tr>
+      {/* {entries.map((entry, index) => {
+        const {
+          liquor,
+          openingStock,
+          purchaseShop,
+          purchaseShopRate,
+          purchaseOutSide,
+          purchaseOutSideRate,
+          credits,
+          send,
+          remaining,
+          closingStock,
+          sales,
+          amount,
+        } = entry;
+
+        // const avvregrate =
+        //   purchaseShopRate.$numberDecimal +
+        //     purchaseOutSideRate.$numberDecimal || 0;
+
+        return (
+          // <tr key={index}>
+          //   <td>{index + 1}</td>
+          //   <td>{getNameByID(liquor?._id)}</td>
+          //   <td>{liquor?.quantityInML || 0}</td>
+          //   <td>{avvregrate}</td>
+          //   <td>{openingStock}</td>
+          //   <td>{purchaseShop}</td>
+          //   <td>{purchaseShopRate.$numberDecimal || 0}</td>
+          //   <td>{purchaseOutSide}</td>
+          //   <td>{purchaseOutSideRate.$numberDecimal || 0}</td>
+          //   <td>{credits}</td>
+          //   <td>{send}</td>
+          //   <td>{remaining}</td>
+          //   <td>{closingStock}</td>
+          //   <td>{sales}</td>
+          //   <td>
+          //     रेट
+          //     {avvregrate * sales}
+          //   </td>
+          //   <td>{amount.$numberDecimal || 0}</td>
+          // </tr>
+          <h1>{index + 1}</h1>
+        );
+      })} */}
     </>
   );
 };
