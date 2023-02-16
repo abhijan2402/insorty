@@ -144,6 +144,38 @@ const SideNav = () => {
             <span className="mx-4 font-medium">Stock Lending</span>
           </Link>
 
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/brandlist"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">Brand List</span>
+          </Link>
+
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/partyname"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">Party Name</span>
+          </Link>
+
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/branchname"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">Branch Name</span>
+          </Link>
+
+          <Link
+            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            to="/user/beerstock"
+          >
+            <FaFileContract />
+            <span className="mx-4 font-medium">Beer Stock</span>
+          </Link>
+
           {/* ============= */}
 
           <hr className="mt-4 mb-2" />
