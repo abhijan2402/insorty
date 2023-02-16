@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../../../Pages/Home/Style/Home.scss";
 import { FaRegTrashAlt } from "react-icons/fa";
+import AddBrandList from "./AddBrandList/AddBrandList";
 
 const BrandList = () => {
   return (
@@ -49,11 +50,13 @@ const BrandList = () => {
       </div>
       <div>
         <div className="my-4">
-          <Link to="/" className="commonBtn ">
+          <label htmlFor="AddBrandList" className="commonBtn">
             Add Naw
-          </Link>
+          </label>
         </div>
       </div>
+
+      <AddBrandList></AddBrandList>
     </section>
   );
 };

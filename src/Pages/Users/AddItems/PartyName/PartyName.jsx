@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import AddPartyName from "./AddPartyName/AddPartyName";
 
 const PartyName = () => {
   return (
@@ -47,11 +48,13 @@ const PartyName = () => {
 
       <div>
         <div className="my-4">
-          <Link to="/" className="commonBtn ">
+          <label htmlFor="AddPartyName" className="commonBtn">
             Add Naw
-          </Link>
+          </label>
         </div>
       </div>
+
+      <AddPartyName></AddPartyName>
     </section>
   );
 };

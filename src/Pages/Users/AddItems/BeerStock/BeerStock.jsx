@@ -199,7 +199,8 @@ const BeerStock = () => {
             </table>
           </div>
 
-          <div>
+          <div className="w-1/2 mx-4">
+            <h1 className="text-2xl font-bold ">रफ जगह</h1>
             <textarea
               className="textarea textarea-accent h-40 "
               placeholder="Type Here ...."

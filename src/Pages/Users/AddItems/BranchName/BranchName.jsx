@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import AddBranchName from "./AddBranchName/AddBranchName";
 
 const BranchName = () => {
   return (
@@ -46,11 +47,13 @@ const BranchName = () => {
       </div>
       <div>
         <div className="my-4">
-          <Link to="/" className="commonBtn ">
+          <label htmlFor="AddPartyName" className="commonBtn">
             Add Naw
-          </Link>
+          </label>
         </div>
       </div>
+
+      <AddBranchName></AddBranchName>
     </section>
   );
 };
