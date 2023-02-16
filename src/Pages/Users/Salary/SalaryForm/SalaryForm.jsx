@@ -9,7 +9,6 @@ import Loader from "../../../../Components/Loader/Loader";
 
 const SalaryForm = () => {
   const token = localStorage.getItem("token");
-  let salData
   const [year,setYear] = useState("")
   const salaryData = useLoaderData();
   const employeeData = salaryData?.data;
