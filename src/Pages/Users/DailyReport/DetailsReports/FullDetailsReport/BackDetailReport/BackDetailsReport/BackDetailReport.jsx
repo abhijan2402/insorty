@@ -12,24 +12,29 @@ import InflowBorrow from "../InflowBorrow/InflowBorrow";
 import ShippingEnglishBear from "../ShippingEnglishBear/ShippingEnglishBear";
 import FinalReport from "../FinalReport/FinalReport";
 import Borrowed from "../Borrrowed/Borrowed";
+import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
 
 const BackDetailReport = () => {
-  const {
-    getBackRmlData,
-    purchaseOutsideData,
-    totalExpensesData,
-    borrowedCashReturnData,
-    isLoading,
-  } = useContext(DataContextApi);
+  // const {
+  //   getBackRmlData,
+  //   purchaseOutsideData,
+  //   totalExpensesData,
+  //   borrowedCashReturnData,
+  //   isLoading,
+  //   RMLloading
+  // } = useContext(DataContextApi);
+
+  const { RMLData,
+    RMLLoaded } = useGetDailyReport()
   const container = useRef(null);
 
   const handlePrint = useReactToPrint({
     content: () => container.current,
   });
 
-  console.log(getBackRmlData, "getBackRmlData Data");
+  console.log(RMLData, "getBackRmlData Data");
 
-  if (isLoading) {
+  if ( RMLLoaded) {
     return <Loader></Loader>;
   }
 
@@ -88,7 +93,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {getBackRmlData.map((RmlData, index) => {
+              {RMLData.map((RmlData, index) => {
                 return (
                   <BackRmlDetailsData
                     key={index}
@@ -157,7 +162,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {purchaseOutsideData.map((outSideData, index) => {
+              {/* {purchaseOutsideData.map((outSideData, index) => {
                 return (
                   <InfolwRml
                     key={index}
@@ -165,7 +170,7 @@ const BackDetailReport = () => {
                     index={index}
                   ></InfolwRml>
                 );
-              })}
+              })} */}
 
               <tr>
                 <td className="tg-0lax">Total</td>
@@ -202,7 +207,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {totalExpensesData.map((expences, index) => {
+              {/* {totalExpensesData.map((expences, index) => {
                 const { entries } = expences;
                 return (
                   <CommisonExpence
@@ -212,7 +217,7 @@ const BackDetailReport = () => {
                     expences={expences}
                   ></CommisonExpence>
                 );
-              })}
+              })} */}
 
               <tr>
                 <td className="tg-0lax">Total</td>
@@ -248,13 +253,13 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {borrowedCashReturnData && borrowedCashReturnData.length === 0 ? (
+              {/* {borrowedCashReturnData && borrowedCashReturnData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
               ) : (
-                <>
-                  {borrowedCashReturnData.map((borrwedCashReturn, index) => {
+                <> */}
+                  {/* {borrowedCashReturnData.map((borrwedCashReturn, index) => {
                     const { entries } = borrwedCashReturn;
                     return (
                       <CashReciveData
@@ -264,9 +269,9 @@ const BackDetailReport = () => {
                         entries={entries}
                       ></CashReciveData>
                     );
-                  })}
-                </>
-              )}
+                  })} */}
+                {/* </>
+              )} */}
 
               <tr>
                 <td className="tg-0lax">Total</td>

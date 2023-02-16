@@ -117,7 +117,7 @@ const DataContext = ({ children }) => {
 
   // {{url}}/shop/getBackPageRMLData
 
-  const { data: getBackRmlData } = useQuery({
+  const { data: getBackRmlData, isLoading: RMLloading } = useQuery({
     queryKey: ["getBackRmlData"],
     queryFn: async () => {
       const res = await fetch(
@@ -152,6 +152,7 @@ const DataContext = ({ children }) => {
     setSalesMan,
     drDate,
     setDrDate,
+    RMLloading
   };
 
   return (
