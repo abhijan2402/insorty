@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
 import { FaRegCopy, FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -34,6 +35,10 @@ const AddBrandList = ({ refetch }) => {
   };
 
   const handleSubmit = () => {
+    let sizes=[]
+    slize.forEach(element => {
+      sizes.push(Number(element.sizeOfBottle))
+    });
     const token = localStorage.getItem("token");
     fetch("https://insorty-api.onrender.com/shop/addLiquor", {
       method: "POST",
@@ -47,13 +52,9 @@ const AddBrandList = ({ refetch }) => {
       //   sizes: [slize],
       // }),
       body: JSON.stringify({
-        sizes: [
-          {
-            brandName: brandName,
-            type: typeData,
-            quantityInML: slize,
-          },
-        ],
+           brandName: brandName,
+        type: typeData,
+        sizes: sizes,
       }),
     })
       .then((res) => res.json())
@@ -73,6 +74,9 @@ const AddBrandList = ({ refetch }) => {
           });
         }
       });
+    console.log(brandName)
+    console.log(typeData)
+    console.log(sizes)
   };
 
   return (
