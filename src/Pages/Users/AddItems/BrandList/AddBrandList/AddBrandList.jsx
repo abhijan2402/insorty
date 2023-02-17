@@ -7,14 +7,14 @@ const AddBrandList = ({ refetch }) => {
   const [brandName, setBrandName] = React.useState("");
   const [typeData, setTypeData] = React.useState("");
 
-  const slizeTemplate = {
+  const sizeTemplate = {
     sizeOfBottle: "",
   };
-  const [slize, setSlize] = React.useState([slizeTemplate]);
+  const [size, setSize] = React.useState([sizeTemplate]);
 
   const addSize = () => {
-    setSlize([
-      ...slize,
+    setSize([
+      ...size,
       {
         sizeOfBottle: "",
       },
@@ -23,20 +23,20 @@ const AddBrandList = ({ refetch }) => {
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
-    const list = [...slize];
+    const list = [...size];
     list[index][name] = value;
-    setSlize(list);
+    setSize(list);
   };
 
   const handleRemoveClick = (index) => {
-    const list = [...slize];
+    const list = [...size];
     list.splice(index, 1);
-    setSlize(list);
+    setSize(list);
   };
 
   const handleSubmit = () => {
     let sizes=[]
-    slize.forEach(element => {
+    size.forEach(element => {
       sizes.push(Number(element.sizeOfBottle))
     });
     const token = localStorage.getItem("token");
@@ -145,7 +145,7 @@ const AddBrandList = ({ refetch }) => {
                 </label>
 
                 <div className="flex gap-6 items-center flex-wrap">
-                  {slize.map((x, i) => {
+                  {size.map((x, i) => {
                     return (
                       <input
                         type="number"

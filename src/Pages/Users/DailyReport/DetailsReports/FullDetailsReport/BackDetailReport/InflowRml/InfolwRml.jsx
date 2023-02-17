@@ -4,16 +4,16 @@ import useLiquors from "../../../../../../../Hooks/useLiquors";
 
 const InfolwRml = ({ outSideData, index }) => {
   const { getPartyName } = usePartyNames();
-  const { liquors, getNameByID, getTheSizeById } = useLiquors();
+  const { liquors, getNameByID, getTheSizeById,getSize } = useLiquors();
   const { entries } = outSideData;
 
   // get brandName from liquors array
 
   return (
     <>
-      <td>
+      {/* <td>
         <b>{index + 1}</b>
-      </td>
+      </td> */}
 
       {entries.map((inflowData, index) => {
         const { party, number, rate, total, comment, liquor } = inflowData;
@@ -33,7 +33,7 @@ const InfolwRml = ({ outSideData, index }) => {
               {number}
             </td>
             <td className="tg-0lax" colSpan={4}>
-              Size
+              {getSize(liquor)}
               {/* {getTheSizeById(liquor)} */}
             </td>
             <td className="tg-0lax" colSpan={4}>

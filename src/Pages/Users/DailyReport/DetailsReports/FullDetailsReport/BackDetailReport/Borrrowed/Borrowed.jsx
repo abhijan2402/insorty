@@ -1,15 +1,24 @@
 import React from "react";
+import useLiquors from "../../../../../../../Hooks/useLiquors";
+import usePartyNames from "../../../../../../../Hooks/usePartyNames";
 
-const Borrowed = () => {
+const Borrowed = ({index,item,entries}) => {
+    const { getPartyName, getPartnerName, getBranchName } = usePartyNames();
+  const { getNameByID } = useLiquors()
     return (
         <>
-            <tr>
-                <td>S.no</td>
-                <td>पार्टी का नाम</td>
-                <td>पार्टी/पार्टनर</td>
-                <td>रकम</td>
-                <td>टिप्पणी</td>
-            </tr>
+        {entries.map((entry,index)=>{
+            return(
+                <tr>
+                    <td>{index+1}</td>
+                    <td>{entry.type==="PARTY" ? getPartyName(entry.from) : entry.type==="PARTNER" ? getPartnerName(entry.from) : entry.type==="BRANCH" ? getBranchName(entry.from):  ""}</td>
+                    <td>{entry.type}</td>
+                    <td>{entry.amount.$numberDecimal}</td>
+                    <td>{entry.comment}</td>
+                </tr>
+            )
+        })}
+           
         </>
     );
 };

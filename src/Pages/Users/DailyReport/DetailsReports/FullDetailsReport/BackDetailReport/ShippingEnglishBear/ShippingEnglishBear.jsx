@@ -1,18 +1,30 @@
+import { Liquor } from "@mui/icons-material";
 import React from "react";
+import useLiquors from "../../../../../../../Hooks/useLiquors";
+import usePartyNames from "../../../../../../../Hooks/usePartyNames";
 
-const ShippingEnglishBear = () => {
+
+const ShippingEnglishBear = ({ index, item, entries }) => {
+  const { getPartyName } = usePartyNames();
+  const { getNameByID, getSize } = useLiquors()
   return (
     <>
-      <tr>
-        <td>S.no</td>
-        <td>Party Name/ पार्टी का नाम</td>
-        <td>Brand Name/ ब्राण्ड</td>
-        <td>संख्या</td>
-        <td>Quantity</td>
-        <td>रेट</td>
-        <td>योग</td>
-        <td>टिप्पणी</td>
-      </tr>
+
+    {entries.map((entry,index)=>{
+      return(
+        <tr>
+          <td>{index+1}</td>
+          <td>{getPartyName(entry.party)}</td>
+          <td>{getNameByID(entry.liquor)}</td>
+          <td>{entry.number}</td>
+          <td>{getSize(entry.liquor)}</td>
+          <td>{Number(entry.total) / Number(entry.number)}</td>
+          <td>{entry.total}</td>
+          <td>{entry.comment}</td>
+        </tr>
+      )
+    })}    
+      
     </>
   );
 };

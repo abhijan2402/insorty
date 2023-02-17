@@ -4,25 +4,12 @@ import useLiquors from "../../../../../../../Hooks/useLiquors";
 const BackRmlDetailsData = ({RmlData, index}) => {
   const { entries } = RmlData;
   const { getNameByID } = useLiquors();
-  console.log(RmlData, "++++++");
+  // console.log(RmlData, "++++++");
 
   return (
     <>
       {entries.map((entry, index) => {
-        {/* const {
-          liquor,
-          openingStock,
-          purchaseShop,
-          purchaseShopRate,
-          purchaseOutSide,
-          purchaseOutSideRate,
-          credits,
-          send,
-          remaining,
-          closingStock,
-          sales,
-          amount,
-        } = entry; */}
+      
 
         const avg =
           entry.purchaseShopRate.$numberDecimal +

@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef,useState } from "react";
 import { Link } from "react-router-dom";
 import FristFormBack from "../FirstFormBack/FristFormBack";
 import BackRmlDetailsData from "../BackRmlDetails/BackRmlDetailsData";
@@ -25,19 +25,27 @@ const BackDetailReport = () => {
   // } = useContext(DataContextApi);
 
   const { RMLData,
-    RMLLoaded } = useGetDailyReport()
+    RMLLoaded, PurchaseOutsideData,
+    PurchaseOutsideLoaded, TotalExpensesData,
+    TotalExpensesLoaded, BorrowedCashReturnData,
+    BorrowedCashReturnLoaded, PurchaseBorrowData,
+    PurchaseBorrowLoaded, SendData,
+    SendLoaded, BorrowedData,
+    BorrowedDataLoaded, FinalReportData,FinalReportDataLoaded } = useGetDailyReport()
+
   const container = useRef(null);
+  const [filterDate,setFilterDate] = useState('')
 
   const handlePrint = useReactToPrint({
     content: () => container.current,
   });
 
-  console.log(RMLData, "getBackRmlData Data");
-
-  if ( RMLLoaded) {
+  
+  if ( RMLLoaded || PurchaseOutsideLoaded || TotalExpensesLoaded || BorrowedCashReturnLoaded || PurchaseBorrowLoaded || SendLoaded || BorrowedDataLoaded || FinalReportDataLoaded ) {
     return <Loader></Loader>;
   }
-
+  
+  // console.log(filterDate, "purchaseborrow");
   return (
     <section className="my-4">
       <div className="flex gap-6 items-center ">
@@ -51,11 +59,13 @@ const BackDetailReport = () => {
       </div>
 
       <button
-        className="btn btn-error text-white font-bold"
+        className="my-4 btn btn-error text-white font-bold"
         onClick={handlePrint}
       >
         PRINT
       </button>
+
+      <input type="date" name="date" value={filterDate} onChange={(e)=>setFilterDate(e.target.value)} className="mx-4 my-4 semiSmallInput" />
 
       <div className="divider"></div>
 
@@ -93,7 +103,26 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {RMLData.map((RmlData, index) => {
+            
+              { RMLData && RMLData.filter((item)=>{
+                if (item.date?.toString().includes(filterDate.toString())){
+                  return item
+                }
+                else if(filterDate===''){
+                  return item
+                }
+              }).length === 0 ? (
+                <>
+                  <p>No Data Found</p>
+                </>
+              ) : RMLData.filter((item) => {
+                if (item.date?.toString().includes(filterDate.toString())) {
+                  return item
+                }
+                else if (filterDate === '') {
+                  return item
+                }
+              }).map((RmlData, index) => {
                 return (
                   <BackRmlDetailsData
                     key={index}
@@ -162,7 +191,26 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {purchaseOutsideData.map((outSideData, index) => {
+              {PurchaseOutsideData && PurchaseOutsideData.filter((item) => {
+                if (item.date?.toString().includes(filterDate.toString())) {
+                  return item
+                }
+                else if (filterDate === '') {
+                  return item
+                }
+              }).length === 0 ? (
+                <>
+                  <p>No Data Found</p>
+                </>
+              ) :
+                PurchaseOutsideData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                }).map((outSideData, index) => {
                 return (
                   <InfolwRml
                     key={index}
@@ -170,7 +218,7 @@ const BackDetailReport = () => {
                     index={index}
                   ></InfolwRml>
                 );
-              })} */}
+              })}
 
               <tr>
                 <td className="tg-0lax">Total</td>
@@ -207,7 +255,26 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {totalExpensesData.map((expences, index) => {
+              {TotalExpensesData && TotalExpensesData.filter((item) => {
+                if (item.date?.toString().includes(filterDate.toString())) {
+                  return item
+                }
+                else if (filterDate === '') {
+                  return item
+                }
+              }).length === 0 ? (
+                <>
+                  <p>No Data Found</p>
+                </>
+              ) :
+                TotalExpensesData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                }).map((expences, index) => {
                 const { entries } = expences;
                 return (
                   <CommisonExpence
@@ -217,7 +284,7 @@ const BackDetailReport = () => {
                     expences={expences}
                   ></CommisonExpence>
                 );
-              })} */}
+              })}
 
               <tr>
                 <td className="tg-0lax">Total</td>
@@ -253,13 +320,20 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {borrowedCashReturnData && borrowedCashReturnData.length === 0 ? (
+              {BorrowedCashReturnData && BorrowedCashReturnData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
               ) : (
-                <> */}
-                  {/* {borrowedCashReturnData.map((borrwedCashReturn, index) => {
+                <>
+                    {BorrowedCashReturnData.filter((item) => {
+                      if (item.date?.toString().includes(filterDate.toString())) {
+                        return item
+                      }
+                      else if (filterDate === '') {
+                        return item
+                      }
+                    }).map((borrwedCashReturn, index) => {
                     const { entries } = borrwedCashReturn;
                     return (
                       <CashReciveData
@@ -269,14 +343,15 @@ const BackDetailReport = () => {
                         entries={entries}
                       ></CashReciveData>
                     );
-                  })} */}
-                {/* </>
-              )} */}
+                  })}
+                </>
+              )}
 
               <tr>
                 <td className="tg-0lax">Total</td>
                 <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax" colSpan={4}  />
+                <td className="tg-0lax"  />
               </tr>
             </tbody>
           </table>
@@ -303,7 +378,33 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              <InflowBorrow></InflowBorrow>
+
+              {PurchaseBorrowData && PurchaseBorrowData.length === 0 ? (
+                <>
+                  <p>No Data Found</p>
+                </>
+              ) : (
+                <>
+                    {PurchaseBorrowData.filter((item) => {
+                      if (item.date?.toString().includes(filterDate.toString())) {
+                        return item
+                      }
+                      else if (filterDate === '') {
+                        return item
+                      }
+                    }).map((item, index) => {
+                      const { entries } = item;
+                    return (
+                      <InflowBorrow
+                        key={index}
+                        index={index}
+                        PurchaseBorrow = {item}
+                        entries={entries}
+                      ></InflowBorrow>
+                    );
+                  })}
+                </>
+              )}
 
               <tr>
                 <td className="tg-0lax" colSpan={2}>
@@ -339,7 +440,33 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              <ShippingEnglishBear></ShippingEnglishBear>
+
+              {SendData && SendData.length === 0 ? (
+                <>
+                  <p>No Data Found</p>
+                </>
+              ) : (
+                <>
+                    {SendData.filter((item) => {
+                      if (item.date?.toString().includes(filterDate.toString())) {
+                        return item
+                      }
+                      else if (filterDate === '') {
+                        return item
+                      }
+                    }).map((item, index) => {
+                    const { entries } = item;
+                    return (
+                      <ShippingEnglishBear
+                        key={index}
+                        index={index}
+                        item={item}
+                        entries={entries}
+                      ></ShippingEnglishBear>
+                    );
+                  })}
+                </>
+              )}
 
               <tr>
                 <td className="tg-0lax" colSpan={2}>
@@ -362,7 +489,6 @@ const BackDetailReport = () => {
                   <span style={{ fontWeight: "bold" }}>उधारी/नामे</span>
                 </td>
               </tr>
-
               <tr>
                 <th>S.no</th>
                 <th>पार्टी का नाम</th>
@@ -372,7 +498,32 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              <Borrowed />
+              {BorrowedData && BorrowedData.length === 0 ? (
+                <>
+                  <p>No Data Found</p>
+                </>
+              ) : (
+                <>
+                    {BorrowedData.filter((item) => {
+                      if (item.date?.toString().includes(filterDate.toString())) {
+                        return item
+                      }
+                      else if (filterDate === '') {
+                        return item
+                      }
+                    }).map((item, index) => {
+                    const { entries } = item;
+                    return (
+                      <Borrowed
+                        key={index}
+                        index={index}
+                        item={item}
+                        entries={entries}
+                      ></Borrowed>
+                    );
+                  })}
+                </>
+              )}
               <tr>
                 <td className="tg-0lax" colSpan={2}>
                   Total
@@ -403,7 +554,26 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              <FinalReport></FinalReport>
+              {FinalReportData && FinalReportData.filter((item) => {
+                if (item?.date?.toString().includes(filterDate.toString())) {
+                  return item
+                }
+                else if (filterDate === '') {
+                  return item
+                }
+              }).length === 0 ? (
+              <>
+                <p>No Data Found</p>
+              </>
+              ) : (<FinalReport data={FinalReportData.filter((item) => {
+                if (item?.date?.toString().includes(filterDate.toString())) {
+                  return item
+                }
+                else if (filterDate === '') {
+                  return item
+                }
+              })}></FinalReport>)}
+              
             </tbody>
           </table>
 
