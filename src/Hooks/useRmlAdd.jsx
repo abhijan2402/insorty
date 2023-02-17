@@ -5,9 +5,9 @@ const useRmlAdd = () => {
   const { liquors, brandsLoaded } = useLiquors();
 
   const addRmlForm = {
-    liquorID:"",
+    liquorID: "",
     brandName: "", //brandName
-    ml:0,
+    ml: 0,
     averageRate: 0,
     openingStock: 0, //initialStock
     incomingPurchase: 0, //purchaseShop.purchaseShopNum
@@ -31,37 +31,32 @@ const useRmlAdd = () => {
   useEffect(() => {
     if (prevdata) {
       setAddRmlState(prevdata);
-      
     }
-      let firstFormData = addRmlState;
+    let firstFormData = addRmlState;
 
     if (!prevdata && !brandsLoaded && liquors.length > 0) {
-        console.log("started");
-        const liq = liquors.filter((item) => {
-          if (item.type === "RML" || item.type ==='DESHIRML') {
-            return item;
-          }
+      console.log("started");
+      const liq = liquors.filter((item) => {
+        if (item.type === "RML" || item.type === "DESHIRML") {
+          return item;
+        }
+      });
+      console.log(liq);
+      liq.map((parent) => {
+        parent.sizes.map((item) => {
+          console.log(parent);
+          const newFormData = { ...addRmlForm };
+
+          newFormData.brandName = parent.brandName;
+          newFormData.liquorID = parent._id;
+          newFormData.ml = item.quantityInML;
+          newFormData.startingStock = item.currentStock;
+          firstFormData = [newFormData, ...firstFormData];
+          setAddRmlState(firstFormData);
         });
-console.log(liq)
-        liq.map((parent) => {
-          parent.sizes.map((item) => {
-            
-              console.log(parent)
-              const newFormData = { ...addRmlForm };
+      });
+    }
 
-              newFormData.brandName = parent.brandName
-              newFormData.liquorID = parent._id
-              newFormData.ml = item.quantityInML
-              newFormData.startingStock = item.currentStock
-              firstFormData = [newFormData, ...firstFormData]
-              setAddRmlState(firstFormData)
-            
-          });
-        });
-      }
-
-
-    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);
 
@@ -216,7 +211,7 @@ console.log(liq)
     handelAddOneInRml,
     onChangeRmlHandler,
     total,
-    setAddRmlState
+    setAddRmlState,
   };
 };
 

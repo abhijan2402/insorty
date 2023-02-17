@@ -51,7 +51,7 @@ const BackDailyReport = () => {
     handelAddFiveInRml,
     handelAddOneInRml,
     onChangeRmlHandler,
-    setAddRmlState
+    setAddRmlState,
   } = useRmlAdd();
 
   // ================== Purchase OutSide Form============
@@ -137,10 +137,9 @@ const BackDailyReport = () => {
     handleChangeComment,
   } = useComment();
 
-  const { salesMan,
-    setSalesMan,
-    drDate,
-    setDrDate } = useContext(DataContextApi)
+  const { salesMan, setSalesMan, drDate, setDrDate } = useContext(
+    DataContextApi
+  );
   // ********************************* submit mulitple api in handelSubmit  *********************************
 
   // console.log(fristFormState);
@@ -163,16 +162,26 @@ const BackDailyReport = () => {
 
         <div className="flex gap-4 ">
           <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
-          <input type="text" value={salesMan}
+          <input
+            type="text"
+            value={salesMan}
             onChange={(e) => {
               setSalesMan(e.target.value);
-              localStorage.setItem('salesMan', e.target.value)
+              localStorage.setItem("salesMan", e.target.value);
             }}
-            className="semiSmallInput" />
-          <input type="date" value={drDate} onChange={(e) => {
-            setDrDate(e.target.value)
-            localStorage.setItem('drDate',e.target.value)
-          }} name="" id="" className="semiSmallInput" />
+            className="semiSmallInput"
+          />
+          <input
+            type="date"
+            value={drDate}
+            onChange={(e) => {
+              setDrDate(e.target.value);
+              localStorage.setItem("drDate", e.target.value);
+            }}
+            name=""
+            id=""
+            className="semiSmallInput"
+          />
           {/* <h1 className="font-bold ">12/12/2022 </h1> */}
         </div>
 
@@ -564,11 +573,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.startingStock650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.startingStock650)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 className="smallinput"
                                 disabled
                                 type="number"
@@ -580,11 +592,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.startingStock550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.startingStock550)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 disabled
@@ -596,11 +611,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.startingStock330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.startingStock330)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 disabled
@@ -618,11 +636,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.incomingPurchase650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.incomingPurchase650)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 disabled
                                 className="smallinput"
@@ -634,11 +655,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.incomingPurchase550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.incomingPurchase550)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 disabled
@@ -650,11 +674,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.incomingPurchase330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.incomingPurchase330)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 disabled
@@ -703,11 +730,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.incomePurchase650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.incomePurchase650)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="incomePurchase"
@@ -719,11 +749,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.incomePurchase550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.incomePurchase550)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 disabled
@@ -735,11 +768,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.incomePurchase330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.incomePurchase330)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="incomePurchase"
@@ -789,11 +825,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.inflowCredit650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.inflowCredit650)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="inflowCredit"
@@ -805,11 +844,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.inflowCredit550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.inflowCredit550)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="inflowCredit"
@@ -821,11 +863,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.inflowCredit330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.inflowCredit330)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="inflowCredit"
@@ -841,11 +886,13 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.sending650)),
+                                    (total =
+                                      total + Number(currentItem.sending650)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="sending"
@@ -857,11 +904,13 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.sending550)),
+                                    (total =
+                                      total + Number(currentItem.sending550)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="sending"
@@ -873,11 +922,13 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.sending330)),
+                                    (total =
+                                      total + Number(currentItem.sending330)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 disabled
                                 className="smallinput"
@@ -893,11 +944,13 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + currentItem.sumRemainder650),
+                                    (total =
+                                      total + currentItem.sumRemainder650),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="sumRemainder"
@@ -909,11 +962,13 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + currentItem.sumRemainder550),
+                                    (total =
+                                      total + currentItem.sumRemainder550),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="sumRemainder"
@@ -925,11 +980,13 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + currentItem.sumRemainder330),
+                                    (total =
+                                      total + currentItem.sumRemainder330),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="sumRemainder"
@@ -943,11 +1000,14 @@ const BackDailyReport = () => {
                           <div className="flex gap-2">
                             <div className="form-control">
                               <input
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.closingStock650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.closingStock650)),
                                   0
                                 )}
                                 type="number"
@@ -961,11 +1021,14 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.closingStock550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.closingStock550)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="closingStock"
@@ -975,11 +1038,14 @@ const BackDailyReport = () => {
 
                             <div className="form-control">
                               <input
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.closingStock330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.closingStock330)),
                                   0
                                 )}
                                 type="number"
@@ -997,11 +1063,12 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + currentItem.sales650),
+                                    (total = total + currentItem.sales650),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="sales"
@@ -1013,11 +1080,12 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + currentItem.sales550),
+                                    (total = total + currentItem.sales550),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="sales"
@@ -1029,11 +1097,12 @@ const BackDailyReport = () => {
                               <input
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + currentItem.sales330),
+                                    (total = total + currentItem.sales330),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                                 type="number"
                                 className="smallinput"
                                 name="sales"
@@ -1083,11 +1152,15 @@ const BackDailyReport = () => {
                                 name="total650"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + (Number(currentItem.sales650) * Number(currentItem.mainRate650))),
+                                    (total =
+                                      total +
+                                      Number(currentItem.sales650) *
+                                        Number(currentItem.mainRate650)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                               />
                             </div>
                             <div className="form-control">
@@ -1097,11 +1170,15 @@ const BackDailyReport = () => {
                                 name="total330"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + (Number(currentItem.sales550) * Number(currentItem.mainRate550))),
+                                    (total =
+                                      total +
+                                      Number(currentItem.sales550) *
+                                        Number(currentItem.mainRate550)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                               />
                             </div>
                             <div className="form-control">
@@ -1111,11 +1188,15 @@ const BackDailyReport = () => {
                                 name="total330"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                  (total =
-                                    total + (Number(currentItem.sales330) * Number(currentItem.mainRate330))),
+                                    (total =
+                                      total +
+                                      Number(currentItem.sales330) *
+                                        Number(currentItem.mainRate330)),
                                   0
                                 )}
-                                onChange={(event) => onChangeFristBackFormHandler(event)}
+                                onChange={(event) =>
+                                  onChangeFristBackFormHandler(event)
+                                }
                               />
                             </div>
                           </div>
@@ -1130,13 +1211,19 @@ const BackDailyReport = () => {
                               name="grandTotal"
                               value={fristFormState.reduce(
                                 (total, currentItem) =>
-                                (total =
-                                  total + (Number(currentItem.sales650) * Number(currentItem.mainRate650)) +
-                                  (Number(currentItem.sales550) * Number(currentItem.mainRate550)) +
-                                  (Number(currentItem.sales330) * Number(currentItem.mainRate330))),
+                                  (total =
+                                    total +
+                                    Number(currentItem.sales650) *
+                                      Number(currentItem.mainRate650) +
+                                    Number(currentItem.sales550) *
+                                      Number(currentItem.mainRate550) +
+                                    Number(currentItem.sales330) *
+                                      Number(currentItem.mainRate330)),
                                 0
                               )}
-                              onChange={(event) => onChangeFristBackFormHandler(event)}
+                              onChange={(event) =>
+                                onChangeFristBackFormHandler(event)
+                              }
                             />
                           </div>
                         </td>
@@ -1159,11 +1246,6 @@ const BackDailyReport = () => {
                 >
                   ADD 1
                 </button>
-
-                            
-                
-
-
 
                 {isLoading ? (
                   <>
@@ -1238,7 +1320,9 @@ const BackDailyReport = () => {
                           {addOneSecondFormState.map((item, index) => {
                             return (
                               <AddOneSecondFormBack
-                                handelSeconFormOnChange={handelSeconFormOnChange}
+                                handelSeconFormOnChange={
+                                  handelSeconFormOnChange
+                                }
                                 addOneSecondFormState={addOneSecondFormState}
                                 key={index}
                                 index={index}
@@ -1254,16 +1338,13 @@ const BackDailyReport = () => {
               </div>
 
               <div className="mt-4 flex gap-4">
-
-              <button
-                className="dailyReportBtn mx-4"
-                onClick={() => addOneSecondFormHandler()}
-              >
-                ADD 1
-              </button>    
-
-              </div>                      
-
+                <button
+                  className="dailyReportBtn mx-4"
+                  onClick={() => addOneSecondFormHandler()}
+                >
+                  ADD 1
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1343,8 +1424,6 @@ const BackDailyReport = () => {
                         </div>
                       </td>
 
-
-
                       <td>
                         <div className="form-control">
                           <input
@@ -1353,8 +1432,8 @@ const BackDailyReport = () => {
                             name="openingStock"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.openingStock)),
+                                (total =
+                                  total + Number(currentItem.openingStock)),
                               0
                             )}
                             onChange={(e) => onChangeRmlHandler(e)}
@@ -1372,8 +1451,8 @@ const BackDailyReport = () => {
                             name="incomingPurchase"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomingPurchase)),
+                                (total =
+                                  total + Number(currentItem.incomingPurchase)),
                               0
                             )}
                             disabled
@@ -1402,8 +1481,8 @@ const BackDailyReport = () => {
                             name="incomePurchase"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomePurchase)),
+                                (total =
+                                  total + Number(currentItem.incomePurchase)),
                               0
                             )}
                             disabled
@@ -1429,8 +1508,8 @@ const BackDailyReport = () => {
                             name="inflowCredit"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.inflowCredit)),
+                                (total =
+                                  total + Number(currentItem.inflowCredit)),
                               0
                             )}
                             disabled
@@ -1462,8 +1541,8 @@ const BackDailyReport = () => {
                             name="sumRemainder"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.sumRemainder)),
+                                (total =
+                                  total + Number(currentItem.sumRemainder)),
                               0
                             )}
                             disabled
@@ -1478,8 +1557,8 @@ const BackDailyReport = () => {
                             name="closingStock"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.closingStock)),
+                                (total =
+                                  total + Number(currentItem.closingStock)),
                               0
                             )}
                             disabled
@@ -1739,7 +1818,6 @@ const BackDailyReport = () => {
                             className="semiSmallInput"
                             name="reason"
                             disabled
-
                           />
                         </div>
                       </td>
@@ -1765,7 +1843,6 @@ const BackDailyReport = () => {
                           type="number"
                           className="semiSmallInput"
                           name="amount"
-
                           disabled
                           style={{
                             width: "100%",
@@ -1794,7 +1871,6 @@ const BackDailyReport = () => {
                       <th>Type</th>
                       <th>रकम</th>
                       <th>comment</th>
-
                     </tr>
                   </thead>
                   <tbody>
@@ -1818,7 +1894,6 @@ const BackDailyReport = () => {
                             className="semiSmallInput"
                             name="reson"
                             disabled
-
                           />
                         </div>
                       </td>
@@ -1829,7 +1904,6 @@ const BackDailyReport = () => {
                             className="semiSmallInput"
                             name="reson"
                             disabled
-
                           />
                         </div>
                       </td>
@@ -1845,7 +1919,6 @@ const BackDailyReport = () => {
                           )}
                           disabled
                           className="semiSmallInput"
-
                         />
                       </td>
                       <td>
@@ -1855,7 +1928,6 @@ const BackDailyReport = () => {
                             className="semiSmallInput"
                             name="comment"
                             disabled
-
                           />
                         </div>
                       </td>
@@ -1925,7 +1997,7 @@ const BackDailyReport = () => {
                           />
                         </div>
                       </td>
-                      
+
                       <td>
                         <div className="form-control">
                           <input

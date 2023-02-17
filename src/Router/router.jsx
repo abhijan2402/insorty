@@ -33,6 +33,10 @@ import routerImport from "./routerImport";
 import BackDetailReport from "../Pages/Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/BackDetailsReport/BackDetailReport";
 // import BackReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
 import FrontDetailsReport2 from "../Pages/Users/DailyReport/DetailsReports/FrontDetailsReport/FrontDetailsReport";
+import PartyName from "../Pages/Users/AddItems/PartyName/PartyName";
+import BrandList from "../Pages/Users/AddItems/BrandList/BrandList";
+import BranchNameData from "../Pages/Users/AddItems/BranchName/BranchName";
+import BeerStock from "../Pages/Users/AddItems/BeerStock/BeerStock";
 
 const {
   BearShopBranch,
@@ -48,7 +52,6 @@ const {
   BearShopSelfBill,
   BearShopExtra,
   BearShopMainInvestment,
-  // BearShopMainInvestmentForm,
   BearShopEnglishBear,
   BearShopStockLanding,
   BearShopStockLandingForm,
@@ -123,13 +126,13 @@ const router = createBrowserRouter([
           fetch(`https://insorty-api.onrender.com/shop/getBranchTransactions`, {
             method: "POST",
             body: JSON.stringify({
-                branchId: params.branchId,
+              branchId: params.branchId,
             }),
             headers: {
               "Content-Type": "application/json",
               cookie_token: token,
             },
-        }),
+          }),
         element: <BranchFrom />,
       },
       {
@@ -211,6 +214,22 @@ const router = createBrowserRouter([
       {
         path: "/user/dailyreport/backdetailsreport",
         element: <FrontDetailsReport2 />,
+      },
+      {
+        path: "/user/brandlist",
+        element: <BrandList />,
+      },
+      {
+        path: "/user/partyname",
+        element: <PartyName />,
+      },
+      {
+        path: "/user/branchname",
+        element: <BranchNameData />,
+      },
+      {
+        path: "/user/beerstock",
+        element: <BeerStock />,
       },
     ],
   },
