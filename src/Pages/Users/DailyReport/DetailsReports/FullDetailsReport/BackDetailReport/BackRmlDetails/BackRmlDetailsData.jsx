@@ -1,26 +1,58 @@
 import React from "react";
+import useLiquors from "../../../../../../../Hooks/useLiquors";
 
-const BackRmlDetailsData = () => {
+const BackRmlDetailsData = ({RmlData, index}) => {
+  const { entries } = RmlData;
+  const { getNameByID } = useLiquors();
+  console.log(RmlData, "++++++");
+
   return (
     <>
-      <tr>
-        <td>S.no</td>
-        <td>Brand Name/ ब्राण्ड</td>
-        <td>ml</td>
-        <td>Average Rate</td>
-        <td>प्रारम्भिक स्टॉक</td>
-        <td>आमद (खरीद)-दु.</td>
-        <td>खरीद रेट - दु</td>
-        <td>आमद (खरीद)-बा.</td>
-        <td>खरीद रेट - बा.</td>
-        <td>आमद (उधारी)</td>
-        <td>भेजान</td>
-        <td>योग/शेष</td>
-        <td>अन्तिम स्टॉक </td>
-        <td>बिक्री</td>
-        <td>रेट</td>
-        <td>रकम</td>
-      </tr>
+      {entries.map((entry, index) => {
+        {/* const {
+          liquor,
+          openingStock,
+          purchaseShop,
+          purchaseShopRate,
+          purchaseOutSide,
+          purchaseOutSideRate,
+          credits,
+          send,
+          remaining,
+          closingStock,
+          sales,
+          amount,
+        } = entry; */}
+
+        const avg =
+          entry.purchaseShopRate.$numberDecimal +
+          entry.purchaseOutSideRate.$numberDecimal || 0;
+
+        return (
+          <tr key={index}>
+            <td>{index + 1}</td>
+            <td>{getNameByID(entry.liquor?._id)}</td>
+            <td>{entry.liquor?.quantityInML || 0}</td>
+            <td>{(Number(entry.purchaseShopRate.$numberDecimal) +
+              Number(entry.purchaseOutSideRate.$numberDecimal))/2}</td>
+            <td>{entry.openingStock}</td>
+            <td>{entry.purchaseShop}</td>
+            <td>{entry.purchaseShopRate.$numberDecimal || 0}</td>
+            <td>{entry.purchaseOutSide}</td>
+            <td>{entry.purchaseOutSideRate.$numberDecimal || 0}</td>
+            <td>{entry.credits}</td>
+            <td>{entry.send}</td>
+            <td>{entry.remaining}</td>
+            <td>{entry.closingStock}</td>
+            <td>{entry.sales}</td>
+            <td>
+              रेट
+             
+            </td>
+            <td>{entry.amount ? entry.amount.$numberDecimal : 0}</td>
+          </tr>
+        );
+      })}
     </>
   );
 };

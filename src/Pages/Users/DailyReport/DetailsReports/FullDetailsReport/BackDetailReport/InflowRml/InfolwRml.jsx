@@ -1,31 +1,54 @@
 import React from "react";
+import usePartyNames from "../../../../../../../Hooks/usePartyNames";
+import useLiquors from "../../../../../../../Hooks/useLiquors";
 
-const InfolwRml = () => {
+const InfolwRml = ({ outSideData, index }) => {
+  const { getPartyName } = usePartyNames();
+  const { liquors, getNameByID, getTheSizeById } = useLiquors();
+  const { entries } = outSideData;
+
+  // get brandName from liquors array
+
   return (
-    <tr>
-      <td className="tg-0lax">1</td>
-      <td className="tg-0lax" colSpan={4}>
-        party
+    <>
+      <td>
+        <b>{index + 1}</b>
       </td>
-      <td className="tg-0lax" colSpan={4}>
-        Brand
-      </td>
-      <td className="tg-0lax" colSpan={4}>
-        Number
-      </td>
-      <td className="tg-0lax" colSpan={4}>
-        Size
-      </td>
-      <td className="tg-0lax" colSpan={4}>
-        Rate
-      </td>
-      <td className="tg-0lax" colSpan={4}>
-        Total
-      </td>
-      <td className="tg-0lax" colSpan={4}>
-        Comment
-      </td>
-    </tr>
+
+      {entries.map((inflowData, index) => {
+        const { party, number, rate, total, comment, liquor } = inflowData;
+        const partyName = getPartyName(party);
+
+        return (
+          <tr key={index}>
+            <td className="tg-0lax">{index + 1}</td>
+            <td className="tg-0lax" colSpan={4}>
+              {partyName}
+            </td>
+
+            <td className="tg-0lax" colSpan={4}>
+              {getNameByID(liquor)}
+            </td>
+            <td className="tg-0lax" colSpan={4}>
+              {number}
+            </td>
+            <td className="tg-0lax" colSpan={4}>
+              Size
+              {/* {getTheSizeById(liquor)} */}
+            </td>
+            <td className="tg-0lax" colSpan={4}>
+              {rate?.$numberDecimal}
+            </td>
+            <td className="tg-0lax" colSpan={4}>
+              {total}
+            </td>
+            <td className="tg-0lax" colSpan={4}>
+              {comment}
+            </td>
+          </tr>
+        );
+      })}
+    </>
   );
 };
 

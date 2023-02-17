@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import SalaryFormData from "./SalaryFormData/SalaryFormData";
 import useSalary from "../SalaryHooks/useSalary";
 import { Link, useLoaderData } from "react-router-dom";
@@ -9,6 +9,7 @@ import Loader from "../../../../Components/Loader/Loader";
 
 const SalaryForm = () => {
   const token = localStorage.getItem("token");
+  const [year,setYear] = useState("")
   const salaryData = useLoaderData();
   const employeeData = salaryData?.data;
   const {
@@ -37,6 +38,7 @@ const SalaryForm = () => {
         }
       );
       const data = await res.json();
+      
       return data?.data?.salaryData;
     },
   });
@@ -101,6 +103,8 @@ const SalaryForm = () => {
     return <Loader></Loader>;
   }
 
+  
+
   return (
     <section className="px-2 py-6">
       <div className="title">
@@ -111,7 +115,7 @@ const SalaryForm = () => {
 
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">Year</h2>
-          <input type="text" className="semiSmallInput" />
+          <input value={year} onChange={(e)=>setYear(e.target.value)} type="text" className="semiSmallInput" />
         </div>
       </div>
       {/* ************************ all sealy data************** */}
@@ -238,7 +242,12 @@ const SalaryForm = () => {
                 </tr>
 
                 {(salareyDataList &&
-                  salareyDataList?.map((salary, index) => {
+                  salareyDataList.filter((item) => {
+                    if (item.salary.month.toString().includes(year) && item.payment.date.toString().includes(year)) {
+                      return item
+                    }
+                   
+                  })?.map((salary, index) => {
                     console.log(salary, ":salary+++++++++++++");
 
                     return (

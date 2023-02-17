@@ -9,8 +9,8 @@ const DataContext = ({ children }) => {
   const [paidDues, setPaidDues] = useState(0);
   const [liquerState, setLiquerState] = useState([]);
   const token = localStorage.getItem("token");
-  const [drDate, setDrDate] = useState("")
-  const [salesMan,setSalesMan] = useState("")
+  const [drDate, setDrDate] = useState("");
+  const [salesMan, setSalesMan] = useState("");
 
   useEffect(() => {
     fetch("https://insorty-api.onrender.com/shop/getAllLiquors", {
@@ -25,14 +25,13 @@ const DataContext = ({ children }) => {
 
     // const salesman = localStorage.getItem('salesMan')
     //  console.log(salesMan)
-    if (localStorage.getItem('salesMan')){
-      setSalesMan(localStorage.getItem('salesMan'))
-     }
-    if (localStorage.getItem('drDate')){
-      setDrDate(localStorage.getItem('drDate'))
-     }
-    console.log(localStorage.getItem('drDate'))
-
+    if (localStorage.getItem("salesMan")) {
+      setSalesMan(localStorage.getItem("salesMan"));
+    }
+    if (localStorage.getItem("drDate")) {
+      setDrDate(localStorage.getItem("drDate"));
+    }
+    console.log(localStorage.getItem("drDate"));
   }, []);
 
   const { data: liquors, isLoading: brandsLoaded, refetch } = useQuery({
@@ -95,7 +94,7 @@ const DataContext = ({ children }) => {
         }
       );
       const data = await res.json();
-      return data.data; 
+      return data.data;
     },
   });
 
@@ -106,6 +105,23 @@ const DataContext = ({ children }) => {
     queryFn: async () => {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getBorrowedCashReturnData",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  // {{url}}/shop/getBackPageRMLData
+
+  const { data: getBackRmlData, isLoading: RMLloading } = useQuery({
+    queryKey: ["getBackRmlData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getBackPageRMLData",
         {
           method: "POST",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -127,15 +143,16 @@ const DataContext = ({ children }) => {
     liquors,
     brandsLoaded,
     refetch,
-
+    getBackRmlData,
     purchaseOutsideData,
     totalExpensesData,
     borrowedCashReturnData,
     isLoading,
-    salesMan, 
+    salesMan,
     setSalesMan,
-    drDate, 
-    setDrDate
+    drDate,
+    setDrDate,
+    RMLloading
   };
 
   return (

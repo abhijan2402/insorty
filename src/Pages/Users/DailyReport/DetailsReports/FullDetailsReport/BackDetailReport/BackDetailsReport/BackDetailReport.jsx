@@ -12,24 +12,29 @@ import InflowBorrow from "../InflowBorrow/InflowBorrow";
 import ShippingEnglishBear from "../ShippingEnglishBear/ShippingEnglishBear";
 import FinalReport from "../FinalReport/FinalReport";
 import Borrowed from "../Borrrowed/Borrowed";
+import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
 
 const BackDetailReport = () => {
-  const {
-    // purchaseOutsideData,
-    totalExpensesData,
-    borrowedCashReturnData,
-    isLoading,
-  } = useContext(DataContextApi);
+  // const {
+  //   getBackRmlData,
+  //   purchaseOutsideData,
+  //   totalExpensesData,
+  //   borrowedCashReturnData,
+  //   isLoading,
+  //   RMLloading
+  // } = useContext(DataContextApi);
 
+  const { RMLData,
+    RMLLoaded } = useGetDailyReport()
   const container = useRef(null);
-
-  // console.log(purchaseOutsideData, "purchaseOutsideData");
-  console.log(totalExpensesData, "totalExpensesData");
 
   const handlePrint = useReactToPrint({
     content: () => container.current,
   });
-  if (isLoading) {
+
+  console.log(RMLData, "getBackRmlData Data");
+
+  if ( RMLLoaded) {
     return <Loader></Loader>;
   }
 
@@ -88,13 +93,21 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              <BackRmlDetailsData></BackRmlDetailsData>
+              {RMLData.map((RmlData, index) => {
+                return (
+                  <BackRmlDetailsData
+                    key={index}
+                    index={index}
+                    RmlData={RmlData}
+                  ></BackRmlDetailsData>
+                );
+              })}
 
               <tr>
                 <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
-                <td className="tg-0lax"  />
+                <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
@@ -149,7 +162,15 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              <InfolwRml></InfolwRml>
+              {/* {purchaseOutsideData.map((outSideData, index) => {
+                return (
+                  <InfolwRml
+                    key={index}
+                    outSideData={outSideData}
+                    index={index}
+                  ></InfolwRml>
+                );
+              })} */}
 
               <tr>
                 <td className="tg-0lax">Total</td>
@@ -186,7 +207,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {totalExpensesData.map((expences, index) => {
+              {/* {totalExpensesData.map((expences, index) => {
                 const { entries } = expences;
                 return (
                   <CommisonExpence
@@ -196,7 +217,7 @@ const BackDetailReport = () => {
                     expences={expences}
                   ></CommisonExpence>
                 );
-              })}
+              })} */}
 
               <tr>
                 <td className="tg-0lax">Total</td>
@@ -232,13 +253,13 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {borrowedCashReturnData && borrowedCashReturnData.length === 0 ? (
+              {/* {borrowedCashReturnData && borrowedCashReturnData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
               ) : (
-                <>
-                  {borrowedCashReturnData.map((borrwedCashReturn, index) => {
+                <> */}
+                  {/* {borrowedCashReturnData.map((borrwedCashReturn, index) => {
                     const { entries } = borrwedCashReturn;
                     return (
                       <CashReciveData
@@ -248,9 +269,9 @@ const BackDetailReport = () => {
                         entries={entries}
                       ></CashReciveData>
                     );
-                  })}
-                </>
-              )}
+                  })} */}
+                {/* </>
+              )} */}
 
               <tr>
                 <td className="tg-0lax">Total</td>
@@ -292,7 +313,6 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
-               
               </tr>
             </tbody>
           </table>
@@ -325,12 +345,12 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
-                <td className="tg-0lax"  />
-                <td className="tg-0lax"  />
-                <td className="tg-0lax"  />
-                <td className="tg-0lax"  />
-                <td className="tg-0lax"  />
-                <td className="tg-0lax"  />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
               </tr>
             </tbody>
           </table>
@@ -352,14 +372,14 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-                  <Borrowed/>
+              <Borrowed />
               <tr>
                 <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
-                <td className="tg-0lax"  />
-                <td className="tg-0lax"  />
-                <td className="tg-0lax"  />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
               </tr>
             </tbody>
           </table>
