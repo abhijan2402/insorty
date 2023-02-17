@@ -35,35 +35,26 @@ const AddBrandList = ({ refetch }) => {
 
   const handleSubmit = () => {
     const token = localStorage.getItem("token");
-
-    const data = {
-      parentLiquor: {
-        brandName,
-        type: typeData,
-      },
-      sizes: {
-        quantityInML: slize,
-      },
-    };
-    // console.log(data);
-
     fetch("https://insorty-api.onrender.com/shop/addLiquor", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         cookie_token: token,
       },
-      body: JSON.stringify([
-        {
-          parentLiquor: {
-            brandName,
+      // body: JSON.stringify({
+      //   brandName: brandName,
+      //   type: typeData,
+      //   sizes: [slize],
+      // }),
+      body: JSON.stringify({
+        sizes: [
+          {
+            brandName: brandName,
             type: typeData,
-          },
-          sizes: {
             quantityInML: slize,
           },
-        },
-      ]),
+        ],
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
