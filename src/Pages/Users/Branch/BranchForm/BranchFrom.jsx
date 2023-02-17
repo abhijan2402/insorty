@@ -39,7 +39,7 @@ const BranchFrom = () => {
     },
   });
 
-  if (isLoading) {
+  if (branchDataLoading) {
     return <Loader></Loader>;
   }
 
