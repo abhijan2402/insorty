@@ -1,31 +1,15 @@
 import React from "react";
 
-const BorrowForm = ({ index, borrow, handelBorrowOnChange }) => {
+const BorrowForm = ({ index, party }) => {
   return (
     <>
       <tr>
-        <th>{index + 1}</th>
+        <td>{index + 1}</td>
 
         <td>
           <div className="flex gap-4">
             <div className="form-control">
-              <input
-                type="text"
-                name="party_name"
-                value={borrow.party_name}
-                onChange={(e) => handelBorrowOnChange(e, index)}
-                className="dailyReportInput"
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                name="debit_amount"
-                value={borrow.debit_amount}
-                onChange={(e) => handelBorrowOnChange(e, index)}
-                className="commonSmallForm"
-              />
+              {party.partyName}
             </div>
           </div>
         </td>
@@ -33,13 +17,7 @@ const BorrowForm = ({ index, borrow, handelBorrowOnChange }) => {
         <td>
           <div className="flex gap-4">
             <div className="form-control">
-              <input
-                type="number"
-                name="deposit_amount"
-                value={borrow.deposit_amount}
-                onChange={(e) => handelBorrowOnChange(e, index)}
-                className="commonSmallForm"
-              />
+              {party.deposits}
             </div>
           </div>
         </td>
@@ -47,23 +25,14 @@ const BorrowForm = ({ index, borrow, handelBorrowOnChange }) => {
         <td>
           <div className="flex gap-4">
             <div className="form-control">
-              <input
-                type="number"
-                name="debit"
-                value={borrow.debit}
-                onChange={(e) => handelBorrowOnChange(e, index)}
-                className="semiSmallInput"
-              />
+              {party.debits}
             </div>
-
+          </div>
+        </td>
+        <td>
+          <div className="flex gap-4">
             <div className="form-control">
-              <input
-                type="number"
-                name="remaining"
-                value={borrow.remaining}
-                onChange={(e) => handelBorrowOnChange(e, index)}
-                className="commonSmallForm"
-              />
+              {party.current_balance}
             </div>
           </div>
         </td>
