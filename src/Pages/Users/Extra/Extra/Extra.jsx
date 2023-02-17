@@ -20,6 +20,7 @@ const Extra = () => {
       return data.data;
     },
   });
+  
   const entriesMainData = extraData?.map((entry) => {
     return entry?.entries;
   });

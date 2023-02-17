@@ -1,8 +1,8 @@
 import React from "react";
-import { HiPlusCircle } from "react-icons/hi";
 import { FaRegCopy, FaRegTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
-const AddBrandList = () => {
+const AddBrandList = ({ refetch }) => {
   const [brandName, setBrandName] = React.useState("");
   const [typeData, setTypeData] = React.useState("");
 
@@ -34,7 +34,54 @@ const AddBrandList = () => {
   };
 
   const handleSubmit = () => {
-    console.log(slize);
+    const token = localStorage.getItem("token");
+
+    const data = {
+      parentLiquor: {
+        brandName,
+        type: typeData,
+      },
+      sizes: {
+        quantityInML: slize,
+      },
+    };
+    // console.log(data);
+
+    fetch("https://insorty-api.onrender.com/shop/addLiquor", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+      body: JSON.stringify([
+        {
+          parentLiquor: {
+            brandName,
+            type: typeData,
+          },
+          sizes: {
+            quantityInML: slize,
+          },
+        },
+      ]),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          refetch();
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Brand Added Successfully",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Something Went Wrong",
+          });
+        }
+      });
   };
 
   return (
@@ -89,8 +136,9 @@ const AddBrandList = () => {
                   <option disabled selected>
                     Select Type
                   </option>
-                  <option>Wine</option>
-                  <option>Bear</option>
+                  <option>WINE</option>
+                  <option>BEAR</option>
+                  <option>DESHIRML</option>
                 </select>
               </div>
 
@@ -135,6 +183,7 @@ const AddBrandList = () => {
                 <button
                   className="btn btn-primary my-4"
                   style={{ width: "100%", height: "2.5rem" }}
+                  onClick={handleSubmit}
                 >
                   Save
                 </button>

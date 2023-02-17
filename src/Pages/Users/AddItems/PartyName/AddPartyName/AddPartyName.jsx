@@ -1,12 +1,39 @@
 import React from "react";
+import Swal from "sweetalert2";
 
-const AddPartyName = () => {
+const AddPartyName = ({refetch}) => {
+  const token = localStorage.getItem("token");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
-    
+    fetch("https://insorty-api.onrender.com/shop/addParty", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", cookie_token: token },
+      body: JSON.stringify({ partyName: data.addPartyName }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          refetch();
+          Swal.fire({
+            icon: "success",
+            title: "Party Name Added Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Something went wrong",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
