@@ -1,8 +1,8 @@
 import React from 'react';
 import useLiquors from '../../../../../../../Hooks/useLiquors';
 
-const FristFormDetails = ({ RmlData, index }) => {
-    const { entries } = RmlData;
+const FristFormDetails = ({ FrontPageData, index }) => {
+    const { entries } = FrontPageData;
     const { getNameByID,getSize } = useLiquors();
     // console.log(RmlData, "++++++");
 
@@ -37,7 +37,7 @@ const FristFormDetails = ({ RmlData, index }) => {
                         <td>{entry.closingStock}</td>
                         <td>{entry.sales}</td>
                         <td>
-                            रेट
+                            {Number(entry.amount ? entry.amount.$numberDecimal : 0)/entry.sales}
 
                         </td>
                         <td>{entry.amount ? entry.amount.$numberDecimal : 0}</td>

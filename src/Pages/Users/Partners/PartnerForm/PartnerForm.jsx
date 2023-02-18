@@ -1,4 +1,5 @@
 import React from "react";
+// import { Link } from "react-router-dom";
 
 const PartnerForm = ({
   partner,
@@ -9,13 +10,17 @@ const PartnerForm = ({
 }) => {
   // get partner name from partner object and store it in
   
-  let transact = partner.transactions.filter((item)=>{
-    if(!StartDate || !EndDate){
-      return item
+  let transact = partner.transactions.filter(row => {
+    let filterPass = true
+    const date = new Date(row.date)
+    if (StartDate) {
+      filterPass = filterPass && (new Date(StartDate) <= date)
     }
-    if(item.date >= StartDate && item.date <= EndDate){
-      return item
+    if (EndDate) {
+      filterPass = filterPass && (new Date(EndDate) >= date)
     }
+    //if filterPass comes back `false` the row is filtered out
+    return filterPass
   })
 
 
@@ -48,6 +53,7 @@ const PartnerForm = ({
                     type="text"
                     name="partnerName"
                     value={partner.name}
+                    disabled
                     className="dailyReportInput"
                   />
                 </div>
@@ -56,6 +62,7 @@ const PartnerForm = ({
                 <div className="form-control">
                   <input
                     type="number"
+                disabled
                 value={transact.reduce(
                   (total, currentItem) => (total = total + currentItem.debit),
                   0
@@ -69,6 +76,7 @@ const PartnerForm = ({
                 <div className="form-control">
                   <input
                     type="number"
+                disabled
                 value={transact.reduce(
                   (total, currentItem) => (total = total + currentItem.deposit),
                   0
@@ -85,6 +93,7 @@ const PartnerForm = ({
                     <input
                       type="number"
                       name="remaining"
+                  disabled
                       // if vale is greater than 0 then show in remaining
                       value={remaining_debit}
                       className="commonSmallForm"

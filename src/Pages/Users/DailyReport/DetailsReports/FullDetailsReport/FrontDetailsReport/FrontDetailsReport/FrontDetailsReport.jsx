@@ -454,36 +454,164 @@ const FrontDetailsReport = () => {
                 else if (filterDate === '') {
                   return item
                 }
-              }).map((RmlData, index) => {
+              }).map((FrontPageData, index) => {
                 return (
                   <FristFormDetails
                     key={index}
                     index={index}
-                    RmlData={RmlData}
+                    FrontPageData={FrontPageData}
                   ></FristFormDetails>
                 );
               })}
                 {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
-                <tr>
-                  <td className="tg-0lax" colSpan={2}>
-                    Total
-                  </td>
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax" />
-                </tr>
+              <tr>
+                <td className="tg-0lax" colSpan={2}>
+                  Total
+                </td>
+                <td className="tg-0lax" ></td>
+                <td className="tg-0lax" ></td>
+                <td className="tg-0lax" >{FrontPageData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                  return false
+                }).reduce(
+                  (total, currentItem) => (total = total + currentItem.entries.reduce(
+                    (total, currentItem) => (total = total + currentItem.openingStock),
+                    0
+                  )),
+                  0
+                )}</td>
+                <td className="tg-0lax" >{FrontPageData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                  return false
+                }).reduce(
+                  (total, currentItem) => (total = total + currentItem.entries.reduce(
+                    (total, currentItem) => (total = total + currentItem.purchaseShop),
+                    0
+                  )),
+                  0
+                )}</td>
+                <td className="tg-0lax" ></td>
+                <td className="tg-0lax" >{FrontPageData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                  return false
+                }).reduce(
+                  (total, currentItem) => (total = total + currentItem.entries.reduce(
+                    (total, currentItem) => (total = total + currentItem.purchaseOutSide),
+                    0
+                  )),
+                  0
+                )}</td>
+                <td className="tg-0lax" ></td>
+                <td className="tg-0lax" >{FrontPageData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                  return false
+                }).reduce(
+                  (total, currentItem) => (total = total + currentItem.entries.reduce(
+                    (total, currentItem) => (total = total + currentItem.credits),
+                    0
+                  )),
+                  0
+                )}</td >
+                <td className="tg-0lax" >{FrontPageData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                  return false
+                }).reduce(
+                  (total, currentItem) => (total = total + currentItem.entries.reduce(
+                    (total, currentItem) => (total = total + currentItem.send),
+                    0
+                  )),
+                  0
+                )}</td >
+                <td className="tg-0lax" >{FrontPageData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                  return false
+                }).reduce(
+                  (total, currentItem) => (total = total + currentItem.entries.reduce(
+                    (total, currentItem) => (total = total + currentItem.remaining),
+                    0
+                  )),
+                  0
+                )}</td >
+                <td className="tg-0lax" >{FrontPageData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                  return false
+                }).reduce(
+                  (total, currentItem) => (total = total + currentItem.entries.reduce(
+                    (total, currentItem) => (total = total + currentItem.closingStock),
+                    0
+                  )),
+                  0
+                )}</td >
+
+                <td className="tg-0lax" >{FrontPageData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                  return false
+                }).reduce(
+                  (total, currentItem) => (total = total + currentItem.entries.reduce(
+                    (total, currentItem) => (total = total + currentItem.sales),
+                    0
+                  )),
+                  0
+                )}</td >
+
+                <td className="tg-0lax" ></td >
+
+                <td className="tg-0lax" >{FrontPageData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item
+                  }
+                  else if (filterDate === '') {
+                    return item
+                  }
+                }).reduce(
+                  (total, currentItem) => (total = total + currentItem.entries.reduce(
+                    (total, currentItem) => (total = total + (Number(currentItem?.amount?.$numberDecimal))),
+                    0
+                  )),
+                  0
+                )}</td >
+              </tr>
               </tbody>
             </table>
 

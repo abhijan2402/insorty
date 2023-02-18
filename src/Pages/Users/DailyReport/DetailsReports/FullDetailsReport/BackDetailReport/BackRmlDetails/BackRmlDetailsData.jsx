@@ -33,7 +33,7 @@ const BackRmlDetailsData = ({RmlData, index}) => {
             <td>{entry.closingStock}</td>
             <td>{entry.sales}</td>
             <td>
-              रेट
+              {Number(entry.amount ? entry.amount.$numberDecimal : 0)/entry.sales}
              
             </td>
             <td>{entry.amount ? entry.amount.$numberDecimal : 0}</td>
