@@ -3,10 +3,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import BeerStockTopData from "./BeerStockTopData/BeerStockTopData";
+import { useState } from "react";
 
 const BeerStock = () => {
   const token = localStorage.getItem("token");
-  const { data: beerStock, isLoading, refetch } = useQuery({
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+  const { data: beerStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
     queryFn: async () => {
       const res = await fetch(
@@ -25,6 +31,18 @@ const BeerStock = () => {
 
   const beerStockData = beerStock?.filter((item) => item.type === "BEER");
 
+  const filteredData = beerStockData
+    ? beerStockData.filter((item) => {
+        const itemDate = new Date(item.createdAt);
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
+    : beerStockData;
+
   if (isLoading) return <Loader></Loader>;
 
   return (
@@ -42,6 +60,9 @@ const BeerStock = () => {
         <div className="form-control">
           <input
             type="date"
+            dateFormat="yyyy-MM-dd"
+            value={selectedDate}
+            onChange={handleDateChange}
             className="input mb-2"
             style={{
               border: "1px solid #e5e7eb",
@@ -135,7 +156,7 @@ const BeerStock = () => {
               </td>
             </tr>
 
-            {beerStockData?.map((item, index) => {
+            {filteredData?.map((item, index) => {
               return (
                 <>
                   <BeerStockTopData

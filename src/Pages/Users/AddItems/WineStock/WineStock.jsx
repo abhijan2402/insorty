@@ -1,11 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import WineStockTopData from "./WineStockTop/WIneSotckTop";
 
 const WineStock = () => {
   const token = localStorage.getItem("token");
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
   const { data: wineStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
     queryFn: async () => {
@@ -25,6 +30,18 @@ const WineStock = () => {
 
   const wineStockData = wineStock?.filter((item) => item.type === "WINE");
 
+  const filteredData = selectedDate
+    ? wineStockData.filter((item) => {
+        const itemDate = new Date(item.createdAt);
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
+    : wineStockData;
+
   if (isLoading) return <Loader></Loader>;
 
   return (
@@ -43,6 +60,9 @@ const WineStock = () => {
           <input
             type="date"
             className="input mb-2"
+            dateFormat="yyyy-MM-dd"
+            value={selectedDate}
+            onChange={handleDateChange}
             style={{
               border: "1px solid #e5e7eb",
             }}
@@ -135,7 +155,7 @@ const WineStock = () => {
               </td>
             </tr>
 
-            {wineStockData?.map((item, index) => {
+            {filteredData?.map((item, index) => {
               return (
                 <>
                   <WineStockTopData
