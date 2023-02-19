@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React from "react";
+import React, { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import OutBillList from "../OutBillList/OutBillList";
 import { useQuery } from "@tanstack/react-query";
@@ -10,6 +10,7 @@ const OutBill = () => {
   const token = localStorage.getItem("token");
   // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
   const { brandsLoaded, loading } = useLiquors();
+  const [selectedDate, setSelectedDate] = useState("");
 
   const { data: OutBill, isLoading } = useQuery({
     queryKey: ["OutBill"],
@@ -31,6 +32,22 @@ const OutBill = () => {
   });
   const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
 
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
+  const filteredData = selectedDate
+    ? OutBill.filter((item) => {
+        const itemDate = new Date(item.date);
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
+    : OutBill;
+
   if (isLoading || brandsLoaded || loading) {
     return <Loader></Loader>;
   }
@@ -44,7 +61,14 @@ const OutBill = () => {
 
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
-            <input type="date" name="year" className="semiSmallInput" />
+            <input
+              type="date"
+              dateFormat="yyyy-MM-dd"
+              value={selectedDate}
+              onChange={handleDateChange}
+              name="year"
+              className="semiSmallInput"
+            />
           </div>
         </div>
         <div className="divider my-2"></div>
@@ -64,8 +88,8 @@ const OutBill = () => {
               </tr>
             </thead>
             <tbody>
-              {(OutBill &&
-                OutBill?.map((outBill, index) => {
+              {(filteredData &&
+                filteredData?.map((outBill, index) => {
                   return (
                     <OutBillList
                       key={index}

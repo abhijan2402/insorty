@@ -37,6 +37,8 @@ import PartyName from "../Pages/Users/AddItems/PartyName/PartyName";
 import BrandList from "../Pages/Users/AddItems/BrandList/BrandList";
 import BranchNameData from "../Pages/Users/AddItems/BranchName/BranchName";
 import BeerStock from "../Pages/Users/AddItems/BeerStock/BeerStock";
+import AllItems from "../Pages/Users/AddItems/AddItems/AddItems";
+import WineStock from "../Pages/Users/AddItems/WineStock/WineStock";
 
 const {
   BearShopBranch,
@@ -230,6 +232,14 @@ const router = createBrowserRouter([
       {
         path: "/user/beerstock",
         element: <BeerStock />,
+      },
+      {
+        path: "/user/winestock",
+        element: <WineStock />,
+      },
+      {
+        path: "/user/allItems",
+        element: <AllItems />,
       },
     ],
   },

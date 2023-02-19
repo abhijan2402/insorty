@@ -1,18 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
-import BeerStockTopData from "./BeerStockTopData/BeerStockTopData";
-import { useState } from "react";
+import WineStockTopData from "./WineStockTop/WIneSotckTop";
 
-const BeerStock = () => {
+const WineStock = () => {
   const token = localStorage.getItem("token");
   const [selectedDate, setSelectedDate] = useState("");
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
   };
-  const { data: beerStock, isLoading } = useQuery({
+  const { data: wineStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
     queryFn: async () => {
       const res = await fetch(
@@ -29,10 +28,10 @@ const BeerStock = () => {
 
   const total = 0;
 
-  const beerStockData = beerStock?.filter((item) => item.type === "BEER");
+  const wineStockData = wineStock?.filter((item) => item.type === "WINE");
 
-  const filteredData = beerStockData
-    ? beerStockData.filter((item) => {
+  const filteredData = selectedDate
+    ? wineStockData.filter((item) => {
         const itemDate = new Date(item.createdAt);
         const selected = selectedDate ? new Date(selectedDate) : null;
         if (selected) {
@@ -41,7 +40,7 @@ const BeerStock = () => {
           return true;
         }
       })
-    : beerStockData;
+    : wineStockData;
 
   if (isLoading) return <Loader></Loader>;
 
@@ -49,9 +48,9 @@ const BeerStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold text-[1.5rem]">Beer Stock</h2>
-          <Link to="/user/winestock" className="commonBtn ">
-            Wine Stock
+          <h2 className="font-bold text-[1.5rem]">Wine Stock</h2>
+          <Link to="/user/beerstock" className="commonBtn ">
+            Beer Stock
           </Link>
         </div>
         <div className="divider my-2"></div>
@@ -60,10 +59,10 @@ const BeerStock = () => {
         <div className="form-control">
           <input
             type="date"
+            className="input mb-2"
             dateFormat="yyyy-MM-dd"
             value={selectedDate}
             onChange={handleDateChange}
-            className="input mb-2"
             style={{
               border: "1px solid #e5e7eb",
             }}
@@ -159,12 +158,12 @@ const BeerStock = () => {
             {filteredData?.map((item, index) => {
               return (
                 <>
-                  <BeerStockTopData
+                  <WineStockTopData
                     key={item._id}
                     index={index}
                     item={item}
                     total={total}
-                  ></BeerStockTopData>
+                  ></WineStockTopData>
                 </>
               );
             })}
@@ -219,4 +218,4 @@ const BeerStock = () => {
   );
 };
 
-export default BeerStock;
+export default WineStock;
