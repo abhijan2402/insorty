@@ -1,8 +1,9 @@
 import React from "react";
 import moment from "moment/moment";
 
-const PaymentForm = ({ index, payment }) => {
+const PaymentForm = ({ index, payment,paymentData }) => {
   // console.log(payment.entries.length);
+
 
 if(payment.entries.length === 0){
   return(
@@ -13,13 +14,30 @@ if(payment.entries.length === 0){
     </div>
   )
 }
+
+  let shesh = paymentData.slice(0, index).reduce(
+    (total, currentItem) => (total = total + currentItem.entries.reduce(
+      (total, currentItem) => (total = total + (currentItem.debit.cash ? currentItem.debit.cash : 0)),
+      0
+    )),
+    0
+  );
+  let totalPaid = paymentData.slice(0, index).reduce(
+    (total, currentItem) => (total = total + currentItem.entries.reduce(
+      (total, currentItem) => (total = total + (currentItem.deposit.cash ? currentItem.deposit.cash : 0)),
+      0
+    )),
+    0
+  );
+
+  console.log(shesh,totalPaid)
   return (
     <>
       <tr>
         <td>{index + 1}</td>
 
         { (payment.entries.map((entry) => {
-         {entry.debit ? console.log('found') : console.log('not found')}
+         {/* {entry.debit ? console.log('found') : console.log('not found')} */}
 
           
           return (
@@ -31,7 +49,7 @@ if(payment.entries.length === 0){
                     disabled
                       type="number"
                       name="debit_amount"
-                      value={entry.debit.cash}
+                      value={shesh - totalPaid + entry.debit.cash}
                       className="commonSmallForm"
                     />
                   </div>
@@ -78,7 +96,8 @@ if(payment.entries.length === 0){
                   disabled
                     type="number"
                     name="current_balance_debit"
-                    value={entry.currentBalance}
+                    // value={entry.currentBalance}
+                    value={shesh - totalPaid + entry.deposit.cash - entry.debit.cash}
                     className="semiSmallInput"
                   />
                 </div>

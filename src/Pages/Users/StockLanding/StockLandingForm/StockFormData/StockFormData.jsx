@@ -1,7 +1,9 @@
 import React from "react";
+import useLiquors from "../../../../../Hooks/useLiquors";
 
 const StockFormData = ({ index, stockData }) => {
   const { inflow, inflowComment, liquor, send, sendComment } = stockData;
+  const { getNameByID, getSize } = useLiquors()
 
   const restBalance = Number(inflow - send);
 
@@ -22,12 +24,12 @@ const StockFormData = ({ index, stockData }) => {
             <input
               type="text"
               className="dailyReportInput"
-              value={liquor?.brandName}
+              value={getNameByID(liquor._id)}
             />
           </div>
 
           <div className="form-control">
-            <input type="number" className="commonSmallForm " />
+            <input type="number" className="commonSmallForm " value={getSize(liquor._id)} />
           </div>
         </div>
       </td>

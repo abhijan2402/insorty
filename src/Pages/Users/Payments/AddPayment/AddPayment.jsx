@@ -43,7 +43,7 @@ const AddPayment = ({
                   style={{
                     border: "1px solid #4CAF50",
                   }}
-                  type="number"
+                  type="date"
                   name="debitMonth"
                   className="input input-bordered w-full"
                 />
@@ -75,7 +75,7 @@ const AddPayment = ({
                   style={{
                     border: "1px solid #4CAF50",
                   }}
-                  type="number"
+                  type="date"
                   name="depositMonth"
                   className="input input-bordered w-full"
                 />

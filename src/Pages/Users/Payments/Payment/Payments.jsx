@@ -202,6 +202,7 @@ const Payments = () => {
                       <PaymentForm
                         key={index}
                         index={index}
+                        paymentData={paymentData}
                         payment={payment}
                       ></PaymentForm>
                     );

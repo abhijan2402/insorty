@@ -15,14 +15,14 @@ const CommisionForm = ({ index, commison }) => {
 
   return (
     <>
-      {commisionForm.map((item, index) => {
+      {commisionForm.map((item) => {
         const { description, amount, comment } = item;
 
         console.log(item);
 
         return (
           <tr key={index}>
-            <th>1</th>
+            <th>{index}</th>
             <td>
               <div className="form-control">
                 {description}
