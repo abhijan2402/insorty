@@ -14,6 +14,7 @@ const EnglishBearForm = ({ index, liquors, englishBear, total }) => {
 
   console.log(total);
 
+
   total +=
     quan750?.currentStock * Number(quan750?.averageRate.$numberDecimal) +
     quan330?.currentStock * Number(quan750?.averageRate.$numberDecimal) +
@@ -57,7 +58,7 @@ const EnglishBearForm = ({ index, liquors, englishBear, total }) => {
           <div className="flex gap-2 items-center">
             <input
               type="number"
-              value={quan750?.averageRate.$numberDecimal}
+              value={quan750?.averageRate.$numberDecimal || 0}
               readOnly
               className="commonSmallForm"
             />

@@ -1,6 +1,8 @@
 import React from "react";
 
-const FinalReport = () => {
+const FinalReport = ({ data,date }) => {
+  // console.log(data)
+  console.log(data)
   return (
     <>
       <tr>
@@ -9,7 +11,10 @@ const FinalReport = () => {
           अंग्रेजी
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.english),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -18,7 +23,12 @@ const FinalReport = () => {
           बीयर
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {
+            data.reduce(
+              (total, currentItem) => (total = total + currentItem.beer),
+              0
+            )
+          }
         </td>
       </tr>
       <tr>
@@ -27,7 +37,10 @@ const FinalReport = () => {
           देशी/RML
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.RML),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -36,7 +49,10 @@ const FinalReport = () => {
           कुल बिक्री
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.totalSell),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -45,7 +61,10 @@ const FinalReport = () => {
           पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.borrowedCashReturn),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -54,7 +73,10 @@ const FinalReport = () => {
           खाते में (फोन पे आदि)
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.intoAccount),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -63,7 +85,10 @@ const FinalReport = () => {
           उधारी/नामे
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.borrowed),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -72,7 +97,10 @@ const FinalReport = () => {
           कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.commission),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -81,7 +109,10 @@ const FinalReport = () => {
           पिछला बकाया
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.previousDues),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -90,7 +121,10 @@ const FinalReport = () => {
           आज भुगतान
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.todaysPayment),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -99,7 +133,10 @@ const FinalReport = () => {
           शेष रकम
         </td>
         <td className="tg-0lax" colSpan={4}>
-          100
+          {data.reduce(
+            (total, currentItem) => (total = total + Number(currentItem.restAmount.$numberDecimal)),
+            0
+          )}
         </td>
       </tr>
     </>

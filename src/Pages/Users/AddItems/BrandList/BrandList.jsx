@@ -58,7 +58,7 @@ const BrandList = () => {
                   <td>{item?.type}</td>
                   <td>
                     <h1>
-                      {quantityInML?.slice(0, 3).map((item, index) => {
+                      {quantityInML?.map((item, index) => {
                         return (
                           <span key={index}>
                             {item}
@@ -86,7 +86,7 @@ const BrandList = () => {
       <div>
         <div className="my-4">
           <label htmlFor="AddBrandList" className="commonBtn">
-            Add Naw
+            Add New
           </label>
         </div>
       </div>

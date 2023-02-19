@@ -1,14 +1,31 @@
 import React from "react";
+import useLiquors from "../../../../../../../Hooks/useLiquors";
+import usePartyNames from "../../../../../../../Hooks/usePartyNames";
 
-const InflowBorrow = () => {
+const InflowBorrow = ({index, PurchaseBorrow, entries}) => {
+  const { getPartyName } = usePartyNames();
+  const { getNameByID,getSize } = useLiquors()
+  // console.log(entries)
+
   return (
     <>
-      <td>S.No</td>
-      <td>Party Name/ पार्टी का नाम</td>
-      <td>Brand Name/ ब्राण्ड</td>
-      <td>Size</td>
-      <td>संख्या</td>
-      <td>टिप्पणी</td>
+    {
+      entries.map((entry,index)=>{
+        return(
+          <tr>
+           <td>{index+1}</td>
+      <td>{getPartyName(entry.party)}</td>
+      <td>{getNameByID(entry.liquor)}</td>
+      <td>{getSize(entry.liquor)}</td>
+      <td>{entry.number}</td>
+      <td>{entry.comment}</td>
+      </tr>
+        )
+      })
+    }
+
+    {/* <h1>test</h1> */}
+     
     </>
   );
 };

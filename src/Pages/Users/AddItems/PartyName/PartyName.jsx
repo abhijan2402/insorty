@@ -71,7 +71,7 @@ const PartyName = () => {
       <div>
         <div className="my-4">
           <label htmlFor="AddPartyName" className="commonBtn">
-            Add Naw
+            Add New
           </label>
         </div>
       </div>

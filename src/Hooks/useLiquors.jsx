@@ -22,6 +22,21 @@ function useLiquors() {
     },
   });
 
+  const { data: AllLiquors, isLoading: liquorsLoaded } = useQuery({
+    queryKey: ["ALlLiquors"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllLiquors",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
   if (!brandsLoaded && liquors.length > 0) {
     liquors.map((item) => {
       if (item.sizes) {
@@ -133,6 +148,17 @@ function useLiquors() {
     }
   };
 
+  const getSize = (id)=>{
+    if(!liquorsLoaded && AllLiquors.length>0){
+      const liq = AllLiquors.find((item)=>item._id===id)
+      if (!liq) {
+        return null
+      }
+      return liq.quantityInML
+      console.log(liq)
+    }
+  }
+
   return {
     brands,
     liquors,
@@ -143,6 +169,7 @@ function useLiquors() {
     getLiquorByID,
     getTheSizeById,
     loading,
+    getSize
   };
 }
 

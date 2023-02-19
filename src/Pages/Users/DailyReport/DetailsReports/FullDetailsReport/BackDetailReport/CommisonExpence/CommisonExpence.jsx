@@ -1,6 +1,7 @@
 import React from "react";
 
 const CommisonExpence = ({ expences, index, entries }) => {
+  // console.log(entries);
   return (
     <>
       {/* <tr>
@@ -8,7 +9,6 @@ const CommisonExpence = ({ expences, index, entries }) => {
         <td colSpan={8}>{expences?.salesmen}</td>
       </tr> */}
       {entries?.map((entry, index) => {
-        console.log(entry?.amount);
 
         return (
           <tr key={index}>

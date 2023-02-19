@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../images/insorty.png";
 import { Link } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 import {
   FaCalendarAlt,
   FaChartLine,
@@ -158,8 +159,7 @@ const SideNav = () => {
 
           <Link>
             <div>
-              <h1 className="font-bold text-red-400">Jai Wine Shop</h1>
-              <p>A4 ss colony Merta city Raj. </p>
+              <h1 className="font-bold text-red-400">{jwtDecode(localStorage.getItem('token')).name}</h1>
             </div>
           </Link>
 

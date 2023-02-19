@@ -43,7 +43,7 @@ function usePartyNames() {
         }
       );
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       return data.data;
     },
   });
@@ -78,6 +78,26 @@ function usePartyNames() {
     }
   };
 
+  const getBranchName = (id)=>{
+    if(!branchLoaded && branches.length > 0){
+   const branch = branches.find((item)=>item._id===id)
+
+   if(!branch){
+    return null
+   }
+  
+    return branch.branchName}
+  }
+
+  const getPartnerName=(id)=>{
+    if(!partnerLoaded && partners.length>0){
+    const partner = partners.find((item)=>item._id===id)
+      if (!partner) {
+        return null
+      }
+    return partner.name}
+  }
+
   return {
     parties,
     partyLoaded,
@@ -87,6 +107,9 @@ function usePartyNames() {
     partnerLoaded,
     branches,
     branchLoaded,
+    getBranchName,
+    getPartnerName
+
   };
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import useBranch from "../BranchHooks/useBranch";
 import { Link, useLoaderData } from "react-router-dom";
@@ -9,6 +9,8 @@ import { Loader } from "react-bootstrap-typeahead";
 const BranchFrom = () => {
   const token = localStorage.getItem("token");
   const branchResponse = useLoaderData();
+  const [startDate,setStartDate] = useState()
+  const [endDate,setEndDate] = useState()
   const branchData = branchResponse?.data;
   const {
     branchState,
@@ -39,7 +41,7 @@ const BranchFrom = () => {
     },
   });
 
-  if (isLoading) {
+  if (branchDataLoading) {
     return <Loader></Loader>;
   }
 
@@ -57,9 +59,10 @@ const BranchFrom = () => {
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <input
-              type="text"
-              value={"12 Dec 2022 "}
-              name="year"
+              type="date"
+              value={startDate}
+              onChange={(e)=>setStartDate(e.target.value)}
+              name="startDate"
               className="semiSmallInput"
             />
           </div>
@@ -68,9 +71,10 @@ const BranchFrom = () => {
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <input
-              type="text"
-              value={"07 January 2023 "}
-              name="year"
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              name="endDate"
               className="semiSmallInput"
             />
           </div>
@@ -94,7 +98,18 @@ const BranchFrom = () => {
               </thead>
 
               <tbody>
-                {(transactions && transactions.map(((current_sum => (transaction, index) => {
+                {(transactions && transactions.filter(row => {
+                  let filterPass = true
+                  const date = new Date(row.date)
+                  if (startDate) {
+                    filterPass = filterPass && (new Date(startDate) <= date)
+                  }
+                  if (endDate) {
+                    filterPass = filterPass && (new Date(endDate) >= date)
+                  }
+                  //if filterPass comes back `false` the row is filtered out
+                  return filterPass
+                }).map(((current_sum => (transaction, index) => {
                   return (
                     <BranchFormData
                       key={index}

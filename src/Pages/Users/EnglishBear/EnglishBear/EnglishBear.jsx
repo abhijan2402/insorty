@@ -25,10 +25,10 @@ const EnglishBear = () => {
     },
   });
 
-  const totalAmountData = englishBearData?.map((item) => {
-    return Number(item.currentStock) * Number(item.rate) || 0;
-  });
-
+  // const totalAmountData = englishBearData?.map((item) => {
+  //   return Number(item.currentStock) * Number(item.rate) || 0;
+  // });
+  
   // const totalAmount = Number(
   //   totalAmountData?.reduce((a, b) => Number(a) + Number(b), 0)
   // );
@@ -38,6 +38,15 @@ const EnglishBear = () => {
   if (isLoading || brandsLoaded) {
     return <Loader></Loader>;
   }
+
+  console.log(liquors.filter((brand) => {
+    if (brand.type === "WINE") {
+      return brand
+    }
+  }).reduce((total, current) => (
+    total = total + current.sizes.reduce((tot, curr) => (tot = tot + (curr.currentStock * Number(curr.averageRate.$numberDecimal))), 0)
+  ), 0))
+
 
   return (
     <section>
@@ -94,7 +103,13 @@ const EnglishBear = () => {
               <td></td>
               <td></td>
               <td className="commonText">Total</td>
-              <td className="price">{total}</td>
+              <td className="price">{liquors.filter((brand) => {
+                if (brand.type === "WINE") {
+                  return brand
+                }
+              }).reduce((total,current)=>(
+                total = total + current.sizes.reduce((tot, curr) => (tot = tot + (curr.currentStock * Number(curr.averageRate.$numberDecimal))),0)
+              ),0)}</td>
             </tr>
           </tbody>
         </table>
