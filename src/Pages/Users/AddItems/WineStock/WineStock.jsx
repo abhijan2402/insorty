@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
-import BeerStockTopData from "./BeerStockTopData/BeerStockTopData";
+import WineStockTopData from "./WineStockTop/WIneSotckTop";
 
-const BeerStock = () => {
+const WineStock = () => {
   const token = localStorage.getItem("token");
-  const { data: beerStock, isLoading, refetch } = useQuery({
+  const { data: wineStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
     queryFn: async () => {
       const res = await fetch(
@@ -23,7 +23,7 @@ const BeerStock = () => {
 
   const total = 0;
 
-  const beerStockData = beerStock?.filter((item) => item.type === "BEER");
+  const wineStockData = wineStock?.filter((item) => item.type === "WINE");
 
   if (isLoading) return <Loader></Loader>;
 
@@ -31,9 +31,9 @@ const BeerStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold text-[1.5rem]">Beer Stock</h2>
-          <Link to="/user/winestock" className="commonBtn ">
-            Wine Stock
+          <h2 className="font-bold text-[1.5rem]">Wine Stock</h2>
+          <Link to="/user/beerstock" className="commonBtn ">
+            Beer Stock
           </Link>
         </div>
         <div className="divider my-2"></div>
@@ -135,15 +135,15 @@ const BeerStock = () => {
               </td>
             </tr>
 
-            {beerStockData?.map((item, index) => {
+            {wineStockData?.map((item, index) => {
               return (
                 <>
-                  <BeerStockTopData
+                  <WineStockTopData
                     key={item._id}
                     index={index}
                     item={item}
                     total={total}
-                  ></BeerStockTopData>
+                  ></WineStockTopData>
                 </>
               );
             })}
@@ -198,4 +198,4 @@ const BeerStock = () => {
   );
 };
 
-export default BeerStock;
+export default WineStock;

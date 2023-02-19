@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React from "react";
+import React, { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import SelfBillList from "../SelfBillList/SelfBillList";
 import { useQuery } from "@tanstack/react-query";
@@ -12,6 +12,12 @@ const SelfBill = () => {
   const [refundDataList, setRefundDataList] = React.useState(0);
   const { brandsLoaded, loading } = useLiquors();
 
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const handleDateChange = (event) => {
+    setSelectedDate(event.target.value);
+  };
+
   const { data: SelfBillData, isLoading } = useQuery({
     queryKey: ["SelfBillData"],
     queryFn: async () => {
@@ -23,7 +29,6 @@ const SelfBill = () => {
         }
       );
       const data = await res.json();
-      // console.log(data.data);
       return data.data;
     },
   });
@@ -31,9 +36,20 @@ const SelfBill = () => {
   const totalAmountData = SelfBillData?.map((item) => {
     return item.total;
   });
-  // const refundData = 2000;
   const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
   const netPaidAmount = totalAmount - refundDataList;
+
+  const filteredData = selectedDate
+    ? SelfBillData.filter((item) => {
+        const itemDate = new Date(item.date);
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
+    : SelfBillData;
 
   if (isLoading || brandsLoaded || loading) {
     return <Loader></Loader>;
@@ -50,8 +66,10 @@ const SelfBill = () => {
             <FaCalendarAlt></FaCalendarAlt>
             <input
               type="date"
-              value="12 Dec 2022 "
-              name="year"
+              dateFormat="yyyy-MM-dd"
+              value={selectedDate}
+              onChange={handleDateChange}
+              name="AllDate"
               className="semiSmallInput"
             />
           </div>
@@ -73,23 +91,26 @@ const SelfBill = () => {
               </tr>
             </thead>
             <tbody>
-              {(SelfBillData &&
-                SelfBillData?.map((billsData, index) => {
-                  return (
-                    <SelfBillList
-                      key={index}
-                      index={index}
-                      billsData={billsData}
-                      isLoading={isLoading}
-                    ></SelfBillList>
-                  );
-                })) || (
-                <>
-                  <p>
-                    <span className="text-red-500">No Data Found</span>
-                  </p>
-                </>
-              )}
+              {
+                // filter the data by date and map it
+                (filteredData &&
+                  filteredData?.map((billsData, index) => {
+                    return (
+                      <SelfBillList
+                        key={index}
+                        index={index}
+                        billsData={billsData}
+                        isLoading={isLoading}
+                      ></SelfBillList>
+                    );
+                  })) || (
+                  <>
+                    <p>
+                      <span className="text-red-500">No Data Found</span>
+                    </p>
+                  </>
+                )
+              }
 
               <tr>
                 <th></th>

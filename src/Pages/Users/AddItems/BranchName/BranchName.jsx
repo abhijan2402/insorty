@@ -30,10 +30,10 @@ const BranchName = () => {
       <div className="title">
         <div className="flex gap-4 items-center">
           <h2 className="font-bold text-[1.5rem]">Branch name</h2>
-          <Link to="/" className="commonBtn ">
+          <Link to="/user/partyname" className="commonBtn ">
             Party name
           </Link>
-          <Link to="/" className="commonBtn ">
+          <Link to="/user/branchname" className="commonBtn ">
             Brand List
           </Link>
         </div>
@@ -74,9 +74,7 @@ const BranchName = () => {
         </div>
       </div>
 
-      <AddBranchName
-        refetch={refetch}
-      ></AddBranchName>
+      <AddBranchName refetch={refetch}></AddBranchName>
     </section>
   );
 };

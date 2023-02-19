@@ -31,10 +31,10 @@ const PartyName = () => {
       <div className="title">
         <div className="flex gap-4 items-center">
           <h2 className="font-bold text-[1.5rem]">Party Name/ पार्टी का नाम</h2>
-          <Link to="/" className="commonBtn ">
+          <Link to="/user/branchname" className="commonBtn ">
             Branch
           </Link>
-          <Link to="/" className="commonBtn ">
+          <Link to="/user/brandlist" className="commonBtn ">
             Brand List
           </Link>
         </div>
