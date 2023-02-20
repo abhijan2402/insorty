@@ -28,6 +28,10 @@ const PartnerForm = ({ partner, StartDate, index, partnerData, EndDate }) => {
       0
     );
 
+  console.log(partner?._id);
+
+  const partnerId = partner?._id;
+
   return (
     <>
       <tr>
@@ -36,21 +40,13 @@ const PartnerForm = ({ partner, StartDate, index, partnerData, EndDate }) => {
           <td key={index}>
             <div className="form-control">
               <Link
-                to={`/user/partners/from/${partner?._id}`}
+                to={`/user/partners/from/${partnerId}`}
                 style={{
                   cursor: "pointer",
                 }}
+                className="dailyReportInput"
               >
-                <input
-                  type="text"
-                  name="partnerName"
-                  value={partner.name}
-                  disabled
-                  className="dailyReportInput"
-                  style={{
-                    cursor: "pointer",
-                  }}
-                />
+                {partner.name}
               </Link>
             </div>
           </td>
