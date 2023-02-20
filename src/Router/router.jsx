@@ -161,19 +161,6 @@ const router = createBrowserRouter([
       {
         path: "/user/partners/from/:partnerId",
         element: <PartnarDetails />,
-        loader: ({ params }) => {
-          console.log(params.partnerId);
-          return fetch(`https://insorty-api.onrender.com/shop/getAllPartners`, {
-            method: "POST",
-            body: JSON.stringify({
-              partnerId: params.partnerId,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-          });
-        },
       },
       {
         path: "/user/payments",

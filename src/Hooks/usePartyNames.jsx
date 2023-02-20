@@ -78,25 +78,37 @@ function usePartyNames() {
     }
   };
 
-  const getBranchName = (id)=>{
-    if(!branchLoaded && branches.length > 0){
-   const branch = branches.find((item)=>item._id===id)
+  const getBranchName = (id) => {
+    if (!branchLoaded && branches.length > 0) {
+      const branch = branches.find((item) => item._id === id);
 
-   if(!branch){
-    return null
-   }
-  
-    return branch.branchName}
-  }
-
-  const getPartnerName=(id)=>{
-    if(!partnerLoaded && partners.length>0){
-    const partner = partners.find((item)=>item._id===id)
-      if (!partner) {
-        return null
+      if (!branch) {
+        return null;
       }
-    return partner.name}
-  }
+
+      return branch.branchName;
+    }
+  };
+
+  const getPartnerName = (id) => {
+    if (!partnerLoaded && partners.length > 0) {
+      const partner = partners.find((item) => item._id === id);
+      if (!partner) {
+        return null;
+      }
+      return partner.name;
+    }
+  };
+
+  const getSpacificePartnerTranslation = (id) => {
+    if (!partnerLoaded && partners.length > 0) {
+      const transactions = partners.find((item) => item._id === id);
+      if (!transactions) {
+        return null;
+      }
+      return transactions.transactions;
+    }
+  };
 
   return {
     parties,
@@ -108,8 +120,8 @@ function usePartyNames() {
     branches,
     branchLoaded,
     getBranchName,
-    getPartnerName
-
+    getPartnerName,
+    getSpacificePartnerTranslation,
   };
 }
 

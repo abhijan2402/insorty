@@ -6,7 +6,7 @@ import PartnerForm from "../PartnerForm/PartnerForm";
 import AddPartner from "../AddPartner/AddPartner";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
-import moment from "moment/moment";
+
 
 const Partners = () => {
   const token = localStorage.getItem("token");
@@ -45,8 +45,6 @@ const Partners = () => {
       return data.data;
     },
   });
-
-  // console.log(partnarData.transactions, "partnarData");
 
   if (isLoading) return <Loader></Loader>;
 

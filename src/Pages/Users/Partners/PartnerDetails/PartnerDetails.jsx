@@ -1,26 +1,39 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import usePartyNames from "../../../../Hooks/usePartyNames";
+import Loader from "../../../../Components/Loader/Loader";
 
 const PartnerDetails = () => {
-  const partnerData = useLoaderData();
-  const partner = partnerData.data;
-  const { _id: userId } = useParams();
-  const partnerTransactions = partner.find(
-    (transaction) => transaction.partner === userId
-  );
-  const partnerTransactionsArray = partnerTransactions?.transactions;
-  const deposite = partnerTransactionsArray.map((item) => item.deposit);
-  const debit = partnerTransactionsArray.map((item) => item.debit);
-  const totalDeposite = deposite.reduce((a, b) => a + b, 0);
-  const totalDebit = debit.reduce((a, b) => a + b, 0);
-  const totalRemaining = totalDeposite - totalDebit;
+  const { partners, partnerLoaded } = usePartyNames();
+  let { partnerId } = useParams();
 
-  console.log(totalRemaining);
+  const partner = partners?.find((item) => {
+    if (item._id === partnerId) {
+      return item;
+    }
+  });
+
+  const partnerTransactionsArray = partner?.transactions;
+
+  const deposite = partnerTransactionsArray?.map((item) => item.deposit);
+  const debit = partnerTransactionsArray?.map((item) => item.debit);
+
+  const totalDepositeData = deposite?.reduce((a, b) => a + b, 0);
+  const totalDebitData = debit?.reduce((a, b) => a + b, 0);
+  const totalRemainingData = totalDepositeData - totalDebitData;
+
+  console.log(totalDepositeData, "totalDepositeData");
+  console.log(totalDebitData, "totalDebitData");
+  console.log(totalRemainingData, "totalRemainingData");
+
+  if (partnerLoaded) {
+    return <Loader></Loader>;
+  }
 
   return (
     <section>
       <div className="title">
-        <h2 className="font-bold text-[1.5rem]">{partnerTransactions?.name}</h2>
+        <h2 className="font-bold text-[1.5rem]">{partner?.name}</h2>
         <div className="divider my-2"></div>
       </div>
       <div className="partner-details">
@@ -37,8 +50,8 @@ const PartnerDetails = () => {
             </thead>
             <tbody>
               {partnerTransactionsArray?.map((item, index) => {
-                const partnerName = partner.find(
-                  (partner) => partner._id === item.partner
+                const partnerName = partners.find(
+                  (partner) => partner._id === item?.partner
                 );
                 const { debit, deposit } = item;
                 const remaining = deposit - debit;
@@ -56,9 +69,9 @@ const PartnerDetails = () => {
               <tr>
                 <th>Total</th>
                 <td></td>
-                <td>{totalDebit}</td>
-                <td>{totalDeposite}</td>
-                <td>{totalRemaining}</td>
+                <td>{totalDebitData}</td>
+                <td>{totalDepositeData}</td>
+                <td>{totalRemainingData}</td>
               </tr>
             </tbody>
           </table>
