@@ -814,7 +814,7 @@ const useFristFormAdd = () => {
         remaining: element.sumRemainder650,
         closingStock: element.closingStock650,
         sales: element.sales650,
-        amount: element.grandTotal,
+        amount: element.total650,
       });
     }
 
@@ -836,7 +836,7 @@ const useFristFormAdd = () => {
         remaining: element.sumRemainder550,
         closingStock: element.closingStock550,
         sales: element.sales550,
-        amount: element.grandTotal,
+        amount: element.total550,
       });
     }
 
@@ -858,7 +858,30 @@ const useFristFormAdd = () => {
         remaining: element.sumRemainder330,
         closingStock: element.closingStock330,
         sales: element.sales330,
-        amount: element.grandTotal,
+        amount: element.total330,
+      });
+    }
+
+    const beerForm = [];
+    const beerFormData = localStorage.getItem('BeerForm')
+    for (let index = 0; index < fristFormState.length; index++) {
+      const element = fristFormState[index];
+      beerForm.push({
+        // liquor: liquors?.[0]?._id,
+        liquor: GetLiqId(element.liquorID, 330, 'BEER'),
+        brandName: element.brandName,
+        quantityInML: element.selectStockVarient,
+        openingStock: element.startingStock,
+        purchaseShop: element.incomingPurchase,
+        purchaseShopRate: element.buyRate,
+        purchaseOutSide: element.incomePurchase,
+        purchaseOutSideRate: element.purchaseRate,
+        credits: element.inflowCredit,
+        send: element.sending,
+        remaining: element.sumRemainder,
+        closingStock: element.closingStock,
+        sales: element.sales,
+        amount: element.total,
       });
     }
 
@@ -897,8 +920,19 @@ const useFristFormAdd = () => {
           body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails330 }),
         }
       );
+      const api4 = await fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: beerForm }),
+        }
+      );
 
-      Promise.all([api1, api2, api3])
+      Promise.all([api1, api2, api3,api4])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
@@ -923,7 +957,7 @@ const useFristFormAdd = () => {
     console.log(dataDetails330)
     console.log(dataDetails550)
     console.log(dataDetails650)
-    console.log(backData)
+    console.log(beerForm)
   };
 
   // ======>
@@ -1095,7 +1129,7 @@ const useFristFormAdd = () => {
 
     localStorage.setItem("BeerForm", JSON.stringify(addOneSecondFormState));
     localStorage.setItem(
-      "mlFormTotal",
+      "beerFormTotal",
       JSON.stringify(
         addOneSecondFormState.reduce(
           (totals, currentItem) =>
