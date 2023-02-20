@@ -53,9 +53,12 @@ const useRmlAdd = () => {
           newFormData.startingStock = item.currentStock;
           firstFormData = [newFormData, ...firstFormData];
           setAddRmlState(firstFormData);
+          localStorage.setItem("rml", JSON.stringify(firstFormData));
         });
       });
     }
+
+
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);

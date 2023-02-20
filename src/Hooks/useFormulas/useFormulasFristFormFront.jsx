@@ -108,6 +108,8 @@ const useFormulasFristFormFront = () => {
           newFormData.startingStock180 = quan180.currentStock
           firstFormData = [newFormData, ...firstFormData]
           setAddOneFristFormState(firstFormData)
+          localStorage.setItem("firstFront", JSON.stringify(firstFormData));
+
         
         }
         

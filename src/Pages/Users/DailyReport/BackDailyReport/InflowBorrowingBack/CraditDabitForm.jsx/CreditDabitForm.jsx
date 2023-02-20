@@ -47,7 +47,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
                 item.partyId = ""
               }
 
-              // onChangePurchesOutSide(event, index)
+              onChangeCarditDabit(event, index)
               console.log(item)
             }}
             renderInput={(params) => (
@@ -55,7 +55,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
                 {...params}
                 className="dailyReportInput"
                 // value={item.partyName}
-                // inputProps={{ ...params.inputProps, value: item.partyName }}
+                inputProps={{ ...params.inputProps, value: item.partyName }}
 
                 onChange={(event) => {
                   item.partyName = event.target.value;
@@ -90,7 +90,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
                 item.partyId = ""
               }
 
-              // onChangePurchesOutSide(event, index)
+              onChangeCarditDabit(event, index)
               console.log(item)
             }}
             renderInput={(params) => (
@@ -98,7 +98,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
                 {...params}
                 className="dailyReportInput"
                 // value={item.partyName}
-                // inputProps={{ ...params.inputProps, value: item.partyName }}
+                inputProps={{ ...params.inputProps, value: item.partyName }}
 
                 onChange={(event) => {
                   item.partyName = event.target.value;
@@ -133,7 +133,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
                 item.partyId = ""
               }
 
-              // onChangePurchesOutSide(event, index)
+              onChangeCarditDabit(event, index)
               console.log(branches)
             }}
             renderInput={(params) => (
@@ -141,7 +141,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
                 {...params}
                 className="dailyReportInput"
                 // value={item.partyName}
-                // inputProps={{ ...params.inputProps, value: item.partyName }}
+                inputProps={{ ...params.inputProps, value: item.partyName }}
 
                 onChange={(event) => {
                   item.partyName = event.target.value;

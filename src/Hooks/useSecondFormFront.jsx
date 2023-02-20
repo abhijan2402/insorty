@@ -60,7 +60,19 @@ const useSecondFormFront = () => {
         newFormData.selectStockVarient = item.quantityInML
         newFormData.startingStock = item.currentStock
         firstFormData = [newFormData, ...firstFormData]
-          setAddOneSecondFormState(firstFormData)          }
+          setAddOneSecondFormState(firstFormData)        
+            localStorage.setItem("mlForm", JSON.stringify(firstFormData));
+            localStorage.setItem(
+              "mlFormTotal",
+              JSON.stringify(
+                firstFormData.reduce(
+                  (totals, currentItem) =>
+                    (totals = totals + Number(currentItem.total)),
+                  0
+                )
+              )
+            )
+        }
         });
       });
     }

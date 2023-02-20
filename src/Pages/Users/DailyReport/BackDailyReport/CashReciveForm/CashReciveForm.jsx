@@ -59,7 +59,7 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
                   item.id = ""
                 }
 
-                // onChangePurchesOutSide(event, index)
+                onChangeCashRecive(event, index)
                 console.log(item)
               }}
               renderInput={(params) => (
@@ -67,7 +67,7 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
                   {...params}
                   className="dailyReportInput"
                 // value={item.partyName}
-                // inputProps={{ ...params.inputProps, value: item.partyName }}
+                inputProps={{ ...params.inputProps, value: item.name }}
 
                 onChange={(event) => {
                   item.name = event.target.value;
@@ -102,7 +102,7 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
                   item.id = ""
                 }
 
-                // onChangePurchesOutSide(event, index)
+                onChangeCashRecive(event, index)
                 console.log(item)
               }}
               renderInput={(params) => (
@@ -110,7 +110,7 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
                   {...params}
                   className="dailyReportInput"
                   // value={item.partyName}
-                  // inputProps={{ ...params.inputProps, value: item.partyName }}
+                  inputProps={{ ...params.inputProps, value: item.name }}
 
                   onChange={(event) => {
                     item.name = event.target.value;
@@ -153,7 +153,7 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
                   {...params}
                   className="dailyReportInput"
                   // value={item.partyName}
-                  // inputProps={{ ...params.inputProps, value: item.partyName }}
+                  inputProps={{ ...params.inputProps, value: item.name }}
 
                   onChange={(event) => {
                     item.name = event.target.value;

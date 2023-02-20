@@ -132,7 +132,11 @@ const useFristFormAdd = () => {
           firstFormData = [newFormData, ...firstFormData]
           console.log(firstFormData)
           setFristFormState(firstFormData)
-
+          localStorage.setItem("firstBack", JSON.stringify(firstFormData));
+          localStorage.setItem(
+            "totalFirstBack",
+            JSON.stringify(totalState.allGrandTotal)
+          )
         }
 
       }
@@ -954,10 +958,7 @@ const useFristFormAdd = () => {
     } finally {
       setIsLoading(false);
     }
-    console.log(dataDetails330)
-    console.log(dataDetails550)
-    console.log(dataDetails650)
-    console.log(beerForm)
+    
   };
 
   // ======>
@@ -996,8 +997,8 @@ const useFristFormAdd = () => {
   const prevdata2 = JSON.parse(localStorage.getItem("BeerForm"));
 
   useEffect(() => {
-    if (prevdata) {
-      setAddOneSecondFormState(prevdata);
+    if (prevdata2) {
+      setAddOneSecondFormState(prevdata2);
     }
 
     let firstFormData = addOneSecondFormState;
@@ -1026,10 +1027,21 @@ const useFristFormAdd = () => {
             newFormData.startingStock = item.currentStock
             firstFormData = [newFormData, ...firstFormData]
             setAddOneSecondFormState(firstFormData)
-          }
+            localStorage.setItem("BeerForm", JSON.stringify(firstFormData));
+            localStorage.setItem(
+              "beerFormTotal",
+              JSON.stringify(
+                firstFormData.reduce(
+                  (totals, currentItem) =>
+                    (totals = totals + Number(currentItem.total)),
+                  0
+                )
+              )
+            )          }
         });
       });
     }
+
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);

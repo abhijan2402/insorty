@@ -24,6 +24,7 @@ const FinalReport = ({
 
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
+  const beerSecond = JSON.parse(localStorage.getItem("beerFormTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
 
   const { data: leftDues, isLoading } = useQuery({
@@ -73,7 +74,7 @@ const FinalReport = ({
             <tr>
               <th>2</th>
               <td>बीयर</td>
-              <td>{Number(JSON.parse(localStorage.getItem('totalFirstBack')))}</td>
+              <td>{Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + beerSecond}</td>
             </tr>
 
             {/* 03 */}
@@ -86,7 +87,7 @@ const FinalReport = ({
             <tr>
               <th>4</th>
               <td>कुल बिक्री</td>
-              <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront}</td>
+              <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront + beerSecond}</td>
             </tr>
             {/* 05 */}
             <tr>
@@ -131,7 +132,7 @@ const FinalReport = ({
             <tr>
               <th>10</th>
               <td>total</td>
-              <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront + Number(localStorage.getItem('totalPaymentsRecieved')) - intoAccountState - udhaariTotal - commisionTotal + pichla}</td>
+              <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront + beerSecond + Number(localStorage.getItem('totalPaymentsRecieved')) - intoAccountState - udhaariTotal - commisionTotal + pichla}</td>
             </tr>
             <tr>
               <th>11</th>
@@ -148,7 +149,7 @@ const FinalReport = ({
             <tr>
               <th>12</th>
               <td>शेष रकम</td>
-              <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront + Number(localStorage.getItem('totalPaymentsRecieved')) - Number(intoAccountState) - udhaariTotal - commisionTotal + pichla - Number(paidDues)}</td>
+              <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront + beerSecond + Number(localStorage.getItem('totalPaymentsRecieved')) - Number(intoAccountState) - udhaariTotal - commisionTotal + pichla - Number(paidDues)}</td>
             </tr>
           </tbody>
         </table>

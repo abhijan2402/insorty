@@ -115,18 +115,6 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
         </td>
 
         <td>
-          <div className="form-control">
-            <input
-              type="number"
-              className="semiSmallInput"
-              name="theNumber"
-              value={item.theNumber}
-              onChange={(e) => onChangeBorrowingRml(e, index)}
-            />
-          </div>
-        </td>
-
-        <td>
           <div className="form-control ">
             <select
               className="select select-bordered"
@@ -156,6 +144,20 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
             </select>
           </div>
         </td>
+
+        <td>
+          <div className="form-control">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="theNumber"
+              value={item.theNumber}
+              onChange={(e) => onChangeBorrowingRml(e, index)}
+            />
+          </div>
+        </td>
+
+        
 
         <td>
           <div className="form-control">

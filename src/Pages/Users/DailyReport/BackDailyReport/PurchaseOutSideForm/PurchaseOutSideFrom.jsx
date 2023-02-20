@@ -124,34 +124,20 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
           </div>
         </td>
 
-        {/* ======== आमद (खरीद)-दु. ========= */}
-
-        <td>
-          <div className="form-control ">
-            <input
-              type="number"
-              className="semiSmallInput"
-              name="theNumber"
-              value={item.theNumber}
-              onChange={(e) => onChangePurchesOutSide(e, index)}
-            />
-          </div>
-        </td>
-        {/* ======== आमद (खरीद)-बा. ========= */}
-
         <td>
           <div className="form-control ">
             <select
               className="select select-bordered"
               name="quantity"
               value={item.quantity}
-              onChange={(e) =>{ onChangePurchesOutSide(e, index)
-              console.log(item)
+              onChange={(e) => {
+                onChangePurchesOutSide(e, index)
+                console.log(item)
               }}
             >
               {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
 
-             
+
               <option selected value={750}>750ml</option>
               <option value={700}>700ml</option>
               <option value={650}>650ml</option>
@@ -169,6 +155,23 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
             </select>
           </div>
         </td>
+
+        {/* ======== आमद (खरीद)-दु. ========= */}
+
+        <td>
+          <div className="form-control ">
+            <input
+              type="number"
+              className="semiSmallInput"
+              name="theNumber"
+              value={item.theNumber}
+              onChange={(e) => onChangePurchesOutSide(e, index)}
+            />
+          </div>
+        </td>
+        {/* ======== आमद (खरीद)-बा. ========= */}
+
+       
 
         <td>
           <div className="form-control">

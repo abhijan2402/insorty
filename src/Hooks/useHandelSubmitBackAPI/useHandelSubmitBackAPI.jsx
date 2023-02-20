@@ -9,6 +9,7 @@ import { DataContextApi } from "../../Context/DataContext";
 import useInfolwBorrowingRml from "../useInfolwBorrowingRml";
 import useShippingAdd from "../useShippingAdd";
 import useLiquors from "../useLiquors";
+import { stringify } from "postcss";
 
 const useHandelSubmitBackAPI = () => {
   const token = localStorage.getItem("token");
@@ -31,6 +32,8 @@ const useHandelSubmitBackAPI = () => {
   const paymentRecieved = JSON.parse(localStorage.getItem("paymentRecieved"));
   const borrow = JSON.parse(localStorage.getItem("bhejan"));
   const send = JSON.parse(localStorage.getItem("borrow"));
+  const backFirst = JSON.parse(localStorage.getItem('firstBack'))
+  const newBeer = JSON.parse(localStorage.getItem('BeerForm'))
 
   const { GetLiqId } = useLiquors();
 
@@ -57,6 +60,97 @@ const useHandelSubmitBackAPI = () => {
       type: element.type,
     });
   }
+
+
+  const dataDetails650 = [];
+
+  for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
+    const element = backFirst[index];
+    dataDetails650.push({
+      // liquor: liquors?.[0]?._id,
+      liquor: GetLiqId(element.liquorID, 650, 'BEER'),
+      brandName: element.brandName,
+      quantityInML: 650,
+      openingStock: element.startingStock650,
+      purchaseShop: element.incomingPurchase650,
+      purchaseShopRate: element.buyRate650,
+      purchaseOutSide: element.incomePurchase650,
+      purchaseOutSideRate: element.purchaseRate650,
+      credits: element.inflowCredit650,
+      send: element.sending650,
+      remaining: element.sumRemainder650,
+      closingStock: element.closingStock650,
+      sales: element.sales650,
+      amount: element.total650,
+    });
+  }
+
+  const dataDetails550 = [];
+  for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
+    const element = backFirst[index];
+    dataDetails550.push({
+      // liquor: liquors?.[0]?._id,
+      liquor: GetLiqId(element.liquorID, 550, 'BEER'),
+      brandName: element.brandName,
+      quantityInML: 550,
+      openingStock: element.startingStock550,
+      purchaseShop: element.incomingPurchase550,
+      purchaseShopRate: element.buyRate550,
+      purchaseOutSide: element.incomePurchase550,
+      purchaseOutSideRate: element.purchaseRate550,
+      credits: element.inflowCredit550,
+      send: element.sending550,
+      remaining: element.sumRemainder550,
+      closingStock: element.closingStock550,
+      sales: element.sales550,
+      amount: element.total550,
+    });
+  }
+
+  const dataDetails330 = [];
+  for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
+    const element = backFirst[index];
+    dataDetails330.push({
+      // liquor: liquors?.[0]?._id,
+      liquor: GetLiqId(element.liquorID, 330, 'BEER'),
+      brandName: element.brandName,
+      quantityInML: 330,
+      openingStock: element.startingStock330,
+      purchaseShop: element.incomingPurchase330,
+      purchaseShopRate: element.buyRate330,
+      purchaseOutSide: element.incomePurchase330,
+      purchaseOutSideRate: element.purchaseRate330,
+      credits: element.inflowCredit330,
+      send: element.sending330,
+      remaining: element.sumRemainder330,
+      closingStock: element.closingStock330,
+      sales: element.sales330,
+      amount: element.total330,
+    });
+  }
+
+  const beerForm = [];
+  for (let index = 0; newBeer ? index < newBeer.length : 0; index++) {
+    const element = newBeer[index];
+    beerForm.push({
+      // liquor: liquors?.[0]?._id,
+      liquor: GetLiqId(element.liquorID, 330, 'BEER'),
+      brandName: element.brandName,
+      quantityInML: element.selectStockVarient,
+      openingStock: element.startingStock,
+      purchaseShop: element.incomingPurchase,
+      purchaseShopRate: element.buyRate,
+      purchaseOutSide: element.incomePurchase,
+      purchaseOutSideRate: element.purchaseRate,
+      credits: element.inflowCredit,
+      send: element.sending,
+      remaining: element.sumRemainder,
+      closingStock: element.closingStock,
+      sales: element.sales,
+      amount: element.total,
+    });
+  }
+
 
   // use cashReciveState to send data to API ======================
 
@@ -146,12 +240,13 @@ const useHandelSubmitBackAPI = () => {
   const fifthFront = JSON.parse(localStorage.getItem("totalPaymentsRecieved"));
   const sixthFront = JSON.parse(localStorage.getItem("udhaariTotal"));
   const seventhFront = JSON.parse(localStorage.getItem("commisionTotal"));
+  const beerFormTotal = JSON.parse(localStorage.getItem("beerFormTotal"));
   const pichlaBakaya = 0;
 
   const english = firstformData + secondFront;
   const beer = beerTotal;
   const rmlData = fourthFront;
-  const totalSell = fourthFront + beerTotal + firstformData + secondFront;
+  const totalSell = (Number(fourthFront) + Number(beerTotal) + Number(firstformData) + Number(secondFront)+Number(beerFormTotal) );
   const borrowedCashReturn = fifthFront;
   const intoAccount = intoAccountState;
   const borrowed = sixthFront;
@@ -162,6 +257,7 @@ const useHandelSubmitBackAPI = () => {
     fourthFront +
     beerTotal +
     firstformData +
+    Number(beerFormTotal) +
     secondFront +
     fifthFront -
     Number(intoAccountState) -
@@ -306,17 +402,91 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      Promise.all([api1, api2, api3, api4, api5, api6, api7, api8])
+      const api9 =  fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails650 }),
+        }
+      );
+
+      const api10 =  fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails550 }),
+        }
+      );
+      const api11 =  fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails330 }),
+        }
+      );
+      const api12 =  fetch(
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: beerForm }),
+        }
+      );
+
+      Promise.all([api1, api2, api3, api4, api5, api6, api7, api8,api9,api10,api11,api12])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
 
-          if (data[0].success === true && data[1].success === true) {
+          if (data[0].success === true && data[1].success === true && data[2].success === true && data[3].success === true && data[4].success === true && data[5].success === true && data[6].success === true && data[7].success === true && data[8].success === true && data[9].success === true && data[10].success === true && data[11].success === true) {
             Swal.fire({
               icon: "success",
               title: "Success",
               text: "Data Saved Successfully",
             });
+            localStorage.removeItem('firstFront')
+            localStorage.removeItem('firstBack')
+            localStorage.removeItem('purchases')
+            localStorage.removeItem('mlForm')
+            localStorage.removeItem('credit')
+            localStorage.removeItem('expenses')
+            localStorage.removeItem('paymentRecieved')
+            localStorage.removeItem('borrow')
+            localStorage.removeItem('rml')
+            localStorage.removeItem('BeerForm')
+            localStorage.removeItem('bhejan')
+            localStorage.removeItem('drDate')
+            localStorage.removeItem('creditTotal')
+            localStorage.removeItem('salesMan')
+            localStorage.removeItem('totalExpenses')
+            localStorage.removeItem('totalFirstBack')
+            localStorage.removeItem('totalPaymentsRecieved')
+            localStorage.removeItem('rmlTotal')
+            localStorage.removeItem('purchasesTotal')
+            localStorage.removeItem('beerTotal')
+            localStorage.removeItem('pichlaBakaya')
+            localStorage.removeItem('commisionTotal')
+            localStorage.removeItem('totalBorrow')
+            localStorage.removeItem('beerFormTotal')
+            localStorage.removeItem('udhaariTotal')
+            localStorage.removeItem('mlFormTotal')
+
+            
           } else {
             Swal.fire({
               icon: "error",
@@ -336,7 +506,16 @@ const useHandelSubmitBackAPI = () => {
       setIsLoading(false);
     }
     console.log(send);
-    console.log(addSendingData);
+    console.log(fourthFront)
+     console.log( beerTotal)
+     console.log( firstformData)
+     console.log( secondFront)
+     console.log( fifthFront)
+     console.log( Number(intoAccountState))
+      console.log(sixthFront)
+      console.log(seventhFront)
+      console.log(pichlaBakaya)
+      console.log(paidDues);
   };
 
   return {

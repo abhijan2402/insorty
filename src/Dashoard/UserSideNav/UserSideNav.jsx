@@ -119,13 +119,13 @@ const SideNav = () => {
             <span className="mx-4 font-medium">Extra /राशन सब्जी आदि खरीद</span>
           </Link>
 
-          <Link
+          {/* <Link
             className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             to="/user/englishbear"
           >
             <FaFileContract />
             <span className="mx-4 font-medium">English Beer अंग्रेजी शराब</span>
-          </Link>
+          </Link> */}
 
           <Link
             className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
@@ -150,7 +150,7 @@ const SideNav = () => {
             to="/user/allItems"
           >
             <FaFileContract />
-            <span className="mx-4 font-medium">All </span>
+            <span className="mx-4 font-medium">Stock and Add </span>
           </Link>
 
           <Link
@@ -159,7 +159,7 @@ const SideNav = () => {
           >
             <FaFileContract />
             <span className="mx-4 font-medium">
-              माल उधार आमद व भेजान फोर्मेट/ send format
+              All Partners
             </span>
           </Link>
 
