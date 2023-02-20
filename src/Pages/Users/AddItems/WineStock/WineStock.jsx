@@ -26,7 +26,6 @@ const WineStock = () => {
     },
   });
 
-  const total = 0;
 
   const wineStockData = wineStock?.filter((item) => item.type === "WINE");
 
@@ -43,6 +42,36 @@ const WineStock = () => {
     : wineStockData;
 
   if (isLoading) return <Loader></Loader>;
+
+
+  const total = 0;
+
+  let three=[]
+
+  filteredData.map((item)=>{
+    item.sizes.map((brand)=>{
+      if (brand.quantityInML === 750 || brand.quantityInML === 330 || brand.quantityInML === 180){
+        console.log(brand)
+        three.push(brand)
+      }
+    })
+  })
+
+  console.log(three)
+  
+  console.log(filteredData.reduce(
+    (total, currentItem) => (total = total + currentItem.sizes.reduce(
+
+      (total, currentItem) => (total = total + (currentItem.currentStock * Number(currentItem.averageRate.$numberDecimal))),
+      0
+    )),
+    0
+  ))
+
+  // console.log(three.reduce(
+  //   (total, currentItem) => (total = total + (currentItem.currentStock * Number(currentItem.averageRate.$numberDecimal))),
+  //   0
+  // ))
 
   return (
     <section>
@@ -162,56 +191,71 @@ const WineStock = () => {
                     key={item._id}
                     index={index}
                     item={item}
-                    total={total}
                   ></WineStockTopData>
                 </>
               );
             })}
 
-            <tr>
-              <td colSpan="5">Total</td>
-              <td>{total}</td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
 
       <div>
-        <div className="flex gap-4 overflow-x-auto my-4 ">
+        <div className=" gap-4 overflow-x-auto my-4 ">
           <div>
             <table className="table w-full m-2">
               <thead>
                 <tr>
                   <th>S.no</th>
                   <th>ब्राण्ड/ Brand Name </th>
+                  <th>size </th>
                   <th>स्टॉक / stock</th>
                   <th>Avg. Rate / रेट</th>
                   <th>Total / योग</th>
                 </tr>
               </thead>
               <tbody>
+              {filteredData.map((brand,index)=>{
+                return(
+                <>
+               { brand.sizes.map((size)=>{
+                 if (size.quantityInML !== 750 && size.quantityInML !== 330 && size.quantityInML !== 180){
+
+                return(
+                  <tr>         
+                  <td>{index+1}</td>
+                  <td>{brand.brandName}</td>
+                  <td>{size.quantityInML}</td>
+                  <td> {size.currentStock}</td>
+                  <td> {size.averageRate.$numberDecimal}</td>
+                    <td> {size.currentStock * Number(size.averageRate.$numberDecimal)}</td>
+                  </tr>
+
+) }
+                })}
+                </>
+)
+              })}
                 <tr>
-                  <td>01</td>
-                  <td>Brand Name</td>
-                  <td> 400</td>
-                  <td> 654</td>
-                  <td> 1000</td>
-                </tr>
-                <tr>
-                  <td colSpan="4">Total</td>
-                  <td>1000</td>
+                  <td colSpan="5">Total</td>
+                  <td>
+                  {
+                    filteredData.reduce(
+                      (total, currentItem) => (total = total + currentItem.sizes.reduce(
+
+                        (total, currentItem) => (total = total + (currentItem.currentStock * Number(currentItem.averageRate.$numberDecimal))),
+                        0
+                      )),
+                      0
+                    )
+}</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div className="w-1/2 mx-4">
-            <h1 className="text-2xl font-bold ">रफ जगह</h1>
-            <textarea
-              className="textarea textarea-accent h-40 "
-              placeholder="Type Here ...."
-            ></textarea>
-          </div>
+         
         </div>
       </div>
     </section>

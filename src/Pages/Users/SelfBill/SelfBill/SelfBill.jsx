@@ -33,11 +33,7 @@ const SelfBill = () => {
     },
   });
 
-  const totalAmountData = SelfBillData?.map((item) => {
-    return item.total;
-  });
-  const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
-  const netPaidAmount = totalAmount - refundDataList;
+ 
 
   const filteredData = selectedDate
     ? SelfBillData.filter((item) => {
@@ -54,6 +50,12 @@ const SelfBill = () => {
   if (isLoading || brandsLoaded || loading) {
     return <Loader></Loader>;
   }
+
+  const totalAmountData = filteredData?.map((item) => {
+    return item.total;
+  });
+  const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
+  const netPaidAmount = totalAmount - refundDataList;
 
   return (
     <section>

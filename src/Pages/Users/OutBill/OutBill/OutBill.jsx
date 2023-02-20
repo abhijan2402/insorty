@@ -27,10 +27,7 @@ const OutBill = () => {
     },
   });
 
-  const totalAmountData = OutBill?.map((item) => {
-    return item.total;
-  });
-  const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
+ 
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -51,6 +48,11 @@ const OutBill = () => {
   if (isLoading || brandsLoaded || loading) {
     return <Loader></Loader>;
   }
+
+  const totalAmountData = filteredData?.map((item) => {
+    return item.total;
+  });
+  const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
 
   return (
     <section>

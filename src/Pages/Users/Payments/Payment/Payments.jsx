@@ -96,7 +96,7 @@ const Payments = () => {
     <section>
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">दुकान/बार पेमेंट</h2>
-        <div className="flex gap-4 items-center my-4">
+        {/* <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
@@ -118,7 +118,7 @@ const Payments = () => {
               className="semiSmallInput"
             />
           </div>
-        </div>
+        </div> */}
         <div className="divider my-2"></div>
       </div>
 

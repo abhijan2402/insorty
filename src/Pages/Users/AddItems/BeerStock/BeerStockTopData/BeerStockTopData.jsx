@@ -10,6 +10,14 @@ const BeerStockTopData = ({ item, index, total }) => {
     quan550?.currentStock * Number(quan650?.averageRate.$numberDecimal) +
     quan330?.currentStock * Number(quan650?.averageRate.$numberDecimal);
 
+  const price650 = quan650?.currentStock *
+    Number(quan650?.averageRate.$numberDecimal) || 0
+  const price550 = quan550?.currentStock *
+    Number(quan550?.averageRate.$numberDecimal) || 0
+  const price330 = quan330?.currentStock *
+    Number(quan330?.averageRate.$numberDecimal) || 0
+
+
   return (
     <>
       <tr>
@@ -83,8 +91,7 @@ const BeerStockTopData = ({ item, index, total }) => {
               <input
                 type="number"
                 value={
-                  quan650?.currentStock *
-                  Number(quan650?.averageRate.$numberDecimal)
+                 price650
                 }
                 disabled
                 className="smallinput"
@@ -95,8 +102,7 @@ const BeerStockTopData = ({ item, index, total }) => {
               <input
                 type="number"
                 value={
-                  quan550?.currentStock *
-                  Number(quan550?.averageRate.$numberDecimal)
+                  price550
                 }
                 disabled
                 className="smallinput"
@@ -107,8 +113,7 @@ const BeerStockTopData = ({ item, index, total }) => {
               <input
                 type="number"
                 value={
-                  quan330?.currentStock *
-                  Number(quan330?.averageRate.$numberDecimal)
+                  price330
                 }
                 disabled
                 className="smallinput"
@@ -117,10 +122,7 @@ const BeerStockTopData = ({ item, index, total }) => {
           </div>
         </td>
         <td>
-          {quan650?.currentStock * Number(quan650?.averageRate.$numberDecimal) +
-            quan550?.currentStock *
-              Number(quan650?.averageRate.$numberDecimal) +
-            quan330?.currentStock * Number(quan650?.averageRate.$numberDecimal)}
+          {price330 + price550 + price650}
         </td>
       </tr>
     </>

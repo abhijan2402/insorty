@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import CommisionForm from "../CommisionForm/CommisionForm";
 import { useQuery } from "@tanstack/react-query";
@@ -6,6 +6,8 @@ import Loader from "../../../../Components/Loader/Loader";
 
 const Commision = () => {
   const token = localStorage.getItem("token");
+  const [startDate,setStartDate] = useState()
+  const [endDate,setEndDate] = useState()
 
   const { data: commitsonData, isLoading } = useQuery({
     queryKey: ["commitsonData"],
@@ -37,9 +39,10 @@ const Commision = () => {
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <input
-              type="text"
-              value={"12 Dec 2022 "}
-              name="year"
+              type="date"
+              value={startDate}
+              onChange={(e)=>setStartDate(e.target.value)}
+              name="start"
               className="semiSmallInput"
             />
           </div>
@@ -48,9 +51,10 @@ const Commision = () => {
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <input
-              type="text"
-              value={"07 January 2023 "}
-              name="year"
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              name="end"
               className="semiSmallInput"
             />
           </div>
@@ -72,7 +76,19 @@ const Commision = () => {
               </thead>
 
               <tbody>
-                {commitsonData.map((commison, index) => {
+                {commitsonData.filter(row => {
+                  let filterPass = true
+                  const date = new Date(row.date)
+                  if (startDate) {
+                    filterPass = filterPass && (new Date(startDate) <= date)
+                  }
+                  if (endDate) {
+                    filterPass = filterPass && (new Date(endDate) >= date)
+                  }
+                  //if filterPass comes back `false` the row is filtered out
+                  return filterPass
+                })
+.map((commison, index) => {
                   return (
                     <CommisionForm
                       key={index}

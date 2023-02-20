@@ -1,14 +1,16 @@
 import React from "react";
 
 const WineStockTopData = ({ item, index, total }) => {
-  const quan650 = item.sizes.find((element) => element.quantityInML === 650);
-  const quan550 = item.sizes.find((element) => element.quantityInML === 550);
-  const quan330 = item.sizes.find((element) => element.quantityInML === 330);
+  const quan650 = item.sizes.find((element) => element.quantityInML === 750);
+  const quan550 = item.sizes.find((element) => element.quantityInML === 330);
+  const quan330 = item.sizes.find((element) => element.quantityInML === 180);
 
-  total +=
-    quan650?.currentStock * Number(quan650?.averageRate.$numberDecimal) +
-    quan550?.currentStock * Number(quan650?.averageRate.$numberDecimal) +
-    quan330?.currentStock * Number(quan650?.averageRate.$numberDecimal);
+  const price650 = quan650?.currentStock *
+    Number(quan650?.averageRate.$numberDecimal) || 0
+  const price550 = quan550?.currentStock *
+    Number(quan550?.averageRate.$numberDecimal) || 0
+  const price330 = quan330?.currentStock *
+    Number(quan330?.averageRate.$numberDecimal) || 0
 
   return (
     <>
@@ -82,9 +84,8 @@ const WineStockTopData = ({ item, index, total }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={
-                  quan650?.currentStock *
-                  Number(quan650?.averageRate.$numberDecimal)
+                value={ 
+                  price650
                 }
                 disabled
                 className="smallinput"
@@ -95,8 +96,7 @@ const WineStockTopData = ({ item, index, total }) => {
               <input
                 type="number"
                 value={
-                  quan550?.currentStock *
-                  Number(quan550?.averageRate.$numberDecimal)
+                  price550
                 }
                 disabled
                 className="smallinput"
@@ -107,8 +107,7 @@ const WineStockTopData = ({ item, index, total }) => {
               <input
                 type="number"
                 value={
-                  quan330?.currentStock *
-                  Number(quan330?.averageRate.$numberDecimal)
+                 price330
                 }
                 disabled
                 className="smallinput"
@@ -117,10 +116,7 @@ const WineStockTopData = ({ item, index, total }) => {
           </div>
         </td>
         <td>
-          {quan650?.currentStock * Number(quan650?.averageRate.$numberDecimal) +
-            quan550?.currentStock *
-              Number(quan650?.averageRate.$numberDecimal) +
-            quan330?.currentStock * Number(quan650?.averageRate.$numberDecimal)}
+          {price330 + price550 + price650}
         </td>
       </tr>
     </>
