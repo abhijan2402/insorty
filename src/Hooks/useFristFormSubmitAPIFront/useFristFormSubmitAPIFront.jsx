@@ -26,7 +26,6 @@ const useFristFormSubmitAPIFront = () => {
     // setIsLoadingSubmit(true);
 
     const dataDetails650 = [];
-
     for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
       const element = firstFront[index];
       dataDetails650.push({
@@ -119,7 +118,11 @@ const useFristFormSubmitAPIFront = () => {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ date: drDate, salesmen:salesMan, entries: dataDetails650 }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: dataDetails650,
+          }),
         }
       );
 
@@ -131,7 +134,11 @@ const useFristFormSubmitAPIFront = () => {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails550 }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: dataDetails550,
+          }),
         }
       );
       const api3 = await fetch(
@@ -142,7 +149,11 @@ const useFristFormSubmitAPIFront = () => {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails330 }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: dataDetails330,
+          }),
         }
       );
 
@@ -154,7 +165,11 @@ const useFristFormSubmitAPIFront = () => {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: addSecondFormData }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: addSecondFormData,
+          }),
         }
       );
 
@@ -185,9 +200,9 @@ const useFristFormSubmitAPIFront = () => {
     } finally {
       setIsLoadingSubmit(false);
     }
-    console.log(dataDetails650)
-    console.log(dataDetails550)
-    console.log(dataDetails330)
+    console.log(dataDetails650);
+    console.log(dataDetails550);
+    console.log(dataDetails330);
   };
 
   return {

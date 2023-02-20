@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 import usePartner from "../PartnerHooks/usePartner";
@@ -63,8 +63,9 @@ const Partners = () => {
             <input
               type="date"
               value={StartDate}
-              onChange={(e)=>{setStartDate(e.target.value)
-              console.log(StartDate)
+              onChange={(e) => {
+                setStartDate(e.target.value);
+                console.log(StartDate);
               }}
               name="year"
               className="semiSmallInput"
@@ -79,8 +80,8 @@ const Partners = () => {
               value={EndDate}
               name="year"
               onChange={(e) => {
-                setEndDate(e.target.value)
-                console.log(EndDate)
+                setEndDate(e.target.value);
+                console.log(EndDate);
               }}
               className="semiSmallInput"
             />
@@ -169,22 +170,9 @@ const Partners = () => {
         </form>{" "}
         <div>
           <div className="mt-4 flex gap-4">
-            {/* <button
-              className="dailyReportBtnSubmit"
-              onClick={() => handelOnSubmitPartner()}
-              type="submit"
-            >
-              Submit
-            </button> */}
             <label htmlFor="addPartner" className="btn bg-[#AA237A]">
               Add Partner
             </label>
-            {/* <button className="dailyReportBtn" onClick={() => addOnePartner()}>
-              ADD 1
-            </button>
-            <Link className="dailyReportBtn text-center flex justify-center items-center">
-              सूची
-            </Link> */}
           </div>
         </div>
       </div>
