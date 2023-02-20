@@ -20,7 +20,9 @@ const useHandelSubmitBackAPI = () => {
   const { craditDabitState } = useCarditDabit();
   const { infolwBorrwingFormState } = useInfolwBorrowingRml();
   const { addShippingState } = useShippingAdd();
-  const { intoAccountState, liquerState,paidDues } = useContext(DataContextApi);
+  const { intoAccountState, liquerState, paidDues } = useContext(
+    DataContextApi
+  );
   const liquerData = liquerState?.data;
   const rmlFieldsData = JSON.parse(localStorage.getItem("rml"));
   const beerTotal = JSON.parse(localStorage.getItem("totalFirstBack"));
@@ -29,9 +31,8 @@ const useHandelSubmitBackAPI = () => {
   const paymentRecieved = JSON.parse(localStorage.getItem("paymentRecieved"));
   const borrow = JSON.parse(localStorage.getItem("bhejan"));
   const send = JSON.parse(localStorage.getItem("borrow"));
-  
 
-  const { GetLiqId } = useLiquors()
+  const { GetLiqId } = useLiquors();
 
   const {
     salesMan,
@@ -39,18 +40,21 @@ const useHandelSubmitBackAPI = () => {
     drDate,
   } = useContext(DataContextApi);
 
-
   // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
 
-  for (let index = 0; paymentRecieved ? index < paymentRecieved.length : 0; index++) {
+  for (
+    let index = 0;
+    paymentRecieved ? index < paymentRecieved.length : 0;
+    index++
+  ) {
     const element = paymentRecieved[index];
 
     borrowCashReturnData.push({
-      comment:element.comment,
+      comment: element.comment,
       from: element.id,
       cash: element.amount,
-      type: element.type
+      type: element.type,
     });
   }
 
@@ -64,16 +68,20 @@ const useHandelSubmitBackAPI = () => {
   const rateData = (liquerData ?? [])[0]?.rate;
   const liquerId = (liquerData ?? [])[0]?._id;
 
-  for (let index = 0; rmlFieldsData ? index < rmlFieldsData.length :  0; index++) {
+  for (
+    let index = 0;
+    rmlFieldsData ? index < rmlFieldsData.length : 0;
+    index++
+  ) {
     const element = rmlFieldsData[index];
     addRmlData.push({
-      liquor: GetLiqId(element.liquorID, Number(element.ml),'RML'), //to be updated
-      brandName:element.brandName,
+      liquor: GetLiqId(element.liquorID, Number(element.ml), "RML"), //to be updated
+      brandName: element.brandName,
       openingStock: element.openingStock,
       purchaseShop: element.incomingPurchase,
       purchaseShopRate: element.buyRate,
       purchaseOutSide: element.incomePurchase,
-      quantityInML : element.ml,
+      quantityInML: element.ml,
       purchaseOutSideRate: element.purchaseRate,
       credits: element.inflowCredit,
       send: element.sending,
@@ -88,10 +96,14 @@ const useHandelSubmitBackAPI = () => {
   // purchesOutSideState ======================
 
   const purchaseOutSideData = [];
-  for (let index = 0; purchaseOutside ? index < purchaseOutside.length : 0; index++) {
+  for (
+    let index = 0;
+    purchaseOutside ? index < purchaseOutside.length : 0;
+    index++
+  ) {
     const element = purchaseOutside[index];
     purchaseOutSideData.push({
-      liquor: GetLiqId(element.liquorID, Number(element.quantity),null), //to be updated
+      liquor: GetLiqId(element.liquorID, Number(element.quantity), null), //to be updated
       party: element.partyId,
       number: element.theNumber,
       ml: element.quantity,
@@ -108,7 +120,7 @@ const useHandelSubmitBackAPI = () => {
     entriesExpances.push({
       amount: element.amount,
       comment: element.desc,
-      type: element.type
+      type: element.type,
     });
   }
 
@@ -116,18 +128,16 @@ const useHandelSubmitBackAPI = () => {
 
   for (let index = 0; index < craditDabitState.length; index++) {
     const element = craditDabitState[index];
-    
-      entriesBorrow.push({
-    type: element.partyType,
-    from: element.partyId,
-        amount: element.amount,
-          comment: element.note,
+
+    entriesBorrow.push({
+      type: element.partyType,
+      from: element.partyId,
+      amount: element.amount,
+      comment: element.note,
     });
-    
-   
   }
 
-  // 
+  //
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
@@ -136,8 +146,7 @@ const useHandelSubmitBackAPI = () => {
   const fifthFront = JSON.parse(localStorage.getItem("totalPaymentsRecieved"));
   const sixthFront = JSON.parse(localStorage.getItem("udhaariTotal"));
   const seventhFront = JSON.parse(localStorage.getItem("commisionTotal"));
-  const pichlaBakaya =  0;
-  
+  const pichlaBakaya = 0;
 
   const english = firstformData + secondFront;
   const beer = beerTotal;
@@ -149,14 +158,24 @@ const useHandelSubmitBackAPI = () => {
   const commission = seventhFront;
   const previousDues = pichlaBakaya;
   const todaysPayment = paidDues;
-  const restAmount = fourthFront + beerTotal + firstformData + secondFront + fifthFront - Number(intoAccountState) - sixthFront - seventhFront + pichlaBakaya - paidDues;
+  const restAmount =
+    fourthFront +
+    beerTotal +
+    firstformData +
+    secondFront +
+    fifthFront -
+    Number(intoAccountState) -
+    sixthFront -
+    seventhFront +
+    pichlaBakaya -
+    paidDues;
 
   const addSendingData = [];
   for (let index = 0; send ? index < send.length : 0; index++) {
     const element = send[index];
     addSendingData.push({
       liquor: GetLiqId(element.liquorId, Number(element.quantity), null),
-      party:element.partyId,
+      party: element.partyId,
       number: element.theNumber,
       total: element.total,
       comment: element.reason,
@@ -171,7 +190,6 @@ const useHandelSubmitBackAPI = () => {
       party: element.partyId,
       number: element.theNumber,
       comment: element.comment,
-      
     });
   }
 
@@ -182,7 +200,11 @@ const useHandelSubmitBackAPI = () => {
         "https://insorty-api.onrender.com/shop/addBackPageRMLData",
         {
           method: "POST",
-          body: JSON.stringify({ date: drDate, salesmen: salesMan,entries: addRmlData }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: addRmlData,
+          }),
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -190,7 +212,11 @@ const useHandelSubmitBackAPI = () => {
         "https://insorty-api.onrender.com/shop/addTotalExpensesData",
         {
           method: "POST",
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: entriesExpances }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: entriesExpances,
+          }),
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -200,7 +226,8 @@ const useHandelSubmitBackAPI = () => {
         {
           method: "POST",
           body: JSON.stringify({
-            date: drDate, salesmen: salesMan,
+            date: drDate,
+            salesmen: salesMan,
             entries: entriesBorrow,
           }),
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -212,7 +239,8 @@ const useHandelSubmitBackAPI = () => {
         {
           method: "POST",
           body: JSON.stringify({
-            date: drDate, salesmen: salesMan,
+            date: drDate,
+            salesmen: salesMan,
             english: english,
             beer: beer,
             RML: rmlData,
@@ -233,7 +261,11 @@ const useHandelSubmitBackAPI = () => {
         "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
         {
           method: "POST",
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: purchaseOutSideData }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: purchaseOutSideData,
+          }),
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -242,14 +274,22 @@ const useHandelSubmitBackAPI = () => {
         "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
         {
           method: "POST",
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: borrowCashReturnData }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: borrowCashReturnData,
+          }),
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
 
       const api7 = fetch("https://insorty-api.onrender.com/shop/addSendData", {
         method: "POST",
-        body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: addSendingData }),
+        body: JSON.stringify({
+          date: drDate,
+          salesmen: salesMan,
+          entries: addSendingData,
+        }),
         headers: { "Content-Type": "application/json", cookie_token: token },
       });
 
@@ -257,7 +297,11 @@ const useHandelSubmitBackAPI = () => {
         "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
         {
           method: "POST",
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: addPurchesBorrowData }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: addPurchesBorrowData,
+          }),
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -291,8 +335,8 @@ const useHandelSubmitBackAPI = () => {
     } finally {
       setIsLoading(false);
     }
-    console.log(send)
-    console.log(addSendingData)
+    console.log(send);
+    console.log(addSendingData);
   };
 
   return {

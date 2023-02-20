@@ -1,0 +1,167 @@
+.dailyReportInput {
+    width: 232px;
+    padding: 0.3rem;
+    height: 40px;
+    background: rgba(253, 249, 250, 0.5);
+    border: 0.2px solid #000000;
+    border-radius: 8px
+}
+
+.specialwidth {
+    width: 600px;
+}
+
+.semiSmallInput {
+    width: 164px;
+    height: 40px;
+    padding: 0.3rem;
+    background: rgba(253, 249, 250, 0.5);
+    border: 0.2px solid #000000;
+    border-radius: 8px
+}
+
+.displayHidden{
+    display: none;
+}
+
+.smallinput {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    left: 0px;
+     margin: 0px 3px;
+    text-align: center;
+    top: 0px;
+    background: rgba(253, 249, 250, 0.5);
+    border: 0.2px solid #000000;
+    border-radius: 8px;
+}
+
+.dailyReportBtnSubmit {
+    width: 180px;
+    height: 41px;
+    text-align: center;
+    background: #AA237A;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
+
+.dailyReportBtn {
+    width: 180px;
+    height: 41px;
+    background: transparent;
+    border: 1px solid #AA237A;
+    border-radius: 5px;
+    transition: 0.6s all ease-in-out;
+
+    &:hover {
+        background: #AA237A;
+        color: #fff;
+    }
+}
+
+.dropdownContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+}
+
+.dropdownContainer:empty {
+    border: none;
+}
+
+.dropdown-rows {
+    cursor: pointer;
+    text-align: start;
+    margin: 2px 0;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .DailyReportContainer {
+        width: 100% !important;
+        margin-right: 1rem !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    .DailyReportContainer {
+        width: 100%;
+        margin-right: 1rem;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .DailyReportContainer {
+        width: 100%;
+        margin-right: 1rem;
+        margin: 0 auto;
+    }
+}
+
+.titleText {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 27px;
+    margin-bottom: 0.7rem;
+    color: #AA237A;
+
+}
+
+
+// ========================== Front Details ================
+
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.tg td {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg th {
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 10px 5px;
+    word-break: normal;
+}
+
+.tg .tg-baqh {
+    text-align: center;
+    vertical-align: top
+}
+
+.tg .tg-0lax {
+    text-align: left;
+    vertical-align: top
+}
+
+// ========================== Front Details ================

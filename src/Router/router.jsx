@@ -39,6 +39,11 @@ import BranchNameData from "../Pages/Users/AddItems/BranchName/BranchName";
 import BeerStock from "../Pages/Users/AddItems/BeerStock/BeerStock";
 import AllItems from "../Pages/Users/AddItems/AddItems/AddItems";
 import WineStock from "../Pages/Users/AddItems/WineStock/WineStock";
+import SendFormat from "../Pages/Users/SendFormat/SendFormat/SendFormat";
+import PartnarDetails from "../Pages/Users/Partners/PartnerDetails/PartnerDetails";
+import BearShopDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopDailyReport";
+import BeerShopFrontDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopFrontDailyReport/BeerShopFronteDailyReport";
+import BeerShopBackDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopBackDailyReport/BeerShopBackDailyReport";
 
 const {
   BearShopBranch,
@@ -154,6 +159,23 @@ const router = createBrowserRouter([
         element: <Partnar />,
       },
       {
+        path: "/user/partners/from/:partnerId",
+        element: <PartnarDetails />,
+        loader: ({ params }) => {
+          console.log(params.partnerId);
+          return fetch(`https://insorty-api.onrender.com/shop/getAllPartners`, {
+            method: "POST",
+            body: JSON.stringify({
+              partnerId: params.partnerId,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          });
+        },
+      },
+      {
         path: "/user/payments",
         element: <Payments />,
       },
@@ -241,12 +263,30 @@ const router = createBrowserRouter([
         path: "/user/allItems",
         element: <AllItems />,
       },
+      {
+        path: "/user/sendFormat",
+        element: <SendFormat />,
+      },
     ],
   },
   {
     path: "/user/bearshop",
     element: <BearShopLayout />,
     children: [
+      {
+        path: "/user/bearshop/dailyreport",
+        element: <BearShopDailyReport />,
+      },
+
+      {
+        path: "/user/bearshop/dailyreport/front",
+        element: <BeerShopFrontDailyReport />,
+      },
+      {
+        path: "/user/bearshop/dailyreport/back",
+        element: <BeerShopBackDailyReport />,
+      },
+
       {
         path: "/user/bearshop/branch",
         element: <BearShopBranch />,
