@@ -36,6 +36,10 @@ const useFristFormAdd = () => {
     incomingPurchase550: 0,
     incomingPurchase330: 0,
 
+    initial650: 0,
+    initial550: 0,
+    initial330: 0,
+
     buyRate650: 0,
     buyRate550: 0,
     buyRate330: 0,
@@ -129,6 +133,12 @@ const useFristFormAdd = () => {
           newFormData.startingStock650 = quan750.currentStock
           newFormData.startingStock550 = quan330.currentStock
           newFormData.startingStock330 = quan180.currentStock
+          newFormData.averageRate650 = quan750.averageRate.$numberDecimal
+          newFormData.initial650 = quan750.averageRate.$numberDecimal
+          newFormData.initial550 = quan330.averageRate.$numberDecimal
+          newFormData.initial330 = quan180.averageRate.$numberDecimal
+          newFormData.averageRate550 = quan330.averageRate.$numberDecimal
+          newFormData.averageRate330 = quan180.averageRate.$numberDecimal
           firstFormData = [newFormData, ...firstFormData]
           console.log(firstFormData)
           setFristFormState(firstFormData)
@@ -165,6 +175,10 @@ const useFristFormAdd = () => {
           incomingPurchase650: 0,
           incomingPurchase550: 0,
           incomingPurchase330: 0,
+
+          initial650: 0,
+          initial550: 0,
+          initial330: 0,
 
           buyRate650: 0,
           buyRate550: 0,
@@ -235,6 +249,10 @@ const useFristFormAdd = () => {
         incomingPurchase650: 0,
         incomingPurchase550: 0,
         incomingPurchase330: 0,
+
+        initial650: 0,
+        initial550: 0,
+        initial330: 0,
 
         buyRate650: 0,
         buyRate550: 0,
@@ -341,10 +359,14 @@ const useFristFormAdd = () => {
           e.target.name === "purchaseRate650" ||
           e.target.name === "buyRate650"
         ) {
-          console.log(obj.averageRate650);
-          obj.averageRate650 =
-            (Number(obj.purchaseRate650) + Number(obj.buyRate650)) / 2;
-          console.log(obj.averageRate650);
+          if (Number(obj.initial650) > 0) {
+            obj.averageRate650 =
+              (Number(obj.averageRate650) + Number(obj.purchaseRate650) + Number(obj.buyRate650)) / 3;
+          }
+          else {
+            obj.averageRate650 =
+              (Number(obj.purchaseRate650) + Number(obj.buyRate650)) / 2;
+          }
         }
         return obj;
       } else return returned;
@@ -358,8 +380,14 @@ const useFristFormAdd = () => {
           e.target.name === "purchaseRate550" ||
           e.target.name === "buyRate550"
         ) {
-          obj.averageRate550 =
-            (Number(obj.purchaseRate550) + Number(obj.buyRate550)) / 2;
+          if (Number(obj.initial550) > 0) {
+            obj.averageRate550 =
+              (Number(obj.averageRate550) + Number(obj.purchaseRate550) + Number(obj.buyRate550)) / 3;
+          }
+          else {
+            obj.averageRate550 =
+              (Number(obj.purchaseRate550) + Number(obj.buyRate550)) / 2;
+          }
         }
         return obj;
       } else return returned;
@@ -373,8 +401,14 @@ const useFristFormAdd = () => {
           e.target.name === "purchaseRate330" ||
           e.target.name === "buyRate330"
         ) {
-          obj.averageRate330 =
-            (Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 2;
+          if (Number(obj.initial330) > 0) {
+            obj.averageRate330 =
+              (Number(obj.averageRate330) + Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 3;
+          }
+          else {
+            obj.averageRate750 =
+              (Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 2;
+          }
         }
         return obj;
       } else return returned;

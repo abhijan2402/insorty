@@ -8,6 +8,7 @@ const useRmlAdd = () => {
     liquorID: "",
     brandName: "", //brandName
     ml: 0,
+    initial:0,
     averageRate: 0,
     openingStock: 0, //initialStock
     incomingPurchase: 0, //purchaseShop.purchaseShopNum
@@ -51,6 +52,8 @@ const useRmlAdd = () => {
           newFormData.liquorID = parent._id;
           newFormData.ml = item.quantityInML;
           newFormData.startingStock = item.currentStock;
+          newFormData.averageRate = item.averageRate.$numberDecimal
+          newFormData.initial = item.averageRate.$numberDecimal
           firstFormData = [newFormData, ...firstFormData];
           setAddRmlState(firstFormData);
           localStorage.setItem("rml", JSON.stringify(firstFormData));
@@ -73,6 +76,8 @@ const useRmlAdd = () => {
           brandName: "",
           averageRate: 0,
           ml: 0,
+          initial: 0,
+
           openingStock: 0,
           incomingPurchase: 0,
           buyRate: 0,
@@ -99,6 +104,8 @@ const useRmlAdd = () => {
         brandName: "",
         averageRate: 0,
         ml: 0,
+        initial: 0,
+
         openingStock: 0,
         incomingPurchase: 0,
         buyRate: 0,
@@ -138,8 +145,14 @@ const useRmlAdd = () => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (e.target.name === "purchaseRate" || e.target.name === "buyRate") {
-          obj.averageRate =
-            (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
+          if (Number(obj.initial) > 0) {
+            obj.averageRate330 =
+              (Number(obj.averageRate) + Number(obj.purchaseRate) + Number(obj.buyRate)) / 3;
+          }
+          else {
+            obj.averageRate =
+              (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
+          }
         }
         return obj;
       } else return returned;

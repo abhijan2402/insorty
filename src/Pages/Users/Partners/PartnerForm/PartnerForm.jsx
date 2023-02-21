@@ -14,7 +14,6 @@ const PartnerForm = ({ partner, StartDate, index, partnerData, EndDate }) => {
     if (EndDate) {
       filterPass = filterPass && new Date(EndDate) >= date;
     }
-    //if filterPass comes back `false` the row is filtered out
     return filterPass;
   });
 

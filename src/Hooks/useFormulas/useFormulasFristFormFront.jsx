@@ -25,6 +25,10 @@ const useFormulasFristFormFront = () => {
     incomePurchase750: 0,
     incomePurchase330: 0,
     incomePurchase180: 0,
+    
+    initial750 : 0,
+    initial330: 0,
+    initial18:0,
 
     purchaseRate750: 0,
     purchaseRate330: 0,
@@ -106,9 +110,15 @@ const useFormulasFristFormFront = () => {
           newFormData.startingStock750 = quan750.currentStock
           newFormData.startingStock330 = quan330.currentStock
           newFormData.startingStock180 = quan180.currentStock
+          newFormData.averageRate750 = quan750.averageRate.$numberDecimal
+          newFormData.initial750 = quan750.averageRate.$numberDecimal
+          newFormData.initial330 = quan330.averageRate.$numberDecimal
+          newFormData.initial180 = quan180.averageRate.$numberDecimal
+          newFormData.averageRate330 = quan330.averageRate.$numberDecimal
+          newFormData.averageRate180 = quan180.averageRate.$numberDecimal
           firstFormData = [newFormData, ...firstFormData]
           setAddOneFristFormState(firstFormData)
-          localStorage.setItem("firstFront", JSON.stringify(firstFormData));
+          // localStorage.setItem("firstFront", JSON.stringify(firstFormData));
 
         
         }
@@ -139,6 +149,10 @@ const useFormulasFristFormFront = () => {
         buyRate750: 0,
         buyRate330: 0,
         buyRate180: 0,
+
+        initial750: 0,
+        initial330: 0,
+        initial18: 0,
 
         incomePurchase750: 0,
         incomePurchase330: 0,
@@ -212,6 +226,10 @@ const useFormulasFristFormFront = () => {
           purchaseRate750: 0,
           purchaseRate330: 0,
           purchaseRate180: 0,
+
+          initial750: 0,
+          initial330: 0,
+          initial18: 0,
 
           inflowCredit750: 0,
           inflowCredit330: 0,
@@ -316,11 +334,15 @@ const useFormulasFristFormFront = () => {
           e.target.name === "purchaseRate750" ||
           e.target.name === "buyRate750"
         ) {
-          console.log(obj.averageRate750);
+          if(Number(obj.initial750) > 0){
+            obj.averageRate750 =
+              (Number(obj.averageRate750) + Number(obj.purchaseRate750) + Number(obj.buyRate750)) / 3;
+          }
+          else{
           obj.averageRate750 =
-            (Number(obj.purchaseRate750) + Number(obj.buyRate750)) / 2;
-          console.log(obj.averageRate750);
-        }
+            (Number(obj.purchaseRate750) + Number(obj.buyRate750)) / 2;}
+ 
+       }
         return obj;
       } else return returned;
     });
@@ -332,10 +354,14 @@ const useFormulasFristFormFront = () => {
         if (
           e.target.name === "purchaseRate330" ||
           e.target.name === "buyRate330"
-        ) {
+        ) if (Number(obj.initial330) > 0) {
           obj.averageRate330 =
-            (Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 2;
+            (Number(obj.averageRate330) + Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 3;
         }
+          else {
+            obj.averageRate330 =
+              (Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 2;
+          }
         return obj;
       } else return returned;
     });
@@ -347,10 +373,14 @@ const useFormulasFristFormFront = () => {
         if (
           e.target.name === "purchaseRate180" ||
           e.target.name === "buyRate180"
-        ) {
+        ) if (Number(obj.initial180) > 0) {
           obj.averageRate180 =
-            (Number(obj.purchaseRate180) + Number(obj.buyRate180)) / 2;
+            (Number(obj.averageRate180) + Number(obj.purchaseRate180) + Number(obj.buyRate180)) / 3;
         }
+          else {
+            obj.averageRate180 =
+              (Number(obj.purchaseRate180) + Number(obj.buyRate180)) / 2;
+          }
         return obj;
       } else return returned;
     });

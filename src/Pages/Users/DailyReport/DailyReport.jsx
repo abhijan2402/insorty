@@ -34,7 +34,7 @@ const DailyReport = () => {
           to="/user/frontdailyreport/details"
           className="btn btn-error text-white font-bold"
         >
-          Al Details
+          All Details
         </Link>
       </div>
     </section>
