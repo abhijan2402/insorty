@@ -6,10 +6,7 @@ import BackDailyReport from "../Pages/Users/DailyReport/BackDailyReport/BackDail
 import Login from "../Auth/Login/Login";
 import AdminLayout from "../Layouts/AdminLayout";
 import SubAdminLayout from "../Layouts/SubAdminLayouts";
-import CreateSubAdmin from "../Pages/Admin/CreateSubAdmin/CreateSubAdmin";
-import CreateUser from "../Pages/Admin/CreateUser/CreateUser";
-import ManegSubAdmin from "../Pages/Admin/ManegSubAdmin/ManegSubAdmin";
-import ManegUser from "../Pages/SubAdmin/ManegUser/ManegUser";
+import SubAdminList from "../Pages/Admin/SubAdmin/SubAdminList/SubAdminList";
 import CreateUserSubAdmin from "../Pages/SubAdmin/CreateUser/CreateUser";
 import Branch from "../Pages/Users/Branch/BranchName/BranchName";
 import BranchFrom from "../Pages/Users/Branch/BranchForm/BranchFrom";
@@ -31,7 +28,6 @@ import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FullDe
 import BearShopLayout from "../Layouts/BearShopLayouts";
 import routerImport from "./routerImport";
 import BackDetailReport from "../Pages/Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/BackDetailsReport/BackDetailReport";
-// import BackReport from "../Pages/Users/DailyReport/DetailsReports/BackDetailsReport/BackDetailsReport";
 import FrontDetailsReport2 from "../Pages/Users/DailyReport/DetailsReports/FrontDetailsReport/FrontDetailsReport";
 import PartyName from "../Pages/Users/AddItems/PartyName/PartyName";
 import BrandList from "../Pages/Users/AddItems/BrandList/BrandList";
@@ -44,6 +40,8 @@ import PartnarDetails from "../Pages/Users/Partners/PartnerDetails/PartnerDetail
 import BearShopDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopDailyReport";
 import BeerShopFrontDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopFrontDailyReport/BeerShopFronteDailyReport";
 import BeerShopBackDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopBackDailyReport/BeerShopBackDailyReport";
+import UserList from "../Pages/Admin/Users/UserList/UserList";
+import ShopList from "../Pages/Admin/Shop/ShopList/ShopList";
 
 const {
   BearShopBranch,
@@ -80,16 +78,16 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        path: "/admin/createsubadmin",
-        element: <CreateSubAdmin />,
+        path: "/admin",
+        element: <SubAdminList />,
       },
       {
-        path: "/admin/createuser",
-        element: <CreateUser />,
+        path: "/admin/userList",
+        element: <UserList />,
       },
       {
-        path: "/admin/manegsubadmin",
-        element: <ManegSubAdmin />,
+        path: "/admin/shopList",
+        element: <ShopList />,
       },
     ],
   },
@@ -103,8 +101,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/subadmin/maneguser",
-        element: <ManegUser />,
+        element: <UserList />,
       },
+      {},
     ],
   },
   {
