@@ -8,6 +8,7 @@ const AddOneFristFromBack = ({
   index,
   item,
   onChangeFristBackFormHandler,
+  handleRemoveFieldsBack
 }) => {
   const SerialNo = index + 1;
 
@@ -42,6 +43,7 @@ const AddOneFristFromBack = ({
     <>
       <tr>
         <th>{SerialNo}</th>
+        <th className="cross" onClick={()=>handleRemoveFieldsBack(index)}>X</th>
         <td>
           <div className="form-control">
             <Autocomplete

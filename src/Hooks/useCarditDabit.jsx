@@ -79,12 +79,21 @@ const useCarditDabit = () => {
     console.log(handelCraditDabit);
   };
 
+
+  const handleRemoveFieldsCredit = index => {
+    const values = [...craditDabitState];
+    values.splice(index, 1);
+    console.log(index)
+    setCraditDabitState(values);
+  };
+
   return {
     craditDabitState,
     onChangeCarditDabit,
     handelSubmitCarditDabit,
     handelAddFiveCarditDabit,
     handelAddOneCarditDabit,
+    handleRemoveFieldsCredit
   };
 };
 

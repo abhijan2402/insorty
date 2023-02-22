@@ -1187,6 +1187,21 @@ const useFristFormAdd = () => {
   };
 
 
+  const handleRemoveFieldsBack = index => {
+    const values = [...fristFormState];
+    values.splice(index, 1);
+    console.log(index)
+    setFristFormState(values);
+  };
+
+  const handleRemoveFieldsBeer = index => {
+    const values = [...addOneSecondFormState];
+    values.splice(index, 1);
+    console.log(index)
+    setAddOneSecondFormState(values);
+  };
+
+
 
 
   return {
@@ -1201,6 +1216,8 @@ const useFristFormAdd = () => {
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
+    handleRemoveFieldsBack,
+    handleRemoveFieldsBeer
     // brandsLoaded,
     // liquors,
   };

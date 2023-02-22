@@ -75,11 +75,19 @@ const useCashReciveAdd = () => {
     );
   };
 
+  const handleRemoveFieldsCashBack = index => {
+    const values = [...cashReciveState];
+    values.splice(index, 1);
+    console.log(index)
+    setCashReciveState(values);
+  };
+
   return {
     handelAddFiveCashRecive,
     handelAddOneCashRecive,
     onChangeCashRecive,
     cashReciveState,
+    handleRemoveFieldsCashBack
   };
 };
 

@@ -70,12 +70,20 @@ const useCommissonAdd = () => {
     console.log(handelCommisson);
   };
 
+  const handleRemoveFieldsCommission = index => {
+    const values = [...commissonState];
+    values.splice(index, 1);
+    console.log(index)
+    setCommissonState(values);
+  };
+
   return {
     handelAddFiveCommison,
     handelAddOneCommison,
     onChangeCommison,
     commissonState,
     handelSubmitCommisson,
+    handleRemoveFieldsCommission
   };
 };
 

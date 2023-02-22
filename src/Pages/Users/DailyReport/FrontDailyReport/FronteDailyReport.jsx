@@ -24,6 +24,7 @@ const FronteDailyReport = () => {
     setAddOneFristFormState,
     addFive,
     myOptions,
+    handleRemoveFields,
     totalState,
   } = useFormulasFristFormFront();
 
@@ -33,6 +34,7 @@ const FronteDailyReport = () => {
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
+    handleRemoveFieldsSecond
   } = useSecondFormFront();
 
   const {
@@ -110,6 +112,7 @@ const FronteDailyReport = () => {
                 <thead>
                   <tr>
                     <th>S.no</th>
+                    <th></th>
                     <th>Brand Name/ ब्राण्ड</th>
                     <th>Average Rate</th>
                     <th>प्रारम्भिक स्टॉक</th>
@@ -443,6 +446,7 @@ const FronteDailyReport = () => {
                         setAddOneFristFormState={setAddOneFristFormState}
                         addOneFristFormState={addOneFristFormState}
                         handelFristFormOnChange={handelFristFormOnChange}
+                        handleRemoveFields={handleRemoveFields}
                       ></AddOneFristForm>
                     );
                   })}
@@ -451,6 +455,7 @@ const FronteDailyReport = () => {
 
                   <tr>
                     <th></th>
+                    <td></td>
                     <td>Total</td>
                     {/* ======== MRP Input ========= */}
                     <td>
@@ -1100,6 +1105,7 @@ const FronteDailyReport = () => {
                   <thead>
                     <tr>
                       <th>S.no</th>
+                      <th></th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>Total ml</th>
                       <th>Average Rate</th>
@@ -1128,6 +1134,7 @@ const FronteDailyReport = () => {
                           key={index}
                           index={index}
                           item={item}
+                          handleRemoveFieldsSecond={handleRemoveFieldsSecond}
                         ></AddOneSecondForm>
                       );
                     })}

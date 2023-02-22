@@ -102,12 +102,20 @@ const usePurchesOutSideAdd = () => {
     console.log(addPurcheshOut);
   };
 
+  const handleRemoveFieldsPurchaseOut = index => {
+    const values = [...purchesOutSideState];
+    values.splice(index, 1);
+    console.log(index)
+    setPurchesOutSideState(values);
+  };
+
   return {
     purchesOutSideState,
     handelAddFivePurchesOutSide,
     handelAddOnePurchesOutSide,
     onChangePurchesOutSide,
     handelSubmitPurchesOutSide,
+    handleRemoveFieldsPurchaseOut
   };
 };
 

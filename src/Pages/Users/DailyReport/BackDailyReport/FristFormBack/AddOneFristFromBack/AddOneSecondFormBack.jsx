@@ -7,6 +7,7 @@ const AddOneSecondFormBack = ({
     index,
     item,
     handelSeconFormOnChange,
+    handleRemoveFieldsBeer
 }) => {
     const SerialNo = index + 1;
 
@@ -24,6 +25,7 @@ const AddOneSecondFormBack = ({
         <>
             <tr>
                 <th>{SerialNo}</th>
+                <th className="cross" onClick={()=>handleRemoveFieldsBeer(index)}>X</th>
 
                 <td>
                     <div className="form-control">

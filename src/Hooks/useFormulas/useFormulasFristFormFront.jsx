@@ -798,6 +798,14 @@ const useFormulasFristFormFront = () => {
     );
   };
 
+
+  const handleRemoveFields = index => {
+    const values = [...addOneFristFormState];
+    values.splice(index, 1);
+    console.log(index)
+    setAddOneFristFormState(values);
+  };
+
   
 
   return {
@@ -808,6 +816,7 @@ const useFormulasFristFormFront = () => {
     addOneFristFormHandler,
     addFive,
     myOptions,
+    handleRemoveFields
   };
 };
 

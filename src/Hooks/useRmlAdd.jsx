@@ -221,6 +221,14 @@ const useRmlAdd = () => {
     );
   };
 
+
+  const handleRemoveFieldsBackRml = index => {
+    const values = [...addRmlState];
+    values.splice(index, 1);
+    console.log(index)
+    setAddRmlState(values);
+  };
+
   return {
     addRmlState,
     handelAddFiveInRml,
@@ -228,6 +236,7 @@ const useRmlAdd = () => {
     onChangeRmlHandler,
     total,
     setAddRmlState,
+    handleRemoveFieldsBackRml
   };
 };
 

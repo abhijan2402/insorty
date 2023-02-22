@@ -196,10 +196,18 @@ const useSecondFormFront = () => {
     );
   };
 
+  const handleRemoveFieldsSecond = index => {
+    const values = [...addOneSecondFormState];
+    values.splice(index, 1);
+    // console.log(index)
+    setAddOneSecondFormState(values);
+  };
+
   return {
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
+    handleRemoveFieldsSecond
   };
 };
 

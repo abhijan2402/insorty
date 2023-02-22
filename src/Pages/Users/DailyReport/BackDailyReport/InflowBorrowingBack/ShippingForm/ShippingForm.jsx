@@ -5,7 +5,7 @@ import useLiquors from "../../../../../../Hooks/useLiquors";
 import { Autocomplete, TextField } from "@mui/material";
 
 
-const ShippingForm = ({ index, onChangeShipping, item }) => {
+const ShippingForm = ({ index, onChangeShipping, item, handleRemoveFieldsShipping }) => {
 
   const {
     brands,
@@ -27,7 +27,9 @@ const ShippingForm = ({ index, onChangeShipping, item }) => {
   return (
     <>
       <tr>
+
         <th>{index + 1}</th>
+        <th className="cross" onClick={() => handleRemoveFieldsShipping(index)}>X</th>
         <td>
           <div className="form-control">
             <Autocomplete

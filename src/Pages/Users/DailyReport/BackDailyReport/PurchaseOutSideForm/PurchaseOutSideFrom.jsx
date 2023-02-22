@@ -5,7 +5,7 @@ import Loader from "../../../../../Components/Loader/Loader";
 import usePartyNames from "../../../../../Hooks/usePartyNames";
 
 
-const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
+const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item, handleRemoveFieldsPurchaseOut }) => {
 
   const {
     brands,
@@ -28,6 +28,8 @@ const PurchaseOutSideFrom = ({ index, onChangePurchesOutSide, item }) => {
   return (
     <>
       <tr>
+        <th className="cross" onClick={() => handleRemoveFieldsPurchaseOut(index)}>X</th>
+
         <td>
           <div className="form-control">
             {/* <input
