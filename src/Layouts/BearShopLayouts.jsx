@@ -5,7 +5,7 @@ import { ImCross } from "react-icons/im";
 import { useState } from "react";
 import "./LayoutStyle.scss";
 import jwtDecode from "jwt-decode";
-import BearShopSideNav from "../Dashoard/BearShopSideNav/BearShopSideNav";
+import BearShopSideNav from "../Dashoard/BearShopSideNav/BeerShopSideNav";
 
 const BearShopLayout = () => {
   const [side, setSide] = useState(true);
