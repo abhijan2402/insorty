@@ -902,354 +902,790 @@ const FronteDailyReport = () => {
         </div>
 
         <div>
-          <form>
-            <div className="mt-6">
-              <div className="overflow-x-auto">
-                <table className="table w-full">
-                  <thead>
-                    <tr>
-                      <th>S.no</th>
-                      <th>Brand Name/ ब्राण्ड</th>
-                      <th> Opening stock / प्रारम्भिक स्टॉक</th>
-                      <th>Inflow(Pur. shop)/आमद(खरीद)-दु</th>
-                      <th>Buy rate shop /खरीद रेट - दुु</th>
-                      <th>Income (Pur. out)/आमद(खरीद)बा</th>
-                      <th>buy  rate out /खरीद रेट - बा.</th>
-                      <th>inflow (credit) / आमद (उधारी)</th>
-                      <th>send / भेजान.</th>
-                      <th>sum -remaining / योग - शेष</th>
-                      <th>closing stock / अन्तिम स्टॉक</th>
-                      <th>sales /  बिक्री</th>
-                      <th>total / योग</th>
-                      <th>Amount/ योग</th>
-                    </tr>
-                  </thead>
+          <div>
+            <form>
+              <div className="mt-6 ">
+                <div className="overflow-x-auto flex gap-4">
+                  <table className="table w-full">
+                    <thead>
+                      <tr>
+                        <th>S.no</th>
+                        <th>Brand Name/ ब्राण्ड</th>
+                        <th> Opening stock / प्रारम्भिक स्टॉक</th>
+                        <th>Inflow(Pur. shop)/आमद(खरीद)-दु</th>
+                        <th>Buy rate shop /खरीद रेट - दुु</th>
+                        <th>Income (Pur. out)/आमद(खरीद)बा</th>
+                        <th>buy  rate out /खरीद रेट - बा.</th>
+                        <th>inflow (credit) / आमद (उधारी)</th>
+                        <th>send / भेजान.</th>
+                        <th>sum -remaining / योग - शेष</th>
+                        <th>closing stock / अन्तिम स्टॉक</th>
+                        <th>sales /  बिक्री</th>
+                        <th>total / योग</th>
+                        <th>Amount/ योग</th>
+                      </tr>
+                    </thead>
 
-                  <tbody>
+                    <tbody>
 
-                    <tr>
-                      <th></th>
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-                      {/* ======== MRP Input ========= */}
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">750ml</span>
-                            </label>
-                          </div>
+                      <tr>
+                        <th></th>
+                        <td>
+                          <div className="form-control"></div>
+                        </td>
+                        {/* ======== MRP Input ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
 
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
 
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">180ml</span>
-                            </label>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
                           </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">60ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">30ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-                      {/* ======== प्रारम्भिक स्टॉक ========= */}
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">750ml</span>
-                            </label>
-                          </div>
+                        </td>
+                        {/* ======== प्रारम्भिक स्टॉक ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
 
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
 
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">180ml</span>
-                            </label>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
                           </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">60ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">30ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
+                        </td>
 
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">750ml</span>
-                            </label>
-                          </div>
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
 
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
 
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">180ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">60ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">30ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">750ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">180ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">60ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">30ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">750ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">180ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">60ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">30ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-
-                      {/* ============खरीद रेट - बा. =============  */}
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">750ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">180ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">60ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">30ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-
-                      {/* ======== आमद (उधारी) ========= */}
-
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">750ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-                      {/* ======== भेजान ========= */}
-
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">650ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">550ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-                      {/* ======== योग/शेष ========= */}
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">750ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-                      {/* ======== अन्तिम स्टॉक ========= */}
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">650ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">550ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">650ml</span>
-                            </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">550ml</span>
-                            </label>
-                          </div>
-
-                          <div className="form-control">
-                            <label className="label">
-                              <span className="label-text">330ml</span>
-                            </label>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-                    </tr>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
 
 
-                    {/* {addOneSecondFormState.map((item, index) => {
-                      return (
-                        <AddOneSecondForm
-                          handelSeconFormOnChange={handelSeconFormOnChange}
-                          addOneSecondFormState={addOneSecondFormState}
-                          key={index}
-                          index={index}
-                          item={item}
-                        ></AddOneSecondForm>
-                      );
-                    })} */}
-                  </tbody>
-                </table>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+
+                          </div>
+                        </td>
+
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
+
+                        {/* ============खरीद रेट - बा. =============  */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
+
+                        {/* ======== आमद (उधारी) ========= */}
+
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
+                        {/* ======== भेजान ========= */}
+
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
+                        {/* ======== योग/शेष ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
+                        {/* ======== अन्तिम स्टॉक ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="form-control"></div>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th></th>
+                        <td>
+                          <input
+                            disabled
+                            type="number"
+                            className="dailyReportInput"
+                            name="Brand"
+                          />
+                        </td>
+                        {/* ======== MRP Input ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                disabled
+                                type="number"
+                                className="smallinput"
+                                name="averageRate"
+                              />
+                            </div>
+                            <div className="form-control">
+                              <input
+                                disabled
+                                type="number"
+                                className="smallinput"
+                                name="averageRate"
+                              />
+                            </div>
+                            <div className="form-control">
+                              <input
+                                disabled
+                                type="number"
+                                className="smallinput"
+                                name="averageRate"
+                              />
+                            </div>
+
+                          </div>
+                        </td>
+                        {/* ======== प्रारम्भिक स्टॉक ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                className="smallinput"
+                                disabled
+                                type="number"
+                                name="startingStock"
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                disabled
+                                name="startingStock"
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                disabled
+                                name="startingStock"
+                              />
+                            </div>
+
+                          </div>
+                        </td>
+
+                        {/* ======== आमद (खरीद)-दु. ========= */}
+
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                disabled
+                                className="smallinput"
+                                name="incomingPurchase"
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                disabled
+                                name="incomingPurchase"
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                disabled
+                                name="incomingPurchase"
+                              />
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                disabled
+                                className="smallinput"
+                                name="buyRate"
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                disabled
+                                className="smallinput"
+                                name="buyRate"
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="buyRate"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                        </td>
+
+                        {/* ======== आमद (खरीद)-बा. ========= */}
+
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="incomePurchase"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                disabled
+                                name="incomePurchase"
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="incomePurchase"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                        </td>
+
+                        {/*================ खरीद रेट - बा. ==================  */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="purchaseRate"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="purchaseRate"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="purchaseRate"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="inflowCredit"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="inflowCredit"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="inflowCredit"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        {/* ======== भेजान ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="sending"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="sending"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                disabled
+                                className="smallinput"
+                                name="sending"
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        {/* ======== योग/शेष ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="sumRemainder"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="sumRemainder"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="sumRemainder"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        {/* ======== अन्तिम स्टॉक ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="closingStock"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="closingStock"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="closingStock"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="closingStock"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="closingStock"
+                                disabled
+                              />
+                            </div>
+
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
+                                name="closingStock"
+                                disabled
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        {/* ============= कुल योग ================ */}
+                        <td>
+                          <div className="form-control">
+                            <input
+                              type="number"
+                              disabled
+                              className="semiSmallInput"
+                              name="grandTotal"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <table className="table w-full">
+                    <thead>
+                      <tr >
+                        <th>पानी, नमकीन, सिगरेट, पुड़िया आदि</th>
+                      </tr>
+                      <tr>
+                        <th>S.no</th>
+                        <th>Description/ सामान का विवरण</th>
+                        <th>Buying price/ खरीद रेट</th>
+                        <th>प्राम्भिक स्टॉक</th>
+                        <th>आमद</th>
+                        <th>योग</th>
+                        <th>अंतिम स्टॉक</th>
+                        <th>बिक्री</th>
+                        <th>रेट</th>
+                        <th>योग</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <tr>
+                        <th></th>
+                        <td>
+                          <input
+                            type="number"
+                            className="dailyReportInput"
+                            name="Brand"
+                          />
+                        </td>
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="dailyReportInput"
+                                name="incomePurchase"
+                              />
+                            </div>
+                          </div>
+                        </td>
+
+                        {/*================ खरीद रेट - बा. ==================  */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="dailyReportInput"
+                                name="purchaseRate"
+                              />
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="dailyReportInput"
+                                name="purchaseRate"
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        {/* ======== भेजान ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="dailyReportInput"
+                                name="purchaseRate"
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        {/* ======== योग/शेष ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="dailyReportInput"
+                                name="purchaseRate"
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        {/* ======== अन्तिम स्टॉक ========= */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="dailyReportInput"
+                                name="purchaseRate"
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="dailyReportInput"
+                                name="purchaseRate"
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        {/* ============= कुल योग ================ */}
+                        <td>
+                          <div className="flex gap-2">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="dailyReportInput"
+                                name="purchaseRate"
+                              />
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-
         <div className="flex my-6 ">
           <button
-            className="dailyReportBtn mx-4"
-          >
+            className="dailyReportBtn mx-4">
             ADD 1
           </button>
         </div>
