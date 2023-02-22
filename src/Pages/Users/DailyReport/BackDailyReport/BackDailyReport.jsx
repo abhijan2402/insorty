@@ -1248,15 +1248,15 @@ const BackDailyReport = () => {
               <div className="mt-4 flex gap-4">
                 <button
                   className="dailyReportBtn"
-                  onClick={() => addFiveInFristFormHandler()}
-                >
-                  ADD 5
-                </button>
-                <button
-                  className="dailyReportBtn"
                   onClick={() => addOneInFristFormHandler()}
                 >
                   ADD 1
+                </button>
+                <button
+                  className="dailyReportBtn"
+                  onClick={() => addFiveInFristFormHandler()}
+                >
+                  ADD 5
                 </button>
 
                 {isLoading ? (
@@ -1367,7 +1367,7 @@ const BackDailyReport = () => {
         <div className="flex overflow-x-auto">
           <div className="py-6">
             <h1 className="my-4">
-              <span className="font-bold titleText">RML / आरएमएल</span>
+              <span className="font-bold titleText">RML / आर.एम.एल</span>
             </h1>
 
             <form action="">
@@ -1637,15 +1637,15 @@ const BackDailyReport = () => {
               <div className="mt-4 flex gap-4">
                 <button
                   className="dailyReportBtn"
-                  onClick={() => addFiveBtnHandler()}
-                >
-                  ADD 5
-                </button>
-                <button
-                  className="dailyReportBtn"
                   onClick={() => addOneBtnHandler()}
                 >
                   ADD 1
+                </button>
+                <button
+                  className="dailyReportBtn"
+                  onClick={() => addFiveBtnHandler()}
+                >
+                  ADD 5
                 </button>
 
                 {/* <button
@@ -2072,15 +2072,15 @@ const BackDailyReport = () => {
             <div className="mt-4 flex gap-4 mx-4">
               <button
                 className="dailyReportBtn"
-                onClick={() => addFiveShippingBtnHandler()}
-              >
-                ADD 5
-              </button>
-              <button
-                className="dailyReportBtn"
                 onClick={() => addOneShippingBtnHandler()}
               >
                 ADD 1
+              </button>
+              <button
+                className="dailyReportBtn"
+                onClick={() => addFiveShippingBtnHandler()}
+              >
+                ADD 5
               </button>
             </div>
           </div>

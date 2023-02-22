@@ -1078,14 +1078,14 @@ const FronteDailyReport = () => {
           </form>
 
           <div className="mt-4 flex gap-4">
-            <button className="dailyReportBtn" onClick={() => addFive()}>
-              ADD 5
-            </button>
             <button
               className="dailyReportBtn"
               onClick={() => addOneFristFormHandler()}
             >
               ADD 1
+            </button>
+            <button className="dailyReportBtn" onClick={() => addFive()}>
+              ADD 5
             </button>
             <button
               className="dailyReportBtn"
@@ -1178,6 +1178,12 @@ const FronteDailyReport = () => {
             </>
           ) : (
             <>
+          <button
+            className="dailyReportBtn mx-4"
+            onClick={() => addOneSecondFormHandler()}
+          >
+            ADD 1
+          </button>
               <button
                 className="dailyReportBtn"
                 onClick={() => submitFristFormHandler()}
@@ -1186,12 +1192,6 @@ const FronteDailyReport = () => {
               </button>
             </>
           )}
-          <button
-            className="dailyReportBtn mx-4"
-            onClick={() => addOneSecondFormHandler()}
-          >
-            ADD 1
-          </button>
         </div>
       </div>
     </section>
