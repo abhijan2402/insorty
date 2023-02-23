@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import CommisionForm from "../CommisionForm/CommisionForm";
 import { useQuery } from "@tanstack/react-query";
@@ -6,8 +6,8 @@ import Loader from "../../../../Components/Loader/Loader";
 
 const Commision = () => {
   const token = localStorage.getItem("token");
-  const [startDate,setStartDate] = useState()
-  const [endDate,setEndDate] = useState()
+  const [startDate, setStartDate] = useState()
+  const [endDate, setEndDate] = useState()
 
   const { data: commitsonData, isLoading } = useQuery({
     queryKey: ["commitsonData"],
@@ -41,7 +41,7 @@ const Commision = () => {
             <input
               type="date"
               value={startDate}
-              onChange={(e)=>setStartDate(e.target.value)}
+              onChange={(e) => setStartDate(e.target.value)}
               name="start"
               className="semiSmallInput"
             />
@@ -88,15 +88,15 @@ const Commision = () => {
                   //if filterPass comes back `false` the row is filtered out
                   return filterPass
                 })
-.map((commison, index) => {
-                  return (
-                    <CommisionForm
-                      key={index}
-                      index={index}
-                      commison={commison}
-                    ></CommisionForm>
-                  );
-                })}
+                  .map((commison, index) => {
+                    return (
+                      <CommisionForm
+                        key={index}
+                        index={index}
+                        commison={commison}
+                      ></CommisionForm>
+                    );
+                  })}
               </tbody>
             </table>
           </div>

@@ -14,13 +14,6 @@ const AddItems = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center">
-          <Link to="/user/beerstock" className="commonBtn ">
-            Bear Stock
-          </Link>
-          <Link to="/user/winestock" className="commonBtn ">
-            Wine Stock
-          </Link>
-
           <Link className="commonBtn" to="/user/brandlist">
             Brand List
           </Link>

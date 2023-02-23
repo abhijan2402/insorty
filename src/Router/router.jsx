@@ -42,6 +42,8 @@ import BeerShopFrontDailyReport from "../Pages/BearShop/BeerShopDailyReport/Beer
 import BeerShopBackDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopBackDailyReport/BeerShopBackDailyReport";
 import UserList from "../Pages/Admin/Users/UserList/UserList";
 import ShopList from "../Pages/Admin/Shop/ShopList/ShopList";
+import RmlStock from "../Pages/Users/AddItems/RMLStock/RMLStock";
+import Stock from "../Pages/Users/AddItems/Stock/Stock";
 
 const {
   BearShopBranch,
@@ -246,8 +248,16 @@ const router = createBrowserRouter([
         element: <WineStock />,
       },
       {
+        path: "/user/rmlstock",
+        element: <RmlStock />,
+      },
+      {
         path: "/user/allItems",
         element: <AllItems />,
+      },
+      {
+        path: "/user/stock",
+        element: <Stock />,
       },
       {
         path: "/user/sendFormat",

@@ -42,6 +42,21 @@ const BrandList = () => {
       </div>
       <div>
         <table className="table w-4/5">
+          <thead>
+            <th>
+              <h1>Sr. No.</h1>
+            </th>
+            <th>
+              <h1>Brand Name</h1>
+            </th>
+            <th>
+              <h1>Type</h1>
+            </th>
+            <th>
+              <h1>Quantity In ML</h1>
+            </th>
+          </thead>
+
           <tbody>
             {BrandData?.map((item, index) => {
               const { sizes } = item;
@@ -72,7 +87,7 @@ const BrandList = () => {
                     <Link
                       className="font-3xl font-bold"
                       style={{ color: "#AA237A" }}
-                      // onClick={() => handleDelete(salary?._id)}
+                    // onClick={() => handleDelete(salary?._id)}
                     >
                       {/* <FaRegTrashAlt></FaRegTrashAlt> */}
                     </Link>

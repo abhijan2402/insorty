@@ -3,7 +3,6 @@ import React from "react";
 const CommisionForm = ({ index, commison }) => {
   const { entries } = commison;
 
-  // filter the type of commision form entries arry and return the type of commision form
 
   const filterCommisionForm = (type) => {
     let filtered = entries.filter((item) => {
@@ -17,15 +16,16 @@ const CommisionForm = ({ index, commison }) => {
     <>
       {commisionForm.map((item) => {
         const { description, amount, comment } = item;
+        const dateData = commison?.date;
 
-        console.log(item);
+        const changeDateFormet = dateData?.split("T")[0]; 
 
         return (
           <tr key={index}>
             <th>{index}</th>
             <td>
               <div className="form-control">
-                {description}
+                {changeDateFormet}
               </div>
             </td>
 
