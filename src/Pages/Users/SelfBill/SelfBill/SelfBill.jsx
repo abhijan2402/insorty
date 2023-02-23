@@ -33,18 +33,18 @@ const SelfBill = () => {
     },
   });
 
- 
+
 
   const filteredData = selectedDate
     ? SelfBillData.filter((item) => {
-        const itemDate = new Date(item.date);
-        const selected = selectedDate ? new Date(selectedDate) : null;
-        if (selected) {
-          return itemDate.toDateString() === selected.toDateString();
-        } else {
-          return true;
-        }
-      })
+      const itemDate = new Date(item.date);
+      const selected = selectedDate ? new Date(selectedDate) : null;
+      if (selected) {
+        return itemDate.toDateString() === selected.toDateString();
+      } else {
+        return true;
+      }
+    })
     : SelfBillData;
 
   if (isLoading || brandsLoaded || loading) {
@@ -62,8 +62,8 @@ const SelfBill = () => {
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">दुकान बिल का फोर्मेट</h2>
         <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">From</h2>
 
+          <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <input
@@ -75,6 +75,20 @@ const SelfBill = () => {
               className="semiSmallInput"
             />
           </div>
+
+          <h2 className="font-bold text-[1.5rem]">To</h2>
+          <div className="flex gap-2 items-center">
+            <FaCalendarAlt></FaCalendarAlt>
+            <input
+              type="date"
+              dateFormat="yyyy-MM-dd"
+              value={selectedDate}
+              onChange={handleDateChange}
+              name="AllDate"
+              className="semiSmallInput"
+            />
+          </div>
+
         </div>
         <div className="divider my-2"></div>
       </div>

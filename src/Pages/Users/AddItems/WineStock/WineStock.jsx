@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import WineStockTopData from "./WineStockTop/WIneSotckTop";
+import { FaCalendarAlt } from "react-icons/fa";
+
 
 const WineStock = () => {
   const token = localStorage.getItem("token");
@@ -31,14 +33,14 @@ const WineStock = () => {
 
   const filteredData = selectedDate
     ? wineStockData.filter((item) => {
-        const itemDate = new Date(item.createdAt);
-        const selected = selectedDate ? new Date(selectedDate) : null;
-        if (selected) {
-          return itemDate.toDateString() === selected.toDateString();
-        } else {
-          return true;
-        }
-      })
+      const itemDate = new Date(item.createdAt);
+      const selected = selectedDate ? new Date(selectedDate) : null;
+      if (selected) {
+        return itemDate.toDateString() === selected.toDateString();
+      } else {
+        return true;
+      }
+    })
     : wineStockData;
 
   if (isLoading) return <Loader></Loader>;
@@ -46,11 +48,11 @@ const WineStock = () => {
 
   const total = 0;
 
-  let three=[]
+  let three = []
 
-  filteredData.map((item)=>{
-    item.sizes.map((brand)=>{
-      if (brand.quantityInML === 750 || brand.quantityInML === 330 || brand.quantityInML === 180){
+  filteredData.map((item) => {
+    item.sizes.map((brand) => {
+      if (brand.quantityInML === 750 || brand.quantityInML === 330 || brand.quantityInML === 180) {
         console.log(brand)
         three.push(brand)
       }
@@ -58,7 +60,7 @@ const WineStock = () => {
   })
 
   console.log(three)
-  
+
   console.log(filteredData.reduce(
     (total, currentItem) => (total = total + currentItem.sizes.reduce(
 
@@ -85,7 +87,7 @@ const WineStock = () => {
         <div className="divider my-2"></div>
       </div>
       <div className="flex gap-4 items-center justify-center ">
-        <div className="form-control">
+        {/* <div className="form-control">
           <input
             type="date"
             className="input mb-2"
@@ -96,7 +98,34 @@ const WineStock = () => {
               border: "1px solid #e5e7eb",
             }}
           />
+        </div> */}
+
+        <h2 className="font-bold text-[1.5rem]">From</h2>
+        <div className="flex gap-2 items-center">
+          <FaCalendarAlt></FaCalendarAlt>
+          <input
+            type="date"
+            dateFormat="yyyy-MM-dd"
+            value={selectedDate}
+            onChange={handleDateChange}
+            name="year"
+            className="semiSmallInput"
+          />
         </div>
+
+        <h2 className="font-bold text-[1.5rem]">To</h2>
+        <div className="flex gap-2 items-center">
+          <FaCalendarAlt></FaCalendarAlt>
+          <input
+            type="date"
+            dateFormat="yyyy-MM-dd"
+            value={selectedDate}
+            onChange={handleDateChange}
+            name="year"
+            className="semiSmallInput"
+          />
+        </div>
+
       </div>
       <div className="overflow-x-auto ">
         <table className="table w-full m-2">
@@ -196,7 +225,7 @@ const WineStock = () => {
               );
             })}
 
-            
+
           </tbody>
         </table>
       </div>
@@ -216,46 +245,47 @@ const WineStock = () => {
                 </tr>
               </thead>
               <tbody>
-              {filteredData.map((brand,index)=>{
-                return(
-                <>
-               { brand.sizes.map((size)=>{
-                 if (size.quantityInML !== 750 && size.quantityInML !== 330 && size.quantityInML !== 180){
+                {filteredData.map((brand, index) => {
+                  return (
+                    <>
+                      {brand.sizes.map((size) => {
+                        if (size.quantityInML !== 750 && size.quantityInML !== 330 && size.quantityInML !== 180) {
 
-                return(
-                  <tr>         
-                  <td>{index+1}</td>
-                  <td>{brand.brandName}</td>
-                  <td>{size.quantityInML}</td>
-                  <td> {size.currentStock}</td>
-                  <td> {size.averageRate.$numberDecimal}</td>
-                    <td> {size.currentStock * Number(size.averageRate.$numberDecimal)}</td>
-                  </tr>
+                          return (
+                            <tr>
+                              <td>{index + 1}</td>
+                              <td>{brand.brandName}</td>
+                              <td>{size.quantityInML}</td>
+                              <td> {size.currentStock}</td>
+                              <td> {size.averageRate.$numberDecimal}</td>
+                              <td> {size.currentStock * Number(size.averageRate.$numberDecimal)}</td>
+                            </tr>
 
-) }
+                          )
+                        }
+                      })}
+                    </>
+                  )
                 })}
-                </>
-)
-              })}
                 <tr>
                   <td colSpan="5">Total</td>
                   <td>
-                  {
-                    filteredData.reduce(
-                      (total, currentItem) => (total = total + currentItem.sizes.reduce(
+                    {
+                      filteredData.reduce(
+                        (total, currentItem) => (total = total + currentItem.sizes.reduce(
 
-                        (total, currentItem) => (total = total + (currentItem.currentStock * Number(currentItem.averageRate.$numberDecimal))),
+                          (total, currentItem) => (total = total + (currentItem.currentStock * Number(currentItem.averageRate.$numberDecimal))),
+                          0
+                        )),
                         0
-                      )),
-                      0
-                    )
-}</td>
+                      )
+                    }</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-         
+
         </div>
       </div>
     </section>

@@ -41,6 +41,19 @@ const BranchName = () => {
       </div>
       <div>
         <table className="table w-4/5">
+        <thead>
+            <th>
+              <h1>Sr. No.</h1>
+            </th>
+            <th>
+              <h1>Brand Name</h1>
+            </th>
+           
+            <th>
+              <h1>Action</h1>
+            </th>
+
+          </thead>
           <tbody>
             {BranchNameData?.map((item, index) => {
               return (

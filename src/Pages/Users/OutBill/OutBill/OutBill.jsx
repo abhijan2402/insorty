@@ -27,7 +27,7 @@ const OutBill = () => {
     },
   });
 
- 
+
 
   const handleDateChange = (event) => {
     setSelectedDate(event.target.value);
@@ -35,14 +35,14 @@ const OutBill = () => {
 
   const filteredData = selectedDate
     ? OutBill.filter((item) => {
-        const itemDate = new Date(item.date);
-        const selected = selectedDate ? new Date(selectedDate) : null;
-        if (selected) {
-          return itemDate.toDateString() === selected.toDateString();
-        } else {
-          return true;
-        }
-      })
+      const itemDate = new Date(item.date);
+      const selected = selectedDate ? new Date(selectedDate) : null;
+      if (selected) {
+        return itemDate.toDateString() === selected.toDateString();
+      } else {
+        return true;
+      }
+    })
     : OutBill;
 
   if (isLoading || brandsLoaded || loading) {
@@ -60,7 +60,19 @@ const OutBill = () => {
         <h2 className="font-bold text-[1.5rem]">बाहर के बिल का फोर्मेट</h2>
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
+          <div className="flex gap-2 items-center">
+            <FaCalendarAlt></FaCalendarAlt>
+            <input
+              type="date"
+              dateFormat="yyyy-MM-dd"
+              value={selectedDate}
+              onChange={handleDateChange}
+              name="year"
+              className="semiSmallInput"
+            />
+          </div>
 
+          <h2 className="font-bold text-[1.5rem]">To</h2>
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <input
@@ -100,12 +112,12 @@ const OutBill = () => {
                     ></OutBillList>
                   );
                 })) || (
-                <>
-                  <p>
-                    <span className="text-red-500">No Data Found</span>
-                  </p>
-                </>
-              )}
+                  <>
+                    <p>
+                      <span className="text-red-500">No Data Found</span>
+                    </p>
+                  </>
+                )}
 
               <tr>
                 <th></th>

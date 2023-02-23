@@ -196,7 +196,17 @@ const SideNav = () => {
                   isActive ? activeStyle : undefined
                 }
               >
-                Stock and Add
+                Add Items
+              </NavLink>
+            </li>
+            <li className="my-4">
+              <NavLink
+                to="/user/stock"
+                style={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
+              >
+                Stock
               </NavLink>
             </li>
 

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import BeerStockTopData from "./BeerStockTopData/BeerStockTopData";
 import { useState } from "react";
+import { FaCalendarAlt } from "react-icons/fa";
 
 const BeerStock = () => {
   const token = localStorage.getItem("token");
@@ -33,14 +34,14 @@ const BeerStock = () => {
 
   const filteredData = beerStockData
     ? beerStockData.filter((item) => {
-        const itemDate = new Date(item.createdAt);
-        const selected = selectedDate ? new Date(selectedDate) : null;
-        if (selected) {
-          return itemDate.toDateString() === selected.toDateString();
-        } else {
-          return true;
-        }
-      })
+      const itemDate = new Date(item.createdAt);
+      const selected = selectedDate ? new Date(selectedDate) : null;
+      if (selected) {
+        return itemDate.toDateString() === selected.toDateString();
+      } else {
+        return true;
+      }
+    })
     : beerStockData;
 
   if (isLoading) return <Loader></Loader>;
@@ -57,17 +58,32 @@ const BeerStock = () => {
         <div className="divider my-2"></div>
       </div>
       <div className="flex gap-4 items-center justify-center ">
-        <div className="form-control">
-          <input
-            type="date"
-            dateFormat="yyyy-MM-dd"
-            value={selectedDate}
-            onChange={handleDateChange}
-            className="input mb-2"
-            style={{
-              border: "1px solid #e5e7eb",
-            }}
-          />
+        <div className="flex gap-4 items-center my-4">
+          <h2 className="font-bold text-[1.5rem]">From</h2>
+          <div className="flex gap-2 items-center">
+            <FaCalendarAlt></FaCalendarAlt>
+            <input
+              type="date"
+              dateFormat="yyyy-MM-dd"
+              value={selectedDate}
+              onChange={handleDateChange}
+              name="year"
+              className="semiSmallInput"
+            />
+          </div>
+
+          <h2 className="font-bold text-[1.5rem]">To</h2>
+          <div className="flex gap-2 items-center">
+            <FaCalendarAlt></FaCalendarAlt>
+            <input
+              type="date"
+              dateFormat="yyyy-MM-dd"
+              value={selectedDate}
+              onChange={handleDateChange}
+              name="year"
+              className="semiSmallInput"
+            />
+          </div>
         </div>
       </div>
       <div className="overflow-x-auto ">
@@ -228,12 +244,12 @@ const BeerStock = () => {
                       )
                     }</td>
                 </tr>
-               
+
               </tbody>
             </table>
           </div>
 
-          
+
         </div>
       </div>
     </section>
