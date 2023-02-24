@@ -1,109 +1,58 @@
 import React from "react";
-import { Autocomplete, TextField } from "@mui/material";
-import useLiquors from "../../../../../../Hooks/useLiquors";
-import Loader from "../../../../../../Components/Loader/Loader";
 
-const AddOneFristForm = ({
-  index,
-  handelFristFormOnChange,
-  formula,
-  myOptions,
-  sujestedData,
-  addOneFirst,
-  addOneFristFormState,
-  setAddOneFristFormState,
-}) => {
-  const SerialNo = index + 1;
-  const { brandsLoaded, liquors } = useLiquors();
-
-  if (brandsLoaded) {
-    return (
-      <div>
-        <Loader></Loader>
-      </div>
-    );
-  }
-
+const AddOneFristForm = ({ beerFront, index }) => {
   return (
     <>
       <tr>
-        <th>{SerialNo}</th>
+        <th>{index + 1}</th>
         <td>
-          <Autocomplete
-            options={
-              liquors.length > 0
-                ? liquors.filter((brand) => {
-                    if (brand.type === "WINE") {
-                      return brand;
-                    }
-                  })
-                : ["no options"]
-            }
-            
-            getOptionLabel={(option) => (option ? option.brandName : "")}
-            onChange={(event, value) => {
-              if (value) {
-                addOneFirst.brandName = value.brandName;
-                addOneFirst.liquorID = value._id;
-              } else {
-                addOneFirst.brandName = "";
-                addOneFirst.liquorID = "";
-              }
-              handelFristFormOnChange(event, index);
-              console.log(addOneFirst);
-            }}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                className="dailyReportInput"
-                // value={addOneFirst.brandName}
-                inputProps={{
-                  ...params.inputProps,
-                  value: addOneFirst.brandName,
-                }}
-                onChange={(event) => {
-                  addOneFirst.brandName = event.target.value;
-                  // addOneFirst.liquorID = null;
-                  // handelFristFormOnChange(event, index);
-                }}
-              />
-            )}
-          />
+          <div className="form-control">
+            <input
+              type="text"
+              className="dailyReportInput"
+              name="brandName"
+            />
+          </div>
         </td>
         {/* ======== MRP Input ========= */}
         <td>
           <div className="flex gap-2">
             <div className="form-control">
               <input
-                // type="number"
-
+                type="number"
                 className="smallinput"
-                value={addOneFirst.averageRate750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-                name="averageRate750"
-                disabled
+                name="OpeningStock750"
               />
             </div>
-
             <div className="form-control">
               <input
-                // type="number"
+
+                type="number"
                 className="smallinput"
-                value={addOneFirst.averageRate330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-                name="averageRate330"
-                disabled
+                name="OpeningStock330"
               />
             </div>
-
             <div className="form-control">
               <input
-                // type="number"
+
+                type="number"
                 className="smallinput"
-                value={addOneFirst.averageRate180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-                name="averageRate180"
-                disabled
+                name="OpeningStock180"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="OpeningStock60"
+              />
+            </div>
+            <div className="form-control">
+              <input
+
+                type="number"
+                className="smallinput"
+                name="OpeningStock30"
               />
             </div>
           </div>
@@ -113,11 +62,10 @@ const AddOneFristForm = ({
           <div className="flex gap-2">
             <div className="form-control">
               <input
-                type="number"
                 className="smallinput"
-                name="startingStock750"
-                value={addOneFirst.startingStock750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+
+                type="number"
+                name="inflowShop750"
               />
             </div>
 
@@ -125,9 +73,8 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="startingStock330"
-                value={addOneFirst.startingStock330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+
+                name="inflowShop330"
               />
             </div>
 
@@ -135,9 +82,21 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="startingStock180"
-                value={addOneFirst.startingStock180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="inflowShop180"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="inflowShop60"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="inflowShop30"
               />
             </div>
           </div>
@@ -151,9 +110,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="incomingPurchase750"
-                value={addOneFirst.incomingPurchase750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="buyeRateShop750"
               />
             </div>
 
@@ -161,9 +118,8 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="incomingPurchase330"
-                value={addOneFirst.incomingPurchase330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+
+                name="buyeRateShop330"
               />
             </div>
 
@@ -171,9 +127,21 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="incomingPurchase180"
-                value={addOneFirst.incomingPurchase180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="buyeRateShop180"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="buyeRateShop60"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="buyeRateShop30"
               />
             </div>
           </div>
@@ -185,9 +153,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="buyRate750"
-                value={addOneFirst.buyRate750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="incomePurchase750"
               />
             </div>
 
@@ -195,9 +161,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="buyRate330"
-                value={addOneFirst.buyRate330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="incomePurchase330"
               />
             </div>
 
@@ -205,9 +169,21 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="buyRate180"
-                value={addOneFirst.buyRate180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="incomePurchase180"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase60"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="incomePurchase30"
               />
             </div>
           </div>
@@ -221,9 +197,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="incomePurchase750"
-                value={addOneFirst.incomePurchase750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="buyeRateOut750"
               />
             </div>
 
@@ -231,9 +205,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="incomePurchase330"
-                value={addOneFirst.incomePurchase330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="buyeRateOut330"
               />
             </div>
 
@@ -241,9 +213,21 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="incomePurchase180"
-                value={addOneFirst.incomePurchase180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="buyeRateOut180"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="buyeRateOut60"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="buyeRateOut30"
               />
             </div>
           </div>
@@ -256,9 +240,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="purchaseRate750"
-                value={addOneFirst.purchaseRate750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="send750"
               />
             </div>
 
@@ -266,9 +248,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="purchaseRate330"
-                value={addOneFirst.purchaseRate330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="send330"
               />
             </div>
 
@@ -276,9 +256,23 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="purchaseRate180"
-                value={addOneFirst.purchaseRate180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="send180"
+              />
+            </div>
+
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="send60"
+              />
+            </div>
+
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="send30"
               />
             </div>
           </div>
@@ -292,9 +286,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="inflowCredit750"
-                value={addOneFirst.inflowCredit750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="sumRemaining750"
               />
             </div>
 
@@ -302,9 +294,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="inflowCredit330"
-                value={addOneFirst.inflowCredit330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="sumRemaining330"
               />
             </div>
 
@@ -312,14 +302,25 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="inflowCredit180"
-                value={addOneFirst.inflowCredit180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="sumRemaining180"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="sumRemaining60"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="sumRemaining30"
               />
             </div>
           </div>
         </td>
-
         {/* ======== भेजान ========= */}
         <td>
           <div className="flex gap-2">
@@ -327,9 +328,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="sending750"
-                value={addOneFirst.sending750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="closingStock750"
               />
             </div>
 
@@ -337,19 +336,29 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="sending330"
-                value={addOneFirst.sending330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+                name="closingStock330"
               />
             </div>
 
             <div className="form-control">
               <input
                 type="number"
+                name="closingStock180"
                 className="smallinput"
-                name="sending180"
-                value={addOneFirst.sending180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                name="closingStock60"
+                className="smallinput"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                name="closingStock30"
+                className="smallinput"
               />
             </div>
           </div>
@@ -361,10 +370,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="sumRemainder750"
-                value={addOneFirst.sumRemainder750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-                disabled
+                name="salse750"
               />
             </div>
 
@@ -372,10 +378,7 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="sumRemainder330"
-                value={addOneFirst.sumRemainder330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-                disabled
+                name="salse330"
               />
             </div>
 
@@ -383,10 +386,25 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="sumRemainder180"
-                value={addOneFirst.sumRemainder180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-                disabled
+                name="salse180"
+
+              />
+            </div>
+
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="salse60"
+
+              />
+            </div>
+
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="salse30"
               />
             </div>
           </div>
@@ -398,162 +416,49 @@ const AddOneFristForm = ({
               <input
                 type="number"
                 className="smallinput"
-                name="closingStock750"
-                value={addOneFirst.closingStock750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="closingStock330"
-                value={addOneFirst.closingStock330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="closingStock180"
-                value={addOneFirst.closingStock180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-          </div>
-        </td>
-        {/* ============= बिक्री ================ */}
-        <td>
-          <div className="flex gap-2">
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="sales750"
-                disabled
-                value={addOneFirst.sales750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="sales330"
-                disabled
-                value={addOneFirst.sales330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="sales180"
-                disabled
-                value={addOneFirst.sales180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-          </div>
-        </td>
-        {/* ============= रेट ================ */}
-        <td>
-          <div className="flex gap-2">
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="mainRate750"
-                value={addOneFirst.mainRate750}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="mainRate330"
-                value={addOneFirst.mainRate330}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="mainRate180"
-                value={addOneFirst.mainRate180}
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-          </div>
-        </td>
-        {/* ============= योग ================ */}
-        <td>
-          <div className="flex gap-2">
-            <div className="form-control">
-              <input
-                type="text"
-                className="smallinput"
                 name="total750"
-                disabled
-                value={
-                  Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750)
-                }
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="text"
-                className="smallinput"
-                disabled
-                name="total330"
-                value={
-                  Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330)
-                }
-                onChange={(event) => handelFristFormOnChange(event, index)}
-              />
-            </div>
-            <div className="form-control">
-              <input
-                type="text"
-                name="total180"
-                className="smallinput"
-                disabled
-                value={
-                  Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180)
-                }
-                onChange={(event) => handelFristFormOnChange(event, index)}
+
               />
             </div>
 
-            <div className="form-control"></div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="total330"
+              />
+            </div>
+
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="total180"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="total60"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="total30"
+              />
+            </div>
           </div>
         </td>
         {/* ============= कुल योग ================ */}
-
         <td>
           <div className="form-control">
             <input
-              type="text"
+              type="number"
               className="semiSmallInput"
               name="grandTotal"
-              disabled
-              value={
-                Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750) +
-                Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330) +
-                Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180)
-              }
-              onChange={(event) => handelFristFormOnChange(event, index)}
             />
           </div>
         </td>

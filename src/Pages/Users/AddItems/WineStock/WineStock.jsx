@@ -4,15 +4,14 @@ import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import WineStockTopData from "./WineStockTop/WIneSotckTop";
 import { FaCalendarAlt } from "react-icons/fa";
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 
 
 const WineStock = () => {
   const token = localStorage.getItem("token");
   const [selectedDate, setSelectedDate] = useState("");
 
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
   const { data: wineStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
     queryFn: async () => {
@@ -28,9 +27,7 @@ const WineStock = () => {
     },
   });
 
-
   const wineStockData = wineStock?.filter((item) => item.type === "WINE");
-
   const filteredData = selectedDate
     ? wineStockData.filter((item) => {
       const itemDate = new Date(item.createdAt);
@@ -44,12 +41,8 @@ const WineStock = () => {
     : wineStockData;
 
   if (isLoading) return <Loader></Loader>;
-
-
   const total = 0;
-
   let three = []
-
   filteredData.map((item) => {
     item.sizes.map((brand) => {
       if (brand.quantityInML === 750 || brand.quantityInML === 330 || brand.quantityInML === 180) {
@@ -87,43 +80,52 @@ const WineStock = () => {
         <div className="divider my-2"></div>
       </div>
       <div className="flex gap-4 items-center justify-center ">
-        {/* <div className="form-control">
-          <input
-            type="date"
-            className="input mb-2"
-            dateFormat="yyyy-MM-dd"
-            value={selectedDate}
-            onChange={handleDateChange}
-            style={{
-              border: "1px solid #e5e7eb",
-            }}
-          />
-        </div> */}
-
         <h2 className="font-bold text-[1.5rem]">From</h2>
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
-          <input
+          <DatePicker
+            selected={selectedDate}
+            onChange={date => setSelectedDate(date)}
+            placeholderText={'dd/mm/yyyy'}
+            filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
+            showYearDropdown
+            dateFormat={'dd/MM/yyyy'}
+            scrollableYearDropdown
+          />
+          {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}
+            dateFormat="Pp"
+          /> */}
+          {/* <input
             type="date"
             dateFormat="yyyy-MM-dd"
             value={selectedDate}
             onChange={handleDateChange}
             name="year"
             className="semiSmallInput"
-          />
+          /> */}
+
         </div>
 
         <h2 className="font-bold text-[1.5rem]">To</h2>
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
-          <input
+          <DatePicker
+            onChange={date => setSelectedDate(date)}
+            placeholderText={'dd/mm/yyyy'}
+            filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
+            showYearDropdown
+            dateFormat={'dd/MM/yyyy'}
+            scrollableYearDropdown
+          />
+
+          {/* <input
             type="date"
             dateFormat="yyyy-MM-dd"
             value={selectedDate}
             onChange={handleDateChange}
             name="year"
             className="semiSmallInput"
-          />
+          /> */}
         </div>
 
       </div>

@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AddOneSecondForm from "./SecondForm/AddOneSecondForm/AddOneSecondForm";
 import AddOneFristForm from "./FirstForm/AddOneFristForm/AddOneFristForm";
@@ -11,7 +11,7 @@ import { DataContextApi } from "../../../../Context/DataContext";
 
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
-  
+
   const { salesMan,
     setSalesMan,
     drDate,
@@ -1038,7 +1038,7 @@ const FronteDailyReport = () => {
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
                               (total =
-                                total + (Number(currentItem.sales180)*Number(currentItem.mainRate180))),
+                                total + (Number(currentItem.sales180) * Number(currentItem.mainRate180))),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
