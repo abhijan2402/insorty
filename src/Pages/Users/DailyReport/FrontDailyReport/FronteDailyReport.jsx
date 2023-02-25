@@ -24,6 +24,7 @@ const FronteDailyReport = () => {
     setAddOneFristFormState,
     addFive,
     myOptions,
+    handleRemoveFields,
     totalState,
   } = useFormulasFristFormFront();
 
@@ -33,6 +34,7 @@ const FronteDailyReport = () => {
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
+    handleRemoveFieldsSecond
   } = useSecondFormFront();
 
   const {
@@ -110,6 +112,7 @@ const FronteDailyReport = () => {
                 <thead>
                   <tr>
                     <th>S.no</th>
+                    <th></th>
                     <th>Brand Name/ ब्राण्ड</th>
                     <th>Average Rate</th>
                     <th>प्रारम्भिक स्टॉक</th>
@@ -443,6 +446,7 @@ const FronteDailyReport = () => {
                         setAddOneFristFormState={setAddOneFristFormState}
                         addOneFristFormState={addOneFristFormState}
                         handelFristFormOnChange={handelFristFormOnChange}
+                        handleRemoveFields={handleRemoveFields}
                       ></AddOneFristForm>
                     );
                   })}
@@ -451,6 +455,7 @@ const FronteDailyReport = () => {
 
                   <tr>
                     <th></th>
+                    <td></td>
                     <td>Total</td>
                     {/* ======== MRP Input ========= */}
                     <td>
@@ -1073,14 +1078,14 @@ const FronteDailyReport = () => {
           </form>
 
           <div className="mt-4 flex gap-4">
-            <button className="dailyReportBtn" onClick={() => addFive()}>
-              ADD 5
-            </button>
             <button
               className="dailyReportBtn"
               onClick={() => addOneFristFormHandler()}
             >
               ADD 1
+            </button>
+            <button className="dailyReportBtn" onClick={() => addFive()}>
+              ADD 5
             </button>
             <button
               className="dailyReportBtn"
@@ -1100,6 +1105,7 @@ const FronteDailyReport = () => {
                   <thead>
                     <tr>
                       <th>S.no</th>
+                      <th></th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>Total ml</th>
                       <th>Average Rate</th>
@@ -1128,6 +1134,7 @@ const FronteDailyReport = () => {
                           key={index}
                           index={index}
                           item={item}
+                          handleRemoveFieldsSecond={handleRemoveFieldsSecond}
                         ></AddOneSecondForm>
                       );
                     })}
@@ -1171,6 +1178,12 @@ const FronteDailyReport = () => {
             </>
           ) : (
             <>
+          <button
+            className="dailyReportBtn mx-4"
+            onClick={() => addOneSecondFormHandler()}
+          >
+            ADD 1
+          </button>
               <button
                 className="dailyReportBtn"
                 onClick={() => submitFristFormHandler()}
@@ -1179,12 +1192,6 @@ const FronteDailyReport = () => {
               </button>
             </>
           )}
-          <button
-            className="dailyReportBtn mx-4"
-            onClick={() => addOneSecondFormHandler()}
-          >
-            ADD 1
-          </button>
         </div>
       </div>
     </section>

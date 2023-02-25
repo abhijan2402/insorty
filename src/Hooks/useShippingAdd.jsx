@@ -70,12 +70,20 @@ const useShippingAdd = () => {
     console.log(handelShipping);
   };
 
+  const handleRemoveFieldsShipping = index => {
+    const values = [...addShippingState];
+    values.splice(index, 1);
+    console.log(index)
+    setAddShippingState(values);
+  };
+
   return {
     addShippingState,
     onChangeShipping,
     handelSubmitShipping,
     handelAddFiveShipping,
     handelAddOneShipping,
+    handleRemoveFieldsShipping
   };
 };
 

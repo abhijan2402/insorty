@@ -63,7 +63,7 @@ const OutBill = () => {
     })
     : OutBill;
 
-  if (isLoading || brandsLoaded || loading) {
+  if (isLoading || brandsLoaded) {
     return <Loader></Loader>;
   }
 

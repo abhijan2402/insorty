@@ -10,6 +10,7 @@ const AddOneFristForm = ({
   myOptions,
   sujestedData,
   addOneFirst,
+  handleRemoveFields,
   addOneFristFormState,
   setAddOneFristFormState,
 }) => {
@@ -26,8 +27,11 @@ const AddOneFristForm = ({
 
   return (
     <>
+      
       <tr>
-        <th>{SerialNo}</th>
+       
+        <th>{SerialNo} </th>
+        <th ><h1 className="cross" onClick={() => handleRemoveFields(index)}>X</h1></th>
         <td>
           <Autocomplete
             options={

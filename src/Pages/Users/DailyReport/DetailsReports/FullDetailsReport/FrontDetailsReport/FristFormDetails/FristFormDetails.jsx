@@ -8,7 +8,7 @@ const FristFormDetails = ({ FrontPageData, index }) => {
 
     return (
         <>
-            {entries.filter((brand) => {
+            {entries && entries.filter((brand) => {
                 if (getSize(brand.liquor) !== 750 && getSize(brand.liquor) !== 330 && getSize(brand.liquor) !== 180 && brand.liquor?.quantityInML !== 750 && brand.liquor?.quantityInML !== 330 && brand.liquor?.quantityInML !== 180){
                     return brand
                 }

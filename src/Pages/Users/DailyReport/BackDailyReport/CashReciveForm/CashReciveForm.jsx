@@ -4,7 +4,7 @@ import Loader from "../../../../../Components/Loader/Loader";
 import { Autocomplete,TextField } from "@mui/material";
 
 
-const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
+const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCashBack }) => {
 
   // const {type,setType} = useState("PARTY")
 
@@ -27,6 +27,8 @@ const CashReciveForm = ({ index, onChangeCashRecive, item }) => {
   return (
     <>
       <tr>
+        <th className="cross" onClick={() => handleRemoveFieldsCashBack(index)}>X</th>
+
         <td>
           <div className="form-control">
             {/* <input

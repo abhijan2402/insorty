@@ -28,6 +28,13 @@ const Commision = () => {
     return <Loader></Loader>;
   }
 
+  if (!commitsonData.length){
+    return(
+      <h1>No Data Found</h1>
+    )
+  }
+
+
   return (
     <section className="py-4 px-4">
       <div className="title">
@@ -76,7 +83,7 @@ const Commision = () => {
               </thead>
 
               <tbody>
-                {commitsonData.filter(row => {
+                {commitsonData && commitsonData.filter(row => {
                   let filterPass = true
                   const date = new Date(row.date)
                   if (startDate) {

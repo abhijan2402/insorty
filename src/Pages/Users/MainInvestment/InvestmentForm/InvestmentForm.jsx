@@ -3,29 +3,30 @@ import React from "react";
 const InvestmentForm = ({
   mainInvestment,
   index,
+  name,
   mainInvestmentState,
   handelOnChangeMainInvestment,
 }) => {
   return (
     <>
       <tr>
-        <th>{index + 1}</th>
+        <th>{index + 2}</th>
         <td>
           <input
             className="dailyReportInput"
             type="text"
             name="brandName"
-            value={mainInvestment.brandName}
+            value={name}
             onChange={(e) => handelOnChangeMainInvestment(e, index)}
           />
         </td>
         <td>
           <input
             type="date"
-            name="theDate"
+            name="date"
             className="semiSmallInput"
-            value={mainInvestmentState.theDate}
-            onChange={(e) => handelOnChangeMainInvestment(e, index)}
+            defaultValue={mainInvestment.date}
+            onChange={event => handelOnChangeMainInvestment(index, 'date', event.target.value)}
           />
         </td>
         <td>
@@ -33,8 +34,8 @@ const InvestmentForm = ({
             type="number"
             name="price"
             className="semiSmallInput"
-            value={mainInvestment.price}
-            onChange={(e) => handelOnChangeMainInvestment(e, index)}
+            defaultValue={mainInvestment.price}
+            onChange={event => handelOnChangeMainInvestment(index, 'price', event.target.value)}
           />
         </td>
       </tr>

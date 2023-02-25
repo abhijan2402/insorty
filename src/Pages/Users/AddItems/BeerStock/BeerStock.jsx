@@ -30,7 +30,15 @@ const BeerStock = () => {
 
   const total = 0;
 
-  const beerStockData = beerStock?.filter((item) => item.type === "BEER");
+  if (isLoading) return <Loader></Loader>;
+
+  if (!beerStock.length){
+    return(
+      <div>No data found</div>
+    )
+  }
+
+  const beerStockData =  beerStock?.filter((item) => item.type === "BEER");
 
   const filteredData = beerStockData
     ? beerStockData.filter((item) => {
@@ -44,7 +52,7 @@ const BeerStock = () => {
     })
     : beerStockData;
 
-  if (isLoading) return <Loader></Loader>;
+ 
 
   return (
     <section>
@@ -172,7 +180,7 @@ const BeerStock = () => {
               </td>
             </tr>
 
-            {filteredData?.map((item, index) => {
+            {beerStock.length && filteredData?.map((item, index) => {
               return (
                 <>
                   <BeerStockTopData

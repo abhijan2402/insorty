@@ -3,17 +3,54 @@ import Refund from "../Refund/Refund";
 import Reserve from "../Reserve/Reserve";
 import InvestmentForm from "../InvestmentForm/InvestmentForm";
 import useMainInvestmentHooks from "../MainInvestmentHooks/useMainInvestmentHooks";
-
+import { Loader } from "three";
 import RefundDetailsData from "../Refund/RefundDetailsData";
 import ResurvedDataDetails from "../Reserve/ResurvedDataDetails";
+import { Button } from "@mui/material";
 
 const MainInvestment = () => {
-  const {
-    addOneMainInvestment,
-    mainInvestmentState,
-    handelOnChangeMainInvestment,
-    handelOnSubmitMainInvestment,
-  } = useMainInvestmentHooks();
+  // const {
+  //   addOneMainInvestment,
+  //   mainInvestmentState,
+  //   handelOnChangeMainInvestment,
+  //   handelOnSubmitMainInvestment,
+  //   addFees,
+  //   addRefund,
+  //   addbelonging,
+  //   addReserve,
+  //   handleBelongingChange,
+  //   handleFeesChange,
+  //   handleRefundChange,
+  //   handleReserveChange,
+  //   fees,
+  //   belonging,
+  //   reserveAmountArr,
+  //   refundRecoveryDetails,
+  //   reserveAmount,
+  //   cashInHand,
+  //   total,
+  //   handleChangeCashInHand,
+  //   handleChangePreviousLoan,
+  //   mainLoading,
+  //   handleChangeTotal,
+  //   previousLoan,handleChange
+  // } = useMainInvestmentHooks();
+
+  const { data, loading, handleInvestmentChange,
+    handleBelongingAdd,
+    handleFeesChange,
+    handleBelongingChange,
+    handleSave, handleFeesAdd,handleTotalChange } = useMainInvestmentHooks()
+
+    
+
+  if(loading){
+    return(
+      <div>
+        Loading....
+      </div>
+    )
+  }
 
   return (
     <section className="my-2">
@@ -29,26 +66,202 @@ const MainInvestment = () => {
               <thead>
                 <tr>
                   <th>S.No</th>
-                  <th>ब्राण्ड/ Brand Name </th>
+                  <th>Detail</th>
                   <th>दिनांक / Date</th>
                   <th>रकम/ price</th>
                 </tr>
               </thead>
 
               <tbody>
-                {mainInvestmentState.map((mainInvestment, index) => {
+                <tr>
+                  <th>1</th>
+                  <td>
+                    <input
+                      className="dailyReportInput"
+                      type="text"
+                      name="brandName"
+                      value={"Previous Loans"}
+                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                    />
+                  </td>
+                  <td>
+                    {/* <input
+                      type="date"
+                      name="theDate"
+                      className="semiSmallInput"
+                      defaultValue={previousLoan.date}
+                      onChange={(e) => previousLoan.date=e.target.value}
+                    /> */}
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="price"
+                      className="semiSmallInput"
+                      defaultValue={data.mainInvest.previousLoan.price}
+                      onChange={event => handleInvestmentChange('previousLoan', event.target.value)}
+                    />
+                  </td>
+                </tr>
+
+                <h1 style={{fontSize:35}}><b>Fees</b></h1>
+              
+
+              
+                {data.mainInvest.fees.map((mainInvestment, index) => {
                   return (
                     <InvestmentForm
                       key={index}
                       index={index}
+                      name={"Fees"}
                       mainInvestment={mainInvestment}
-                      mainInvestmentState={mainInvestmentState}
+                      
                       handelOnChangeMainInvestment={
-                        handelOnChangeMainInvestment
+                        handleFeesChange
                       }
                     ></InvestmentForm>
                   );
                 })}
+
+                <tr>
+                <h1 
+                style={{textAlign:'center',paddingTop:3,marginTop:7}}
+                  className="dailyReportBtn"
+                    onClick={() => handleFeesAdd()}
+                >
+                  ADD 1
+                </h1>
+
+                </tr>
+
+<tr>                <h1 style={{ fontSize: 35 }}><b>Belongings</b></h1>
+
+                </tr>
+
+
+
+                {data && data.mainInvest.belonging.map((mainInvestment, index) => {
+                  return (
+                    <InvestmentForm
+                      key={index}
+                      index={index}
+                      name={"Belonging"}
+                      mainInvestment={mainInvestment}
+                      
+                      handelOnChangeMainInvestment={
+                        handleBelongingChange
+                      }
+                    ></InvestmentForm>
+                  );
+                })}
+
+                <tr>
+
+                <h1
+                  style={{ textAlign: 'center', paddingTop: 3, marginTop: 7 }}
+                  className="dailyReportBtn"
+                    onClick={() => handleBelongingAdd()}
+                >
+                  ADD 1
+                </h1>
+
+                </tr>
+
+
+                <tr>
+                  <th>1</th>
+                  <td>
+                    <input
+                      className="dailyReportInput"
+                      type="text"
+                      name="brandName"
+                      value={"Cash in Hand"}
+                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                    />
+                  </td>
+                  <td>
+                    {/* <input
+                      type="date"
+                      name="theDate"
+                      className="semiSmallInput"
+                      defaultValue={cashInHand.date}
+                      onChange={(e) => cashInHand.date = e.target.value}
+                    /> */}
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="price"
+                      className="semiSmallInput"
+                      defaultValue={data.mainInvest.cashInHand.price}
+                      onChange={event => handleInvestmentChange('cashInHand', event.target.value)}
+                    />
+                  </td>
+                </tr>
+
+
+                <tr>
+                  <th>1</th>
+                  <td>
+                    <input
+                      className="dailyReportInput"
+                      type="text"
+                      name="brandName"
+                      value={"Reserve Amount"}
+                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                    />
+                  </td>
+                  <td>
+                    {/* <input
+                      type="date"
+                      name="theDate"
+                      className="semiSmallInput"
+                      defaultValue={cashInHand.date}
+                      onChange={(e) => cashInHand.date = e.target.value}
+                    /> */}
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="price"
+                      className="semiSmallInput"
+                      value={data.mainInvest.reserveAmount.price}
+                      readOnly
+                      // onChange={(e) => handleChange(e)}
+                    />
+                  </td>
+                </tr>
+                <tr>
+
+                  <th></th>
+                  <td>
+                    <input
+                      className="dailyReportInput"
+                      type="text"
+                      name="brandName"
+                      value={"Total"}
+                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                    />
+                  </td>
+                  <td>
+                    {/* <input
+                      type="date"
+                      name="theDate"
+                      className="semiSmallInput"
+                      defaultValue={cashInHand.date}
+                      onChange={(e) => cashInHand.date = e.target.value}
+                    /> */}
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="price"
+                      className="semiSmallInput"
+                      defaultValue={data.mainInvest.total}
+                      onChange={event => handleTotalChange(event.target.value)}
+                    />
+                  </td>
+                </tr>
 
                 {/* <MainInvestmentList></MainInvestmentList> */}
                 {/* <tr>
@@ -64,21 +277,16 @@ const MainInvestment = () => {
         <div className="my-4 flex gap-4">
           <button
             className="dailyReportBtnSubmit"
-            onClick={() => handelOnSubmitMainInvestment()}
+            onClick={() => handleSave()}
             type="submit"
           >
             Submit
           </button>
-          <button
-            className="dailyReportBtn"
-            onClick={() => addOneMainInvestment()}
-          >
-            ADD 1
-          </button>
+          
         </div>
       </div>
 
-      <div>
+      {/* <div>
         <div>
           <h2 className="font-bold text-[1.5rem] my-2">
             रिफंड/रिकवरी विवरण/ Refund/Recovery Details
@@ -107,7 +315,6 @@ const MainInvestment = () => {
                         padding: "0.6rem 1.5rem",
                         borderRadius: "0.5rem",
                         color: "black",
-
                         fontSize: "1rem",
                       }}
                     >
@@ -177,7 +384,7 @@ const MainInvestment = () => {
         </div>
       </div>
       <RefundDetailsData></RefundDetailsData>
-      <ResurvedDataDetails></ResurvedDataDetails>
+      <ResurvedDataDetails></ResurvedDataDetails> */}
     </section>
   );
 };

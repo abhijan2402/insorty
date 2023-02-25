@@ -7,6 +7,7 @@ const AddOneSecondForm = ({
   index,
   item,
   handelSeconFormOnChange,
+  handleRemoveFieldsSecond
 }) => {
   const SerialNo = index + 1;
 
@@ -24,6 +25,7 @@ const AddOneSecondForm = ({
     <>
       <tr>
         <th>{SerialNo}</th>
+        <th><h1 className="cross" onClick={() => handleRemoveFieldsSecond(index)}>X</h1></th>
        
         <td>
           <div className="form-control">

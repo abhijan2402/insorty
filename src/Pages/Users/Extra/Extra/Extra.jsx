@@ -20,13 +20,23 @@ const Extra = () => {
       return data.data;
     },
   });
+
   
+  
+ 
+  // console.log(entriesMainData);
+
+  if (isLoading) return <Loader></Loader>;
+
+  if (!extraData.length) {
+    return (
+      <h1>No data found</h1>
+    )
+  }
+
   const entriesMainData = extraData?.map((entry) => {
     return entry?.entries;
   });
-  console.log(entriesMainData);
-
-  if (isLoading) return <Loader></Loader>;
 
   return (
     <section className="my-2">

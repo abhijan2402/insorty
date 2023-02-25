@@ -8,7 +8,7 @@ const AddSendFormat = () => {
     const form = e.target;
     const data = {
       name: form.partnerName.value,
-      equity: form.partnerPercentage.value,
+      equity: 0,
       balance: form.balance.value,
     };
 
@@ -67,21 +67,7 @@ const AddSendFormat = () => {
                   }}
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Partner Percentage</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Partner Percentage"
-                  name="partnerPercentage"
-                  className="input input-bordered"
-                  style={{
-                    width: "100%",
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              </div>
+              
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Balance</span>

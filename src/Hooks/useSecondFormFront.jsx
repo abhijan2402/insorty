@@ -13,6 +13,7 @@ const useSecondFormFront = () => {
     buyRate: 0,
     incomePurchase: 0,
     purchaseRate: 0,
+    initial:0,
     inflowCredit: 0,
     sending: 0,
     sumRemainder: 0,
@@ -59,19 +60,21 @@ const useSecondFormFront = () => {
           newFormData.liquorID = parent._id
         newFormData.selectStockVarient = item.quantityInML
         newFormData.startingStock = item.currentStock
+        newFormData.averageRate = item.averageRate.$numberDecimal
+        newFormData.initial = item.averageRate.$numberDecimal
         firstFormData = [newFormData, ...firstFormData]
           setAddOneSecondFormState(firstFormData)        
-            localStorage.setItem("mlForm", JSON.stringify(firstFormData));
-            localStorage.setItem(
-              "mlFormTotal",
-              JSON.stringify(
-                firstFormData.reduce(
-                  (totals, currentItem) =>
-                    (totals = totals + Number(currentItem.total)),
-                  0
-                )
-              )
-            )
+            // localStorage.setItem("mlForm", JSON.stringify(firstFormData));
+            // localStorage.setItem(
+            //   "mlFormTotal",
+            //   JSON.stringify(
+            //     firstFormData.reduce(
+            //       (totals, currentItem) =>
+            //         (totals = totals + Number(currentItem.total)),
+            //       0
+            //     )
+            //   )
+            // )
         }
         });
       });
@@ -90,6 +93,7 @@ const useSecondFormFront = () => {
         incomingPurchase: 0,
         buyRate: 0,
         incomePurchase: 0,
+        initial:0,
         purchaseRate: 0,
         inflowCredit: 0,
         sending: 0,
@@ -118,8 +122,14 @@ const useSecondFormFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
 
         if (e.target.name === "purchaseRate" || e.target.name === "buyRate") {
-          obj.averageRate =
-            (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
+          if (Number(obj.initial) > 0) {
+            obj.averageRate330 =
+              (Number(obj.averageRate) + Number(obj.purchaseRate) + Number(obj.buyRate)) / 3;
+          }
+          else {
+            obj.averageRate =
+              (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
+          }
         }
         return obj;
       } else return returned;
@@ -186,10 +196,18 @@ const useSecondFormFront = () => {
     );
   };
 
+  const handleRemoveFieldsSecond = index => {
+    const values = [...addOneSecondFormState];
+    values.splice(index, 1);
+    // console.log(index)
+    setAddOneSecondFormState(values);
+  };
+
   return {
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
+    handleRemoveFieldsSecond
   };
 };
 

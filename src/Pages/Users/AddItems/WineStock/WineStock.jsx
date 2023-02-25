@@ -27,6 +27,21 @@ const WineStock = () => {
     },
   });
 
+
+
+
+
+
+  if (isLoading) return <Loader></Loader>;
+
+  if (!wineStock.length){
+    return(
+      <div>No data found</div>
+    )
+  }
+
+
+
   const wineStockData = wineStock?.filter((item) => item.type === "WINE");
   const filteredData = selectedDate
     ? wineStockData.filter((item) => {
@@ -40,7 +55,12 @@ const WineStock = () => {
     })
     : wineStockData;
 
+
   if (isLoading) return <Loader></Loader>;
+
+
+
+
   const total = 0;
   let three = []
   filteredData.map((item) => {

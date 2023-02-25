@@ -43,6 +43,8 @@ const BackDailyReport = () => {
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
+    handleRemoveFieldsBack,
+    handleRemoveFieldsBeer
   } = useFristFormAdd();
 
   // ================== Rml Form============
@@ -52,6 +54,7 @@ const BackDailyReport = () => {
     handelAddOneInRml,
     onChangeRmlHandler,
     setAddRmlState,
+    handleRemoveFieldsBackRml
   } = useRmlAdd();
 
   // ================== Purchase OutSide Form============
@@ -60,6 +63,7 @@ const BackDailyReport = () => {
     handelAddFivePurchesOutSide,
     handelAddOnePurchesOutSide,
     onChangePurchesOutSide,
+    handleRemoveFieldsPurchaseOut
   } = usePurchesOutSideAdd();
 
   // ================== Commission Form============
@@ -68,6 +72,7 @@ const BackDailyReport = () => {
     handelAddFiveCommison,
     handelAddOneCommison,
     onChangeCommison,
+    handleRemoveFieldsCommission
   } = useCommissonAdd();
 
   // ================== Cash Recive Form============
@@ -76,11 +81,13 @@ const BackDailyReport = () => {
     handelAddFiveCashRecive,
     handelAddOneCashRecive,
     onChangeCashRecive,
+    handleRemoveFieldsCashBack
   } = useCashReciveAdd();
 
   // ================== Shipping Form============
   const {
     addShippingState,
+    handleRemoveFieldsShipping,
     onChangeShipping,
     handelAddFiveShipping,
     handelAddOneShipping,
@@ -91,6 +98,7 @@ const BackDailyReport = () => {
     infolwBorrwingFormState,
     onChangeBorrowingRml,
     // handelSubmitBorrowingRml,
+    handleRemoveFieldsInflow,
     handelAddFiveBorrowingRml,
     handelAddOneBorrowingRml,
   } = useInfolwBorrowingRml();
@@ -99,6 +107,7 @@ const BackDailyReport = () => {
   const {
     craditDabitState,
     onChangeCarditDabit,
+    handleRemoveFieldsCredit,
     // handelSubmitCarditDabit,
     handelAddFiveCarditDabit,
     handelAddOneCarditDabit,
@@ -195,6 +204,7 @@ const BackDailyReport = () => {
                     <thead>
                       <tr>
                         <th>S.no</th>
+                        <th></th>
                         <th>Brand Name/ ब्राण्ड</th>
                         <th>Average Rate</th>
                         <th>प्रारम्भिक स्टॉक</th>
@@ -518,6 +528,7 @@ const BackDailyReport = () => {
                       {fristFormState.map((item, index) => {
                         return (
                           <AddOneFristFromBack
+                            handleRemoveFieldsBack={handleRemoveFieldsBack}
                             key={index}
                             onChangeFristBackFormHandler={
                               onChangeFristBackFormHandler
@@ -534,6 +545,7 @@ const BackDailyReport = () => {
 
                       <tr>
                         <th></th>
+                        <td></td>
                         <td>Total</td>
                         {/* ======== MRP Input ========= */}
                         <td>
@@ -1236,15 +1248,15 @@ const BackDailyReport = () => {
               <div className="mt-4 flex gap-4">
                 <button
                   className="dailyReportBtn"
-                  onClick={() => addFiveInFristFormHandler()}
-                >
-                  ADD 5
-                </button>
-                <button
-                  className="dailyReportBtn"
                   onClick={() => addOneInFristFormHandler()}
                 >
                   ADD 1
+                </button>
+                <button
+                  className="dailyReportBtn"
+                  onClick={() => addFiveInFristFormHandler()}
+                >
+                  ADD 5
                 </button>
 
                 {isLoading ? (
@@ -1297,6 +1309,7 @@ const BackDailyReport = () => {
                         <thead>
                           <tr>
                             <th>S.no</th>
+                            <th></th>
                             <th>Brand Name/ ब्राण्ड</th>
                             <th>Total ml</th>
                             <th>Average Rate</th>
@@ -1323,6 +1336,7 @@ const BackDailyReport = () => {
                                 handelSeconFormOnChange={
                                   handelSeconFormOnChange
                                 }
+                                handleRemoveFieldsBeer={handleRemoveFieldsBeer}
                                 addOneSecondFormState={addOneSecondFormState}
                                 key={index}
                                 index={index}
@@ -1353,7 +1367,7 @@ const BackDailyReport = () => {
         <div className="flex overflow-x-auto">
           <div className="py-6">
             <h1 className="my-4">
-              <span className="font-bold titleText">RML / आरएमएल</span>
+              <span className="font-bold titleText">RML / आर.एम.एल</span>
             </h1>
 
             <form action="">
@@ -1362,6 +1376,7 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th>S.no</th>
+                      <th></th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>ml</th>
                       <th>Average Rate</th>
@@ -1387,6 +1402,7 @@ const BackDailyReport = () => {
                           key={index}
                           item={item}
                           index={index}
+                          handleRemoveFieldsBackRml={handleRemoveFieldsBackRml}
                           onChangeRmlHandler={onChangeRmlHandler}
                           addRmlState={addRmlState}
                           setAddRmlState={setAddRmlState}
@@ -1395,6 +1411,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
+                      <th></th>
                       <th></th>
                       <td>
                         <div className="form-control">Total</div>
@@ -1620,15 +1637,15 @@ const BackDailyReport = () => {
               <div className="mt-4 flex gap-4">
                 <button
                   className="dailyReportBtn"
-                  onClick={() => addFiveBtnHandler()}
-                >
-                  ADD 5
-                </button>
-                <button
-                  className="dailyReportBtn"
                   onClick={() => addOneBtnHandler()}
                 >
                   ADD 1
+                </button>
+                <button
+                  className="dailyReportBtn"
+                  onClick={() => addFiveBtnHandler()}
+                >
+                  ADD 5
                 </button>
 
                 {/* <button
@@ -1653,6 +1670,7 @@ const BackDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
+                      <th></th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>संख्या</th>
@@ -1668,6 +1686,7 @@ const BackDailyReport = () => {
                       return (
                         <PurchaseOutSideFrom
                           onChangePurchesOutSide={onChangePurchesOutSide}
+                          handleRemoveFieldsPurchaseOut={handleRemoveFieldsPurchaseOut}
                           item={item}
                           key={index}
                           index={index}
@@ -1677,6 +1696,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
+                    <td>Total</td>
                       <td>
                         <div className="form-control">
                           <input
@@ -1792,6 +1812,7 @@ const BackDailyReport = () => {
                 <table className="table">
                   <thead>
                     <tr>
+                    <th></th>
                       <th>Reason / विवरण</th>
                       <th>रकम</th>
                       <th>Description</th>
@@ -1804,6 +1825,7 @@ const BackDailyReport = () => {
                           key={index}
                           index={index}
                           item={item}
+                          handleRemoveFieldsCommission={handleRemoveFieldsCommission}
                           commissonState={commissonState}
                           onChangeCommison={onChangeCommison}
                         ></CommissonFrom>
@@ -1811,6 +1833,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
+                    <td>Total</td>
                       <td>
                         <div className="form-control">
                           <input
@@ -1867,6 +1890,7 @@ const BackDailyReport = () => {
                 <table className="table">
                   <thead>
                     <tr>
+                    <th></th>
                       <th>Name</th>
                       <th>Type</th>
                       <th>रकम</th>
@@ -1879,6 +1903,7 @@ const BackDailyReport = () => {
                         <CashReciveFrom
                           key={index}
                           item={item}
+                          handleRemoveFieldsCashBack={handleRemoveFieldsCashBack}
                           index={index}
                           onChangeCashRecive={onChangeCashRecive}
                           cashReciveState={cashReciveState}
@@ -1887,6 +1912,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
+                    <td>Total</td>
                       <td>
                         <div className="form-control">
                           <input
@@ -1954,6 +1980,7 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th>S.No</th>
+                      <th></th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>Size</th>
@@ -1968,6 +1995,7 @@ const BackDailyReport = () => {
                           key={index}
                           item={item}
                           index={index}
+                          handleRemoveFieldsShipping={handleRemoveFieldsShipping}
                           addShippingState={addShippingState}
                           onChangeShipping={onChangeShipping}
                         ></ShippingForm>
@@ -1976,6 +2004,7 @@ const BackDailyReport = () => {
 
                     <tr>
                       <th>Total</th>
+                    <th></th>
                       <td>
                         <div className="form-control">
                           <input
@@ -2043,15 +2072,15 @@ const BackDailyReport = () => {
             <div className="mt-4 flex gap-4 mx-4">
               <button
                 className="dailyReportBtn"
-                onClick={() => addFiveShippingBtnHandler()}
-              >
-                ADD 5
-              </button>
-              <button
-                className="dailyReportBtn"
                 onClick={() => addOneShippingBtnHandler()}
               >
                 ADD 1
+              </button>
+              <button
+                className="dailyReportBtn"
+                onClick={() => addFiveShippingBtnHandler()}
+              >
+                ADD 5
               </button>
             </div>
           </div>
@@ -2068,6 +2097,7 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th>S.no</th>
+                      <th></th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>संख्या</th>
@@ -2083,6 +2113,7 @@ const BackDailyReport = () => {
                       return (
                         <InflowBorrowingRML
                           infolwBorrwingFormState={infolwBorrwingFormState}
+                          handleRemoveFieldsInflow={handleRemoveFieldsInflow}
                           onChangeBorrowingRml={onChangeBorrowingRml}
                           key={index}
                           item={item}
@@ -2093,6 +2124,7 @@ const BackDailyReport = () => {
 
                     <tr>
                       <th>Total</th>
+                      <th></th>
                       <td>
                         <div className="form-control">
                           <input
@@ -2204,6 +2236,7 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th>S.no</th>
+                      <th></th>
                       <th>पार्टी का नाम</th>
                       <th>पार्टी/पार्टनर</th>
                       <th>रकम</th>
@@ -2217,6 +2250,7 @@ const BackDailyReport = () => {
                         <CraditDabitForm
                           key={index}
                           item={item}
+                          handleRemoveFieldsCredit={handleRemoveFieldsCredit}
                           craditDabitState={craditDabitState}
                           onChangeCarditDabit={onChangeCarditDabit}
                           index={index}
@@ -2226,6 +2260,7 @@ const BackDailyReport = () => {
 
                     <tr>
                       <th>Total</th>
+                      <th></th>
 
                       <td>
                         <div className="form-control">

@@ -5,7 +5,7 @@ import useLiquors from "../../../../../Hooks/useLiquors";
 import useRmlAdd from "../../../../../Hooks/useRmlAdd";
 import Loader from "../../../../../Components/Loader/Loader";
 
-const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
+const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFieldsBackRml }) => {
   const serialNo = index + 1;
   const { setAddRmlState } = useRmlAdd()
   // const { liquors } = useContext(DataContextApi);
@@ -31,6 +31,8 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState }) => {
     <>
       <tr>
         <th>{serialNo}</th>
+        <th className="cross" onClick={() => handleRemoveFieldsBackRml(index)}>X</th>
+
         <td>
           <div className="form-control">
             {/* <input

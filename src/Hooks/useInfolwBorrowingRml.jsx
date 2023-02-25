@@ -106,12 +106,20 @@ const useInfolwBorrowingRml = () => {
     console.log(handelBorrowingRml);
   };
 
+  const handleRemoveFieldsInflow = index => {
+    const values = [...infolwBorrwingFormState];
+    values.splice(index, 1);
+    console.log(index)
+    setInfolwBorrwingFormState(values);
+  };
+
   return {
     infolwBorrwingFormState,
     onChangeBorrowingRml,
     handelSubmitBorrowingRml,
     handelAddFiveBorrowingRml,
     handelAddOneBorrowingRml,
+    handleRemoveFieldsInflow
   };
 };
 

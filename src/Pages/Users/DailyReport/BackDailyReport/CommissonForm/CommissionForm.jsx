@@ -1,9 +1,10 @@
 import React from "react";
 
-const CommissionForm = ({ index, onChangeCommison, item }) => {
+const CommissionForm = ({ index, onChangeCommison, item, handleRemoveFieldsCommission }) => {
   return (
     <>
       <tr>
+        <th className="cross" onClick={() => handleRemoveFieldsCommission(index)}>X</th>
         <td>
           <div className="form-control">
             {/* <input

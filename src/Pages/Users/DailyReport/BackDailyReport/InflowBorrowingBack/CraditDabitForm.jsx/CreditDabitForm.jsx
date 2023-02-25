@@ -4,7 +4,7 @@ import usePartyNames from "../../../../../../Hooks/usePartyNames";
 import { Autocomplete, TextField } from "@mui/material";
 
 
-const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
+const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsCredit }) => {
   const { parties,
     partyLoaded,
     partners,
@@ -22,6 +22,8 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
   return (
     <tr>
       <th>{index + 1}</th>
+      <th className="cross" onClick={() => handleRemoveFieldsCredit(index)}>X</th>
+
 
       <td>
         <div className="form-control">

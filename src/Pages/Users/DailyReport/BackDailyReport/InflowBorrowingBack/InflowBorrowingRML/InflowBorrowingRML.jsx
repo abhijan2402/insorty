@@ -4,7 +4,7 @@ import usePartyNames from "../../../../../../Hooks/usePartyNames";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import { Autocomplete, TextField } from "@mui/material";
 
-const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
+const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item, handleRemoveFieldsInflow }) => {
   const {
     brands,
     brandsLoaded,
@@ -26,6 +26,8 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
     <>
       <tr>
         <th>{index + 1}</th>
+        <th className="cross" onClick={() => handleRemoveFieldsInflow(index)}>X</th>
+
         <td>
           <div className="form-control">
             <Autocomplete
