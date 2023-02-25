@@ -92,7 +92,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; mlForm ? index < mlForm.length : 0; index++) {
       const element = mlForm[index];
       addSecondFormData.push({
-        liquor: GetLiqId(element.liquor, element.selectStockVarient, "WINE"),
+        liquor: GetLiqId(element.liquorID, Number(element.selectStockVarient), "WINE"),
         brandName: element.brandName,
         quantityInML: element.selectStockVarient,
         openingStock: element.startingStock,
@@ -121,67 +121,65 @@ const useFristFormSubmitAPIFront = () => {
           body: JSON.stringify({
             date: drDate,
             salesmen: salesMan,
-            entries: dataDetails650,
+            entries: [...dataDetails650, ...dataDetails550, ...dataDetails330, ...addSecondFormData],
           }),
         }
       );
 
-      const api2 = await fetch(
-        "https://insorty-api.onrender.com/shop/addFrontPageData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({
-            date: drDate,
-            salesmen: salesMan,
-            entries: dataDetails550,
-          }),
-        }
-      );
-      const api3 = await fetch(
-        "https://insorty-api.onrender.com/shop/addFrontPageData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({
-            date: drDate,
-            salesmen: salesMan,
-            entries: dataDetails330,
-          }),
-        }
-      );
+      // const api2 = await fetch(
+      //   "https://insorty-api.onrender.com/shop/addFrontPageData",
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       cookie_token: token,
+      //     },
+      //     body: JSON.stringify({
+      //       date: drDate,
+      //       salesmen: salesMan,
+      //       entries: dataDetails550,
+      //     }),
+      //   }
+      // );
+      // const api3 = await fetch(
+      //   "https://insorty-api.onrender.com/shop/addFrontPageData",
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       cookie_token: token,
+      //     },
+      //     body: JSON.stringify({
+      //       date: drDate,
+      //       salesmen: salesMan,
+      //       entries: dataDetails330,
+      //     }),
+      //   }
+      // );
 
-      const api4 = await fetch(
-        "https://insorty-api.onrender.com/shop/addFrontPageData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({
-            date: drDate,
-            salesmen: salesMan,
-            entries: addSecondFormData,
-          }),
-        }
-      );
+      // const api4 = await fetch(
+      //   "https://insorty-api.onrender.com/shop/addFrontPageData",
+      //   {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       cookie_token: token,
+      //     },
+      //     body: JSON.stringify({
+      //       date: drDate,
+      //       salesmen: salesMan,
+      //       entries: addSecondFormData,
+      //     }),
+      //   }
+      // );
 
-      Promise.all([api1, api2, api3, api4])
+      Promise.all([api1])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
           if (
-            data[0].success &&
-            data[1].success &&
-            data[2].success &&
-            data[3].success
+            data[0].success
+            
           ) {
             Swal.fire({
               icon: "success",
@@ -200,9 +198,9 @@ const useFristFormSubmitAPIFront = () => {
     } finally {
       setIsLoadingSubmit(false);
     }
-    console.log(dataDetails650);
-    console.log(dataDetails550);
-    console.log(dataDetails330);
+    console.log(mlForm)
+    console.log(addSecondFormData)
+    console.log([...dataDetails650, ...dataDetails550, ...dataDetails330, ...addSecondFormData]);
   };
 
   return {

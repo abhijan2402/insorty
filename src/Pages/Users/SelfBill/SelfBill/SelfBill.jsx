@@ -109,10 +109,10 @@ const SelfBill = () => {
 
             <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
-              value={StartDate}
-              onChange={(e) => {
-                setStartDate(e.target.value);
-                console.log(StartDate);
+              selected={StartDate}
+              onChange={(date) => {
+                setStartDate(date);
+                console.log(typeof(StartDate));
               }}
               placeholderText={'dd/mm/yyyy'}
               filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
