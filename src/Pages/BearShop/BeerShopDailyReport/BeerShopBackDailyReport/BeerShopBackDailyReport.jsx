@@ -15,7 +15,6 @@ const BackDailyReport = () => {
     fourthFormState,
     fivthFormState,
     sixthFormState,
-
     addOneSecondForm,
     addFiveSecondForm,
 
