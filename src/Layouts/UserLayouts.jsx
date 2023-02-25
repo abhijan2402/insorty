@@ -24,7 +24,12 @@ const DashboardLayout = () => {
 
   return (
     <>
-      <div className="md:hidden block">
+      <div className="md:hidden block"
+        style={{
+          position: "fixed",
+          zIndex: "99999999999999999999",
+        }}
+      >
         {!side ? (
           <button className="text-2xl p-4 " onClick={() => setSide(true)}>
             <FaBars></FaBars>

@@ -22,12 +22,10 @@ const SideNav = () => {
 
         <div
           style={{
-            position: "fixed",
-            top: "0",
             left: "0",
             zIndex: " 1000",
           }}
-          className="flex flex-col w-64  px-4 mb-10  bg-white border-r "
+          className="flex-col w-64 fixed px-4 md:mb-10 top-0 md:top-0 bg-white border-r flex "
         >
 
           <div className="text-3xl flex justify-center items-center font-semibold  text-white">
@@ -43,7 +41,7 @@ const SideNav = () => {
           <hr className="mt-4 mb-2" />
         </div>
 
-        <div className="flex flex-col justify-between flex-1 mt-28">
+        <div className="flex flex-col justify-between flex-1 md:mt-28">
           <nav>
 
             <li className="my-4">

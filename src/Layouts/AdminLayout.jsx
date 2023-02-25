@@ -24,7 +24,12 @@ const AdminLayout = () => {
 
   return (
     <>
-      <div className="md:hidden block">
+      <div className="md:hidden block"
+        style={{
+          position: "fixed",
+          zIndex: "99999999999999999999",
+        }}
+      >
         {!side ? (
           <button className="text-2xl p-4 " onClick={() => setSide(true)}>
             <FaBars></FaBars>
@@ -36,8 +41,8 @@ const AdminLayout = () => {
         )}
       </div>
 
-      <div className="flex gap-2">
-        <div className={side ? "lg:w-[300px] md:w-48 w-full" : "hidden"}>
+      <div className="md:flex gap-2">
+        <div className={side ? "lg:w-[300px] md:w-48 w-full md:block hidden" : "hidden"}>
           <AdminSideNav></AdminSideNav>
         </div>
         <div className="md:w-[calc(100%-300px)] w-full DashboardLayoutOutlate ">

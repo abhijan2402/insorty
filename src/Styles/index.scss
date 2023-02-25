@@ -37,12 +37,14 @@ table {
   border-collapse: collapse;
   padding: 5px;
 }
+
 table th {
   border: 1px solid black !important;
   padding: 5px;
   background: #f0f0f0;
   color: #313030;
 }
+
 table td {
   border: 1px solid black !important;
   text-align: center;
@@ -63,6 +65,15 @@ table td {
   padding-top: 20px;
 }
 
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
 
 
 

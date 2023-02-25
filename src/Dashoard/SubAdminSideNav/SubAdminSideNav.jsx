@@ -16,12 +16,10 @@ const SubAdminSideNav = () => {
     <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r sidenav">
       <div
         style={{
-          position: "fixed",
-          top: "0",
           left: "0",
           zIndex: " 1000",
         }}
-        className="flex flex-col w-64  px-4 mb-10  bg-white border-r "
+        className="flex-col w-64 fixed px-4 md:mb-10 top-0 md:top-0 bg-white border-r flex "
       >
         <div className="text-3xl flex justify-center items-center font-semibold  text-white">
           <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />
@@ -37,7 +35,7 @@ const SubAdminSideNav = () => {
       </div>
 
 
-      <div className="flex flex-col justify-between flex-1 mt-28">
+      <div className="flex flex-col justify-between flex-1 md:mt-28">
         <nav>
 
           <li className="my-4">

@@ -3,7 +3,7 @@ import Refund from "../Refund/Refund";
 import Reserve from "../Reserve/Reserve";
 import InvestmentForm from "../InvestmentForm/InvestmentForm";
 import useMainInvestmentHooks from "../MainInvestmentHooks/useMainInvestmentHooks";
-import { Loader } from "three";
+// import { Loader } from "three";
 import RefundDetailsData from "../Refund/RefundDetailsData";
 import ResurvedDataDetails from "../Reserve/ResurvedDataDetails";
 import { Button } from "@mui/material";
