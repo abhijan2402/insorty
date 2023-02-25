@@ -5,12 +5,19 @@ import OutBillList from "../OutBillList/OutBillList";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import useLiquors from "../../../../Hooks/useLiquors";
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+
+
 
 const OutBill = () => {
   const token = localStorage.getItem("token");
   // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
   const { brandsLoaded, loading } = useLiquors();
   const [selectedDate, setSelectedDate] = useState("");
+  const [StartDate, setStartDate] = useState();
+  const [EndDate, setEndDate] = useState();
+
 
   const { data: OutBill, isLoading } = useQuery({
     queryKey: ["OutBill"],
@@ -35,13 +42,24 @@ const OutBill = () => {
 
   const filteredData = selectedDate
     ? OutBill.filter((item) => {
-      const itemDate = new Date(item.date);
-      const selected = selectedDate ? new Date(selectedDate) : null;
-      if (selected) {
-        return itemDate.toDateString() === selected.toDateString();
-      } else {
-        return true;
+      let filterPass = true;
+      const date = new Date(item.date);
+      if (StartDate) {
+        filterPass = filterPass && new Date(StartDate) <= date;
       }
+      if (EndDate) {
+        filterPass = filterPass && new Date(EndDate) >= date;
+      }
+      //if filterPass comes back `false` the row is filtered out
+      return filterPass;
+
+      // const itemDate = new Date(item.date);
+      // const selected = selectedDate ? new Date(selectedDate) : null;
+      // if (selected) {
+      //   return itemDate.toDateString() === selected.toDateString();
+      // } else {
+      //   return true;
+      // }
     })
     : OutBill;
 
@@ -59,31 +77,61 @@ const OutBill = () => {
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">बाहर के बिल का फोर्मेट</h2>
         <div className="flex gap-4 items-center my-4">
+
           <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
+            {/* <FaCalendarAlt></FaCalendarAlt>
             <input
               type="date"
               dateFormat="yyyy-MM-dd"
               value={selectedDate}
               onChange={handleDateChange}
-              name="year"
+              name="AllDate"
               className="semiSmallInput"
+            /> */}
+
+            <FaCalendarAlt></FaCalendarAlt>
+            <DatePicker
+              value={StartDate}
+              onChange={(e) => {
+                setStartDate(e.target.value);
+                console.log(StartDate);
+              }}
+              placeholderText={'dd/mm/yyyy'}
+              filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
+              showYearDropdown
+              dateFormat={'dd/MM/yyyy'}
+              scrollableYearDropdown
             />
           </div>
 
           <h2 className="font-bold text-[1.5rem]">To</h2>
           <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
+            {/* <FaCalendarAlt></FaCalendarAlt>
             <input
               type="date"
               dateFormat="yyyy-MM-dd"
               value={selectedDate}
               onChange={handleDateChange}
-              name="year"
+              name="AllDate"
               className="semiSmallInput"
+            /> */}
+            <FaCalendarAlt></FaCalendarAlt>
+            <DatePicker
+              value={EndDate}
+              name="year"
+              onChange={(e) => {
+                setEndDate(e.target.value);
+                console.log(EndDate);
+              }}
+              placeholderText={'dd/mm/yyyy'}
+              filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
+              showYearDropdown
+              dateFormat={'dd/MM/yyyy'}
+              scrollableYearDropdown
             />
           </div>
+
         </div>
         <div className="divider my-2"></div>
       </div>

@@ -1,7 +1,25 @@
 import React from "react";
 import "../Style/DailyReport.scss";
 import { Link } from "react-router-dom";
+import UseBeerShopBack from "../../BeerHooks/DailyReportHooks/UseBeerShopBack/UseBeerShopBack";
 const BackDailyReport = () => {
+  const { comissonData,
+    backLandedData,
+    addOneData,
+    addOneBackLand,
+    addFiveThirdForm,
+    addOneThirdForm,
+    firstFormAddFive,
+    fistFormAddOne,
+    thirdFormData,
+    fourthFormState,
+    fivthFormState,
+    sixthFormState,
+    addOneSecondForm,
+    addFiveSecondForm,
+
+  } = UseBeerShopBack()
+
   return (
     <>
       <section className="mx-2">
@@ -42,72 +60,78 @@ const BackDailyReport = () => {
                   </thead>
 
                   <tbody>
-                    <tr>
-                      <th></th>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                    </tr>
+                    {
+                      comissonData.map((commison, index) => {
+                        return (
+                          <tr key={index}>
+                            <th>{index + 1}</th>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="partyName"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="brandName"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="theNumber"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="quantity"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="rate"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="totalData"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="reason"
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                        )
+                      })
+                    }
                   </tbody>
                 </table>
               </div>
@@ -116,11 +140,14 @@ const BackDailyReport = () => {
             <div>
               <div className="mt-4 flex gap-4">
                 <button
+                  onClick={firstFormAddFive}
                   className="dailyReportBtn"
                 >
                   ADD 5
                 </button>
                 <button
+
+                  onClick={fistFormAddOne}
                   className="dailyReportBtn"
                 >
                   ADD 1
@@ -151,54 +178,62 @@ const BackDailyReport = () => {
                   </thead>
 
                   <tbody>
-                    <tr>
-                      <th>01</th>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                    </tr>
+
+                    {
+                      backLandedData.map((backLanded, index) => {
+                        return (
+                          <tr
+                            key={index}>
+                            <th>{index + 1}</th>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="partyName"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="brandName"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="rakom"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="sizeMl"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="comment"
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                        )
+                      })
+                    }
                   </tbody>
                 </table>
               </div>
@@ -224,35 +259,43 @@ const BackDailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reason"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reason"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reason"
-                          />
-                        </div>
-                      </td>
-                    </tr>
+                    {
+                      thirdFormData.map((data, index) => {
+                        return (
+                          <tr key={index + 1}>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="semiSmallInput"
+                                  name="reason"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="semiSmallInput"
+                                  name="rakom"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="semiSmallInput"
+                                  name="comment"
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                        )
+                      })
+                    }
+
+
                   </tbody>
                 </table>
               </div>
@@ -282,45 +325,55 @@ const BackDailyReport = () => {
                   </thead>
 
                   <tbody>
-                    <tr>
-                      <th></th>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                    </tr>
+                    {
+                      fourthFormState.map((data, index) => {
+                        return (
+                          <tr
+                            key={index}
+                          >
+                            <th>{index + 1}</th>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="partyName"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="partnerName"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="amount"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="comment"
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                        )
+                      })
+                    }
+
+
                   </tbody>
                 </table>
               </div>
@@ -330,10 +383,12 @@ const BackDailyReport = () => {
               <div className="mt-4 flex gap-4">
                 <button
                   className="dailyReportBtn"
+                  onClick={addFiveSecondForm}
                 >
                   ADD 5
                 </button>
                 <button
+                  onClick={addOneSecondForm}
                   className="dailyReportBtn"
                 >
                   ADD 1
@@ -361,35 +416,41 @@ const BackDailyReport = () => {
                   </thead>
 
                   <tbody>
-                    <tr>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </td>
-                    </tr>
+                    {
+                      fivthFormState.map((data, index) => {
+                        return <tr
+                          key={index}
+                        >
+                          <td>
+                            <div className="form-control">
+                              <input
+                                type="text"
+                                className="dailyReportInput"
+                                name="resone"
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <div className="form-control">
+                              <input
+                                type="text"
+                                className="dailyReportInput"
+                                name="rakam"
+                              />
+                            </div>
+                          </td>
+                          <td>
+                            <div className="form-control">
+                              <input
+                                type="text"
+                                className="dailyReportInput"
+                                name="comment"
+                              />
+                            </div>
+                          </td>
+                        </tr>
+                      })
+                    }
                   </tbody>
                 </table>
               </div>
@@ -414,35 +475,46 @@ const BackDailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reason"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reason"
-                          />
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reason"
-                          />
-                        </div>
-                      </td>
-                    </tr>
+                    {
+                      sixthFormState.map((data, index) => {
+                        return (
+                          <tr
+                            key={index}
+                          >
+                            <td>
+                              {index + 1}
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="date"
+                                  className="semiSmallInput"
+                                  name="theDate"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="semiSmallInput"
+                                  name="price"
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="semiSmallInput"
+                                  name="details"
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                        )
+                      })
+                    }
                   </tbody>
                 </table>
               </div>
@@ -543,9 +615,6 @@ const BackDailyReport = () => {
 
         </div>
         {/* *********************************************************BREAK*********************************************************  */}
-
-
-
 
       </section>
     </>
