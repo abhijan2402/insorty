@@ -21,6 +21,13 @@ const FrontDetailsReport = () => {
 
   }
 
+  console.log(FrontPageData)
+  if(!FrontPageData.length){
+    return(
+      <h1>No Data Found</h1>
+    )
+  }
+
   return (
     <section className="my-4">
       <div className="flex gap-6 items-center my-4">

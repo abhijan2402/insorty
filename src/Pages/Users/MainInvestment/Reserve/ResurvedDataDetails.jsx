@@ -42,7 +42,7 @@ const ResurvedDataDetails = () => {
 
               <div className="form-control my-2">
                 <label>
-                  <span> MONTH</span>
+                  <span> Date</span>
                 </label>
                 <input
                   type="date"

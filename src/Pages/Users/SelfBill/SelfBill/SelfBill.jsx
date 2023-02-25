@@ -47,7 +47,7 @@ const SelfBill = () => {
     })
     : SelfBillData;
 
-  if (isLoading || brandsLoaded || loading) {
+  if (isLoading || brandsLoaded) {
     return <Loader></Loader>;
   }
 

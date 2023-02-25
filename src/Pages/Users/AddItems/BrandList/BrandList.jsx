@@ -26,6 +26,8 @@ const BrandList = () => {
 
   if (isLoading) return <Loader></Loader>;
 
+
+
   return (
     <section className="p-4">
       <div className="title">
@@ -58,7 +60,7 @@ const BrandList = () => {
           </thead>
 
           <tbody>
-            {BrandData?.map((item, index) => {
+            {BrandData.length && BrandData?.map((item, index) => {
               const { sizes } = item;
               const quantityInML = sizes?.map((item) => item?.quantityInML);
 
