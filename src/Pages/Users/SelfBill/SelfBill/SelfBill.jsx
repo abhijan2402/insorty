@@ -63,14 +63,6 @@ const SelfBill = () => {
         }
         //if filterPass comes back `false` the row is filtered out
         return filterPass;
-
-        // const itemDate = new Date(item.date);
-        // const selected = selectedDate ? new Date(selectedDate) : null;
-        // if (selected) {
-        //   return itemDate.toDateString() === selected.toDateString();
-        // } else {
-        //   return true;
-        // }
       })
     : SelfBillData;
 
@@ -99,11 +91,9 @@ const SelfBill = () => {
                 setStartDate(date);
                 console.log(typeof StartDate);
               }}
+              dateFormat="dd/MM/yyyy"
               placeholderText={"dd/mm/yyyy"}
-              filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
-              showYearDropdown
-              dateFormat={"dd/MM/yyyy"}
-              scrollableYearDropdown
+              className="inputBox"
             />
           </div>
 
@@ -114,11 +104,9 @@ const SelfBill = () => {
               selected={EndDate}
               name="year"
               onChange={(data) => setEndDate(data)}
+              dateFormat="dd/MM/yyyy"
+              className="inputBox"
               placeholderText={"dd/mm/yyyy"}
-              showYearDropdown
-              dateFormat={"dd/MM/yyyy"}
-              filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
-              scrollableYearDropdown
             />
           </div>
         </div>

@@ -8,6 +8,8 @@ import { useQuery } from "@tanstack/react-query";
 import useFristFormSubmitAPIFront from "../../../../Hooks/useFristFormSubmitAPIFront/useFristFormSubmitAPIFront";
 import Loader from "../../../../Components/Loader/Loader";
 import { DataContextApi } from "../../../../Context/DataContext";
+import { FaCalendarAlt } from "react-icons/fa";
+import DatePicker from "react-datepicker";
 
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");

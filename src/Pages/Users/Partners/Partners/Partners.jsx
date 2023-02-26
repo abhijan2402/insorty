@@ -7,6 +7,7 @@ import AddPartner from "../AddPartner/AddPartner";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import format from "date-fns/format";
+import DatePicker from "react-datepicker";
 
 const Partners = () => {
   const token = localStorage.getItem("token");
@@ -58,32 +59,35 @@ const Partners = () => {
 
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
-            <input
-              type="date"
-              value={StartDate}
-              onChange={(e) => {
-                setStartDate(e.target.value);
-                console.log(StartDate);
-              }}
-              name="year"
-              className="semiSmallInput"
+            <DatePicker
+              selected={StartDate}
+              onChange={(date) => setStartDate(date)}
+              dateFormat="dd/MM/yyyy"
+              className="inputBox"
             />
           </div>
           <h2 className="font-bold text-[1.5rem]">To</h2>
 
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
-            <input
+            <DatePicker
+              selected={EndDate}
+              onChange={(date) => setEndDate(date)}
+              dateFormat="dd/MM/yyyy"
+              className="inputBox"
+            />
+
+            {/* <input
               type="date"
-              // value={EndDate}
-              value={format(EndDate, "dd/MM/yyyy")}
+              value={EndDate}
               name="year"
               onChange={(e) => {
                 setEndDate(e.target.value);
                 console.log(EndDate);
               }}
+              dateFormate="dd/MM/yyyy"
               className="semiSmallInput"
-            />
+            /> */}
           </div>
         </div>
         <div className="divider my-2"></div>
