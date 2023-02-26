@@ -5,10 +5,8 @@ import SelfBillList from "../SelfBillList/SelfBillList";
 import { useQuery } from "@tanstack/react-query";
 import useLiquors from "../../../../Hooks/useLiquors";
 import Loader from "../../../../Components/Loader/Loader";
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const SelfBill = () => {
   const token = localStorage.getItem("token");
@@ -52,31 +50,28 @@ const SelfBill = () => {
   //   return filterPass;
   // });
 
-
-
-
   const filteredData = selectedDate
     ? SelfBillData.filter((item) => {
+        let filterPass = true;
+        const date = new Date(item.date);
 
-      let filterPass = true;
-      const date = new Date(item.date);
-      if (StartDate) {
-        filterPass = filterPass && new Date(StartDate) <= date;
-      }
-      if (EndDate) {
-        filterPass = filterPass && new Date(EndDate) >= date;
-      }
-      //if filterPass comes back `false` the row is filtered out
-      return filterPass;
+        if (StartDate) {
+          filterPass = filterPass && new Date(StartDate) <= date;
+        }
+        if (EndDate) {
+          filterPass = filterPass && new Date(EndDate) >= date;
+        }
+        //if filterPass comes back `false` the row is filtered out
+        return filterPass;
 
-      // const itemDate = new Date(item.date);
-      // const selected = selectedDate ? new Date(selectedDate) : null;
-      // if (selected) {
-      //   return itemDate.toDateString() === selected.toDateString();
-      // } else {
-      //   return true;
-      // }
-    })
+        // const itemDate = new Date(item.date);
+        // const selected = selectedDate ? new Date(selectedDate) : null;
+        // if (selected) {
+        //   return itemDate.toDateString() === selected.toDateString();
+        // } else {
+        //   return true;
+        // }
+      })
     : SelfBillData;
 
   if (isLoading || brandsLoaded) {
@@ -86,6 +81,7 @@ const SelfBill = () => {
   const totalAmountData = filteredData?.map((item) => {
     return item.total;
   });
+
   const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
   const netPaidAmount = totalAmount - refundDataList;
 
@@ -94,61 +90,37 @@ const SelfBill = () => {
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">दुकान बिल का फोर्मेट</h2>
         <div className="flex gap-4 items-center my-4">
-
           <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">
-            {/* <FaCalendarAlt></FaCalendarAlt>
-            <input
-              type="date"
-              dateFormat="yyyy-MM-dd"
-              value={selectedDate}
-              onChange={handleDateChange}
-              name="AllDate"
-              className="semiSmallInput"
-            /> */}
-
             <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
               selected={StartDate}
               onChange={(date) => {
                 setStartDate(date);
-                console.log(typeof(StartDate));
+                console.log(typeof StartDate);
               }}
-              placeholderText={'dd/mm/yyyy'}
-              filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
+              placeholderText={"dd/mm/yyyy"}
+              filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
               showYearDropdown
-              dateFormat={'dd/MM/yyyy'}
+              dateFormat={"dd/MM/yyyy"}
               scrollableYearDropdown
             />
           </div>
 
           <h2 className="font-bold text-[1.5rem]">To</h2>
           <div className="flex gap-2 items-center">
-            {/* <FaCalendarAlt></FaCalendarAlt>
-            <input
-              type="date"
-              dateFormat="yyyy-MM-dd"
-              value={selectedDate}
-              onChange={handleDateChange}
-              name="AllDate"
-              className="semiSmallInput"
-            /> */}
             <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
-              value={EndDate}
+              selected={EndDate}
               name="year"
-              onChange={(e) => {
-                setEndDate(e.target.value);
-                console.log(EndDate);
-              }}
-              placeholderText={'dd/mm/yyyy'}
-              filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
+              onChange={(data) => setEndDate(data)}
+              placeholderText={"dd/mm/yyyy"}
               showYearDropdown
-              dateFormat={'dd/MM/yyyy'}
+              dateFormat={"dd/MM/yyyy"}
+              filterDate={(date) => date.getDay() !== 6 && date.getDay() !== 0}
               scrollableYearDropdown
             />
           </div>
-
         </div>
         <div className="divider my-2"></div>
       </div>

@@ -5,14 +5,37 @@ import Loader from "../../../../Components/Loader/Loader";
 import BeerStockTopData from "./BeerStockTopData/BeerStockTopData";
 import { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRange, DateRangePicker } from "react-date-range";
+import format from "date-fns/format";
+import { useEffect } from "react";
+import { useRef } from "react";
 
 const BeerStock = () => {
   const token = localStorage.getItem("token");
   const [selectedDate, setSelectedDate] = useState("");
+  const [open, setOpen] = useState(false);
+  const refOne = useRef(null);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [filteredData, setFilteredData] = useState([]);
 
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
+  useEffect(() => {
+    document.addEventListener("keydown", hideOnEscape, true);
+    document.addEventListener("click", hideOnClickOutside, true);
+  }, []);
+  const hideOnEscape = (e) => {
+    if (e.key === "Escape") {
+      setOpen(false);
+    }
   };
+  const hideOnClickOutside = (e) => {
+    if (refOne.current && !refOne.current.contains(e.target)) {
+      setOpen(false);
+    }
+  };
+
   const { data: beerStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
     queryFn: async () => {
@@ -32,27 +55,49 @@ const BeerStock = () => {
 
   if (isLoading) return <Loader></Loader>;
 
-  if (!beerStock.length){
-    return(
-      <div>No data found</div>
-    )
+  if (!beerStock.length) {
+    return <div>No data found</div>;
   }
 
-  const beerStockData =  beerStock?.filter((item) => item.type === "BEER");
+  const beerStockData = beerStock?.filter((item) => item.type === "BEER");
 
-  const filteredData = beerStockData
-    ? beerStockData.filter((item) => {
+  // const filteredData = beerStockData
+  //   ? beerStockData.filter((item) => {
+  //       const itemDate = new Date(item.createdAt);
+  //       const selected = selectedDate ? new Date(selectedDate) : null;
+  //       if (selected) {
+  //         return itemDate.toDateString() === selected.toDateString();
+  //       } else {
+  //         return true;
+  //       }
+  //     })
+  //   : beerStockData;
+
+  //   const selectionRange = {
+  //     startDate: startDate,
+  //     endDate: endDate,
+  //     key: "selection",
+  //   };
+
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: "selection",
+  };
+
+  const handleSelect = (data) => {
+    const filteredData = beerStockData.filter((item) => {
       const itemDate = new Date(item.createdAt);
-      const selected = selectedDate ? new Date(selectedDate) : null;
-      if (selected) {
-        return itemDate.toDateString() === selected.toDateString();
-      } else {
-        return true;
-      }
-    })
-    : beerStockData;
+      return (
+        itemDate >= data.selection.startDate &&
+        itemDate <= data.selection.endDate
+      );
+    });
 
- 
+    setStartDate(data.selection.startDate);
+    setEndDate(data.selection.endDate);
+    setFilteredData(filteredData);
+  };
 
   return (
     <section>
@@ -65,35 +110,32 @@ const BeerStock = () => {
         </div>
         <div className="divider my-2"></div>
       </div>
-      <div className="flex gap-4 items-center justify-center ">
-        <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">From</h2>
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <input
-              type="date"
-              dateFormat="yyyy-MM-dd"
-              value={selectedDate}
-              onChange={handleDateChange}
-              name="year"
-              className="semiSmallInput"
-            />
-          </div>
 
-          <h2 className="font-bold text-[1.5rem]">To</h2>
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <input
-              type="date"
-              dateFormat="yyyy-MM-dd"
-              value={selectedDate}
-              onChange={handleDateChange}
-              name="year"
-              className="semiSmallInput"
-            />
+      <div className="flex gap-2 items-center">
+        <FaCalendarAlt></FaCalendarAlt>
+        <div className="calendarWrap">
+          <input
+            value={`${format(
+              selectionRange.startDate,
+              "dd/MM/yyyy"
+            )} to ${format(selectionRange.endDate, "dd/MM/yyyy")}`}
+            readOnly
+            className="inputBox"
+            onClick={() => setOpen((open) => !open)}
+          />
+
+          <div ref={refOne}>
+            {open && (
+              <DateRangePicker
+                ranges={[selectionRange]}
+                onChange={handleSelect}
+                className="calendarElement"
+              />
+            )}
           </div>
         </div>
       </div>
+
       <div className="overflow-x-auto ">
         <table className="table w-full m-2">
           <thead>
@@ -180,18 +222,19 @@ const BeerStock = () => {
               </td>
             </tr>
 
-            {beerStock.length && filteredData?.map((item, index) => {
-              return (
-                <>
-                  <BeerStockTopData
-                    key={item._id}
-                    index={index}
-                    item={item}
-                    total={total}
-                  ></BeerStockTopData>
-                </>
-              );
-            })}
+            {beerStock.length &&
+              filteredData?.map((item, index) => {
+                return (
+                  <>
+                    <BeerStockTopData
+                      key={item._id}
+                      index={index}
+                      item={item}
+                      total={total}
+                    ></BeerStockTopData>
+                  </>
+                );
+              })}
 
             {/* <tr>
               <td colSpan="5">Total</td>
@@ -220,8 +263,11 @@ const BeerStock = () => {
                   return (
                     <>
                       {brand.sizes.map((size) => {
-                        if (size.quantityInML !== 650 && size.quantityInML !== 550 && size.quantityInML !== 330) {
-
+                        if (
+                          size.quantityInML !== 650 &&
+                          size.quantityInML !== 550 &&
+                          size.quantityInML !== 330
+                        ) {
                           return (
                             <tr>
                               <td>{index + 1}</td>
@@ -229,35 +275,42 @@ const BeerStock = () => {
                               <td>{size.quantityInML}</td>
                               <td> {size.currentStock}</td>
                               <td> {size.averageRate.$numberDecimal}</td>
-                              <td> {size.currentStock * Number(size.averageRate.$numberDecimal)}</td>
+                              <td>
+                                {" "}
+                                {size.currentStock *
+                                  Number(size.averageRate.$numberDecimal)}
+                              </td>
                             </tr>
-
-                          )
+                          );
                         }
                       })}
                     </>
-                  )
+                  );
                 })}
                 <tr>
                   <td colSpan="5">Total</td>
                   <td>
-                    {
-                      filteredData.reduce(
-                        (total, currentItem) => (total = total + currentItem.sizes.reduce(
-
-                          (total, currentItem) => (total = total + (currentItem.currentStock * Number(currentItem.averageRate.$numberDecimal))),
-                          0
-                        )),
-                        0
-                      )
-                    }</td>
+                    {filteredData.reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.sizes.reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem.currentStock *
+                                  Number(
+                                    currentItem.averageRate.$numberDecimal
+                                  )),
+                            0
+                          )),
+                      0
+                    )}
+                  </td>
                 </tr>
-
               </tbody>
             </table>
           </div>
-
-
         </div>
       </div>
     </section>

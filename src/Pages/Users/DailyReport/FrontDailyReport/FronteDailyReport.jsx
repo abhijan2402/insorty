@@ -12,10 +12,8 @@ import { DataContextApi } from "../../../../Context/DataContext";
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
 
-  const { salesMan,
-    setSalesMan,
-    drDate,
-    setDrDate } = useContext(DataContextApi)
+  const { salesMan, setSalesMan, drDate, setDrDate } =
+    useContext(DataContextApi);
 
   const {
     addOneFristFormState,
@@ -25,7 +23,6 @@ const FronteDailyReport = () => {
     addFive,
     myOptions,
     handleRemoveFields,
-    totalState,
   } = useFormulasFristFormFront();
 
   //=============== add One second form ================
@@ -34,13 +31,11 @@ const FronteDailyReport = () => {
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
-    handleRemoveFieldsSecond
+    handleRemoveFieldsSecond,
   } = useSecondFormFront();
 
-  const {
-    submitFristFormHandler,
-    isLoadingSubmit,
-  } = useFristFormSubmitAPIFront();
+  const { submitFristFormHandler, isLoadingSubmit } =
+    useFristFormSubmitAPIFront();
 
   //=============== add One second form =================
 
@@ -92,16 +87,26 @@ const FronteDailyReport = () => {
       </div>
       <div className="flex gap-4 ">
         <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
-        <input type="text" value={salesMan}
+        <input
+          type="text"
+          value={salesMan}
           onChange={(e) => {
             setSalesMan(e.target.value);
-            localStorage.setItem('salesMan', e.target.value)
+            localStorage.setItem("salesMan", e.target.value);
           }}
-          className="semiSmallInput" />
-        <input type="date" value={drDate} onChange={(e) => {
-          setDrDate(e.target.value)
-          localStorage.setItem('drDate', e.target.value)
-        }} name="" id="" className="semiSmallInput" />
+          className="semiSmallInput"
+        />
+        <input
+          type="date"
+          value={drDate}
+          onChange={(e) => {
+            setDrDate(e.target.value);
+            localStorage.setItem("drDate", e.target.value);
+          }}
+          name=""
+          id=""
+          className="semiSmallInput"
+        />
       </div>
 
       <div className="py-6">
@@ -148,7 +153,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -170,7 +175,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -192,7 +197,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -214,7 +219,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -236,7 +241,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -259,7 +264,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -283,7 +288,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -306,7 +311,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -328,7 +333,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -350,7 +355,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -372,7 +377,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -394,7 +399,7 @@ const FronteDailyReport = () => {
 
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
 
@@ -416,7 +421,7 @@ const FronteDailyReport = () => {
                         </div>
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -495,8 +500,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.startingStock750)),
+                                (total =
+                                  total + Number(currentItem.startingStock750)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -511,8 +516,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.startingStock330)),
+                                (total =
+                                  total + Number(currentItem.startingStock375)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -527,8 +532,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.startingStock180)),
+                                (total =
+                                  total + Number(currentItem.startingStock180)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -549,8 +554,9 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomingPurchase750)),
+                                (total =
+                                  total +
+                                  Number(currentItem.incomingPurchase750)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -565,8 +571,9 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomingPurchase330)),
+                                (total =
+                                  total +
+                                  Number(currentItem.incomingPurchase375)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -581,8 +588,9 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomingPurchase180)),
+                                (total =
+                                  total +
+                                  Number(currentItem.incomingPurchase180)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -634,8 +642,9 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomePurchase750)),
+                                (total =
+                                  total +
+                                  Number(currentItem.incomePurchase750)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -650,8 +659,9 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomePurchase330)),
+                                (total =
+                                  total +
+                                  Number(currentItem.incomePurchase375)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -666,8 +676,9 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomePurchase180)),
+                                (total =
+                                  total +
+                                  Number(currentItem.incomePurchase180)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -720,8 +731,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.inflowCredit750)),
+                                (total =
+                                  total + Number(currentItem.inflowCredit750)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -736,8 +747,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.inflowCredit330)),
+                                (total =
+                                  total + Number(currentItem.inflowCredit375)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -752,8 +763,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.inflowCredit180)),
+                                (total =
+                                  total + Number(currentItem.inflowCredit180)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -772,8 +783,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.sending750)),
+                                (total =
+                                  total + Number(currentItem.sending750)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -788,8 +799,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.sending330)),
+                                (total =
+                                  total + Number(currentItem.sending375)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -804,8 +815,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.sending180)),
+                                (total =
+                                  total + Number(currentItem.sending180)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -824,8 +835,7 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + currentItem.sumRemainder750),
+                                (total = total + currentItem.sumRemainder750),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -840,8 +850,7 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + currentItem.sumRemainder330),
+                                (total = total + currentItem.sumRemainder375),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -856,8 +865,7 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + currentItem.sumRemainder180),
+                                (total = total + currentItem.sumRemainder180),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -877,8 +885,8 @@ const FronteDailyReport = () => {
                             onChange={(event) => handelFristFormOnChange(event)}
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.closingStock750)),
+                                (total =
+                                  total + Number(currentItem.closingStock750)),
                               0
                             )}
                             type="number"
@@ -892,8 +900,8 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.closingStock330)),
+                                (total =
+                                  total + Number(currentItem.closingStock375)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -909,8 +917,8 @@ const FronteDailyReport = () => {
                             onChange={(event) => handelFristFormOnChange(event)}
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.closingStock180)),
+                                (total =
+                                  total + Number(currentItem.closingStock180)),
                               0
                             )}
                             type="number"
@@ -928,8 +936,7 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + currentItem.sales750),
+                                (total = total + currentItem.sales750),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -944,8 +951,7 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + currentItem.sales330),
+                                (total = total + currentItem.sales375),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -960,8 +966,7 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + currentItem.sales180),
+                                (total = total + currentItem.sales180),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -1014,8 +1019,10 @@ const FronteDailyReport = () => {
                             name="total750"
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + (Number(currentItem.sales750) * Number(currentItem.mainRate750))),
+                                (total =
+                                  total +
+                                  Number(currentItem.sales750) *
+                                    Number(currentItem.mainRate750)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -1025,11 +1032,13 @@ const FronteDailyReport = () => {
                           <input
                             type="number"
                             className="smallinput"
-                            name="total330"
+                            name="total375"
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + (Number(currentItem.sales330) * Number(currentItem.mainRate330))),
+                                (total =
+                                  total +
+                                  Number(currentItem.sales375) *
+                                    Number(currentItem.mainRate375)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -1042,8 +1051,10 @@ const FronteDailyReport = () => {
                             name="total180"
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                              (total =
-                                total + (Number(currentItem.sales180) * Number(currentItem.mainRate180))),
+                                (total =
+                                  total +
+                                  Number(currentItem.sales180) *
+                                    Number(currentItem.mainRate180)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -1061,10 +1072,14 @@ const FronteDailyReport = () => {
                           name="grandTotal"
                           value={addOneFristFormState.reduce(
                             (total, currentItem) =>
-                            (total =
-                              total + (Number(currentItem.sales750) * Number(currentItem.mainRate750)) +
-                              (Number(currentItem.sales330) * Number(currentItem.mainRate330)) +
-                              (Number(currentItem.sales180) * Number(currentItem.mainRate180))),
+                              (total =
+                                total +
+                                Number(currentItem.sales750) *
+                                  Number(currentItem.mainRate750) +
+                                Number(currentItem.sales375) *
+                                  Number(currentItem.mainRate375) +
+                                Number(currentItem.sales180) *
+                                  Number(currentItem.mainRate180)),
                             0
                           )}
                           onChange={(event) => handelFristFormOnChange(event)}
@@ -1178,12 +1193,12 @@ const FronteDailyReport = () => {
             </>
           ) : (
             <>
-          <button
-            className="dailyReportBtn mx-4"
-            onClick={() => addOneSecondFormHandler()}
-          >
-            ADD 1
-          </button>
+              <button
+                className="dailyReportBtn mx-4"
+                onClick={() => addOneSecondFormHandler()}
+              >
+                ADD 1
+              </button>
               <button
                 className="dailyReportBtn"
                 onClick={() => submitFristFormHandler()}

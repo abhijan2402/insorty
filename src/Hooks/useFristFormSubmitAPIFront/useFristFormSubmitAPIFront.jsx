@@ -18,7 +18,6 @@ const useFristFormSubmitAPIFront = () => {
 
   const {
     salesMan,
-
     drDate,
   } = useContext(DataContextApi);
 
@@ -67,24 +66,24 @@ const useFristFormSubmitAPIFront = () => {
       });
     }
 
-    const dataDetails330 = [];
+    const dataDetails375 = [];
     for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
       const element = firstFront[index];
-      dataDetails330.push({
-        liquor: GetLiqId(element.liquorID, 330, "WINE"),
+      dataDetails375.push({
+        liquor: GetLiqId(element.liquorID, 375, "WINE"),
         brandName: element.brandName,
-        quantityInML: 330,
-        openingStock: element.startingStock330,
-        purchaseShop: element.incomingPurchase330,
-        purchaseShopRate: element.buyRate330,
-        purchaseOutSide: element.incomePurchase330,
-        purchaseOutSideRate: element.purchaseRate330,
-        credits: element.inflowCredit330,
-        send: element.sending330,
-        remaining: element.sumRemainder330,
-        closingStock: element.closingStock330,
-        sales: element.sales330,
-        amount: Number(element.mainRate330) * Number(element.sales330),
+        quantityInML: 375,
+        openingStock: element.startingStock375,
+        purchaseShop: element.incomingPurchase375,
+        purchaseShopRate: element.buyRate375,
+        purchaseOutSide: element.incomePurchase375,
+        purchaseOutSideRate: element.purchaseRate375,
+        credits: element.inflowCredit375,
+        send: element.sending375,
+        remaining: element.sumRemainder375,
+        closingStock: element.closingStock375,
+        sales: element.sales375,
+        amount: Number(element.mainRate375) * Number(element.sales375),
       });
     }
 
@@ -92,7 +91,11 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; mlForm ? index < mlForm.length : 0; index++) {
       const element = mlForm[index];
       addSecondFormData.push({
-        liquor: GetLiqId(element.liquorID, Number(element.selectStockVarient), "WINE"),
+        liquor: GetLiqId(
+          element.liquorID,
+          Number(element.selectStockVarient),
+          "WINE"
+        ),
         brandName: element.brandName,
         quantityInML: element.selectStockVarient,
         openingStock: element.startingStock,
@@ -121,7 +124,12 @@ const useFristFormSubmitAPIFront = () => {
           body: JSON.stringify({
             date: drDate,
             salesmen: salesMan,
-            entries: [...dataDetails650, ...dataDetails550, ...dataDetails330, ...addSecondFormData],
+            entries: [
+              ...dataDetails650,
+              ...dataDetails550,
+              ...dataDetails375,
+              ...addSecondFormData,
+            ],
           }),
         }
       );
@@ -152,7 +160,7 @@ const useFristFormSubmitAPIFront = () => {
       //     body: JSON.stringify({
       //       date: drDate,
       //       salesmen: salesMan,
-      //       entries: dataDetails330,
+      //       entries: dataDetails375,
       //     }),
       //   }
       // );
@@ -177,10 +185,7 @@ const useFristFormSubmitAPIFront = () => {
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
-          if (
-            data[0].success
-            
-          ) {
+          if (data[0].success) {
             Swal.fire({
               icon: "success",
               title: "Success",
@@ -198,9 +203,14 @@ const useFristFormSubmitAPIFront = () => {
     } finally {
       setIsLoadingSubmit(false);
     }
-    console.log(mlForm)
-    console.log(addSecondFormData)
-    console.log([...dataDetails650, ...dataDetails550, ...dataDetails330, ...addSecondFormData]);
+    console.log(mlForm);
+    console.log(addSecondFormData);
+    console.log([
+      ...dataDetails650,
+      ...dataDetails550,
+      ...dataDetails375,
+      ...addSecondFormData,
+    ], "++++++++++++++++++++");
   };
 
   return {

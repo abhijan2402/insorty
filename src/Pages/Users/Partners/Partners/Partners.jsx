@@ -6,7 +6,7 @@ import PartnerForm from "../PartnerForm/PartnerForm";
 import AddPartner from "../AddPartner/AddPartner";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
-
+import format from "date-fns/format";
 
 const Partners = () => {
   const token = localStorage.getItem("token");
@@ -75,7 +75,8 @@ const Partners = () => {
             <FaCalendarAlt></FaCalendarAlt>
             <input
               type="date"
-              value={EndDate}
+              // value={EndDate}
+              value={format(EndDate, "dd/MM/yyyy")}
               name="year"
               onChange={(e) => {
                 setEndDate(e.target.value);

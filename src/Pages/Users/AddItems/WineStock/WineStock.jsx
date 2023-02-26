@@ -1,17 +1,37 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import WineStockTopData from "./WineStockTop/WIneSotckTop";
 import { FaCalendarAlt } from "react-icons/fa";
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-
-
+import DatePicker from "react-datepicker";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRange, DateRangePicker } from "react-date-range";
+import format from "date-fns/format";
 
 const WineStock = () => {
   const token = localStorage.getItem("token");
-  const [selectedDate, setSelectedDate] = useState("");
+  const [open, setOpen] = useState(false);
+  const refOne = useRef(null);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", hideOnEscape, true);
+    document.addEventListener("click", hideOnClickOutside, true);
+  }, []);
+  const hideOnEscape = (e) => {
+    if (e.key === "Escape") {
+      setOpen(false);
+    }
+  };
+  const hideOnClickOutside = (e) => {
+    if (refOne.current && !refOne.current.contains(e.target)) {
+      setOpen(false);
+    }
+  };
 
   const { data: wineStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
@@ -28,67 +48,84 @@ const WineStock = () => {
     },
   });
 
-
-
-
-
-
   if (isLoading) return <Loader></Loader>;
 
-  if (!wineStock.length){
-    return(
-      <div>No data found</div>
-    )
+  if (!wineStock.length) {
+    return <div>No data found</div>;
   }
 
-
-
   const wineStockData = wineStock?.filter((item) => item.type === "WINE");
-  const filteredData = selectedDate
-    ? wineStockData.filter((item) => {
-      const itemDate = new Date(item.createdAt);
-      const selected = selectedDate ? new Date(selectedDate) : null;
-      if (selected) {
-        return itemDate.toDateString() === selected.toDateString();
-      } else {
-        return true;
-      }
-    })
-    : wineStockData;
+  // setFilteredData(wineStockData);
+  // setAllData(wineStockData);
 
+  // const filteredData = selectedDate
+  //   ? wineStockData.filter((item) => {
+  //       const itemDate = new Date(item.createdAt);
+  //       const selected = selectedDate ? new Date(selectedDate) : null;
+  //       if (selected) {
+  //         return itemDate.toDateString() === selected.toDateString();
+  //       } else {
+  //         return true;
+  //       }
+  //     })
+  //   : wineStockData;
+
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: "selection",
+  };
+
+  const handleSelect = (data) => {
+    const filteredData = wineStockData.filter((item) => {
+      const itemDate = new Date(item.createdAt);
+      return (
+        itemDate >= data.selection.startDate &&
+        itemDate <= data.selection.endDate
+      );
+    });
+
+    setStartDate(data.selection.startDate);
+    setEndDate(data.selection.endDate);
+    setFilteredData(filteredData);
+  };
 
   if (isLoading) return <Loader></Loader>;
 
-
-
-
   const total = 0;
-  let three = []
+
+  let three = [];
   filteredData.map((item) => {
     item.sizes.map((brand) => {
-      if (brand.quantityInML === 750 || brand.quantityInML === 330 || brand.quantityInML === 180) {
-        console.log(brand)
-        three.push(brand)
+      if (
+        brand.quantityInML === 750 ||
+        brand.quantityInML === 330 ||
+        brand.quantityInML === 180
+      ) {
+        console.log(brand);
+        three.push(brand);
       }
-    })
-  })
+    });
+  });
 
-  console.log(three)
+  console.log(three);
 
-  console.log(filteredData.reduce(
-    (total, currentItem) => (total = total + currentItem.sizes.reduce(
-
-      (total, currentItem) => (total = total + (currentItem.currentStock * Number(currentItem.averageRate.$numberDecimal))),
+  console.log(
+    filteredData.reduce(
+      (total, currentItem) =>
+        (total =
+          total +
+          currentItem.sizes.reduce(
+            (total, currentItem) =>
+              (total =
+                total +
+                currentItem.currentStock *
+                  Number(currentItem.averageRate.$numberDecimal)),
+            0
+          )),
       0
-    )),
-    0
-  ))
-
-  // console.log(three.reduce(
-  //   (total, currentItem) => (total = total + (currentItem.currentStock * Number(currentItem.averageRate.$numberDecimal))),
-  //   0
-  // ))
-
+    )
+  );
   return (
     <section>
       <div className="title">
@@ -101,54 +138,30 @@ const WineStock = () => {
         <div className="divider my-2"></div>
       </div>
       <div className="flex gap-4 items-center justify-center ">
-        <h2 className="font-bold text-[1.5rem]">From</h2>
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
-          <DatePicker
-            selected={selectedDate}
-            onChange={date => setSelectedDate(date)}
-            placeholderText={'dd/mm/yyyy'}
-            filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
-            showYearDropdown
-            dateFormat={'dd/MM/yyyy'}
-            scrollableYearDropdown
-          />
-          {/* <DatePicker selected={startDate} onChange={(date) => setStartDate(date)}
-            dateFormat="Pp"
-          /> */}
-          {/* <input
-            type="date"
-            dateFormat="yyyy-MM-dd"
-            value={selectedDate}
-            onChange={handleDateChange}
-            name="year"
-            className="semiSmallInput"
-          /> */}
+          <div className="calendarWrap">
+            <input
+              value={`${format(
+                selectionRange.startDate,
+                "dd/MM/yyyy"
+              )} to ${format(selectionRange.endDate, "dd/MM/yyyy")}`}
+              readOnly
+              className="inputBox"
+              onClick={() => setOpen((open) => !open)}
+            />
 
+            <div ref={refOne}>
+              {open && (
+                <DateRangePicker
+                  ranges={[selectionRange]}
+                  onChange={handleSelect}
+                  className="calendarElement"
+                />
+              )}
+            </div>
+          </div>
         </div>
-
-        <h2 className="font-bold text-[1.5rem]">To</h2>
-        <div className="flex gap-2 items-center">
-          <FaCalendarAlt></FaCalendarAlt>
-          <DatePicker
-            onChange={date => setSelectedDate(date)}
-            placeholderText={'dd/mm/yyyy'}
-            filterDate={date => date.getDay() !== 6 && date.getDay() !== 0}
-            showYearDropdown
-            dateFormat={'dd/MM/yyyy'}
-            scrollableYearDropdown
-          />
-
-          {/* <input
-            type="date"
-            dateFormat="yyyy-MM-dd"
-            value={selectedDate}
-            onChange={handleDateChange}
-            name="year"
-            className="semiSmallInput"
-          /> */}
-        </div>
-
       </div>
       <div className="overflow-x-auto ">
         <table className="table w-full m-2">
@@ -247,8 +260,6 @@ const WineStock = () => {
                 </>
               );
             })}
-
-
           </tbody>
         </table>
       </div>
@@ -272,8 +283,11 @@ const WineStock = () => {
                   return (
                     <>
                       {brand.sizes.map((size) => {
-                        if (size.quantityInML !== 750 && size.quantityInML !== 330 && size.quantityInML !== 180) {
-
+                        if (
+                          size.quantityInML !== 750 &&
+                          size.quantityInML !== 330 &&
+                          size.quantityInML !== 180
+                        ) {
                           return (
                             <tr>
                               <td>{index + 1}</td>
@@ -281,34 +295,42 @@ const WineStock = () => {
                               <td>{size.quantityInML}</td>
                               <td> {size.currentStock}</td>
                               <td> {size.averageRate.$numberDecimal}</td>
-                              <td> {size.currentStock * Number(size.averageRate.$numberDecimal)}</td>
+                              <td>
+                                {" "}
+                                {size.currentStock *
+                                  Number(size.averageRate.$numberDecimal)}
+                              </td>
                             </tr>
-
-                          )
+                          );
                         }
                       })}
                     </>
-                  )
+                  );
                 })}
                 <tr>
                   <td colSpan="5">Total</td>
                   <td>
-                    {
-                      filteredData.reduce(
-                        (total, currentItem) => (total = total + currentItem.sizes.reduce(
-
-                          (total, currentItem) => (total = total + (currentItem.currentStock * Number(currentItem.averageRate.$numberDecimal))),
-                          0
-                        )),
-                        0
-                      )
-                    }</td>
+                    {filteredData.reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.sizes.reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem.currentStock *
+                                  Number(
+                                    currentItem.averageRate.$numberDecimal
+                                  )),
+                            0
+                          )),
+                      0
+                    )}
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
-
-
         </div>
       </div>
     </section>
