@@ -99,7 +99,7 @@ const useFormulasFristFormFront = () => {
           (elem) => elem.quantityInML === 750
         );
         const quan330 = liq[index].sizes.find(
-          (elem) => elem.quantityInML === 330
+          (elem) => elem.quantityInML === 375
         );
         const quan180 = liq[index].sizes.find(
           (elem) => elem.quantityInML === 180

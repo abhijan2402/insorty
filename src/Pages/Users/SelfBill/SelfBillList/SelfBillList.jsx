@@ -1,10 +1,11 @@
 import React from "react";
 import useLiquors from "../../../../Hooks/useLiquors";
 import Loader from "../../../../Components/Loader/Loader";
+import moment from "moment/moment";
 
 
 const SelfBillList = ({ index, billsData, isLoading }) => {
-  const { averageRate, total, number, liquor } = billsData;
+  const { averageRate, total, number, liquor,date } = billsData;
   const { getNameByID, loading, brandsLoaded } = useLiquors()
 
   if (brandsLoaded || loading ) {
@@ -14,11 +15,13 @@ const SelfBillList = ({ index, billsData, isLoading }) => {
       </div>
     );
   }
+// console.log(date)
 
   return (
     <>
       <tr>
         <th>{index + 1}</th>
+        <th>{moment(date).format('DD/MM/YYYY')}</th>
         <td>{getNameByID(liquor?._id)}</td>
         <td>{liquor?.quantityInML}</td>
         <td>{number}</td>
