@@ -9,47 +9,16 @@ import ResurvedDataDetails from "../Reserve/ResurvedDataDetails";
 import { Button } from "@mui/material";
 
 const MainInvestment = () => {
-  // const {
-  //   addOneMainInvestment,
-  //   mainInvestmentState,
-  //   handelOnChangeMainInvestment,
-  //   handelOnSubmitMainInvestment,
-  //   addFees,
-  //   addRefund,
-  //   addbelonging,
-  //   addReserve,
-  //   handleBelongingChange,
-  //   handleFeesChange,
-  //   handleRefundChange,
-  //   handleReserveChange,
-  //   fees,
-  //   belonging,
-  //   reserveAmountArr,
-  //   refundRecoveryDetails,
-  //   reserveAmount,
-  //   cashInHand,
-  //   total,
-  //   handleChangeCashInHand,
-  //   handleChangePreviousLoan,
-  //   mainLoading,
-  //   handleChangeTotal,
-  //   previousLoan,handleChange
-  // } = useMainInvestmentHooks();
-
-  const { data, loading, handleInvestmentChange,
+  const {
+    data,
+    handleInvestmentChange,
     handleBelongingAdd,
-    handleFeesChange,
-    handleBelongingChange,
-    handleSave, handleFeesAdd,handleTotalChange } = useMainInvestmentHooks()
+    handleSave,
+    handleFeesAdd,
+  } = useMainInvestmentHooks();
 
-    
-
-  if(loading){
-    return(
-      <div>
-        Loading....
-      </div>
-    )
+  if (data.isLoading) {
+    return <div>Loading....</div>;
   }
 
   return (
@@ -99,74 +68,71 @@ const MainInvestment = () => {
                       name="price"
                       className="semiSmallInput"
                       defaultValue={data.mainInvest.previousLoan.price}
-                      onChange={event => handleInvestmentChange('previousLoan', event.target.value)}
+                      onChange={(event) =>
+                        handleInvestmentChange(
+                          "previousLoan",
+                          event.target.value
+                        )
+                      }
                     />
                   </td>
                 </tr>
 
-                <h1 style={{fontSize:35}}><b>Fees</b></h1>
-              
+                <h1 style={{ fontSize: 35 }}>
+                  <b>Fees</b>
+                </h1>
 
-              
                 {data.mainInvest.fees.map((mainInvestment, index) => {
                   return (
                     <InvestmentForm
                       key={index}
                       index={index}
-                      name={"Fees"}
+                      name={"fees"}
                       mainInvestment={mainInvestment}
-                      
-                      handelOnChangeMainInvestment={
-                        handleFeesChange
-                      }
+                      handelOnChangeMainInvestment={handleInvestmentChange}
                     ></InvestmentForm>
                   );
                 })}
 
                 <tr>
-                <h1 
-                style={{textAlign:'center',paddingTop:3,marginTop:7}}
-                  className="dailyReportBtn"
+                  <h1
+                    style={{ textAlign: "center", paddingTop: 3, marginTop: 7 }}
+                    className="dailyReportBtn"
                     onClick={() => handleFeesAdd()}
-                >
-                  ADD 1
-                </h1>
-
+                  >
+                    ADD 1
+                  </h1>
                 </tr>
-
-<tr>                <h1 style={{ fontSize: 35 }}><b>Belongings</b></h1>
-
-                </tr>
-
-
-
-                {data && data.mainInvest.belonging.map((mainInvestment, index) => {
-                  return (
-                    <InvestmentForm
-                      key={index}
-                      index={index}
-                      name={"Belonging"}
-                      mainInvestment={mainInvestment}
-                      
-                      handelOnChangeMainInvestment={
-                        handleBelongingChange
-                      }
-                    ></InvestmentForm>
-                  );
-                })}
 
                 <tr>
-
-                <h1
-                  style={{ textAlign: 'center', paddingTop: 3, marginTop: 7 }}
-                  className="dailyReportBtn"
-                    onClick={() => handleBelongingAdd()}
-                >
-                  ADD 1
-                </h1>
-
+                  {" "}
+                  <h1 style={{ fontSize: 35 }}>
+                    <b>Belongings</b>
+                  </h1>
                 </tr>
 
+                {data &&
+                  data.mainInvest.belonging.map((mainInvestment, index) => {
+                    return (
+                      <InvestmentForm
+                        key={index}
+                        index={index}
+                        name={"belonging"}
+                        mainInvestment={mainInvestment}
+                        handelOnChangeMainInvestment={handleInvestmentChange}
+                      ></InvestmentForm>
+                    );
+                  })}
+
+                <tr>
+                  <h1
+                    style={{ textAlign: "center", paddingTop: 3, marginTop: 7 }}
+                    className="dailyReportBtn"
+                    onClick={() => handleBelongingAdd()}
+                  >
+                    ADD 1
+                  </h1>
+                </tr>
 
                 <tr>
                   <th>1</th>
@@ -176,7 +142,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Cash in Hand"}
-                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -194,11 +160,12 @@ const MainInvestment = () => {
                       name="price"
                       className="semiSmallInput"
                       defaultValue={data.mainInvest.cashInHand.price}
-                      onChange={event => handleInvestmentChange('cashInHand', event.target.value)}
+                      onChange={(event) =>
+                        handleInvestmentChange("cashInHand", event.target.value)
+                      }
                     />
                   </td>
                 </tr>
-
 
                 <tr>
                   <th>1</th>
@@ -208,7 +175,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Reserve Amount"}
-                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -232,7 +199,6 @@ const MainInvestment = () => {
                   </td>
                 </tr>
                 <tr>
-
                   <th></th>
                   <td>
                     <input
@@ -240,7 +206,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Total"}
-                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -258,7 +224,9 @@ const MainInvestment = () => {
                       name="price"
                       className="semiSmallInput"
                       defaultValue={data.mainInvest.total}
-                      onChange={event => handleTotalChange(event.target.value)}
+                      onChange={(event) =>
+                        handleInvestmentChange("total", event.target.value)
+                      }
                     />
                   </td>
                 </tr>
@@ -282,11 +250,10 @@ const MainInvestment = () => {
           >
             Submit
           </button>
-          
         </div>
       </div>
 
-      {/* <div>
+      <div>
         <div>
           <h2 className="font-bold text-[1.5rem] my-2">
             रिफंड/रिकवरी विवरण/ Refund/Recovery Details
@@ -383,7 +350,7 @@ const MainInvestment = () => {
           </table>
         </div>
       </div>
-      <RefundDetailsData></RefundDetailsData>
+      {/* <RefundDetailsData></RefundDetailsData>
       <ResurvedDataDetails></ResurvedDataDetails> */}
     </section>
   );
