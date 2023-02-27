@@ -13,7 +13,7 @@ const useSecondFormFront = () => {
     buyRate: 0,
     incomePurchase: 0,
     purchaseRate: 0,
-    initial:0,
+    initial: 0,
     inflowCredit: 0,
     sending: 0,
     sumRemainder: 0,
@@ -45,25 +45,25 @@ const useSecondFormFront = () => {
           return item;
         }
       });
-      
+
       liq.map((parent) => {
         parent.sizes.map((item) => {
           if (
             item.quantityInML !== 750 &&
             item.quantityInML !== 330 &&
             item.quantityInML !== 180
-            ) {
-              console.log(parent)
+          ) {
+            console.log(parent);
             const newFormData = { ...addOneSecondForm };
 
-            newFormData.brandName = parent.brandName
-          newFormData.liquorID = parent._id
-        newFormData.selectStockVarient = item.quantityInML
-        newFormData.startingStock = item.currentStock
-        newFormData.averageRate = item.averageRate.$numberDecimal
-        newFormData.initial = item.averageRate.$numberDecimal
-        firstFormData = [newFormData, ...firstFormData]
-          setAddOneSecondFormState(firstFormData)        
+            newFormData.brandName = parent.brandName;
+            newFormData.liquorID = parent._id;
+            newFormData.selectStockVarient = item.quantityInML;
+            newFormData.startingStock = item.currentStock;
+            newFormData.averageRate = item.averageRate.$numberDecimal;
+            newFormData.initial = item.averageRate.$numberDecimal;
+            firstFormData = [newFormData, ...firstFormData];
+            setAddOneSecondFormState(firstFormData);
             // localStorage.setItem("mlForm", JSON.stringify(firstFormData));
             // localStorage.setItem(
             //   "mlFormTotal",
@@ -75,7 +75,7 @@ const useSecondFormFront = () => {
             //     )
             //   )
             // )
-        }
+          }
         });
       });
     }
@@ -83,7 +83,6 @@ const useSecondFormFront = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);
 
-  
   const addOneSecondFormHandler = () => {
     setAddOneSecondFormState([
       ...addOneSecondFormState,
@@ -93,7 +92,7 @@ const useSecondFormFront = () => {
         incomingPurchase: 0,
         buyRate: 0,
         incomePurchase: 0,
-        initial:0,
+        initial: 0,
         purchaseRate: 0,
         inflowCredit: 0,
         sending: 0,
@@ -124,9 +123,11 @@ const useSecondFormFront = () => {
         if (e.target.name === "purchaseRate" || e.target.name === "buyRate") {
           if (Number(obj.initial) > 0) {
             obj.averageRate330 =
-              (Number(obj.averageRate) + Number(obj.purchaseRate) + Number(obj.buyRate)) / 3;
-          }
-          else {
+              (Number(obj.averageRate) +
+                Number(obj.purchaseRate) +
+                Number(obj.buyRate)) /
+              3;
+          } else {
             obj.averageRate =
               (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
           }
@@ -196,7 +197,7 @@ const useSecondFormFront = () => {
     );
   };
 
-  const handleRemoveFieldsSecond = index => {
+  const handleRemoveFieldsSecond = (index) => {
     const values = [...addOneSecondFormState];
     values.splice(index, 1);
     // console.log(index)
@@ -207,7 +208,7 @@ const useSecondFormFront = () => {
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
-    handleRemoveFieldsSecond
+    handleRemoveFieldsSecond,
   };
 };
 

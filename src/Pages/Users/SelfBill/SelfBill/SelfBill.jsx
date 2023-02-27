@@ -13,15 +13,9 @@ const SelfBill = () => {
   const token = localStorage.getItem("token");
   // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
   const [refundDataList, setRefundDataList] = React.useState(0);
-  const { brandsLoaded, loading } = useLiquors();
+  const { brandsLoaded } = useLiquors();
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
-
-  // const [selectedDate, setSelectedDate] = useState("");
-
-  // const handleDateChange = (event) => {
-  //   setSelectedDate(event.target.value);
-  // };
 
   const { data: SelfBillData, isLoading } = useQuery({
     queryKey: ["SelfBillData"],
@@ -38,39 +32,24 @@ const SelfBill = () => {
     },
   });
 
-  // let transact = partner.transactions.filter((row) => {
-  //   let filterPass = true;
-  //   const date = new Date(row.date);
-  //   if (StartDate) {
-  //     filterPass = filterPass && new Date(StartDate) <= date;
-  //   }
-  //   if (EndDate) {
-  //     filterPass = filterPass && new Date(EndDate) >= date;
-  //   }
-  //   //if filterPass comes back `false` the row is filtered out
-  //   return filterPass;
-  // });
-
-  
   if (isLoading || brandsLoaded) {
     return <Loader></Loader>;
   }
-  
-  const filteredData = SelfBillData.filter((item) => {
-        let filterPass = true;
-        const date = moment(item.date).format('DD/MM/YYYY');
 
-        if (StartDate) {
-          filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
-         
-        }
-        if (EndDate) {
-          filterPass = filterPass && moment(EndDate).format('DD/MM/YYYY') >= date;
-        }
-        //if filterPass comes back `false` the row is filtered out
-        return filterPass;
-      })
-    ;
+  const filteredData = SelfBillData.filter((item) => {
+    let filterPass = true;
+    const date = moment(item.date).format("DD/MM/YYYY");
+
+    if (StartDate) {
+      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+    }
+    if (EndDate) {
+      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+    }
+    //if filterPass comes back `false` the row is filtered out
+    return filterPass;
+  });
+
   const totalAmountData = filteredData?.map((item) => {
     return item.total;
   });
@@ -119,7 +98,7 @@ const SelfBill = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>S.No</th>
+                <td>S.No</td>
                 <th>Date</th>
                 <th>ब्राण्ड/ Brand Name </th>
                 <th>साईज / ml</th>

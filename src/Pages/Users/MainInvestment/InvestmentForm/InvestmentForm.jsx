@@ -25,9 +25,24 @@ const InvestmentForm = ({
             type="date"
             name="date"
             className="semiSmallInput"
+            dateFormat="dd/MM/yyyy"
+            placeholderText={"dd/mm/yyyy"}
             defaultValue={mainInvestment.date}
-            onChange={event => handelOnChangeMainInvestment(index, 'date', event.target.value)}
+            onChange={(event) =>
+              handelOnChangeMainInvestment(index, "date", event.target.value)
+            }
           />
+          {/* <DatePicker
+            name="date"
+            className="semiSmallInput"
+            selected={""}
+            defaultValue={mainInvestment.date}
+            onChange={(event) =>
+              handelOnChangeMainInvestment(index, "date", event.target.value)
+            }
+            dateFormat="dd/MM/yyyy"
+            placeholderText={"dd/mm/yyyy"}
+          /> */}
         </td>
         <td>
           <input
@@ -35,7 +50,9 @@ const InvestmentForm = ({
             name="price"
             className="semiSmallInput"
             defaultValue={mainInvestment.price}
-            onChange={event => handelOnChangeMainInvestment(index, 'price', event.target.value)}
+            onChange={(event) =>
+              handelOnChangeMainInvestment(index, "price", event.target.value)
+            }
           />
         </td>
       </tr>

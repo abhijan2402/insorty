@@ -3,17 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import { useState } from "react";
-import RMLStockData from "./RMLStockData/RMLStockData";
-import moment from "moment";
 import { FaCalendarAlt } from "react-icons/fa";
+import DatePicker from "react-datepicker";
+import moment from "moment/moment";
 
 const RmlStock = () => {
   const token = localStorage.getItem("token");
-  const [selectedDate, setSelectedDate] = useState("");
-
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
+  const [StartDate, setStartDate] = useState();
+  const [EndDate, setEndDate] = useState();
 
   const { data: rmlStock, isLoading } = useQuery({
     queryKey: ["rmlStock"],
@@ -30,22 +27,19 @@ const RmlStock = () => {
     },
   });
 
-  const total = 0;
   const rmlStockData = rmlStock?.filter((item) => item.type === "RML");
+  const filteredData = rmlStockData.filter((item) => {
+    let filterPass = true;
+    const date = moment(item.date).format("DD/MM/YYYY");
 
-  const filteredData = rmlStockData
-    ? rmlStockData.filter((item) => {
-        const itemDate = new Date(item.createdAt);
-        const selected = selectedDate ? new Date(selectedDate) : null;
-        if (selected) {
-          return itemDate.toDateString() === selected.toDateString();
-        } else {
-          return true;
-        }
-      })
-    : rmlStockData;
-
-  console.log(rmlStock, "++++reml stock");
+    if (StartDate) {
+      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+    }
+    if (EndDate) {
+      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+    }
+    return filterPass;
+  });
 
   if (isLoading) return <Loader></Loader>;
 
@@ -60,42 +54,33 @@ const RmlStock = () => {
         </div>
         <div className="divider my-2"></div>
       </div>
-      <div className="flex gap-4 items-center justify-center ">
-        {/* <div className="form-control">
-                    <input
-                        type="date"
-                        value={selectedDate}
-                        format="dd/MM/yyyy"
-                        onChange={handleDateChange}
-                        className="input mb-2"
-                        style={{
-                            border: "1px solid #e5e7eb",
-                        }}
-                    />
-                </div> */}
+
+      <div className="flex gap-4 items-center my-4">
         <h2 className="font-bold text-[1.5rem]">From</h2>
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
-          <input
-            type="date"
-            dateFormat="yyyy-MM-dd"
-            value={selectedDate}
-            onChange={handleDateChange}
-            name="year"
-            className="semiSmallInput"
+          <DatePicker
+            selected={StartDate}
+            onChange={(date) => {
+              setStartDate(date);
+              console.log(moment(date).format());
+            }}
+            dateFormat="dd/MM/yyyy"
+            placeholderText={"dd/mm/yyyy"}
+            className="inputBox"
           />
         </div>
 
         <h2 className="font-bold text-[1.5rem]">To</h2>
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
-          <input
-            type="date"
-            dateFormat="yyyy-MM-dd"
-            value={selectedDate}
-            onChange={handleDateChange}
+          <DatePicker
+            selected={EndDate}
             name="year"
-            className="semiSmallInput"
+            onChange={(data) => setEndDate(data)}
+            dateFormat="dd/MM/yyyy"
+            className="inputBox"
+            placeholderText={"dd/mm/yyyy"}
           />
         </div>
       </div>
