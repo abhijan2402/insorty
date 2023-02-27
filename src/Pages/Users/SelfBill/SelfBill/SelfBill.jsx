@@ -7,6 +7,7 @@ import useLiquors from "../../../../Hooks/useLiquors";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment/moment";
 
 const SelfBill = () => {
   const token = localStorage.getItem("token");
@@ -16,11 +17,11 @@ const SelfBill = () => {
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
 
-  const [selectedDate, setSelectedDate] = useState("");
+  // const [selectedDate, setSelectedDate] = useState("");
 
-  const handleDateChange = (event) => {
-    setSelectedDate(event.target.value);
-  };
+  // const handleDateChange = (event) => {
+  //   setSelectedDate(event.target.value);
+  // };
 
   const { data: SelfBillData, isLoading } = useQuery({
     queryKey: ["SelfBillData"],
@@ -50,26 +51,26 @@ const SelfBill = () => {
   //   return filterPass;
   // });
 
-  const filteredData = selectedDate
-    ? SelfBillData.filter((item) => {
+  
+  if (isLoading || brandsLoaded) {
+    return <Loader></Loader>;
+  }
+  
+  const filteredData = SelfBillData.filter((item) => {
         let filterPass = true;
-        const date = new Date(item.date);
+        const date = moment(item.date).format('DD/MM/YYYY');
 
         if (StartDate) {
-          filterPass = filterPass && new Date(StartDate) <= date;
+          filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+         
         }
         if (EndDate) {
-          filterPass = filterPass && new Date(EndDate) >= date;
+          filterPass = filterPass && moment(EndDate).format('DD/MM/YYYY') >= date;
         }
         //if filterPass comes back `false` the row is filtered out
         return filterPass;
       })
-    : SelfBillData;
-
-  if (isLoading || brandsLoaded) {
-    return <Loader></Loader>;
-  }
-
+    ;
   const totalAmountData = filteredData?.map((item) => {
     return item.total;
   });
@@ -89,7 +90,7 @@ const SelfBill = () => {
               selected={StartDate}
               onChange={(date) => {
                 setStartDate(date);
-                console.log(typeof StartDate);
+                console.log(moment(date).format());
               }}
               dateFormat="dd/MM/yyyy"
               placeholderText={"dd/mm/yyyy"}
@@ -119,6 +120,7 @@ const SelfBill = () => {
             <thead>
               <tr>
                 <th>S.No</th>
+                <th>Date</th>
                 <th>ब्राण्ड/ Brand Name </th>
                 <th>साईज / ml</th>
                 <th>Number / संख्या</th>
@@ -153,11 +155,13 @@ const SelfBill = () => {
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
                 <td className="commonText">Total</td>
                 <td className="price">{totalAmount}</td>
               </tr>
               <tr>
                 <th></th>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -173,6 +177,7 @@ const SelfBill = () => {
               </tr>
               <tr>
                 <th></th>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
