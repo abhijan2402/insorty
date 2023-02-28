@@ -1,119 +1,135 @@
-import React, { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useReactToPrint } from 'react-to-print'
-import useGetDailyReport from '../../../../../../../Hooks/useGetDailyReport'
-import Loader from '../../../../../../../Components/Loader/Loader'
-import FristFormDetails from '../FristFormDetails/FristFormDetails'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
-import moment from 'moment/moment'
-import { FaCalendarAlt } from 'react-icons/fa'
-import useFrontDetailHooks from '../FrontDetailsHooks/useFrontDetailHooks'
-import RegularData from '../RegularData/RegularData'
+import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
+import Loader from "../../../../../../../Components/Loader/Loader";
+import FristFormDetails from "../FristFormDetails/FristFormDetails";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment/moment";
+import { FaCalendarAlt } from "react-icons/fa";
+import useFrontDetailHooks from "../FrontDetailsHooks/useFrontDetailHooks";
+import RegularData from "../RegularData/RegularData";
 
 const FrontDetailsReport = () => {
-  const front = useRef(null)
-  const { FrontPageData, FrontPageDataLoaded } = useGetDailyReport()
-  const [filterDate, setFilterDate] = useState('')
-  const [StartDate, setStartDate] = useState()
-  const [EndDate, setEndDate] = useState()
+  const front = useRef(null);
+  const [StartDate, setStartDate] = useState();
+  const [EndDate, setEndDate] = useState();
 
-  const { FrontPageRegularData, isLoading, FrontPageExceptionalData } =
-    useFrontDetailHooks()
+  const {
+    FrontPageRegularData,
+    isLoading,
+    FrontPageExceptionalData,
+  } = useFrontDetailHooks();
 
   const handlePrint = useReactToPrint({
-    content: () => front.current
-  })
+    content: () => front.current,
+  });
 
   if (isLoading) {
-    return <Loader></Loader>
+    return <Loader></Loader>;
   }
 
   const filteredRegularData =
     FrontPageRegularData &&
-    FrontPageRegularData?.filter(item => {
-      let filterPass = true
-      const date = moment(item.date).format('DD/MM/YYYY')
+    FrontPageRegularData?.filter((item) => {
+      let filterPass = true;
+      const date = moment(item.date).format("DD/MM/YYYY");
 
       if (StartDate) {
         filterPass =
-          filterPass && moment(StartDate).format('DD/MM/YYYY') <= date
+          filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
       }
       if (EndDate) {
-        filterPass = filterPass && moment(EndDate).format('DD/MM/YYYY') >= date
+        filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
       }
-      return filterPass
-    })
+      return filterPass;
+    });
+  console.log(filteredRegularData, "+++++++++++++");
 
-  console.log(filteredRegularData, '+++++++++++++')
+  const filteredExceptionalData = FrontPageExceptionalData?.filter((item) => {
+    let filterPass = true;
+    const date = moment(item.date).format("DD/MM/YYYY");
+
+    if (StartDate) {
+      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+    }
+    if (EndDate) {
+      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+    }
+    return filterPass;
+  });
+
+  if (isLoading) {
+    return <Loader></Loader>;
+  }
 
   return (
-    <section className='my-4'>
-      <div className='flex gap-6 items-center my-4'>
-        <h2 className='font-bold text-xl text-gray-800'>
+    <section className="my-4">
+      <div className="flex gap-6 items-center my-4">
+        <h2 className="font-bold text-xl text-gray-800">
           Front Details Report
         </h2>
 
         <Link
-          to='/user/dailyreport/details'
-          className='btn btn-error text-white font-bold'
+          to="/user/dailyreport/details"
+          className="btn btn-error text-white font-bold"
         >
           Back Details Report
         </Link>
 
         <button
-          className='my-4 btn btn-error text-white font-bold'
+          className="my-4 btn btn-error text-white font-bold"
           onClick={handlePrint}
         >
           PRINT
         </button>
       </div>
-      <div className='flex gap-4 items-center my-4'>
-        <h2 className='font-bold text-[1.5rem]'>From</h2>
-        <div className='flex gap-2 items-center'>
+      <div className="flex gap-4 items-center my-4">
+        <h2 className="font-bold text-[1.5rem]">From</h2>
+        <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
             selected={StartDate}
-            onChange={date => {
-              setStartDate(date)
-              console.log(moment(date).format())
+            onChange={(date) => {
+              setStartDate(date);
+              console.log(moment(date).format());
             }}
-            dateFormat='dd/MM/yyyy'
-            placeholderText={'dd/mm/yyyy'}
-            className='inputBox'
+            dateFormat="dd/MM/yyyy"
+            placeholderText={"dd/mm/yyyy"}
+            className="inputBox"
           />
         </div>
 
-        <h2 className='font-bold text-[1.5rem]'>To</h2>
-        <div className='flex gap-2 items-center'>
+        <h2 className="font-bold text-[1.5rem]">To</h2>
+        <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
             selected={EndDate}
-            name='year'
-            onChange={data => setEndDate(data)}
-            dateFormat='dd/MM/yyyy'
-            className='inputBox'
-            placeholderText={'dd/mm/yyyy'}
+            name="year"
+            onChange={(data) => setEndDate(data)}
+            dateFormat="dd/MM/yyyy"
+            className="inputBox"
+            placeholderText={"dd/mm/yyyy"}
           />
         </div>
       </div>
-      <div className='divider'></div>
+      <div className="divider"></div>
 
       <div ref={front}>
-        <div className='overflow-x-auto m-4 p-4 flex '>
-          <table className='table w-full'>
+        <div className="overflow-x-auto m-4 p-4 flex ">
+          <table className="table w-full">
             <thead>
               <tr>
-                <th className='tg-baqh' colSpan={42}>
+                <th className="tg-baqh" colSpan={42}>
                   <span
-                    style={{ fontWeight: 'bold', textDecoration: 'underline' }}
+                    style={{ fontWeight: "bold", textDecoration: "underline" }}
                   >
                     अंग्रेजी शराब
                   </span>
                 </th>
               </tr>
               <tr>
-                <td className='tg-baqh' colSpan={42}>
+                <td className="tg-baqh" colSpan={42}>
                   दुकान का नाम
                   ............................................................................................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
                   का नाम
@@ -143,122 +159,122 @@ const FrontDetailsReport = () => {
               </tr>
 
               <tr>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>750ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>750ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>375ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>375ml</span>
                 </td>
-                <td className='tg-0lax'>
-                  <span style={{ fontWeight: 'bold' }}>180ml</span>
+                <td className="tg-0lax">
+                  <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
               </tr>
 
@@ -271,65 +287,77 @@ const FrontDetailsReport = () => {
                     regularData={regularData}
                     index={index}
                   ></RegularData>
-                )
+                );
               })}
 
               {/* ========================== */}
 
               <tr>
-                <td className='tg-0lax' colSpan={2}>
+                <td className="tg-0lax" colSpan={2}>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total
                 </td>
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
-                <td className='tg-0lax' />
+                <td className="tg-0lax"> 0</td>
+                <td className="tg-0lax"> 0</td>
+                <td className="tg-0lax"> 0</td>
+
+                <td className="tg-0lax">0</td>
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
+
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
+
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
+
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax"> 0 </td>
+
+                <td className="tg-0lax">0</td>
+                <td className="tg-0lax">0</td>
+                <td className="tg-0lax">0</td>
+
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
+
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">0 </td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <div className='overflow-x-auto m-4 p-4 flex '>
-          <table className='table w-full'>
+        <div className="overflow-x-auto m-4 p-4 flex ">
+          <table className="table w-full">
             <thead>
               <tr>
-                <td className='tg-0lax ' colSpan={50}>
-                  <span style={{ fontWeight: 'bold' }}>English</span>
+                <td className="tg-0lax " colSpan={50}>
+                  <span style={{ fontWeight: "bold" }}>English</span>
                 </td>
               </tr>
 
@@ -353,50 +381,32 @@ const FrontDetailsReport = () => {
               </tr>
             </thead>
             <tbody>
-              {FrontPageData &&
-              FrontPageData.filter(item => {
-                if (item.date?.toString().includes(filterDate.toString())) {
-                  return item
-                } else if (filterDate === '') {
-                  return item
-                }
-              }).length === 0 ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : (
-                FrontPageData.filter(item => {
-                  if (item.date?.toString().includes(filterDate.toString())) {
-                    return item
-                  } else if (filterDate === '') {
-                    return item
-                  }
-                }).map((FrontPageData, index) => {
-                  return (
-                    <FristFormDetails
-                      key={index}
-                      index={index}
-                      FrontPageData={FrontPageData}
-                    ></FristFormDetails>
-                  )
-                })
-              )}
+              {filteredExceptionalData.map((exceptionalData, index) => {
+                return (
+                  <FristFormDetails
+                    key={index}
+                    index={index}
+                    exceptionalData={exceptionalData}
+                  ></FristFormDetails>
+                );
+              })}
+
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
               <tr>
-                <td className='tg-0lax' colSpan={2}>
+                <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
-                <td className='tg-0lax'></td>
-                <td className='tg-0lax'></td>
-                <td className='tg-0lax'>
-                  {FrontPageData.filter(item => {
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {/* {FrontPageData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
-                      return item
-                    } else if (filterDate === '') {
-                      return item
+                      return item;
+                    } else if (filterDate === "") {
+                      return item;
                     }
-                    return false
+                    return false;
                   }).reduce(
                     (total, currentItem) =>
                       (total =
@@ -407,16 +417,16 @@ const FrontDetailsReport = () => {
                           0
                         )),
                     0
-                  )}
+                  )} */}
                 </td>
-                <td className='tg-0lax'>
-                  {FrontPageData.filter(item => {
+                <td className="tg-0lax">
+                  {/* {FrontPageData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
-                      return item
-                    } else if (filterDate === '') {
-                      return item
+                      return item;
+                    } else if (filterDate === "") {
+                      return item;
                     }
-                    return false
+                    return false;
                   }).reduce(
                     (total, currentItem) =>
                       (total =
@@ -427,17 +437,17 @@ const FrontDetailsReport = () => {
                           0
                         )),
                     0
-                  )}
+                  )} */}
                 </td>
-                <td className='tg-0lax'></td>
-                <td className='tg-0lax'>
-                  {FrontPageData.filter(item => {
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {/* {FrontPageData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
-                      return item
-                    } else if (filterDate === '') {
-                      return item
+                      return item;
+                    } else if (filterDate === "") {
+                      return item;
                     }
-                    return false
+                    return false;
                   }).reduce(
                     (total, currentItem) =>
                       (total =
@@ -448,17 +458,17 @@ const FrontDetailsReport = () => {
                           0
                         )),
                     0
-                  )}
+                  )} */}
                 </td>
-                <td className='tg-0lax'></td>
-                <td className='tg-0lax'>
-                  {FrontPageData.filter(item => {
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {/* {FrontPageData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
-                      return item
-                    } else if (filterDate === '') {
-                      return item
+                      return item;
+                    } else if (filterDate === "") {
+                      return item;
                     }
-                    return false
+                    return false;
                   }).reduce(
                     (total, currentItem) =>
                       (total =
@@ -471,14 +481,14 @@ const FrontDetailsReport = () => {
                     0
                   )}
                 </td>
-                <td className='tg-0lax'>
-                  {FrontPageData.filter(item => {
+                <td className="tg-0lax">
+                  {FrontPageData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
-                      return item
-                    } else if (filterDate === '') {
-                      return item
+                      return item;
+                    } else if (filterDate === "") {
+                      return item;
                     }
-                    return false
+                    return false;
                   }).reduce(
                     (total, currentItem) =>
                       (total =
@@ -489,16 +499,16 @@ const FrontDetailsReport = () => {
                           0
                         )),
                     0
-                  )}
+                  )} */}
                 </td>
-                <td className='tg-0lax'>
-                  {FrontPageData.filter(item => {
+                <td className="tg-0lax">
+                  {/* {FrontPageData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
-                      return item
-                    } else if (filterDate === '') {
-                      return item
+                      return item;
+                    } else if (filterDate === "") {
+                      return item;
                     }
-                    return false
+                    return false;
                   }).reduce(
                     (total, currentItem) =>
                       (total =
@@ -509,16 +519,16 @@ const FrontDetailsReport = () => {
                           0
                         )),
                     0
-                  )}
+                  )} */}
                 </td>
-                <td className='tg-0lax'>
-                  {FrontPageData.filter(item => {
+                <td className="tg-0lax">
+                  {/* {FrontPageData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
-                      return item
-                    } else if (filterDate === '') {
-                      return item
+                      return item;
+                    } else if (filterDate === "") {
+                      return item;
                     }
-                    return false
+                    return false;
                   }).reduce(
                     (total, currentItem) =>
                       (total =
@@ -529,17 +539,17 @@ const FrontDetailsReport = () => {
                           0
                         )),
                     0
-                  )}
+                  )} */}
                 </td>
 
-                <td className='tg-0lax'>
-                  {FrontPageData.filter(item => {
+                <td className="tg-0lax">
+                  {/* {FrontPageData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
-                      return item
-                    } else if (filterDate === '') {
-                      return item
+                      return item;
+                    } else if (filterDate === "") {
+                      return item;
                     }
-                    return false
+                    return false;
                   }).reduce(
                     (total, currentItem) =>
                       (total =
@@ -550,17 +560,17 @@ const FrontDetailsReport = () => {
                           0
                         )),
                     0
-                  )}
+                  )} */}
                 </td>
 
-                <td className='tg-0lax'></td>
+                <td className="tg-0lax"></td>
 
-                <td className='tg-0lax'>
-                  {FrontPageData.filter(item => {
+                <td className="tg-0lax">
+                  {/* {FrontPageData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
-                      return item
-                    } else if (filterDate === '') {
-                      return item
+                      return item;
+                    } else if (filterDate === "") {
+                      return item;
                     }
                   }).reduce(
                     (total, currentItem) =>
@@ -574,7 +584,7 @@ const FrontDetailsReport = () => {
                           0
                         )),
                     0
-                  )}
+                  )} */}
                 </td>
               </tr>
             </tbody>
@@ -582,7 +592,7 @@ const FrontDetailsReport = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default FrontDetailsReport
+export default FrontDetailsReport;

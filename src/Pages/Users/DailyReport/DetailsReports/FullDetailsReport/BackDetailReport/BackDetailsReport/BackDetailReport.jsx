@@ -13,6 +13,10 @@ import ShippingEnglishBear from "../ShippingEnglishBear/ShippingEnglishBear";
 import FinalReport from "../FinalReport/FinalReport";
 import Borrowed from "../Borrrowed/Borrowed";
 import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
+import moment from "moment/moment";
+import { FaCalendarAlt } from "react-icons/fa";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const BackDetailReport = () => {
   // const {
@@ -23,6 +27,8 @@ const BackDetailReport = () => {
   //   isLoading,
   //   RMLloading
   // } = useContext(DataContextApi);
+  const [StartDate, setStartDate] = useState();
+  const [EndDate, setEndDate] = useState();
 
   const {
     // RMLData,
@@ -86,13 +92,35 @@ const BackDetailReport = () => {
         PRINT
       </button>
 
-      <input
-        type="date"
-        name="date"
-        value={filterDate}
-        onChange={(e) => setFilterDate(e.target.value)}
-        className="mx-4 my-4 semiSmallInput"
-      />
+      <div className="flex gap-4 items-center my-4">
+        <h2 className="font-bold text-[1.5rem]">From</h2>
+        <div className="flex gap-2 items-center">
+          <FaCalendarAlt></FaCalendarAlt>
+          <DatePicker
+            selected={StartDate}
+            onChange={(date) => {
+              setStartDate(date);
+              console.log(moment(date).format());
+            }}
+            dateFormat="dd/MM/yyyy"
+            placeholderText={"dd/mm/yyyy"}
+            className="inputBox"
+          />
+        </div>
+
+        <h2 className="font-bold text-[1.5rem]">To</h2>
+        <div className="flex gap-2 items-center">
+          <FaCalendarAlt></FaCalendarAlt>
+          <DatePicker
+            selected={EndDate}
+            name="year"
+            onChange={(data) => setEndDate(data)}
+            dateFormat="dd/MM/yyyy"
+            className="inputBox"
+            placeholderText={"dd/mm/yyyy"}
+          />
+        </div>
+      </div>
 
       <div className="divider"></div>
 
