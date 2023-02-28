@@ -1,8 +1,8 @@
 import React from "react";
 
-const FinalReport = ({ data,date }) => {
+const FinalReport = ({ data, date }) => {
   // console.log(data)
-  console.log(data)
+  console.log(data);
   return (
     <>
       <tr>
@@ -23,12 +23,10 @@ const FinalReport = ({ data,date }) => {
           बीयर
         </td>
         <td className="tg-0lax" colSpan={4}>
-          {
-            data.reduce(
-              (total, currentItem) => (total = total + currentItem.beer),
-              0
-            )
-          }
+          {data.reduce(
+            (total, currentItem) => (total = total + currentItem.beer),
+            0
+          )}
         </td>
       </tr>
       <tr>
@@ -62,7 +60,8 @@ const FinalReport = ({ data,date }) => {
         </td>
         <td className="tg-0lax" colSpan={4}>
           {data.reduce(
-            (total, currentItem) => (total = total + currentItem.borrowedCashReturn),
+            (total, currentItem) =>
+              (total = total + currentItem.borrowedCashReturn),
             0
           )}
         </td>
@@ -134,7 +133,8 @@ const FinalReport = ({ data,date }) => {
         </td>
         <td className="tg-0lax" colSpan={4}>
           {data.reduce(
-            (total, currentItem) => (total = total + Number(currentItem.restAmount.$numberDecimal)),
+            (total, currentItem) =>
+              (total = total + Number(currentItem.restAmount.$numberDecimal)),
             0
           )}
         </td>

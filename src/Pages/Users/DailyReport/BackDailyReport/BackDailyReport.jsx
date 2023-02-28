@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../Style/DailyReport.scss";
 import RmlFrom from "./RmlForm/RmlFrom";
 import { Link } from "react-router-dom";
@@ -25,9 +25,14 @@ import { DataContextApi } from "../../../../Context/DataContext";
 // import Swal from "sweetalert2";
 import useHandelSubmitBackAPI from "../../../../Hooks/useHandelSubmitBackAPI/useHandelSubmitBackAPI";
 import AddOneSecondFormBack from "./FristFormBack/AddOneFristFromBack/AddOneSecondFormBack";
+import moment from "moment/moment";
+import { FaCalendarAlt } from "react-icons/fa";
+import DatePicker from "react-datepicker";
 
 const BackDailyReport = () => {
   const { handleSubmit, isLoadingSubmit } = useHandelSubmitBackAPI();
+  const [StartDate, setStartDate] = useState();
+
   // ================== Frist Form============
   const {
     addFiveInFristFormHandler,
@@ -44,7 +49,7 @@ const BackDailyReport = () => {
     addOneSecondFormHandler,
     handelSeconFormOnChange,
     handleRemoveFieldsBack,
-    handleRemoveFieldsBeer
+    handleRemoveFieldsBeer,
   } = useFristFormAdd();
 
   // ================== Rml Form============
@@ -54,7 +59,7 @@ const BackDailyReport = () => {
     handelAddOneInRml,
     onChangeRmlHandler,
     setAddRmlState,
-    handleRemoveFieldsBackRml
+    handleRemoveFieldsBackRml,
   } = useRmlAdd();
 
   // ================== Purchase OutSide Form============
@@ -63,7 +68,7 @@ const BackDailyReport = () => {
     handelAddFivePurchesOutSide,
     handelAddOnePurchesOutSide,
     onChangePurchesOutSide,
-    handleRemoveFieldsPurchaseOut
+    handleRemoveFieldsPurchaseOut,
   } = usePurchesOutSideAdd();
 
   // ================== Commission Form============
@@ -72,7 +77,7 @@ const BackDailyReport = () => {
     handelAddFiveCommison,
     handelAddOneCommison,
     onChangeCommison,
-    handleRemoveFieldsCommission
+    handleRemoveFieldsCommission,
   } = useCommissonAdd();
 
   // ================== Cash Recive Form============
@@ -81,7 +86,7 @@ const BackDailyReport = () => {
     handelAddFiveCashRecive,
     handelAddOneCashRecive,
     onChangeCashRecive,
-    handleRemoveFieldsCashBack
+    handleRemoveFieldsCashBack,
   } = useCashReciveAdd();
 
   // ================== Shipping Form============
@@ -180,7 +185,8 @@ const BackDailyReport = () => {
             }}
             className="semiSmallInput"
           />
-          <input
+
+          {/* <input
             type="date"
             value={drDate}
             onChange={(e) => {
@@ -190,8 +196,20 @@ const BackDailyReport = () => {
             name=""
             id=""
             className="semiSmallInput"
-          />
+          /> */}
           {/* <h1 className="font-bold ">12/12/2022 </h1> */}
+        </div>
+
+        <div className="flex gap-2 items-center">
+          <FaCalendarAlt></FaCalendarAlt>
+          <DatePicker
+            selected={drDate}
+            name="year"
+            onChange={(data) => setDrDate(moment(data).format())}
+            dateFormat="dd/MM/yyyy"
+            className="inputBox"
+            placeholderText={"dd/mm/yyyy"}
+          />
         </div>
 
         {/* *********************************************************BREAK*********************************************************  */}
@@ -1686,7 +1704,9 @@ const BackDailyReport = () => {
                       return (
                         <PurchaseOutSideFrom
                           onChangePurchesOutSide={onChangePurchesOutSide}
-                          handleRemoveFieldsPurchaseOut={handleRemoveFieldsPurchaseOut}
+                          handleRemoveFieldsPurchaseOut={
+                            handleRemoveFieldsPurchaseOut
+                          }
                           item={item}
                           key={index}
                           index={index}
@@ -1696,7 +1716,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                    <td>Total</td>
+                      <td>Total</td>
                       <td>
                         <div className="form-control">
                           <input
@@ -1812,7 +1832,7 @@ const BackDailyReport = () => {
                 <table className="table">
                   <thead>
                     <tr>
-                    <th></th>
+                      <th></th>
                       <th>Reason / विवरण</th>
                       <th>रकम</th>
                       <th>Description</th>
@@ -1825,7 +1845,9 @@ const BackDailyReport = () => {
                           key={index}
                           index={index}
                           item={item}
-                          handleRemoveFieldsCommission={handleRemoveFieldsCommission}
+                          handleRemoveFieldsCommission={
+                            handleRemoveFieldsCommission
+                          }
                           commissonState={commissonState}
                           onChangeCommison={onChangeCommison}
                         ></CommissonFrom>
@@ -1833,7 +1855,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                    <td>Total</td>
+                      <td>Total</td>
                       <td>
                         <div className="form-control">
                           <input
@@ -1890,7 +1912,7 @@ const BackDailyReport = () => {
                 <table className="table">
                   <thead>
                     <tr>
-                    <th></th>
+                      <th></th>
                       <th>Name</th>
                       <th>Type</th>
                       <th>रकम</th>
@@ -1903,7 +1925,9 @@ const BackDailyReport = () => {
                         <CashReciveFrom
                           key={index}
                           item={item}
-                          handleRemoveFieldsCashBack={handleRemoveFieldsCashBack}
+                          handleRemoveFieldsCashBack={
+                            handleRemoveFieldsCashBack
+                          }
                           index={index}
                           onChangeCashRecive={onChangeCashRecive}
                           cashReciveState={cashReciveState}
@@ -1912,7 +1936,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                    <td>Total</td>
+                      <td>Total</td>
                       <td>
                         <div className="form-control">
                           <input
@@ -1995,7 +2019,9 @@ const BackDailyReport = () => {
                           key={index}
                           item={item}
                           index={index}
-                          handleRemoveFieldsShipping={handleRemoveFieldsShipping}
+                          handleRemoveFieldsShipping={
+                            handleRemoveFieldsShipping
+                          }
                           addShippingState={addShippingState}
                           onChangeShipping={onChangeShipping}
                         ></ShippingForm>
@@ -2004,7 +2030,7 @@ const BackDailyReport = () => {
 
                     <tr>
                       <th>Total</th>
-                    <th></th>
+                      <th></th>
                       <td>
                         <div className="form-control">
                           <input

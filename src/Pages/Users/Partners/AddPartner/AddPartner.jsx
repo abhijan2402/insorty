@@ -89,7 +89,7 @@ const AddPartner = ({ handelPartnerSubmit }) => {
 
             <div>
               <button type="submit" className="dailyReportBtn  mt-4">
-                Add New Employ
+                Add New
               </button>
             </div>
           </form>

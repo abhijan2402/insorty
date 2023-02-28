@@ -5,36 +5,13 @@ import Loader from "../../../../Components/Loader/Loader";
 import BeerStockTopData from "./BeerStockTopData/BeerStockTopData";
 import { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
-import "react-date-range/dist/styles.css"; // main css file
-import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRange, DateRangePicker } from "react-date-range";
-import format from "date-fns/format";
-import { useEffect } from "react";
-import { useRef } from "react";
+import DatePicker from "react-datepicker";
+import moment from "moment/moment";
 
 const BeerStock = () => {
   const token = localStorage.getItem("token");
-  const [selectedDate, setSelectedDate] = useState("");
-  const [open, setOpen] = useState(false);
-  const refOne = useRef(null);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [filteredData, setFilteredData] = useState([]);
-
-  useEffect(() => {
-    document.addEventListener("keydown", hideOnEscape, true);
-    document.addEventListener("click", hideOnClickOutside, true);
-  }, []);
-  const hideOnEscape = (e) => {
-    if (e.key === "Escape") {
-      setOpen(false);
-    }
-  };
-  const hideOnClickOutside = (e) => {
-    if (refOne.current && !refOne.current.contains(e.target)) {
-      setOpen(false);
-    }
-  };
+  const [StartDate, setStartDate] = useState();
+  const [EndDate, setEndDate] = useState();
 
   const { data: beerStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
@@ -61,43 +38,20 @@ const BeerStock = () => {
 
   const beerStockData = beerStock?.filter((item) => item.type === "BEER");
 
-  // const filteredData = beerStockData
-  //   ? beerStockData.filter((item) => {
-  //       const itemDate = new Date(item.createdAt);
-  //       const selected = selectedDate ? new Date(selectedDate) : null;
-  //       if (selected) {
-  //         return itemDate.toDateString() === selected.toDateString();
-  //       } else {
-  //         return true;
-  //       }
-  //     })
-  //   : beerStockData;
+  console.log(beerStockData);
 
-  //   const selectionRange = {
-  //     startDate: startDate,
-  //     endDate: endDate,
-  //     key: "selection",
-  //   };
+  const filteredData = beerStockData.filter((item) => {
+    let filterPass = true;
+    const date = moment(item.date).format("DD/MM/YYYY");
 
-  const selectionRange = {
-    startDate: startDate,
-    endDate: endDate,
-    key: "selection",
-  };
-
-  const handleSelect = (data) => {
-    const filteredData = beerStockData.filter((item) => {
-      const itemDate = new Date(item.createdAt);
-      return (
-        itemDate >= data.selection.startDate &&
-        itemDate <= data.selection.endDate
-      );
-    });
-
-    setStartDate(data.selection.startDate);
-    setEndDate(data.selection.endDate);
-    setFilteredData(filteredData);
-  };
+    if (StartDate) {
+      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+    }
+    if (EndDate) {
+      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+    }
+    return filterPass;
+  });
 
   return (
     <section>
@@ -111,28 +65,33 @@ const BeerStock = () => {
         <div className="divider my-2"></div>
       </div>
 
-      <div className="flex gap-2 items-center">
-        <FaCalendarAlt></FaCalendarAlt>
-        <div className="calendarWrap">
-          <input
-            value={`${format(
-              selectionRange.startDate,
-              "dd/MM/yyyy"
-            )} to ${format(selectionRange.endDate, "dd/MM/yyyy")}`}
-            readOnly
+      <div className="flex gap-4 items-center my-4">
+        <h2 className="font-bold text-[1.5rem]">From</h2>
+        <div className="flex gap-2 items-center">
+          <FaCalendarAlt></FaCalendarAlt>
+          <DatePicker
+            selected={StartDate}
+            onChange={(date) => {
+              setStartDate(date);
+              console.log(moment(date).format());
+            }}
+            dateFormat="dd/MM/yyyy"
+            placeholderText={"dd/mm/yyyy"}
             className="inputBox"
-            onClick={() => setOpen((open) => !open)}
           />
+        </div>
 
-          <div ref={refOne}>
-            {open && (
-              <DateRangePicker
-                ranges={[selectionRange]}
-                onChange={handleSelect}
-                className="calendarElement"
-              />
-            )}
-          </div>
+        <h2 className="font-bold text-[1.5rem]">To</h2>
+        <div className="flex gap-2 items-center">
+          <FaCalendarAlt></FaCalendarAlt>
+          <DatePicker
+            selected={EndDate}
+            name="year"
+            onChange={(data) => setEndDate(data)}
+            dateFormat="dd/MM/yyyy"
+            className="inputBox"
+            placeholderText={"dd/mm/yyyy"}
+          />
         </div>
       </div>
 

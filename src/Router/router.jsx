@@ -28,7 +28,6 @@ import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FullDe
 import BearShopLayout from "../Layouts/BearShopLayouts";
 import routerImport from "./routerImport";
 import BackDetailReport from "../Pages/Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/BackDetailsReport/BackDetailReport";
-import FrontDetailsReport2 from "../Pages/Users/DailyReport/DetailsReports/FrontDetailsReport/FrontDetailsReport";
 import PartyName from "../Pages/Users/AddItems/PartyName/PartyName";
 import BrandList from "../Pages/Users/AddItems/BrandList/BrandList";
 import BranchNameData from "../Pages/Users/AddItems/BranchName/BranchName";
@@ -225,7 +224,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/dailyreport/backdetailsreport",
-        element: <FrontDetailsReport2 />,
+        // element: <FrontDetailsReport2 />,
       },
       {
         path: "/user/brandlist",

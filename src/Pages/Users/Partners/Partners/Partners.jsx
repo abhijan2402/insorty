@@ -1,25 +1,17 @@
 import React, { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 // import { Link } from "react-router-dom";
-import usePartner from "../PartnerHooks/usePartner";
 import PartnerForm from "../PartnerForm/PartnerForm";
 import AddPartner from "../AddPartner/AddPartner";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
-import format from "date-fns/format";
 import DatePicker from "react-datepicker";
+import moment from "moment/moment";
 
 const Partners = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
-  const {
-    partnerState,
-    // addOnePartner,
-    // addFivePartner,
-    handelOnChangePartner,
-    // handelOnSubmitPartner,
-  } = usePartner();
 
   const handelPartnerSubmit = (e) => {
     e.preventDefault();
@@ -49,6 +41,21 @@ const Partners = () => {
 
   if (isLoading) return <Loader></Loader>;
 
+  const filteredData = partnarData.filter((item) => {
+    let filterPass = true;
+    const date = moment(item.date).format("DD/MM/YYYY");
+
+    if (StartDate) {
+      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+    }
+    if (EndDate) {
+      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+    }
+    return filterPass;
+  });
+
+  console.log(partnarData, "+++++");
+
   return (
     <section className="py-4">
       <div className="title">
@@ -56,38 +63,31 @@ const Partners = () => {
 
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
-
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
               selected={StartDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={(date) => {
+                setStartDate(date);
+                console.log(moment(date).format());
+              }}
               dateFormat="dd/MM/yyyy"
+              placeholderText={"dd/mm/yyyy"}
               className="inputBox"
             />
           </div>
-          <h2 className="font-bold text-[1.5rem]">To</h2>
 
+          <h2 className="font-bold text-[1.5rem]">To</h2>
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
               selected={EndDate}
-              onChange={(date) => setEndDate(date)}
+              name="year"
+              onChange={(data) => setEndDate(data)}
               dateFormat="dd/MM/yyyy"
               className="inputBox"
+              placeholderText={"dd/mm/yyyy"}
             />
-
-            {/* <input
-              type="date"
-              value={EndDate}
-              name="year"
-              onChange={(e) => {
-                setEndDate(e.target.value);
-                console.log(EndDate);
-              }}
-              dateFormate="dd/MM/yyyy"
-              className="semiSmallInput"
-            /> */}
           </div>
         </div>
         <div className="divider my-2"></div>
@@ -155,7 +155,7 @@ const Partners = () => {
                   </td>
                 </tr>
 
-                {partnarData.map((partner, index) => {
+                {filteredData.map((partner, index) => {
                   return (
                     <PartnerForm
                       key={index}
