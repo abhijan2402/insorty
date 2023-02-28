@@ -297,9 +297,48 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">data</td>
 
         {/* sum */}
-        <td className="tg-0lax">data</td>
-        <td className="tg-0lax">data</td>
-        <td className="tg-0lax">data</td>
+        <td className="tg-0lax">
+          {quantityInML750.length > 0
+            ? quantityInML750
+                .map((item) => item.purchaseOutSide)
+                .reduce((a, b) => a + b) +
+              quantityInML750
+                .map((item) => item.purchaseShop)
+                .reduce((a, b) => a + b) +
+              quantityInML750
+                .map((item) => item.credits)
+                .reduce((a, b) => a + b) -
+              quantityInML750.map((item) => item.send).reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML375.length > 0
+            ? quantityInML375
+                .map((item) => item.purchaseOutSide)
+                .reduce((a, b) => a + b) +
+              quantityInML375
+                .map((item) => item.purchaseShop)
+                .reduce((a, b) => a + b) +
+              quantityInML375
+                .map((item) => item.credits)
+                .reduce((a, b) => a + b) -
+              quantityInML375.map((item) => item.send).reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML180.length > 0
+            ? quantityInML180
+                .map((item) => item.purchaseOutSide)
+                .reduce((a, b) => a + b) +
+              quantityInML180
+                .map((item) => item.purchaseShop)
+                .reduce((a, b) => a + b) +
+              quantityInML180
+                .map((item) => item.credits)
+                .reduce((a, b) => a + b) -
+              quantityInML180.map((item) => item.send).reduce((a, b) => a + b)
+            : 0}
+        </td>
         {/* <td className="tg-0lax"> */}
         {/* <span
                     style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
