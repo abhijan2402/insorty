@@ -4,9 +4,6 @@ import Reserve from "../Reserve/Reserve";
 import InvestmentForm from "../InvestmentForm/InvestmentForm";
 import useMainInvestmentHooks from "../MainInvestmentHooks/useMainInvestmentHooks";
 // import { Loader } from "three";
-import RefundDetailsData from "../Refund/RefundDetailsData";
-import ResurvedDataDetails from "../Reserve/ResurvedDataDetails";
-import { Button } from "@mui/material";
 
 const MainInvestment = () => {
   const {
@@ -15,7 +12,13 @@ const MainInvestment = () => {
     handleBelongingAdd,
     handleSave,
     handleFeesAdd,
+    handleReserveAmountAdd,
+    handleRefundRecoveryAdd,
+    reserveAmountOnChange,
+    refundRecoveryOnChange,
   } = useMainInvestmentHooks();
+
+  console.log(data, "+++++++++ data");
 
   if (data.isLoading) {
     return <div>Loading....</div>;
@@ -50,7 +53,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Previous Loans"}
-                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -142,7 +145,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Cash in Hand"}
-                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -175,7 +178,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Reserve Amount"}
-                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -194,7 +197,7 @@ const MainInvestment = () => {
                       className="semiSmallInput"
                       value={data.mainInvest.reserveAmount.price}
                       readOnly
-                    // onChange={(e) => handleChange(e)}
+                      // onChange={(e) => handleChange(e)}
                     />
                   </td>
                 </tr>
@@ -206,7 +209,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Total"}
-                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -270,12 +273,25 @@ const MainInvestment = () => {
               </tr>
             </thead>
             <tbody>
-              <Refund></Refund>
+              {data &&
+                data?.refundRecoveryDetails?.entries.map(
+                  (refundRecovery, index) => {
+                    return (
+                      <Refund
+                        key={index}
+                        name={"refundRecovery"}
+                        refundRecoveryOnChange={refundRecoveryOnChange}
+                        index={index}
+                        refundRecovery={refundRecovery}
+                      ></Refund>
+                    );
+                  }
+                )}
+
               <tr>
                 <td>
                   <div>
-                    <label
-                      htmlFor="RefundData"
+                    <button
                       style={{
                         cursor: "pointer",
                         backgroundColor: "#AA237A",
@@ -284,9 +300,10 @@ const MainInvestment = () => {
                         color: "black",
                         fontSize: "1rem",
                       }}
+                      onClick={() => handleRefundRecoveryAdd()}
                     >
                       Add Refund
-                    </label>
+                    </button>
                   </div>
                 </td>
                 <td></td>
@@ -315,25 +332,35 @@ const MainInvestment = () => {
               </tr>
             </thead>
             <tbody>
-              <Reserve></Reserve>
+              {data &&
+                data?.reserveAmount?.entries.map((reserve, index) => {
+                  return (
+                    <Reserve
+                      key={index}
+                      name={"reserve"}
+                      index={index}
+                      reserve={reserve}
+                      reserveAmountOnChange={reserveAmountOnChange}
+                    ></Reserve>
+                  );
+                })}
 
               <tr>
                 <td>
                   <div>
-                    <label
-                      htmlFor="ResurvedData"
+                    <button
                       style={{
                         cursor: "pointer",
                         backgroundColor: "#AA237A",
                         padding: "0.6rem 1.5rem",
                         borderRadius: "0.5rem",
                         color: "black",
-
                         fontSize: "1rem",
                       }}
+                      onClick={() => handleReserveAmountAdd()}
                     >
                       Add Reserve
-                    </label>
+                    </button>
                   </div>
                 </td>
                 <td></td>
