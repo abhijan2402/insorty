@@ -1,48 +1,14 @@
 import React from "react";
+import Refund from "../Refund/Refund";
+import Reserve from "../Reserve/Reserve";
 import InvestmentForm from "../InvestmentForm/InvestmentForm";
 import useMainInvestmentHooks from "../MainInvestmentHooks/useMainInvestmentHooks";
+// import { Loader } from "three";
+import RefundDetailsData from "../Refund/RefundDetailsData";
+import ResurvedDataDetails from "../Reserve/ResurvedDataDetails";
+import { Button } from "@mui/material";
 
 const MainInvestment = () => {
-  // const {
-  //   addOneMainInvestment,
-  //   mainInvestmentState,
-  //   handelOnChangeMainInvestment,
-  //   handelOnSubmitMainInvestment,
-  //   addFees,
-  //   addRefund,
-  //   addbelonging,
-  //   addReserve,
-  //   handleBelongingChange,
-  //   handleFeesChange,
-  //   handleRefundChange,
-  //   handleReserveChange,
-  //   fees,
-  //   belonging,
-  //   reserveAmountArr,
-  //   refundRecoveryDetails,
-  //   reserveAmount,
-  //   cashInHand,
-  //   total,
-  //   handleChangeCashInHand,
-  //   handleChangePreviousLoan,
-  //   mainLoading,
-  //   handleChangeTotal,
-  //   previousLoan,handleChange
-  // } = useMainInvestmentHooks();
-
-  const {
-    data,
-    loading,
-    handleInvestmentChange,
-    handleBelongingAdd,
-    handleFeesChange,
-    handleBelongingChange,
-    handleSave,
-    handleFeesAdd,
-    handleTotalChange,
-  } = useMainInvestmentHooks();
-
-  if (loading) {
   const {
     data,
     handleInvestmentChange,
@@ -84,7 +50,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Previous Loans"}
-                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -123,7 +89,6 @@ const MainInvestment = () => {
                       index={index}
                       name={"fees"}
                       mainInvestment={mainInvestment}
-                      handelOnChangeMainInvestment={handleFeesChange}
                       handelOnChangeMainInvestment={handleInvestmentChange}
                     ></InvestmentForm>
                   );
@@ -152,9 +117,6 @@ const MainInvestment = () => {
                       <InvestmentForm
                         key={index}
                         index={index}
-                        name={"Belonging"}
-                        mainInvestment={mainInvestment}
-                        handelOnChangeMainInvestment={handleBelongingChange}
                         name={"belonging"}
                         mainInvestment={mainInvestment}
                         handelOnChangeMainInvestment={handleInvestmentChange}
@@ -180,7 +142,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Cash in Hand"}
-                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -213,7 +175,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Reserve Amount"}
-                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -232,7 +194,7 @@ const MainInvestment = () => {
                       className="semiSmallInput"
                       value={data.mainInvest.reserveAmount.price}
                       readOnly
-                      // onChange={(e) => handleChange(e)}
+                    // onChange={(e) => handleChange(e)}
                     />
                   </td>
                 </tr>
@@ -244,7 +206,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Total"}
-                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -263,7 +225,6 @@ const MainInvestment = () => {
                       className="semiSmallInput"
                       defaultValue={data.mainInvest.total}
                       onChange={(event) =>
-                        handleTotalChange(event.target.value)
                         handleInvestmentChange("total", event.target.value)
                       }
                     />

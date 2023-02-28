@@ -1,5 +1,6 @@
 import moment from "moment/moment";
 import React from "react";
+import DatePicker from "react-datepicker";
 
 const InvestmentForm = ({
   mainInvestment,
@@ -7,6 +8,9 @@ const InvestmentForm = ({
   name,
   handelOnChangeMainInvestment,
 }) => {
+
+  console.log(mainInvestment.date)
+
   return (
     <>
       <tr>
@@ -21,31 +25,25 @@ const InvestmentForm = ({
           />
         </td>
         <td>
-          <input
+          {/* <input
             type="date"
             name="date"
             className="semiSmallInput"
-            dateFormat="dd/MM/yyyy"
-            placeholderText={"dd/mm/yyyy"}
-            defaultValue={mainInvestment.date}
-            onChange={(event) =>
-              handelOnChangeMainInvestment(index, "date", event.target.value)
-            }
-
+            defaultValue={new Date(mainInvestment.date) }
             onChange={event => handelOnChangeMainInvestment(name, new Date(event.target.value), index, 'date')}
-            // onChange={event => handelOnChangeMainInvestment(name, moment(event.target.value, 'dd-mm-yyyy').toDate(), index, 'date')}
-          />
-          {/* <DatePicker
+          // onChange={event => handelOnChangeMainInvestment(name, moment(event.target.value, 'dd-mm-yyyy').toDate(), index, 'date')}
+          /> */}
+          <DatePicker
+            selected={new Date(mainInvestment.date)}
             name="date"
-            className="semiSmallInput"
-            selected={""}
-            defaultValue={mainInvestment.date}
-            onChange={(event) =>
-              handelOnChangeMainInvestment(index, "date", event.target.value)
-            }
+            onChange={(date) => {
+              handelOnChangeMainInvestment(name, new Date(date), index, 'date');
+              console.log(date);
+            }}
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
-          /> */}
+            // className="inputBox"
+          />
         </td>
         <td>
           <input
@@ -53,10 +51,6 @@ const InvestmentForm = ({
             name="price"
             className="semiSmallInput"
             defaultValue={mainInvestment.price}
-            onChange={(event) =>
-              handelOnChangeMainInvestment(index, "price", event.target.value)
-            }
-
             onChange={event => handelOnChangeMainInvestment(name, event.target.value, index, 'price')}
           />
         </td>
