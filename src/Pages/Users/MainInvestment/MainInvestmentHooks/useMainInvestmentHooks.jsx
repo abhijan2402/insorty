@@ -5,7 +5,8 @@ import moment from "moment";
 const useMainInvestmentHooks = () => {
   const token = localStorage.getItem("token");
   const [data, setData] = useState({ isLoading: true });
-  const [newBelonging, setNewBelonging] = useState({ price: 0, date: "" });
+  const [newBelonging, setNewBelonging] = useState({ price: 0, date: new Date() });
+  const refund = {type:'REFUND', price: 0, date: new Date() }
 
   useEffect(() => {
     fetch("https://insorty-api.onrender.com/shop/getMainInvestmentPage", {
@@ -75,8 +76,8 @@ const useMainInvestmentHooks = () => {
         belonging: [...prevData.mainInvest.belonging, newBelonging],
       },
     }));
-    setNewBelonging({ price: 0, date: "" });
-  }, [calculateReserveAmount, newBelonging]);
+    // setNewBelonging({ price: 0, date: "" });
+  }, [calculateReserveAmount]);
 
   const handleFeesAdd = useCallback(() => {
     setData((prevData) => ({
@@ -86,20 +87,41 @@ const useMainInvestmentHooks = () => {
         fees: [...prevData.mainInvest.fees, newBelonging],
       },
     }));
-    setNewBelonging({ price: 0, date: "" });
+    // setNewBelonging({ price: 0, date: "" });
   }, [calculateReserveAmount, newBelonging]);
 
-  const handleSave = useCallback(() => {
-    fetch("https://insorty-api.onrender.com/shop/updateMainInvestmentPage", {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', cookie_token: token },
-      body: JSON.stringify(data)
-    })
-      .then(response => response.json())
-      .then(updatedData => console.log(updatedData))
-      .catch(error => console.error(error));
 
-    // console.log(data);
+  // < -------for refundRecoveryDetails------>
+  // setData((prevData) => ({
+  //   ...prevData,
+  //   refundRecoveryDetails: {
+  //     ...prevData.refundRecoveryDetails,
+  //     entries: [...prevData.refundRecoveryDetails.entries, newBelonging],
+  //   },
+  // })); 
+  // < -------for reserveAmount------>
+  // setData((prevData) => ({
+  //   ...prevData,
+  //   reserveAmount: {
+  //     ...prevData.reserveAmount,
+  //     entries: [...prevData.reserveAmount.entries, newBelonging],
+  //   },
+  // })); 
+
+
+
+
+  const handleSave = useCallback(() => {
+    // fetch("https://insorty-api.onrender.com/shop/updateMainInvestmentPage", {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json', cookie_token: token },
+    //   body: JSON.stringify(data)
+    // })
+    //   .then(response => response.json())
+    //   .then(updatedData => console.log(updatedData))
+    //   .catch(error => console.error(error));
+
+    console.log(data);
   }, [data]);
 
 

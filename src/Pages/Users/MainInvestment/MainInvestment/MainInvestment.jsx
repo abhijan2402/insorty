@@ -264,7 +264,7 @@ const MainInvestment = () => {
             <thead>
               <tr>
                 <th>S.No</th>
-                <th>रिफंड/रिकवरी विवरण/ Refund/Recovery Details </th>
+                <th>Type </th>
                 <th>दिनांक / Date</th>
                 <th>रकम/ price</th>
               </tr>

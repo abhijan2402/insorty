@@ -205,7 +205,7 @@ const BackDailyReport = () => {
           <DatePicker
             selected={drDate}
             name="year"
-            onChange={(data) => setDrDate(moment(data).format())}
+            onChange={(data) => setDrDate(data)}
             dateFormat="dd/MM/yyyy"
             className="inputBox"
             placeholderText={"dd/mm/yyyy"}
