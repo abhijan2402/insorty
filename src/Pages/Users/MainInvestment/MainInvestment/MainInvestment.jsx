@@ -43,6 +43,15 @@ const MainInvestment = () => {
   } = useMainInvestmentHooks();
 
   if (loading) {
+  const {
+    data,
+    handleInvestmentChange,
+    handleBelongingAdd,
+    handleSave,
+    handleFeesAdd,
+  } = useMainInvestmentHooks();
+
+  if (data.isLoading) {
     return <div>Loading....</div>;
   }
 
@@ -112,9 +121,10 @@ const MainInvestment = () => {
                     <InvestmentForm
                       key={index}
                       index={index}
-                      name={"Fees"}
+                      name={"fees"}
                       mainInvestment={mainInvestment}
                       handelOnChangeMainInvestment={handleFeesChange}
+                      handelOnChangeMainInvestment={handleInvestmentChange}
                     ></InvestmentForm>
                   );
                 })}
@@ -145,6 +155,9 @@ const MainInvestment = () => {
                         name={"Belonging"}
                         mainInvestment={mainInvestment}
                         handelOnChangeMainInvestment={handleBelongingChange}
+                        name={"belonging"}
+                        mainInvestment={mainInvestment}
+                        handelOnChangeMainInvestment={handleInvestmentChange}
                       ></InvestmentForm>
                     );
                   })}
@@ -251,6 +264,7 @@ const MainInvestment = () => {
                       defaultValue={data.mainInvest.total}
                       onChange={(event) =>
                         handleTotalChange(event.target.value)
+                        handleInvestmentChange("total", event.target.value)
                       }
                     />
                   </td>
@@ -278,7 +292,7 @@ const MainInvestment = () => {
         </div>
       </div>
 
-      {/* <div>
+      <div>
         <div>
           <h2 className="font-bold text-[1.5rem] my-2">
             रिफंड/रिकवरी विवरण/ Refund/Recovery Details
@@ -375,7 +389,7 @@ const MainInvestment = () => {
           </table>
         </div>
       </div>
-      <RefundDetailsData></RefundDetailsData>
+      {/* <RefundDetailsData></RefundDetailsData>
       <ResurvedDataDetails></ResurvedDataDetails> */}
     </section>
   );

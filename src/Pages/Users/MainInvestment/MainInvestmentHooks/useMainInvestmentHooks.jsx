@@ -6,6 +6,12 @@ const useMainInvestmentHooks = () => {
   const [data, setData] = useState(null);
   const [newBelonging, setNewBelonging] = useState({ price: "", date: "" });
   const [loading, setLoading] = useState(true);
+import moment from "moment";
+
+const useMainInvestmentHooks = () => {
+  const token = localStorage.getItem("token");
+  const [data, setData] = useState({isLoading: true});
+  const [newBelonging, setNewBelonging] = useState({ price: 0, date: "" });
 
   useEffect(() => {
     fetch("https://insorty-api.onrender.com/shop/getMainInvestmentPage", {
@@ -21,21 +27,29 @@ const useMainInvestmentHooks = () => {
       .catch((error) => {
         console.error(error);
         setLoading(false);
+
+        let _data = {...data};
+        _data = {
+          ..._data,
+          ...invest.data,
+          isLoading: false,
+        }
+        setData(_data);
+        console.log({_data});
+      })
+      .catch((error) => {
+        let _data = {...data};
+        _data = {
+         ..._data,
+          isLoading: false,
+        }
+        setData(_data);
+        console.error(error);
       });
   }, []);
 
-  // const calculateReserveAmount = () => {
-  //   const total =
-  //     parseInt(data.mainInvest.total) -
-  //     (parseInt(data.mainInvest.previousLoan.price) || 0) -
-  //     (parseInt(data.mainInvest.cashInHand.price) || 0) -
-  //     data.mainInvest.belonging.reduce((sum, item) => sum + parseInt(item.price), 0) -
-  //     data.mainInvest.fees.reduce((sum, item) => sum + parseInt(item.price), 0);
-  //     console.log(total)
-  //   return total >= 0 ? total : 0;
-  // };
 
-  const calculateReserveAmount = useCallback(() => {
+  const calculateReserveAmount = data => {
     const total =
       data.mainInvest.total -
       (parseInt(data.mainInvest.previousLoan.price) || 0) -
@@ -179,6 +193,26 @@ const useMainInvestmentHooks = () => {
       }));
     },
     [calculateReserveAmount]
+      // console.log(total)
+      return total;
+  };
+
+  const handleInvestmentChange = useCallback(
+    (field, newValue, index = -1, subfield = '') => {
+      // console.log(field, newValue, index, subfield)
+      // console.log(newValue, moment(newValue, 'dd-mm-yyyy'), moment(newValue, 'dd-mm-yyyy').toDate())
+      let _data = {...data};
+      if(field === 'previousLoan')  _data.mainInvest.previousLoan.price = Number(newValue);
+      else if(field === 'cashInHand') _data.mainInvest.cashInHand.price = Number(newValue);
+      else if(field === 'belonging') _data.mainInvest.belonging[index][subfield] = Number(newValue);
+      else if(field === 'fees') _data.mainInvest.fees[index][subfield] = Number(newValue);
+      else if(field === 'total')  _data.mainInvest.total = Number(newValue);
+      // else if(field === 'refundRecovery')
+      _data.mainInvest.reserveAmount.price = calculateReserveAmount(_data);
+      // calculateReserveAmount()
+      setData(_data);
+    },
+    [data]
   );
 
   const handleBelongingAdd = useCallback(() => {
@@ -193,6 +227,9 @@ const useMainInvestmentHooks = () => {
       },
     }));
     setNewBelonging({ price: "", date: "" });
+      },
+    }));
+    setNewBelonging({ price: 0, date: "" });
   }, [calculateReserveAmount, newBelonging]);
 
   const handleFeesAdd = useCallback(() => {
@@ -227,15 +264,20 @@ const useMainInvestmentHooks = () => {
     [calculateReserveAmount]
   );
 
+      },
+    }));
+    setNewBelonging({ price: 0, date: "" });
+  }, [calculateReserveAmount, newBelonging]);
+
   const handleSave = useCallback(() => {
-    // fetch('https://myapi.com/data', {
-    //   method: 'PUT',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(data)
-    // })
-    //   .then(response => response.json())
-    //   .then(updatedData => console.log(updatedData))
-    //   .catch(error => console.error(error));
+    fetch("https://insorty-api.onrender.com/shop/updateMainInvestmentPage", {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', cookie_token: token },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(updatedData => console.log(updatedData))
+      .catch(error => console.error(error));
 
     console.log(data);
   }, [data]);
@@ -437,13 +479,14 @@ const useMainInvestmentHooks = () => {
   //     data = input
   //   }
 
+    // console.log(data);
+  }, [data]);
+
+
   return {
     data,
-    loading,
     handleInvestmentChange,
     handleBelongingAdd,
-    handleFeesChange,
-    handleBelongingChange,
     handleSave,
     handleFeesAdd,
     handleTotalChange,
@@ -481,6 +524,7 @@ const useMainInvestmentHooks = () => {
     // handleChangePreviousLoan,
     // handleChangeTotal,
     // mainInvest
+
   };
 };
 
