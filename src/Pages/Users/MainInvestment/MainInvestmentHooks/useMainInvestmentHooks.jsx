@@ -10,7 +10,7 @@ const useMainInvestmentHooks = () => {
     date: new Date(),
   });
   const refund = { type: "REFUND", price: 0, date: new Date() };
-  const reserveAmount = { type: "RESERVE_AMOUNT", price: 0, date: new Date() };
+  const reserveAmount = { detail: "", price: 0, month: new Date() };
 
   useEffect(() => {
     fetch("https://insorty-api.onrender.com/shop/getMainInvestmentPage", {
@@ -105,7 +105,7 @@ const useMainInvestmentHooks = () => {
       ...prevData,
       refundRecoveryDetails: {
         ...prevData.refundRecoveryDetails,
-        entries: [...prevData.refundRecoveryDetails.entries, newBelonging],
+        entries: [...prevData.refundRecoveryDetails.entries, refund],
       },
     }));
   }, [calculateReserveAmount, newBelonging]);
@@ -117,7 +117,7 @@ const useMainInvestmentHooks = () => {
       ...prevData,
       reserveAmount: {
         ...prevData.reserveAmount,
-        entries: [...prevData.reserveAmount.entries, newBelonging],
+        entries: [...prevData.reserveAmount.entries, reserveAmount],
       },
     }));
   }, [calculateReserveAmount, newBelonging]);
@@ -132,17 +132,17 @@ const useMainInvestmentHooks = () => {
   ) => {
     let _data = { ...data };
     if (field === "refundRecovery")
-      _data.refundRecoveryDetails.entries[index][subfield] = Number(newValue);
-    else if (field === "cashInHand")
-      _data.mainInvest.cashInHand.price = Number(newValue);
-    else if (field === "belonging")
-      _data.mainInvest.belonging[index][subfield] = Number(newValue);
-    else if (field === "fees")
-      _data.mainInvest.fees[index][subfield] = Number(newValue);
-    else if (field === "total") _data.mainInvest.total = Number(newValue);
-    else if (field === "refundRecovery")
-      _data.mainInvest.reserveAmount.price = calculateReserveAmount(_data);
-    calculateReserveAmount();
+      _data.refundRecoveryDetails.entries[index][subfield] = newValue;
+    // else if (field === "cashInHand")
+    //   _data.mainInvest.cashInHand.price = Number(newValue);
+    // else if (field === "belonging")
+    //   _data.mainInvest.belonging[index][subfield] = Number(newValue);
+    // else if (field === "fees")
+    //   _data.mainInvest.fees[index][subfield] = Number(newValue);
+    // else if (field === "total") _data.mainInvest.total = Number(newValue);
+    // else if (field === "refundRecovery")
+    //   _data.mainInvest.reserveAmount.price = calculateReserveAmount(_data);
+    // calculateReserveAmount();
     setData(_data);
   };
 
@@ -155,18 +155,9 @@ const useMainInvestmentHooks = () => {
     subfield = ""
   ) => {
     let _data = { ...data };
-    if (field === "refundRecovery")
-      _data.refundRecoveryDetails.entries[index][subfield] = Number(newValue);
-    else if (field === "cashInHand")
-      _data.mainInvest.cashInHand.price = Number(newValue);
-    else if (field === "belonging")
-      _data.mainInvest.belonging[index][subfield] = Number(newValue);
-    else if (field === "fees")
-      _data.mainInvest.fees[index][subfield] = Number(newValue);
-    else if (field === "total") _data.mainInvest.total = Number(newValue);
-    else if (field === "reserveAmount")
-      _data.mainInvest.reserveAmount.price = calculateReserveAmount(_data);
-    calculateReserveAmount();
+    if (field === "reserve")
+      _data.reserveAmount.entries[index][subfield] = newValue;
+    
     setData(_data);
   };
 

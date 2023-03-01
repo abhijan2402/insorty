@@ -9,7 +9,7 @@ const DataContext = ({ children }) => {
   const [paidDues, setPaidDues] = useState(0);
   const [liquerState, setLiquerState] = useState([]);
   const token = localStorage.getItem("token");
-  const [drDate, setDrDate] = useState("");
+  const [drDate, setDrDate] = useState(new Date());
   const [salesMan, setSalesMan] = useState("");
 
   useEffect(() => {

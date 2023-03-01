@@ -26,10 +26,13 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
               refundRecoveryOnChange(name, e.target.value, index, "type");
             }}
           >
-            <option selected value={"REFUND"}>
+            <option selected >
+              Select-type
+            </option>
+            <option  value="REFUND">
               REFUND
             </option>
-            <option value={"RECOVERY"}>RECOVERY</option>
+            <option value="RECOVERY">RECOVERY</option>
           </select>
         </td>
         <td>
@@ -40,10 +43,10 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
             className="semiSmallInput"
           /> */}
           <DatePicker
-            selected={new Date(refundRecovery?.date)}
+            selected={new Date(refundRecovery.date)}
             name="month"
             onChange={(month) => {
-              refundRecoveryOnChange(name, new Date(month), index, "month");
+              refundRecoveryOnChange(name, new Date(month), index, "date");
               console.log(month);
             }}
             dateFormat="dd/MM/yyyy"
