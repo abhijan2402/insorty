@@ -58,12 +58,19 @@ const BackDetailReport = () => {
 
   if (
     !PurchaseOutsideData &&
+    PurchaseOutsideData.length === 0 &&
     !TotalExpensesData &&
+    TotalExpensesData.length === 0 &&
     !BorrowedCashReturnData &&
+    BorrowedCashReturnData.length === 0 &&
     !PurchaseBorrowData &&
+    PurchaseBorrowData.length === 0 &&
     !SendData &&
+    SendData.length === 0 &&
     !BorrowedData &&
-    !FinalReportData
+    BorrowedData.length === 0 &&
+    !FinalReportData &&
+    FinalReportData.length === 0
   ) {
     return (
       <div>
@@ -87,6 +94,29 @@ const BackDetailReport = () => {
     FinalReportDataLoaded
   ) {
     return <Loader></Loader>;
+  }
+
+  if (
+    !PurchaseOutsideData &&
+    PurchaseOutsideData.length === 0 &&
+    !TotalExpensesData &&
+    TotalExpensesData.length === 0 &&
+    !BorrowedCashReturnData &&
+    BorrowedCashReturnData.length === 0 &&
+    !PurchaseBorrowData &&
+    PurchaseBorrowData.length === 0 &&
+    !SendData &&
+    SendData.length === 0 &&
+    !BorrowedData &&
+    BorrowedData.length === 0 &&
+    !FinalReportData &&
+    FinalReportData.length === 0
+  ) {
+    return (
+      <div>
+        <h1 className="text-red-600">No Data Found</h1>
+      </div>
+    );
   }
 
   // console.log(RMLData, "RMLData");
@@ -892,7 +922,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {!BorrowedData && BorrowedData.length === 0 ? (
+              {/* {!BorrowedData && BorrowedData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
@@ -921,7 +951,27 @@ const BackDetailReport = () => {
                       );
                     })}
                 </>
-              )}
+              )} */}
+
+              {BorrowedData.filter((item) => {
+                if (item.date?.toString().includes(filterDate.toString())) {
+                  return item;
+                } else if (filterDate === "") {
+                  return item;
+                }
+                return false;
+              }).map((item, index) => {
+                const { entries } = item;
+                return (
+                  <Borrowed
+                    key={index}
+                    index={index}
+                    item={item}
+                    entries={entries}
+                  ></Borrowed>
+                );
+              })}
+
               <tr>
                 <td className="tg-0lax" colSpan={2}>
                   Total
