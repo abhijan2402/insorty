@@ -57,6 +57,26 @@ const BackDetailReport = () => {
   });
 
   if (
+    !PurchaseOutsideData &&
+    !TotalExpensesData &&
+    !BorrowedCashReturnData &&
+    !PurchaseBorrowData &&
+    !SendData &&
+    !BorrowedData &&
+    !FinalReportData
+  ) {
+    return (
+      <div>
+        <h1 className="text-red-600">No Data Found</h1>
+      </div>
+    );
+  }
+
+  if (!BorrowedData && BorrowedData.length === 0) {
+    return <h1>No Data Found</h1>;
+  }
+
+  if (
     RMLLoaded ||
     PurchaseOutsideLoaded ||
     TotalExpensesLoaded ||
@@ -872,30 +892,34 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {BorrowedData && BorrowedData.length === 0 ? (
+              {!BorrowedData && BorrowedData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
               ) : (
                 <>
-                  {BorrowedData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).map((item, index) => {
-                    const { entries } = item;
-                    return (
-                      <Borrowed
-                        key={index}
-                        index={index}
-                        item={item}
-                        entries={entries}
-                      ></Borrowed>
-                    );
-                  })}
+                  {BorrowedData &&
+                    BorrowedData > 0 &&
+                    BorrowedData.filter((item) => {
+                      if (
+                        item.date?.toString().includes(filterDate.toString())
+                      ) {
+                        return item;
+                      } else if (filterDate === "") {
+                        return item;
+                      }
+                      return false;
+                    }).map((item, index) => {
+                      const { entries } = item;
+                      return (
+                        <Borrowed
+                          key={index}
+                          index={index}
+                          item={item}
+                          entries={entries}
+                        ></Borrowed>
+                      );
+                    })}
                 </>
               )}
               <tr>
@@ -904,25 +928,39 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {BorrowedData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
+                  {!BorrowedData && BorrowedData.length === 0 ? (
+                    <>
+                      <p>No Data Found</p>
+                    </>
+                  ) : (
+                    <>
+                      {BorrowedData &&
+                        BorrowedData > 0 &&
+                        BorrowedData.filter((item) => {
+                          if (
+                            item.date
+                              ?.toString()
+                              .includes(filterDate.toString())
+                          ) {
+                            return item;
+                          } else if (filterDate === "") {
+                            return item;
+                          }
+                          return false;
+                        }).reduce(
                           (total, currentItem) =>
                             (total =
                               total +
-                              Number(currentItem.amount.$numberDecimal)),
+                              currentItem.entries.reduce(
+                                (total, currentItem) =>
+                                  (total =
+                                    total +
+                                    Number(currentItem.amount.$numberDecimal)),
+                                0
+                              )),
                           0
-                        )),
-                    0
+                        )}
+                    </>
                   )}
                 </td>
                 <td className="tg-0lax" />

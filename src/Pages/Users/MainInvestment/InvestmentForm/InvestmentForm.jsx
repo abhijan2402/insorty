@@ -1,4 +1,3 @@
-import moment from "moment/moment";
 import React from "react";
 import DatePicker from "react-datepicker";
 
@@ -8,8 +7,7 @@ const InvestmentForm = ({
   name,
   handelOnChangeMainInvestment,
 }) => {
-
-  console.log(mainInvestment.date)
+  console.log(mainInvestment.date);
 
   return (
     <>
@@ -34,15 +32,16 @@ const InvestmentForm = ({
           // onChange={event => handelOnChangeMainInvestment(name, moment(event.target.value, 'dd-mm-yyyy').toDate(), index, 'date')}
           /> */}
           <DatePicker
+            // selected the date from the database and convert it to date format for display in the input box
             selected={new Date(mainInvestment.date)}
             name="date"
             onChange={(date) => {
-              handelOnChangeMainInvestment(name, new Date(date), index, 'date');
+              handelOnChangeMainInvestment(name, new Date(date), index, "date");
               console.log(date);
             }}
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
-            // className="inputBox"
+            className="inputBox"
           />
         </td>
         <td>
@@ -51,7 +50,14 @@ const InvestmentForm = ({
             name="price"
             className="semiSmallInput"
             defaultValue={mainInvestment.price}
-            onChange={event => handelOnChangeMainInvestment(name, event.target.value, index, 'price')}
+            onChange={(event) =>
+              handelOnChangeMainInvestment(
+                name,
+                event.target.value,
+                index,
+                "price"
+              )
+            }
           />
         </td>
       </tr>

@@ -1,34 +1,52 @@
 import React from "react";
+import DatePicker from "react-datepicker";
 
-const Reserve = () => {
+const Reserve = ({ reserve, index, reserveAmountOnChange, name }) => {
+  const { details, price } = reserve;
+
   return (
     <>
       <tr>
-        <th>1</th>
+        <th>{index + 1}</th>
         <td>
           <input
             type="text"
-            name="brandName"
-            value="ब्राण्ड/ Brand Name"
-            readOnly
+            name="details"
+            defaultValue={details}
+            onChange={(e) => {
+              reserveAmountOnChange(name, e.target.value, index, "details");
+            }}
             className="semiSmallInput"
           />
         </td>
         <td>
-          <input
+          {/* <input
             type="date"
             name="date"
-            value="2021-08-01"
-            readOnly
+            defaultValue={date}
             className="semiSmallInput"
+          /> */}
+          <DatePicker
+            // selected={new Date(reserve?.month)}
+            selected={new Date(reserve.month)}
+            name="month"
+            onChange={(month) => {
+              reserveAmountOnChange(name, new Date(month), index, "month");
+              console.log(month);
+            }}
+            dateFormat="dd/MM/yyyy"
+            placeholderText={"dd/mm/yyyy"}
+            className="inputBox"
           />
         </td>
         <td>
           <input
             type="number"
             name="price"
-            value={162000}
-            readOnly
+            defaultValue={price}
+            onChange={(e) => {
+              reserveAmountOnChange(name, e.target.value, index, "price");
+            }}
             className="semiSmallInput"
           />
         </td>

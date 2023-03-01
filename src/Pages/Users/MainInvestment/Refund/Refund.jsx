@@ -1,34 +1,64 @@
-import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-const Refund = () => {
+
+const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
+  const { type, price } = refundRecovery;
+
   return (
     <>
       <tr>
-        <th>1</th>
+        <th>{index + 1}</th>
         <td>
-          <input
+          {/* <input
             type="text"
             name="brandName"
             value="ब्राण्ड/ Brand Name"
             readOnly
             className="semiSmallInput"
-          />
+          /> */}
+
+          <select
+            className="select w-full max-w-xs"
+            name="type"
+            defaultValue={type}
+            onChange={(e) => {
+              refundRecoveryOnChange(name, e.target.value, index, "type");
+            }}
+          >
+            <option selected value={"REFUND"}>
+              REFUND
+            </option>
+            <option value={"RECOVERY"}>RECOVERY</option>
+          </select>
         </td>
         <td>
-          <input
+          {/* <input
             type="date"
             name="date"
             value="2021-08-01"
-            readOnly
             className="semiSmallInput"
+          /> */}
+          <DatePicker
+            selected={new Date(refundRecovery?.date)}
+            name="month"
+            onChange={(month) => {
+              refundRecoveryOnChange(name, new Date(month), index, "month");
+              console.log(month);
+            }}
+            dateFormat="dd/MM/yyyy"
+            placeholderText={"dd/mm/yyyy"}
+            className="inputBox"
           />
         </td>
         <td>
           <input
             type="number"
             name="price"
-            value={162000}
-            readOnly
+            defaultValue={price}
+            onChange={(e) => {
+              refundRecoveryOnChange(name, e.target.value, index, "price");
+            }}
             className="semiSmallInput"
           />
         </td>
