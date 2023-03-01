@@ -53,6 +53,31 @@ const useMainInvestmentHooks = () => {
     return total;
   };
 
+  const calRefundTotal=(data)=>{
+    let refundTotal = data.refundRecoveryDetails.entries.length>0 ? data.refundRecoveryDetails.entries.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.price)),
+      0
+    ) : 0
+    const total = data.mainInvest.total  - refundTotal
+
+    return total
+  }
+
+  const calAllTotal=(data)=>{
+    let refundTotal = data.refundRecoveryDetails.entries.length>0 ? data.refundRecoveryDetails.entries.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.price)),
+      0
+    ) : 0
+
+    let reserveTotal = data.reserveAmount.entries.length > 0 ? data.reserveAmount.entries.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.price)),
+      0
+    ) : 0
+    const total = data.mainInvest.total  - refundTotal - reserveTotal
+
+    return total
+  }
+
   const handleInvestmentChange = useCallback(
     (field, newValue, index = -1, subfield = "") => {
       // console.log(field, newValue, index, subfield)
@@ -69,6 +94,9 @@ const useMainInvestmentHooks = () => {
       else if (field === "total") _data.mainInvest.total = Number(newValue);
       // else if(field === 'refundRecovery')
       _data.mainInvest.reserveAmount.price = calculateReserveAmount(_data);
+      _data.refundRecoveryDetails.total = calRefundTotal(_data)
+      _data.reserveAmount.total = calAllTotal(_data)
+
       // calculateReserveAmount()
 
       setData(_data);
@@ -131,8 +159,11 @@ const useMainInvestmentHooks = () => {
     subfield = ""
   ) => {
     let _data = { ...data };
-    if (field === "refundRecovery")
+    // if (field === "refundRecovery")
       _data.refundRecoveryDetails.entries[index][subfield] = newValue;
+    _data.refundRecoveryDetails.total = calRefundTotal(_data)
+    _data.reserveAmount.total = calAllTotal(_data)
+
     // else if (field === "cashInHand")
     //   _data.mainInvest.cashInHand.price = Number(newValue);
     // else if (field === "belonging")
@@ -155,9 +186,9 @@ const useMainInvestmentHooks = () => {
     subfield = ""
   ) => {
     let _data = { ...data };
-    if (field === "reserve")
       _data.reserveAmount.entries[index][subfield] = newValue;
-    
+    _data.refundRecoveryDetails.total = calRefundTotal(_data)
+    _data.reserveAmount.total = calAllTotal(_data)
     setData(_data);
   };
 
