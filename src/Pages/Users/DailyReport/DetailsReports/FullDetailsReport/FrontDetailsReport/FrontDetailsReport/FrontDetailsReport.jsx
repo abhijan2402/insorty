@@ -381,7 +381,7 @@ const FrontDetailsReport = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredExceptionalData.map((exceptionalData, index) => {
+              {filteredExceptionalData && filteredExceptionalData.map((exceptionalData, index) => {
                 return (
                   <FristFormDetails
                     key={index}
@@ -400,7 +400,7 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData.filter((item) => {
+                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
                     if (
                       item.date
                         ?.toString()
@@ -424,7 +424,7 @@ const FrontDetailsReport = () => {
                   )}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData.filter((item) => {
+                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
                     if (
                       item.date
                         ?.toString()
@@ -449,7 +449,7 @@ const FrontDetailsReport = () => {
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData.filter((item) => {
+                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
                     if (
                       item.date
                         ?.toString()
@@ -474,7 +474,7 @@ const FrontDetailsReport = () => {
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData.filter((item) => {
+                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
                     if (
                       item.date
                         ?.toString()
@@ -498,7 +498,7 @@ const FrontDetailsReport = () => {
                   )}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData.filter((item) => {
+                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
                     if (
                       item.date
                         ?.toString()
@@ -522,7 +522,7 @@ const FrontDetailsReport = () => {
                   )}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData.filter((item) => {
+                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
                     if (
                       item.date
                         ?.toString()
@@ -546,7 +546,7 @@ const FrontDetailsReport = () => {
                   )}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData.filter((item) => {
+                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
                     if (
                       item.date
                         ?.toString()
@@ -571,7 +571,7 @@ const FrontDetailsReport = () => {
                 </td>
 
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData.filter((item) => {
+                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
                     if (
                       item.date
                         ?.toString()

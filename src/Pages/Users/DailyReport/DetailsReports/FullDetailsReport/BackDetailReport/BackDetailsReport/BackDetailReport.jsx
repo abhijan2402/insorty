@@ -56,25 +56,23 @@ const BackDetailReport = () => {
     content: () => container.current,
   });
 
-  if (
-    !PurchaseOutsideData &&
-    !TotalExpensesData &&
-    !BorrowedCashReturnData &&
-    !PurchaseBorrowData &&
-    !SendData &&
-    !BorrowedData &&
-    !FinalReportData
-  ) {
-    return (
-      <div>
-        <h1 className="text-red-600">No Data Found</h1>
-      </div>
-    );
-  }
+  // if (
+  //   !PurchaseOutsideData ||
+  //   !TotalExpensesData ||
+  //   !BorrowedCashReturnData ||
+  //   !PurchaseBorrowData ||
+  //   !SendData ||
+  //   !BorrowedData ||
+  //   !FinalReportData
+  // ) {
+  //   return (
+  //     <div>
+  //       <h1 className="text-red-600">No Data Found</h1>
+  //     </div>
+  //   );
+  // }
 
-  if (!BorrowedData && BorrowedData.length === 0) {
-    return <h1>No Data Found</h1>;
-  }
+  
 
   if (
     RMLLoaded ||
@@ -87,6 +85,10 @@ const BackDetailReport = () => {
     FinalReportDataLoaded
   ) {
     return <Loader></Loader>;
+  }
+
+  if (!BorrowedData.length) {
+    return <h1>No Data Found</h1>;
   }
 
   // console.log(RMLData, "RMLData");
