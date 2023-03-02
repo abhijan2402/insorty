@@ -8,14 +8,15 @@ import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment/moment";
+import useMainInvestmentHooks from '../../MainInvestment/MainInvestmentHooks/useMainInvestmentHooks'
 
 const SelfBill = () => {
   const token = localStorage.getItem("token");
   // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
-  const [refundDataList, setRefundDataList] = React.useState(0);
   const { brandsLoaded } = useLiquors();
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const { data } = useMainInvestmentHooks()
 
   const { data: SelfBillData, isLoading } = useQuery({
     queryKey: ["SelfBillData"],
@@ -32,7 +33,7 @@ const SelfBill = () => {
     },
   });
 
-  if (isLoading || brandsLoaded) {
+  if (isLoading || brandsLoaded || data.isLoading) {
     return <Loader></Loader>;
   }
 
@@ -49,13 +50,35 @@ const SelfBill = () => {
     //if filterPass comes back `false` the row is filtered out
     return filterPass;
   });
+  const filteredRefund = data?.refundRecoveryDetails?.entries.filter((entry)=>
+
+    entry.type==="REFUND"
+
+  ).filter((item) => {
+    let filterPass = true;
+    const date = moment(item.date).format("DD/MM/YYYY");
+
+    if (StartDate) {
+      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+    }
+    if (EndDate) {
+      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+    }
+    //if filterPass comes back `false` the row is filtered out
+    return filterPass;
+  });
+
+  console.log(filteredRefund)
 
   const totalAmountData = filteredData?.map((item) => {
     return item.total;
   });
 
   const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
-  const netPaidAmount = totalAmount - refundDataList;
+  const netPaidAmount = totalAmount - filteredRefund.reduce(
+    (total, currentItem) => (total = total + Number(currentItem.price)),
+    0
+  );
 
   return (
     <section>
@@ -69,7 +92,6 @@ const SelfBill = () => {
               selected={StartDate}
               onChange={(date) => {
                 setStartDate(date);
-                console.log(moment(date).format());
               }}
               dateFormat="dd/MM/yyyy"
               placeholderText={"dd/mm/yyyy"}
@@ -149,8 +171,11 @@ const SelfBill = () => {
                   <input
                     type="number"
                     className="semiSmallInput"
-                    value={refundDataList}
-                    onChange={(e) => setRefundDataList(e.target.value)}
+                    disabled
+                    value={filteredRefund.reduce(
+                      (total, currentItem) => (total = total + Number(currentItem.price)),
+                      0
+                    )}
                   />
                 </td>
               </tr>

@@ -49,6 +49,7 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
               refundRecoveryOnChange(name, new Date(month), index, "date");
               console.log(month);
             }}
+            
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
             className="inputBox"

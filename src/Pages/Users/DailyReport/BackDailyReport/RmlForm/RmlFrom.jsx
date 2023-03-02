@@ -45,7 +45,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
 
             <Autocomplete
               options={liquors.length > 0 ? liquors.filter((brand) => {
-                if (brand.type === 'RML') {
+                if (brand.type === 'DESHIRML') {
                   return brand
                 }
               }) : ['no options']}

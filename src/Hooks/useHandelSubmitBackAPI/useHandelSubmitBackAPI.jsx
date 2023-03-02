@@ -441,8 +441,8 @@ const useHandelSubmitBackAPI = () => {
             data[5].success === true &&
             data[6].success === true &&
             data[7].success === true &&
-            data[8].success === true &&
-            data[9].success === true
+            data[8].success === true 
+            // data[9].success === true
           ) {
             Swal.fire({
               icon: "success",
@@ -493,17 +493,11 @@ const useHandelSubmitBackAPI = () => {
     } finally {
       setIsLoading(false);
     }
-    console.log(send);
-    console.log(fourthFront);
-    console.log(beerTotal);
-    console.log(firstformData);
-    console.log(secondFront);
-    console.log(fifthFront);
-    console.log(Number(intoAccountState));
-    console.log(sixthFront);
-    console.log(seventhFront);
-    console.log(pichlaBakaya);
-    console.log(paidDues);
+    console.log([...dataDetails650,
+              ...dataDetails550,
+              ...dataDetails330,
+              ...beerForm,]);
+    
   };
 
   return {

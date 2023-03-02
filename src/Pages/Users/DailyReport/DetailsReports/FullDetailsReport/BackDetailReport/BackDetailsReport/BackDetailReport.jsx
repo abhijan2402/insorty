@@ -69,9 +69,9 @@ const BackDetailReport = () => {
     return <Loader></Loader>;
   }
 
-  if (!BorrowedData.length) {
-    return <h1>No Data Found</h1>;
-  }
+  // if (!BorrowedData.length) {
+  //   return <h1>No Data Found</h1>;
+  // }
 
   // console.log(RMLData, "RMLData");
   // console.log(BorrowedData)
@@ -624,7 +624,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {BorrowedCashReturnData && BorrowedCashReturnData.length === 0 ? (
+              {!BorrowedCashReturnData || BorrowedCashReturnData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
@@ -701,7 +701,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {PurchaseBorrowData && PurchaseBorrowData.length === 0 ? (
+              {!PurchaseBorrowData && PurchaseBorrowData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
@@ -781,7 +781,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {SendData && SendData.length === 0 ? (
+              {!SendData || SendData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
@@ -907,7 +907,8 @@ const BackDetailReport = () => {
                 </>
               )} */}
 
-              {BorrowedData.filter((item) => {
+              {BorrowedData &&
+                BorrowedData.length > 0 && BorrowedData.filter((item) => {
                 if (item.date?.toString().includes(filterDate.toString())) {
                   return item;
                 } else if (filterDate === "") {
@@ -932,14 +933,14 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {!BorrowedData && BorrowedData.length === 0 ? (
+                  {!BorrowedData || !BorrowedData.length || BorrowedData.length === 0 ? (
                     <>
                       <p>No Data Found</p>
                     </>
                   ) : (
                     <>
                       {BorrowedData &&
-                        BorrowedData > 0 &&
+                        BorrowedData.length > 0 &&
                         BorrowedData.filter((item) => {
                           if (
                             item.date
@@ -991,7 +992,11 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {FinalReportData &&
+              {!FinalReportData  ? (
+                <>
+                  <p>No Data Found</p>
+                </>
+              ) : 
               FinalReportData.filter((item) => {
                 if (item?.date?.toString().includes(filterDate.toString())) {
                   return item;
@@ -1003,9 +1008,12 @@ const BackDetailReport = () => {
                 <>
                   <p>No Data Found</p>
                 </>
-              ) : (
+              ) : 
+                 
+              
+              (
                 <FinalReport
-                  data={FinalReportData.filter((item) => {
+                    data={FinalReportData.filter((item) => {
                     if (
                       item?.date?.toString().includes(filterDate.toString())
                     ) {
@@ -1014,7 +1022,7 @@ const BackDetailReport = () => {
                       return item;
                     }
                     return false;
-                  })}
+                    })  }
                 ></FinalReport>
               )}
             </tbody>

@@ -1,7 +1,6 @@
 import React from "react";
 
 const FristFormDetails = ({ exceptionalData, index }) => {
-  console.log(exceptionalData, "++++++++++++++++++++ Data");
 
   const {
     brandName,
