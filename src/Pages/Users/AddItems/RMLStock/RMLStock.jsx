@@ -27,6 +27,8 @@ const RmlStock = () => {
     },
   });
 
+  if (isLoading) return <Loader></Loader>;
+
   const rmlStockData = rmlStock?.filter((item) => item.type === "RML");
   const filteredData = rmlStockData.filter((item) => {
     let filterPass = true;
@@ -41,7 +43,13 @@ const RmlStock = () => {
     return filterPass;
   });
 
-  if (isLoading) return <Loader></Loader>;
+  if (!rmlStockData.length) {
+    return <h1>No Data Found</h1>;
+  }
+
+  if (!filteredData.length) {
+    return <h1>No Data Found</h1>;
+  }
 
   return (
     <section>
@@ -99,53 +107,55 @@ const RmlStock = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map((brand, index) => {
-                  return (
-                    <>
-                      {brand.sizes.map((size) => {
-                        if (
-                          size.quantityInML !== 650 &&
-                          size.quantityInML !== 550 &&
-                          size.quantityInML !== 330
-                        ) {
-                          return (
-                            <tr>
-                              <td>{index + 1}</td>
-                              <td>{brand.brandName}</td>
-                              <td>{size.quantityInML}</td>
-                              <td> {size.currentStock}</td>
-                              <td> {size.averageRate.$numberDecimal}</td>
-                              <td>
-                                {" "}
-                                {size.currentStock *
-                                  Number(size.averageRate.$numberDecimal)}
-                              </td>
-                            </tr>
-                          );
-                        }
-                      })}
-                    </>
-                  );
-                })}
+                {filteredData &&
+                  filteredData.map((brand, index) => {
+                    return (
+                      <>
+                        {brand.sizes.map((size) => {
+                          if (
+                            size.quantityInML !== 650 &&
+                            size.quantityInML !== 550 &&
+                            size.quantityInML !== 330
+                          ) {
+                            return (
+                              <tr>
+                                <td>{index + 1}</td>
+                                <td>{brand.brandName}</td>
+                                <td>{size.quantityInML}</td>
+                                <td> {size.currentStock}</td>
+                                <td> {size.averageRate.$numberDecimal}</td>
+                                <td>
+                                  {" "}
+                                  {size.currentStock *
+                                    Number(size.averageRate.$numberDecimal)}
+                                </td>
+                              </tr>
+                            );
+                          }
+                        })}
+                      </>
+                    );
+                  })}
                 <tr>
                   <td colSpan="5">Total</td>
                   <td>
-                    {filteredData.reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.sizes.reduce(
-                            (total, currentItem) =>
-                              (total =
-                                total +
-                                currentItem.currentStock *
-                                  Number(
-                                    currentItem.averageRate.$numberDecimal
-                                  )),
-                            0
-                          )),
-                      0
-                    )}
+                    {filteredData &&
+                      filteredData.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.sizes.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  currentItem.currentStock *
+                                    Number(
+                                      currentItem.averageRate.$numberDecimal
+                                    )),
+                              0
+                            )),
+                        0
+                      )}
                   </td>
                 </tr>
               </tbody>

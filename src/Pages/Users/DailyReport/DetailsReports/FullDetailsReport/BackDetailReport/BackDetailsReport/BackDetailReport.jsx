@@ -56,9 +56,6 @@ const BackDetailReport = () => {
     content: () => container.current,
   });
 
-
-  
-
   if (
     RMLLoaded ||
     PurchaseOutsideLoaded ||
@@ -71,7 +68,6 @@ const BackDetailReport = () => {
   ) {
     return <Loader></Loader>;
   }
-
 
   if (!BorrowedData.length) {
     return <h1>No Data Found</h1>;
