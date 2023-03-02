@@ -56,21 +56,6 @@ const BackDetailReport = () => {
     content: () => container.current,
   });
 
-  // if (
-  //   !PurchaseOutsideData ||
-  //   !TotalExpensesData ||
-  //   !BorrowedCashReturnData ||
-  //   !PurchaseBorrowData ||
-  //   !SendData ||
-  //   !BorrowedData ||
-  //   !FinalReportData
-  // ) {
-  //   return (
-  //     <div>
-  //       <h1 className="text-red-600">No Data Found</h1>
-  //     </div>
-  //   );
-  // }
 
   
 
@@ -86,6 +71,7 @@ const BackDetailReport = () => {
   ) {
     return <Loader></Loader>;
   }
+
 
   if (!BorrowedData.length) {
     return <h1>No Data Found</h1>;
@@ -894,7 +880,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {!BorrowedData && BorrowedData.length === 0 ? (
+              {/* {!BorrowedData && BorrowedData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
@@ -923,7 +909,27 @@ const BackDetailReport = () => {
                       );
                     })}
                 </>
-              )}
+              )} */}
+
+              {BorrowedData.filter((item) => {
+                if (item.date?.toString().includes(filterDate.toString())) {
+                  return item;
+                } else if (filterDate === "") {
+                  return item;
+                }
+                return false;
+              }).map((item, index) => {
+                const { entries } = item;
+                return (
+                  <Borrowed
+                    key={index}
+                    index={index}
+                    item={item}
+                    entries={entries}
+                  ></Borrowed>
+                );
+              })}
+
               <tr>
                 <td className="tg-0lax" colSpan={2}>
                   Total
