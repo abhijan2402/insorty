@@ -1,5 +1,5 @@
+/* eslint-disable no-use-before-define */
 import React from "react";
-import { FaCalendarAlt } from "react-icons/fa";
 import PaymentForm from "../PaymentForm/PaymentForm";
 import AddPayment from "../AddPayment/AddPayment";
 import Swal from "sweetalert2";
@@ -9,6 +9,8 @@ import Loader from "../../../../Components/Loader/Loader";
 const Payments = () => {
   const token = localStorage.getItem("token");
   const [paymentDetailsData, setPaymentDetailsData] = React.useState([]);
+  const [debitMonth, setDebitMonth] = React.useState("");
+  const [depositMonth, setDepositMonth] = React.useState("");
 
   const { data: paymentData, isLoading, refetch } = useQuery({
     queryKey: ["paymentData"],
@@ -28,16 +30,13 @@ const Payments = () => {
     },
   });
 
-  const paymentDetails = paymentData?.entries;
   console.log("Payments -> paymentDetails", paymentDetailsData);
 
   const handelAddPayment = async (e) => {
     e.preventDefault();
     const from = e.target;
     const debitAmount = from.debitAmount.value;
-    const debitMonth = from.debitMonth.value;
     const depositAmount = from.depositAmount.value;
-    const depositDate = from.depositMonth.value;
     const currentBalanceDebit = from.currentBalance.value;
     const description = from.details.value;
 
@@ -45,11 +44,11 @@ const Payments = () => {
       {
         debit: {
           cash: debitAmount,
-          month: debitMonth,
+          date: debitMonth,
         },
         deposit: {
           cash: depositAmount,
-          month: depositDate,
+          date: depositMonth,
         },
         currentBalalcne: currentBalanceDebit,
         description: description,
@@ -96,29 +95,6 @@ const Payments = () => {
     <section>
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">दुकान/बार पेमेंट</h2>
-        {/* <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">From</h2>
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <input
-              type="text"
-              value={"12 Dec 2022 "}
-              name="year"
-              className="semiSmallInput"
-            />
-          </div>
-          <h2 className="font-bold text-[1.5rem]">To</h2>
-
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <input
-              type="text"
-              value={"07 January 2023 "}
-              name="year"
-              className="semiSmallInput"
-            />
-          </div>
-        </div> */}
         <div className="divider my-2"></div>
       </div>
 
@@ -220,7 +196,13 @@ const Payments = () => {
           </div>
         </div>
       </div>
-      <AddPayment handelAddPayment={handelAddPayment}></AddPayment>
+      <AddPayment
+        handelAddPayment={handelAddPayment}
+        debitMonth={debitMonth}
+        setDebitMonth={setDebitMonth}
+        depositMonth={depositMonth}
+        setDepositMonth={setDepositMonth}
+      ></AddPayment>
     </section>
   );
 };

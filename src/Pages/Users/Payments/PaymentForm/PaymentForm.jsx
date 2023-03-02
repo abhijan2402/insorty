@@ -1,52 +1,61 @@
 import React from "react";
 import moment from "moment/moment";
 
-const PaymentForm = ({ index, payment,paymentData }) => {
+const PaymentForm = ({ index, payment, paymentData }) => {
   // console.log(payment.entries.length);
 
+  if (payment.entries.length === 0) {
+    return (
+      <div>
+        <td>No Payment Data Found</td>
+      </div>
+    );
+  }
 
-if(payment.entries.length === 0){
-  return(
-    <div>
-    <td >
-      No Payment Data Found
-    </td>
-    </div>
-  )
-}
-
-  let shesh = paymentData.slice(0, index).reduce(
-    (total, currentItem) => (total = total + currentItem.entries.reduce(
-      (total, currentItem) => (total = total + (currentItem.debit.cash ? currentItem.debit.cash : 0)),
+  let shesh = paymentData
+    .slice(0, index)
+    .reduce(
+      (total, currentItem) =>
+        (total =
+          total +
+          currentItem.entries.reduce(
+            (total, currentItem) =>
+              (total =
+                total + (currentItem.debit.cash ? currentItem.debit.cash : 0)),
+            0
+          )),
       0
-    )),
-    0
-  );
-  let totalPaid = paymentData.slice(0, index).reduce(
-    (total, currentItem) => (total = total + currentItem.entries.reduce(
-      (total, currentItem) => (total = total + (currentItem.deposit.cash ? currentItem.deposit.cash : 0)),
+    );
+  let totalPaid = paymentData
+    .slice(0, index)
+    .reduce(
+      (total, currentItem) =>
+        (total =
+          total +
+          currentItem.entries.reduce(
+            (total, currentItem) =>
+              (total =
+                total +
+                (currentItem.deposit.cash ? currentItem.deposit.cash : 0)),
+            0
+          )),
       0
-    )),
-    0
-  );
+    );
 
-  console.log(shesh,totalPaid)
+  console.log(shesh, totalPaid);
   return (
     <>
       <tr>
         <td>{index + 1}</td>
 
-        { (payment.entries.map((entry) => {
-         {/* {entry.debit ? console.log('found') : console.log('not found')} */}
-
-          
+        {payment.entries.map((entry) => {
           return (
             <>
               <td>
                 <div className="flex gap-4">
                   <div className="form-control">
                     <input
-                    disabled
+                      disabled
                       type="number"
                       name="debit_amount"
                       value={shesh - totalPaid + entry.debit.cash}
@@ -56,11 +65,11 @@ if(payment.entries.length === 0){
 
                   <div className="form-control">
                     <input
-                    disabled
+                      disabled
                       type="text"
                       name="debit_month"
-                      value={moment(entry.debit.month).format("DD/MM/YYYY")}
-                      className="commonSmallForm"
+                      value={moment(entry.debit.date).format("DD/MM/YYYY")}
+                      className="dailyReportInput"
                     />
                   </div>
                 </div>
@@ -70,7 +79,7 @@ if(payment.entries.length === 0){
                 <div className="flex gap-4">
                   <div className="form-control">
                     <input
-                    disabled
+                      disabled
                       type="number"
                       name="deposit_amount"
                       value={entry.deposit.cash}
@@ -80,11 +89,11 @@ if(payment.entries.length === 0){
 
                   <div className="form-control">
                     <input
-                    disabled
+                      disabled
                       type="text"
                       name="deposit_date"
                       value={moment(entry.deposit.date).format("DD/MM/YYYY")}
-                      className="commonSmallForm"
+                      className="dailyReportInput"
                     />
                   </div>
                 </div>
@@ -93,11 +102,13 @@ if(payment.entries.length === 0){
               <td>
                 <div className="form-control">
                   <input
-                  disabled
+                    disabled
                     type="number"
                     name="current_balance_debit"
                     // value={entry.currentBalance}
-                    value={shesh - totalPaid + entry.deposit.cash - entry.debit.cash}
+                    value={
+                      shesh - totalPaid + entry.deposit.cash - entry.debit.cash
+                    }
                     className="semiSmallInput"
                   />
                 </div>
@@ -107,7 +118,7 @@ if(payment.entries.length === 0){
                 <div className="flex gap-4">
                   <div className="form-control">
                     <input
-                    disabled
+                      disabled
                       type="text"
                       name="description"
                       value={entry.description}
@@ -117,10 +128,8 @@ if(payment.entries.length === 0){
                 </div>
               </td>
             </>
-          )
-        }))
-}
-        
+          );
+        })}
 
         {/* ============= कुल योग ================ */}
       </tr>

@@ -3,7 +3,6 @@ import React from "react";
 const CommisionForm = ({ index, commison }) => {
   const { entries } = commison;
 
-
   const filterCommisionForm = (type) => {
     let filtered = entries.filter((item) => {
       return item.type === "COMMISSION";
@@ -18,27 +17,21 @@ const CommisionForm = ({ index, commison }) => {
         const { description, amount, comment } = item;
         const dateData = commison?.date;
 
-        const changeDateFormet = dateData?.split("T")[0]; 
+        const changeDateFormet = dateData?.split("T")[0];
 
         return (
           <tr key={index}>
             <th>{index}</th>
             <td>
-              <div className="form-control">
-                {changeDateFormet}
-              </div>
+              <div className="form-control">{changeDateFormet}</div>
             </td>
 
             <td>
-              <div className="form-control">
-                {amount?.$numberDecimal}
-              </div>
+              <div className="form-control">{amount?.$numberDecimal}</div>
             </td>
 
             <td>
-              <div className="form-control">
-                {comment}
-              </div>
+              <div className="form-control">{comment}</div>
             </td>
           </tr>
         );

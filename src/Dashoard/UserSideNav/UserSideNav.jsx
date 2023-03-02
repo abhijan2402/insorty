@@ -3,12 +3,9 @@ import Logo from "../../images/insorty.png";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import {
-  FaPowerOff,
-} from "react-icons/fa";
+import { FaPowerOff } from "react-icons/fa";
 
 const SideNav = () => {
-
   let activeStyle = {
     background: "gray",
     color: "white",
@@ -19,7 +16,6 @@ const SideNav = () => {
   return (
     <>
       <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r sticky  left-0 sidenav">
-
         <div
           style={{
             left: "0",
@@ -27,12 +23,11 @@ const SideNav = () => {
           }}
           className="flex-col w-64 fixed px-4 md:mb-10 top-0 md:top-0 bg-white border-r flex "
         >
-
           <div className="text-3xl flex justify-center items-center font-semibold  text-white">
             <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />
           </div>
           <Link>
-            <div >
+            <div>
               <h1 className="font-bold text-red-400 text-center uppercase">
                 {jwtDecode(localStorage.getItem("token")).name}
               </h1>
@@ -43,13 +38,10 @@ const SideNav = () => {
 
         <div className="flex flex-col justify-between flex-1 md:mt-28">
           <nav>
-
             <li className="my-4">
               <NavLink
                 to="/user/dailyreport"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Daily Report / दैनिक रिपोर्ट
               </NavLink>
@@ -58,9 +50,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/partners"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Partners / पार्टनर
               </NavLink>
@@ -69,9 +59,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/branch"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Branch / ब्रांच
               </NavLink>
@@ -80,9 +68,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/salary"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Salary / वेतन
               </NavLink>
@@ -91,9 +77,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/payments"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Payments दुकान/बार पेमेंट
               </NavLink>
@@ -102,9 +86,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/commision"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Commision / कमीशन
               </NavLink>
@@ -113,9 +95,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/borrow"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Borrow / उधारी
               </NavLink>
@@ -124,9 +104,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/finalreport"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Final report / हिसाब
               </NavLink>
@@ -135,9 +113,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/selfbill"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Self Bill / दुकान बिल का फोर्मेट
               </NavLink>
@@ -146,15 +122,13 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/outbill"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Out Bill / बाहर के बिल का फोर्मेट
               </NavLink>
             </li>
 
-            <li className="my-4">
+            {/* <li className="my-4">
               <NavLink
                 to="/user/extra"
                 style={({ isActive }) =>
@@ -163,14 +137,12 @@ const SideNav = () => {
               >
                 Extra /राशन सब्जी आदि खरीद
               </NavLink>
-            </li>
+            </li> */}
 
             <li className="my-4">
               <NavLink
                 to="/user/maininvestment"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Main Investment / मुख्य इन्वेस्ट
               </NavLink>
@@ -179,9 +151,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/stocklanding"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Stock Lending
               </NavLink>
@@ -190,9 +160,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/allItems"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Add Items
               </NavLink>
@@ -200,9 +168,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/stock"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Stock
               </NavLink>
@@ -211,9 +177,7 @@ const SideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/user/sendFormat"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 All Partners
               </NavLink>

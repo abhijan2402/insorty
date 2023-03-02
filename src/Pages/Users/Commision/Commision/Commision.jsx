@@ -30,7 +30,15 @@ const Commision = () => {
     return <Loader></Loader>;
   }
 
-  console.log(commitsonData, "+++++++++")
+  console.log(commitsonData, "+++++++++");
+
+  const entries = commitsonData.map((item) => {
+    return item.entries;
+  });
+
+  const amount = entries.map((item) => {
+    return item;
+  });
 
   if (!commitsonData.length) {
     return <h1>No Data Found</h1>;
@@ -110,6 +118,13 @@ const Commision = () => {
                     ></CommisionForm>
                   );
                 })}
+
+                <tr>
+                  <td></td>
+                  <th></th>
+                  <th>Total :</th>
+                  <th></th>
+                </tr>
               </tbody>
             </table>
           </div>

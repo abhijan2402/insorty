@@ -1,9 +1,15 @@
 import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddPayment = ({
   handelAddPayment,
   handelOnChangePayment,
   handelOnSubmitPayment,
+  debitMonth,
+  setDebitMonth,
+  depositMonth,
+  setDepositMonth,
 }) => {
   return (
     <section>
@@ -39,13 +45,23 @@ const AddPayment = ({
                 <label className="label">
                   <span className="label-text font-bold">माह</span>
                 </label>
-                <input
+
+                {/* <input
                   style={{
                     border: "1px solid #4CAF50",
                   }}
                   type="date"
                   name="debitMonth"
                   className="input input-bordered w-full"
+                /> */}
+
+                <DatePicker
+                  name="debitMonth"
+                  selected={debitMonth}
+                  onChange={(date) => setDebitMonth(date)}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText={"dd/MM/yyyy"}
+                  className="inputBox"
                 />
               </div>
             </div>
@@ -71,13 +87,22 @@ const AddPayment = ({
                 <label className="label">
                   <span className="label-text font-bold">माह</span>
                 </label>
-                <input
+                {/* <input
                   style={{
                     border: "1px solid #4CAF50",
                   }}
                   type="date"
                   name="depositMonth"
                   className="input input-bordered w-full"
+                /> */}
+
+                <DatePicker
+                  name="depositMonth"
+                  selected={depositMonth}
+                  onChange={(date) => setDepositMonth(date)}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText={"dd/MM/yyyy"}
+                  className="inputBox"
                 />
               </div>
             </div>

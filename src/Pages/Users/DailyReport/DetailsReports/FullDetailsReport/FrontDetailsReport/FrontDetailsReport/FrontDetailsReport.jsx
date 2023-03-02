@@ -53,9 +53,9 @@ const FrontDetailsReport = () => {
     if (StartDate) {
       filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
     }
-    if (EndDate) {
-      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
-    }
+    // if (EndDate) {
+    //   filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+    // }
     return filterPass;
   });
 
@@ -85,7 +85,6 @@ const FrontDetailsReport = () => {
         </button>
       </div>
       <div className="flex gap-4 items-center my-4">
-        <h2 className="font-bold text-[1.5rem]">From</h2>
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
@@ -100,7 +99,7 @@ const FrontDetailsReport = () => {
           />
         </div>
 
-        <h2 className="font-bold text-[1.5rem]">To</h2>
+        {/* <h2 className="font-bold text-[1.5rem]">To</h2>
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
@@ -111,7 +110,7 @@ const FrontDetailsReport = () => {
             className="inputBox"
             placeholderText={"dd/mm/yyyy"}
           />
-        </div>
+        </div> */}
       </div>
       <div className="divider"></div>
 
@@ -120,13 +119,13 @@ const FrontDetailsReport = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th className="tg-baqh" colSpan={42}>
+                <td className="tg-baqh" colSpan={42}>
                   <span
                     style={{ fontWeight: "bold", textDecoration: "underline" }}
                   >
                     अंग्रेजी शराब
                   </span>
-                </th>
+                </td>
               </tr>
               <tr>
                 <td className="tg-baqh" colSpan={42}>
@@ -381,15 +380,16 @@ const FrontDetailsReport = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredExceptionalData && filteredExceptionalData.map((exceptionalData, index) => {
-                return (
-                  <FristFormDetails
-                    key={index}
-                    index={index}
-                    exceptionalData={exceptionalData}
-                  ></FristFormDetails>
-                );
-              })}
+              {filteredExceptionalData &&
+                filteredExceptionalData.map((exceptionalData, index) => {
+                  return (
+                    <FristFormDetails
+                      key={index}
+                      index={index}
+                      exceptionalData={exceptionalData}
+                    ></FristFormDetails>
+                  );
+                })}
 
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
@@ -400,199 +400,207 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
-                    if (
-                      item.date
-                        ?.toString()
-                        .includes(filteredExceptionalData.toString())
-                    ) {
-                      return item;
-                    } else if (filteredExceptionalData === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.openingStock),
-                          0
-                        )),
-                    0
-                  )}
+                  {FrontPageExceptionalData &&
+                    FrontPageExceptionalData.filter((item) => {
+                      if (
+                        item.date
+                          ?.toString()
+                          .includes(filteredExceptionalData.toString())
+                      ) {
+                        return item;
+                      } else if (filteredExceptionalData === "") {
+                        return item;
+                      }
+                      return false;
+                    }).reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.reduce(
+                            (total, currentItem) =>
+                              (total = total + currentItem.openingStock),
+                            0
+                          )),
+                      0
+                    )}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
-                    if (
-                      item.date
-                        ?.toString()
-                        .includes(filteredExceptionalData.toString())
-                    ) {
-                      return item;
-                    } else if (filteredExceptionalData === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.purchaseShop),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
-                    if (
-                      item.date
-                        ?.toString()
-                        .includes(filteredExceptionalData.toString())
-                    ) {
-                      return item;
-                    } else if (filteredExceptionalData === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.purchaseOutSide),
-                          0
-                        )),
-                    0
-                  )}
+                  {FrontPageExceptionalData &&
+                    FrontPageExceptionalData.filter((item) => {
+                      if (
+                        item.date
+                          ?.toString()
+                          .includes(filteredExceptionalData.toString())
+                      ) {
+                        return item;
+                      } else if (filteredExceptionalData === "") {
+                        return item;
+                      }
+                      return false;
+                    }).reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.reduce(
+                            (total, currentItem) =>
+                              (total = total + currentItem.purchaseShop),
+                            0
+                          )),
+                      0
+                    )}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
-                    if (
-                      item.date
-                        ?.toString()
-                        .includes(filteredExceptionalData.toString())
-                    ) {
-                      return item;
-                    } else if (filteredExceptionalData === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.credits),
-                          0
-                        )),
-                    0
-                  )}
+                  {FrontPageExceptionalData &&
+                    FrontPageExceptionalData.filter((item) => {
+                      if (
+                        item.date
+                          ?.toString()
+                          .includes(filteredExceptionalData.toString())
+                      ) {
+                        return item;
+                      } else if (filteredExceptionalData === "") {
+                        return item;
+                      }
+                      return false;
+                    }).reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.reduce(
+                            (total, currentItem) =>
+                              (total = total + currentItem.purchaseOutSide),
+                            0
+                          )),
+                      0
+                    )}
+                </td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {FrontPageExceptionalData &&
+                    FrontPageExceptionalData.filter((item) => {
+                      if (
+                        item.date
+                          ?.toString()
+                          .includes(filteredExceptionalData.toString())
+                      ) {
+                        return item;
+                      } else if (filteredExceptionalData === "") {
+                        return item;
+                      }
+                      return false;
+                    }).reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.reduce(
+                            (total, currentItem) =>
+                              (total = total + currentItem.credits),
+                            0
+                          )),
+                      0
+                    )}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
-                    if (
-                      item.date
-                        ?.toString()
-                        .includes(filteredExceptionalData.toString())
-                    ) {
-                      return item;
-                    } else if (filteredExceptionalData === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.send),
-                          0
-                        )),
-                    0
-                  )}
+                  {FrontPageExceptionalData &&
+                    FrontPageExceptionalData.filter((item) => {
+                      if (
+                        item.date
+                          ?.toString()
+                          .includes(filteredExceptionalData.toString())
+                      ) {
+                        return item;
+                      } else if (filteredExceptionalData === "") {
+                        return item;
+                      }
+                      return false;
+                    }).reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.reduce(
+                            (total, currentItem) =>
+                              (total = total + currentItem.send),
+                            0
+                          )),
+                      0
+                    )}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
-                    if (
-                      item.date
-                        ?.toString()
-                        .includes(filteredExceptionalData.toString())
-                    ) {
-                      return item;
-                    } else if (filteredExceptionalData === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.remaining),
-                          0
-                        )),
-                    0
-                  )}
+                  {FrontPageExceptionalData &&
+                    FrontPageExceptionalData.filter((item) => {
+                      if (
+                        item.date
+                          ?.toString()
+                          .includes(filteredExceptionalData.toString())
+                      ) {
+                        return item;
+                      } else if (filteredExceptionalData === "") {
+                        return item;
+                      }
+                      return false;
+                    }).reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.reduce(
+                            (total, currentItem) =>
+                              (total = total + currentItem.remaining),
+                            0
+                          )),
+                      0
+                    )}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
-                    if (
-                      item.date
-                        ?.toString()
-                        .includes(filteredExceptionalData.toString())
-                    ) {
-                      return item;
-                    } else if (filteredExceptionalData === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.closingStock),
-                          0
-                        )),
-                    0
-                  )}
+                  {FrontPageExceptionalData &&
+                    FrontPageExceptionalData.filter((item) => {
+                      if (
+                        item.date
+                          ?.toString()
+                          .includes(filteredExceptionalData.toString())
+                      ) {
+                        return item;
+                      } else if (filteredExceptionalData === "") {
+                        return item;
+                      }
+                      return false;
+                    }).reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.reduce(
+                            (total, currentItem) =>
+                              (total = total + currentItem.closingStock),
+                            0
+                          )),
+                      0
+                    )}
                 </td>
 
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData && FrontPageExceptionalData.filter((item) => {
-                    if (
-                      item.date
-                        ?.toString()
-                        .includes(filteredExceptionalData.toString())
-                    ) {
-                      return item;
-                    } else if (filteredExceptionalData === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.sales),
-                          0
-                        )),
-                    0
-                  )}
+                  {FrontPageExceptionalData &&
+                    FrontPageExceptionalData.filter((item) => {
+                      if (
+                        item.date
+                          ?.toString()
+                          .includes(filteredExceptionalData.toString())
+                      ) {
+                        return item;
+                      } else if (filteredExceptionalData === "") {
+                        return item;
+                      }
+                      return false;
+                    }).reduce(
+                      (total, currentItem) =>
+                        (total =
+                          total +
+                          currentItem.reduce(
+                            (total, currentItem) =>
+                              (total = total + currentItem.sales),
+                            0
+                          )),
+                      0
+                    )}
                 </td>
 
                 <td className="tg-0lax"></td>

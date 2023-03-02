@@ -172,11 +172,11 @@ const Partners = () => {
           </div>
         </form>{" "}
         <div>
-          <div className="mt-4 flex gap-4">
+          {/* <div className="mt-4 flex gap-4">
             <label htmlFor="addPartner" className="btn bg-[#AA237A]">
               Add Partner
             </label>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* ************************ all sealy data************** */}

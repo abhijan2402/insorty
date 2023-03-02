@@ -1,31 +1,14 @@
 import React from "react";
 import ListOfFinalReport from "../ListOfFinalReport/ListOfFinalReport";
-import useFinalReport from "../FinalReportHooks/useFinalReport";
 import BorrowedBottles from "../BorrowedBottles/BorrowedBottles.jsx";
 import FinalReportStockExcessForm from "../FinalReportStockExcessForm/FinalReportStockExcessForm";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 
 const FinalReport = () => {
-  const {
-    finalReportState,
-    addFiveFinalReeport,
-    addOneFinalReport,
-    handelOnChangeFinalReport,
-    handelOnSubmitFinalReport,
-    handelOnChangeStockExcess,
-    finalReportSockExcessState,
-    addOneStockExcess,
-    addFiveStockExcess,
-  } = useFinalReport();
-
   const token = localStorage.getItem("token");
 
-  // const monthlyFinalReport = {}, 
-  //   borrowedBottles = [], 
-  //   extraBottles = []; 
   const { data, isLoading } = useQuery({
-  // const { data , isLoading } = useQuery({
     queryKey: ["monthlyFinalReport", "borrowedBottles", "extraBottles"],
     queryFn: async () => {
       const res = await fetch(
@@ -36,15 +19,15 @@ const FinalReport = () => {
         }
       );
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       return data.data;
     },
   });
   if (isLoading) {
     return <Loader></Loader>;
   }
-  
-  const {monthlyFinalReport, borrowedBottles, extraBottles} = data;
+
+  const { monthlyFinalReport, borrowedBottles, extraBottles } = data;
 
   return (
     <section className="py-4 px-4">
