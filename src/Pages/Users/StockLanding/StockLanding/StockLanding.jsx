@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
-// import Swal from "sweetalert2";
 import { FaRegTrashAlt } from "react-icons/fa";
 
 const StockLanding = () => {
@@ -24,8 +23,6 @@ const StockLanding = () => {
     },
   });
 
-  console.log(PartyInfo);
-
   if (isLoading) {
     return (
       <div>
@@ -43,7 +40,7 @@ const StockLanding = () => {
       <div>
         <h1 className="titleStyle">पार्टी का नाम</h1>
         <div className="flex gap-10 font-bold">
-          <p className="description">Sanjay wine shop</p>
+          {/* <p className="description">Sanjay wine shop</p> */}
           <p className="description">
             {todayDate.toLocaleDateString("en-IN", {
               year: "numeric",
@@ -60,7 +57,7 @@ const StockLanding = () => {
 
       <div>
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          {/* <table className="table w-full">
             <tbody>
               {PartyInfo?.map((party, index) => {
                 return (
@@ -92,7 +89,7 @@ const StockLanding = () => {
                 </label>
               </tr>
             </tbody>
-          </table>
+          </table> */}
         </div>
       </div>
     </section>

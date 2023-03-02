@@ -57,6 +57,17 @@ const Commision = () => {
     return filterPass;
   });
 
+  // get total amount of filtered data and map it to the array of objects and then add all the values of the array
+  const totalAmount = filteredData.map((item) => {
+    // get total ammount using reduce method
+    const total = item.entries.reduce((acc, item) => {
+      return acc + Number(item.amount.$numberDecimal);
+    }, 0);
+    return total;
+  });
+
+  console.log(totalAmount, "totalAmount");
+
   return (
     <section className="py-4 px-4">
       <div className="title">
@@ -122,7 +133,18 @@ const Commision = () => {
                 <tr>
                   <td></td>
                   <th></th>
-                  <th>Total :</th>
+                  <th
+                    className="flex items-center justify-center
+                    text-[#AA237A]
+                  "
+                  >
+                    Total :
+                    <span className="mx-4">
+                      {totalAmount.reduce((acc, item) => {
+                        return acc + item;
+                      }, 0)}
+                    </span>
+                  </th>
                   <th></th>
                 </tr>
               </tbody>
