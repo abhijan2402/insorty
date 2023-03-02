@@ -98,16 +98,13 @@ const FronteDailyReport = () => {
           }}
           className="semiSmallInput"
         />
-        <input
-          type="date"
-          value={drDate}
-          onChange={(e) => {
-            setDrDate(e.target.value);
-            localStorage.setItem("drDate", e.target.value);
-          }}
-          name=""
-          id=""
-          className="semiSmallInput"
+        <DatePicker
+          selected={new Date(drDate)}
+          name="year"
+          onChange={(data) => { setDrDate(new Date(data)); console.log(data) }}
+          dateFormat="dd/MM/yyyy"
+          className="inputBox"
+          placeholderText={"dd/mm/yyyy"}
         />
       </div>
 

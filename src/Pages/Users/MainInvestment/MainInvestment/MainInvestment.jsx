@@ -18,7 +18,6 @@ const MainInvestment = () => {
     refundRecoveryOnChange,
   } = useMainInvestmentHooks();
 
-  console.log(data, "+++++++++ data");
 
   if (data.isLoading) {
     return <div>Loading....</div>;
@@ -308,7 +307,7 @@ const MainInvestment = () => {
                 </td>
                 <td></td>
                 <td className="commonText">Total</td>
-                <td className="price">162,000</td>
+                <td className="price">{data.refundRecoveryDetails.total}</td>
               </tr>
             </tbody>
           </table>
@@ -365,13 +364,16 @@ const MainInvestment = () => {
                 </td>
                 <td></td>
                 <td className="commonText">Total</td>
-                <td className="price">162,000</td>
+                <td className="price">{ data.reserveAmount.entries.length > 0 ? data.reserveAmount.entries.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.price)),
+                  0
+                  ) : 0}</td>
               </tr>
               <tr>
                 <td></td>
                 <td></td>
                 <td className="commonText">शेष इन्वेस्ट</td>
-                <td className="price">662,000</td>
+                <td className="price">{data.reserveAmount.total}</td>
               </tr>
             </tbody>
           </table>

@@ -203,9 +203,9 @@ const BackDailyReport = () => {
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
-            selected={drDate}
+            selected={new Date(drDate)}
             name="year"
-            onChange={(data) => setDrDate(data)}
+            onChange={(data) => {setDrDate(new Date(data)); console.log(data)}}
             dateFormat="dd/MM/yyyy"
             className="inputBox"
             placeholderText={"dd/mm/yyyy"}

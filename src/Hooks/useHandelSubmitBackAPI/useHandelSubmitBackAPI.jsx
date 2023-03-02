@@ -425,51 +425,7 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      // const api10 = fetch(
-      //   "https://insorty-api.onrender.com/shop/addBackPageReportData",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       cookie_token: token,
-      //     },
-      //     body: JSON.stringify({
-      //       date: drDate,
-      //       salesmen: salesMan,
-      //       entries: dataDetails550,
-      //     }),
-      //   }
-      // );
-      // const api11 = fetch(
-      //   "https://insorty-api.onrender.com/shop/addBackPageReportData",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       cookie_token: token,
-      //     },
-      //     body: JSON.stringify({
-      //       date: drDate,
-      //       salesmen: salesMan,
-      //       entries: dataDetails330,
-      //     }),
-      //   }
-      // );
-      // const api12 = fetch(
-      //   "https://insorty-api.onrender.com/shop/addBackPageReportData",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       cookie_token: token,
-      //     },
-      //     body: JSON.stringify({
-      //       date: drDate,
-      //       salesmen: salesMan,
-      //       entries: beerForm,
-      //     }),
-      //   }
-      // );
+      
 
       Promise.all([api1, api2, api3, api4, api5, api6, api7, api8, api9])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
