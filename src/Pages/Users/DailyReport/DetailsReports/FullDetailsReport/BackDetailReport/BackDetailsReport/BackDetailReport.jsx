@@ -429,7 +429,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {PurchaseOutsideData &&
+              {PurchaseOutsideData && PurchaseOutsideData.length &&
               PurchaseOutsideData.filter((item) => {
                 if (item.date?.toString().includes(filterDate.toString())) {
                   return item;
@@ -441,7 +441,7 @@ const BackDetailReport = () => {
                 <>
                   <p>No Data Found</p>
                 </>
-              ) : (
+              ) : (PurchaseOutsideData && PurchaseOutsideData.length &&
                 PurchaseOutsideData.filter((item) => {
                   if (item.date?.toString().includes(filterDate.toString())) {
                     return item;
@@ -465,7 +465,7 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4}>
-                  {PurchaseOutsideData.filter((item) => {
+                  {PurchaseOutsideData && PurchaseOutsideData.length && PurchaseOutsideData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -486,7 +486,7 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={4}></td>
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4}>
-                  {PurchaseOutsideData.filter((item) => {
+                  {PurchaseOutsideData && PurchaseOutsideData.length && PurchaseOutsideData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -531,7 +531,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {TotalExpensesData &&
+              {TotalExpensesData && TotalExpensesData.length &&
               TotalExpensesData.filter((item) => {
                 if (item.date?.toString().includes(filterDate.toString())) {
                   return item;
@@ -543,7 +543,7 @@ const BackDetailReport = () => {
                 <>
                   <p>No Data Found</p>
                 </>
-              ) : (
+              ) : (TotalExpensesData && TotalExpensesData.length &&
                 TotalExpensesData.filter((item) => {
                   if (item.date?.toString().includes(filterDate.toString())) {
                     return item;
@@ -573,7 +573,7 @@ const BackDetailReport = () => {
                   3
                 </td>
                 <td className="tg-0lax">
-                  {TotalExpensesData.filter((item) => {
+                  {TotalExpensesData && TotalExpensesData.length && TotalExpensesData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -630,7 +630,7 @@ const BackDetailReport = () => {
                 </>
               ) : (
                 <>
-                  {BorrowedCashReturnData.filter((item) => {
+                    {BorrowedCashReturnData && BorrowedCashReturnData.length && BorrowedCashReturnData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -656,7 +656,7 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax">
-                  {BorrowedCashReturnData.filter((item) => {
+                  {BorrowedCashReturnData && BorrowedCashReturnData.length && BorrowedCashReturnData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -707,7 +707,7 @@ const BackDetailReport = () => {
                 </>
               ) : (
                 <>
-                  {PurchaseBorrowData.filter((item) => {
+                    {PurchaseBorrowData && PurchaseBorrowData.length && PurchaseBorrowData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -735,7 +735,7 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {PurchaseBorrowData.filter((item) => {
+                  {PurchaseBorrowData && PurchaseBorrowData.length && PurchaseBorrowData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -787,7 +787,7 @@ const BackDetailReport = () => {
                 </>
               ) : (
                 <>
-                  {SendData.filter((item) => {
+                    {SendData && SendData.length && SendData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -814,7 +814,7 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {SendData.filter((item) => {
+                  {SendData && SendData.length && SendData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -836,7 +836,7 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {SendData.filter((item) => {
+                  {SendData && SendData.length && SendData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -992,12 +992,12 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {!FinalReportData  ? (
+              {!FinalReportData || !FinalReportData.length ? (
                 <>
                   <p>No Data Found</p>
                 </>
               ) : 
-              FinalReportData.filter((item) => {
+                FinalReportData && FinalReportData.length && FinalReportData.filter((item) => {
                 if (item?.date?.toString().includes(filterDate.toString())) {
                   return item;
                 } else if (filterDate === "") {
