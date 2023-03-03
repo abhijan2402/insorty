@@ -107,6 +107,17 @@ const usePurchesOutSideAdd = () => {
     values.splice(index, 1);
     console.log(index)
     setPurchesOutSideState(values);
+    localStorage.setItem("purchases", JSON.stringify(values));
+    localStorage.setItem(
+      "purchasesTotal",
+      JSON.stringify(
+        values.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.total)),
+          0
+        )
+      )
+    );
+
   };
 
   return {

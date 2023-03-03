@@ -75,6 +75,17 @@ const useCommissonAdd = () => {
     values.splice(index, 1);
     console.log(index)
     setCommissonState(values);
+    localStorage.setItem("expenses", JSON.stringify(values));
+    localStorage.setItem(
+      "totalExpenses",
+      JSON.stringify(
+        values.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.amount)),
+          0
+        )
+      )
+    );
+
   };
 
   return {

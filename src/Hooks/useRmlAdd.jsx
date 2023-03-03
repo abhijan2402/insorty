@@ -45,19 +45,18 @@ const useRmlAdd = () => {
       console.log(liq);
       liq.map((parent) => {
         parent.sizes.map((item) => {
-          console.log(parent);
+          if (item.currentStock > 0){
           const newFormData = { ...addRmlForm };
-
           newFormData.brandName = parent.brandName;
           newFormData.liquorID = parent._id;
           newFormData.ml = item.quantityInML;
-          newFormData.startingStock = item.currentStock;
+            newFormData.openingStock = item.currentStock;
           newFormData.averageRate = item.averageRate.$numberDecimal
           newFormData.initial = item.averageRate.$numberDecimal
           firstFormData = [newFormData, ...firstFormData];
           setAddRmlState(firstFormData);
           localStorage.setItem("rml", JSON.stringify(firstFormData));
-        });
+        }});
       });
     }
 
@@ -227,6 +226,17 @@ const useRmlAdd = () => {
     values.splice(index, 1);
     console.log(index)
     setAddRmlState(values);
+    localStorage.setItem("rml", JSON.stringify(values));
+    localStorage.setItem(
+      "rmlTotal",
+      JSON.stringify(
+        values.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.cost)),
+          0
+        ) || 0
+      )
+    );
+
   };
 
   return {

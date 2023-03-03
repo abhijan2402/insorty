@@ -33,6 +33,7 @@ const useHandelSubmitBackAPI = () => {
   const send = JSON.parse(localStorage.getItem("borrow"));
   const backFirst = JSON.parse(localStorage.getItem("firstBack"));
   const newBeer = JSON.parse(localStorage.getItem("BeerForm"));
+  const credit = JSON.parse(localStorage.getItem("credit"));
 
   const { GetLiqId } = useLiquors();
 
@@ -166,7 +167,7 @@ const useHandelSubmitBackAPI = () => {
   ) {
     const element = rmlFieldsData[index];
     addRmlData.push({
-      liquor: GetLiqId(element.liquorID, Number(element.ml), "RML"), //to be updated
+      liquor: GetLiqId(element.liquorID, Number(element.ml), "DESHIRML"), //to be updated
       brandName: element.brandName,
       openingStock: element.openingStock,
       purchaseShop: element.incomingPurchase,
@@ -217,8 +218,8 @@ const useHandelSubmitBackAPI = () => {
 
   const entriesBorrow = [];
 
-  for (let index = 0; index < craditDabitState.length; index++) {
-    const element = craditDabitState[index];
+  for (let index = 0; credit ? index < credit.length : 0; index++) {
+    const element = credit[index];
 
     entriesBorrow.push({
       type: element.partyType,
@@ -240,33 +241,33 @@ const useHandelSubmitBackAPI = () => {
   const beerFormTotal = JSON.parse(localStorage.getItem("beerFormTotal"));
   const pichlaBakaya = 0;
 
-  const english = firstformData + secondFront;
-  const beer = beerTotal;
-  const rmlData = fourthFront;
+  const english = Number(firstformData)||0 + Number(secondFront)||0;
+  const beer = beerTotal ? beerTotal:0;
+  const rmlData = fourthFront ? fourthFront:0;
   const totalSell =
-    Number(fourthFront) +
-    Number(beerTotal) +
-    Number(firstformData) +
-    Number(secondFront) +
-    Number(beerFormTotal);
-  const borrowedCashReturn = fifthFront;
-  const intoAccount = intoAccountState;
-  const borrowed = sixthFront;
-  const commission = seventhFront;
-  const previousDues = pichlaBakaya;
-  const todaysPayment = paidDues;
+    Number(fourthFront) || 0 +
+    Number(beerTotal) || 0  +
+    Number(firstformData) || 0 +
+    Number(secondFront) || 0 +
+    Number(beerFormTotal) || 0;
+  const borrowedCashReturn = fifthFront ? fifthFront : 0;
+  const intoAccount = intoAccountState ? intoAccountState : 0;
+  const borrowed = sixthFront ? sixthFront:0;
+  const commission = seventhFront ? seventhFront:0    ;
+  const previousDues = pichlaBakaya ? pichlaBakaya:0;
+  const todaysPayment = paidDues ? paidDues:0;
   const restAmount =
-    fourthFront +
-    beerTotal +
-    firstformData +
-    Number(beerFormTotal) +
-    secondFront +
-    fifthFront -
-    Number(intoAccountState) -
-    sixthFront -
-    seventhFront +
-    pichlaBakaya -
-    paidDues;
+   Number( fourthFront) || 0 +
+    Number(beerTotal) || 0 +
+    Number(firstformData) || 0 +
+    Number(beerFormTotal) || 0 +
+    Number(secondFront) || 0 +
+    Number(fifthFront) || 0 -
+    Number(intoAccountState) || 0 -
+    Number(sixthFront) || 0 -
+    Number(seventhFront) || 0 +
+    Number(pichlaBakaya) || 0 -
+    Number(paidDues) || 0;
 
   const addSendingData = [];
   for (let index = 0; send ? index < send.length : 0; index++) {
@@ -493,10 +494,7 @@ const useHandelSubmitBackAPI = () => {
     } finally {
       setIsLoading(false);
     }
-    console.log([...dataDetails650,
-              ...dataDetails550,
-              ...dataDetails330,
-              ...beerForm,]);
+   
     
   };
 

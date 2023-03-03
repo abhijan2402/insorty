@@ -31,7 +31,7 @@ const BackDetailReport = () => {
   const [EndDate, setEndDate] = useState();
 
   const {
-    // RMLData,
+    RMLData,
     RMLLoaded,
     PurchaseOutsideData,
     PurchaseOutsideLoaded,
@@ -161,7 +161,7 @@ const BackDetailReport = () => {
                 <th>रकम</th>
               </tr>
             </thead>
-            {/* <tbody>
+            <tbody>
               {RMLData &&
               RMLData.filter((item) => {
                 if (item.date?.toString().includes(filterDate.toString())) {
@@ -389,7 +389,7 @@ const BackDetailReport = () => {
                   )}
                 </td>
               </tr>
-            </tbody> */}
+            </tbody>
           </table>
 
           <table className="table w-full">

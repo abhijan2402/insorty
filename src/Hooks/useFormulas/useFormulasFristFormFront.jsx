@@ -105,7 +105,7 @@ const useFormulasFristFormFront = () => {
           (elem) => elem.quantityInML === 180
         );
 
-        if (quan750 && quan330 && quan180) {
+        if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock > 0) {
           const newFormData = { ...addOneFristForm };
           newFormData.brandName = liq[index].brandName;
           newFormData.liquorID = liq[index]._id;
@@ -803,6 +803,22 @@ const useFormulasFristFormFront = () => {
     values.splice(index, 1);
     console.log(index);
     setAddOneFristFormState(values);
+    localStorage.setItem("firstFront", JSON.stringify(values));
+    localStorage.setItem(
+      "firstFrontTotal",
+      JSON.stringify(
+        values.reduce(
+          (total, currentItem) =>
+          (total =
+            total +
+            Number(currentItem.sales750) * Number(currentItem.mainRate750) +
+            Number(currentItem.sales330) * Number(currentItem.mainRate330) +
+            Number(currentItem.sales180) * Number(currentItem.mainRate180)),
+          0
+        ) || 0
+      )
+    );
+
   };
 
   return {

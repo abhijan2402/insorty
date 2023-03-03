@@ -115,6 +115,7 @@ const useFristFormAdd = () => {
     if (prevdata) {
       setFristFormState(prevdata);
     }
+    else{
     let firstFormData = fristFormState
 
 
@@ -126,7 +127,7 @@ const useFristFormAdd = () => {
         const quan330 = liq[index].sizes.find((elem) => elem.quantityInML === 550)
         const quan180 = liq[index].sizes.find((elem) => elem.quantityInML === 330)
 
-        if (quan750 && quan330 && quan180) {
+        if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock>0) {
           const newFormData = { ...fristFormObj }
           newFormData.brandName = liq[index].brandName
           newFormData.liquorID = liq[index]._id
@@ -150,9 +151,8 @@ const useFristFormAdd = () => {
         }
 
       }
-    }
+    }}
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);
 
   const addFiveInFristFormHandler = () => {
@@ -1034,7 +1034,7 @@ const useFristFormAdd = () => {
     if (prevdata2) {
       setAddOneSecondFormState(prevdata2);
     }
-
+else{
     let firstFormData = addOneSecondFormState;
 
     if (!brandsLoaded && liquors.length > 0) {
@@ -1050,7 +1050,8 @@ const useFristFormAdd = () => {
           if (
             item.quantityInML !== 650 &&
             item.quantityInML !== 550 &&
-            item.quantityInML !== 330
+            item.quantityInML !== 330 &&
+            item.currentStock > 0
           ) {
             console.log(parent)
             const newFormData = { ...addOneSecondForm };
@@ -1074,6 +1075,7 @@ const useFristFormAdd = () => {
             )          }
         });
       });
+      }
     }
 
 
@@ -1192,6 +1194,12 @@ const useFristFormAdd = () => {
     values.splice(index, 1);
     console.log(index)
     setFristFormState(values);
+    localStorage.setItem("firstBack", JSON.stringify(values));
+    localStorage.setItem(
+      "totalFirstBack",
+      JSON.stringify(totalState.allGrandTotal)
+    )
+
   };
 
   const handleRemoveFieldsBeer = index => {
@@ -1199,6 +1207,12 @@ const useFristFormAdd = () => {
     values.splice(index, 1);
     console.log(index)
     setAddOneSecondFormState(values);
+    localStorage.setItem("BeerForm", JSON.stringify(values));
+    localStorage.setItem(
+      "totalFirstBack",
+      JSON.stringify(totalState.allGrandTotal)
+    )
+
   };
 
 

@@ -111,6 +111,12 @@ const useInfolwBorrowingRml = () => {
     values.splice(index, 1);
     console.log(index)
     setInfolwBorrwingFormState(values);
+    localStorage.setItem('borrow', JSON.stringify(values))
+    localStorage.setItem('totalBorrow', JSON.stringify(values.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.total)),
+      0
+    )))
+
   };
 
   return {

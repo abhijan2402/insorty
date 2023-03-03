@@ -75,6 +75,8 @@ const useShippingAdd = () => {
     values.splice(index, 1);
     console.log(index)
     setAddShippingState(values);
+    localStorage.setItem('bhejan', JSON.stringify(values))
+
   };
 
   return {
