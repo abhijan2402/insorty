@@ -2,8 +2,7 @@ import React from "react";
 import ExceptionalDataDetails from "./ExceptionalDataDetails";
 
 const ExcepctionalData = ({
-  BackPageReportExceptionalSize,
-  filteredExceptionalData,
+  BackPageReportExceptionalSize: filteredExceptionalData,
 }) => {
   return (
     <table className="table w-full">
@@ -44,8 +43,6 @@ const ExcepctionalData = ({
               ></ExceptionalDataDetails>
             );
           })}
-
-        {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
         <tr>
           <td className="tg-0lax" colSpan={2}>

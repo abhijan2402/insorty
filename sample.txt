@@ -95,3 +95,18 @@ front daily report --> addFrontPageData
        }
        return filterPass;
      });
+
+
+  const filteredExceptionalData = selectedDate
+    ? BackPageReportExceptionalSize.filter((data) => {
+        const date = moment(data.date).format("DD/MM/YYYY");
+        return date === moment(selectedDate).format("DD/MM/YYYY");
+      })
+    : BackPageReportExceptionalSize;
+
+  const filteredRegularData = selectedDate
+    ? BackPageReportRegularSize.filter((data) => {
+        const date = moment(data.date).format("DD/MM/YYYY");
+        return date === moment(selectedDate).format("DD/MM/YYYY");
+      })
+    : BackPageReportRegularSize;

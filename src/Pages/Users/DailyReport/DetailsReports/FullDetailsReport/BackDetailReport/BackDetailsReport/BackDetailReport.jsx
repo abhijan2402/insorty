@@ -1,11 +1,9 @@
 import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FristFormBack from "../FirstFormBack/FristFormBack";
-import BackRmlDetailsData from "../BackRmlDetails/BackRmlDetailsData";
 import InfolwRml from "../InflowRml/InfolwRml";
 import CommisonExpence from "../CommisonExpence/CommisonExpence";
 import CashReciveData from "../CashReciveData/CashReciveData";
-import { DataContextApi } from "../../../../../../../Context/DataContext";
 import Loader from "../../../../../../../Components/Loader/Loader";
 import { useReactToPrint } from "react-to-print";
 import InflowBorrow from "../InflowBorrow/InflowBorrow";
@@ -67,21 +65,36 @@ const BackDetailReport = () => {
     return <h1>No Data Found</h1>;
   }
 
-  // filter data by date and time if date is not selected then show all data
-
   const filteredExceptionalData = selectedDate
-    ? BackPageReportExceptionalSize.filter((data) => {
-        const date = moment(data.date).format("DD/MM/YYYY");
-        return date === moment(selectedDate).format("DD/MM/YYYY");
+    ? BackPageReportExceptionalSize.filter((item) => {
+        const itemDate = new Date(moment(item.date).format());
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
       })
     : BackPageReportExceptionalSize;
 
   const filteredRegularData = selectedDate
-    ? BackPageReportRegularSize.filter((data) => {
-        const date = moment(data.date).format("DD/MM/YYYY");
-        return date === moment(selectedDate).format("DD/MM/YYYY");
+    ? BackPageReportRegularSize.filter((item) => {
+        const itemDate = new Date(moment(item.date).format());
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
       })
     : BackPageReportRegularSize;
+
+  console.log(
+    filteredExceptionalData,
+    "filteredExceptionalData +++++++++++++++++"
+  );
+
+  console.log(BackPageReportExceptionalSize, "+++++++++++++++++++4");
 
   return (
     <section className="my-4">
@@ -166,236 +179,6 @@ const BackDetailReport = () => {
                 <th>रकम</th>
               </tr>
             </thead>
-
-            {/* <tbody>
-              {RMLData &&
-              RMLData.filter((item) => {
-                if (item.date?.toString().includes(filterDate.toString())) {
-                  return item;
-                } else if (filterDate === "") {
-                  return item;
-                } else if (RMLData === undefined) {
-                  return item;
-                }
-                return false;
-              }).length === 0 ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : (
-                RMLData.filter((item) => {
-                  if (item.date?.toString().includes(filterDate.toString())) {
-                    return item;
-                  } else if (filterDate === "") {
-                    return item;
-                  }
-                  return false;
-                }).map((RmlData, index) => {
-                  return (
-                    <BackRmlDetailsData
-                      key={index}
-                      index={index}
-                      RmlData={RmlData}
-                    ></BackRmlDetailsData>
-                  );
-                })
-              )}
-
-              <tr>
-                <td className="tg-0lax" colSpan={2}>
-                  Total
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {RMLData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.openingStock),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {RMLData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.purchaseShop),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {RMLData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.purchaseOutSide),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {RMLData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.credits),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {RMLData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.send),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {RMLData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.remaining),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {RMLData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.closingStock),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax">
-                  {RMLData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
-                          (total, currentItem) =>
-                            (total = total + currentItem.sales),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax"></td>
-
-                <td className="tg-0lax">
-                  {RMLData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.entries.reduce(
-                          (total, currentItem) =>
-                            (total =
-                              total +
-                              Number(currentItem?.amount?.$numberDecimal)),
-                          0
-                        )),
-                    0
-                  )}
-                </td>
-              </tr>
-            </tbody> */}
           </table>
 
           <table className="table w-full">
