@@ -108,7 +108,7 @@ const Payments = () => {
                   <th>Debit / नामे</th>
                   <th>Deposit / जमा </th>
 
-                  <th>चालू शेष नामे</th>
+                  <th> शेष </th>
                   <th>विवरणे</th>
                 </tr>
               </thead>

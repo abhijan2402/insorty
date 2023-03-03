@@ -107,7 +107,7 @@ const PaymentForm = ({ index, payment, paymentData }) => {
                     name="current_balance_debit"
                     // value={entry.currentBalance}
                     value={
-                      shesh - totalPaid + entry.deposit.cash - entry.debit.cash
+                     - shesh + totalPaid - entry.deposit.cash + entry.debit.cash
                     }
                     className="semiSmallInput"
                   />

@@ -4,6 +4,7 @@ import BorrowedBottles from "../BorrowedBottles/BorrowedBottles.jsx";
 import FinalReportStockExcessForm from "../FinalReportStockExcessForm/FinalReportStockExcessForm";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import moment from "moment/moment";
 
 const FinalReport = () => {
   const token = localStorage.getItem("token");
@@ -35,6 +36,9 @@ const FinalReport = () => {
         <h2 className="font-bold text-[1.5rem] titleStyle">
           बचत व नकदी का हिसाब
         </h2>
+        <h2 className="font-bold text-[1.5rem]">
+          {moment(monthlyFinalReport.date).format("MM/YYYY")}
+          </h2>
         <div className="divider my-2"></div>
       </div>
       <div>

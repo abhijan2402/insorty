@@ -108,7 +108,7 @@ const AddPayment = ({
             </div>
 
             <div className="mt-4">
-              <label className="label">
+              {/* <label className="label">
                 <span className="label-text font-bold">चालू शेष नामे</span>
               </label>
               <input
@@ -118,7 +118,7 @@ const AddPayment = ({
                 type="number"
                 name="currentBalance"
                 className="input input-bordered w-full"
-              />
+              /> */}
               <label className="label">
                 <span className="label-text font-bold">विवरणे</span>
               </label>

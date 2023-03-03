@@ -141,7 +141,7 @@ const SalaryForm = () => {
                     <div className="flex gap-2">
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">Month Year</span>
+                          <span className="label-text">दिनांक</span>
                         </label>
                       </div>
 
