@@ -15,6 +15,8 @@ const FrontDetailsReport = () => {
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
 
+  const [selectedDate, setSelectedDate] = useState();
+
   const {
     FrontPageRegularData,
     isLoading,
@@ -34,7 +36,6 @@ const FrontDetailsReport = () => {
     FrontPageRegularData?.filter((item) => {
       let filterPass = true;
       const date = moment(item.date).format("DD/MM/YYYY");
-
       if (StartDate) {
         filterPass =
           filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
@@ -44,7 +45,8 @@ const FrontDetailsReport = () => {
       }
       return filterPass;
     });
-  console.log(filteredRegularData, "+++++++++++++");
+
+  // console.log(filteredRegularData, "+++++++++++++");
 
   const filteredExceptionalData = FrontPageExceptionalData?.filter((item) => {
     let filterPass = true;

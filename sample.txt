@@ -77,3 +77,21 @@ front daily report --> addFrontPageData
                 पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
               </span>
             </td>
+
+
+
+
+             const filteredRegularData =
+     FrontPageRegularData &&
+     FrontPageRegularData?.filter((item) => {
+       let filterPass = true;
+       const date = moment(item.date).format("DD/MM/YYYY")
+       if (StartDate) {
+         filterPass =
+           filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+       }
+       if (EndDate) {
+         filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+       }
+       return filterPass;
+     });

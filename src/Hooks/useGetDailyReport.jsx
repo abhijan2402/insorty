@@ -4,11 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 function useGetDailyReport() {
   const token = localStorage.getItem("token");
 
-  const {
-    data: RMLData,
-    isLoading: RMLLoaded,
-    RMLrefetch,
-  } = useQuery({
+  const { data: RMLData, isLoading: RMLLoaded, RMLrefetch } = useQuery({
     queryKey: ["RMLData"],
     queryFn: async () => {
       const res = await fetch(
@@ -91,11 +87,7 @@ function useGetDailyReport() {
       return data.data;
     },
   });
-  const {
-    data: SendData,
-    isLoading: SendLoaded,
-    SendRefetch,
-  } = useQuery({
+  const { data: SendData, isLoading: SendLoaded, SendRefetch } = useQuery({
     queryKey: ["SendData"],
     queryFn: async () => {
       const res = await fetch(
@@ -166,6 +158,36 @@ function useGetDailyReport() {
     },
   });
 
+  const { data: BackPageReportExceptionalSize } = useQuery({
+    queryKey: ["BackPageReportExceptionalSize"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getBackPageReportExceptionalSize",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  const { data: BackPageReportRegularSize } = useQuery({
+    queryKey: ["BackPageReportRegularSize"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getBackPageReportRegularSize",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
   return {
     RMLData,
     RMLLoaded,
@@ -185,6 +207,8 @@ function useGetDailyReport() {
     FinalReportDataLoaded,
     FrontPageData,
     FrontPageDataLoaded,
+    BackPageReportExceptionalSize,
+    BackPageReportRegularSize,
   };
 }
 

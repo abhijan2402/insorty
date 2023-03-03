@@ -1,51 +1,450 @@
 import React from "react";
 
-const FristFormBackData = () => {
+const FristFormBackData = ({ regularData, index }) => {
+  const { entries, brandName } = regularData;
+
+  // get all quantityInML 650 ml data form entries arry
+
+  const quantityInML650 = entries.filter((entry) => entry.quantityInML === 650);
+  console.log("quantityInML650", quantityInML650);
+
+  const quantityInML550 = entries.filter((entry) => entry.quantityInML === 550);
+  console.log("quantityInML550", quantityInML550);
+
+  // get all quantityInML 330 ml data form entries arry
+
+  const quantityInML330 = entries.filter((entry) => entry.quantityInML === 330);
+  console.log("quantityInML330", quantityInML330);
+
   return (
     <>
       <tr>
-        <td className="tg-0lax">1</td>
-        <td className="tg-0lax">data 1</td>
-        <td className="tg-0lax">data 2</td>
-        <td className="tg-0lax">data 3</td>
-        <td className="tg-0lax">data 4</td>
-        <td className="tg-0lax">data 5</td>
-        <td className="tg-0lax">data 6</td>
-        <td className="tg-0lax">data 7</td>
-        <td className="tg-0lax">data 8</td>
-        <td className="tg-0lax">data 9</td>
-        <td className="tg-0lax">data 10</td>
-        <td className="tg-0lax">data 11</td>
-        <td className="tg-0lax">data 12</td>
-        <td className="tg-0lax">data 13</td>
-        <td className="tg-0lax">data 14</td>
-        <td className="tg-0lax">data 15</td>
-        <td className="tg-0lax">data 16</td>
-        <td className="tg-0lax">data 17</td>
-        <td className="tg-0lax">data 18</td>
-        <td className="tg-0lax">data 19</td>
-        <td className="tg-0lax">data 20</td>
-        <td className="tg-0lax">data 21</td>
-        <td className="tg-0lax">data 22</td>
-        <td className="tg-0lax">data 23</td>
-        <td className="tg-0lax">data 24</td>
-        <td className="tg-0lax">data 25</td>
-        <td className="tg-0lax">data 26</td>
-        <td className="tg-0lax">data 27</td>
-        <td className="tg-0lax">data 28</td>
-        <td className="tg-0lax">data 29</td>
-        <td className="tg-0lax">data 30</td>
-        <td className="tg-0lax">data 31</td>
-        <td className="tg-0lax">data 32</td>
-        <td className="tg-0lax">data 33</td>
-        <td className="tg-0lax">data 34</td>
-        <td className="tg-0lax">data 35</td>
-        <td className="tg-0lax">data 36</td>
-        <td className="tg-0lax">data 37</td>
-        <td className="tg-0lax">data 38</td>
-        <td className="tg-0lax">data 39</td>
-        <td className="tg-0lax">data 40</td>
-        <td className="tg-0lax">data 41</td>
+        <td className="tg-0lax">{index + 1}</td>
+        <td className="tg-0lax">{brandName}</td>
+
+        {/* Average Rate */}
+        {/* show the 650 data  */}
+
+        <td className="tg-0lax">
+          {
+            // get the average rate for the 650 ml data
+
+            quantityInML650.length > 0
+              ? quantityInML650
+                  .map((item) => Number(item.purchaseShopRate?.$numberDecimal))
+                  .reduce((a, b) => a + b) /
+                quantityInML650
+                  .map((item) =>
+                    Number(item.purchaseOutSideRate?.$numberDecimal)
+                  )
+                  .reduce((a, b) => a + b)
+              : 0
+          }
+        </td>
+        <td className="tg-0lax">
+          {
+            // get the average rate for the 550 ml data
+
+            quantityInML550.length > 0
+              ? quantityInML550
+                  .map((item) => Number(item.purchaseShopRate?.$numberDecimal))
+                  .reduce((a, b) => a + b) /
+                quantityInML550
+                  .map((item) =>
+                    Number(item.purchaseOutSideRate?.$numberDecimal)
+                  )
+                  .reduce((a, b) => a + b)
+              : 0
+          }
+        </td>
+        <td className="tg-0lax">
+          {
+            // get the average rate for the 330 ml data
+
+            quantityInML330.length > 0
+              ? quantityInML330
+                  .map((item) => Number(item.purchaseShopRate?.$numberDecimal))
+                  .reduce((a, b) => a + b) /
+                quantityInML330
+                  .map((item) =>
+                    Number(item.purchaseOutSideRate?.$numberDecimal)
+                  )
+                  .reduce((a, b) => a + b)
+              : 0
+          }
+        </td>
+
+        {/* starting stock */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650
+                .map((item) => item.openingStock)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550
+                .map((item) => item.openingStock)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330
+                .map((item) => item.openingStock)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* Income (Purchase)-D */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650
+                .map((item) => item?.purchaseShop)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550
+                .map((item) => item?.purchaseShop)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330
+                .map((item) => item?.purchaseShop)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* buy rate */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650
+                .map((item) => item.purchaseShopRate?.$numberDecimal)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550
+                .map((item) => item.purchaseShopRate?.$numberDecimal)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330
+                .map((item) => item.purchaseShopRate?.$numberDecimal)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* Inflow (Purchase)-Ba */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650
+                .map((item) => item.purchaseOutSide)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550
+                .map((item) => item.purchaseOutSide)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330
+                .map((item) => item.purchaseOutSide)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* Purchase Rate - Ba */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650
+                .map((item) => item.purchaseOutSideRate?.$numberDecimal)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550
+                .map((item) => item.purchaseOutSideRate?.$numberDecimal)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330
+                .map((item) => item.purchaseOutSideRate?.$numberDecimal)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* inflow (credit) */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650
+                .map((item) => item.credits)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550
+                .map((item) => item.credits)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330
+                .map((item) => item.credits)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* sending */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650.map((item) => item.send).reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550.map((item) => item.send).reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330.map((item) => item.send).reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* sum/remainder */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650
+                .map((item) => item.remaining)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550
+                .map((item) => item.remaining)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330
+                .map((item) => item.remaining)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* closing stock */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650
+                .map((item) => item.closingStock)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550
+                .map((item) => item.closingStock)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330
+                .map((item) => item.closingStock)
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* sale, marketing, closeout */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650.map((item) => item.sales).reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550.map((item) => item.sales).reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330.map((item) => item.sales).reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* rate */}
+        <td className="tg-0lax">data</td>
+        <td className="tg-0lax">data</td>
+        <td className="tg-0lax">data</td>
+
+        {/* sum */}
+        <td className="tg-0lax">
+          {quantityInML650.length > 0
+            ? quantityInML650
+                .map((item) => item.purchaseOutSide)
+                .reduce((a, b) => a + b) +
+              quantityInML650
+                .map((item) => item.purchaseShop)
+                .reduce((a, b) => a + b) +
+              quantityInML650
+                .map((item) => item.credits)
+                .reduce((a, b) => a + b) -
+              quantityInML650.map((item) => item.send).reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML550.length > 0
+            ? quantityInML550
+                .map((item) => item.purchaseOutSide)
+                .reduce((a, b) => a + b) +
+              quantityInML550
+                .map((item) => item.purchaseShop)
+                .reduce((a, b) => a + b) +
+              quantityInML550
+                .map((item) => item.credits)
+                .reduce((a, b) => a + b) -
+              quantityInML550.map((item) => item.send).reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML330.length > 0
+            ? quantityInML330
+                .map((item) => item.purchaseOutSide)
+                .reduce((a, b) => a + b) +
+              quantityInML330
+                .map((item) => item.purchaseShop)
+                .reduce((a, b) => a + b) +
+              quantityInML330
+                .map((item) => item.credits)
+                .reduce((a, b) => a + b) -
+              quantityInML330.map((item) => item.send).reduce((a, b) => a + b)
+            : 0}
+        </td>
+        {/* <td className="tg-0lax"> */}
+        {/* <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td>
+              <td className="tg-0lax">
+                <span
+                  style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
+                >
+                  data
+                </span>
+              </td> */}
       </tr>
     </>
   );
