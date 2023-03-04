@@ -198,18 +198,21 @@ const BackDailyReport = () => {
             className="semiSmallInput"
           /> */}
           {/* <h1 className="font-bold ">12/12/2022 </h1> */}
-        </div>
 
-        <div className="flex gap-2 items-center">
-          <FaCalendarAlt></FaCalendarAlt>
-          <DatePicker
-            selected={new Date(drDate)}
-            name="year"
-            onChange={(data) => {setDrDate(new Date(data)); console.log(data)}}
-            dateFormat="dd/MM/yyyy"
-            className="inputBox"
-            placeholderText={"dd/mm/yyyy"}
-          />
+          <div className="flex gap-2 items-center">
+            <FaCalendarAlt></FaCalendarAlt>
+            <DatePicker
+              selected={new Date(drDate)}
+              name="year"
+              onChange={(data) => {
+                setDrDate(new Date(data));
+                console.log(data);
+              }}
+              dateFormat="dd/MM/yyyy"
+              className="inputBox"
+              placeholderText={"dd/mm/yyyy"}
+            />
+          </div>
         </div>
 
         {/* *********************************************************BREAK*********************************************************  */}
@@ -221,7 +224,7 @@ const BackDailyReport = () => {
                   <table className="table w-full">
                     <thead>
                       <tr>
-                        <th>S.no</th>
+                        <td>S.no</td>
                         <th></th>
                         <th>Brand Name/ ब्राण्ड</th>
                         <th>Average Rate</th>
@@ -243,7 +246,7 @@ const BackDailyReport = () => {
 
                     <tbody>
                       <tr>
-                        <th></th>
+                        <td></td>
                         <td>
                           <div className="form-control"></div>
                         </td>

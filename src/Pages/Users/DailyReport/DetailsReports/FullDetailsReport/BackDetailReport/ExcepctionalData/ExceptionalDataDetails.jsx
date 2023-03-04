@@ -1,6 +1,6 @@
 import React from "react";
 
-const FristFormDetails = ({ exceptionalData, index }) => {
+const ExceptionalDataDetails = ({ exceptionalData, index }) => {
   const {
     brandName,
     closingStock,
@@ -46,4 +46,4 @@ const FristFormDetails = ({ exceptionalData, index }) => {
   );
 };
 
-export default FristFormDetails;
+export default ExceptionalDataDetails;

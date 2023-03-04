@@ -1,11 +1,9 @@
 import React, { useContext, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import FristFormBack from "../FirstFormBack/FristFormBack";
-import BackRmlDetailsData from "../BackRmlDetails/BackRmlDetailsData";
 import InfolwRml from "../InflowRml/InfolwRml";
 import CommisonExpence from "../CommisonExpence/CommisonExpence";
 import CashReciveData from "../CashReciveData/CashReciveData";
-import { DataContextApi } from "../../../../../../../Context/DataContext";
 import Loader from "../../../../../../../Components/Loader/Loader";
 import { useReactToPrint } from "react-to-print";
 import InflowBorrow from "../InflowBorrow/InflowBorrow";
@@ -17,18 +15,10 @@ import moment from "moment/moment";
 import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import ExcepctionalData from "../ExcepctionalData/ExcepctionalData";
 
 const BackDetailReport = () => {
-  // const {
-  //   getBackRmlData,
-  //   purchaseOutsideData,
-  //   totalExpensesData,
-  //   borrowedCashReturnData,
-  //   isLoading,
-  //   RMLloading
-  // } = useContext(DataContextApi);
-  const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const {
     RMLData,
@@ -47,10 +37,12 @@ const BackDetailReport = () => {
     BorrowedDataLoaded,
     FinalReportData,
     FinalReportDataLoaded,
+    BackPageReportExceptionalSize,
+    BackPageReportRegularSize,
   } = useGetDailyReport();
 
   const container = useRef(null);
-  const [filterDate, setFilterDate] = useState("");
+  const [filterDate, setFilterData] = useState([]);
 
   const handlePrint = useReactToPrint({
     content: () => container.current,
@@ -69,14 +61,41 @@ const BackDetailReport = () => {
     return <Loader></Loader>;
   }
 
-  // if (!BorrowedData.length) {
-  //   return <h1>No Data Found</h1>;
-  // }
+  if (!PurchaseOutsideData.length) {
+    return <h1>No Data Found</h1>;
+  }
 
-  // console.log(RMLData, "RMLData");
-  // console.log(BorrowedData)
+  const filteredExceptionalData = selectedDate
+    ? BackPageReportExceptionalSize.filter((item) => {
+        const itemDate = new Date(moment(item.date).format());
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
+    : BackPageReportExceptionalSize;
 
-  // console.log(filterDate, "purchaseborrow");
+  const filteredRegularData = selectedDate
+    ? BackPageReportRegularSize.filter((item) => {
+        const itemDate = new Date(moment(item.date).format());
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
+    : BackPageReportRegularSize;
+
+  console.log(
+    filteredExceptionalData,
+    "filteredExceptionalData +++++++++++++++++"
+  );
+
+  console.log(BackPageReportExceptionalSize, "+++++++++++++++++++4");
+
   return (
     <section className="my-4">
       <div className="flex gap-6 items-center ">
@@ -101,9 +120,9 @@ const BackDetailReport = () => {
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
-            selected={StartDate}
+            selected={selectedDate}
             onChange={(date) => {
-              setStartDate(date);
+              setSelectedDate(date);
               console.log(moment(date).format());
             }}
             dateFormat="dd/MM/yyyy"
@@ -111,26 +130,25 @@ const BackDetailReport = () => {
             className="inputBox"
           />
         </div>
-
-        <h2 className="font-bold text-[1.5rem]">To</h2>
-        <div className="flex gap-2 items-center">
-          <FaCalendarAlt></FaCalendarAlt>
-          <DatePicker
-            selected={EndDate}
-            name="year"
-            onChange={(data) => setEndDate(data)}
-            dateFormat="dd/MM/yyyy"
-            className="inputBox"
-            placeholderText={"dd/mm/yyyy"}
-          />
-        </div>
       </div>
 
       <div className="divider"></div>
 
       <div ref={container}>
+        {/* ====================1==================== */}
+
         <div className="overflow-x-auto m-4 p-4 ">
-          <FristFormBack></FristFormBack>
+          <FristFormBack
+            filteredRegularData={filteredRegularData}
+          ></FristFormBack>
+        </div>
+        {/* ====================2==================== */}
+        <div className="overflow-x-auto m-4 p-4 ">
+          <ExcepctionalData
+            BackPageReportExceptionalSize={BackPageReportExceptionalSize}
+            filteredExceptionalData={filteredExceptionalData}
+          ></ExcepctionalData>
+          ;
         </div>
 
         <div className="overflow-x-auto m-4 p-4 flex ">
@@ -161,6 +179,7 @@ const BackDetailReport = () => {
                 <th>रकम</th>
               </tr>
             </thead>
+
             <tbody>
               {RMLData &&
               RMLData.filter((item) => {
@@ -390,6 +409,7 @@ const BackDetailReport = () => {
                 </td>
               </tr>
             </tbody>
+
           </table>
 
           <table className="table w-full">
@@ -624,7 +644,8 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {!BorrowedCashReturnData || BorrowedCashReturnData.length === 0 ? (
+              {!BorrowedCashReturnData ||
+              BorrowedCashReturnData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
@@ -908,24 +929,25 @@ const BackDetailReport = () => {
               )} */}
 
               {BorrowedData &&
-                BorrowedData.length > 0 && BorrowedData.filter((item) => {
-                if (item.date?.toString().includes(filterDate.toString())) {
-                  return item;
-                } else if (filterDate === "") {
-                  return item;
-                }
-                return false;
-              }).map((item, index) => {
-                const { entries } = item;
-                return (
-                  <Borrowed
-                    key={index}
-                    index={index}
-                    item={item}
-                    entries={entries}
-                  ></Borrowed>
-                );
-              })}
+                BorrowedData.length > 0 &&
+                BorrowedData.filter((item) => {
+                  if (item.date?.toString().includes(filterDate.toString())) {
+                    return item;
+                  } else if (filterDate === "") {
+                    return item;
+                  }
+                  return false;
+                }).map((item, index) => {
+                  const { entries } = item;
+                  return (
+                    <Borrowed
+                      key={index}
+                      index={index}
+                      item={item}
+                      entries={entries}
+                    ></Borrowed>
+                  );
+                })}
 
               <tr>
                 <td className="tg-0lax" colSpan={2}>
@@ -933,7 +955,9 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {!BorrowedData || !BorrowedData.length || BorrowedData.length === 0 ? (
+                  {!BorrowedData ||
+                  !BorrowedData.length ||
+                  BorrowedData.length === 0 ? (
                     <>
                       <p>No Data Found</p>
                     </>
@@ -992,6 +1016,20 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
+
+              {!FinalReportData ? (
+                <>
+                  <p>No Data Found</p>
+                </>
+              ) : FinalReportData.filter((item) => {
+                  if (item?.date?.toString().includes(filterDate.toString())) {
+                    return item;
+                  } else if (filterDate === "") {
+                    return item;
+                  }
+                  return false;
+                }).length === 0 ? (
+
               {!FinalReportData || !FinalReportData.length ? (
                 <>
                   <p>No Data Found</p>
@@ -1005,15 +1043,13 @@ const BackDetailReport = () => {
                 }
                 return false;
               }).length === 0 ? (
+
                 <>
                   <p>No Data Found</p>
                 </>
-              ) : 
-                 
-              
-              (
+              ) : (
                 <FinalReport
-                    data={FinalReportData.filter((item) => {
+                  data={FinalReportData.filter((item) => {
                     if (
                       item?.date?.toString().includes(filterDate.toString())
                     ) {
@@ -1022,7 +1058,7 @@ const BackDetailReport = () => {
                       return item;
                     }
                     return false;
-                    })  }
+                  })}
                 ></FinalReport>
               )}
             </tbody>

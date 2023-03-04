@@ -15,6 +15,8 @@ const FrontDetailsReport = () => {
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
 
+  const [selectedDate, setSelectedDate] = useState();
+
   const {
     FrontPageRegularData,
     isLoading,
@@ -29,39 +31,33 @@ const FrontDetailsReport = () => {
     return <Loader></Loader>;
   }
 
-  const filteredRegularData =
-    FrontPageRegularData &&
-    FrontPageRegularData?.filter((item) => {
-      let filterPass = true;
-      const date = moment(item.date).format("DD/MM/YYYY");
+  const filteredRegularData = selectedDate
+    ? FrontPageRegularData.filter((item) => {
+        const itemDate = new Date(moment(item.date).format());
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
+    : FrontPageRegularData;
 
-      if (StartDate) {
-        filterPass =
-          filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
-      }
-      if (EndDate) {
-        filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
-      }
-      return filterPass;
-    });
-  console.log(filteredRegularData, "+++++++++++++");
 
-  const filteredExceptionalData = FrontPageExceptionalData?.filter((item) => {
-    let filterPass = true;
-    const date = moment(item.date).format("DD/MM/YYYY");
+    const filteredExceptionalData = selectedDate
+    ? FrontPageExceptionalData.filter((item) => {
+        const itemDate = new Date(moment(item.date).format());
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
+    : FrontPageExceptionalData;
 
-    if (StartDate) {
-      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
-    }
-    // if (EndDate) {
-    //   filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
-    // }
-    return filterPass;
-  });
 
-  if (isLoading) {
-    return <Loader></Loader>;
-  }
+  
 
   return (
     <section className="my-4">

@@ -2,7 +2,7 @@ import React from "react";
 import "../../../Style/DetailsReport.css";
 import FristFormBackData from "./FristFormBackData";
 
-const FristFormBack = () => {
+const FristFormBack = ({ filteredRegularData }) => {
   return (
     <section>
       <div className="overflow-x-auto">
@@ -151,7 +151,15 @@ const FristFormBack = () => {
               </td>
             </tr>
 
-            <FristFormBackData></FristFormBackData>
+            {filteredRegularData.map((regularData, index) => {
+              return (
+                <FristFormBackData
+                  key={index}
+                  index={index}
+                  regularData={regularData}
+                ></FristFormBackData>
+              );
+            })}
 
             <tr>
               <td className="tg-0lax" colSpan={2}>
