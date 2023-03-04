@@ -43,6 +43,13 @@ import UserList from "../Pages/Admin/Users/UserList/UserList";
 import ShopList from "../Pages/Admin/Shop/ShopList/ShopList";
 import RmlStock from "../Pages/Users/AddItems/RMLStock/RMLStock";
 import Stock from "../Pages/Users/AddItems/Stock/Stock";
+import Kharcha from "../Pages/Users/Commision/Kharcha/Kharcha.";
+import Fut from "../Pages/Users/Commision/Fut/Fut";
+import Burger from "../Pages/Users/Commision/Burger/Burger";
+import Monthly from "../Pages/Users/Commision/Monthly/Monthly";
+import Penalty from "../Pages/Users/Commision/Penalty/Penalty";
+import Others from "../Pages/Users/Commision/Others/Others";
+import CommisionRoute from "../Pages/Users/Commision/CommsionRoute/CommsionRoute";
 
 const {
   BearShopBranch,
@@ -143,9 +150,38 @@ const router = createBrowserRouter([
         element: <BranchFrom />,
       },
       {
-        path: "/user/commision",
+        path: "/user/commisionroute",
+        element: <CommisionRoute />,
+      },
+      {
+        path: "/user/commisson",
         element: <Commision />,
       },
+      {
+        path: "/user/kharcha",
+        element: <Kharcha />,
+      },
+      {
+        path: "/user/fut",
+        element: <Fut />,
+      },
+      {
+        path: "/user/begar",
+        element: <Burger />,
+      },
+      {
+        path: "/user/monthly",
+        element: <Monthly />,
+      },
+      {
+        path: "/user/penalty",
+        element: <Penalty />,
+      },
+      {
+        path: "/user/others",
+        element: <Others />,
+      },
+
       {
         path: "/user/borrow",
         element: <Borrow />,

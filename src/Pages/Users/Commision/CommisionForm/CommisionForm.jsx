@@ -14,7 +14,7 @@ const CommisionForm = ({ index, commison }) => {
   return (
     <>
       {commisionForm.map((item) => {
-        const { description, amount, comment } = item;
+        const { amount, comment } = item;
         const dateData = commison?.date;
 
         const changeDateFormet = dateData?.split("T")[0];

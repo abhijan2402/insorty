@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
-import CommisionForm from "../CommisionForm/CommisionForm";
-import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import useCommision from "../CommisionHooks/useCommision";
 
-const Commision = () => {
+const Monthly = () => {
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
   const { commitsonData, isLoading } = useCommision();
@@ -33,7 +31,6 @@ const Commision = () => {
     return filterPass;
   });
 
-  // get total amount of filtered data and map it to the array of objects and then add all the values of the array
   const totalAmount = filteredData.map((item) => {
     // get total ammount using reduce method
     const total = item.entries.reduce((acc, item) => {
@@ -41,8 +38,6 @@ const Commision = () => {
     }, 0);
     return total;
   });
-
-  console.log(totalAmount, "totalAmount");
 
   return (
     <section className="py-4 px-4">
@@ -96,13 +91,47 @@ const Commision = () => {
               </thead>
 
               <tbody>
-                {filteredData.map((commison, index) => {
+                {filteredData.map((burger, index) => {
+                  const { entries } = burger;
+
+                  const filterMonthlyForm = (type) => {
+                    let filtered = entries.filter((item) => {
+                      return item.type === "MONTHLY";
+                    });
+                    return filtered;
+                  };
+                  const MonthlyForm = filterMonthlyForm("MONTHLY");
+
                   return (
-                    <CommisionForm
-                      key={index}
-                      index={index}
-                      commison={commison}
-                    ></CommisionForm>
+                    <>
+                      {MonthlyForm.map((item) => {
+                        const { amount, comment } = item;
+                        const dateData = burger?.date;
+
+                        const changeDateFormet = dateData?.split("T")[0];
+
+                        return (
+                          <tr key={index}>
+                            <th>{index}</th>
+                            <td>
+                              <div className="form-control">
+                                {changeDateFormet}
+                              </div>
+                            </td>
+
+                            <td>
+                              <div className="form-control">
+                                {amount?.$numberDecimal}
+                              </div>
+                            </td>
+
+                            <td>
+                              <div className="form-control">{comment}</div>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </>
                   );
                 })}
 
@@ -116,9 +145,7 @@ const Commision = () => {
                   >
                     Total :
                     <span className="mx-4">
-                      {totalAmount.reduce((acc, item) => {
-                        return acc + item;
-                      }, 0)}
+                    0
                     </span>
                   </th>
                   <th></th>
@@ -132,4 +159,4 @@ const Commision = () => {
   );
 };
 
-export default Commision;
+export default Monthly;
