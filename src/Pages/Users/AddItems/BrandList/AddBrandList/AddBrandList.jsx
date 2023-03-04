@@ -132,7 +132,7 @@ const AddBrandList = ({ refetch }) => {
                     Select Type
                   </option>
                   <option>WINE</option>
-                  <option>BEAR</option>
+                  <option>BEER</option>
                   <option>DESHIRML</option>
                 </select>
               </div>

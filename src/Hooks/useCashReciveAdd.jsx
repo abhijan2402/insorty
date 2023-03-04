@@ -80,6 +80,16 @@ const useCashReciveAdd = () => {
     values.splice(index, 1);
     console.log(index)
     setCashReciveState(values);
+    localStorage.setItem("paymentRecieved", JSON.stringify(values));
+    localStorage.setItem(
+      "totalPaymentsRecieved",
+      JSON.stringify(
+        values.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.amount)),
+          0
+        )
+      )
+    );
   };
 
   return {

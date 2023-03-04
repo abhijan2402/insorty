@@ -38,7 +38,8 @@ const useFristFormSubmitAPIFront = () => {
         remaining: element.sumRemainder750,
         closingStock: element.closingStock750,
         sales: element.sales750,
-        amount: Number(element.mainRate750) * Number(element.sales750),
+        sellingRate: element.mainRate750,
+        total: Number(element.mainRate750) * Number(element.sales750),
       });
     }
 
@@ -59,7 +60,8 @@ const useFristFormSubmitAPIFront = () => {
         remaining: element.sumRemainder180,
         closingStock: element.closingStock180,
         sales: element.sales180,
-        amount: Number(element.mainRate180) * Number(element.sales180),
+        sellingRate: element.mainRate180,
+        total: Number(element.mainRate180) * Number(element.sales180),
       });
     }
 
@@ -80,7 +82,8 @@ const useFristFormSubmitAPIFront = () => {
         remaining: element.sumRemainder330,
         closingStock: element.closingStock330,
         sales: element.sales330,
-        amount: Number(element.mainRate330) * Number(element.sales330),
+        sellingRate:element.mainRate330,
+        total: Number(element.mainRate330) * Number(element.sales330),
       });
     }
 
@@ -105,7 +108,8 @@ const useFristFormSubmitAPIFront = () => {
         remaining: element.sumRemainder,
         closingStock: element.closingStock,
         sales: element.sales,
-        amount: element.total,
+        sellingRate: element.mainRate,
+        total: element.total,
       });
     }
 
