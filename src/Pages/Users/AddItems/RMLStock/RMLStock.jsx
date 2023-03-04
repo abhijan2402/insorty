@@ -29,7 +29,7 @@ const RmlStock = () => {
 
   if (isLoading) return <Loader></Loader>;
 
-  const rmlStockData = rmlStock?.filter((item) => item.type === "RML");
+  const rmlStockData = rmlStock?.filter((item) => item.type === "DESHIRML");
   const filteredData = rmlStockData.filter((item) => {
     let filterPass = true;
     const date = moment(item.date).format("DD/MM/YYYY");

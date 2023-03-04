@@ -50,8 +50,9 @@ const useSecondFormFront = () => {
         parent.sizes.map((item) => {
           if (
             item.quantityInML !== 750 &&
-            item.quantityInML !== 330 &&
-            item.quantityInML !== 180
+            item.quantityInML !== 375 &&
+            item.quantityInML !== 180 &&
+            item.currentStock > 0
           ) {
             console.log(parent);
             const newFormData = { ...addOneSecondForm };
@@ -202,6 +203,18 @@ const useSecondFormFront = () => {
     values.splice(index, 1);
     // console.log(index)
     setAddOneSecondFormState(values);
+    localStorage.setItem("mlForm", JSON.stringify(values));
+    localStorage.setItem(
+      "mlFormTotal",
+      JSON.stringify(
+        values.reduce(
+          (totals, currentItem) =>
+            (totals = totals + Number(currentItem.total)),
+          0
+        ) || 0
+      )
+    );
+
   };
 
   return {
