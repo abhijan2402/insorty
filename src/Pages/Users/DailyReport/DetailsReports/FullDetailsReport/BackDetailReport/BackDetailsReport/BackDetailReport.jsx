@@ -11,6 +11,7 @@ import ShippingEnglishBear from "../ShippingEnglishBear/ShippingEnglishBear";
 import FinalReport from "../FinalReport/FinalReport";
 import Borrowed from "../Borrrowed/Borrowed";
 import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
+import BackRmlDetailsData from '../BackRmlDetails/BackRmlDetailsData'
 import moment from "moment/moment";
 import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
@@ -61,9 +62,7 @@ const BackDetailReport = () => {
     return <Loader></Loader>;
   }
 
-  if (!PurchaseOutsideData.length) {
-    return <h1>No Data Found</h1>;
-  }
+  // 
 
   const filteredExceptionalData = selectedDate
     ? BackPageReportExceptionalSize.filter((item) => {
@@ -1017,18 +1016,7 @@ const BackDetailReport = () => {
             </thead>
             <tbody>
 
-              {!FinalReportData ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : FinalReportData.filter((item) => {
-                  if (item?.date?.toString().includes(filterDate.toString())) {
-                    return item;
-                  } else if (filterDate === "") {
-                    return item;
-                  }
-                  return false;
-                }).length === 0 ? (
+             
 
               {!FinalReportData || !FinalReportData.length ? (
                 <>
