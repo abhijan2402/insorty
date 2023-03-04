@@ -80,71 +80,15 @@ const MainInvestment = () => {
                   </td>
                 </tr>
 
-                <h1 style={{ fontSize: 35 }}>
-                  <b>Fees</b>
-                </h1>
-
-                {data.mainInvest.fees.map((mainInvestment, index) => {
-                  return (
-                    <InvestmentForm
-                      key={index}
-                      index={index}
-                      name={"fees"}
-                      mainInvestment={mainInvestment}
-                      handelOnChangeMainInvestment={handleInvestmentChange}
-                    ></InvestmentForm>
-                  );
-                })}
-
                 <tr>
-                  <h1
-                    style={{ textAlign: "center", paddingTop: 3, marginTop: 7 }}
-                    className="dailyReportBtn"
-                    onClick={() => handleFeesAdd()}
-                  >
-                    ADD 1
-                  </h1>
-                </tr>
-
-                <tr>
-                  {" "}
-                  <h1 style={{ fontSize: 35 }}>
-                    <b>Belongings</b>
-                  </h1>
-                </tr>
-
-                {data &&
-                  data.mainInvest.belonging.map((mainInvestment, index) => {
-                    return (
-                      <InvestmentForm
-                        key={index}
-                        index={index}
-                        name={"belonging"}
-                        mainInvestment={mainInvestment}
-                        handelOnChangeMainInvestment={handleInvestmentChange}
-                      ></InvestmentForm>
-                    );
-                  })}
-
-                <tr>
-                  <h1
-                    style={{ textAlign: "center", paddingTop: 3, marginTop: 7 }}
-                    className="dailyReportBtn"
-                    onClick={() => handleBelongingAdd()}
-                  >
-                    ADD 1
-                  </h1>
-                </tr>
-
-                <tr>
-                  <th>1</th>
+                  <th>2</th>
                   <td>
                     <input
                       className="dailyReportInput"
                       type="text"
                       name="brandName"
                       value={"Cash in Hand"}
-                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -169,8 +113,36 @@ const MainInvestment = () => {
                   </td>
                 </tr>
 
+
+                {data.mainInvest.fees.map((mainInvestment, index) => {
+                  return (
+                    <InvestmentForm
+                      key={index}
+                      index={index}
+                      name={"fees"}
+                      mainInvestment={mainInvestment}
+                      handelOnChangeMainInvestment={handleInvestmentChange}
+                    ></InvestmentForm>
+                  );
+                })}
+
                 <tr>
-                  <th>1</th>
+                  <h1
+                    style={{ textAlign: "center", paddingTop: 3, marginTop: 7 }}
+                    className="dailyReportBtn"
+                    onClick={() => handleFeesAdd()}
+                  >
+                    ADD 1
+                  </h1>
+                </tr>
+
+               
+                
+
+               
+
+                <tr>
+                  <th>{data.mainInvest.fees.length + 3}</th>
                   <td>
                     <input
                       className="dailyReportInput"

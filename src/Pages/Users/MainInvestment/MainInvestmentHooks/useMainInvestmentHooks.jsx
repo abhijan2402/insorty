@@ -43,11 +43,7 @@ const useMainInvestmentHooks = () => {
     const total =
       data.mainInvest.total -
       (parseInt(data.mainInvest.previousLoan.price) || 0) -
-      (parseInt(data.mainInvest.cashInHand.price) || 0) -
-      data.mainInvest.belonging.reduce(
-        (sum, item) => sum + parseInt(item.price),
-        0
-      ) -
+      (parseInt(data.mainInvest.cashInHand.price) || 0)  -
       data.mainInvest.fees.reduce((sum, item) => sum + parseInt(item.price), 0);
     // console.log(total)
     return total;
@@ -90,7 +86,7 @@ const useMainInvestmentHooks = () => {
       else if (field === "belonging")
         _data.mainInvest.belonging[index][subfield] = Number(newValue);
       else if (field === "fees")
-        _data.mainInvest.fees[index][subfield] = Number(newValue);
+        _data.mainInvest.fees[index][subfield] = (newValue);
       else if (field === "total") _data.mainInvest.total = Number(newValue);
       // else if(field === 'refundRecovery')
       _data.mainInvest.reserveAmount.price = calculateReserveAmount(_data);

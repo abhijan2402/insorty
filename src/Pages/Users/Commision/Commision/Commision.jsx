@@ -30,7 +30,6 @@ const Commision = () => {
     return <Loader></Loader>;
   }
 
-  console.log(commitsonData, "+++++++++");
 
   if (!commitsonData.length) {
     return <h1>No Data Found</h1>;
@@ -115,6 +114,7 @@ const Commision = () => {
                 {filteredData.map((commison, index) => {
                   return (
                     <CommisionForm
+                    
                       key={index}
                       index={index}
                       commison={commison}

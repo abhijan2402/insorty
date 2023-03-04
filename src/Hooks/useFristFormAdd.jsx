@@ -1208,11 +1208,14 @@ else{
     console.log(index)
     setAddOneSecondFormState(values);
     localStorage.setItem("BeerForm", JSON.stringify(values));
-    localStorage.setItem(
-      "totalFirstBack",
-      JSON.stringify(totalState.allGrandTotal)
+    JSON.stringify(
+      values.reduce(
+        (totals, currentItem) =>
+          (totals = totals + Number(currentItem.total)),
+        0
+      )
     )
-
+    
   };
 
 

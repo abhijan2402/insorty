@@ -7,19 +7,26 @@ const InvestmentForm = ({
   name,
   handelOnChangeMainInvestment,
 }) => {
-  console.log(mainInvestment.date);
+  console.log(mainInvestment);
 
   return (
     <>
       <tr>
-        <th>{index + 2}</th>
+        <th>{index + 3}</th>
         <td>
           <input
-            className="dailyReportInput"
             type="text"
-            name="brandName"
-            value={name}
-            onChange={(e) => handelOnChangeMainInvestment(e, index)}
+            name="price"
+            className="semiSmallInput"
+            defaultValue={mainInvestment.type}
+            onChange={(event) =>
+              handelOnChangeMainInvestment(
+                name,
+                event.target.value,
+                index,
+                "type"
+              )
+            }
           />
         </td>
         <td>

@@ -7,10 +7,12 @@ const RegularData = ({ regularData, index }) => {
 
   const quantityInML750 = entries.filter((entry) => entry.quantityInML === 750);
   console.log("quantityInML750", quantityInML750);
+  // [1]
 
 
   const quantityInML375 = entries.filter((entry) => entry.quantityInML === 375);
   console.log("quantityInML375", quantityInML375);
+  // [1]
 
   // get all quantityInML 180 ml data form entries arry
 

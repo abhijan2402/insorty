@@ -133,7 +133,7 @@ const useHandelSubmitBackAPI = () => {
     const element = newBeer[index];
     beerForm.push({
       // liquor: liquors?.[0]?._id,
-      liquor: GetLiqId(element.liquorID, 330, "BEER"),
+      liquor: GetLiqId(element.liquorID, element.selectStockVarient, "BEER"),
       brandName: element.brandName,
       quantityInML: element.selectStockVarient,
       openingStock: element.startingStock,

@@ -144,9 +144,3 @@ const mappedArray = arr1.map((item, index) => (
 ));
 
 
-
-
-
-
-
-
