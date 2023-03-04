@@ -12,12 +12,12 @@ import RegularData from "../RegularData/RegularData";
 
 const FrontDetailsReport = () => {
   const front = useRef(null);
-
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const {
     FrontPageRegularData,
     isLoading,
+    isLoading2,
     FrontPageExceptionalData,
   } = useFrontDetailHooks();
 
@@ -53,13 +53,15 @@ const FrontDetailsReport = () => {
       })
     : FrontPageExceptionalData;
 
+  if (isLoading2) {
+    return <Loader></Loader>;
+  }
+
   console.log(filteredExceptionalData, "filteredExceptionalData");
   const openingStock = filteredExceptionalData.map((item) => {
     const { openingStock } = item;
     return openingStock;
   });
-
-  console.log(openingStock, "openingStock");
 
   const purchaseShop = filteredExceptionalData.map((item) => {
     const { purchaseShop } = item;
@@ -97,8 +99,6 @@ const FrontDetailsReport = () => {
     return sales;
   });
 
-  console.log(openingStock, "openingStock");
-
   // get the  750ml data from the regular data  array
   const filtered750mlRegularData = filteredRegularData.map((item) => {
     const { entries } = item;
@@ -114,6 +114,14 @@ const FrontDetailsReport = () => {
     const { entries } = item;
     return entries.filter((entry) => entry.quantityInML === 180);
   });
+
+  if (!filteredRegularData.length) {
+    return (
+      <h1 className="text-center text-red-500 text-2xl font-bold">
+        No Data Found
+      </h1>
+    );
+  }
 
   return (
     <section className="my-4">
@@ -339,342 +347,476 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"> 0</td>
 
                 <td className="tg-0lax">
-                  {
-                    //  filteredData.map((item) => {
-                    //   // get total ammount using reduce method
-                    //   const total = item.entries.reduce((acc, item) => {
-                    //     return acc + Number(item.amount.$numberDecimal);
-                    //   }, 0);
-                    //   return total;
-                    // });
-
-                    filtered750mlRegularData.map((items) => {
-                      const total = items.reduce((acc, item) => {
-                        const total = Number(acc) + Number(item.openingStock);
-                        return total;
-                      }, 0);
-                      return total;
-                    })
-                  }
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.openingStock)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.openingStock);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.openingStock)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.openingStock);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-
-                <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item?.purchaseShop);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item?.purchaseShop);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item?.purchaseShop);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.openingStock)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
 
                 <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total =
-                        Number(acc) +
-                        Number(Number(item.purchaseShopRate?.$numberDecimal));
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.purchaseShop)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total =
-                        Number(acc) +
-                        Number(Number(item.purchaseShopRate?.$numberDecimal));
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.purchaseShop)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total =
-                        Number(acc) +
-                        Number(Number(item.purchaseShopRate?.$numberDecimal));
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-
-                <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.purchaseOutSide);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.purchaseOutSide);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.purchaseOutSide);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.purchaseShop)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
 
                 <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total =
-                        Number(acc) +
-                        Number(
-                          Number(item.purchaseOutSideRate?.$numberDecimal)
-                        );
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              Number(
+                                currentItem.purchaseShopRate?.$numberDecimal
+                              )),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total =
-                        Number(acc) +
-                        Number(
-                          Number(item.purchaseOutSideRate?.$numberDecimal)
-                        );
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              Number(
+                                currentItem.purchaseShopRate?.$numberDecimal
+                              )),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total =
-                        Number(acc) +
-                        Number(
-                          Number(item.purchaseOutSideRate?.$numberDecimal)
-                        );
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-
-                <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.credits);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.credits);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.credits);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              Number(
+                                currentItem.purchaseShopRate?.$numberDecimal
+                              )),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
 
                 <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.send);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total + Number(currentItem.purchaseOutSide)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.send);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total + Number(currentItem.purchaseOutSide)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.send);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-
-                <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.remaining);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.remaining);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.remaining);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total + Number(currentItem.purchaseOutSide)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
 
                 <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.closingStock);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              Number(
+                                currentItem.purchaseOutSideRate?.$numberDecimal
+                              )),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.closingStock);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              Number(
+                                currentItem.purchaseOutSideRate?.$numberDecimal
+                              )),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.closingStock);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-
-                <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.sales);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.sales);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
-                </td>
-                <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item.sales);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              Number(
+                                currentItem.purchaseOutSideRate?.$numberDecimal
+                              )),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
 
                 <td className="tg-0lax">
-                  {filtered750mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total =
-                        Number(acc) + Number(item.sellingRate?.$numberDecimal);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.credits)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered375mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total =
-                        Number(acc) + Number(item.sellingRate?.$numberDecimal);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.credits)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
                 <td className="tg-0lax">
-                  {filtered180mlRegularData.map((items) => {
-                    const total = items.reduce((acc, item) => {
-                      const total =
-                        Number(acc) + Number(item.sellingRate?.$numberDecimal);
-                      return total;
-                    }, 0);
-                    return total;
-                  })}
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.credits)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.send)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.send)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.send)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.remaining)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.remaining)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.remaining)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.closingStock)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.closingStock)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.closingStock)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.sales)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.sales)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.sales)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              Number(currentItem.sellingRate?.$numberDecimal)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              Number(currentItem.sellingRate?.$numberDecimal)),
+                          0
+                        )),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              Number(currentItem.sellingRate?.$numberDecimal)),
+                          0
+                        )),
+                    0
+                  )}
                 </td>
 
                 <td className="tg-0lax">0 </td>
