@@ -32,14 +32,6 @@ const Commision = () => {
 
   console.log(commitsonData, "+++++++++");
 
-  const entries = commitsonData.map((item) => {
-    return item.entries;
-  });
-
-  const amount = entries.map((item) => {
-    return item;
-  });
-
   if (!commitsonData.length) {
     return <h1>No Data Found</h1>;
   }

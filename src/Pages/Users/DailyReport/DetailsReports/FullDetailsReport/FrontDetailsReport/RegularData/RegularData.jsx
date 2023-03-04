@@ -21,9 +21,6 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">{index + 1}</td>
         <td className="tg-0lax">{brandName}</td>
 
-        {/* Average Rate */}
-        {/* show the 750 data  */}
-
         <td className="tg-0lax">
           {
             // get the average rate for the 750 ml data
@@ -77,21 +74,21 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">
           {quantityInML750.length > 0
             ? quantityInML750
-                .map((item) => item.openingStock)
+                .map((item) => Number(item.openingStock))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
             ? quantityInML375
-                .map((item) => item.openingStock)
+                .map((item) => Number(item.openingStock))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
             ? quantityInML180
-                .map((item) => item.openingStock)
+                .map((item) => Number(item.openingStock))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
@@ -100,21 +97,21 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">
           {quantityInML750.length > 0
             ? quantityInML750
-                .map((item) => item?.purchaseShop)
+                .map((item) => Number(item?.purchaseShop))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
             ? quantityInML375
-                .map((item) => item?.purchaseShop)
+                .map((item) => Number(item?.purchaseShop))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
             ? quantityInML180
-                .map((item) => item?.purchaseShop)
+                .map((item) => Number(item?.purchaseShop))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
@@ -123,21 +120,21 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">
           {quantityInML750.length > 0
             ? quantityInML750
-                .map((item) => item.purchaseShopRate?.$numberDecimal)
+                .map((item) => Number(item.purchaseShopRate?.$numberDecimal))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
             ? quantityInML375
-                .map((item) => item.purchaseShopRate?.$numberDecimal)
+                .map((item) => Number(item.purchaseShopRate?.$numberDecimal))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
             ? quantityInML180
-                .map((item) => item.purchaseShopRate?.$numberDecimal)
+                .map((item) => Number(item.purchaseShopRate?.$numberDecimal))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
@@ -146,21 +143,21 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">
           {quantityInML750.length > 0
             ? quantityInML750
-                .map((item) => item.purchaseOutSide)
+                .map((item) => Number(item.purchaseOutSide))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
             ? quantityInML375
-                .map((item) => item.purchaseOutSide)
+                .map((item) => Number(item.purchaseOutSide))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
             ? quantityInML180
-                .map((item) => item.purchaseOutSide)
+                .map((item) => Number(item.purchaseOutSide))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
@@ -169,21 +166,21 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">
           {quantityInML750.length > 0
             ? quantityInML750
-                .map((item) => item.purchaseOutSideRate?.$numberDecimal)
+                .map((item) => Number(item.purchaseOutSideRate?.$numberDecimal))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
             ? quantityInML375
-                .map((item) => item.purchaseOutSideRate?.$numberDecimal)
+                .map((item) => Number(item.purchaseOutSideRate?.$numberDecimal))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
             ? quantityInML180
-                .map((item) => item.purchaseOutSideRate?.$numberDecimal)
+                .map((item) => Number(item.purchaseOutSideRate?.$numberDecimal))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
@@ -192,21 +189,21 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">
           {quantityInML750.length > 0
             ? quantityInML750
-                .map((item) => item.credits)
+                .map((item) => Number(item.credits))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
             ? quantityInML375
-                .map((item) => item.credits)
+                .map((item) => Number(item.credits))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
             ? quantityInML180
-                .map((item) => item.credits)
+                .map((item) => Number(item.credits))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
@@ -214,17 +211,23 @@ const RegularData = ({ regularData, index }) => {
         {/* sending */}
         <td className="tg-0lax">
           {quantityInML750.length > 0
-            ? quantityInML750.map((item) => item.send).reduce((a, b) => a + b)
+            ? quantityInML750
+                .map((item) => Number(item.send))
+                .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
-            ? quantityInML375.map((item) => item.send).reduce((a, b) => a + b)
+            ? quantityInML375
+                .map((item) => Number(item.send))
+                .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
-            ? quantityInML180.map((item) => item.send).reduce((a, b) => a + b)
+            ? quantityInML180
+                .map((item) => Number(item.send))
+                .reduce((a, b) => a + b)
             : 0}
         </td>
 
@@ -232,21 +235,21 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">
           {quantityInML750.length > 0
             ? quantityInML750
-                .map((item) => item.remaining)
+                .map((item) => Number(item.remaining))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
             ? quantityInML375
-                .map((item) => item.remaining)
+                .map((item) => Number(item.remaining))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
             ? quantityInML180
-                .map((item) => item.remaining)
+                .map((item) => Number(item.remaining))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
@@ -255,21 +258,21 @@ const RegularData = ({ regularData, index }) => {
         <td className="tg-0lax">
           {quantityInML750.length > 0
             ? quantityInML750
-                .map((item) => item.closingStock)
+                .map((item) => Number(item.closingStock))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
             ? quantityInML375
-                .map((item) => item.closingStock)
+                .map((item) => Number(item.closingStock))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
             ? quantityInML180
-                .map((item) => item.closingStock)
+                .map((item) => Number(item.closingStock))
                 .reduce((a, b) => a + b)
             : 0}
         </td>
@@ -277,173 +280,80 @@ const RegularData = ({ regularData, index }) => {
         {/* sale, marketing, closeout */}
         <td className="tg-0lax">
           {quantityInML750.length > 0
-            ? quantityInML750.map((item) => item.sales).reduce((a, b) => a + b)
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375.map((item) => item.sales).reduce((a, b) => a + b)
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180.map((item) => item.sales).reduce((a, b) => a + b)
-            : 0}
-        </td>
-
-        {/* rate */}
-        <td className="tg-0lax">data</td>
-        <td className="tg-0lax">data</td>
-        <td className="tg-0lax">data</td>
-
-        {/* sum */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
             ? quantityInML750
-                .map((item) => item.purchaseOutSide)
-                .reduce((a, b) => a + b) +
-              quantityInML750
-                .map((item) => item.purchaseShop)
-                .reduce((a, b) => a + b) +
-              quantityInML750
-                .map((item) => item.credits)
-                .reduce((a, b) => a + b) -
-              quantityInML750.map((item) => item.send).reduce((a, b) => a + b)
+                .map((item) => Number(item.sales))
+                .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML375.length > 0
             ? quantityInML375
-                .map((item) => item.purchaseOutSide)
-                .reduce((a, b) => a + b) +
-              quantityInML375
-                .map((item) => item.purchaseShop)
-                .reduce((a, b) => a + b) +
-              quantityInML375
-                .map((item) => item.credits)
-                .reduce((a, b) => a + b) -
-              quantityInML375.map((item) => item.send).reduce((a, b) => a + b)
+                .map((item) => Number(item.sales))
+                .reduce((a, b) => a + b)
             : 0}
         </td>
         <td className="tg-0lax">
           {quantityInML180.length > 0
             ? quantityInML180
-                .map((item) => item.purchaseOutSide)
-                .reduce((a, b) => a + b) +
-              quantityInML180
-                .map((item) => item.purchaseShop)
-                .reduce((a, b) => a + b) +
-              quantityInML180
-                .map((item) => item.credits)
-                .reduce((a, b) => a + b) -
-              quantityInML180.map((item) => item.send).reduce((a, b) => a + b)
+                .map((item) => Number(item.sales))
+                .reduce((a, b) => a + b)
             : 0}
         </td>
-        {/* <td className="tg-0lax"> */}
-        {/* <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td> */}
+
+        {/* rate */}
+        <td className="tg-0lax">
+          {quantityInML750.length > 0
+            ? quantityInML750
+                .map((item) => Number(item.sellingRate?.$numberDecimal))
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML375.length > 0
+            ? quantityInML375
+                .map((item) => Number(item.sellingRate?.$numberDecimal))
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML180.length > 0
+            ? quantityInML180
+                .map((item) => Number(item.sellingRate?.$numberDecimal))
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+
+        {/* sum */}
+        <td className="tg-0lax">
+          {quantityInML750.length > 0
+            ? quantityInML750
+                .map((item) => Number(item.sellingRate?.$numberDecimal))
+                .reduce((a, b) => a + b) *
+              quantityInML750
+                .map((item) => Number(item.sales))
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML375.length > 0
+            ? quantityInML375
+                .map((item) => Number(item.sellingRate?.$numberDecimal))
+                .reduce((a, b) => a + b) *
+              quantityInML375
+                .map((item) => Number(item.sales))
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
+        <td className="tg-0lax">
+          {quantityInML180.length > 0
+            ? quantityInML180
+                .map((item) => Number(item.sellingRate?.$numberDecimal))
+                .reduce((a, b) => a + b) *
+              quantityInML180
+                .map((item) => Number(item.sales))
+                .reduce((a, b) => a + b)
+            : 0}
+        </td>
       </tr>
     </>
   );

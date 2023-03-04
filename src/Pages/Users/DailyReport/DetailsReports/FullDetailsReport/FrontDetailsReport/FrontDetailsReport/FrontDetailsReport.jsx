@@ -12,10 +12,8 @@ import RegularData from "../RegularData/RegularData";
 
 const FrontDetailsReport = () => {
   const front = useRef(null);
-  const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
 
-  const [selectedDate, setSelectedDate] = useState();
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
   const {
     FrontPageRegularData,
@@ -43,8 +41,7 @@ const FrontDetailsReport = () => {
       })
     : FrontPageRegularData;
 
-
-    const filteredExceptionalData = selectedDate
+  const filteredExceptionalData = selectedDate
     ? FrontPageExceptionalData.filter((item) => {
         const itemDate = new Date(moment(item.date).format());
         const selected = selectedDate ? new Date(selectedDate) : null;
@@ -56,8 +53,67 @@ const FrontDetailsReport = () => {
       })
     : FrontPageExceptionalData;
 
+  console.log(filteredExceptionalData, "filteredExceptionalData");
+  const openingStock = filteredExceptionalData.map((item) => {
+    const { openingStock } = item;
+    return openingStock;
+  });
 
-  
+  console.log(openingStock, "openingStock");
+
+  const purchaseShop = filteredExceptionalData.map((item) => {
+    const { purchaseShop } = item;
+    return purchaseShop;
+  });
+
+  const purchaseOutSide = filteredExceptionalData.map((item) => {
+    const { purchaseOutSide } = item;
+    return purchaseOutSide;
+  });
+
+  const credits = filteredExceptionalData.map((item) => {
+    const { credits } = item;
+    return credits;
+  });
+
+  const send = filteredExceptionalData.map((item) => {
+    const { send } = item;
+    return send;
+  });
+
+  const remaining = filteredExceptionalData.map((item) => {
+    const { remaining } = item;
+    return remaining;
+  });
+
+  const closingStock = filteredExceptionalData.map((item) => {
+    const { closingStock } = item;
+    return closingStock;
+  });
+
+  const sales = filteredExceptionalData.map((item) => {
+    console.log(item, "item+++++");
+    const { sales } = item;
+    return sales;
+  });
+
+  console.log(openingStock, "openingStock");
+
+  // get the  750ml data from the regular data  array
+  const filtered750mlRegularData = filteredRegularData.map((item) => {
+    const { entries } = item;
+    return entries.filter((entry) => entry.quantityInML === 750);
+  });
+
+  const filtered375mlRegularData = filteredRegularData.map((item) => {
+    const { entries } = item;
+    return entries.filter((entry) => entry.quantityInML === 375);
+  });
+
+  const filtered180mlRegularData = filteredRegularData.map((item) => {
+    const { entries } = item;
+    return entries.filter((entry) => entry.quantityInML === 180);
+  });
 
   return (
     <section className="my-4">
@@ -84,9 +140,9 @@ const FrontDetailsReport = () => {
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
-            selected={StartDate}
+            selected={selectedDate}
             onChange={(date) => {
-              setStartDate(date);
+              setSelectedDate(date);
               console.log(moment(date).format());
             }}
             dateFormat="dd/MM/yyyy"
@@ -94,19 +150,6 @@ const FrontDetailsReport = () => {
             className="inputBox"
           />
         </div>
-
-        {/* <h2 className="font-bold text-[1.5rem]">To</h2>
-        <div className="flex gap-2 items-center">
-          <FaCalendarAlt></FaCalendarAlt>
-          <DatePicker
-            selected={EndDate}
-            name="year"
-            onChange={(data) => setEndDate(data)}
-            dateFormat="dd/MM/yyyy"
-            className="inputBox"
-            placeholderText={"dd/mm/yyyy"}
-          />
-        </div> */}
       </div>
       <div className="divider"></div>
 
@@ -295,49 +338,344 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"> 0</td>
                 <td className="tg-0lax"> 0</td>
 
-                <td className="tg-0lax">0</td>
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax">
+                  {
+                    //  filteredData.map((item) => {
+                    //   // get total ammount using reduce method
+                    //   const total = item.entries.reduce((acc, item) => {
+                    //     return acc + Number(item.amount.$numberDecimal);
+                    //   }, 0);
+                    //   return total;
+                    // });
 
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
+                    filtered750mlRegularData.map((items) => {
+                      const total = items.reduce((acc, item) => {
+                        const total = Number(acc) + Number(item.openingStock);
+                        return total;
+                      }, 0);
+                      return total;
+                    })
+                  }
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.openingStock);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.openingStock);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item?.purchaseShop);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item?.purchaseShop);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item?.purchaseShop);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total =
+                        Number(acc) +
+                        Number(Number(item.purchaseShopRate?.$numberDecimal));
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total =
+                        Number(acc) +
+                        Number(Number(item.purchaseShopRate?.$numberDecimal));
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total =
+                        Number(acc) +
+                        Number(Number(item.purchaseShopRate?.$numberDecimal));
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
-                <td className="tg-0lax">0 </td>
-                <td className="tg-0lax">0 </td>
-                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.purchaseOutSide);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.purchaseOutSide);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.purchaseOutSide);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
-                <td className="tg-0lax">0 </td>
-                <td className="tg-0lax">0 </td>
-                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total =
+                        Number(acc) +
+                        Number(
+                          Number(item.purchaseOutSideRate?.$numberDecimal)
+                        );
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total =
+                        Number(acc) +
+                        Number(
+                          Number(item.purchaseOutSideRate?.$numberDecimal)
+                        );
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total =
+                        Number(acc) +
+                        Number(
+                          Number(item.purchaseOutSideRate?.$numberDecimal)
+                        );
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
-                <td className="tg-0lax">0 </td>
-                <td className="tg-0lax">0 </td>
-                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.credits);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.credits);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.credits);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.send);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.send);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.send);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
-                <td className="tg-0lax"> 0 </td>
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.remaining);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.remaining);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.remaining);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
-                <td className="tg-0lax">0</td>
-                <td className="tg-0lax">0</td>
-                <td className="tg-0lax">0</td>
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.closingStock);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.closingStock);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.closingStock);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
-                <td className="tg-0lax">0 </td>
-                <td className="tg-0lax">0 </td>
-                <td className="tg-0lax">0 </td>
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.sales);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.sales);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item.sales);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+
+                <td className="tg-0lax">
+                  {filtered750mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total =
+                        Number(acc) + Number(item.sellingRate?.$numberDecimal);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered375mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total =
+                        Number(acc) + Number(item.sellingRate?.$numberDecimal);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
+                <td className="tg-0lax">
+                  {filtered180mlRegularData.map((items) => {
+                    const total = items.reduce((acc, item) => {
+                      const total =
+                        Number(acc) + Number(item.sellingRate?.$numberDecimal);
+                      return total;
+                    }, 0);
+                    return total;
+                  })}
+                </td>
 
                 <td className="tg-0lax">0 </td>
                 <td className="tg-0lax">0 </td>
@@ -396,232 +734,60 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData &&
-                    FrontPageExceptionalData.filter((item) => {
-                      if (
-                        item.date
-                          ?.toString()
-                          .includes(filteredExceptionalData.toString())
-                      ) {
-                        return item;
-                      } else if (filteredExceptionalData === "") {
-                        return item;
-                      }
-                      return false;
-                    }).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.openingStock),
-                            0
-                          )),
-                      0
-                    )}
+                  {openingStock.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  })}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData &&
-                    FrontPageExceptionalData.filter((item) => {
-                      if (
-                        item.date
-                          ?.toString()
-                          .includes(filteredExceptionalData.toString())
-                      ) {
-                        return item;
-                      } else if (filteredExceptionalData === "") {
-                        return item;
-                      }
-                      return false;
-                    }).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.purchaseShop),
-                            0
-                          )),
-                      0
-                    )}
+                  {purchaseShop.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData &&
-                    FrontPageExceptionalData.filter((item) => {
-                      if (
-                        item.date
-                          ?.toString()
-                          .includes(filteredExceptionalData.toString())
-                      ) {
-                        return item;
-                      } else if (filteredExceptionalData === "") {
-                        return item;
-                      }
-                      return false;
-                    }).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.purchaseOutSide),
-                            0
-                          )),
-                      0
-                    )}
+                  {purchaseOutSide.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  })}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData &&
-                    FrontPageExceptionalData.filter((item) => {
-                      if (
-                        item.date
-                          ?.toString()
-                          .includes(filteredExceptionalData.toString())
-                      ) {
-                        return item;
-                      } else if (filteredExceptionalData === "") {
-                        return item;
-                      }
-                      return false;
-                    }).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.credits),
-                            0
-                          )),
-                      0
-                    )}
+                  {credits.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData &&
-                    FrontPageExceptionalData.filter((item) => {
-                      if (
-                        item.date
-                          ?.toString()
-                          .includes(filteredExceptionalData.toString())
-                      ) {
-                        return item;
-                      } else if (filteredExceptionalData === "") {
-                        return item;
-                      }
-                      return false;
-                    }).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.send),
-                            0
-                          )),
-                      0
-                    )}
+                  {send.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData &&
-                    FrontPageExceptionalData.filter((item) => {
-                      if (
-                        item.date
-                          ?.toString()
-                          .includes(filteredExceptionalData.toString())
-                      ) {
-                        return item;
-                      } else if (filteredExceptionalData === "") {
-                        return item;
-                      }
-                      return false;
-                    }).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.remaining),
-                            0
-                          )),
-                      0
-                    )}
+                  {remaining.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData &&
-                    FrontPageExceptionalData.filter((item) => {
-                      if (
-                        item.date
-                          ?.toString()
-                          .includes(filteredExceptionalData.toString())
-                      ) {
-                        return item;
-                      } else if (filteredExceptionalData === "") {
-                        return item;
-                      }
-                      return false;
-                    }).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.closingStock),
-                            0
-                          )),
-                      0
-                    )}
+                  {closingStock.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
                 </td>
 
                 <td className="tg-0lax">
-                  {FrontPageExceptionalData &&
-                    FrontPageExceptionalData.filter((item) => {
-                      if (
-                        item.date
-                          ?.toString()
-                          .includes(filteredExceptionalData.toString())
-                      ) {
-                        return item;
-                      } else if (filteredExceptionalData === "") {
-                        return item;
-                      }
-                      return false;
-                    }).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.sales),
-                            0
-                          )),
-                      0
-                    )}
+                  {sales.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  })}
                 </td>
 
                 <td className="tg-0lax"></td>
 
-                <td className="tg-0lax">
-                  {/* {FrontPageData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total =
-                              total +
-                              Number(currentItem?.amount?.$numberDecimal)),
-                          0
-                        )),
-                    0
-                  )} */}
-                </td>
+                <td className="tg-0lax"></td>
               </tr>
             </tbody>
           </table>
