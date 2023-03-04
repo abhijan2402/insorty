@@ -35,7 +35,8 @@ const useSecondFormFront = () => {
     if (prevdata) {
       setAddOneSecondFormState(prevdata);
     }
-
+    
+    else{
     let firstFormData = addOneSecondFormState;
 
     if (!brandsLoaded && liquors.length > 0) {
@@ -79,6 +80,7 @@ const useSecondFormFront = () => {
           }
         });
       });
+    }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

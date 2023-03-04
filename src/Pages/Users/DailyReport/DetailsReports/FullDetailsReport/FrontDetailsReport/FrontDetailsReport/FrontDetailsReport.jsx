@@ -29,6 +29,11 @@ const FrontDetailsReport = () => {
     return <Loader></Loader>;
   }
 
+  
+  if (isLoading2) {
+    return <Loader></Loader>;
+  }
+
   const filteredRegularData = selectedDate
     ? FrontPageRegularData.filter((item) => {
         const itemDate = new Date(moment(item.date).format());
@@ -53,9 +58,7 @@ const FrontDetailsReport = () => {
       })
     : FrontPageExceptionalData;
 
-  if (isLoading2) {
-    return <Loader></Loader>;
-  }
+ 
 
   console.log(filteredExceptionalData, "filteredExceptionalData");
   const openingStock = filteredExceptionalData.map((item) => {
@@ -117,9 +120,45 @@ const FrontDetailsReport = () => {
 
   if (!filteredRegularData.length) {
     return (
+      <>
+        <div className="flex gap-6 items-center my-4">
+          <h2 className="font-bold text-xl text-gray-800">
+            Front Details Report
+          </h2>
+
+          <Link
+            to="/user/dailyreport/details"
+            className="btn btn-error text-white font-bold"
+          >
+            Back Details Report
+          </Link>
+
+          <button
+            className="my-4 btn btn-error text-white font-bold"
+            onClick={handlePrint}
+          >
+            PRINT
+          </button>
+        </div>
+        <div className="flex gap-4 items-center my-4">
+          <div className="flex gap-2 items-center">
+            <FaCalendarAlt></FaCalendarAlt>
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date) => {
+                setSelectedDate(date);
+                console.log(moment(date).format());
+              }}
+              dateFormat="dd/MM/yyyy"
+              placeholderText={"dd/mm/yyyy"}
+              className="inputBox"
+            />
+          </div>
+        </div>
       <h1 className="text-center text-red-500 text-2xl font-bold">
         No Data Found
       </h1>
+      </>
     );
   }
 

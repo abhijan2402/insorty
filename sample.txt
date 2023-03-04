@@ -110,3 +110,43 @@ front daily report --> addFrontPageData
         return date === moment(selectedDate).format("DD/MM/YYYY");
       })
     : BackPageReportRegularSize;
+
+
+
+    const arr1 = [
+  { id: 1, name: 'Alice' },
+  { id: 2, name: 'Bob' },
+  { id: 3, name: 'Charlie' },
+];
+const arr2 = [
+  { id: 1, age: 30 },
+  { id: 2, age: 25 },
+  { id: 3, age: 35 },
+];
+const arr3 = [
+  { id: 1, color: 'red' },
+  { id: 2, color: 'green' },
+  { id: 3, color: 'blue' },
+];
+
+const mappedArray = arr1.map((item, index) => (
+  quan375=arr2.find((item2)=>item.id===item2.id)
+  quan180=arr3.find((item3)=>item.id===item2.id)
+
+  return(
+  <div key={item.id}>
+    <p>ID: {item.id}</p>
+    <p>Name: {item.name}</p>
+    <p>Age: {arr2[index].age}</p>
+    <p>Color: {arr3[index].color}</p>
+
+  </div>)
+));
+
+
+
+
+
+
+
+
