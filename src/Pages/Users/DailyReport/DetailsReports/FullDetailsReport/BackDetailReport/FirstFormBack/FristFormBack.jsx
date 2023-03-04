@@ -3,6 +3,25 @@ import "../../../Style/DetailsReport.css";
 import FristFormBackData from "./FristFormBackData";
 
 const FristFormBack = ({ filteredRegularData }) => {
+  const filtered650mlRegularData = filteredRegularData.map((item) => {
+    const { entries } = item;
+    return entries.filter((entry) => entry.quantityInML === 650);
+  });
+
+  console.log("filtered650mlRegularData", filtered650mlRegularData);
+
+  const filtered550mlRegularData = filteredRegularData.map((item) => {
+    const { entries } = item;
+    return entries.filter((entry) => entry.quantityInML === 550);
+  });
+
+  console.log("filtered550mlRegularData", filtered550mlRegularData);
+
+  const filtered330mlRegularData = filteredRegularData.map((item) => {
+    const { entries } = item;
+    return entries.filter((entry) => entry.quantityInML === 330);
+  });
+
   return (
     <section>
       <div className="overflow-x-auto">
@@ -163,48 +182,485 @@ const FristFormBack = ({ filteredRegularData }) => {
 
             <tr>
               <td className="tg-0lax" colSpan={2}>
-                Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total
               </td>
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
-              <td className="tg-0lax" />
+              <td className="tg-0lax"> 0</td>
+              <td className="tg-0lax"> 0</td>
+              <td className="tg-0lax"> 0</td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.openingStock)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.openingStock)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.openingStock)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.purchaseShop)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.purchaseShop)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.purchaseShop)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(
+                              currentItem.purchaseShopRate?.$numberDecimal
+                            )),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(
+                              currentItem.purchaseShopRate?.$numberDecimal
+                            )),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(
+                              currentItem.purchaseShopRate?.$numberDecimal
+                            )),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.purchaseOutSide)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.purchaseOutSide)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.purchaseOutSide)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(
+                              currentItem.purchaseOutSideRate?.$numberDecimal
+                            )),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(
+                              currentItem.purchaseOutSideRate?.$numberDecimal
+                            )),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(
+                              currentItem.purchaseOutSideRate?.$numberDecimal
+                            )),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.credits)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.credits)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.credits)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.send)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.send)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.send)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.remaining)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.remaining)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.remaining)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.closingStock)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.closingStock)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.closingStock)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.sales)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.sales)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.sales)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">
+                {filtered650mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(currentItem.sellingRate?.$numberDecimal)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered550mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(currentItem.sellingRate?.$numberDecimal)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+              <td className="tg-0lax">
+                {filtered330mlRegularData.reduce(
+                  (total, currentItem) =>
+                    (total =
+                      total +
+                      currentItem.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(currentItem.sellingRate?.$numberDecimal)),
+                        0
+                      )),
+                  0
+                )}
+              </td>
+
+              <td className="tg-0lax">0 </td>
+              <td className="tg-0lax">0 </td>
+              <td className="tg-0lax">0 </td>
             </tr>
           </tbody>
         </table>

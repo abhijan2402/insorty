@@ -4,6 +4,51 @@ import ExceptionalDataDetails from "./ExceptionalDataDetails";
 const ExcepctionalData = ({
   BackPageReportExceptionalSize: filteredExceptionalData,
 }) => {
+  const openingStock = filteredExceptionalData.map((item) => {
+    const { openingStock } = item;
+    return openingStock;
+  });
+
+  console.log(openingStock, "openingStock");
+
+  const purchaseShop = filteredExceptionalData.map((item) => {
+    const { purchaseShop } = item;
+    return purchaseShop;
+  });
+
+  const purchaseOutSide = filteredExceptionalData.map((item) => {
+    const { purchaseOutSide } = item;
+    return purchaseOutSide;
+  });
+
+  const credits = filteredExceptionalData.map((item) => {
+    const { credits } = item;
+    return credits;
+  });
+
+  const send = filteredExceptionalData.map((item) => {
+    const { send } = item;
+    return send;
+  });
+
+  const remaining = filteredExceptionalData.map((item) => {
+    const { remaining } = item;
+    return remaining;
+  });
+
+  const closingStock = filteredExceptionalData.map((item) => {
+    const { closingStock } = item;
+    return closingStock;
+  });
+
+  const sales = filteredExceptionalData.map((item) => {
+    console.log(item, "item+++++");
+    const { sales } = item;
+    return sales;
+  });
+
+  console.log(sales, "468++");
+
   return (
     <table className="table w-full">
       <thead>
@@ -51,248 +96,60 @@ const ExcepctionalData = ({
           <td className="tg-0lax"></td>
           <td className="tg-0lax"></td>
           <td className="tg-0lax">
-            {filteredExceptionalData &&
-              filteredExceptionalData
-                .filter((item) => {
-                  if (
-                    item.date
-                      ?.toString()
-                      .includes(filteredExceptionalData.toString())
-                  ) {
-                    return item;
-                  } else if (filteredExceptionalData === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                .reduce(
-                  (total, currentItem) =>
-                    (total =
-                      total +
-                      currentItem.reduce(
-                        (total, currentItem) =>
-                          (total = total + currentItem.openingStock),
-                        0
-                      )),
-                  0
-                )}
+            {openingStock.reduce((acc, item) => {
+              const total = Number(acc) + Number(item);
+              return total;
+            })}
           </td>
           <td className="tg-0lax">
-            {filteredExceptionalData &&
-              filteredExceptionalData
-                .filter((item) => {
-                  if (
-                    item.date
-                      ?.toString()
-                      .includes(filteredExceptionalData.toString())
-                  ) {
-                    return item;
-                  } else if (filteredExceptionalData === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                .reduce(
-                  (total, currentItem) =>
-                    (total =
-                      total +
-                      currentItem.reduce(
-                        (total, currentItem) =>
-                          (total = total + currentItem.purchaseShop),
-                        0
-                      )),
-                  0
-                )}
+            {purchaseShop.reduce((acc, item) => {
+              const total = Number(acc) + Number(item);
+              return total;
+            }, 0)}
           </td>
           <td className="tg-0lax"></td>
           <td className="tg-0lax">
-            {filteredExceptionalData &&
-              filteredExceptionalData
-                .filter((item) => {
-                  if (
-                    item.date
-                      ?.toString()
-                      .includes(filteredExceptionalData.toString())
-                  ) {
-                    return item;
-                  } else if (filteredExceptionalData === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                .reduce(
-                  (total, currentItem) =>
-                    (total =
-                      total +
-                      currentItem.reduce(
-                        (total, currentItem) =>
-                          (total = total + currentItem.purchaseOutSide),
-                        0
-                      )),
-                  0
-                )}
+            {purchaseOutSide.reduce((acc, item) => {
+              const total = Number(acc) + Number(item);
+              return total;
+            })}
           </td>
           <td className="tg-0lax"></td>
           <td className="tg-0lax">
-            {filteredExceptionalData &&
-              filteredExceptionalData
-                .filter((item) => {
-                  if (
-                    item.date
-                      ?.toString()
-                      .includes(filteredExceptionalData.toString())
-                  ) {
-                    return item;
-                  } else if (filteredExceptionalData === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                .reduce(
-                  (total, currentItem) =>
-                    (total =
-                      total +
-                      currentItem.reduce(
-                        (total, currentItem) =>
-                          (total = total + currentItem.credits),
-                        0
-                      )),
-                  0
-                )}
+            {credits.reduce((acc, item) => {
+              const total = Number(acc) + Number(item);
+              return total;
+            }, 0)}
           </td>
           <td className="tg-0lax">
-            {filteredExceptionalData &&
-              filteredExceptionalData
-                .filter((item) => {
-                  if (
-                    item.date
-                      ?.toString()
-                      .includes(filteredExceptionalData.toString())
-                  ) {
-                    return item;
-                  } else if (filteredExceptionalData === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                .reduce(
-                  (total, currentItem) =>
-                    (total =
-                      total +
-                      currentItem.reduce(
-                        (total, currentItem) =>
-                          (total = total + currentItem.send),
-                        0
-                      )),
-                  0
-                )}
+            {send.reduce((acc, item) => {
+              const total = Number(acc) + Number(item);
+              return total;
+            }, 0)}
           </td>
           <td className="tg-0lax">
-            {filteredExceptionalData &&
-              filteredExceptionalData
-                .filter((item) => {
-                  if (
-                    item.date
-                      ?.toString()
-                      .includes(filteredExceptionalData.toString())
-                  ) {
-                    return item;
-                  } else if (filteredExceptionalData === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                .reduce(
-                  (total, currentItem) =>
-                    (total =
-                      total +
-                      currentItem.reduce(
-                        (total, currentItem) =>
-                          (total = total + currentItem.remaining),
-                        0
-                      )),
-                  0
-                )}
+            {remaining.reduce((acc, item) => {
+              const total = Number(acc) + Number(item);
+              return total;
+            }, 0)}
           </td>
           <td className="tg-0lax">
-            {filteredExceptionalData &&
-              filteredExceptionalData
-                .filter((item) => {
-                  if (
-                    item.date
-                      ?.toString()
-                      .includes(filteredExceptionalData.toString())
-                  ) {
-                    return item;
-                  } else if (filteredExceptionalData === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                .reduce(
-                  (total, currentItem) =>
-                    (total =
-                      total +
-                      currentItem.reduce(
-                        (total, currentItem) =>
-                          (total = total + currentItem.closingStock),
-                        0
-                      )),
-                  0
-                )}
+            {closingStock.reduce((acc, item) => {
+              const total = Number(acc) + Number(item);
+              return total;
+            }, 0)}
           </td>
 
           <td className="tg-0lax">
-            {filteredExceptionalData &&
-              filteredExceptionalData
-                .filter((item) => {
-                  if (
-                    item.date
-                      ?.toString()
-                      .includes(filteredExceptionalData.toString())
-                  ) {
-                    return item;
-                  } else if (filteredExceptionalData === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                .reduce(
-                  (total, currentItem) =>
-                    (total =
-                      total +
-                      currentItem.reduce(
-                        (total, currentItem) =>
-                          (total = total + currentItem.sales),
-                        0
-                      )),
-                  0
-                )}
+            {sales.reduce((acc, item) => {
+              const total = Number(acc) + Number(item);
+              return total;
+            })}
           </td>
 
           <td className="tg-0lax"></td>
 
-          <td className="tg-0lax">
-            {/* {FrontPageData.filter((item) => {
-                    if (item.date?.toString().includes(filterDate.toString())) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                  }).reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        currentItem.reduce(
-                          (total, currentItem) =>
-                            (total =
-                              total +
-                              Number(currentItem?.amount?.$numberDecimal)),
-                          0
-                        )),
-                    0
-                  )} */}
-          </td>
+          <td className="tg-0lax"></td>
         </tr>
       </tbody>
     </table>
