@@ -144,3 +144,7 @@ const mappedArray = arr1.map((item, index) => (
 ));
 
 
+entries[{},{}]
+
+pages[{entries},{entries}]
+

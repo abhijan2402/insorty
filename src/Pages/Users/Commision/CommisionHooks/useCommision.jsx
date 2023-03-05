@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const useCommision = () => {
+  const token = localStorage.getItem("token");
   const commisionFormData = {
     description: "",
     amount: 0,
@@ -46,8 +48,25 @@ const useCommision = () => {
     console.log(commisionState);
   };
 
+  const { data: commitsonData, isLoading } = useQuery({
+    queryKey: ["commitsonData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getTotalExpensesData",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
   return {
     commisionState,
+    commitsonData,
+    isLoading,
     addFiveCommision,
     addOneCommision,
     handelOnChangeCommision,

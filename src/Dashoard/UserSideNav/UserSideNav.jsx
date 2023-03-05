@@ -85,7 +85,7 @@ const SideNav = () => {
 
             <li className="my-4">
               <NavLink
-                to="/user/commision"
+                to="/user/commisionroute"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Commision / कमीशन
