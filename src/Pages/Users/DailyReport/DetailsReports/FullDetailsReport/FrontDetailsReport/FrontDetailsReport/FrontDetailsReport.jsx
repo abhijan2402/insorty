@@ -13,9 +13,6 @@ import RegularData from "../RegularData/RegularData";
 const FrontDetailsReport = () => {
   const front = useRef(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [quan750, setQuan750] = useState([]);
-  const [quan375, setQuan375] = useState([]);
-  const [quan180, setQuan180] = useState([]);
 
   const {
     FrontPageRegularData,
@@ -47,6 +44,38 @@ const FrontDetailsReport = () => {
         }
       })
     : FrontPageRegularData;
+
+  const getQuantity750 = filteredRegularData.map((item) => {
+    return item.pages.map((page) => {
+      return page.entries.filter((entry) => {
+        if (entry.quantityInML === "750ml") {
+          return entry;
+        }
+      });
+    });
+  });
+
+  console.log(getQuantity750, "getQuantity750+++2448");
+
+  const getQuantity375 = filteredRegularData.map((item) => {
+    return item.pages.map((page) => {
+      return page.entries.filter((entry) => {
+        if (entry.quantityInML === "375ml") {
+          return entry;
+        }
+      });
+    });
+  });
+
+  const getQuantity180 = filteredRegularData.map((item) => {
+    return item.pages.map((page) => {
+      return page.entries.filter((entry) => {
+        if (entry.quantityInML === "180ml") {
+          return entry;
+        }
+      });
+    });
+  });
 
   const filteredExceptionalData = selectedDate
     ? FrontPageExceptionalData.filter((item) => {
@@ -144,20 +173,6 @@ const FrontDetailsReport = () => {
       </>
     );
   }
-
-  filteredRegularData.map((data) => {
-    data.pages.map((page) => {
-      page.entries.map((entry) => {
-        if (entry.quantityInML === 750) {
-          setQuan750((quan750) => [...quan750, entry]);
-        } else if (entry.quantityInML === 375) {
-          setQuan375((quan375) => [...quan375, entry]);
-        } else if (entry.quantityInML === 180) {
-          setQuan180((quan180) => [...quan180, entry]);
-        }
-      });
-    });
-  });
 
   return (
     <section className="my-4">
@@ -383,7 +398,13 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"> 0</td>
                 <td className="tg-0lax"> 0</td>
 
-                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {filteredRegularData.reduce(
+                    (total, regularData) =>
+                      total + Number(regularData.openingStock),
+                    0
+                  )}
+                </td>
                 <td className="tg-0lax">0</td>
                 <td className="tg-0lax">0</td>
 

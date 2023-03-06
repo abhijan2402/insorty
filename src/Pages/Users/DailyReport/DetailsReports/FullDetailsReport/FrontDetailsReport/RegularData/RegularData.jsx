@@ -14,8 +14,6 @@ const RegularData = ({ regularData, index }) => {
           (entry) => entry.quantityInML === 750
         );
 
-        console.log(quantityInML750, "4hjui");
-
         const quantityInML375 = page.entries.filter(
           (entry) => entry.quantityInML === 375
         );
