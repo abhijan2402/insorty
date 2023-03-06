@@ -18,7 +18,7 @@ const useFrontDetailHooks = () => {
     },
   });
 
-  const { data: FrontPageExceptionalData , isLoading: isLoading2} = useQuery({
+  const { data: FrontPageExceptionalData, isLoading: isLoading2 } = useQuery({
     queryKey: ["FrontPageExceptionalData"],
     queryFn: async () => {
       const res = await fetch(
@@ -37,7 +37,7 @@ const useFrontDetailHooks = () => {
     FrontPageRegularData,
     FrontPageExceptionalData,
     isLoading,
-    isLoading2
+    isLoading2,
   };
 };
 

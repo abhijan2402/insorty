@@ -59,7 +59,7 @@ const Partners = () => {
   return (
     <section className="py-4">
       <div className="title">
-        <h2 className="font-bold text-[1.5rem]">पार्टनर</h2>
+        <h2 className="font-bold md:text-[1.5rem] text-center">पार्टनर</h2>
 
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>

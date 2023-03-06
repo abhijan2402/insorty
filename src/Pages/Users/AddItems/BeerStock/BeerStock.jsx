@@ -57,7 +57,7 @@ const BeerStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold text-[1.5rem]">Beer Stock</h2>
+          <h2 className="font-bold text-[1.5rem] text-center">Beer Stock</h2>
           <Link to="/user/winestock" className="commonBtn ">
             Wine Stock
           </Link>

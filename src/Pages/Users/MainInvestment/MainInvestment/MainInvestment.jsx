@@ -9,7 +9,6 @@ const MainInvestment = () => {
   const {
     data,
     handleInvestmentChange,
-    handleBelongingAdd,
     handleSave,
     handleFeesAdd,
     handleReserveAmountAdd,
@@ -18,7 +17,6 @@ const MainInvestment = () => {
     refundRecoveryOnChange,
   } = useMainInvestmentHooks();
 
-
   if (data.isLoading) {
     return <div>Loading....</div>;
   }
@@ -26,7 +24,9 @@ const MainInvestment = () => {
   return (
     <section className="my-2">
       <div className="title">
-        <h2 className="font-bold text-[1.5rem]">मुख्य इन्वेस्ट</h2>
+        <h2 className="font-bold md:text-[1.5rem] text-center">
+          मुख्य इन्वेस्ट
+        </h2>
         <div className="divider my-2"></div>
       </div>
 
@@ -88,7 +88,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Cash in Hand"}
-                    // onChange={(e) => handelOnChangeMainInvestment(e, index)}
+                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
@@ -113,7 +113,6 @@ const MainInvestment = () => {
                   </td>
                 </tr>
 
-
                 {data.mainInvest.fees.map((mainInvestment, index) => {
                   return (
                     <InvestmentForm
@@ -135,11 +134,6 @@ const MainInvestment = () => {
                     ADD 1
                   </h1>
                 </tr>
-
-               
-                
-
-               
 
                 <tr>
                   <th>{data.mainInvest.fees.length + 3}</th>
@@ -336,10 +330,15 @@ const MainInvestment = () => {
                 </td>
                 <td></td>
                 <td className="commonText">Total</td>
-                <td className="price">{ data.reserveAmount.entries.length > 0 ? data.reserveAmount.entries.reduce(
-      (total, currentItem) => (total = total + Number(currentItem.price)),
-                  0
-                  ) : 0}</td>
+                <td className="price">
+                  {data.reserveAmount.entries.length > 0
+                    ? data.reserveAmount.entries.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.price)),
+                        0
+                      )
+                    : 0}
+                </td>
               </tr>
               <tr>
                 <td></td>

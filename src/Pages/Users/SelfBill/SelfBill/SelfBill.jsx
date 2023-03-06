@@ -83,7 +83,7 @@ const SelfBill = () => {
   return (
     <section>
       <div className="title">
-        <h2 className="font-bold text-[1.5rem]">दुकान बिल का फोर्मेट</h2>
+        <h2 className="font-bold md:text-[1.5rem] text-center">दुकान बिल का फोर्मेट</h2>
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">

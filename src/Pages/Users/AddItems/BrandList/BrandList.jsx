@@ -32,7 +32,7 @@ const BrandList = () => {
     <section className="p-4">
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold text-[1.5rem]">Brand List / ब्राण्ड सूची</h2>
+          <h2 className="font-bold md:text-[1.5rem] text-center">Brand List / ब्राण्ड सूची</h2>
           <Link to="/user/branchname" className="commonBtn ">
             Branch
           </Link>

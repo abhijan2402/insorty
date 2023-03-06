@@ -1,439 +1,287 @@
 import React from "react";
 
 const RegularData = ({ regularData, index }) => {
-  const { entries, brandName } = regularData;
+  const { pages, brandName } = regularData;
 
   // get all quantityInML 750 ml data form entries arry
 
-  const quantityInML750 = entries.filter((entry) => entry.quantityInML === 750);
-  console.log("quantityInML750", quantityInML750);
-  // [1]
-
-  const quantityInML375 = entries.filter((entry) => entry.quantityInML === 375);
-  console.log("quantityInML375", quantityInML375);
-  // [1]
-
-  // get all quantityInML 180 ml data form entries arry
-
-  const quantityInML180 = entries.filter((entry) => entry.quantityInML === 180);
-  console.log("quantityInML180", quantityInML180);
-
   return (
     <>
-      <tr>
-        <td className="tg-0lax">{index + 1}</td>
-        <td className="tg-0lax">{brandName}</td>
+      {pages.map((page, index) => {
+        console.log("page", page);
 
-        {/* Average Rate */}
-        {/* show the 750 data  */}
+        const quantityInML750 = page.entries.filter(
+          (entry) => entry.quantityInML === 750
+        );
 
-        <td className="tg-0lax">0</td>
-        <td className="tg-0lax">0</td>
-        <td className="tg-0lax">0</td>
+        console.log(quantityInML750, "4hjui");
 
-        {/* starting stock */}
-        <td className="tg-0lax">
-          {/* {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.openingStock)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0} */}
+        const quantityInML375 = page.entries.filter(
+          (entry) => entry.quantityInML === 375
+        );
 
-          {quantityInML750.map((array, index) => {
-            console.log("array+++++++", array);
-            return (
-              <>
-                <div key={index}>
-                  {array.map((data, index) => (
-                    <span key={index}>{data.openingStock} </span>
-                  ))}
-                </div>
-              </>
-            );
-          })}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.openingStock)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.openingStock)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+        const quantityInML180 = page.entries.filter(
+          (entry) => entry.quantityInML === 180
+        );
 
-        {/* Income (Purchase)-D */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item?.purchaseShop)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item?.purchaseShop)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item?.purchaseShop)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+        return (
+          <tr>
+            <td className="tg-0lax">{index + 1}</td>
+            <td className="tg-0lax">{brandName}</td>
 
-        {/* buy rate */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.purchaseShopRate?.$numberDecimal)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.purchaseShopRate?.$numberDecimal)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.purchaseShopRate?.$numberDecimal)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+            {/* Average Rate */}
+            {/* show the 750 data  */}
 
-        {/* Inflow (Purchase)-Ba */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.purchaseOutSide)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.purchaseOutSide)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.purchaseOutSide)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+            <td className="tg-0lax">0</td>
+            <td className="tg-0lax">0</td>
+            <td className="tg-0lax">0</td>
 
-        {/* Purchase Rate - Ba */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.purchaseOutSideRate?.$numberDecimal)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.purchaseOutSideRate?.$numberDecimal)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.purchaseOutSideRate?.$numberDecimal)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+            {/* starting stock */}
+            <td className="tg-0lax">
+              {quantityInML750.map((item, index) => {
+                return item.openingStock;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.map((item, index) => {
+                return item.openingStock;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.map((item, index) => {
+                return item.openingStock;
+              })}
+            </td>
 
-        {/* inflow (credit) */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.credits)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.credits)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.credits)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+            {/* Income (Purchase)-D */}
+            <td className="tg-0lax">
+              {quantityInML750.map((item, index) => {
+                return item.purchaseShop;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.map((item, index) => {
+                return item.purchaseShop;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.map((item, index) => {
+                return item.purchaseShop;
+              })}
+            </td>
 
-        {/* sending */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.send)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.send)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.send)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+            {/* buy rate */}
+            <td className="tg-0lax">
+              {quantityInML750.map((item, index) => {
+                return item.purchaseShopRate?.$numberDecimal;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.map((item, index) => {
+                return item.purchaseShopRate?.$numberDecimal;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.map((item, index) => {
+                return item.purchaseShopRate?.$numberDecimal;
+              })}
+            </td>
 
-        {/* sum/remainder */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.remaining)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.remaining)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.remaining)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+            {/* Inflow (Purchase)-Ba */}
+            <td className="tg-0lax">
+              {quantityInML750.map((item, index) => {
+                return item.purchaseOutSide;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.map((item, index) => {
+                return item.purchaseOutSide;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.map((item, index) => {
+                return item.purchaseOutSide;
+              })}
+            </td>
 
-        {/* closing stock */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.closingStock)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.closingStock)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.closingStock)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+            {/* Purchase Rate - Ba */}
+            <td className="tg-0lax">
+              {quantityInML750.map((item, index) => {
+                return item.purchaseOutSideRate?.$numberDecimal;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.map((item, index) => {
+                return item.purchaseOutSideRate?.$numberDecimal;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.map((item, index) => {
+                return item.purchaseOutSideRate?.$numberDecimal;
+              })}
+            </td>
 
-        {/* sale, marketing, closeout */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.sales)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.sales)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.sales)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
+            {/* inflow (credit) */}
+            <td className="tg-0lax">
+              {quantityInML750.map((item, index) => {
+                return item.credits;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.map((item, index) => {
+                return item.credits;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.map((item, index) => {
+                return item.credits;
+              })}
+            </td>
 
-        {/* rate */}
-        <td className="tg-0lax">data</td>
-        <td className="tg-0lax">data</td>
-        <td className="tg-0lax">data</td>
+            {/* sending */}
+            <td className="tg-0lax">
+              {quantityInML750.map((item, index) => {
+                return item.send;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.map((item, index) => {
+                return item.send;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.map((item, index) => {
+                return item.send;
+              })}
+            </td>
 
-        {/* sum */}
-        <td className="tg-0lax">
-          {quantityInML750.length > 0
-            ? quantityInML750
-                .map((item) => item.purchaseOutSide)
-                .reduce((a, b) => Number(a) + Number(b)) +
-              quantityInML750
-                .map((item) => item.purchaseShop)
-                .reduce((a, b) => Number(a) + Number(b)) +
-              quantityInML750
-                .map((item) => item.credits)
-                .reduce((a, b) => Number(a) + Number(b)) -
-              quantityInML750
-                .map((item) => item.send)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML375.length > 0
-            ? quantityInML375
-                .map((item) => item.purchaseOutSide)
-                .reduce((a, b) => Number(a) + Number(b)) +
-              quantityInML375
-                .map((item) => item.purchaseShop)
-                .reduce((a, b) => Number(a) + Number(b)) +
-              quantityInML375
-                .map((item) => item.credits)
-                .reduce((a, b) => Number(a) + Number(b)) -
-              quantityInML375
-                .map((item) => item.send)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        <td className="tg-0lax">
-          {quantityInML180.length > 0
-            ? quantityInML180
-                .map((item) => item.purchaseOutSide)
-                .reduce((a, b) => Number(a) + Number(b)) +
-              quantityInML180
-                .map((item) => item.purchaseShop)
-                .reduce((a, b) => Number(a) + Number(b)) +
-              quantityInML180
-                .map((item) => item.credits)
-                .reduce((a, b) => Number(a) + Number(b)) -
-              quantityInML180
-                .map((item) => item.send)
-                .reduce((a, b) => Number(a) + Number(b))
-            : 0}
-        </td>
-        {/* <td className="tg-0lax"> */}
-        {/* <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td>
-                <td className="tg-0lax">
-                  <span
-                    style={{ fontWeight: "normal", backgroundColor: "#FFF" }}
-                  >
-                    data
-                  </span>
-                </td> */}
-      </tr>
+            {/* sum/remainder */}
+            <td className="tg-0lax">
+              {quantityInML750.length > 0
+                ? quantityInML750.map((item, index) => {
+                    return item.remaining;
+                  })
+                : 0}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.length > 0
+                ? quantityInML375.map((item, index) => {
+                    return item.remaining;
+                  })
+                : 0}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.length > 0
+                ? quantityInML180.map((item, index) => {
+                    return item.remaining;
+                  })
+                : 0}
+            </td>
+
+            {/* closing stock */}
+            <td className="tg-0lax">
+              {quantityInML750.length > 0
+                ? quantityInML750.map((item, index) => {
+                    return item.closingStock;
+                  })
+                : 0}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.length > 0
+                ? quantityInML375.map((item, index) => {
+                    return item.closingStock;
+                  })
+                : 0}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.length > 0
+                ? quantityInML180.map((item, index) => {
+                    return item.closingStock;
+                  })
+                : 0}
+            </td>
+
+            {/* sale, marketing, closeout */}
+            <td className="tg-0lax">
+              {quantityInML750.length > 0
+                ? quantityInML750.map((item, index) => {
+                    return item.sales;
+                  })
+                : 0}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.length > 0
+                ? quantityInML375.map((item, index) => {
+                    return item.sales;
+                  })
+                : 0}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.length > 0
+                ? quantityInML180.map((item, index) => {
+                    return item.sales;
+                  })
+                : 0}
+            </td>
+
+            {/* rate */}
+            <td className="tg-0lax">
+              {quantityInML750.map((item, index) => {
+                return item.sellingRate.$numberDecimal;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.map((item, index) => {
+                return item.sellingRate.$numberDecimal;
+              })}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.map((item, index) => {
+                return item.sellingRate.$numberDecimal;
+              })}
+            </td>
+
+            {/* sum */}
+            <td className="tg-0lax">
+              {quantityInML750.length > 0
+                ? quantityInML750.map((item, index) => {
+                    return (
+                      item.purchaseOutSide +
+                      item.purchaseShop +
+                      item.credits +
+                      item.send
+                    );
+                  })
+                : 0}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML375.length > 0
+                ? quantityInML375.map((item, index) => {
+                    return (
+                      item.purchaseOutSide +
+                      item.purchaseShop +
+                      item.credits +
+                      item.send
+                    );
+                  })
+                : 0}
+            </td>
+            <td className="tg-0lax">
+              {quantityInML180.length > 0
+                ? quantityInML180.map((item, index) => {
+                    return (
+                      item.purchaseOutSide +
+                      item.purchaseShop +
+                      item.credits +
+                      item.send
+                    );
+                  })
+                : 0}
+            </td>
+            {/* <td className="tg-0lax"> */}
+          </tr>
+        );
+      })}
     </>
   );
 };

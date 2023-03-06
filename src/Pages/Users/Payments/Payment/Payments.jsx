@@ -94,7 +94,7 @@ const Payments = () => {
   return (
     <section>
       <div className="title">
-        <h2 className="font-bold text-[1.5rem]">दुकान/बार पेमेंट</h2>
+        <h2 className="font-bold md:text-[1.5rem] text-center">दुकान/बार पेमेंट</h2>
         <div className="divider my-2"></div>
       </div>
 

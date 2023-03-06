@@ -6,7 +6,7 @@ const Stock = () => {
         <section className='p-4'>
             <div className="title">
                 <div className="flex gap-4 items-center">
-                    <h2 className="font-bold text-[1.5rem]">All Stock</h2>
+                    <h2 className="font-bold md:text-[1.5rem] text-center">All Stock</h2>
                 </div>
                 <div className="divider my-2"></div>
             </div>

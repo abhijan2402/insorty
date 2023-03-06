@@ -35,7 +35,7 @@ const SubAdminSideNav = () => {
       </div>
 
 
-      <div className="flex flex-col justify-between flex-1 md:mt-28">
+      <div className="flex flex-col justify-between mt-32 flex-1 md:mt-28">
         <nav>
 
           <li className="my-4">

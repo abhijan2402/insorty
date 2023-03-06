@@ -36,7 +36,7 @@ const SideNav = () => {
           <hr className="mt-4 mb-2" />
         </div>
 
-        <div className="flex flex-col justify-between flex-1 md:mt-28">
+        <div className="flex flex-col justify-between flex-1 mt-32 md:mt-28">
           <nav>
             <li className="my-4">
               <NavLink

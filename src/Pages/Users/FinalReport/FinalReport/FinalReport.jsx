@@ -38,7 +38,7 @@ const FinalReport = () => {
         </h2>
         <h2 className="font-bold text-[1.5rem]">
           {moment(monthlyFinalReport.date).format("MM/YYYY")}
-          </h2>
+        </h2>
         <div className="divider my-2"></div>
       </div>
       <div>
@@ -49,7 +49,9 @@ const FinalReport = () => {
 
       <div className="my-4">
         <div>
-          <h2 className="font-bold text-[1.5rem] titleStyle">माल नामे</h2>
+          <h2 className="font-bold md:text-[1.5rem] titleStyle text-center">
+            माल नामे
+          </h2>
         </div>
         <div>
           <form action="">

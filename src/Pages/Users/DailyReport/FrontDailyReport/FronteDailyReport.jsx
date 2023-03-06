@@ -14,8 +14,9 @@ import DatePicker from "react-datepicker";
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
 
-  const { salesMan, setSalesMan, drDate, setDrDate } =
-    useContext(DataContextApi);
+  const { salesMan, setSalesMan, drDate, setDrDate } = useContext(
+    DataContextApi
+  );
 
   const {
     addOneFristFormState,
@@ -36,8 +37,10 @@ const FronteDailyReport = () => {
     handleRemoveFieldsSecond,
   } = useSecondFormFront();
 
-  const { submitFristFormHandler, isLoadingSubmit } =
-    useFristFormSubmitAPIFront();
+  const {
+    submitFristFormHandler,
+    isLoadingSubmit,
+  } = useFristFormSubmitAPIFront();
 
   //=============== add One second form =================
 
@@ -79,7 +82,9 @@ const FronteDailyReport = () => {
   return (
     <section className="mx-2">
       <div className="my-4 flex gap-4 items-center">
-        <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
+        <h1 className="font-bold md:text-2xl text-center">
+          Daily Report / दैनिक रिपोर्ट{" "}
+        </h1>
         <Link
           to="/user/dailyreport/back"
           className="btn btn-error text-white font-bold"
@@ -101,7 +106,10 @@ const FronteDailyReport = () => {
         <DatePicker
           selected={new Date(drDate)}
           name="year"
-          onChange={(data) => { setDrDate(new Date(data)); console.log(data) }}
+          onChange={(data) => {
+            setDrDate(new Date(data));
+            console.log(data);
+          }}
           dateFormat="dd/MM/yyyy"
           className="inputBox"
           placeholderText={"dd/mm/yyyy"}

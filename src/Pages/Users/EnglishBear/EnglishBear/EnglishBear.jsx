@@ -51,7 +51,7 @@ const EnglishBear = () => {
   return (
     <section>
       <div className="title my-2">
-        <h2 className="font-bold text-[1.5rem]">अंग्रेजी शराब</h2>
+        <h2 className="font-bold md:text-[1.5rem] text-center">अंग्रेजी शराब</h2>
         <div className="flex gap-8 items-center my-4">
           {/* <h2 className="font-bold text-[1.5rem]">सेल्समेन का नाम</h2>
           <h2 className="font-bold text-[1.5rem]">12/12/2022</h2> */}

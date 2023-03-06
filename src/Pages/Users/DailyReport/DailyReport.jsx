@@ -6,7 +6,9 @@ const DailyReport = () => {
   return (
     <section className="mx-2">
       <div className="my-4">
-        <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
+        <h1 className="font-bold text-2xl text-center">
+          Daily Report / दैनिक रिपोर्ट{" "}
+        </h1>
       </div>
 
       <div className="divider"></div>
