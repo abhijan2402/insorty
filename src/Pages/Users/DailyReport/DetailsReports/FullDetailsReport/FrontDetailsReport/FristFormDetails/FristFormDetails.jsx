@@ -14,6 +14,7 @@ const FristFormDetails = ({ exceptionalData, index }) => {
     credits,
     sales,
     send,
+    sellingRate
   } = exceptionalData;
 
   const amount = send * purchaseShopRate.$numberDecimal;
@@ -39,8 +40,8 @@ const FristFormDetails = ({ exceptionalData, index }) => {
         <td>{remaining}</td>
         <td>{closingStock}</td>
         <td>{sales}</td>
-        <td>{Number(amount ? amount : 0) / sales}</td>
-        <td>{amount}</td>
+        <td>{sellingRate?.$numberDecimal}</td>
+        <td>{Number(sellingRate?.$numberDecimal) * Number(sales)}</td>
       </tr>
     </>
   );

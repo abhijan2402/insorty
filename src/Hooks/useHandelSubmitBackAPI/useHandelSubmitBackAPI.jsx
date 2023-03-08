@@ -80,6 +80,7 @@ const useHandelSubmitBackAPI = () => {
       remaining: element.sumRemainder650,
       closingStock: element.closingStock650,
       sales: element.sales650,
+      sellingRate: element.mainRate650,
       amount: element.total650,
     });
   }
@@ -102,6 +103,7 @@ const useHandelSubmitBackAPI = () => {
       remaining: element.sumRemainder550,
       closingStock: element.closingStock550,
       sales: element.sales550,
+      sellingRate: element.mainRate550,
       amount: element.total550,
     });
   }
@@ -124,6 +126,7 @@ const useHandelSubmitBackAPI = () => {
       remaining: element.sumRemainder330,
       closingStock: element.closingStock330,
       sales: element.sales330,
+      sellingRate: element.mainRate330,
       amount: element.total330,
     });
   }
@@ -146,6 +149,7 @@ const useHandelSubmitBackAPI = () => {
       remaining: element.sumRemainder,
       closingStock: element.closingStock,
       sales: element.sales,
+      sellingRate: element.mainRate,
       amount: element.total,
     });
   }

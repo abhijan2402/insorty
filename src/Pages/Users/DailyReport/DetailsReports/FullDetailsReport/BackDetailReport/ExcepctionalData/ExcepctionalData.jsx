@@ -89,14 +89,14 @@ const ExcepctionalData = ({
             );
           })}
 
-        <tr>
+        {/* <tr>
           <td className="tg-0lax" colSpan={2}>
             Total
           </td>
           <td className="tg-0lax"></td>
           <td className="tg-0lax"></td>
           <td className="tg-0lax">
-            {openingStock.reduce((acc, item) => {
+            {filteredExceptionalData && filteredExceptionalData.length && filteredExceptionalData.length>0 && openingStock.reduce((acc, item) => {
               const total = Number(acc) + Number(item);
               return total;
             })}
@@ -150,7 +150,7 @@ const ExcepctionalData = ({
           <td className="tg-0lax"></td>
 
           <td className="tg-0lax"></td>
-        </tr>
+        </tr> */}
       </tbody>
     </table>
   );

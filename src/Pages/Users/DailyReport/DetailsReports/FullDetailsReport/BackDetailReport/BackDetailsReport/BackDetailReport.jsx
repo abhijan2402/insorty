@@ -17,6 +17,8 @@ import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ExcepctionalData from "../ExcepctionalData/ExcepctionalData";
+import RegularData from "../../FrontDetailsReport/RegularData/RegularData";
+import FristFormDetails from "../../FrontDetailsReport/FristFormDetails/FristFormDetails";
 
 const BackDetailReport = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -39,7 +41,9 @@ const BackDetailReport = () => {
     FinalReportData,
     FinalReportDataLoaded,
     BackPageReportExceptionalSize,
-    BackPageReportRegularSize,
+    BackPageReportRegularSize, 
+    ExceptionalLoading,
+    RegularLoading
   } = useGetDailyReport();
 
   const container = useRef(null);
@@ -57,7 +61,9 @@ const BackDetailReport = () => {
     PurchaseBorrowLoaded ||
     SendLoaded ||
     BorrowedDataLoaded ||
-    FinalReportDataLoaded
+    FinalReportDataLoaded ||
+     ExceptionalLoading||
+      RegularLoading
   ) {
     return <Loader></Loader>;
   }
@@ -87,6 +93,31 @@ const BackDetailReport = () => {
         }
       })
     : BackPageReportRegularSize;
+
+    let quan650=[]
+    let quan550=[]
+    let quan330=[]
+
+    filteredRegularData.map((item)=>{
+      console.log(item,'itemhere')
+     item.pages.map((page)=>{
+      page.entries.map((entry)=>{
+        if (entry.quantityInML===650){
+          quan650.push(entry)
+        }
+        else if (entry.quantityInML===550){
+          quan550.push(entry)
+        }
+        else if (entry.quantityInML===330){
+          quan330.push(entry)
+        }
+      })
+     }) 
+    })
+
+    console.log(quan330,'quan330here')
+    console.log(quan650,'quan650here')
+    console.log(quan550,'quan550here')
 
   return (
     <section className="my-4">
@@ -130,17 +161,458 @@ const BackDetailReport = () => {
         {/* ====================1==================== */}
 
         <div className="overflow-x-auto m-4 p-4 ">
-          <FristFormBack
-            filteredRegularData={filteredRegularData}
-          ></FristFormBack>
-        </div>
-        {/* ====================2==================== */}
-        <div className="overflow-x-auto m-4 p-4 ">
-          <ExcepctionalData
-            BackPageReportExceptionalSize={BackPageReportExceptionalSize}
-            filteredExceptionalData={filteredExceptionalData}
-          ></ExcepctionalData>
-          ;
+        <table>
+          <tbody>
+            <tr>
+              <td rowSpan={2}>S.no</td>
+              <th rowSpan={2}>Brand Name/ ब्राण्ड</th>
+              <th colSpan={3}>Average Rate</th>
+              <th colSpan={3}>प्रारम्भिक स्टॉक</th>
+              <th colSpan={3}>आमद (खरीद)-दु.</th>
+              <th colSpan={3}>खरीद रेट - दु</th>
+              <th colSpan={3}>आमद (खरीद)-बा.</th>
+              <th colSpan={3}>खरीद रेट - बा.</th>
+              <th colSpan={3}>आमद (उधारी)</th>
+              <th colSpan={3}>भेजान</th>
+              <th colSpan={3}>योग/शेष</th>
+              <th colSpan={3}>अन्तिम स्टॉक</th>
+              <th colSpan={3}>बिक्री</th>
+              <th colSpan={3}>रेट</th>
+              <th colSpan={3}>योग</th>
+              <th rowSpan={3}>कुल योग</th>
+            </tr>
+
+            <tr>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>650ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>550ml</span>
+              </td>
+              <td className="tg-0lax">
+                <span style={{ fontWeight: "bold" }}>330ml</span>
+              </td>
+            </tr>
+
+            {/* ========================== */}
+
+            {filteredRegularData.map((regularData, index) => {
+              return (
+                <RegularData
+                  key={index}
+                  regularData={regularData}
+                  index={index}
+                   quan1={650}
+                  quan2={550}
+                  quan3={330}
+                ></RegularData>
+              );
+            })}
+
+            {/* ========================== */}
+
+            <tr>
+              <td className="tg-0lax" colSpan={2}>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total
+              </td>
+              <td className="tg-0lax"> 0</td>
+              <td className="tg-0lax"> 0</td>
+              <td className="tg-0lax"> 0</td>
+
+              <td className="tg-0lax">
+                {quan650.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.openingStock),
+                  0
+                )}
+              </td>
+                <td className="tg-0lax">{quan550.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.openingStock),
+                  0
+                )}</td>
+                <td className="tg-0lax">{quan330.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.openingStock),
+                  0
+                )}</td>
+
+                <td className="tg-0lax">
+                  {quan650.reduce(
+                    (total, regularData) =>
+                      total + Number(regularData.purchaseShop),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">{quan550.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.purchaseShop),
+                  0
+                )}</td>
+                <td className="tg-0lax">{quan330.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.purchaseShop),
+                  0
+                )}</td>
+
+               
+
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax"></td>
+
+                <td className="tg-0lax">
+                  {quan650.reduce(
+                    (total, regularData) =>
+                      total + Number(regularData.purchaseOutSide),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">{quan550.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.purchaseOutSide),
+                  0
+                )}</td>
+                <td className="tg-0lax">{quan330.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.purchaseOutSide),
+                  0
+                )}</td>
+
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax"></td>
+
+                <td className="tg-0lax">
+                  {quan650.reduce(
+                    (total, regularData) =>
+                      total + Number(regularData.credits),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">{quan550.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.credits),
+                  0
+                )}</td>
+                <td className="tg-0lax">{quan330.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.credits),
+                  0
+                )}</td>
+
+                <td className="tg-0lax">
+                  {quan650.reduce(
+                    (total, regularData) =>
+                      total + Number(regularData.send),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">{quan550.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.send),
+                  0
+                )}</td>
+                <td className="tg-0lax">{quan330.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.send),
+                  0
+                )}</td>
+
+                <td className="tg-0lax">
+                  {quan650.reduce(
+                    (total, regularData) =>
+                      total + Number(regularData.remaining),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">{quan550.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.remaining),
+                  0
+                )}</td>
+                <td className="tg-0lax">{quan330.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.remaining),
+                  0
+                )}</td>
+
+                <td className="tg-0lax">
+                  {quan650.reduce(
+                    (total, regularData) =>
+                      total + Number(regularData.closingStock),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">{quan550.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.closingStock),
+                  0
+                )}</td>
+                <td className="tg-0lax">{quan330.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.closingStock),
+                  0
+                )}</td>
+
+                <td className="tg-0lax">
+                  {quan650.reduce(
+                    (total, regularData) =>
+                      total + Number(regularData.sales),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">{quan550.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.sales),
+                  0
+                )}</td>
+                <td className="tg-0lax">{quan330.reduce(
+                  (total, regularData) =>
+                    total + Number(regularData.sales),
+                  0
+                )}</td>
+
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax"></td>
+
+                <td className="tg-0lax">
+                  {quan650.reduce(
+                    (total, regularData) =>
+                      total + (Number(regularData.sales) * Number(regularData.sellingRate?.$numberDecimal)),
+                    0
+                  )}
+                </td>
+                <td className="tg-0lax">{quan550.reduce(
+                  (total, regularData) =>
+                    total + (Number(regularData.sales) * Number(regularData.sellingRate?.$numberDecimal)),
+                  0
+                )}</td>
+                <td className="tg-0lax">{quan330.reduce(
+                  (total, regularData) =>
+                    total + (Number(regularData.sales) * Number(regularData.sellingRate?.$numberDecimal)),
+                  0
+                )}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div className="overflow-x-auto m-4 p-4 flex ">
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <td className="tg-0lax " colSpan={50}>
+                <span style={{ fontWeight: "bold" }}>English</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td>S.no</td>
+              <th>Brand Name/ ब्राण्ड</th>
+              <th>ml</th>
+              <th>Average Rate</th>
+              <th>प्रारम्भिक स्टॉक</th>
+              <th>आमद (खरीद)-दु.</th>
+              <th>खरीद रेट - दु</th>
+              <th>आमद (खरीद)-बा.</th>
+              <th>खरीद रेट - बा.</th>
+              <th>आमद (उधारी)</th>
+              <th>भेजान</th>
+              <th>योग/शेष</th>
+              <th>अन्तिम स्टॉक </th>
+              <th>बिक्री</th>
+              <th>रेट</th>
+              <th>रकम</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredExceptionalData &&
+              filteredExceptionalData.map((exceptionalData, index) => {
+                return (
+                  <FristFormDetails
+                    key={index}
+                    index={index}
+                    exceptionalData={exceptionalData}
+                  ></FristFormDetails>
+                );
+              })}
+
+            {/* <BackRmlDetailsData></BackRmlDetailsData> */}
+
+            {/* <tr>
+              <td className="tg-0lax" colSpan={2}>
+                Total
+              </td>
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax">
+                {openingStock.reduce((acc, item) => {
+                  const total = Number(acc) + Number(item);
+                  return total;
+                })}
+              </td>
+              <td className="tg-0lax">
+                {purchaseShop.reduce((acc, item) => {
+                  const total = Number(acc) + Number(item);
+                  return total;
+                }, 0)}
+              </td>
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax">
+                {purchaseOutSide.reduce((acc, item) => {
+                  const total = Number(acc) + Number(item);
+                  return total;
+                })}
+              </td>
+              <td className="tg-0lax"></td>
+              <td className="tg-0lax">
+                {credits.reduce((acc, item) => {
+                  const total = Number(acc) + Number(item);
+                  return total;
+                }, 0)}
+              </td>
+              <td className="tg-0lax">
+                {send.reduce((acc, item) => {
+                  const total = Number(acc) + Number(item);
+                  return total;
+                }, 0)}
+              </td>
+              <td className="tg-0lax">
+                {remaining.reduce((acc, item) => {
+                  const total = Number(acc) + Number(item);
+                  return total;
+                }, 0)}
+              </td>
+              <td className="tg-0lax">
+                {closingStock.reduce((acc, item) => {
+                  const total = Number(acc) + Number(item);
+                  return total;
+                }, 0)}
+              </td>
+
+              <td className="tg-0lax">
+                {sales.reduce((acc, item) => {
+                  const total = Number(acc) + Number(item);
+                  return total;
+                })}
+              </td>
+
+              <td className="tg-0lax"></td>
+
+              <td className="tg-0lax"></td>
+            </tr> */}
+          </tbody>
+        </table>
         </div>
 
         <div className="overflow-x-auto m-4 p-4 flex ">
@@ -189,7 +661,8 @@ const BackDetailReport = () => {
                   <p>No Data Found</p>
                 </>
               ) : (
-                RMLData.filter((item) => {
+                  RMLData &&
+                  RMLData.length && RMLData.filter((item) => {
                   if (item.date?.toString().includes(filterDate.toString())) {
                     return item;
                   } else if (filterDate === "") {
@@ -214,7 +687,8 @@ const BackDetailReport = () => {
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {RMLData.filter((item) => {
+                  {RMLData &&
+                    RMLData.length && RMLData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -234,7 +708,8 @@ const BackDetailReport = () => {
                   )}
                 </td>
                 <td className="tg-0lax">
-                  {RMLData.filter((item) => {
+                  {RMLData &&
+                    RMLData.length && RMLData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -255,7 +730,8 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {RMLData.filter((item) => {
+                  {RMLData &&
+                    RMLData.length && RMLData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -276,7 +752,8 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {RMLData.filter((item) => {
+                  {RMLData &&
+                    RMLData.length && RMLData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -296,7 +773,8 @@ const BackDetailReport = () => {
                   )}
                 </td>
                 <td className="tg-0lax">
-                  {RMLData.filter((item) => {
+                  {RMLData &&
+                    RMLData.length && RMLData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -316,7 +794,8 @@ const BackDetailReport = () => {
                   )}
                 </td>
                 <td className="tg-0lax">
-                  {RMLData.filter((item) => {
+                  {RMLData &&
+                    RMLData.length && RMLData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -336,7 +815,8 @@ const BackDetailReport = () => {
                   )}
                 </td>
                 <td className="tg-0lax">
-                  {RMLData.filter((item) => {
+                  {RMLData &&
+                    RMLData.length && RMLData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -357,7 +837,8 @@ const BackDetailReport = () => {
                 </td>
 
                 <td className="tg-0lax">
-                  {RMLData.filter((item) => {
+                  {RMLData &&
+                    RMLData.length && RMLData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {
@@ -380,7 +861,8 @@ const BackDetailReport = () => {
                 <td className="tg-0lax"></td>
 
                 <td className="tg-0lax">
-                  {RMLData.filter((item) => {
+                  {RMLData &&
+                    RMLData.length && RMLData.filter((item) => {
                     if (item.date?.toString().includes(filterDate.toString())) {
                       return item;
                     } else if (filterDate === "") {

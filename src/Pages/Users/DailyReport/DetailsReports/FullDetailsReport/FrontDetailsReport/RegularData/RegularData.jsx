@@ -1,6 +1,6 @@
 import React from "react";
 
-const RegularData = ({ regularData, index }) => {
+const RegularData = ({ regularData, index,quan1,quan2,quan3 }) => {
   const { pages, brandName } = regularData;
 
   // get all quantityInML 750 ml data form entries arry
@@ -11,15 +11,15 @@ const RegularData = ({ regularData, index }) => {
         console.log("page", page);
 
         const quantityInML750 = page.entries.filter(
-          (entry) => entry.quantityInML === 750
+          (entry) => entry.quantityInML === quan1
         );
 
         const quantityInML375 = page.entries.filter(
-          (entry) => entry.quantityInML === 375
+          (entry) => entry.quantityInML === quan2
         );
 
         const quantityInML180 = page.entries.filter(
-          (entry) => entry.quantityInML === 180
+          (entry) => entry.quantityInML === quan3
         );
 
         return (
@@ -225,17 +225,17 @@ const RegularData = ({ regularData, index }) => {
             {/* rate */}
             <td className="tg-0lax">
               {quantityInML750.map((item, index) => {
-                return item.sellingRate.$numberDecimal;
+                return item.sellingRate?.$numberDecimal;
               })}
             </td>
             <td className="tg-0lax">
               {quantityInML375.map((item, index) => {
-                return item.sellingRate.$numberDecimal;
+                return item.sellingRate?.$numberDecimal;
               })}
             </td>
             <td className="tg-0lax">
               {quantityInML180.map((item, index) => {
-                return item.sellingRate.$numberDecimal;
+                return item.sellingRate?.$numberDecimal;
               })}
             </td>
 
@@ -244,10 +244,7 @@ const RegularData = ({ regularData, index }) => {
               {quantityInML750.length > 0
                 ? quantityInML750.map((item, index) => {
                     return (
-                      item.purchaseOutSide +
-                      item.purchaseShop +
-                      item.credits +
-                      item.send
+                      Number(item.sellingRate?.$numberDecimal)*Number(item.sales)
                     );
                   })
                 : 0}
@@ -256,10 +253,7 @@ const RegularData = ({ regularData, index }) => {
               {quantityInML375.length > 0
                 ? quantityInML375.map((item, index) => {
                     return (
-                      item.purchaseOutSide +
-                      item.purchaseShop +
-                      item.credits +
-                      item.send
+                      Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
                     );
                   })
                 : 0}
@@ -268,10 +262,7 @@ const RegularData = ({ regularData, index }) => {
               {quantityInML180.length > 0
                 ? quantityInML180.map((item, index) => {
                     return (
-                      item.purchaseOutSide +
-                      item.purchaseShop +
-                      item.credits +
-                      item.send
+                      Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
                     );
                   })
                 : 0}

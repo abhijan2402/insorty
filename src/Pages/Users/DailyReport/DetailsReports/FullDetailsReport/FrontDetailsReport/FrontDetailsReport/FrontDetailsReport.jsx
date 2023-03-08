@@ -384,6 +384,9 @@ const FrontDetailsReport = () => {
                     key={index}
                     regularData={regularData}
                     index={index}
+                    quan1={750}
+                    quan2={375}
+                    quan3={180}
                   ></RegularData>
                 );
               })}

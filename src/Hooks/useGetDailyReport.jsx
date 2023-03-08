@@ -158,7 +158,7 @@ function useGetDailyReport() {
     },
   });
 
-  const { data: BackPageReportExceptionalSize } = useQuery({
+  const { data: BackPageReportExceptionalSize,   isLoading: ExceptionalLoading } = useQuery({
     queryKey: ["BackPageReportExceptionalSize"],
     queryFn: async () => {
       const res = await fetch(
@@ -173,7 +173,7 @@ function useGetDailyReport() {
     },
   });
 
-  const { data: BackPageReportRegularSize } = useQuery({
+  const { data: BackPageReportRegularSize, isLoading: RegularLoading } = useQuery({
     queryKey: ["BackPageReportRegularSize"],
     queryFn: async () => {
       const res = await fetch(
@@ -209,6 +209,8 @@ function useGetDailyReport() {
     FrontPageDataLoaded,
     BackPageReportExceptionalSize,
     BackPageReportRegularSize,
+    ExceptionalLoading,
+    RegularLoading
   };
 }
 
