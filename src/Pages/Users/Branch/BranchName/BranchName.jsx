@@ -55,7 +55,7 @@ const BranchName = () => {
   return (
     <section className="py-4">
       <div>
-        <h1 className="titleStyle">Branch List / ब्रांच सूची</h1>
+        <h1 className="titleStyle text-center">Branch List / ब्रांच सूची</h1>
         <div className="divider my-2"></div>
       </div>
 

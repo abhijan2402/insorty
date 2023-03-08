@@ -148,3 +148,92 @@ entries[{},{}]
 
 pages[{entries},{entries}]
 
+entries[[data, data, data , data], [data,data,data,data,data]]
+
+
+  const filtered750mlRegularData = filteredRegularData.map((item) => {
+    const { entries } = item;
+    return entries.filter((entry) => entry.quantityInML === 750);
+  });
+
+
+  const filtered375mlRegularData = filteredRegularData.map((item) => {
+    const { entries } = item;
+    return entries.filter((entry) => entry.quantityInML === 375);
+  });
+
+
+ {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.openingStock)),
+                          0
+                        )),
+                    0
+                  )}
+
+
+{filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.openingStock)),
+                          0
+                        )),
+                    0
+                  )}
+  {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.openingStock)),
+                          0
+                        )),
+                    0
+                  )}
+
+ {filtered750mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.purchaseShop)),
+                          0
+                        )),
+                    0
+                  )}
+
+  {filtered375mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.purchaseShop)),
+                          0
+                        )),
+                    0
+                  )}
+
+ {filtered180mlRegularData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        currentItem.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.purchaseShop)),
+                          0
+                        )),
+                    0
+                  )}
+
+               
+                  

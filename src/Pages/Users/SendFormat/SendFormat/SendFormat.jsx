@@ -11,7 +11,7 @@ const SendFormat = () => {
   return (
     <section>
       <div className="title">
-        <h2 className="font-bold text-[1.5rem]">Partner</h2>
+        <h2 className="font-bold md:text-[1.5rem] text-center">Partner</h2>
         <div className="divider my-2"></div>
       </div>
       <div className="mx-6">

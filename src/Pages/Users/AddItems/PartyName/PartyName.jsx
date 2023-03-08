@@ -29,7 +29,7 @@ const PartyName = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold text-[1.5rem]">Party Name/ पार्टी का नाम</h2>
+          <h2 className="font-bold md:text-[1.5rem] text-center">Party Name/ पार्टी का नाम</h2>
           <Link to="/user/branchname" className="commonBtn ">
             Branch
           </Link>

@@ -4,7 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 import { FaPowerOff } from "react-icons/fa";
 
 const AdminSideNav = () => {
-
   let activeStyle = {
     background: "gray",
     color: "white",
@@ -22,7 +21,6 @@ const AdminSideNav = () => {
           }}
           className="flex-col w-64 fixed px-4 md:mb-10 top-0 md:top-0 bg-white border-r flex "
         >
-
           <div className="text-3xl flex justify-center items-center font-semibold  text-white">
             <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />
           </div>
@@ -35,15 +33,12 @@ const AdminSideNav = () => {
           <hr className="mt-4 mb-2" />
         </div>
 
-
-        <div className="flex flex-col justify-between flex-1 mt-6">
+        <div className="flex flex-col justify-between  flex-1 mt-10">
           <nav>
             <li className="my-4">
               <NavLink
                 to="/admin"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Subadmin
               </NavLink>
@@ -52,9 +47,7 @@ const AdminSideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/admin/userList"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Users
               </NavLink>
@@ -63,9 +56,7 @@ const AdminSideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/admin/shopList"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Shop
               </NavLink>
@@ -74,9 +65,7 @@ const AdminSideNav = () => {
             <li className="my-4">
               <NavLink
                 to="/admin/userList"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Users
               </NavLink>

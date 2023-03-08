@@ -74,7 +74,7 @@ const SalaryList = () => {
   return (
     <section className="px-2 py-6">
       <div>
-        <h1 className="titleStyle">Salary List</h1>
+        <h1 className="titleStyle text-center">Salary List</h1>
         <div className="divider my-2"></div>
       </div>
 

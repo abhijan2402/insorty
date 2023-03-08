@@ -162,7 +162,9 @@ const BackDailyReport = () => {
     <>
       <section className="mx-2">
         <div className="my-4 flex gap-4 items-center">
-          <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
+          <h1 className="font-bold md:text-2xl sm:text-sm text-center">
+            Daily Report / दैनिक रिपोर्ट{" "}
+          </h1>
 
           <div className="my-4">
             <Link

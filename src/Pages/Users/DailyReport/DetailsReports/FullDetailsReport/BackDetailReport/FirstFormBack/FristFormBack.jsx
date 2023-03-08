@@ -4,8 +4,8 @@ import FristFormBackData from "./FristFormBackData";
 
 const FristFormBack = ({ filteredRegularData }) => {
   const filtered650mlRegularData = filteredRegularData.map((item) => {
-    const { entries } = item;
-    return entries.filter((entry) => entry.quantityInML === 650);
+    console.log("item2222222222222222222222222222222", item);
+  
   });
 
   console.log("filtered650mlRegularData", filtered650mlRegularData);

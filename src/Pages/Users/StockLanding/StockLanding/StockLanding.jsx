@@ -38,7 +38,7 @@ const StockLanding = () => {
   return (
     <section className="p-6">
       <div>
-        <h1 className="titleStyle">पार्टी का नाम</h1>
+        <h1 className="titleStyle text-center">पार्टी का नाम</h1>
         <div className="flex gap-10 font-bold">
           {/* <p className="description">Sanjay wine shop</p> */}
           {/* <p className="description">

@@ -1,5 +1,4 @@
 import React from "react";
-import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AddBranchName from "./AddBranchName/AddBranchName";
 import Loader from "../../../../Components/Loader/Loader";
@@ -29,7 +28,7 @@ const BranchName = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold text-[1.5rem]">Branch name</h2>
+          <h2 className="font-bold text-[1.5rem] text-center">Branch name</h2>
           <Link to="/user/partyname" className="commonBtn ">
             Party name
           </Link>
@@ -41,18 +40,17 @@ const BranchName = () => {
       </div>
       <div>
         <table className="table w-4/5">
-        <thead>
+          <thead>
             <th>
               <h1>Sr. No.</h1>
             </th>
             <th>
               <h1>Brand Name</h1>
             </th>
-           
+
             <th>
               <h1>Action</h1>
             </th>
-
           </thead>
           <tbody>
             {BranchNameData?.map((item, index) => {

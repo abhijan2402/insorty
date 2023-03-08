@@ -48,7 +48,7 @@ const BranchFrom = () => {
   return (
     <section className="p-4">
       <div className="title">
-        <h2 className="font-bold text-[1.5rem]">
+        <h2 className="font-bold md:text-[1.5rem] text-center">
           Branch Name / ब्रांच नाम
           <span className="titleStyle"> {branchData.branchName}</span>
         </h2>
