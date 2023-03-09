@@ -8,8 +8,6 @@ const BorrowDetails = () => {
 
   const { partyId } = useParams();
 
-  console.log(partyId, "mypartyId +++++++");
-
   const { data: borrowTranstion, isLoading } = useQuery({
     queryKey: ["partnarData"],
     queryFn: async () => {

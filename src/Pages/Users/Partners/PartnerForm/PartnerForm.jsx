@@ -27,8 +27,6 @@ const PartnerForm = ({ partner, StartDate, index, EndDate }) => {
       0
     );
 
-  console.log(partner?._id);
-
   const partnerId = partner?._id;
 
   return (
