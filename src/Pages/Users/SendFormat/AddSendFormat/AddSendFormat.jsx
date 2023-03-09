@@ -9,7 +9,6 @@ const AddSendFormat = () => {
     const data = {
       name: form.partnerName.value,
       equity: 0,
-      balance: form.balance.value,
     };
 
     fetch("https://insorty-api.onrender.com/shop/addPartner", {

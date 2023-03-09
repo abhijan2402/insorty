@@ -76,8 +76,7 @@ const useMainInvestmentHooks = () => {
 
   const handleInvestmentChange = useCallback(
     (field, newValue, index = -1, subfield = "") => {
-      // console.log(field, newValue, index, subfield)
-      // console.log(newValue, moment(newValue, 'dd-mm-yyyy'), moment(newValue, 'dd-mm-yyyy').toDate())
+      
       let _data = { ...data };
       if (field === "previousLoan")
         _data.mainInvest.previousLoan.price = Number(newValue);
@@ -108,7 +107,6 @@ const useMainInvestmentHooks = () => {
         belonging: [...prevData.mainInvest.belonging, newBelonging],
       },
     }));
-    // setNewBelonging({ price: 0, date: "" });
   }, [calculateReserveAmount]);
 
   const handleFeesAdd = useCallback(() => {
@@ -119,7 +117,6 @@ const useMainInvestmentHooks = () => {
         fees: [...prevData.mainInvest.fees, newBelonging],
       },
     }));
-    // setNewBelonging({ price: 0, date: "" });
   }, [calculateReserveAmount, newBelonging]);
 
   // < -------for refundRecoveryDetails------>
@@ -155,21 +152,11 @@ const useMainInvestmentHooks = () => {
     subfield = ""
   ) => {
     let _data = { ...data };
-    // if (field === "refundRecovery")
       _data.refundRecoveryDetails.entries[index][subfield] = newValue;
     _data.refundRecoveryDetails.total = calRefundTotal(_data)
     _data.reserveAmount.total = calAllTotal(_data)
 
-    // else if (field === "cashInHand")
-    //   _data.mainInvest.cashInHand.price = Number(newValue);
-    // else if (field === "belonging")
-    //   _data.mainInvest.belonging[index][subfield] = Number(newValue);
-    // else if (field === "fees")
-    //   _data.mainInvest.fees[index][subfield] = Number(newValue);
-    // else if (field === "total") _data.mainInvest.total = Number(newValue);
-    // else if (field === "refundRecovery")
-    //   _data.mainInvest.reserveAmount.price = calculateReserveAmount(_data);
-    // calculateReserveAmount();
+   
     setData(_data);
   };
 
@@ -188,13 +175,7 @@ const useMainInvestmentHooks = () => {
     setData(_data);
   };
 
-  // setData((prevData) => ({
-  //   ...prevData,
-  //   reserveAmount: {
-  //     ...prevData.reserveAmount,
-  //     entries: [...prevData.reserveAmount.entries, newBelonging],
-  //   },
-  // }));
+ 
 
   const handleSave = useCallback(() => {
     fetch("https://insorty-api.onrender.com/shop/updateMainInvestmentPage", {

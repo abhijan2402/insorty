@@ -2,6 +2,7 @@ import React from "react";
 import AddSendFormat from "../AddSendFormat/AddSendFormat";
 import usePartyNames from "../../../../Hooks/usePartyNames";
 import Loader from "../../../../Components/Loader/Loader";
+import ChangeEquity from "../ChangeEquity";
 
 const SendFormat = () => {
   const { partners, partnerLoaded } = usePartyNames();
@@ -40,12 +41,16 @@ const SendFormat = () => {
           </table>
         </div>
         <div>
-          <label htmlFor="addFormat" className="btn bg-[#AA237A] my-4">
+          <label htmlFor="addFormat" className="btn bg-[#AA237A] my-4 mx-4">
             Add new Partner
+          </label>
+          <label htmlFor="changeShare" className="btn bg-[#AA237A] my-4">
+            Change Share
           </label>
         </div>
       </div>
       <AddSendFormat></AddSendFormat>
+      <ChangeEquity data={partners}></ChangeEquity>
     </section>
   );
 };

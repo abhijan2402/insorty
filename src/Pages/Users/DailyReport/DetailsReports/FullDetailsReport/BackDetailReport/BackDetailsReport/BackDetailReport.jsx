@@ -19,7 +19,7 @@ import RegularData from "../../FrontDetailsReport/RegularData/RegularData";
 import FristFormDetails from "../../FrontDetailsReport/FristFormDetails/FristFormDetails";
 
 const BackDetailReport = () => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  // const [selectedDate, setSelectedDate] = useState();
 
   const {
     RMLData,
@@ -45,7 +45,7 @@ const BackDetailReport = () => {
   } = useGetDailyReport();
 
   const container = useRef(null);
-  const [filterDate, setFilterData] = useState([]);
+  const [filterDate, setFilterData] = useState(new Date());
 
   const handlePrint = useReactToPrint({
     content: () => container.current,
@@ -68,10 +68,10 @@ const BackDetailReport = () => {
 
   //
 
-  const filteredExceptionalData = selectedDate
+  const filteredExceptionalData = filterDate
     ? BackPageReportExceptionalSize.filter((item) => {
         const itemDate = new Date(moment(item.date).format());
-        const selected = selectedDate ? new Date(selectedDate) : null;
+        const selected = filterDate ? new Date(filterDate) : null;
         if (selected) {
           return itemDate.toDateString() === selected.toDateString();
         } else {
@@ -80,10 +80,10 @@ const BackDetailReport = () => {
       })
     : BackPageReportExceptionalSize;
 
-  const filteredRegularData = selectedDate
+  const filteredRegularData = filterDate
     ? BackPageReportRegularSize.filter((item) => {
         const itemDate = new Date(moment(item.date).format());
-        const selected = selectedDate ? new Date(selectedDate) : null;
+        const selected = filterDate ? new Date(filterDate) : null;
         if (selected) {
           return itemDate.toDateString() === selected.toDateString();
         } else {
@@ -111,9 +111,51 @@ const BackDetailReport = () => {
     });
   });
 
-  console.log(quan330, "quan330here");
-  console.log(quan650, "quan650here");
-  console.log(quan550, "quan550here");
+
+  
+
+  const openingStock = filteredExceptionalData.map((item) => {
+    const { openingStock } = item;
+    return openingStock;
+  });
+
+  const purchaseShop = filteredExceptionalData.map((item) => {
+    const { purchaseShop } = item;
+    return purchaseShop;
+  });
+
+  const purchaseOutSide = filteredExceptionalData.map((item) => {
+    const { purchaseOutSide } = item;
+    return purchaseOutSide;
+  });
+
+  const credits = filteredExceptionalData.map((item) => {
+    const { credits } = item;
+    return credits;
+  });
+
+  const send = filteredExceptionalData.map((item) => {
+    const { send } = item;
+    return send;
+  });
+
+  const remaining = filteredExceptionalData.map((item) => {
+    const { remaining } = item;
+    return remaining;
+  });
+
+  const closingStock = filteredExceptionalData.map((item) => {
+    const { closingStock } = item;
+    return closingStock;
+  });
+
+  const sales = filteredExceptionalData.map((item) => {
+    console.log(item, "item+++++");
+    const { sales } = item;
+    return sales;
+  });
+
+ 
 
   return (
     <section className="my-4">
@@ -139,10 +181,9 @@ const BackDetailReport = () => {
         <div className="flex gap-2 items-center">
           <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
-            selected={selectedDate}
+            selected={filterDate}
             onChange={(date) => {
-              setSelectedDate(date);
-              console.log(moment(date).format());
+              setFilterData(date);
             }}
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
@@ -175,7 +216,7 @@ const BackDetailReport = () => {
                 <th colSpan={3}>बिक्री</th>
                 <th colSpan={3}>रेट</th>
                 <th colSpan={3}>योग</th>
-                <th rowSpan={3}>कुल योग</th>
+                <th rowSpan={2}>कुल योग</th>
               </tr>
 
               <tr>
@@ -529,6 +570,27 @@ const BackDetailReport = () => {
                     0
                   )}
                 </td>
+
+
+                  <td>{quan650.reduce(
+                    (total, regularData) =>
+                      total +
+                      Number(regularData.sales) *
+                      Number(regularData.sellingRate?.$numberDecimal),
+                    0
+                  ) + quan550.reduce(
+                    (total, regularData) =>
+                      total +
+                      Number(regularData.sales) *
+                      Number(regularData.sellingRate?.$numberDecimal),
+                    0
+                  ) + quan330.reduce(
+                    (total, regularData) =>
+                      total +
+                      Number(regularData.sales) *
+                      Number(regularData.sellingRate?.$numberDecimal),
+                    0
+                  )}</td>
               </tr>
             </tbody>
           </table>
@@ -539,7 +601,7 @@ const BackDetailReport = () => {
             <thead>
               <tr>
                 <td className="tg-0lax " colSpan={50}>
-                  <span style={{ fontWeight: "bold" }}>English</span>
+                  <span style={{ fontWeight: "bold" }}></span>
                 </td>
               </tr>
 
@@ -576,17 +638,17 @@ const BackDetailReport = () => {
 
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
-              {/* <tr>
+              <tr>
               <td className="tg-0lax" colSpan={2}>
                 Total
               </td>
               <td className="tg-0lax"></td>
               <td className="tg-0lax"></td>
               <td className="tg-0lax">
-                {openingStock.reduce((acc, item) => {
+                { openingStock.reduce((acc, item) => {
                   const total = Number(acc) + Number(item);
                   return total;
-                })}
+                },0)}
               </td>
               <td className="tg-0lax">
                 {purchaseShop.reduce((acc, item) => {
@@ -599,7 +661,7 @@ const BackDetailReport = () => {
                 {purchaseOutSide.reduce((acc, item) => {
                   const total = Number(acc) + Number(item);
                   return total;
-                })}
+                },0)}
               </td>
               <td className="tg-0lax"></td>
               <td className="tg-0lax">
@@ -631,13 +693,13 @@ const BackDetailReport = () => {
                 {sales.reduce((acc, item) => {
                   const total = Number(acc) + Number(item);
                   return total;
-                })}
+                },0)}
               </td>
 
               <td className="tg-0lax"></td>
 
               <td className="tg-0lax"></td>
-            </tr> */}
+            </tr>
             </tbody>
           </table>
         </div>
@@ -675,7 +737,9 @@ const BackDetailReport = () => {
               {RMLData &&
               RMLData.length &&
               RMLData.filter((item) => {
-                if (item.date?.toString().includes(filterDate.toString())) {
+                const itemDate = new Date(moment(item.date).format());
+                const selected = filterDate ? new Date(filterDate) : null;
+                if (itemDate.toDateString() === selected.toDateString()) {
                   return item;
                 } else if (filterDate === "") {
                   return item;
@@ -691,7 +755,9 @@ const BackDetailReport = () => {
                 RMLData &&
                 RMLData.length &&
                 RMLData.filter((item) => {
-                  if (item.date?.toString().includes(filterDate.toString())) {
+                  const itemDate = new Date(moment(item.date).format());
+                  const selected = filterDate ? new Date(filterDate) : null;
+                  if (itemDate.toDateString() === selected.toDateString()) {
                     return item;
                   } else if (filterDate === "") {
                     return item;
@@ -718,9 +784,9 @@ const BackDetailReport = () => {
                   {RMLData &&
                     RMLData.length &&
                     RMLData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -742,9 +808,9 @@ const BackDetailReport = () => {
                   {RMLData &&
                     RMLData.length &&
                     RMLData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -767,9 +833,9 @@ const BackDetailReport = () => {
                   {RMLData &&
                     RMLData.length &&
                     RMLData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -792,9 +858,9 @@ const BackDetailReport = () => {
                   {RMLData &&
                     RMLData.length &&
                     RMLData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -816,9 +882,9 @@ const BackDetailReport = () => {
                   {RMLData &&
                     RMLData.length &&
                     RMLData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -840,9 +906,9 @@ const BackDetailReport = () => {
                   {RMLData &&
                     RMLData.length &&
                     RMLData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -864,9 +930,9 @@ const BackDetailReport = () => {
                   {RMLData &&
                     RMLData.length &&
                     RMLData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -889,9 +955,9 @@ const BackDetailReport = () => {
                   {RMLData &&
                     RMLData.length &&
                     RMLData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -916,9 +982,9 @@ const BackDetailReport = () => {
                   {RMLData &&
                     RMLData.length &&
                     RMLData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -981,7 +1047,9 @@ const BackDetailReport = () => {
               {PurchaseOutsideData &&
               PurchaseOutsideData.length &&
               PurchaseOutsideData.filter((item) => {
-                if (item.date?.toString().includes(filterDate.toString())) {
+                const itemDate = new Date(moment(item.date).format());
+                const selected = filterDate ? new Date(filterDate) : null;
+                if (itemDate.toDateString() === selected.toDateString()) {
                   return item;
                 } else if (filterDate === "") {
                   return item;
@@ -995,7 +1063,9 @@ const BackDetailReport = () => {
                 PurchaseOutsideData &&
                 PurchaseOutsideData.length &&
                 PurchaseOutsideData.filter((item) => {
-                  if (item.date?.toString().includes(filterDate.toString())) {
+                  const itemDate = new Date(moment(item.date).format());
+                  const selected = filterDate ? new Date(filterDate) : null;
+                  if (itemDate.toDateString() === selected.toDateString()) {
                     return item;
                   } else if (filterDate === "") {
                     return item;
@@ -1020,9 +1090,9 @@ const BackDetailReport = () => {
                   {PurchaseOutsideData &&
                     PurchaseOutsideData.length &&
                     PurchaseOutsideData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1045,9 +1115,9 @@ const BackDetailReport = () => {
                   {PurchaseOutsideData &&
                     PurchaseOutsideData.length &&
                     PurchaseOutsideData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1094,7 +1164,9 @@ const BackDetailReport = () => {
               {TotalExpensesData &&
               TotalExpensesData.length &&
               TotalExpensesData.filter((item) => {
-                if (item.date?.toString().includes(filterDate.toString())) {
+                const itemDate = new Date(moment(item.date).format());
+                const selected = filterDate ? new Date(filterDate) : null;
+                if (itemDate.toDateString() === selected.toDateString()) {
                   return item;
                 } else if (filterDate === "") {
                   return item;
@@ -1108,7 +1180,9 @@ const BackDetailReport = () => {
                 TotalExpensesData &&
                 TotalExpensesData.length &&
                 TotalExpensesData.filter((item) => {
-                  if (item.date?.toString().includes(filterDate.toString())) {
+                  const itemDate = new Date(moment(item.date).format());
+                  const selected = filterDate ? new Date(filterDate) : null;
+                  if (itemDate.toDateString() === selected.toDateString()) {
                     return item;
                   } else if (filterDate === "") {
                     return item;
@@ -1130,18 +1204,18 @@ const BackDetailReport = () => {
               <tr>
                 <td className="tg-0lax">Total</td>
                 <td className="tg-0lax" colSpan={4}>
-                  1
+                  
                 </td>
                 <td className="tg-0lax" colSpan={4}>
-                  3
+                  
                 </td>
                 <td className="tg-0lax">
                   {TotalExpensesData &&
                     TotalExpensesData.length &&
                     TotalExpensesData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1201,9 +1275,9 @@ const BackDetailReport = () => {
                   {BorrowedCashReturnData &&
                     BorrowedCashReturnData.length &&
                     BorrowedCashReturnData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1231,9 +1305,9 @@ const BackDetailReport = () => {
                   {BorrowedCashReturnData &&
                     BorrowedCashReturnData.length &&
                     BorrowedCashReturnData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1286,9 +1360,9 @@ const BackDetailReport = () => {
                   {PurchaseBorrowData &&
                     PurchaseBorrowData.length &&
                     PurchaseBorrowData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1318,9 +1392,9 @@ const BackDetailReport = () => {
                   {PurchaseBorrowData &&
                     PurchaseBorrowData.length &&
                     PurchaseBorrowData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1374,9 +1448,9 @@ const BackDetailReport = () => {
                   {SendData &&
                     SendData.length &&
                     SendData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1405,9 +1479,9 @@ const BackDetailReport = () => {
                   {SendData &&
                     SendData.length &&
                     SendData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1431,9 +1505,9 @@ const BackDetailReport = () => {
                   {SendData &&
                     SendData.length &&
                     SendData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
+                      const itemDate = new Date(moment(item.date).format());
+                      const selected = filterDate ? new Date(filterDate) : null;
+                      if (itemDate.toDateString() === selected.toDateString()) {
                         return item;
                       } else if (filterDate === "") {
                         return item;
@@ -1506,7 +1580,9 @@ const BackDetailReport = () => {
               {BorrowedData &&
                 BorrowedData.length > 0 &&
                 BorrowedData.filter((item) => {
-                  if (item.date?.toString().includes(filterDate.toString())) {
+                  const itemDate = new Date(moment(item.date).format());
+                  const selected = filterDate ? new Date(filterDate) : null;
+                  if (itemDate.toDateString() === selected.toDateString()) {
                     return item;
                   } else if (filterDate === "") {
                     return item;
@@ -1541,11 +1617,9 @@ const BackDetailReport = () => {
                       {BorrowedData &&
                         BorrowedData.length > 0 &&
                         BorrowedData.filter((item) => {
-                          if (
-                            item.date
-                              ?.toString()
-                              .includes(filterDate.toString())
-                          ) {
+                          const itemDate = new Date(moment(item.date).format());
+                          const selected = filterDate ? new Date(filterDate) : null;
+                          if (itemDate.toDateString() === selected.toDateString()) {
                             return item;
                           } else if (filterDate === "") {
                             return item;
@@ -1598,7 +1672,9 @@ const BackDetailReport = () => {
               ) : FinalReportData &&
                 FinalReportData.length &&
                 FinalReportData.filter((item) => {
-                  if (item?.date?.toString().includes(filterDate.toString())) {
+                  const itemDate = new Date(moment(item.date).format());
+                  const selected = filterDate ? new Date(filterDate) : null;
+                  if (itemDate.toDateString() === selected.toDateString()) {
                     return item;
                   } else if (filterDate === "") {
                     return item;
@@ -1611,9 +1687,9 @@ const BackDetailReport = () => {
               ) : (
                 <FinalReport
                   data={FinalReportData.filter((item) => {
-                    if (
-                      item?.date?.toString().includes(filterDate.toString())
-                    ) {
+                    const itemDate = new Date(moment(item.date).format());
+                    const selected = filterDate ? new Date(filterDate) : null;
+                    if (itemDate.toDateString() === selected.toDateString()) {
                       return item;
                     } else if (filterDate === "") {
                       return item;

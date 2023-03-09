@@ -9,6 +9,7 @@ import moment from "moment/moment";
 import { FaCalendarAlt } from "react-icons/fa";
 import useFrontDetailHooks from "../FrontDetailsHooks/useFrontDetailHooks";
 import RegularData from "../RegularData/RegularData";
+import jwtDecode from "jwt-decode";
 
 const FrontDetailsReport = () => {
   const front = useRef(null);
@@ -24,6 +25,8 @@ const FrontDetailsReport = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+
+  const token = localStorage.getItem('token')
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -63,6 +66,8 @@ const FrontDetailsReport = () => {
       });
     });
   });
+
+  console.log(FrontPageExceptionalData[0].salesmen,'salesman')
 
   const filteredExceptionalData = selectedDate
     ? FrontPageExceptionalData.filter((item) => {
@@ -116,6 +121,7 @@ const FrontDetailsReport = () => {
     const { sales } = item;
     return sales;
   });
+ 
 
   if (!filteredRegularData.length) {
     return (
@@ -215,11 +221,12 @@ const FrontDetailsReport = () => {
               </tr>
               <tr>
                 <td className="tg-baqh" colSpan={42}>
-                  दुकान का नाम
-                  ............................................................................................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
-                  का नाम
-                  ..................................................................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक
-                  ...............................
+                  दुकान का नाम:- &nbsp;&nbsp;
+                  {jwtDecode(localStorage.getItem("token")).name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
+                  का नाम :- {FrontPageExceptionalData[0].salesmen}
+                  
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक :- 
+                  {moment(selectedDate).format('DD/MM/YYYY')}
                 </td>
               </tr>
             </thead>
@@ -240,7 +247,7 @@ const FrontDetailsReport = () => {
                 <th colSpan={3}>बिक्री</th>
                 <th colSpan={3}>रेट</th>
                 <th colSpan={3}>योग</th>
-                <th rowSpan={3}>कुल योग</th>
+                <th rowSpan={2}>कुल योग</th>
               </tr>
 
               <tr>
@@ -594,6 +601,26 @@ const FrontDetailsReport = () => {
                     0
                   )}
                 </td>
+
+                <td>{quan180.reduce(
+                    (total, regularData) =>
+                  total +
+                  Number(regularData.sales) *
+                  Number(regularData.sellingRate?.$numberDecimal),
+                  0
+                ) + quan375.reduce(
+                  (total, regularData) =>
+                    total +
+                    Number(regularData.sales) *
+                    Number(regularData.sellingRate?.$numberDecimal),
+                  0
+                  ) + quan750.reduce(
+                    (total, regularData) =>
+                      total +
+                      Number(regularData.sales) *
+                      Number(regularData.sellingRate?.$numberDecimal),
+                    0
+                  ) }</td>
               </tr>
             </tbody>
           </table>
@@ -701,7 +728,10 @@ const FrontDetailsReport = () => {
 
                 <td className="tg-0lax"></td>
 
-                <td className="tg-0lax"></td>
+                <td className="tg-0lax">{filteredExceptionalData.reduce(
+                  (total, currentItem) => (total = total + (Number(currentItem.sales)*Number(currentItem.sellingRate.$numberDecimal))),
+                  0
+                )}</td>
               </tr>
             </tbody>
           </table>

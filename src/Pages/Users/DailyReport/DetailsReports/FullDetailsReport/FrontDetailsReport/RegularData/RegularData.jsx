@@ -267,6 +267,29 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3 }) => {
                   })
                 : 0}
             </td>
+            <td> {Number(quantityInML750.length > 0
+              ? quantityInML750.map((item, index) => {
+                return (
+                  Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
+                );
+              })
+              : 0) + Number(
+              quantityInML375.length > 0
+                  ? quantityInML750.map((item, index) => {
+                    return (
+                      Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
+                    );
+                  })
+                  : 0
+              ) + Number(
+                quantityInML180.length > 0
+                  ? quantityInML750.map((item, index) => {
+                    return (
+                      Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
+                    );
+                  })
+                  : 0
+              )}</td>
             {/* <td className="tg-0lax"> */}
           </tr>
         );
