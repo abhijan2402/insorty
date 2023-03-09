@@ -1,5 +1,4 @@
 import React from "react";
-import { FaCalendarAlt } from "react-icons/fa";
 import BorrowForm from "../BorrowForm/BorrowForm";
 import { useQuery } from "@tanstack/react-query";
 import { Loader } from "react-bootstrap-typeahead";

@@ -50,6 +50,7 @@ import Monthly from "../Pages/Users/Commision/Monthly/Monthly";
 import Penalty from "../Pages/Users/Commision/Penalty/Penalty";
 import Others from "../Pages/Users/Commision/Others/Others";
 import CommisionRoute from "../Pages/Users/Commision/CommsionRoute/CommsionRoute";
+import BorrowDetails from "../Pages/Users/Borrow/BorrowDetails/BorrowDetails";
 
 const {
   BearShopBranch,
@@ -185,6 +186,10 @@ const router = createBrowserRouter([
       {
         path: "/user/borrow",
         element: <Borrow />,
+      },
+      {
+        path: "/user/borrow/from/:partyId",
+        element: <BorrowDetails />,
       },
       {
         path: "/user/finalreport",
