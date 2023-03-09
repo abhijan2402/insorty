@@ -17,7 +17,7 @@ const CommisonExpence = ({ expences, index, entries }) => {
               {entry?.type}
             </td>
             <td className="tg-0lax" colSpan={4}>
-              {entry?.description}
+              {entry?.comment}
             </td>
             <td className="tg-0lax" colSpan={4}>
               {entry?.amount?.$numberDecimal}

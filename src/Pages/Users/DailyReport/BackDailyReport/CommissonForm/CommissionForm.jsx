@@ -25,6 +25,7 @@ const CommissionForm = ({ index, onChangeCommison, item, handleRemoveFieldsCommi
               <option value="BEGAR">BEGAR</option>
               <option value="MONTHLY">MONTHLY</option>
               <option value="OTHERS">OTHERS</option>
+              <option value="SALARY">SALARY</option>
             </select>
           </div>
         </td>
