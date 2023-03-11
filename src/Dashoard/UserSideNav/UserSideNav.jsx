@@ -188,7 +188,16 @@ const SideNav = () => {
                 to="/user/phonePay"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Phone Pay
+                फोन पे और आज भुगतान
+              </NavLink>
+            </li>
+
+            <li className="my-4">
+              <NavLink
+                to="/user/cashReceive"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                अन्य से नकद प्राप्ति
               </NavLink>
             </li>
 

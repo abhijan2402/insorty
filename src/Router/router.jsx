@@ -52,6 +52,7 @@ import Others from "../Pages/Users/Commision/Others/Others";
 import CommisionRoute from "../Pages/Users/Commision/CommsionRoute/CommsionRoute";
 import BorrowDetails from "../Pages/Users/Borrow/BorrowDetails/BorrowDetails";
 import PhonePeToday from "../Pages/Users/PhonePeToday/PhonePeToday/PhonePeToday";
+import CashReceiveData from "../Pages/Users/CashReciveData/CashReciveData/CashReciveData";
 
 const {
   BearShopBranch,
@@ -215,6 +216,10 @@ const router = createBrowserRouter([
       {
         path: "/user/salary",
         element: <Salary />,
+      },
+      {
+        path: "/user/cashReceive",
+        element: <CashReceiveData />,
       },
 
       {

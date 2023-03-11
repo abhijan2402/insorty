@@ -1,28 +1,21 @@
 import React, { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
-import useBranch from "../BranchHooks/useBranch";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import BranchFormData from "./BranchFormData/BranchFormData";
 import { useQuery } from "@tanstack/react-query";
 import { Loader } from "react-bootstrap-typeahead";
+import DatePicker from "react-datepicker";
+import moment from "moment/moment";
 
 const BranchFrom = () => {
   const token = localStorage.getItem("token");
   const branchResponse = useLoaderData();
-  const [startDate,setStartDate] = useState()
-  const [endDate,setEndDate] = useState()
-  const branchData = branchResponse?.data;
-  const {
-    branchState,
-    isLoading,
-    setIsLoading,
-  } = useBranch();
+  const [StartDate, setStartDate] = useState();
+  const [EndDate, setEndDate] = useState();
 
-  const {
-    data: transactions,
-    isLoading: branchDataLoading,
-    refetch,
-  } = useQuery({
+  const branchData = branchResponse?.data;
+
+  const { data: transactions, isLoading: branchDataLoading } = useQuery({
     queryKey: ["transactions"],
     queryFn: async () => {
       const res = await fetch(
@@ -53,29 +46,32 @@ const BranchFrom = () => {
           <span className="titleStyle"> {branchData.branchName}</span>
         </h2>
 
-        <div className="flex gap-4 items-center my-4">
+        <div className="flex gap-4 items-center my-4 z-10">
           <h2 className="font-bold text-[1.5rem]">From</h2>
-
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
-            <input
-              type="date"
-              value={startDate}
-              onChange={(e)=>setStartDate(e.target.value)}
-              name="startDate"
-              className="semiSmallInput"
+            <DatePicker
+              selected={StartDate}
+              onChange={(date) => {
+                setStartDate(date);
+                console.log(moment(date).format());
+              }}
+              dateFormat="dd/MM/yyyy"
+              placeholderText={"dd/mm/yyyy"}
+              className="inputBox"
             />
           </div>
-          <h2 className="font-bold text-[1.5rem]">To</h2>
 
+          <h2 className="font-bold text-[1.5rem]">To</h2>
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
-            <input
-              type="date"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              name="endDate"
-              className="semiSmallInput"
+            <DatePicker
+              selected={EndDate}
+              name="year"
+              onChange={(data) => setEndDate(data)}
+              dateFormat="dd/MM/yyyy"
+              className="inputBox"
+              placeholderText={"dd/mm/yyyy"}
             />
           </div>
         </div>
@@ -98,26 +94,35 @@ const BranchFrom = () => {
               </thead>
 
               <tbody>
-                {(transactions && transactions.filter(row => {
-                  let filterPass = true
-                  const date = new Date(row.date)
-                  if (startDate) {
-                    filterPass = filterPass && (new Date(startDate) <= date)
-                  }
-                  if (endDate) {
-                    filterPass = filterPass && (new Date(endDate) >= date)
-                  }
-                  //if filterPass comes back `false` the row is filtered out
-                  return filterPass
-                }).map(((current_sum => (transaction, index) => {
-                  return (
-                    <BranchFormData
-                      key={index}
-                      index={index}
-                      transaction={{...transaction, current_balance: (current_sum += (transaction.deposit - transaction.debit))}}
-                    ></BranchFormData>
-                  );
-                }))(0))) || (
+                {(transactions &&
+                  transactions
+                    .filter((row) => {
+                      let filterPass = true;
+                      const date = new Date(row.date);
+                      if (StartDate) {
+                        filterPass = filterPass && new Date(StartDate) <= date;
+                      }
+                      if (EndDate) {
+                        filterPass = filterPass && new Date(EndDate) >= date;
+                      }
+                      //if filterPass comes back `false` the row is filtered out
+                      return filterPass;
+                    })
+                    .map(
+                      ((current_sum) => (transaction, index) => {
+                        return (
+                          <BranchFormData
+                            key={index}
+                            index={index}
+                            transaction={{
+                              ...transaction,
+                              current_balance: (current_sum +=
+                                transaction.deposit - transaction.debit),
+                            }}
+                          ></BranchFormData>
+                        );
+                      })(0)
+                    )) || (
                   <>
                     <tr>
                       <td>
