@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "../Style/DailyReport.scss";
 import RmlFrom from "./RmlForm/RmlFrom";
 import { Link } from "react-router-dom";
@@ -25,13 +25,11 @@ import { DataContextApi } from "../../../../Context/DataContext";
 // import Swal from "sweetalert2";
 import useHandelSubmitBackAPI from "../../../../Hooks/useHandelSubmitBackAPI/useHandelSubmitBackAPI";
 import AddOneSecondFormBack from "./FristFormBack/AddOneFristFromBack/AddOneSecondFormBack";
-import moment from "moment/moment";
 import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 
 const BackDailyReport = () => {
   const { handleSubmit, isLoadingSubmit } = useHandelSubmitBackAPI();
-  const [StartDate, setStartDate] = useState();
 
   // ================== Frist Form============
   const {
@@ -161,7 +159,7 @@ const BackDailyReport = () => {
   return (
     <>
       <section className="mx-2">
-        <div className="my-4 flex gap-4 items-center">
+        <div className="my-4 flex gap-4 items-center justify-center">
           <h1 className="font-bold md:text-2xl sm:text-sm text-center">
             Daily Report / दैनिक रिपोर्ट{" "}
           </h1>
@@ -172,6 +170,12 @@ const BackDailyReport = () => {
               className="btn btn-error text-white font-bold"
             >
               Front
+            </Link>
+            <Link
+              to="/user/frontdailyreport/details"
+              className="btn btn-error text-white font-bold mx-4"
+            >
+              परचा
             </Link>
           </div>
         </div>
@@ -226,7 +230,7 @@ const BackDailyReport = () => {
                   <table className="table w-full">
                     <thead>
                       <tr>
-                        <td>S.no</td>
+                        <td> क्र. सं.</td>
                         <th></th>
                         <th>Brand Name/ ब्राण्ड</th>
                         <th>Average Rate</th>
@@ -1331,7 +1335,7 @@ const BackDailyReport = () => {
                       <table className="table w-full">
                         <thead>
                           <tr>
-                            <th>S.no</th>
+                            <th> क्र. सं.</th>
                             <th></th>
                             <th>Brand Name/ ब्राण्ड</th>
                             <th>Total ml</th>
@@ -1398,7 +1402,7 @@ const BackDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>S.no</th>
+                      <th> क्र. सं.</th>
                       <th></th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>ml</th>
@@ -2008,7 +2012,7 @@ const BackDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>S.No</th>
+                      <th> क्र. सं.</th>
                       <th></th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
@@ -2127,7 +2131,7 @@ const BackDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>S.no</th>
+                      <th> क्र. सं.</th>
                       <th></th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
@@ -2266,7 +2270,7 @@ const BackDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>S.no</th>
+                      <th> क्र. सं.</th>
                       <th></th>
                       <th>पार्टी का नाम</th>
                       <th>पार्टी/पार्टनर</th>

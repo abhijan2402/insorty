@@ -53,6 +53,8 @@ import CommisionRoute from "../Pages/Users/Commision/CommsionRoute/CommsionRoute
 import BorrowDetails from "../Pages/Users/Borrow/BorrowDetails/BorrowDetails";
 import PhonePeToday from "../Pages/Users/PhonePeToday/PhonePeToday/PhonePeToday";
 import CashReceiveData from "../Pages/Users/CashReciveData/CashReciveData/CashReciveData";
+import PartnersMarge from "../Pages/Users/MargePartners/MargePartners";
+import WineBill from "../Pages/Users/WineBill/WineBill";
 
 const {
   BearShopBranch,
@@ -165,6 +167,10 @@ const router = createBrowserRouter([
         element: <Kharcha />,
       },
       {
+        path: "/user/partnersMarge",
+        element: <PartnersMarge />,
+      },
+      {
         path: "/user/fut",
         element: <Fut />,
       },
@@ -245,6 +251,12 @@ const router = createBrowserRouter([
         path: "/user/selfbill",
         element: <SelfBill />,
       },
+
+      {
+        path: "/user/winebill",
+        element: <WineBill />,
+      },
+
       {
         path: "/user/extra",
         element: <Extra />,

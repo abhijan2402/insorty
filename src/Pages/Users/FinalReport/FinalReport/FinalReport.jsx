@@ -34,7 +34,7 @@ const FinalReport = () => {
     <section className="py-4 px-4">
       <div className="title">
         <h2 className="font-bold text-[1.5rem] titleStyle">
-          बचत व नकदी का हिसाब
+          {/* बचत व नकदी का हिसाब  */} फाइनल रिपोर्ट
         </h2>
         <h2 className="font-bold text-[1.5rem]">
           {moment(monthlyFinalReport.date).format("MM/YYYY")}
@@ -59,7 +59,7 @@ const FinalReport = () => {
               <table className="table w-full">
                 <thead>
                   <tr>
-                    <th>S.no</th>
+                    <th> क्र. सं.</th>
                     <th>पार्टी का नाम</th>
                     <th>Brand / ब्राण्ड</th>
                     <th>Size / ml</th>
@@ -94,7 +94,7 @@ const FinalReport = () => {
               <table className="table w-full">
                 <thead>
                   <tr>
-                    <th>S.no</th>
+                    <th> क्र. सं.</th>
                     <th>पार्टी का नाम</th>
                     <th>Brand / ब्राण्ड</th>
                     <th>Size / ml</th>

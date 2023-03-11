@@ -7,7 +7,7 @@ const ListOfFinalReport = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>S.No </th>
+              <th> क्र. सं. </th>
               <th>विवरण</th>
               <th>रकम</th>
             </tr>

@@ -57,13 +57,16 @@ const BeerStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold text-[1.5rem] text-center">Beer Stock</h2>
+          <h2 className="font-bold text-[1.5rem] text-center"> बीयर</h2>
           <Link to="/user/winestock" className="commonBtn ">
             Wine Stock
           </Link>
+          <Link className="commonBtn" to="/user/rmlstock">
+            देशी
+          </Link>
         </div>
-        <div className="divider my-2"></div>
       </div>
+      <div className="divider my-2"></div>
 
       <div className="flex gap-4 items-center my-4">
         <h2 className="font-bold text-[1.5rem]">From</h2>
@@ -99,7 +102,7 @@ const BeerStock = () => {
         <table className="table w-full m-2">
           <thead>
             <tr>
-              <th>S.no</th>
+              <th> क्र. सं.</th>
               <th>ब्राण्ड/ Brand Name </th>
               <th>स्टॉक / stock</th>
               <th>Avg. Rate / रेट</th>
@@ -209,7 +212,7 @@ const BeerStock = () => {
             <table className="table w-full m-2">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>ब्राण्ड/ Brand Name </th>
                   <th>size </th>
                   <th>स्टॉक / stock</th>
@@ -233,11 +236,18 @@ const BeerStock = () => {
                               <td>{brand.brandName}</td>
                               <td>{size.quantityInML}</td>
                               <td> {size.currentStock}</td>
-                              <td> {size.averageRate.$numberDecimal}</td>
+                              <td>
+                                {" "}
+                                {Number(
+                                  size.averageRate.$numberDecimal
+                                ).toFixed(2)}
+                              </td>
                               <td>
                                 {" "}
                                 {size.currentStock *
-                                  Number(size.averageRate.$numberDecimal)}
+                                  Number(
+                                    size.averageRate.$numberDecimal
+                                  ).toFixed(2)}
                               </td>
                             </tr>
                           );
@@ -249,22 +259,24 @@ const BeerStock = () => {
                 <tr>
                   <td colSpan="5">Total</td>
                   <td>
-                    {filteredData.reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.sizes.reduce(
-                            (total, currentItem) =>
-                              (total =
-                                total +
-                                currentItem.currentStock *
-                                  Number(
-                                    currentItem.averageRate.$numberDecimal
-                                  )),
-                            0
-                          )),
-                      0
-                    )}
+                    {filteredData
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.sizes.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  currentItem.currentStock *
+                                    Number(
+                                      currentItem.averageRate.$numberDecimal
+                                    )),
+                              0
+                            )),
+                        0
+                      )
+                      .toFixed(2)}
                   </td>
                 </tr>
               </tbody>

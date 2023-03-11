@@ -4,7 +4,7 @@ const Borrowed = () => {
     return (
         <>
             <tr>
-                <td>S.no</td>
+                <td> क्र. सं.</td>
                 <td>पार्टी का नाम</td>
                 <td>पार्टी/पार्टनर</td>
                 <td>रकम</td>

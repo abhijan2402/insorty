@@ -2,9 +2,9 @@ import React from "react";
 import Logo from "../../images/insorty.png";
 import { Link, NavLink } from "react-router-dom";
 import { FaPowerOff } from "react-icons/fa";
+import jwtDecode from "jwt-decode";
 
 const SubAdminSideNav = () => {
-
   let activeStyle = {
     background: "gray",
     color: "white",
@@ -25,25 +25,26 @@ const SubAdminSideNav = () => {
           <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />
         </div>
         <Link>
-          <div >
+          <div>
             <h1 className="font-bold text-red-400 text-center uppercase">
-              Name
+              Name: {jwtDecode(localStorage.getItem("token")).name}
             </h1>
+            <div>
+              <h1 className="font-bold text-center uppercase mt-2">
+                {jwtDecode(localStorage.getItem("token")).role}
+              </h1>
+            </div>
           </div>
         </Link>
         <hr className="mt-4 mb-2" />
       </div>
 
-
       <div className="flex flex-col justify-between mt-32 flex-1 md:mt-28">
         <nav>
-
           <li className="my-4">
             <NavLink
               to="/subadmin/createuser"
-              style={({ isActive }) =>
-                isActive ? activeStyle : undefined
-              }
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
               Create User
             </NavLink>
@@ -52,9 +53,7 @@ const SubAdminSideNav = () => {
           <li className="my-4">
             <NavLink
               to="/subadmin/maneguser"
-              style={({ isActive }) =>
-                isActive ? activeStyle : undefined
-              }
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
               Manage User
             </NavLink>

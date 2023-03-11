@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../../../Pages/Home/Style/Home.scss";
-import { FaRegTrashAlt } from "react-icons/fa";
 import AddBrandList from "./AddBrandList/AddBrandList";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
@@ -26,13 +25,13 @@ const BrandList = () => {
 
   if (isLoading) return <Loader></Loader>;
 
-
-
   return (
     <section className="p-4">
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold md:text-[1.5rem] text-center">Brand List / ब्राण्ड सूची</h2>
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            ब्राण्ड सूची
+          </h2>
           <Link to="/user/branchname" className="commonBtn ">
             Branch
           </Link>
@@ -44,7 +43,7 @@ const BrandList = () => {
       </div>
       <div>
         <table className="table w-4/5">
-          <thead>
+          <thead className="text-center">
             <th>
               <h1>Sr. No.</h1>
             </th>
@@ -60,43 +59,44 @@ const BrandList = () => {
           </thead>
 
           <tbody>
-            {BrandData.length && BrandData?.map((item, index) => {
-              const { sizes } = item;
-              const quantityInML = sizes?.map((item) => item?.quantityInML);
+            {BrandData.length &&
+              BrandData?.map((item, index) => {
+                const { sizes } = item;
+                const quantityInML = sizes?.map((item) => item?.quantityInML);
 
-              return (
-                <tr key={index}>
-                  <th>
-                    <h1>{index + 1}</h1>
-                  </th>
-                  <td>
-                    <h1>{item?.brandName}</h1>
-                  </td>
-                  <td>{item?.type}</td>
-                  <td>
-                    <h1>
-                      {quantityInML?.map((item, index) => {
-                        return (
-                          <span key={index}>
-                            {item}
-                            {index !== quantityInML?.length - 1 && ", "}
-                          </span>
-                        );
-                      })}
-                    </h1>
-                  </td>
-                  <td>
-                    <Link
-                      className="font-3xl font-bold"
-                      style={{ color: "#AA237A" }}
-                    // onClick={() => handleDelete(salary?._id)}
-                    >
-                      {/* <FaRegTrashAlt></FaRegTrashAlt> */}
-                    </Link>
-                  </td>
-                </tr>
-              );
-            })}
+                return (
+                  <tr key={index} className="text-center">
+                    <th>
+                      <h1>{index + 1}</h1>
+                    </th>
+                    <td>
+                      <h1>{item?.brandName}</h1>
+                    </td>
+                    <td>{item?.type}</td>
+                    <td>
+                      <h1>
+                        {quantityInML?.map((item, index) => {
+                          return (
+                            <span key={index}>
+                              {item}
+                              {index !== quantityInML?.length - 1 && ", "}
+                            </span>
+                          );
+                        })}
+                      </h1>
+                    </td>
+                    <td>
+                      <Link
+                        className="font-3xl font-bold"
+                        style={{ color: "#AA237A" }}
+                        // onClick={() => handleDelete(salary?._id)}
+                      >
+                        {/* <FaRegTrashAlt></FaRegTrashAlt> */}
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>

@@ -137,7 +137,7 @@ const SalaryForm = () => {
             <table className="table w-full">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>Salary / वेतन</th>
                   <th>Payment / भुगतान</th>
                   <th>reason /टिप्पणी</th>

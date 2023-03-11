@@ -21,7 +21,7 @@ const SideNav = () => {
             left: "0",
             zIndex: " 1000",
           }}
-          className="flex-col w-64 fixed px-4 md:mb-10 top-0 md:top-0 bg-white border-r flex "
+          className="flex-col w-64 fixed px-4 md:mb-14 top-0 md:top-0 bg-white border-r flex "
         >
           <div className="text-3xl flex justify-center items-center font-semibold  text-white">
             <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />
@@ -29,30 +29,35 @@ const SideNav = () => {
           <Link>
             <div>
               <h1 className="font-bold text-red-400 text-center uppercase">
-                {jwtDecode(localStorage.getItem("token")).name}
+                Name: {jwtDecode(localStorage.getItem("token")).name}
               </h1>
+              <div>
+                <h1 className="font-bold text-center uppercase mt-2">
+                  {jwtDecode(localStorage.getItem("token")).role}
+                </h1>
+              </div>
             </div>
           </Link>
           <hr className="mt-4 mb-2" />
         </div>
 
-        <div className="flex flex-col justify-between flex-1 mt-32 md:mt-28">
+        <div className="flex flex-col justify-between flex-1 mt-34 md:mt-[9rem]">
           <nav>
             <li className="my-4">
               <NavLink
                 to="/user/dailyreport"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Daily Report / दैनिक रिपोर्ट
+                दैनिक रिपोर्ट
               </NavLink>
             </li>
 
             <li className="my-4">
               <NavLink
-                to="/user/partners"
+                to="/user/partnersMarge"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Partners / पार्टनर
+                पार्टनर
               </NavLink>
             </li>
 
@@ -61,7 +66,7 @@ const SideNav = () => {
                 to="/user/branch"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Branch / ब्रांच
+                ब्रांच
               </NavLink>
             </li>
 
@@ -70,7 +75,7 @@ const SideNav = () => {
                 to="/user/salary"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Salary / वेतन
+                वेतन
               </NavLink>
             </li>
 
@@ -79,7 +84,7 @@ const SideNav = () => {
                 to="/user/payments"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Payments दुकान/बार पेमेंट
+                Payments Shop / दुकान पेमेंट
               </NavLink>
             </li>
 
@@ -88,7 +93,7 @@ const SideNav = () => {
                 to="/user/commisionroute"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Commision / कमीशन
+                कमीशन
               </NavLink>
             </li>
 
@@ -97,7 +102,7 @@ const SideNav = () => {
                 to="/user/borrow"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Borrow / उधारी
+                उधारी
               </NavLink>
             </li>
 
@@ -106,19 +111,19 @@ const SideNav = () => {
                 to="/user/finalreport"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Final report / हिसाब
+                अंतिम रिपोर्ट
               </NavLink>
             </li>
 
-            <li className="my-4">
+            {/* <li className="my-4">
               <NavLink
                 to="/user/selfbill"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Self Bill / दुकान बिल का फोर्मेट
               </NavLink>
-            </li>
-
+            </li> */}
+            {/* 
             <li className="my-4">
               <NavLink
                 to="/user/outbill"
@@ -126,18 +131,17 @@ const SideNav = () => {
               >
                 Out Bill / बाहर के बिल का फोर्मेट
               </NavLink>
-            </li>
-
-            {/* <li className="my-4">
-              <NavLink
-                to="/user/extra"
-                style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
-              >
-                Extra /राशन सब्जी आदि खरीद
-              </NavLink>
             </li> */}
+            {/*  Wine Bill /  */}
+
+            <li className="my-4">
+              <NavLink
+                to="/user/winebill"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                वाइन बिल का फोर्मेट
+              </NavLink>
+            </li>
 
             <li className="my-4">
               <NavLink
@@ -171,15 +175,6 @@ const SideNav = () => {
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Stock
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/sendFormat"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                All Partners
               </NavLink>
             </li>
 

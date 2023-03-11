@@ -57,7 +57,7 @@ const FrontDetailsReport = () => {
             </thead>
             <tbody>
               <tr>
-                <td rowSpan={2}>S.no</td>
+                <td rowSpan={2}> क्र. सं.</td>
                 <th rowSpan={2}>Brand Name/ ब्राण्ड</th>
                 <th colSpan={3}>Average Rate</th>
                 <th colSpan={3}>प्रारम्भिक स्टॉक</th>
@@ -403,7 +403,7 @@ const FrontDetailsReport = () => {
                 </tr>
 
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>Brand Name/ ब्राण्ड</th>
                   <th>ml</th>
                   <th>Average Rate</th>

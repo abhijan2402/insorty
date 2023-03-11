@@ -67,7 +67,7 @@ const OutBill = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>S.No</th>
+                <th> क्र. सं.</th>
                 <th>ब्राण्ड/ Brand Name </th>
                 <th>साईज / ml</th>
                 <th>Number / संख्या</th>

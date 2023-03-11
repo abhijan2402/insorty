@@ -29,8 +29,13 @@ const SideNav = () => {
           <Link>
             <div>
               <h1 className="font-bold text-red-400 text-center uppercase">
-                {jwtDecode(localStorage.getItem("token")).name}
+                Name: {jwtDecode(localStorage.getItem("token")).name}
               </h1>
+              <div>
+                <h1 className="font-bold text-center uppercase mt-2">
+                  {jwtDecode(localStorage.getItem("token")).role}
+                </h1>
+              </div>
             </div>
           </Link>
           <hr className="mt-4 mb-2" />

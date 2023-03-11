@@ -48,7 +48,7 @@ const BackDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>S.no</th>
+                      <th> क्र. सं.</th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>Number / संख्या</th>
@@ -168,7 +168,7 @@ const BackDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>S.no</th>
+                      <th> क्र. सं.</th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>संख्या</th>
@@ -316,7 +316,7 @@ const BackDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>S.no</th>
+                      <th> क्र. सं.</th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Partner Name/पार्टनर नाम</th>
                       <th>Amount / रकम</th>
@@ -468,7 +468,7 @@ const BackDailyReport = () => {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th>S.no</th>
+                      <th> क्र. सं.</th>
                       <th>दिनांक / Date</th>
                       <th>रकम/  price</th>
                       <th>विवरण/ Details</th>
@@ -532,7 +532,7 @@ const BackDailyReport = () => {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th>S.no</th>
+                      <th> क्र. सं.</th>
                       <th>Reason / विवरण</th>
                       <th>रकम</th>
                     </tr>

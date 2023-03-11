@@ -8,7 +8,8 @@ import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment/moment";
-import useMainInvestmentHooks from '../../MainInvestment/MainInvestmentHooks/useMainInvestmentHooks'
+import useMainInvestmentHooks from "../../MainInvestment/MainInvestmentHooks/useMainInvestmentHooks";
+import { Link } from "react-router-dom";
 
 const SelfBill = () => {
   const token = localStorage.getItem("token");
@@ -16,7 +17,7 @@ const SelfBill = () => {
   const { brandsLoaded } = useLiquors();
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
-  const { data } = useMainInvestmentHooks()
+  const { data } = useMainInvestmentHooks();
 
   const { data: SelfBillData, isLoading } = useQuery({
     queryKey: ["SelfBillData"],
@@ -50,40 +51,49 @@ const SelfBill = () => {
     //if filterPass comes back `false` the row is filtered out
     return filterPass;
   });
-  const filteredRefund = data?.refundRecoveryDetails?.entries.filter((entry)=>
+  const filteredRefund = data?.refundRecoveryDetails?.entries
+    .filter((entry) => entry.type === "REFUND")
+    .filter((item) => {
+      let filterPass = true;
+      const date = moment(item.date).format("DD/MM/YYYY");
 
-    entry.type==="REFUND"
+      if (StartDate) {
+        filterPass =
+          filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+      }
+      if (EndDate) {
+        filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+      }
+      //if filterPass comes back `false` the row is filtered out
+      return filterPass;
+    });
 
-  ).filter((item) => {
-    let filterPass = true;
-    const date = moment(item.date).format("DD/MM/YYYY");
-
-    if (StartDate) {
-      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
-    }
-    if (EndDate) {
-      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
-    }
-    //if filterPass comes back `false` the row is filtered out
-    return filterPass;
-  });
-
-  console.log(filteredRefund)
+  console.log(filteredRefund);
 
   const totalAmountData = filteredData?.map((item) => {
     return item.total;
   });
 
   const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
-  const netPaidAmount = totalAmount - filteredRefund.reduce(
-    (total, currentItem) => (total = total + Number(currentItem.price)),
-    0
-  );
+  const netPaidAmount =
+    totalAmount -
+    filteredRefund.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.price)),
+      0
+    );
 
   return (
     <section>
-      <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">दुकान बिल का फोर्मेट</h2>
+      <div className="title flex flex-col justify-center items-center py-2">
+        <div className="flex gap-4">
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            दुकान बिल का फोर्मेट
+          </h2>
+          <Link className="commonBtn " to="user/outbill">
+            Out Bill
+          </Link>
+        </div>
+
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">
@@ -120,7 +130,7 @@ const SelfBill = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <td>S.No</td>
+                <td> क्र. सं.</td>
                 <th>Date</th>
                 <th>ब्राण्ड/ Brand Name </th>
                 <th>साईज / ml</th>
@@ -173,7 +183,8 @@ const SelfBill = () => {
                     className="semiSmallInput"
                     disabled
                     value={filteredRefund.reduce(
-                      (total, currentItem) => (total = total + Number(currentItem.price)),
+                      (total, currentItem) =>
+                        (total = total + Number(currentItem.price)),
                       0
                     )}
                   />

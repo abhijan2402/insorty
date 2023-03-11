@@ -36,6 +36,7 @@ const AddOneFristForm = ({
         </th>
         <td>
           <Autocomplete
+            className="dailyReportInput"
             options={
               liquors.length > 0
                 ? liquors.filter((brand) => {
@@ -59,8 +60,8 @@ const AddOneFristForm = ({
             }}
             renderInput={(params) => (
               <TextField
-                {...params}
                 className="dailyReportInput"
+                {...params}
                 // value={addOneFirst.brandName}
                 inputProps={{
                   ...params.inputProps,
@@ -68,8 +69,6 @@ const AddOneFristForm = ({
                 }}
                 onChange={(event) => {
                   addOneFirst.brandName = event.target.value;
-                  // addOneFirst.liquorID = null;
-                  // handelFristFormOnChange(event, index);
                 }}
               />
             )}
@@ -80,8 +79,6 @@ const AddOneFristForm = ({
           <div className="flex gap-2">
             <div className="form-control">
               <input
-                // type="number"
-
                 className="smallinput"
                 value={addOneFirst.averageRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}

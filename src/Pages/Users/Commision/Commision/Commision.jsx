@@ -88,7 +88,7 @@ const Commision = () => {
             <table className="table w-full">
               <thead>
                 <tr>
-                  <td>S.no</td>
+                  <td> क्र. सं.</td>
                   <th>विवरण</th>
                   <th>रकम</th>
                   <th>टिप्पणी</th>

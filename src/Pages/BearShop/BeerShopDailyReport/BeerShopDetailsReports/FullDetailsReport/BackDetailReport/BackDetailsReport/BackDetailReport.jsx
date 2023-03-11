@@ -74,7 +74,7 @@ const BackDetailReport = () => {
               </tr>
 
               <tr>
-                <th>S.no</th>
+                <th> क्र. सं.</th>
                 <th>Brand Name/ ब्राण्ड</th>
                 <th>ml</th>
                 <th>Average Rate</th>
@@ -364,7 +364,7 @@ const BackDetailReport = () => {
               </tr>
 
               <tr>
-                <th>S.no</th>
+                <th> क्र. सं.</th>
                 <th>पार्टी का नाम</th>
                 <th>पार्टी/पार्टनर</th>
                 <th>रकम</th>

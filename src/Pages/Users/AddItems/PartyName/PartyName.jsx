@@ -1,5 +1,4 @@
 import React from "react";
-import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AddPartyName from "./AddPartyName/AddPartyName";
 import { useQuery } from "@tanstack/react-query";
@@ -29,7 +28,9 @@ const PartyName = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold md:text-[1.5rem] text-center">Party Name/ पार्टी का नाम</h2>
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            पार्टी का नाम
+          </h2>
           <Link to="/user/branchname" className="commonBtn ">
             Branch
           </Link>
@@ -41,7 +42,7 @@ const PartyName = () => {
       </div>
       <div>
         <table className="table w-4/5">
-          <thead>
+          <thead className="text-center">
             <th>
               <h1>Sr. No.</h1>
             </th>
@@ -51,7 +52,6 @@ const PartyName = () => {
             <th>
               <h1>Action</h1>
             </th>
-
           </thead>
           <tbody>
             {PartyNameData?.map((item, index) => {
@@ -67,7 +67,7 @@ const PartyName = () => {
                     <Link
                       className="font-3xl font-bold"
                       style={{ color: "#AA237A" }}
-                    // onClick={() => handleDelete(salary?._id)}
+                      // onClick={() => handleDelete(salary?._id)}
                     >
                       {/* <FaRegTrashAlt></FaRegTrashAlt> */}
                     </Link>

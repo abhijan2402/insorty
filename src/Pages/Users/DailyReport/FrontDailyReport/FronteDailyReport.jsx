@@ -8,7 +8,6 @@ import { useQuery } from "@tanstack/react-query";
 import useFristFormSubmitAPIFront from "../../../../Hooks/useFristFormSubmitAPIFront/useFristFormSubmitAPIFront";
 import Loader from "../../../../Components/Loader/Loader";
 import { DataContextApi } from "../../../../Context/DataContext";
-import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 
 const FronteDailyReport = () => {
@@ -42,19 +41,6 @@ const FronteDailyReport = () => {
     isLoadingSubmit,
   } = useFristFormSubmitAPIFront();
 
-  //=============== add One second form =================
-
-  // const hendelSubmit = (event) => {
-  //   const addFristForm = Object.assign({}, addOneFristFormState);
-  //   console.log(addFristForm);
-  //   console.log(
-  //     `total is ${addOneFristFormState.reduce(
-  //       (total, currentItem) => (total = total + currentItem.grandTotal),
-  //       0
-  //     )}`
-  //   );
-  // };
-
   const { data: sujestedData, isLoading } = useQuery({
     queryKey: ["sujestedData"],
     queryFn: async () => {
@@ -81,18 +67,23 @@ const FronteDailyReport = () => {
 
   return (
     <section className="mx-2">
-      <div className="my-4 flex gap-4 items-center">
-        <h1 className="font-bold md:text-2xl text-center">
-          Daily Report / दैनिक रिपोर्ट{" "}
-        </h1>
+      <div className="my-4 flex gap-4 items-center justify-center">
+        <h1 className="font-bold md:text-2xl text-center">दैनिक रिपोर्ट </h1>
         <Link
           to="/user/dailyreport/back"
           className="btn btn-error text-white font-bold"
         >
           Back
         </Link>
+
+        <Link
+          to="/user/frontdailyreport/details"
+          className="btn btn-error text-white font-bold"
+        >
+          परचा
+        </Link>
       </div>
-      <div className="flex gap-4 ">
+      <div className="flex gap-4 justify-center items-center ">
         <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
         <input
           type="text"
@@ -120,10 +111,10 @@ const FronteDailyReport = () => {
         <div>
           <form>
             <div className="overflow-x-auto">
-              <table className="table w-full">
+              <table className="table commonTable">
                 <thead>
                   <tr>
-                    <th>S.no</th>
+                    <th> क्र. सं.</th>
                     <th></th>
                     <th>Brand Name/ ब्राण्ड</th>
                     <th>Average Rate</th>
@@ -150,6 +141,13 @@ const FronteDailyReport = () => {
                       <div className="form-control"></div>
                     </td>
                     {/* ======== MRP Input ========= */}
+                    <td>
+                      <div className="flex gap-2">
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
+                      </div>
+                    </td>
                     <td>
                       <div className="flex gap-2">
                         <div className="form-control">
@@ -466,7 +464,14 @@ const FronteDailyReport = () => {
                   {/* ============ =========== */}
 
                   <tr>
-                    <th></th>
+                    <th >
+                      <button
+                        className="btn bg-[#AA237A] btn-sm"
+                        onClick={() => addOneFristFormHandler()}
+                      >
+                        ADD
+                      </button>
+                    </th>
                     <td></td>
                     <td>Total</td>
                     {/* ======== MRP Input ========= */}
@@ -1099,24 +1104,14 @@ const FronteDailyReport = () => {
             </div>
           </form>
 
-          <div className="mt-4 flex gap-4">
+          {/* <div className="mt-4 flex gap-4">
             <button
               className="dailyReportBtn"
               onClick={() => addOneFristFormHandler()}
             >
-              ADD 1
+              ADD
             </button>
-            <button className="dailyReportBtn" onClick={() => addFive()}>
-              ADD 5
-            </button>
-            <button
-              className="dailyReportBtn"
-              onClick={() => submitFristFormHandler()}
-              type="submit"
-            >
-              Submit
-            </button>
-          </div>
+          </div> */}
         </div>
 
         <div>
@@ -1126,7 +1121,7 @@ const FronteDailyReport = () => {
                 <table className="table w-full">
                   <thead>
                     <tr>
-                      <th>S.no</th>
+                      <th> क्र. सं.</th>
                       <th></th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>Total ml</th>

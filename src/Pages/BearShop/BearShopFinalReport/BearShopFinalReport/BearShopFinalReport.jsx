@@ -39,7 +39,7 @@ const FinalReport = () => {
               <table className="table w-full">
                 <thead>
                   <tr>
-                    <th>S.no</th>
+                    <th> क्र. सं.</th>
                     <th>पार्टी का नाम</th>
                     <th>Brand / ब्राण्ड</th>
                     <th>संख्या</th>
@@ -90,7 +90,7 @@ const FinalReport = () => {
               <table className="table w-full">
                 <thead>
                   <tr>
-                    <th>S.no</th>
+                    <th> क्र. सं.</th>
                     <th>पार्टी का नाम</th>
                     <th>Brand / ब्राण्ड</th>
                     <th>संख्या</th>

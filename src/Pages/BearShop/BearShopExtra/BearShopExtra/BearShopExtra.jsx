@@ -52,7 +52,7 @@ const Extra = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>S.No</th>
+                <th> क्र. सं.</th>
                 <th>दिनांक / Date </th>
                 <th>रकम/ price</th>
                 <th>विवरण/ Details</th>

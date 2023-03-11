@@ -57,7 +57,7 @@ const FinalReport = ({
         <table className="table w-full">
           <thead>
             <tr>
-              <th>S.No</th>
+              <th> क्र. सं.</th>
               <th>Reason / विवरण</th>
               <th>total</th>
             </tr>

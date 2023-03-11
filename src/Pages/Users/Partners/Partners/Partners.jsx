@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
+import { Link } from "react-router-dom";
 
 const Partners = () => {
   const token = localStorage.getItem("token");
@@ -59,7 +60,12 @@ const Partners = () => {
   return (
     <section className="py-4">
       <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">पार्टनर</h2>
+        <div className="flex justify-center items-center gap-4">
+          <h2 className="font-bold md:text-[1.5rem] text-center">पार्टनर</h2>
+          <Link className="commonBtn" to="/user/sendFormat">
+            All Partnes
+          </Link>
+        </div>
 
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
@@ -100,7 +106,7 @@ const Partners = () => {
             <table className="table ">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>पार्टनर नाम</th>
                   <th>नामे </th>
                   <th>जमा</th>

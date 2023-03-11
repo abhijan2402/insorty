@@ -35,7 +35,7 @@ const StockLandingForm = () => {
             <table className="table w-full">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>आमद/Inflow</th>
                   <th>भेजान/ Send </th>
                   <th>शेष/Remaining</th>

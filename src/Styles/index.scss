@@ -18,6 +18,26 @@ code {
     monospace;
 }
 
+thead {
+  text-align: center !important;
+}
+
+th {
+  text-align: center !important;
+}
+
+td {
+  text-align: center !important;
+}
+
+input {
+  text-align: center;
+}
+
+input[type="text"] {
+  text-align: center;
+}
+
 
 input.inputBox {
   font-size: 18px;
@@ -58,12 +78,14 @@ li {
 table {
   border: 1px solid black !important;
   border-collapse: collapse;
-  padding: 5px;
+  // padding: 0 !important;
+  // padding: 5px;
 }
 
 table th {
   border: 1px solid black !important;
-  padding: 5px;
+  // padding: 5px;
+  // padding: 0 !important;
   background: #f0f0f0;
   color: #313030;
 }
@@ -71,7 +93,32 @@ table th {
 table td {
   border: 1px solid black !important;
   text-align: center;
-  padding: 5px;
+  // padding: 0 !important;
+  // padding: 5px;
+  background: #ffffff;
+  color: #313030;
+}
+
+.commonTable {
+  border: 1px solid black !important;
+  border-collapse: collapse;
+  padding: 0 !important;
+  // padding: 5px;
+}
+
+.commonTable th {
+  border: 1px solid black !important;
+  // padding: 5px;
+  padding: 2px !important;
+  background: #f0f0f0;
+  color: #313030;
+}
+
+.commonTable td {
+  border: 1px solid black !important;
+  text-align: center;
+  padding: 2px !important;
+  // padding: 5px;
   background: #ffffff;
   color: #313030;
 }

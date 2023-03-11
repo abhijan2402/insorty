@@ -40,7 +40,7 @@ const BranchName = () => {
       </div>
       <div>
         <table className="table w-4/5">
-          <thead>
+          <thead className="text-center ">
             <th>
               <h1>Sr. No.</h1>
             </th>
@@ -55,7 +55,7 @@ const BranchName = () => {
           <tbody>
             {BranchNameData?.map((item, index) => {
               return (
-                <tr key={index}>
+                <tr key={index} className="text-center">
                   <th>
                     <h1>{index + 1}</h1>
                   </th>
@@ -66,10 +66,7 @@ const BranchName = () => {
                     <Link
                       className="font-3xl font-bold"
                       style={{ color: "#AA237A" }}
-                      // onClick={() => handleDelete(salary?._id)}
-                    >
-                      {/* <FaRegTrashAlt></FaRegTrashAlt> */}
-                    </Link>
+                    ></Link>
                   </td>
                 </tr>
               );

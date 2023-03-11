@@ -85,7 +85,7 @@ const CashReciveData = () => {
           <table className="table w-11/12">
             <thead>
               <tr>
-                <td>S.No</td>
+                <td> क्र. सं.</td>
                 <th>Date</th>
                 <th>Salesman</th>
                 <th>Cash</th>

@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../../images/insorty.png";
 import { Link, NavLink } from "react-router-dom";
 import { FaPowerOff } from "react-icons/fa";
+import jwtDecode from "jwt-decode";
 
 const AdminSideNav = () => {
   let activeStyle = {
@@ -26,8 +27,14 @@ const AdminSideNav = () => {
           </div>
           <Link>
             <div>
-              <h1 className="font-bold text-red-400">Jai Wine Shop</h1>
-              <p>A4 ss colony Merta city Raj. </p>
+              <h1 className="font-bold text-red-400 text-center uppercase">
+                Name: {jwtDecode(localStorage.getItem("token")).name}
+              </h1>
+              <div>
+                <h1 className="font-bold text-center uppercase mt-2">
+                  {jwtDecode(localStorage.getItem("token")).role}
+                </h1>
+              </div>
             </div>
           </Link>
           <hr className="mt-4 mb-2" />

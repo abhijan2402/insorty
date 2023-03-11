@@ -51,7 +51,7 @@ const Payments = () => {
             <table className="table w-full">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>नामे</th>
                   <th>जमा </th>
 

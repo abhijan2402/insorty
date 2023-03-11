@@ -85,7 +85,7 @@ const BranchFrom = () => {
             <table className="table w-full">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>Date / दिनांक</th>
                   <th>debit / नामे </th>
                   <th>Deposit / जमा</th>

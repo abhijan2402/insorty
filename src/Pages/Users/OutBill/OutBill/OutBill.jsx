@@ -8,6 +8,7 @@ import useLiquors from "../../../../Hooks/useLiquors";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment/moment";
+import { Link } from "react-router-dom";
 
 const OutBill = () => {
   const token = localStorage.getItem("token");
@@ -54,8 +55,16 @@ const OutBill = () => {
 
   return (
     <section>
-      <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">बाहर के बिल का फोर्मेट</h2>
+      <div className="title flex justify-center flex-col items-center py-2">
+        <div className="flex gap-4">
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            बाहर के बिल का फोर्मेट
+          </h2>
+          <Link className="commonBtn" to="/user/selfbill">
+            Self Bill
+          </Link>
+        </div>
+
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">
@@ -93,7 +102,7 @@ const OutBill = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <td>S.No</td>
+                <td> क्र. सं.</td>
                 <th>Date</th>
                 <th>ब्राण्ड/ Brand Name </th>
                 <th>साईज / ml</th>

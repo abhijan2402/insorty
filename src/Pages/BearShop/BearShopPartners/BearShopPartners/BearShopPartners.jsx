@@ -52,7 +52,7 @@ const Partners = () => {
             <table className="table ">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>पार्टनर नाम</th>
                   <th>नामे </th>
                   <th>जमा</th>

@@ -59,7 +59,7 @@ const ExcepctionalData = ({
         </tr>
 
         <tr>
-          <td>S.no</td>
+          <td> क्र. सं.</td>
           <th>Brand Name/ ब्राण्ड</th>
           <th>ml</th>
           <th>Average Rate</th>

@@ -42,7 +42,7 @@ const FronteDailyReport = () => {
               <table className="table w-full">
                 <thead>
                   <tr>
-                    <th>S.no</th>
+                    <th> क्र. सं.</th>
                     <th>Brand Name/ ब्राण्ड</th>
                     <th> Opening stock / प्रारम्भिक स्टॉक</th>
                     <th>Inflow(Pur. shop)/आमद(खरीद)-दु</th>
@@ -937,7 +937,7 @@ const FronteDailyReport = () => {
                   <table className="table w-full">
                     <thead>
                       <tr>
-                        <th>S.no</th>
+                        <th> क्र. सं.</th>
                         <th>Brand Name/ ब्राण्ड</th>
                         <th> Opening stock / प्रारम्भिक स्टॉक</th>
                         <th>Inflow(Pur. shop)/आमद(खरीद)-दु</th>
@@ -1564,7 +1564,7 @@ const FronteDailyReport = () => {
                         <th>पानी, नमकीन, सिगरेट, पुड़िया आदि</th>
                       </tr>
                       <tr>
-                        <th>S.no</th>
+                        <th> क्र. सं.</th>
                         <th>Description/ सामान का विवरण</th>
                         <th>Buying price/ खरीद रेट</th>
                         <th>प्राम्भिक स्टॉक</th>

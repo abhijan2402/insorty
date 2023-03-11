@@ -35,8 +35,8 @@ const MainInvestment = () => {
           <div className="overflow-x-auto">
             <table className="table">
               <thead>
-                <tr>
-                  <th>S.No</th>
+                <tr className="text-center">
+                  <th> क्र. सं.</th>
                   <th>Detail</th>
                   <th>दिनांक / Date</th>
                   <th>रकम/ price</th>
@@ -210,28 +210,17 @@ const MainInvestment = () => {
             </table>
           </div>
         </form>
-        <div className="my-4 flex gap-4">
-          <button
-            className="dailyReportBtnSubmit"
-            onClick={() => handleSave()}
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
       </div>
 
       <div>
-        <div>
-          <h2 className="font-bold text-[1.5rem] my-2">
-            रिफंड/रिकवरी विवरण/ Refund/Recovery Details
-          </h2>
+        <div className="p-2">
+          <h2 className="font-bold text-[1.5rem] my-2">रिफंड / रिकवरी विवरण</h2>
         </div>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
-              <tr>
-                <th>S.No</th>
+              <tr className="text-center">
+                <th> क्र. सं.</th>
                 <th>Type </th>
                 <th>दिनांक / Date</th>
                 <th>रकम/ price</th>
@@ -282,18 +271,18 @@ const MainInvestment = () => {
 
       <div>
         <div>
-          <h2 className="font-bold text-[1.5rem] my-2">
-            लाभ में से रिजर्व रकम /reserve amount out of profit
+          <h2 className="font-bold text-[1.5rem] my-2 p-2">
+            लाभ में से रिजर्व रकम
           </h2>
         </div>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
-              <tr>
-                <th>S.No</th>
-                <th>विवरण/ Details</th>
-                <th>माह / Month</th>
-                <th>रकम/ price</th>
+              <tr className="text-center">
+                <th className="text-center"> क्र. सं.</th>
+                <th className="text-center">विवरण/ Details</th>
+                <th className="text-center">माह / Month</th>
+                <th className="text-center">रकम/ price</th>
               </tr>
             </thead>
             <tbody>
@@ -349,6 +338,15 @@ const MainInvestment = () => {
             </tbody>
           </table>
         </div>
+      </div>
+      <div className="my-4 flex gap-4">
+        <button
+          className="dailyReportBtnSubmit"
+          onClick={() => handleSave()}
+          type="submit"
+        >
+          Submit
+        </button>
       </div>
       {/* <RefundDetailsData></RefundDetailsData>
       <ResurvedDataDetails></ResurvedDataDetails> */}

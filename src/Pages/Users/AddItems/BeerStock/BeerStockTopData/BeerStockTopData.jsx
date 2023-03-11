@@ -10,13 +10,12 @@ const BeerStockTopData = ({ item, index, total }) => {
     quan550?.currentStock * Number(quan650?.averageRate.$numberDecimal) +
     quan330?.currentStock * Number(quan650?.averageRate.$numberDecimal);
 
-  const price650 = quan650?.currentStock *
-    Number(quan650?.averageRate.$numberDecimal) || 0
-  const price550 = quan550?.currentStock *
-    Number(quan550?.averageRate.$numberDecimal) || 0
-  const price330 = quan330?.currentStock *
-    Number(quan330?.averageRate.$numberDecimal) || 0
-
+  const price650 =
+    quan650?.currentStock * Number(quan650?.averageRate.$numberDecimal) || 0;
+  const price550 =
+    quan550?.currentStock * Number(quan550?.averageRate.$numberDecimal) || 0;
+  const price330 =
+    quan330?.currentStock * Number(quan330?.averageRate.$numberDecimal) || 0;
 
   return (
     <>
@@ -60,7 +59,7 @@ const BeerStockTopData = ({ item, index, total }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={quan650?.averageRate.$numberDecimal}
+                value={Number(quan650?.averageRate.$numberDecimal).toFixed(2)}
                 disabled
                 className="smallinput"
               />
@@ -69,7 +68,7 @@ const BeerStockTopData = ({ item, index, total }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={quan550?.averageRate.$numberDecimal}
+                value={Number(quan550?.averageRate.$numberDecimal).toFixed(2)}
                 disabled
                 className="smallinput"
               />
@@ -78,7 +77,7 @@ const BeerStockTopData = ({ item, index, total }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={quan330?.averageRate.$numberDecimal}
+                value={Number(quan330?.averageRate.$numberDecimal).toFixed(2)}
                 disabled
                 className="smallinput"
               />
@@ -90,9 +89,7 @@ const BeerStockTopData = ({ item, index, total }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={
-                 price650
-                }
+                value={Number(price650).toFixed(2)}
                 disabled
                 className="smallinput"
               />
@@ -101,9 +98,7 @@ const BeerStockTopData = ({ item, index, total }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={
-                  price550
-                }
+                value={Number(price550).toFixed(2)}
                 disabled
                 className="smallinput"
               />
@@ -112,18 +107,14 @@ const BeerStockTopData = ({ item, index, total }) => {
             <div className="form-control">
               <input
                 type="number"
-                value={
-                  price330
-                }
+                value={Number(price330).toFixed(2)}
                 disabled
                 className="smallinput"
               />
             </div>
           </div>
         </td>
-        <td>
-          {price330 + price550 + price650}
-        </td>
+        <td>{Number(price330 + price550 + price650).toFixed(2)}</td>
       </tr>
     </>
   );

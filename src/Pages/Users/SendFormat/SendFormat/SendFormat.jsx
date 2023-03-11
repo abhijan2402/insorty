@@ -3,6 +3,7 @@ import AddSendFormat from "../AddSendFormat/AddSendFormat";
 import usePartyNames from "../../../../Hooks/usePartyNames";
 import Loader from "../../../../Components/Loader/Loader";
 import ChangeEquity from "../ChangeEquity";
+import { Link } from "react-router-dom";
 
 const SendFormat = () => {
   const { partners, partnerLoaded } = usePartyNames();
@@ -12,7 +13,15 @@ const SendFormat = () => {
   return (
     <section>
       <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">Partner</h2>
+        <div className="flex gap-4 items-center justify-center">
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            All Partner
+          </h2>
+          <Link className="commonBtn" to="/user/partners">
+            Partner
+          </Link>
+        </div>
+
         <div className="divider my-2"></div>
       </div>
       <div className="mx-6">
@@ -20,7 +29,7 @@ const SendFormat = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>S.no</th>
+                <th> क्र. सं.</th>
                 <th>Partner Name/पार्टनर नाम</th>
                 <th>Partner Percentage</th>
                 <th>Balance</th>

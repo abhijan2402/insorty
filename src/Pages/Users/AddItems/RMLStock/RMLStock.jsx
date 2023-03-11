@@ -55,9 +55,15 @@ const RmlStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold md:text-[1.5rem] text-center">RML Stock</h2>
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            {" "}
+            देशी / RML
+          </h2>
           <Link to="/user/winestock" className="commonBtn ">
-            Wine Stock
+            अंग्रेजी
+          </Link>
+          <Link to="/user/beerstock" className="commonBtn ">
+            बीयर
           </Link>
         </div>
         <div className="divider my-2"></div>
@@ -98,7 +104,7 @@ const RmlStock = () => {
             <table className="table w-full m-2">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>ब्राण्ड/ Brand Name </th>
                   <th>size </th>
                   <th>स्टॉक / stock</th>
@@ -123,11 +129,18 @@ const RmlStock = () => {
                                 <td>{brand.brandName}</td>
                                 <td>{size.quantityInML}</td>
                                 <td> {size.currentStock}</td>
-                                <td> {size.averageRate.$numberDecimal}</td>
+                                <td>
+                                  {" "}
+                                  {Number(
+                                    size.averageRate.$numberDecimal
+                                  ).toFixed(2)}
+                                </td>
                                 <td>
                                   {" "}
                                   {size.currentStock *
-                                    Number(size.averageRate.$numberDecimal)}
+                                    Number(
+                                      size.averageRate.$numberDecimal
+                                    ).toFixed(2)}
                                 </td>
                               </tr>
                             );
@@ -140,22 +153,24 @@ const RmlStock = () => {
                   <td colSpan="5">Total</td>
                   <td>
                     {filteredData &&
-                      filteredData.reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem.sizes.reduce(
-                              (total, currentItem) =>
-                                (total =
-                                  total +
-                                  currentItem.currentStock *
-                                    Number(
-                                      currentItem.averageRate.$numberDecimal
-                                    )),
-                              0
-                            )),
-                        0
-                      )}
+                      filteredData
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem.sizes.reduce(
+                                (total, currentItem) =>
+                                  (total =
+                                    total +
+                                    currentItem.currentStock *
+                                      Number(
+                                        currentItem.averageRate.$numberDecimal
+                                      )),
+                                0
+                              )),
+                          0
+                        )
+                        .toFixed(2)}
                   </td>
                 </tr>
               </tbody>

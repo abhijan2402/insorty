@@ -4,7 +4,7 @@ const ShippingEnglishBear = () => {
   return (
     <>
       <tr>
-        <td>S.no</td>
+        <td> क्र. सं.</td>
         <td>Party Name/ पार्टी का नाम</td>
         <td>Brand Name/ ब्राण्ड</td>
         <td>संख्या</td>

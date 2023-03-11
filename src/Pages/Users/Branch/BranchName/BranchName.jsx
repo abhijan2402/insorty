@@ -55,7 +55,7 @@ const BranchName = () => {
   return (
     <section className="py-4">
       <div>
-        <h1 className="titleStyle text-center">Branch List / ब्रांच सूची</h1>
+        <h1 className="titleStyle text-center">ब्रांच सूची</h1>
         <div className="divider my-2"></div>
       </div>
 
@@ -63,27 +63,28 @@ const BranchName = () => {
         <div className="overflow-x-auto">
           <table className="table w-full">
             <tbody>
-              {(branches && branches.map( (branch, index) => (
-                <tr>
-                  <th>{index + 1}</th>
-                  <td>
-                    <Link
-                      className="font-bold text-[1rem]"
-                      to={`/user/branch/from/${branch._id}`}
-                    >
-                      { branch.branchName }
-                    </Link>
-                  </td>
-                  <td>
-                    <Link
-                      className="font-3xl font-bold"
-                      style={{ color: "#AA237A" }}
-                    >
-                      <FaRegTrashAlt></FaRegTrashAlt>
-                    </Link>
-                  </td>
-                </tr>
-              )))}
+              {branches &&
+                branches.map((branch, index) => (
+                  <tr>
+                    <th>{index + 1}</th>
+                    <td>
+                      <Link
+                        className="font-bold text-[1rem]"
+                        to={`/user/branch/from/${branch._id}`}
+                      >
+                        {branch.branchName}
+                      </Link>
+                    </td>
+                    <td>
+                      <Link
+                        className="font-3xl font-bold"
+                        style={{ color: "#AA237A" }}
+                      >
+                        <FaRegTrashAlt></FaRegTrashAlt>
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

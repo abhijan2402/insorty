@@ -27,7 +27,7 @@ const MainInvestment = () => {
             <table className="table">
               <thead>
                 <tr>
-                  <th>S.No</th>
+                  <th> क्र. सं.</th>
                   <th>ब्राण्ड/ Brand Name </th>
                   <th>दिनांक / Date</th>
                   <th>रकम/ price</th>
@@ -87,7 +87,7 @@ const MainInvestment = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>S.No</th>
+                <th> क्र. सं.</th>
                 <th>रिफंड/रिकवरी विवरण/ Refund/Recovery Details </th>
                 <th>दिनांक / Date</th>
                 <th>रकम/ price</th>
@@ -133,7 +133,7 @@ const MainInvestment = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>S.No</th>
+                <th> क्र. सं.</th>
                 <th>विवरण/ Details</th>
                 <th>माह / Month</th>
                 <th>रकम/ price</th>

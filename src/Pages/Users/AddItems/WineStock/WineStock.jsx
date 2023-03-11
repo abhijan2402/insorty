@@ -86,9 +86,14 @@ const WineStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold md:text-[1.5rem] text-center">Wine Stock</h2>
+          <h2 className="font-bold md:text-[1.5rem] text-center"> अंग्रेजी</h2>
+
           <Link to="/user/beerstock" className="commonBtn ">
-            Beer Stock
+            बीयर
+          </Link>
+
+          <Link className="commonBtn" to="/user/rmlstock">
+            देशी
           </Link>
         </div>
         <div className="divider my-2"></div>
@@ -128,7 +133,7 @@ const WineStock = () => {
         <table className="table w-full m-2">
           <thead>
             <tr>
-              <th>S.no</th>
+              <th> क्र. सं.</th>
               <th>ब्राण्ड/ Brand Name </th>
               <th>स्टॉक / stock</th>
               <th>Avg. Rate / रेट</th>
@@ -231,7 +236,7 @@ const WineStock = () => {
             <table className="table w-full m-2">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>ब्राण्ड/ Brand Name </th>
                   <th>size </th>
                   <th>स्टॉक / stock</th>
@@ -255,11 +260,18 @@ const WineStock = () => {
                               <td>{brand.brandName}</td>
                               <td>{size.quantityInML}</td>
                               <td> {size.currentStock}</td>
-                              <td> {size.averageRate.$numberDecimal}</td>
+                              <td>
+                                {" "}
+                                {Number(
+                                  size.averageRate.$numberDecimal
+                                ).toFixed(2)}
+                              </td>
                               <td>
                                 {" "}
                                 {size.currentStock *
-                                  Number(size.averageRate.$numberDecimal)}
+                                  Number(
+                                    size.averageRate.$numberDecimal
+                                  ).toFixed(2)}
                               </td>
                             </tr>
                           );

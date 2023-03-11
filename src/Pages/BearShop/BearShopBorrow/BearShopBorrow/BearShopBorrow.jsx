@@ -54,7 +54,7 @@ const Borrow = () => {
             <table className="table ">
               <thead>
                 <tr>
-                  <th>S.no</th>
+                  <th> क्र. सं.</th>
                   <th>नामे </th>
                   <th>जमा </th>
                   <th>शेष</th>
