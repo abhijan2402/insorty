@@ -3,18 +3,17 @@ import Loader from "../../../../../../Components/Loader/Loader";
 import usePartyNames from "../../../../../../Hooks/usePartyNames";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import { Autocomplete, TextField } from "@mui/material";
+import swal from "sweetalert";
 
+const ShippingForm = ({
+  index,
+  onChangeShipping,
+  item,
+  handleRemoveFieldsShipping,
+}) => {
+  const { brands, brandsLoaded, checkLiquor, liquors } = useLiquors();
 
-const ShippingForm = ({ index, onChangeShipping, item, handleRemoveFieldsShipping }) => {
-
-  const {
-    brands,
-    brandsLoaded,
-    checkLiquor,
-    liquors
-  } = useLiquors()
-
-  const { parties, partyLoaded } = usePartyNames()
+  const { parties, partyLoaded } = usePartyNames();
 
   if (brandsLoaded || partyLoaded) {
     return (
@@ -27,34 +26,51 @@ const ShippingForm = ({ index, onChangeShipping, item, handleRemoveFieldsShippin
   return (
     <>
       <tr>
-
         <th>{index + 1}</th>
-        <th className="cross" onClick={() => handleRemoveFieldsShipping(index)}>X</th>
+        <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${
+                index + 1
+              }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                handleRemoveFieldsShipping(index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
+          X
+        </th>
         <td>
           <div className="form-control">
             <Autocomplete
-              options={parties.length>0 ? parties : ['no options']}
-              
-              getOptionLabel={(option) => option ? option.partyName : ""}
-              // item.brandName = event.target.outerText;
-              // // eslint-disable-next-line array-callback-return
-              // const liq = liquors.filter((liq) => {
-              //   if (liq.brandName === event.target.outerText) {
-              //     return liq;
-              //   }
-              // });
-              // item.liquorID = liq._id
-              // handelFristFormOnChange(event, index);
+              size="small"
+              style={{
+                width: "10rem",
+              }}
+              options={parties.length > 0 ? parties : ["no options"]}
+              getOptionLabel={(option) => (option ? option.partyName : "")}
               onChange={(event, value) => {
                 if (value) {
-                  item.partyName = value.partyName
-                  item.partyId = value._id
+                  item.partyName = value.partyName;
+                  item.partyId = value._id;
                 } else {
-                  item.partyName = ""
-                  item.partyId = ""
+                  item.partyName = "";
+                  item.partyId = "";
                 }
-                onChangeShipping(event, index)
-                console.log(item)
+                onChangeShipping(event, index);
+                console.log(item);
               }}
               renderInput={(params) => (
                 <TextField
@@ -62,7 +78,6 @@ const ShippingForm = ({ index, onChangeShipping, item, handleRemoveFieldsShippin
                   className="dailyReportInput"
                   // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.partyName }}
-
                   onChange={(event) => {
                     item.partyName = event.target.value;
                     // item.liquorID = null;
@@ -77,28 +92,22 @@ const ShippingForm = ({ index, onChangeShipping, item, handleRemoveFieldsShippin
         <td>
           <div className="form-control">
             <Autocomplete
+              size="small"
+              style={{
+                width: "10rem",
+              }}
               options={liquors}
-              
-              getOptionLabel={(option) => option ? option.brandName : ""}
-              // item.brandName = event.target.outerText;
-              // // eslint-disable-next-line array-callback-return
-              // const liq = liquors.filter((liq) => {
-              //   if (liq.brandName === event.target.outerText) {
-              //     return liq;
-              //   }
-              // });
-              // item.liquorID = liq._id
-              // handelFristFormOnChange(event, index);
+              getOptionLabel={(option) => (option ? option.brandName : "")}
               onChange={(event, value) => {
                 if (value) {
-                  item.brandName = value.brandName
-                  item.liquorID = value._id
+                  item.brandName = value.brandName;
+                  item.liquorID = value._id;
                 } else {
-                  item.brandName = ""
-                  item.liquorID = ""
+                  item.brandName = "";
+                  item.liquorID = "";
                 }
-                onChangeShipping(event, index)
-                console.log(item)
+                onChangeShipping(event, index);
+                console.log(item);
               }}
               renderInput={(params) => (
                 <TextField
@@ -106,7 +115,6 @@ const ShippingForm = ({ index, onChangeShipping, item, handleRemoveFieldsShippin
                   className="dailyReportInput"
                   // value={item.brandName}
                   inputProps={{ ...params.inputProps, value: item.brandName }}
-
                   onChange={(event) => {
                     item.brandName = event.target.value;
                     // item.liquorID = null;
@@ -121,18 +129,19 @@ const ShippingForm = ({ index, onChangeShipping, item, handleRemoveFieldsShippin
         <td>
           <div className="form-control">
             <select
-              className="select select-bordered"
+              // className="select select-bordered"
               name="quantity"
               value={item.quantity}
               onChange={(e) => {
-                onChangeShipping(e, index)
-                console.log(item)
+                onChangeShipping(e, index);
+                console.log(item);
               }}
             >
               {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
 
-
-              <option selected value={750}>750ml</option>
+              <option selected value={750}>
+                750ml
+              </option>
               <option value={700}>700ml</option>
               <option value={650}>650ml</option>
               <option value={550}>550ml</option>
@@ -154,7 +163,7 @@ const ShippingForm = ({ index, onChangeShipping, item, handleRemoveFieldsShippin
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="theNumber"
               value={item.theNumber}
               onChange={(e) => onChangeShipping(e, index)}

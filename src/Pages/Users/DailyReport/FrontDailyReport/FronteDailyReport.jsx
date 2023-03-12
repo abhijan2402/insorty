@@ -13,9 +13,8 @@ import DatePicker from "react-datepicker";
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
 
-  const { salesMan, setSalesMan, drDate, setDrDate } = useContext(
-    DataContextApi
-  );
+  const { salesMan, setSalesMan, drDate, setDrDate } =
+    useContext(DataContextApi);
 
   const {
     addOneFristFormState,
@@ -36,10 +35,8 @@ const FronteDailyReport = () => {
     handleRemoveFieldsSecond,
   } = useSecondFormFront();
 
-  const {
-    submitFristFormHandler,
-    isLoadingSubmit,
-  } = useFristFormSubmitAPIFront();
+  const { submitFristFormHandler, isLoadingSubmit } =
+    useFristFormSubmitAPIFront();
 
   const { data: sujestedData, isLoading } = useQuery({
     queryKey: ["sujestedData"],
@@ -109,7 +106,7 @@ const FronteDailyReport = () => {
 
       <div className="py-6">
         <div>
-          <form>
+          <>
             <div className="overflow-x-auto">
               <table className="table commonTable">
                 <thead>
@@ -142,14 +139,14 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== MRP Input ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control"></div>
                         <div className="form-control"></div>
                         <div className="form-control"></div>
                       </div>
                     </td>
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -171,7 +168,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -193,7 +190,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -215,7 +212,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -237,7 +234,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -260,7 +257,7 @@ const FronteDailyReport = () => {
 
                     {/* ============खरीद रेट - बा. =============  */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -284,7 +281,7 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (उधारी) ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -307,7 +304,7 @@ const FronteDailyReport = () => {
                     {/* ======== भेजान ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -329,7 +326,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== योग/शेष ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -351,7 +348,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== अन्तिम स्टॉक ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -373,7 +370,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ============= बिक्री ================ */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -395,7 +392,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ============= रेट ================ */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -464,50 +461,29 @@ const FronteDailyReport = () => {
                   {/* ============ =========== */}
 
                   <tr>
-                    <th >
-                      <button
-                        className="btn bg-[#AA237A] btn-sm"
-                        onClick={() => addOneFristFormHandler()}
-                      >
-                        ADD
-                      </button>
+                    <th>
+                      <div>
+                        <button
+                          className="btn bg-[#AA237A] btn-sm"
+                          onClick={() => addOneFristFormHandler()}
+                        >
+                          ADD
+                        </button>
+                      </div>
                     </th>
                     <td></td>
                     <td>Total</td>
                     {/* ======== MRP Input ========= */}
                     <td>
-                      <div className="flex gap-2">
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
+                      <div className="flex">
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
                       </div>
                     </td>
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             value={addOneFristFormState.reduce(
@@ -529,7 +505,7 @@ const FronteDailyReport = () => {
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
                                 (total =
-                                  total + Number(currentItem.startingStock375)),
+                                  total + Number(currentItem.startingStock330)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -561,7 +537,7 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (खरीद)-दु. ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             value={addOneFristFormState.reduce(
@@ -585,7 +561,7 @@ const FronteDailyReport = () => {
                               (total, currentItem) =>
                                 (total =
                                   total +
-                                  Number(currentItem.incomingPurchase375)),
+                                  Number(currentItem.incomingPurchase330)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -616,40 +592,17 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex gap-2">
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            disabled
-                            className="smallinput"
-                            name="buyRate"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            disabled
-                            className="smallinput"
-                            name="buyRate"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="buyRate"
-                            disabled
-                          />
-                        </div>
+                      <div className="flex ">
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
                       </div>
                     </td>
 
                     {/* ======== आमद (खरीद)-बा. ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             value={addOneFristFormState.reduce(
@@ -673,7 +626,7 @@ const FronteDailyReport = () => {
                               (total, currentItem) =>
                                 (total =
                                   total +
-                                  Number(currentItem.incomePurchase375)),
+                                  Number(currentItem.incomePurchase330)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -705,40 +658,17 @@ const FronteDailyReport = () => {
 
                     {/*================ खरीद रेट - बा. ==================  */}
                     <td>
-                      <div className="flex gap-2">
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                            disabled
-                          />
-                        </div>
+                      <div className="flex ">
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
                       </div>
                     </td>
 
                     {/* ======== आमद (उधारी) ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             value={addOneFristFormState.reduce(
@@ -760,7 +690,7 @@ const FronteDailyReport = () => {
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
                                 (total =
-                                  total + Number(currentItem.inflowCredit375)),
+                                  total + Number(currentItem.inflowCredit330)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -790,7 +720,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== भेजान ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             value={addOneFristFormState.reduce(
@@ -812,7 +742,7 @@ const FronteDailyReport = () => {
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
                                 (total =
-                                  total + Number(currentItem.sending375)),
+                                  total + Number(currentItem.sending330)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -842,7 +772,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== योग/शेष ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             value={addOneFristFormState.reduce(
@@ -862,7 +792,7 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.sumRemainder375),
+                                (total = total + currentItem.sumRemainder330),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -891,7 +821,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== अन्तिम स्टॉक ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -913,7 +843,7 @@ const FronteDailyReport = () => {
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
                                 (total =
-                                  total + Number(currentItem.closingStock375)),
+                                  total + Number(currentItem.closingStock330)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -943,7 +873,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ============= बिक्री ================ */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             value={addOneFristFormState.reduce(
@@ -963,7 +893,7 @@ const FronteDailyReport = () => {
                           <input
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.sales375),
+                                (total = total + currentItem.sales330),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -992,43 +922,21 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ============= रेट ================ */}
                     <td>
-                      <div className="flex gap-2">
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="mainRate"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="mainRate"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="mainRate"
-                          />
-                        </div>
+                      <div className="flex ">
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
+                        <div className="form-control"></div>
                       </div>
                     </td>
                     {/* ============= योग ================ */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             type="number"
                             className="smallinput"
                             name="total750"
+                            disabled
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
                                 (total =
@@ -1045,12 +953,13 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="total375"
+                            disabled
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
                                 (total =
                                   total +
-                                  Number(currentItem.sales375) *
-                                    Number(currentItem.mainRate375)),
+                                  Number(currentItem.sales330) *
+                                    Number(currentItem.mainRate330)),
                               0
                             )}
                             onChange={(event) => handelFristFormOnChange(event)}
@@ -1061,6 +970,7 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="total180"
+                            disabled
                             value={addOneFristFormState.reduce(
                               (total, currentItem) =>
                                 (total =
@@ -1080,7 +990,7 @@ const FronteDailyReport = () => {
                         <input
                           type="number"
                           disabled
-                          className="semiSmallInput"
+                          className="smallinput"
                           name="grandTotal"
                           value={addOneFristFormState.reduce(
                             (total, currentItem) =>
@@ -1088,8 +998,8 @@ const FronteDailyReport = () => {
                                 total +
                                 Number(currentItem.sales750) *
                                   Number(currentItem.mainRate750) +
-                                Number(currentItem.sales375) *
-                                  Number(currentItem.mainRate375) +
+                                Number(currentItem.sales330) *
+                                  Number(currentItem.mainRate330) +
                                 Number(currentItem.sales180) *
                                   Number(currentItem.mainRate180)),
                             0
@@ -1102,7 +1012,7 @@ const FronteDailyReport = () => {
                 </tbody>
               </table>
             </div>
-          </form>
+          </>
 
           {/* <div className="mt-4 flex gap-4">
             <button
@@ -1115,16 +1025,16 @@ const FronteDailyReport = () => {
         </div>
 
         <div>
-          <form>
+          <>
             <div className="mt-6">
               <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table commonTable">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
                       <th></th>
                       <th>Brand Name/ ब्राण्ड</th>
-                      <th>Total ml</th>
+                      <th>ml</th>
                       <th>Average Rate</th>
                       <th>प्रारम्भिक स्टॉक</th>
                       <th>आमद (खरीद)-दु.</th>
@@ -1138,7 +1048,6 @@ const FronteDailyReport = () => {
                       <th>बिक्री</th>
                       <th>रेट</th>
                       <th>योग</th>
-                      {/* <th>कुल योग</th> */}
                     </tr>
                   </thead>
 
@@ -1155,11 +1064,242 @@ const FronteDailyReport = () => {
                         ></AddOneSecondForm>
                       );
                     })}
+
+                    <tr>
+                      <td>
+                        <div>
+                          <button
+                            className="btn bg-[#AA237A] btn-sm"
+                            onClick={() => addOneSecondFormHandler()}
+                          >
+                            ADD
+                          </button>
+                        </div>
+                      </td>
+                      <td></td>
+                      <td>TOTAL</td>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            // value={item.selectStockVarient}
+                            // onChange={(e) => handelSeconFormOnChange(e, index)}
+                            className="SmallInput"
+                            name="selectStockVarient"
+                          />
+                        </div>
+                      </td>
+                      {/* ======== MRP Input ========= */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            // value={item.averageRate}
+                            // onChange={(e) => handelSeconFormOnChange(e, index)}
+                            className="smallinput"
+                            name="averageRate"
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="startingStock"
+                            value={addOneSecondFormState.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.startingStock)),
+                              0
+                            )}
+                            onChange={(e) => handelSeconFormOnChange(e)}
+                          />
+                        </div>
+                      </td>
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="incomingPurchase"
+                            value={addOneSecondFormState.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.incomingPurchase)),
+                              0
+                            )}
+                            onChange={(e) => handelSeconFormOnChange(e)}
+                          />
+                        </div>
+                      </td>
+                      {/* ======== प्रारम्भिक स्टॉक ========= */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="buyRate"
+                            // value={item.buyRate}
+                            // onChange={(e) => handelSeconFormOnChange(e, index)}
+                          />
+                        </div>
+                      </td>
+
+                      {/* ======== आमद (खरीद)-दु. ========= */}
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="incomePurchase"
+                            value={addOneSecondFormState.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.incomePurchase)),
+                              0
+                            )}
+                            onChange={(e) => handelSeconFormOnChange(e)}
+                          />
+                        </div>
+                      </td>
+                      {/* ======== आमद (खरीद)-बा. ========= */}
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="purchaseRate"
+                            // value={item.purchaseRate}
+                            // onChange={(e) => handelSeconFormOnChange(e, index)}
+                          />
+                        </div>
+                      </td>
+                      {/* ======== आमद (उधारी) ========= */}
+
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="inflowCredit"
+                            value={addOneSecondFormState.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.inflowCredit)),
+                              0
+                            )}
+                            onChange={(e) => handelSeconFormOnChange(e)}
+                          />
+                        </div>
+                      </td>
+                      {/* ======== भेजान ========= */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="sending"
+                            value={addOneSecondFormState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.sending)),
+                              0
+                            )}
+                            onChange={(e) => handelSeconFormOnChange(e)}
+                          />
+                        </div>
+                      </td>
+                      {/* ======== योग/शेष ========= */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="sumRemainder"
+                            value={addOneSecondFormState.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.sumRemainder)),
+                              0
+                            )}
+                            onChange={(e) => handelSeconFormOnChange(e)}
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ======== अन्तिम स्टॉक ========= */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="closingStock"
+                            value={addOneSecondFormState.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total + Number(currentItem.closingStock)),
+                              0
+                            )}
+                            onChange={(e) => handelSeconFormOnChange(e)}
+                          />
+                        </div>
+                      </td>
+                      {/* ============= बिक्री ================ */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="sales"
+                            value={addOneSecondFormState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.sales)),
+                              0
+                            )}
+                            onChange={(e) => handelSeconFormOnChange(e)}
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ============= रेट ================ */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="mainRate"
+                            // value={item.mainRate}
+                            // onChange={(e) => handelSeconFormOnChange(e, index)}
+                          />
+                        </div>
+                      </td>
+                      {/* ============= योग ================ */}
+                      <td>
+                        <div className="form-control">
+                          <input
+                            type="number"
+                            className="smallinput"
+                            name="total"
+                            value={addOneSecondFormState.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.total)),
+                              0
+                            )}
+                            onChange={(e) => handelSeconFormOnChange(e)}
+                            disabled
+                          />
+                        </div>
+                      </td>
+                      {/* ============= कुल योग ================ */}
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-          </form>
+          </>
         </div>
 
         <div className="flex my-6 ">
@@ -1195,12 +1335,6 @@ const FronteDailyReport = () => {
             </>
           ) : (
             <>
-              <button
-                className="dailyReportBtn mx-4"
-                onClick={() => addOneSecondFormHandler()}
-              >
-                ADD 1
-              </button>
               <button
                 className="dailyReportBtn"
                 onClick={() => submitFristFormHandler()}

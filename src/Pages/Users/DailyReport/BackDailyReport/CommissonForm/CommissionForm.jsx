@@ -1,23 +1,48 @@
 import React from "react";
+import swal from "sweetalert";
 
-const CommissionForm = ({ index, onChangeCommison, item, handleRemoveFieldsCommission }) => {
+const CommissionForm = ({
+  index,
+  onChangeCommison,
+  item,
+  handleRemoveFieldsCommission,
+}) => {
   return (
     <>
       <tr>
-        <th className="cross" onClick={() => handleRemoveFieldsCommission(index)}>X</th>
+        <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${
+                index + 1
+              }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                handleRemoveFieldsCommission(index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
+          X
+        </th>
         <td>
           <div className="form-control">
-            {/* <input
-              type="text"
-              className="dailyReportInput"
-              name="reason"
-              value={item.reason}
+            <select
+              value={item.type}
               onChange={(e) => onChangeCommison(e, index)}
-              style={{
-                width: "443px",
-              }}
-            /> */}
-            <select value={item.type} onChange={(e) => onChangeCommison(e, index)} name="type" className="semiSmallInput">
+              name="type"
+              className="semiSmallInput"
+            >
               <option value="COMMISSION">COMMISSION</option>
               <option value="FUT">FUT</option>
               <option value="KHARCHA">KHARCHA</option>
@@ -33,7 +58,7 @@ const CommissionForm = ({ index, onChangeCommison, item, handleRemoveFieldsCommi
         <td>
           <input
             type="number"
-            className="semiSmallInput"
+            className="SmallInput"
             name="amount"
             value={item.amount}
             onChange={(e) => onChangeCommison(e, index)}

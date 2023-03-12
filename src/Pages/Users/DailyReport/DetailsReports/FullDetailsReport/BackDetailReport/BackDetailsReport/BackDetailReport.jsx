@@ -111,9 +111,6 @@ const BackDetailReport = () => {
     });
   });
 
-
-  
-
   const openingStock = filteredExceptionalData.map((item) => {
     const { openingStock } = item;
     return openingStock;
@@ -155,8 +152,6 @@ const BackDetailReport = () => {
     return sales;
   });
 
- 
-
   return (
     <section className="my-4">
       <div className="flex gap-6 items-center ">
@@ -197,7 +192,7 @@ const BackDetailReport = () => {
       <div ref={container}>
         {/* ====================1==================== */}
 
-        <div className="overflow-x-auto m-4 p-4 ">
+        <div className="overflow-x-auto m-4 p-4">
           <table>
             <tbody>
               <tr>
@@ -571,26 +566,29 @@ const BackDetailReport = () => {
                   )}
                 </td>
 
-
-                  <td>{quan650.reduce(
+                <td>
+                  {quan650.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
-                      Number(regularData.sellingRate?.$numberDecimal),
+                        Number(regularData.sellingRate?.$numberDecimal),
                     0
-                  ) + quan550.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                      Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ) + quan330.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                      Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  )}</td>
+                  ) +
+                    quan550.reduce(
+                      (total, regularData) =>
+                        total +
+                        Number(regularData.sales) *
+                          Number(regularData.sellingRate?.$numberDecimal),
+                      0
+                    ) +
+                    quan330.reduce(
+                      (total, regularData) =>
+                        total +
+                        Number(regularData.sales) *
+                          Number(regularData.sellingRate?.$numberDecimal),
+                      0
+                    )}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -639,67 +637,67 @@ const BackDetailReport = () => {
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
               <tr>
-              <td className="tg-0lax" colSpan={2}>
-                Total
-              </td>
-              <td className="tg-0lax"></td>
-              <td className="tg-0lax"></td>
-              <td className="tg-0lax">
-                { openingStock.reduce((acc, item) => {
-                  const total = Number(acc) + Number(item);
-                  return total;
-                },0)}
-              </td>
-              <td className="tg-0lax">
-                {purchaseShop.reduce((acc, item) => {
-                  const total = Number(acc) + Number(item);
-                  return total;
-                }, 0)}
-              </td>
-              <td className="tg-0lax"></td>
-              <td className="tg-0lax">
-                {purchaseOutSide.reduce((acc, item) => {
-                  const total = Number(acc) + Number(item);
-                  return total;
-                },0)}
-              </td>
-              <td className="tg-0lax"></td>
-              <td className="tg-0lax">
-                {credits.reduce((acc, item) => {
-                  const total = Number(acc) + Number(item);
-                  return total;
-                }, 0)}
-              </td>
-              <td className="tg-0lax">
-                {send.reduce((acc, item) => {
-                  const total = Number(acc) + Number(item);
-                  return total;
-                }, 0)}
-              </td>
-              <td className="tg-0lax">
-                {remaining.reduce((acc, item) => {
-                  const total = Number(acc) + Number(item);
-                  return total;
-                }, 0)}
-              </td>
-              <td className="tg-0lax">
-                {closingStock.reduce((acc, item) => {
-                  const total = Number(acc) + Number(item);
-                  return total;
-                }, 0)}
-              </td>
+                <td className="tg-0lax" colSpan={2}>
+                  Total
+                </td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {openingStock.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax">
+                  {purchaseShop.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {purchaseOutSide.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {credits.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax">
+                  {send.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax">
+                  {remaining.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax">
+                  {closingStock.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
 
-              <td className="tg-0lax">
-                {sales.reduce((acc, item) => {
-                  const total = Number(acc) + Number(item);
-                  return total;
-                },0)}
-              </td>
+                <td className="tg-0lax">
+                  {sales.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
 
-              <td className="tg-0lax"></td>
+                <td className="tg-0lax"></td>
 
-              <td className="tg-0lax"></td>
-            </tr>
+                <td className="tg-0lax"></td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -1203,12 +1201,8 @@ const BackDetailReport = () => {
 
               <tr>
                 <td className="tg-0lax">Total</td>
-                <td className="tg-0lax" colSpan={4}>
-                  
-                </td>
-                <td className="tg-0lax" colSpan={4}>
-                  
-                </td>
+                <td className="tg-0lax" colSpan={4}></td>
+                <td className="tg-0lax" colSpan={4}></td>
                 <td className="tg-0lax">
                   {TotalExpensesData &&
                     TotalExpensesData.length &&
@@ -1618,8 +1612,12 @@ const BackDetailReport = () => {
                         BorrowedData.length > 0 &&
                         BorrowedData.filter((item) => {
                           const itemDate = new Date(moment(item.date).format());
-                          const selected = filterDate ? new Date(filterDate) : null;
-                          if (itemDate.toDateString() === selected.toDateString()) {
+                          const selected = filterDate
+                            ? new Date(filterDate)
+                            : null;
+                          if (
+                            itemDate.toDateString() === selected.toDateString()
+                          ) {
                             return item;
                           } else if (filterDate === "") {
                             return item;

@@ -26,7 +26,7 @@ const FrontDetailsReport = () => {
     content: () => front.current,
   });
 
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -67,7 +67,7 @@ const FrontDetailsReport = () => {
     });
   });
 
-  console.log(FrontPageExceptionalData[0].salesmen,'salesman')
+  console.log(FrontPageExceptionalData[0].salesmen, "salesman");
 
   const filteredExceptionalData = selectedDate
     ? FrontPageExceptionalData.filter((item) => {
@@ -121,7 +121,6 @@ const FrontDetailsReport = () => {
     const { sales } = item;
     return sales;
   });
- 
 
   if (!filteredRegularData.length) {
     return (
@@ -222,11 +221,12 @@ const FrontDetailsReport = () => {
               <tr>
                 <td className="tg-baqh" colSpan={42}>
                   दुकान का नाम:- &nbsp;&nbsp;
-                  {jwtDecode(localStorage.getItem("token")).name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
+                  {jwtDecode(localStorage.getItem("token")).name}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
                   का नाम :- {FrontPageExceptionalData[0].salesmen}
-                  
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक :- 
-                  {moment(selectedDate).format('DD/MM/YYYY')}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक
+                  :-
+                  {moment(selectedDate).format("DD/MM/YYYY")}
                 </td>
               </tr>
             </thead>
@@ -602,25 +602,29 @@ const FrontDetailsReport = () => {
                   )}
                 </td>
 
-                <td>{quan180.reduce(
-                    (total, regularData) =>
-                  total +
-                  Number(regularData.sales) *
-                  Number(regularData.sellingRate?.$numberDecimal),
-                  0
-                ) + quan375.reduce(
-                  (total, regularData) =>
-                    total +
-                    Number(regularData.sales) *
-                    Number(regularData.sellingRate?.$numberDecimal),
-                  0
-                  ) + quan750.reduce(
+                <td>
+                  {quan180.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
-                      Number(regularData.sellingRate?.$numberDecimal),
+                        Number(regularData.sellingRate?.$numberDecimal),
                     0
-                  ) }</td>
+                  ) +
+                    quan375.reduce(
+                      (total, regularData) =>
+                        total +
+                        Number(regularData.sales) *
+                          Number(regularData.sellingRate?.$numberDecimal),
+                      0
+                    ) +
+                    quan750.reduce(
+                      (total, regularData) =>
+                        total +
+                        Number(regularData.sales) *
+                          Number(regularData.sellingRate?.$numberDecimal),
+                      0
+                    )}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -728,10 +732,16 @@ const FrontDetailsReport = () => {
 
                 <td className="tg-0lax"></td>
 
-                <td className="tg-0lax">{filteredExceptionalData.reduce(
-                  (total, currentItem) => (total = total + (Number(currentItem.sales)*Number(currentItem.sellingRate.$numberDecimal))),
-                  0
-                )}</td>
+                <td className="tg-0lax">
+                  {filteredExceptionalData.reduce(
+                    (total, currentItem) =>
+                      (total =
+                        total +
+                        Number(currentItem.sales) *
+                          Number(currentItem.sellingRate.$numberDecimal)),
+                    0
+                  )}
+                </td>
               </tr>
             </tbody>
           </table>

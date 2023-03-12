@@ -124,15 +124,39 @@ const useSecondFormFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
 
         if (e.target.name === "purchaseRate" || e.target.name === "buyRate") {
-          if (Number(obj.initial) > 0) {
-            obj.averageRate330 =
-              (Number(obj.averageRate) +
+          if (Number(obj.initial) > 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) > 0) {
+            obj.averageRate =
+              (Number(obj.initial) +
                 Number(obj.purchaseRate) +
                 Number(obj.buyRate)) /
               3;
-          } else {
+          } else if (Number(obj.initial) === 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) > 0) {
             obj.averageRate =
               (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
+          }
+          else if (Number(obj.initial) === 0 && Number(obj.buyRate) === 0 && Number(obj.purchaseRate) > 0) {
+            obj.averageRate =
+              Number(obj.purchaseRate)
+          }
+          else if (Number(obj.initial) === 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) === 0) {
+            obj.averageRate =
+              Number(obj.buyRate)
+          }
+          else if (Number(obj.initial) > 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) === 0) {
+            obj.averageRate =
+              (Number(obj.initial) +
+                Number(obj.buyRate)) /
+              2
+          }
+          else if (Number(obj.initial) > 0 && Number(obj.buyRate) === 0 && Number(obj.purchaseRate) > 0) {
+            obj.averageRate =
+              (Number(obj.initial) +
+                Number(obj.purchaseRate)) /
+              2
+          }
+          else {
+            obj.averageRate =
+              Number(obj.initial)
           }
         }
         return obj;

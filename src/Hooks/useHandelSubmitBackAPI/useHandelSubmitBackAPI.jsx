@@ -297,6 +297,17 @@ const useHandelSubmitBackAPI = () => {
   }
 
   const handleSubmit = () => {
+
+    if(salesMan===''){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Enter Salesman",
+      })
+    }
+
+    else{
+
     setIsLoading(true);
     try {
       const api1 = fetch(
@@ -498,7 +509,7 @@ const useHandelSubmitBackAPI = () => {
     } finally {
       setIsLoading(false);
     }
-   
+  }
     
   };
 
@@ -506,6 +517,7 @@ const useHandelSubmitBackAPI = () => {
     handleSubmit,
     isLoadingSubmit,
   };
+
 };
 
 export default useHandelSubmitBackAPI;

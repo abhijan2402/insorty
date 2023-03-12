@@ -1,20 +1,25 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import usePartyNames from "../../../../../Hooks/usePartyNames";
 import Loader from "../../../../../Components/Loader/Loader";
-import { Autocomplete,TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
+import swal from "sweetalert";
 
-
-const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCashBack }) => {
-
+const CashReciveForm = ({
+  index,
+  onChangeCashRecive,
+  item,
+  handleRemoveFieldsCashBack,
+}) => {
   // const {type,setType} = useState("PARTY")
 
-  const { parties,
+  const {
+    parties,
     partyLoaded,
     partners,
     partnerLoaded,
     branches,
-    branchLoaded } = usePartyNames()
-
+    branchLoaded,
+  } = usePartyNames();
 
   if (partyLoaded || partnerLoaded || branchLoaded) {
     return (
@@ -27,7 +32,31 @@ const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCas
   return (
     <>
       <tr>
-        <th className="cross" onClick={() => handleRemoveFieldsCashBack(index)}>X</th>
+        <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${
+                index + 1
+              }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                handleRemoveFieldsCashBack(index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
+          X
+        </th>
 
         <td>
           <div className="form-control">
@@ -40,72 +69,24 @@ const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCas
              
             /> */}
             <Autocomplete
-              options={parties.length > 0 ? parties : ['no options']}
-              getOptionLabel={(option) => option ? option.partyName : ""}
-              // item.brandName = event.target.outerText;
-              // // eslint-disable-next-line array-callback-return
-              // const liq = liquors.filter((liq) => {
-              //   if (liq.brandName === event.target.outerText) {
-              //     return liq;
-              //   }
-              // });
-              // item.liquorID = liq._id
-              // handelFristFormOnChange(event, index);
-              className={item.type === "PARTY" ? '' :'displayHidden'}
-              onChange={(event, value) => {
-                if (value) {
-                  item.name = value.partyName
-                  item.id = value._id
-                } else {
-                  item.name = ""
-                  item.id = ""
-                }
-
-                onChangeCashRecive(event, index)
-                console.log(item)
+              size="small"
+              style={{
+                width: "10rem",
               }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  className="dailyReportInput"
-                // value={item.partyName}
-                inputProps={{ ...params.inputProps, value: item.name }}
-
-                onChange={(event) => {
-                  item.name = event.target.value;
-                  // item.liquorID = null;
-                  // onChangePurchesOutSide(event, index)
-                }}
-                />
-              )}
-            />
-
-            <Autocomplete
-              options={partners.length > 0 ? partners : ['no options']}
-              getOptionLabel={(option) => option ? option.name : ""}
-              className={item.type === "PARTNER" ? '' : 'displayHidden'}
-
-              // item.brandName = event.target.outerText;
-              // // eslint-disable-next-line array-callback-return
-              // const liq = liquors.filter((liq) => {
-              //   if (liq.brandName === event.target.outerText) {
-              //     return liq;
-              //   }
-              // });
-              // item.liquorID = liq._id
-              // handelFristFormOnChange(event, index);
-
+              options={parties.length > 0 ? parties : ["no options"]}
+              getOptionLabel={(option) => (option ? option.partyName : "")}
+              className={item.type === "PARTY" ? "" : "displayHidden"}
               onChange={(event, value) => {
                 if (value) {
-                  item.name = value.name
-                  item.id = value._id
+                  item.name = value.partyName;
+                  item.id = value._id;
                 } else {
-                  item.name = ""
-                  item.id = ""
+                  item.name = "";
+                  item.id = "";
                 }
 
-                onChangeCashRecive(event, index)
-                console.log(item)
+                onChangeCashRecive(event, index);
+                console.log(item);
               }}
               renderInput={(params) => (
                 <TextField
@@ -113,7 +94,6 @@ const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCas
                   className="dailyReportInput"
                   // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.name }}
-
                   onChange={(event) => {
                     item.name = event.target.value;
                     // item.liquorID = null;
@@ -124,10 +104,13 @@ const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCas
             />
 
             <Autocomplete
-              options={branches.length > 0 ? branches : ['no options']}
-              getOptionLabel={(option) => option ? option.branchName : ""}
-              className={item.type === "BRANCH" ? '' : 'displayHidden'}
-
+              size="small"
+              style={{
+                width: "10rem",
+              }}
+              options={partners.length > 0 ? partners : ["no options"]}
+              getOptionLabel={(option) => (option ? option.name : "")}
+              className={item.type === "PARTNER" ? "" : "displayHidden"}
               // item.brandName = event.target.outerText;
               // // eslint-disable-next-line array-callback-return
               // const liq = liquors.filter((liq) => {
@@ -140,15 +123,15 @@ const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCas
 
               onChange={(event, value) => {
                 if (value) {
-                  item.name = value.branchName
-                  item.id = value._id
+                  item.name = value.name;
+                  item.id = value._id;
                 } else {
-                  item.name = ""
-                  item.id = ""
+                  item.name = "";
+                  item.id = "";
                 }
 
-                // onChangePurchesOutSide(event, index)
-                console.log(branches)
+                onChangeCashRecive(event, index);
+                console.log(item);
               }}
               renderInput={(params) => (
                 <TextField
@@ -156,7 +139,51 @@ const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCas
                   className="dailyReportInput"
                   // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.name }}
+                  onChange={(event) => {
+                    item.name = event.target.value;
+                    // item.liquorID = null;
+                    // onChangePurchesOutSide(event, index)
+                  }}
+                />
+              )}
+            />
 
+            <Autocomplete
+              size="small"
+              style={{
+                width: "10rem",
+              }}
+              options={branches.length > 0 ? branches : ["no options"]}
+              getOptionLabel={(option) => (option ? option.branchName : "")}
+              className={item.type === "BRANCH" ? "" : "displayHidden"}
+              // item.brandName = event.target.outerText;
+              // // eslint-disable-next-line array-callback-return
+              // const liq = liquors.filter((liq) => {
+              //   if (liq.brandName === event.target.outerText) {
+              //     return liq;
+              //   }
+              // });
+              // item.liquorID = liq._id
+              // handelFristFormOnChange(event, index);
+
+              onChange={(event, value) => {
+                if (value) {
+                  item.name = value.branchName;
+                  item.id = value._id;
+                } else {
+                  item.name = "";
+                  item.id = "";
+                }
+
+                // onChangePurchesOutSide(event, index)
+                console.log(branches);
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  className="dailyReportInput"
+                  // value={item.partyName}
+                  inputProps={{ ...params.inputProps, value: item.name }}
                   onChange={(event) => {
                     item.name = event.target.value;
                     // item.liquorID = null;
@@ -167,10 +194,18 @@ const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCas
             />
           </div>
         </td>
-        
+
         <td>
           <div className="form-control">
-            <select className="semiSmallInput" name="type" value={item.type} onChange={(e) => {onChangeCashRecive(e, index)}} id="">
+            <select
+              className="semiSmallInput"
+              name="type"
+              value={item.type}
+              onChange={(e) => {
+                onChangeCashRecive(e, index);
+              }}
+              id=""
+            >
               <option value="PARTY">Party</option>
               <option value="PARTNER">Partner</option>
               <option value="BRANCH">Branch</option>
@@ -185,10 +220,8 @@ const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCas
             name="amount"
             value={item.amount}
             onChange={(e) => onChangeCashRecive(e, index)}
-            className="semiSmallInput"
-            style={{
-              width: "100%",
-            }}
+            className="SmallInput"
+            
           />
         </td>
         <td>
@@ -197,7 +230,7 @@ const CashReciveForm = ({ index, onChangeCashRecive, item, handleRemoveFieldsCas
             name="comment"
             value={item.comment}
             onChange={(e) => onChangeCashRecive(e, index)}
-            className="semiSmallInput"
+            className="SmallInput"
             style={{
               width: "100%",
             }}

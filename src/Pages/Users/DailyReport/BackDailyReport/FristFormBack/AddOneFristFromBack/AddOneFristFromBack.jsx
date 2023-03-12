@@ -3,6 +3,7 @@ import "react-bootstrap-typeahead/css/Typeahead.css";
 import Loader from "../../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../../../Hooks/useLiquors";
+import swal from "sweetalert";
 
 const AddOneFristFromBack = ({
   index,
@@ -36,12 +37,38 @@ const AddOneFristFromBack = ({
     <>
       <tr>
         <td>{SerialNo}</td>
-        <th className="cross" onClick={() => handleRemoveFieldsBack(index)}>
+        <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${
+                index + 1
+              }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                handleRemoveFieldsBack(index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
           X
         </th>
         <td>
           <div className="form-control">
             <Autocomplete
+              size="small"
+              style={{
+                width: "10rem",
+              }}
               options={
                 liquors.length > 0
                   ? liquors.filter((brand) => {
@@ -81,7 +108,7 @@ const AddOneFristFromBack = ({
         </td>
         {/* ======== MRP Input ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 // type="number"
@@ -124,7 +151,7 @@ const AddOneFristFromBack = ({
         </td>
         {/* ======== प्रारम्भिक स्टॉक ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -160,7 +187,7 @@ const AddOneFristFromBack = ({
         {/* ======== आमद (खरीद)-दु. ========= */}
 
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -194,7 +221,7 @@ const AddOneFristFromBack = ({
         </td>
 
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -230,7 +257,7 @@ const AddOneFristFromBack = ({
         {/* ======== आमद (खरीद)-बा. ========= */}
 
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -265,7 +292,7 @@ const AddOneFristFromBack = ({
 
         {/*================ खरीद रेट - बा. ==================  */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -301,7 +328,7 @@ const AddOneFristFromBack = ({
         {/* ======== आमद (उधारी) ========= */}
 
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -336,7 +363,7 @@ const AddOneFristFromBack = ({
 
         {/* ======== भेजान ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -370,7 +397,7 @@ const AddOneFristFromBack = ({
         </td>
         {/* ======== योग/शेष ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -407,7 +434,7 @@ const AddOneFristFromBack = ({
         </td>
         {/* ======== अन्तिम स्टॉक ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -441,7 +468,7 @@ const AddOneFristFromBack = ({
         </td>
         {/* ============= बिक्री ================ */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -478,7 +505,7 @@ const AddOneFristFromBack = ({
         </td>
         {/* ============= रेट ================ */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -512,7 +539,7 @@ const AddOneFristFromBack = ({
         </td>
         {/* ============= योग ================ */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="text"
@@ -553,7 +580,7 @@ const AddOneFristFromBack = ({
             <input
               type="text"
               disabled
-              className="semiSmallInput"
+              className="smallinput"
               name="grandTotal"
               value={item.grandTotal}
               onChange={(event) => onChangeFristBackFormHandler(event, index)}

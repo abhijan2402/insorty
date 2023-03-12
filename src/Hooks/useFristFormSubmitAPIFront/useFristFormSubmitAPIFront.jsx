@@ -113,6 +113,16 @@ const useFristFormSubmitAPIFront = () => {
       });
     }
 
+    if (salesMan===''){
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: 'Enter Salesman Name',
+      });
+    }
+
+    else{
+
     try {
       const api1 = await fetch(
         "https://insorty-api.onrender.com/shop/addFrontPageData",
@@ -135,53 +145,7 @@ const useFristFormSubmitAPIFront = () => {
         }
       );
 
-      // const api2 = await fetch(
-      //   "https://insorty-api.onrender.com/shop/addFrontPageData",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       cookie_token: token,
-      //     },
-      //     body: JSON.stringify({
-      //       date: drDate,
-      //       salesmen: salesMan,
-      //       entries: dataDetails550,
-      //     }),
-      //   }
-      // );
-      // const api3 = await fetch(
-      //   "https://insorty-api.onrender.com/shop/addFrontPageData",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       cookie_token: token,
-      //     },
-      //     body: JSON.stringify({
-      //       date: drDate,
-      //       salesmen: salesMan,
-      //       entries: dataDetails375,
-      //     }),
-      //   }
-      // );
-
-      // const api4 = await fetch(
-      //   "https://insorty-api.onrender.com/shop/addFrontPageData",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //       cookie_token: token,
-      //     },
-      //     body: JSON.stringify({
-      //       date: drDate,
-      //       salesmen: salesMan,
-      //       entries: addSecondFormData,
-      //     }),
-      //   }
-      // );
-
+      
       Promise.all([api1])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
@@ -215,6 +179,7 @@ const useFristFormSubmitAPIFront = () => {
       ],
       "++++++++++++++++++++"
     );
+    }
   };
 
   return {

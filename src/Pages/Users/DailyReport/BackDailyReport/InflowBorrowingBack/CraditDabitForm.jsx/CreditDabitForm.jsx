@@ -2,6 +2,7 @@ import React from "react";
 import Loader from "../../../../../../Components/Loader/Loader";
 import usePartyNames from "../../../../../../Hooks/usePartyNames";
 import { Autocomplete, TextField } from "@mui/material";
+import swal from "sweetalert";
 
 
 const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsCredit }) => {
@@ -22,12 +23,34 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
   return (
     <tr>
       <th>{index + 1}</th>
-      <th className="cross" onClick={() => handleRemoveFieldsCredit(index)}>X</th>
+      <th className="cross" onClick={() => {
+        swal({
+          title: "Are you sure?",
+          text: `Once deleted, you will not be able to recover row ${index + 1}`,
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+          .then((willDelete) => {
+            if (willDelete) {
+              handleRemoveFieldsCredit(index)
+              swal(`row ${index + 1}  has been deleted!`, {
+                icon: "success",
+              });
+            } else {
+              swal("Your row is safe!");
+            }
+          });
+      }}>X</th>
 
 
       <td>
         <div className="form-control">
           <Autocomplete
+          size="small"
+          style={{
+            width: "10rem",
+          }}
             options={parties.length > 0 ? parties : ['no options']}
             getOptionLabel={(option) => option ? option.partyName : ""}
             // item.brandName = event.target.outerText;
@@ -69,6 +92,10 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           />
 
           <Autocomplete
+          size="small"
+          style={{
+            width: "10rem",
+          }}
             options={partners.length > 0 ? partners : ['no options']}
             getOptionLabel={(option) => option ? option.name : ""}
             className={item.partyType === "PARTNER" ? '' : 'displayHidden'}
@@ -112,6 +139,10 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           />
 
           <Autocomplete
+          size="small"
+          style={{
+            width: "10rem",
+          }}
             options={branches.length > 0 ? branches : ['no options']}
             getOptionLabel={(option) => option ? option.branchName : ""}
             className={item.partyType === "BRANCH" ? '' : 'displayHidden'}
@@ -160,7 +191,8 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
         <div className="form-control">
           <select
             type="text"
-            className="select select-bordered"
+            // className="select select-bordered"
+            className="semiSmallInput"
             name="partyType"
             value={item.partyType}
             onChange={(e) => onChangeCarditDabit(e, index)}
@@ -178,7 +210,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
         <div className="form-control">
           <input
             type="number"
-            className="semiSmallInput"
+            className="SmallInput"
             name="amount"
             value={item.amount}
             onChange={(e) => onChangeCarditDabit(e, index)}

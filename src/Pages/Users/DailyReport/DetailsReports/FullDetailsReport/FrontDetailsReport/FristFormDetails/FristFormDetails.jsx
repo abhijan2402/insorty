@@ -14,7 +14,7 @@ const FristFormDetails = ({ exceptionalData, index }) => {
     credits,
     sales,
     send,
-    sellingRate
+    sellingRate,
   } = exceptionalData;
 
   const amount = send * purchaseShopRate.$numberDecimal;

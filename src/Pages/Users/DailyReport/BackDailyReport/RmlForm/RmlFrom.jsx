@@ -4,18 +4,20 @@ import { DataContextApi } from "../../../../../Context/DataContext";
 import useLiquors from "../../../../../Hooks/useLiquors";
 import useRmlAdd from "../../../../../Hooks/useRmlAdd";
 import Loader from "../../../../../Components/Loader/Loader";
+import swal from "sweetalert";
 
-const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFieldsBackRml }) => {
+const RmlFrom = ({
+  index,
+  onChangeRmlHandler,
+  item,
+  addRmlState,
+  handleRemoveFieldsBackRml,
+}) => {
   const serialNo = index + 1;
-  const { setAddRmlState } = useRmlAdd()
+  const { setAddRmlState } = useRmlAdd();
   // const { liquors } = useContext(DataContextApi);
-  let rmlData = addRmlState
-  const {
-    brands,
-    brandsLoaded,
-    checkLiquor,
-    liquors
-  } = useLiquors()
+  let rmlData = addRmlState;
+  const { brands, brandsLoaded, checkLiquor, liquors } = useLiquors();
 
   if (brandsLoaded) {
     return (
@@ -25,55 +27,65 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
     );
   }
 
-
-
   return (
     <>
       <tr>
         <th>{serialNo}</th>
-        <th className="cross" onClick={() => handleRemoveFieldsBackRml(index)}>X</th>
+        <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${
+                index + 1
+              }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                handleRemoveFieldsBackRml(index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
+          X
+        </th>
 
         <td>
           <div className="form-control">
-            {/* <input
-              type="text"
-              className="semiSmallInput"
-              name="brandName"
-              value={item.brandName}
-              onChange={(e) => onChangeRmlHandler(e, index)}
-            /> */}
-
             <Autocomplete
-              options={liquors.length > 0 ? liquors.filter((brand) => {
-                if (brand.type === 'DESHIRML' || brand.type === 'RML') {
-                  return brand
-                }
-              }) : ['no options']}
-              getOptionLabel={(option) => option ? option.brandName : ""}
-
-              // item.brandName = event.target.outerText;
-              // // eslint-disable-next-line array-callback-return
-              // const liq = liquors.filter((liq) => {
-              //   if (liq.brandName === event.target.outerText) {
-              //     return liq;
-              //   }
-              // });
-              // item.liquorID = liq._id
-              // handelFristFormOnChange(event, index);
+              size="small"
+              style={{
+                width: "10rem",
+              }}
+              options={
+                liquors.length > 0
+                  ? liquors.filter((brand) => {
+                      if (brand.type === "DESHIRML" || brand.type === "RML") {
+                        return brand;
+                      }
+                    })
+                  : ["no options"]
+              }
+              getOptionLabel={(option) => (option ? option.brandName : "")}
               onChange={(event, value) => {
                 if (value) {
-                  item.brandName = value.brandName
-                  item.liquorID = value._id
-
+                  item.brandName = value.brandName;
+                  item.liquorID = value._id;
                 } else {
-                  item.brandName = ""
-                  item.liquorID = ""
+                  item.brandName = "";
+                  item.liquorID = "";
                 }
-                setAddRmlState(addRmlState)
-                onChangeRmlHandler(event, index)
+                setAddRmlState(addRmlState);
+                onChangeRmlHandler(event, index);
 
-                console.log(addRmlState)
-
+                console.log(addRmlState);
               }}
               renderInput={(params) => (
                 <TextField
@@ -102,7 +114,6 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
               name="ml"
               value={item.ml}
               onChange={(e) => onChangeRmlHandler(e, index)}
-              
             />
           </div>
         </td>
@@ -110,7 +121,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="averageRate"
               value={item.averageRate}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -123,7 +134,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="openingStock"
               value={item.openingStock}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -136,7 +147,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="incomingPurchase"
               value={item.incomingPurchase}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -149,7 +160,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="buyRate"
               value={item.buyRate}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -162,7 +173,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="incomePurchase"
               value={item.incomePurchase}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -175,7 +186,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="purchaseRate"
               value={item.purchaseRate}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -187,7 +198,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="inflowCredit"
               value={item.inflowCredit}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -199,7 +210,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="sending"
               value={item.sending}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -211,7 +222,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="sumRemainder"
               value={item.sumRemainder}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -224,7 +235,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="closingStock"
               value={item.closingStock}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -236,7 +247,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="sales"
               value={item.sales}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -249,7 +260,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="rate"
               value={item.rate}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -261,7 +272,7 @@ const RmlFrom = ({ index, onChangeRmlHandler, item, addRmlState, handleRemoveFie
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className="SmallInput"
               name="cost"
               value={item.cost}
               onChange={(e) => onChangeRmlHandler(e, index)}

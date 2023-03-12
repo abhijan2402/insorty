@@ -67,21 +67,7 @@ const AddSendFormat = () => {
                 />
               </div>
               
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Balance</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Balance"
-                  name="balance"
-                  className="input input-bordered"
-                  style={{
-                    width: "100%",
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              </div>
+             
 
               <div>
                 <button className="btn bg-[#AA237A] my-4 px-6" type="submit">

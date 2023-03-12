@@ -359,13 +359,39 @@ const useFristFormAdd = () => {
           e.target.name === "purchaseRate650" ||
           e.target.name === "buyRate650"
         ) {
-          if (Number(obj.initial650) > 0) {
+          if (Number(obj.initial650) > 0 && Number(obj.buyRate650) > 0 && Number(obj.purchaseRate650) > 0) {
             obj.averageRate650 =
-              (Number(obj.averageRate650) + Number(obj.purchaseRate650) + Number(obj.buyRate650)) / 3;
+              (Number(obj.initial650) +
+                Number(obj.purchaseRate650) +
+                Number(obj.buyRate650)) /
+              3;
+          } else if (Number(obj.initial650) === 0 && Number(obj.buyRate650) > 0 && Number(obj.purchaseRate650) > 0) {
+            obj.averageRate650 =
+              (Number(obj.purchaseRate650) + Number(obj.buyRate650)) / 2;
+          }
+          else if (Number(obj.initial650) === 0 && Number(obj.buyRate650) === 0 && Number(obj.purchaseRate650) > 0) {
+            obj.averageRate650 =
+              Number(obj.purchaseRate650)
+          }
+          else if (Number(obj.initial650) === 0 && Number(obj.buyRate650) > 0 && Number(obj.purchaseRate650) === 0) {
+            obj.averageRate650 =
+              Number(obj.buyRate650)
+          }
+          else if (Number(obj.initial650) > 0 && Number(obj.buyRate650) > 0 && Number(obj.purchaseRate650) === 0) {
+            obj.averageRate650 =
+              (Number(obj.initial650) +
+                Number(obj.buyRate650)) /
+              2
+          }
+          else if (Number(obj.initial650) > 0 && Number(obj.buyRate650) === 0 && Number(obj.purchaseRate650) > 0) {
+            obj.averageRate650 =
+              (Number(obj.initial650) +
+                Number(obj.purchaseRate650)) /
+              2
           }
           else {
             obj.averageRate650 =
-              (Number(obj.purchaseRate650) + Number(obj.buyRate650)) / 2;
+              Number(obj.initial650)
           }
         }
         return obj;
@@ -380,13 +406,39 @@ const useFristFormAdd = () => {
           e.target.name === "purchaseRate550" ||
           e.target.name === "buyRate550"
         ) {
-          if (Number(obj.initial550) > 0) {
+          if (Number(obj.initial550) > 0 && Number(obj.buyRate550) > 0 && Number(obj.purchaseRate550) > 0) {
             obj.averageRate550 =
-              (Number(obj.averageRate550) + Number(obj.purchaseRate550) + Number(obj.buyRate550)) / 3;
+              (Number(obj.initial550) +
+                Number(obj.purchaseRate550) +
+                Number(obj.buyRate550)) /
+              3;
+          } else if (Number(obj.initial550) === 0 && Number(obj.buyRate550) > 0 && Number(obj.purchaseRate550) > 0) {
+            obj.averageRate550 =
+              (Number(obj.purchaseRate550) + Number(obj.buyRate550)) / 2;
+          }
+          else if (Number(obj.initial550) === 0 && Number(obj.buyRate550) === 0 && Number(obj.purchaseRate550) > 0) {
+            obj.averageRate550 =
+              Number(obj.purchaseRate550)
+          }
+          else if (Number(obj.initial550) === 0 && Number(obj.buyRate550) > 0 && Number(obj.purchaseRate550) === 0) {
+            obj.averageRate550 =
+              Number(obj.buyRate550)
+          }
+          else if (Number(obj.initial550) > 0 && Number(obj.buyRate550) > 0 && Number(obj.purchaseRate550) === 0) {
+            obj.averageRate550 =
+              (Number(obj.initial550) +
+                Number(obj.buyRate550)) /
+              2
+          }
+          else if (Number(obj.initial550) > 0 && Number(obj.buyRate550) === 0 && Number(obj.purchaseRate550) > 0) {
+            obj.averageRate550 =
+              (Number(obj.initial550) +
+                Number(obj.purchaseRate550)) /
+              2
           }
           else {
             obj.averageRate550 =
-              (Number(obj.purchaseRate550) + Number(obj.buyRate550)) / 2;
+              Number(obj.initial550)
           }
         }
         return obj;
@@ -401,13 +453,39 @@ const useFristFormAdd = () => {
           e.target.name === "purchaseRate330" ||
           e.target.name === "buyRate330"
         ) {
-          if (Number(obj.initial330) > 0) {
+          if (Number(obj.initial330) > 0 && Number(obj.buyRate330) > 0 && Number(obj.purchaseRate330) > 0) {
             obj.averageRate330 =
-              (Number(obj.averageRate330) + Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 3;
+              (Number(obj.initial330) +
+                Number(obj.purchaseRate330) +
+                Number(obj.buyRate330)) /
+              3;
+          } else if (Number(obj.initial330) === 0 && Number(obj.buyRate330) > 0 && Number(obj.purchaseRate330) > 0) {
+            obj.averageRate330 =
+              (Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 2;
+          }
+          else if (Number(obj.initial330) === 0 && Number(obj.buyRate330) === 0 && Number(obj.purchaseRate330) > 0) {
+            obj.averageRate330 =
+              Number(obj.purchaseRate330)
+          }
+          else if (Number(obj.initial330) === 0 && Number(obj.buyRate330) > 0 && Number(obj.purchaseRate330) === 0) {
+            obj.averageRate330 =
+              Number(obj.buyRate330)
+          }
+          else if (Number(obj.initial330) > 0 && Number(obj.buyRate330) > 0 && Number(obj.purchaseRate330) === 0) {
+            obj.averageRate330 =
+              (Number(obj.initial330) +
+                Number(obj.buyRate330)) /
+              2
+          }
+          else if (Number(obj.initial330) > 0 && Number(obj.buyRate330) === 0 && Number(obj.purchaseRate330) > 0) {
+            obj.averageRate330 =
+              (Number(obj.initial330) +
+                Number(obj.purchaseRate330)) /
+              2
           }
           else {
-            obj.averageRate750 =
-              (Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 2;
+            obj.averageRate330 =
+              Number(obj.initial330)
           }
         }
         return obj;
@@ -1009,6 +1087,7 @@ const useFristFormAdd = () => {
     brandName: "",
     averageRate: 0,
     startingStock: 0,
+    initial:0,
     incomingPurchase: 0,
     buyRate: 0,
     incomePurchase: 0,
@@ -1060,6 +1139,8 @@ else{
             newFormData.liquorID = parent._id
             newFormData.selectStockVarient = item.quantityInML
             newFormData.startingStock = item.currentStock
+            newFormData.averageRate = item.averageRate.$numberDecimal;
+            newFormData.initial = item.averageRate.$numberDecimal;
             firstFormData = [newFormData, ...firstFormData]
             setAddOneSecondFormState(firstFormData)
             localStorage.setItem("BeerForm", JSON.stringify(firstFormData));
@@ -1092,6 +1173,7 @@ else{
         incomingPurchase: 0,
         buyRate: 0,
         incomePurchase: 0,
+        initial:0,
         purchaseRate: 0,
         inflowCredit: 0,
         sending: 0,
@@ -1120,8 +1202,40 @@ else{
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
 
         if (e.target.name === "purchaseRate" || e.target.name === "buyRate") {
-          obj.averageRate =
-            (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
+          if (Number(obj.initial) > 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) > 0) {
+            obj.averageRate =
+              (Number(obj.initial) +
+                Number(obj.purchaseRate) +
+                Number(obj.buyRate)) /
+              3;
+          } else if (Number(obj.initial) === 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) > 0) {
+            obj.averageRate =
+              (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
+          }
+          else if (Number(obj.initial) === 0 && Number(obj.buyRate) === 0 && Number(obj.purchaseRate) > 0) {
+            obj.averageRate =
+              Number(obj.purchaseRate)
+          }
+          else if (Number(obj.initial) === 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) === 0) {
+            obj.averageRate =
+              Number(obj.buyRate)
+          }
+          else if (Number(obj.initial) > 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) === 0) {
+            obj.averageRate =
+              (Number(obj.initial) +
+                Number(obj.buyRate)) /
+              2
+          }
+          else if (Number(obj.initial) > 0 && Number(obj.buyRate) === 0 && Number(obj.purchaseRate) > 0) {
+            obj.averageRate =
+              (Number(obj.initial) +
+                Number(obj.purchaseRate)) /
+              2
+          }
+          else {
+            obj.averageRate =
+              Number(obj.initial)
+          }
         }
         return obj;
       } else return returned;

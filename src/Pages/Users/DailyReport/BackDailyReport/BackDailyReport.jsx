@@ -149,9 +149,8 @@ const BackDailyReport = () => {
     handleChangeComment,
   } = useComment();
 
-  const { salesMan, setSalesMan, drDate, setDrDate } = useContext(
-    DataContextApi
-  );
+  const { salesMan, setSalesMan, drDate, setDrDate } =
+    useContext(DataContextApi);
   // ********************************* submit mulitple api in handelSubmit  *********************************
 
   // console.log(fristFormState);
@@ -192,20 +191,7 @@ const BackDailyReport = () => {
             className="semiSmallInput"
           />
 
-          {/* <input
-            type="date"
-            value={drDate}
-            onChange={(e) => {
-              setDrDate(e.target.value);
-              localStorage.setItem("drDate", e.target.value);
-            }}
-            name=""
-            id=""
-            className="semiSmallInput"
-          /> */}
-          {/* <h1 className="font-bold ">12/12/2022 </h1> */}
-
-          <div className="flex gap-2 items-center">
+          <div className="flex  items-center">
             <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
               selected={new Date(drDate)}
@@ -225,9 +211,9 @@ const BackDailyReport = () => {
         <div>
           <div className="py-6">
             <div>
-              <form>
+              <>
                 <div className="overflow-x-auto">
-                  <table className="table w-full">
+                  <table className="table commonTable">
                     <thead>
                       <tr>
                         <td> क्र. सं.</td>
@@ -258,7 +244,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== MRP Input ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -280,7 +266,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== प्रारम्भिक स्टॉक ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -302,7 +288,7 @@ const BackDailyReport = () => {
                         </td>
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -324,7 +310,7 @@ const BackDailyReport = () => {
                         </td>
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -346,7 +332,7 @@ const BackDailyReport = () => {
                         </td>
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -369,7 +355,7 @@ const BackDailyReport = () => {
 
                         {/* ============खरीद रेट - बा. =============  */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -393,7 +379,7 @@ const BackDailyReport = () => {
                         {/* ======== आमद (उधारी) ========= */}
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -416,7 +402,7 @@ const BackDailyReport = () => {
                         {/* ======== भेजान ========= */}
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -438,7 +424,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== योग/शेष ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -460,7 +446,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== अन्तिम स्टॉक ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -482,7 +468,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ============= बिक्री ================ */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -504,7 +490,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ============= रेट ================ */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -526,7 +512,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ============= योग ================ */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -571,43 +557,29 @@ const BackDailyReport = () => {
                       })}
 
                       <tr>
-                        <th></th>
+                        <th>
+                          <button
+                            className="btn bg-[#AA237A] btn-sm"
+                            onClick={() => addOneInFristFormHandler()}
+                          >
+                            ADD
+                          </button>
+                        </th>
                         <td></td>
                         <td>Total</td>
                         {/* ======== MRP Input ========= */}
                         <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                disabled
-                                type="number"
-                                className="smallinput"
-                                name="averageRate"
-                              />
-                            </div>
+                          <div className="flex ">
+                            <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                disabled
-                                type="number"
-                                className="smallinput"
-                                name="averageRate"
-                              />
-                            </div>
+                            <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                disabled
-                                type="number"
-                                className="smallinput"
-                                name="averageRate"
-                              />
-                            </div>
+                            <div className="form-control"></div>
                           </div>
                         </td>
                         {/* ======== प्रारम्भिक स्टॉक ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <input
                                 value={fristFormState.reduce(
@@ -670,7 +642,7 @@ const BackDailyReport = () => {
                         {/* ======== आमद (खरीद)-दु. ========= */}
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <input
                                 value={fristFormState.reduce(
@@ -731,40 +703,19 @@ const BackDailyReport = () => {
                         </td>
 
                         <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                disabled
-                                className="smallinput"
-                                name="buyRate"
-                              />
-                            </div>
+                          <div className="flex ">
+                            <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                disabled
-                                className="smallinput"
-                                name="buyRate"
-                              />
-                            </div>
+                            <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="buyRate"
-                                disabled
-                              />
-                            </div>
+                            <div className="form-control"></div>
                           </div>
                         </td>
 
                         {/* ======== आमद (खरीद)-बा. ========= */}
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <input
                                 value={fristFormState.reduce(
@@ -826,40 +777,19 @@ const BackDailyReport = () => {
 
                         {/*================ खरीद रेट - बा. ==================  */}
                         <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="purchaseRate"
-                                disabled
-                              />
-                            </div>
+                          <div className="flex ">
+                            <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="purchaseRate"
-                                disabled
-                              />
-                            </div>
+                            <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput"
-                                name="purchaseRate"
-                                disabled
-                              />
-                            </div>
+                            <div className="form-control"></div>
                           </div>
                         </td>
 
                         {/* ======== आमद (उधारी) ========= */}
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <input
                                 value={fristFormState.reduce(
@@ -920,7 +850,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== भेजान ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <input
                                 value={fristFormState.reduce(
@@ -978,7 +908,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== योग/शेष ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <input
                                 value={fristFormState.reduce(
@@ -1036,7 +966,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== अन्तिम स्टॉक ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <input
                                 onChange={(event) =>
@@ -1097,7 +1027,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ============= बिक्री ================ */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <input
                                 value={fristFormState.reduce(
@@ -1152,38 +1082,17 @@ const BackDailyReport = () => {
                         </td>
                         {/* ============= रेट ================ */}
                         <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <input
-                                disabled
-                                type="number"
-                                className="smallinput"
-                                name="mainRate"
-                              />
-                            </div>
+                          <div className="flex ">
+                            <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                disabled
-                                type="number"
-                                className="smallinput"
-                                name="mainRate"
-                              />
-                            </div>
+                            <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                disabled
-                                type="number"
-                                className="smallinput"
-                                name="mainRate"
-                              />
-                            </div>
+                            <div className="form-control"></div>
                           </div>
                         </td>
                         {/* ============= योग ================ */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <input
                                 type="number"
@@ -1246,7 +1155,7 @@ const BackDailyReport = () => {
                             <input
                               type="number"
                               disabled
-                              className="semiSmallInput"
+                              className="smallinput"
                               name="grandTotal"
                               value={fristFormState.reduce(
                                 (total, currentItem) =>
@@ -1270,75 +1179,19 @@ const BackDailyReport = () => {
                     </tbody>
                   </table>
                 </div>
-              </form>
-
-              <div className="mt-4 flex gap-4">
-                <button
-                  className="dailyReportBtn"
-                  onClick={() => addOneInFristFormHandler()}
-                >
-                  ADD 1
-                </button>
-                <button
-                  className="dailyReportBtn"
-                  onClick={() => addFiveInFristFormHandler()}
-                >
-                  ADD 5
-                </button>
-
-                {isLoading ? (
-                  <>
-                    <button
-                      type="button"
-                      className="inline-flex items-center px-4 py-2 text-sm font-semibold leading-6 text-[#AA237A] transition duration-150 ease-in-out border-2 border-[#AA237A] rounded-md shadow cursor-not-allowed"
-                      disabled=""
-                    >
-                      <svg
-                        className="w-5 h-5 mr-3 -ml-1 text-[#AA237A] animate-spin"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Loading...
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      className="dailyReportBtn"
-                      onClick={() => handelSubmitFristFormBack()}
-                    >
-                      Submit
-                    </button>
-                  </>
-                )}
-              </div>
+              </>
 
               <div className="overflow-x-auto">
                 <div className="mt-6">
                   <div className="overflow-x-auto">
-                    <form>
-                      <table className="table w-full">
+                    <>
+                      <table className="table commonTable">
                         <thead>
                           <tr>
                             <th> क्र. सं.</th>
                             <th></th>
                             <th>Brand Name/ ब्राण्ड</th>
-                            <th>Total ml</th>
+                            <th>ml</th>
                             <th>Average Rate</th>
                             <th>प्रारम्भिक स्टॉक</th>
                             <th>आमद (खरीद)-दु.</th>
@@ -1371,20 +1224,247 @@ const BackDailyReport = () => {
                               ></AddOneSecondFormBack>
                             );
                           })}
+
+                          <tr>
+                            <td>
+                              <button
+                                className="btn bg-[#AA237A] btn-sm"
+                                onClick={() => addOneSecondFormHandler()}
+                              >
+                                ADD
+                              </button>
+                            </td>
+                            <td></td>
+                            <td>TOTAL</td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  // value={item.selectStockVarient}
+                                  // onChange={(e) => handelSeconFormOnChange(e, index)}
+                                  className="SmallInput"
+                                  name="selectStockVarient"
+                                />
+                              </div>
+                            </td>
+                            {/* ======== MRP Input ========= */}
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  // value={item.averageRate}
+                                  // onChange={(e) => handelSeconFormOnChange(e, index)}
+                                  className="SmallInput"
+                                  name="averageRate"
+                                  disabled
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="startingStock"
+                                  value={addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.startingStock)),
+                                    0
+                                  )}
+                                  onChange={(e) => handelSeconFormOnChange(e)}
+                                />
+                              </div>
+                            </td>
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="incomingPurchase"
+                                  value={addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.incomingPurchase)),
+                                    0
+                                  )}
+                                  onChange={(e) => handelSeconFormOnChange(e)}
+                                />
+                              </div>
+                            </td>
+                            {/* ======== प्रारम्भिक स्टॉक ========= */}
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="buyRate"
+                                />
+                              </div>
+                            </td>
+
+                            {/* ======== आमद (खरीद)-दु. ========= */}
+
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="incomePurchase"
+                                  value={addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.incomePurchase)),
+                                    0
+                                  )}
+                                  onChange={(e) => handelSeconFormOnChange(e)}
+                                />
+                              </div>
+                            </td>
+                            {/* ======== आमद (खरीद)-बा. ========= */}
+
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="purchaseRate"
+                                  // value={item.purchaseRate}
+                                  // onChange={(e) => handelSeconFormOnChange(e, index)}
+                                />
+                              </div>
+                            </td>
+                            {/* ======== आमद (उधारी) ========= */}
+
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="inflowCredit"
+                                  value={addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.inflowCredit)),
+                                    0
+                                  )}
+                                  onChange={(e) => handelSeconFormOnChange(e)}
+                                />
+                              </div>
+                            </td>
+                            {/* ======== भेजान ========= */}
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="sending"
+                                  value={addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + Number(currentItem.sending)),
+                                    0
+                                  )}
+                                  onChange={(e) => handelSeconFormOnChange(e)}
+                                />
+                              </div>
+                            </td>
+                            {/* ======== योग/शेष ========= */}
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="sumRemainder"
+                                  value={addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.sumRemainder)),
+                                    0
+                                  )}
+                                  onChange={(e) => handelSeconFormOnChange(e)}
+                                  disabled
+                                />
+                              </div>
+                            </td>
+                            {/* ======== अन्तिम स्टॉक ========= */}
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="closingStock"
+                                  value={addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.closingStock)),
+                                    0
+                                  )}
+                                  onChange={(e) => handelSeconFormOnChange(e)}
+                                />
+                              </div>
+                            </td>
+                            {/* ============= बिक्री ================ */}
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="sales"
+                                  value={addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + Number(currentItem.sales)),
+                                    0
+                                  )}
+                                  onChange={(e) => handelSeconFormOnChange(e)}
+                                  disabled
+                                />
+                              </div>
+                            </td>
+                            {/* ============= रेट ================ */}
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="mainRate"
+                                  // value={item.mainRate}
+                                  // onChange={(e) => handelSeconFormOnChange(e, index)}
+                                />
+                              </div>
+                            </td>
+                            {/* ============= योग ================ */}
+                            <td>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="SmallInput"
+                                  name="total"
+                                  value={addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + Number(currentItem.total)),
+                                    0
+                                  )}
+                                  onChange={(e) => handelSeconFormOnChange(e)}
+                                  disabled
+                                />
+                              </div>
+                            </td>
+                            {/* ============= कुल योग ================ */}
+                          </tr>
                         </tbody>
                       </table>
-                    </form>
+                    </>
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-4 flex gap-4">
-                <button
-                  className="dailyReportBtn mx-4"
-                  onClick={() => addOneSecondFormHandler()}
-                >
-                  ADD 1
-                </button>
               </div>
             </div>
           </div>
@@ -1397,9 +1477,9 @@ const BackDailyReport = () => {
               <span className="font-bold titleText">RML / आर.एम.एल</span>
             </h1>
 
-            <form action="">
+            <>
               <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table commonTable">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -1438,41 +1518,32 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th></th>
+                      <th>
+                        <button
+                          className="btn bg-[#AA237A] btn-sm"
+                          onClick={() => addOneBtnHandler()}
+                        >
+                          ADD
+                        </button>
+                      </th>
                       <th></th>
                       <td>
                         <div className="form-control">Total</div>
                       </td>
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallInput"
-                            name="averageRate"
-                            // value={item.averageRate}
-                            // onChange={(e) => onChangeRmlHandler(e, index)}
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="semiSmallInput"
-                            name="averageRate"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
                         <div className="form-control">
                           <input
                             // type="number"
-                            className="semiSmallInput"
+                            className="smallInput"
                             name="openingStock"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1491,7 +1562,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="smallInput"
                             name="incomingPurchase"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1506,14 +1577,7 @@ const BackDailyReport = () => {
                       {/* ======== आमद (खरीद)-बा. ========= */}
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="semiSmallInput"
-                            name="buyRate"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                       {/* ======== आमद (उधारी) ========= */}
 
@@ -1521,7 +1585,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="smallInput"
                             name="incomePurchase"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1534,21 +1598,14 @@ const BackDailyReport = () => {
                         </div>
                       </td>
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="semiSmallInput"
-                            name="purchaserRate"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                       {/* ======== भेजान ========= */}
                       <td>
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="smallInput"
                             name="inflowCredit"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1565,7 +1622,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="smallInput"
                             name="sending"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1581,7 +1638,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="smallInput"
                             name="sumRemainder"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1597,7 +1654,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="smallInput"
                             name="closingStock"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1615,7 +1672,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="smallInput"
                             name="sales"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1628,21 +1685,14 @@ const BackDailyReport = () => {
                       </td>
                       {/* ============= रेट ================ */}
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="semiSmallInput"
-                            name="rate"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                       {/* ============= योग ================ */}
                       <td>
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="smallInput"
                             name="cost"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1658,31 +1708,9 @@ const BackDailyReport = () => {
                   </tbody>
                 </table>
               </div>
-            </form>
+            </>
             {/******************** Add Button   ********************/}
-            <div>
-              <div className="mt-4 flex gap-4">
-                <button
-                  className="dailyReportBtn"
-                  onClick={() => addOneBtnHandler()}
-                >
-                  ADD 1
-                </button>
-                <button
-                  className="dailyReportBtn"
-                  onClick={() => addFiveBtnHandler()}
-                >
-                  ADD 5
-                </button>
 
-                {/* <button
-                  className="dailyReportBtn"
-                  onClick={() => handelSubmitCashRecive()}
-                >
-                  Submit
-                </button> */}
-              </div>
-            </div>
             {/******************** Add Button   ********************/}
           </div>
 
@@ -1694,14 +1722,14 @@ const BackDailyReport = () => {
             </h1>
             <form action="">
               <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table commonTable">
                   <thead>
                     <tr>
                       <th></th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
+                      <th>ML</th>
                       <th>संख्या</th>
-                      <th>Quantity</th>
                       <th>रेट</th>
                       <th>योग</th>
                       <th>टिप्पणी</th>
@@ -1727,34 +1755,26 @@ const BackDailyReport = () => {
                     <tr>
                       <td>Total</td>
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="partyName"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                       {/* ======== प्रारम्भिक स्टॉक ========= */}
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="brandName"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       {/* ======== आमद (खरीद)-दु. ========= */}
+
+                      {/* ======== आमद (खरीद)-बा. ========= */}
+
+                      <td>
+                        <div className="form-control "></div>
+                      </td>
 
                       <td>
                         <div className="form-control ">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="SmallInput"
                             name="theNumber"
                             value={purchesOutSideState.reduce(
                               (total, currentItem) =>
@@ -1765,42 +1785,16 @@ const BackDailyReport = () => {
                           />
                         </div>
                       </td>
-                      {/* ======== आमद (खरीद)-बा. ========= */}
 
                       <td>
-                        <div className="form-control ">
-                          <select
-                            className="select select-bordered"
-                            name="quantity"
-                            disabled
-                          >
-                            <option value={650} selected>
-                              650ml
-                            </option>
-                            <option value={550}>550ml</option>
-                            <option value={330}>330ml</option>
-                            <option value={90}>90ml</option>
-                            <option value={60}>60ml</option>
-                          </select>
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
-                            name="rate"
-                            disabled
-                          />
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="semiSmallInput"
+                            className="SmallInput"
                             name="total"
                             value={purchesOutSideState.reduce(
                               (total, currentItem) =>
@@ -1813,14 +1807,7 @@ const BackDailyReport = () => {
                       </td>
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reason"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                       {/* ======== आमद (उधारी) ========= */}
                     </tr>
@@ -1838,7 +1825,7 @@ const BackDailyReport = () => {
             </h1>
             <form action="">
               <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table commonTable">
                   <thead>
                     <tr>
                       <th></th>
@@ -1866,20 +1853,13 @@ const BackDailyReport = () => {
                     <tr>
                       <td>Total</td>
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reason"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
                         <input
                           type="number"
-                          className="semiSmallInput"
+                          className="SmallInput"
                           name="amount"
                           value={commissonState.reduce(
                             (total, currentItem) =>
@@ -1892,17 +1872,7 @@ const BackDailyReport = () => {
                           }}
                         />
                       </td>
-                      <td>
-                        <input
-                          type="number"
-                          className="semiSmallInput"
-                          name="amount"
-                          disabled
-                          style={{
-                            width: "100%",
-                          }}
-                        />
-                      </td>
+                      <td></td>
                     </tr>
                   </tbody>
                 </table>
@@ -1918,7 +1888,7 @@ const BackDailyReport = () => {
             </h1>
             <form action="">
               <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table commonTable">
                   <thead>
                     <tr>
                       <th></th>
@@ -1947,24 +1917,10 @@ const BackDailyReport = () => {
                     <tr>
                       <td>Total</td>
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reson"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reson"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
@@ -1977,18 +1933,11 @@ const BackDailyReport = () => {
                             0
                           )}
                           disabled
-                          className="semiSmallInput"
+                          className="SmallInput"
                         />
                       </td>
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="comment"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                     </tr>
                   </tbody>
@@ -2007,9 +1956,9 @@ const BackDailyReport = () => {
               </span>
             </h1>
 
-            <form action="">
+            <>
               <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table commonTable">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -2038,46 +1987,32 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
+                      <th>
+                        <button
+                          className="btn bg-[#AA237A] btn-sm"
+                          onClick={() => addOneShippingBtnHandler()}
+                        >
+                          ADD
+                        </button>
+                      </th>
                       <th>Total</th>
-                      <th></th>
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="partyName"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="brandName"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="brandName"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="SmallInput"
                             name="theNumber"
                             value={addShippingState.reduce(
                               (total, currentItem) =>
@@ -2089,35 +2024,13 @@ const BackDailyReport = () => {
                         </div>
                       </td>
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="comment"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-            </form>
-
-            <div className="mt-4 flex gap-4 mx-4">
-              <button
-                className="dailyReportBtn"
-                onClick={() => addOneShippingBtnHandler()}
-              >
-                ADD 1
-              </button>
-              <button
-                className="dailyReportBtn"
-                onClick={() => addFiveShippingBtnHandler()}
-              >
-                ADD 5
-              </button>
-            </div>
+            </>
           </div>
 
           <div className="py-6">
@@ -2128,7 +2041,7 @@ const BackDailyReport = () => {
             </h1>
             <form action="">
               <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table commonTable">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -2161,32 +2074,20 @@ const BackDailyReport = () => {
                       <th>Total</th>
                       <th></th>
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="partyName"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="brandName"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
-
+                      <td>
+                        <div className="form-control "></div>
+                      </td>
                       <td>
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="SmallInput"
                             name="theNumber"
                             value={infolwBorrwingFormState.reduce(
                               (total, currentItem) =>
@@ -2199,39 +2100,14 @@ const BackDailyReport = () => {
                       </td>
 
                       <td>
-                        <div className="form-control ">
-                          <select
-                            className="select select-bordered"
-                            name="quantity"
-                            disabled
-                          >
-                            <option value={650} selected>
-                              650ml
-                            </option>
-                            <option value={550}>550ml</option>
-                            <option value={330}>330ml</option>
-                            <option value={90}>90ml</option>
-                            <option value={60}>60ml</option>
-                          </select>
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
-                            name="rate"
-                            disabled
-                          />
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="semiSmallInput"
+                            className="SmallInput"
                             name="total"
                             value={infolwBorrwingFormState.reduce(
                               (total, currentItem) =>
@@ -2244,14 +2120,7 @@ const BackDailyReport = () => {
                       </td>
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="reason"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                     </tr>
                   </tbody>
@@ -2267,7 +2136,7 @@ const BackDailyReport = () => {
 
             <form action="">
               <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="table commonTable">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -2298,36 +2167,18 @@ const BackDailyReport = () => {
                       <th></th>
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="semiSmallInput"
-                            name="amount"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
-                        <div className="form-control">
-                          <select
-                            className="select select-bordered"
-                            name="partyType"
-                            disabled
-                          >
-                            <option value="Partner" selected>
-                              Partner
-                            </option>
-                            <option value="Party">Party</option>
-                          </select>
-                        </div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
                         <div className="form-control">
                           <input
                             type="number"
-                            className="semiSmallInput"
+                            className="SmallInput"
                             name="amount"
                             value={craditDabitState.reduce(
                               (total, currentItem) =>
@@ -2340,14 +2191,7 @@ const BackDailyReport = () => {
                       </td>
 
                       <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="note"
-                            disabled
-                          />
-                        </div>
+                        <div className="form-control"></div>
                       </td>
                     </tr>
                   </tbody>
