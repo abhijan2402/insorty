@@ -332,19 +332,10 @@ const useFormulasFristFormFront = () => {
         ) {
           const buyShop = Number(obj.incomingPurchase750) * Number(obj.buyRate750)
           const buyOut = Number(obj.incomePurchase750) * Number(obj.purchaseRate750)
-          const totalStock = Number(obj.incomingPurchase750) + Number(obj.incomePurchase750)
+          const totalStock = Number(obj.incomingPurchase750) + Number(obj.incomePurchase750) + Number(obj.startingStock750)
+          const stock = Number(obj.initial750) * Number(obj.startingStock750)
+          obj.averageRate750 = (buyShop + buyOut + stock) / totalStock
 
-          if (obj.incomingPurchase750 > 0 && obj.buyRate750 > 0 && obj.incomePurchase750 === 0 && obj.purchaseRate750===0){
-            obj.averageRate750 =buyShop/Number(obj.incomingPurchase750)
-          }
-          else if (obj.incomingPurchase750 === 0 && obj.buyRate750 === 0 && obj.incomePurchase750 > 0 && obj.purchaseRate750 > 0){
-            obj.averageRate750 = buyShop / Number(obj.incomePurchase750)
-          }
-          else {
-
-            obj.averageRate750 = (buyShop+buyOut)/totalStock
-          }
-          
         }
         return obj;
       } else return returned;
@@ -362,21 +353,13 @@ const useFormulasFristFormFront = () => {
         ) {
           const buyShop = Number(obj.incomingPurchase330) * Number(obj.buyRate330)
           const buyOut = Number(obj.incomePurchase330) * Number(obj.purchaseRate330)
-          const totalStock = Number(obj.incomingPurchase330) + Number(obj.incomePurchase330)
+          const totalStock = Number(obj.incomingPurchase330) + Number(obj.incomePurchase330) + Number(obj.startingStock330)
 
-          if (obj.incomingPurchase330 > 0 && obj.buyRate330 > 0 && obj.incomePurchase330 === 0 && obj.purchaseRate330 === 0) {
-            obj.averageRate330 = buyShop / Number(obj.incomingPurchase330)
-          }
-          else if (obj.incomingPurchase330 === 0 && obj.buyRate330 === 0 && obj.incomePurchase330 > 0 && obj.purchaseRate330 > 0) {
-            obj.averageRate330 = buyShop / Number(obj.incomePurchase330)
-          }
-          else {
-
-            obj.averageRate330 = (buyShop + buyOut) / totalStock
-          }
+          const stock = Number(obj.initial330) * Number(obj.startingStock330)
+          obj.averageRate330 = (buyShop + buyOut + stock) / totalStock
 
         }
-        
+
         return obj;
       } else return returned;
     });
@@ -393,9 +376,10 @@ const useFormulasFristFormFront = () => {
         ) {
           const buyShop = Number(obj.incomingPurchase180) * Number(obj.buyRate180)
           const buyOut = Number(obj.incomePurchase180) * Number(obj.purchaseRate180)
-          const totalStock = Number(obj.incomePurchase180) + Number(obj.incomePurchase180)
+          const totalStock = Number(obj.incomePurchase180) + Number(obj.incomingPurchase180) + Number(obj.startingStock180)
 
-          obj.averageRate180 = (buyShop + buyOut) / totalStock
+          const stock = Number(obj.initial180) * Number(obj.startingStock180)
+          obj.averageRate180 = (buyShop + buyOut + stock) / totalStock
         }
         return obj;
       } else return returned;

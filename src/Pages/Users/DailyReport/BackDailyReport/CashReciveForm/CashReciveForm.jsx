@@ -91,6 +91,7 @@ const CashReciveForm = ({
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  required
                   className="dailyReportInput"
                   // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.name }}
@@ -136,6 +137,7 @@ const CashReciveForm = ({
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  required
                   className="dailyReportInput"
                   // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.name }}
@@ -180,6 +182,7 @@ const CashReciveForm = ({
               }}
               renderInput={(params) => (
                 <TextField
+                  required
                   {...params}
                   className="dailyReportInput"
                   // value={item.partyName}
@@ -200,6 +203,7 @@ const CashReciveForm = ({
             <select
               className="semiSmallInput"
               name="type"
+              required
               value={item.type}
               onChange={(e) => {
                 onChangeCashRecive(e, index);
@@ -217,6 +221,7 @@ const CashReciveForm = ({
         <td>
           <input
             type="number"
+            required
             name="amount"
             value={item.amount}
             onChange={(e) => onChangeCashRecive(e, index)}
@@ -227,6 +232,7 @@ const CashReciveForm = ({
         <td>
           <input
             type="text"
+            required
             name="comment"
             value={item.comment}
             onChange={(e) => onChangeCashRecive(e, index)}

@@ -90,6 +90,7 @@ const RmlFrom = ({
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  required
                   className="dailyReportInput"
                   // value={item.brandName}
                   inputProps={{ ...params.inputProps, value: item.brandName }}
@@ -110,6 +111,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="smallInput"
               name="ml"
               value={item.ml}
@@ -121,6 +123,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="averageRate"
               value={item.averageRate}
@@ -134,6 +137,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="openingStock"
               value={item.openingStock}
@@ -147,6 +151,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="incomingPurchase"
               value={item.incomingPurchase}
@@ -160,6 +165,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="buyRate"
               value={item.buyRate}
@@ -173,6 +179,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="incomePurchase"
               value={item.incomePurchase}
@@ -186,6 +193,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="purchaseRate"
               value={item.purchaseRate}
@@ -198,6 +206,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="inflowCredit"
               value={item.inflowCredit}
@@ -210,6 +219,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="sending"
               value={item.sending}
@@ -222,6 +232,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="sumRemainder"
               value={item.sumRemainder}
@@ -235,6 +246,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="closingStock"
               value={item.closingStock}
@@ -247,6 +259,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="sales"
               value={item.sales}
@@ -260,6 +273,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="rate"
               value={item.rate}
@@ -272,6 +286,7 @@ const RmlFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="cost"
               value={item.cost}

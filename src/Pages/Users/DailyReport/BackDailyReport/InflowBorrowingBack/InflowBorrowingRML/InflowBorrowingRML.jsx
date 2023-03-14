@@ -112,6 +112,7 @@ const InflowBorrowingRML = ({
               }}
               renderInput={(params) => (
                 <TextField
+                  required
                   {...params}
                   className="dailyReportInput"
                   // value={item.brandName}
@@ -134,6 +135,7 @@ const InflowBorrowingRML = ({
               className="semiSmallInput"
               name="quantity"
               value={item.quantity}
+              required
               onChange={(e) => {
                 onChangeBorrowingRml(e, index);
               }}
@@ -164,6 +166,7 @@ const InflowBorrowingRML = ({
           <div className="form-control">
             <input
               type="number"
+              required
               className="SmallInput"
               name="theNumber"
               value={item.theNumber}
@@ -176,6 +179,7 @@ const InflowBorrowingRML = ({
           <div className="form-control">
             <input
               type="number"
+              required
               className="SmallInput"
               name="rate"
               value={item.rate}
@@ -188,6 +192,7 @@ const InflowBorrowingRML = ({
           <div className="form-control">
             <input
               type="number"
+              required
               className="SmallInput"
               name="total"
               value={item.total}
@@ -201,6 +206,7 @@ const InflowBorrowingRML = ({
           <div className="form-control">
             <input
               type="text"
+              required
               className="semiSmallInput"
               name="reason"
               value={item.reason}

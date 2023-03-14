@@ -83,6 +83,8 @@ const AddOneSecondFormBack = ({
               }}
               renderInput={(params) => (
                 <TextField
+
+                  required
                   {...params}
                   className="dailyReportInput"
                   // value={item.brandName}
@@ -99,6 +101,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               value={item.selectStockVarient}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               className="SmallInput"
@@ -111,6 +114,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               value={item.averageRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               className="SmallInput"
@@ -123,6 +127,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="startingStock"
               value={item.startingStock}
@@ -134,6 +139,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="incomingPurchase"
               value={item.incomingPurchase}
@@ -146,6 +152,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="buyRate"
               value={item.buyRate}
@@ -160,6 +167,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="incomePurchase"
               value={item.incomePurchase}
@@ -173,6 +181,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="purchaseRate"
               value={item.purchaseRate}
@@ -186,6 +195,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="inflowCredit"
               value={item.inflowCredit}
@@ -198,6 +208,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="sending"
               value={item.sending}
@@ -210,6 +221,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="sumRemainder"
               value={item.sumRemainder}
@@ -223,6 +235,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="closingStock"
               value={item.closingStock}
@@ -235,6 +248,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="sales"
               value={item.sales}
@@ -248,6 +262,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="mainRate"
               value={item.mainRate}
@@ -260,6 +275,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="total"
               value={item.total}

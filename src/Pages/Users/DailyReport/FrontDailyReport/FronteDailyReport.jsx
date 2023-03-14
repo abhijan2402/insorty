@@ -64,6 +64,7 @@ const FronteDailyReport = () => {
 
   return (
     <section className="mx-2">
+    <form onSubmit={submitFristFormHandler}>
       <div className="my-4 flex gap-4 items-center justify-center">
         <h1 className="font-bold md:text-2xl text-center">दैनिक रिपोर्ट </h1>
         <Link
@@ -1085,6 +1086,7 @@ const FronteDailyReport = () => {
                             // value={item.selectStockVarient}
                             // onChange={(e) => handelSeconFormOnChange(e, index)}
                             className="SmallInput"
+                            disabled
                             name="selectStockVarient"
                           />
                         </div>
@@ -1096,9 +1098,9 @@ const FronteDailyReport = () => {
                             type="number"
                             // value={item.averageRate}
                             // onChange={(e) => handelSeconFormOnChange(e, index)}
-                            className="smallinput"
+                              className="smallinput"
+                              disabled
                             name="averageRate"
-                            disabled
                           />
                         </div>
                       </td>
@@ -1108,6 +1110,7 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="startingStock"
+                            disabled
                             value={addOneSecondFormState.reduce(
                               (total, currentItem) =>
                                 (total =
@@ -1124,6 +1127,7 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="incomingPurchase"
+                            disabled
                             value={addOneSecondFormState.reduce(
                               (total, currentItem) =>
                                 (total =
@@ -1139,6 +1143,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="buyRate"
                             // value={item.buyRate}
@@ -1153,6 +1158,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="incomePurchase"
                             value={addOneSecondFormState.reduce(
@@ -1171,6 +1177,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="purchaseRate"
                             // value={item.purchaseRate}
@@ -1184,6 +1191,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="inflowCredit"
                             value={addOneSecondFormState.reduce(
@@ -1201,6 +1209,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="sending"
                             value={addOneSecondFormState.reduce(
@@ -1217,6 +1226,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="sumRemainder"
                             value={addOneSecondFormState.reduce(
@@ -1226,7 +1236,6 @@ const FronteDailyReport = () => {
                               0
                             )}
                             onChange={(e) => handelSeconFormOnChange(e)}
-                            disabled
                           />
                         </div>
                       </td>
@@ -1235,6 +1244,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="closingStock"
                             value={addOneSecondFormState.reduce(
@@ -1252,6 +1262,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="sales"
                             value={addOneSecondFormState.reduce(
@@ -1260,7 +1271,6 @@ const FronteDailyReport = () => {
                               0
                             )}
                             onChange={(e) => handelSeconFormOnChange(e)}
-                            disabled
                           />
                         </div>
                       </td>
@@ -1269,6 +1279,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
+                            disabled
                             className="smallinput"
                             name="mainRate"
                             // value={item.mainRate}
@@ -1335,16 +1346,19 @@ const FronteDailyReport = () => {
             </>
           ) : (
             <>
-              <button
+              {/* <button
                 className="dailyReportBtn"
-                onClick={() => submitFristFormHandler()}
+                type="submit"
+                onSubmit={() => submitFristFormHandler()}
               >
                 Submit
-              </button>
+              </button> */}
+                  <input type="submit" className="dailyReportBtn"/>
             </>
           )}
         </div>
       </div>
+      </form>
     </section>
   );
 };

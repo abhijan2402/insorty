@@ -76,6 +76,7 @@ const PurchaseOutSideFrom = ({
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  required
                   className="dailyReportInput"
                   // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.partyName }}
@@ -121,6 +122,7 @@ const PurchaseOutSideFrom = ({
               }}
               renderInput={(params) => (
                 <TextField
+                  required
                   {...params}
                   inputProps={{ ...params.inputProps, value: item.brandName }}
                   onChange={(event) => {
@@ -138,6 +140,7 @@ const PurchaseOutSideFrom = ({
           <div className="form-control ">
             <select
               className=""
+              required
               name="quantity"
               value={item.quantity}
               onChange={(e) => {
@@ -173,6 +176,7 @@ const PurchaseOutSideFrom = ({
           <div className="form-control ">
             <input
               type="number"
+                required
               className="SmallInput"
               name="theNumber"
               value={item.theNumber}
@@ -186,6 +190,7 @@ const PurchaseOutSideFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="rate"
               value={item.rate}
@@ -198,6 +203,7 @@ const PurchaseOutSideFrom = ({
           <div className="form-control">
             <input
               type="number"
+                required
               className="SmallInput"
               name="total"
               disabled
@@ -211,6 +217,7 @@ const PurchaseOutSideFrom = ({
           <div className="form-control">
             <input
               type="text"
+                required
               className="SmallInput"
               name="reason"
               value={item.reason}

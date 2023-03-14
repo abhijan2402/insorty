@@ -75,6 +75,7 @@ const ShippingForm = ({
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  required
                   className="dailyReportInput"
                   // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.partyName }}
@@ -112,6 +113,7 @@ const ShippingForm = ({
               renderInput={(params) => (
                 <TextField
                   {...params}
+                  required
                   className="dailyReportInput"
                   // value={item.brandName}
                   inputProps={{ ...params.inputProps, value: item.brandName }}
@@ -131,6 +133,7 @@ const ShippingForm = ({
             <select
               // className="select select-bordered"
               name="quantity"
+              required
               value={item.quantity}
               onChange={(e) => {
                 onChangeShipping(e, index);
@@ -163,6 +166,7 @@ const ShippingForm = ({
           <div className="form-control">
             <input
               type="number"
+              required
               className="SmallInput"
               name="theNumber"
               value={item.theNumber}
@@ -174,6 +178,7 @@ const ShippingForm = ({
           <div className="form-control">
             <input
               type="text"
+              required
               className="semiSmallInput"
               name="comment"
               value={item.comment}

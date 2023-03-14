@@ -296,7 +296,9 @@ const useHandelSubmitBackAPI = () => {
     });
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+
+    e.preventDefault() 
 
     if(salesMan===''){
       Swal.fire({

@@ -357,42 +357,16 @@ const useFristFormAdd = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "purchaseRate650" ||
-          e.target.name === "buyRate650"
+          e.target.name === "buyRate650" ||
+          e.target.name === 'incomingPurchase650' ||
+          e.target.name === 'incomePurchase650'
         ) {
-          if (Number(obj.initial650) > 0 && Number(obj.buyRate650) > 0 && Number(obj.purchaseRate650) > 0) {
-            obj.averageRate650 =
-              (Number(obj.initial650) +
-                Number(obj.purchaseRate650) +
-                Number(obj.buyRate650)) /
-              3;
-          } else if (Number(obj.initial650) === 0 && Number(obj.buyRate650) > 0 && Number(obj.purchaseRate650) > 0) {
-            obj.averageRate650 =
-              (Number(obj.purchaseRate650) + Number(obj.buyRate650)) / 2;
-          }
-          else if (Number(obj.initial650) === 0 && Number(obj.buyRate650) === 0 && Number(obj.purchaseRate650) > 0) {
-            obj.averageRate650 =
-              Number(obj.purchaseRate650)
-          }
-          else if (Number(obj.initial650) === 0 && Number(obj.buyRate650) > 0 && Number(obj.purchaseRate650) === 0) {
-            obj.averageRate650 =
-              Number(obj.buyRate650)
-          }
-          else if (Number(obj.initial650) > 0 && Number(obj.buyRate650) > 0 && Number(obj.purchaseRate650) === 0) {
-            obj.averageRate650 =
-              (Number(obj.initial650) +
-                Number(obj.buyRate650)) /
-              2
-          }
-          else if (Number(obj.initial650) > 0 && Number(obj.buyRate650) === 0 && Number(obj.purchaseRate650) > 0) {
-            obj.averageRate650 =
-              (Number(obj.initial650) +
-                Number(obj.purchaseRate650)) /
-              2
-          }
-          else {
-            obj.averageRate650 =
-              Number(obj.initial650)
-          }
+          const buyShop = Number(obj.incomingPurchase650) * Number(obj.buyRate650)
+          const buyOut = Number(obj.incomePurchase650) * Number(obj.purchaseRate650)
+          const totalStock = Number(obj.incomePurchase650) + Number(obj.incomingPurchase650) + Number(obj.startingStock650)
+
+          const stock = Number(obj.initial650) * Number(obj.startingStock650)
+          obj.averageRate650 = (buyShop + buyOut + stock) / totalStock
         }
         return obj;
       } else return returned;
@@ -404,42 +378,17 @@ const useFristFormAdd = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "purchaseRate550" ||
-          e.target.name === "buyRate550"
+          e.target.name === "buyRate550" ||
+          e.target.name === 'incomingPurchase550' ||
+          e.target.name === 'incomePurchase550'
         ) {
-          if (Number(obj.initial550) > 0 && Number(obj.buyRate550) > 0 && Number(obj.purchaseRate550) > 0) {
-            obj.averageRate550 =
-              (Number(obj.initial550) +
-                Number(obj.purchaseRate550) +
-                Number(obj.buyRate550)) /
-              3;
-          } else if (Number(obj.initial550) === 0 && Number(obj.buyRate550) > 0 && Number(obj.purchaseRate550) > 0) {
-            obj.averageRate550 =
-              (Number(obj.purchaseRate550) + Number(obj.buyRate550)) / 2;
-          }
-          else if (Number(obj.initial550) === 0 && Number(obj.buyRate550) === 0 && Number(obj.purchaseRate550) > 0) {
-            obj.averageRate550 =
-              Number(obj.purchaseRate550)
-          }
-          else if (Number(obj.initial550) === 0 && Number(obj.buyRate550) > 0 && Number(obj.purchaseRate550) === 0) {
-            obj.averageRate550 =
-              Number(obj.buyRate550)
-          }
-          else if (Number(obj.initial550) > 0 && Number(obj.buyRate550) > 0 && Number(obj.purchaseRate550) === 0) {
-            obj.averageRate550 =
-              (Number(obj.initial550) +
-                Number(obj.buyRate550)) /
-              2
-          }
-          else if (Number(obj.initial550) > 0 && Number(obj.buyRate550) === 0 && Number(obj.purchaseRate550) > 0) {
-            obj.averageRate550 =
-              (Number(obj.initial550) +
-                Number(obj.purchaseRate550)) /
-              2
-          }
-          else {
-            obj.averageRate550 =
-              Number(obj.initial550)
-          }
+          const buyShop = Number(obj.incomingPurchase550) * Number(obj.buyRate550)
+          const buyOut = Number(obj.incomePurchase550) * Number(obj.purchaseRate550)
+          const totalStock = Number(obj.incomePurchase550) + Number(obj.incomingPurchase550) + Number(obj.startingStock550)
+
+          const stock = Number(obj.initial550) * Number(obj.startingStock550)
+          obj.averageRate550 = (buyShop + buyOut + stock) / totalStock
+
         }
         return obj;
       } else return returned;
@@ -451,42 +400,17 @@ const useFristFormAdd = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "purchaseRate330" ||
-          e.target.name === "buyRate330"
+          e.target.name === "buyRate330" ||
+          e.target.name === 'incomingPurchase330' ||
+          e.target.name === 'incomePurchase330'
         ) {
-          if (Number(obj.initial330) > 0 && Number(obj.buyRate330) > 0 && Number(obj.purchaseRate330) > 0) {
-            obj.averageRate330 =
-              (Number(obj.initial330) +
-                Number(obj.purchaseRate330) +
-                Number(obj.buyRate330)) /
-              3;
-          } else if (Number(obj.initial330) === 0 && Number(obj.buyRate330) > 0 && Number(obj.purchaseRate330) > 0) {
-            obj.averageRate330 =
-              (Number(obj.purchaseRate330) + Number(obj.buyRate330)) / 2;
-          }
-          else if (Number(obj.initial330) === 0 && Number(obj.buyRate330) === 0 && Number(obj.purchaseRate330) > 0) {
-            obj.averageRate330 =
-              Number(obj.purchaseRate330)
-          }
-          else if (Number(obj.initial330) === 0 && Number(obj.buyRate330) > 0 && Number(obj.purchaseRate330) === 0) {
-            obj.averageRate330 =
-              Number(obj.buyRate330)
-          }
-          else if (Number(obj.initial330) > 0 && Number(obj.buyRate330) > 0 && Number(obj.purchaseRate330) === 0) {
-            obj.averageRate330 =
-              (Number(obj.initial330) +
-                Number(obj.buyRate330)) /
-              2
-          }
-          else if (Number(obj.initial330) > 0 && Number(obj.buyRate330) === 0 && Number(obj.purchaseRate330) > 0) {
-            obj.averageRate330 =
-              (Number(obj.initial330) +
-                Number(obj.purchaseRate330)) /
-              2
-          }
-          else {
-            obj.averageRate330 =
-              Number(obj.initial330)
-          }
+          const buyShop = Number(obj.incomingPurchase330) * Number(obj.buyRate330)
+          const buyOut = Number(obj.incomePurchase330) * Number(obj.purchaseRate330)
+          const totalStock = Number(obj.incomePurchase330) + Number(obj.incomingPurchase330) + Number(obj.startingStock330)
+
+          const stock = Number(obj.initial330) * Number(obj.startingStock330)
+          obj.averageRate330 = (buyShop + buyOut + stock) / totalStock
+
         }
         return obj;
       } else return returned;
@@ -1201,41 +1125,19 @@ else{
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
 
-        if (e.target.name === "purchaseRate" || e.target.name === "buyRate") {
-          if (Number(obj.initial) > 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) > 0) {
-            obj.averageRate =
-              (Number(obj.initial) +
-                Number(obj.purchaseRate) +
-                Number(obj.buyRate)) /
-              3;
-          } else if (Number(obj.initial) === 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) > 0) {
-            obj.averageRate =
-              (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
-          }
-          else if (Number(obj.initial) === 0 && Number(obj.buyRate) === 0 && Number(obj.purchaseRate) > 0) {
-            obj.averageRate =
-              Number(obj.purchaseRate)
-          }
-          else if (Number(obj.initial) === 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) === 0) {
-            obj.averageRate =
-              Number(obj.buyRate)
-          }
-          else if (Number(obj.initial) > 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) === 0) {
-            obj.averageRate =
-              (Number(obj.initial) +
-                Number(obj.buyRate)) /
-              2
-          }
-          else if (Number(obj.initial) > 0 && Number(obj.buyRate) === 0 && Number(obj.purchaseRate) > 0) {
-            obj.averageRate =
-              (Number(obj.initial) +
-                Number(obj.purchaseRate)) /
-              2
-          }
-          else {
-            obj.averageRate =
-              Number(obj.initial)
-          }
+        if (
+          e.target.name === "purchaseRate" ||
+          e.target.name === "buyRate" ||
+          e.target.name === 'incomingPurchase' ||
+          e.target.name === 'incomePurchase'
+        ) {
+          const buyShop = Number(obj.incomingPurchase) * Number(obj.buyRate)
+          const buyOut = Number(obj.incomePurchase) * Number(obj.purchaseRate)
+          const totalStock = Number(obj.incomePurchase) + Number(obj.incomingPurchase) + Number(obj.startingStock)
+
+          const stock = Number(obj.initial) * Number(obj.startingStock)
+          obj.averageRate = (buyShop + buyOut + stock) / totalStock
+
         }
         return obj;
       } else return returned;

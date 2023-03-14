@@ -10,6 +10,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 import useFrontDetailHooks from "../FrontDetailsHooks/useFrontDetailHooks";
 import RegularData from "../RegularData/RegularData";
 import jwtDecode from "jwt-decode";
+import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
 
 const FrontDetailsReport = () => {
   const front = useRef(null);
@@ -22,13 +23,16 @@ const FrontDetailsReport = () => {
     FrontPageExceptionalData,
   } = useFrontDetailHooks();
 
+  const { FrontPageData,
+    FrontPageDataLoaded } = useGetDailyReport()
+
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token')
 
-  if (isLoading) {
+  if (isLoading || FrontPageDataLoaded) {
     return <Loader></Loader>;
   }
 
@@ -38,14 +42,14 @@ const FrontDetailsReport = () => {
 
   const filteredRegularData = selectedDate
     ? FrontPageRegularData.filter((item) => {
-        const itemDate = new Date(moment(item.date).format());
-        const selected = selectedDate ? new Date(selectedDate) : null;
-        if (selected) {
-          return itemDate.toDateString() === selected.toDateString();
-        } else {
-          return true;
-        }
-      })
+      const itemDate = new Date(moment(item.date).format());
+      const selected = selectedDate ? new Date(selectedDate) : null;
+      if (selected) {
+        return itemDate.toDateString() === selected.toDateString();
+      } else {
+        return true;
+      }
+    })
     : FrontPageRegularData;
 
   let quan750 = [];
@@ -53,7 +57,6 @@ const FrontDetailsReport = () => {
   let quan180 = [];
 
   filteredRegularData.map((item) => {
-    console.log(item, "itemhere");
     item.pages.map((page) => {
       page.entries.map((entry) => {
         if (entry.quantityInML === 750) {
@@ -67,19 +70,32 @@ const FrontDetailsReport = () => {
     });
   });
 
-  console.log(FrontPageExceptionalData[0].salesmen, "salesman");
 
   const filteredExceptionalData = selectedDate
     ? FrontPageExceptionalData.filter((item) => {
-        const itemDate = new Date(moment(item.date).format());
-        const selected = selectedDate ? new Date(selectedDate) : null;
-        if (selected) {
-          return itemDate.toDateString() === selected.toDateString();
-        } else {
-          return true;
-        }
-      })
+      const itemDate = new Date(moment(item.date).format());
+      const selected = selectedDate ? new Date(selectedDate) : null;
+      if (selected) {
+        return itemDate.toDateString() === selected.toDateString();
+      } else {
+        return true;
+      }
+    })
     : FrontPageExceptionalData;
+
+  const frontPage = selectedDate
+    ? FrontPageData.filter((item) => {
+      const itemDate = new Date(moment(item.date).format());
+      const selected = selectedDate ? new Date(selectedDate) : null;
+      if (selected) {
+        return itemDate.toDateString() === selected.toDateString();
+      } else {
+        return true;
+      }
+    })
+    : FrontPageData;
+
+  console.log(frontPage, 'FrontPageDataLoaded')
 
   const openingStock = filteredExceptionalData.map((item) => {
     const { openingStock } = item;
@@ -121,6 +137,7 @@ const FrontDetailsReport = () => {
     const { sales } = item;
     return sales;
   });
+
 
   if (!filteredRegularData.length) {
     return (
@@ -221,12 +238,11 @@ const FrontDetailsReport = () => {
               <tr>
                 <td className="tg-baqh" colSpan={42}>
                   दुकान का नाम:- &nbsp;&nbsp;
-                  {jwtDecode(localStorage.getItem("token")).name}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
-                  का नाम :- {FrontPageExceptionalData[0].salesmen}
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक
-                  :-
-                  {moment(selectedDate).format("DD/MM/YYYY")}
+                  {jwtDecode(localStorage.getItem("token")).name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
+                  का नाम :- {frontPage[0]?.salesmen}
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक :-
+                  {moment(selectedDate).format('DD/MM/YYYY')}
                 </td>
               </tr>
             </thead>
@@ -579,7 +595,7 @@ const FrontDetailsReport = () => {
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
+                      Number(regularData.sellingRate?.$numberDecimal),
                     0
                   )}
                 </td>
@@ -588,7 +604,7 @@ const FrontDetailsReport = () => {
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
+                      Number(regularData.sellingRate?.$numberDecimal),
                     0
                   )}
                 </td>
@@ -597,34 +613,30 @@ const FrontDetailsReport = () => {
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
+                      Number(regularData.sellingRate?.$numberDecimal),
                     0
                   )}
                 </td>
 
-                <td>
-                  {quan180.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ) +
-                    quan375.reduce(
-                      (total, regularData) =>
-                        total +
-                        Number(regularData.sales) *
-                          Number(regularData.sellingRate?.$numberDecimal),
-                      0
-                    ) +
-                    quan750.reduce(
-                      (total, regularData) =>
-                        total +
-                        Number(regularData.sales) *
-                          Number(regularData.sellingRate?.$numberDecimal),
-                      0
-                    )}
-                </td>
+                <td>{quan180.reduce(
+                  (total, regularData) =>
+                    total +
+                    Number(regularData.sales) *
+                    Number(regularData.sellingRate?.$numberDecimal),
+                  0
+                ) + quan375.reduce(
+                  (total, regularData) =>
+                    total +
+                    Number(regularData.sales) *
+                    Number(regularData.sellingRate?.$numberDecimal),
+                  0
+                ) + quan750.reduce(
+                  (total, regularData) =>
+                    total +
+                    Number(regularData.sales) *
+                    Number(regularData.sellingRate?.$numberDecimal),
+                  0
+                )}</td>
               </tr>
             </tbody>
           </table>
@@ -659,7 +671,7 @@ const FrontDetailsReport = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredExceptionalData &&
+              {filteredExceptionalData && filteredExceptionalData.length > 0 &&
                 filteredExceptionalData.map((exceptionalData, index) => {
                   return (
                     <FristFormDetails
@@ -679,52 +691,52 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {openingStock.reduce((acc, item) => {
+                  {filteredExceptionalData && filteredExceptionalData.length > 0 && openingStock.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
                   })}
                 </td>
                 <td className="tg-0lax">
-                  {purchaseShop.reduce((acc, item) => {
+                  {filteredExceptionalData && filteredExceptionalData.length > 0 && purchaseShop.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
                   }, 0)}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {purchaseOutSide.reduce((acc, item) => {
+                  {filteredExceptionalData && filteredExceptionalData.length > 0 && purchaseOutSide.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
                   })}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {credits.reduce((acc, item) => {
+                  {filteredExceptionalData && filteredExceptionalData.length > 0 && credits.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
                   }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {send.reduce((acc, item) => {
+                  {filteredExceptionalData && filteredExceptionalData.length > 0 && send.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
                   }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {remaining.reduce((acc, item) => {
+                  {filteredExceptionalData && filteredExceptionalData.length > 0 && remaining.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
                   }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {closingStock.reduce((acc, item) => {
+                  {filteredExceptionalData && filteredExceptionalData.length > 0 && closingStock.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
                   }, 0)}
                 </td>
 
                 <td className="tg-0lax">
-                  {sales.reduce((acc, item) => {
+                  {filteredExceptionalData && filteredExceptionalData.length > 0 && sales.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
                   })}
@@ -732,16 +744,10 @@ const FrontDetailsReport = () => {
 
                 <td className="tg-0lax"></td>
 
-                <td className="tg-0lax">
-                  {filteredExceptionalData.reduce(
-                    (total, currentItem) =>
-                      (total =
-                        total +
-                        Number(currentItem.sales) *
-                          Number(currentItem.sellingRate.$numberDecimal)),
-                    0
-                  )}
-                </td>
+                <td className="tg-0lax">{filteredExceptionalData && filteredExceptionalData.length > 0 && filteredExceptionalData.reduce(
+                  (total, currentItem) => (total = total + (Number(currentItem.sales) * Number(currentItem.sellingRate.$numberDecimal))),
+                  0
+                )}</td>
               </tr>
             </tbody>
           </table>

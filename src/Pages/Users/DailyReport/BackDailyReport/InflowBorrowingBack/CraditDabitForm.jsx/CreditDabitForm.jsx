@@ -77,6 +77,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             }}
             renderInput={(params) => (
               <TextField
+                required
                 {...params}
                 className="dailyReportInput"
                 // value={item.partyName}
@@ -124,6 +125,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             }}
             renderInput={(params) => (
               <TextField
+                required
                 {...params}
                 className="dailyReportInput"
                 // value={item.partyName}
@@ -171,6 +173,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             }}
             renderInput={(params) => (
               <TextField
+                required
                 {...params}
                 className="dailyReportInput"
                 // value={item.partyName}
@@ -191,6 +194,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
         <div className="form-control">
           <select
             type="text"
+            required
             // className="select select-bordered"
             className="semiSmallInput"
             name="partyType"
@@ -210,6 +214,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
         <div className="form-control">
           <input
             type="number"
+            required
             className="SmallInput"
             name="amount"
             value={item.amount}
@@ -222,6 +227,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
         <div className="form-control">
           <input
             type="text"
+            required
             className="semiSmallInput"
             name="note"
             value={item.note}

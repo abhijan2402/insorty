@@ -20,7 +20,8 @@ const useFristFormSubmitAPIFront = () => {
 
   const submitFristFormHandler = async (e) => {
     // setIsLoadingSubmit(true);
-
+    e.preventDefault() 
+    
     const dataDetails650 = [];
     for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
       const element = firstFront[index];
