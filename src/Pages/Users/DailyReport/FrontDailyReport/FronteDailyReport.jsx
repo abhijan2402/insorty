@@ -71,7 +71,7 @@ const FronteDailyReport = () => {
           to="/user/dailyreport/back"
           className="btn btn-error text-white font-bold"
         >
-          Back
+            बीयर
         </Link>
 
         <Link

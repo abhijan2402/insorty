@@ -28,6 +28,7 @@ const useFristFormSubmitAPIFront = () => {
       dataDetails650.push({
         liquor: GetLiqId(element.liquorID, 750, "WINE"),
         brandName: element.brandName,
+        averageRate: element.averageRate750,
         quantityInML: 750,
         openingStock: element.startingStock750,
         purchaseShop: element.incomingPurchase750,
@@ -50,6 +51,7 @@ const useFristFormSubmitAPIFront = () => {
       dataDetails550.push({
         liquor: GetLiqId(element.liquorID, 180, "WINE"),
         brandName: element.brandName,
+        averageRate: element.averageRate180,
         quantityInML: 180,
         openingStock: element.startingStock180,
         purchaseShop: element.incomingPurchase180,
@@ -72,6 +74,7 @@ const useFristFormSubmitAPIFront = () => {
       dataDetails375.push({
         liquor: GetLiqId(element.liquorID, 375, "WINE"),
         brandName: element.brandName,
+        averageRate: element.averageRate330,
         quantityInML: 375,
         openingStock: element.startingStock330,
         purchaseShop: element.incomingPurchase330,
@@ -99,6 +102,7 @@ const useFristFormSubmitAPIFront = () => {
         ),
         brandName: element.brandName,
         quantityInML: element.selectStockVarient,
+        averageRate:element.averageRate,
         openingStock: element.startingStock,
         purchaseShop: element.incomePurchase,
         purchaseShopRate: element.buyRate,

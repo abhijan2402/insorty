@@ -105,7 +105,12 @@ const useFormulasFristFormFront = () => {
           (elem) => elem.quantityInML === 180
         );
 
+        console.log(quan750)
+        console.log(quan330)
+        console.log(quan180)
+
         if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock > 0) {
+          console.log('checked')
           const newFormData = { ...addOneFristForm };
           newFormData.brandName = liq[index].brandName;
           newFormData.liquorID = liq[index]._id;

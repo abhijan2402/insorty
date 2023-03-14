@@ -407,9 +407,9 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax" colSpan={2}>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total
                 </td>
-                <td className="tg-0lax"> 0</td>
-                <td className="tg-0lax"> 0</td>
-                <td className="tg-0lax"> 0</td>
+                <td className="tg-0lax"> </td>
+                <td className="tg-0lax"> </td>
+                <td className="tg-0lax"> </td>
 
                 <td className="tg-0lax">
                   {quan750.reduce(

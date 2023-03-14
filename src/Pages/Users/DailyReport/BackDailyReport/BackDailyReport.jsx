@@ -170,7 +170,7 @@ const BackDailyReport = () => {
               to="/user/dailyreport/front"
               className="btn btn-error text-white font-bold"
             >
-              Front
+                अंग्रेजी
             </Link>
             <Link
               to="/user/frontdailyreport/details"

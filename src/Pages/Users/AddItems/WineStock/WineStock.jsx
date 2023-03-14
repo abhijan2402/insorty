@@ -55,7 +55,7 @@ const WineStock = () => {
     item.sizes.map((brand) => {
       if (
         brand.quantityInML === 750 ||
-        brand.quantityInML === 330 ||
+        brand.quantityInML === 375 ||
         brand.quantityInML === 180
       ) {
         console.log(brand);
@@ -151,19 +151,19 @@ const WineStock = () => {
                 <div className="flex gap-2">
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">650ml</span>
+                      <span className="label-text">750ml</span>
                     </label>
                   </div>
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">550ml</span>
+                      <span className="label-text">375ml</span>
                     </label>
                   </div>
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">330ml</span>
+                      <span className="label-text">180ml</span>
                     </label>
                   </div>
                 </div>
@@ -172,19 +172,19 @@ const WineStock = () => {
                 <div className="flex gap-2">
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">650ml</span>
+                      <span className="label-text">750ml</span>
                     </label>
                   </div>
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">550ml</span>
+                      <span className="label-text">375ml</span>
                     </label>
                   </div>
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">330ml</span>
+                      <span className="label-text">180ml</span>
                     </label>
                   </div>
                 </div>
@@ -193,19 +193,19 @@ const WineStock = () => {
                 <div className="flex gap-2">
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">650ml</span>
+                      <span className="label-text">750ml</span>
                     </label>
                   </div>
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">550ml</span>
+                      <span className="label-text">375ml</span>
                     </label>
                   </div>
 
                   <div className="form-control">
                     <label className="label">
-                      <span className="label-text">330ml</span>
+                      <span className="label-text">180ml</span>
                     </label>
                   </div>
                 </div>
@@ -251,7 +251,7 @@ const WineStock = () => {
                       {brand.sizes.map((size) => {
                         if (
                           size.quantityInML !== 750 &&
-                          size.quantityInML !== 330 &&
+                          size.quantityInML !== 375 &&
                           size.quantityInML !== 180
                         ) {
                           return (

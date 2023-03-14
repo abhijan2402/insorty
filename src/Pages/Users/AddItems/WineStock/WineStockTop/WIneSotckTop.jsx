@@ -2,7 +2,7 @@ import React from "react";
 
 const WineStockTopData = ({ item, index, total }) => {
   const quan650 = item.sizes.find((element) => element.quantityInML === 750);
-  const quan550 = item.sizes.find((element) => element.quantityInML === 330);
+  const quan550 = item.sizes.find((element) => element.quantityInML === 375);
   const quan330 = item.sizes.find((element) => element.quantityInML === 180);
 
   const price650 =

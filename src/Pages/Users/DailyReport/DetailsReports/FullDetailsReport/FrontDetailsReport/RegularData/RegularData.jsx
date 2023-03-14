@@ -30,9 +30,15 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3 }) => {
             {/* Average Rate */}
             {/* show the 750 data  */}
 
-            <td className="tg-0lax">0</td>
-            <td className="tg-0lax">0</td>
-            <td className="tg-0lax">0</td>
+            <td className="tg-0lax">{quantityInML750.map((item, index) => {
+              return item?.averageRate?.$numberDecimal;
+            })}</td>
+            <td className="tg-0lax">{quantityInML375.map((item, index) => {
+              return item?.averageRate?.$numberDecimal;
+            })}</td>
+            <td className="tg-0lax">{quantityInML180.map((item, index) => {
+              return item?.averageRate?.$numberDecimal;
+            })}</td>
 
             {/* starting stock */}
             <td className="tg-0lax">

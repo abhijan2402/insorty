@@ -6,6 +6,7 @@ const FristFormDetails = ({ exceptionalData, index }) => {
     closingStock,
     openingStock,
     purchaseOutSide,
+    averageRate,
     purchaseOutSideRate,
     purchaseShop,
     purchaseShopRate,
@@ -26,9 +27,7 @@ const FristFormDetails = ({ exceptionalData, index }) => {
         <td>{brandName}</td>
         <td>{quantityInML}</td>
         <td>
-          {(Number(purchaseShopRate.$numberDecimal) +
-            Number(purchaseOutSideRate.$numberDecimal)) /
-            2}
+          {averageRate?.$numberDecimal}
         </td>
         <td>{openingStock}</td>
         <td>{purchaseShop}</td>
