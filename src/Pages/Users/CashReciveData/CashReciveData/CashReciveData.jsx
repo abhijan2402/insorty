@@ -14,6 +14,10 @@ const CashReciveData = () => {
     return <Loader></Loader>;
   }
 
+  if (!CashReciveData.length){
+    return <div>No data found</div>
+  }
+
   const cashReceive = CashReciveData?.map((items) => items);
 
   const cashReciveDatas = cashReceive.map((item) => {

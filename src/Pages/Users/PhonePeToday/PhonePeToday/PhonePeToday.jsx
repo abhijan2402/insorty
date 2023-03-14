@@ -15,7 +15,11 @@ const PhonePeToday = () => {
     return <Loader></Loader>;
   }
 
-  const filteredData = phonePayData.filter((item) => {
+  if (!phonePayData.length){
+    return <div>No data found</div>
+  }
+
+  const filteredData = phonePayData?.filter((item) => {
     let filterPass = true;
     const date = moment(item.date).format("DD/MM/YYYY");
 

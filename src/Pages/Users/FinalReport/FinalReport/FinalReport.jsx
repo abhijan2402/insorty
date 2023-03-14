@@ -28,6 +28,10 @@ const FinalReport = () => {
     return <Loader></Loader>;
   }
 
+  if(!data.length){
+    return <div>No Data Found</div>;
+  }
+
   const { monthlyFinalReport, borrowedBottles, extraBottles } = data;
 
   return (
@@ -37,7 +41,7 @@ const FinalReport = () => {
           {/* बचत व नकदी का हिसाब  */} फाइनल रिपोर्ट
         </h2>
         <h2 className="font-bold text-[1.5rem]">
-          {moment(monthlyFinalReport.date).format("MM/YYYY")}
+          {data.length  && moment(monthlyFinalReport?.date).format("MM/YYYY")}
         </h2>
         <div className="divider my-2"></div>
       </div>
@@ -68,7 +72,7 @@ const FinalReport = () => {
                 </thead>
 
                 <tbody>
-                  {borrowedBottles.map((borrowedBottle, index) => {
+                  {data.length && borrowedBottles.map((borrowedBottle, index) => {
                     return (
                       <BorrowedBottles
                         key={index}
@@ -103,7 +107,7 @@ const FinalReport = () => {
                 </thead>
 
                 <tbody>
-                  {extraBottles.map((StockExcess, index) => {
+                  {data.length && extraBottles.map((StockExcess, index) => {
                     return (
                       <FinalReportStockExcessForm
                         key={index}

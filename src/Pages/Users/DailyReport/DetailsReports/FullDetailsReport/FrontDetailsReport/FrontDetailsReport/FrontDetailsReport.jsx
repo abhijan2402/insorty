@@ -83,8 +83,8 @@ const FrontDetailsReport = () => {
     })
     : FrontPageExceptionalData;
 
-  const frontPage = selectedDate
-    ? FrontPageData.filter((item) => {
+  const frontPage = selectedDate && FrontPageData.length && FrontPageData.length>0
+    ?  FrontPageData?.filter((item) => {
       const itemDate = new Date(moment(item.date).format());
       const selected = selectedDate ? new Date(selectedDate) : null;
       if (selected) {
