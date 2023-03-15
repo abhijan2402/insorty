@@ -28,9 +28,9 @@ const FinalReport = () => {
     return <Loader></Loader>;
   }
 
-  if(!data.length){
-    return <div>No Data Found</div>;
-  }
+  // if(!data.length){
+  //   return <div>No Data Found</div>;
+  // }
 
   const { monthlyFinalReport, borrowedBottles, extraBottles } = data;
 
