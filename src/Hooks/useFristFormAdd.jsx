@@ -491,7 +491,12 @@ const useFristFormAdd = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "sumRemainder650" ||
-          e.target.name === "closingStock650"
+          e.target.name === "closingStock650" ||
+          e.target.name === "startingStock650" ||
+          e.target.name === "incomingPurchase650" ||
+          e.target.name === "inflowCredit650" ||
+          e.target.name === "incomePurchase650" ||
+          e.target.name === "sending650"
         ) {
           obj.sales650 =
             Number(obj.sumRemainder650) - Number(obj.closingStock650);
@@ -507,7 +512,12 @@ const useFristFormAdd = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "sumRemainder550" ||
-          e.target.name === "closingStock550"
+          e.target.name === "closingStock550" ||
+          e.target.name === "startingStock550" ||
+          e.target.name === "incomingPurchase550" ||
+          e.target.name === "inflowCredit550" ||
+          e.target.name === "incomePurchase550" ||
+          e.target.name === "sending550"
         ) {
           obj.sales550 =
             Number(obj.sumRemainder550) - Number(obj.closingStock550);
@@ -523,7 +533,12 @@ const useFristFormAdd = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "sumRemainder330" ||
-          e.target.name === "closingStock330"
+          e.target.name === "closingStock330" ||
+          e.target.name === "startingStock330" ||
+          e.target.name === "incomingPurchase330" ||
+          e.target.name === "inflowCredit330" ||
+          e.target.name === "incomePurchase330" ||
+          e.target.name === "sending330"
         ) {
           obj.sales330 =
             Number(obj.sumRemainder330) - Number(obj.closingStock330);
@@ -1171,7 +1186,12 @@ else{
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "sumRemainder" ||
-          e.target.name === "closingStock"
+          e.target.name === "closingStock" ||
+          e.target.name === "startingStock" ||
+          e.target.name === "incomingPurchase" ||
+          e.target.name === "inflowCredit" ||
+          e.target.name === "incomePurchase" ||
+          e.target.name === "sending"
         ) {
           obj.sales = Number(obj.sumRemainder) - Number(obj.closingStock);
         }

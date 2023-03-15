@@ -143,41 +143,19 @@ const useRmlAdd = () => {
     const handelavg = addRmlState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "purchaseRate" || e.target.name === "buyRate") {
-          if (Number(obj.initial) > 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) > 0) {
-            obj.averageRate =
-              (Number(obj.initial) +
-                Number(obj.purchaseRate) +
-                Number(obj.buyRate)) /
-              3;
-          } else if (Number(obj.initial) === 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) > 0) {
-            obj.averageRate =
-              (Number(obj.purchaseRate) + Number(obj.buyRate)) / 2;
-          }
-          else if (Number(obj.initial) === 0 && Number(obj.buyRate) === 0 && Number(obj.purchaseRate) > 0) {
-            obj.averageRate =
-              Number(obj.purchaseRate)
-          }
-          else if (Number(obj.initial) === 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) === 0) {
-            obj.averageRate =
-              Number(obj.buyRate)
-          }
-          else if (Number(obj.initial) > 0 && Number(obj.buyRate) > 0 && Number(obj.purchaseRate) === 0) {
-            obj.averageRate =
-              (Number(obj.initial) +
-                Number(obj.buyRate)) /
-              2
-          }
-          else if (Number(obj.initial) > 0 && Number(obj.buyRate) === 0 && Number(obj.purchaseRate) > 0) {
-            obj.averageRate =
-              (Number(obj.initial) +
-                Number(obj.purchaseRate)) /
-              2
-          }
-          else {
-            obj.averageRate =
-              Number(obj.initial)
-          }
+        if (
+          e.target.name === "purchaseRate" ||
+          e.target.name === "buyRate" ||
+          e.target.name === 'incomingPurchase' ||
+          e.target.name === 'incomePurchase'
+        ) {
+          const buyShop = Number(obj.incomingPurchase) * Number(obj.buyRate)
+          const buyOut = Number(obj.incomePurchase) * Number(obj.purchaseRate)
+          const totalStock = Number(obj.incomePurchase) + Number(obj.incomingPurchase) + Number(obj.openingStock)
+
+          const stock = Number(obj.initial) * Number(obj.openingStock)
+          obj.averageRate = (buyShop + buyOut + stock) / totalStock
+
         }
         return obj;
       } else return returned;
@@ -212,7 +190,12 @@ const useRmlAdd = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "sumRemainder" ||
-          e.target.name === "closingStock"
+          e.target.name === "closingStock" ||
+          e.target.name === "startingStock" ||
+          e.target.name === "incomingPurchase" ||
+          e.target.name === "inflowCredit" ||
+          e.target.name === "incomePurchase" ||
+          e.target.name === "sending"
         ) {
           obj.sales = Number(obj.sumRemainder) - Number(obj.closingStock);
         }

@@ -107,7 +107,8 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 className="smallinput"
-                required
+                required 
+                min={0}
                 value={addOneFirst.averageRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
                 name="averageRate750"
@@ -117,9 +118,10 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                // type="number"
+                type="number"
                 className="smallinput"
                 required
+                min={0}
                 value={addOneFirst.averageRate330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
                 name="averageRate330"
@@ -129,9 +131,10 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                // type="number"
+                type="number"
                 className="smallinput"
                 required
+                min={0}
                 value={addOneFirst.averageRate180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
                 name="averageRate180"
@@ -148,6 +151,8 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
+                disabled
                 name="startingStock750"
                 value={addOneFirst.startingStock750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -159,6 +164,8 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
+                disabled
                 name="startingStock330"
                 value={addOneFirst.startingStock330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -170,6 +177,8 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
+                disabled
                 name="startingStock180"
                 value={addOneFirst.startingStock180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -187,6 +196,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="incomingPurchase750"
                 value={addOneFirst.incomingPurchase750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -198,6 +208,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="incomingPurchase330"
                 value={addOneFirst.incomingPurchase330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -209,6 +220,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="incomingPurchase180"
                 value={addOneFirst.incomingPurchase180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -224,6 +236,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="buyRate750"
                 value={addOneFirst.buyRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -235,6 +248,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="buyRate330"
                 value={addOneFirst.buyRate330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -246,6 +260,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="buyRate180"
                 value={addOneFirst.buyRate180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -263,6 +278,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="incomePurchase750"
                 value={addOneFirst.incomePurchase750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -274,6 +290,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="incomePurchase330"
                 value={addOneFirst.incomePurchase330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -285,6 +302,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="incomePurchase180"
                 value={addOneFirst.incomePurchase180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -301,6 +319,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="purchaseRate750"
                 value={addOneFirst.purchaseRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -312,6 +331,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="purchaseRate330"
                 value={addOneFirst.purchaseRate330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -323,6 +343,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="purchaseRate180"
                 value={addOneFirst.purchaseRate180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -340,6 +361,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="inflowCredit750"
                 value={addOneFirst.inflowCredit750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -351,6 +373,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="inflowCredit330"
                 value={addOneFirst.inflowCredit330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -362,6 +385,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="inflowCredit180"
                 value={addOneFirst.inflowCredit180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -378,6 +402,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="sending750"
                 value={addOneFirst.sending750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -389,6 +414,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="sending330"
                 value={addOneFirst.sending330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -400,6 +426,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="sending180"
                 value={addOneFirst.sending180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -415,6 +442,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="sumRemainder750"
                 value={addOneFirst.sumRemainder750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -427,6 +455,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="sumRemainder330"
                 value={addOneFirst.sumRemainder330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -439,6 +468,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="sumRemainder180"
                 value={addOneFirst.sumRemainder180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -455,6 +485,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="closingStock750"
                 value={addOneFirst.closingStock750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -466,6 +497,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="closingStock330"
                 value={addOneFirst.closingStock330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -477,6 +509,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="closingStock180"
                 value={addOneFirst.closingStock180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -492,6 +525,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="sales750"
                 disabled
                 value={addOneFirst.sales750}
@@ -504,6 +538,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="sales330"
                 disabled
                 value={addOneFirst.sales330}
@@ -516,6 +551,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="sales180"
                 disabled
                 value={addOneFirst.sales180}
@@ -532,6 +568,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="mainRate750"
                 value={addOneFirst.mainRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -543,6 +580,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="mainRate330"
                 value={addOneFirst.mainRate330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -554,6 +592,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                min={0}
                 name="mainRate180"
                 value={addOneFirst.mainRate180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -569,6 +608,7 @@ const AddOneFristForm = ({
                 type="text"
                 className="smallinput"
                 required
+                min={0}
                 name="total750"
                 disabled
                 value={
@@ -583,6 +623,7 @@ const AddOneFristForm = ({
                 className="smallinput"
                 required
                 disabled
+                min={0}
                 name="total330"
                 value={
                   Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330)
@@ -596,6 +637,7 @@ const AddOneFristForm = ({
                 name="total180"
                 className="smallinput"
                 required
+                min={0}
                 disabled
                 value={
                   Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180)
@@ -615,6 +657,7 @@ const AddOneFristForm = ({
               type="text"
               className="smallinput"
                 required
+                min={0}
               name="grandTotal"
               disabled
               value={

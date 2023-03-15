@@ -215,6 +215,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <input
             type="number"
             required
+            min={0}
             className="SmallInput"
             name="amount"
             value={item.amount}

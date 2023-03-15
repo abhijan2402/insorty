@@ -97,16 +97,36 @@ const AddOneSecondFormBack = ({
             />
           </div>
         </td>
+      
         <td>
-          <div className="form-control">
-            <input
-              type="number"
-                required
+          <div className="form-control ">
+            <select
+              // className="select select-bordered"
+              className="semiSmallInput"
+              name="quantity"
               value={item.selectStockVarient}
               onChange={(e) => handelSeconFormOnChange(e, index)}
-              className="SmallInput"
-              name="selectStockVarient"
-            />
+              required
+            >
+              {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
+
+              <option selected value={750}>
+                750ml
+              </option>
+              <option value={700}>700ml</option>
+              <option value={650}>650ml</option>
+              <option value={550}>550ml</option>
+              <option value={500}>500ml</option>
+              <option value={375}>375ml</option>
+              <option value={330}>330ml</option>
+              <option value={275}>275ml</option>
+              <option value={250}>250ml</option>
+              <option value={200}>200ml</option>
+              <option value={180}>180ml</option>
+              <option value={90}>90ml</option>
+              <option value={60}>60ml</option>
+              <option value={50}>50ml</option>
+            </select>
           </div>
         </td>
         {/* ======== MRP Input ========= */}
@@ -115,6 +135,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               value={item.averageRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               className="SmallInput"
@@ -128,6 +149,8 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
+                disabled
               className="SmallInput"
               name="startingStock"
               value={item.startingStock}
@@ -140,6 +163,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="incomingPurchase"
               value={item.incomingPurchase}
@@ -153,6 +177,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="buyRate"
               value={item.buyRate}
@@ -168,6 +193,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="incomePurchase"
               value={item.incomePurchase}
@@ -182,6 +208,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="purchaseRate"
               value={item.purchaseRate}
@@ -196,6 +223,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="inflowCredit"
               value={item.inflowCredit}
@@ -209,6 +237,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="sending"
               value={item.sending}
@@ -222,6 +251,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="sumRemainder"
               value={item.sumRemainder}
@@ -236,6 +266,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="closingStock"
               value={item.closingStock}
@@ -249,6 +280,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="sales"
               value={item.sales}
@@ -262,7 +294,8 @@ const AddOneSecondFormBack = ({
           <div className="form-control">
             <input
               type="number"
-                required
+                
+                min={0}
               className="SmallInput"
               name="mainRate"
               value={item.mainRate}
@@ -276,6 +309,7 @@ const AddOneSecondFormBack = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="total"
               value={item.total}

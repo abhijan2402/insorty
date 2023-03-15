@@ -284,7 +284,7 @@ const useHandelSubmitBackAPI = () => {
       liquor: GetLiqId(element.liquorId, Number(element.quantity), null),
       party: element.partyId,
       number: element.theNumber,
-      total: element.total,
+      
       comment: element.reason,
     });
   }

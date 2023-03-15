@@ -245,27 +245,7 @@ const BackDailyReport = () => {
                           <div className="form-control"></div>
                         </td>
                         {/* ======== MRP Input ========= */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
+                       <td ></td>
                         {/* ======== प्रारम्भिक स्टॉक ========= */}
                         <td>
                           <div className="flex ">
@@ -513,6 +493,27 @@ const BackDailyReport = () => {
                           </div>
                         </td>
                         {/* ============= योग ================ */}
+                        <td>
+                          <div className="flex ">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
                         <td>
                           <div className="flex ">
                             <div className="form-control">
@@ -2058,8 +2059,8 @@ const BackDailyReport = () => {
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>संख्या</th>
                       <th>Quantity</th>
-                      <th>रेट</th>
-                      <th>योग</th>
+                      {/* <th>रेट</th>
+                      <th>योग</th> */}
                       <th>टिप्पणी</th>
                     </tr>
                   </thead>
@@ -2107,7 +2108,7 @@ const BackDailyReport = () => {
                         </div>
                       </td>
 
-                      <td>
+                      {/* <td>
                         <div className="form-control"></div>
                       </td>
 
@@ -2125,7 +2126,7 @@ const BackDailyReport = () => {
                             disabled
                           />
                         </div>
-                      </td>
+                      </td> */}
 
                       <td>
                         <div className="form-control"></div>

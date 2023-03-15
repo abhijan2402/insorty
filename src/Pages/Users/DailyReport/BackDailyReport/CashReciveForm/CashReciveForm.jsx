@@ -223,6 +223,7 @@ const CashReciveForm = ({
             type="number"
             required
             name="amount"
+            min={0}
             value={item.amount}
             onChange={(e) => onChangeCashRecive(e, index)}
             className="SmallInput"

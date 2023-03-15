@@ -170,6 +170,7 @@ const ShippingForm = ({
               className="SmallInput"
               name="theNumber"
               value={item.theNumber}
+              min={0}
               onChange={(e) => onChangeShipping(e, index)}
             />
           </div>

@@ -168,6 +168,7 @@ const InflowBorrowingRML = ({
               type="number"
               required
               className="SmallInput"
+              min={0}
               name="theNumber"
               value={item.theNumber}
               onChange={(e) => onChangeBorrowingRml(e, index)}
@@ -175,10 +176,12 @@ const InflowBorrowingRML = ({
           </div>
         </td>
 
-        <td>
+        {/* <td>
           <div className="form-control">
             <input
               type="number"
+
+              min={0}
               required
               className="SmallInput"
               name="rate"
@@ -194,13 +197,14 @@ const InflowBorrowingRML = ({
               type="number"
               required
               className="SmallInput"
+              min={0}
               name="total"
               value={item.total}
               disabled
               onChange={(e) => onChangeBorrowingRml(e, index)}
             />
           </div>
-        </td>
+        </td> */}
 
         <td>
           <div className="form-control">

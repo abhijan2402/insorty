@@ -112,6 +112,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallInput"
               name="ml"
               value={item.ml}
@@ -124,6 +125,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="averageRate"
               value={item.averageRate}
@@ -138,6 +140,8 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
+                disabled
               className="SmallInput"
               name="openingStock"
               value={item.openingStock}
@@ -152,6 +156,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="incomingPurchase"
               value={item.incomingPurchase}
@@ -166,6 +171,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="buyRate"
               value={item.buyRate}
@@ -180,6 +186,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="incomePurchase"
               value={item.incomePurchase}
@@ -194,6 +201,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="purchaseRate"
               value={item.purchaseRate}
@@ -207,6 +215,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="inflowCredit"
               value={item.inflowCredit}
@@ -220,6 +229,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="sending"
               value={item.sending}
@@ -233,6 +243,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="sumRemainder"
               value={item.sumRemainder}
@@ -247,6 +258,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="closingStock"
               value={item.closingStock}
@@ -260,6 +272,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="sales"
               value={item.sales}
@@ -274,6 +287,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="rate"
               value={item.rate}
@@ -287,6 +301,7 @@ const RmlFrom = ({
             <input
               type="number"
                 required
+                min={0}
               className="SmallInput"
               name="cost"
               value={item.cost}

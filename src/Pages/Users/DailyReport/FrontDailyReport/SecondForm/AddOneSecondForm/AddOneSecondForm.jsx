@@ -102,16 +102,36 @@ const AddOneSecondForm = ({
             />
           </div>
         </td>
+        
         <td>
-          <div>
-            <input
-              type="number"
-              required
+          <div className="form-control ">
+            <select
+              // className="select select-bordered"
+              className="semiSmallInput"
+              name="quantity"
               value={item.selectStockVarient}
               onChange={(e) => handelSeconFormOnChange(e, index)}
-              className="SmallInput"
-              name="selectStockVarient"
-            />
+              required
+            >
+              {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
+
+              <option selected value={750}>
+                750ml
+              </option>
+              <option value={700}>700ml</option>
+              <option value={650}>650ml</option>
+              <option value={550}>550ml</option>
+              <option value={500}>500ml</option>
+              <option value={375}>375ml</option>
+              <option value={330}>330ml</option>
+              <option value={275}>275ml</option>
+              <option value={250}>250ml</option>
+              <option value={200}>200ml</option>
+              <option value={180}>180ml</option>
+              <option value={90}>90ml</option>
+              <option value={60}>60ml</option>
+              <option value={50}>50ml</option>
+            </select>
           </div>
         </td>
         {/* ======== MRP Input ========= */}
@@ -120,6 +140,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               value={item.averageRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               className="smallinput"
@@ -133,6 +154,8 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
+                disabled
               className="smallinput"
               name="startingStock"
               value={item.startingStock}
@@ -145,6 +168,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="incomingPurchase"
               value={item.incomingPurchase}
@@ -158,6 +182,8 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
+                
               className="smallinput"
               name="buyRate"
               value={item.buyRate}
@@ -173,6 +199,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="incomePurchase"
               value={item.incomePurchase}
@@ -187,6 +214,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="purchaseRate"
               value={item.purchaseRate}
@@ -201,6 +229,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="inflowCredit"
               value={item.inflowCredit}
@@ -214,6 +243,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="sending"
               value={item.sending}
@@ -227,6 +257,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="sumRemainder"
               value={item.sumRemainder}
@@ -241,6 +272,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="closingStock"
               value={item.closingStock}
@@ -254,6 +286,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="sales"
               value={item.sales}
@@ -268,6 +301,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="mainRate"
               value={item.mainRate}
@@ -281,6 +315,7 @@ const AddOneSecondForm = ({
             <input
               type="number"
                 required
+                min={0}
               className="smallinput"
               name="total"
               value={item.total}

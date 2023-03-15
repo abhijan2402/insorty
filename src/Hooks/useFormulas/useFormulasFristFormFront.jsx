@@ -465,7 +465,12 @@ const useFormulasFristFormFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "sumRemainder750" ||
-          e.target.name === "closingStock750"
+          e.target.name === "closingStock750" || 
+          e.target.name === "startingStock180" ||
+          e.target.name === "incomingPurchase180" ||
+          e.target.name === "inflowCredit180" ||
+          e.target.name === "incomePurchase180" ||
+          e.target.name === "sending180"
         ) {
           obj.sales750 =
             Number(obj.sumRemainder750) - Number(obj.closingStock750);
@@ -481,7 +486,12 @@ const useFormulasFristFormFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "sumRemainder330" ||
-          e.target.name === "closingStock330"
+          e.target.name === "closingStock330" ||
+          e.target.name === "startingStock330" ||
+          e.target.name === "incomingPurchase330" ||
+          e.target.name === "inflowCredit330" ||
+          e.target.name === "incomePurchase330" ||
+          e.target.name === "sending330"
         ) {
           obj.sales330 =
             Number(obj.sumRemainder180) - Number(obj.closingStock330);
@@ -497,7 +507,12 @@ const useFormulasFristFormFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "sumRemainder180" ||
-          e.target.name === "closingStock180"
+          e.target.name === "closingStock180" ||
+          e.target.name === "startingStock180" ||
+          e.target.name === "incomingPurchase180" ||
+          e.target.name === "inflowCredit180" ||
+          e.target.name === "incomePurchase180" ||
+          e.target.name === "sending180"
         ) {
           obj.sales180 =
             Number(obj.sumRemainder180) - Number(obj.closingStock180);
@@ -837,39 +852,3 @@ const useFormulasFristFormFront = () => {
 export default useFormulasFristFormFront;
 
 
-// <------------Maybe needed in future --------------->
-
-// if (Number(obj.initial750) > 0 && Number(obj.buyRate750) > 0 && Number(obj.purchaseRate750) > 0) {
-//   obj.averageRate750 =
-//     (Number(obj.initial750) +
-//       Number(obj.purchaseRate750) +
-//       Number(obj.buyRate750)) /
-//     3;
-// } else if (Number(obj.initial750) === 0 && Number(obj.buyRate750) > 0 && Number(obj.purchaseRate750) > 0) {
-//   obj.averageRate750 =
-//     (Number(obj.purchaseRate750) + Number(obj.buyRate750)) / 2;
-// }
-// else if (Number(obj.initial750) === 0 && Number(obj.buyRate750) === 0 && Number(obj.purchaseRate750) > 0) {
-//   obj.averageRate750 =
-//     Number(obj.purchaseRate750)
-// }
-// else if (Number(obj.initial750) === 0 && Number(obj.buyRate750) > 0 && Number(obj.purchaseRate750) === 0) {
-//   obj.averageRate750 =
-//     Number(obj.buyRate750)
-// }
-// else if (Number(obj.initial750) > 0 && Number(obj.buyRate750) > 0 && Number(obj.purchaseRate750) === 0) {
-//   obj.averageRate750 =
-//     (Number(obj.initial750) +
-//       Number(obj.buyRate750)) /
-//     2
-// }
-// else if (Number(obj.initial750) > 0 && Number(obj.buyRate750) === 0 && Number(obj.purchaseRate750) > 0) {
-//   obj.averageRate750 =
-//     (Number(obj.initial750) +
-//       Number(obj.purchaseRate750)) /
-//     2
-// }
-// else {
-//   obj.averageRate750 =
-//     Number(obj.initial750)
-// }

@@ -104,6 +104,8 @@ const FinalReport = ({
                   type="number"
                   className="commonSmallForm"
                   name="intoAccountState"
+                  required
+                  min={0}
                   value={intoAccountState}
                   onChange={(e) => setintoAccountState(e.target.value)}
                 />
@@ -139,6 +141,8 @@ const FinalReport = ({
               <td>आज भुगतान</td>
               <td><input
                 type="number"
+                required
+                min={0}
                 className="commonSmallForm"
                 name="intoAccountState"
                 value={paidDues}

@@ -176,6 +176,7 @@ const PurchaseOutSideFrom = ({
           <div className="form-control ">
             <input
               type="number"
+                min={0}
                 required
               className="SmallInput"
               name="theNumber"
@@ -190,6 +191,7 @@ const PurchaseOutSideFrom = ({
           <div className="form-control">
             <input
               type="number"
+                min={0}
                 required
               className="SmallInput"
               name="rate"
@@ -203,6 +205,7 @@ const PurchaseOutSideFrom = ({
           <div className="form-control">
             <input
               type="number"
+                min={0}
                 required
               className="SmallInput"
               name="total"
