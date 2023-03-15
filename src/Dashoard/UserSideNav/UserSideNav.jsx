@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { FaPowerOff } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const SideNav = () => {
   let activeStyle = {
@@ -11,6 +12,19 @@ const SideNav = () => {
     color: "white",
     padding: "6px",
     borderRadius: "6px",
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location = "/";
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Logout Successfully",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
   };
 
   return (
@@ -41,7 +55,7 @@ const SideNav = () => {
           <hr className="mt-4 mb-2" />
         </div>
 
-        <div className="flex flex-col justify-between flex-1 mt-34 md:mt-[9rem]">
+        <div className="flex flex-col justify-between flex-1 mt-[12rem] md:mt-[9rem]">
           <nav>
             <li className="my-4">
               <NavLink
@@ -84,7 +98,7 @@ const SideNav = () => {
                 to="/user/payments"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Payments Shop / दुकान पेमेंट
+                दुकान पेमेंट
               </NavLink>
             </li>
 
@@ -148,7 +162,7 @@ const SideNav = () => {
                 to="/user/maininvestment"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Main Investment / मुख्य इन्वेस्ट
+                मुख्य इन्वेस्ट
               </NavLink>
             </li>
 
@@ -196,10 +210,13 @@ const SideNav = () => {
               </NavLink>
             </li>
 
-            <Link className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 ">
+            <button
+              onClick={() => logout({ returnTo: window.location.origin })}
+              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            >
               <FaPowerOff />
               <span className="mx-4 font-medium">Logout</span>
-            </Link>
+            </button>
           </nav>
         </div>
       </div>
