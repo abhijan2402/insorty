@@ -3,6 +3,7 @@ import Logo from "../../images/insorty.png";
 import { Link, NavLink } from "react-router-dom";
 import { FaPowerOff } from "react-icons/fa";
 import jwtDecode from "jwt-decode";
+import Swal from "sweetalert2";
 
 const SubAdminSideNav = () => {
   let activeStyle = {
@@ -11,6 +12,20 @@ const SubAdminSideNav = () => {
     padding: "6px",
     borderRadius: "6px",
   };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    window.location = "/";
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Logout Successfully",
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+    });
+  };
+
 
   return (
     <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r sidenav">
@@ -39,7 +54,7 @@ const SubAdminSideNav = () => {
         <hr className="mt-4 mb-2" />
       </div>
 
-      <div className="flex flex-col justify-between mt-32 flex-1 md:mt-28">
+      <div className="flex flex-col justify-between mt-[12rem] flex-1 md:mt-28">
         <nav>
           <li className="my-4">
             <NavLink
@@ -59,13 +74,13 @@ const SubAdminSideNav = () => {
             </NavLink>
           </li>
 
-          <Link
-            className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
-            to="/"
-          >
-            <FaPowerOff />
-            <span className="mx-4 font-medium">Logout</span>
-          </Link>
+          <button
+              onClick={() => logout({ returnTo: window.location.origin })}
+              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            >
+              <FaPowerOff />
+              <span className="mx-4 font-medium">Logout</span>
+            </button>
         </nav>
       </div>
     </div>
