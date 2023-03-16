@@ -20,7 +20,7 @@ const WineBill = () => {
             Self Bill
           </Link>
 
-          <Link className="commonBtn " to="user/outbill">
+          <Link className="commonBtn " to="/user/outbill">
             Out Bill
           </Link>
         </div>

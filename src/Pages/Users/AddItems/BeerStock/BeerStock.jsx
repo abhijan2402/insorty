@@ -59,7 +59,7 @@ const BeerStock = () => {
         <div className="flex gap-4 items-center">
           <h2 className="font-bold text-[1.5rem] text-center"> बीयर</h2>
           <Link to="/user/winestock" className="commonBtn ">
-            Wine Stock
+          अंग्रेजी
           </Link>
           <Link className="commonBtn" to="/user/rmlstock">
             देशी
