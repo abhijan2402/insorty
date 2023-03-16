@@ -1,17 +1,29 @@
 import React from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const SalaryModal = ({
   salaryState,
   handelSelaryOnChange,
   handelSalaryOnSubmit,
   isLoading,
+  slaryDate,
+  setSalaryDate,
+  paymentDate,
+  setPaymentDate,
 }) => {
   return (
     <>
       <input type="checkbox" id="addData" className="modal-toggle" />
 
       <div className="modal">
-        <div className="modal-box w-2/3 max-w-5xl">
+        <div className="modal-box w-2/3 max-w-5xl relativ">
+          <label
+            htmlFor="addData"
+            className="btn btn-sm btn-circle absolute right-2 top-2"
+          >
+            ✕
+          </label>
           <h3 className="font-bold text-lg text-center">Add New</h3>
 
           <div>
@@ -30,6 +42,15 @@ const SalaryModal = ({
                 </label>
 
                 <div className="input-group">
+                  <DatePicker
+                    name="salary_monthYear"
+                    selected={slaryDate}
+                    onChange={(date) => setSalaryDate(date)}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText={"dd/MM/yyyy"}
+                    className="inputBox"
+                  />
+                  {/* 
                   <input
                     type="date"
                     name="salary_monthYear"
@@ -40,7 +61,7 @@ const SalaryModal = ({
                       border: "1px solid #000",
                       borderRadius: "5px",
                     }}
-                  />
+                  /> */}
                 </div>
               </div>
 
@@ -78,6 +99,16 @@ const SalaryModal = ({
                 </label>
 
                 <div>
+                  <DatePicker
+                    name="payment_date"
+                    selected={paymentDate}
+                    onChange={(date) => setPaymentDate(date)}
+                    dateFormat="dd/MM/yyyy"
+                    placeholderText={"dd/MM/yyyy"}
+                    className="inputBox"
+                  />
+                  {/* 
+
                   <input
                     type="date"
                     name="payment_date"
@@ -88,7 +119,7 @@ const SalaryModal = ({
                       border: "1px solid #000",
                       borderRadius: "5px",
                     }}
-                  />
+                  /> */}
                 </div>
               </div>
               <div className="form-control">
@@ -173,12 +204,6 @@ const SalaryModal = ({
                 )}
               </div>
             </form>{" "}
-          </div>
-
-          <div className="modal-action">
-            <label htmlFor="addData" className="btn">
-              Exit
-            </label>
           </div>
         </div>
       </div>

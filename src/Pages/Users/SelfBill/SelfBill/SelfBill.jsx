@@ -89,7 +89,7 @@ const SelfBill = () => {
           <h2 className="font-bold md:text-[1.5rem] text-center">
             दुकान बिल का फोर्मेट
           </h2>
-          <Link className="commonBtn " to="user/outbill">
+          <Link className="commonBtn " to="/user/outbill">
             Out Bill
           </Link>
         </div>

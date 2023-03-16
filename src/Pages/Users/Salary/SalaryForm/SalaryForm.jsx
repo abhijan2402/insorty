@@ -43,17 +43,20 @@ const SalaryForm = () => {
     },
   });
 
+  const [slaryDate , setSalaryDate] = useState("");
+  const [paymentDate , setPaymentDate] = useState("");
+
   const handelSalaryOnSubmit = async () => {
     const handelSalary = salaryState;
 
     const salaryData = [
       {
         salary: {
-          month: handelSalary?.salary_monthYear,
+          month: slaryDate,
           price: handelSalary?.salary_price,
         },
         payment: {
-          date: handelSalary?.payment_date,
+          date: paymentDate,
           price: handelSalary?.payment_price,
         },
         comment: handelSalary?.reason,
@@ -298,6 +301,10 @@ const SalaryForm = () => {
       <SalaryModal
         salaryState={salaryState}
         isLoading={isLoading}
+        slaryDate = {slaryDate}
+        setSalaryDate={setSalaryDate}
+        paymentDate ={paymentDate}
+        setPaymentDate={setPaymentDate}
         handelSalaryOnSubmit={handelSalaryOnSubmit}
         handelSelaryOnChange={handelSelaryOnChange}
       ></SalaryModal>
