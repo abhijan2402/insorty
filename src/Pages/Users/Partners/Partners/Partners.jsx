@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 import PartnerForm from "../PartnerForm/PartnerForm";
@@ -8,11 +8,17 @@ import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import { Link } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 
 const Partners = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
+  
 
   const handelPartnerSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +30,9 @@ const Partners = () => {
       remaining: "",
     };
   };
+
+ 
+
 
   const { data: partnarData, isLoading } = useQuery({
     queryKey: ["partnarData"],
@@ -55,7 +64,6 @@ const Partners = () => {
     return filterPass;
   });
 
-  console.log(partnarData, "+++++");
 
   return (
     <section className="py-4">
@@ -65,8 +73,16 @@ const Partners = () => {
           <Link className="commonBtn" to="/user/sendFormat">
             All Partnes
           </Link>
+          <button
+            className="my-4 btn btn-error text-white font-bold"
+            onClick={handlePrint}
+          >
+            PRINT
+          </button>
         </div>
 
+    <div ref={front}>
+    <div>
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">
@@ -184,6 +200,9 @@ const Partners = () => {
             </label>
           </div> */}
         </div>
+      </div>
+
+      </div>
       </div>
       {/* ************************ all sealy data************** */}
 

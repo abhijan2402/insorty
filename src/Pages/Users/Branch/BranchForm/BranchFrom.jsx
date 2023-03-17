@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import BranchFormData from "./BranchFormData/BranchFormData";
@@ -6,12 +6,17 @@ import { useQuery } from "@tanstack/react-query";
 import { Loader } from "react-bootstrap-typeahead";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
+import { useReactToPrint } from "react-to-print";
 
 const BranchFrom = () => {
   const token = localStorage.getItem("token");
   const branchResponse = useLoaderData();
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   const branchData = branchResponse?.data;
 
@@ -39,10 +44,17 @@ const BranchFrom = () => {
   }
 
   return (
-    <section className="p-4">
+    <>
+      <button
+        className="my-4 btn btn-error text-white font-bold"
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
+    <section ref={front} className="p-4">
       <div className="title">
         <h2 className="font-bold md:text-[1.5rem] text-center">
-          Branch Name / ब्रांच नाम
+          Branch Name / ब्रांच नाम:-
           <span className="titleStyle"> {branchData.branchName}</span>
         </h2>
 
@@ -137,6 +149,7 @@ const BranchFrom = () => {
         </form>{" "}
       </div>
     </section>
+    </>
   );
 };
 

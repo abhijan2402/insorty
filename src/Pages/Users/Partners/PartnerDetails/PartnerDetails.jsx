@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useRef} from "react";
 import { useParams } from "react-router-dom";
 import usePartyNames from "../../../../Hooks/usePartyNames";
 import Loader from "../../../../Components/Loader/Loader";
+import { useReactToPrint } from "react-to-print";
+
 
 const PartnerDetails = () => {
   const { partners, partnerLoaded } = usePartyNames();
@@ -13,6 +15,13 @@ const PartnerDetails = () => {
     }
   });
 
+  const front = useRef(null);
+
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
+
+
   const partnerTransactionsArray = partner?.transactions;
 
   const deposite = partnerTransactionsArray?.map((item) => item.deposit);
@@ -22,16 +31,21 @@ const PartnerDetails = () => {
   const totalDebitData = debit?.reduce((a, b) => a + b, 0);
   const totalRemainingData = totalDepositeData - totalDebitData;
 
-  console.log(totalDepositeData, "totalDepositeData");
-  console.log(totalDebitData, "totalDebitData");
-  console.log(totalRemainingData, "totalRemainingData");
+  
 
   if (partnerLoaded) {
     return <Loader></Loader>;
   }
 
   return (
-    <section>
+    <>
+      <button
+        className="my-4 btn btn-error text-white font-bold"
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
+    <section ref={front}>
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">{partner?.name}</h2>
         <div className="divider my-2"></div>
@@ -42,7 +56,7 @@ const PartnerDetails = () => {
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                <th>Partner Name/पार्टनर नाम</th>
+                {/* <th>Partner Name/पार्टनर नाम</th> */}
                 <th>Debit/ नामे </th>
                 <th>Deposit / जमा</th>
                 <th>Remaining / शेष</th>
@@ -58,7 +72,7 @@ const PartnerDetails = () => {
                 return (
                   <tr key={index}>
                     <th>{index + 1}</th>
-                    <td>{partnerName?.name}</td>
+                    {/* <td>{partnerName?.name}</td> */}
                     <td>{debit}</td>
                     <td>{deposit}</td>
                     <td>{remaining}</td>
@@ -68,7 +82,7 @@ const PartnerDetails = () => {
 
               <tr>
                 <th>Total</th>
-                <td></td>
+                {/* <td></td> */}
                 <td>{totalDebitData}</td>
                 <td>{totalDepositeData}</td>
                 <td>{totalRemainingData}</td>
@@ -78,6 +92,7 @@ const PartnerDetails = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

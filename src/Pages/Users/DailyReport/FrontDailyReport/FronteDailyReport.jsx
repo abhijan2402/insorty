@@ -12,6 +12,10 @@ import DatePicker from "react-datepicker";
 
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
+  const first = localStorage.getItem("firstFrontTotal") ? localStorage.getItem("firstFrontTotal") : 0;
+  const second = localStorage.getItem("mlFormTotal") ? localStorage.getItem("mlFormTotal") : 0;
+ 
+
 
   const { salesMan, setSalesMan, drDate, setDrDate } =
     useContext(DataContextApi);
@@ -1311,6 +1315,10 @@ const FronteDailyReport = () => {
               </div>
             </div>
           </>
+        </div>
+
+          <div className="my-8  leading-6">
+            <h4 className="text-[#AA237A] font-bold ">Total: {Number(first)+ Number(second)}</h4>
         </div>
 
         <div className="flex my-6 ">
