@@ -6,7 +6,7 @@ const MargePartners = () => {
     <section className="p-4">
       <div>
         <div className="title">
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center justify-center">
             <h2 className="font-bold md:text-[1.5rem] text-center">Partners</h2>
           </div>
           <div className="divider my-2"></div>

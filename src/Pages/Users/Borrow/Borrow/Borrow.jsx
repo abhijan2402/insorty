@@ -37,7 +37,7 @@ const Borrow = () => {
       <div>
         <form action="">
           <div className="overflow-x-auto">
-            <table className="table ">
+            <table className="table w-full">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>

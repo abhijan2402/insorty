@@ -212,7 +212,7 @@ const SideNav = () => {
 
             <button
               onClick={() => logout({ returnTo: window.location.origin })}
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+              className="commonBtn flex justify-center items-center"
             >
               <FaPowerOff />
               <span className="mx-4 font-medium">Logout</span>

@@ -3,14 +3,15 @@ import Loader from "../../../../../../Components/Loader/Loader";
 import usePartyNames from "../../../../../../Hooks/usePartyNames";
 import { Autocomplete, TextField } from "@mui/material";
 
-
 const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
-  const { parties,
+  const {
+    parties,
     partyLoaded,
     partners,
     partnerLoaded,
     branches,
-    branchLoaded } = usePartyNames()
+    branchLoaded,
+  } = usePartyNames();
 
   if (partyLoaded || partnerLoaded || branchLoaded) {
     return (
@@ -26,8 +27,12 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
       <td>
         <div className="form-control">
           <Autocomplete
-            options={parties.length > 0 ? parties : ['no options']}
-            getOptionLabel={(option) => option ? option.partyName : ""}
+            size="small"
+            style={{
+              width: "24rem",
+            }}
+            options={parties.length > 0 ? parties : ["no options"]}
+            getOptionLabel={(option) => (option ? option.partyName : "")}
             // item.brandName = event.target.outerText;
             // // eslint-disable-next-line array-callback-return
             // const liq = liquors.filter((liq) => {
@@ -37,18 +42,18 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
             // });
             // item.liquorID = liq._id
             // handelFristFormOnChange(event, index);
-            className={item.partyType === "PARTY" ? '' : 'displayHidden'}
+            className={item.partyType === "PARTY" ? "" : "displayHidden"}
             onChange={(event, value) => {
               if (value) {
-                item.partyName = value.partyName
-                item.partyId = value._id
+                item.partyName = value.partyName;
+                item.partyId = value._id;
               } else {
-                item.partyName = ""
-                item.partyId = ""
+                item.partyName = "";
+                item.partyId = "";
               }
 
               // onChangePurchesOutSide(event, index)
-              console.log(item)
+              console.log(item);
             }}
             renderInput={(params) => (
               <TextField
@@ -67,10 +72,13 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
           />
 
           <Autocomplete
-            options={partners.length > 0 ? partners : ['no options']}
-            getOptionLabel={(option) => option ? option.name : ""}
-            className={item.partyType === "PARTNER" ? '' : 'displayHidden'}
-                
+            size="small"
+            style={{
+              width: "24rem",
+            }}
+            options={partners.length > 0 ? partners : ["no options"]}
+            getOptionLabel={(option) => (option ? option.name : "")}
+            className={item.partyType === "PARTNER" ? "" : "displayHidden"}
             // item.brandName = event.target.outerText;
             // // eslint-disable-next-line array-callback-return
             // const liq = liquors.filter((liq) => {
@@ -83,15 +91,15 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
 
             onChange={(event, value) => {
               if (value) {
-                item.partyName = value.name
-                item.partyId = value._id
+                item.partyName = value.name;
+                item.partyId = value._id;
               } else {
-                item.partyName = ""
-                item.partyId = ""
+                item.partyName = "";
+                item.partyId = "";
               }
 
               // onChangePurchesOutSide(event, index)
-              console.log(item)
+              console.log(item);
             }}
             renderInput={(params) => (
               <TextField
@@ -110,10 +118,13 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
           />
 
           <Autocomplete
-            options={branches.length > 0 ? branches : ['no options']}
-            getOptionLabel={(option) => option ? option.branchName : ""}
-            className={item.partyType === "BRANCH" ? '' : 'displayHidden'}
-
+            size="small"
+            style={{
+              width: "24rem",
+            }}
+            options={branches.length > 0 ? branches : ["no options"]}
+            getOptionLabel={(option) => (option ? option.branchName : "")}
+            className={item.partyType === "BRANCH" ? "" : "displayHidden"}
             // item.brandName = event.target.outerText;
             // // eslint-disable-next-line array-callback-return
             // const liq = liquors.filter((liq) => {
@@ -126,15 +137,15 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit }) => {
 
             onChange={(event, value) => {
               if (value) {
-                item.partyName = value.branchName
-                item.partyId = value._id
+                item.partyName = value.branchName;
+                item.partyId = value._id;
               } else {
-                item.partyName = ""
-                item.partyId = ""
+                item.partyName = "";
+                item.partyId = "";
               }
 
               // onChangePurchesOutSide(event, index)
-              console.log(branches)
+              console.log(branches);
             }}
             renderInput={(params) => (
               <TextField

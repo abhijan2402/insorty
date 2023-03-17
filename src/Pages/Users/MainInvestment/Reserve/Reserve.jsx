@@ -47,7 +47,7 @@ const Reserve = ({ reserve, index, reserveAmountOnChange, name }) => {
             onChange={(e) => {
               reserveAmountOnChange(name, e.target.value, index, "price");
             }}
-            className="semiSmallInput"
+            className="dailyReportInput"
           />
         </td>
       </tr>

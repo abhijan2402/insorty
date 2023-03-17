@@ -57,7 +57,7 @@ const AddOneSecondFormBack = ({
             <Autocomplete
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               options={
                 liquors.length > 0
@@ -138,7 +138,7 @@ const AddOneSecondFormBack = ({
                 min={0}
               value={item.averageRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
-              className="SmallInput"
+              className="SmallInput show9Chereter"
               name="averageRate"
               disabled
             />
@@ -178,7 +178,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="SmallInput show9Chereter"
               name="buyRate"
               value={item.buyRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -209,7 +209,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="SmallInput show9Chereter"
               name="purchaseRate"
               value={item.purchaseRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -310,7 +310,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="SmallInput show9Chereter"
               name="total"
               value={item.total}
               onChange={(e) => handelSeconFormOnChange(e, index)}

@@ -37,7 +37,7 @@ const FinalReport = () => {
   return (
     <section className="py-4 px-4">
       <div className="title">
-        <h2 className="font-bold text-[1.5rem] titleStyle">
+        <h2 className="font-bold text-[1.5rem] text-center titleStyle">
           {/* बचत व नकदी का हिसाब  */} फाइनल रिपोर्ट
         </h2>
         <h2 className="font-bold text-[1.5rem]">
@@ -106,7 +106,7 @@ const FinalReport = () => {
                   </tr>
                 </thead>
 
-                <tbody>
+                <tbody className="finalTableBody">
                   {data.length && extraBottles.map((StockExcess, index) => {
                     return (
                       <FinalReportStockExcessForm

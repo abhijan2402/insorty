@@ -17,7 +17,7 @@ const RmlFrom = ({
   const { setAddRmlState } = useRmlAdd();
   // const { liquors } = useContext(DataContextApi);
   let rmlData = addRmlState;
-  const { brands, brandsLoaded, checkLiquor, liquors } = useLiquors();
+  const { brandsLoaded, liquors } = useLiquors();
 
   if (brandsLoaded) {
     return (
@@ -30,7 +30,7 @@ const RmlFrom = ({
   return (
     <>
       <tr>
-        <th>{serialNo}</th>
+        <th >{serialNo}</th>
         <th
           className="cross"
           onClick={() => {
@@ -62,7 +62,7 @@ const RmlFrom = ({
             <Autocomplete
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               options={
                 liquors.length > 0

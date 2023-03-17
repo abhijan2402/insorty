@@ -11,7 +11,7 @@ const ShippingForm = ({
   item,
   handleRemoveFieldsShipping,
 }) => {
-  const { brands, brandsLoaded, checkLiquor, liquors } = useLiquors();
+  const {  brandsLoaded,  liquors } = useLiquors();
 
   const { parties, partyLoaded } = usePartyNames();
 
@@ -57,7 +57,7 @@ const ShippingForm = ({
             <Autocomplete
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               options={parties.length > 0 ? parties : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
@@ -95,7 +95,7 @@ const ShippingForm = ({
             <Autocomplete
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               options={liquors}
               getOptionLabel={(option) => (option ? option.brandName : "")}

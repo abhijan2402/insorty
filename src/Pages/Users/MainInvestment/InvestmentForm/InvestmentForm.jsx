@@ -17,7 +17,7 @@ const InvestmentForm = ({
           <input
             type="text"
             name="price"
-            className="semiSmallInput"
+            className="dailyReportInput"
             defaultValue={mainInvestment.type}
             onChange={(event) =>
               handelOnChangeMainInvestment(
@@ -33,7 +33,7 @@ const InvestmentForm = ({
           {/* <input
             type="date"
             name="date"
-            className="semiSmallInput"
+            className="dailyReportInput"
             defaultValue={new Date(mainInvestment.date) }
             onChange={event => handelOnChangeMainInvestment(name, new Date(event.target.value), index, 'date')}
           // onChange={event => handelOnChangeMainInvestment(name, moment(event.target.value, 'dd-mm-yyyy').toDate(), index, 'date')}
@@ -55,7 +55,7 @@ const InvestmentForm = ({
           <input
             type="number"
             name="price"
-            className="semiSmallInput"
+            className="dailyReportInput"
             defaultValue={mainInvestment.price}
             onChange={(event) =>
               handelOnChangeMainInvestment(

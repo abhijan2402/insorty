@@ -4,6 +4,7 @@ import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import useCommision from "../CommisionHooks/useCommision";
+import { Link } from "react-router-dom";
 
 const Burger = () => {
   const [StartDate, setStartDate] = useState();
@@ -42,7 +43,32 @@ const Burger = () => {
   return (
     <section className="py-4 px-4">
       <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">कमीशन</h2>
+        <h2 className="font-bold md:text-[1.5rem] text-center">BEGAR</h2>
+
+        <div className="flex item-cnter justify-center">
+        <Link className="commonBtn" to="/user/commisson">
+            COMMISSION
+          </Link>
+          <Link className="commonBtn " to="/user/kharcha">
+            KHARCHA
+          </Link>
+
+          <Link className="commonBtn " to="/user/fut">
+            FUT
+          </Link>
+
+          <Link className="commonBtn " to="/user/monthly">
+            MONTHLY
+          </Link>
+
+          <Link className="commonBtn " to="/user/penalty">
+            PENALTY
+          </Link>
+
+          <Link className="commonBtn " to="/user/others">
+            OTHERS
+          </Link>
+        </div>
 
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>

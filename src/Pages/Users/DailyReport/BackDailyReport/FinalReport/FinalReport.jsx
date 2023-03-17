@@ -3,25 +3,19 @@ import { DataContextApi } from "../../../../../Context/DataContext";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../../Components/Loader/Loader";
 
-const FinalReport = ({
-  beerTotal,
-  rmlTotal,
-  udhaariTotal,
-  commisionTotal,
-}) => {
+const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
   const { intoAccountState, setintoAccountState } = useContext(DataContextApi);
   const { paidDues, setPaidDues } = useContext(DataContextApi);
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
 
   localStorage.setItem("beerTotal", JSON.stringify(beerTotal));
   localStorage.setItem("rmlTotal", JSON.stringify(rmlTotal));
   // localStorage.setItem("cashTotal", JSON.stringify(Number(localStorage.getItem('totalPaymentsRecieved'))));
   localStorage.setItem("udhaariTotal", JSON.stringify(udhaariTotal));
   localStorage.setItem("commisionTotal", JSON.stringify(commisionTotal));
-  localStorage.setItem('pichlaBakaya', JSON.stringify(0))
+  localStorage.setItem("pichlaBakaya", JSON.stringify(0));
 
   // localStorage.setItem("paymentRecieved", JSON.stringify(paymentRecieved));
-
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const beerSecond = JSON.parse(localStorage.getItem("beerFormTotal"));
@@ -42,14 +36,13 @@ const FinalReport = ({
     },
   });
 
-
-
   if (isLoading) return <Loader></Loader>;
 
-  const len = leftDues.length
-  const pichla = Number(leftDues.length > 0 ? leftDues[len - 1].restAmount.$numberDecimal : 0)
-  localStorage.setItem('pichlaBakaya', JSON.stringify(pichla))
-
+  const len = leftDues.length;
+  const pichla = Number(
+    leftDues.length > 0 ? leftDues[len - 1].restAmount.$numberDecimal : 0
+  );
+  localStorage.setItem("pichlaBakaya", JSON.stringify(pichla));
 
   return (
     <section>
@@ -63,7 +56,7 @@ const FinalReport = ({
             </tr>
           </thead>
 
-          <tbody>
+          <tbody className="finalTableBody">
             <tr>
               <th>1</th>
               <td>अंग्रेजी</td>
@@ -74,7 +67,10 @@ const FinalReport = ({
             <tr>
               <th>2</th>
               <td>बीयर</td>
-              <td>{Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + beerSecond}</td>
+              <td>
+                {Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
+                  beerSecond}
+              </td>
             </tr>
 
             {/* 03 */}
@@ -87,13 +83,19 @@ const FinalReport = ({
             <tr>
               <th>4</th>
               <td>कुल बिक्री</td>
-              <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront + beerSecond}</td>
+              <td>
+                {rmlTotal +
+                  Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
+                  firstformData +
+                  secondFront +
+                  beerSecond}
+              </td>
             </tr>
             {/* 05 */}
             <tr>
               <th>5</th>
               <td>पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति</td>
-              <td>{Number(localStorage.getItem('totalPaymentsRecieved'))}</td>
+              <td>{Number(localStorage.getItem("totalPaymentsRecieved"))}</td>
             </tr>
             {/* 06 */}
             <tr>
@@ -134,26 +136,51 @@ const FinalReport = ({
             <tr>
               <th>10</th>
               <td>total</td>
-              <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront + beerSecond + Number(localStorage.getItem('totalPaymentsRecieved')) - intoAccountState - udhaariTotal - commisionTotal + pichla}</td>
+              <td>
+                {rmlTotal +
+                  Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
+                  firstformData +
+                  secondFront +
+                  beerSecond +
+                  Number(localStorage.getItem("totalPaymentsRecieved")) -
+                  intoAccountState -
+                  udhaariTotal -
+                  commisionTotal +
+                  pichla}
+              </td>
             </tr>
             <tr>
               <th>11</th>
               <td>आज भुगतान</td>
-              <td><input
-                type="number"
-                required
-                min={0}
-                className="commonSmallForm"
-                name="intoAccountState"
-                value={paidDues}
-                onChange={(e) => setPaidDues(e.target.value)}
-              /></td>
+              <td>
+                <input
+                  type="number"
+                  required
+                  min={0}
+                  className="commonSmallForm"
+                  name="intoAccountState"
+                  value={paidDues}
+                  onChange={(e) => setPaidDues(e.target.value)}
+                />
+              </td>
             </tr>
             {/* 11 */}
             <tr>
               <th>12</th>
               <td>शेष रकम</td>
-              <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront + beerSecond + Number(localStorage.getItem('totalPaymentsRecieved')) - Number(intoAccountState) - udhaariTotal - commisionTotal + pichla - Number(paidDues)}</td>
+              <td>
+                {rmlTotal +
+                  Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
+                  firstformData +
+                  secondFront +
+                  beerSecond +
+                  Number(localStorage.getItem("totalPaymentsRecieved")) -
+                  Number(intoAccountState) -
+                  udhaariTotal -
+                  commisionTotal +
+                  pichla -
+                  Number(paidDues)}
+              </td>
             </tr>
           </tbody>
         </table>

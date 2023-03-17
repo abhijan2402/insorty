@@ -133,6 +133,16 @@ table td {
   -o-border-radius: 0;
 }
 
+.finalTableBody th,
+td {
+  border: 1px solid black !important;
+  text-align: left !important;
+
+  //padding: 5px;
+  background: #ffffff;
+  color: #313030;
+}
+
 .sidenav {
   height: 100%;
   width: 160px;
@@ -143,6 +153,24 @@ table td {
   background-color: #111;
   overflow-x: hidden;
   padding-top: 20px;
+}
+
+.show9Chereter {
+  width: 6.5rem !important;
+}
+
+
+
+.show7Chereter {
+  width: 6rem !important;
+}
+
+.show6Chereter {
+  width: 5rem !important;
+}
+
+.show5Chereter {
+  width: 30px;
 }
 
 @media screen and (max-height: 450px) {
