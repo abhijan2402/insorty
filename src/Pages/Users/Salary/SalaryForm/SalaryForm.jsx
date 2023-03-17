@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import SalaryFormData from "./SalaryFormData/SalaryFormData";
 import useSalary from "../SalaryHooks/useSalary";
 import { Link, useLoaderData } from "react-router-dom";
@@ -6,6 +6,7 @@ import SalaryModal from "../SalaryModal/SalaryModal";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import { useReactToPrint } from "react-to-print";
 
 const SalaryForm = () => {
   const token = localStorage.getItem("token");
@@ -18,6 +19,10 @@ const SalaryForm = () => {
     handelSelaryOnChange,
     setIsLoading,
   } = useSalary();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   const {
     data: salareyDataList,
@@ -108,6 +113,15 @@ const SalaryForm = () => {
 
   return (
     <section className="px-2 py-6">
+      <button
+        className="my-4 btn btn-error text-white font-bold"
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
+
+<div ref={front}>
+
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">
           कर्माचीरी का नाम / Name{" "}
@@ -282,6 +296,10 @@ const SalaryForm = () => {
             </table>
           </div>
         </form>{" "}
+</div>
+
+
+      </div>
         <div>
           <div className="mt-4 flex gap-4">
             <label htmlFor="addData" className="btn bg-[#AA237A]">
@@ -296,7 +314,6 @@ const SalaryForm = () => {
             </Link>
           </div>
         </div>
-      </div>
       {/* ************************ all sealy data************** */}
       <SalaryModal
         salaryState={salaryState}

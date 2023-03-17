@@ -1,16 +1,21 @@
 /* eslint-disable no-use-before-define */
-import React from "react";
+import React,{useRef} from "react";
 import PaymentForm from "../PaymentForm/PaymentForm";
 import AddPayment from "../AddPayment/AddPayment";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import { useReactToPrint } from "react-to-print";
 
 const Payments = () => {
   const token = localStorage.getItem("token");
   const [paymentDetailsData, setPaymentDetailsData] = React.useState([]);
   const [debitMonth, setDebitMonth] = React.useState("");
   const [depositMonth, setDepositMonth] = React.useState("");
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   const { data: paymentData, isLoading, refetch } = useQuery({
     queryKey: ["paymentData"],
@@ -30,15 +35,13 @@ const Payments = () => {
     },
   });
 
-  console.log("Payments -> paymentDetails", paymentDetailsData);
 
   const handelAddPayment = async (e) => {
     e.preventDefault();
     const from = e.target;
     const debitAmount = from.debitAmount.value;
     const depositAmount = from.depositAmount.value;
-    const currentBalanceDebit = from.currentBalance.value;
-    const description = from.details.value;
+   
 
     const shopAccount = [
       {
@@ -50,8 +53,7 @@ const Payments = () => {
           cash: depositAmount,
           date: depositMonth,
         },
-        currentBalalcne: currentBalanceDebit,
-        description: description,
+       
       },
     ];
 
@@ -92,7 +94,17 @@ const Payments = () => {
   }
 
   return (
+    <>
+      <button
+        className="my-4 btn btn-error text-white font-bold"
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
+
     <section>
+
+    <div ref={front}>
       <div className="title">
         <h2 className="font-bold md:text-[1.5rem] text-center">दुकान/बार पेमेंट</h2>
         <div className="divider my-2"></div>
@@ -188,6 +200,9 @@ const Payments = () => {
             </table>
           </div>
         </form>{" "}
+      </div>
+        </div>
+
         <div>
           <div className="mt-4 flex gap-4">
             <label htmlFor="addPaymentData" className="btn bg-[#AA237A]">
@@ -195,7 +210,6 @@ const Payments = () => {
             </label>
           </div>
         </div>
-      </div>
       <AddPayment
         handelAddPayment={handelAddPayment}
         debitMonth={debitMonth}
@@ -204,6 +218,7 @@ const Payments = () => {
         setDepositMonth={setDepositMonth}
       ></AddPayment>
     </section>
+    </>
   );
 };
 

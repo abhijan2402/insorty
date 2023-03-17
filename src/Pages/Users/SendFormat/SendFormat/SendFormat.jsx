@@ -1,12 +1,17 @@
-import React from "react";
+import React,{useRef} from "react";
 import AddSendFormat from "../AddSendFormat/AddSendFormat";
 import usePartyNames from "../../../../Hooks/usePartyNames";
 import Loader from "../../../../Components/Loader/Loader";
 import ChangeEquity from "../ChangeEquity";
 import { Link } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 
 const SendFormat = () => {
   const { partners, partnerLoaded } = usePartyNames();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   if (partnerLoaded) return <Loader></Loader>;
 
@@ -20,13 +25,19 @@ const SendFormat = () => {
           <Link className="commonBtn" to="/user/partners">
             Partner
           </Link>
+          <button
+            className="my-4 btn btn-error text-white font-bold"
+            onClick={handlePrint}
+          >
+            PRINT
+          </button>
         </div>
 
         <div className="divider my-2"></div>
       </div>
       <div className="mx-6">
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table ref={front} className="table w-full">
             <thead>
               <tr>
                 <th> क्र. सं.</th>

@@ -28,6 +28,12 @@ const FinalReport = () => {
     return <Loader></Loader>;
   }
 
+  if (!data.success){
+    return(
+      <div>No data found</div>
+    )
+  }
+
   // if(!data.length){
   //   return <div>No Data Found</div>;
   // }

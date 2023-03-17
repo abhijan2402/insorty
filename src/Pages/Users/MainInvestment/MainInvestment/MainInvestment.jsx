@@ -232,7 +232,13 @@ const MainInvestment = () => {
                 </td>
                 <td></td>
                 <td className="commonText">Total</td>
-                <td className="price">{data.refundRecoveryDetails.total}</td>
+                <td className="price">{data.refundRecoveryDetails.entries.length > 0
+                  ? data.refundRecoveryDetails.entries.reduce(
+                    (total, currentItem) =>
+                      (total = total + Number(currentItem.price)),
+                    0
+                  )
+                  : 0}</td>
               </tr>
             </tbody>
           </table>
