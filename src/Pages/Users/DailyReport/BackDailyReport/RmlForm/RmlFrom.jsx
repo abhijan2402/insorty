@@ -62,7 +62,7 @@ const RmlFrom = ({
             <Autocomplete
               size="small"
               style={{
-                width: "24rem",
+                width: "20rem",
               }}
               options={
                 liquors.length > 0
