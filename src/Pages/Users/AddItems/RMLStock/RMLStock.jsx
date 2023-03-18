@@ -1,16 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React,{useRef} from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
+import { useReactToPrint } from "react-to-print";
+
 
 const RmlStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   const { data: rmlStock, isLoading } = useQuery({
     queryKey: ["rmlStock"],
@@ -55,20 +61,29 @@ const RmlStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold md:text-[1.5rem] text-center">
-            {" "}
-            देशी / RML
-          </h2>
           <Link to="/user/winestock" className="commonBtn ">
             अंग्रेजी
           </Link>
           <Link to="/user/beerstock" className="commonBtn ">
             बीयर
           </Link>
+          <button
+            className="my-4 btn btn-error text-white font-bold"
+            onClick={handlePrint}
+          >
+            PRINT
+          </button>
         </div>
         <div className="divider my-2"></div>
       </div>
 
+
+<div ref={front}>
+<div>
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            {" "}
+            देशी / RML
+          </h2>
       <div className="flex gap-4 items-center my-4">
         <h2 className="font-bold text-[1.5rem]">From</h2>
         <div className="flex gap-2 items-center">
@@ -177,6 +192,8 @@ const RmlStock = () => {
             </table>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </section>
   );

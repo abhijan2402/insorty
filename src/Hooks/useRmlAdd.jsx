@@ -7,7 +7,7 @@ const useRmlAdd = () => {
   const addRmlForm = {
     liquorID: "",
     brandName: "", //brandName
-    ml: 0,
+    ml: 750,
     initial:0,
     averageRate: 0,
     openingStock: 0, //initialStock
@@ -74,7 +74,7 @@ const useRmlAdd = () => {
           liquorID: "",
           brandName: "",
           averageRate: 0,
-          ml: 0,
+          ml: 750,
           initial: 0,
 
           openingStock: 0,
@@ -102,7 +102,7 @@ const useRmlAdd = () => {
         liquorID: "",
         brandName: "",
         averageRate: 0,
-        ml: 0,
+        ml: 750,
         initial: 0,
 
         openingStock: 0,

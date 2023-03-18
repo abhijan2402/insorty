@@ -57,11 +57,12 @@ const AddPayment = ({
 
                 <DatePicker
                   name="debitMonth"
+                 
                   selected={debitMonth}
                   onChange={(date) => setDebitMonth(date)}
                   dateFormat="dd/MM/yyyy"
                   placeholderText={"dd/MM/yyyy"}
-                  className="inputBox"
+                  className="inputBox wd-100"
                 />
               </div>
             </div>
@@ -102,7 +103,7 @@ const AddPayment = ({
                   onChange={(date) => setDepositMonth(date)}
                   dateFormat="dd/MM/yyyy"
                   placeholderText={"dd/MM/yyyy"}
-                  className="inputBox"
+                  className="inputBox wd-100"
                 />
               </div>
             </div>

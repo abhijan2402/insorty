@@ -102,15 +102,15 @@ const AddOneSecondFormBack = ({
           <div className="form-control ">
             <select
               // className="select select-bordered"
-              className="semiSmallInput"
-              name="quantity"
+              className="semiSmallInput wd-9"
+              name="selectStockVarient"
               value={item.selectStockVarient}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               required
             >
               {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
 
-              <option selected value={750}>
+              <option value={750}>
                 750ml
               </option>
               <option value={700}>700ml</option>
@@ -138,7 +138,7 @@ const AddOneSecondFormBack = ({
                 min={0}
               value={item.averageRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
-              className="SmallInput show9Chereter"
+              className="SmallInput wd-7"
               name="averageRate"
               disabled
             />
@@ -178,7 +178,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput show9Chereter"
+              className="SmallInput wd-7"
               name="buyRate"
               value={item.buyRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -209,7 +209,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput show9Chereter"
+              className="SmallInput wd-7"
               name="purchaseRate"
               value={item.purchaseRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -310,7 +310,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput show9Chereter"
+              className="SmallInput wd-5"
               name="total"
               value={item.total}
               onChange={(e) => handelSeconFormOnChange(e, index)}

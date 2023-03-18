@@ -20,94 +20,65 @@ const WineStockTopData = ({ item, index, total }) => {
           <div className="form-control">{item?.brandName}</div>
         </td>
         <td>
-          <div className="flex gap-2">
             <div className="form-control">
-              <input
-                type="number"
-                value={quan650?.currentStock}
-                disabled
-                className="smallinput"
-              />
+            {quan650?.currentStock}
             </div>
 
-            <div className="form-control">
-              <input
-                type="number"
-                value={quan550?.currentStock}
-                disabled
-                className="smallinput"
-              />
-            </div>
+            </td>
+
+            <td>
 
             <div className="form-control">
-              <input
-                type="number"
-                value={quan330?.currentStock}
-                disabled
-                className="smallinput"
-              />
+            {quan550?.currentStock}
             </div>
-          </div>
+
+            </td>
+
+            <td>
+
+            <div className="form-control">
+            {quan330?.currentStock}
+            </div>
         </td>
         <td>
-          <div className="flex gap-2">
+          
             <div className="form-control">
-              <input
-                type="number"
-                value={Number(quan650?.averageRate.$numberDecimal).toFixed(2)}
-                disabled
-                className="smallinput"
-              />
+            {Number(quan650?.averageRate.$numberDecimal).toFixed(2)}
             </div>
+          </td>
+
+          <td>
+            
 
             <div className="form-control">
-              <input
-                type="number"
-                value={Number(quan550?.averageRate.$numberDecimal).toFixed(2)}
-                disabled
-                className="smallinput"
-              />
+            {Number(quan550?.averageRate.$numberDecimal).toFixed(2)}
             </div>
 
+            </td>
+            <td>
             <div className="form-control">
-              <input
-                type="number"
-                value={Number(quan330?.averageRate.$numberDecimal).toFixed(2)}
-                disabled
-                className="smallinput"
-              />
+            {Number(quan330?.averageRate.$numberDecimal).toFixed(2)}
             </div>
-          </div>
         </td>
+
+
         <td>
-          <div className="flex gap-2">
             <div className="form-control">
-              <input
-                type="number"
-                value={Number(price650).toFixed(2)}
-                disabled
-                className="smallinput"
-              />
+            {Number(price650).toFixed(2)}
             </div>
+          </td>
+
+          <td>
+            <div className="form-control">
+            {Number(price550).toFixed(2)}
+            </div>
+            </td>
+
+            <td>
 
             <div className="form-control">
-              <input
-                type="number"
-                value={Number(price550).toFixed(2)}
-                disabled
-                className="smallinput"
-              />
+            {Number(price330).toFixed(2)}
             </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                value={Number(price330).toFixed(2)}
-                disabled
-                className="smallinput"
-              />
-            </div>
-          </div>
         </td>
         <td>{Number(price330 + price550 + price650).toFixed(2)}</td>
       </tr>

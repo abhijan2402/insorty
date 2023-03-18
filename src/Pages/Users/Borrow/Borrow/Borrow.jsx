@@ -1,10 +1,15 @@
-import React from "react";
+import React,{useRef} from "react";
 import BorrowForm from "../BorrowForm/BorrowForm";
 import { useQuery } from "@tanstack/react-query";
 import { Loader } from "react-bootstrap-typeahead";
+import { useReactToPrint } from "react-to-print";
 
 const Borrow = () => {
   const token = localStorage.getItem("token");
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
   const { data: parties, isLoading: partiesLoading, refetch } = useQuery({
     queryKey: ["parties"],
     queryFn: async () => {
@@ -26,7 +31,14 @@ const Borrow = () => {
     return <Loader></Loader>;
   }
   return (
-    <section className="py-4">
+    <>
+      <button
+        className="my-4 btn btn-error text-white font-bold"
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
+    <section ref={front} className="py-4">
       <div className="title">
         <h2 className="font-bold md:text-[1.5rem] text-center">
           उधारी (माल व नकद) नामे व जमा
@@ -37,7 +49,7 @@ const Borrow = () => {
       <div>
         <form action="">
           <div className="overflow-x-auto">
-            <table className="table w-full">
+            <table className="table ">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>
@@ -79,6 +91,7 @@ const Borrow = () => {
         </form>
       </div>
     </section>
+    </>
   );
 };
 

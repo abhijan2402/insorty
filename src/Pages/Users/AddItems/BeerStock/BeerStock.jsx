@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React,{useRef} from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import BeerStockTopData from "./BeerStockTopData/BeerStockTopData";
@@ -7,11 +7,16 @@ import { useState } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
+import { useReactToPrint } from "react-to-print";
 
 const BeerStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   const { data: beerStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
@@ -57,17 +62,26 @@ const BeerStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold text-[1.5rem] text-center"> बीयर</h2>
           <Link to="/user/winestock" className="commonBtn ">
           अंग्रेजी
           </Link>
           <Link className="commonBtn" to="/user/rmlstock">
             देशी
           </Link>
+          <button
+            className="my-4 btn btn-error text-white font-bold"
+            onClick={handlePrint}
+          >
+            PRINT
+          </button>
         </div>
       </div>
       <div className="divider my-2"></div>
 
+
+<div ref={front}>
+<div>
+          <h2 className="font-bold text-[1.5rem] text-center"> बीयर</h2>
       <div className="flex gap-4 items-center my-4">
         <h2 className="font-bold text-[1.5rem]">From</h2>
         <div className="flex gap-2 items-center">
@@ -104,80 +118,90 @@ const BeerStock = () => {
             <tr>
               <th> क्र. सं.</th>
               <th>ब्राण्ड/ Brand Name </th>
-              <th>स्टॉक / stock</th>
-              <th>Avg. Rate / रेट</th>
-              <th>Total / योग</th>
+              <th colSpan={3}>स्टॉक / stock</th>
+                  <th colSpan={3}>Avg. Rate / रेट</th>
+                  <th colSpan={3}>Total / योग</th>
               <th>कुल योग/ Amount</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td></td>
+              <td></td>
+              
               <td>
-                <div className="form-control"></div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">650ml</span>
+                    </label>
+                  </div>
+                </td>
+
+                <td>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">550ml</span>
+                    </label>
+                  </div>
+                  </td>
+
+                  <td>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">330ml</span>
+                    </label>
+                  </div>
+              </td>
+
+
+              <td>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">650ml</span>
+                    </label>
+                  </div>
+              </td>
+
+              <td>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">550ml</span>
+                    </label>
+                  </div>
+              </td>
+
+              <td>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">330ml</span>
+                    </label>
+                  </div>
               </td>
               <td>
-                <div className="flex gap-2">
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">650ml</span>
                     </label>
                   </div>
 
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">550ml</span>
-                    </label>
-                  </div>
+                  </td>
 
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">330ml</span>
-                    </label>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="flex gap-2">
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">650ml</span>
-                    </label>
-                  </div>
+
+                  <td>
 
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">550ml</span>
                     </label>
                   </div>
+                </td>
 
+                <td>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">330ml</span>
                     </label>
                   </div>
-                </div>
-              </td>
-              <td>
-                <div className="flex gap-2">
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">650ml</span>
-                    </label>
-                  </div>
-
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">550ml</span>
-                    </label>
-                  </div>
-
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">330ml</span>
-                    </label>
-                  </div>
-                </div>
               </td>
               <td>
                 <div className="form-control"></div>
@@ -283,6 +307,8 @@ const BeerStock = () => {
             </table>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </section>
   );

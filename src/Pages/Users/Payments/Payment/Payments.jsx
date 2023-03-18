@@ -113,12 +113,12 @@ const Payments = () => {
       <div>
         <form action="">
           <div className="overflow-x-auto">
-            <table className="table w-full">
+                <table className="table self-center	">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>
-                  <th>Debit / नामे</th>
-                  <th>Deposit / जमा </th>
+                  <th colSpan={2}>Debit / नामे</th>
+                  <th colSpan={2}>Deposit / जमा </th>
 
                   <th> शेष </th>
                   <th>विवरणे</th>
@@ -130,35 +130,39 @@ const Payments = () => {
                   <td></td>
 
                   <td>
-                    <div className="flex gap-2">
+                    {/* <div className="flex gap-2"> */}
                       <div className="form-control">
                         <label className="label">
                           <span className="label-text">रकम</span>
                         </label>
                       </div>
+                      </td>
+
+                      <td>
 
                       <div className="form-control">
                         <label className="label">
                           <span className="label-text">माह</span>
                         </label>
                       </div>
-                    </div>
+                    {/* </div> */}
                   </td>
 
                   <td>
-                    <div className="flex gap-4">
                       <div className="form-control">
                         <label className="label">
                           <span className="label-text">रकम</span>
                         </label>
                       </div>
+                      </td>
+
+                      <td>
 
                       <div className="form-control">
                         <label className="label">
                           <span className="label-text">दिनाक</span>
                         </label>
                       </div>
-                    </div>
                   </td>
 
                   <td>

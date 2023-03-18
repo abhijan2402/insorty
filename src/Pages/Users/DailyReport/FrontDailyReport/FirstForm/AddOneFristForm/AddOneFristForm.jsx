@@ -106,7 +106,7 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                className="smallinput show9Chereter"
+                className="smallinput wd-9"
                 required
                 min={0}
                 value={addOneFirst.averageRate750}
@@ -119,7 +119,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show9Chereter"
+                className="smallinput wd-9"
                 required
                 min={0}
                 value={addOneFirst.averageRate330}
@@ -132,7 +132,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show9Chereter"
+                className="smallinput wd-9"
                 required
                 min={0}
                 value={addOneFirst.averageRate180}
@@ -234,7 +234,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput wd-9"
                 required
                 min={0}
                 name="buyRate750"
@@ -246,7 +246,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput wd-9"
                 required
                 min={0}
                 name="buyRate330"
@@ -258,7 +258,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput wd-8"
                 required
                 min={0}
                 name="buyRate180"
@@ -320,7 +320,7 @@ const AddOneFristForm = ({
                 className="smallinput show9Chereter"
                 required
                 min={0}
-                name="purchaseRate750"
+                name="purchaseRate750 wd-9"
                 value={addOneFirst.purchaseRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -332,7 +332,7 @@ const AddOneFristForm = ({
                 className="smallinput show9Chereter"
                 required
                 min={0}
-                name="purchaseRate330"
+                name="purchaseRate330 wd-9"
                 value={addOneFirst.purchaseRate330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -344,7 +344,7 @@ const AddOneFristForm = ({
                 className="smallinput show9Chereter"
                 required
                 min={0}
-                name="purchaseRate180"
+                name="purchaseRate180 wd-8"
                 value={addOneFirst.purchaseRate180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -400,7 +400,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show9Chereter"
+                className="smallinput "
                 required
                 min={0}
                 name="sending750"
@@ -412,7 +412,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show9Chereter"
+                className="smallinput "
                 required
                 min={0}
                 name="sending330"
@@ -424,7 +424,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show9Chereter"
+                className="smallinput "
                 required
                 min={0}
                 name="sending180"
@@ -566,7 +566,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show6Chereter"
+                className="smallinput wd-6"
                 required
                 min={0}
                 name="mainRate750"
@@ -578,7 +578,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show6Chereter"
+                className="smallinput wd-5"
                 required
                 min={0}
                 name="mainRate330"
@@ -590,7 +590,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show6Chereter"
+                className="smallinput wd-5"
                 required
                 min={0}
                 name="mainRate180"
@@ -606,7 +606,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="text"
-                className="smallinput show6Chereter"
+                className="smallinput wd-6"
                 required
                 min={0}
                 name="total750"
@@ -620,7 +620,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="text"
-                className="smallinput show6Chereter"
+                className="smallinput wd-6"
                 required
                 disabled
                 min={0}
@@ -635,7 +635,7 @@ const AddOneFristForm = ({
               <input
                 type="text"
                 name="total180"
-                className="smallinput show6Chereter"
+                className="smallinput wd-6"
                 required
                 min={0}
                 disabled
@@ -655,7 +655,7 @@ const AddOneFristForm = ({
           <div className="form-control">
             <input
               type="text"
-              className="smallinput show7Chereter"
+              className="smallinput wd-7"
               required
               min={0}
               name="grandTotal"

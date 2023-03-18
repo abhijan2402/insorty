@@ -939,7 +939,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-6"
                             name="total750"
                             disabled
                             value={addOneFristFormState.reduce(
@@ -956,7 +956,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-6"
                             name="total375"
                             disabled
                             value={addOneFristFormState.reduce(
@@ -973,7 +973,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-6"
                             name="total180"
                             disabled
                             value={addOneFristFormState.reduce(
@@ -995,7 +995,7 @@ const FronteDailyReport = () => {
                         <input
                           type="number"
                           disabled
-                          className="smallinput"
+                          className="smallinput wd-7"
                           name="grandTotal"
                           value={addOneFristFormState.reduce(
                             (total, currentItem) =>
@@ -1085,27 +1085,13 @@ const FronteDailyReport = () => {
                       <td>TOTAL</td>
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            // value={item.selectStockVarient}
-                            // onChange={(e) => handelSeconFormOnChange(e, index)}
-                            className="SmallInput"
-                            disabled
-                            name="selectStockVarient"
-                          />
+                         
                         </div>
                       </td>
                       {/* ======== MRP Input ========= */}
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            // value={item.averageRate}
-                            // onChange={(e) => handelSeconFormOnChange(e, index)}
-                              className="smallinput"
-                              disabled
-                            name="averageRate"
-                          />
+                         
                         </div>
                       </td>
                       <td>
@@ -1145,14 +1131,7 @@ const FronteDailyReport = () => {
                       {/* ======== प्रारम्भिक स्टॉक ========= */}
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            disabled
-                            className="smallinput"
-                            name="buyRate"
-                            // value={item.buyRate}
-                            // onChange={(e) => handelSeconFormOnChange(e, index)}
-                          />
+                         
                         </div>
                       </td>
 
@@ -1179,14 +1158,7 @@ const FronteDailyReport = () => {
 
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            disabled
-                            className="smallinput"
-                            name="purchaseRate"
-                            // value={item.purchaseRate}
-                            // onChange={(e) => handelSeconFormOnChange(e, index)}
-                          />
+                         
                         </div>
                       </td>
                       {/* ======== आमद (उधारी) ========= */}
@@ -1281,14 +1253,7 @@ const FronteDailyReport = () => {
                       {/* ============= रेट ================ */}
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            disabled
-                            className="smallinput"
-                            name="mainRate"
-                            // value={item.mainRate}
-                            // onChange={(e) => handelSeconFormOnChange(e, index)}
-                          />
+                         
                         </div>
                       </td>
                       {/* ============= योग ================ */}
@@ -1296,7 +1261,7 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-6"
                             name="total"
                             value={addOneSecondFormState.reduce(
                               (total, currentItem) =>

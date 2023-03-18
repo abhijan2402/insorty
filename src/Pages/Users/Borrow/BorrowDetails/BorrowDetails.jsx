@@ -1,10 +1,15 @@
-import React from "react";
+import React,{useRef} from "react";
 import { useParams } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
+import { useReactToPrint } from "react-to-print";
 
 const BorrowDetails = () => {
   const token = localStorage.getItem("token");
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   const { partyId } = useParams();
 
@@ -45,7 +50,14 @@ const BorrowDetails = () => {
   }
 
   return (
-    <section>
+    <>
+      <button
+        className="my-4 btn btn-error text-white font-bold"
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
+    <section ref={front}>
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">
           {borrowTranstion?.partyName}
@@ -54,7 +66,7 @@ const BorrowDetails = () => {
       </div>
       <div className="partner-details">
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table className="table ">
             <thead>
               <tr>
                 <th> क्र. सं.</th>
@@ -89,6 +101,7 @@ const BorrowDetails = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

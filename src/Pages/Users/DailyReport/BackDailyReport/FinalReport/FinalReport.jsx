@@ -47,7 +47,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
   return (
     <section>
       <div className="overflow-x-auto">
-        <table className="table w-full">
+        {/* <table className="table w-full"> */}
+        <table className="table">
           <thead>
             <tr>
               <th> क्र. सं.</th>

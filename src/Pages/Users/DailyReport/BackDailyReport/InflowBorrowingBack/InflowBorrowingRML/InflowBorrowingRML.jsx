@@ -58,7 +58,7 @@ const InflowBorrowingRML = ({
             <Autocomplete
               size="small"
               style={{
-                width: "24rem",
+                width: "20rem",
               }}
               options={parties.length > 0 ? parties : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
@@ -95,7 +95,7 @@ const InflowBorrowingRML = ({
             <Autocomplete
               size="small"
               style={{
-                width: "24rem",
+                width: "20rem",
               }}
               options={liquors.length > 0 ? liquors : ["no options"]}
               getOptionLabel={(option) => (option ? option.brandName : "")}
@@ -132,7 +132,7 @@ const InflowBorrowingRML = ({
           <div className="form-control ">
             <select
               // className="select select-bordered"
-              className="semiSmallInput"
+              className="semiSmallInput wd-9"
               name="quantity"
               value={item.quantity}
               required
@@ -211,7 +211,7 @@ const InflowBorrowingRML = ({
             <input
               type="text"
               required
-              className="semiSmallInput"
+              className="semiSmallInput wd-30"
               name="reason"
               value={item.reason}
               onChange={(e) => onChangeBorrowingRml(e, index)}

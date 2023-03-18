@@ -1,16 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
-import React, { useState } from "react";
+import { useQuery} from "@tanstack/react-query";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import WineStockTopData from "./WineStockTop/WIneSotckTop";
 import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
+import { useReactToPrint } from "react-to-print";
 
 const WineStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
+  
 
   const { data: wineStock, isLoading } = useQuery({
     queryKey: ["beerStock"],
@@ -86,7 +92,6 @@ const WineStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center">
-          <h2 className="font-bold md:text-[1.5rem] text-center"> अंग्रेजी</h2>
 
           <Link to="/user/beerstock" className="commonBtn ">
             बीयर
@@ -95,10 +100,20 @@ const WineStock = () => {
           <Link className="commonBtn" to="/user/rmlstock">
             देशी
           </Link>
+          <button
+            className="my-4 btn btn-error text-white font-bold"
+            onClick={handlePrint}
+          >
+            PRINT
+          </button>
         </div>
         <div className="divider my-2"></div>
       </div>
 
+      <div ref={front}>
+      <div>
+
+          <h2 className="font-bold md:text-[1.5rem] text-center"> अंग्रेजी</h2>
       <div className="flex gap-4 items-center my-4">
         <h2 className="font-bold text-[1.5rem]">From</h2>
         <div className="flex gap-2 items-center">
@@ -135,9 +150,9 @@ const WineStock = () => {
             <tr>
               <th> क्र. सं.</th>
               <th>ब्राण्ड/ Brand Name </th>
-              <th>स्टॉक / stock</th>
-              <th>Avg. Rate / रेट</th>
-              <th>Total / योग</th>
+              <th colSpan={3}>स्टॉक / stock</th>
+                  <th colSpan={3}>Avg. Rate / रेट</th>
+                  <th colSpan={3}>Total / योग</th>
               <th>कुल योग/ Amount</th>
             </tr>
           </thead>
@@ -148,68 +163,73 @@ const WineStock = () => {
                 <div className="form-control"></div>
               </td>
               <td>
-                <div className="flex gap-2">
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">750ml</span>
                     </label>
                   </div>
-
+            </td>
+            <td>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">375ml</span>
                     </label>
                   </div>
-
+                  </td>
+                  <td>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">180ml</span>
                     </label>
                   </div>
-                </div>
+                
               </td>
-              <td>
-                <div className="flex gap-2">
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">750ml</span>
-                    </label>
-                  </div>
+                  
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">750ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">375ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">180ml</span>
+                      </label>
+                    </div>
 
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">375ml</span>
-                    </label>
-                  </div>
+                  </td>
+                 
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">750ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">375ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">180ml</span>
+                      </label>
+                    </div>
 
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">180ml</span>
-                    </label>
-                  </div>
-                </div>
-              </td>
-              <td>
-                <div className="flex gap-2">
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">750ml</span>
-                    </label>
-                  </div>
-
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">375ml</span>
-                    </label>
-                  </div>
-
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">180ml</span>
-                    </label>
-                  </div>
-                </div>
-              </td>
+                  </td>
               <td>
                 <div className="form-control"></div>
               </td>
@@ -305,6 +325,8 @@ const WineStock = () => {
             </table>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </section>
   );

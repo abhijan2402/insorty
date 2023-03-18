@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import useCommision from "../CommisionHooks/useCommision";
 import { Link } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
 
 const Monthly = () => {
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
   const { commitsonData, isLoading } = useCommision();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -45,6 +50,12 @@ const Monthly = () => {
       <div className="title">
         <h2 className="font-bold md:text-[1.5rem] text-center">MONTHLY</h2>
         <div className="flex items-center justify-center">
+          <button
+            className="my-4 btn btn-error text-white font-bold"
+            onClick={handlePrint}
+          >
+            PRINT
+          </button>
           <Link className="commonBtn" to="/user/commisson">
             COMMISSION
           </Link>
@@ -69,6 +80,9 @@ const Monthly = () => {
             OTHERS
           </Link>
         </div>
+
+        <div ref={front}>
+        <div>
 
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
@@ -181,6 +195,8 @@ const Monthly = () => {
           </div>
         </form>{" "}
       </div>
+        </div>
+        </div>
     </section>
   );
 };

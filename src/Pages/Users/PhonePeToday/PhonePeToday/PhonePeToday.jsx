@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import usePhonePay from "../PhonePayHooks/usePhonePay";
 import Loader from "../../../../Components/Loader/Loader";
 import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
+import { useReactToPrint } from "react-to-print";
 
 const PhonePeToday = () => {
   const { phonePayData, isLoading } = usePhonePay();
   console.log(phonePayData, "phonePayData");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -37,7 +42,15 @@ const PhonePeToday = () => {
   }
 
   return (
-    <section>
+    <>
+      <button
+        className="my-4 btn btn-error text-white font-bold"
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
+
+    <section ref={front}>
       <div className="title">
         <h2 className="font-bold md:text-[1.5rem] text-center">
           फोन पे और आज भुगतान
@@ -123,6 +136,7 @@ const PhonePeToday = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

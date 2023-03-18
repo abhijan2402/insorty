@@ -16,7 +16,7 @@ const Reserve = ({ reserve, index, reserveAmountOnChange, name }) => {
             onChange={(e) => {
               reserveAmountOnChange(name, e.target.value, index, "details");
             }}
-            className="semiSmallInput"
+            className="semiSmallInput wd-30"
           />
         </td>
         <td>
@@ -47,7 +47,7 @@ const Reserve = ({ reserve, index, reserveAmountOnChange, name }) => {
             onChange={(e) => {
               reserveAmountOnChange(name, e.target.value, index, "price");
             }}
-            className="dailyReportInput"
+            className="dailyReportInput wd-8"
           />
         </td>
       </tr>

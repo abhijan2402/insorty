@@ -1,8 +1,9 @@
-import React from "react";
+import React,{useRef} from "react";
 import Refund from "../Refund/Refund";
 import Reserve from "../Reserve/Reserve";
 import InvestmentForm from "../InvestmentForm/InvestmentForm";
 import useMainInvestmentHooks from "../MainInvestmentHooks/useMainInvestmentHooks";
+import { useReactToPrint } from "react-to-print";
 // import { Loader } from "three";
 
 const MainInvestment = () => {
@@ -16,13 +17,25 @@ const MainInvestment = () => {
     reserveAmountOnChange,
     refundRecoveryOnChange,
   } = useMainInvestmentHooks();
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   if (data.isLoading) {
     return <div>Loading....</div>;
   }
 
   return (
-    <section className="my-2">
+    <>
+      <button
+        className="my-4 btn btn-error text-white font-bold"
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
+
+    <section ref={front} className="my-2">
       <div className="title">
         <h2 className="font-bold md:text-[1.5rem] text-center">
           मुख्य इन्वेस्ट
@@ -48,7 +61,7 @@ const MainInvestment = () => {
                   <th>1</th>
                   <td>
                     <input
-                      className="dailyReportInput"
+                      className="dailyReportInput wd-30"
                       type="text"
                       name="brandName"
                       value={"Previous Loans"}
@@ -59,7 +72,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput"
+                      className="dailyReportInput wd-8"
                       defaultValue={data.mainInvest.previousLoan.price}
                       onChange={(event) =>
                         handleInvestmentChange(
@@ -75,7 +88,7 @@ const MainInvestment = () => {
                   <th>2</th>
                   <td>
                     <input
-                      className="dailyReportInput"
+                      className="dailyReportInput wd-30"
                       type="text"
                       name="brandName"
                       value={"Cash in Hand"}
@@ -86,7 +99,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput"
+                      className="dailyReportInput wd-8"
                       defaultValue={data.mainInvest.cashInHand.price}
                       onChange={(event) =>
                         handleInvestmentChange("cashInHand", event.target.value)
@@ -116,7 +129,7 @@ const MainInvestment = () => {
                       marginBottom: 7,
                     }}
                     className="commonBtn"
-                    onClick={() => handleFeesAdd()}
+                    onClick={(e) => {e.preventDefault(); handleFeesAdd()}}
                   >
                     ADD
                   </button>
@@ -126,7 +139,7 @@ const MainInvestment = () => {
                   <th>{data.mainInvest.fees.length + 3}</th>
                   <td>
                     <input
-                      className="dailyReportInput"
+                      className="dailyReportInput wd-30"
                       type="text"
                       name="brandName"
                       value={"Reserve Amount"}
@@ -137,7 +150,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput"
+                      className="dailyReportInput wd-8"
                       value={data.mainInvest.reserveAmount.price}
                       readOnly
                     />
@@ -147,7 +160,7 @@ const MainInvestment = () => {
                   <th></th>
                   <td>
                     <input
-                      className="dailyReportInput"
+                      className="dailyReportInput wd-30"
                       type="text"
                       name="brandName"
                       value={"Total"}
@@ -167,7 +180,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput"
+                      className="dailyReportInput wd-8"
                       defaultValue={data.mainInvest.total}
                       onChange={(event) =>
                         handleInvestmentChange("total", event.target.value)
@@ -224,7 +237,7 @@ const MainInvestment = () => {
                   <div>
                     <button
                       className="commonBtn"
-                      onClick={() => handleRefundRecoveryAdd()}
+                      onClick={(e) =>{e.preventDefault(); handleRefundRecoveryAdd()}}
                     >
                       Add
                     </button>
@@ -280,7 +293,7 @@ const MainInvestment = () => {
                   <div>
                     <button
                       className="commonBtn"
-                      onClick={() => handleReserveAmountAdd()}
+                        onClick={(e) => { e.preventDefault(); handleReserveAmountAdd()}}
                     >
                       Add
                     </button>
@@ -320,6 +333,7 @@ const MainInvestment = () => {
       {/* <RefundDetailsData></RefundDetailsData>
       <ResurvedDataDetails></ResurvedDataDetails> */}
     </section>
+    </>
   );
 };
 

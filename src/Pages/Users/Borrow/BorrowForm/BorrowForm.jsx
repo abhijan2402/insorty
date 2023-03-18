@@ -19,7 +19,7 @@ const BorrowForm = ({ index, party }) => {
                 style={{
                   cursor: "pointer",
                 }}
-                className="dailyReportInput"
+                
               >
                 {party.partyName}
               </Link>

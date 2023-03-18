@@ -26,7 +26,7 @@ const SelfBillList = ({ index, billsData, isLoading }) => {
         <td>{liquor?.quantityInML}</td>
         <td>{number}</td>
         <td>{averageRate?.$numberDecimal}</td>
-        <td>{total}</td>
+        <td>{total?.$numberDecimal}</td>
       </tr>
     </>
   );

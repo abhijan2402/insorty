@@ -49,7 +49,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <Autocomplete
           size="small"
           style={{
-            width: "24rem",
+            width: "20rem",
           }}
             options={parties.length > 0 ? parties : ['no options']}
             getOptionLabel={(option) => option ? option.partyName : ""}
@@ -95,7 +95,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <Autocomplete
           size="small"
           style={{
-            width: "24rem",
+            width: "20rem",
           }}
             options={partners.length > 0 ? partners : ['no options']}
             getOptionLabel={(option) => option ? option.name : ""}
@@ -143,7 +143,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <Autocomplete
           size="small"
           style={{
-            width: "24rem",
+            width: "20rem",
           }}
             options={branches.length > 0 ? branches : ['no options']}
             getOptionLabel={(option) => option ? option.branchName : ""}
@@ -216,7 +216,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             type="number"
             required
             min={0}
-            className="SmallInput"
+            className="SmallInput wd-9"
             name="amount"
             value={item.amount}
             onChange={(e) => onChangeCarditDabit(e, index)}
@@ -229,7 +229,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <input
             type="text"
             required
-            className="semiSmallInput"
+            className="semiSmallInput wd-30"
             name="note"
             value={item.note}
             onChange={(e) => onChangeCarditDabit(e, index)}

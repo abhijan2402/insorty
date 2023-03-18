@@ -19,7 +19,7 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
           /> */}
 
           <select
-            className="select w-full max-w-xs"
+            className="dailyReportInput"
             name="type"
             defaultValue={type}
             onChange={(e) => {
@@ -66,7 +66,7 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
             onChange={(e) => {
               refundRecoveryOnChange(name, e.target.value, index, "price");
             }}
-            className="dailyReportInput"
+            className="dailyReportInput wd-8"
           />
         </td>
       </tr>

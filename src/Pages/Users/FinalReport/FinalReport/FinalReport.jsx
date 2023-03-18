@@ -1,13 +1,18 @@
-import React from "react";
+import React,{useRef} from "react";
 import ListOfFinalReport from "../ListOfFinalReport/ListOfFinalReport";
 import BorrowedBottles from "../BorrowedBottles/BorrowedBottles.jsx";
 import FinalReportStockExcessForm from "../FinalReportStockExcessForm/FinalReportStockExcessForm";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import moment from "moment/moment";
+import { useReactToPrint } from "react-to-print";
 
 const FinalReport = () => {
   const token = localStorage.getItem("token");
+  const front = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => front.current,
+  });
 
   const { data, isLoading } = useQuery({
     queryKey: ["monthlyFinalReport", "borrowedBottles", "extraBottles"],
@@ -28,7 +33,7 @@ const FinalReport = () => {
     return <Loader></Loader>;
   }
 
-  if (!data.success){
+  if (data.success===false){
     return(
       <div>No data found</div>
     )
@@ -41,7 +46,14 @@ const FinalReport = () => {
   const { monthlyFinalReport, borrowedBottles, extraBottles } = data;
 
   return (
-    <section className="py-4 px-4">
+    <>
+      <button
+        className="my-4 btn btn-error text-white font-bold"
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
+    <section ref={front} className="py-4 px-4">
       <div className="title">
         <h2 className="font-bold text-[1.5rem] text-center titleStyle">
           {/* बचत व नकदी का हिसाब  */} फाइनल रिपोर्ट
@@ -129,6 +141,7 @@ const FinalReport = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

@@ -52,78 +52,44 @@ const PaymentForm = ({ index, payment, paymentData }) => {
           return (
             <>
               <td>
-                <div className="flex gap-4">
                   <div className="form-control">
-                    <input
-                      disabled
-                      type="number"
-                      name="debit_amount"
-                      value={shesh - totalPaid + entry.debit.cash}
-                      className="commonSmallForm"
-                    />
+                    {shesh - totalPaid + entry.debit.cash}
                   </div>
+                  </td>
+
+
+                  <td>
 
                   <div className="form-control">
-                    <input
-                      disabled
-                      type="text"
-                      name="debit_month"
-                      value={moment(entry.debit.date).format("DD/MM/YYYY")}
-                      className="dailyReportInput"
-                    />
+                    {moment(entry.debit.date).format("DD/MM/YYYY")}
                   </div>
-                </div>
               </td>
 
               <td>
-                <div className="flex gap-4">
                   <div className="form-control">
-                    <input
-                      disabled
-                      type="number"
-                      name="deposit_amount"
-                      value={entry.deposit.cash}
-                      className="commonSmallForm"
-                    />
+                  {entry.deposit.cash}
                   </div>
+                  </td>
+
+                  <td>
 
                   <div className="form-control">
-                    <input
-                      disabled
-                      type="text"
-                      name="deposit_date"
-                      value={moment(entry.deposit.date).format("DD/MM/YYYY")}
-                      className="dailyReportInput"
-                    />
+                  {moment(entry.deposit.date).format("DD/MM/YYYY")}
                   </div>
-                </div>
               </td>
 
               <td>
                 <div className="form-control">
-                  <input
-                    disabled
-                    type="number"
-                    name="current_balance_debit"
-                    // value={entry.currentBalance}
-                    value={
-                     - shesh + totalPaid - entry.deposit.cash + entry.debit.cash
-                    }
-                    className="semiSmallInput"
-                  />
+                  {
+                    - shesh + totalPaid - entry.deposit.cash + entry.debit.cash
+                  }
                 </div>
               </td>
 
               <td>
                 <div className="flex gap-4">
                   <div className="form-control">
-                    <input
-                      disabled
-                      type="text"
-                      name="description"
-                      value={entry.description}
-                      className="semiSmallInput"
-                    />
+                    {entry.description}
                   </div>
                 </div>
               </td>

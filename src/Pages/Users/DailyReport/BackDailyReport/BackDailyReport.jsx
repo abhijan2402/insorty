@@ -1090,7 +1090,7 @@ const BackDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput show9Chereter"
+                                className="smallinput wd-6"
                                 name="total650"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
@@ -1108,7 +1108,7 @@ const BackDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput show9Chereter"
+                                className="smallinput wd-6"
                                 name="total330"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
@@ -1126,7 +1126,7 @@ const BackDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput show9Chereter"
+                                className="smallinput wd-6"
                                 name="total330"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
@@ -1149,7 +1149,7 @@ const BackDailyReport = () => {
                             <input
                               type="number"
                               disabled
-                              className="smallinput show9Chereter"
+                              className="smallinput wd-7"
                               name="grandTotal"
                               value={fristFormState.reduce(
                                 (total, currentItem) =>
@@ -1237,16 +1237,7 @@ const BackDailyReport = () => {
                             </td>
                             {/* ======== MRP Input ========= */}
                             <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  // value={item.averageRate}
-                                  // onChange={(e) => handelSeconFormOnChange(e, index)}
-                                  className="SmallInput show9Chereter"
-                                  name="averageRate"
-                                  disabled
-                                />
-                              </div>
+                              
                             </td>
                             <td>
                               <div className="form-control">
@@ -1286,14 +1277,7 @@ const BackDailyReport = () => {
                             </td>
                             {/* ======== प्रारम्भिक स्टॉक ========= */}
                             <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                            disabled
-                                  className="SmallInput show9Chereter"
-                                  name="buyRate"
-                                />
-                              </div>
+                              
                             </td>
 
                             {/* ======== आमद (खरीद)-दु. ========= */}
@@ -1319,16 +1303,7 @@ const BackDailyReport = () => {
                             {/* ======== आमद (खरीद)-बा. ========= */}
 
                             <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="SmallInput show9Chereter"
-                            disabled
-                                  name="purchaseRate"
-                                  // value={item.purchaseRate}
-                                  // onChange={(e) => handelSeconFormOnChange(e, index)}
-                                />
-                              </div>
+                              
                             </td>
                             {/* ======== आमद (उधारी) ========= */}
 
@@ -1427,23 +1402,14 @@ const BackDailyReport = () => {
                             </td>
                             {/* ============= रेट ================ */}
                             <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="SmallInput"
-                            disabled
-                                  name="mainRate"
-                                  // value={item.mainRate}
-                                  // onChange={(e) => handelSeconFormOnChange(e, index)}
-                                />
-                              </div>
+                              
                             </td>
                             {/* ============= योग ================ */}
                             <td>
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput show9Chereter"
+                                  className="SmallInput wd-5"
                                   name="total"
                                   value={addOneSecondFormState.reduce(
                                     (total, currentItem) =>
@@ -1723,6 +1689,7 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th></th>
+                      <td></td>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>ML</th>
@@ -1751,6 +1718,9 @@ const BackDailyReport = () => {
 
                     <tr>
                       <td>Total</td>
+                      <td>
+                        <div className="form-control"></div>
+                      </td>
                       <td>
                         <div className="form-control"></div>
                       </td>
@@ -1791,7 +1761,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="SmallInput"
+                            className="SmallInput wd-7"
                             name="total"
                             value={purchesOutSideState.reduce(
                               (total, currentItem) =>
@@ -1824,6 +1794,7 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th></th>
+                      <td></td>
                       <th>Reason / विवरण</th>
                       <th>रकम</th>
                       <th>Description</th>
@@ -1850,11 +1821,14 @@ const BackDailyReport = () => {
                       <td>
                         <div className="form-control"></div>
                       </td>
+                      <td>
+                        <div className="form-control"></div>
+                      </td>
 
                       <td>
                         <input
                           type="number"
-                          className="SmallInput"
+                          className="SmallInput wd-6"
                           name="amount"
                           value={commissonState.reduce(
                             (total, currentItem) =>
@@ -1886,6 +1860,7 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th></th>
+                      <td></td>
                       <th>Name</th>
                       <th>Type</th>
                       <th>रकम</th>
@@ -1916,6 +1891,9 @@ const BackDailyReport = () => {
                       <td>
                         <div className="form-control"></div>
                       </td>
+                      <td>
+                        <div className="form-control"></div>
+                      </td>
 
                       <td>
                         <input
@@ -1927,7 +1905,7 @@ const BackDailyReport = () => {
                             0
                           )}
                           disabled
-                          className="SmallInput"
+                          className="SmallInput wd-7"
                         />
                       </td>
                       <td>
@@ -2170,7 +2148,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="SmallInput"
+                            className="SmallInput wd-9"
                             name="amount"
                             value={craditDabitState.reduce(
                               (total, currentItem) =>

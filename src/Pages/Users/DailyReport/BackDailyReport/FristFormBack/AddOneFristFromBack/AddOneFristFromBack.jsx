@@ -117,7 +117,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 disabled
-                className="smallinput show9Chereter"
+                className="smallinput wd-7"
                 value={item.averageRate650}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
                 name="averageRate650"
@@ -131,7 +131,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 disabled
-                className="smallinput show9Chereter"
+                className="smallinput wd-7"
                 value={item.averageRate550}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
                 name="averageRate550"
@@ -145,7 +145,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 disabled
-                className="smallinput show9Chereter"
+                className="smallinput wd-6"
                 value={item.averageRate330}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
                 name="averageRate330"
@@ -243,7 +243,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
-                className="smallinput  show9Chereter "
+                className="smallinput  wd-7 "
                 name="buyRate650"
                 value={item.buyRate650}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -255,7 +255,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
-                className="smallinput show9Chereter "
+                className="smallinput wd-6 "
                 name="buyRate550"
                 value={item.buyRate550}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -267,7 +267,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
-                className="smallinput show9Chereter"
+                className="smallinput wd-6"
                 name="buyRate330"
                 value={item.buyRate330}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -326,7 +326,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
-                className="smallinput show9Chereter"
+                className="smallinput wd-7"
                 name="purchaseRate650"
                 value={item.purchaseRate650}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -338,7 +338,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
-                className="smallinput show9Chereter"
+                className="smallinput wd-6"
                 name="purchaseRate550"
                 value={item.purchaseRate550}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -350,7 +350,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
-                className="smallinput show9Chereter"
+                className="smallinput wd-6"
                 name="purchaseRate330"
                 value={item.purchaseRate330}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
@@ -615,7 +615,7 @@ const AddOneFristFromBack = ({
                 type="text"
                 required
                 min={0}
-                className="smallinput show9Chereter"
+                className="smallinput wd-6"
                 name="total650"
                 disabled
                 value={item.total650}
@@ -628,7 +628,7 @@ const AddOneFristFromBack = ({
                 type="text"
                 required
                 min={0}
-                className="smallinput show9Chereter"
+                className="smallinput wd-6"
                 name="total550"
                 disabled
                 value={item.total550}
@@ -641,7 +641,7 @@ const AddOneFristFromBack = ({
                 type="text"
                 required
                 min={0}
-                className="smallinput show9Chereter"
+                className="smallinput wd-6"
                 name="total650"
                 disabled
                 value={item.total330}
@@ -658,7 +658,7 @@ const AddOneFristFromBack = ({
               required
               min={0}
               disabled
-              className="smallinput show9Chereter"
+              className="smallinput wd-7"
               name="grandTotal"
               value={item.grandTotal}
               onChange={(event) => onChangeFristBackFormHandler(event, index)}

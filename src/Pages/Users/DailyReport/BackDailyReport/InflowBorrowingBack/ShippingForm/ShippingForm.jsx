@@ -57,7 +57,7 @@ const ShippingForm = ({
             <Autocomplete
               size="small"
               style={{
-                width: "24rem",
+                width: "20rem",
               }}
               options={parties.length > 0 ? parties : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
@@ -133,6 +133,7 @@ const ShippingForm = ({
             <select
               // className="select select-bordered"
               name="quantity"
+              className="wd-9"
               required
               value={item.quantity}
               onChange={(e) => {
@@ -180,7 +181,7 @@ const ShippingForm = ({
             <input
               type="text"
               required
-              className="semiSmallInput"
+              className="semiSmallInput wd-30"
               name="comment"
               value={item.comment}
               onChange={(e) => onChangeShipping(e, index)}

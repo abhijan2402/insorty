@@ -61,7 +61,7 @@ const CommissionForm = ({
           <input
             type="number"
             required
-            className="SmallInput"
+            className="SmallInput wd-6"
             name="amount"
             value={item.amount}
 
@@ -76,7 +76,7 @@ const CommissionForm = ({
           <input
             type="text"
             required
-            className="semiSmallInput"
+            className="semiSmallInput wd-30"
             name="desc"
             value={item.desc}
             onChange={(e) => onChangeCommison(e, index)}
