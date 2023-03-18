@@ -57,7 +57,7 @@ const StockLanding = () => {
 
       <div>
         <div className="overflow-x-auto">
-          {/* <table className="table w-full">
+          <table className="table w-full">
             <tbody>
               {PartyInfo?.map((party, index) => {
                 return (
@@ -83,13 +83,9 @@ const StockLanding = () => {
                 );
               })}
 
-              <tr>
-                <label htmlFor="addNewEmploy" className="btn btn-sm my-4">
-                  Add New
-                </label>
-              </tr>
+             
             </tbody>
-          </table> */}
+          </table>
         </div>
       </div>
     </section>

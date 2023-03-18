@@ -19,83 +19,52 @@ const StockFormData = ({ index, stockData }) => {
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div className="flex gap-4">
           <div className="form-control">
-            <input
-              type="text"
-              className="dailyReportInput"
-              value={getNameByID(liquor._id)}
-            />
+          {getNameByID(liquor._id)}
           </div>
+          </td>
+
+          <td>
 
           <div className="form-control">
-            <input type="number" className="commonSmallForm " value={getSize(liquor._id)} />
+          {getSize(liquor._id)} ml
           </div>
-        </div>
       </td>
 
       <td>
-        <div className="flex gap-4">
           <div className="form-control">
-            <input
-              type="number"
-              name="inflowNumber"
-              value={inflow}
-              className="commonSmallForm "
-            />
+          {inflow}
           </div>
+          </td>
+
+          <td>
           <div className="form-control">
-            <input
-              type="text"
-              name="inflowComment"
-              value={inflowComment}
-              className="semiSmallInput "
-            />
+          {inflowComment}
           </div>
-        </div>
       </td>
 
       <td>
-        <div className="flex gap-4">
           <div className="form-control">
-            <input
-              type="number"
-              name="sendNumber"
-              value={send}
-              className="commonSmallForm "
-            />
+          {send}
           </div>
+          </td>
+
+          <td>
           <div className="form-control">
-            <input
-              type="text"
-              name="sendComment"
-              value={sendComment}
-              className="semiSmallInput"
-            />
+          {sendComment}
           </div>
-        </div>
       </td>
 
       <td>
-        <div className="flex gap-4">
-          <div className="form-control">
-            <input
-              type="number"
-              name="sendDeposit"
-              value={restBalance < 0 ? restBalance : 0} // show the positive amount for deposit
-              className="semiSmallInput "
-            />
+        <div className="form-control">
+          {restBalance < 0 ? restBalance : 0} 
           </div>
+          </td>
+
+          <td>
           <div className="form-control">
-            <input
-              type="text"
-              name="debit"
-              // show the negative amount for debit
-              value={restBalance > 0 ? restBalance : 0}
-              className="semiSmallInput"
-            />
+          {restBalance > 0 ? restBalance : 0}
           </div>
-        </div>
       </td>
 
       {/* ============= कुल योग ================ */}
