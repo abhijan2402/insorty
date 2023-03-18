@@ -21,8 +21,8 @@ const ListOfFinalReport = ({ monthlyFinalReport }) => {
 
   return (
     <section>
-      <div className="overflow-x-auto">
-        <table className="table w-full">
+      <div className="justify-center items-center flex">
+        <table className="table w-2/3">
           <thead>
             <tr>
               <th> क्र. सं. </th>

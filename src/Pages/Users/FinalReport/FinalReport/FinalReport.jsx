@@ -47,22 +47,23 @@ const FinalReport = () => {
 
   return (
     <>
-      <button
-        className="my-4 btn btn-error text-white font-bold"
-        onClick={handlePrint}
-      >
-        PRINT
-      </button>
+     
     <section ref={front} className="py-4 px-4">
-      <div className="title">
+      <div className="title flex justify-center items-center">
         <h2 className="font-bold text-[1.5rem] text-center titleStyle">
           {/* बचत व नकदी का हिसाब  */} फाइनल रिपोर्ट
         </h2>
         <h2 className="font-bold text-[1.5rem]">
           {data.length  && moment(monthlyFinalReport?.date).format("MM/YYYY")}
         </h2>
-        <div className="divider my-2"></div>
+        <button
+        className="commonBtn "
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
       </div>
+        <div className="divider my-2"></div>
       <div>
         <ListOfFinalReport
           monthlyFinalReport={monthlyFinalReport}
@@ -77,8 +78,8 @@ const FinalReport = () => {
         </div>
         <div>
           <form action="">
-            <div className="overflow-x-auto">
-              <table className="table w-full">
+            <div className="flex justify-center items-center">
+              <table className="table w-2/3">
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
@@ -112,8 +113,8 @@ const FinalReport = () => {
         </div>
         <div>
           <form action="">
-            <div className="overflow-x-auto">
-              <table className="table w-full">
+            <div className="flex justify-center items-center">
+              <table className="table w-2/3">
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>

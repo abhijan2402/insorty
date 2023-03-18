@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import CommisionForm from "../CommisionForm/CommisionForm";
 import Loader from "../../../../Components/Loader/Loader";
@@ -7,7 +7,6 @@ import moment from "moment/moment";
 import useCommision from "../CommisionHooks/useCommision";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
-
 
 const Commision = () => {
   const [StartDate, setStartDate] = useState();
@@ -55,9 +54,9 @@ const Commision = () => {
       <div className="title">
         <h2 className="font-bold md:text-[1.5rem] text-center ">कमीशन</h2>
 
-        <div className="flex item-cnter justify-center">
+        <div className="flex item-cnter justify-center flex-wrap">
           <button
-            className="my-4 btn btn-error text-white font-bold"
+            className="commonBtn "
             onClick={handlePrint}
           >
             PRINT
@@ -88,87 +87,86 @@ const Commision = () => {
         </div>
 
         <div ref={front}>
-        <div>
+          <div>
+            <div className="flex gap-4 items-center justify-center my-4">
+              <h2 className="font-bold text-[1.5rem]">From</h2>
+              <div className="flex gap-2 items-center">
+                <FaCalendarAlt></FaCalendarAlt>
+                <DatePicker
+                  selected={StartDate}
+                  onChange={(date) => {
+                    setStartDate(date);
+                    console.log(moment(date).format());
+                  }}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText={"dd/mm/yyyy"}
+                  className="inputBox"
+                />
+              </div>
 
-        <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">From</h2>
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <DatePicker
-              selected={StartDate}
-              onChange={(date) => {
-                setStartDate(date);
-                console.log(moment(date).format());
-              }}
-              dateFormat="dd/MM/yyyy"
-              placeholderText={"dd/mm/yyyy"}
-              className="inputBox"
-            />
+              <h2 className="font-bold text-[1.5rem]">To</h2>
+              <div className="flex gap-2 items-center">
+                <FaCalendarAlt></FaCalendarAlt>
+                <DatePicker
+                  selected={EndDate}
+                  name="year"
+                  onChange={(data) => setEndDate(data)}
+                  dateFormat="dd/MM/yyyy"
+                  className="inputBox"
+                  placeholderText={"dd/mm/yyyy"}
+                />
+              </div>
+            </div>
+
+            <div className="divider my-2"></div>
           </div>
 
-          <h2 className="font-bold text-[1.5rem]">To</h2>
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <DatePicker
-              selected={EndDate}
-              name="year"
-              onChange={(data) => setEndDate(data)}
-              dateFormat="dd/MM/yyyy"
-              className="inputBox"
-              placeholderText={"dd/mm/yyyy"}
-            />
-          </div>
-        </div>
+          <div className="flex justify-center items-center">
+            <form action="">
+              <div className="overflow-x-auto">
+                <table className="table w-full">
+                  <thead>
+                    <tr>
+                      <td> क्र. सं.</td>
+                      <th>विवरण</th>
+                      <th>रकम</th>
+                      <th>टिप्पणी</th>
+                    </tr>
+                  </thead>
 
-        <div className="divider my-2"></div>
-      </div>
+                  <tbody>
+                    {filteredData.map((commison, index) => {
+                      return (
+                        <CommisionForm
+                          key={index}
+                          index={index}
+                          commison={commison}
+                        ></CommisionForm>
+                      );
+                    })}
 
-      <div>
-        <form action="">
-          <div className="overflow-x-auto">
-            <table className="table w-full">
-              <thead>
-                <tr>
-                  <td> क्र. सं.</td>
-                  <th>विवरण</th>
-                  <th>रकम</th>
-                  <th>टिप्पणी</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {filteredData.map((commison, index) => {
-                  return (
-                    <CommisionForm
-                      key={index}
-                      index={index}
-                      commison={commison}
-                    ></CommisionForm>
-                  );
-                })}
-
-                <tr>
-                  <td></td>
-                  <th></th>
-                  <th
-                    className="flex items-center justify-center
+                    <tr>
+                      <td></td>
+                      <th></th>
+                      <th
+                        className="flex items-center justify-center
                     text-[#AA237A]
                   "
-                  >
-                    Total :
-                    <span className="mx-4">
-                      {totalAmount.reduce((acc, item) => {
-                        return acc + item;
-                      }, 0)}
-                    </span>
-                  </th>
-                  <th></th>
-                </tr>
-              </tbody>
-            </table>
+                      >
+                        Total :
+                        <span className="mx-4">
+                          {totalAmount.reduce((acc, item) => {
+                            return acc + item;
+                          }, 0)}
+                        </span>
+                      </th>
+                      <th></th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>{" "}
           </div>
-        </form>{" "}
-      </div>
         </div>
       </div>
     </section>

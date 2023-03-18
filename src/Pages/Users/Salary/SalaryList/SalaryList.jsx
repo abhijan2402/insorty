@@ -10,7 +10,11 @@ import Loader from "../../../../Components/Loader/Loader";
 const SalaryList = () => {
   const token = localStorage.getItem("token");
 
-  const { data: salaryData, isLoading, refetch } = useQuery({
+  const {
+    data: salaryData,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["salaryData"],
     queryFn: async () => {
       const res = await fetch(
@@ -79,8 +83,11 @@ const SalaryList = () => {
       </div>
 
       <div>
-        <div className="overflow-x-auto">
-          <table className="table w-full">
+        <div
+          className="flex justify-center items-center
+        "
+        >
+          <table className="table w-3/4">
             <tbody>
               {(salaryData.length > 0 &&
                 salaryData?.map((salary, index) => {
@@ -113,15 +120,14 @@ const SalaryList = () => {
                   </p>
                 </>
               )}
-
-              <tr>
-                <label htmlFor="addNewEmploy" className="btn btn-sm my-4">
-                  Add New
-                </label>
-              </tr>
             </tbody>
           </table>
         </div>
+        <tr className="py-4 flex justify-center">
+          <label htmlFor="addNewEmploy" className="commonBtn">
+            Add New
+          </label>
+        </tr>
       </div>
       <AddNewEmploy
         key={salaryData?._id}

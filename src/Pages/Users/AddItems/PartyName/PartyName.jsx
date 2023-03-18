@@ -7,7 +7,11 @@ import Loader from "../../../../Components/Loader/Loader";
 const PartyName = () => {
   const token = localStorage.getItem("token");
 
-  const { data: PartyNameData, isLoading, refetch } = useQuery({
+  const {
+    data: PartyNameData,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["PartyNameData"],
     queryFn: async () => {
       const res = await fetch(
@@ -27,7 +31,7 @@ const PartyName = () => {
   return (
     <section>
       <div className="title">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 justify-center items-center">
           <h2 className="font-bold md:text-[1.5rem] text-center">
             पार्टी का नाम
           </h2>
@@ -40,7 +44,9 @@ const PartyName = () => {
         </div>
         <div className="divider my-2"></div>
       </div>
-      <div>
+      <div
+        className="justify-center flex items-center"
+      >
         <table className="table w-4/5">
           <thead className="text-center">
             <th>
@@ -79,7 +85,7 @@ const PartyName = () => {
         </table>
       </div>
 
-      <div>
+      <div className="flex justify-center items-center">
         <div className="my-4">
           <label htmlFor="AddPartyName" className="commonBtn">
             Add New

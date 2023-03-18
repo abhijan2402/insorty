@@ -27,7 +27,7 @@ const BranchName = () => {
   return (
     <section>
       <div className="title">
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 justify-center items-center">
           <h2 className="font-bold text-[1.5rem] text-center">Branch name</h2>
           <Link to="/user/partyname" className="commonBtn ">
             Party name
@@ -38,7 +38,7 @@ const BranchName = () => {
         </div>
         <div className="divider my-2"></div>
       </div>
-      <div>
+      <div className="flex justify-center items-center">
         <table className="table w-4/5">
           <thead className="text-center ">
             <th>
@@ -74,7 +74,7 @@ const BranchName = () => {
           </tbody>
         </table>
       </div>
-      <div>
+      <div className="flex justify-center">
         <div className="my-4">
           <label htmlFor="AddPartyName" className="commonBtn">
             Add New

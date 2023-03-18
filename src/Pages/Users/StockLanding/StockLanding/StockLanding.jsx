@@ -56,8 +56,8 @@ const StockLanding = () => {
       </div>
 
       <div>
-        <div className="overflow-x-auto">
-          <table className="table w-full">
+        <div className="flex justify-center items-center">
+          <table className="table w-2/3">
             <tbody>
               {PartyInfo?.map((party, index) => {
                 return (

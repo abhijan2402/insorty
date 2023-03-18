@@ -50,17 +50,18 @@ const CashReciveData = () => {
 
   return (
     <>
-      <button
-        className="my-4 btn btn-error text-white font-bold"
+     
+    <section ref={front}>
+      <div className="title flex justify-center items-center flex-col">
+        <h2 className="font-bold md:text-[1.5rem] text-center">
+          अन्य से नकद प्राप्ति
+        </h2>
+        <button
+        className="commonBtn "
         onClick={handlePrint}
       >
         PRINT
       </button>
-    <section ref={front}>
-      <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">
-          अन्य से नकद प्राप्ति
-        </h2>
 
         <div className="flex gap-4 items-center my-4 z-10">
           <h2 className="font-bold text-[1.5rem]">From</h2>
@@ -91,13 +92,13 @@ const CashReciveData = () => {
             />
           </div>
         </div>
-        <div className="divider my-2"></div>
       </div>
+        <div className="divider my-2"></div>
 
       {/* ************************ all sealy data************** */}
 
       <div>
-        <div className="overflow-x-auto m-6">
+        <div className="justify-center items-center flex m-6">
           <table className="table w-11/12">
             <thead>
               <tr>

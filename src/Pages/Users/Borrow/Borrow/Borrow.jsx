@@ -32,23 +32,24 @@ const Borrow = () => {
   }
   return (
     <>
-      <button
-        className="my-4 btn btn-error text-white font-bold"
+      
+    <section ref={front} className="py-4">
+      <div className="title flex justify-center items-center">
+        <h2 className="font-bold md:text-[1.5rem] text-center">
+          उधारी (माल व नकद) नामे व जमा
+        </h2>
+        <button
+        className="commonBtn "
         onClick={handlePrint}
       >
         PRINT
       </button>
-    <section ref={front} className="py-4">
-      <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">
-          उधारी (माल व नकद) नामे व जमा
-        </h2>
-        <div className="divider my-2"></div>
       </div>
+        <div className="divider my-2"></div>
 
       <div>
         <form action="">
-          <div className="overflow-x-auto">
+          <div className="flex justify-center items-center">
             <table className="table ">
               <thead>
                 <tr>

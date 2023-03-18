@@ -155,7 +155,7 @@ const FrontDetailsReport = () => {
           </Link>
 
           <button
-            className="my-4 btn btn-error text-white font-bold"
+            className="commonBtn "
             onClick={handlePrint}
           >
             PRINT
@@ -198,7 +198,7 @@ const FrontDetailsReport = () => {
         </Link>
 
         <button
-          className="my-4 btn btn-error text-white font-bold"
+          className="commonBtn "
           onClick={handlePrint}
         >
           PRINT

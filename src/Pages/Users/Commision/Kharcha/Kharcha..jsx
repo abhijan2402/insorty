@@ -51,9 +51,9 @@ const Kharcha = () => {
       <div className="title">
         <h2 className="font-bold md:text-[1.5rem] text-center"> KHARCHA</h2>
 
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center flex-wrap">
           <button
-            className="my-4 btn btn-error text-white font-bold"
+            className="commonBtn "
             onClick={handlePrint}
           >
             PRINT
@@ -85,7 +85,7 @@ const Kharcha = () => {
         <div ref={front}>
         <div>
 
-        <div className="flex gap-4 items-center my-4">
+        <div className="flex gap-4 justify-center items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">
             <FaCalendarAlt></FaCalendarAlt>
@@ -118,7 +118,7 @@ const Kharcha = () => {
         <div className="divider my-2"></div>
       </div>
 
-      <div>
+      <div className="flex justify-center items-center">
         <form action="">
           <div className="overflow-x-auto">
             <table className="table w-full">
