@@ -6,7 +6,7 @@ const WineBill = () => {
     <section className="p-4">
       <div>
         <div className="title">
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center justify-center">
             <h2 className="font-bold md:text-[1.5rem] text-center">
               वाइन बिल का फोर्मेट
             </h2>

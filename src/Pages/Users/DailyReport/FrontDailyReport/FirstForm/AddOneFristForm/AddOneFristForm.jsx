@@ -61,7 +61,7 @@ const AddOneFristForm = ({
           <Autocomplete
             size="small"
             style={{
-              width: "10rem",
+              width: "24rem",
             }}
             options={
               liquors.length > 0
@@ -106,8 +106,8 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                className="smallinput"
-                required 
+                className="smallinput show9Chereter"
+                required
                 min={0}
                 value={addOneFirst.averageRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -119,7 +119,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show9Chereter"
                 required
                 min={0}
                 value={addOneFirst.averageRate330}
@@ -132,7 +132,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show9Chereter"
                 required
                 min={0}
                 value={addOneFirst.averageRate180}
@@ -317,7 +317,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show9Chereter"
                 required
                 min={0}
                 name="purchaseRate750"
@@ -329,7 +329,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show9Chereter"
                 required
                 min={0}
                 name="purchaseRate330"
@@ -341,7 +341,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show9Chereter"
                 required
                 min={0}
                 name="purchaseRate180"
@@ -400,7 +400,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show9Chereter"
                 required
                 min={0}
                 name="sending750"
@@ -412,7 +412,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show9Chereter"
                 required
                 min={0}
                 name="sending330"
@@ -424,7 +424,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show9Chereter"
                 required
                 min={0}
                 name="sending180"
@@ -566,7 +566,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show6Chereter"
                 required
                 min={0}
                 name="mainRate750"
@@ -578,7 +578,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show6Chereter"
                 required
                 min={0}
                 name="mainRate330"
@@ -590,7 +590,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput show6Chereter"
                 required
                 min={0}
                 name="mainRate180"
@@ -606,7 +606,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="text"
-                className="smallinput"
+                className="smallinput show6Chereter"
                 required
                 min={0}
                 name="total750"
@@ -620,7 +620,7 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="text"
-                className="smallinput"
+                className="smallinput show6Chereter"
                 required
                 disabled
                 min={0}
@@ -635,7 +635,7 @@ const AddOneFristForm = ({
               <input
                 type="text"
                 name="total180"
-                className="smallinput"
+                className="smallinput show6Chereter"
                 required
                 min={0}
                 disabled
@@ -655,9 +655,9 @@ const AddOneFristForm = ({
           <div className="form-control">
             <input
               type="text"
-              className="smallinput"
-                required
-                min={0}
+              className="smallinput show7Chereter"
+              required
+              min={0}
               name="grandTotal"
               disabled
               value={

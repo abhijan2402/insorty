@@ -5,14 +5,9 @@ import useLiquors from "../../../../../../Hooks/useLiquors";
 import { Autocomplete, TextField } from "@mui/material";
 
 const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
-  const {
-    brands,
-    brandsLoaded,
-    checkLiquor,
-    liquors
-  } = useLiquors()
+  const {  brandsLoaded, liquors } = useLiquors();
 
-  const { parties, partyLoaded } = usePartyNames()
+  const { parties, partyLoaded } = usePartyNames();
 
   if (brandsLoaded || partyLoaded) {
     return (
@@ -29,9 +24,12 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
         <td>
           <div className="form-control">
             <Autocomplete
-              options={parties.length > 0 ? parties : ['no options']}
-              
-              getOptionLabel={(option) => option ? option.partyName : ""}
+              size="small"
+              style={{
+                width: "24rem",
+              }}
+              options={parties.length > 0 ? parties : ["no options"]}
+              getOptionLabel={(option) => (option ? option.partyName : "")}
               // item.brandName = event.target.outerText;
               // // eslint-disable-next-line array-callback-return
               // const liq = liquors.filter((liq) => {
@@ -43,14 +41,14 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
               // handelFristFormOnChange(event, index);
               onChange={(event, value) => {
                 if (value) {
-                  item.partyName = value.partyName
-                  item.partyId = value._id
+                  item.partyName = value.partyName;
+                  item.partyId = value._id;
                 } else {
-                  item.partyName = ""
-                  item.partyId = ""
+                  item.partyName = "";
+                  item.partyId = "";
                 }
-                onChangeBorrowingRml(event, index)
-                console.log(item)
+                onChangeBorrowingRml(event, index);
+                console.log(item);
               }}
               renderInput={(params) => (
                 <TextField
@@ -58,7 +56,6 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
                   className="dailyReportInput"
                   // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.partyName }}
-
                   onChange={(event) => {
                     item.partyName = event.target.value;
                     // item.liquorID = null;
@@ -73,9 +70,12 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
         <td>
           <div className="form-control">
             <Autocomplete
-              options={liquors.length > 0 ? liquors : ['no options']}
-              
-              getOptionLabel={(option) => option ? option.brandName : ""}
+              size="small"
+              style={{
+                width: "24rem",
+              }}
+              options={liquors.length > 0 ? liquors : ["no options"]}
+              getOptionLabel={(option) => (option ? option.brandName : "")}
               // item.brandName = event.target.outerText;
               // // eslint-disable-next-line array-callback-return
               // const liq = liquors.filter((liq) => {
@@ -87,14 +87,14 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
               // handelFristFormOnChange(event, index);
               onChange={(event, value) => {
                 if (value) {
-                  item.brandName = value.brandName
-                  item.liquorId = value._id
+                  item.brandName = value.brandName;
+                  item.liquorId = value._id;
                 } else {
-                  item.brandName = ""
-                  item.liquorId = ""
+                  item.brandName = "";
+                  item.liquorId = "";
                 }
-                onChangeBorrowingRml(event, index)
-                console.log(item)
+                onChangeBorrowingRml(event, index);
+                console.log(item);
               }}
               renderInput={(params) => (
                 <TextField
@@ -102,7 +102,6 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
                   className="dailyReportInput"
                   // value={item.brandName}
                   inputProps={{ ...params.inputProps, value: item.brandName }}
-
                   onChange={(event) => {
                     item.brandName = event.target.value;
                     // item.liquorID = null;
@@ -133,13 +132,14 @@ const InflowBorrowingRML = ({ index, onChangeBorrowingRml, item }) => {
               name="quantity"
               value={item.quantity}
               onChange={(e) => {
-                onChangeBorrowingRml(e, index)
+                onChangeBorrowingRml(e, index);
               }}
             >
               {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
 
-
-              <option selected value={750}>750ml</option>
+              <option selected value={750}>
+                750ml
+              </option>
               <option value={700}>700ml</option>
               <option value={650}>650ml</option>
               <option value={550}>550ml</option>

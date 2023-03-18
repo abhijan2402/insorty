@@ -59,7 +59,7 @@ const AddOneSecondForm = ({
             <Autocomplete
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               options={
                 liquors.length > 0
@@ -71,7 +71,6 @@ const AddOneSecondForm = ({
                   : ["no options"]
               }
               getOptionLabel={(option) => (option ? option.brandName : "")}
-              
               onChange={(event, value) => {
                 if (value) {
                   item.brandName = value.brandName;
@@ -86,7 +85,7 @@ const AddOneSecondForm = ({
               }}
               renderInput={(params) => (
                 <TextField
-                required
+                  required
                   size="small"
                   {...params}
                   // className="dailyReportInput"
@@ -102,7 +101,7 @@ const AddOneSecondForm = ({
             />
           </div>
         </td>
-        
+
         <td>
           <div className="form-control ">
             <select
@@ -139,11 +138,11 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
+              required
+              min={0}
               value={item.averageRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
-              className="smallinput"
+              className="smallinput show9Chereter show9Chereter"
               name="averageRate"
               disabled
             />
@@ -153,10 +152,10 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
-                disabled
-              className="smallinput"
+              required
+              min={0}
+              disabled
+              className="smallinput show9Chereter"
               name="startingStock"
               value={item.startingStock}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -167,9 +166,9 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
-              className="smallinput"
+              required
+              min={0}
+              className="smallinput show9Chereter"
               name="incomingPurchase"
               value={item.incomingPurchase}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -181,9 +180,8 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
-                
+              required
+              min={0}
               className="smallinput"
               name="buyRate"
               value={item.buyRate}
@@ -198,8 +196,8 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
+              required
+              min={0}
               className="smallinput"
               name="incomePurchase"
               value={item.incomePurchase}
@@ -213,9 +211,9 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
-              className="smallinput"
+              required
+              min={0}
+              className="smallinput show9Chereter"
               name="purchaseRate"
               value={item.purchaseRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -228,8 +226,8 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
+              required
+              min={0}
               className="smallinput"
               name="inflowCredit"
               value={item.inflowCredit}
@@ -242,9 +240,9 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
-              className="smallinput"
+              required
+              min={0}
+              className="smallinput show9Chereter"
               name="sending"
               value={item.sending}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -256,8 +254,8 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
+              required
+              min={0}
               className="smallinput"
               name="sumRemainder"
               value={item.sumRemainder}
@@ -271,8 +269,8 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
+              required
+              min={0}
               className="smallinput"
               name="closingStock"
               value={item.closingStock}
@@ -285,8 +283,8 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
+              required
+              min={0}
               className="smallinput"
               name="sales"
               value={item.sales}
@@ -300,9 +298,9 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
-              className="smallinput"
+              required
+              min={0}
+              className="smallinput show6Chereter"
               name="mainRate"
               value={item.mainRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -314,9 +312,9 @@ const AddOneSecondForm = ({
           <div className="form-control">
             <input
               type="number"
-                required
-                min={0}
-              className="smallinput"
+              required
+              min={0}
+              className="smallinput show6Chereter"
               name="total"
               value={item.total}
               onChange={(e) => handelSeconFormOnChange(e, index)}

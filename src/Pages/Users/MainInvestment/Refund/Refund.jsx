@@ -7,7 +7,7 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
 
   return (
     <>
-      <tr>
+      <tr className="my-6">
         <th>{index + 1}</th>
         <td>
           {/* <input
@@ -53,6 +53,9 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
             className="inputBox"
+            style={{
+              zIndex: "1000"
+            }}
           />
         </td>
         <td>
@@ -63,7 +66,7 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
             onChange={(e) => {
               refundRecoveryOnChange(name, e.target.value, index, "price");
             }}
-            className="semiSmallInput"
+            className="dailyReportInput"
           />
         </td>
       </tr>

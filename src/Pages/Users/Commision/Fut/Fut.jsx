@@ -4,6 +4,7 @@ import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import useCommision from "../CommisionHooks/useCommision";
+import { Link } from "react-router-dom";
 
 const Fut = () => {
   const [StartDate, setStartDate] = useState();
@@ -42,7 +43,32 @@ const Fut = () => {
   return (
     <section className="py-4 px-4">
       <div className="title">
-        <h2 className="font-bold text-center md:text-[1.5rem]">कमीशन</h2>
+        <h2 className="font-bold text-center md:text-[1.5rem]">FUT</h2>
+
+        <div className="flex item-cnter justify-center">
+          <Link className="commonBtn" to="/user/commisson">
+            COMMISSION
+          </Link>
+          <Link className="commonBtn " to="/user/kharcha">
+            KHARCHA
+          </Link>
+
+          <Link className="commonBtn " to="/user/begar">
+            BEGAR
+          </Link>
+
+          <Link className="commonBtn " to="/user/monthly">
+            MONTHLY
+          </Link>
+
+          <Link className="commonBtn " to="/user/penalty">
+            PENALTY
+          </Link>
+
+          <Link className="commonBtn " to="/user/others">
+            OTHERS
+          </Link>
+        </div>
 
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
@@ -143,10 +169,7 @@ const Fut = () => {
                     text-[#AA237A]
                   "
                   >
-                    Total :
-                    <span className="mx-4">
-                     0
-                    </span>
+                    Total :<span className="mx-4">0</span>
                   </th>
                   <th></th>
                 </tr>

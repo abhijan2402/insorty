@@ -49,7 +49,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <Autocomplete
           size="small"
           style={{
-            width: "10rem",
+            width: "24rem",
           }}
             options={parties.length > 0 ? parties : ['no options']}
             getOptionLabel={(option) => option ? option.partyName : ""}
@@ -95,7 +95,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <Autocomplete
           size="small"
           style={{
-            width: "10rem",
+            width: "24rem",
           }}
             options={partners.length > 0 ? partners : ['no options']}
             getOptionLabel={(option) => option ? option.name : ""}
@@ -143,7 +143,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <Autocomplete
           size="small"
           style={{
-            width: "10rem",
+            width: "24rem",
           }}
             options={branches.length > 0 ? branches : ['no options']}
             getOptionLabel={(option) => option ? option.branchName : ""}

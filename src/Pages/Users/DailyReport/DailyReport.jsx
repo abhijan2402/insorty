@@ -14,20 +14,20 @@ const DailyReport = () => {
       <div className="flex gap-4">
         <Link
           to="/user/dailyreport/front"
-          className="btn btn-error text-white font-bold"
+          className="commonBtn"
         >
           अंग्रेजी
         </Link>
         <Link
           to="/user/dailyreport/back"
-          className="btn btn-error text-white font-bold"
+          className="commonBtn"
         >
           बीयर
         </Link>
 
         <Link
           to="/user/frontdailyreport/details"
-          className="btn btn-error text-white font-bold"
+          className="commonBtn"
         >
           परचा
         </Link>

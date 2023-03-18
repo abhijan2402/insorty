@@ -4,6 +4,7 @@ import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import useCommision from "../CommisionHooks/useCommision";
+import { Link } from "react-router-dom";
 
 const Monthly = () => {
   const [StartDate, setStartDate] = useState();
@@ -31,18 +32,43 @@ const Monthly = () => {
     return filterPass;
   });
 
-  const totalAmount = filteredData.map((item) => {
-    // get total ammount using reduce method
-    const total = item.entries.reduce((acc, item) => {
-      return acc + Number(item.amount.$numberDecimal);
-    }, 0);
-    return total;
-  });
+  // const totalAmount = filteredData.map((item) => {
+  //   // get total ammount using reduce method
+  //   const total = item.entries.reduce((acc, item) => {
+  //     return acc + Number(item.amount.$numberDecimal);
+  //   }, 0);
+  //   return total;
+  // });
 
   return (
     <section className="py-4 px-4">
       <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">कमीशन</h2>
+        <h2 className="font-bold md:text-[1.5rem] text-center">MONTHLY</h2>
+        <div className="flex items-center justify-center">
+          <Link className="commonBtn" to="/user/commisson">
+            COMMISSION
+          </Link>
+
+          <Link className="commonBtn " to="/user/kharcha">
+            KHARCHA
+          </Link>
+
+          <Link className="commonBtn " to="/user/fut">
+            FUT
+          </Link>
+
+          <Link className="commonBtn " to="/user/begar">
+            BEGAR
+          </Link>
+
+          <Link className="commonBtn " to="/user/penalty">
+            PENALTY
+          </Link>
+
+          <Link className="commonBtn " to="/user/others">
+            OTHERS
+          </Link>
+        </div>
 
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>

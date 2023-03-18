@@ -4,21 +4,12 @@ import Loader from "../../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 
-const AddOneFristFromBack = ({
-  index,
-  item,
-  onChangeFristBackFormHandler,
-}) => {
+const AddOneFristFromBack = ({ index, item, onChangeFristBackFormHandler }) => {
   const SerialNo = index + 1;
 
-  const {
-    brands,
-    brandsLoaded,
-    checkLiquor,
-    liquors
-  } = useLiquors()
+  const { brands, brandsLoaded, checkLiquor, liquors } = useLiquors();
 
-  if(!brandsLoaded){
+  if (!brandsLoaded) {
     // console.log(checkLiquor("b").filter((item)=>{
     //   if (item.quantityInML === 650){
     //     return item
@@ -26,8 +17,6 @@ const AddOneFristFromBack = ({
     // }))
     // console.log(brands)
   }
-  
-
 
   // const brands = ["a", "b", "c", "d"];
 
@@ -45,13 +34,20 @@ const AddOneFristFromBack = ({
         <td>
           <div className="form-control">
             <Autocomplete
-              options={liquors.length > 0 ? liquors.filter((brand) => {
-                if (brand.type === 'BEER') {
-                  return brand
-                }
-              }) : ['no options']}
-              
-              getOptionLabel={(option) => option ? option.brandName : ""}
+              size="small"
+              style={{
+                width: "24rem",
+              }}
+              options={
+                liquors.length > 0
+                  ? liquors.filter((brand) => {
+                      if (brand.type === "BEER") {
+                        return brand;
+                      }
+                    })
+                  : ["no options"]
+              }
+              getOptionLabel={(option) => (option ? option.brandName : "")}
               // item.brandName = event.target.outerText;
               // // eslint-disable-next-line array-callback-return
               // const liq = liquors.filter((liq) => {
@@ -63,14 +59,14 @@ const AddOneFristFromBack = ({
               // handelFristFormOnChange(event, index);
               onChange={(event, value) => {
                 if (value) {
-                  item.brandName = value.brandName
-                  item.liquorID = value._id
+                  item.brandName = value.brandName;
+                  item.liquorID = value._id;
                 } else {
-                  item.brandName = ""
-                  item.liquorID = ""
+                  item.brandName = "";
+                  item.liquorID = "";
                 }
-                onChangeFristBackFormHandler(event, index)
-                console.log(item)
+                onChangeFristBackFormHandler(event, index);
+                console.log(item);
               }}
               renderInput={(params) => (
                 <TextField
@@ -78,7 +74,6 @@ const AddOneFristFromBack = ({
                   className="dailyReportInput"
                   // value={item.brandName}
                   inputProps={{ ...params.inputProps, value: item.brandName }}
-
                   onChange={(event) => {
                     item.brandName = event.target.value;
                     // item.liquorID = null;

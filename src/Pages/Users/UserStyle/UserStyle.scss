@@ -1,32 +1,31 @@
-$primaryColor : #AA237A;
+$primaryColor: #aa237a;
 
 .titleStyle {
-    color: $primaryColor;
-    font-size: 26px;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
+  color: $primaryColor;
+  font-size: 26px;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
 }
 
 .commonSmallForm {
-    padding: 0.2rem;
-    width: 65px;
-    height: 41px;
-    background: rgba(253, 249, 250, 0.5);
-    border: 0.2px solid #000000;
-    border-radius: 8px;
+  padding: 0.2rem;
+  width: 65px;
+  height: 41px;
+  background: rgba(253, 249, 250, 0.5);
+  border: 0.2px solid #000000;
+  border-radius: 8px;
 }
 
 .commonText {
-    font-size: 16px;
-    font-weight: bold;
-    color: #000000;
-
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
 }
 
 .price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #AA237A;
-
+  font-size: 16px;
+  font-weight: bold;
+  color: #aa237a;
 }

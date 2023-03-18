@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import usePartyNames from "../../../../../Hooks/usePartyNames";
 import Loader from "../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
@@ -32,6 +32,7 @@ const CashReciveForm = ({
   return (
     <>
       <tr>
+      <th></th>
         <th
           className="cross"
           onClick={() => {
@@ -71,7 +72,7 @@ const CashReciveForm = ({
             <Autocomplete
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               options={parties.length > 0 ? parties : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
@@ -107,7 +108,7 @@ const CashReciveForm = ({
             <Autocomplete
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               options={partners.length > 0 ? partners : ["no options"]}
               getOptionLabel={(option) => (option ? option.name : "")}
@@ -153,7 +154,7 @@ const CashReciveForm = ({
             <Autocomplete
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               options={branches.length > 0 ? branches : ["no options"]}
               getOptionLabel={(option) => (option ? option.branchName : "")}

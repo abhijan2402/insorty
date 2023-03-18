@@ -33,7 +33,7 @@ const MainInvestment = () => {
       <div>
         <form>
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table w-full">
               <thead>
                 <tr className="text-center">
                   <th> क्र. सं.</th>
@@ -52,23 +52,14 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Previous Loans"}
-                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
-                  <td>
-                    {/* <input
-                      type="date"
-                      name="theDate"
-                      className="semiSmallInput"
-                      defaultValue={previousLoan.date}
-                      onChange={(e) => previousLoan.date=e.target.value}
-                    /> */}
-                  </td>
+                  <td></td>
                   <td>
                     <input
                       type="number"
                       name="price"
-                      className="semiSmallInput"
+                      className="dailyReportInput"
                       defaultValue={data.mainInvest.previousLoan.price}
                       onChange={(event) =>
                         handleInvestmentChange(
@@ -88,23 +79,14 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Cash in Hand"}
-                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
-                  <td>
-                    {/* <input
-                      type="date"
-                      name="theDate"
-                      className="semiSmallInput"
-                      defaultValue={cashInHand.date}
-                      onChange={(e) => cashInHand.date = e.target.value}
-                    /> */}
-                  </td>
+                  <td></td>
                   <td>
                     <input
                       type="number"
                       name="price"
-                      className="semiSmallInput"
+                      className="dailyReportInput"
                       defaultValue={data.mainInvest.cashInHand.price}
                       onChange={(event) =>
                         handleInvestmentChange("cashInHand", event.target.value)
@@ -126,13 +108,18 @@ const MainInvestment = () => {
                 })}
 
                 <tr>
-                  <h1
-                    style={{ textAlign: "center", paddingTop: 3, marginTop: 7 }}
-                    className="dailyReportBtn"
+                  <button
+                    style={{
+                      textAlign: "center",
+                      paddingTop: 3,
+                      marginTop: 7,
+                      marginBottom: 7,
+                    }}
+                    className="commonBtn"
                     onClick={() => handleFeesAdd()}
                   >
-                    ADD 1
-                  </h1>
+                    ADD
+                  </button>
                 </tr>
 
                 <tr>
@@ -143,26 +130,16 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Reserve Amount"}
-                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
-                  <td>
-                    {/* <input
-                      type="date"
-                      name="theDate"
-                      className="semiSmallInput"
-                      defaultValue={cashInHand.date}
-                      onChange={(e) => cashInHand.date = e.target.value}
-                    /> */}
-                  </td>
+                  <td></td>
                   <td>
                     <input
                       type="number"
                       name="price"
-                      className="semiSmallInput"
+                      className="dailyReportInput"
                       value={data.mainInvest.reserveAmount.price}
                       readOnly
-                      // onChange={(e) => handleChange(e)}
                     />
                   </td>
                 </tr>
@@ -181,7 +158,7 @@ const MainInvestment = () => {
                     {/* <input
                       type="date"
                       name="theDate"
-                      className="semiSmallInput"
+                      className="dailyReportInput"
                       defaultValue={cashInHand.date}
                       onChange={(e) => cashInHand.date = e.target.value}
                     /> */}
@@ -190,7 +167,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="semiSmallInput"
+                      className="dailyReportInput"
                       defaultValue={data.mainInvest.total}
                       onChange={(event) =>
                         handleInvestmentChange("total", event.target.value)
@@ -216,7 +193,7 @@ const MainInvestment = () => {
         <div className="p-2">
           <h2 className="font-bold text-[1.5rem] my-2">रिफंड / रिकवरी विवरण</h2>
         </div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto my-6">
           <table className="table w-full">
             <thead>
               <tr className="text-center">
@@ -246,17 +223,10 @@ const MainInvestment = () => {
                 <td>
                   <div>
                     <button
-                      style={{
-                        cursor: "pointer",
-                        backgroundColor: "#AA237A",
-                        padding: "0.6rem 1.5rem",
-                        borderRadius: "0.5rem",
-                        color: "black",
-                        fontSize: "1rem",
-                      }}
+                      className="commonBtn"
                       onClick={() => handleRefundRecoveryAdd()}
                     >
-                      Add Refund
+                      Add
                     </button>
                   </div>
                 </td>
@@ -281,7 +251,7 @@ const MainInvestment = () => {
             लाभ में से रिजर्व रकम
           </h2>
         </div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto my-6">
           <table className="table w-full">
             <thead>
               <tr className="text-center">
@@ -309,17 +279,10 @@ const MainInvestment = () => {
                 <td>
                   <div>
                     <button
-                      style={{
-                        cursor: "pointer",
-                        backgroundColor: "#AA237A",
-                        padding: "0.6rem 1.5rem",
-                        borderRadius: "0.5rem",
-                        color: "black",
-                        fontSize: "1rem",
-                      }}
+                      className="commonBtn"
                       onClick={() => handleReserveAmountAdd()}
                     >
-                      Add Reserve
+                      Add
                     </button>
                   </div>
                 </td>
@@ -347,7 +310,7 @@ const MainInvestment = () => {
       </div>
       <div className="my-4 flex gap-4">
         <button
-          className="dailyReportBtnSubmit"
+          className="commonBtn"
           onClick={() => handleSave()}
           type="submit"
         >

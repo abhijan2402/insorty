@@ -33,13 +33,13 @@ const BackDailyReport = () => {
 
   // ================== Frist Form============
   const {
-    addFiveInFristFormHandler,
+   
     addOneInFristFormHandler,
     fristFormState,
-    handelSubmitFristFormBack,
+   
     onChangeFristBackFormHandler,
     totalState,
-    isLoading,
+   
     brands,
     brandsLoaded,
     liquors,
@@ -53,7 +53,7 @@ const BackDailyReport = () => {
   // ================== Rml Form============
   const {
     addRmlState,
-    handelAddFiveInRml,
+   
     handelAddOneInRml,
     onChangeRmlHandler,
     setAddRmlState,
@@ -63,7 +63,7 @@ const BackDailyReport = () => {
   // ================== Purchase OutSide Form============
   const {
     purchesOutSideState,
-    handelAddFivePurchesOutSide,
+   
     handelAddOnePurchesOutSide,
     onChangePurchesOutSide,
     handleRemoveFieldsPurchaseOut,
@@ -72,7 +72,7 @@ const BackDailyReport = () => {
   // ================== Commission Form============
   const {
     commissonState,
-    handelAddFiveCommison,
+   
     handelAddOneCommison,
     onChangeCommison,
     handleRemoveFieldsCommission,
@@ -81,7 +81,7 @@ const BackDailyReport = () => {
   // ================== Cash Recive Form============
   const {
     cashReciveState,
-    handelAddFiveCashRecive,
+   
     handelAddOneCashRecive,
     onChangeCashRecive,
     handleRemoveFieldsCashBack,
@@ -92,7 +92,7 @@ const BackDailyReport = () => {
     addShippingState,
     handleRemoveFieldsShipping,
     onChangeShipping,
-    handelAddFiveShipping,
+    
     handelAddOneShipping,
   } = useShippingAdd();
 
@@ -102,7 +102,7 @@ const BackDailyReport = () => {
     onChangeBorrowingRml,
     // handelSubmitBorrowingRml,
     handleRemoveFieldsInflow,
-    handelAddFiveBorrowingRml,
+   
     handelAddOneBorrowingRml,
   } = useInfolwBorrowingRml();
 
@@ -112,17 +112,12 @@ const BackDailyReport = () => {
     onChangeCarditDabit,
     handleRemoveFieldsCredit,
     // handelSubmitCarditDabit,
-    handelAddFiveCarditDabit,
+   
     handelAddOneCarditDabit,
   } = useCarditDabit();
 
   // ********************************* add five button handler *********************************
-  const addFiveBtnHandler = () => {
-    handelAddFiveInRml();
-    handelAddFivePurchesOutSide();
-    handelAddFiveCommison();
-    handelAddFiveCashRecive();
-  };
+
 
   const addOneBtnHandler = () => {
     handelAddOneInRml();
@@ -131,11 +126,7 @@ const BackDailyReport = () => {
     handelAddOneCashRecive();
   };
 
-  const addFiveShippingBtnHandler = () => {
-    handelAddFiveShipping();
-    handelAddFiveBorrowingRml();
-    handelAddFiveCarditDabit();
-  };
+
 
   const addOneShippingBtnHandler = () => {
     handelAddOneShipping();
@@ -162,7 +153,7 @@ const BackDailyReport = () => {
 
         <div className="my-4 flex gap-4 items-center justify-center">
           <h1 className="font-bold md:text-2xl sm:text-sm text-center">
-            Daily Report / दैनिक रिपोर्ट{" "}
+          बीयर
           </h1>
 
           <div className="my-4">
@@ -218,7 +209,7 @@ const BackDailyReport = () => {
                   <table className="table commonTable">
                     <thead>
                       <tr>
-                        <td> क्र. सं.</td>
+                        <th> क्र. सं.</th>
                         <th></th>
                         <th>Brand Name/ ब्राण्ड</th>
                         <th>Average Rate</th>
@@ -240,7 +231,7 @@ const BackDailyReport = () => {
 
                     <tbody>
                       <tr>
-                        <td></td>
+                        <th></th>
                         <td>
                           <div className="form-control"></div>
                         </td>
@@ -248,7 +239,7 @@ const BackDailyReport = () => {
                        <td ></td>
                         {/* ======== प्रारम्भिक स्टॉक ========= */}
                         <td>
-                          <div className="flex ">
+                          <div className="flex justify-center item-center gap-4">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -314,7 +305,7 @@ const BackDailyReport = () => {
                         </td>
 
                         <td>
-                          <div className="flex ">
+                          <div className="flex justify-center item-center gap-4">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -361,7 +352,7 @@ const BackDailyReport = () => {
                         {/* ======== आमद (उधारी) ========= */}
 
                         <td>
-                          <div className="flex ">
+                          <div className="flex justify-center item-center gap-4">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -515,7 +506,7 @@ const BackDailyReport = () => {
                           </div>
                         </td>
                         <td>
-                          <div className="flex ">
+                          <div className="flex justify-center item-center gap-4 ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1099,7 +1090,7 @@ const BackDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput show9Chereter"
                                 name="total650"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
@@ -1117,7 +1108,7 @@ const BackDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput show9Chereter"
                                 name="total330"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
@@ -1135,7 +1126,7 @@ const BackDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput show9Chereter"
                                 name="total330"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
@@ -1158,7 +1149,7 @@ const BackDailyReport = () => {
                             <input
                               type="number"
                               disabled
-                              className="smallinput"
+                              className="smallinput show9Chereter"
                               name="grandTotal"
                               value={fristFormState.reduce(
                                 (total, currentItem) =>
@@ -1241,14 +1232,7 @@ const BackDailyReport = () => {
                             <td>TOTAL</td>
                             <td>
                               <div className="form-control">
-                                <input
-                                  type="number"
-                            disabled
-                                  // value={item.selectStockVarient}
-                                  // onChange={(e) => handelSeconFormOnChange(e, index)}
-                                  className="SmallInput"
-                                  name="selectStockVarient"
-                                />
+                              
                               </div>
                             </td>
                             {/* ======== MRP Input ========= */}
@@ -1258,7 +1242,7 @@ const BackDailyReport = () => {
                                   type="number"
                                   // value={item.averageRate}
                                   // onChange={(e) => handelSeconFormOnChange(e, index)}
-                                  className="SmallInput"
+                                  className="SmallInput show9Chereter"
                                   name="averageRate"
                                   disabled
                                 />
@@ -1306,7 +1290,7 @@ const BackDailyReport = () => {
                                 <input
                                   type="number"
                             disabled
-                                  className="SmallInput"
+                                  className="SmallInput show9Chereter"
                                   name="buyRate"
                                 />
                               </div>
@@ -1338,7 +1322,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="SmallInput show9Chereter"
                             disabled
                                   name="purchaseRate"
                                   // value={item.purchaseRate}
@@ -1459,7 +1443,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="SmallInput show9Chereter"
                                   name="total"
                                   value={addOneSecondFormState.reduce(
                                     (total, currentItem) =>
@@ -1485,14 +1469,14 @@ const BackDailyReport = () => {
         </div>
 
         {/* *********************************************************BREAK*********************************************************  */}
-        <div className="flex overflow-x-auto">
+        <div className="flex  overflow-x-auto">
           <div className="py-6">
             <h1 className="my-4">
               <span className="font-bold titleText">RML / आर.एम.एल</span>
             </h1>
 
             <>
-              <div className="overflow-x-auto">
+              <div >
                 <table className="table commonTable">
                   <thead>
                     <tr>
@@ -1734,7 +1718,7 @@ const BackDailyReport = () => {
                 अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
               </span>
             </h1>
-              <div className="overflow-x-auto">
+              <div >
                 <table className="table commonTable">
                   <thead>
                     <tr>
@@ -1835,7 +1819,7 @@ const BackDailyReport = () => {
                 कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
               </span>
             </h1>
-              <div className="overflow-x-auto">
+              <div >
                 <table className="table commonTable">
                   <thead>
                     <tr>
@@ -1897,7 +1881,7 @@ const BackDailyReport = () => {
               </span>
             </h1>
            
-              <div className="overflow-x-auto">
+              <div >
                 <table className="table commonTable">
                   <thead>
                     <tr>
@@ -1966,7 +1950,7 @@ const BackDailyReport = () => {
             </h1>
 
             <>
-              <div className="overflow-x-auto">
+              <div >
                 <table className="table commonTable">
                   <thead>
                     <tr>
@@ -1974,7 +1958,7 @@ const BackDailyReport = () => {
                       <th></th>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
-                      <th>Size</th>
+                      <th>ML</th>
                       <th>संख्या</th>
                       <th>टिप्पणी</th>
                     </tr>
@@ -2049,7 +2033,7 @@ const BackDailyReport = () => {
               </span>
             </h1>
           
-              <div className="overflow-x-auto">
+              <div >
                 <table className="table commonTable">
                   <thead>
                     <tr>
@@ -2143,7 +2127,7 @@ const BackDailyReport = () => {
             </h1>
 
          
-              <div className="overflow-x-auto">
+              <div >
                 <table className="table commonTable">
                   <thead>
                     <tr>

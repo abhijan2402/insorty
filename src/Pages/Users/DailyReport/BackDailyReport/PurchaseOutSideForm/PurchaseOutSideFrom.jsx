@@ -26,6 +26,7 @@ const PurchaseOutSideFrom = ({
   return (
     <>
       <tr>
+      <th></th>
         <th
           className="cross"
           onClick={() => {
@@ -58,7 +59,7 @@ const PurchaseOutSideFrom = ({
               options={parties.length > 0 ? parties : ["no options"]}
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               getOptionLabel={(option) => (option ? option.partyName : "")}
               onChange={(event, value) => {
@@ -96,7 +97,7 @@ const PurchaseOutSideFrom = ({
             <Autocomplete
               size="small"
               style={{
-                width: "10rem",
+                width: "24rem",
               }}
               options={liquors}
               getOptionLabel={(option) => (option ? option.brandName : "")}
