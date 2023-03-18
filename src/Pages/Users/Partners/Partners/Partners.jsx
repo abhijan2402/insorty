@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 // import { Link } from "react-router-dom";
 import PartnerForm from "../PartnerForm/PartnerForm";
@@ -18,7 +18,6 @@ const Partners = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
-  
 
   const handelPartnerSubmit = (e) => {
     e.preventDefault();
@@ -30,9 +29,6 @@ const Partners = () => {
       remaining: "",
     };
   };
-
- 
-
 
   const { data: partnarData, isLoading } = useQuery({
     queryKey: ["partnarData"],
@@ -64,7 +60,6 @@ const Partners = () => {
     return filterPass;
   });
 
-
   return (
     <section className="py-4">
       <div className="title">
@@ -73,136 +68,132 @@ const Partners = () => {
           <Link className="commonBtn" to="/user/sendFormat">
             All Partnes
           </Link>
-          <button
-            className="my-4 btn btn-error text-white font-bold"
-            onClick={handlePrint}
-          >
+          <button className="commonBtn " onClick={handlePrint}>
             PRINT
           </button>
         </div>
 
-    <div ref={front}>
-    <div>
-        <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">From</h2>
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <DatePicker
-              selected={StartDate}
-              onChange={(date) => {
-                setStartDate(date);
-                console.log(moment(date).format());
-              }}
-              dateFormat="dd/MM/yyyy"
-              placeholderText={"dd/mm/yyyy"}
-              className="inputBox"
-            />
+        <div ref={front}>
+          <div className="flex justify-center items-center">
+            <div className="flex gap-4 items-center my-4">
+              <h2 className="font-bold text-[1.5rem]">From</h2>
+              <div className="flex gap-2 items-center">
+                <FaCalendarAlt></FaCalendarAlt>
+                <DatePicker
+                  selected={StartDate}
+                  onChange={(date) => {
+                    setStartDate(date);
+                    console.log(moment(date).format());
+                  }}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText={"dd/mm/yyyy"}
+                  className="inputBox"
+                />
+              </div>
+
+              <h2 className="font-bold text-[1.5rem]">To</h2>
+              <div className="flex gap-2 items-center">
+                <FaCalendarAlt></FaCalendarAlt>
+                <DatePicker
+                  selected={EndDate}
+                  name="year"
+                  onChange={(data) => setEndDate(data)}
+                  dateFormat="dd/MM/yyyy"
+                  className="inputBox"
+                  placeholderText={"dd/mm/yyyy"}
+                />
+              </div>
+            </div>
+            <div className="divider my-2"></div>
           </div>
 
-          <h2 className="font-bold text-[1.5rem]">To</h2>
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <DatePicker
-              selected={EndDate}
-              name="year"
-              onChange={(data) => setEndDate(data)}
-              dateFormat="dd/MM/yyyy"
-              className="inputBox"
-              placeholderText={"dd/mm/yyyy"}
-            />
-          </div>
-        </div>
-        <div className="divider my-2"></div>
-      </div>
+          {/* ************************ all sealy data************** */}
+          <div className="flex justify-center items-center">
+            <form action="">
+              <div className="overflow-x-auto">
+                <table className="table ">
+                  <thead>
+                    <tr>
+                      <th> क्र. सं.</th>
+                      <th>पार्टनर नाम</th>
+                      <th>नामे </th>
+                      <th>जमा</th>
+                      <th>शेष</th>
+                    </tr>
+                  </thead>
 
-      {/* ************************ all sealy data************** */}
-      <div>
-        <form action="">
-          <div className="overflow-x-auto">
-            <table className="table ">
-              <thead>
-                <tr>
-                  <th> क्र. सं.</th>
-                  <th>पार्टनर नाम</th>
-                  <th>नामे </th>
-                  <th>जमा</th>
-                  <th>शेष</th>
-                </tr>
-              </thead>
+                  <tbody>
+                    <tr>
+                      <th></th>
 
-              <tbody>
-                <tr>
-                  <th></th>
+                      <td>
+                        <div className="flex gap-2">
+                          <div className="form-control">
+                            <label className="label"></label>
+                          </div>
+                        </div>
+                      </td>
 
-                  <td>
-                    <div className="flex gap-2">
-                      <div className="form-control">
-                        <label className="label"></label>
-                      </div>
-                    </div>
-                  </td>
+                      <td>
+                        <div className="flex gap-4">
+                          <div className="form-control">
+                            <label className="label"></label>
+                          </div>
+                        </div>
+                      </td>
 
-                  <td>
-                    <div className="flex gap-4">
-                      <div className="form-control">
-                        <label className="label"></label>
-                      </div>
-                    </div>
-                  </td>
+                      <td>
+                        <div className="flex gap-4">
+                          <div className="form-control">
+                            <label className="label"></label>
+                          </div>
+                        </div>
+                      </td>
 
-                  <td>
-                    <div className="flex gap-4">
-                      <div className="form-control">
-                        <label className="label"></label>
-                      </div>
-                    </div>
-                  </td>
+                      <td>
+                        <div className="flex gap-4">
+                          <div className="form-control">
+                            {/* <label className="label">नामे </label> */}
+                          </div>
+                          <div className="form-control">
+                            <label className="label"> </label>
+                          </div>
+                          <div className="form-control">
+                            <label className="label"> </label>
+                          </div>
 
-                  <td>
-                    <div className="flex gap-4">
-                      <div className="form-control">
-                        {/* <label className="label">नामे </label> */}
-                      </div>
-                      <div className="form-control">
-                        <label className="label"> </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label"> </label>
-                      </div>
+                          <div className="form-control">
+                            {/* <label className="label">शेष</label> */}
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
 
-                      <div className="form-control">
-                        {/* <label className="label">शेष</label> */}
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-
-                {filteredData.map((partner, index) => {
-                  return (
-                    <PartnerForm
-                      key={index}
-                      partner={partner}
-                      index={index}
-                      partnerData={partnarData}
-                      StartDate={StartDate}
-                      EndDate={EndDate}
-                    ></PartnerForm>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </form>{" "}
-        <div>
-          {/* <div className="mt-4 flex gap-4">
+                    {filteredData.map((partner, index) => {
+                      return (
+                        <PartnerForm
+                          key={index}
+                          partner={partner}
+                          index={index}
+                          partnerData={partnarData}
+                          StartDate={StartDate}
+                          EndDate={EndDate}
+                        ></PartnerForm>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </form>{" "}
+            <div>
+              {/* <div className="mt-4 flex gap-4">
             <label htmlFor="addPartner" className="btn bg-[#AA237A]">
               Add Partner
             </label>
           </div> */}
+            </div>
+          </div>
         </div>
-      </div>
-
-      </div>
       </div>
       {/* ************************ all sealy data************** */}
 

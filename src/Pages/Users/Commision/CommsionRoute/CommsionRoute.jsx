@@ -6,16 +6,16 @@ const CommsionRoute = () => {
     <section className="p-4">
       <div>
         <div className="title">
-          <div className="flex gap-4 items-center  text-center ">
+          <div className="flex gap-4 items-center justify-center  text-center ">
             <h2 className="font-bold md:text-[1.5rem] text-center ">
               All Commisson
             </h2>
-          </div>
+          </div> 
           <div className="divider my-2"></div>
         </div>
       </div>
       <div className="p-4">
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center flex-wrap">
           <Link className="commonBtn" to="/user/commisson">
             COMMISSION
           </Link>

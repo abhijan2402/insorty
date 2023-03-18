@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import SalaryFormData from "./SalaryFormData/SalaryFormData";
 import useSalary from "../SalaryHooks/useSalary";
 import { Link, useLoaderData } from "react-router-dom";
@@ -13,12 +13,8 @@ const SalaryForm = () => {
   const [year, setYear] = useState("");
   const salaryData = useLoaderData();
   const employeeData = salaryData?.data;
-  const {
-    salaryState,
-    isLoading,
-    handelSelaryOnChange,
-    setIsLoading,
-  } = useSalary();
+  const { salaryState, isLoading, handelSelaryOnChange, setIsLoading } =
+    useSalary();
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
@@ -48,8 +44,8 @@ const SalaryForm = () => {
     },
   });
 
-  const [slaryDate , setSalaryDate] = useState("");
-  const [paymentDate , setPaymentDate] = useState("");
+  const [slaryDate, setSalaryDate] = useState("");
+  const [paymentDate, setPaymentDate] = useState("");
 
   const handelSalaryOnSubmit = async () => {
     const handelSalary = salaryState;
@@ -113,214 +109,212 @@ const SalaryForm = () => {
 
   return (
     <section className="px-2 py-6">
-      <button
-        className="my-4 btn btn-error text-white font-bold"
-        onClick={handlePrint}
-      >
-        PRINT
-      </button>
+      <div ref={front}>
+        <div className="flex justify-center items-center">
+          <div className="title">
+            <h2 className="font-bold text-[1.5rem]">
+              कर्माचीरी का नाम / Name{" "}
+              <span className="titleStyle">{employeeData?.name}</span>
+            </h2>
 
-<div ref={front}>
+            <div className="flex gap-4 items-center my-4">
+              <h2 className="font-bold text-[1.5rem]">Year</h2>
+              <input
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                type="text"
+                className="semiSmallInput"
+              />
 
-      <div className="title">
-        <h2 className="font-bold text-[1.5rem]">
-          कर्माचीरी का नाम / Name{" "}
-          <span className="titleStyle">{employeeData?.name}</span>
-        </h2>
-
-        <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">Year</h2>
-          <input
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            type="text"
-            className="semiSmallInput"
-          />
-        </div>
-      </div>
-      {/* ************************ all sealy data************** */}
-      <div>
-        <form action="">
-          <div className="overflow-x-auto">
-            <table className="table w-full">
-              <thead>
-                <tr>
-                  <th> क्र. सं.</th>
-                  <th>Salary / वेतन</th>
-                  <th>Payment / भुगतान</th>
-                  <th>Shesh </th>
-                  <th>reason /टिप्पणी</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <th></th>
-
-                  <td>
-                    <div className="flex gap-2">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">दिनांक</span>
-                        </label>
-                      </div>
-
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"> रकम</span>
-                        </label>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className="flex gap-4">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">दिनांक</span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text"></span>
-                        </label>
-                      </div>
-
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">रकम</span>
-                        </label>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className="flex gap-4">
-                      <div className="form-control">
-                        <label className="label"></label>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="flex gap-4">
-                      <div className="form-control">
-                        <label className="label"></label>
-                      </div>
-                    </div>
-                  </td>
-                  {/* ============= कुल योग ================ */}
-                </tr>
-
-                {(salareyDataList &&
-                  salareyDataList
-                    .filter((item) => {
-                      if (
-                        item.salary.month.toString().includes(year) &&
-                        item.payment.date.toString().includes(year)
-                      ) {
-                        return item;
-                      }
-                    })
-                    ?.map((salary, index) => {
-                      console.log(salary, ":salary+++++++++++++");
-
-                      return (
-                        <SalaryFormData
-                          key={index}
-                          salareyDataLoading={salareyDataLoading}
-                          salareyDataList={salareyDataList}
-                          salary={salary}
-                          index={index}
-                        ></SalaryFormData>
-                      );
-                    })) || (
-                  <>
-                    <tr>
-                      <td>
-                        <span className="text-red-500">No Data Found</span>
-                      </td>
-                    </tr>
-                  </>
-                )}
-              </tbody>
-            </table>
+<button className="commonBtn " onClick={handlePrint}>
+              PRINT
+            </button>
+            </div>
+          
           </div>
-        </form>{" "}
-</div>
+        </div>
 
-
-      </div>
+        {/* ************************ all sealy data************** */}
         <div>
-          <div className="mt-4 flex gap-4">
-            <label htmlFor="addData" className="btn bg-[#AA237A]">
-              Add Now
-            </label>
+          <form action="">
+            <div className="flex justify-center items-center">
+              <table className="table ">
+                <thead>
+                  <tr>
+                    <th> क्र. सं.</th>
+                    <th>Salary / वेतन</th>
+                    <th>Payment / भुगतान</th>
+                    <th>Shesh </th>
+                    <th>reason /टिप्पणी</th>
+                  </tr>
+                </thead>
 
-            <Link
-              to="/user/salary"
-              className="dailyReportBtn text-center flex justify-center items-center"
-            >
-              सूची
-            </Link>
-          </div>
+                <tbody>
+                  <tr>
+                    <th></th>
+
+                    <td>
+                      <div className="flex gap-2">
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">दिनांक</span>
+                          </label>
+                        </div>
+
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"> रकम</span>
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div className="flex gap-4">
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">दिनांक</span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text"></span>
+                          </label>
+                        </div>
+
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">रकम</span>
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div className="flex gap-4">
+                        <div className="form-control">
+                          <label className="label"></label>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="flex gap-4">
+                        <div className="form-control">
+                          <label className="label"></label>
+                        </div>
+                      </div>
+                    </td>
+                    {/* ============= कुल योग ================ */}
+                  </tr>
+
+                  {(salareyDataList &&
+                    salareyDataList
+                      .filter((item) => {
+                        if (
+                          item.salary.month.toString().includes(year) &&
+                          item.payment.date.toString().includes(year)
+                        ) {
+                          return item;
+                        }
+                      })
+                      ?.map((salary, index) => {
+                        console.log(salary, ":salary+++++++++++++");
+
+                        return (
+                          <SalaryFormData
+                            key={index}
+                            salareyDataLoading={salareyDataLoading}
+                            salareyDataList={salareyDataList}
+                            salary={salary}
+                            index={index}
+                          ></SalaryFormData>
+                        );
+                      })) || (
+                    <>
+                      <tr>
+                        <td>
+                          <span className="text-red-500">No Data Found</span>
+                        </td>
+                      </tr>
+                    </>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </form>{" "}
         </div>
+      </div>
+      <div>
+        <div className="mt-4 flex justify-center items-center gap-4">
+          <label htmlFor="addData" className="commonBtn">
+            Add Now
+          </label>
+
+          <Link
+            to="/user/salary"
+            className="dailyReportBtn text-center flex justify-center items-center"
+          >
+            सूची
+          </Link>
+        </div>
+      </div>
       {/* ************************ all sealy data************** */}
       <SalaryModal
         salaryState={salaryState}
         isLoading={isLoading}
-        slaryDate = {slaryDate}
+        slaryDate={slaryDate}
         setSalaryDate={setSalaryDate}
-        paymentDate ={paymentDate}
+        paymentDate={paymentDate}
         setPaymentDate={setPaymentDate}
         handelSalaryOnSubmit={handelSalaryOnSubmit}
         handelSelaryOnChange={handelSelaryOnChange}

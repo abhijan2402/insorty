@@ -15,7 +15,7 @@ const AddItems = () => {
         </div>
       </div>
       <div className="p-4">
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center flex-wrap">
           <Link className="commonBtn" to="/user/brandlist">
             Brand List
           </Link>

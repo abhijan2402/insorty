@@ -63,7 +63,7 @@ const OutBill = () => {
       <div className="title flex justify-center flex-col items-center py-2">
         <div className="flex gap-4">
           <button
-            className="my-4 btn btn-error text-white font-bold"
+            className="commonBtn "
             onClick={handlePrint}
           >
             PRINT

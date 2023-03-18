@@ -60,8 +60,8 @@ const BranchName = () => {
       </div>
 
       <div>
-        <div className="overflow-x-auto">
-          <table className="table w-full">
+        <div className="flex justify-center items-center" >
+          <table className="table w-5/6">
             <tbody>
               {branches &&
                 branches.map((branch, index) => (

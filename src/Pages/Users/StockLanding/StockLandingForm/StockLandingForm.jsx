@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React, { useRef } from "react";
 import { Link, useParams } from "react-router-dom";
 import StockFormData from "../StockLandingForm/StockFormData/StockFormData";
 import useStockHooks from "../StockHooks/useStockHooks";
@@ -16,7 +16,6 @@ const StockLandingForm = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
-
 
   const { data: partyData, isLoading } = useQuery({
     queryKey: ["partyData"],
@@ -42,162 +41,159 @@ const StockLandingForm = () => {
 
   return (
     <>
-      <button
-        className="my-4 btn btn-error text-white font-bold"
-        onClick={handlePrint}
-      >
-        PRINT
-      </button>
-    <section ref={front} className="px-2 py-6">
-      <div className="title">
-        <h2 className="font-bold text-[1.5rem]">
-          पार्टी का नाम/
-          <span className="titleStyle">{getPartyName(id.partyId)}</span>
-        </h2>
+      <section ref={front} className="px-2 py-6">
+        <div className="title flex justify-center items-center">
+          <h2 className="font-bold text-[1.5rem]">
+            पार्टी का नाम/
+            <span className="titleStyle">{getPartyName(id.partyId)}</span>
+          </h2>
+          <button className="commonBtn " onClick={handlePrint}>
+            PRINT
+          </button>
 
-        {/* <div className="flex gap-4 items-center my-4">
+          {/* <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">Year</h2>
           <input type="text" className="semiSmallInput" />
         </div> */}
-      </div>
-      {/* ************************ all sealy data************** */}
+        </div>
+        {/* ************************ all sealy data************** */}
 
-      <div>
-        <form action="">
-          <div className="overflow-x-auto">
-            <table className="table w-full">
-              <thead>
-                <tr>
-                  <th> क्र. सं.</th>
-                  <th colSpan={2}>Brand Name/ ब्राण्ड</th>
-                  <th colSpan={2}>आमद/Inflow</th>
-                  <th colSpan={2}>भेजान/ Send </th>
-                  <th colSpan={2}>शेष/Remaining</th>
-                </tr>
-              </thead>
+        <div>
+          <form action="">
+            <div
+              className="flex justify-center items-center
+          "
+            >
+              <table className="table w-2/3">
+                <thead>
+                  <tr>
+                    <th> क्र. सं.</th>
+                    <th colSpan={2}>Brand Name/ ब्राण्ड</th>
+                    <th colSpan={2}>आमद/Inflow</th>
+                    <th colSpan={2}>भेजान/ Send </th>
+                    <th colSpan={2}>शेष/Remaining</th>
+                  </tr>
+                </thead>
 
-              <tbody>
-                <tr>
-                  <th></th>
+                <tbody>
+                  <tr>
+                    <th></th>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">Brand Name</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">Brand Name</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">साईज/ml</span>
+                        </label>
+                      </div>
+                    </td>
 
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">साईज/ml</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">संख्या/Number</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">संख्या/Number</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">टिप्पणी/Comment</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">संख्या/Number</span>
+                        </label>
+                      </div>
+                    </td>
 
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">टिप्पणी/Comment</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">टिप्पणी/Comment</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">संख्या/Number</span>
-                      </label>
-                    </div>
-                  </td>
-
-                  <td>
-
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">टिप्पणी/Comment</span>
-                      </label>
-                    </div>
-                  </td>
-
-                  <td>
-                    <div className="flex gap-4">
+                    <td>
+                      <div className="flex gap-4">
                         <div className="form-control">
                           <label className="label">जमा/Deposit</label>
                         </div>
                       </div>
-                      </td>
+                    </td>
 
-                      <td>
+                    <td>
                       <div className="form-control">
                         <label className="label">नामे/ Debit</label>
                       </div>
-                  </td>
-
-                  {/* ============= कुल योग ================ */}
-                </tr>
-                {partyData.length === 0 && partyData ? (
-                  <>
-                    <td>
-                      <tr className="text-center font-bold text-red-500 text-2xl">
-                        No Data Available
-                      </tr>
                     </td>
-                  </>
-                ) : (
-                  <>
-                    {partyData.map((stockData, index) => {
-                      return (
-                        <StockFormData
-                          key={index}
-                          index={index}
-                          stockData={stockData}
-                        ></StockFormData>
-                      );
-                    })}
-                  </>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </form>{" "}
-        <div>
-          <div className="mt-4 flex gap-4">
-            {/* <button
+
+                    {/* ============= कुल योग ================ */}
+                  </tr>
+                  {partyData.length === 0 && partyData ? (
+                    <>
+                      <td>
+                        <tr className="text-center font-bold text-red-500 text-2xl">
+                          No Data Available
+                        </tr>
+                      </td>
+                    </>
+                  ) : (
+                    <>
+                      {partyData.map((stockData, index) => {
+                        return (
+                          <StockFormData
+                            key={index}
+                            index={index}
+                            stockData={stockData}
+                          ></StockFormData>
+                        );
+                      })}
+                    </>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </form>{" "}
+          <div>
+            <div className="mt-4 flex justify-center gap-4">
+              {/* <button
               className="dailyReportBtnSubmit"
               type="submit"
               onClick={handelOnSubmitStockLanding}
             >
               Submit
             </button> */}
-            {/* <button
+              {/* <button
               className="dailyReportBtnSubmit"
               onClick={addOneStockLandingStock}
             >
               Add 1
             </button> */}
 
-            <Link
-              to="/user/stocklanding"
-              className="dailyReportBtn text-center flex justify-center items-center"
-            >
-              सूची
-            </Link>
+              <Link
+                to="/user/stocklanding"
+                className="dailyReportBtn text-center flex justify-center items-center"
+              >
+                सूची
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };

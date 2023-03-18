@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import usePhonePay from "../PhonePayHooks/usePhonePay";
 import Loader from "../../../../Components/Loader/Loader";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -20,8 +20,8 @@ const PhonePeToday = () => {
     return <Loader></Loader>;
   }
 
-  if (!phonePayData.length){
-    return <div>No data found</div>
+  if (!phonePayData.length) {
+    return <div>No data found</div>;
   }
 
   const filteredData = phonePayData?.filter((item) => {
@@ -43,99 +43,95 @@ const PhonePeToday = () => {
 
   return (
     <>
-      <button
-        className="my-4 btn btn-error text-white font-bold"
-        onClick={handlePrint}
-      >
-        PRINT
-      </button>
+      <section ref={front}>
+        <div className="title flex justify-center items-center flex-col">
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            फोन पे और आज भुगतान
+          </h2>
+          <button className="commonBtn " onClick={handlePrint}>
+            PRINT
+          </button>
 
-    <section ref={front}>
-      <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">
-          फोन पे और आज भुगतान
-        </h2>
+          <div className="flex gap-4 items-center my-4 z-10">
+            <h2 className="font-bold text-[1.5rem]">From</h2>
+            <div className="flex gap-2 items-center">
+              <FaCalendarAlt></FaCalendarAlt>
+              <DatePicker
+                selected={StartDate}
+                onChange={(date) => {
+                  setStartDate(date);
+                  console.log(moment(date).format());
+                }}
+                dateFormat="dd/MM/yyyy"
+                placeholderText={"dd/mm/yyyy"}
+                className="inputBox"
+              />
+            </div>
 
-        <div className="flex gap-4 items-center my-4 z-10">
-          <h2 className="font-bold text-[1.5rem]">From</h2>
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <DatePicker
-              selected={StartDate}
-              onChange={(date) => {
-                setStartDate(date);
-                console.log(moment(date).format());
-              }}
-              dateFormat="dd/MM/yyyy"
-              placeholderText={"dd/mm/yyyy"}
-              className="inputBox"
-            />
-          </div>
-
-          <h2 className="font-bold text-[1.5rem]">To</h2>
-          <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
-            <DatePicker
-              selected={EndDate}
-              name="year"
-              onChange={(data) => setEndDate(data)}
-              dateFormat="dd/MM/yyyy"
-              className="inputBox"
-              placeholderText={"dd/mm/yyyy"}
-            />
+            <h2 className="font-bold text-[1.5rem]">To</h2>
+            <div className="flex gap-2 items-center">
+              <FaCalendarAlt></FaCalendarAlt>
+              <DatePicker
+                selected={EndDate}
+                name="year"
+                onChange={(data) => setEndDate(data)}
+                dateFormat="dd/MM/yyyy"
+                className="inputBox"
+                placeholderText={"dd/mm/yyyy"}
+              />
+            </div>
           </div>
         </div>
-        <div className="divider my-2"></div>
-      </div>
+          <div className="divider my-2"></div>
 
-      {/* ************************ all sealy data************** */}
+        {/* ************************ all sealy data************** */}
 
-      <div>
-        <div className="overflow-x-auto m-6">
-          <table className="table w-11/12">
-            <thead>
-              <tr>
-                <td> क्र. सं.</td>
-                <th>Date</th>
-                <th>Salesman</th>
-                <th>Into Account</th>
-                <th>Todays Payment</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData.map((item, index) => {
-                return (
-                  <tr>
-                    <td>{index + 1}</td>
-                    <td>{moment(item.date).format("DD/MM/YYYY")}</td>
-                    <td>{item.salesmen}</td>
-                    <td>{item.intoAccount}</td>
-                    <td>{item.todaysPayment}</td>
-                  </tr>
-                );
-              })}
-              <tr>
-                <td>
-                  <h2 className="font-bold">Total</h2>
-                </td>
-                <td></td>
-                <td></td>
-                <td>
-                  {filteredData.reduce((acc, item) => {
-                    return acc + item.intoAccount;
-                  }, 0)}
-                </td>
-                <td>
-                  {filteredData.reduce((acc, item) => {
-                    return acc + item.todaysPayment;
-                  }, 0)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div>
+          <div className="flex justify-center items-center m-6">
+            <table className="table w-11/12">
+              <thead>
+                <tr>
+                  <td> क्र. सं.</td>
+                  <th>Date</th>
+                  <th>Salesman</th>
+                  <th>Into Account</th>
+                  <th>Todays Payment</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredData.map((item, index) => {
+                  return (
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>{moment(item.date).format("DD/MM/YYYY")}</td>
+                      <td>{item.salesmen}</td>
+                      <td>{item.intoAccount}</td>
+                      <td>{item.todaysPayment}</td>
+                    </tr>
+                  );
+                })}
+                <tr>
+                  <td>
+                    <h2 className="font-bold">Total</h2>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td>
+                    {filteredData.reduce((acc, item) => {
+                      return acc + item.intoAccount;
+                    }, 0)}
+                  </td>
+                  <td>
+                    {filteredData.reduce((acc, item) => {
+                      return acc + item.todaysPayment;
+                    }, 0)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };

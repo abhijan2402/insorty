@@ -159,20 +159,20 @@ const BackDailyReport = () => {
           <div className="my-4">
             <Link
               to="/user/dailyreport/front"
-              className="btn btn-error text-white font-bold"
+              className="commonBtn "
             >
                 अंग्रेजी
             </Link>
             <Link
               to="/user/frontdailyreport/details"
-              className="btn btn-error text-white font-bold mx-4"
+              className="commonBtn  mx-4"
             >
               परचा
             </Link>
           </div>
         </div>
 
-        <div className="flex gap-4 ">
+        <div className="flex gap-4 justify-center items-center">
           <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
           <input
             type="text"
@@ -239,7 +239,7 @@ const BackDailyReport = () => {
                        <td ></td>
                         {/* ======== प्रारम्भिक स्टॉक ========= */}
                         <td>
-                          <div className="flex justify-center item-center gap-4">
+                          <div className="flex justify-evenly">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -305,7 +305,7 @@ const BackDailyReport = () => {
                         </td>
 
                         <td>
-                          <div className="flex justify-center item-center gap-4">
+                          <div className="flex justify-evenly">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -352,7 +352,7 @@ const BackDailyReport = () => {
                         {/* ======== आमद (उधारी) ========= */}
 
                         <td>
-                          <div className="flex justify-center item-center gap-4">
+                          <div className="flex justify-evenly">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -506,7 +506,7 @@ const BackDailyReport = () => {
                           </div>
                         </td>
                         <td>
-                          <div className="flex justify-center item-center gap-4 ">
+                          <div className="flex justify-evenly ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>

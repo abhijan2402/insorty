@@ -28,25 +28,26 @@ const MainInvestment = () => {
 
   return (
     <>
-      <button
-        className="my-4 btn btn-error text-white font-bold"
+    
+
+    <section ref={front} className="my-2">
+      <div className="title flex justify-center items-center">
+        <h2 className="font-bold md:text-[1.5rem] text-center">
+          मुख्य इन्वेस्ट
+        </h2>
+        <button
+        className="commonBtn "
         onClick={handlePrint}
       >
         PRINT
       </button>
-
-    <section ref={front} className="my-2">
-      <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center">
-          मुख्य इन्वेस्ट
-        </h2>
-        <div className="divider my-2"></div>
       </div>
+        <div className="divider my-2"></div>
 
       <div>
         <form>
-          <div className="overflow-x-auto">
-            <table className="table w-full">
+          <div className="justify-center flex items-center">
+            <table className="table w-2/3">
               <thead>
                 <tr className="text-center">
                   <th> क्र. सं.</th>
@@ -204,10 +205,10 @@ const MainInvestment = () => {
 
       <div>
         <div className="p-2">
-          <h2 className="font-bold text-[1.5rem] my-2">रिफंड / रिकवरी विवरण</h2>
+          <h2 className="font-bold text-[1.5rem] text-center my-2">रिफंड / रिकवरी विवरण</h2>
         </div>
-        <div className="overflow-x-auto my-6">
-          <table className="table w-full">
+        <div className="justify-center flex items-center my-6">
+          <table className="table w-2/3">
             <thead>
               <tr className="text-center">
                 <th> क्र. सं.</th>
@@ -260,12 +261,12 @@ const MainInvestment = () => {
 
       <div>
         <div>
-          <h2 className="font-bold text-[1.5rem] my-2 p-2">
+          <h2 className="font-bold text-center text-[1.5rem] my-2 p-2">
             लाभ में से रिजर्व रकम
           </h2>
         </div>
-        <div className="overflow-x-auto my-6">
-          <table className="table w-full">
+        <div className="justify-center flex items-center my-6">
+          <table className="table w-2/3">
             <thead>
               <tr className="text-center">
                 <th className="text-center"> क्र. सं.</th>
@@ -321,7 +322,7 @@ const MainInvestment = () => {
           </table>
         </div>
       </div>
-      <div className="my-4 flex gap-4">
+      <div className="my-4 flex justify-center  items-center gap-4">
         <button
           className="commonBtn"
           onClick={() => handleSave()}

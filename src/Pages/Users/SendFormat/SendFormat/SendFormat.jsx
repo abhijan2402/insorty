@@ -26,7 +26,7 @@ const SendFormat = () => {
             Partner
           </Link>
           <button
-            className="my-4 btn btn-error text-white font-bold"
+            className="commonBtn "
             onClick={handlePrint}
           >
             PRINT
@@ -35,9 +35,9 @@ const SendFormat = () => {
 
         <div className="divider my-2"></div>
       </div>
-      <div className="mx-6">
-        <div className="overflow-x-auto">
-          <table ref={front} className="table w-full">
+      <div className="mx-6 flex justify-center flex-col">
+        <div className="flex justify-center items-center flex-col">
+          <table ref={front} className="table ">
             <thead>
               <tr>
                 <th> क्र. सं.</th>
@@ -60,7 +60,8 @@ const SendFormat = () => {
             </tbody>
           </table>
         </div>
-        <div>
+
+        <div className="flex justify-center ">
           <label htmlFor="addFormat" className="btn bg-[#AA237A] my-4 mx-4">
             Add new Partner
           </label>
