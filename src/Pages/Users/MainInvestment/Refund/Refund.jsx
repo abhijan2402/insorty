@@ -1,14 +1,39 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import swal from "sweetalert";
 
 
-const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name }) => {
+const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemoveFields }) => {
   const { type, price } = refundRecovery;
 
   return (
     <>
       <tr className="my-6">
         <th>{index + 1}</th>
+        <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${index + 1
+                }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                handleRemoveFields('refund',index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
+          X
+        </th>
         <td>
           {/* <input
             type="text"

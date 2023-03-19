@@ -55,7 +55,7 @@ const useMainInvestmentHooks = () => {
       (total, currentItem) => (total = total + Number(currentItem.price)),
       0
     ) : 0
-    const total = data.mainInvest.total  - refundTotal
+    const total = refundTotal
 
     return total
   }
@@ -176,6 +176,35 @@ const useMainInvestmentHooks = () => {
     setData(_data);
   };
 
+  const handleRemoveFields = (field,index) => {
+    console.log('fired')
+    const values = { ...data }
+    console.log(values)
+    if(field==='fees'){
+    values.mainInvest.fees.splice(index, 1);
+      values.mainInvest.reserveAmount.price = calculateReserveAmount(values);
+      values.refundRecoveryDetails.total = calRefundTotal(values)
+      values.reserveAmount.total = calAllTotal(values)
+      setData(values);
+   }
+
+   else if(field==='refund'){
+      values.refundRecoveryDetails.entries.splice(index, 1)
+      values.mainInvest.reserveAmount.price = calculateReserveAmount(values);
+      values.refundRecoveryDetails.total = calRefundTotal(values)
+      values.reserveAmount.total = calAllTotal(values)
+      setData(values);
+   }
+   else if(field==='reserve'){
+      values.reserveAmount.entries.splice(index, 1)
+      values.mainInvest.reserveAmount.price = calculateReserveAmount(values);
+      values.refundRecoveryDetails.total = calRefundTotal(values)
+      values.reserveAmount.total = calAllTotal(values)
+      setData(values);
+   }
+
+  };
+
  
 
   const handleSave = useCallback(() => {
@@ -204,6 +233,7 @@ const useMainInvestmentHooks = () => {
       .then((updatedData) => console.log(updatedData))
       .catch((error) => console.error(error));
 
+
   }, [data]);
 
   return {
@@ -215,7 +245,8 @@ const useMainInvestmentHooks = () => {
     handleReserveAmountAdd,
     handleRefundRecoveryAdd,
     reserveAmountOnChange,
-    refundRecoveryOnChange
+    refundRecoveryOnChange,
+    handleRemoveFields
   };
 };
 

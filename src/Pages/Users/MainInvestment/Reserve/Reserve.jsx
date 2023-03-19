@@ -1,13 +1,38 @@
 import React from "react";
 import DatePicker from "react-datepicker";
+import swal from "sweetalert";
 
-const Reserve = ({ reserve, index, reserveAmountOnChange, name }) => {
+const Reserve = ({ reserve, index, reserveAmountOnChange, name, handleRemoveFields }) => {
   const { details, price } = reserve;
 
   return (
     <>
       <tr>
         <th>{index + 1}</th>
+        <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${index + 1
+                }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                handleRemoveFields('reserve',index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
+          X
+        </th>
         <td>
           <input
             type="text"

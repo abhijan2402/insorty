@@ -37,13 +37,13 @@ const Penalty = () => {
     return filterPass;
   });
 
-  const totalAmount = filteredData.map((item) => {
-    // get total ammount using reduce method
-    const total = item.entries.reduce((acc, item) => {
-      return acc + Number(item.amount.$numberDecimal);
+  const totalAmount = filteredData.reduce((acc, item) => {
+    return Number(acc) + item.entries.filter((item) => {
+      return item.type === "PENALTY";
+    }).reduce((acc, item) => {
+      return Number(acc) + Number(item.amount.$numberDecimal);
     }, 0);
-    return total;
-  });
+  }, 0)
 
   return (
     <section className="py-4 px-4">
@@ -186,7 +186,7 @@ const Penalty = () => {
                   >
                     Total :
                     <span className="mx-4">
-                     0
+                     {totalAmount}
                     </span>
                   </th>
                   <th></th>

@@ -16,6 +16,7 @@ const MainInvestment = () => {
     handleRefundRecoveryAdd,
     reserveAmountOnChange,
     refundRecoveryOnChange,
+    handleRemoveFields
   } = useMainInvestmentHooks();
   const front = useRef(null);
   const handlePrint = useReactToPrint({
@@ -51,6 +52,7 @@ const MainInvestment = () => {
               <thead>
                 <tr className="text-center">
                   <th> क्र. सं.</th>
+                  <th></th>
                   <th>Detail</th>
                   <th>दिनांक / Date</th>
                   <th>रकम/ price</th>
@@ -60,6 +62,7 @@ const MainInvestment = () => {
               <tbody>
                 <tr>
                   <th>1</th>
+                  <td></td>
                   <td>
                     <input
                       className="dailyReportInput wd-30"
@@ -87,6 +90,7 @@ const MainInvestment = () => {
 
                 <tr>
                   <th>2</th>
+                  <td></td>
                   <td>
                     <input
                       className="dailyReportInput wd-30"
@@ -115,6 +119,7 @@ const MainInvestment = () => {
                       key={index}
                       index={index}
                       name={"fees"}
+                      handleRemoveFields={handleRemoveFields}
                       mainInvestment={mainInvestment}
                       handelOnChangeMainInvestment={handleInvestmentChange}
                     ></InvestmentForm>
@@ -138,6 +143,7 @@ const MainInvestment = () => {
 
                 <tr>
                   <th>{data.mainInvest.fees.length + 3}</th>
+                  <td></td>
                   <td>
                     <input
                       className="dailyReportInput wd-30"
@@ -159,6 +165,7 @@ const MainInvestment = () => {
                 </tr>
                 <tr>
                   <th></th>
+                  <td></td>
                   <td>
                     <input
                       className="dailyReportInput wd-30"
@@ -183,6 +190,8 @@ const MainInvestment = () => {
                       name="price"
                       className="dailyReportInput wd-8"
                       defaultValue={data.mainInvest.total}
+                        handleRemoveFields={handleRemoveFields}
+
                       onChange={(event) =>
                         handleInvestmentChange("total", event.target.value)
                       }
@@ -212,6 +221,7 @@ const MainInvestment = () => {
             <thead>
               <tr className="text-center">
                 <th> क्र. सं.</th>
+                <th></th>
                 <th>Type </th>
                 <th>दिनांक / Date</th>
                 <th>रकम/ price</th>
@@ -226,6 +236,8 @@ const MainInvestment = () => {
                         key={index}
                         name={"refundRecovery"}
                         refundRecoveryOnChange={refundRecoveryOnChange}
+                        handleRemoveFields={handleRemoveFields}
+
                         index={index}
                         refundRecovery={refundRecovery}
                       ></Refund>
@@ -234,6 +246,7 @@ const MainInvestment = () => {
                 )}
 
               <tr>
+              <td></td>
                 <td>
                   <div>
                     <button
@@ -246,13 +259,7 @@ const MainInvestment = () => {
                 </td>
                 <td></td>
                 <td className="commonText">Total</td>
-                <td className="price">{data.refundRecoveryDetails.entries.length > 0
-                  ? data.refundRecoveryDetails.entries.reduce(
-                    (total, currentItem) =>
-                      (total = total + Number(currentItem.price)),
-                    0
-                  )
-                  : 0}</td>
+                  <td className="price">{data?.refundRecoveryDetails?.total}</td>
               </tr>
             </tbody>
           </table>
@@ -270,6 +277,7 @@ const MainInvestment = () => {
             <thead>
               <tr className="text-center">
                 <th className="text-center"> क्र. सं.</th>
+                <th></th>
                 <th className="text-center">विवरण/ Details</th>
                 <th className="text-center">माह / Month</th>
                 <th className="text-center">रकम/ price</th>
@@ -283,6 +291,8 @@ const MainInvestment = () => {
                       key={index}
                       name={"reserve"}
                       index={index}
+                      handleRemoveFields={handleRemoveFields}
+
                       reserve={reserve}
                       reserveAmountOnChange={reserveAmountOnChange}
                     ></Reserve>
@@ -290,6 +300,7 @@ const MainInvestment = () => {
                 })}
 
               <tr>
+              <td></td>
                 <td>
                   <div>
                     <button

@@ -109,7 +109,6 @@ const useInfolwBorrowingRml = () => {
   const handleRemoveFieldsInflow = index => {
     const values = [...infolwBorrwingFormState];
     values.splice(index, 1);
-    console.log(index)
     setInfolwBorrwingFormState(values);
     localStorage.setItem('borrow', JSON.stringify(values))
     localStorage.setItem('totalBorrow', JSON.stringify(values.reduce(

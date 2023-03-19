@@ -317,10 +317,10 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show9Chereter"
+                className="smallinput  wd-9"
                 required
                 min={0}
-                name="purchaseRate750 wd-9"
+                name="purchaseRate750"
                 value={addOneFirst.purchaseRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -329,10 +329,10 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show9Chereter"
+                className="smallinput  wd-9"
                 required
                 min={0}
-                name="purchaseRate330 wd-9"
+                name="purchaseRate330"
                 value={addOneFirst.purchaseRate330}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -341,10 +341,10 @@ const AddOneFristForm = ({
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput show9Chereter"
+                className="smallinput  wd-8"
                 required
                 min={0}
-                name="purchaseRate180 wd-8"
+                name="purchaseRate180"
                 value={addOneFirst.purchaseRate180}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
