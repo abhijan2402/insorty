@@ -121,8 +121,8 @@ const Burger = () => {
 
       <div>
         <form action="">
-          <div className="overflow-x-auto">
-            <table className="table w-full">
+          <div className="overflow-x-auto flex justify-center item-center">
+            <table className="table ">
               <thead>
                 <tr>
                   <td> क्र. सं.</td>

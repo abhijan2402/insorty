@@ -106,9 +106,9 @@ const WineStock = () => {
       </div>
 
       <div ref={front}>
-        <div className="flex justify-center items-center">
+        {/* <div className="flex justify-center items-center"> */}
           <h2 className="font-bold md:text-[1.5rem] text-center"> अंग्रेजी</h2>
-          <div className="flex gap-4 items-center my-4">
+          <div className="flex gap-4 items-center justify-center my-4">
             <h2 className="font-bold text-[1.5rem]">From</h2>
             <div className="flex gap-2 items-center">
               <FaCalendarAlt></FaCalendarAlt>
@@ -138,8 +138,8 @@ const WineStock = () => {
             </div>
           </div>
 
-          <div className="overflow-x-auto ">
-            <table className="table w-full m-2">
+        <div className="overflow-x-auto flex justify-center item-center" >
+            <table className="table  m-2">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>
@@ -243,8 +243,8 @@ const WineStock = () => {
 
           <div>
             <div className=" gap-4 overflow-x-auto my-4 ">
-              <div>
-                <table className="table w-full m-2">
+              <div className="flex justify-center item-center">
+                <table className="table  m-2">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -318,7 +318,7 @@ const WineStock = () => {
             </div>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </section>
   );
 };

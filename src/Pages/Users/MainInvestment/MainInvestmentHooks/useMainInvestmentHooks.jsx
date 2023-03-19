@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
+import Swal from "sweetalert2";
 
 const useMainInvestmentHooks = () => {
   const token = localStorage.getItem("token");
@@ -183,11 +184,26 @@ const useMainInvestmentHooks = () => {
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify(data),
     })
-      .then((response) => response.json())
+      .then((response) => {response.json();
+        console.log(response)
+        if (response.status===200) {
+          Swal.fire({
+            icon: "success",
+            title: "Updated Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "some error occured",
+            text: data.message,
+          });
+        }
+      })
       .then((updatedData) => console.log(updatedData))
       .catch((error) => console.error(error));
 
-    console.log(data);
   }, [data]);
 
   return {
