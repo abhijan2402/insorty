@@ -1,6 +1,6 @@
 import React from "react";
 
-const FristFormDetails = ({ exceptionalData, index }) => {
+const FristFormDetails = ({ exceptionalData, index,pageId,frontSet }) => {
   const {
     brandName,
     closingStock,

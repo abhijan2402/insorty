@@ -132,7 +132,7 @@ const InflowBorrowingRML = ({
           <div className="form-control ">
             <select
               // className="select select-bordered"
-              className="semiSmallInput wd-9"
+              className="smallinput wd-9"
               name="quantity"
               value={item.quantity}
               required
@@ -167,7 +167,7 @@ const InflowBorrowingRML = ({
             <input
               type="number"
               required
-              className="SmallInput"
+              className="smallinput"
               min={0}
               name="theNumber"
               value={item.theNumber}
@@ -183,7 +183,7 @@ const InflowBorrowingRML = ({
 
               min={0}
               required
-              className="SmallInput"
+              className="smallinput"
               name="rate"
               value={item.rate}
               onChange={(e) => onChangeBorrowingRml(e, index)}
@@ -196,7 +196,7 @@ const InflowBorrowingRML = ({
             <input
               type="number"
               required
-              className="SmallInput"
+              className="smallinput"
               min={0}
               name="total"
               value={item.total}
@@ -211,7 +211,7 @@ const InflowBorrowingRML = ({
             <input
               type="text"
               required
-              className="semiSmallInput wd-30"
+              className="smallinput wd-30"
               name="reason"
               value={item.reason}
               onChange={(e) => onChangeBorrowingRml(e, index)}

@@ -8,7 +8,7 @@ const WineBill = () => {
         <div className="title">
           <div className="flex gap-4 items-center justify-center">
             <h2 className="font-bold md:text-[1.5rem] text-center">
-              वाइन बिल का फोर्मेट
+              वाइन बिल 
             </h2>
           </div>
           <div className="divider my-2"></div>

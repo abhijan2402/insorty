@@ -15,6 +15,7 @@ import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
 const FrontDetailsReport = () => {
   const front = useRef(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [pageId,setPageId] = useState()
 
   const {
     FrontPageRegularData,
@@ -52,12 +53,33 @@ const FrontDetailsReport = () => {
     })
     : FrontPageRegularData;
 
+  let frontSet = new Set([])
+
+  filteredRegularData.map((item) => {
+    item.pages.map((pg) => {
+      frontSet.add(pg.page)
+      // setPage(pg.page)
+      return 0
+    })
+    return 0
+  })
+
+
+
+
+
+  // console.log(page)
+  // console.log(Array.from(frontSet)[0])
+  // console.log(filteredPages)
+
   let quan750 = [];
   let quan375 = [];
   let quan180 = [];
 
   filteredRegularData.map((item) => {
     item.pages.map((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0]
+      if (page.page === pg){
       page.entries.map((entry) => {
         if (entry.quantityInML === 750) {
           quan750.push(entry);
@@ -66,9 +88,10 @@ const FrontDetailsReport = () => {
         } else if (entry.quantityInML === 180) {
           quan180.push(entry);
         }
-      });
+      });}
     });
   });
+
 
 
   const filteredExceptionalData = selectedDate
@@ -95,45 +118,93 @@ const FrontDetailsReport = () => {
     })
     : FrontPageData;
 
-  console.log(frontPage, 'FrontPageDataLoaded')
 
-  const openingStock = filteredExceptionalData.map((item) => {
+ 
+
+  const openingStock = filteredExceptionalData.filter((page)=>{
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if(page.page===pg){
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { openingStock } = item;
     return openingStock;
   });
 
-  const purchaseShop = filteredExceptionalData.map((item) => {
+  const purchaseShop = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { purchaseShop } = item;
     return purchaseShop;
   });
 
-  const purchaseOutSide = filteredExceptionalData.map((item) => {
+  const purchaseOutSide = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { purchaseOutSide } = item;
     return purchaseOutSide;
   });
 
-  const credits = filteredExceptionalData.map((item) => {
+  const credits = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { credits } = item;
     return credits;
   });
 
-  const send = filteredExceptionalData.map((item) => {
+  const send = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { send } = item;
     return send;
   });
 
-  const remaining = filteredExceptionalData.map((item) => {
+  const remaining = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { remaining } = item;
     return remaining;
   });
 
-  const closingStock = filteredExceptionalData.map((item) => {
+  const closingStock = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { closingStock } = item;
     return closingStock;
   });
 
-  const sales = filteredExceptionalData.map((item) => {
-    console.log(item, "item+++++");
+  const sales = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { sales } = item;
     return sales;
   });
@@ -168,7 +239,6 @@ const FrontDetailsReport = () => {
               selected={selectedDate}
               onChange={(date) => {
                 setSelectedDate(date);
-                console.log(moment(date).format());
               }}
               dateFormat="dd/MM/yyyy"
               placeholderText={"dd/mm/yyyy"}
@@ -212,13 +282,21 @@ const FrontDetailsReport = () => {
             selected={selectedDate}
             onChange={(date) => {
               setSelectedDate(date);
-              console.log(moment(date).format());
             }}
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
             className="inputBox"
           />
         </div>
+        {Array.from(frontSet).map((item,index)=>{
+          return(
+          <button
+            className="commonBtn "
+              onClick={() => { setPageId(item)}}
+          >
+            {index+1}
+          </button>)
+        })}
       </div>
       <div className="divider"></div>
 
@@ -397,6 +475,8 @@ const FrontDetailsReport = () => {
                     quan1={750}
                     quan2={375}
                     quan3={180}
+                    pageId={pageId}
+                    frontSet={frontSet}
                   ></RegularData>
                 );
               })}
@@ -673,13 +753,17 @@ const FrontDetailsReport = () => {
             <tbody>
               {filteredExceptionalData && filteredExceptionalData.length > 0 &&
                 filteredExceptionalData.map((exceptionalData, index) => {
+                  const pg = pageId ? pageId : Array.from(frontSet)[0]
+                  if (exceptionalData.page===pg){
                   return (
                     <FristFormDetails
                       key={index}
                       index={index}
                       exceptionalData={exceptionalData}
+                      pageId={pageId}
+                      frontSet={frontSet}
                     ></FristFormDetails>
-                  );
+                  );}
                 })}
 
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
@@ -744,7 +828,13 @@ const FrontDetailsReport = () => {
 
                 <td className="tg-0lax"></td>
 
-                <td className="tg-0lax">{filteredExceptionalData && filteredExceptionalData.length > 0 && filteredExceptionalData.reduce(
+                <td className="tg-0lax">{filteredExceptionalData && filteredExceptionalData.length > 0 && filteredExceptionalData.filter((page) => {
+                  const pg = pageId ? pageId : Array.from(frontSet)[0]
+                  if (page.page === pg) {
+                    return page
+                  }
+                  else return 0
+                }).reduce(
                   (total, currentItem) => (total = total + (Number(currentItem.sales) * Number(currentItem.sellingRate.$numberDecimal))),
                   0
                 )}</td>

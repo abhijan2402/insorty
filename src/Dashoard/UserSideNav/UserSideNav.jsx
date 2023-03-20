@@ -153,7 +153,7 @@ const SideNav = () => {
                 to="/user/winebill"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                वाइन बिल का फोर्मेट
+                वाइन बिल
               </NavLink>
             </li>
 

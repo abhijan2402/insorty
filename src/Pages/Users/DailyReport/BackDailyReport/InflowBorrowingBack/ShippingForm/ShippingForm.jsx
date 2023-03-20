@@ -133,7 +133,7 @@ const ShippingForm = ({
             <select
               // className="select select-bordered"
               name="quantity"
-              className="wd-9"
+              className="smallinput wd-9"
               required
               value={item.quantity}
               onChange={(e) => {
@@ -168,7 +168,7 @@ const ShippingForm = ({
             <input
               type="number"
               required
-              className="SmallInput"
+              className="smallinput"
               name="theNumber"
               value={item.theNumber}
               min={0}
@@ -181,7 +181,7 @@ const ShippingForm = ({
             <input
               type="text"
               required
-              className="semiSmallInput wd-30"
+              className="smallinput wd-30"
               name="comment"
               value={item.comment}
               onChange={(e) => onChangeShipping(e, index)}

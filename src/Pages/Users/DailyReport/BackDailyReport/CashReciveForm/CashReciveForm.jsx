@@ -63,7 +63,7 @@ const CashReciveForm = ({
           <div className="form-control">
             {/* <input
               type="text"
-              className="semiSmallInput"
+              className="smallinput"
               name="reson"
               value={item.reson}
               onChange={(e) => onChangeCashRecive(e, index)}
@@ -202,7 +202,7 @@ const CashReciveForm = ({
         <td>
           <div className="form-control">
             <select
-              className="semiSmallInput"
+              className="smallinput wd-30"
               name="type"
               required
               value={item.type}
@@ -227,7 +227,7 @@ const CashReciveForm = ({
             min={0}
             value={item.amount}
             onChange={(e) => onChangeCashRecive(e, index)}
-            className="SmallInput wd-7"
+            className="smallinput wd-7"
             
           />
         </td>
@@ -238,7 +238,7 @@ const CashReciveForm = ({
             name="comment"
             value={item.comment}
             onChange={(e) => onChangeCashRecive(e, index)}
-            className="SmallInput"
+            className="smallinput"
             style={{
               width: "240px",
             }}

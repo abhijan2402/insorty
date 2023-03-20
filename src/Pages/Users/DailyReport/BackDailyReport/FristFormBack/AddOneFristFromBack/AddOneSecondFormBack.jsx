@@ -102,7 +102,7 @@ const AddOneSecondFormBack = ({
           <div className="form-control ">
             <select
               // className="select select-bordered"
-              className="semiSmallInput wd-9"
+              className="smallinput wd-9"
               name="selectStockVarient"
               value={item.selectStockVarient}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -138,7 +138,7 @@ const AddOneSecondFormBack = ({
                 min={0}
               value={item.averageRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
-              className="SmallInput wd-7"
+              className="smallinput wd-7"
               name="averageRate"
               disabled
             />
@@ -151,7 +151,7 @@ const AddOneSecondFormBack = ({
                 required
                 min={0}
                 disabled
-              className="SmallInput"
+              className="smallinput"
               name="startingStock"
               value={item.startingStock}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -164,7 +164,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="smallinput"
               name="incomingPurchase"
               value={item.incomingPurchase}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -178,7 +178,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput wd-7"
+              className="smallinput wd-7"
               name="buyRate"
               value={item.buyRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -194,7 +194,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="smallinput"
               name="incomePurchase"
               value={item.incomePurchase}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -209,7 +209,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput wd-7"
+              className="smallinput wd-7"
               name="purchaseRate"
               value={item.purchaseRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -224,7 +224,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="smallinput"
               name="inflowCredit"
               value={item.inflowCredit}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -238,7 +238,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="smallinput"
               name="sending"
               value={item.sending}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -252,7 +252,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="smallinput"
               name="sumRemainder"
               value={item.sumRemainder}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -267,7 +267,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="smallinput"
               name="closingStock"
               value={item.closingStock}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -281,7 +281,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput"
+              className="smallinput"
               name="sales"
               value={item.sales}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -296,7 +296,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 
                 min={0}
-              className="SmallInput"
+              className="smallinput"
               name="mainRate"
               value={item.mainRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -310,7 +310,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="SmallInput wd-5"
+              className="smallinput wd-5"
               name="total"
               value={item.total}
               onChange={(e) => handelSeconFormOnChange(e, index)}

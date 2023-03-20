@@ -140,7 +140,7 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control ">
             <select
-              className="wd-9"
+              className="smallinput wd-9"
               required
               name="quantity"
               value={item.quantity}
@@ -179,7 +179,7 @@ const PurchaseOutSideFrom = ({
               type="number"
                 min={0}
                 required
-              className="SmallInput"
+              className="smallinput"
               name="theNumber"
               value={item.theNumber}
               onChange={(e) => onChangePurchesOutSide(e, index)}
@@ -194,7 +194,7 @@ const PurchaseOutSideFrom = ({
               type="number"
                 min={0}
                 required
-              className="SmallInput"
+              className="smallinput"
               name="rate"
               value={item.rate}
               onChange={(e) => onChangePurchesOutSide(e, index)}
@@ -208,7 +208,7 @@ const PurchaseOutSideFrom = ({
               type="number"
                 min={0}
                 required
-              className="SmallInput wd-7"
+              className="smallinput wd-7"
               name="total"
               disabled
               value={item.total}
@@ -222,7 +222,7 @@ const PurchaseOutSideFrom = ({
             <input
               type="text"
                 required
-              className="SmallInput wd-30"
+              className="smallinput wd-30"
               name="reason"
               value={item.reason}
               onChange={(e) => onChangePurchesOutSide(e, index)}

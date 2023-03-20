@@ -21,7 +21,7 @@ const TotalRML = () => {
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className=""
               name="averageRate"
               disabled
             />
@@ -32,7 +32,7 @@ const TotalRML = () => {
           <div className="form-control">
             <input
               // type="number"
-              className="semiSmallInput"
+              className=""
               name="openingStock"
               value={addRmlState.reduce(
                 (total, currentItem) =>
@@ -50,7 +50,7 @@ const TotalRML = () => {
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className=""
               name="incomingPurchase"
               value={addRmlState.reduce(
                 (total, currentItem) =>
@@ -67,7 +67,7 @@ const TotalRML = () => {
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className=""
               name="buyRate"
               disabled
             />
@@ -79,7 +79,7 @@ const TotalRML = () => {
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className=""
               name="incomePurchase"
               value={addRmlState.reduce(
                 (total, currentItem) =>
@@ -94,7 +94,7 @@ const TotalRML = () => {
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className=""
               name="purchaserRate"
               disabled
             />
@@ -105,7 +105,7 @@ const TotalRML = () => {
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className=""
               name="inflowCredit"
               value={addRmlState.reduce(
                 (total, currentItem) =>
@@ -119,7 +119,7 @@ const TotalRML = () => {
         {/* ======== योग/शेष ========= */}
         <td>
           <div className="form-control">
-            <input type="number" className="semiSmallInput" name="sending" value={addRmlState.reduce(
+            <input type="number" className="" name="sending" value={addRmlState.reduce(
               (total, currentItem) =>
                 (total = total + Number(currentItem.sending)),
               0
@@ -132,7 +132,7 @@ const TotalRML = () => {
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className=""
               name="sumRemainder"
               value={addRmlState.reduce(
                 (total, currentItem) =>
@@ -147,7 +147,7 @@ const TotalRML = () => {
           <div className="form-control">
             <input
               type="number"
-              className="semiSmallInput"
+              className=""
               name="closingStock"
               value={addRmlState.reduce(
                 (total, currentItem) =>
@@ -162,7 +162,7 @@ const TotalRML = () => {
         {/* ============= बिक्री ================ */}
         <td>
           <div className="form-control">
-            <input type="number" className="semiSmallInput" name="sales" value={addRmlState.reduce(
+            <input type="number" className="" name="sales" value={addRmlState.reduce(
               (total, currentItem) =>
                 (total = total + Number(currentItem.sales)),
               0
@@ -173,13 +173,13 @@ const TotalRML = () => {
         {/* ============= रेट ================ */}
         <td>
           <div className="form-control">
-            <input type="number" className="semiSmallInput" name="rate" disabled/>
+            <input type="number" className="" name="rate" disabled/>
           </div>
         </td>
         {/* ============= योग ================ */}
         <td>
           <div className="form-control">
-            <input type="number" className="semiSmallInput" name="cost" value={addRmlState.reduce(
+            <input type="number" className="" name="cost" value={addRmlState.reduce(
               (total, currentItem) =>
                 (total = total + Number(currentItem.cost)),
               0

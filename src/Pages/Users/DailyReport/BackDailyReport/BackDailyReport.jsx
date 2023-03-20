@@ -181,7 +181,7 @@ const BackDailyReport = () => {
               setSalesMan(e.target.value);
               localStorage.setItem("salesMan", e.target.value);
             }}
-            className="semiSmallInput"
+            className="smallinput wd-30"
           />
 
           <div className="flex  items-center">
@@ -1243,7 +1243,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="smallinput"
                             disabled
                                   name="startingStock"
                                   value={addOneSecondFormState.reduce(
@@ -1261,7 +1261,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="smallinput"
                             disabled
                                   name="incomingPurchase"
                                   value={addOneSecondFormState.reduce(
@@ -1286,7 +1286,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="smallinput"
                                   name="incomePurchase"
                             disabled
                                   value={addOneSecondFormState.reduce(
@@ -1311,7 +1311,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="smallinput"
                             disabled
                                   name="inflowCredit"
                                   value={addOneSecondFormState.reduce(
@@ -1330,7 +1330,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="smallinput"
                             disabled
                                   name="sending"
                                   value={addOneSecondFormState.reduce(
@@ -1348,7 +1348,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="smallinput"
                                   name="sumRemainder"
                                   value={addOneSecondFormState.reduce(
                                     (total, currentItem) =>
@@ -1367,7 +1367,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="smallinput"
                             disabled
                                   name="closingStock"
                                   value={addOneSecondFormState.reduce(
@@ -1386,7 +1386,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput"
+                                  className="smallinput"
                             disabled
                                   name="sales"
                                   value={addOneSecondFormState.reduce(
@@ -1409,7 +1409,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="SmallInput wd-5"
+                                  className="smallinput wd-5"
                                   name="total"
                                   value={addOneSecondFormState.reduce(
                                     (total, currentItem) =>
@@ -1507,7 +1507,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             // type="number"
-                            className="smallInput"
+                            className="smallinput"
                             name="openingStock"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1526,7 +1526,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallInput"
+                            className="smallinput"
                             name="incomingPurchase"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1549,7 +1549,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallInput"
+                            className="smallinput"
                             name="incomePurchase"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1569,7 +1569,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallInput"
+                            className="smallinput"
                             name="inflowCredit"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1586,7 +1586,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallInput"
+                            className="smallinput"
                             name="sending"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1602,7 +1602,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallInput"
+                            className="smallinput"
                             name="sumRemainder"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1618,7 +1618,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallInput"
+                            className="smallinput"
                             name="closingStock"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1636,7 +1636,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallInput"
+                            className="smallinput"
                             name="sales"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1656,7 +1656,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallInput"
+                            className="smallinput"
                             name="cost"
                             value={addRmlState.reduce(
                               (total, currentItem) =>
@@ -1741,7 +1741,7 @@ const BackDailyReport = () => {
                         <div className="form-control ">
                           <input
                             type="number"
-                            className="SmallInput"
+                            className="smallinput"
                             name="theNumber"
                             value={purchesOutSideState.reduce(
                               (total, currentItem) =>
@@ -1761,7 +1761,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="SmallInput wd-7"
+                            className="smallinput wd-7"
                             name="total"
                             value={purchesOutSideState.reduce(
                               (total, currentItem) =>
@@ -1828,7 +1828,7 @@ const BackDailyReport = () => {
                       <td>
                         <input
                           type="number"
-                          className="SmallInput wd-6"
+                          className="smallinput wd-6"
                           name="amount"
                           value={commissonState.reduce(
                             (total, currentItem) =>
@@ -1905,7 +1905,7 @@ const BackDailyReport = () => {
                             0
                           )}
                           disabled
-                          className="SmallInput wd-7"
+                          className="smallinput wd-7"
                         />
                       </td>
                       <td>
@@ -1983,7 +1983,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="SmallInput"
+                            className="smallinput"
                             name="theNumber"
                             value={addShippingState.reduce(
                               (total, currentItem) =>
@@ -2058,7 +2058,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="SmallInput"
+                            className="smallinput"
                             name="theNumber"
                             value={infolwBorrwingFormState.reduce(
                               (total, currentItem) =>
@@ -2078,7 +2078,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="SmallInput"
+                            className="smallinput"
                             name="total"
                             value={infolwBorrwingFormState.reduce(
                               (total, currentItem) =>
@@ -2148,7 +2148,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="SmallInput wd-9"
+                            className="smallinput wd-9"
                             name="amount"
                             value={craditDabitState.reduce(
                               (total, currentItem) =>

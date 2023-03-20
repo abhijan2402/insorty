@@ -196,7 +196,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             type="text"
             required
             // className="select select-bordered"
-            className="semiSmallInput"
+            className="smallinput wd-30"
             name="partyType"
             value={item.partyType}
             onChange={(e) => onChangeCarditDabit(e, index)}
@@ -216,7 +216,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             type="number"
             required
             min={0}
-            className="SmallInput wd-9"
+            className="smallinput wd-9"
             name="amount"
             value={item.amount}
             onChange={(e) => onChangeCarditDabit(e, index)}
@@ -229,7 +229,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <input
             type="text"
             required
-            className="semiSmallInput wd-30"
+            className="smallinput wd-30"
             name="note"
             value={item.note}
             onChange={(e) => onChangeCarditDabit(e, index)}

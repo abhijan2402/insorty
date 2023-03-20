@@ -1,6 +1,6 @@
 import React from "react";
 
-const RegularData = ({ regularData, index,quan1,quan2,quan3 }) => {
+const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet }) => {
   const { pages, brandName } = regularData;
 
   // get all quantityInML 750 ml data form entries arry
@@ -8,8 +8,10 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3 }) => {
   return (
     <>
       {pages.map((page, index) => {
-        console.log("page", page);
 
+        const pg = pageId ? pageId : Array.from(frontSet)[0]
+
+        if (page.page === pg){
         const quantityInML750 = page.entries.filter(
           (entry) => entry.quantityInML === quan1
         );
@@ -281,7 +283,7 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3 }) => {
               })
               : 0) + Number(
               quantityInML375.length > 0
-                  ? quantityInML750.map((item, index) => {
+                  ? quantityInML375.map((item, index) => {
                     return (
                       Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
                     );
@@ -289,7 +291,7 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3 }) => {
                   : 0
               ) + Number(
                 quantityInML180.length > 0
-                  ? quantityInML750.map((item, index) => {
+                  ? quantityInML180.map((item, index) => {
                     return (
                       Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
                     );
@@ -298,7 +300,7 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3 }) => {
               )}</td>
             {/* <td className="tg-0lax"> */}
           </tr>
-        );
+        );}
       })}
     </>
   );
