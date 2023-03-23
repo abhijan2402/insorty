@@ -1,42 +1,80 @@
+import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 
 const AddOneFristForm = ({ beerFront, index }) => {
+  //
   return (
     <>
       <tr>
         <th>{index + 1}</th>
         <td>
           <div className="form-control">
-            <input
-              type="text"
-              className="dailyReportInput"
-              name="brandName"
-            />
+            <input type="text" className="dailyReportInput" name="brandName" />
           </div>
+          {/* <Autocomplete
+            size="small"
+            style={{
+              width: "20rem",
+            }}
+            options={
+              liquors.length > 0
+                ? liquors.filter((brand) => {
+                    if (brand.type === "WINE") {
+                      return brand;
+                    }
+                  })
+                : ["no options"]
+            }
+            getOptionLabel={(option) => (option ? option.brandName : "")}
+            onChange={(event, value) => {
+              if (value) {
+                addOneFirst.brandName = value.brandName;
+                addOneFirst.liquorID = value._id;
+              } else {
+                addOneFirst.brandName = "";
+                addOneFirst.liquorID = "";
+              }
+              handelFristFormOnChange(event, index);
+              console.log(addOneFirst);
+            }}
+            renderInput={(params) => (
+              <TextField
+                required
+                size="small"
+                {...params}
+                // value={addOneFirst.brandName}
+                inputProps={{
+                  ...params.inputProps,
+                  value: addOneFirst.brandName,
+                }}
+                onChange={(event) => {
+                  addOneFirst.brandName = event.target.value;
+                }}
+              />
+            )}
+          /> */}
         </td>
         {/* ======== MRP Input ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
-                className="smallinput"
+                className="smallinput "
                 name="OpeningStock750"
               />
             </div>
             <div className="form-control">
               <input
-
                 type="number"
-                className="smallinput"
+                className="smallinput "
                 name="OpeningStock330"
               />
             </div>
             <div className="form-control">
               <input
-
                 type="number"
-                className="smallinput"
+                className="smallinput "
                 name="OpeningStock180"
               />
             </div>
@@ -49,7 +87,6 @@ const AddOneFristForm = ({ beerFront, index }) => {
             </div>
             <div className="form-control">
               <input
-
                 type="number"
                 className="smallinput"
                 name="OpeningStock30"
@@ -59,11 +96,10 @@ const AddOneFristForm = ({ beerFront, index }) => {
         </td>
         {/* ======== प्रारम्भिक स्टॉक ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 className="smallinput"
-
                 type="number"
                 name="inflowShop750"
               />
@@ -73,7 +109,6 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput"
-
                 name="inflowShop330"
               />
             </div>
@@ -86,18 +121,10 @@ const AddOneFristForm = ({ beerFront, index }) => {
               />
             </div>
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="inflowShop60"
-              />
+              <input type="number" className="smallinput" name="inflowShop60" />
             </div>
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="inflowShop30"
-              />
+              <input type="number" className="smallinput" name="inflowShop30" />
             </div>
           </div>
         </td>
@@ -105,7 +132,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
         {/* ======== आमद (खरीद)-दु. ========= */}
 
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -118,7 +145,6 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput"
-
                 name="buyeRateShop330"
               />
             </div>
@@ -148,7 +174,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
         </td>
 
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -192,7 +218,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
         {/* ======== आमद (खरीद)-बा. ========= */}
 
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -235,45 +261,25 @@ const AddOneFristForm = ({ beerFront, index }) => {
 
         {/*================ खरीद रेट - बा. ==================  */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="send750"
-              />
+              <input type="number" className="smallinput" name="send750" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="send330"
-              />
+              <input type="number" className="smallinput" name="send330" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="send180"
-              />
+              <input type="number" className="smallinput" name="send180" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="send60"
-              />
+              <input type="number" className="smallinput" name="send60" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="send30"
-              />
+              <input type="number" className="smallinput" name="send30" />
             </div>
           </div>
         </td>
@@ -281,7 +287,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
         {/* ======== आमद (उधारी) ========= */}
 
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -323,7 +329,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
         </td>
         {/* ======== भेजान ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
               <input
                 type="number"
@@ -365,101 +371,54 @@ const AddOneFristForm = ({ beerFront, index }) => {
         </td>
         {/* ======== योग/शेष ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="salse750"
-              />
+              <input type="number" className="smallinput" name="salse750" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="salse330"
-              />
+              <input type="number" className="smallinput" name="salse330" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="salse180"
-
-              />
+              <input type="number" className="smallinput" name="salse180" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="salse60"
-
-              />
+              <input type="number" className="smallinput" name="salse60" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="salse30"
-              />
+              <input type="number" className="smallinput" name="salse30" />
             </div>
           </div>
         </td>
         {/* ======== अन्तिम स्टॉक ========= */}
         <td>
-          <div className="flex gap-2">
+          <div className="flex ">
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="total750"
-
-              />
+              <input type="number" className="smallinput" name="total750" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="total330"
-              />
+              <input type="number" className="smallinput" name="total330" />
             </div>
 
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="total180"
-              />
+              <input type="number" className="smallinput" name="total180" />
             </div>
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="total60"
-              />
+              <input type="number" className="smallinput" name="total60" />
             </div>
             <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="total30"
-              />
+              <input type="number" className="smallinput" name="total30" />
             </div>
           </div>
         </td>
         {/* ============= कुल योग ================ */}
         <td>
           <div className="form-control">
-            <input
-              type="number"
-              className="semiSmallInput"
-              name="grandTotal"
-            />
+            <input type="number" className="semiSmallInput" name="grandTotal" />
           </div>
         </td>
       </tr>
