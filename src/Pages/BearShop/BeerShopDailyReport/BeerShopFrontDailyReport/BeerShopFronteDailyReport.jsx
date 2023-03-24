@@ -8,18 +8,19 @@ const FronteDailyReport = () => {
     handelFristFormSubmit,
     fristFormAddOne,
     fristFormAddFive,
-    fristFormOnChange,
+    // fristFormOnChange,
     beerShopFrontFrist,
     beerShopFrontSecond,
     beerShopFrontThird,
-    secondFormAddOne,
-    thirdFormAddOne,
+    // secondFormAddOne,
+    // thirdFormAddOne,
     addOne,
   } = UseBeerShopFront();
 
 
   return (
     <section className="mx-2">
+      <div className="flex justify-center items-center flex-col">
       <div className="my-4 flex gap-4 items-center">
         <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
         <Link
@@ -34,12 +35,13 @@ const FronteDailyReport = () => {
         <input type="text" className="semiSmallInput" />
         <input type="date" name="" id="" className="semiSmallInput" />
       </div>
+      </div>
 
       <div className="py-6">
         <div>
           <form>
             <div className="overflow-x-auto">
-              <table className="table w-full">
+              <table className="table commonTable">
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
@@ -66,7 +68,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== MRP Input ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -98,7 +100,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -130,7 +132,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -162,7 +164,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -194,7 +196,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -227,7 +229,7 @@ const FronteDailyReport = () => {
 
                     {/* ============खरीद रेट - बा. =============  */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -261,7 +263,7 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (उधारी) ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -294,7 +296,7 @@ const FronteDailyReport = () => {
                     {/* ======== भेजान ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -326,7 +328,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== योग/शेष ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -358,7 +360,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== अन्तिम स्टॉक ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -414,7 +416,7 @@ const FronteDailyReport = () => {
                     <td>Total</td>
                     {/* ======== MRP Input ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             disabled
@@ -459,7 +461,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             className="smallinput"
@@ -509,7 +511,7 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (खरीद)-दु. ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             type="number"
@@ -556,7 +558,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             type="number"
@@ -605,7 +607,7 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (खरीद)-बा. ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             type="number"
@@ -653,7 +655,7 @@ const FronteDailyReport = () => {
 
                     {/*================ खरीद रेट - बा. ==================  */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             type="number"
@@ -704,7 +706,7 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (उधारी) ========= */}
 
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             type="number"
@@ -751,7 +753,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== भेजान ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             type="number"
@@ -798,7 +800,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== योग/शेष ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             type="number"
@@ -847,7 +849,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== अन्तिम स्टॉक ========= */}
                     <td>
-                      <div className="flex gap-2">
+                      <div className="flex ">
                         <div className="form-control">
                           <input
                             type="number"
@@ -933,24 +935,24 @@ const FronteDailyReport = () => {
           <div>
             <form>
               <div className="mt-6 ">
-                <div className="overflow-x-auto flex gap-4">
-                  <table className="table w-full">
+                <div className="overflow-x-auto flex ">
+                  <table className="table commonTable">
                     <thead>
                       <tr>
                         <th> क्र. सं.</th>
-                        <th>Brand Name/ ब्राण्ड</th>
-                        <th> Opening stock / प्रारम्भिक स्टॉक</th>
-                        <th>Inflow(Pur. shop)/आमद(खरीद)-दु</th>
-                        <th>Buy rate shop /खरीद रेट - दुु</th>
-                        <th>Income (Pur. out)/आमद(खरीद)बा</th>
-                        <th>buy  rate out /खरीद रेट - बा.</th>
-                        <th>inflow (credit) / आमद (उधारी)</th>
-                        <th>send / भेजान.</th>
-                        <th>sum -remaining / योग - शेष</th>
-                        <th>closing stock / अन्तिम स्टॉक</th>
-                        <th>sales /  बिक्री</th>
-                        <th>total / योग</th>
-                        <th>Amount/ योग</th>
+                        <th> ब्राण्ड</th>
+                        <th> प्रारम्भिक स्टॉक</th>
+                        <th>आमद(खरीद)-दु</th>
+                        <th>खरीद रेट - दुु</th>
+                        <th>आमद(खरीद)बा</th>
+                        <th>खरीद रेट - बा.</th>
+                        <th>आमद (उधारी)</th>
+                        <th> भेजान.</th>
+                        <th> योग - शेष</th>
+                        <th> अन्तिम स्टॉक</th>
+                        <th> बिक्री</th>
+                        <th> योग</th>
+                        <th> योग</th>
                       </tr>
                     </thead>
 
@@ -964,7 +966,7 @@ const FronteDailyReport = () => {
                         </td>
                         {/* ======== MRP Input ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -986,7 +988,7 @@ const FronteDailyReport = () => {
                         </td>
                         {/* ======== प्रारम्भिक स्टॉक ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1008,7 +1010,29 @@ const FronteDailyReport = () => {
                         </td>
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">650ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">550ml</span>
+                              </label>
+                            </div>
+
+                            <div className="form-control">
+                              <label className="label">
+                                <span className="label-text">330ml</span>
+                              </label>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1027,35 +1051,11 @@ const FronteDailyReport = () => {
                               </label>
                             </div>
 
-
                           </div>
                         </td>
 
                         <td>
-                          <div className="flex gap-2">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-
-                          </div>
-                        </td>
-
-                        <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1078,7 +1078,7 @@ const FronteDailyReport = () => {
 
                         {/* ============खरीद रेट - बा. =============  */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1102,7 +1102,7 @@ const FronteDailyReport = () => {
                         {/* ======== आमद (उधारी) ========= */}
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1124,7 +1124,7 @@ const FronteDailyReport = () => {
                         {/* ======== भेजान ========= */}
 
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1145,7 +1145,7 @@ const FronteDailyReport = () => {
                         </td>
                         {/* ======== योग/शेष ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1166,7 +1166,7 @@ const FronteDailyReport = () => {
                         </td>
                         {/* ======== अन्तिम स्टॉक ========= */}
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1185,7 +1185,7 @@ const FronteDailyReport = () => {
                           </div>
                         </td>
                         <td>
-                          <div className="flex gap-2">
+                          <div className="flex ">
                             <div className="form-control">
                               <label className="label">
                                 <span className="label-text">650ml</span>
@@ -1208,7 +1208,6 @@ const FronteDailyReport = () => {
                           <div className="form-control"></div>
                         </td>
                       </tr>
-
                       {
                         beerShopFrontSecond.map((item, index) => {
                           return (
@@ -1226,7 +1225,7 @@ const FronteDailyReport = () => {
                                 </td>
                                 {/* ======== MRP Input ========= */}
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1252,7 +1251,7 @@ const FronteDailyReport = () => {
                                 </td>
                                 {/* ======== प्रारम्भिक स्टॉक ========= */}
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         className="smallinput"
@@ -1282,7 +1281,7 @@ const FronteDailyReport = () => {
                                 {/* ======== आमद (खरीद)-दु. ========= */}
 
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1310,7 +1309,7 @@ const FronteDailyReport = () => {
                                 </td>
 
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1340,7 +1339,7 @@ const FronteDailyReport = () => {
                                 {/* ======== आमद (खरीद)-बा. ========= */}
 
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1369,7 +1368,7 @@ const FronteDailyReport = () => {
 
                                 {/*================ खरीद रेट - बा. ==================  */}
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1399,7 +1398,7 @@ const FronteDailyReport = () => {
                                 </td>
 
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1427,7 +1426,7 @@ const FronteDailyReport = () => {
                                 </td>
                                 {/* ======== भेजान ========= */}
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1455,7 +1454,7 @@ const FronteDailyReport = () => {
                                 </td>
                                 {/* ======== योग/शेष ========= */}
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1483,7 +1482,7 @@ const FronteDailyReport = () => {
                                 </td>
                                 {/* ======== अन्तिम स्टॉक ========= */}
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1510,7 +1509,7 @@ const FronteDailyReport = () => {
                                   </div>
                                 </td>
                                 <td>
-                                  <div className="flex gap-2">
+                                  <div className="flex ">
                                     <div className="form-control">
                                       <input
                                         type="number"
@@ -1554,11 +1553,10 @@ const FronteDailyReport = () => {
                           )
                         })
                       }
-
                     </tbody>
                   </table>
 
-                  <table className="table w-full">
+                  <table className="table commonTable">
                     <thead>
                       <tr >
                         <th>पानी, नमकीन, सिगरेट, पुड़िया आदि</th>
@@ -1578,8 +1576,6 @@ const FronteDailyReport = () => {
                     </thead>
 
                     <tbody>
-
-
                       {
                         beerShopFrontThird.map((beerBarthird, index) => {
                           return (
@@ -1595,7 +1591,7 @@ const FronteDailyReport = () => {
                                 />
                               </td>
                               <td>
-                                <div className="flex gap-2">
+                                <div className="flex ">
                                   <div className="form-control">
                                     <input
                                       type="number"
@@ -1608,7 +1604,7 @@ const FronteDailyReport = () => {
 
                               {/*================ खरीद रेट - बा. ==================  */}
                               <td>
-                                <div className="flex gap-2">
+                                <div className="flex ">
                                   <div className="form-control">
                                     <input
                                       type="text"
@@ -1620,7 +1616,7 @@ const FronteDailyReport = () => {
                               </td>
 
                               <td>
-                                <div className="flex gap-2">
+                                <div className="flex ">
                                   <div className="form-control">
                                     <input
                                       type="number"
@@ -1632,7 +1628,7 @@ const FronteDailyReport = () => {
                               </td>
                               {/* ======== भेजान ========= */}
                               <td>
-                                <div className="flex gap-2">
+                                <div className="flex ">
                                   <div className="form-control">
                                     <input
                                       type="number"
@@ -1644,7 +1640,7 @@ const FronteDailyReport = () => {
                               </td>
                               {/* ======== योग/शेष ========= */}
                               <td>
-                                <div className="flex gap-2">
+                                <div className="flex ">
                                   <div className="form-control">
                                     <input
                                       type="number"
@@ -1656,7 +1652,7 @@ const FronteDailyReport = () => {
                               </td>
                               {/* ======== अन्तिम स्टॉक ========= */}
                               <td>
-                                <div className="flex gap-2">
+                                <div className="flex ">
                                   <div className="form-control">
                                     <input
                                       type="number"
@@ -1667,7 +1663,7 @@ const FronteDailyReport = () => {
                                 </div>
                               </td>
                               <td>
-                                <div className="flex gap-2">
+                                <div className="flex ">
                                   <div className="form-control">
                                     <input
                                       type="number"
@@ -1679,7 +1675,7 @@ const FronteDailyReport = () => {
                               </td>
                               {/* ============= कुल योग ================ */}
                               <td>
-                                <div className="flex gap-2">
+                                <div className="flex ">
                                   <div className="form-control">
                                     <input
                                       type="number"
