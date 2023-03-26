@@ -39,7 +39,7 @@ const BranchName = () => {
         <div className="divider my-2"></div>
       </div>
       <div className="flex justify-center items-center">
-        <table className="table w-4/5">
+        <table className="table w-4/5 removeCommonWSpace">
           <thead className="text-center ">
             <th>
               <h1>Sr. No.</h1>

@@ -113,7 +113,7 @@ const OutBill = () => {
 
       <div>
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table className="table w-full removeCommonWSpace">
             <thead>
               <tr>
                 <td> क्र. सं.</td>

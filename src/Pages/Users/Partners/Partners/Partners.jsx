@@ -111,7 +111,7 @@ const Partners = () => {
           <div className="flex justify-center items-center">
             <form action="">
               <div className="overflow-x-auto">
-                <table className="table ">
+                <table className="table removeCommonWSpace">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>

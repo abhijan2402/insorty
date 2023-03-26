@@ -111,7 +111,7 @@ const RmlStock = () => {
           <div>
             <div className=" gap-4  my-4 ">
               <div>
-                <table className="table w-full m-2">
+                <table className="table w-full m-2 removeCommonWSpace">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>

@@ -48,7 +48,7 @@ const MainInvestment = () => {
       <div>
         <form>
           <div className="justify-center flex items-center">
-            <table className="table w-2/3">
+            <table className="table  removeCommonWSpace">
               <thead>
                 <tr className="text-center">
                   <th> क्र. सं.</th>
@@ -217,7 +217,7 @@ const MainInvestment = () => {
           <h2 className="font-bold text-[1.5rem] text-center my-2">रिफंड / रिकवरी विवरण</h2>
         </div>
         <div className="justify-center flex items-center my-6">
-          <table className="table w-2/3">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr className="text-center">
                 <th> क्र. सं.</th>
@@ -273,7 +273,7 @@ const MainInvestment = () => {
           </h2>
         </div>
         <div className="justify-center flex items-center my-6">
-          <table className="table w-2/3">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr className="text-center">
                 <th className="text-center"> क्र. सं.</th>
