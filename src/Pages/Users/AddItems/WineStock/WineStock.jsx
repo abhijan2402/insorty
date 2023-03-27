@@ -139,7 +139,7 @@ const WineStock = () => {
           </div>
 
         <div className="overflow-x-auto flex justify-center item-center" >
-            <table className="table  m-2">
+            <table className="table removeCommonWSpace m-2">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>

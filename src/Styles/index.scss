@@ -159,8 +159,6 @@ td {
   width: 6.5rem !important;
 }
 
-
-
 .show7Chereter {
   width: 6rem !important;
 }
@@ -172,6 +170,46 @@ td {
 .show5Chereter {
   width: 30px;
 }
+
+.removeCommonWSpace {
+  border: 1px solid black !important;
+  border-collapse: collapse;
+  padding: 0 !important;
+  // padding: 5px;
+}
+
+.removeCommonWSpace th {
+  border: 1px solid black !important;
+  //padding: 5px;
+  padding: 5px !important;
+  border-radius: 0;
+  background: #f0f0f0;
+  color: #313030;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+.removeCommonWSpace td {
+  border: 1px solid black !important;
+  text-align: center;
+  padding: 5px !important;
+  border-radius: 0;
+  //padding: 5px;
+  background: #ffffff;
+  color: #313030;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+
+
+
+
+
 
 @media screen and (max-height: 450px) {
   .sidenav {

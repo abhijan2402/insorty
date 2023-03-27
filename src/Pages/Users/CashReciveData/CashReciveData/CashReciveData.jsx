@@ -99,7 +99,7 @@ const CashReciveData = () => {
 
       <div>
         <div className="justify-center items-center flex m-6">
-          <table className="table w-11/12">
+          <table className="table w-11/12 removeCommonWSpace">
             <thead>
               <tr>
                 <td> क्र. सं.</td>

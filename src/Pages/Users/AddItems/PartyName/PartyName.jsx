@@ -47,7 +47,7 @@ const PartyName = () => {
       <div
         className="justify-center flex items-center"
       >
-        <table className="table w-4/5">
+        <table className="table w-4/5 removeCommonWSpace">
           <thead className="text-center">
             <th>
               <h1>Sr. No.</h1>
