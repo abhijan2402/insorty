@@ -40,7 +40,7 @@ const InvestmentForm = ({
         <td>
           <input
             type="text"
-            name="price"
+            name="type"
             className="dailyReportInput wd-30"
             defaultValue={mainInvestment.type}
             onChange={(event) =>
@@ -72,7 +72,7 @@ const InvestmentForm = ({
             }}
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
-            className="inputBox"
+            className="inputBox date"
           />
         </td>
         <td>

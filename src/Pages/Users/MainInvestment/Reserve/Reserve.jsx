@@ -61,7 +61,7 @@ const Reserve = ({ reserve, index, reserveAmountOnChange, name, handleRemoveFiel
             }}
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
-            className="inputBox"
+            className="inputBox date"
           />
         </td>
         <td>

@@ -6,10 +6,11 @@ import Swal from "sweetalert2";
 const useMainInvestmentHooks = () => {
   const token = localStorage.getItem("token");
   const [data, setData] = useState({ isLoading: true });
-  const [newBelonging, setNewBelonging] = useState({
+  const newBelonging = {
     price: 0,
     date: new Date(),
-  });
+    type: ""
+  }
   const refund = { type: "REFUND", price: 0, date: new Date() };
   const reserveAmount = { detail: "", price: 0, month: new Date() };
 

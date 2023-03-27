@@ -77,7 +77,7 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
             
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
-            className="inputBox"
+            className="inputBox date"
             style={{
               zIndex: "1000"
             }}

@@ -48,7 +48,7 @@ const MainInvestment = () => {
       <div>
         <form>
           <div className="justify-center flex items-center">
-            <table className="table  removeCommonWSpace">
+            <table className=" removeCommonWSpace">
               <thead>
                 <tr className="text-center">
                   <th> क्र. सं.</th>
@@ -134,7 +134,7 @@ const MainInvestment = () => {
                       marginTop: 7,
                       marginBottom: 7,
                     }}
-                    className="commonBtn"
+                    className="btn bg-[#AA237A] btn-sm"
                     onClick={(e) => {e.preventDefault(); handleFeesAdd()}}
                   >
                     ADD
@@ -217,7 +217,7 @@ const MainInvestment = () => {
           <h2 className="font-bold text-[1.5rem] text-center my-2">रिफंड / रिकवरी विवरण</h2>
         </div>
         <div className="justify-center flex items-center my-6">
-          <table className="table removeCommonWSpace">
+            <table className=" removeCommonWSpace">
             <thead>
               <tr className="text-center">
                 <th> क्र. सं.</th>
@@ -246,16 +246,14 @@ const MainInvestment = () => {
                 )}
 
               <tr>
-              <td></td>
+                  <td><button
+                    className="btn bg-[#AA237A] btn-sm"
+                    onClick={(e) => { e.preventDefault(); handleRefundRecoveryAdd() }}
+                  >
+                    Add
+                  </button></td>
                 <td>
-                  <div>
-                    <button
-                      className="commonBtn"
-                      onClick={(e) =>{e.preventDefault(); handleRefundRecoveryAdd()}}
-                    >
-                      Add
-                    </button>
-                  </div>
+                 
                 </td>
                 <td></td>
                 <td className="commonText">Total</td>
@@ -273,7 +271,7 @@ const MainInvestment = () => {
           </h2>
         </div>
         <div className="justify-center flex items-center my-6">
-          <table className="table removeCommonWSpace">
+          <table className=" removeCommonWSpace">
             <thead>
               <tr className="text-center">
                 <th className="text-center"> क्र. सं.</th>
@@ -300,16 +298,16 @@ const MainInvestment = () => {
                 })}
 
               <tr>
-              <td></td>
-                <td>
-                  <div>
+                  <td> <div>
                     <button
-                      className="commonBtn"
-                        onClick={(e) => { e.preventDefault(); handleReserveAmountAdd()}}
+                      className="btn bg-[#AA237A] btn-sm"
+                      onClick={(e) => { e.preventDefault(); handleReserveAmountAdd() }}
                     >
                       Add
                     </button>
-                  </div>
+                  </div></td>
+                <td>
+                 
                 </td>
                 <td></td>
                 <td className="commonText">Total</td>
@@ -326,8 +324,9 @@ const MainInvestment = () => {
               <tr>
                 <td></td>
                 <td></td>
-                <td className="commonText">शेष इन्वेस्ट</td>
-                <td className="price">{data.reserveAmount.total}</td>
+                <td className="commonText"></td>
+                  <td className="price">शेष इन्वेस्ट</td>
+                  <td>{data.reserveAmount.total}</td>
               </tr>
             </tbody>
           </table>

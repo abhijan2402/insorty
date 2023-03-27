@@ -317,7 +317,7 @@ const FrontDetailsReport = () => {
                 <td className="tg-baqh" colSpan={42}>
                   दुकान का नाम:- &nbsp;&nbsp;
                   {jwtDecode(localStorage.getItem("token")).name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
-                  का नाम :- {frontPage[0]?.salesmen}
+                  का नाम :- {frontPage.find((entry) => { const pg = pageId ? pageId : Array.from(frontSet)[0]; return entry._id===pg})?.salesman}
 
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक :-
                   {moment(selectedDate).format('DD/MM/YYYY')}
@@ -778,7 +778,7 @@ const FrontDetailsReport = () => {
                   {filteredExceptionalData && filteredExceptionalData.length > 0 && openingStock.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
-                  })}
+                  },0)}
                 </td>
                 <td className="tg-0lax">
                   {filteredExceptionalData && filteredExceptionalData.length > 0 && purchaseShop.reduce((acc, item) => {
@@ -791,7 +791,7 @@ const FrontDetailsReport = () => {
                   {filteredExceptionalData && filteredExceptionalData.length > 0 && purchaseOutSide.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
-                  })}
+                  },0)}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
@@ -823,7 +823,7 @@ const FrontDetailsReport = () => {
                   {filteredExceptionalData && filteredExceptionalData.length > 0 && sales.reduce((acc, item) => {
                     const total = Number(acc) + Number(item);
                     return total;
-                  })}
+                  },0)}
                 </td>
 
                 <td className="tg-0lax"></td>
