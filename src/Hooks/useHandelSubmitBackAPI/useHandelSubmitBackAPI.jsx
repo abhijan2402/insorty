@@ -209,7 +209,7 @@ const useHandelSubmitBackAPI = () => {
       ml: element.quantity,
       rate: element.rate,
       total: element.total,
-      comments: element.reason,
+      comment: element.reason,
     });
   }
 

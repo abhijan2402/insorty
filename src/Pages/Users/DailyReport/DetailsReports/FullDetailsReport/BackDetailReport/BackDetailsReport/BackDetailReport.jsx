@@ -45,6 +45,11 @@ const BackDetailReport = () => {
   } = useGetDailyReport();
 
   const container = useRef(null);
+  const [pageId, setPageId] = useState()
+  const [pgNo, setPgNo] = useState(0)
+  let frontSet = new Set([])
+
+
   const [filterDate, setFilterData] = useState(new Date());
 
   const handlePrint = useReactToPrint({
@@ -65,6 +70,10 @@ const BackDetailReport = () => {
   ) {
     return <Loader></Loader>;
   }
+
+  console.log(Array.from(frontSet),"page no1")
+  console.log(Array.from(frontSet).sort((a, b) => a-b
+  ),"page no")
 
   //
 
@@ -95,10 +104,13 @@ const BackDetailReport = () => {
   let quan650 = [];
   let quan550 = [];
   let quan330 = [];
+  
 
   filteredRegularData.map((item) => {
-    console.log(item, "itemhere");
+    
     item.pages.map((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0]
+      if (page.page === pg) {
       page.entries.map((entry) => {
         if (entry.quantityInML === 650) {
           quan650.push(entry);
@@ -107,47 +119,104 @@ const BackDetailReport = () => {
         } else if (entry.quantityInML === 330) {
           quan330.push(entry);
         }
-      });
+      });}
     });
   });
 
-  const openingStock = filteredExceptionalData.map((item) => {
+
+  filteredRegularData.map((item) => {
+    item.pages.map((pg) => {
+      frontSet.add(pg.page)
+      // setPage(pg.page)
+      return 0
+    })
+    return 0
+  })
+
+  const openingStock = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { openingStock } = item;
     return openingStock;
   });
 
-  const purchaseShop = filteredExceptionalData.map((item) => {
+  const purchaseShop = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { purchaseShop } = item;
     return purchaseShop;
   });
 
-  const purchaseOutSide = filteredExceptionalData.map((item) => {
+  const purchaseOutSide = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { purchaseOutSide } = item;
     return purchaseOutSide;
   });
 
-  const credits = filteredExceptionalData.map((item) => {
+  const credits = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { credits } = item;
     return credits;
   });
 
-  const send = filteredExceptionalData.map((item) => {
+  const send = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { send } = item;
     return send;
   });
 
-  const remaining = filteredExceptionalData.map((item) => {
+  const remaining = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { remaining } = item;
     return remaining;
   });
 
-  const closingStock = filteredExceptionalData.map((item) => {
+  const closingStock = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { closingStock } = item;
     return closingStock;
   });
 
-  const sales = filteredExceptionalData.map((item) => {
-    console.log(item, "item+++++");
+  const sales = filteredExceptionalData.filter((page) => {
+    const pg = pageId ? pageId : Array.from(frontSet)[0]
+    if (page.page === pg) {
+      return page
+    }
+    else return 0
+  }).map((item) => {
     const { sales } = item;
     return sales;
   });
@@ -185,6 +254,16 @@ const BackDetailReport = () => {
             className="inputBox"
           />
         </div>
+        {Array.from(frontSet).sort((a, b) => a - b
+        ).map((item, index) => {
+          return (
+            <button
+              className="commonBtn "
+              onClick={() => { setPageId(item); setPgNo(index) }}
+            >
+              {index + 1}
+            </button>)
+        })}
       </div>
 
       <div className="divider"></div>
@@ -345,6 +424,8 @@ const BackDetailReport = () => {
                     quan1={650}
                     quan2={550}
                     quan3={330}
+                    pageId={pageId}
+                    frontSet={frontSet}
                   ></RegularData>
                 );
               })}
@@ -625,13 +706,17 @@ const BackDetailReport = () => {
             <tbody>
               {filteredExceptionalData &&
                 filteredExceptionalData.map((exceptionalData, index) => {
+                  const pg = pageId ? pageId : Array.from(frontSet)[0]
+                  if (exceptionalData.page === pg) {
                   return (
                     <FristFormDetails
                       key={index}
                       index={index}
                       exceptionalData={exceptionalData}
+                      pageId={pageId}
+                      frontSet={frontSet}
                     ></FristFormDetails>
-                  );
+                  );}
                 })}
 
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
@@ -761,14 +846,17 @@ const BackDetailReport = () => {
                     return item;
                   }
                   return false;
-                }).map((RmlData, index) => {
+                }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                ).map((RmlData, index) => {
+                  if(index===pgNo){
                   return (
                     <BackRmlDetailsData
                       key={index}
                       index={index}
                       RmlData={RmlData}
                     ></BackRmlDetailsData>
-                  );
+                  );}
+                  else return false
                 })
               )}
 
@@ -790,7 +878,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo,pgNo+1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -814,7 +903,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -839,7 +929,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -864,7 +955,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -888,7 +980,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -912,7 +1005,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -936,7 +1030,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -961,7 +1056,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -987,7 +1083,8 @@ const BackDetailReport = () => {
                       } else if (filterDate === "") {
                         return item;
                       }
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -1069,14 +1166,16 @@ const BackDetailReport = () => {
                     return item;
                   }
                   return false;
-                }).map((outSideData, index) => {
+                }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                ).map((outSideData, index) => {
+                  if (index === pgNo) {
                   return (
                     <InfolwRml
                       key={index}
                       outSideData={outSideData}
                       index={index}
                     ></InfolwRml>
-                  );
+                  );}
                 })
               )}
 
@@ -1095,7 +1194,8 @@ const BackDetailReport = () => {
                       } else if (filterDate === "") {
                         return item;
                       }
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -1120,7 +1220,8 @@ const BackDetailReport = () => {
                       } else if (filterDate === "") {
                         return item;
                       }
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -1186,8 +1287,10 @@ const BackDetailReport = () => {
                     return item;
                   }
                   return false;
-                }).map((expences, index) => {
+                }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                ).map((expences, index) => {
                   const { entries } = expences;
+                  if (index === pgNo) {
                   return (
                     <CommisonExpence
                       key={index}
@@ -1195,7 +1298,7 @@ const BackDetailReport = () => {
                       index={index}
                       expences={expences}
                     ></CommisonExpence>
-                  );
+                  );}
                 })
               )}
 
@@ -1215,7 +1318,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -1277,8 +1381,10 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).map((borrwedCashReturn, index) => {
+                    }).sort((a, b) => a._id-b._id
+                    ).map((borrwedCashReturn, index) => {
                       const { entries } = borrwedCashReturn;
+                      if (index === pgNo) {
                       return (
                         <CashReciveData
                           key={index}
@@ -1286,7 +1392,7 @@ const BackDetailReport = () => {
                           borrwedCashReturn={borrwedCashReturn}
                           entries={entries}
                         ></CashReciveData>
-                      );
+                      );}
                     })}
                 </>
               )}
@@ -1307,7 +1413,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a._id-b._id
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -1362,8 +1469,10 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).map((item, index) => {
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).map((item, index) => {
                       const { entries } = item;
+                      if (index === pgNo) {
                       return (
                         <InflowBorrow
                           key={index}
@@ -1371,7 +1480,7 @@ const BackDetailReport = () => {
                           PurchaseBorrow={item}
                           entries={entries}
                         ></InflowBorrow>
-                      );
+                      );}
                     })}
                 </>
               )}
@@ -1394,7 +1503,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -1450,8 +1560,10 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).map((item, index) => {
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).map((item, index) => {
                       const { entries } = item;
+                      if (index === pgNo) {
                       return (
                         <ShippingEnglishBear
                           key={index}
@@ -1459,7 +1571,7 @@ const BackDetailReport = () => {
                           item={item}
                           entries={entries}
                         ></ShippingEnglishBear>
-                      );
+                      );}
                     })}
                 </>
               )}
@@ -1481,7 +1593,8 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).reduce(
+                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                    ).slice(pgNo, pgNo + 1).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
@@ -1540,36 +1653,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {!BorrowedData && BorrowedData.length === 0 ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : (
-                <>
-                  {BorrowedData &&
-                    BorrowedData > 0 &&
-                    BorrowedData.filter((item) => {
-                      if (
-                        item.date?.toString().includes(filterDate.toString())
-                      ) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    }).map((item, index) => {
-                      const { entries } = item;
-                      return (
-                        <Borrowed
-                          key={index}
-                          index={index}
-                          item={item}
-                          entries={entries}
-                        ></Borrowed>
-                      );
-                    })}
-                </>
-              )} */}
+              
 
               {BorrowedData &&
                 BorrowedData.length > 0 &&
@@ -1582,8 +1666,10 @@ const BackDetailReport = () => {
                     return item;
                   }
                   return false;
-                }).map((item, index) => {
+                }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                ).map((item, index) => {
                   const { entries } = item;
+                  if (index === pgNo) {
                   return (
                     <Borrowed
                       key={index}
@@ -1591,7 +1677,7 @@ const BackDetailReport = () => {
                       item={item}
                       entries={entries}
                     ></Borrowed>
-                  );
+                  );}
                 })}
 
               <tr>
@@ -1623,7 +1709,8 @@ const BackDetailReport = () => {
                             return item;
                           }
                           return false;
-                        }).reduce(
+                        }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                        ).slice(pgNo, pgNo + 1).reduce(
                           (total, currentItem) =>
                             (total =
                               total +
@@ -1693,7 +1780,8 @@ const BackDetailReport = () => {
                       return item;
                     }
                     return false;
-                  })}
+                  }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
+                  ).slice(pgNo, pgNo + 1) }
                 ></FinalReport>
               )}
             </tbody>
