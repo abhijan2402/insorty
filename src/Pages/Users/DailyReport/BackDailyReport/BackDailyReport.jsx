@@ -185,7 +185,6 @@ const BackDailyReport = () => {
           />
 
           <div className="flex  items-center">
-            <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
               selected={new Date(drDate)}
               name="year"
@@ -194,7 +193,7 @@ const BackDailyReport = () => {
                 console.log(data);
               }}
               dateFormat="dd/MM/yyyy"
-              className="inputBox"
+              className="inputBox date"
               placeholderText={"dd/mm/yyyy"}
             />
           </div>

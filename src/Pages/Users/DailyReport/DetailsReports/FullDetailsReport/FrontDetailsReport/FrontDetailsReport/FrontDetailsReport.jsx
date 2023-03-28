@@ -264,7 +264,6 @@ const FrontDetailsReport = () => {
 
       <div className="flex gap-4 items-center my-4">
         <div className="flex gap-2 items-center">
-          <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
             selected={selectedDate}
             onChange={(date) => {
@@ -272,7 +271,7 @@ const FrontDetailsReport = () => {
             }}
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
-            className="inputBox"
+            className="inputBox date"
           />
         </div>
         {Array.from(frontSet).map((item, index) => {
