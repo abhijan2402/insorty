@@ -10,7 +10,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getBackPageRMLData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -29,7 +29,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getPurchaseOutsideData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -43,7 +43,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getTotalExpensesData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -61,7 +61,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getBorrowedCashReturnData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -79,11 +79,12 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getPurchaseBorrowData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
       const data = await res.json();
+      console.log(data.data)
       return data.data;
     },
   });
@@ -93,7 +94,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getSendData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -111,7 +112,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getBorrowedData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -129,7 +130,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getFinalReportData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -148,7 +149,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getFrontPageData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -164,7 +165,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getBackPageReportExceptionalSize",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -179,7 +180,7 @@ function useGetDailyReport() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getBackPageReportRegularSize",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );

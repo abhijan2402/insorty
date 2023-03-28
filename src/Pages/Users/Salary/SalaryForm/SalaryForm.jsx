@@ -7,9 +7,12 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import { useReactToPrint } from "react-to-print";
+import { useParams } from "react-router-dom";
+
 
 const SalaryForm = () => {
   const token = localStorage.getItem("token");
+  const { employeeId } = useParams()
   const [year, setYear] = useState("");
   const salaryData = useLoaderData();
   const employeeData = salaryData?.data;
@@ -20,6 +23,8 @@ const SalaryForm = () => {
     content: () => front.current,
   });
 
+  console.log(employeeId)
+
   const {
     data: salareyDataList,
     isLoading: salareyDataLoading,
@@ -28,14 +33,14 @@ const SalaryForm = () => {
     queryKey: ["salareyDataList"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getEmployeeSalaryData",
+        `https://insorty-api.onrender.com/shop/getEmployeeSalaryData/`,
         {
-          method: "POST",
+          method: "POst",
           headers: {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ employeeId: employeeData._id }),
+          body: JSON.stringify({ employeeId: employeeId }),
         }
       );
       const data = await res.json();

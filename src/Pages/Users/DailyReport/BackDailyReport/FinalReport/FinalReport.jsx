@@ -27,7 +27,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getFinalReportData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );

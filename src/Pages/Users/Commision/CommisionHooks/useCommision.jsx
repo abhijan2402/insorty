@@ -54,7 +54,7 @@ const useCommision = () => {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getTotalExpensesData",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );

@@ -49,7 +49,7 @@ const FronteDailyReport = () => {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getAllLiquors",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -71,7 +71,7 @@ const FronteDailyReport = () => {
     <section className="mx-2">
       <form onSubmit={submitFristFormHandler}>
         <div className="my-4 flex gap-4 items-center justify-center">
-          <h1 className="font-bold md:text-2xl text-center">दैनिक रिपोर्ट </h1>
+          <h1 className="font-bold md:text-2xl text-center">अंग्रेजी </h1>
           <Link to="/user/dailyreport/back" className="commonBtn ">
             बीयर
           </Link>

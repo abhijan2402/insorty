@@ -9,7 +9,7 @@ const useFrontDetailHooks = () => {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getFrontPageRegularSize",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -24,7 +24,7 @@ const useFrontDetailHooks = () => {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getFrontPageExceptionalSize",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );

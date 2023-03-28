@@ -9,6 +9,7 @@ import Loader from "../../../../Components/Loader/Loader";
 
 const SalaryList = () => {
   const token = localStorage.getItem("token");
+ 
 
   const {
     data: salaryData,
@@ -20,11 +21,12 @@ const SalaryList = () => {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getAllEmployees",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
       const data = await res.json();
+      console.log(data.data)
       return data.data;
     },
   });

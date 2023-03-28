@@ -8,7 +8,7 @@ function usePartyNames() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getAllParties",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -23,7 +23,7 @@ function usePartyNames() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getAllPartners",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -38,7 +38,7 @@ function usePartyNames() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getAllBranches",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );

@@ -72,7 +72,7 @@ const useFormulasFristFormFront = () => {
 
   useEffect(() => {
     fetch("https://insorty-api.onrender.com/shop/getAllLiquors", {
-      method: "POST",
+      method: "GET",
       headers: { "Content-Type": "application/json", cookie_token: token },
     })
       .then((res) => res.json())

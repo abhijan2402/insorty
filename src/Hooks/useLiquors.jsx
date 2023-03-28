@@ -12,7 +12,7 @@ function useLiquors() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getAllParentLiquors",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
@@ -28,7 +28,7 @@ function useLiquors() {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getAllLiquors",
         {
-          method: "POST",
+          method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );

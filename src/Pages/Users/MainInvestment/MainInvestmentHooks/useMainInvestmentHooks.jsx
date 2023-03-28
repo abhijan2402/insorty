@@ -16,7 +16,7 @@ const useMainInvestmentHooks = () => {
 
   useEffect(() => {
     fetch("https://insorty-api.onrender.com/shop/getMainInvestmentPage", {
-      method: "POST",
+      method: "GET",
       headers: { "Content-Type": "application/json", cookie_token: token },
     })
       .then((response) => response.json())
