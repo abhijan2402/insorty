@@ -52,7 +52,7 @@ const PartnerDetails = () => {
       </div>
       <div className="partner-details">
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table className="table ">
             <thead>
               <tr>
                 <th> क्र. सं.</th>

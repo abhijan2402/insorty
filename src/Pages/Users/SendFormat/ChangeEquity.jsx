@@ -7,7 +7,6 @@ const ChangeEquity = ({data}) => {
     let list=[]
     
     data.map((partner)=>{
-
         let obj ={_id:partner._id,equity:partner.equity}
         list.push(obj)
         
@@ -51,6 +50,7 @@ const ChangeEquity = ({data}) => {
                                showConfirmButton: false,
                                timer: 1500,
                            });
+                           window.location.reload();
                        } else {
                            Swal.fire({
                                icon: "error",

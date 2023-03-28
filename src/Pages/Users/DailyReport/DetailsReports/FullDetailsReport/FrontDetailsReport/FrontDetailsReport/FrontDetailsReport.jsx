@@ -15,7 +15,7 @@ import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
 const FrontDetailsReport = () => {
   const front = useRef(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [pageId,setPageId] = useState()
+  const [pageId, setPageId] = useState();
 
   const {
     FrontPageRegularData,
@@ -24,14 +24,13 @@ const FrontDetailsReport = () => {
     FrontPageExceptionalData,
   } = useFrontDetailHooks();
 
-  const { FrontPageData,
-    FrontPageDataLoaded } = useGetDailyReport()
+  const { FrontPageData, FrontPageDataLoaded } = useGetDailyReport();
 
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
 
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
 
   if (isLoading || FrontPageDataLoaded) {
     return <Loader></Loader>;
@@ -43,30 +42,26 @@ const FrontDetailsReport = () => {
 
   const filteredRegularData = selectedDate
     ? FrontPageRegularData.filter((item) => {
-      const itemDate = new Date(moment(item.date).format());
-      const selected = selectedDate ? new Date(selectedDate) : null;
-      if (selected) {
-        return itemDate.toDateString() === selected.toDateString();
-      } else {
-        return true;
-      }
-    })
+        const itemDate = new Date(moment(item.date).format());
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
     : FrontPageRegularData;
 
-  let frontSet = new Set([])
+  let frontSet = new Set([]);
 
   filteredRegularData.map((item) => {
     item.pages.map((pg) => {
-      frontSet.add(pg.page)
+      frontSet.add(pg.page);
       // setPage(pg.page)
-      return 0
-    })
-    return 0
-  })
-
-
-
-
+      return 0;
+    });
+    return 0;
+  });
 
   // console.log(page)
   // console.log(Array.from(frontSet)[0])
@@ -78,163 +73,158 @@ const FrontDetailsReport = () => {
 
   filteredRegularData.map((item) => {
     item.pages.map((page) => {
-      const pg = pageId ? pageId : Array.from(frontSet)[0]
-      if (page.page === pg){
-      page.entries.map((entry) => {
-        if (entry.quantityInML === 750) {
-          quan750.push(entry);
-        } else if (entry.quantityInML === 375) {
-          quan375.push(entry);
-        } else if (entry.quantityInML === 180) {
-          quan180.push(entry);
-        }
-      });}
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        page.entries.map((entry) => {
+          if (entry.quantityInML === 750) {
+            quan750.push(entry);
+          } else if (entry.quantityInML === 375) {
+            quan375.push(entry);
+          } else if (entry.quantityInML === 180) {
+            quan180.push(entry);
+          }
+        });
+      }
     });
   });
 
-
-
   const filteredExceptionalData = selectedDate
     ? FrontPageExceptionalData.filter((item) => {
-      const itemDate = new Date(moment(item.date).format());
-      const selected = selectedDate ? new Date(selectedDate) : null;
-      if (selected) {
-        return itemDate.toDateString() === selected.toDateString();
-      } else {
-        return true;
-      }
-    })
+        const itemDate = new Date(moment(item.date).format());
+        const selected = selectedDate ? new Date(selectedDate) : null;
+        if (selected) {
+          return itemDate.toDateString() === selected.toDateString();
+        } else {
+          return true;
+        }
+      })
     : FrontPageExceptionalData;
 
-  const frontPage = selectedDate && FrontPageData.length && FrontPageData.length>0
-    ?  FrontPageData?.filter((item) => {
-      const itemDate = new Date(moment(item.date).format());
-      const selected = selectedDate ? new Date(selectedDate) : null;
-      if (selected) {
-        return itemDate.toDateString() === selected.toDateString();
-      } else {
-        return true;
-      }
+  const frontPage =
+    selectedDate && FrontPageData.length && FrontPageData.length > 0
+      ? FrontPageData?.filter((item) => {
+          const itemDate = new Date(moment(item.date).format());
+          const selected = selectedDate ? new Date(selectedDate) : null;
+          if (selected) {
+            return itemDate.toDateString() === selected.toDateString();
+          } else {
+            return true;
+          }
+        })
+      : FrontPageData;
+
+  const openingStock = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
     })
-    : FrontPageData;
+    .map((item) => {
+      const { openingStock } = item;
+      return openingStock;
+    });
 
+  const purchaseShop = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { purchaseShop } = item;
+      return purchaseShop;
+    });
 
- 
+  const purchaseOutSide = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { purchaseOutSide } = item;
+      return purchaseOutSide;
+    });
 
-  const openingStock = filteredExceptionalData.filter((page)=>{
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if(page.page===pg){
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { openingStock } = item;
-    return openingStock;
-  });
+  const credits = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { credits } = item;
+      return credits;
+    });
 
-  const purchaseShop = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { purchaseShop } = item;
-    return purchaseShop;
-  });
+  const send = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { send } = item;
+      return send;
+    });
 
-  const purchaseOutSide = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { purchaseOutSide } = item;
-    return purchaseOutSide;
-  });
+  const remaining = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { remaining } = item;
+      return remaining;
+    });
 
-  const credits = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { credits } = item;
-    return credits;
-  });
+  const closingStock = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { closingStock } = item;
+      return closingStock;
+    });
 
-  const send = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { send } = item;
-    return send;
-  });
-
-  const remaining = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { remaining } = item;
-    return remaining;
-  });
-
-  const closingStock = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { closingStock } = item;
-    return closingStock;
-  });
-
-  const sales = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { sales } = item;
-    return sales;
-  });
-
+  const sales = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { sales } = item;
+      return sales;
+    });
 
   if (!filteredRegularData.length) {
     return (
       <>
         <div className="flex gap-6 items-center my-4">
-          <h2 className="font-bold text-xl text-gray-800">
-            Front Details Report
-          </h2>
+          <h2 className="font-bold text-xl text-gray-800">अंग्रेजी</h2>
 
-          <Link
-            to="/user/dailyreport/details"
-            className="btn btn-error text-white font-bold"
-          >
-            Back Details Report
+          <Link to="/user/dailyreport/details" className="commonBtn">
+            बीयर
           </Link>
 
-          <button
-            className="commonBtn "
-            onClick={handlePrint}
-          >
+          <button className="commonBtn " onClick={handlePrint}>
             PRINT
           </button>
         </div>
         <div className="flex gap-4 items-center my-4">
           <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
               selected={selectedDate}
               onChange={(date) => {
@@ -242,7 +232,7 @@ const FrontDetailsReport = () => {
               }}
               dateFormat="dd/MM/yyyy"
               placeholderText={"dd/mm/yyyy"}
-              className="inputBox"
+              className="inputBox date"
             />
           </div>
         </div>
@@ -267,10 +257,7 @@ const FrontDetailsReport = () => {
           Back Details Report
         </Link>
 
-        <button
-          className="commonBtn "
-          onClick={handlePrint}
-        >
+        <button className="commonBtn " onClick={handlePrint}>
           PRINT
         </button>
       </div>
@@ -288,14 +275,17 @@ const FrontDetailsReport = () => {
             className="inputBox"
           />
         </div>
-        {Array.from(frontSet).map((item,index)=>{
-          return(
-          <button
-            className="commonBtn "
-              onClick={() => { setPageId(item)}}
-          >
-            {index+1}
-          </button>)
+        {Array.from(frontSet).map((item, index) => {
+          return (
+            <button
+              className="commonBtn "
+              onClick={() => {
+                setPageId(item);
+              }}
+            >
+              {index + 1}
+            </button>
+          );
         })}
       </div>
       <div className="divider"></div>
@@ -316,11 +306,18 @@ const FrontDetailsReport = () => {
               <tr>
                 <td className="tg-baqh" colSpan={42}>
                   दुकान का नाम:- &nbsp;&nbsp;
-                  {jwtDecode(localStorage.getItem("token")).name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
-                  का नाम :- {frontPage.find((entry) => { const pg = pageId ? pageId : Array.from(frontSet)[0]; return entry._id===pg})?.salesman}
-
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक :-
-                  {moment(selectedDate).format('DD/MM/YYYY')}
+                  {jwtDecode(localStorage.getItem("token")).name}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
+                  का नाम :-{" "}
+                  {
+                    frontPage.find((entry) => {
+                      const pg = pageId ? pageId : Array.from(frontSet)[0];
+                      return entry._id === pg;
+                    })?.salesman
+                  }
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक
+                  :-
+                  {moment(selectedDate).format("DD/MM/YYYY")}
                 </td>
               </tr>
             </thead>
@@ -675,7 +672,7 @@ const FrontDetailsReport = () => {
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
-                      Number(regularData.sellingRate?.$numberDecimal),
+                        Number(regularData.sellingRate?.$numberDecimal),
                     0
                   )}
                 </td>
@@ -684,7 +681,7 @@ const FrontDetailsReport = () => {
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
-                      Number(regularData.sellingRate?.$numberDecimal),
+                        Number(regularData.sellingRate?.$numberDecimal),
                     0
                   )}
                 </td>
@@ -693,30 +690,34 @@ const FrontDetailsReport = () => {
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
-                      Number(regularData.sellingRate?.$numberDecimal),
+                        Number(regularData.sellingRate?.$numberDecimal),
                     0
                   )}
                 </td>
 
-                <td>{quan180.reduce(
-                  (total, regularData) =>
-                    total +
-                    Number(regularData.sales) *
-                    Number(regularData.sellingRate?.$numberDecimal),
-                  0
-                ) + quan375.reduce(
-                  (total, regularData) =>
-                    total +
-                    Number(regularData.sales) *
-                    Number(regularData.sellingRate?.$numberDecimal),
-                  0
-                ) + quan750.reduce(
-                  (total, regularData) =>
-                    total +
-                    Number(regularData.sales) *
-                    Number(regularData.sellingRate?.$numberDecimal),
-                  0
-                )}</td>
+                <td>
+                  {quan180.reduce(
+                    (total, regularData) =>
+                      total +
+                      Number(regularData.sales) *
+                        Number(regularData.sellingRate?.$numberDecimal),
+                    0
+                  ) +
+                    quan375.reduce(
+                      (total, regularData) =>
+                        total +
+                        Number(regularData.sales) *
+                          Number(regularData.sellingRate?.$numberDecimal),
+                      0
+                    ) +
+                    quan750.reduce(
+                      (total, regularData) =>
+                        total +
+                        Number(regularData.sales) *
+                          Number(regularData.sellingRate?.$numberDecimal),
+                      0
+                    )}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -751,19 +752,21 @@ const FrontDetailsReport = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredExceptionalData && filteredExceptionalData.length > 0 &&
+              {filteredExceptionalData &&
+                filteredExceptionalData.length > 0 &&
                 filteredExceptionalData.map((exceptionalData, index) => {
-                  const pg = pageId ? pageId : Array.from(frontSet)[0]
-                  if (exceptionalData.page===pg){
-                  return (
-                    <FristFormDetails
-                      key={index}
-                      index={index}
-                      exceptionalData={exceptionalData}
-                      pageId={pageId}
-                      frontSet={frontSet}
-                    ></FristFormDetails>
-                  );}
+                  const pg = pageId ? pageId : Array.from(frontSet)[0];
+                  if (exceptionalData.page === pg) {
+                    return (
+                      <FristFormDetails
+                        key={index}
+                        index={index}
+                        exceptionalData={exceptionalData}
+                        pageId={pageId}
+                        frontSet={frontSet}
+                      ></FristFormDetails>
+                    );
+                  }
                 })}
 
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
@@ -775,69 +778,94 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {filteredExceptionalData && filteredExceptionalData.length > 0 && openingStock.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  },0)}
+                  {filteredExceptionalData &&
+                    filteredExceptionalData.length > 0 &&
+                    openingStock.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {filteredExceptionalData && filteredExceptionalData.length > 0 && purchaseShop.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
+                  {filteredExceptionalData &&
+                    filteredExceptionalData.length > 0 &&
+                    purchaseShop.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {filteredExceptionalData && filteredExceptionalData.length > 0 && purchaseOutSide.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  },0)}
+                  {filteredExceptionalData &&
+                    filteredExceptionalData.length > 0 &&
+                    purchaseOutSide.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {filteredExceptionalData && filteredExceptionalData.length > 0 && credits.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
+                  {filteredExceptionalData &&
+                    filteredExceptionalData.length > 0 &&
+                    credits.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {filteredExceptionalData && filteredExceptionalData.length > 0 && send.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
+                  {filteredExceptionalData &&
+                    filteredExceptionalData.length > 0 &&
+                    send.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {filteredExceptionalData && filteredExceptionalData.length > 0 && remaining.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
+                  {filteredExceptionalData &&
+                    filteredExceptionalData.length > 0 &&
+                    remaining.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
                 </td>
                 <td className="tg-0lax">
-                  {filteredExceptionalData && filteredExceptionalData.length > 0 && closingStock.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
+                  {filteredExceptionalData &&
+                    filteredExceptionalData.length > 0 &&
+                    closingStock.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
                 </td>
 
                 <td className="tg-0lax">
-                  {filteredExceptionalData && filteredExceptionalData.length > 0 && sales.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  },0)}
+                  {filteredExceptionalData &&
+                    filteredExceptionalData.length > 0 &&
+                    sales.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
                 </td>
 
                 <td className="tg-0lax"></td>
 
-                <td className="tg-0lax">{filteredExceptionalData && filteredExceptionalData.length > 0 && filteredExceptionalData.filter((page) => {
-                  const pg = pageId ? pageId : Array.from(frontSet)[0]
-                  if (page.page === pg) {
-                    return page
-                  }
-                  else return 0
-                }).reduce(
-                  (total, currentItem) => (total = total + (Number(currentItem.sales) * Number(currentItem.sellingRate.$numberDecimal))),
-                  0
-                )}</td>
+                <td className="tg-0lax">
+                  {filteredExceptionalData &&
+                    filteredExceptionalData.length > 0 &&
+                    filteredExceptionalData
+                      .filter((page) => {
+                        const pg = pageId ? pageId : Array.from(frontSet)[0];
+                        if (page.page === pg) {
+                          return page;
+                        } else return 0;
+                      })
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            Number(currentItem.sales) *
+                              Number(currentItem.sellingRate.$numberDecimal)),
+                        0
+                      )}
+                </td>
               </tr>
             </tbody>
           </table>
