@@ -124,7 +124,7 @@ const Commision = () => {
           <div className="flex justify-center items-center">
             <form action="">
               <div className="overflow-x-auto">
-                <table className="table w-full">
+                <table className="">
                   <thead>
                     <tr>
                       <td> क्र. सं.</td>
