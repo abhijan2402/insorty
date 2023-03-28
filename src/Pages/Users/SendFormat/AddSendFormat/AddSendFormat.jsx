@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Swal from "sweetalert2";
+import { DataContextApi } from "../../../../Context/DataContext";
 
 const AddSendFormat = () => {
   const token = localStorage.getItem("token");
+  const { refetch } = useContext(DataContextApi);
   const handelSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -25,6 +27,8 @@ const AddSendFormat = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          refetch();
+          window.location.reload();
         } else {
           Swal.fire({
             icon: "error",
@@ -66,8 +70,6 @@ const AddSendFormat = () => {
                   }}
                 />
               </div>
-              
-             
 
               <div>
                 <button className="btn bg-[#AA237A] my-4 px-6" type="submit">

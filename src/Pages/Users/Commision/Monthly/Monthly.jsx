@@ -87,7 +87,6 @@ const Monthly = () => {
         <div className="flex gap-4 items-center justify-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
           <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
               selected={StartDate}
               onChange={(date) => {
@@ -96,19 +95,18 @@ const Monthly = () => {
               }}
               dateFormat="dd/MM/yyyy"
               placeholderText={"dd/mm/yyyy"}
-              className="inputBox"
+              className="inputBox date"
             />
           </div>
 
           <h2 className="font-bold text-[1.5rem]">To</h2>
           <div className="flex gap-2 items-center">
-            <FaCalendarAlt></FaCalendarAlt>
             <DatePicker
               selected={EndDate}
               name="year"
               onChange={(data) => setEndDate(data)}
               dateFormat="dd/MM/yyyy"
-              className="inputBox"
+              className="inputBox date"
               placeholderText={"dd/mm/yyyy"}
             />
           </div>

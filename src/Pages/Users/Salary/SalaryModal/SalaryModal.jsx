@@ -48,7 +48,7 @@ const SalaryModal = ({
                     onChange={(date) => setSalaryDate(date)}
                     dateFormat="dd/MM/yyyy"
                     placeholderText={"dd/MM/yyyy"}
-                    className="inputBox"
+                    className="inputBox date"
                   />
                   {/* 
                   <input
@@ -105,7 +105,7 @@ const SalaryModal = ({
                     onChange={(date) => setPaymentDate(date)}
                     dateFormat="dd/MM/yyyy"
                     placeholderText={"dd/MM/yyyy"}
-                    className="inputBox"
+                    className="inputBox date"
                   />
                   {/* 
 

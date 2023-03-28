@@ -45,10 +45,9 @@ const BackDetailReport = () => {
   } = useGetDailyReport();
 
   const container = useRef(null);
-  const [pageId, setPageId] = useState()
-  const [pgNo, setPgNo] = useState(0)
-  let frontSet = new Set([])
-
+  const [pageId, setPageId] = useState();
+  const [pgNo, setPgNo] = useState(0);
+  let frontSet = new Set([]);
 
   const [filterDate, setFilterData] = useState(new Date());
 
@@ -71,9 +70,11 @@ const BackDetailReport = () => {
     return <Loader></Loader>;
   }
 
-  console.log(Array.from(frontSet),"page no1")
-  console.log(Array.from(frontSet).sort((a, b) => a-b
-  ),"page no")
+  console.log(Array.from(frontSet), "page no1");
+  console.log(
+    Array.from(frontSet).sort((a, b) => a - b),
+    "page no"
+  );
 
   //
 
@@ -104,146 +105,145 @@ const BackDetailReport = () => {
   let quan650 = [];
   let quan550 = [];
   let quan330 = [];
-  
 
   filteredRegularData.map((item) => {
-    
     item.pages.map((page) => {
-      const pg = pageId ? pageId : Array.from(frontSet)[0]
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
       if (page.page === pg) {
-      page.entries.map((entry) => {
-        if (entry.quantityInML === 650) {
-          quan650.push(entry);
-        } else if (entry.quantityInML === 550) {
-          quan550.push(entry);
-        } else if (entry.quantityInML === 330) {
-          quan330.push(entry);
-        }
-      });}
+        page.entries.map((entry) => {
+          if (entry.quantityInML === 650) {
+            quan650.push(entry);
+          } else if (entry.quantityInML === 550) {
+            quan550.push(entry);
+          } else if (entry.quantityInML === 330) {
+            quan330.push(entry);
+          }
+        });
+      }
     });
   });
 
-
   filteredRegularData.map((item) => {
     item.pages.map((pg) => {
-      frontSet.add(pg.page)
+      frontSet.add(pg.page);
       // setPage(pg.page)
-      return 0
+      return 0;
+    });
+    return 0;
+  });
+
+  const openingStock = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
     })
-    return 0
-  })
+    .map((item) => {
+      const { openingStock } = item;
+      return openingStock;
+    });
 
-  const openingStock = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { openingStock } = item;
-    return openingStock;
-  });
+  const purchaseShop = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { purchaseShop } = item;
+      return purchaseShop;
+    });
 
-  const purchaseShop = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { purchaseShop } = item;
-    return purchaseShop;
-  });
+  const purchaseOutSide = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { purchaseOutSide } = item;
+      return purchaseOutSide;
+    });
 
-  const purchaseOutSide = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { purchaseOutSide } = item;
-    return purchaseOutSide;
-  });
+  const credits = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { credits } = item;
+      return credits;
+    });
 
-  const credits = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { credits } = item;
-    return credits;
-  });
+  const send = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { send } = item;
+      return send;
+    });
 
-  const send = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { send } = item;
-    return send;
-  });
+  const remaining = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { remaining } = item;
+      return remaining;
+    });
 
-  const remaining = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { remaining } = item;
-    return remaining;
-  });
+  const closingStock = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { closingStock } = item;
+      return closingStock;
+    });
 
-  const closingStock = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { closingStock } = item;
-    return closingStock;
-  });
-
-  const sales = filteredExceptionalData.filter((page) => {
-    const pg = pageId ? pageId : Array.from(frontSet)[0]
-    if (page.page === pg) {
-      return page
-    }
-    else return 0
-  }).map((item) => {
-    const { sales } = item;
-    return sales;
-  });
+  const sales = filteredExceptionalData
+    .filter((page) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (page.page === pg) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { sales } = item;
+      return sales;
+    });
 
   return (
     <section className="my-4">
       <div className="flex gap-6 items-center ">
-        <h1>Back Details Report</h1>
-        <Link
-          to="/user/frontdailyreport/details"
-          className="btn btn-error text-white font-bold"
-        >
-          Front Details Report
+        <h1> बीयर</h1>
+        <Link to="/user/frontdailyreport/details" className="commonBtn">
+          अंग्रेजी
         </Link>
-      </div>
 
-      <button
-        className="commonBtn "
-        onClick={handlePrint}
-      >
-        PRINT
-      </button>
+        <button className="commonBtn " onClick={handlePrint}>
+          PRINT
+        </button>
+      </div>
 
       <div className="flex gap-4 items-center my-4">
         <h2 className="font-bold text-[1.5rem]">From</h2>
         <div className="flex gap-2 items-center">
-          <FaCalendarAlt></FaCalendarAlt>
           <DatePicker
             selected={filterDate}
             onChange={(date) => {
@@ -251,19 +251,24 @@ const BackDetailReport = () => {
             }}
             dateFormat="dd/MM/yyyy"
             placeholderText={"dd/mm/yyyy"}
-            className="inputBox"
+            className="inputBox date"
           />
         </div>
-        {Array.from(frontSet).sort((a, b) => a - b
-        ).map((item, index) => {
-          return (
-            <button
-              className="commonBtn "
-              onClick={() => { setPageId(item); setPgNo(index) }}
-            >
-              {index + 1}
-            </button>)
-        })}
+        {Array.from(frontSet)
+          .sort((a, b) => a - b)
+          .map((item, index) => {
+            return (
+              <button
+                className="commonBtn "
+                onClick={() => {
+                  setPageId(item);
+                  setPgNo(index);
+                }}
+              >
+                {index + 1}
+              </button>
+            );
+          })}
       </div>
 
       <div className="divider"></div>
@@ -706,17 +711,18 @@ const BackDetailReport = () => {
             <tbody>
               {filteredExceptionalData &&
                 filteredExceptionalData.map((exceptionalData, index) => {
-                  const pg = pageId ? pageId : Array.from(frontSet)[0]
+                  const pg = pageId ? pageId : Array.from(frontSet)[0];
                   if (exceptionalData.page === pg) {
-                  return (
-                    <FristFormDetails
-                      key={index}
-                      index={index}
-                      exceptionalData={exceptionalData}
-                      pageId={pageId}
-                      frontSet={frontSet}
-                    ></FristFormDetails>
-                  );}
+                    return (
+                      <FristFormDetails
+                        key={index}
+                        index={index}
+                        exceptionalData={exceptionalData}
+                        pageId={pageId}
+                        frontSet={frontSet}
+                      ></FristFormDetails>
+                    );
+                  }
                 })}
 
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
@@ -846,18 +852,19 @@ const BackDetailReport = () => {
                     return item;
                   }
                   return false;
-                }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                ).map((RmlData, index) => {
-                  if(index===pgNo){
-                  return (
-                    <BackRmlDetailsData
-                      key={index}
-                      index={index}
-                      RmlData={RmlData}
-                    ></BackRmlDetailsData>
-                  );}
-                  else return false
                 })
+                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                  .map((RmlData, index) => {
+                    if (index === pgNo) {
+                      return (
+                        <BackRmlDetailsData
+                          key={index}
+                          index={index}
+                          RmlData={RmlData}
+                        ></BackRmlDetailsData>
+                      );
+                    } else return false;
+                  })
               )}
 
               <tr>
@@ -878,18 +885,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo,pgNo+1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.openingStock),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.openingStock),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
                 <td className="tg-0lax">
                   {RMLData &&
@@ -903,18 +912,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.purchaseShop),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.purchaseShop),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
@@ -929,18 +940,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.purchaseOutSide),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.purchaseOutSide),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
@@ -955,18 +968,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.credits),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.credits),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
                 <td className="tg-0lax">
                   {RMLData &&
@@ -980,18 +995,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.send),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.send),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
                 <td className="tg-0lax">
                   {RMLData &&
@@ -1005,18 +1022,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.remaining),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.remaining),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
                 <td className="tg-0lax">
                   {RMLData &&
@@ -1030,18 +1049,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.closingStock),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.closingStock),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
 
                 <td className="tg-0lax">
@@ -1056,18 +1077,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.sales),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.sales),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
 
                 <td className="tg-0lax"></td>
@@ -1083,20 +1106,22 @@ const BackDetailReport = () => {
                       } else if (filterDate === "") {
                         return item;
                       }
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total =
-                                total +
-                                Number(currentItem?.amount?.$numberDecimal)),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  Number(currentItem?.amount?.$numberDecimal)),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
               </tr>
             </tbody>
@@ -1166,17 +1191,19 @@ const BackDetailReport = () => {
                     return item;
                   }
                   return false;
-                }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                ).map((outSideData, index) => {
-                  if (index === pgNo) {
-                  return (
-                    <InfolwRml
-                      key={index}
-                      outSideData={outSideData}
-                      index={index}
-                    ></InfolwRml>
-                  );}
                 })
+                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                  .map((outSideData, index) => {
+                    if (index === pgNo) {
+                      return (
+                        <InfolwRml
+                          key={index}
+                          outSideData={outSideData}
+                          index={index}
+                        ></InfolwRml>
+                      );
+                    }
+                  })
               )}
 
               <tr>
@@ -1194,18 +1221,20 @@ const BackDetailReport = () => {
                       } else if (filterDate === "") {
                         return item;
                       }
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.number),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.number),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
                 <td className="tg-0lax" colSpan={4}></td>
                 <td className="tg-0lax" colSpan={4} />
@@ -1220,18 +1249,20 @@ const BackDetailReport = () => {
                       } else if (filterDate === "") {
                         return item;
                       }
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.total),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.total),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
               </tr>
             </tbody>
@@ -1287,19 +1318,21 @@ const BackDetailReport = () => {
                     return item;
                   }
                   return false;
-                }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                ).map((expences, index) => {
-                  const { entries } = expences;
-                  if (index === pgNo) {
-                  return (
-                    <CommisonExpence
-                      key={index}
-                      entries={entries}
-                      index={index}
-                      expences={expences}
-                    ></CommisonExpence>
-                  );}
                 })
+                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                  .map((expences, index) => {
+                    const { entries } = expences;
+                    if (index === pgNo) {
+                      return (
+                        <CommisonExpence
+                          key={index}
+                          entries={entries}
+                          index={index}
+                          expences={expences}
+                        ></CommisonExpence>
+                      );
+                    }
+                  })
               )}
 
               <tr>
@@ -1318,20 +1351,22 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total =
-                                total +
-                                Number(currentItem.amount.$numberDecimal)),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  Number(currentItem.amount.$numberDecimal)),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
               </tr>
             </tbody>
@@ -1381,19 +1416,21 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a._id-b._id
-                    ).map((borrwedCashReturn, index) => {
-                      const { entries } = borrwedCashReturn;
-                      if (index === pgNo) {
-                      return (
-                        <CashReciveData
-                          key={index}
-                          index={index}
-                          borrwedCashReturn={borrwedCashReturn}
-                          entries={entries}
-                        ></CashReciveData>
-                      );}
-                    })}
+                    })
+                      .sort((a, b) => a._id - b._id)
+                      .map((borrwedCashReturn, index) => {
+                        const { entries } = borrwedCashReturn;
+                        if (index === pgNo) {
+                          return (
+                            <CashReciveData
+                              key={index}
+                              index={index}
+                              borrwedCashReturn={borrwedCashReturn}
+                              entries={entries}
+                            ></CashReciveData>
+                          );
+                        }
+                      })}
                 </>
               )}
 
@@ -1413,18 +1450,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a._id-b._id
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.cash),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a._id - b._id)
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.cash),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
               </tr>
             </tbody>
@@ -1469,19 +1508,21 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).map((item, index) => {
-                      const { entries } = item;
-                      if (index === pgNo) {
-                      return (
-                        <InflowBorrow
-                          key={index}
-                          index={index}
-                          PurchaseBorrow={item}
-                          entries={entries}
-                        ></InflowBorrow>
-                      );}
-                    })}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .map((item, index) => {
+                        const { entries } = item;
+                        if (index === pgNo) {
+                          return (
+                            <InflowBorrow
+                              key={index}
+                              index={index}
+                              PurchaseBorrow={item}
+                              entries={entries}
+                            ></InflowBorrow>
+                          );
+                        }
+                      })}
                 </>
               )}
 
@@ -1503,18 +1544,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.number),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.number),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
                 <td className="tg-0lax" />
               </tr>
@@ -1560,19 +1603,21 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).map((item, index) => {
-                      const { entries } = item;
-                      if (index === pgNo) {
-                      return (
-                        <ShippingEnglishBear
-                          key={index}
-                          index={index}
-                          item={item}
-                          entries={entries}
-                        ></ShippingEnglishBear>
-                      );}
-                    })}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .map((item, index) => {
+                        const { entries } = item;
+                        if (index === pgNo) {
+                          return (
+                            <ShippingEnglishBear
+                              key={index}
+                              index={index}
+                              item={item}
+                              entries={entries}
+                            ></ShippingEnglishBear>
+                          );
+                        }
+                      })}
                 </>
               )}
 
@@ -1593,18 +1638,20 @@ const BackDetailReport = () => {
                         return item;
                       }
                       return false;
-                    }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                    ).slice(pgNo, pgNo + 1).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem.entries.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem.number),
-                            0
-                          )),
-                      0
-                    )}
+                    })
+                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.number),
+                              0
+                            )),
+                        0
+                      )}
                 </td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
@@ -1653,8 +1700,6 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              
-
               {BorrowedData &&
                 BorrowedData.length > 0 &&
                 BorrowedData.filter((item) => {
@@ -1666,19 +1711,21 @@ const BackDetailReport = () => {
                     return item;
                   }
                   return false;
-                }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                ).map((item, index) => {
-                  const { entries } = item;
-                  if (index === pgNo) {
-                  return (
-                    <Borrowed
-                      key={index}
-                      index={index}
-                      item={item}
-                      entries={entries}
-                    ></Borrowed>
-                  );}
-                })}
+                })
+                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                  .map((item, index) => {
+                    const { entries } = item;
+                    if (index === pgNo) {
+                      return (
+                        <Borrowed
+                          key={index}
+                          index={index}
+                          item={item}
+                          entries={entries}
+                        ></Borrowed>
+                      );
+                    }
+                  })}
 
               <tr>
                 <td className="tg-0lax" colSpan={2}>
@@ -1709,20 +1756,26 @@ const BackDetailReport = () => {
                             return item;
                           }
                           return false;
-                        }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                        ).slice(pgNo, pgNo + 1).reduce(
-                          (total, currentItem) =>
-                            (total =
-                              total +
-                              currentItem.entries.reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    Number(currentItem.amount.$numberDecimal)),
-                                0
-                              )),
-                          0
-                        )}
+                        })
+                          .sort((a, b) =>
+                            a.createdAt.localeCompare(b.createdAt)
+                          )
+                          .slice(pgNo, pgNo + 1)
+                          .reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem.entries.reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      Number(
+                                        currentItem.amount.$numberDecimal
+                                      )),
+                                  0
+                                )),
+                            0
+                          )}
                     </>
                   )}
                 </td>
@@ -1780,8 +1833,9 @@ const BackDetailReport = () => {
                       return item;
                     }
                     return false;
-                  }).sort((a, b) => a.createdAt.localeCompare(b.createdAt)
-                  ).slice(pgNo, pgNo + 1) }
+                  })
+                    .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    .slice(pgNo, pgNo + 1)}
                 ></FinalReport>
               )}
             </tbody>
