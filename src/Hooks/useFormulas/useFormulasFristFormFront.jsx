@@ -92,7 +92,6 @@ const useFormulasFristFormFront = () => {
     let firstFormData = addOneFristFormState;
 
     if (!prevdata && !brandsLoaded && liquors.length > 0) {
-      console.log("started");
       const liq = liquors.filter((item) => item.type === "WINE");
       for (let index = 0; index < liq.length; index++) {
         const quan750 = liq[index].sizes.find(
@@ -105,12 +104,9 @@ const useFormulasFristFormFront = () => {
           (elem) => elem.quantityInML === 180
         );
 
-        console.log(quan750)
-        console.log(quan330)
-        console.log(quan180)
+      
 
         if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock > 0) {
-          console.log('checked')
           const newFormData = { ...addOneFristForm };
           newFormData.brandName = liq[index].brandName;
           newFormData.liquorID = liq[index]._id;
@@ -540,7 +536,6 @@ const useFormulasFristFormFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (e.target.name === "sales330" || e.target.name === "mainRate330") {
           obj.total330 = Number(obj.sales330) * Number(obj.mainRate330);
-          console.log("ended 330");
         }
         return obj;
       } else return returned;
@@ -553,7 +548,6 @@ const useFormulasFristFormFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (e.target.name === "sales180" || e.target.name === "mainRate180") {
           obj.total180 = Number(obj.mainRate180) * Number(obj.sales180);
-          console.log(`total is ${obj.total180}`);
         }
         return obj;
       } else return returned;
@@ -817,7 +811,6 @@ const useFormulasFristFormFront = () => {
   const handleRemoveFields = (index) => {
     const values = [...addOneFristFormState];
     values.splice(index, 1);
-    console.log(index);
     setAddOneFristFormState(values);
     localStorage.setItem("firstFront", JSON.stringify(values));
     localStorage.setItem(

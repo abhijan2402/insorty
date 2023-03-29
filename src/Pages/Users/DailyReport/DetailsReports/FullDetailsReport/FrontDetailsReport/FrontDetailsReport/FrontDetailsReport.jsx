@@ -213,7 +213,9 @@ const FrontDetailsReport = () => {
     return (
       <>
         <div className="flex gap-6 items-center my-4">
-          <h2 className="font-bold text-xl text-gray-800">अंग्रेजी</h2>
+          <h2 className="font-bold text-xl text-gray-800">
+            अंग्रेजी
+          </h2>
 
           <Link to="/user/dailyreport/details" className="commonBtn">
             बीयर
@@ -247,14 +249,14 @@ const FrontDetailsReport = () => {
     <section className="my-4">
       <div className="flex gap-6 items-center my-4">
         <h2 className="font-bold text-xl text-gray-800">
-          Front Details Report
+          अंग्रेजी
         </h2>
 
         <Link
           to="/user/dailyreport/details"
-          className="btn btn-error text-white font-bold"
+          className="commonBtn"
         >
-          Back Details Report
+          बीयर
         </Link>
 
         <button className="commonBtn " onClick={handlePrint}>

@@ -109,7 +109,7 @@ const AddOneFristForm = ({
                 className="smallinput wd-9"
                 required
                 min={0}
-                value={addOneFirst.averageRate750}
+                value={Number(addOneFirst.averageRate750).toFixed(2)}
                 onChange={(event) => handelFristFormOnChange(event, index)}
                 name="averageRate750"
                 disabled
@@ -122,7 +122,7 @@ const AddOneFristForm = ({
                 className="smallinput wd-9"
                 required
                 min={0}
-                value={addOneFirst.averageRate330}
+                value={Number(addOneFirst.averageRate330).toFixed(2)}
                 onChange={(event) => handelFristFormOnChange(event, index)}
                 name="averageRate330"
                 disabled
@@ -135,7 +135,7 @@ const AddOneFristForm = ({
                 className="smallinput wd-9"
                 required
                 min={0}
-                value={addOneFirst.averageRate180}
+                value={Number(addOneFirst.averageRate180).toFixed(2)}
                 onChange={(event) => handelFristFormOnChange(event, index)}
                 name="averageRate180"
                 disabled

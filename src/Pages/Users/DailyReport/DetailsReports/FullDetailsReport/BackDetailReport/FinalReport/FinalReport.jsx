@@ -2,7 +2,6 @@ import React from "react";
 
 const FinalReport = ({ data, date }) => {
   // console.log(data)
-  console.log(data);
   return (
     <>
       <tr>

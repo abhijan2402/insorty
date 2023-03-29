@@ -118,7 +118,7 @@ const AddOneFristFromBack = ({
                 required
                 disabled
                 className="smallinput wd-7"
-                value={item.averageRate650}
+                value={Number(item.averageRate650).toFixed(2)}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
                 name="averageRate650"
               />
@@ -132,7 +132,7 @@ const AddOneFristFromBack = ({
                 required
                 disabled
                 className="smallinput wd-7"
-                value={item.averageRate550}
+                value={Number(item.averageRate550).toFixed(2)}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
                 name="averageRate550"
               />
@@ -146,7 +146,7 @@ const AddOneFristFromBack = ({
                 required
                 disabled
                 className="smallinput wd-6"
-                value={item.averageRate330}
+                value={Number(item.averageRate330).toFixed(2)}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
                 name="averageRate330"
               />

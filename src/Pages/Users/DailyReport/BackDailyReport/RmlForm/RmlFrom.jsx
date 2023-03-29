@@ -144,7 +144,7 @@ const RmlFrom = ({
                 min={0}
               className="smallinput"
               name="averageRate"
-              value={item.averageRate}
+              value={Number(item.averageRate).toFixed(2)}
               onChange={(e) => onChangeRmlHandler(e, index)}
               disabled
             />

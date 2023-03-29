@@ -136,7 +136,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              value={item.averageRate}
+              value={Number(item.averageRate).toFixed(2)}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               className="smallinput wd-7"
               name="averageRate"

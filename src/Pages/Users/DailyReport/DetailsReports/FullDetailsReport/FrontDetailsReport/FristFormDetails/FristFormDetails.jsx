@@ -27,7 +27,7 @@ const FristFormDetails = ({ exceptionalData, index,pageId,frontSet }) => {
         <td>{brandName}</td>
         <td>{quantityInML}</td>
         <td>
-          {averageRate?.$numberDecimal}
+          {Number(averageRate?.$numberDecimal).toFixed(2)}
         </td>
         <td>{openingStock}</td>
         <td>{purchaseShop}</td>

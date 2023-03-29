@@ -33,13 +33,13 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet }) =
             {/* show the 750 data  */}
 
             <td className="tg-0lax">{quantityInML750.map((item, index) => {
-              return item?.averageRate?.$numberDecimal;
+              return Number(item?.averageRate?.$numberDecimal).toFixed(2);
             })}</td>
             <td className="tg-0lax">{quantityInML375.map((item, index) => {
-              return item?.averageRate?.$numberDecimal;
+              return Number(item?.averageRate?.$numberDecimal).toFixed(2);
             })}</td>
             <td className="tg-0lax">{quantityInML180.map((item, index) => {
-              return item?.averageRate?.$numberDecimal;
+              return Number(item?.averageRate?.$numberDecimal).toFixed(2);
             })}</td>
 
             {/* starting stock */}

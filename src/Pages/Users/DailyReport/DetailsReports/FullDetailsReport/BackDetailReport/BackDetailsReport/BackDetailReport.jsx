@@ -70,11 +70,7 @@ const BackDetailReport = () => {
     return <Loader></Loader>;
   }
 
-  console.log(Array.from(frontSet), "page no1");
-  console.log(
-    Array.from(frontSet).sort((a, b) => a - b),
-    "page no"
-  );
+  
 
   //
 
@@ -102,15 +98,27 @@ const BackDetailReport = () => {
       })
     : BackPageReportRegularSize;
 
+  filteredRegularData.map((item) => {
+    item.pages.map((pg) => {
+      frontSet.add(pg.page);
+      // setPage(pg.page)
+      return 0;
+    });
+    return 0;
+  });
+
   let quan650 = [];
   let quan550 = [];
   let quan330 = [];
 
   filteredRegularData.map((item) => {
     item.pages.map((page) => {
+      console.log(page)
       const pg = pageId ? pageId : Array.from(frontSet)[0];
+      console.log(frontSet)
       if (page.page === pg) {
         page.entries.map((entry) => {
+          console.log(entry)
           if (entry.quantityInML === 650) {
             quan650.push(entry);
           } else if (entry.quantityInML === 550) {
@@ -123,14 +131,7 @@ const BackDetailReport = () => {
     });
   });
 
-  filteredRegularData.map((item) => {
-    item.pages.map((pg) => {
-      frontSet.add(pg.page);
-      // setPage(pg.page)
-      return 0;
-    });
-    return 0;
-  });
+  
 
   const openingStock = filteredExceptionalData
     .filter((page) => {
@@ -231,7 +232,9 @@ const BackDetailReport = () => {
   return (
     <section className="my-4">
       <div className="flex gap-6 items-center ">
-        <h1> बीयर</h1>
+        <h2 className="font-bold text-xl text-gray-800">
+          बीयर
+        </h2>
         <Link to="/user/frontdailyreport/details" className="commonBtn">
           अंग्रेजी
         </Link>
@@ -787,7 +790,23 @@ const BackDetailReport = () => {
 
                 <td className="tg-0lax"></td>
 
-                <td className="tg-0lax"></td>
+                <td className="tg-0lax"> {filteredExceptionalData &&
+                  filteredExceptionalData.length > 0 &&
+                  filteredExceptionalData
+                    .filter((page) => {
+                      const pg = pageId ? pageId : Array.from(frontSet)[0];
+                      if (page.page === pg) {
+                        return page;
+                      } else return 0;
+                    })
+                    .reduce(
+                      (total, currentItem) =>
+                      (total =
+                        total +
+                        Number(currentItem.sales) *
+                        Number(currentItem.sellingRate.$numberDecimal)),
+                      0
+                    )}</td>
               </tr>
             </tbody>
           </table>
