@@ -10,7 +10,7 @@ const CommissionForm = ({
   return (
     <>
       <tr>
-      <th></th>
+      <th>{index+1}</th>
         <th
           className="cross"
           onClick={() => {

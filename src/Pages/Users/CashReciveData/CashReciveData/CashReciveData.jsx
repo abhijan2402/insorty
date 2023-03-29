@@ -132,7 +132,7 @@ const CashReciveData = () => {
                 <td>
                   {filteredData.map((item) => {
                     return item.reduce((acc, item) => {
-                      return acc + item.cash;
+                      return acc + Number(item.cash);
                     }, 0);
                   })}
                 </td>

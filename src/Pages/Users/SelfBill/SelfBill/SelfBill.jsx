@@ -209,7 +209,7 @@ const SelfBill = () => {
                 <td></td>
                 <td></td>
                 <td className="commonText">Net Paid Amount</td>
-                <td className="price">{netPaidAmount}</td>
+                <td className="price">{Number(netPaidAmount).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>

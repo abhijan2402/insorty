@@ -26,7 +26,7 @@ const PurchaseOutSideFrom = ({
   return (
     <>
       <tr>
-      <th></th>
+      <th className="sticky">{index+1}</th>
         <th
           className="cross"
           onClick={() => {

@@ -1219,14 +1219,14 @@ const BackDailyReport = () => {
                           })}
 
                           <tr>
-                            <td>
+                            <th className="sticky">
                               <button
                                 className="btn bg-[#AA237A] btn-sm"
                                 onClick={() => addOneSecondFormHandler()}
                               >
                                 ADD
                               </button>
-                            </td>
+                            </th>
                             <td></td>
                             <td>TOTAL</td>
                             <td>
@@ -1425,6 +1425,11 @@ const BackDailyReport = () => {
                           </tr>
                         </tbody>
                       </table>
+                        <div className="my-8  leading-6">
+                          <h4 className="text-[#AA237A] font-bold ">
+                            Beer Total: {Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + Number(localStorage.getItem('beerFormTotal'))}
+                          </h4>
+                        </div>
                     </>
                   </div>
                 </div>
@@ -1687,7 +1692,7 @@ const BackDailyReport = () => {
                 <table className="table commonTable">
                   <thead>
                     <tr>
-                      <th></th>
+                      <th> क्र. सं.</th>
                       <td></td>
                       <th>Party Name/ पार्टी का नाम</th>
                       <th>Brand Name/ ब्राण्ड</th>
@@ -1716,11 +1721,17 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <td>Total</td>
+                      <th className="sticky"> <button
+                        className="sticky btn bg-[#AA237A] btn-sm"
+                        onClick={() => addOneBtnHandler()}
+                      >
+                        ADD
+                      </button></th>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
-                      <td>
+                      <td>   
+
                         <div className="form-control"></div>
                       </td>
                       {/* ======== प्रारम्भिक स्टॉक ========= */}
@@ -1792,7 +1803,7 @@ const BackDailyReport = () => {
                 <table className="table commonTable">
                   <thead>
                     <tr>
-                      <th></th>
+                      <th> क्र. सं.</th>
                       <td></td>
                       <th>Reason / विवरण</th>
                       <th>रकम</th>
@@ -1816,9 +1827,14 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <td>Total</td>
+                      <th className="sticky"> <button
+                        className="sticky btn bg-[#AA237A] btn-sm"
+                        onClick={() => addOneBtnHandler()}
+                      >
+                        ADD
+                      </button></th>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
                       <td>
                         <div className="form-control"></div>
@@ -1858,7 +1874,7 @@ const BackDailyReport = () => {
                 <table className="table commonTable">
                   <thead>
                     <tr>
-                      <th></th>
+                      <th> क्र. सं.</th>
                       <td></td>
                       <th>Name</th>
                       <th>Type</th>
@@ -1883,9 +1899,14 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <td>Total</td>
+                      <th className="sticky"> <button
+                        className="sticky btn bg-[#AA237A] btn-sm"
+                        onClick={() => addOneBtnHandler()}
+                      >
+                        ADD
+                      </button></th>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
                       <td>
                         <div className="form-control"></div>
@@ -2041,8 +2062,15 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th>Total</th>
-                      <th></th>
+                      <th className="sticky">   <button
+                        className="btn bg-[#AA237A] btn-sm"
+                        onClick={() => addOneShippingBtnHandler()}
+                      >
+                        ADD
+                      </button></th>
+                      <td>
+                        <div className="form-control">Total</div>
+                      </td>
                       <td>
                         <div className="form-control"></div>
                       </td>
@@ -2132,8 +2160,15 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th>Total</th>
-                      <th></th>
+                      <th className="sticky">    <button
+                        className="btn bg-[#AA237A] btn-sm"
+                        onClick={() => addOneShippingBtnHandler()}
+                      >
+                        ADD
+                      </button></th>
+                      <td>
+                        <div className="form-control">Total</div>
+                      </td>
 
                       <td>
                         <div className="form-control"></div>

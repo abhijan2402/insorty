@@ -146,8 +146,9 @@ const OutBill = () => {
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
                 <td className="commonText">Total</td>
-                <td className="price">{totalAmount}</td>
+                <td className="price">{Number(totalAmount).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>

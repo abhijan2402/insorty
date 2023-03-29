@@ -21,7 +21,7 @@ const StockLandingForm = () => {
     queryKey: ["partyData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-api.onrender.com/shop/getStockLendingAndReceivingData/${id.partyId}`,
+        `https://insorty-api.onrender.com/shop/getStockLendingAndReceivingData?party=${id.partyId}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

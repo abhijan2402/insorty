@@ -33,18 +33,18 @@ const SalaryForm = () => {
     queryKey: ["salareyDataList"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-api.onrender.com/shop/getEmployeeSalaryData/`,
+        `https://insorty-api.onrender.com/shop/getEmployeeSalaryData?employeeId=${employeeId}`,
         {
-          method: "POst",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ employeeId: employeeId }),
+          
         }
       );
       const data = await res.json();
-
+        console.log(data)
       return data?.data?.salaryData;
     },
   });
@@ -76,7 +76,7 @@ const SalaryForm = () => {
         {
           method: "POST",
           body: JSON.stringify({
-            employeeId: employeeData._id,
+            employeeId: employeeId,
             salaryData,
           }),
           headers: {

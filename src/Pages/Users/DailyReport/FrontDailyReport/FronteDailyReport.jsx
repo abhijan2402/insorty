@@ -1135,7 +1135,7 @@ const FronteDailyReport = () => {
                       })}
 
                       <tr>
-                        <td>
+                        <th className="sticky">
                           <div>
                             <button
                               className="btn bg-[#AA237A] btn-sm"
@@ -1144,7 +1144,7 @@ const FronteDailyReport = () => {
                               ADD
                             </button>
                           </div>
-                        </td>
+                        </th>
                         <td></td>
                         <td>TOTAL</td>
                         <td>

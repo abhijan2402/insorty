@@ -25,8 +25,8 @@ const SelfBillList = ({ index, billsData, isLoading }) => {
         <td>{getNameByID(liquor?._id)}</td>
         <td>{liquor?.quantityInML}</td>
         <td>{number}</td>
-        <td>{averageRate?.$numberDecimal}</td>
-        <td>{total?.$numberDecimal}</td>
+        <td>{Number(averageRate?.$numberDecimal).toFixed(2)}</td>
+        <td>{Number(total?.$numberDecimal).toFixed(2)}</td>
       </tr>
     </>
   );

@@ -17,16 +17,14 @@ const BorrowDetails = () => {
     queryKey: ["partnarData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getPartyTransactions",
+        `https://insorty-api.onrender.com/shop/getPartyTransactions?partyId=${partyId}`,
         {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({
-            partyId: partyId,
-          }),
+          
         }
       );
       const data = await res.json();

@@ -7,6 +7,7 @@ import { Loader } from "react-bootstrap-typeahead";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
+import { useParams } from "react-router-dom";
 
 const BranchFrom = () => {
   const token = localStorage.getItem("token");
@@ -17,24 +18,26 @@ const BranchFrom = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+  const { branchId } = useParams()
 
   const branchData = branchResponse?.data;
+  console.log(branchId)
 
   const { data: transactions, isLoading: branchDataLoading } = useQuery({
     queryKey: ["transactions"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getBranchTransactions",
+        `https://insorty-api.onrender.com/shop/getBranchTransactions?branchId=${branchId}`,
         {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ branchId: branchData._id }),
         }
       );
       const data = await res.json();
+      console.log(data)
       return data.data.transactions;
     },
   });
