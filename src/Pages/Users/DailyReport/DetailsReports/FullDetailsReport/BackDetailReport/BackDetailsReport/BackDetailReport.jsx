@@ -713,12 +713,14 @@ const BackDetailReport = () => {
             <tbody>
               {filteredExceptionalData &&
                 filteredExceptionalData.map((exceptionalData, index) => {
+                  let count = 0
                   const pg = pageId ? pageId : Array.from(frontSet)[0];
                   if (exceptionalData.page === pg) {
+                    count++
                     return (
                       <FristFormDetails
                         key={index}
-                        index={index}
+                        index={count}
                         exceptionalData={exceptionalData}
                         pageId={pageId}
                         frontSet={frontSet}

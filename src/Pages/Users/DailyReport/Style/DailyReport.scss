@@ -31,8 +31,10 @@
 }
 
 .displayHidden {
-  display: none;
+opacity: 0!important;
+visibility: hidden!important;
 }
+
 
 .smallinput {
   box-sizing: border-box;

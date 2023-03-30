@@ -310,7 +310,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
-              className="smallinput wd-5"
+              className="smallinput wd-7"
               name="total"
               value={item.total}
               onChange={(e) => handelSeconFormOnChange(e, index)}

@@ -64,7 +64,7 @@ const BorrowDetails = () => {
       </div>
       <div className="partner-details">
         <div className="overflow-x-auto">
-          <table className="table ">
+            <table className="removeCommonWSpace ">
             <thead>
               <tr>
                 <th> क्र. सं.</th>

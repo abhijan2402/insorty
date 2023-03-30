@@ -14,6 +14,8 @@ const BeerStock = () => {
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
   const front = useRef(null);
+  let count = 0
+
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
@@ -107,7 +109,7 @@ const BeerStock = () => {
           </div>
 
           <div className="overflow-x-auto flex justify-center items-center">
-            <table className="table  m-2">
+            <table className="removeCommonWSpace  m-2">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>
@@ -223,7 +225,7 @@ const BeerStock = () => {
           <div>
             <div className="flex justify-center gap-4 overflow-x-auto my-4 ">
               <div>
-                <table className="table m-2">
+                <table className="removeCommonWSpace m-2">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -244,9 +246,10 @@ const BeerStock = () => {
                               size.quantityInML !== 550 &&
                               size.quantityInML !== 330
                             ) {
+                              count++
                               return (
                                 <tr>
-                                  <td>{index + 1}</td>
+                                  <td>{count}</td>
                                   <td>{brand.brandName}</td>
                                   <td>{size.quantityInML}</td>
                                   <td> {size.currentStock}</td>

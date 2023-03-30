@@ -13,6 +13,8 @@ const RmlStock = () => {
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
   const front = useRef(null);
+  let count = 0
+
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
@@ -82,7 +84,6 @@ const RmlStock = () => {
           <div className="flex gap-4 items-center my-4">
             <h2 className="font-bold text-[1.5rem]">From</h2>
             <div className="flex gap-2 items-center">
-              <FaCalendarAlt></FaCalendarAlt>
               <DatePicker
                 selected={StartDate}
                 onChange={(date) => {
@@ -91,19 +92,18 @@ const RmlStock = () => {
                 }}
                 dateFormat="dd/MM/yyyy"
                 placeholderText={"dd/mm/yyyy"}
-                className="inputBox"
+                className="inputBox date"
               />
             </div>
 
             <h2 className="font-bold text-[1.5rem]">To</h2>
             <div className="flex gap-2 items-center">
-              <FaCalendarAlt></FaCalendarAlt>
               <DatePicker
                 selected={EndDate}
                 name="year"
                 onChange={(data) => setEndDate(data)}
                 dateFormat="dd/MM/yyyy"
-                className="inputBox"
+                className="inputBox date"
                 placeholderText={"dd/mm/yyyy"}
               />
             </div>
@@ -111,7 +111,7 @@ const RmlStock = () => {
           <div>
             <div className=" gap-4  my-4 ">
               <div>
-                <table className="table w-full m-2 removeCommonWSpace">
+                <table className="m-2 removeCommonWSpace">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -133,9 +133,10 @@ const RmlStock = () => {
                                 size.quantityInML !== 550 &&
                                 size.quantityInML !== 330
                               ) {
+                                count++
                                 return (
                                   <tr>
-                                    <td>{index + 1}</td>
+                                    <td>{count}</td>
                                     <td>{brand.brandName}</td>
                                     <td>{size.quantityInML}</td>
                                     <td> {size.currentStock}</td>

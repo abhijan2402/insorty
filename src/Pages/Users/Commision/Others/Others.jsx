@@ -120,7 +120,7 @@ const Others = () => {
       <div className="flex justify-center items-center">
         <form action="">
           <div className="overflow-x-auto">
-            <table className="table w-full">
+                <table className="removeCommonWSpace">
               <thead>
                 <tr>
                   <td> क्र. सं.</td>
@@ -152,7 +152,7 @@ const Others = () => {
 
                         return (
                           <tr key={index}>
-                            <th>{index}</th>
+                            <th>{index+1}</th>
                             <td>
                               <div className="form-control">
                                 {changeDateFormet}

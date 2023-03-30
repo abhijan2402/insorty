@@ -158,7 +158,7 @@ const RmlFrom = ({
                 required
                 min={0}
                 disabled
-              className="smallinput"
+              className="smallinput wd-5"
               name="openingStock"
               value={item.openingStock}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -173,7 +173,7 @@ const RmlFrom = ({
               type="number"
                 required
                 min={0}
-              className="smallinput"
+              className="smallinput wd-5"
               name="incomingPurchase"
               value={item.incomingPurchase}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -203,7 +203,7 @@ const RmlFrom = ({
               type="number"
                 required
                 min={0}
-              className="smallinput"
+              className="smallinput wd-5"
               name="incomePurchase"
               value={item.incomePurchase}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -232,7 +232,7 @@ const RmlFrom = ({
               type="number"
                 required
                 min={0}
-              className="smallinput"
+              className="smallinput wd-5"
               name="inflowCredit"
               value={item.inflowCredit}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -246,7 +246,7 @@ const RmlFrom = ({
               type="number"
                 required
                 min={0}
-              className="smallinput"
+              className="smallinput wd-5"
               name="sending"
               value={item.sending}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -260,7 +260,7 @@ const RmlFrom = ({
               type="number"
                 required
                 min={0}
-              className="smallinput"
+              className="smallinput wd-5"
               name="sumRemainder"
               value={item.sumRemainder}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -275,7 +275,7 @@ const RmlFrom = ({
               type="number"
                 required
                 min={0}
-              className="smallinput"
+              className="smallinput wd-5"
               name="closingStock"
               value={item.closingStock}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -289,7 +289,7 @@ const RmlFrom = ({
               type="number"
                 required
                 min={0}
-              className="smallinput"
+              className="smallinput wd-5"
               name="sales"
               value={item.sales}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -304,7 +304,7 @@ const RmlFrom = ({
               type="number"
                 required
                 min={0}
-              className="smallinput"
+              className="smallinput wd-8"
               name="rate"
               value={item.rate}
               onChange={(e) => onChangeRmlHandler(e, index)}
@@ -318,7 +318,7 @@ const RmlFrom = ({
               type="number"
                 required
                 min={0}
-              className="smallinput"
+              className="smallinput wd-11"
               name="cost"
               value={item.cost}
               onChange={(e) => onChangeRmlHandler(e, index)}

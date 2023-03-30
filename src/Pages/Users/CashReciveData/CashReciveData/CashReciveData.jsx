@@ -46,7 +46,7 @@ const CashReciveData = () => {
     return <h1 className="text-center text-2xl font-bold ">No Data Found</h1>;
   }
 
-  console.log(filteredData, "+++++++++++++");
+  console.log(cashReciveDatas, "+++++++++++++");
 
   return (
     <>

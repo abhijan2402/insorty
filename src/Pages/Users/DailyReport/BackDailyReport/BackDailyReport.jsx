@@ -1408,7 +1408,7 @@ const BackDailyReport = () => {
                               <div className="form-control">
                                 <input
                                   type="number"
-                                  className="smallinput wd-5"
+                                  className="smallinput wd-7"
                                   name="total"
                                   value={addOneSecondFormState.reduce(
                                     (total, currentItem) =>
@@ -1660,7 +1660,7 @@ const BackDailyReport = () => {
                         <div className="form-control">
                           <input
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-11"
                             name="cost"
                             value={addRmlState.reduce(
                               (total, currentItem) =>

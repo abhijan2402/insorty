@@ -213,7 +213,7 @@ const AddOneSecondForm = ({
               type="number wd-9"
               required
               min={0}
-              className="smallinput show9Chereter"
+              className="smallinput wd-9"
               name="purchaseRate"
               value={item.purchaseRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
@@ -314,7 +314,7 @@ const AddOneSecondForm = ({
               type="number"
               required
               min={0}
-              className="smallinput wd-6"
+              className="smallinput wd-7"
               name="total"
               value={item.total}
               onChange={(e) => handelSeconFormOnChange(e, index)}

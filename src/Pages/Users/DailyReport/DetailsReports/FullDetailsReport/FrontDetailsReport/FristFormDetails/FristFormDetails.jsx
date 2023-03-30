@@ -23,7 +23,7 @@ const FristFormDetails = ({ exceptionalData, index,pageId,frontSet }) => {
   return (
     <>
       <tr key={index}>
-        <td>{index + 1}</td>
+        <td>{index }</td>
         <td>{brandName}</td>
         <td>{quantityInML}</td>
         <td>

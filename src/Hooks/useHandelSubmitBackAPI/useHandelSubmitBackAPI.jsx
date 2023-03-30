@@ -46,19 +46,32 @@ const useHandelSubmitBackAPI = () => {
   // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
 
+
   for (
     let index = 0;
     paymentRecieved ? index < paymentRecieved.length : 0;
     index++
   ) {
+
+
     const element = paymentRecieved[index];
+
+    if(element.type==="OTHER"){
+      borrowCashReturnData.push({
+        comment: element.comment,
+        
+        cash: element.amount,
+        type: element.type,
+      });
+    }
+    else{
 
     borrowCashReturnData.push({
       comment: element.comment,
       from: element.id,
       cash: element.amount,
       type: element.type,
-    });
+    });}
   }
 
   const dataDetails650 = [];

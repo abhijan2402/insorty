@@ -122,7 +122,7 @@ const Commision = () => {
           <div className="flex justify-center items-center">
             <form action="">
               <div className="overflow-x-auto">
-                <table className="">
+                <table className="removeCommonWSpace">
                   <thead>
                     <tr>
                       <td> क्र. सं.</td>

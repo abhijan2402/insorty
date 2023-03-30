@@ -50,7 +50,7 @@ const Borrow = () => {
       <div>
         <form action="">
           <div className="flex justify-center items-center">
-            <table className="table ">
+              <table className="removeCommonWSpace ">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>

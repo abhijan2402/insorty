@@ -2,16 +2,18 @@ import React from "react";
 
 const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet }) => {
   const { pages, brandName } = regularData;
+  let count = 0 
 
   // get all quantityInML 750 ml data form entries arry
 
   return (
     <>
-      {pages.map((page, index) => {
+      {pages.map((page, index2) => {
 
         const pg = pageId ? pageId : Array.from(frontSet)[0]
 
         if (page.page === pg){
+          
         const quantityInML750 = page.entries.filter(
           (entry) => entry.quantityInML === quan1
         );
@@ -24,9 +26,10 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet }) =
           (entry) => entry.quantityInML === quan3
         );
 
+
         return (
           <tr>
-            <td className="tg-0lax">{index + 1}</td>
+            <td className="tg-0lax">{index+1}</td>
             <td className="tg-0lax">{brandName}</td>
 
             {/* Average Rate */}

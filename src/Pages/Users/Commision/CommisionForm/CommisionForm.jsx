@@ -21,7 +21,7 @@ const CommisionForm = ({ index, commison }) => {
 
         return (
           <tr key={index}>
-            <th>{index}</th>
+            <th>{index+1}</th>
             <td>
               <div className="form-control">{changeDateFormet}</div>
             </td>

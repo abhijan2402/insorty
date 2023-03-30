@@ -1316,7 +1316,7 @@ const FronteDailyReport = () => {
                           <div className="form-control">
                             <input
                               type="number"
-                              className="smallinput wd-6"
+                              className="smallinput wd-7"
                               name="total"
                               value={addOneSecondFormState.reduce(
                                 (total, currentItem) =>

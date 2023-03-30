@@ -59,6 +59,8 @@ const CashReciveForm = ({
           X
         </th>
 
+        
+
         <td>
           <div className="form-control">
             {/* <input
@@ -69,6 +71,7 @@ const CashReciveForm = ({
               onChange={(e) => onChangeCashRecive(e, index)}
              
             /> */}
+            {item.type==="PARTY" ?(
             <Autocomplete
               size="small"
               style={{
@@ -103,7 +106,7 @@ const CashReciveForm = ({
                   }}
                 />
               )}
-            />
+            />) : item.type==="PARTNER" ?(
 
             <Autocomplete
               size="small"
@@ -149,7 +152,7 @@ const CashReciveForm = ({
                   }}
                 />
               )}
-            />
+            />) : item.type==="BRANCH" ?(
 
             <Autocomplete
               size="small"
@@ -195,7 +198,7 @@ const CashReciveForm = ({
                   }}
                 />
               )}
-            />
+            />) : <div></div>}
           </div>
         </td>
 

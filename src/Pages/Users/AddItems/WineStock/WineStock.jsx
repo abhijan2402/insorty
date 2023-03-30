@@ -12,6 +12,8 @@ const WineStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  let count = 0
+
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
@@ -137,7 +139,7 @@ const WineStock = () => {
           </div>
 
         <div className="overflow-x-auto flex justify-center item-center" >
-            <table className="table removeCommonWSpace m-2">
+            <table className=" removeCommonWSpace m-2">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>
@@ -242,7 +244,7 @@ const WineStock = () => {
           <div>
             <div className=" gap-4 overflow-x-auto my-4 ">
               <div className="flex justify-center item-center">
-                <table className="table  m-2">
+              <table className="removeCommonWSpace  m-2">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -265,7 +267,7 @@ const WineStock = () => {
                             ) {
                               return (
                                 <tr>
-                                  <td>{index + 1}</td>
+                                  <td>{count}</td>
                                   <td>{brand.brandName}</td>
                                   <td>{size.quantityInML}</td>
                                   <td> {size.currentStock}</td>

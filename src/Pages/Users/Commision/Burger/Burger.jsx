@@ -119,7 +119,7 @@ const Burger = () => {
       <div>
         <form action="">
           <div className="overflow-x-auto flex justify-center item-center">
-            <table className="table ">
+                <table className="removeCommonWSpace ">
               <thead>
                 <tr>
                   <td> क्र. सं.</td>
@@ -151,7 +151,7 @@ const Burger = () => {
 
                         return (
                           <tr key={index}>
-                            <th>{index}</th>
+                            <th>{index+1}</th>
                             <td>
                               <div className="form-control">
                                 {changeDateFormet}

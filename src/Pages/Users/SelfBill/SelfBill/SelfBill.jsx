@@ -139,7 +139,7 @@ const SelfBill = () => {
 
       <div>
         <div className="overflow-x-auto">
-          <table className="table w-full removeCommonWSpace">
+          <table className="removeCommonWSpace">
             <thead>
               <tr>
                 <td> क्र. सं.</td>

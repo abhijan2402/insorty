@@ -53,9 +53,7 @@ const FinalReport = () => {
         <h2 className="font-bold text-[1.5rem] text-center titleStyle">
           {/* बचत व नकदी का हिसाब  */} फाइनल रिपोर्ट
         </h2>
-        <h2 className="font-bold text-[1.5rem]">
-          {data.length  && moment(monthlyFinalReport?.date).format("MM/YYYY")}
-        </h2>
+       
         <button
         className="commonBtn "
         onClick={handlePrint}
@@ -64,6 +62,9 @@ const FinalReport = () => {
       </button>
       </div>
         <div className="divider my-2"></div>
+        <h2 className="font-bold text-[1.5rem]">
+          {data && moment(monthlyFinalReport?.date).format("MM/YYYY")}
+        </h2>
       <div>
         <ListOfFinalReport
           monthlyFinalReport={monthlyFinalReport}
@@ -79,7 +80,7 @@ const FinalReport = () => {
         <div>
           <form action="">
             <div className="flex justify-center items-center">
-              <table className="table w-2/3">
+                <table className="removeCommonWSpace">
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
@@ -91,7 +92,7 @@ const FinalReport = () => {
                 </thead>
 
                 <tbody>
-                  {data.length && borrowedBottles.map((borrowedBottle, index) => {
+                    {data.borrowedBottles.length && borrowedBottles.map((borrowedBottle, index) => {
                     return (
                       <BorrowedBottles
                         key={index}
@@ -114,7 +115,7 @@ const FinalReport = () => {
         <div>
           <form action="">
             <div className="flex justify-center items-center">
-              <table className="table w-2/3">
+                <table className="removeCommonWSpace">
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
@@ -126,7 +127,7 @@ const FinalReport = () => {
                 </thead>
 
                 <tbody className="finalTableBody">
-                  {data.length && extraBottles.map((StockExcess, index) => {
+                    {data.extraBottles.length && extraBottles.map((StockExcess, index) => {
                     return (
                       <FinalReportStockExcessForm
                         key={index}

@@ -5,6 +5,8 @@ const BeerStockTopData = ({ item, index, total }) => {
   const quan550 = item.sizes.find((element) => element.quantityInML === 550);
   const quan330 = item.sizes.find((element) => element.quantityInML === 330);
 
+  console.log(item)
+
   total +=
     quan650?.currentStock * Number(quan650?.averageRate.$numberDecimal) +
     quan550?.currentStock * Number(quan650?.averageRate.$numberDecimal) +
@@ -16,6 +18,8 @@ const BeerStockTopData = ({ item, index, total }) => {
     quan550?.currentStock * Number(quan550?.averageRate.$numberDecimal) || 0;
   const price330 =
     quan330?.currentStock * Number(quan330?.averageRate.$numberDecimal) || 0;
+
+  if (quan650 && quan550 && quan330){
 
   return (
     <>
@@ -47,13 +51,13 @@ const BeerStockTopData = ({ item, index, total }) => {
 
         <td>
             <div className="form-control">
-            {Number(quan650?.averageRate.$numberDecimal).toFixed(2)}
+            {Number(quan650?.averageRate?.$numberDecimal).toFixed(2)}
             </div>
           </td>
 
           <td>
             <div className="form-control">
-            {Number(quan550?.averageRate.$numberDecimal).toFixed(2)}
+            {Number(quan550?.averageRate?.$numberDecimal).toFixed(2)}
             </div>
 
             </td>
@@ -61,7 +65,7 @@ const BeerStockTopData = ({ item, index, total }) => {
             <td>
 
             <div className="form-control">
-            {Number(quan330?.averageRate.$numberDecimal).toFixed(2)}
+            {Number(quan330?.averageRate?.$numberDecimal).toFixed(2)}
             </div>
         </td>
 
@@ -89,7 +93,7 @@ const BeerStockTopData = ({ item, index, total }) => {
         <td>{Number(price330 + price550 + price650).toFixed(2)}</td>
       </tr>
     </>
-  );
+  );}
 };
 
 export default BeerStockTopData;
