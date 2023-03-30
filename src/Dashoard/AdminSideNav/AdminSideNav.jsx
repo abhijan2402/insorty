@@ -54,25 +54,14 @@ const AdminSideNav = () => {
           <hr className="mt-4 mb-2" />
         </div>
 
-        <div className="flex flex-col justify-between  flex-1 mt-[12rem]">
+        <div className="flex flex-col justify-between  flex-1 mt-[10rem]">
           <nav>
-            <li className="my-4">
-              <NavLink
-                to="/admin"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Subadmin
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/admin/userList"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Users
-              </NavLink>
-            </li>
+            <NavLink
+              to="/admin/subadminList"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Subadmin
+            </NavLink>
 
             <li className="my-4">
               <NavLink
@@ -80,15 +69,6 @@ const AdminSideNav = () => {
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Shop
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/admin/userList"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Users
               </NavLink>
             </li>
 

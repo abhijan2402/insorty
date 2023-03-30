@@ -91,7 +91,7 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        path: "/admin",
+        path: "/admin/subadminList",
         element: <SubAdminList />,
       },
       {

@@ -6,20 +6,71 @@ import EditeShop from "../EditeShop/EditeShop";
 import ShopInfo from "../ShopInfo/ShopInfo";
 import useGetShopsNSubadmins from "../../../../Hooks/useGetShopsNSubadmins";
 import Loader from "../../../../Components/Loader/Loader";
+import swal from "sweetalert";
 
 const ShopList = () => {
-  const { subAdmins,
-    subAdminsLoading,
-    shops,
-    shopsLoaded } = useGetShopsNSubadmins()
+  const token = localStorage.getItem("token");
+  const { shopsRefetch, shops, shopsLoaded } = useGetShopsNSubadmins();
 
-    if(shopsLoaded){
-      return <Loader></Loader>
-    }
+  const handelDelete = (id) => {
+    console.log(id);
+    fetch(`https://insorty-api.onrender.com/admin/deleteShop/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
 
-    if(shops.success===false){
-      return <div>{shops.message}</div>
-    }
+  const addNewShop = (e) => {
+    e.preventDefault();
+    const from = e.target;
+
+    const name = from.name.value;
+    const phone = from.phone.value;
+    const password = from.password.value;
+    const licenceNumber = from.licenceNumber.value;
+    const address = from.address.value;
+    const accountId = from.accountId.value;
+
+    fetch("https://insorty-api.onrender.com/admin/createShop", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+      body: JSON.stringify({
+        cookie_token: token,
+        name,
+        accountId,
+        address,
+        password,
+        licenceNumber,
+        mobileNumber: phone,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.success) {
+          swal("Shop Added Successfully", "", "success");
+          shopsRefetch();
+        }
+      });
+  };
+
+  if (shopsLoaded) {
+    return <Loader></Loader>;
+  }
+
+  if (shops.success === false) {
+    return <div>{shops.message}</div>;
+  }
 
   return (
     <section>
@@ -39,37 +90,64 @@ const ShopList = () => {
         <div className="overflow-x-auto">
           <table className="table-auto w-3/4">
             <tbody>
-              {shops && shops.data.length && shops.data.map((shop)=>{
-                return(
-                  <tr className="p-4 text-left">
-                    <td className="border px-4 py-2 font-bold">
-                      <Link>{shop?.shopId.name} </Link>
-                    </td>
-                    <td>
-                      <div className="flex gap-4 items-center justify-end">
-                        <Link>
-                          <FaRegTrashAlt className="text-[1.7rem]" />
-                        </Link>
+              {shops &&
+                shops.data.length &&
+                shops.data.map((shop) => {
+                  const myShop = shop?.shopId;
+                  const myShopId = myShop?._id;
 
-                        <label
-                          htmlFor="EditShop"
-                          className="text-[1.7rem] cursor-pointer"
-                        >
-                          <FaPencilAlt className="text-[1.7rem]" />
-                        </label>
-                        <label
-                          htmlFor="ShopInfo"
-                          
-                          className="text-[1.7rem] cursor-pointer"
-                        >
-                          <FaInfo className="text-[1.7rem]" />
-                        </label>
-                      </div>
-                    </td>
-                  </tr>
-                )
-              })   }
-             
+                  return (
+                    <tr className="p-4 text-left">
+                      <td className="border px-4 py-2 font-bold">
+                        <Link>{shop?.shopId.name} </Link>
+                      </td>
+                      <td>
+                        <div className="flex gap-4 items-center justify-end">
+                          <button
+                            onClick={() => {
+                              swal({
+                                title: "Are you sure?",
+                                text: `Once deleted, you will not be able to recover ${shop?.shopId.name}!`,
+                                icon: "warning",
+                                buttons: true,
+                                dangerMode: true,
+                              }).then((willDelete) => {
+                                if (willDelete) {
+                                  handelDelete(myShopId);
+                                  swal(`Subadmin has been deleted!`, {
+                                    icon: "success",
+                                  });
+                                  shopsRefetch();
+                                } else {
+                                  swal("Your row is safe!");
+                                }
+                              });
+                            }}
+                          >
+                            <FaRegTrashAlt className="text-[1.7rem]" />
+                          </button>
+
+                          <label
+                            htmlFor="EditShop"
+                            className="text-[1.7rem] cursor-pointer"
+                          >
+                            <FaPencilAlt className="text-[1.7rem]" />
+                          </label>
+                          <label
+                            htmlFor={myShopId}
+                            className="text-[1.7rem] cursor-pointer"
+                          >
+                            <FaInfo className="text-[1.7rem]" />
+                          </label>
+                          <ShopInfo
+                            myShopId={myShopId}
+                            shop={myShop}
+                          ></ShopInfo>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
           <div className="py-4 my-4">
@@ -80,9 +158,9 @@ const ShopList = () => {
         </div>
       </div>
 
-      <ShopInfo></ShopInfo>
+      {/* <ShopInfo></ShopInfo> */}
       <EditeShop></EditeShop>
-      <AddNewShop></AddNewShop>
+      <AddNewShop addNewShop={addNewShop}></AddNewShop>
     </section>
   );
 };

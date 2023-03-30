@@ -1,11 +1,10 @@
-import React from 'react'
 import { useQuery } from "@tanstack/react-query";
 
 
 const useGetShopsNSubadmins = () => {
     const token = localStorage.getItem("token");
 
-    const { data: shops, isLoading: shopsLoaded, shopsRefetch } = useQuery({
+    const { data: shops, isLoading: shopsLoaded, refetch: shopsRefetch } = useQuery({
         queryKey: ["Shops"],
         queryFn: async () => {
             const res = await fetch(
@@ -21,7 +20,7 @@ const useGetShopsNSubadmins = () => {
         },
     });
 
-    const { data: subAdmins, isLoading: subAdminsLoading, subAdminRefetch } = useQuery({
+    const { data: subAdmins, isLoading: subAdminsLoading, refetch:subAdminRefetch } = useQuery({
         queryKey: ["subAdmins"],
         queryFn: async () => {
             const res = await fetch(
@@ -41,8 +40,10 @@ const useGetShopsNSubadmins = () => {
   return {
     subAdmins,
     subAdminsLoading,
+    subAdminRefetch,
     shops,
-    shopsLoaded
+    shopsLoaded,
+    shopsRefetch
   }
 }
 
