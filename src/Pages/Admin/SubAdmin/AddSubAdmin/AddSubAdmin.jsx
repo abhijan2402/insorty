@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddSubAdmin = () => {
+const AddSubAdmin = ({ addNewSubAdmin }) => {
   return (
     <section>
       {/* The button to open modal */}
@@ -17,7 +17,7 @@ const AddSubAdmin = () => {
           </label>
           <h3 className="text-lg font-bold">New Subadmin</h3>
           <div className="py-4">
-            <form action="">
+            <form onSubmit={addNewSubAdmin}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Subadmin Name</span>
@@ -25,6 +25,7 @@ const AddSubAdmin = () => {
                 <input
                   type="text"
                   placeholder="Subadmin Name"
+                  name="name"
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -39,6 +40,7 @@ const AddSubAdmin = () => {
                 <input
                   type="text"
                   placeholder="Phone Number"
+                  name="phone"
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -53,58 +55,7 @@ const AddSubAdmin = () => {
                 <input
                   type="password"
                   placeholder="Password"
-                  className="input input-bordered"
-                  style={{
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Confirm Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="Confirm Password"
-                  className="input input-bordered"
-                  style={{
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Address</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Address"
-                  className="input input-bordered"
-                  style={{
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Pin Code</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Pin Code"
-                  className="input input-bordered"
-                  style={{
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">City</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="City"
+                  name="password"
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -112,8 +63,24 @@ const AddSubAdmin = () => {
                 />
               </div>
 
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Address</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Address"
+                  name="address"
+                  className="input input-bordered"
+                  style={{
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+              </div>
+             
+
               <div>
-                <button type="submit" className="btn btn-primary my-2">
+                <button type="submit" className="commonBtn">
                   <span>Submit</span>
                 </button>
               </div>

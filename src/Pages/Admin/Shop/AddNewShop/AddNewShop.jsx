@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddNewShop = () => {
+const AddNewShop = ({addNewShop}) => {
   return (
     <section>
   
@@ -15,12 +15,109 @@ const AddNewShop = () => {
             ✕
           </label>
           <h3 className="text-lg font-bold">
-            Congratulations random Internet user!
+           Add New Shop
           </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
+          <div className="py-4">
+              <form onSubmit={addNewShop}>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  name="name"
+                  className="input input-bordered"
+                  style={{
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Phone Number</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Phone Number"
+                  name="phone"
+                  className="input input-bordered"
+                  style={{
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  className="input input-bordered"
+                  style={{
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Address</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Address"
+                  name="address"
+                  className="input input-bordered"
+                  style={{
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Account Id</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Account Id"
+                  name="accountId"
+                  className="input input-bordered"
+                  style={{
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Licence Number</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Licence Number"
+                  name="licenceNumber"
+                  className="input input-bordered"
+                  style={{
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+              </div>
+             
+
+              <div>
+                <button type="submit" className="commonBtn">
+                  <span>Submit</span>
+                </button>
+              </div>
+            </form>
+
+          </div>
         </div>
       </div>
     </section>

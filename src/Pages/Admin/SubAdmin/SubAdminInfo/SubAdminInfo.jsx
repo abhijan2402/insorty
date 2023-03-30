@@ -1,71 +1,61 @@
 import React from "react";
 
-const SubAdminInfo = () => {
+const SubAdminInfo = ({ subadminId, subAdmin }) => {
+
   return (
     <section>
       {/* The button to open modal */}
 
       {/* Put this part before </body> tag */}
-      <input type="checkbox" id="SubAdminInfo" className="modal-toggle" />
+      <input type="checkbox" id={subadminId} className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative" style={{ maxWidth: "700px" }}>
           <label
-            htmlFor="SubAdminInfo"
+            htmlFor={subadminId}
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">
-            Rahul wine shop / राहुल शराब की दुकान
-          </h3>
+          {/* <h3 className="text-lg font-bold">
+            Rahul wine shop / राहुल शराब की दुकान 
+          </h3> */}
           <div className="py-4 divider"></div>
 
           <div>
-            <div className="overflow-x-auto flex  gap-6 flex-wrap">
+            <div className="overflow-x-auto flex justify-around items-center  gap-6 flex-wrap w-full">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Username</span>
+                  <span className="label-text">Name</span>
                 </label>
-                <input type="text" defaultValue={"Rahul"} disabled />
+                <input
+                  type="text"
+                  defaultValue={subAdmin?.name}
+                  disabled
+                  className="commonDataInput"
+                />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Phone Number</span>
                 </label>
-                <input type="text" defaultValue={"+91484564454475"} disabled />
+                <input
+                  type="text"
+                  defaultValue={subAdmin?.mobileNumber}
+                  className="commonDataInput"
+                  disabled
+                />
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text">Account Id</span>
                 </label>
-                <input type="text" defaultValue={"6+4586454"} disabled />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Confirem Password</span>
-                </label>
-                <input type="text" defaultValue={"6+4586454"} disabled />
-              </div>
-
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Adderss</span>
-                </label>
-                <input type="text" defaultValue={"45A sadar nagar "} disabled />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Pin</span>
-                </label>
-                <input type="text" defaultValue={"9254214"} disabled />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">City</span>
-                </label>
-                <input type="text" defaultValue={"Mumbai"} disabled />
+                <input
+                  type="text"
+                  className="commonDataInput"
+                  defaultValue={subAdmin?.accountId}
+                  disabled
+                />
               </div>
             </div>
           </div>
