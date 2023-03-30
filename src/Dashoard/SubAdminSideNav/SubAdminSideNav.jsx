@@ -67,10 +67,10 @@ const SubAdminSideNav = () => {
 
           <li className="my-4">
             <NavLink
-              to="/subadmin/maneguser"
+              to="/subadmin/manegshop"
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
-              Manage User
+              Manage Shop
             </NavLink>
           </li>
 
