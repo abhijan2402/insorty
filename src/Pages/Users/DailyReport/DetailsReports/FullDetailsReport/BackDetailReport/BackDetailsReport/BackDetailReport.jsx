@@ -48,6 +48,8 @@ const BackDetailReport = () => {
   const [pageId, setPageId] = useState();
   const [pgNo, setPgNo] = useState(0);
   let frontSet = new Set([]);
+  let count = 0
+
 
   const [filterDate, setFilterData] = useState(new Date());
 
@@ -279,7 +281,7 @@ const BackDetailReport = () => {
         {/* ====================1==================== */}
 
         <div className="overflow-x-auto m-4 p-4">
-          <table>
+          <table className="removeCommonWSpace">
             <tbody>
               <tr>
                 <td rowSpan={2}> क्र. सं.</td>
@@ -713,7 +715,6 @@ const BackDetailReport = () => {
             <tbody>
               {filteredExceptionalData &&
                 filteredExceptionalData.map((exceptionalData, index) => {
-                  let count = 0
                   const pg = pageId ? pageId : Array.from(frontSet)[0];
                   if (exceptionalData.page === pg) {
                     count++

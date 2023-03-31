@@ -25,6 +25,8 @@ const FrontDetailsReport = () => {
   } = useFrontDetailHooks();
 
   const { FrontPageData, FrontPageDataLoaded } = useGetDailyReport();
+  let count = 0
+
 
   const handlePrint = useReactToPrint({
     content: () => front.current,
@@ -756,7 +758,6 @@ const FrontDetailsReport = () => {
               {filteredExceptionalData &&
                 filteredExceptionalData.length > 0 &&
                 filteredExceptionalData.map((exceptionalData, index) => {
-                  let count = 0
                   const pg = pageId ? pageId : Array.from(frontSet)[0];
                   if (exceptionalData.page === pg) {
                     count++

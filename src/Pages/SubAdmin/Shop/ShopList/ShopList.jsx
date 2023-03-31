@@ -91,15 +91,16 @@ const ShopList = () => {
           <table className="table-auto w-3/4">
             <tbody>
               {shops &&
-                shops.data.length &&
+                shops.data.length && shops.data.length>0 &&
                 shops.data.map((shop) => {
                   const myShop = shop?.shopId;
                   const myShopId = myShop?._id;
 
+                  if(myShop){
                   return (
                     <tr className="p-4 text-left">
                       <td className="border px-4 py-2 font-bold">
-                        <Link>{shop?.shopId.name} </Link>
+                        <Link>{shop?.shopId?.name} </Link>
                       </td>
                       <td>
                         <div className="flex gap-4 items-center justify-end">
@@ -147,7 +148,7 @@ const ShopList = () => {
                         </div>
                       </td>
                     </tr>
-                  );
+                  );}
                 })}
             </tbody>
           </table>
