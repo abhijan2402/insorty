@@ -27,6 +27,15 @@ const ShopList = () => {
       });
   };
 
+  const onTokenChange=(Shoptoken)=>{
+    const token = localStorage.getItem('token')
+      localStorage.setItem('token2',token)
+      localStorage.setItem('token',Shoptoken)
+      
+    console.log(Shoptoken,"token changed")
+    console.log(localStorage.getItem('token'),"token unchanged")
+  }
+
   const addNewShop = (e) => {
     e.preventDefault();
     const from = e.target;
@@ -95,11 +104,12 @@ const ShopList = () => {
                 shops.data.map((shop) => {
                   const myShop = shop?.shopId;
                   const myShopId = myShop?._id;
+                  console.log(shop)
 
                   return (
                     <tr className="p-4 text-left">
                       <td className="border px-4 py-2 font-bold">
-                        <Link>{shop?.shopId.name} </Link>
+                        <Link onClick={() => onTokenChange(shop.shopToken)}>{shop?.shopId.name} </Link>
                       </td>
                       <td>
                         <div className="flex gap-4 items-center justify-end">
