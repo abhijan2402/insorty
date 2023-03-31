@@ -39,7 +39,7 @@ import PartnarDetails from "../Pages/Users/Partners/PartnerDetails/PartnerDetail
 import BearShopDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopDailyReport";
 import BeerShopFrontDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopFrontDailyReport/BeerShopFronteDailyReport";
 import BeerShopBackDailyReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopBackDailyReport/BeerShopBackDailyReport";
-import UserList from "../Pages/Admin/Users/UserList/UserList";
+import SubAdminShopList from "../Pages/SubAdmin/Shop/ShopList/ShopList";
 import ShopList from "../Pages/Admin/Shop/ShopList/ShopList";
 import RmlStock from "../Pages/Users/AddItems/RMLStock/RMLStock";
 import Stock from "../Pages/Users/AddItems/Stock/Stock";
@@ -95,10 +95,6 @@ const router = createBrowserRouter([
         element: <SubAdminList />,
       },
       {
-        path: "/admin/userList",
-        element: <UserList />,
-      },
-      {
         path: "/admin/shopList",
         element: <ShopList />,
       },
@@ -113,8 +109,8 @@ const router = createBrowserRouter([
         element: <CreateUserSubAdmin />,
       },
       {
-        path: "/subadmin/maneguser",
-        element: <UserList />,
+        path: "/subadmin/manegshop",
+        element: <SubAdminShopList />,
       },
       {},
     ],

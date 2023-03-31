@@ -35,6 +35,21 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
 
               <div className="form-control">
                 <label className="label">
+                  <span className="label-text">Account Id</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Account Id"
+                  name="accountId"
+                  className="input input-bordered"
+                  style={{
+                    border: "1px solid #e5e7eb",
+                  }}
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Phone Number</span>
                 </label>
                 <input

@@ -36,7 +36,7 @@ const SubAdminList = () => {
     const password = from.password.value;
     const address = from.address.value;
     const phone = from.phone.value;
-    const accountId = name;
+    const accountId = from.accountId.value;
 
     fetch("https://insorty-api.onrender.com/admin/createSubAdmin", {
       method: "POST",

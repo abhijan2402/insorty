@@ -1,27 +1,29 @@
 import React from "react";
 
-const AddUser = () => {
+const AddShop = ({ addNewShop }) => {
   return (
     <section>
-      <input type="checkbox" id="addNewSubAdmin" className="modal-toggle" />
+      {/* Put this part before </body> tag */}
+      <input type="checkbox" id="addShop" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
           <label
-            htmlFor="addNewSubAdmin"
+            htmlFor="addShop"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">New User</h3>
+          <h3 className="text-lg font-bold">Add New Shop</h3>
           <div className="py-4">
-            <form action="">
+            <form onSubmit={addNewShop}>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">User Name</span>
+                  <span className="label-text">Name</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="User Name"
+                  placeholder="Name"
+                  name="name"
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -36,6 +38,7 @@ const AddUser = () => {
                 <input
                   type="text"
                   placeholder="Phone Number"
+                  name="phone"
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -50,25 +53,14 @@ const AddUser = () => {
                 <input
                   type="password"
                   placeholder="Password"
+                  name="password"
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
                   }}
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Confirm Password</span>
-                </label>
-                <input
-                  type="password"
-                  placeholder="Confirm Password"
-                  className="input input-bordered"
-                  style={{
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              </div>
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Address</span>
@@ -76,32 +68,37 @@ const AddUser = () => {
                 <input
                   type="text"
                   placeholder="Address"
+                  name="address"
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
                   }}
                 />
               </div>
+
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Pin Code</span>
+                  <span className="label-text">Account Id</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Pin Code"
+                  placeholder="Account Id"
+                  name="accountId"
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
                   }}
                 />
               </div>
+
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">City</span>
+                  <span className="label-text">Licence Number</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="City"
+                  placeholder="Licence Number"
+                  name="licenceNumber"
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -110,7 +107,7 @@ const AddUser = () => {
               </div>
 
               <div>
-                <button type="submit" className="btn btn-primary my-2">
+                <button type="submit" className="commonBtn">
                   <span>Submit</span>
                 </button>
               </div>
@@ -122,4 +119,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default AddShop;
