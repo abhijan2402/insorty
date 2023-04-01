@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaPencilAlt, FaRegTrashAlt, FaInfo } from "react-icons/fa";
 import AddNewShop from "../AddNewShop/AddNewShop";
 import EditeShop from "../EditeShop/EditeShop";
@@ -11,6 +11,8 @@ import swal from "sweetalert";
 const ShopList = () => {
   const token = localStorage.getItem("token");
   const { shopsRefetch, shops, shopsLoaded } = useGetShopsNSubadmins();
+
+  const navigate = useNavigate();
 
   const handelDelete = (id) => {
     console.log(id);
@@ -27,14 +29,49 @@ const ShopList = () => {
       });
   };
 
-  const onTokenChange=(Shoptoken)=>{
-    const token = localStorage.getItem('token')
-      localStorage.setItem('token2',token)
-      localStorage.setItem('token',Shoptoken)
-      
-    console.log(Shoptoken,"token changed")
-    console.log(localStorage.getItem('token'),"token unchanged")
-  }
+  // const onTokenChange = (Shoptoken) => {
+  //   const token = localStorage.getItem("token");
+  //   localStorage.setItem("token2", token);
+  //   localStorage.setItem("token", Shoptoken);
+
+  //   const shopTokens = localStorage.getItem("token");
+  //   const userToken = localStorage.getItem("token2");
+    
+  //   console.log(Shoptoken, "token changed");
+  //   console.log(localStorage.getItem("token"), "token unchanged");
+  // };
+
+  const onTokenChange = (Shoptoken) => {
+    // Get the current values of "token" and "token2" from localStorage
+    const token = localStorage.getItem("token");
+    const adminToken = localStorage.getItem("token2");
+  
+    // If the shop token is different from the current token, update the tokens and redirect to the appropriate dashboard
+    if (Shoptoken !== token) {
+      // Update the "token" and "token2" values in localStorage
+      localStorage.setItem("token", Shoptoken);
+      localStorage.setItem("token2", adminToken);
+  
+      // Check whether the current user has admin privileges
+      const shopToken = localStorage.getItem("token");
+      const userToken = localStorage.getItem("token2");
+      const isAdmin = shopToken === adminToken;
+  
+      // Redirect to the appropriate dashboard based on the user's privileges
+      if (isAdmin) {
+        window.location.href = "/admin";
+      } else {
+        window.location.href = "/user";
+      }
+  
+      // Log the new token value and the status of the admin privileges
+      console.log(Shoptoken, "token changed");
+      console.log("Admin privileges:", isAdmin);
+    } else {
+      console.log("Token unchanged:", token);
+    }
+  };
+  
 
   const addNewShop = (e) => {
     e.preventDefault();
@@ -104,12 +141,14 @@ const ShopList = () => {
                 shops.data.map((shop) => {
                   const myShop = shop?.shopId;
                   const myShopId = myShop?._id;
-                  console.log(shop)
+                  console.log(shop);
 
                   return (
                     <tr className="p-4 text-left">
                       <td className="border px-4 py-2 font-bold">
-                        <Link onClick={() => onTokenChange(shop.shopToken)}>{shop?.shopId.name} </Link>
+                        <Link onClick={() => onTokenChange(shop.shopToken)}>
+                          {shop?.shopId.name}{" "}
+                        </Link>
                       </td>
                       <td>
                         <div className="flex gap-4 items-center justify-end">
