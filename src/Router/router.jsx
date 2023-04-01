@@ -55,6 +55,7 @@ import PhonePeToday from "../Pages/Users/PhonePeToday/PhonePeToday/PhonePeToday"
 import CashReceiveData from "../Pages/Users/CashReciveData/CashReciveData/CashReciveData";
 import PartnersMarge from "../Pages/Users/MargePartners/MargePartners";
 import WineBill from "../Pages/Users/WineBill/WineBill";
+import ShopParmisson from "../Pages/Admin/ShopParmisson/ShopParmisson/ShopParmisson";
 
 const {
   BearShopBranch,
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
         path: "/admin/shopList",
         element: <ShopList />,
       },
+      {
+        path: "/admin/shopParmisson",
+        element: <ShopParmisson />,
+      }
     ],
   },
   {
