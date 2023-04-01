@@ -37,8 +37,7 @@ const BranchFrom = () => {
         }
       );
       const data = await res.json();
-      console.log(data)
-      return data.data.transactions;
+      return data.data;
     },
   });
 
@@ -48,18 +47,23 @@ const BranchFrom = () => {
 
   return (
     <>
+      <div className="flex justify-center items-center">
+        
+        <button className="commonBtn " onClick={handlePrint}>
+          PRINT
+        </button>
+      </div>
       <section ref={front} className="p-4">
         <div className="flex justify-center items-center">
           <div className="title">
-            <div className="flex justify-center items-center">
+            
+
+
+            
               <h2 className="font-bold md:text-[1.5rem] text-center">
                 Branch Name / ब्रांच नाम:-
-                <span className="titleStyle"> {branchData.branchName}</span>
+                <span className="titleStyle"> {transactions.branchName}</span>
               </h2>
-              <button className="commonBtn " onClick={handlePrint}>
-                PRINT
-              </button>
-            </div>
 
             <div className="flex gap-4 justify-center items-center my-4 z-10">
               <h2 className="font-bold text-[1.5rem]">From</h2>
@@ -95,7 +99,7 @@ const BranchFrom = () => {
         <div className="flex justify-center items-center">
           <form action="">
             <div className="overflow-x-auto">
-              <table className="table w-full">
+              <table className="removeCommonWSpace">
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
@@ -107,8 +111,8 @@ const BranchFrom = () => {
                 </thead>
 
                 <tbody>
-                  {(transactions &&
-                    transactions
+                  {(transactions.transactions &&
+                    transactions.transactions
                       .filter((row) => {
                         let filterPass = true;
                         const date = new Date(row.date);

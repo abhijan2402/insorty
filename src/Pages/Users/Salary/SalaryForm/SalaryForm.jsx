@@ -45,7 +45,7 @@ const SalaryForm = () => {
       );
       const data = await res.json();
         console.log(data)
-      return data?.data?.salaryData;
+      return data.data;
     },
   });
 
@@ -108,18 +108,21 @@ const SalaryForm = () => {
     }
   };
 
-  if (isLoading) {
+  if (isLoading || salareyDataLoading) {
     return <Loader></Loader>;
   }
 
   return (
     <section className="px-2 py-6">
+      <button className="commonBtn " onClick={handlePrint}>
+        PRINT
+      </button>
       <div ref={front}>
         <div className="flex justify-center items-center">
           <div className="title">
             <h2 className="font-bold text-[1.5rem]">
               कर्माचीरी का नाम / Name{" "}
-              <span className="titleStyle">{employeeData?.name}</span>
+              <span className="titleStyle">{salareyDataList.name}</span>
             </h2>
 
             <div className="flex gap-4 items-center my-4">
@@ -131,9 +134,7 @@ const SalaryForm = () => {
                 className="semiSmallInput"
               />
 
-<button className="commonBtn " onClick={handlePrint}>
-              PRINT
-            </button>
+
             </div>
           
           </div>
@@ -143,12 +144,12 @@ const SalaryForm = () => {
         <div>
           <form action="">
             <div className="flex justify-center items-center">
-              <table className="table ">
+              <table className="removeCommonWSpace ">
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
-                    <th>Salary / वेतन</th>
-                    <th>Payment / भुगतान</th>
+                    <th colSpan={2}>Salary / वेतन</th>
+                    <th colSpan={2}>Payment / भुगतान</th>
                     <th>Shesh </th>
                     <th>reason /टिप्पणी</th>
                   </tr>
@@ -159,14 +160,15 @@ const SalaryForm = () => {
                     <th></th>
 
                     <td>
-                      <div className="flex gap-2">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">दिनांक</span>
                           </label>
                         </div>
+                        </td>
 
-                        <div className="form-control">
+
+                        {/* <div className="form-control">
                           <label className="label">
                             <span className="label-text"></span>
                           </label>
@@ -195,23 +197,23 @@ const SalaryForm = () => {
                           <label className="label">
                             <span className="label-text"></span>
                           </label>
-                        </div>
+                        </div> */}
+                        <td>
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text"> रकम</span>
                           </label>
                         </div>
-                      </div>
                     </td>
 
                     <td>
-                      <div className="flex gap-4">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">दिनांक</span>
                           </label>
                         </div>
-                        <div className="form-control">
+                        </td>
+                        {/* <div className="form-control">
                           <label className="label">
                             <span className="label-text"></span>
                           </label>
@@ -235,14 +237,13 @@ const SalaryForm = () => {
                           <label className="label">
                             <span className="label-text"></span>
                           </label>
-                        </div>
-
+                        </div> */}
+                        <td>
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">रकम</span>
                           </label>
                         </div>
-                      </div>
                     </td>
 
                     <td>
@@ -263,7 +264,7 @@ const SalaryForm = () => {
                   </tr>
 
                   {(salareyDataList &&
-                    salareyDataList
+                    salareyDataList.salaryData
                       .filter((item) => {
                         if (
                           item.salary.month.toString().includes(year) &&
@@ -279,7 +280,7 @@ const SalaryForm = () => {
                           <SalaryFormData
                             key={index}
                             salareyDataLoading={salareyDataLoading}
-                            salareyDataList={salareyDataList}
+                            salareyDataList={salareyDataList.salaryData}
                             salary={salary}
                             index={index}
                           ></SalaryFormData>

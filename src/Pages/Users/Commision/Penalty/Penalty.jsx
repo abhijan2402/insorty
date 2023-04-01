@@ -48,7 +48,6 @@ const Penalty = () => {
   return (
     <section className="py-4 px-4">
       <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center"> PENALTY</h2>
 
         <div className="flex items-center justify-center flex-wrap">
           <button
@@ -84,6 +83,8 @@ const Penalty = () => {
 
         <div ref={front}>
         <div>
+            <h2 className="font-bold md:text-[1.5rem] text-center"> PENALTY</h2>
+
 
         <div className="flex gap-4 justify-center items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>

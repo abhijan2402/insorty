@@ -35,9 +35,7 @@ const Borrow = () => {
       
     <section ref={front} className="py-4">
       <div className="title flex justify-center items-center">
-        <h2 className="font-bold md:text-[1.5rem] text-center">
-          उधारी (माल व नकद) नामे व जमा
-        </h2>
+        
         <button
         className="commonBtn "
         onClick={handlePrint}
@@ -48,6 +46,9 @@ const Borrow = () => {
         <div className="divider my-2"></div>
 
       <div>
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            उधारी (माल व नकद) नामे व जमा
+          </h2>
         <form action="">
           <div className="flex justify-center items-center">
               <table className="removeCommonWSpace ">

@@ -58,7 +58,6 @@ const Fut = () => {
   return (
     <section className="py-4 px-4">
       <div className="title">
-        <h2 className="font-bold text-center md:text-[1.5rem]">FUT</h2>
 
         <div className="flex item-cnter justify-center flex-wrap">
          <button
@@ -93,6 +92,8 @@ const Fut = () => {
 
         <div ref={front}>
         <div>
+            <h2 className="font-bold text-center md:text-[1.5rem]">FUT</h2>
+
 
         <div className="flex gap-4 items-center justify-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
@@ -105,7 +106,7 @@ const Fut = () => {
               }}
               dateFormat="dd/MM/yyyy"
               placeholderText={"dd/mm/yyyy"}
-              className="inputBoxb date"
+              className="inputBox date"
             />
           </div>
 

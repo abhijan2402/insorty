@@ -66,7 +66,6 @@ const Partners = () => {
     <section className="py-4">
       <div className="title">
         <div className="flex justify-center items-center gap-4">
-          <h2 className="font-bold md:text-[1.5rem] text-center">पार्टनर</h2>
           <Link className="commonBtn" to="/user/sendFormat">
             All Partnes
           </Link>
@@ -76,8 +75,10 @@ const Partners = () => {
         </div>
 
         <div ref={front}>
+              <h2 className="font-bold md:text-[1.5rem] text-center">पार्टनर</h2>
           <div className="flex justify-center items-center">
             <div className="flex gap-4 items-center my-4">
+
               <h2 className="font-bold text-[1.5rem]">From</h2>
               <div className="flex gap-2 items-center">
                 <DatePicker
@@ -111,7 +112,7 @@ const Partners = () => {
           <div className="flex justify-center items-center">
             <form action="">
               <div className="overflow-x-auto">
-                <table className="table removeCommonWSpace">
+                <table className=" removeCommonWSpace">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
