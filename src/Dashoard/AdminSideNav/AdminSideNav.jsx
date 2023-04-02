@@ -78,7 +78,7 @@ const AdminSideNav = () => {
                 to="/admin/shopParmisson"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Shop Parmisson
+                Shop Permisson
               </NavLink>
             </li>
 
