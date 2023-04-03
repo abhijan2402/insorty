@@ -46,22 +46,25 @@ const CashReciveData = () => {
     return <h1 className="text-center text-2xl font-bold ">No Data Found</h1>;
   }
 
-  console.log(cashReciveDatas, "+++++++++++++");
+ 
+
+  
 
   return (
     <>
+      <button
+        className="commonBtn "
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
      
     <section ref={front}>
       <div className="title flex justify-center items-center flex-col">
         <h2 className="font-bold md:text-[1.5rem] text-center">
           अन्य से नकद प्राप्ति
         </h2>
-        <button
-        className="commonBtn "
-        onClick={handlePrint}
-      >
-        PRINT
-      </button>
+       
 
         <div className="flex gap-4 items-center my-4 z-10">
           <h2 className="font-bold text-[1.5rem]">From</h2>
@@ -130,11 +133,11 @@ const CashReciveData = () => {
                 <td></td>
                 <td></td>
                 <td>
-                  {filteredData.map((item) => {
-                    return item.reduce((acc, item) => {
-                      return acc + Number(item.cash);
-                    }, 0);
-                  })}
+                    {filteredData.reduce((acc, item) =>
+                      acc + item.reduce((acc, item) =>
+                        acc + Number(item.cash)
+                        , 0)
+                      , 0)}
                 </td>
               </tr>
             </tbody>

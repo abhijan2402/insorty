@@ -52,7 +52,6 @@ const Commision = () => {
   return (
     <section className="py-4 px-4">
       <div className="title">
-        <h2 className="font-bold md:text-[1.5rem] text-center ">कमीशन</h2>
 
         <div className="flex item-cnter justify-center flex-wrap">
           <button
@@ -87,6 +86,8 @@ const Commision = () => {
         </div>
 
         <div ref={front}>
+          <h2 className="font-bold md:text-[1.5rem] text-center ">कमीशन</h2>
+
           <div>
             <div className="flex gap-4 items-center justify-center my-4">
               <h2 className="font-bold text-[1.5rem]">From</h2>

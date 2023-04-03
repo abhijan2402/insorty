@@ -3,27 +3,79 @@ import React from "react";
 import { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 
+import useGetShopsNSubadmins from "../../../../Hooks/useGetShopsNSubadmins";
+import Loader from "../../../../Components/Loader/Loader";
+import Swal from "sweetalert2";
+
+
 const ShopParmisson = () => {
+  const { shops,
+    shopsLoaded, subAdmins,
+    subAdminsLoading,
+} = useGetShopsNSubadmins()
+
+const token = localStorage.getItem('token')
+
+
   const shopParmissonTemplate = {
+    shopId: "",
     shopName: "",
-    shopParmisson: "",
+    ShopPermission : {
+      GET : true,
+      POST: true,
+      DELETE: true,
+      PUT: true
+    }
   };
-  const [shopParmisson, setShopParmisson] = useState([shopParmissonTemplate]);
-  const [subAdminName, setSubAdminName] = useState("");
+
+
+
+  const [shopParmisson, setShopParmisson] = useState([{
+    shopId: "",
+    shopName: "",
+    ShopPermission: {
+      GET: true,
+      POST: true,
+      DELETE: true,
+      PUT: true
+    }
+}]);
+  const [subAdminName, setSubAdminName] = useState({subAdminName:"",subAdminId:""});
 
   const addMore = () => {
     setShopParmisson([...shopParmisson, shopParmissonTemplate]);
   };
 
-  const onChange = (event, index) => {
-    const updatedProduct = shopParmisson.map((shopParmisson, i) =>
-      index === i
-        ? Object.assign(shopParmisson, {
+
+  const onChange = (type, event, index) => {
+
+    if (type === "permissions") {
+      const updatedShopParmisson = shopParmisson.map((shopData, i) =>
+        index === i
+          ? {
+            ...shopData,
+            ShopPermission: {
+              ...shopData.ShopPermission,
+              [event.target.name]: event.target.checked
+            }
+          }
+          : shopData
+      );
+      setShopParmisson(updatedShopParmisson);
+    }
+
+   
+    else{
+      const updatedProduct = shopParmisson.map((shopParmisson, i) =>
+        index === i
+          ? Object.assign(shopParmisson, {
             [event.target.name]: event.target.value,
           })
-        : shopParmisson
-    );
-    setShopParmisson(updatedProduct);
+          : shopParmisson
+      )
+      setShopParmisson(updatedProduct);
+    }
+
   };
 
   const removeShop = (index) => {
@@ -33,11 +85,65 @@ const ShopParmisson = () => {
 
   const hendelSubmit = (e) => {
     e.preventDefault();
-    const shopsData = Object.assign({}, shopParmisson);
-    const subAdminNames = subAdminName;
 
-    console.log(shopsData, subAdminNames);
+    let shopDetails=[]
+    for (let index = 0; index < shopParmisson.length; index++) {
+      const element = shopParmisson[index]
+      shopDetails.push(
+        {
+          shopId: element.shopId,
+          permissionSet: {
+            GET: element.ShopPermission.GET,
+            POST: element.ShopPermission.POST,
+            DELETE: element.ShopPermission.DELETE,
+            PUT: element.ShopPermission.PUT
+          }
+        }
+      )
+      
+    }
+    fetch("https://insorty-api.onrender.com/admin/assignShopToSubadmin", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+      body: JSON.stringify({ subAdminId: subAdminName.subAdminId,
+    shops: shopDetails
+  }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Sub Admin Added Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Something went wrong",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
+    console.log()
+
+    
   };
+
+  if (shopsLoaded || subAdminsLoading){
+    return <Loader></Loader>
+  }
 
   return (
     <section>
@@ -53,26 +159,52 @@ const ShopParmisson = () => {
           <label className="label">
             <span className="label-text">SubAdmin Name</span>
           </label>
-          <input
+
+          <Autocomplete
+            size="small"
             style={{
-              width: "100%",
-              height: "2.8rem",
-              borderRadius: "0.5rem",
-              border: "1px solid #e2e8f0",
-              textAlign: "left",
-              paddingLeft: "1rem",
-              paddingRight: "1rem",
+              width: "20rem",
             }}
-            className="px-6"
-            type="text"
-            name="subAdminName"
-            value={subAdminName}
-            onChange={(event) => setSubAdminName(event.target.value)}
+            options={
+              subAdmins.data.length > 0
+                ? subAdmins?.data
+                : ["no options"]
+            }
+            getOptionLabel={(option) => (option ? option?.name : "")}
+            onChange={(event, value) => {
+              const sub = subAdminName
+              if (value) {
+                sub.subAdminName = value.name;
+                sub.subAdminId = value._id;
+              } else {
+                sub.subAdminName = "";
+                sub.subAdminId = "";
+              }
+              setSubAdminName(sub)
+              console.log(subAdminName)
+            }}
+            renderInput={(params) => (
+              <TextField
+                required
+                size="small"
+                {...params}
+                // value={addOneFirst.brandName}
+                inputProps={{
+                  ...params.inputProps,
+                  value: subAdminName.subAdminName,
+                }}
+                onChange={(event) => {
+                  const sub = subAdminName
+                  sub.shopName = event.target.value;
+                }}
+              />
+            )}
           />
         </div>
 
         <form onSubmit={hendelSubmit}>
-          {shopParmisson.map((shopParmisson, index) => {
+
+          {shopParmisson.map((shop, index) => {
             return (
               <div key={index}>
                 {/* <div className="form-control mb-2">
@@ -101,45 +233,45 @@ const ShopParmisson = () => {
                   <Autocomplete
                     size="small"
                     style={{
-                      width: "100%",
+
+                      width: "20rem",
                     }}
-                    // options={
-                    //   liquors.length > 0
-                    //     ? liquors.filter((shopName) => {
-                    //         if (shopName.type === "BEER") {
-                    //           return shopName;
-                    //         }
-                    //       })
-                    //     : ["no options"]
-                    // }
-                    getOptionLabel={(option) =>
-                      option ? option.shopName : ""
+                    options={
+                      shops.data.length > 0
+                        ? shops?.data
+                        : ["no options"]
                     }
+                    getOptionLabel={(option) => (option ? option?.shopId?.name : "")}
                     onChange={(event, value) => {
-                      onChange(event, index);
-                      console.log(shopParmisson);
+                      if (value) {
+                        shop.shopName = value.shopId.name;
+                        shop.shopId = value.shopId._id;
+                      } else {
+                        shop.shopName = "";
+                        shop.shopId = "";
+                      }
+                      onChange('shopName',event, index);
                     }}
                     renderInput={(params) => (
                       <TextField
-                        {...params}
                         required
-                        className="dailyReportInput"
-                        // value={shopParmisson.shopName}
+                        size="small"
+                        {...params}
+                        // value={addOneFirst.brandName}
                         inputProps={{
                           ...params.inputProps,
-                          value: shopParmisson.shopName,
+                          value: shop.shopName,
                         }}
                         onChange={(event) => {
-                          shopParmisson.shopName = event.target.value;
-                          // shopParmisson.liquorID = null;
-                          // onChangeFristBackFormHandler(event, index)
+                          shop.shopName = event.target.value;
                         }}
                       />
                     )}
                   />
                 </div>
 
-                <div className="form-control">
+
+                {/* <div className="form-control">
                   <select
                     className="select w-full"
                     name="shopParmisson"
@@ -160,7 +292,46 @@ const ShopParmisson = () => {
                     <option value={"DELETE"}>DELETE</option>
                     <option value={"PUT"}>PUT</option>
                   </select>
+
+                </div> */}
+
+                <div className="form-control w-52">
+                  <label className="cursor-pointer label">
+                    <span className="label-text">GET</span>
+                    <input name="GET" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.GET}
+                    onChange={(event) => onChange("permissions" , event, index)}  style={{
+                      border: "1px solid black",
+                    }} />
+                  </label>
                 </div>
+                <div className="form-control w-52">
+                  <label className="cursor-pointer label">
+                    <span className="label-text">POST</span>
+                    <input name="POST" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.POST}
+                    onChange={(event) => onChange("permissions" , event, index)}  style={{
+                      border: "1px solid black",
+                    }} />
+                  </label>
+                </div>
+                <div className="form-control w-52">
+                  <label className="cursor-pointer label">
+                    <span className="label-text">DELETE</span>
+                    <input name="DELETE" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.DELETE}
+                    onChange={(event) => onChange("permissions" , event, index)}  style={{
+                      border: "1px solid black",
+                    }} />
+                  </label>
+                </div>
+                <div className="form-control w-52">
+                  <label className="cursor-pointer label">
+                    <span className="label-text">PUT</span>
+                    <input name="PUT" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.PUT}
+                    onChange={(event) => onChange("permissions" , event, index)}  style={{
+                      border: "1px solid black",
+                    }} />
+                  </label>
+                </div>
+
 
                 <div className="flex">
                   <button

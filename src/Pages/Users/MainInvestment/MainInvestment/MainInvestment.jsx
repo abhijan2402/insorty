@@ -29,19 +29,19 @@ const MainInvestment = () => {
 
   return (
     <>
-    
+      <button
+        className="commonBtn "
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
 
     <section ref={front} className="my-2">
       <div className="title flex justify-center items-center">
         <h2 className="font-bold md:text-[1.5rem] text-center">
           मुख्य इन्वेस्ट
         </h2>
-        <button
-        className="commonBtn "
-        onClick={handlePrint}
-      >
-        PRINT
-      </button>
+       
       </div>
         <div className="divider my-2"></div>
 
@@ -332,6 +332,10 @@ const MainInvestment = () => {
           </table>
         </div>
       </div>
+      
+      {/* <RefundDetailsData></RefundDetailsData>
+      <ResurvedDataDetails></ResurvedDataDetails> */}
+    </section>
       <div className="my-4 flex justify-center  items-center gap-4">
         <button
           className="commonBtn"
@@ -341,9 +345,6 @@ const MainInvestment = () => {
           Submit
         </button>
       </div>
-      {/* <RefundDetailsData></RefundDetailsData>
-      <ResurvedDataDetails></ResurvedDataDetails> */}
-    </section>
     </>
   );
 };

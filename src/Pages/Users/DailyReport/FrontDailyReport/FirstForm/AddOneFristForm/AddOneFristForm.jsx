@@ -82,7 +82,6 @@ const AddOneFristForm = ({
                 addOneFirst.liquorID = "";
               }
               handelFristFormOnChange(event, index);
-              console.log(addOneFirst);
             }}
             renderInput={(params) => (
               <TextField

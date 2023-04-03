@@ -96,15 +96,16 @@ const Payments = () => {
 
   return (
     <>
+      <button className="commonBtn " onClick={handlePrint}>
+        PRINT
+      </button>
       <section>
         <div ref={front}>
           <div className="title flex justify-center items-center">
             <h2 className="font-bold md:text-[1.5rem] text-center">
               दुकान/बार पेमेंट
             </h2>
-            <button className="commonBtn " onClick={handlePrint}>
-              PRINT
-            </button>
+            
           </div>
             <div className="divider my-2"></div>
 

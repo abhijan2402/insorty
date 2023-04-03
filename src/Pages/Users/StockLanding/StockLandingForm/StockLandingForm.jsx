@@ -40,15 +40,16 @@ const StockLandingForm = () => {
 
   return (
     <>
+      <button className="commonBtn " onClick={handlePrint}>
+        PRINT
+      </button>
       <section ref={front} className="px-2 py-6">
         <div className="title flex justify-center items-center">
           <h2 className="font-bold text-[1.5rem]">
             पार्टी का नाम/
             <span className="titleStyle">{getPartyName(id.partyId)}</span>
           </h2>
-          <button className="commonBtn " onClick={handlePrint}>
-            PRINT
-          </button>
+          
 
           {/* <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">Year</h2>
@@ -183,16 +184,18 @@ const StockLandingForm = () => {
               Add 1
             </button> */}
 
-              <Link
-                to="/user/stocklanding"
-                className="dailyReportBtn text-center flex justify-center items-center"
-              >
-                सूची
-              </Link>
+             
             </div>
           </div>
         </div>
+        
       </section>
+      <Link
+        to="/user/stocklanding"
+        className="dailyReportBtn text-center flex justify-center items-center"
+      >
+        सूची
+      </Link>
     </>
   );
 };

@@ -265,6 +265,7 @@ const WineStock = () => {
                               size.quantityInML !== 375 &&
                               size.quantityInML !== 180
                             ) {
+                              count++
                               return (
                                 <tr>
                                   <td>{count}</td>

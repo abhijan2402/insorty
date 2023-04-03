@@ -47,19 +47,19 @@ const FinalReport = () => {
 
   return (
     <>
-     
+      <button
+        className="commonBtn "
+        onClick={handlePrint}
+      >
+        PRINT
+      </button>
     <section ref={front} className="py-4 px-4">
       <div className="title flex justify-center items-center">
         <h2 className="font-bold text-[1.5rem] text-center titleStyle">
           {/* बचत व नकदी का हिसाब  */} फाइनल रिपोर्ट
         </h2>
        
-        <button
-        className="commonBtn "
-        onClick={handlePrint}
-      >
-        PRINT
-      </button>
+       
       </div>
         <div className="divider my-2"></div>
         <h2 className="font-bold text-[1.5rem]">

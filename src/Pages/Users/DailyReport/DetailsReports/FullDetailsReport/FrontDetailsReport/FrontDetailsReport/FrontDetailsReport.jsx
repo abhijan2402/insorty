@@ -247,6 +247,7 @@ const FrontDetailsReport = () => {
     );
   }
 
+  
   return (
     <section className="my-4">
       <div className="flex gap-6 items-center my-4">
@@ -316,7 +317,7 @@ const FrontDetailsReport = () => {
                     frontPage.find((entry) => {
                       const pg = pageId ? pageId : Array.from(frontSet)[0];
                       return entry._id === pg;
-                    })?.salesman
+                    }).salesmen
                   }
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक
                   :-
