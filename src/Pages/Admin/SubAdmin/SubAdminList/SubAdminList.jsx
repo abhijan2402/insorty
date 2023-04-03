@@ -79,6 +79,39 @@ const SubAdminList = () => {
     console.log("add new sub admin");
   };
 
+ const onTokenChange = (subAdminToken) => {
+    // Get the current values of "token" and "token2" from localStorage
+    const token = localStorage.getItem("token");
+    const adminToken = localStorage.getItem("token2");
+  
+    // If the shop token is different from the current token, update the tokens and redirect to the appropriate dashboard
+    if (subAdminToken !== token) {
+      // Update the "token" and "token2" values in localStorage
+      localStorage.setItem("token", subAdminToken);
+      localStorage.setItem("token2", adminToken);
+  
+      // Check whether the current user has admin privileges
+      const subAdminToken = localStorage.getItem("token");
+      const userToken = localStorage.getItem("token2");
+      const isAdmin = subAdminToken === adminToken;
+  
+      // Redirect to the appropriate dashboard based on the user's privileges
+      if (isAdmin) {
+        window.location.href = "/admin";
+      } else {
+        window.location.href = "/subadmin";
+      }
+  
+      // Log the new token value and the status of the admin privileges
+      console.log(subAdminToken, "token changed");
+      console.log("Admin privileges:", isAdmin);
+    } else {
+      console.log("Token unchanged:", token);
+    }
+  };
+  
+
+
   if (subAdminsLoading) {
     return <div>Loading...</div>;
   }
@@ -103,7 +136,9 @@ const SubAdminList = () => {
                 return (
                   <tr className="p-4 text-left" key={subAdmin?._id}>
                     <td className="border px-4 py-2 font-bold">
-                      <Link>{subAdmin?.name}</Link>
+                      <Link
+                     onClick={() => onTokenChange(subAdmin.subAdminToken)}
+                      >{subAdmin?.name}</Link>
                     </td>
 
                     <td>

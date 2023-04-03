@@ -11,16 +11,16 @@ const DashboardLayout = () => {
   const [side, setSide] = useState(true);
   const token = localStorage.getItem("token");
 
-  if (!token) {
-    return <Navigate to="/login" replace />;
-  }
+  // if (!token) {
+  //   return <Navigate to="/login" replace />;
+  // }
 
-  if (token) {
-    const decode = jwtDecode(token);
-    if (decode.role !== "shop") {
-      return <Navigate to="/login" replace />;
-    }
-  }
+  // if (token) {
+  //   const decode = jwtDecode(token);
+  //   if (decode.role !== "shop") {
+  //     return <Navigate to="/login" replace />;
+  //   }
+  // }
 
   return (
     <>

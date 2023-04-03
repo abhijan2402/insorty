@@ -72,6 +72,16 @@ const AdminSideNav = () => {
               </NavLink>
             </li>
 
+
+            <li className="my-4">
+              <NavLink
+                to="/admin/shopParmisson"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                Shop Parmisson
+              </NavLink>
+            </li>
+
             <hr className="mt-4 mb-2" />
 
             <Link>
