@@ -2,6 +2,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 import { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+
 import useGetShopsNSubadmins from "../../../../Hooks/useGetShopsNSubadmins";
 import Loader from "../../../../Components/Loader/Loader";
 import Swal from "sweetalert2";
@@ -45,6 +46,7 @@ const token = localStorage.getItem('token')
     setShopParmisson([...shopParmisson, shopParmissonTemplate]);
   };
 
+
   const onChange = (type, event, index) => {
 
     if (type === "permissions") {
@@ -83,10 +85,7 @@ const token = localStorage.getItem('token')
 
   const hendelSubmit = (e) => {
     e.preventDefault();
-    // const shopsData = Object.assign({}, shopParmisson);
-    // const subAdminNames = subAdminName;
 
-    // console.log(shopsData, subAdminNames);
     let shopDetails=[]
     for (let index = 0; index < shopParmisson.length; index++) {
       const element = shopParmisson[index]
@@ -160,6 +159,7 @@ const token = localStorage.getItem('token')
           <label className="label">
             <span className="label-text">SubAdmin Name</span>
           </label>
+
           <Autocomplete
             size="small"
             style={{
@@ -203,6 +203,7 @@ const token = localStorage.getItem('token')
         </div>
 
         <form onSubmit={hendelSubmit}>
+
           {shopParmisson.map((shop, index) => {
             return (
               <div key={index}>
@@ -232,6 +233,7 @@ const token = localStorage.getItem('token')
                   <Autocomplete
                     size="small"
                     style={{
+
                       width: "20rem",
                     }}
                     options={
@@ -268,6 +270,7 @@ const token = localStorage.getItem('token')
                   />
                 </div>
 
+
                 {/* <div className="form-control">
                   <select
                     className="select w-full"
@@ -289,6 +292,7 @@ const token = localStorage.getItem('token')
                     <option value={"DELETE"}>DELETE</option>
                     <option value={"PUT"}>PUT</option>
                   </select>
+
                 </div> */}
 
                 <div className="form-control w-52">

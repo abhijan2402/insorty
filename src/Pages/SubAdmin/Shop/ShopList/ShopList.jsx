@@ -67,6 +67,40 @@ const ShopList = () => {
       });
   };
 
+
+
+  const onTokenChange = (Shoptoken) => {
+    // Get the current values of "token" and "token2" from localStorage
+    const token = localStorage.getItem("token");
+    const subAdminToken = localStorage.getItem("token2");
+  
+    // If the shop token is different from the current token, update the tokens and redirect to the appropriate dashboard
+    if (Shoptoken !== token) {
+      // Update the "token" and "token2" values in localStorage
+      localStorage.setItem("token", Shoptoken);
+      localStorage.setItem("token2", subAdminToken);
+  
+      // Check whether the current user has admin privileges
+      const shopToken = localStorage.getItem("token");
+      const userToken = localStorage.getItem("token2");
+      const isSubAdmin = shopToken === subAdminToken;
+  
+      // Redirect to the appropriate dashboard based on the user's privileges
+      if (isSubAdmin) {
+        window.location.href = "/subadmin";
+      } else {
+        window.location.href = "/user";
+      }
+  
+      // Log the new token value and the status of the admin privileges
+      console.log(Shoptoken, "token changed");
+      console.log("Admin privileges:", isSubAdmin);
+    } else {
+      console.log("Token unchanged:", token);
+    }
+  };
+  
+
   if (shopsLoaded) {
     return <Loader></Loader>;
   }
@@ -100,7 +134,9 @@ const ShopList = () => {
                   return (
                     <tr className="p-4 text-left">
                       <td className="border px-4 py-2 font-bold">
-                        <Link>{shop?.shopId?.name} </Link>
+                        <Link
+                         onClick={() => onTokenChange(shop.shopToken)}
+                        >{shop?.shopId?.name} </Link>
                       </td>
                       <td>
                         <div className="flex gap-4 items-center justify-end">
