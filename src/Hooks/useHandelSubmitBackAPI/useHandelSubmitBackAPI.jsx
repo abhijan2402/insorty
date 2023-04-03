@@ -329,7 +329,7 @@ const useHandelSubmitBackAPI = () => {
 
     setIsLoading(true);
     try {
-      const api1 = fetch(
+      const api2 = fetch(
         "https://insorty-api.onrender.com/shop/addBackPageRMLData",
         {
           method: "POST",
@@ -341,7 +341,7 @@ const useHandelSubmitBackAPI = () => {
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
-      const api2 = fetch(
+      const api4 = fetch(
         "https://insorty-api.onrender.com/shop/addTotalExpensesData",
         {
           method: "POST",
@@ -354,7 +354,7 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      const api3 = fetch(
+      const api8 = fetch(
         "https://insorty-api.onrender.com/shop/addBorrowedData",
         {
           method: "POST",
@@ -367,7 +367,7 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      const api4 = fetch(
+      const api9 = fetch(
         "https://insorty-api.onrender.com/shop/addFinalReportData",
         {
           method: "POST",
@@ -390,7 +390,7 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      const api5 = fetch(
+      const api3 = fetch(
         "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
         {
           method: "POST",
@@ -403,7 +403,7 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      const api6 = fetch(
+      const api5 = fetch(
         "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
         {
           method: "POST",
@@ -426,7 +426,7 @@ const useHandelSubmitBackAPI = () => {
         headers: { "Content-Type": "application/json", cookie_token: token },
       });
 
-      const api8 = fetch(
+      const api6 = fetch(
         "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
         {
           method: "POST",
@@ -439,7 +439,7 @@ const useHandelSubmitBackAPI = () => {
         }
       );
 
-      const api9 = fetch(
+      const api1 = fetch(
         "https://insorty-api.onrender.com/shop/addBackPageReportData",
         {
           method: "POST",
@@ -479,37 +479,77 @@ const useHandelSubmitBackAPI = () => {
             data[8].success === true 
             // data[9].success === true
           ) {
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: "Data Saved Successfully",
-            });
-            localStorage.removeItem("firstFront");
-            localStorage.removeItem("firstBack");
-            localStorage.removeItem("purchases");
-            localStorage.removeItem("mlForm");
-            localStorage.removeItem("credit");
-            localStorage.removeItem("expenses");
-            localStorage.removeItem("paymentRecieved");
-            localStorage.removeItem("borrow");
-            localStorage.removeItem("rml");
-            localStorage.removeItem("BeerForm");
-            localStorage.removeItem("bhejan");
-            localStorage.removeItem("drDate");
-            localStorage.removeItem("creditTotal");
-            localStorage.removeItem("salesMan");
-            localStorage.removeItem("totalExpenses");
-            localStorage.removeItem("totalFirstBack");
-            localStorage.removeItem("totalPaymentsRecieved");
-            localStorage.removeItem("rmlTotal");
-            localStorage.removeItem("purchasesTotal");
-            localStorage.removeItem("beerTotal");
-            localStorage.removeItem("pichlaBakaya");
-            localStorage.removeItem("commisionTotal");
-            localStorage.removeItem("totalBorrow");
-            localStorage.removeItem("beerFormTotal");
-            localStorage.removeItem("udhaariTotal");
-            localStorage.removeItem("mlFormTotal");
+
+            let BackPage = {
+              dailyReport: data[0].data._id,
+              RML: data[1].data._id,
+              purchaseOutSide: data[2].data._id,
+              totalExpense: data[3].data._id,
+              borrowedCashReturn: data[4].data._id,
+              purchaseBorrow: data[5].data._id,
+              send: data[6].data._id,
+              borrowed: data[7].data._id,
+              finalReport: data[8].data._id
+            }
+
+            fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                cookie_token: token,
+              },
+              body: JSON.stringify({BackPage}),
+            })
+              .then((res) => res.json())
+              .then((data1) => {
+                console.log(data1);
+                if (data1.success===true) {
+                  
+                  Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Data Saved Successfully",
+                  });
+                  localStorage.removeItem("firstFront");
+                  localStorage.removeItem("firstBack");
+                  localStorage.removeItem("purchases");
+                  localStorage.removeItem("mlForm");
+                  localStorage.removeItem("credit");
+                  localStorage.removeItem("expenses");
+                  localStorage.removeItem("paymentRecieved");
+                  localStorage.removeItem("borrow");
+                  localStorage.removeItem("rml");
+                  localStorage.removeItem("BeerForm");
+                  localStorage.removeItem("bhejan");
+                  localStorage.removeItem("drDate");
+                  localStorage.removeItem("creditTotal");
+                  localStorage.removeItem("salesMan");
+                  localStorage.removeItem("totalExpenses");
+                  localStorage.removeItem("totalFirstBack");
+                  localStorage.removeItem("totalPaymentsRecieved");
+                  localStorage.removeItem("rmlTotal");
+                  localStorage.removeItem("purchasesTotal");
+                  localStorage.removeItem("beerTotal");
+                  localStorage.removeItem("pichlaBakaya");
+                  localStorage.removeItem("commisionTotal");
+                  localStorage.removeItem("totalBorrow");
+                  localStorage.removeItem("beerFormTotal");
+                  localStorage.removeItem("udhaariTotal");
+                  localStorage.removeItem("mlFormTotal");
+                }
+                else {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                  });
+                }
+              }
+              
+              )
+            console.log(BackPage)
+              
+            
           } else {
             Swal.fire({
               icon: "error",

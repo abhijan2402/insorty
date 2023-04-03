@@ -602,7 +602,7 @@ const AddOneFristFromBack = ({
                 className="smallinput"
                 name="mainRate330"
                 value={item.mainRate330}
-                onChatruenge={(event) => onChangeFristBackFormHandler(event, index)}
+                onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
           </div>
