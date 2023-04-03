@@ -82,6 +82,15 @@ const AdminSideNav = () => {
                 Shop Permisson
               </NavLink>
             </li>
+            <li className="my-4">
+              <NavLink
+                to="/admin/brandlist"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+
+                Brand List
+              </NavLink>
+            </li>
 
             <hr className="mt-4 mb-2" />
 

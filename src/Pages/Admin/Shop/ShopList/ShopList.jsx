@@ -123,12 +123,7 @@ const ShopList = () => {
       <div className="title">
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">Shop List</h2>
-          <Link to="/" className="commonBtn ">
-            Sub Admin List
-          </Link>
-          <Link to="/user" className="commonBtn ">
-            User List
-          </Link>
+         
         </div>
         <div className="divider my-2"></div>
       </div>

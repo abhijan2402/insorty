@@ -16,9 +16,7 @@ const AddItems = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center flex-wrap">
-          <Link className="commonBtn" to="/user/brandlist">
-            Brand List
-          </Link>
+       
           
           <Link className="commonBtn " to="/user/branchname">
             Branch Name

@@ -149,7 +149,7 @@ const token = localStorage.getItem('token')
     <section>
       <div className="title">
         <div className="flex gap-4 shopParmissons-center my-4">
-          <h2 className="font-bold text-[1.5rem]">Shop Parmisson</h2>
+          <h2 className="font-bold text-[1.5rem]">Shop Permisson</h2>
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -157,7 +157,7 @@ const token = localStorage.getItem('token')
       <div className="w-2/3 mx-auto border shadow-lg p-6">
         <div className="form-control mb-2">
           <label className="label">
-            <span className="label-text">SubAdmin Name</span>
+           Sub Admin Name
           </label>
 
           <Autocomplete
@@ -207,29 +207,12 @@ const token = localStorage.getItem('token')
           {shopParmisson.map((shop, index) => {
             return (
               <div key={index}>
-                {/* <div className="form-control mb-2">
-                  <label className="label">
-                    <span className="label-text">Shop Name</span>
-                  </label>
-                  <input
-                    style={{
-                      width: "100%",
-                      height: "2.8rem",
-                      borderRadius: "0.5rem",
-                      border: "1px solid #e2e8f0",
-                      textAlign: "left",
-                      paddingLeft: "1rem",
-                      paddingRight: "1rem",
-                    }}
-                    className="px-6"
-                    type="text"
-                    name="shopName"
-                    value={shopParmisson.shopName}
-                    onChange={(event) => onChange(event, index)}
-                  />
-                </div> */}
+               
 
                 <div className="form-control mb-2">
+                  <label className="label">
+                    Shop Name
+                  </label>
                   <Autocomplete
                     size="small"
                     style={{

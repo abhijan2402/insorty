@@ -32,12 +32,7 @@ const BrandList = () => {
           <h2 className="font-bold md:text-[1.5rem] text-center">
             ब्राण्ड सूची
           </h2>
-          <Link to="/user/branchname" className="commonBtn ">
-            Branch
-          </Link>
-          <Link to="/user/partyname" className="commonBtn ">
-            Party
-          </Link>
+          
         </div>
         <div className="divider my-2"></div>
       </div>

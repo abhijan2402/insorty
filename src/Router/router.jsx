@@ -102,7 +102,11 @@ const router = createBrowserRouter([
       {
         path: "/admin/shopParmisson",
         element: <ShopParmisson />,
-      }
+      },
+      {
+        path: "/admin/brandlist",
+        element: <BrandList />,
+      },
     ],
   },
   {
