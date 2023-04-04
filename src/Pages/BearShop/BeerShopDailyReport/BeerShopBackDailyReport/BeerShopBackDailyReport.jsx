@@ -29,10 +29,10 @@ const BackDailyReport = () => {
               Daily Report / दैनिक रिपोर्ट{" "}
             </h1>
 
-            <div className="my-4">
+            <div className="my-4 mx-4">
               <Link
                 to="/user/bearshop/dailyreport/front"
-                className="btn btn-error text-white font-bold"
+                className="commonBtn"
               >
                 Front
               </Link>
@@ -45,7 +45,7 @@ const BackDailyReport = () => {
           <div className="py-6">
             <h1 className="my-4">
               <span className="font-bold titleText">
-                कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
+              अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
               </span>
             </h1>
 
@@ -142,7 +142,7 @@ const BackDailyReport = () => {
             </form>
             {/******************** Add Button   ********************/}
             <div>
-              <div className="mt-4 flex ">
+              <div className="mt-4 flex gap-4">
                 <button onClick={firstFormAddFive} className="dailyReportBtn">
                   ADD 5
                 </button>
@@ -157,7 +157,7 @@ const BackDailyReport = () => {
           <div className="py-6">
             <h1 className="my-4">
               <span className="font-bold titleText">
-                अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
+              अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
               </span>
             </h1>
             <form action="">
@@ -236,7 +236,7 @@ const BackDailyReport = () => {
           <div className="py-6">
             <h1 className="my-4 specialwidth">
               <span className="font-bold titleText ">
-                पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
+              कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
               </span>
             </h1>
             <form action="">
@@ -361,7 +361,7 @@ const BackDailyReport = () => {
             </form>
             {/******************** Add Button   ********************/}
             <div>
-              <div className="mt-4 flex ">
+              <div className="mt-4 flex gap-4">
                 <button className="dailyReportBtn" onClick={addFiveSecondForm}>
                   ADD 5
                 </button>
@@ -376,7 +376,7 @@ const BackDailyReport = () => {
           <div className="py-6">
             <h1 className="my-4">
               <span className="font-bold titleText">
-                पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
+              पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
               </span>
             </h1>
             <form action="">
