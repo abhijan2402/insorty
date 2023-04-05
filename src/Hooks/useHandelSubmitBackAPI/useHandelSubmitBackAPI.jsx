@@ -348,6 +348,7 @@ const useHandelSubmitBackAPI = () => {
           body: JSON.stringify({
             date: drDate,
             salesmen: salesMan,
+            
             entries: entriesExpances,
           }),
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -396,6 +397,7 @@ const useHandelSubmitBackAPI = () => {
           method: "POST",
           body: JSON.stringify({
             date: drDate,
+            
             salesmen: salesMan,
             entries: purchaseOutSideData,
           }),
