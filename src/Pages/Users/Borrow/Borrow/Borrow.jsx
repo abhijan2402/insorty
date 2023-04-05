@@ -40,7 +40,7 @@ const Borrow = () => {
         className="commonBtn "
         onClick={handlePrint}
       >
-        PRINT
+            प्रिंट
       </button>
       </div>
         <div className="divider my-2"></div>
@@ -55,7 +55,7 @@ const Borrow = () => {
               <thead>
                 <tr>
                   <th> क्र. सं.</th>
-                  <th>Party Name / पार्टी का नाम</th>
+                  <th> पार्टी का नाम</th>
                   <th>नामे </th>
                   <th>जमा </th>
                   <th>चालू शेष</th>

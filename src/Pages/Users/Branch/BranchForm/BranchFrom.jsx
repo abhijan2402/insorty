@@ -50,7 +50,7 @@ const BranchFrom = () => {
       <div className="flex justify-center items-center">
         
         <button className="commonBtn " onClick={handlePrint}>
-          PRINT
+          प्रिंट
         </button>
       </div>
       <section ref={front} className="p-4">
@@ -61,7 +61,7 @@ const BranchFrom = () => {
 
             
               <h2 className="font-bold md:text-[1.5rem] text-center">
-                Branch Name / ब्रांच नाम:-
+                ब्रांच नाम:-
                 <span className="titleStyle"> {transactions.branchName}</span>
               </h2>
 
@@ -103,10 +103,10 @@ const BranchFrom = () => {
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
-                    <th>Date / दिनांक</th>
-                    <th>debit / नामे </th>
-                    <th>Deposit / जमा</th>
-                    <th>Running Balance / चालू शेष जमा</th>
+                    <th>दिनांक</th>
+                    <th>नामे </th>
+                    <th>जमा</th>
+                    <th>चालू शेष जमा</th>
                   </tr>
                 </thead>
 

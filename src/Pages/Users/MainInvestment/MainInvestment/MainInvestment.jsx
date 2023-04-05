@@ -33,7 +33,7 @@ const MainInvestment = () => {
         className="commonBtn "
         onClick={handlePrint}
       >
-        PRINT
+        प्रिंट
       </button>
 
     <section ref={front} className="my-2">
@@ -53,9 +53,9 @@ const MainInvestment = () => {
                 <tr className="text-center">
                   <th> क्र. सं.</th>
                   <th></th>
-                  <th>Detail</th>
-                  <th>दिनांक / Date</th>
-                  <th>रकम/ price</th>
+                    <th>विवरण</th>
+                  <th>दिनांक </th>
+                  <th>रकम</th>
                 </tr>
               </thead>
 
@@ -76,7 +76,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput wd-8"
+                      className="dailyReportInput wd-9"
                       defaultValue={data.mainInvest.previousLoan.price}
                       onChange={(event) =>
                         handleInvestmentChange(
@@ -104,7 +104,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput wd-8"
+                      className="dailyReportInput wd-9"
                       defaultValue={data.mainInvest.cashInHand.price}
                       onChange={(event) =>
                         handleInvestmentChange("cashInHand", event.target.value)
@@ -157,7 +157,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput wd-8"
+                      className="dailyReportInput wd-9"
                       value={data.mainInvest.reserveAmount.price}
                       readOnly
                     />
@@ -188,7 +188,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput wd-8"
+                      className="dailyReportInput wd-9"
                       defaultValue={data.mainInvest.total}
                         handleRemoveFields={handleRemoveFields}
 
@@ -222,9 +222,9 @@ const MainInvestment = () => {
               <tr className="text-center">
                 <th> क्र. सं.</th>
                 <th></th>
-                <th>Type </th>
-                <th>दिनांक / Date</th>
-                <th>रकम/ price</th>
+                  <th>रिफंड / रिकवरी </th>
+                <th>दिनांक </th>
+                <th>रकम</th>
               </tr>
             </thead>
             <tbody>
@@ -276,9 +276,9 @@ const MainInvestment = () => {
               <tr className="text-center">
                 <th className="text-center"> क्र. सं.</th>
                 <th></th>
-                <th className="text-center">विवरण/ Details</th>
-                <th className="text-center">माह / Month</th>
-                <th className="text-center">रकम/ price</th>
+                <th className="text-center">विवरण</th>
+                <th className="text-center">माह</th>
+                <th className="text-center">रकम</th>
               </tr>
             </thead>
             <tbody>

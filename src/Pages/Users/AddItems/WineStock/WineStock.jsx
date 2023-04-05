@@ -101,7 +101,7 @@ const WineStock = () => {
             देशी
           </Link>
           <button className="commonBtn " onClick={handlePrint}>
-            PRINT
+            प्रिंट
           </button>
         </div>
         <div className="divider my-2"></div>
@@ -143,11 +143,11 @@ const WineStock = () => {
               <thead>
                 <tr>
                   <th> क्र. सं.</th>
-                  <th>ब्राण्ड/ Brand Name </th>
-                  <th colSpan={3}>स्टॉक / stock</th>
-                  <th colSpan={3}>Avg. Rate / रेट</th>
-                  <th colSpan={3}>Total / योग</th>
-                  <th>कुल योग/ Amount</th>
+                  <th>ब्राण्ड</th>
+                  <th colSpan={3}>स्टॉक </th>
+                  <th colSpan={3}> रेट</th>
+                  <th colSpan={3}> योग</th>
+                  <th>कुल योग</th>
                 </tr>
               </thead>
               <tbody>
@@ -248,11 +248,11 @@ const WineStock = () => {
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
-                      <th>ब्राण्ड/ Brand Name </th>
-                      <th>size </th>
-                      <th>स्टॉक / stock</th>
-                      <th>Avg. Rate / रेट</th>
-                      <th>Total / योग</th>
+                      <th>ब्राण्ड</th>
+                    <th>साईज </th>
+                      <th>स्टॉक</th>
+                      <th> रेट</th>
+                      <th> योग</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -293,7 +293,7 @@ const WineStock = () => {
                       );
                     })}
                     <tr>
-                      <td colSpan="5">Total</td>
+                    <td colSpan="5">कुल योग</td>
                       <td>
                         {filteredData.reduce(
                           (total, currentItem) =>

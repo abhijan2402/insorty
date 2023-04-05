@@ -28,13 +28,11 @@ const BranchName = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 justify-center items-center">
-          <h2 className="font-bold text-[1.5rem] text-center">Branch name</h2>
+          <h2 className="font-bold text-[1.5rem] text-center">ब्रांच जोड़ें</h2>
           <Link to="/user/partyname" className="commonBtn ">
-            Party name
+            पार्टी जोड़ें
           </Link>
-          <Link to="/user/branchname" className="commonBtn ">
-            Brand List
-          </Link>
+          
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -42,15 +40,13 @@ const BranchName = () => {
         <table className="table w-4/5 removeCommonWSpace">
           <thead className="text-center ">
             <th>
-              <h1>Sr. No.</h1>
+              <h1>क्र. सं.</h1>
             </th>
             <th>
-              <h1>Brand Name</h1>
+              <h1>ब्रांच नाम</h1>
             </th>
 
-            <th>
-              <h1>Action</h1>
-            </th>
+            
           </thead>
           <tbody>
             {BranchNameData?.map((item, index) => {
@@ -62,12 +58,7 @@ const BranchName = () => {
                   <td>
                     <h1>{item?.branchName}</h1>
                   </td>
-                  <td>
-                    <Link
-                      className="font-3xl font-bold"
-                      style={{ color: "#AA237A" }}
-                    ></Link>
-                  </td>
+                  
                 </tr>
               );
             })}
@@ -77,7 +68,7 @@ const BranchName = () => {
       <div className="flex justify-center">
         <div className="my-4">
           <label htmlFor="AddPartyName" className="commonBtn">
-            Add New
+            नई ब्रांच जोड़ें
           </label>
         </div>
       </div>

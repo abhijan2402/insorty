@@ -50,12 +50,12 @@ const AddPartyName = ({refetch}) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Add Party Name/ पार्टी का नाम</h3>
+          <h3 className="text-lg font-bold">नई पार्टी जोड़ें</h3>
           <div className="my-4">
             <form action="" onSubmit={handleSubmit}>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-bold">Brand Name</span>
+                  <span className="label-text font-bold">पार्टी का नाम</span>
                 </label>
                 <input
                   type="text"

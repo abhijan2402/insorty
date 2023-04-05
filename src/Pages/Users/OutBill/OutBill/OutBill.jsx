@@ -66,10 +66,10 @@ const OutBill = () => {
             className="commonBtn "
             onClick={handlePrint}
           >
-            PRINT
+            प्रिंट
           </button>
           <Link className="commonBtn" to="/user/selfbill">
-            Self Bill
+            दुकान बिल
           </Link>
         </div>
 
@@ -77,7 +77,7 @@ const OutBill = () => {
         <div>
 
           <h2 className="font-bold md:text-[1.5rem] text-center">
-            बाहर के बिल का फोर्मेट
+              बाहर का बिल
           </h2>
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
@@ -115,12 +115,12 @@ const OutBill = () => {
             <thead>
               <tr>
                 <td> क्र. सं.</td>
-                <th>Date</th>
-                <th>ब्राण्ड/ Brand Name </th>
-                <th>साईज / ml</th>
-                <th>Number / संख्या</th>
-                <th>Rate / रेट</th>
-                <th>Amount / रकम</th>
+                    <th>दिनाक</th>
+                <th>ब्राण्ड</th>
+                <th>साईज </th>
+                <th>संख्या</th>
+                <th>रेट</th>
+                <th>रकम</th>
               </tr>
             </thead>
             <tbody>

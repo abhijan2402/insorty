@@ -52,16 +52,15 @@ const AddSendFormat = () => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Add new partner</h3>
+          <h3 className="text-lg font-bold">नया पार्टनर जोड़ें</h3>
           <div className="py-4">
             <form action="" onSubmit={handelSubmit}>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Partner Name</span>
+                  <span className="label-text">पार्टनर नाम</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Partner Name"
                   name="partnerName"
                   className="input input-bordered"
                   style={{

@@ -21,13 +21,13 @@ const SendFormat = () => {
         <div className="flex gap-4 items-center justify-center">
          
           <Link className="commonBtn" to="/user/partners">
-            Partner
+            पार्टनर खाते
           </Link>
           <button
             className="commonBtn "
             onClick={handlePrint}
           >
-            PRINT
+            प्रिंट
           </button>
         </div>
 
@@ -38,7 +38,7 @@ const SendFormat = () => {
         <section ref={front}>
       <div className="mx-6 flex justify-center flex-col">
         <h2 className="font-bold md:text-[1.5rem] text-center">
-          All Partner
+              सभी पार्टनर
         </h2>
         <div className="flex justify-center items-center flex-col">
           <table className="removeCommonWSpace ">
@@ -46,9 +46,9 @@ const SendFormat = () => {
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                <th>Partner Name/पार्टनर नाम</th>
-                <th>Partner Percentage</th>
-                <th>Balance</th>
+                <th>पार्टनर नाम</th>
+                    <th>हिस्सा</th>
+                    <th>खाते में शेष</th>
               </tr>
             </thead>
             <tbody>
@@ -72,10 +72,10 @@ const SendFormat = () => {
 
         <div className="flex justify-center ">
           <label htmlFor="addFormat" className="btn bg-[#AA237A] my-4 mx-4">
-            Add new Partner
+              नया पार्टनर जोड़ें
           </label>
           <label htmlFor="changeShare" className="btn bg-[#AA237A] my-4">
-            Change Share
+              शेयर बदलें
           </label>
         </div>
       </div>

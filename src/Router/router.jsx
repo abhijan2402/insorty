@@ -146,17 +146,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/branch/from/:branchId",
-        loader: ({ params }) =>
-          fetch(`https://insorty-api.onrender.com/shop/getBranchTransactions`, {
-            method: "POST",
-            body: JSON.stringify({
-              branchId: params.branchId,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-          }),
+       
         element: <BranchFrom />,
       },
       {
@@ -235,17 +225,7 @@ const router = createBrowserRouter([
 
       {
         path: "/user/salary/from/:employeeId",
-        loader: ({ params }) =>
-          fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
-            method: "POST",
-            body: JSON.stringify({
-              employeeId: params.employeeId,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-          }),
+       
         element: <SalaryForm />,
       },
       {

@@ -38,10 +38,7 @@ const PartnerForm = ({ partner, StartDate, index, EndDate }) => {
             <div className="form-control">
               <Link
                 to={`/user/partners/from/${partnerId}`}
-                style={{
-                  cursor: "pointer",
-                }}
-                className="dailyReportInput"
+               
               >
                 {partner.name}
               </Link>
@@ -49,43 +46,26 @@ const PartnerForm = ({ partner, StartDate, index, EndDate }) => {
           </td>
           <td>
             <div className="form-control">
-              <input
-                type="number"
-                disabled
-                value={transact.reduce(
-                  (total, currentItem) => (total = total + currentItem.debit),
-                  0
-                )}
-                className="dailyReportInput"
-              />
+              {transact.reduce(
+                (total, currentItem) => (total = total + currentItem.debit),
+                0
+              )}
             </div>
           </td>
 
           <td>
             <div className="form-control">
-              <input
-                type="number"
-                disabled
-                value={transact.reduce(
+             {transact.reduce(
                   (total, currentItem) => (total = total + currentItem.deposit),
                   0
                 )}
-                className="dailyReportInput"
-              />
             </div>
           </td>
 
           <td>
             <div className="flex gap-4">
               <div className="form-control">
-                <input
-                  type="number"
-                  name="remaining"
-                  disabled
-                  // if vale is greater than 0 then show in remaining
-                  value={remaining_debit}
-                  className="commonSmallForm"
-                />
+                {remaining_debit}
               </div>
             </div>
           </td>

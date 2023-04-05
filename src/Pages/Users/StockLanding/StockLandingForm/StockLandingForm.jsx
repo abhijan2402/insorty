@@ -41,7 +41,7 @@ const StockLandingForm = () => {
   return (
     <>
       <button className="commonBtn " onClick={handlePrint}>
-        PRINT
+        प्रिंट
       </button>
       <section ref={front} className="px-2 py-6">
         <div className="title flex justify-center items-center">
@@ -68,10 +68,10 @@ const StockLandingForm = () => {
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
-                    <th colSpan={2}>Brand Name/ ब्राण्ड</th>
-                    <th colSpan={2}>आमद/Inflow</th>
-                    <th colSpan={2}>भेजान/ Send </th>
-                    <th colSpan={2}>शेष/Remaining</th>
+                    <th colSpan={2}>ब्राण्ड</th>
+                    <th colSpan={2}>आमद</th>
+                    <th colSpan={2}>भेजान </th>
+                    <th colSpan={2}>शेष</th>
                   </tr>
                 </thead>
 
@@ -82,7 +82,7 @@ const StockLandingForm = () => {
                     <td>
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">Brand Name</span>
+                          <span className="label-text">ब्राण्ड</span>
                         </label>
                       </div>
                     </td>
@@ -90,7 +90,7 @@ const StockLandingForm = () => {
                     <td>
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">साईज/ml</span>
+                          <span className="label-text">साईज</span>
                         </label>
                       </div>
                     </td>
@@ -98,7 +98,7 @@ const StockLandingForm = () => {
                     <td>
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">संख्या/Number</span>
+                          <span className="label-text">संख्या</span>
                         </label>
                       </div>
                     </td>
@@ -106,7 +106,7 @@ const StockLandingForm = () => {
                     <td>
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">टिप्पणी/Comment</span>
+                          <span className="label-text">टिप्पणी</span>
                         </label>
                       </div>
                     </td>
@@ -114,7 +114,7 @@ const StockLandingForm = () => {
                     <td>
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">संख्या/Number</span>
+                          <span className="label-text">संख्या</span>
                         </label>
                       </div>
                     </td>
@@ -122,7 +122,7 @@ const StockLandingForm = () => {
                     <td>
                       <div className="form-control">
                         <label className="label">
-                          <span className="label-text">टिप्पणी/Comment</span>
+                          <span className="label-text">टिप्पणी</span>
                         </label>
                       </div>
                     </td>
@@ -130,14 +130,14 @@ const StockLandingForm = () => {
                     <td>
                       <div className="flex gap-4">
                         <div className="form-control">
-                          <label className="label">जमा/Deposit</label>
+                          <label className="label">जमा</label>
                         </div>
                       </div>
                     </td>
 
                     <td>
                       <div className="form-control">
-                        <label className="label">नामे/ Debit</label>
+                        <label className="label">नामे</label>
                       </div>
                     </td>
 

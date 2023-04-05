@@ -55,8 +55,8 @@ const SideNav = () => {
           <hr className="mt-4 mb-2" />
         </div>
 
-        <div className="flex flex-col justify-between flex-1 mt-[12rem] md:mt-[9rem]">
-          <nav>
+        <div className="flex flex-col justify-between flex-1 mt-[12rem] md:mt-[9rem] ">
+          <nav className="text-center	">
             <li className="my-4">
               <NavLink
                 to="/user/dailyreport"
@@ -77,10 +77,28 @@ const SideNav = () => {
 
             <li className="my-4">
               <NavLink
+                to="/user/maininvestment"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                मुख्य इन्वेस्ट
+              </NavLink>
+            </li>
+
+            <li className="my-4">
+              <NavLink
                 to="/user/branch"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 ब्रांच
+              </NavLink>
+            </li>
+
+            <li className="my-4">
+              <NavLink
+                to="/user/borrow"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                पार्टी
               </NavLink>
             </li>
 
@@ -95,74 +113,10 @@ const SideNav = () => {
 
             <li className="my-4">
               <NavLink
-                to="/user/payments"
+                to="/user/stock"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                दुकान पेमेंट
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/commisionroute"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                कमीशन
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/borrow"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                उधारी
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/finalreport"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                अंतिम रिपोर्ट
-              </NavLink>
-            </li>
-
-            {/* <li className="my-4">
-              <NavLink
-                to="/user/selfbill"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Self Bill / दुकान बिल का फोर्मेट
-              </NavLink>
-            </li> */}
-            {/* 
-            <li className="my-4">
-              <NavLink
-                to="/user/outbill"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Out Bill / बाहर के बिल का फोर्मेट
-              </NavLink>
-            </li> */}
-            {/*  Wine Bill /  */}
-
-            <li className="my-4">
-              <NavLink
-                to="/user/winebill"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                वाइन बिल
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/maininvestment"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                मुख्य इन्वेस्ट
+                स्टॉक
               </NavLink>
             </li>
 
@@ -171,24 +125,26 @@ const SideNav = () => {
                 to="/user/stocklanding"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Stock Lending
+                स्टॉक जमा नामे
+
               </NavLink>
             </li>
 
             <li className="my-4">
               <NavLink
-                to="/user/allItems"
+                to="/user/winebill"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Add Items
+                शराब  बिल
               </NavLink>
             </li>
+
             <li className="my-4">
               <NavLink
-                to="/user/stock"
+                to="/user/commisionroute"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Stock
+                कमीशन आदि
               </NavLink>
             </li>
 
@@ -209,6 +165,52 @@ const SideNav = () => {
                 अन्य से नकद प्राप्ति
               </NavLink>
             </li>
+
+            <li className="my-4">
+              <NavLink
+                to="/user/finalreport"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                अंतिम रिपोर्ट
+              </NavLink>
+            </li>
+
+            <li className="my-4">
+              <NavLink
+                to="/user/payments"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                दुकान पेमेंट
+              </NavLink>
+            </li>
+
+           
+
+            
+
+            
+
+            
+
+           
+
+           
+
+           
+
+            <li className="my-4">
+              <NavLink
+                to="/user/allItems"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                Add Items
+              </NavLink>
+            </li>
+            
+
+            
+
+           
 
             <button
               onClick={() => logout({ returnTo: window.location.origin })}

@@ -54,35 +54,36 @@ const Burger = () => {
             className="commonBtn "
             onClick={handlePrint}
           >
-            PRINT
+            प्रिंट
           </button>
-        <Link className="commonBtn" to="/user/commisson">
-            COMMISSION
+          <Link className="commonBtn" to="/user/commisson">
+            कमीशन
           </Link>
+
           <Link className="commonBtn " to="/user/kharcha">
-            KHARCHA
+            खर्चा
           </Link>
 
           <Link className="commonBtn " to="/user/fut">
-            FUT
+            फूट
           </Link>
 
           <Link className="commonBtn " to="/user/monthly">
-            MONTHLY
+            मंथली
           </Link>
 
           <Link className="commonBtn " to="/user/penalty">
-            PENALTY
+            पेनाल्टी
           </Link>
 
           <Link className="commonBtn " to="/user/others">
-            OTHERS
+            अन्य
           </Link>
         </div>
 
         <div ref={front}>
         <div>
-            <h2 className="font-bold md:text-[1.5rem] text-center">BEGAR</h2>
+            <h2 className="font-bold md:text-[1.5rem] text-center">बेगार</h2>
 
 
 

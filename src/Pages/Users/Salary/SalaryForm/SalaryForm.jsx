@@ -115,18 +115,18 @@ const SalaryForm = () => {
   return (
     <section className="px-2 py-6">
       <button className="commonBtn " onClick={handlePrint}>
-        PRINT
+        प्रिंट
       </button>
       <div ref={front}>
         <div className="flex justify-center items-center">
           <div className="title">
             <h2 className="font-bold text-[1.5rem]">
-              कर्माचीरी का नाम / Name{" "}
+              कर्माचीरी का नाम :- {" "}
               <span className="titleStyle">{salareyDataList.name}</span>
             </h2>
 
             <div className="flex gap-4 items-center my-4">
-              <h2 className="font-bold text-[1.5rem]">Year</h2>
+              <h2 className="font-bold text-[1.5rem]">वर्ष</h2>
               <input
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
@@ -148,10 +148,10 @@ const SalaryForm = () => {
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
-                    <th colSpan={2}>Salary / वेतन</th>
-                    <th colSpan={2}>Payment / भुगतान</th>
-                    <th>Shesh </th>
-                    <th>reason /टिप्पणी</th>
+                    <th colSpan={2}> वेतन</th>
+                    <th colSpan={2}> भुगतान</th>
+                    <th>शेष </th>
+                    <th>टिप्पणी</th>
                   </tr>
                 </thead>
 
@@ -303,7 +303,7 @@ const SalaryForm = () => {
       <div>
         <div className="mt-4 flex justify-center items-center gap-4">
           <label htmlFor="addData" className="commonBtn">
-            Add Now
+            लेन-देन जोड़ें
           </label>
 
           <Link

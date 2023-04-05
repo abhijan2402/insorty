@@ -49,12 +49,12 @@ const AddBranchName = ({ refetch }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Add Branch</h3>
+          <h3 className="text-lg font-bold">नई ब्रांच जोड़ें</h3>
           <div className="my-4">
             <form action="" onSubmit={handleSubmit}>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-bold">Branch Name</span>
+                  <span className="label-text font-bold">ब्रांच नाम</span>
                 </label>
                 <input
                   type="text"

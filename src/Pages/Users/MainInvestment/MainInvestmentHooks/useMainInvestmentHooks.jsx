@@ -15,6 +15,13 @@ const useMainInvestmentHooks = () => {
   const reserveAmount = { detail: "", price: 0, month: new Date() };
 
   useEffect(() => {
+    const prevData = localStorage.getItem('mainInvest')
+    if (prevData){
+      setData(JSON.parse(prevData))
+    }
+
+    else{
+
     fetch("https://insorty-api.onrender.com/shop/getMainInvestmentPage", {
       method: "GET",
       headers: { "Content-Type": "application/json", cookie_token: token },
@@ -38,7 +45,7 @@ const useMainInvestmentHooks = () => {
         };
         setData(_data);
         console.error(error);
-      });
+      });}
   }, []);
 
   const calculateReserveAmount = (data) => {
@@ -97,6 +104,7 @@ const useMainInvestmentHooks = () => {
       // calculateReserveAmount()
 
       setData(_data);
+      localStorage.setItem('mainInvest',JSON.stringify(_data))
     },
     [data]
   );
@@ -109,6 +117,7 @@ const useMainInvestmentHooks = () => {
         belonging: [...prevData.mainInvest.belonging, newBelonging],
       },
     }));
+
   }, [calculateReserveAmount]);
 
   const handleFeesAdd = useCallback(() => {
@@ -160,6 +169,7 @@ const useMainInvestmentHooks = () => {
 
    
     setData(_data);
+    localStorage.setItem('mainInvest', JSON.stringify(_data))
   };
 
   // handleReserveAmountAdd on cahange  ----->
@@ -175,6 +185,7 @@ const useMainInvestmentHooks = () => {
     _data.refundRecoveryDetails.total = calRefundTotal(_data)
     _data.reserveAmount.total = calAllTotal(_data)
     setData(_data);
+    localStorage.setItem('mainInvest', JSON.stringify(_data))
   };
 
   const handleRemoveFields = (field,index) => {
@@ -187,6 +198,7 @@ const useMainInvestmentHooks = () => {
       values.refundRecoveryDetails.total = calRefundTotal(values)
       values.reserveAmount.total = calAllTotal(values)
       setData(values);
+      localStorage.setItem('mainInvest', JSON.stringify(values))
    }
 
    else if(field==='refund'){
@@ -195,6 +207,7 @@ const useMainInvestmentHooks = () => {
       values.refundRecoveryDetails.total = calRefundTotal(values)
       values.reserveAmount.total = calAllTotal(values)
       setData(values);
+      localStorage.setItem('mainInvest', JSON.stringify(values))
    }
    else if(field==='reserve'){
       values.reserveAmount.entries.splice(index, 1)
@@ -202,6 +215,7 @@ const useMainInvestmentHooks = () => {
       values.refundRecoveryDetails.total = calRefundTotal(values)
       values.reserveAmount.total = calAllTotal(values)
       setData(values);
+      localStorage.setItem('mainInvest', JSON.stringify(values))
    }
 
   };
@@ -223,6 +237,7 @@ const useMainInvestmentHooks = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          localStorage.removeItem('mainInvest')
         } else {
           Swal.fire({
             icon: "error",

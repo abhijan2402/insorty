@@ -43,7 +43,7 @@ const PartnerDetails = () => {
         className="commonBtn "
         onClick={handlePrint}
       >
-        PRINT
+        प्रिंट
       </button>
     <section ref={front}>
       <div className="title">
@@ -57,9 +57,9 @@ const PartnerDetails = () => {
               <tr>
                 <th> क्र. सं.</th>
                 {/* <th>Partner Name/पार्टनर नाम</th> */}
-                <th>Debit/ नामे </th>
-                <th>Deposit / जमा</th>
-                <th>Remaining / शेष</th>
+                <th> नामे </th>
+                <th> जमा</th>
+                <th> शेष</th>
               </tr>
             </thead>
             <tbody>

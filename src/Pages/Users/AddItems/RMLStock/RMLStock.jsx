@@ -69,7 +69,7 @@ const RmlStock = () => {
             बीयर
           </Link>
           <button className="commonBtn " onClick={handlePrint}>
-            PRINT
+            प्रिंट
           </button>
         </div>
         <div className="divider my-2"></div>
@@ -115,11 +115,11 @@ const RmlStock = () => {
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
-                      <th>ब्राण्ड/ Brand Name </th>
-                      <th>size </th>
-                      <th>स्टॉक / stock</th>
-                      <th>Avg. Rate / रेट</th>
-                      <th>Total / योग</th>
+                      <th>ब्राण्ड </th>
+                      <th>साईज </th>
+                      <th>स्टॉक </th>
+                      <th> रेट</th>
+                      <th> योग</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -161,7 +161,7 @@ const RmlStock = () => {
                         );
                       })}
                     <tr>
-                      <td colSpan="5">Total</td>
+                      <td colSpan="5">कुल योग</td>
                       <td>
                         {filteredData &&
                           filteredData

@@ -56,7 +56,7 @@ const CashReciveData = () => {
         className="commonBtn "
         onClick={handlePrint}
       >
-        PRINT
+        प्रिंट
       </button>
      
     <section ref={front}>
@@ -100,13 +100,13 @@ const CashReciveData = () => {
 
       <div>
         <div className="justify-center items-center flex m-6">
-          <table className="table w-11/12 removeCommonWSpace">
+          <table className=" removeCommonWSpace">
             <thead>
               <tr>
                 <td> क्र. सं.</td>
-                <th>Date</th>
-                <th>Salesman</th>
-                <th>Cash</th>
+                  <th>दिनांक</th>
+                  <th>सेल्समैन का नाम</th>
+                  <th>रकम</th>
               </tr>
             </thead>
             <tbody>
@@ -128,7 +128,7 @@ const CashReciveData = () => {
               })}
               <tr>
                 <td>
-                  <h2 className="font-bold">Total</h2>
+                    <h2 className="font-bold">कुल योग</h2>
                 </td>
                 <td></td>
                 <td></td>

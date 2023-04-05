@@ -44,7 +44,7 @@ const PhonePeToday = () => {
   return (
     <>
       <button className="commonBtn " onClick={handlePrint}>
-        PRINT
+        प्रिंट
       </button>
       <section ref={front}>
         <div className="title flex justify-center items-center flex-col">
@@ -87,14 +87,14 @@ const PhonePeToday = () => {
 
         <div>
           <div className="flex justify-center items-center m-6">
-            <table className="table w-11/12 removeCommonWSpace">
+            <table className="removeCommonWSpace">
               <thead>
                 <tr>
                   <td> क्र. सं.</td>
-                  <th>Date</th>
-                  <th>Salesman</th>
-                  <th>Into Account</th>
-                  <th>Todays Payment</th>
+                  <th>दिनांक</th>
+                  <th>सेल्समैन का नाम</th>
+                  <th>खाते में</th>
+                  <th>आज भुगतान</th>
                 </tr>
               </thead>
               <tbody>
@@ -111,7 +111,7 @@ const PhonePeToday = () => {
                 })}
                 <tr>
                   <td>
-                    <h2 className="font-bold">Total</h2>
+                    <h2 className="font-bold">कुल योग</h2>
                   </td>
                   <td></td>
                   <td></td>

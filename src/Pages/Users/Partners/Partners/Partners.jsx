@@ -67,15 +67,15 @@ const Partners = () => {
       <div className="title">
         <div className="flex justify-center items-center gap-4">
           <Link className="commonBtn" to="/user/sendFormat">
-            All Partnes
+            सभी पार्टनर
           </Link>
           <button className="commonBtn " onClick={handlePrint}>
-            PRINT
+            प्रिंट
           </button>
         </div>
 
         <div ref={front}>
-              <h2 className="font-bold md:text-[1.5rem] text-center">पार्टनर</h2>
+          <h2 className="font-bold md:text-[1.5rem] text-center">पार्टनर खाते </h2>
           <div className="flex justify-center items-center">
             <div className="flex gap-4 items-center my-4">
 

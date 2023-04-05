@@ -54,36 +54,37 @@ const Penalty = () => {
             className="commonBtn "
             onClick={handlePrint}
           >
-            PRINT
+            प्रिंट
           </button>
           <Link className="commonBtn" to="/user/commisson">
-            COMMISSION
+            कमीशन
           </Link>
 
           <Link className="commonBtn " to="/user/kharcha">
-            KHARCHA
+            खर्चा
           </Link>
 
           <Link className="commonBtn " to="/user/fut">
-            FUT
+            फूट
           </Link>
 
           <Link className="commonBtn " to="/user/begar">
-            BEGAR
+            बेगार
           </Link>
 
           <Link className="commonBtn " to="/user/monthly">
-            MONTHLY
+            मंथली
           </Link>
 
+
           <Link className="commonBtn " to="/user/others">
-            OTHERS
+            अन्य
           </Link>
         </div>
 
         <div ref={front}>
         <div>
-            <h2 className="font-bold md:text-[1.5rem] text-center"> PENALTY</h2>
+            <h2 className="font-bold md:text-[1.5rem] text-center"> पेनाल्टी</h2>
 
 
         <div className="flex gap-4 justify-center items-center my-4">

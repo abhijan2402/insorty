@@ -91,7 +91,7 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
             onChange={(e) => {
               refundRecoveryOnChange(name, e.target.value, index, "price");
             }}
-            className="dailyReportInput wd-8"
+            className="dailyReportInput wd-9"
           />
         </td>
       </tr>

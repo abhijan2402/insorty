@@ -17,11 +17,11 @@ const WineBill = () => {
       <div className="p-4">
         <div className="flex items-center justify-center">
           <Link className="commonBtn" to="/user/selfbill">
-            Self Bill
+            दुकान बिल
           </Link>
 
           <Link className="commonBtn " to="/user/outbill">
-            Out Bill
+            बाहर का बिल
           </Link>
         </div>
       </div>

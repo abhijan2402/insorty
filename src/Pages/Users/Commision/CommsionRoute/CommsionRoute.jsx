@@ -17,31 +17,31 @@ const CommsionRoute = () => {
       <div className="p-4">
         <div className="flex items-center justify-center flex-wrap">
           <Link className="commonBtn" to="/user/commisson">
-            COMMISSION
+            कमीशन
           </Link>
 
           <Link className="commonBtn " to="/user/kharcha">
-            KHARCHA
+            खर्चा
           </Link>
 
           <Link className="commonBtn " to="/user/fut">
-            FUT
+            फूट
           </Link>
 
           <Link className="commonBtn " to="/user/begar">
-            BEGAR
+            बेगार
           </Link>
 
           <Link className="commonBtn " to="/user/monthly">
-            MONTHLY
+            मंथली
           </Link>
 
           <Link className="commonBtn " to="/user/penalty">
-            PENALTY
+            पेनाल्टी
           </Link>
 
           <Link className="commonBtn " to="/user/others">
-            OTHERS
+            अन्य
           </Link>
         </div>
       </div>

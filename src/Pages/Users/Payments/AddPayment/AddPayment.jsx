@@ -22,12 +22,12 @@ const AddPayment = ({
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Add New Payment </h3>
+          <h3 className="text-lg font-bold">लेन-देन जोड़ें</h3>
           <form action="" onSubmit={handelAddPayment}>
             <div className="flex gap-4 flex-col mt-4">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-bold">DEBIT / नामे</span>
+                  <span className="label-text font-bold"> नामे</span>
                 </label>
               </div>
               <div>
@@ -43,7 +43,7 @@ const AddPayment = ({
                   className="input input-bordered w-full"
                 />
                 <label className="label">
-                  <span className="label-text font-bold">माह</span>
+                  <span className="label-text font-bold">दिनाक</span>
                 </label>
 
                 {/* <input
@@ -70,7 +70,7 @@ const AddPayment = ({
             <div className="flex gap-4 flex-col mt-4">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text font-bold">Deposit / जमा</span>
+                  <span className="label-text font-bold"> जमा</span>
                 </label>
               </div>
               <div>
@@ -86,7 +86,7 @@ const AddPayment = ({
                   className="input input-bordered w-full"
                 />
                 <label className="label">
-                  <span className="label-text font-bold">माह</span>
+                  <span className="label-text font-bold">दिनाक</span>
                 </label>
                 {/* <input
                   style={{
@@ -135,7 +135,7 @@ const AddPayment = ({
 
             <div>
               <button type="submit" className="dailyReportBtn  mt-4">
-                Add New Payment
+                लेन-देन जोड़ें
               </button>
             </div>
           </form>

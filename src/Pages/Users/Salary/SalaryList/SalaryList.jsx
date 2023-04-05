@@ -80,7 +80,7 @@ const SalaryList = () => {
   return (
     <section className="px-2 py-6">
       <div>
-        <h1 className="titleStyle text-center">Salary List</h1>
+        <h1 className="titleStyle text-center">कर्मचारी</h1>
         <div className="divider my-2"></div>
       </div>
 
@@ -127,7 +127,7 @@ const SalaryList = () => {
         </div>
         <tr className="py-4 flex justify-center">
           <label htmlFor="addNewEmploy" className="commonBtn">
-            Add New
+            नया कर्मचारी जोड़ें
           </label>
         </tr>
       </div>

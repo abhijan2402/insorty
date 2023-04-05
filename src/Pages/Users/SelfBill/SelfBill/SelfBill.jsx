@@ -92,13 +92,13 @@ const SelfBill = () => {
       <div className="title flex flex-col justify-center items-center py-2">
         <div className="flex gap-4">
           <Link className="commonBtn " to="/user/outbill">
-            Out Bill
+            बाहर का बिल
           </Link>
           <button
             className="commonBtn "
             onClick={handlePrint}
           >
-            PRINT
+            प्रिंट
           </button>
         </div>
 
@@ -143,12 +143,12 @@ const SelfBill = () => {
             <thead>
               <tr>
                 <td> क्र. सं.</td>
-                <th>Date</th>
-                <th>ब्राण्ड/ Brand Name </th>
-                <th>साईज / ml</th>
-                <th>Number / संख्या</th>
-                <th>Rate / रेट</th>
-                <th>Amount / रकम</th>
+                    <th>दिनाक</th>
+                <th>ब्राण्ड </th>
+                <th>साईज</th>
+                <th>संख्या</th>
+                <th> रेट</th>
+                <th>रकम</th>
               </tr>
             </thead>
             <tbody>
@@ -188,7 +188,7 @@ const SelfBill = () => {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td className="commonText">Refund/रिफंड</td>
+                <td className="commonText">रिफंड</td>
                 <td className="price">
                   <input
                     type="number"
@@ -208,7 +208,7 @@ const SelfBill = () => {
                 <td></td>
                 <td></td>
                 <td></td>
-                <td className="commonText">Net Paid Amount</td>
+                    <td className="commonText">कुल रकम</td>
                 <td className="price">{Number(netPaidAmount).toFixed(2)}</td>
               </tr>
             </tbody>

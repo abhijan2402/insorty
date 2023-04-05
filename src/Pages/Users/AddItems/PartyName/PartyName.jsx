@@ -33,14 +33,12 @@ const PartyName = () => {
       <div className="title">
         <div className="flex gap-4 justify-center items-center">
           <h2 className="font-bold md:text-[1.5rem] text-center">
-            पार्टी का नाम
+            पार्टी जोड़ें
           </h2>
           <Link to="/user/branchname" className="commonBtn ">
-            Branch
+            ब्रांच जोड़ें
           </Link>
-          <Link to="/user/brandlist" className="commonBtn ">
-            Brand List
-          </Link>
+          
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -50,14 +48,12 @@ const PartyName = () => {
         <table className="table w-4/5 removeCommonWSpace">
           <thead className="text-center">
             <th>
-              <h1>Sr. No.</h1>
+              <h1>क्र. सं.</h1>
             </th>
             <th>
-              <h1>Party Name</h1>
+              <h1>पार्टी नाम</h1>
             </th>
-            <th>
-              <h1>Action</h1>
-            </th>
+            
           </thead>
           <tbody>
             {PartyNameData?.map((item, index) => {
@@ -69,15 +65,7 @@ const PartyName = () => {
                   <td>
                     <h1>{item?.partyName}</h1>
                   </td>
-                  <td>
-                    <Link
-                      className="font-3xl font-bold"
-                      style={{ color: "#AA237A" }}
-                      // onClick={() => handleDelete(salary?._id)}
-                    >
-                      {/* <FaRegTrashAlt></FaRegTrashAlt> */}
-                    </Link>
-                  </td>
+                 =
                 </tr>
               );
             })}
@@ -88,7 +76,7 @@ const PartyName = () => {
       <div className="flex justify-center items-center">
         <div className="my-4">
           <label htmlFor="AddPartyName" className="commonBtn">
-            Add New
+            नई पार्टी जोड़ें
           </label>
         </div>
       </div>

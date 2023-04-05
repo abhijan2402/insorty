@@ -97,7 +97,7 @@ const Payments = () => {
   return (
     <>
       <button className="commonBtn " onClick={handlePrint}>
-        PRINT
+        प्रिंट
       </button>
       <section>
         <div ref={front}>
@@ -112,12 +112,12 @@ const Payments = () => {
           <div>
             <form action="">
               <div className="justify-center flex items-center">
-                <table className="table self-center	">
+                <table className="removeCommonWSpace self-center	">
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
-                      <th colSpan={2}>Debit / नामे</th>
-                      <th colSpan={2}>Deposit / जमा </th>
+                      <th colSpan={2}> नामे</th>
+                      <th colSpan={2}> जमा </th>
 
                       <th> शेष </th>
                       <th>विवरणे</th>
@@ -140,7 +140,7 @@ const Payments = () => {
                       <td>
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">माह</span>
+                            <span className="label-text">दिनाक</span>
                           </label>
                         </div>
                         {/* </div> */}
@@ -207,7 +207,7 @@ const Payments = () => {
         <div>
           <div className="mt-4 flex justify-center items-center gap-4">
             <label htmlFor="addPaymentData" className="btn bg-[#AA237A]">
-              Add Payment
+              लेन-देन जोड़ें
             </label>
           </div>
         </div>

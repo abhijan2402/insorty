@@ -51,7 +51,7 @@ const FinalReport = () => {
         className="commonBtn "
         onClick={handlePrint}
       >
-        PRINT
+        प्रिंट
       </button>
     <section ref={front} className="py-4 px-4">
       <div className="title flex justify-center items-center">
@@ -85,8 +85,8 @@ const FinalReport = () => {
                   <tr>
                     <th> क्र. सं.</th>
                     <th>पार्टी का नाम</th>
-                    <th>Brand / ब्राण्ड</th>
-                    <th>Size / ml</th>
+                    <th> ब्राण्ड</th>
+                      <th>साईज</th>
                     <th>संख्या</th>
                   </tr>
                 </thead>
@@ -120,8 +120,8 @@ const FinalReport = () => {
                   <tr>
                     <th> क्र. सं.</th>
                     <th>पार्टी का नाम</th>
-                    <th>Brand / ब्राण्ड</th>
-                    <th>Size / ml</th>
+                    <th> ब्राण्ड</th>
+                      <th>साईज</th>
                     <th>संख्या</th>
                   </tr>
                 </thead>

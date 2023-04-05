@@ -19,11 +19,11 @@ const AddItems = () => {
        
           
           <Link className="commonBtn " to="/user/branchname">
-            Branch Name
+            ब्रांच जोड़ें
           </Link>
 
           <Link className="commonBtn " to="/user/partyname">
-            Party Name
+            पार्टी जोड़ें
           </Link>
         </div>
       </div>
