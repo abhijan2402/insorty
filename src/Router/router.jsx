@@ -328,7 +328,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/sendFormat",
-        element: <SendFormat />,
+        element: <SendFormat />
       },
     ],
   },
