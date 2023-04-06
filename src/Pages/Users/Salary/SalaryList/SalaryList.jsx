@@ -33,7 +33,7 @@ const SalaryList = () => {
 
   const handleDelete = (employeeId) => {
     fetch(`https://insorty-api.onrender.com/shop/deleteEmployee`, {
-      method: "POST",
+      method: "DELETE",
       body: JSON.stringify({ employeeId }),
       headers: { "Content-Type": "application/json", cookie_token: token },
     })

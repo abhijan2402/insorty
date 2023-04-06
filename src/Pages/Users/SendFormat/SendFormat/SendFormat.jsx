@@ -5,13 +5,38 @@ import Loader from "../../../../Components/Loader/Loader";
 import ChangeEquity from "../ChangeEquity";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import { FaRegTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 const SendFormat = () => {
-  const { partners, partnerLoaded } = usePartyNames();
+  const { partners, partnerLoaded, refetch,
+ } = usePartyNames();
+  const token = localStorage.getItem('token')
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+
+  const deletePartner=(id)=>{
+
+    fetch(`https://insorty-api.onrender.com/shop/deletePartner`, {
+      method: "DELETE",
+      body: JSON.stringify({partnerId: id}),
+      headers: { "Content-Type": "application/json", cookie_token: token },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.success===true) {
+          refetch()
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          window.location.reload()
+        } else {
+          Swal.fire("Failed!", "Your file has not been deleted.", "error");
+        }
+      });
+  }
 
   if (partnerLoaded) return <Loader></Loader>;
 
@@ -49,6 +74,7 @@ const SendFormat = () => {
                 <th>पार्टनर नाम</th>
                     <th>हिस्सा</th>
                     <th>खाते में शेष</th>
+                    <th></th>
               </tr>
             </thead>
             <tbody>
@@ -59,6 +85,29 @@ const SendFormat = () => {
                     <td>{item?.name}</td>
                     <td>{item?.equity} %</td>
                     <td>{item?.balance}</td>
+                    <td><FaRegTrashAlt onClick={() => {
+                      swal({
+                        title: "Are you sure?",
+                        text: `Once deleted, you will not be able to recover partner ${item?.name}`,
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                      }).then((willDelete) => {
+                        if (willDelete) {
+                          if (item.equity!==0){
+                            swal(`Please Change Equity to 0%`, {
+                              icon: "error",
+                            });
+                          }
+                          else{
+                          deletePartner(item._id);
+                          
+                          }
+                        } else {
+                          swal("Your partner is safe!");
+                        }
+                      });
+                    }}></FaRegTrashAlt></td>
                   </tr>
                 );
               })}

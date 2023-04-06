@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 
 function usePartyNames() {
   const token = localStorage.getItem("token");
-  const { data: parties, isLoading: partyLoaded } = useQuery({
+  const { data: parties, isLoading: partyLoaded, refetch } = useQuery({
     queryKey: ["parties"],
     queryFn: async () => {
       const res = await fetch(
@@ -122,6 +122,8 @@ function usePartyNames() {
     getBranchName,
     getPartnerName,
     getSpacificePartnerTranslation,
+    refetch,
+
   };
 }
 

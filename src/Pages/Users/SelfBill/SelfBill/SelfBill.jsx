@@ -106,7 +106,7 @@ const SelfBill = () => {
         <div>
 
           <h2 className="font-bold md:text-[1.5rem] text-center">
-            दुकान बिल का फोर्मेट
+            दुकान बिल 
           </h2>
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">From</h2>
