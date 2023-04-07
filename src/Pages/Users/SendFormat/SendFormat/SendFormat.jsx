@@ -9,7 +9,7 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import swal from "sweetalert";
 
-const SendFormat = () => {
+const SendFormat = ({isBearShop}) => {
   const { partners, partnerLoaded, refetch,
  } = usePartyNames();
   const token = localStorage.getItem('token')
@@ -17,6 +17,8 @@ const SendFormat = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+  const partnersUrl = isBearShop ? '/user/bearshop/partners' : '/user/partners';
+
 
   const deletePartner=(id)=>{
 
@@ -45,9 +47,12 @@ const SendFormat = () => {
       <div className="title">
         <div className="flex gap-4 items-center justify-center">
          
-          <Link className="commonBtn" to="/user/partners">
+          {/* <Link className="commonBtn" to="/user/partners">
             पार्टनर खाते
-          </Link>
+          </Link> */}
+          <Link className="commonBtn" to={partnersUrl}>
+            पार्टनर खाते
+          </Link> 
           <button
             className="commonBtn "
             onClick={handlePrint}

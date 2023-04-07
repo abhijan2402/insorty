@@ -7,10 +7,10 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 
-const Partners = () => {
+const Partners = ({ isBearShop }) => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
@@ -18,6 +18,9 @@ const Partners = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+
+  const { shopType } = useParams();
+  const partnersUrl = isBearShop ? '/user/bearshop/sendFormat' : '/user/sendFormat';
 
   const handelPartnerSubmit = (e) => {
     e.preventDefault();
@@ -28,8 +31,6 @@ const Partners = () => {
       remianingDebit: "",
       remaining: "",
     };
-
-    
   };
 
   const { data: partnarData, isLoading } = useQuery({
@@ -66,19 +67,37 @@ const Partners = () => {
     <section className="py-4">
       <div className="title">
         <div className="flex justify-center items-center gap-4">
-          <Link className="commonBtn" to="/user/sendFormat">
+          {/* <Link className="commonBtn" to="/user/sendFormat">
+            सभी पार्टनर
+          </Link> */}
+
+           <Link className="commonBtn" to={partnersUrl}>
             सभी पार्टनर
           </Link>
+
+
+          <>
+            {/* {!isBeerShop ? (
+              <Link className="commonBtn" to="/user/bearshop/sendFormat">
+                सभी पार्टनर
+              </Link>
+            ) : (
+              <Link className="commonBtn" to="/user/sendFormat">
+                Send this in shop
+              </Link>
+            )} */}
+          </>
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
         </div>
 
         <div ref={front}>
-          <h2 className="font-bold md:text-[1.5rem] text-center">पार्टनर खाते </h2>
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            पार्टनर खाते{" "}
+          </h2>
           <div className="flex justify-center items-center">
             <div className="flex gap-4 items-center my-4">
-
               <h2 className="font-bold text-[1.5rem]">From</h2>
               <div className="flex gap-2 items-center">
                 <DatePicker

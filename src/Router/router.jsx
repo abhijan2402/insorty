@@ -56,14 +56,13 @@ import CashReceiveData from "../Pages/Users/CashReciveData/CashReciveData/CashRe
 import PartnersMarge from "../Pages/Users/MargePartners/MargePartners";
 import WineBill from "../Pages/Users/WineBill/WineBill";
 import ShopParmisson from "../Pages/Admin/ShopParmisson/ShopParmisson/ShopParmisson";
+import PartnersMarge2 from "../Pages/BearShop/MargePartners/MargePartners"
+import CommsionRoutes from "../Pages/BearShop/BearShopCommision/CommsionRoute/CommsionRoute";
 
 const {
   BearShopBranch,
-  BearShopBranchForm,
-  BearShopCommison,
   BearShopBorrow,
   BearShopFinalReport,
-  BearShopPartners,
   BearShopPayments,
   BearShopSalary,
   BearShopSalaryForm,
@@ -334,14 +333,47 @@ const router = createBrowserRouter([
         path: "/user/bearshop/branch",
         element: <BearShopBranch />,
       },
+    
       {
-        path: "/user/bearshop/branch/from",
-        element: <BearShopBranchForm />,
+        path: "/user/bearshop/commisionRoute",
+        element: <CommsionRoutes />,
+      },
+
+      {
+        path: "/user/bearshop/commisson",
+        element: <Commision />,
       },
       {
-        path: "/user/bearshop/commision",
-        element: <BearShopCommison />,
+        path: "/user/bearshop/kharcha",
+        element: <Kharcha />,
       },
+      {
+        path: "/user/bearshop/partnersMarge",
+        element: <PartnersMarge />,
+      },
+      {
+        path: "/user/bearshop/fut",
+        element: <Fut />,
+      },
+      {
+        path: "/user/bearshop/begar",
+        element: <Burger />,
+      },
+      {
+        path: "/user/bearshop/monthly",
+        element: <Monthly />,
+      },
+      {
+        path: "/user/bearshop/penalty",
+        element: <Penalty />,
+      },
+      {
+        path: "/user/bearshop/others",
+        element: <Others />,
+      },
+
+
+
       {
         path: "/user/bearshop/borrow",
         element: <BearShopBorrow />,
@@ -350,10 +382,19 @@ const router = createBrowserRouter([
         path: "/user/bearshop/finalreport",
         element: <BearShopFinalReport />,
       },
+       {
+        path: "/user/bearshop/partnersMarge",
+        element: <PartnersMarge2 />,
+      },
       {
         path: "/user/bearshop/partners",
-        element: <BearShopPartners />,
+        element: <Partnar />,
       },
+      {
+        path: "/user/bearshop/sendFormat",
+        element: <SendFormat />
+      },
+
       {
         path: "/user/bearshop/payments",
         element: <BearShopPayments />,
