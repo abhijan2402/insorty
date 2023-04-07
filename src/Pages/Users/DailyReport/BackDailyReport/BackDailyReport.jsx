@@ -25,7 +25,6 @@ import { DataContextApi } from "../../../../Context/DataContext";
 // import Swal from "sweetalert2";
 import useHandelSubmitBackAPI from "../../../../Hooks/useHandelSubmitBackAPI/useHandelSubmitBackAPI";
 import AddOneSecondFormBack from "./FristFormBack/AddOneFristFromBack/AddOneSecondFormBack";
-import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 
 const BackDailyReport = () => {
@@ -63,7 +62,6 @@ const BackDailyReport = () => {
   // ================== Purchase OutSide Form============
   const {
     purchesOutSideState,
-   
     handelAddOnePurchesOutSide,
     onChangePurchesOutSide,
     handleRemoveFieldsPurchaseOut,
@@ -2131,7 +2129,6 @@ const BackDailyReport = () => {
               <span className="font-bold titleText">उधारी/नामे</span>
             </h1>
 
-         
               <div >
                 <table className="table commonTable">
                   <thead>
@@ -2206,7 +2203,6 @@ const BackDailyReport = () => {
         {/* *********************************************************BREAK*********************************************************  */}
 
         <div className="py-6">
-        
             <h1 className="my-4">
               <span className="font-bold titleText">फाईनल रिपोर्ट</span>
             </h1>
