@@ -58,6 +58,7 @@ import WineBill from "../Pages/Users/WineBill/WineBill";
 import ShopParmisson from "../Pages/Admin/ShopParmisson/ShopParmisson/ShopParmisson";
 import PartnersMarge2 from "../Pages/BearShop/MargePartners/MargePartners"
 import CommsionRoutes from "../Pages/BearShop/BearShopCommision/CommsionRoute/CommsionRoute";
+import AddItemsBear from "../Pages/BearShop/AddItems/AddItems";
 
 const {
   BearShopBranch,
@@ -72,7 +73,6 @@ const {
   BearShopMainInvestment,
   BearShopEnglishBear,
   BearShopStockLanding,
-  BearShopStockLandingForm,
 } = routerImport();
 
 const token = localStorage.getItem("token");
@@ -371,9 +371,6 @@ const router = createBrowserRouter([
         path: "/user/bearshop/others",
         element: <Others />,
       },
-
-
-
       {
         path: "/user/bearshop/borrow",
         element: <BearShopBorrow />,
@@ -398,6 +395,18 @@ const router = createBrowserRouter([
       {
         path: "/user/bearshop/payments",
         element: <BearShopPayments />,
+      },
+      {
+        path: "/user/bearshop/allItems",
+        element: <AddItemsBear />,
+      },
+      {
+        path: "/user/bearshop/branchname",
+        element: <BranchNameData />,
+      },
+      {
+        path: "/user/bearshop/partyname",
+        element: <PartyName />,
       },
       {
         path: "/user/bearshop/salary",
@@ -442,21 +451,6 @@ const router = createBrowserRouter([
       {
         path: "/user/bearshop/stocklanding",
         element: <BearShopStockLanding />,
-      },
-      {
-        path: "/user/bearshop/stocklanding/form",
-        // loader: ({ params }) =>
-        //   fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
-        //     method: "POST",
-        //     body: JSON.stringify({
-        //       employeeId: params.employeeId,
-        //     }),
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //       cookie_token: token,
-        //     },
-        //   }),
-        element: <BearShopStockLandingForm />,
       },
     ],
   },

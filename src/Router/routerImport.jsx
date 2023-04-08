@@ -11,7 +11,6 @@ import BearShopExtra from "../Pages/BearShop/BearShopExtra/BearShopExtra/BearSho
 import BearShopMainInvestment from "../Pages/BearShop/BearShopMainInvestment/BearShopMainInvestment/BearShopMainInvestment";
 import BearShopEnglishBear from "../Pages/BearShop/BearShopEnglishBear/BearShopEnglishBear/BearShopEnglishBear";
 import BearShopStockLanding from "../Pages/BearShop/BearShopStockLanding/BearShopStockLanding/BearShopStockLanding";
-import BearShopStockLandingForm from "../Pages/BearShop/BearShopStockLanding/BearShopStockLandingForm/BearShopStockLandingForm";
 
 const routerImport = () => {
   return {
@@ -29,7 +28,7 @@ const routerImport = () => {
 
     BearShopEnglishBear,
     BearShopStockLanding,
-    BearShopStockLandingForm,
+ 
   };
 };
 
