@@ -90,14 +90,24 @@ const SideNav = () => {
               </NavLink>
             </li>
 
-            <li className="my-4">
+            {/* <li className="my-4">
               <NavLink
                 to="/user/bearshop/partners"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Partners / पार्टनर
               </NavLink>
+            </li> */}
+
+            <li className="my-4">
+              <NavLink
+                to="/user/bearshop/partnersMarge"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                पार्टनर
+              </NavLink>
             </li>
+
 
             <li className="my-4">
               <NavLink
@@ -128,7 +138,7 @@ const SideNav = () => {
 
             <li className="my-4">
               <NavLink
-                to="/user/bearshop/commision"
+                to="/user/bearshop/commisionRoute"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Commision / कमीशन
