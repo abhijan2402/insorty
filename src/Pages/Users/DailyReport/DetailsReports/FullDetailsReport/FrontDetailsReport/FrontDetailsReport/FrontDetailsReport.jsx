@@ -24,6 +24,7 @@ const FrontDetailsReport = () => {
     FrontPageExceptionalData,
   } = useFrontDetailHooks();
 
+
   const { FrontPageData, FrontPageDataLoaded } = useGetDailyReport();
   let count = 0
 
@@ -31,6 +32,8 @@ const FrontDetailsReport = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+
+  console.log(FrontPageExceptionalData)
 
   const token = localStorage.getItem("token");
 

@@ -1089,6 +1089,7 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput wd-6"
                                 name="total650"
+                                disabled
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
                                     (total =
@@ -1107,6 +1108,7 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput wd-6"
                                 name="total330"
+                                disabled
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
                                     (total =
@@ -1125,6 +1127,7 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="smallinput wd-6"
                                 name="total330"
+                                disabled
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
                                     (total =

@@ -61,6 +61,8 @@ const AddOneFristFromBack = ({
           }}
         >
           X
+          <input type="button" value="" autoFocus />
+
         </th>
         <td>
           <div className="form-control">

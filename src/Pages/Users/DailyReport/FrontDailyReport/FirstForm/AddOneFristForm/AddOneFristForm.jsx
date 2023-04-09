@@ -55,6 +55,7 @@ const AddOneFristForm = ({
             }}
           >
             X
+            <input type="button" value="" autoFocus/>
           </h1>
         </th>
         <td>

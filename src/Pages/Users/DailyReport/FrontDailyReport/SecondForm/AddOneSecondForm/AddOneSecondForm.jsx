@@ -51,6 +51,8 @@ const AddOneSecondForm = ({
             }}
           >
             X
+            <input type="button" value="" autoFocus />
+
           </h1>
         </th>
 

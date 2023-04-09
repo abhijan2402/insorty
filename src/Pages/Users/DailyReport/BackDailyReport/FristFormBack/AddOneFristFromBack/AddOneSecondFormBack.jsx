@@ -50,6 +50,8 @@ const AddOneSecondFormBack = ({
           }}
         >
           X
+          <input type="button" value="" autoFocus />
+
         </th>
 
         <td>
