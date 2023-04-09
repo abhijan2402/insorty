@@ -183,21 +183,6 @@ const SideNav = () => {
                 दुकान पेमेंट
               </NavLink>
             </li>
-
-           
-
-            
-
-            
-
-            
-
-           
-
-           
-
-           
-
             <li className="my-4">
               <NavLink
                 to="/user/allItems"
@@ -206,11 +191,7 @@ const SideNav = () => {
                 Add Items
               </NavLink>
             </li>
-            
 
-            
-
-           
 
             <button
               onClick={() => logout({ returnTo: window.location.origin })}
