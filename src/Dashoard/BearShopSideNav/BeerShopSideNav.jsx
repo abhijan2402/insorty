@@ -99,7 +99,7 @@ const SideNav = () => {
               </NavLink>
             </li> */}
 
-            <li className="my-4">
+           <li className="my-4">
               <NavLink
                 to="/user/bearshop/partnersMarge"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -108,40 +108,21 @@ const SideNav = () => {
               </NavLink>
             </li>
 
+            <li className="my-4">
+              <NavLink
+                to="/user/bearshop/maininvestment"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                मुख्य इन्वेस्ट
+              </NavLink>
+            </li>
 
             <li className="my-4">
               <NavLink
                 to="/user/bearshop/branch"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Branch / ब्रांच
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/bearshop/salary"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Salary / वेतन
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/bearshop/payments"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Payments दुकान/बार पेमेंट
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/bearshop/commisionRoute"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Commision / कमीशन
+                ब्रांच
               </NavLink>
             </li>
 
@@ -150,52 +131,25 @@ const SideNav = () => {
                 to="/user/bearshop/borrow"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Borrow / उधारी
+                पार्टी
               </NavLink>
             </li>
 
             <li className="my-4">
               <NavLink
-                to="/user/bearshop/finalreport"
+                to="/user/bearshop/salary"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Final report / हिसाब
+                वेतन
               </NavLink>
             </li>
 
             <li className="my-4">
               <NavLink
-                to="/user/bearshop/selfbill"
+                to="/user/bearshop/stock"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Self Bill / दुकान बिल का फोर्मेट
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/bearshop/outbill"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Out Bill / बाहर के बिल का फोर्मेट
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/bearshop/extra"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Extra /राशन सब्जी आदि खरीद
-              </NavLink>
-            </li>
-
-            <li className="my-4">
-              <NavLink
-                to="/user/bearshop/maininvestment"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Main Investment / मुख्य इन्वेस्ट
+                स्टॉक
               </NavLink>
             </li>
 
@@ -204,30 +158,77 @@ const SideNav = () => {
                 to="/user/bearshop/stocklanding"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Stock Lending
+                स्टॉक जमा नामे
+
               </NavLink>
             </li>
 
             <li className="my-4">
               <NavLink
-                to="/user/bearshop/allItems"
+                to="/user/bearshop/winebill"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Stock and Add
+                शराब  बिल
               </NavLink>
             </li>
 
             <li className="my-4">
               <NavLink
-                to="/user/bearshop/sendFormat"
+                to="/user/bearshop/commisionroute"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                All Partners
+                कमीशन आदि
               </NavLink>
             </li>
+
+            <li className="my-4">
+              <NavLink
+                to="/user/bearshop/phonePay"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                फोन पे और आज भुगतान
+              </NavLink>
+            </li>
+
+            <li className="my-4">
+              <NavLink
+                to="/user/bearshop/cashReceive"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                अन्य से नकद प्राप्ति
+              </NavLink>
+            </li>
+
+            <li className="my-4">
+              <NavLink
+                to="/user/bearshop/finalreport"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                अंतिम रिपोर्ट
+              </NavLink>
+            </li>
+
+            <li className="my-4">
+              <NavLink
+                to="/user/payments"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                दुकान पेमेंट
+              </NavLink>
+            </li>
+            <li className="my-4">
+              <NavLink
+                to="/user/allItems"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                Add Items
+              </NavLink>
+            </li>
+
+
             <button
               onClick={() => logout({ returnTo: window.location.origin })}
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+              className="commonBtn flex justify-center items-center"
             >
               <FaPowerOff />
               <span className="mx-4 font-medium">Logout</span>

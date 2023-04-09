@@ -22,7 +22,7 @@ const AddItems = () => {
             ब्रांच जोड़ें
           </Link>
 
-          <Link className="commonBtn " to="/user/bearshop/partyname">
+          <Link className="commonBtn " to="/user/bearshop/cpartyname">
             पार्टी जोड़ें
           </Link>
         </div>

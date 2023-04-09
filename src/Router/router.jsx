@@ -317,28 +317,29 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/user/bearshop/dailyreport",
-        element: <BearShopDailyReport />,
+        element: <DailyReport />,
       },
-
       {
         path: "/user/bearshop/dailyreport/front",
-        element: <BeerShopFrontDailyReport />,
+        element: <FronteDailyReport />,
       },
       {
         path: "/user/bearshop/dailyreport/back",
-        element: <BeerShopBackDailyReport />,
+        element: <BackDailyReport />,
       },
-
       {
         path: "/user/bearshop/branch",
-        element: <BearShopBranch />,
+        element: <Branch />,
       },
-    
       {
-        path: "/user/bearshop/commisionRoute",
-        element: <CommsionRoutes />,
+        path: "/user/bearshop/branch/from/:branchId",
+       
+        element: <BranchFrom />,
       },
-
+      {
+        path: "/user/bearshop/commisionroute",
+        element: <CommisionRoute />,
+      },
       {
         path: "/user/bearshop/commisson",
         element: <Commision />,
@@ -371,86 +372,130 @@ const router = createBrowserRouter([
         path: "/user/bearshop/others",
         element: <Others />,
       },
+
       {
         path: "/user/bearshop/borrow",
-        element: <BearShopBorrow />,
+        element: <Borrow />,
+      },
+      {
+        path: "/user/bearshop/borrow/from/:partyId",
+        element: <BorrowDetails />,
       },
       {
         path: "/user/bearshop/finalreport",
-        element: <BearShopFinalReport />,
-      },
-       {
-        path: "/user/bearshop/partnersMarge",
-        element: <PartnersMarge2 />,
+        element: <FinalReport />,
       },
       {
         path: "/user/bearshop/partners",
         element: <Partnar />,
       },
       {
-        path: "/user/bearshop/sendFormat",
-        element: <SendFormat />
+        path: "/user/bearshop/partners/from/:partnerId",
+        element: <PartnarDetails />,
+      },
+      {
+        path: "/user/bearshop/payments",
+        element: <Payments />,
+      },
+      {
+        path: "/user/bearshop/phonePay",
+        element: <PhonePeToday />,
+      },
+      {
+        path: "/user/bearshop/salary",
+        element: <Salary />,
+      },
+      {
+        path: "/user/bearshop/cashReceive",
+        element: <CashReceiveData />,
       },
 
       {
-        path: "/user/bearshop/payments",
-        element: <BearShopPayments />,
+        path: "/user/bearshop/salary/from/:employeeId",
+       
+        element: <SalaryForm />,
       },
       {
-        path: "/user/bearshop/allItems",
-        element: <AddItemsBear />,
+        path: "/user/bearshop/outbill",
+        element: <OutBill />,
       },
       {
-        path: "/user/bearshop/branchname",
-        element: <BranchNameData />,
+        path: "/user/bearshop/selfbill",
+        element: <SelfBill />,
+      },
+
+      {
+        path: "/user/bearshop/winebill",
+        element: <WineBill />,
+      },
+
+      {
+        path: "/user/bearshop/extra",
+        element: <Extra />,
+      },
+      {
+        path: "/user/bearshop/maininvestment",
+        element: <MainInvestment />,
+      },
+      {
+        path: "/user/bearshop/englishbear",
+        element: <EnglishBear />,
+      },
+      {
+        path: "/user/bearshop/stocklanding",
+        element: <StockLanding />,
+      },
+      {
+        path: "/user/bearshop/stocklanding/form/:partyId",
+        element: <StockLandingForm />,
+      },
+      {
+        path: "/user/bearshop/frontdailyreport/details",
+        element: <FrontDetailsReport />,
+      },
+      {
+        path: "/user/bearshop/dailyreport/details",
+        element: <BackDetailReport />,
+      },
+      {
+        path: "/user/bearshop/dailyreport/backdetailsreport",
+        // element: <FrontDetailsReport2 />,
+      },
+      {
+        path: "/user/bearshop/brandlist",
+        element: <BrandList />,
       },
       {
         path: "/user/bearshop/partyname",
         element: <PartyName />,
       },
       {
-        path: "/user/bearshop/salary",
-        element: <BearShopSalary />,
-      },
-
-      {
-        path: "/user/bearshop/salary/from/:employeeId",
-        loader: ({ params }) =>
-          fetch(`https://insorty-api.onrender.com/shop/getEmployeeSalaryData`, {
-            method: "POST",
-            body: JSON.stringify({
-              employeeId: params.employeeId,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-          }),
-        element: <BearShopSalaryForm />,
+        path: "/user/bearshop/branchname",
+        element: <BranchNameData />,
       },
       {
-        path: "/user/bearshop/outbill",
-        element: <BearShopOutbill />,
+        path: "/user/bearshop/beerstock",
+        element: <BeerStock />,
       },
       {
-        path: "/user/bearshop/selfbill",
-        element: <BearShopSelfBill />,
+        path: "/user/bearshop/winestock",
+        element: <WineStock />,
       },
       {
-        path: "/user/bearshop/extra",
-        element: <BearShopExtra />,
+        path: "/user/bearshop/rmlstock",
+        element: <RmlStock />,
       },
       {
-        path: "/user/bearshop/maininvestment",
-        element: <BearShopMainInvestment />,
+        path: "/user/bearshop/allItems",
+        element: <AllItems />,
       },
       {
-        path: "/user/bearshop/englishbear",
-        element: <BearShopEnglishBear />,
+        path: "/user/bearshop/stock",
+        element: <Stock />,
       },
       {
-        path: "/user/bearshop/stocklanding",
-        element: <BearShopStockLanding />,
+        path: "/user/bearshop/sendFormat",
+        element: <SendFormat />
       },
     ],
   },
