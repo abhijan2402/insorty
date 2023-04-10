@@ -208,7 +208,13 @@ const useRmlAdd = () => {
     const saleTotal = addRmlState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales" || e.target.name === "rate") {
+        if (e.target.name === "sales" || e.target.name === "rate" || e.target.name === "sumRemainder" ||
+          e.target.name === "closingStock" ||
+          e.target.name === "startingStock" ||
+          e.target.name === "incomingPurchase" ||
+          e.target.name === "inflowCredit" ||
+          e.target.name === "incomePurchase" ||
+          e.target.name === "sending") {
           obj.cost = Number(obj.sales) * Number(obj.rate);
         }
         return obj;

@@ -20,11 +20,11 @@ const Fut = () => {
     return <Loader></Loader>;
   }
 
-  if (!commitsonData.length) {
-    return <h1>No Data Found</h1>;
-  }
+  // if (!commitsonData.length) {
+  //   return <h1>No Data Found</h1>;
+  // }
 
-  const filteredData = commitsonData.filter((item) => {
+  const filteredData = commitsonData.length && commitsonData.filter((item) => {
     let filterPass = true;
     const date = moment(item.date).format("DD/MM/YYYY");
 
@@ -47,7 +47,7 @@ const Fut = () => {
   //   return Number(total);
   // });
 
-  const totalAmount = filteredData.reduce((acc, item) => {
+  const totalAmount = commitsonData.length && filteredData.reduce((acc, item) => {
     return Number(acc) + item.entries.filter((item) => {
       return item.type === "FUT";
     }).reduce((acc, item) => {
@@ -141,7 +141,7 @@ const Fut = () => {
               </thead>
 
               <tbody>
-                {filteredData.map((burger, index) => {
+                    {commitsonData.length && filteredData.map((burger, index) => {
                   const { entries } = burger;
 
                   const filterFutForm = (type) => {

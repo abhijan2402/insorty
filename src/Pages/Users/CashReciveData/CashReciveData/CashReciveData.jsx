@@ -19,17 +19,17 @@ const CashReciveData = () => {
     return <Loader></Loader>;
   }
 
-  if (!CashReciveData.length){
-    return <div>No data found</div>
-  }
+  // if (!CashReciveData.length){
+  //   return <div>No data found</div>
+  // }
 
-  const cashReceive = CashReciveData?.map((items) => items);
+  const cashReceive = CashReciveData.length && CashReciveData?.map((items) => items);
 
-  const cashReciveDatas = cashReceive.map((item) => {
+  const cashReciveDatas = CashReciveData.length && cashReceive.map((item) => {
     return item.entries.filter((item) => item.type === "OTHER");
   });
 
-  const filteredData = cashReciveDatas.filter((item) => {
+  const filteredData = CashReciveData.length && cashReciveDatas.filter((item) => {
     let filterPass = true;
     const date = moment(item.date).format("DD/MM/YYYY");
 
@@ -42,9 +42,9 @@ const CashReciveData = () => {
     return filterPass;
   });
 
-  if (!filteredData && filteredData.length === 0 && filteredData.length) {
-    return <h1 className="text-center text-2xl font-bold ">No Data Found</h1>;
-  }
+  // if (!filteredData && filteredData.length === 0 && filteredData.length) {
+  //   return <h1 className="text-center text-2xl font-bold ">No Data Found</h1>;
+  // }
 
  
 
@@ -110,7 +110,7 @@ const CashReciveData = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredData.map((item, index) => {
+                {CashReciveData.length && filteredData.map((item, index) => {
                 return (
                   <>
                     {item.map((item, index) => {
@@ -133,7 +133,7 @@ const CashReciveData = () => {
                 <td></td>
                 <td></td>
                 <td>
-                    {filteredData.reduce((acc, item) =>
+                    {CashReciveData.length && filteredData.reduce((acc, item) =>
                       acc + item.reduce((acc, item) =>
                         acc + Number(item.cash)
                         , 0)

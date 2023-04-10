@@ -69,6 +69,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Previous Loans"}
+                      disabled
                     />
                   </td>
                   <td></td>
@@ -97,6 +98,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Cash in Hand"}
+                      disabled
                     />
                   </td>
                   <td></td>
@@ -150,6 +152,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Reserve Amount"}
+                      disabled
                     />
                   </td>
                   <td></td>
@@ -172,6 +175,7 @@ const MainInvestment = () => {
                       type="text"
                       name="brandName"
                       value={"Total"}
+                      disabled
                       // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>

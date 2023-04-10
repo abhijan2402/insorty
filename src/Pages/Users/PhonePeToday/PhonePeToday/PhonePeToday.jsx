@@ -20,11 +20,11 @@ const PhonePeToday = () => {
     return <Loader></Loader>;
   }
 
-  if (!phonePayData.length) {
-    return <div>No data found</div>;
-  }
+  // if (!phonePayData.length) {
+  //   return <div>No data found</div>;
+  // }
 
-  const filteredData = phonePayData?.filter((item) => {
+  const filteredData = phonePayData.length && phonePayData?.filter((item) => {
     let filterPass = true;
     const date = moment(item.date).format("DD/MM/YYYY");
 
@@ -37,9 +37,9 @@ const PhonePeToday = () => {
     return filterPass;
   });
 
-  if (!filteredData && filteredData.length === 0 && filteredData.length) {
-    return <h1 className="text-center text-2xl font-bold ">No Data Found</h1>;
-  }
+  // if (!filteredData && filteredData.length === 0 && filteredData.length) {
+  //   return <h1 className="text-center text-2xl font-bold ">No Data Found</h1>;
+  // }
 
   return (
     <>
@@ -98,7 +98,7 @@ const PhonePeToday = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredData.map((item, index) => {
+                {phonePayData.length && filteredData.map((item, index) => {
                   return (
                     <tr>
                       <td>{index + 1}</td>
@@ -116,12 +116,12 @@ const PhonePeToday = () => {
                   <td></td>
                   <td></td>
                   <td>
-                    {filteredData.reduce((acc, item) => {
+                    {phonePayData.length && filteredData.reduce((acc, item) => {
                       return acc + item.intoAccount;
                     }, 0)}
                   </td>
                   <td>
-                    {filteredData.reduce((acc, item) => {
+                    {phonePayData.length && filteredData.reduce((acc, item) => {
                       return acc + item.todaysPayment;
                     }, 0)}
                   </td>

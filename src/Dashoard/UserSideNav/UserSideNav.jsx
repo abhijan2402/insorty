@@ -195,10 +195,25 @@ const SideNav = () => {
 
             <button
               onClick={() => logout({ returnTo: window.location.origin })}
-              className="commonBtn flex justify-center items-center"
+              // className="commonBtn flex justify-center items-center"
+              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             >
               <FaPowerOff />
               <span className="mx-4 font-medium">Logout</span>
+            </button>
+
+            <button
+              
+              // className="commonBtn flex justify-center items-center"
+              className={jwtDecode(localStorage.getItem("token")).role === "admin" ? "commonBtn flex justify-center items-center" : "hidden"}
+              // className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+            >
+              <NavLink
+                to="/admin"
+                // className={jwtDecode(localStorage.getItem("token")).role==="ADMIN" ? "" : "hidden"}
+              >
+                To Admin
+              </NavLink>
             </button>
           </nav>
         </div>

@@ -293,6 +293,8 @@ const useHandelSubmitBackAPI = (shopType) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    
+
     if (salesMan === "") {
       Swal.fire({
         icon: "error",

@@ -77,7 +77,8 @@ const FronteDailyReport = () => {
           </Link>
 
           <Link to="/user/frontdailyreport/details" className="commonBtn ">
-            परचा
+            पर्चा
+
           </Link>
         </div>
         <div className="flex gap-4 justify-center items-center ">

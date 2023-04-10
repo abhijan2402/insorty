@@ -190,16 +190,11 @@ const SelfBill = () => {
                 <td></td>
                 <td className="commonText">रिफंड</td>
                 <td className="price">
-                  <input
-                    type="number"
-                    className="semiSmallInput"
-                    disabled
-                    value={filteredRefund.reduce(
-                      (total, currentItem) =>
-                        (total = total + Number(currentItem.price)),
-                      0
-                    )}
-                  />
+                      {filteredRefund.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.price)),
+                        0
+                      )}
                 </td>
               </tr>
               <tr>

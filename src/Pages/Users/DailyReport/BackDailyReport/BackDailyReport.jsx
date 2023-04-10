@@ -165,22 +165,24 @@ const BackDailyReport = () => {
               to="/user/frontdailyreport/details"
               className="commonBtn  mx-4"
             >
-              परचा
+                पर्चा
+
             </Link>
           </div>
         </div>
 
         <div className="flex gap-4 justify-center items-center">
           <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
-          <input
-            type="text"
-            value={salesMan}
-            onChange={(e) => {
-              setSalesMan(e.target.value);
-              localStorage.setItem("salesMan", e.target.value);
-            }}
-            className="smallinput wd-30"
-          />
+            <input
+              type="text"
+              value={salesMan}
+              onChange={(e) => {
+                setSalesMan(e.target.value);
+                localStorage.setItem("salesMan", e.target.value);
+              }}
+              className="semiSmallInput"
+              style={{ width: "24rem" }}
+            />
 
           <div className="flex  items-center">
             <DatePicker
@@ -1175,11 +1177,11 @@ const BackDailyReport = () => {
                 </div>
               </>
 
-              <div className="overflow-x-auto">
-                <div className="mt-6">
-                  <div className="overflow-x-auto">
+                <div >
                     <>
-                      <table className="table commonTable">
+                  <div className="mt-6 ">
+                      <div className="overflow-x-auto">
+                        <table className="table commonTable ">
                         <thead>
                           <tr>
                             <th> क्र. सं.</th>
@@ -1426,15 +1428,16 @@ const BackDailyReport = () => {
                           </tr>
                         </tbody>
                       </table>
-                        <div className="my-8  leading-6">
-                          <h4 className="text-[#AA237A] font-bold ">
-                            Beer Total: {Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + Number(localStorage.getItem('beerFormTotal'))}
-                          </h4>
-                        </div>
-                    </>
+                       
                   </div>
                 </div>
+                    </>
               </div>
+                <div className="my-8  leading-6">
+                  <h4 className="text-[#AA237A] font-bold ">
+                    Total: {Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + Number(localStorage.getItem('beerFormTotal'))}
+                  </h4>
+                </div>
             </div>
           </div>
         </div>

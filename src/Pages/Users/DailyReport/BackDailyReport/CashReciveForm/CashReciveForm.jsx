@@ -59,7 +59,25 @@ const CashReciveForm = ({
           X
         </th>
 
-        
+        <td>
+          <div className="form-control">
+            <select
+              className="smallinput wd-30"
+              name="type"
+              required
+              value={item.type}
+              onChange={(e) => {
+                onChangeCashRecive(e, index);
+              }}
+              id=""
+            >
+              <option value="PARTY">Party</option>
+              <option value="PARTNER">Partner</option>
+              <option value="BRANCH">Branch</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+        </td>
 
         <td>
           <div className="form-control">
@@ -202,25 +220,7 @@ const CashReciveForm = ({
           </div>
         </td>
 
-        <td>
-          <div className="form-control">
-            <select
-              className="smallinput wd-30"
-              name="type"
-              required
-              value={item.type}
-              onChange={(e) => {
-                onChangeCashRecive(e, index);
-              }}
-              id=""
-            >
-              <option value="PARTY">Party</option>
-              <option value="PARTNER">Partner</option>
-              <option value="BRANCH">Branch</option>
-              <option value="OTHER">Other</option>
-            </select>
-          </div>
-        </td>
+        
 
         <td>
           <input

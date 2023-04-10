@@ -43,6 +43,26 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           });
       }}>X</th>
 
+      <td>
+        <div className="form-control">
+          <select
+            type="text"
+            required
+            // className="select select-bordered"
+            className="smallinput wd-30"
+            name="partyType"
+            value={item.partyType}
+            onChange={(e) => onChangeCarditDabit(e, index)}
+          >
+            <option selected value="PARTNER">
+              PARTNER
+            </option>
+            <option value="PARTY">PARTY</option>
+            <option value="BRANCH">BRANCH</option>
+          </select>
+        </div>
+      </td>
+
 
       <td>
         <div className="form-control">
@@ -190,25 +210,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
         </div>
       </td>
 
-      <td>
-        <div className="form-control">
-          <select
-            type="text"
-            required
-            // className="select select-bordered"
-            className="smallinput wd-30"
-            name="partyType"
-            value={item.partyType}
-            onChange={(e) => onChangeCarditDabit(e, index)}
-          >
-            <option selected value="PARTNER">
-              PARTNER
-            </option>
-            <option value="PARTY">PARTY</option>
-            <option value="BRANCH">BRANCH</option>
-          </select>
-        </div>
-      </td>
+      
 
       <td>
         <div className="form-control">

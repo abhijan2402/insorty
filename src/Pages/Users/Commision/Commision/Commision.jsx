@@ -21,11 +21,12 @@ const Commision = () => {
     return <Loader></Loader>;
   }
 
-  if (!commitsonData.length) {
-    return <h1>No Data Found</h1>;
-  }
 
-  const filteredData = commitsonData.filter((item) => {
+  // if (!commitsonData.length) {
+  //   return <h1>No Data Found</h1>;
+  // }
+
+  const filteredData = commitsonData.length && commitsonData.filter((item) => {
     let filterPass = true;
     const date = moment(item.date).format("DD/MM/YYYY");
 
@@ -39,7 +40,7 @@ const Commision = () => {
   });
 
   // get total amount of filtered data and map it to the array of objects and then add all the values of the array
-  const totalAmount = filteredData.reduce((acc, item) => {
+  const totalAmount = commitsonData.length && filteredData.reduce((acc, item) => {
     return Number(acc) + item.entries.filter((item) => {
       return item.type === "COMMISSION";
     }).reduce((acc, item) => {
@@ -47,7 +48,6 @@ const Commision = () => {
     }, 0);
   }, 0)
 
-  console.log(totalAmount, "totalAmount");
 
   return (
     <section className="py-4 px-4">
@@ -134,7 +134,7 @@ const Commision = () => {
                   </thead>
 
                   <tbody>
-                    {filteredData.map((commison, index) => {
+                    {commitsonData.length && filteredData.map((commison, index) => {
                       return (
                         <CommisionForm
                           key={index}

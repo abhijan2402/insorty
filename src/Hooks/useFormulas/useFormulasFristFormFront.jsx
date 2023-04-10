@@ -462,11 +462,11 @@ const useFormulasFristFormFront = () => {
         if (
           e.target.name === "sumRemainder750" ||
           e.target.name === "closingStock750" || 
-          e.target.name === "startingStock180" ||
-          e.target.name === "incomingPurchase180" ||
-          e.target.name === "inflowCredit180" ||
-          e.target.name === "incomePurchase180" ||
-          e.target.name === "sending180"
+          e.target.name === "startingStock750" ||
+          e.target.name === "incomingPurchase750" ||
+          e.target.name === "inflowCredit750" ||
+          e.target.name === "incomePurchase750" ||
+          e.target.name === "sending750"
         ) {
           obj.sales750 =
             Number(obj.sumRemainder750) - Number(obj.closingStock750);

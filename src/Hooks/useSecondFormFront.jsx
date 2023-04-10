@@ -169,7 +169,13 @@ const useSecondFormFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "sumRemainder" ||
-          e.target.name === "closingStock"
+          e.target.name === "closingStock" ||
+          e.target.name === "startingStock" ||
+          e.target.name === "incomingPurchase" ||
+          e.target.name === "inflowCredit" ||
+          e.target.name === "incomePurchase" ||
+          e.target.name === "sending"
+
         ) {
           obj.sales = Number(obj.sumRemainder) - Number(obj.closingStock);
         }
@@ -181,7 +187,13 @@ const useSecondFormFront = () => {
     const totals = addOneSecondFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales" || e.target.name === "mainRate") {
+        if (e.target.name === "sales" || e.target.name === "mainRate" || e.target.name === "sumRemainder" ||
+          e.target.name === "closingStock" ||
+          e.target.name === "startingStock" ||
+          e.target.name === "incomingPurchase" ||
+          e.target.name === "inflowCredit" ||
+          e.target.name === "incomePurchase" ||
+          e.target.name === "sending") {
           obj.total = Number(obj.sales) * Number(obj.mainRate);
         }
         return obj;

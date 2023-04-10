@@ -552,7 +552,14 @@ const useFristFormAdd = () => {
     const saleTotal650 = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales650" || e.target.name === "mainRate650") {
+        if (e.target.name === "sales650" || e.target.name === "mainRate650" || e.target.name === "sumRemainder650" ||
+          e.target.name === "closingStock650" ||
+          e.target.name === "startingStock650" ||
+          e.target.name === "incomingPurchase650" ||
+          e.target.name === "inflowCredit650" ||
+          e.target.name === "incomePurchase650" ||
+          e.target.name === "sending650"
+        ) {
           obj.total650 = Number(obj.sales650) * Number(obj.mainRate650);
         }
         return obj;
@@ -564,7 +571,13 @@ const useFristFormAdd = () => {
     const saleTotal550 = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales550" || e.target.name === "mainRate550") {
+        if (e.target.name === "sales550" || e.target.name === "mainRate550" || e.target.name === "sumRemainder550" ||
+          e.target.name === "closingStock550" ||
+          e.target.name === "startingStock550" ||
+          e.target.name === "incomingPurchase550" ||
+          e.target.name === "inflowCredit550" ||
+          e.target.name === "incomePurchase550" ||
+          e.target.name === "sending550") {
           obj.total550 = Number(obj.sales550) * Number(obj.mainRate550);
         }
         return obj;
@@ -576,9 +589,16 @@ const useFristFormAdd = () => {
     const saleTotal330 = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales330" || e.target.name === "mainRate330") {
+        if (e.target.name === "sales330" || e.target.name === "mainRate330" || e.target.name === "sumRemainder330" ||
+          e.target.name === "closingStock330" ||
+          e.target.name === "startingStock330" ||
+          e.target.name === "incomingPurchase330" ||
+          e.target.name === "inflowCredit330" ||
+          e.target.name === "incomePurchase330" ||
+          e.target.name === "sending330") {
           obj.total330 = Number(obj.sales330) * Number(obj.mainRate330);
         }
+        console.log(obj.total330)
         return obj;
       } else return returned;
     });
@@ -594,7 +614,26 @@ const useFristFormAdd = () => {
           e.target.name === "sales550" ||
           e.target.name === "mainRate550" ||
           e.target.name === "sales330" ||
-          e.target.name === "mainRate330"
+          e.target.name === "mainRate330" || e.target.name === "sumRemainder650" ||
+          e.target.name === "closingStock650" ||
+          e.target.name === "startingStock650" ||
+          e.target.name === "incomingPurchase650" ||
+          e.target.name === "inflowCredit650" ||
+          e.target.name === "incomePurchase650" ||
+          e.target.name === "sending650" || e.target.name === "sumRemainder550" ||
+          e.target.name === "closingStock550" ||
+          e.target.name === "startingStock550" ||
+          e.target.name === "incomingPurchase550" ||
+          e.target.name === "inflowCredit550" ||
+          e.target.name === "incomePurchase550" ||
+          e.target.name === "sending550" || e.target.name === "sumRemainder330" ||
+          e.target.name === "closingStock330" ||
+          e.target.name === "startingStock330" ||
+          e.target.name === "incomingPurchase330" ||
+          e.target.name === "inflowCredit330" ||
+          e.target.name === "incomePurchase330" ||
+          e.target.name === "sending330"
+
         ) {
           obj.grandTotal =
             Number(obj.sales650) * Number(obj.mainRate650) +
@@ -1203,7 +1242,13 @@ else{
     const totals = addOneSecondFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales" || e.target.name === "mainRate") {
+        if (e.target.name === "sales" || e.target.name === "mainRate" || e.target.name === "sumRemainder" ||
+          e.target.name === "closingStock" ||
+          e.target.name === "startingStock" ||
+          e.target.name === "incomingPurchase" ||
+          e.target.name === "inflowCredit" ||
+          e.target.name === "incomePurchase" ||
+          e.target.name === "sending") {
           obj.total = Number(obj.sales) * Number(obj.mainRate);
         }
         return obj;

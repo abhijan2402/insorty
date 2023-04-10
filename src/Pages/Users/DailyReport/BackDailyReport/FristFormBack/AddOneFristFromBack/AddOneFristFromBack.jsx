@@ -644,7 +644,7 @@ const AddOneFristFromBack = ({
                 required
                 min={0}
                 className="smallinput wd-6"
-                name="total650"
+                name="total330"
                 disabled
                 value={item.total330}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}

@@ -214,41 +214,41 @@ const FrontDetailsReport = () => {
       return sales;
     });
 
-  if (!filteredRegularData.length) {
-    return (
-      <>
-        <div className="flex gap-6 items-center my-4">
-          <h2 className="font-bold text-xl text-gray-800">
-            अंग्रेजी
-          </h2>
+  // if (!filteredRegularData.length) {
+  //   return (
+  //     <>
+  //       <div className="flex gap-6 items-center my-4">
+  //         <h2 className="font-bold text-xl text-gray-800">
+  //           अंग्रेजी
+  //         </h2>
 
-          <Link to="/user/dailyreport/details" className="commonBtn">
-            बीयर
-          </Link>
+  //         <Link to="/user/dailyreport/details" className="commonBtn">
+  //           बीयर
+  //         </Link>
 
-          <button className="commonBtn " onClick={handlePrint}>
-            PRINT
-          </button>
-        </div>
-        <div className="flex gap-4 items-center my-4">
-          <div className="flex gap-2 items-center">
-            <DatePicker
-              selected={selectedDate}
-              onChange={(date) => {
-                setSelectedDate(date);
-              }}
-              dateFormat="dd/MM/yyyy"
-              placeholderText={"dd/mm/yyyy"}
-              className="inputBox date"
-            />
-          </div>
-        </div>
-        <h1 className="text-center text-red-500 text-2xl font-bold">
-          No Data Found
-        </h1>
-      </>
-    );
-  }
+  //         <button className="commonBtn " onClick={handlePrint}>
+  //           PRINT
+  //         </button>
+  //       </div>
+  //       <div className="flex gap-4 items-center my-4">
+  //         <div className="flex gap-2 items-center">
+  //           <DatePicker
+  //             selected={selectedDate}
+  //             onChange={(date) => {
+  //               setSelectedDate(date);
+  //             }}
+  //             dateFormat="dd/MM/yyyy"
+  //             placeholderText={"dd/mm/yyyy"}
+  //             className="inputBox date"
+  //           />
+  //         </div>
+  //       </div>
+  //       <h1 className="text-center text-red-500 text-2xl font-bold">
+  //         No Data Found
+  //       </h1>
+  //     </>
+  //   );
+  // }
 
   
   return (
@@ -317,7 +317,7 @@ const FrontDetailsReport = () => {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
                   का नाम :-{" "}
                   {
-                    frontPage.find((entry) => {
+                    frontPage.length && frontPage.find((entry) => {
                       const pg = pageId ? pageId : Array.from(frontSet)[0];
                       return entry._id === pg;
                     }).salesmen
@@ -470,7 +470,7 @@ const FrontDetailsReport = () => {
 
               {/* ========================== */}
 
-              {filteredRegularData.map((regularData, index) => {
+              { filteredRegularData.map((regularData, index) => {
                 return (
                   <RegularData
                     key={index}
@@ -877,6 +877,47 @@ const FrontDetailsReport = () => {
               </tr>
             </tbody>
           </table>
+        </div>
+        <div className="my-8 mx-8 leading-6">
+          <h4 className="text-[#AA237A] font-bold ">
+            Total: {filteredExceptionalData &&
+              filteredExceptionalData.length > 0 &&
+              filteredExceptionalData
+                .filter((page) => {
+                  const pg = pageId ? pageId : Array.from(frontSet)[0];
+                  if (page.page === pg) {
+                    return page;
+                  } else return 0;
+                })
+                .reduce(
+                  (total, currentItem) =>
+                  (total =
+                    total +
+                    Number(currentItem.sales) *
+                    Number(currentItem.sellingRate.$numberDecimal)),
+                  0
+            ) + quan180.reduce(
+              (total, regularData) =>
+                total +
+                Number(regularData.sales) *
+                Number(regularData.sellingRate?.$numberDecimal),
+              0
+            ) +
+            quan375.reduce(
+              (total, regularData) =>
+                total +
+                Number(regularData.sales) *
+                Number(regularData.sellingRate?.$numberDecimal),
+              0
+            ) +
+            quan750.reduce(
+              (total, regularData) =>
+                total +
+                Number(regularData.sales) *
+                Number(regularData.sellingRate?.$numberDecimal),
+              0
+            ) }
+          </h4>
         </div>
       </div>
     </section>

@@ -57,7 +57,8 @@ const DailyReport = () => {
           to="/user/frontdailyreport/details"
           className="commonBtn"
         >
-          परचा
+          पर्चा
+
         </Link>
 
         <button className="commonBtn" onClick={()=>clearData()}>Clear Data</button>
