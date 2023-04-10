@@ -501,7 +501,7 @@ const useHandelSubmitBackAPI = (shopType) => {
                   "Content-Type": "application/json",
                   cookie_token: token,
                 },
-                body: JSON.stringify({ BackPage }),
+                body: JSON.stringify( BackPage ),
               })
                 .then((res) => res.json())
                 .then((data1) => {
