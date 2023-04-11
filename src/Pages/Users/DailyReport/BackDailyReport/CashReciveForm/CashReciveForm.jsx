@@ -10,7 +10,6 @@ const CashReciveForm = ({
   item,
   handleRemoveFieldsCashBack,
 }) => {
-  // const {type,setType} = useState("PARTY")
 
   const {
     parties,
@@ -81,14 +80,7 @@ const CashReciveForm = ({
 
         <td>
           <div className="form-control">
-            {/* <input
-              type="text"
-              className="smallinput"
-              name="reson"
-              value={item.reson}
-              onChange={(e) => onChangeCashRecive(e, index)}
-             
-            /> */}
+         
             {item.type==="PARTY" ?(
             <Autocomplete
               size="small"
@@ -115,12 +107,10 @@ const CashReciveForm = ({
                   {...params}
                   required
                   className="dailyReportInput"
-                  // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.name }}
                   onChange={(event) => {
                     item.name = event.target.value;
-                    // item.liquorID = null;
-                    // onChangePurchesOutSide(event, index)
+                   
                   }}
                 />
               )}
@@ -134,15 +124,7 @@ const CashReciveForm = ({
               options={partners.length > 0 ? partners : ["no options"]}
               getOptionLabel={(option) => (option ? option.name : "")}
               className={item.type === "PARTNER" ? "" : "displayHidden"}
-              // item.brandName = event.target.outerText;
-              // // eslint-disable-next-line array-callback-return
-              // const liq = liquors.filter((liq) => {
-              //   if (liq.brandName === event.target.outerText) {
-              //     return liq;
-              //   }
-              // });
-              // item.liquorID = liq._id
-              // handelFristFormOnChange(event, index);
+              
 
               onChange={(event, value) => {
                 if (value) {
@@ -161,12 +143,10 @@ const CashReciveForm = ({
                   {...params}
                   required
                   className="dailyReportInput"
-                  // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.name }}
                   onChange={(event) => {
                     item.name = event.target.value;
-                    // item.liquorID = null;
-                    // onChangePurchesOutSide(event, index)
+                  
                   }}
                 />
               )}
@@ -180,15 +160,7 @@ const CashReciveForm = ({
               options={branches.length > 0 ? branches : ["no options"]}
               getOptionLabel={(option) => (option ? option.branchName : "")}
               className={item.type === "BRANCH" ? "" : "displayHidden"}
-              // item.brandName = event.target.outerText;
-              // // eslint-disable-next-line array-callback-return
-              // const liq = liquors.filter((liq) => {
-              //   if (liq.brandName === event.target.outerText) {
-              //     return liq;
-              //   }
-              // });
-              // item.liquorID = liq._id
-              // handelFristFormOnChange(event, index);
+            
 
               onChange={(event, value) => {
                 if (value) {
@@ -199,7 +171,6 @@ const CashReciveForm = ({
                   item.id = "";
                 }
 
-                // onChangePurchesOutSide(event, index)
                 console.log(branches);
               }}
               renderInput={(params) => (
@@ -207,12 +178,10 @@ const CashReciveForm = ({
                   required
                   {...params}
                   className="dailyReportInput"
-                  // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.name }}
                   onChange={(event) => {
                     item.name = event.target.value;
-                    // item.liquorID = null;
-                    // onChangePurchesOutSide(event, index)
+            
                   }}
                 />
               )}

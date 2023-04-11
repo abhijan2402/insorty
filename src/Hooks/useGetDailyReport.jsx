@@ -1,10 +1,10 @@
-import React from "react";
+
 import { useQuery } from "@tanstack/react-query";
 
 function useGetDailyReport() {
   const token = localStorage.getItem("token");
 
-  const { data: RMLData, isLoading: RMLLoaded, RMLrefetch } = useQuery({
+  const { data: RMLData, isLoading: RMLLoaded } = useQuery({
     queryKey: ["RMLData"],
     queryFn: async () => {
       const res = await fetch(
@@ -22,7 +22,6 @@ function useGetDailyReport() {
   const {
     data: PurchaseOutsideData,
     isLoading: PurchaseOutsideLoaded,
-    PurchaseOutsideRefetch,
   } = useQuery({
     queryKey: ["PurchaseOutsideData"],
     queryFn: async () => {
@@ -54,7 +53,6 @@ function useGetDailyReport() {
   const {
     data: BorrowedCashReturnData,
     isLoading: BorrowedCashReturnLoaded,
-    BorrowedCashReturnRefetch,
   } = useQuery({
     queryKey: ["BorrowedCashReturnData"],
     queryFn: async () => {
@@ -72,7 +70,6 @@ function useGetDailyReport() {
   const {
     data: PurchaseBorrowData,
     isLoading: PurchaseBorrowLoaded,
-    PurchaseBorrowRefetch,
   } = useQuery({
     queryKey: ["PurchaseBorrowData"],
     queryFn: async () => {
@@ -87,7 +84,7 @@ function useGetDailyReport() {
       return data.data;
     },
   });
-  const { data: SendData, isLoading: SendLoaded, SendRefetch } = useQuery({
+  const { data: SendData, isLoading: SendLoaded } = useQuery({
     queryKey: ["SendData"],
     queryFn: async () => {
       const res = await fetch(
@@ -104,7 +101,7 @@ function useGetDailyReport() {
   const {
     data: BorrowedData,
     isLoading: BorrowedDataLoaded,
-    BorrowedDataRefetch,
+   
   } = useQuery({
     queryKey: ["BorrowedData"],
     queryFn: async () => {
@@ -122,7 +119,6 @@ function useGetDailyReport() {
   const {
     data: FinalReportData,
     isLoading: FinalReportDataLoaded,
-    FinalReportDataRefetch,
   } = useQuery({
     queryKey: ["FinalReportData"],
     queryFn: async () => {
@@ -140,7 +136,6 @@ function useGetDailyReport() {
   const {
     data: FrontPageData,
     isLoading: FrontPageDataLoaded,
-    FrontPageDataRefetch,
   } = useQuery({
     queryKey: ["FrontPageData"],
     queryFn: async () => {

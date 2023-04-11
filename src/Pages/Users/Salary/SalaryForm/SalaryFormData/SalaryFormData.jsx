@@ -18,16 +18,6 @@ const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList }) =
     0
   );
 
-
-// console.log(`shesh is ${shesh} at ${index}`)
-
-// console.log(totalPaid)
-
-  // console.log(salareyDataList[index - 1] ? ((salareyDataList[index - 1].salary.price)-(salareyDataList[index - 1].payment.price)+salaryData.price) : 0 )
-  // console.log(salareyDataList[index - 1] ? salareyDataList[index - 1].salary.price : 0 )
-  // console.log((salaryData?.price)-(payment?.price))
-  // console.log(salary)
-
   return (
     <>
       <tr>

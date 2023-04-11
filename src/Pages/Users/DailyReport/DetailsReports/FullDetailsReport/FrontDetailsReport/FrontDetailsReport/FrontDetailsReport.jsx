@@ -6,7 +6,6 @@ import FristFormDetails from "../FristFormDetails/FristFormDetails";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment/moment";
-import { FaCalendarAlt } from "react-icons/fa";
 import useFrontDetailHooks from "../FrontDetailsHooks/useFrontDetailHooks";
 import RegularData from "../RegularData/RegularData";
 import jwtDecode from "jwt-decode";
@@ -68,9 +67,6 @@ const FrontDetailsReport = () => {
     return 0;
   });
 
-  // console.log(page)
-  // console.log(Array.from(frontSet)[0])
-  // console.log(filteredPages)
 
   let quan750 = [];
   let quan375 = [];
@@ -213,42 +209,6 @@ const FrontDetailsReport = () => {
       const { sales } = item;
       return sales;
     });
-
-  // if (!filteredRegularData.length) {
-  //   return (
-  //     <>
-  //       <div className="flex gap-6 items-center my-4">
-  //         <h2 className="font-bold text-xl text-gray-800">
-  //           अंग्रेजी
-  //         </h2>
-
-  //         <Link to="/user/dailyreport/details" className="commonBtn">
-  //           बीयर
-  //         </Link>
-
-  //         <button className="commonBtn " onClick={handlePrint}>
-  //           PRINT
-  //         </button>
-  //       </div>
-  //       <div className="flex gap-4 items-center my-4">
-  //         <div className="flex gap-2 items-center">
-  //           <DatePicker
-  //             selected={selectedDate}
-  //             onChange={(date) => {
-  //               setSelectedDate(date);
-  //             }}
-  //             dateFormat="dd/MM/yyyy"
-  //             placeholderText={"dd/mm/yyyy"}
-  //             className="inputBox date"
-  //           />
-  //         </div>
-  //       </div>
-  //       <h1 className="text-center text-red-500 text-2xl font-bold">
-  //         No Data Found
-  //       </h1>
-  //     </>
-  //   );
-  // }
 
   
   return (

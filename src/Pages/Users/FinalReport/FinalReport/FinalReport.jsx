@@ -39,9 +39,6 @@ const FinalReport = () => {
     )
   }
 
-  // if(!data.length){
-  //   return <div>No Data Found</div>;
-  // }
 
   const { monthlyFinalReport, borrowedBottles, extraBottles } = data;
 
@@ -56,7 +53,7 @@ const FinalReport = () => {
     <section ref={front} className="py-4 px-4">
       <div className="title flex justify-center items-center">
         <h2 className="font-bold text-[1.5rem] text-center titleStyle">
-          {/* बचत व नकदी का हिसाब  */} फाइनल रिपोर्ट
+ फाइनल रिपोर्ट
         </h2>
        
        

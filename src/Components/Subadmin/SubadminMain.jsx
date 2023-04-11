@@ -16,8 +16,7 @@ function SubadminMain() {
     }
 
   }
-
-
+  
   return (
     <div>This is SubadminMain</div>
   )

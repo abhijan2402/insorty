@@ -10,12 +10,11 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
 
   localStorage.setItem("beerTotal", JSON.stringify(beerTotal));
   localStorage.setItem("rmlTotal", JSON.stringify(rmlTotal));
-  // localStorage.setItem("cashTotal", JSON.stringify(Number(localStorage.getItem('totalPaymentsRecieved'))));
+
   localStorage.setItem("udhaariTotal", JSON.stringify(udhaariTotal));
   localStorage.setItem("commisionTotal", JSON.stringify(commisionTotal));
   localStorage.setItem("pichlaBakaya", JSON.stringify(0));
 
-  // localStorage.setItem("paymentRecieved", JSON.stringify(paymentRecieved));
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const beerSecond = JSON.parse(localStorage.getItem("beerFormTotal"));
@@ -47,7 +46,6 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
   return (
     <section>
       <div className="overflow-x-auto">
-        {/* <table className="table w-full"> */}
         <table className="table">
           <thead>
             <tr>

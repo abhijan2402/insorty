@@ -35,11 +35,8 @@ const Login = () => {
         })
         .then((response) => {
           setuserData(response.data);
-          // console.log(response.data);
-          // console.log("from user data", userData);
-
+          
           if (response.data.success) {
-            // const role = response.data.data.role;
             console.log(response.data.data.role);
             console.log(role);
             if (role === "admin") {
@@ -132,7 +129,6 @@ const Login = () => {
                       <option disabled selected>
                         Select Your Role
                       </option>
-                      {/* <option value="user">User</option> */}
                       <option value="shop">Shop</option>
                       <option value="admin">Admin</option>
                       <option value="subadmin">Sub Admin</option>

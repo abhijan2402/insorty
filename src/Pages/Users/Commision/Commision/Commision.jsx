@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import { FaCalendarAlt } from "react-icons/fa";
 import CommisionForm from "../CommisionForm/CommisionForm";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
@@ -21,11 +20,6 @@ const Commision = () => {
     return <Loader></Loader>;
   }
 
-
-  // if (!commitsonData.length) {
-  //   return <h1>No Data Found</h1>;
-  // }
-
   const filteredData = commitsonData.length && commitsonData.filter((item) => {
     let filterPass = true;
     const date = moment(item.date).format("DD/MM/YYYY");
@@ -39,7 +33,7 @@ const Commision = () => {
     return filterPass;
   });
 
-  // get total amount of filtered data and map it to the array of objects and then add all the values of the array
+
   const totalAmount = commitsonData.length && filteredData.reduce((acc, item) => {
     return Number(acc) + item.entries.filter((item) => {
       return item.type === "COMMISSION";

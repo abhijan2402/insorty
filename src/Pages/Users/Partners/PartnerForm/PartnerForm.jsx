@@ -70,10 +70,7 @@ const PartnerForm = ({ partner, StartDate, index, EndDate }) => {
             </div>
           </td>
         </>
-        {/* ); */}
-        {/* })} */}
-
-        {/* ============= कुल योग ================ */}
+       
       </tr>
     </>
   );

@@ -46,14 +46,7 @@ const AddPayment = ({
                   <span className="label-text font-bold">दिनाक</span>
                 </label>
 
-                {/* <input
-                  style={{
-                    border: "1px solid #4CAF50",
-                  }}
-                  type="date"
-                  name="debitMonth"
-                  className="input input-bordered w-full"
-                /> */}
+        
 
                 <DatePicker
                   name="debitMonth"
@@ -88,14 +81,6 @@ const AddPayment = ({
                 <label className="label">
                   <span className="label-text font-bold">दिनाक</span>
                 </label>
-                {/* <input
-                  style={{
-                    border: "1px solid #4CAF50",
-                  }}
-                  type="date"
-                  name="depositMonth"
-                  className="input input-bordered w-full"
-                /> */}
 
                 <DatePicker
                   name="depositMonth"
@@ -109,17 +94,7 @@ const AddPayment = ({
             </div>
 
             <div className="mt-4">
-              {/* <label className="label">
-                <span className="label-text font-bold">चालू शेष नामे</span>
-              </label>
-              <input
-                style={{
-                  border: "1px solid #4CAF50",
-                }}
-                type="number"
-                name="currentBalance"
-                className="input input-bordered w-full"
-              /> */}
+        
               <label className="label">
                 <span className="label-text font-bold">विवरणे</span>
               </label>

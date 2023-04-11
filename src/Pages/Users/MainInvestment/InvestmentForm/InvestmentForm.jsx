@@ -54,16 +54,8 @@ const InvestmentForm = ({
           />
         </td>
         <td>
-          {/* <input
-            type="date"
-            name="date"
-            className="dailyReportInput"
-            defaultValue={new Date(mainInvestment.date) }
-            onChange={event => handelOnChangeMainInvestment(name, new Date(event.target.value), index, 'date')}
-          // onChange={event => handelOnChangeMainInvestment(name, moment(event.target.value, 'dd-mm-yyyy').toDate(), index, 'date')}
-          /> */}
+         
           <DatePicker
-            // selected the date from the database and convert it to date format for display in the input box
             selected={new Date(mainInvestment.date)}
             name="date"
             onChange={(date) => {

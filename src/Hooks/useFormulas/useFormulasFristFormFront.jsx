@@ -104,7 +104,6 @@ const useFormulasFristFormFront = () => {
           (elem) => elem.quantityInML === 180
         );
 
-      
 
         if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock > 0) {
           const newFormData = { ...addOneFristForm };
@@ -303,7 +302,6 @@ const useFormulasFristFormFront = () => {
   });
 
   const handelFristFormOnChange = (e, index) => {
-    //************* Formula **************** */
     const getDataFromAPI = () => {
       const res = data;
       for (var i = 0; i < res.data.length; i++) {
@@ -320,7 +318,6 @@ const useFormulasFristFormFront = () => {
     );
     setAddOneFristFormState(firstFormHandel);
 
-    //************* Formula **************** */
 
     const handelavg750 = addOneFristFormState.map((returned, i) => {
       if (index === i) {

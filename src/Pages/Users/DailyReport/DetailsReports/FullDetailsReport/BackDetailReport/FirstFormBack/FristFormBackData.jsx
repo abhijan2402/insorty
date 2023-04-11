@@ -27,9 +27,7 @@ const FristFormBackData = ({ regularData, index }) => {
             <td className="tg-0lax">{index + 1}</td>
             <td className="tg-0lax">{brandName}</td>
 
-            {/* Average Rate */}
-            {/* show the 650 data  */}
-
+      
             <td className="tg-0lax">0</td>
             <td className="tg-0lax">0</td>
             <td className="tg-0lax">0</td>
@@ -276,7 +274,6 @@ const FristFormBackData = ({ regularData, index }) => {
                   })
                 : 0}
             </td>
-            {/* <td className="tg-0lax"> */}
           </tr>
         );
       })}

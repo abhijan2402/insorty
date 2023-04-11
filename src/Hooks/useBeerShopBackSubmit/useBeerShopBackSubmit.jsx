@@ -38,7 +38,6 @@ const useBeerShopBackSubmit = (shoType) => {
     });
   }
 
-  //   shipping
 
   const addPurchesBorrowData = [];
   for (let index = 0; borrow ? index < borrow.length : 0; index++) {
@@ -51,7 +50,6 @@ const useBeerShopBackSubmit = (shoType) => {
     });
   }
 
-  // vagitable
 
   const addExtrathig = [];
   for (
@@ -67,7 +65,6 @@ const useBeerShopBackSubmit = (shoType) => {
     });
   }
 
-  // commison
 
   const entriesExpances = [];
 
@@ -80,7 +77,6 @@ const useBeerShopBackSubmit = (shoType) => {
     });
   }
 
-  // cradit dabit
 
   const entriesBorrow = [];
   for (let index = 0; credit ? index < credit.length : 0; index++) {
@@ -94,7 +90,6 @@ const useBeerShopBackSubmit = (shoType) => {
     });
   }
 
-  // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
   for (
     let index = 0;
@@ -132,7 +127,7 @@ const useBeerShopBackSubmit = (shoType) => {
       setIsLoading(true);
       try {
         const api1 = fetch(
-          "https://insorty-api.onrender.com/shop/addTotalExpensesData", //1
+          "https://insorty-api.onrender.com/shop/addTotalExpensesData", 
           {
             method: "POST",
             body: JSON.stringify({
@@ -149,7 +144,7 @@ const useBeerShopBackSubmit = (shoType) => {
         );
 
         const api2 = fetch(
-          "https://insorty-api.onrender.com/shop/addBorrowedData", //2
+          "https://insorty-api.onrender.com/shop/addBorrowedData", 
           {
             method: "POST",
             body: JSON.stringify({
@@ -218,7 +213,7 @@ const useBeerShopBackSubmit = (shoType) => {
         );
 
         const api6 = fetch(
-          "https://insorty-api.onrender.com/shop/addExtraThings", //7
+          "https://insorty-api.onrender.com/shop/addExtraThings", 
           {
             method: "POST",
             body: JSON.stringify({
@@ -234,7 +229,6 @@ const useBeerShopBackSubmit = (shoType) => {
           }
         );
 
-        // api3, api4, api5, api6, api8
         Promise.all([api1, api2, api3, api4, api5, api6])
           .then((responses) => Promise.all(responses.map((res) => res.json())))
           .then((data) => {

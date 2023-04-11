@@ -56,7 +56,6 @@ const PartnerDetails = () => {
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                {/* <th>Partner Name/पार्टनर नाम</th> */}
                 <th> नामे </th>
                 <th> जमा</th>
                 <th> शेष</th>
@@ -72,7 +71,6 @@ const PartnerDetails = () => {
                 return (
                   <tr key={index}>
                     <th>{index + 1}</th>
-                    {/* <td>{partnerName?.name}</td> */}
                     <td>{debit}</td>
                     <td>{deposit}</td>
                     <td>{remaining}</td>
@@ -82,7 +80,6 @@ const PartnerDetails = () => {
 
               <tr>
                 <th>Total</th>
-                {/* <td></td> */}
                 <td>{totalDebitData}</td>
                 <td>{totalDepositeData}</td>
                 <td>{totalRemainingData}</td>

@@ -12,14 +12,13 @@ const EnglishBearForm = ({ index, liquors, englishBear, total }) => {
     (element) => element.quantityInML === 180
   );
 
-  console.log(total);
 
 
   total +=
     quan750?.currentStock * Number(quan750?.averageRate.$numberDecimal) +
     quan330?.currentStock * Number(quan750?.averageRate.$numberDecimal) +
     quan180?.currentStock * Number(quan750?.averageRate.$numberDecimal);
-  console.log(total);
+
 
   return (
     <>

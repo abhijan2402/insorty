@@ -105,9 +105,8 @@ const Payments = () => {
             <h2 className="font-bold md:text-[1.5rem] text-center">
               दुकान/बार पेमेंट
             </h2>
-            
           </div>
-            <div className="divider my-2"></div>
+          <div className="divider my-2"></div>
 
           <div>
             <form action="">
@@ -129,7 +128,6 @@ const Payments = () => {
                       <td></td>
 
                       <td>
-                        {/* <div className="flex gap-2"> */}
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">रकम</span>

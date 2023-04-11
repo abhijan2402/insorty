@@ -67,26 +67,10 @@ const Partners = ({ isBearShop }) => {
     <section className="py-4">
       <div className="title">
         <div className="flex justify-center items-center gap-4">
-          {/* <Link className="commonBtn" to="/user/sendFormat">
-            सभी पार्टनर
-          </Link> */}
 
            <Link className="commonBtn" to={partnersUrl}>
             सभी पार्टनर
           </Link>
-
-
-          <>
-            {/* {!isBeerShop ? (
-              <Link className="commonBtn" to="/user/bearshop/sendFormat">
-                सभी पार्टनर
-              </Link>
-            ) : (
-              <Link className="commonBtn" to="/user/sendFormat">
-                Send this in shop
-              </Link>
-            )} */}
-          </>
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
@@ -206,11 +190,7 @@ const Partners = ({ isBearShop }) => {
               </div>
             </form>{" "}
             <div>
-              {/* <div className="mt-4 flex gap-4">
-            <label htmlFor="addPartner" className="btn bg-[#AA237A]">
-              Add Partner
-            </label>
-          </div> */}
+              
             </div>
           </div>
         </div>

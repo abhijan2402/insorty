@@ -1,7 +1,6 @@
 import React, { useState,useRef } from "react";
 import useCashRecive from "../CashReciveHooks/useCashRecive";
 import Loader from "../../../../Components/Loader/Loader";
-import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
@@ -19,9 +18,7 @@ const CashReciveData = () => {
     return <Loader></Loader>;
   }
 
-  // if (!CashReciveData.length){
-  //   return <div>No data found</div>
-  // }
+
 
   const cashReceive = CashReciveData.length && CashReciveData?.map((items) => items);
 
@@ -42,13 +39,6 @@ const CashReciveData = () => {
     return filterPass;
   });
 
-  // if (!filteredData && filteredData.length === 0 && filteredData.length) {
-  //   return <h1 className="text-center text-2xl font-bold ">No Data Found</h1>;
-  // }
-
- 
-
-  
 
   return (
     <>

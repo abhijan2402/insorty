@@ -7,14 +7,6 @@ const StockFormData = ({ index, stockData }) => {
 
   const restBalance = Number(inflow - send);
 
-  // how to place  if restblance is negative then this will be go debit and if positive then this will be go deposit
-
-  if (restBalance < 0) {
-    // this will be go debit
-  } else {
-    // this will be go deposit
-  }
-
   return (
     <tr>
       <th>{index + 1}</th>

@@ -16,9 +16,7 @@ const SubAdminInfo = ({ subadminId, subAdmin }) => {
           >
             ✕
           </label>
-          {/* <h3 className="text-lg font-bold">
-            Rahul wine shop / राहुल शराब की दुकान 
-          </h3> */}
+  
           <div className="py-4 divider"></div>
 
           <div>

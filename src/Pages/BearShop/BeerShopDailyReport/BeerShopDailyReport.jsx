@@ -25,12 +25,6 @@ const DailyReport = () => {
           Back
         </Link>
 
-        {/* <Link
-          to="/user/frontdailyreport/details"
-          className="commonBtn"
-        >
-          Al Details
-        </Link> */}
       </div>
     </section>
   );

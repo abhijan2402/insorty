@@ -35,13 +35,6 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
           X
         </th>
         <td>
-          {/* <input
-            type="text"
-            name="brandName"
-            value="ब्राण्ड/ Brand Name"
-            readOnly
-            className="semiSmallInput"
-          /> */}
 
           <select
             className="dailyReportInput"
@@ -61,12 +54,7 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
           </select>
         </td>
         <td>
-          {/* <input
-            type="date"
-            name="date"
-            value="2021-08-01"
-            className="semiSmallInput"
-          /> */}
+         
           <DatePicker
             selected={new Date(refundRecovery.date)}
             name="month"

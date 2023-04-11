@@ -4,7 +4,6 @@ import FristFormBackData from "./FristFormBackData";
 
 const FristFormBack = ({ filteredRegularData }) => {
   const filtered650mlRegularData = filteredRegularData.map((item) => {
-    console.log("item2222222222222222222222222222222", item);
   
   });
 

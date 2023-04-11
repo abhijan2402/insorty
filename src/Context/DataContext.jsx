@@ -23,8 +23,6 @@ const DataContext = ({ children }) => {
       .then((res) => res.json())
       .then((data) => setLiquerState(data));
 
-    // const salesman = localStorage.getItem('salesMan')
-    //  console.log(salesMan)
     if (localStorage.getItem("salesMan")) {
       setSalesMan(localStorage.getItem("salesMan"));
     }
@@ -64,7 +62,6 @@ const DataContext = ({ children }) => {
     },
   });
 
-  // /shop/getPurchaseOutsideData
 
   const { data: purchaseOutsideData } = useQuery({
     queryKey: ["purchaseOutsideData"],
@@ -81,7 +78,7 @@ const DataContext = ({ children }) => {
     },
   });
 
-  // /shop/getTotalExpensesData
+  
 
   const { data: totalExpensesData, isLoading } = useQuery({
     queryKey: ["totalExpensesData"],
@@ -98,8 +95,7 @@ const DataContext = ({ children }) => {
     },
   });
 
-  // /shop/getBorrowedCashReturnData
-
+  
   const { data: borrowedCashReturnData } = useQuery({
     queryKey: ["borrowedCashReturnData"],
     queryFn: async () => {
@@ -115,7 +111,6 @@ const DataContext = ({ children }) => {
     },
   });
 
-  // {{url}}/shop/getBackPageRMLData
 
   const { data: getBackRmlData, isLoading: RMLloading } = useQuery({
     queryKey: ["getBackRmlData"],

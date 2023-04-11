@@ -126,7 +126,6 @@ const SideNav = () => {
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 स्टॉक जमा नामे
-
               </NavLink>
             </li>
 
@@ -135,7 +134,7 @@ const SideNav = () => {
                 to="/user/winebill"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                शराब  बिल
+                शराब बिल
               </NavLink>
             </li>
 
@@ -192,10 +191,8 @@ const SideNav = () => {
               </NavLink>
             </li>
 
-
             <button
               onClick={() => logout({ returnTo: window.location.origin })}
-              // className="commonBtn flex justify-center items-center"
               className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             >
               <FaPowerOff />
@@ -203,17 +200,13 @@ const SideNav = () => {
             </button>
 
             <button
-              
-              // className="commonBtn flex justify-center items-center"
-              className={jwtDecode(localStorage.getItem("token")).role === "admin" ? "commonBtn flex justify-center items-center" : "hidden"}
-              // className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+              className={
+                jwtDecode(localStorage.getItem("token")).role === "admin"
+                  ? "commonBtn flex justify-center items-center"
+                  : "hidden"
+              }
             >
-              <NavLink
-                to="/admin"
-                // className={jwtDecode(localStorage.getItem("token")).role==="ADMIN" ? "" : "hidden"}
-              >
-                To Admin
-              </NavLink>
+              <NavLink to="/admin">To Admin</NavLink>
             </button>
           </nav>
         </div>

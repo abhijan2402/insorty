@@ -38,9 +38,7 @@ const AddPartyName = ({refetch}) => {
 
   return (
     <section>
-      {/* The button to open modal */}
 
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="AddPartyName" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">

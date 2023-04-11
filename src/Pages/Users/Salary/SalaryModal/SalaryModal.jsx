@@ -50,18 +50,7 @@ const SalaryModal = ({
                     placeholderText={"dd/MM/yyyy"}
                     className="inputBox date"
                   />
-                  {/* 
-                  <input
-                    type="date"
-                    name="salary_monthYear"
-                    value={salaryState.salary_monthYear}
-                    onChange={handelSelaryOnChange}
-                    className="input input-bordered input-accent w-full"
-                    style={{
-                      border: "1px solid #000",
-                      borderRadius: "5px",
-                    }}
-                  /> */}
+                 
                 </div>
               </div>
 
@@ -107,19 +96,7 @@ const SalaryModal = ({
                     placeholderText={"dd/MM/yyyy"}
                     className="inputBox date"
                   />
-                  {/* 
-
-                  <input
-                    type="date"
-                    name="payment_date"
-                    value={salaryState.payment_date}
-                    onChange={handelSelaryOnChange}
-                    className="input input-bordered input-accent w-full"
-                    style={{
-                      border: "1px solid #000",
-                      borderRadius: "5px",
-                    }}
-                  /> */}
+             
                 </div>
               </div>
               <div className="form-control">

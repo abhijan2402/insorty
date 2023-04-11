@@ -6,21 +6,21 @@ const useRmlAdd = () => {
 
   const addRmlForm = {
     liquorID: "",
-    brandName: "", //brandName
+    brandName: "", 
     ml: 750,
     initial:0,
     averageRate: 0,
-    openingStock: 0, //initialStock
-    incomingPurchase: 0, //purchaseShop.purchaseShopNum
-    buyRate: 0, //purchaseShop.purchaseShopRate
-    incomePurchase: 0, //purchaseOutSide.purchaseOutSideNum
-    purchaseRate: 0, //purchaseOutSide.purchaseOutSideRate
-    inflowCredit: 0, //purchaseBorrow
-    sending: 0, //sendingBhejan
+    openingStock: 0, 
+    incomingPurchase: 0, 
+    buyRate: 0, 
+    incomePurchase: 0, 
+    purchaseRate: 0, 
+    inflowCredit: 0, 
+    sending: 0, 
     sumRemainder: 0,
-    closingStock: 0, //lastStock
+    closingStock: 0, 
     sales: 0,
-    rate: 0, //soldRate
+    rate: 0, 
     cost: 0,
   };
 

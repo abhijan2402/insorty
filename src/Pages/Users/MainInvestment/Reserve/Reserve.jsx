@@ -45,14 +45,8 @@ const Reserve = ({ reserve, index, reserveAmountOnChange, name, handleRemoveFiel
           />
         </td>
         <td>
-          {/* <input
-            type="date"
-            name="date"
-            defaultValue={date}
-            className="semiSmallInput"
-          /> */}
+         
           <DatePicker
-            // selected={new Date(reserve?.month)}
             selected={new Date(reserve.month)}
             name="month"
             onChange={(month) => {

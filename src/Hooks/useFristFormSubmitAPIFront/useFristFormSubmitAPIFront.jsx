@@ -1,6 +1,4 @@
 import { useContext, useState } from "react";
-import useFormulasFristFormFront from "../useFormulas/useFormulasFristFormFront";
-import useSecondFormFront from "../useSecondFormFront";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../../Context/DataContext";
 import useLiquors from "../useLiquors";
@@ -8,12 +6,9 @@ import useLiquors from "../useLiquors";
 const useFristFormSubmitAPIFront = () => {
   const token = localStorage.getItem("token");
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
-  const { addOneFristFormState } = useFormulasFristFormFront();
-  const { addOneSecondFormState } = useSecondFormFront();
   const firstFront = JSON.parse(localStorage.getItem("firstFront"));
   const mlForm = JSON.parse(localStorage.getItem("mlForm"));
 
-  const { liquors } = useContext(DataContextApi);
   const { GetLiqId } = useLiquors();
 
   const { salesMan, drDate } = useContext(DataContextApi);

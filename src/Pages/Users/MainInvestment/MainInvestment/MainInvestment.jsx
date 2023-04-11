@@ -176,17 +176,10 @@ const MainInvestment = () => {
                       name="brandName"
                       value={"Total"}
                       disabled
-                      // onChange={(e) => handelOnChangeMainInvestment(e, index)}
                     />
                   </td>
                   <td>
-                    {/* <input
-                      type="date"
-                      name="theDate"
-                      className="dailyReportInput"
-                      defaultValue={cashInHand.date}
-                      onChange={(e) => cashInHand.date = e.target.value}
-                    /> */}
+                   
                   </td>
                   <td>
                     <input
@@ -203,13 +196,7 @@ const MainInvestment = () => {
                   </td>
                 </tr>
 
-                {/* <MainInvestmentList></MainInvestmentList> */}
-                {/* <tr>
-                <td></td>
-                <td></td>
-                <td className="commonText">Total</td>
-                <td className="price">162,000</td>
-              </tr> */}
+                
               </tbody>
             </table>
           </div>
@@ -336,9 +323,7 @@ const MainInvestment = () => {
           </table>
         </div>
       </div>
-      
-      {/* <RefundDetailsData></RefundDetailsData>
-      <ResurvedDataDetails></ResurvedDataDetails> */}
+     
     </section>
       <div className="my-4 flex justify-center  items-center gap-4">
         <button

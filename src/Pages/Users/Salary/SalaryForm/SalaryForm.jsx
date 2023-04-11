@@ -168,36 +168,7 @@ const SalaryForm = () => {
                         </td>
 
 
-                        {/* <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div> */}
+                      
                         <td>
                         <div className="form-control">
                           <label className="label">
@@ -213,31 +184,7 @@ const SalaryForm = () => {
                           </label>
                         </div>
                         </td>
-                        {/* <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"></span>
-                          </label>
-                        </div> */}
+                  
                         <td>
                         <div className="form-control">
                           <label className="label">

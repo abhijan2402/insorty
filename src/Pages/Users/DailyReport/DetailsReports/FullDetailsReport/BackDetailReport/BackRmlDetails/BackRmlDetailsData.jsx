@@ -4,7 +4,6 @@ import useLiquors from "../../../../../../../Hooks/useLiquors";
 const BackRmlDetailsData = ({RmlData, index}) => {
   const { entries } = RmlData;
   const { getNameByID } = useLiquors();
-  // console.log(RmlData, "++++++");
 
   return (
     <>

@@ -29,31 +29,6 @@ const SideNav = () => {
   return (
     <>
       <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r sticky  left-0 sidenav">
-        {/* <div
-          style={{
-            left: "0",
-            zIndex: " 1000",
-          }}
-          className="flex-col w-64 fixed px-4 md:mb-14 top-0 md:top-0 bg-white border-r flex "
-        >
-          <div className="text-3xl flex justify-center items-center font-semibold  text-white">
-            <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />
-          </div>
-          <Link>
-            <div>
-              <h1 className="font-bold text-red-400 text-center uppercase">
-                Name: {jwtDecode(localStorage.getItem("token")).name}
-              </h1>
-              <div>
-                <h1 className="font-bold text-center uppercase mt-2">
-                  {jwtDecode(localStorage.getItem("token")).role}
-                </h1>
-              </div>
-            </div>
-          </Link>
-          <hr className="mt-4 mb-2" />
-        </div> */}
-
         <div
           style={{
             left: "0",
@@ -90,14 +65,6 @@ const SideNav = () => {
               </NavLink>
             </li>
 
-            {/* <li className="my-4">
-              <NavLink
-                to="/user/bearshop/partners"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                Partners / पार्टनर
-              </NavLink>
-            </li> */}
 
            <li className="my-4">
               <NavLink

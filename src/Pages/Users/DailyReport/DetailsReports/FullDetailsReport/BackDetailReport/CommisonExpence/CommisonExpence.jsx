@@ -4,10 +4,7 @@ const CommisonExpence = ({ expences, index, entries }) => {
   // console.log(entries);
   return (
     <>
-      {/* <tr>
-        <td>{index + 1}</td>
-        <td colSpan={8}>{expences?.salesmen}</td>
-      </tr> */}
+
       {entries?.map((entry, index) => {
 
         return (

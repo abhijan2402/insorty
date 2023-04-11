@@ -83,7 +83,6 @@ const useCarditDabit = () => {
   const handleRemoveFieldsCredit = index => {
     const values = [...craditDabitState];
     values.splice(index, 1);
-    // console.log(index)
     setCraditDabitState(values);
     localStorage.setItem("credit", JSON.stringify(values))
     localStorage.setItem(

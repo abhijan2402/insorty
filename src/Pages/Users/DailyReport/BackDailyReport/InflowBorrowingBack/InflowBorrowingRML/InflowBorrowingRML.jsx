@@ -77,12 +77,11 @@ const InflowBorrowingRML = ({
                 <TextField
                   {...params}
                   className="dailyReportInput"
-                  // value={item.partyName}
+       
                   inputProps={{ ...params.inputProps, value: item.partyName }}
                   onChange={(event) => {
                     item.partyName = event.target.value;
-                    // item.liquorID = null;
-                    // onChangeBorrowingRml(event, index)
+                  
                   }}
                 />
               )}
@@ -115,12 +114,11 @@ const InflowBorrowingRML = ({
                   required
                   {...params}
                   className="dailyReportInput"
-                  // value={item.brandName}
+
                   inputProps={{ ...params.inputProps, value: item.brandName }}
                   onChange={(event) => {
                     item.brandName = event.target.value;
-                    // item.liquorID = null;
-                    // onChangeBorrowingRml(event, index)
+                   
                   }}
                 />
               )}
@@ -131,7 +129,7 @@ const InflowBorrowingRML = ({
         <td>
           <div className="form-control ">
             <select
-              // className="select select-bordered"
+
               className="smallinput wd-9"
               name="quantity"
               value={item.quantity}
@@ -140,8 +138,7 @@ const InflowBorrowingRML = ({
                 onChangeBorrowingRml(e, index);
               }}
             >
-              {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
-
+             
               <option selected value={750}>
                 750ml
               </option>
@@ -175,36 +172,6 @@ const InflowBorrowingRML = ({
             />
           </div>
         </td>
-
-        {/* <td>
-          <div className="form-control">
-            <input
-              type="number"
-
-              min={0}
-              required
-              className="smallinput"
-              name="rate"
-              value={item.rate}
-              onChange={(e) => onChangeBorrowingRml(e, index)}
-            />
-          </div>
-        </td>
-
-        <td>
-          <div className="form-control">
-            <input
-              type="number"
-              required
-              className="smallinput"
-              min={0}
-              name="total"
-              value={item.total}
-              disabled
-              onChange={(e) => onChangeBorrowingRml(e, index)}
-            />
-          </div>
-        </td> */}
 
         <td>
           <div className="form-control">
