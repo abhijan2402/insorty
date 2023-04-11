@@ -77,12 +77,10 @@ const ShippingForm = ({
                   {...params}
                   required
                   className="dailyReportInput"
-                  // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.partyName }}
                   onChange={(event) => {
                     item.partyName = event.target.value;
-                    // item.liquorID = null;
-                    // onChangeShipping(event, index)
+                    
                   }}
                 />
               )}
@@ -115,12 +113,10 @@ const ShippingForm = ({
                   {...params}
                   required
                   className="dailyReportInput"
-                  // value={item.brandName}
                   inputProps={{ ...params.inputProps, value: item.brandName }}
                   onChange={(event) => {
                     item.brandName = event.target.value;
-                    // item.liquorID = null;
-                    // onChangeShipping(event, index)
+                    
                   }}
                 />
               )}
@@ -131,7 +127,6 @@ const ShippingForm = ({
         <td>
           <div className="form-control">
             <select
-              // className="select select-bordered"
               name="quantity"
               className="smallinput wd-9"
               required
@@ -141,7 +136,6 @@ const ShippingForm = ({
                 console.log(item);
               }}
             >
-              {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
 
               <option selected value={750}>
                 750ml

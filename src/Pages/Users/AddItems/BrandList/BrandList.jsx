@@ -84,9 +84,7 @@ const BrandList = () => {
                       <Link
                         className="font-3xl font-bold"
                         style={{ color: "#AA237A" }}
-                        // onClick={() => handleDelete(salary?._id)}
                       >
-                        {/* <FaRegTrashAlt></FaRegTrashAlt> */}
                       </Link>
                     </td>
                   </tr>

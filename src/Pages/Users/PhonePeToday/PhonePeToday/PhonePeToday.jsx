@@ -20,9 +20,6 @@ const PhonePeToday = () => {
     return <Loader></Loader>;
   }
 
-  // if (!phonePayData.length) {
-  //   return <div>No data found</div>;
-  // }
 
   const filteredData = phonePayData.length && phonePayData?.filter((item) => {
     let filterPass = true;
@@ -36,10 +33,6 @@ const PhonePeToday = () => {
     }
     return filterPass;
   });
-
-  // if (!filteredData && filteredData.length === 0 && filteredData.length) {
-  //   return <h1 className="text-center text-2xl font-bold ">No Data Found</h1>;
-  // }
 
   return (
     <>

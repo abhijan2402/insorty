@@ -48,7 +48,6 @@ function useLiquors() {
     });
     loading = false;
   }
-  // console.log(liquors)
 
   const checkLiquor = (name) => {
     let liq;
@@ -77,24 +76,19 @@ function useLiquors() {
       liquors.map((item) => {
         if (item._id === id && item.type === type) {
           size = item.sizes.filter((brand) => {
-            // console.log(brand)
             if (brand.quantityInML === ml) {
-              // console.log(brand)
               return brand;
             }
           });
         }
         if (item._id === id && type === null) {
           size = item.sizes.filter((brand) => {
-            // console.log(brand)
             if (brand.quantityInML === ml) {
-              // console.log(brand)
               return brand;
             }
           });
         }
       });
-      // console.log(size)
       if (size && size.length > 0) {
         return size[0]._id;
       } else return null;
@@ -155,7 +149,6 @@ function useLiquors() {
         return null
       }
       return liq.quantityInML
-      console.log(liq)
     }
   }
 

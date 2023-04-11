@@ -214,10 +214,6 @@ const BeerStock = () => {
                     );
                   })}
 
-                {/* <tr>
-              <td colSpan="5">Total</td>
-              <td>{total}</td>
-            </tr> */}
               </tbody>
             </table>
           </div>

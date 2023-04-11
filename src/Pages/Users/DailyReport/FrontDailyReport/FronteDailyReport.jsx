@@ -1084,14 +1084,6 @@ const FronteDailyReport = () => {
               </div>
             </>
 
-            {/* <div className="mt-4 flex gap-4">
-            <button
-              className="dailyReportBtn"
-              onClick={() => addOneFristFormHandler()}
-            >
-              ADD
-            </button>
-          </div> */}
           </div>
 
           <div>
@@ -1377,13 +1369,7 @@ const FronteDailyReport = () => {
               </>
             ) : (
               <>
-                {/* <button
-                className="dailyReportBtn"
-                type="submit"
-                onSubmit={() => submitFristFormHandler()}
-              >
-                Submit
-              </button> */}
+    
                 <input type="submit" className="dailyReportBtn" />
               </>
             )}

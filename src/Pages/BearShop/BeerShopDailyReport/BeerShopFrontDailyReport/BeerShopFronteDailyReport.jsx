@@ -8,12 +8,9 @@ const FronteDailyReport = () => {
     handelFristFormSubmit,
     fristFormAddOne,
     fristFormAddFive,
-    // fristFormOnChange,
     beerShopFrontFrist,
     beerShopFrontSecond,
     beerShopFrontThird,
-    // secondFormAddOne,
-    // thirdFormAddOne,
     addOne,
   } = UseBeerShopFront();
 
@@ -25,7 +22,7 @@ const FronteDailyReport = () => {
         <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
         <Link
           to="/user/bearshop/dailyreport/back"
-          className="btn btn-error text-white font-bold"
+          className="commonBtn"
         >
           Back
         </Link>

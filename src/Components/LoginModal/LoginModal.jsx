@@ -4,7 +4,6 @@ import "../../Auth/Styles/Auth.scss";
 const LoginModal = () => {
   return (
     <>
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="loginModal" className="modal-toggle" />
       <div className="modal ">
         <div className="modal-box relative loginModalContainer">

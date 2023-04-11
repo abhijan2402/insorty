@@ -79,12 +79,10 @@ const PurchaseOutSideFrom = ({
                   {...params}
                   required
                   className="dailyReportInput"
-                  // value={item.partyName}
                   inputProps={{ ...params.inputProps, value: item.partyName }}
                   onChange={(event) => {
                     item.partyName = event.target.value;
-                    // item.liquorID = null;
-                    // onChangePurchesOutSide(event, index)
+                    
                   }}
                 />
               )}
@@ -101,15 +99,7 @@ const PurchaseOutSideFrom = ({
               }}
               options={liquors}
               getOptionLabel={(option) => (option ? option.brandName : "")}
-              // item.brandName = event.target.outerText;
-              // // eslint-disable-next-line array-callback-return
-              // const liq = liquors.filter((liq) => {
-              //   if (liq.brandName === event.target.outerText) {
-              //     return liq;
-              //   }
-              // });
-              // item.liquorID = liq._id
-              // handelFristFormOnChange(event, index);
+              
               onChange={(event, value) => {
                 if (value) {
                   item.brandName = value.brandName;
@@ -128,8 +118,7 @@ const PurchaseOutSideFrom = ({
                   inputProps={{ ...params.inputProps, value: item.brandName }}
                   onChange={(event) => {
                     item.brandName = event.target.value;
-                    // item.liquorID = null;
-                    // onChangePurchesOutSide(event, index)
+                    
                   }}
                 />
               )}
@@ -149,7 +138,6 @@ const PurchaseOutSideFrom = ({
                 console.log(item);
               }}
             >
-              {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
 
               <option selected value={750}>
                 750ml

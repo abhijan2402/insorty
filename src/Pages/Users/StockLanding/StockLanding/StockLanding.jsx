@@ -40,17 +40,7 @@ const StockLanding = () => {
       <div>
         <h1 className="titleStyle text-center">पार्टी का नाम</h1>
         <div className="flex gap-10 font-bold">
-          {/* <p className="description">Sanjay wine shop</p> */}
-          {/* <p className="description">
-            {todayDate.toLocaleDateString("en-IN", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-              hour: "numeric",
-              minute: "numeric",
-              second: "numeric",
-            })}
-          </p> */}
+          
         </div>
         <div className="divider my-2"></div>
       </div>

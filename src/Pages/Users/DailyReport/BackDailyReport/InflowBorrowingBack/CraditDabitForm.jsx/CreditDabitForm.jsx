@@ -48,7 +48,6 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <select
             type="text"
             required
-            // className="select select-bordered"
             className="smallinput wd-30"
             name="partyType"
             value={item.partyType}
@@ -73,15 +72,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           }}
             options={parties.length > 0 ? parties : ['no options']}
             getOptionLabel={(option) => option ? option.partyName : ""}
-            // item.brandName = event.target.outerText;
-            // // eslint-disable-next-line array-callback-return
-            // const liq = liquors.filter((liq) => {
-            //   if (liq.brandName === event.target.outerText) {
-            //     return liq;
-            //   }
-            // });
-            // item.liquorID = liq._id
-            // handelFristFormOnChange(event, index);
+            
             className={item.partyType === "PARTY" ? '' : 'displayHidden'}
             onChange={(event, value) => {
               if (value) {
@@ -100,13 +91,11 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
                 required
                 {...params}
                 className="dailyReportInput"
-                // value={item.partyName}
                 inputProps={{ ...params.inputProps, value: item.partyName }}
 
                 onChange={(event) => {
                   item.partyName = event.target.value;
-                  // item.liquorID = null;
-                  // onChangePurchesOutSide(event, index)
+                  
                 }}
               />
             )}
@@ -120,16 +109,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             options={partners.length > 0 ? partners : ['no options']}
             getOptionLabel={(option) => option ? option.name : ""}
             className={item.partyType === "PARTNER" ? '' : 'displayHidden'}
-                
-            // item.brandName = event.target.outerText;
-            // // eslint-disable-next-line array-callback-return
-            // const liq = liquors.filter((liq) => {
-            //   if (liq.brandName === event.target.outerText) {
-            //     return liq;
-            //   }
-            // });
-            // item.liquorID = liq._id
-            // handelFristFormOnChange(event, index);
+            
 
             onChange={(event, value) => {
               if (value) {
@@ -148,13 +128,11 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
                 required
                 {...params}
                 className="dailyReportInput"
-                // value={item.partyName}
                 inputProps={{ ...params.inputProps, value: item.partyName }}
 
                 onChange={(event) => {
                   item.partyName = event.target.value;
-                  // item.liquorID = null;
-                  // onChangePurchesOutSide(event, index)
+                 
                 }}
               />
             )}
@@ -168,16 +146,6 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             options={branches.length > 0 ? branches : ['no options']}
             getOptionLabel={(option) => option ? option.branchName : ""}
             className={item.partyType === "BRANCH" ? '' : 'displayHidden'}
-
-            // item.brandName = event.target.outerText;
-            // // eslint-disable-next-line array-callback-return
-            // const liq = liquors.filter((liq) => {
-            //   if (liq.brandName === event.target.outerText) {
-            //     return liq;
-            //   }
-            // });
-            // item.liquorID = liq._id
-            // handelFristFormOnChange(event, index);
 
             onChange={(event, value) => {
               if (value) {
@@ -196,13 +164,11 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
                 required
                 {...params}
                 className="dailyReportInput"
-                // value={item.partyName}
                 inputProps={{ ...params.inputProps, value: item.partyName }}
 
                 onChange={(event) => {
                   item.partyName = event.target.value;
-                  // item.liquorID = null;
-                  // onChangePurchesOutSide(event, index)
+                  
                 }}
               />
             )}

@@ -1,6 +1,4 @@
 import React, { useState, useRef } from "react";
-import { FaCalendarAlt } from "react-icons/fa";
-import { useLoaderData } from "react-router-dom";
 import BranchFormData from "./BranchFormData/BranchFormData";
 import { useQuery } from "@tanstack/react-query";
 import { Loader } from "react-bootstrap-typeahead";
@@ -11,7 +9,6 @@ import { useParams } from "react-router-dom";
 
 const BranchFrom = () => {
   const token = localStorage.getItem("token");
-  const branchResponse = useLoaderData();
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
   const front = useRef(null);
@@ -20,7 +17,6 @@ const BranchFrom = () => {
   });
   const { branchId } = useParams()
 
-  const branchData = branchResponse?.data;
   console.log(branchId)
 
   const { data: transactions, isLoading: branchDataLoading } = useQuery({

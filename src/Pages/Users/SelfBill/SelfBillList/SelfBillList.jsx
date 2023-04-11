@@ -15,7 +15,6 @@ const SelfBillList = ({ index, billsData, isLoading }) => {
       </div>
     );
   }
-// console.log(date)
 
   return (
     <>

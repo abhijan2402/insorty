@@ -69,7 +69,7 @@ const SelfBill = () => {
       if (EndDate) {
         filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
       }
-      //if filterPass comes back `false` the row is filtered out
+
       return filterPass;
     });
 
@@ -153,7 +153,7 @@ const SelfBill = () => {
             </thead>
             <tbody>
               {
-                // filter the data by date and map it
+
                 (filteredData &&
                   filteredData?.map((billsData, index) => {
                     return (

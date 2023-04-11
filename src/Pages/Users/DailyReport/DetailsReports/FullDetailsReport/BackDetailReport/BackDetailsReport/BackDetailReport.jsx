@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, {  useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import InfolwRml from "../InflowRml/InfolwRml";
 import CommisonExpence from "../CommisonExpence/CommisonExpence";
@@ -12,14 +12,12 @@ import Borrowed from "../Borrrowed/Borrowed";
 import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
 import BackRmlDetailsData from "../BackRmlDetails/BackRmlDetailsData";
 import moment from "moment/moment";
-import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import RegularData from "../../FrontDetailsReport/RegularData/RegularData";
 import FristFormDetails from "../../FrontDetailsReport/FristFormDetails/FristFormDetails";
 
 const BackDetailReport = () => {
-  // const [selectedDate, setSelectedDate] = useState();
 
   const {
     RMLData,

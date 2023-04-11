@@ -1,6 +1,5 @@
 /* eslint-disable array-callback-return */
 import React, { useState,useRef } from "react";
-import { FaCalendarAlt } from "react-icons/fa";
 import OutBillList from "../OutBillList/OutBillList";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";

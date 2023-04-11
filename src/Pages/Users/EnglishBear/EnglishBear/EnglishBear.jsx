@@ -1,6 +1,5 @@
 /* eslint-disable no-sequences */
 import React from "react";
-import EnglishBearDataDisplay from "../EnglishBearDataDisplay/EnglishBearDataDisplay";
 import EnglishBearForm from "../EnglishBearForm/EnglishBearForm";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
@@ -25,16 +24,6 @@ const EnglishBear = () => {
     },
   });
 
-  // const totalAmountData = englishBearData?.map((item) => {
-  //   return Number(item.currentStock) * Number(item.rate) || 0;
-  // });
-  
-  // const totalAmount = Number(
-  //   totalAmountData?.reduce((a, b) => Number(a) + Number(b), 0)
-  // );
-
-  // console.log(totalAmount);
-
   if (isLoading || brandsLoaded) {
     return <Loader></Loader>;
   }
@@ -53,8 +42,7 @@ const EnglishBear = () => {
       <div className="title my-2">
         <h2 className="font-bold md:text-[1.5rem] text-center">अंग्रेजी शराब</h2>
         <div className="flex gap-8 items-center my-4">
-          {/* <h2 className="font-bold text-[1.5rem]">सेल्समेन का नाम</h2>
-          <h2 className="font-bold text-[1.5rem]">12/12/2022</h2> */}
+         
         </div>
         <div className="divider my-2"></div>
       </div>

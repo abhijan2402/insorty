@@ -3,14 +3,6 @@ import { useState } from "react";
 const useSalary = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  // const salaryFormValue = {
-  //   salary_monthYear: "",
-  //   salary_price: 0,
-  //   payment_date: "",
-  //   payment_price: 0,
-  //   reason: "",
-  // };
-
   const [salaryState, setSalaryState] = useState({
     salary_monthYear: "",
     salary_price: 0,

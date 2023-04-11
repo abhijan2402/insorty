@@ -26,7 +26,6 @@ import StockLanding from "../Pages/Users/StockLanding/StockLanding/StockLanding"
 import StockLandingForm from "../Pages/Users/StockLanding/StockLandingForm/StockLandingForm";
 import FrontDetailsReport from "../Pages/Users/DailyReport/DetailsReports/FullDetailsReport/FrontDetailsReport/FrontDetailsReport/FrontDetailsReport";
 import BearShopLayout from "../Layouts/BearShopLayouts";
-import routerImport from "./routerImport";
 import BackDetailReport from "../Pages/Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/BackDetailsReport/BackDetailReport";
 import PartyName from "../Pages/Users/AddItems/PartyName/PartyName";
 import BrandList from "../Pages/Users/AddItems/BrandList/BrandList";
@@ -56,26 +55,7 @@ import CashReceiveData from "../Pages/Users/CashReciveData/CashReciveData/CashRe
 import PartnersMarge from "../Pages/Users/MargePartners/MargePartners";
 import WineBill from "../Pages/Users/WineBill/WineBill";
 import ShopParmisson from "../Pages/Admin/ShopParmisson/ShopParmisson/ShopParmisson";
-import PartnersMarge2 from "../Pages/BearShop/MargePartners/MargePartners"
-import CommsionRoutes from "../Pages/BearShop/BearShopCommision/CommsionRoute/CommsionRoute";
-import AddItemsBear from "../Pages/BearShop/AddItems/AddItems";
 
-const {
-  BearShopBranch,
-  BearShopBorrow,
-  BearShopFinalReport,
-  BearShopPayments,
-  BearShopSalary,
-  BearShopSalaryForm,
-  BearShopOutbill,
-  BearShopSelfBill,
-  BearShopExtra,
-  BearShopMainInvestment,
-  BearShopEnglishBear,
-  BearShopStockLanding,
-} = routerImport();
-
-const token = localStorage.getItem("token");
 const router = createBrowserRouter([
   {
     path: "/",
@@ -317,16 +297,19 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/user/bearshop/dailyreport",
-        element: <DailyReport />,
+        element: <BearShopDailyReport />,
       },
+
       {
         path: "/user/bearshop/dailyreport/front",
-        element: <FronteDailyReport />,
+        element: <BeerShopFrontDailyReport />,
       },
       {
         path: "/user/bearshop/dailyreport/back",
-        element: <BackDailyReport />,
+        element: <BeerShopBackDailyReport />,
       },
+
+
       {
         path: "/user/bearshop/branch",
         element: <Branch />,

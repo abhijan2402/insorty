@@ -6,9 +6,8 @@ import useLiquors from "../useLiquors";
 const useHandelSubmitBackAPI = (shopType) => {
   const token = localStorage.getItem("token");
   const [isLoadingSubmit, setIsLoading] = useState(false);
-  const { intoAccountState, liquerState, paidDues } =
+  const { intoAccountState,  paidDues } =
     useContext(DataContextApi);
-  const liquerData = liquerState?.data;
   const rmlFieldsData = JSON.parse(localStorage.getItem("rml"));
   const beerTotal = JSON.parse(localStorage.getItem("totalFirstBack"));
   const purchaseOutside = JSON.parse(localStorage.getItem("purchases"));
@@ -24,7 +23,6 @@ const useHandelSubmitBackAPI = (shopType) => {
 
   const { salesMan, drDate } = useContext(DataContextApi);
 
-  // use cashReciveState to send data to API ======================
   const borrowCashReturnData = [];
   for (
     let index = 0;
@@ -54,7 +52,6 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails650.push({
-      // liquor: liquors?.[0]?._id,
       liquor: GetLiqId(element.liquorID, 650, "BEER"),
       brandName: element.brandName,
       averageRate: element.averageRate650,
@@ -78,7 +75,6 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails550.push({
-      // liquor: liquors?.[0]?._id,
       liquor: GetLiqId(element.liquorID, 550, "BEER"),
       brandName: element.brandName,
       averageRate: element.averageRate550,
@@ -102,7 +98,6 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails330.push({
-      // liquor: liquors?.[0]?._id,
       liquor: GetLiqId(element.liquorID, 330, "BEER"),
       brandName: element.brandName,
       averageRate: element.averageRate330,
@@ -126,7 +121,6 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; newBeer ? index < newBeer.length : 0; index++) {
     const element = newBeer[index];
     beerForm.push({
-      // liquor: liquors?.[0]?._id,
       liquor: GetLiqId(element.liquorID, element.selectStockVarient, "BEER"),
       brandName: element.brandName,
       averageRate: element.averageRate,
@@ -146,15 +140,7 @@ const useHandelSubmitBackAPI = (shopType) => {
     });
   }
 
-  // use cashReciveState to send data to API ======================
-
-  // add Rml ======================
   const addRmlData = [];
-  const currentStock = (liquerData ?? [])[0]?.currentStock;
-  const typeData = (liquerData ?? [])[0]?.type;
-  const quantityInMLData = (liquerData ?? [])[0]?.quantityInML;
-  const rateData = (liquerData ?? [])[0]?.rate;
-  const liquerId = (liquerData ?? [])[0]?._id;
 
   for (
     let index = 0;
@@ -179,9 +165,6 @@ const useHandelSubmitBackAPI = (shopType) => {
       amount: element.cost,
     });
   }
-  // add Rml ======================
-
-  // purchesOutSideState ======================
 
   const purchaseOutSideData = [];
   for (
@@ -191,7 +174,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   ) {
     const element = purchaseOutside[index];
     purchaseOutSideData.push({
-      liquor: GetLiqId(element.liquorID, Number(element.quantity), null), //to be updated
+      liquor: GetLiqId(element.liquorID, Number(element.quantity), null),
       party: element.partyId,
       number: element.theNumber,
       ml: element.quantity,
@@ -225,11 +208,8 @@ const useHandelSubmitBackAPI = (shopType) => {
     });
   }
 
-  //
-
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
-  const thirdFront = JSON.parse(localStorage.getItem("beerFormTotal"));
   const fourthFront = JSON.parse(localStorage.getItem("rmlTotal"));
   const fifthFront = JSON.parse(localStorage.getItem("totalPaymentsRecieved"));
   const sixthFront = JSON.parse(localStorage.getItem("udhaariTotal"));
@@ -293,8 +273,6 @@ const useHandelSubmitBackAPI = (shopType) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
-
     if (salesMan === "") {
       Swal.fire({
         icon: "error",
@@ -320,7 +298,7 @@ const useHandelSubmitBackAPI = (shopType) => {
           }
         );
         const api4 = fetch(
-          "https://insorty-api.onrender.com/shop/addTotalExpensesData", //1
+          "https://insorty-api.onrender.com/shop/addTotalExpensesData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -337,7 +315,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api8 = fetch(
-          "https://insorty-api.onrender.com/shop/addBorrowedData", //2
+          "https://insorty-api.onrender.com/shop/addBorrowedData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -379,9 +357,8 @@ const useHandelSubmitBackAPI = (shopType) => {
           }
         );
 
-        //4
         const api3 = fetch(
-          "https://insorty-api.onrender.com/shop/addPurchaseOutsideData", // 4
+          "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -398,7 +375,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api5 = fetch(
-          "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData", //5
+          "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -431,7 +408,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api6 = fetch(
-          "https://insorty-api.onrender.com/shop/addPurchaseBorrowData", //7
+          "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -483,7 +460,6 @@ const useHandelSubmitBackAPI = (shopType) => {
               data[6].success === true &&
               data[7].success === true &&
               data[8].success === true
-              // data[9].success === true
             ) {
               let BackPage = {
                 dailyReport: data[0].data._id,
@@ -503,7 +479,7 @@ const useHandelSubmitBackAPI = (shopType) => {
                   "Content-Type": "application/json",
                   cookie_token: token,
                 },
-                body: JSON.stringify( BackPage ),
+                body: JSON.stringify(BackPage),
               })
                 .then((res) => res.json())
                 .then((data1) => {

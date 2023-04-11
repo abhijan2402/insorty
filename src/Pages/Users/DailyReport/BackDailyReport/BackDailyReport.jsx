@@ -8,7 +8,6 @@ import InflowBorrowingRML from "./InflowBorrowingBack/InflowBorrowingRML/InflowB
 import FinalReport from "./FinalReport/FinalReport";
 import Comment from "./Comment/Comment";
 import AddOneFristFromBack from "./FristFormBack/AddOneFristFromBack/AddOneFristFromBack";
-// import TotalRML from "./RmlForm/TotalRML";
 import useRmlAdd from "../../../../Hooks/useRmlAdd";
 import useFristFormAdd from "../../../../Hooks/useFristFormAdd";
 import usePurchesOutSideAdd from "../../../../Hooks/usePurchesOutSideAdd";
@@ -22,7 +21,6 @@ import CraditDabitForm from "../BackDailyReport/InflowBorrowingBack/CraditDabitF
 import CommissonFrom from "./CommissonForm/CommissionForm";
 import useComment from "../../../../Hooks/useComment";
 import { DataContextApi } from "../../../../Context/DataContext";
-// import Swal from "sweetalert2";
 import useHandelSubmitBackAPI from "../../../../Hooks/useHandelSubmitBackAPI/useHandelSubmitBackAPI";
 import AddOneSecondFormBack from "./FristFormBack/AddOneFristFromBack/AddOneSecondFormBack";
 import DatePicker from "react-datepicker";
@@ -38,7 +36,7 @@ const BackDailyReport = () => {
    
     onChangeFristBackFormHandler,
     totalState,
-   
+  
     brands,
     brandsLoaded,
     liquors,
@@ -98,9 +96,7 @@ const BackDailyReport = () => {
   const {
     infolwBorrwingFormState,
     onChangeBorrowingRml,
-    // handelSubmitBorrowingRml,
     handleRemoveFieldsInflow,
-   
     handelAddOneBorrowingRml,
   } = useInfolwBorrowingRml();
 
@@ -109,8 +105,6 @@ const BackDailyReport = () => {
     craditDabitState,
     onChangeCarditDabit,
     handleRemoveFieldsCredit,
-    // handelSubmitCarditDabit,
-   
     handelAddOneCarditDabit,
   } = useCarditDabit();
 
@@ -134,15 +128,12 @@ const BackDailyReport = () => {
 
   const {
     commentState,
-    // handelSubimtComment,
     handleChangeComment,
   } = useComment();
 
   const { salesMan, setSalesMan, drDate, setDrDate } =
     useContext(DataContextApi);
   // ********************************* submit mulitple api in handelSubmit  *********************************
-
-  // console.log(fristFormState);
 
   return (
     <>
@@ -1302,13 +1293,11 @@ const BackDailyReport = () => {
                                 />
                               </div>
                             </td>
-                            {/* ======== आमद (खरीद)-बा. ========= */}
-
+                         
                             <td>
                               
                             </td>
-                            {/* ======== आमद (उधारी) ========= */}
-
+                       
                             <td>
                               <div className="form-control">
                                 <input
@@ -2045,8 +2034,6 @@ const BackDailyReport = () => {
                       <th>Brand Name/ ब्राण्ड</th>
                       <th>संख्या</th>
                       <th>Quantity</th>
-                      {/* <th>रेट</th>
-                      <th>योग</th> */}
                       <th>टिप्पणी</th>
                     </tr>
                   </thead>
@@ -2100,26 +2087,6 @@ const BackDailyReport = () => {
                           />
                         </div>
                       </td>
-
-                      {/* <td>
-                        <div className="form-control"></div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="total"
-                            value={infolwBorrwingFormState.reduce(
-                              (total, currentItem) =>
-                                (total = total + Number(currentItem.total)),
-                              0
-                            )}
-                            disabled
-                          />
-                        </div>
-                      </td> */}
 
                       <td>
                         <div className="form-control"></div>
@@ -2285,9 +2252,7 @@ const BackDailyReport = () => {
             </>
           ) : (
             <>
-              {/* <button className="dailyReportBtn" onClick={() => handleSubmit()}>
-                Submit
-              </button> */}
+
                 <input type="submit" className="dailyReportBtn" />
             </>
           )}

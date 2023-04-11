@@ -32,9 +32,7 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet }) =
             <td className="tg-0lax">{index+1}</td>
             <td className="tg-0lax">{brandName}</td>
 
-            {/* Average Rate */}
-            {/* show the 750 data  */}
-
+           
             <td className="tg-0lax">{quantityInML750.map((item, index) => {
               return Number(item?.averageRate?.$numberDecimal).toFixed(2);
             })}</td>
@@ -301,7 +299,6 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet }) =
                   })
                   : 0
               )}</td>
-            {/* <td className="tg-0lax"> */}
           </tr>
         );}
       })}

@@ -89,7 +89,6 @@ const AddOneSecondFormBack = ({
                   required
                   {...params}
                   className="dailyReportInput"
-                  // value={item.brandName}
                   inputProps={{ ...params.inputProps, value: item.brandName }}
                   onChange={(event) => {
                     item.brandName = event.target.value;
@@ -103,15 +102,12 @@ const AddOneSecondFormBack = ({
         <td>
           <div className="form-control ">
             <select
-              // className="select select-bordered"
               className="smallinput wd-9"
               name="selectStockVarient"
               value={item.selectStockVarient}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               required
             >
-              {/* 750,700,650,550,500,375,330,275,250,200,180,90,60,50 */}
-
               <option value={750}>
                 750ml
               </option>

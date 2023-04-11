@@ -49,12 +49,7 @@ const StockLandingForm = () => {
             पार्टी का नाम/
             <span className="titleStyle">{getPartyName(id.partyId)}</span>
           </h2>
-          
-
-          {/* <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">Year</h2>
-          <input type="text" className="semiSmallInput" />
-        </div> */}
+        
         </div>
         {/* ************************ all sealy data************** */}
 
@@ -170,21 +165,7 @@ const StockLandingForm = () => {
           </form>{" "}
           <div>
             <div className="mt-4 flex justify-center gap-4">
-              {/* <button
-              className="dailyReportBtnSubmit"
-              type="submit"
-              onClick={handelOnSubmitStockLanding}
-            >
-              Submit
-            </button> */}
-              {/* <button
-              className="dailyReportBtnSubmit"
-              onClick={addOneStockLandingStock}
-            >
-              Add 1
-            </button> */}
-
-             
+            
             </div>
           </div>
         </div>

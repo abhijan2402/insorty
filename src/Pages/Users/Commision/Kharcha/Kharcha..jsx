@@ -21,9 +21,6 @@ const Kharcha = () => {
     return <Loader></Loader>;
   }
 
-  // if (!commitsonData.length) {
-  //   return <h1>No Data Found</h1>;
-  // }
 
   const filteredData = commitsonData.length && commitsonData.filter((item) => {
     let filterPass = true;

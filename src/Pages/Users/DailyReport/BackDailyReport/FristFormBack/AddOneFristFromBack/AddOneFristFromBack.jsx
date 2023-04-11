@@ -15,16 +15,6 @@ const AddOneFristFromBack = ({
 
   const { brandsLoaded, liquors } = useLiquors();
 
-  if (!brandsLoaded) {
-    // console.log(checkLiquor("b").filter((item)=>{
-    //   if (item.quantityInML === 650){
-    //     return item
-    //   }
-    // }))
-    // console.log(brands)
-  }
-
-  // const brands = ["a", "b", "c", "d"];
 
   if (brandsLoaded) {
     return (
@@ -97,12 +87,10 @@ const AddOneFristFromBack = ({
                   {...params}
                   required
                   className="dailyReportInput"
-                  // value={item.brandName}
                   inputProps={{ ...params.inputProps, value: item.brandName }}
                   onChange={(event) => {
                     item.brandName = event.target.value;
-                    // item.liquorID = null;
-                    // onChangeFristBackFormHandler(event, index)
+                   
                   }}
                 />
               )}
@@ -114,8 +102,6 @@ const AddOneFristFromBack = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                // type="number"
-
                 type="number"
                 required
                 disabled
@@ -128,8 +114,6 @@ const AddOneFristFromBack = ({
 
             <div className="form-control">
               <input
-                // type="number"
-
                 type="number"
                 required
                 disabled
@@ -142,8 +126,6 @@ const AddOneFristFromBack = ({
 
             <div className="form-control">
               <input
-                // type="number"
-
                 type="number"
                 required
                 disabled

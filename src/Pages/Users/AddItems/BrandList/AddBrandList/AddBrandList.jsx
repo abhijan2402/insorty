@@ -46,11 +46,7 @@ const AddBrandList = ({ refetch }) => {
         "Content-Type": "application/json",
         cookie_token: token,
       },
-      // body: JSON.stringify({
-      //   brandName: brandName,
-      //   type: typeData,
-      //   sizes: [slize],
-      // }),
+
       body: JSON.stringify({
            brandName: brandName,
         type: typeData,
@@ -81,7 +77,6 @@ const AddBrandList = ({ refetch }) => {
 
   return (
     <>
-      {/* Put this part before </body> tag */}
       <input type="checkbox" id="AddBrandList" className="modal-toggle" />
       <div className="modal p-6 " style={{ width: "100%" }}>
         <div

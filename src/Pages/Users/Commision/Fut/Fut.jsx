@@ -20,9 +20,6 @@ const Fut = () => {
     return <Loader></Loader>;
   }
 
-  // if (!commitsonData.length) {
-  //   return <h1>No Data Found</h1>;
-  // }
 
   const filteredData = commitsonData.length && commitsonData.filter((item) => {
     let filterPass = true;
@@ -37,15 +34,6 @@ const Fut = () => {
     return filterPass;
   });
 
-  // const totalAmount = filteredData.map((item) => {
-  //   // get total ammount using reduce method
-  //   const total = item.entries.filter((item) => {
-  //     return item.type === "FUT";
-  //   }).reduce((acc, item) => {
-  //     return Number(acc) + Number(item.amount.$numberDecimal);
-  //   }, 0);
-  //   return Number(total);
-  // });
 
   const totalAmount = commitsonData.length && filteredData.reduce((acc, item) => {
     return Number(acc) + item.entries.filter((item) => {

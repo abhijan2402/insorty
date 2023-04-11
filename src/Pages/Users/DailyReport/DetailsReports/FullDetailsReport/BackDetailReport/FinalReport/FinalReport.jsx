@@ -1,7 +1,6 @@
 import React from "react";
 
 const FinalReport = ({ data, date }) => {
-  // console.log(data)
   return (
     <>
       <tr>

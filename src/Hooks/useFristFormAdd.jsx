@@ -1,4 +1,4 @@
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useLiquors from "./useLiquors";
 import Swal from "sweetalert2";
@@ -8,15 +8,13 @@ const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(false);
   let brands;
-  const { GetLiqId } = useLiquors()
-  const backData = JSON.parse(localStorage.getItem('firstBack'))
+  const { GetLiqId } = useLiquors();
   const {
     salesMan,
 
     drDate,
   } = useContext(DataContextApi);
-  const { liquors,
-    brandsLoaded, } = useLiquors()
+  const { liquors, brandsLoaded } = useLiquors();
 
   // ======================== add five in frist form ========================
 
@@ -87,72 +85,58 @@ const useFristFormAdd = () => {
 
   const prevdata = JSON.parse(localStorage.getItem("firstBack"));
 
-  // const { data: liquors, isLoading: brandsLoaded } = useQuery({
-  //   queryKey: ["liquors"],
-  //   queryFn: async () => {
-  //     const res = await fetch(
-  //       "https://insorty-api.onrender.com/shop/getAllParentLiquors",
-  //       {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json", cookie_token: token },
-  //       }
-  //     );
-  //     const data = await res.json();
-  //     console.log(data.data, "data.data");
-  //     return data.data;
-  //   },
-  // });
-
-  // if (liquors) {
-  //   let brandSet = new Set();
-  //   liquors.map((item) => {
-  //     return brandSet.add(item.brandName);
-  //   });
-  //   brands = [...brandSet];
-  // }
-
   useEffect(() => {
     if (prevdata) {
       setFristFormState(prevdata);
-    }
-    else{
-    let firstFormData = fristFormState
+    } else {
+      let firstFormData = fristFormState;
 
+      if (!prevdata && !brandsLoaded && liquors.length > 0) {
+        console.log("started");
+        const liq = liquors.filter((item) => item.type === "BEER");
+        for (let index = 0; index < liq.length; index++) {
+          const quan750 = liq[index].sizes.find(
+            (elem) => elem.quantityInML === 650
+          );
+          const quan330 = liq[index].sizes.find(
+            (elem) => elem.quantityInML === 550
+          );
+          const quan180 = liq[index].sizes.find(
+            (elem) => elem.quantityInML === 330
+          );
 
-    if (!prevdata && !brandsLoaded && liquors.length > 0) {
-      console.log("started")
-      const liq = liquors.filter((item) => item.type === "BEER")
-      for (let index = 0; index < liq.length; index++) {
-        const quan750 = liq[index].sizes.find((elem) => elem.quantityInML === 650)
-        const quan330 = liq[index].sizes.find((elem) => elem.quantityInML === 550)
-        const quan180 = liq[index].sizes.find((elem) => elem.quantityInML === 330)
-
-        if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock>0) {
-          const newFormData = { ...fristFormObj }
-          newFormData.brandName = liq[index].brandName
-          newFormData.liquorID = liq[index]._id
-          newFormData.startingStock650 = quan750.currentStock
-          newFormData.startingStock550 = quan330.currentStock
-          newFormData.startingStock330 = quan180.currentStock
-          newFormData.averageRate650 = quan750.averageRate.$numberDecimal
-          newFormData.initial650 = quan750.averageRate.$numberDecimal
-          newFormData.initial550 = quan330.averageRate.$numberDecimal
-          newFormData.initial330 = quan180.averageRate.$numberDecimal
-          newFormData.averageRate550 = quan330.averageRate.$numberDecimal
-          newFormData.averageRate330 = quan180.averageRate.$numberDecimal
-          firstFormData = [newFormData, ...firstFormData]
-          console.log(firstFormData)
-          setFristFormState(firstFormData)
-          localStorage.setItem("firstBack", JSON.stringify(firstFormData));
-          localStorage.setItem(
-            "totalFirstBack",
-            JSON.stringify(totalState.allGrandTotal)
-          )
+          if (
+            quan750 &&
+            quan330 &&
+            quan180 &&
+            quan180.currentStock > 0 &&
+            quan750.currentStock > 0 &&
+            quan330.currentStock > 0
+          ) {
+            const newFormData = { ...fristFormObj };
+            newFormData.brandName = liq[index].brandName;
+            newFormData.liquorID = liq[index]._id;
+            newFormData.startingStock650 = quan750.currentStock;
+            newFormData.startingStock550 = quan330.currentStock;
+            newFormData.startingStock330 = quan180.currentStock;
+            newFormData.averageRate650 = quan750.averageRate.$numberDecimal;
+            newFormData.initial650 = quan750.averageRate.$numberDecimal;
+            newFormData.initial550 = quan330.averageRate.$numberDecimal;
+            newFormData.initial330 = quan180.averageRate.$numberDecimal;
+            newFormData.averageRate550 = quan330.averageRate.$numberDecimal;
+            newFormData.averageRate330 = quan180.averageRate.$numberDecimal;
+            firstFormData = [newFormData, ...firstFormData];
+            console.log(firstFormData);
+            setFristFormState(firstFormData);
+            localStorage.setItem("firstBack", JSON.stringify(firstFormData));
+            localStorage.setItem(
+              "totalFirstBack",
+              JSON.stringify(totalState.allGrandTotal)
+            );
+          }
         }
-
       }
-    }}
-
+    }
   }, [brandsLoaded]);
 
   const addFiveInFristFormHandler = () => {
@@ -226,10 +210,6 @@ const useFristFormAdd = () => {
     }
     setFristFormState(data);
   };
-
-  // ======================== add five in frist form ========================
-
-  // ======================== add One in frist form ========================
 
   const addOneInFristFormHandler = () => {
     setFristFormState([
@@ -336,10 +316,6 @@ const useFristFormAdd = () => {
     allGrandTotal: 0,
   });
 
-  // ======================== add One in frist f0orm ========================
-
-  // ======================== onChange  ========================
-
   const onChangeFristBackFormHandler = (e, index) => {
     const firstFormHandel = fristFormState.map((returned, i) =>
       index === i
@@ -348,25 +324,26 @@ const useFristFormAdd = () => {
     );
     setFristFormState(firstFormHandel);
 
-    // ****************************** Formula ******************************
-
-    //************* Formula **************** */
-
     const handelavg650 = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "purchaseRate650" ||
           e.target.name === "buyRate650" ||
-          e.target.name === 'incomingPurchase650' ||
-          e.target.name === 'incomePurchase650'
+          e.target.name === "incomingPurchase650" ||
+          e.target.name === "incomePurchase650"
         ) {
-          const buyShop = Number(obj.incomingPurchase650) * Number(obj.buyRate650)
-          const buyOut = Number(obj.incomePurchase650) * Number(obj.purchaseRate650)
-          const totalStock = Number(obj.incomePurchase650) + Number(obj.incomingPurchase650) + Number(obj.startingStock650)
+          const buyShop =
+            Number(obj.incomingPurchase650) * Number(obj.buyRate650);
+          const buyOut =
+            Number(obj.incomePurchase650) * Number(obj.purchaseRate650);
+          const totalStock =
+            Number(obj.incomePurchase650) +
+            Number(obj.incomingPurchase650) +
+            Number(obj.startingStock650);
 
-          const stock = Number(obj.initial650) * Number(obj.startingStock650)
-          obj.averageRate650 = (buyShop + buyOut + stock) / totalStock
+          const stock = Number(obj.initial650) * Number(obj.startingStock650);
+          obj.averageRate650 = (buyShop + buyOut + stock) / totalStock;
         }
         return obj;
       } else return returned;
@@ -379,16 +356,20 @@ const useFristFormAdd = () => {
         if (
           e.target.name === "purchaseRate550" ||
           e.target.name === "buyRate550" ||
-          e.target.name === 'incomingPurchase550' ||
-          e.target.name === 'incomePurchase550'
+          e.target.name === "incomingPurchase550" ||
+          e.target.name === "incomePurchase550"
         ) {
-          const buyShop = Number(obj.incomingPurchase550) * Number(obj.buyRate550)
-          const buyOut = Number(obj.incomePurchase550) * Number(obj.purchaseRate550)
-          const totalStock = Number(obj.incomePurchase550) + Number(obj.incomingPurchase550) + Number(obj.startingStock550)
+          const buyShop =
+            Number(obj.incomingPurchase550) * Number(obj.buyRate550);
+          const buyOut =
+            Number(obj.incomePurchase550) * Number(obj.purchaseRate550);
+          const totalStock =
+            Number(obj.incomePurchase550) +
+            Number(obj.incomingPurchase550) +
+            Number(obj.startingStock550);
 
-          const stock = Number(obj.initial550) * Number(obj.startingStock550)
-          obj.averageRate550 = (buyShop + buyOut + stock) / totalStock
-
+          const stock = Number(obj.initial550) * Number(obj.startingStock550);
+          obj.averageRate550 = (buyShop + buyOut + stock) / totalStock;
         }
         return obj;
       } else return returned;
@@ -401,16 +382,20 @@ const useFristFormAdd = () => {
         if (
           e.target.name === "purchaseRate330" ||
           e.target.name === "buyRate330" ||
-          e.target.name === 'incomingPurchase330' ||
-          e.target.name === 'incomePurchase330'
+          e.target.name === "incomingPurchase330" ||
+          e.target.name === "incomePurchase330"
         ) {
-          const buyShop = Number(obj.incomingPurchase330) * Number(obj.buyRate330)
-          const buyOut = Number(obj.incomePurchase330) * Number(obj.purchaseRate330)
-          const totalStock = Number(obj.incomePurchase330) + Number(obj.incomingPurchase330) + Number(obj.startingStock330)
+          const buyShop =
+            Number(obj.incomingPurchase330) * Number(obj.buyRate330);
+          const buyOut =
+            Number(obj.incomePurchase330) * Number(obj.purchaseRate330);
+          const totalStock =
+            Number(obj.incomePurchase330) +
+            Number(obj.incomingPurchase330) +
+            Number(obj.startingStock330);
 
-          const stock = Number(obj.initial330) * Number(obj.startingStock330)
-          obj.averageRate330 = (buyShop + buyOut + stock) / totalStock
-
+          const stock = Number(obj.initial330) * Number(obj.startingStock330);
+          obj.averageRate330 = (buyShop + buyOut + stock) / totalStock;
         }
         return obj;
       } else return returned;
@@ -552,7 +537,10 @@ const useFristFormAdd = () => {
     const saleTotal650 = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales650" || e.target.name === "mainRate650" || e.target.name === "sumRemainder650" ||
+        if (
+          e.target.name === "sales650" ||
+          e.target.name === "mainRate650" ||
+          e.target.name === "sumRemainder650" ||
           e.target.name === "closingStock650" ||
           e.target.name === "startingStock650" ||
           e.target.name === "incomingPurchase650" ||
@@ -571,13 +559,17 @@ const useFristFormAdd = () => {
     const saleTotal550 = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales550" || e.target.name === "mainRate550" || e.target.name === "sumRemainder550" ||
+        if (
+          e.target.name === "sales550" ||
+          e.target.name === "mainRate550" ||
+          e.target.name === "sumRemainder550" ||
           e.target.name === "closingStock550" ||
           e.target.name === "startingStock550" ||
           e.target.name === "incomingPurchase550" ||
           e.target.name === "inflowCredit550" ||
           e.target.name === "incomePurchase550" ||
-          e.target.name === "sending550") {
+          e.target.name === "sending550"
+        ) {
           obj.total550 = Number(obj.sales550) * Number(obj.mainRate550);
         }
         return obj;
@@ -589,16 +581,20 @@ const useFristFormAdd = () => {
     const saleTotal330 = fristFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales330" || e.target.name === "mainRate330" || e.target.name === "sumRemainder330" ||
+        if (
+          e.target.name === "sales330" ||
+          e.target.name === "mainRate330" ||
+          e.target.name === "sumRemainder330" ||
           e.target.name === "closingStock330" ||
           e.target.name === "startingStock330" ||
           e.target.name === "incomingPurchase330" ||
           e.target.name === "inflowCredit330" ||
           e.target.name === "incomePurchase330" ||
-          e.target.name === "sending330") {
+          e.target.name === "sending330"
+        ) {
           obj.total330 = Number(obj.sales330) * Number(obj.mainRate330);
         }
-        console.log(obj.total330)
+        console.log(obj.total330);
         return obj;
       } else return returned;
     });
@@ -614,26 +610,28 @@ const useFristFormAdd = () => {
           e.target.name === "sales550" ||
           e.target.name === "mainRate550" ||
           e.target.name === "sales330" ||
-          e.target.name === "mainRate330" || e.target.name === "sumRemainder650" ||
+          e.target.name === "mainRate330" ||
+          e.target.name === "sumRemainder650" ||
           e.target.name === "closingStock650" ||
           e.target.name === "startingStock650" ||
           e.target.name === "incomingPurchase650" ||
           e.target.name === "inflowCredit650" ||
           e.target.name === "incomePurchase650" ||
-          e.target.name === "sending650" || e.target.name === "sumRemainder550" ||
+          e.target.name === "sending650" ||
+          e.target.name === "sumRemainder550" ||
           e.target.name === "closingStock550" ||
           e.target.name === "startingStock550" ||
           e.target.name === "incomingPurchase550" ||
           e.target.name === "inflowCredit550" ||
           e.target.name === "incomePurchase550" ||
-          e.target.name === "sending550" || e.target.name === "sumRemainder330" ||
+          e.target.name === "sending550" ||
+          e.target.name === "sumRemainder330" ||
           e.target.name === "closingStock330" ||
           e.target.name === "startingStock330" ||
           e.target.name === "incomingPurchase330" ||
           e.target.name === "inflowCredit330" ||
           e.target.name === "incomePurchase330" ||
           e.target.name === "sending330"
-
         ) {
           obj.grandTotal =
             Number(obj.sales650) * Number(obj.mainRate650) +
@@ -645,25 +643,6 @@ const useFristFormAdd = () => {
     });
 
     setFristFormState(grandT);
-
-    // const liqID = fristFormState.map((returned, i) => {
-    //   if (index === i) {
-    //     let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-    //     if (e.target.name === "brandName") {
-    //       // eslint-disable-next-line array-callback-return
-    //       const liq = liquors.filter((name) => {
-    //         if (name === obj.brandName) {
-    //           return name._id;
-    //         }
-    //       });
-    //       obj.liquorID = liq._id;
-    //     }
-    //     console.log(obj.liqID);
-    //     return obj;
-    //   } else return returned;
-    // });
-
-    // setFristFormState(liqID);
 
     let obj1 = totalState;
     obj1.startingStock650Total = fristFormState.reduce(
@@ -887,15 +866,12 @@ const useFristFormAdd = () => {
   };
 
   const handelSubmitFristFormBack = async (e) => {
-    // setIsLoading(true);
-
     const dataDetails650 = [];
 
     for (let index = 0; index < fristFormState.length; index++) {
       const element = fristFormState[index];
       dataDetails650.push({
-        // liquor: liquors?.[0]?._id,
-        liquor: GetLiqId(element.liquorID, 650, 'BEER'),
+        liquor: GetLiqId(element.liquorID, 650, "BEER"),
         brandName: element.brandName,
         quantityInML: 650,
         openingStock: element.startingStock650,
@@ -916,8 +892,7 @@ const useFristFormAdd = () => {
     for (let index = 0; index < fristFormState.length; index++) {
       const element = fristFormState[index];
       dataDetails550.push({
-        // liquor: liquors?.[0]?._id,
-        liquor: GetLiqId(element.liquorID, 550, 'BEER'),
+        liquor: GetLiqId(element.liquorID, 550, "BEER"),
         brandName: element.brandName,
         quantityInML: 550,
         openingStock: element.startingStock550,
@@ -938,8 +913,7 @@ const useFristFormAdd = () => {
     for (let index = 0; index < fristFormState.length; index++) {
       const element = fristFormState[index];
       dataDetails330.push({
-        // liquor: liquors?.[0]?._id,
-        liquor: GetLiqId(element.liquorID, 330, 'BEER'),
+        liquor: GetLiqId(element.liquorID, 330, "BEER"),
         brandName: element.brandName,
         quantityInML: 330,
         openingStock: element.startingStock330,
@@ -957,12 +931,10 @@ const useFristFormAdd = () => {
     }
 
     const beerForm = [];
-    const beerFormData = localStorage.getItem('BeerForm')
     for (let index = 0; index < fristFormState.length; index++) {
       const element = fristFormState[index];
       beerForm.push({
-        // liquor: liquors?.[0]?._id,
-        liquor: GetLiqId(element.liquorID, 330, 'BEER'),
+        liquor: GetLiqId(element.liquorID, 330, "BEER"),
         brandName: element.brandName,
         quantityInML: element.selectStockVarient,
         openingStock: element.startingStock,
@@ -988,7 +960,11 @@ const useFristFormAdd = () => {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails650 }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: dataDetails650,
+          }),
         }
       );
 
@@ -1000,7 +976,11 @@ const useFristFormAdd = () => {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails550 }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: dataDetails550,
+          }),
         }
       );
       const api3 = await fetch(
@@ -1011,7 +991,11 @@ const useFristFormAdd = () => {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: dataDetails330 }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: dataDetails330,
+          }),
         }
       );
       const api4 = await fetch(
@@ -1022,11 +1006,15 @@ const useFristFormAdd = () => {
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          body: JSON.stringify({ date: drDate, salesmen: salesMan, entries: beerForm }),
+          body: JSON.stringify({
+            date: drDate,
+            salesmen: salesMan,
+            entries: beerForm,
+          }),
         }
       );
 
-      Promise.all([api1, api2, api3,api4])
+      Promise.all([api1, api2, api3, api4])
         .then((responses) => Promise.all(responses.map((res) => res.json())))
         .then((data) => {
           console.log(data);
@@ -1048,24 +1036,14 @@ const useFristFormAdd = () => {
     } finally {
       setIsLoading(false);
     }
-    
   };
-
-  // ======>
-
-  // ======================== onChange  ========================
-
-
-
-
-  // const { liquors, brandsLoaded } = useLiquors();
 
   const addOneSecondForm = {
     liquor: "",
     brandName: "",
     averageRate: 0,
     startingStock: 0,
-    initial:0,
+    initial: 0,
     incomingPurchase: 0,
     buyRate: 0,
     incomePurchase: 0,
@@ -1090,57 +1068,55 @@ const useFristFormAdd = () => {
   useEffect(() => {
     if (prevdata2) {
       setAddOneSecondFormState(prevdata2);
-    }
-else{
-    let firstFormData = addOneSecondFormState;
+    } else {
+      let firstFormData = addOneSecondFormState;
 
-    if (!brandsLoaded && liquors.length > 0) {
-      console.log("started");
-      const liq = liquors.filter((item) => {
-        if (item.type === "BEER") {
-          return item;
-        }
-      });
-
-      liq.map((parent) => {
-        parent.sizes.map((item) => {
-          if (
-            item.quantityInML !== 650 &&
-            item.quantityInML !== 550 &&
-            item.quantityInML !== 330 &&
-            item.currentStock > 0
-          ) {
-            console.log(parent)
-            const newFormData = { ...addOneSecondForm };
-
-            newFormData.brandName = parent.brandName
-            newFormData.liquorID = parent._id
-            newFormData.selectStockVarient = item.quantityInML
-            newFormData.startingStock = item.currentStock
-            newFormData.averageRate = item.averageRate.$numberDecimal;
-            newFormData.initial = item.averageRate.$numberDecimal;
-            firstFormData = [newFormData, ...firstFormData]
-            setAddOneSecondFormState(firstFormData)
-            localStorage.setItem("BeerForm", JSON.stringify(firstFormData));
-            localStorage.setItem(
-              "beerFormTotal",
-              JSON.stringify(
-                firstFormData.reduce(
-                  (totals, currentItem) =>
-                    (totals = totals + Number(currentItem.total)),
-                  0
-                )
-              )
-            )          }
+      if (!brandsLoaded && liquors.length > 0) {
+        console.log("started");
+        const liq = liquors.filter((item) => {
+          if (item.type === "BEER") {
+            return item;
+          }
         });
-      });
+
+        liq.map((parent) => {
+          parent.sizes.map((item) => {
+            if (
+              item.quantityInML !== 650 &&
+              item.quantityInML !== 550 &&
+              item.quantityInML !== 330 &&
+              item.currentStock > 0
+            ) {
+              console.log(parent);
+              const newFormData = { ...addOneSecondForm };
+
+              newFormData.brandName = parent.brandName;
+              newFormData.liquorID = parent._id;
+              newFormData.selectStockVarient = item.quantityInML;
+              newFormData.startingStock = item.currentStock;
+              newFormData.averageRate = item.averageRate.$numberDecimal;
+              newFormData.initial = item.averageRate.$numberDecimal;
+              firstFormData = [newFormData, ...firstFormData];
+              setAddOneSecondFormState(firstFormData);
+              localStorage.setItem("BeerForm", JSON.stringify(firstFormData));
+              localStorage.setItem(
+                "beerFormTotal",
+                JSON.stringify(
+                  firstFormData.reduce(
+                    (totals, currentItem) =>
+                      (totals = totals + Number(currentItem.total)),
+                    0
+                  )
+                )
+              );
+            }
+          });
+        });
       }
     }
 
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);
-
 
   const addOneSecondFormHandler = () => {
     setAddOneSecondFormState([
@@ -1151,7 +1127,7 @@ else{
         incomingPurchase: 0,
         buyRate: 0,
         incomePurchase: 0,
-        initial:0,
+        initial: 0,
         purchaseRate: 0,
         inflowCredit: 0,
         sending: 0,
@@ -1173,7 +1149,6 @@ else{
         : returned
     );
     setAddOneSecondFormState(secondFormHandel);
-    // **********************formula******************
 
     const handelavg = addOneSecondFormState.map((returned, i) => {
       if (index === i) {
@@ -1182,16 +1157,18 @@ else{
         if (
           e.target.name === "purchaseRate" ||
           e.target.name === "buyRate" ||
-          e.target.name === 'incomingPurchase' ||
-          e.target.name === 'incomePurchase'
+          e.target.name === "incomingPurchase" ||
+          e.target.name === "incomePurchase"
         ) {
-          const buyShop = Number(obj.incomingPurchase) * Number(obj.buyRate)
-          const buyOut = Number(obj.incomePurchase) * Number(obj.purchaseRate)
-          const totalStock = Number(obj.incomePurchase) + Number(obj.incomingPurchase) + Number(obj.startingStock)
+          const buyShop = Number(obj.incomingPurchase) * Number(obj.buyRate);
+          const buyOut = Number(obj.incomePurchase) * Number(obj.purchaseRate);
+          const totalStock =
+            Number(obj.incomePurchase) +
+            Number(obj.incomingPurchase) +
+            Number(obj.startingStock);
 
-          const stock = Number(obj.initial) * Number(obj.startingStock)
-          obj.averageRate = (buyShop + buyOut + stock) / totalStock
-
+          const stock = Number(obj.initial) * Number(obj.startingStock);
+          obj.averageRate = (buyShop + buyOut + stock) / totalStock;
         }
         return obj;
       } else return returned;
@@ -1242,13 +1219,17 @@ else{
     const totals = addOneSecondFormState.map((returned, i) => {
       if (index === i) {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
-        if (e.target.name === "sales" || e.target.name === "mainRate" || e.target.name === "sumRemainder" ||
+        if (
+          e.target.name === "sales" ||
+          e.target.name === "mainRate" ||
+          e.target.name === "sumRemainder" ||
           e.target.name === "closingStock" ||
           e.target.name === "startingStock" ||
           e.target.name === "incomingPurchase" ||
           e.target.name === "inflowCredit" ||
           e.target.name === "incomePurchase" ||
-          e.target.name === "sending") {
+          e.target.name === "sending"
+        ) {
           obj.total = Number(obj.sales) * Number(obj.mainRate);
         }
         return obj;
@@ -1269,38 +1250,31 @@ else{
     );
   };
 
-
-  const handleRemoveFieldsBack = index => {
+  const handleRemoveFieldsBack = (index) => {
     const values = [...fristFormState];
     values.splice(index, 1);
-    console.log(index)
+    console.log(index);
     setFristFormState(values);
     localStorage.setItem("firstBack", JSON.stringify(values));
     localStorage.setItem(
       "totalFirstBack",
       JSON.stringify(totalState.allGrandTotal)
-    )
-
+    );
   };
 
-  const handleRemoveFieldsBeer = index => {
+  const handleRemoveFieldsBeer = (index) => {
     const values = [...addOneSecondFormState];
     values.splice(index, 1);
-    console.log(index)
+    console.log(index);
     setAddOneSecondFormState(values);
     localStorage.setItem("BeerForm", JSON.stringify(values));
     JSON.stringify(
       values.reduce(
-        (totals, currentItem) =>
-          (totals = totals + Number(currentItem.total)),
+        (totals, currentItem) => (totals = totals + Number(currentItem.total)),
         0
       )
-    )
-    
+    );
   };
-
-
-
 
   return {
     addFiveInFristFormHandler,
@@ -1315,9 +1289,7 @@ else{
     addOneSecondFormHandler,
     handelSeconFormOnChange,
     handleRemoveFieldsBack,
-    handleRemoveFieldsBeer
-    // brandsLoaded,
-    // liquors,
+    handleRemoveFieldsBeer,
   };
 };
 

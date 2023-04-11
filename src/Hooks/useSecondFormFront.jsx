@@ -66,17 +66,7 @@ const useSecondFormFront = () => {
             newFormData.initial = item.averageRate.$numberDecimal;
             firstFormData = [newFormData, ...firstFormData];
             setAddOneSecondFormState(firstFormData);
-            // localStorage.setItem("mlForm", JSON.stringify(firstFormData));
-            // localStorage.setItem(
-            //   "mlFormTotal",
-            //   JSON.stringify(
-            //     firstFormData.reduce(
-            //       (totals, currentItem) =>
-            //         (totals = totals + Number(currentItem.total)),
-            //       0
-            //     )
-            //   )
-            // )
+            
           }
         });
       });
@@ -91,7 +81,7 @@ const useSecondFormFront = () => {
       ...addOneSecondFormState,
       {
         averageRate: 0,
-        startingStock: 0, // openingStock
+        startingStock: 0,
         incomingPurchase: 0,
         buyRate: 0,
         incomePurchase: 0,
