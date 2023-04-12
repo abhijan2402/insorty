@@ -48,6 +48,13 @@ const StockLanding = () => {
       <div>
         <div className="flex justify-center items-center">
           <table className="table w-2/3">
+          <thead>
+            <tr>
+              <th> क्र. सं.</th>
+              <th colSpan={2}>Party Name</th>
+              <th colSpan={2}>Delete</th>
+            </tr>
+          </thead>
             <tbody>
               {PartyInfo?.map((party, index) => {
                 return (

@@ -1,5 +1,4 @@
 import React from "react";
-import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import AddNewBranch from "../AddNewBranch/AddNewBranch";
 import Swal from "sweetalert2";
@@ -9,7 +8,11 @@ import Loader from "../../../../Components/Loader/Loader";
 const BranchName = () => {
   const token = localStorage.getItem("token");
 
-  const { data: branches, isLoading, refetch } = useQuery({
+  const {
+    data: branches,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["branches"],
     queryFn: async () => {
       const res = await fetch(
@@ -60,8 +63,15 @@ const BranchName = () => {
       </div>
 
       <div>
-        <div className="flex justify-center items-center" >
+        <div className="flex justify-center items-center">
+         
           <table className="table w-5/6">
+          <thead>
+            <tr>
+              <th> क्र. सं.</th>
+              <th colSpan={2}>Branch Name</th>
+            </tr>
+          </thead>
             <tbody>
               {branches &&
                 branches.map((branch, index) => (
@@ -73,14 +83,6 @@ const BranchName = () => {
                         to={`/user/branch/from/${branch._id}`}
                       >
                         {branch.branchName}
-                      </Link>
-                    </td>
-                    <td>
-                      <Link
-                        className="font-3xl font-bold"
-                        style={{ color: "#AA237A" }}
-                      >
-                        <FaRegTrashAlt></FaRegTrashAlt>
                       </Link>
                     </td>
                   </tr>

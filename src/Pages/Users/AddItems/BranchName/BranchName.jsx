@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 import AddBranchName from "./AddBranchName/AddBranchName";
 import Loader from "../../../../Components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
+import { FaRegTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const BranchName = () => {
   const token = localStorage.getItem("token");
 
-  const { data: BranchNameData, isLoading, refetch } = useQuery({
+  const {
+    data: BranchNameData,
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["BranchNameData"],
     queryFn: async () => {
       const res = await fetch(
@@ -22,6 +28,28 @@ const BranchName = () => {
     },
   });
 
+  const handelDelete = (id) => {
+    console.log("delete" , id);
+    fetch(`https://insorty-api.onrender.com/shop/deleteBranch`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json", cookie_token: token },
+      body: JSON.stringify({ branchId: id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data);
+          Swal.fire("Success!", "Your file has been deleted.", "success");
+          refetch();
+        } else {
+          Swal.fire("Error!", "Something went wrong.", "error");
+        }
+      })
+      .catch((err) => {
+        Swal.fire("Error!", "Something went wrong.", "error");
+      });
+  };
+
   if (isLoading) return <Loader></Loader>;
 
   return (
@@ -32,7 +60,6 @@ const BranchName = () => {
           <Link to="/user/partyname" className="commonBtn ">
             पार्टी जोड़ें
           </Link>
-          
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -46,7 +73,9 @@ const BranchName = () => {
               <h1>ब्रांच नाम</h1>
             </th>
 
-            
+            <th>
+              <h1>Delete</h1>
+            </th>
           </thead>
           <tbody>
             {BranchNameData?.map((item, index) => {
@@ -58,7 +87,15 @@ const BranchName = () => {
                   <td>
                     <h1>{item?.branchName}</h1>
                   </td>
-                  
+                  <td>
+                    <button
+                      className="font-3xl font-bold"
+                      style={{ color: "#AA237A" }}
+                      onClick={() => handelDelete(item?._id)}
+                    >
+                      <FaRegTrashAlt></FaRegTrashAlt>
+                    </button>
+                  </td>
                 </tr>
               );
             })}

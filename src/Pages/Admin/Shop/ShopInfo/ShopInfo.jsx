@@ -1,7 +1,7 @@
 import React from "react";
 
 const ShopInfo = ({ myShopId, shop }) => {
-  const { name, accountId, address, licenceNumber, mobileNumber } = shop;
+  const { name, accountId, address, licenceNumber, mobileNumber,shopType } = shop;
   return (
     <section>
       {/* The button to open modal */}
@@ -92,6 +92,17 @@ const ShopInfo = ({ myShopId, shop }) => {
                   type="text"
                   className="commonDataInput"
                   defaultValue={licenceNumber}
+                  disabled
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Shop Type</span>
+                </label>
+                <input
+                  type="text"
+                  className="commonDataInput"
+                  defaultValue={shopType}
                   disabled
                 />
               </div>

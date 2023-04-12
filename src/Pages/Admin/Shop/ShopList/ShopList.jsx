@@ -29,24 +29,11 @@ const ShopList = () => {
       });
   };
 
-  // const onTokenChange = (Shoptoken) => {
-  //   const token = localStorage.getItem("token");
-  //   localStorage.setItem("token2", token);
-  //   localStorage.setItem("token", Shoptoken);
-
-  //   const shopTokens = localStorage.getItem("token");
-  //   const userToken = localStorage.getItem("token2");
-    
-  //   console.log(Shoptoken, "token changed");
-  //   console.log(localStorage.getItem("token"), "token unchanged");
-  // };
-
   const onTokenChange = (Shoptoken) => {
     // Get the current values of "token" and "token2" from localStorage
     const token = localStorage.getItem("token");
     const adminToken = localStorage.getItem("token2");
   
-    // If the shop token is different from the current token, update the tokens and redirect to the appropriate dashboard
     if (Shoptoken !== token) {
       // Update the "token" and "token2" values in localStorage
       localStorage.setItem("token", Shoptoken);
@@ -83,6 +70,7 @@ const ShopList = () => {
     const licenceNumber = from.licenceNumber.value;
     const address = from.address.value;
     const accountId = from.accountId.value;
+    const shopType = from.shopType.value;
 
     fetch("https://insorty-api.onrender.com/admin/createShop", {
       method: "POST",
@@ -98,6 +86,8 @@ const ShopList = () => {
         password,
         licenceNumber,
         mobileNumber: phone,
+        shopType
+
       }),
     })
       .then((res) => res.json())

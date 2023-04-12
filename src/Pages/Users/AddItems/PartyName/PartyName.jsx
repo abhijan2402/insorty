@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import AddPartyName from "./AddPartyName/AddPartyName";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import { FaRegTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2"; 
 
 const PartyName = () => {
   const token = localStorage.getItem("token");
@@ -25,6 +27,23 @@ const PartyName = () => {
       return data.data;
     },
   });
+
+  const handelDelete = (id) => {
+    console.log(id);
+    fetch(`https://insorty-api.onrender.com/shop/deleteParty`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json", cookie_token: token },
+      body: JSON.stringify({ partyId:id }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          console.log(data);
+          Swal.fire("Success!", "Your file has been deleted.", "success");
+          refetch();
+        }
+      });
+  }
 
   if (isLoading) return <Loader></Loader>;
 
@@ -53,6 +72,9 @@ const PartyName = () => {
             <th>
               <h1>पार्टी नाम</h1>
             </th>
+            <th>
+              <h1>Delete</h1>
+            </th>
             
           </thead>
           <tbody>
@@ -65,7 +87,15 @@ const PartyName = () => {
                   <td>
                     <h1>{item?.partyName}</h1>
                   </td>
-                 =
+                  <td>
+                      <button
+                        className="font-3xl font-bold"
+                        style={{ color: "#AA237A" }}
+                        onClick={() => handelDelete(item?._id)}
+                      >
+                        <FaRegTrashAlt></FaRegTrashAlt>
+                      </button>
+                    </td>
                 </tr>
               );
             })}
