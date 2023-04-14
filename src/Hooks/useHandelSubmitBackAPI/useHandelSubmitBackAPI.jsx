@@ -217,16 +217,16 @@ const useHandelSubmitBackAPI = (shopType) => {
   const beerFormTotal = JSON.parse(localStorage.getItem("beerFormTotal"));
   const pichlaBakaya = 0;
 
-  const english = Number(firstformData) || 0 + Number(secondFront) || 0;
-  const beer = beerTotal ? beerTotal : 0;
+  const english = (Number(firstformData) || 0) + (Number(secondFront) || 0);
+  const beer = (Number(beerTotal) || 0) + (Number(beerFormTotal) || 0);
   const rmlData = fourthFront ? fourthFront : 0;
   const totalSell =
-    Number(fourthFront) ||
-    0 + Number(beerTotal) ||
-    0 + Number(firstformData) ||
-    0 + Number(secondFront) ||
-    0 + Number(beerFormTotal) ||
-    0;
+    (Number(fourthFront) ||
+      0) + (Number(beerTotal) ||
+        0) + (Number(firstformData) ||
+          0) + (Number(secondFront) ||
+            0) + (Number(beerFormTotal) ||
+              0);
   const borrowedCashReturn = fifthFront ? fifthFront : 0;
   const intoAccount = intoAccountState ? intoAccountState : 0;
   const borrowed = sixthFront ? sixthFront : 0;
