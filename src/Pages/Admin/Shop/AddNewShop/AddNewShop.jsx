@@ -1,9 +1,8 @@
 import React from "react";
 
-const AddNewShop = ({addNewShop}) => {
+const AddNewShop = ({ addNewShop }) => {
   return (
     <section>
-  
       {/* Put this part before </body> tag */}
       <input type="checkbox" id="addShop" className="modal-toggle" />
       <div className="modal">
@@ -14,11 +13,9 @@ const AddNewShop = ({addNewShop}) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">
-           Add New Shop
-          </h3>
+          <h3 className="text-lg font-bold">Add New Shop</h3>
           <div className="py-4">
-              <form onSubmit={addNewShop}>
+            <form onSubmit={addNewShop}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -108,7 +105,21 @@ const AddNewShop = ({addNewShop}) => {
                   }}
                 />
               </div>
-             
+
+              <div className="form-control my-3">
+                <select className="select w-full"
+                name = "shopType"
+                style={{
+                    border: "1px solid #e5e7eb",
+                  }}
+                >
+                  <option disabled selected>
+                    Select Shop Type
+                  </option>
+                  <option value={"BAR"}>BAR</option>
+                  <option value={"SHOP"}>SHOP</option>
+                </select>
+              </div>
 
               <div>
                 <button type="submit" className="commonBtn">
@@ -116,7 +127,6 @@ const AddNewShop = ({addNewShop}) => {
                 </button>
               </div>
             </form>
-
           </div>
         </div>
       </div>

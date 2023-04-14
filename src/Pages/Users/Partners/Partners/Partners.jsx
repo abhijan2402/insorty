@@ -20,7 +20,9 @@ const Partners = ({ isBearShop }) => {
   });
 
   const { shopType } = useParams();
-  const partnersUrl = isBearShop ? '/user/bearshop/sendFormat' : '/user/sendFormat';
+  const partnersUrl = isBearShop
+    ? "/user/bearshop/sendFormat"
+    : "/user/sendFormat";
 
   const handelPartnerSubmit = (e) => {
     e.preventDefault();
@@ -67,15 +69,16 @@ const Partners = ({ isBearShop }) => {
     <section className="py-4">
       <div className="title">
         <div className="flex justify-center items-center gap-4">
-
-           <Link className="commonBtn" to={partnersUrl}>
+          <Link className="commonBtn" to={partnersUrl}>
             सभी पार्टनर
           </Link>
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
         </div>
-
+        <div>
+            <div className="divider my-4"></div>
+          </div>
         <div ref={front}>
           <h2 className="font-bold md:text-[1.5rem] text-center">
             पार्टनर खाते{" "}
@@ -108,8 +111,9 @@ const Partners = ({ isBearShop }) => {
                 />
               </div>
             </div>
-            <div className="divider my-2"></div>
           </div>
+
+  
 
           {/* ************************ all sealy data************** */}
           <div className="flex justify-center items-center">
@@ -189,17 +193,12 @@ const Partners = ({ isBearShop }) => {
                 </table>
               </div>
             </form>{" "}
-            <div>
-              
-            </div>
+            <div></div>
           </div>
         </div>
       </div>
       {/* ************************ all sealy data************** */}
 
-      <div>
-        <div className="divider my-4"></div>
-      </div>
       <AddPartner handelPartnerSubmit={handelPartnerSubmit}></AddPartner>
     </section>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import moment from "moment/moment";
+import { FaRegTrashAlt } from "react-icons/fa";
 
-const PaymentForm = ({ index, payment, paymentData }) => {
+const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
   // console.log(payment.entries.length);
 
   if (payment.entries.length === 0) {
@@ -93,6 +94,15 @@ const PaymentForm = ({ index, payment, paymentData }) => {
                   </div>
                 </div>
               </td>
+              <td>
+                    <button
+                      className="font-3xl font-bold"
+                      style={{ color: "#AA237A" }}
+                      onClick={() => handelDelete(entry?._id)}
+                    >
+                      <FaRegTrashAlt></FaRegTrashAlt>
+                    </button>
+                  </td>
             </>
           );
         })}

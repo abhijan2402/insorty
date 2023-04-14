@@ -90,6 +90,37 @@ const Payments = () => {
       });
   };
 
+  const handelDelete  = async (id) => {
+    const res = await fetch(
+      `https://insorty-api.onrender.com/shop/deleteShopAccount/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          cookie_token: token,
+        },
+      }
+    );
+    const data = await res.json();
+    console.log(data);
+    refetch();
+    if (data.success) {
+      Swal.fire({
+        icon: "success",
+        title: "Payment Deleted Successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: data.message,
+      });
+    }
+  }
+
+
   if (isLoading) {
     return <Loader></Loader>;
   }
@@ -117,9 +148,9 @@ const Payments = () => {
                       <th> क्र. सं.</th>
                       <th colSpan={2}> नामे</th>
                       <th colSpan={2}> जमा </th>
-
                       <th> शेष </th>
                       <th>विवरणे</th>
+                      <th>Delete</th>
                     </tr>
                   </thead>
 
@@ -174,6 +205,13 @@ const Payments = () => {
                           </div>
                         </div>
                       </td>
+                      <td>
+                        <div className="flex gap-4">
+                          <div className="form-control">
+                            <label className="label"></label>
+                          </div>
+                        </div>
+                      </td>
 
                       {/* ============= कुल योग ================ */}
                     </tr>
@@ -191,6 +229,7 @@ const Payments = () => {
                             index={index}
                             paymentData={paymentData}
                             payment={payment}
+                            handelDelete ={handelDelete }
                           ></PaymentForm>
                         );
                       })

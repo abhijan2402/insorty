@@ -90,6 +90,13 @@ const SalaryList = () => {
         "
         >
           <table className="table w-3/4">
+          <thead>
+            <tr>
+              <th> क्र. सं.</th>
+              <th colSpan={2}>Name</th>
+              <th colSpan={2}>Delete</th>
+            </tr>
+          </thead>
             <tbody>
               {(salaryData.length > 0 &&
                 salaryData?.map((salary, index) => {
