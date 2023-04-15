@@ -14,24 +14,20 @@ const FronteDailyReport = () => {
     addOne,
   } = UseBeerShopFront();
 
-
   return (
     <section className="mx-2">
       <div className="flex justify-center items-center flex-col">
-      <div className="my-4 flex gap-4 items-center">
-        <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
-        <Link
-          to="/user/bearshop/dailyreport/back"
-          className="commonBtn"
-        >
-          Back
-        </Link>
-      </div>
-      <div className="flex gap-4 ">
-        <h1 className="font-bold ">सेल्समेन का नाम</h1>
-        <input type="text" className="semiSmallInput" />
-        <input type="date" name="" id="" className="semiSmallInput" />
-      </div>
+        <div className="my-4 flex gap-4 items-center">
+          <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
+          <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
+            Back
+          </Link>
+        </div>
+        <div className="flex gap-4 ">
+          <h1 className="font-bold ">सेल्समेन का नाम</h1>
+          <input type="text" className="semiSmallInput" />
+          <input type="date" name="" id="" className="semiSmallInput" />
+        </div>
       </div>
 
       <div className="py-6">
@@ -47,11 +43,11 @@ const FronteDailyReport = () => {
                     <th>Inflow(Pur. shop)/आमद(खरीद)-दु</th>
                     <th>buy rate shop /खरीद रेट - दुु</th>
                     <th>Income (Pur. out)/आमद(खरीद)बा</th>
-                    <th>buy  rate out /खरीद रेट - बा.</th>
+                    <th>buy rate out /खरीद रेट - बा.</th>
                     <th>send / भेजान</th>
                     <th>sum -remaining / योग - शेष</th>
                     <th>closing stock / अन्तिम स्टॉक</th>
-                    <th>sales /  बिक्री</th>
+                    <th>sales / बिक्री</th>
                     <th>total / योग</th>
                     <th>Grand total/ कुल योग</th>
                   </tr>
@@ -71,21 +67,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -103,21 +92,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -135,21 +117,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -167,21 +142,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -199,21 +167,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -232,21 +193,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -266,21 +220,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -299,21 +246,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -331,21 +271,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -363,21 +296,14 @@ const FronteDailyReport = () => {
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">330ml</span>
+                            <span className="label-text">375ml</span>
                           </label>
                         </div>
-
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">60ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -394,17 +320,15 @@ const FronteDailyReport = () => {
                   </tr>
 
                   {/* ============ ============== */}
-                  {
-                    beerShopFrontFrist.map((beerFront, index) => {
-                      return (
-                        <AddOneFristForm
-                          key={index}
-                          index={index}
-                          beerFront={beerFront}
-                        ></AddOneFristForm>
-                      )
-                    })
-                  }
+                  {beerShopFrontFrist.map((beerFront, index) => {
+                    return (
+                      <AddOneFristForm
+                        key={index}
+                        index={index}
+                        beerFront={beerFront}
+                      ></AddOneFristForm>
+                    );
+                  })}
 
                   {/* ============ =========== */}
 
@@ -446,6 +370,35 @@ const FronteDailyReport = () => {
                             name="averageRate"
                           />
                         </div>
+                      </div>
+                    </td>
+                    {/* ======== प्रारम्भिक स्टॉक ========= */}
+                    <td>
+                      <div className="flex ">
+                        <div className="form-control">
+                          <input
+                            disabled
+                            type="number"
+                            className="smallinput"
+                            name="averageRate"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
+                            disabled
+                            type="number"
+                            className="smallinput"
+                            name="averageRate"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
+                            disabled
+                            type="number"
+                            className="smallinput"
+                            name="averageRate"
+                          />
+                        </div>
                         <div className="form-control">
                           <input
                             disabled
@@ -456,54 +409,6 @@ const FronteDailyReport = () => {
                         </div>
                       </div>
                     </td>
-                    {/* ======== प्रारम्भिक स्टॉक ========= */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <input
-                            className="smallinput"
-                            disabled
-                            type="number"
-                            name="startingStock"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            disabled
-                            name="startingStock"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            disabled
-                            name="startingStock"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            disabled
-                            name="startingStock"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            disabled
-                            name="startingStock"
-                          />
-                        </div>
-
-                      </div>
-                    </td>
 
                     {/* ======== आमद (खरीद)-दु. ========= */}
 
@@ -511,44 +416,34 @@ const FronteDailyReport = () => {
                       <div className="flex ">
                         <div className="form-control">
                           <input
-                            type="number"
                             disabled
-                            className="smallinput"
-                            name="incomingPurchase"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
                             type="number"
                             className="smallinput"
-                            disabled
-                            name="incomingPurchase"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            disabled
-                            name="incomingPurchase"
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            disabled
-                            name="incomingPurchase"
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
+                            name="averageRate"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
                             disabled
-                            name="incomingPurchase"
+                            type="number"
+                            className="smallinput"
+                            name="averageRate"
                           />
                         </div>
                       </div>
@@ -558,44 +453,34 @@ const FronteDailyReport = () => {
                       <div className="flex ">
                         <div className="form-control">
                           <input
-                            type="number"
                             disabled
-                            className="smallinput"
-                            name="buyRate"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            disabled
-                            className="smallinput"
-                            name="buyRate"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
                             type="number"
                             className="smallinput"
-                            name="buyRate"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="buyRate"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="buyRate"
+                            name="averageRate"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
                             disabled
+                            type="number"
+                            className="smallinput"
+                            name="averageRate"
                           />
                         </div>
                       </div>
@@ -607,44 +492,34 @@ const FronteDailyReport = () => {
                       <div className="flex ">
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="incomePurchase"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            disabled
-                            name="incomePurchase"
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="incomePurchase"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="incomePurchase"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="incomePurchase"
+                            name="averageRate"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
                             disabled
+                            type="number"
+                            className="smallinput"
+                            name="averageRate"
                           />
                         </div>
                       </div>
@@ -655,46 +530,34 @@ const FronteDailyReport = () => {
                       <div className="flex ">
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="purchaseRate"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
-
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="purchaseRate"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
-
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="purchaseRate"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
-
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="purchaseRate"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="purchaseRate"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                       </div>
@@ -706,44 +569,34 @@ const FronteDailyReport = () => {
                       <div className="flex ">
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="inflowCredit"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="inflowCredit"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="inflowCredit"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="inflowCredit"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="inflowCredit"
+                            name="averageRate"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
                             disabled
+                            type="number"
+                            className="smallinput"
+                            name="averageRate"
                           />
                         </div>
                       </div>
@@ -753,44 +606,34 @@ const FronteDailyReport = () => {
                       <div className="flex ">
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="sending"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="sending"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            disabled
-                            className="smallinput"
-                            name="sending"
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
-                            type="number"
                             disabled
+                            type="number"
                             className="smallinput"
-                            name="sending"
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
-                            type="number"
                             disabled
+                            type="number"
                             className="smallinput"
-                            name="sending"
+                            name="averageRate"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
+                            disabled
+                            type="number"
+                            className="smallinput"
+                            name="averageRate"
                           />
                         </div>
                       </div>
@@ -800,46 +643,34 @@ const FronteDailyReport = () => {
                       <div className="flex ">
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="sumRemainder"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
-
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="sumRemainder"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
-
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="sumRemainder"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
-
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="sumRemainder"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="sumRemainder"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                       </div>
@@ -849,44 +680,34 @@ const FronteDailyReport = () => {
                       <div className="flex ">
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="closingStock"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="closingStock"
-                            disabled
-                          />
-                        </div>
-
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            name="closingStock"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="closingStock"
-                            disabled
+                            name="averageRate"
                           />
                         </div>
                         <div className="form-control">
                           <input
+                            disabled
                             type="number"
                             className="smallinput"
-                            name="closingStock"
+                            name="averageRate"
+                          />
+                        </div>
+                        <div className="form-control">
+                          <input
                             disabled
+                            type="number"
+                            className="smallinput"
+                            name="averageRate"
                           />
                         </div>
                       </div>
@@ -909,9 +730,12 @@ const FronteDailyReport = () => {
           </form>
 
           <div className="mt-4 flex gap-4">
-            <button className="dailyReportBtn"
+            <button
+              className="dailyReportBtn"
               onClick={() => fristFormAddFive()}
-            >ADD 5</button>
+            >
+              ADD 5
+            </button>
             <button
               className="dailyReportBtn"
               onClick={() => fristFormAddOne()}
@@ -957,9 +781,7 @@ const FronteDailyReport = () => {
                       <tr>
                         <th></th>
                         <td>
-                          <div className="form-control">
-
-                          </div>
+                          <div className="form-control"></div>
                         </td>
                         {/* ======== MRP Input ========= */}
                         <td>
@@ -1047,7 +869,6 @@ const FronteDailyReport = () => {
                                 <span className="label-text">330ml</span>
                               </label>
                             </div>
-
                           </div>
                         </td>
 
@@ -1205,357 +1026,348 @@ const FronteDailyReport = () => {
                           <div className="form-control"></div>
                         </td>
                       </tr>
-                      {
-                        beerShopFrontSecond.map((item, index) => {
-                          return (
-                            <>
-                              <tr
-                                key={index}
-                              >
-                                <th>{index + 1}</th>
-                                <td>
-                                  <input
-                                    type="text"
-                                    className="dailyReportInput"
-                                    name="BrandName"
-                                  />
-                                </td>
-                                {/* ======== MRP Input ========= */}
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="openingStock650"
-                                      />
-                                    </div>
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="openingStock550" />
-                                    </div>
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="openingStock330"
-                                      />
-                                    </div>
-
-                                  </div>
-                                </td>
-                                {/* ======== प्रारम्भिक स्टॉक ========= */}
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        className="smallinput"
-                                        type="number"
-                                        name="infllowPuchase650"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="infllowPuchase550"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="infllowPuchase330"
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-
-                                {/* ======== आमद (खरीद)-दु. ========= */}
-
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="buyeShop650"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="buyeShop550"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="buyeShop330"
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="incomePurchesOut650"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="incomePurchesOut550"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="incomePurchesOut330"
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-
-                                {/* ======== आमद (खरीद)-बा. ========= */}
-
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="buyeRateOut650"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="buyeRateOut650"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="buyeRateOut330"
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-
-                                {/*================ खरीद रेट - बा. ==================  */}
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="infllowCradit750"
-
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="infllowCradit650"
-
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="infllowCradit330"
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="send650"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="send550"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="send330"
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-                                {/* ======== भेजान ========= */}
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="sumRemainder650"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="sumRemainder550"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="sumRemainder330"
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-                                {/* ======== योग/शेष ========= */}
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="closingStock650"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="closingStock550"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="closingStock330"
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-                                {/* ======== अन्तिम स्टॉक ========= */}
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="sals650"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="sals550"
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="sals330"
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-                                <td>
-                                  <div className="flex ">
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="total650"
-
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="total550"
-
-                                      />
-                                    </div>
-
-                                    <div className="form-control">
-                                      <input
-                                        type="number"
-                                        className="smallinput"
-                                        name="total330"
-
-                                      />
-                                    </div>
-                                  </div>
-                                </td>
-                                {/* ============= कुल योग ================ */}
-                                <td>
+                      {beerShopFrontSecond.map((item, index) => {
+                        return (
+                          <>
+                            <tr key={index}>
+                              <th>{index + 1}</th>
+                              <td>
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  name="BrandName"
+                                />
+                              </td>
+                              {/* ======== MRP Input ========= */}
+                              <td>
+                                <div className="flex ">
                                   <div className="form-control">
                                     <input
                                       type="number"
-                                      className="semiSmallInput"
-                                      name="Amount"
+                                      className="smallinput"
+                                      name="openingStock650"
                                     />
                                   </div>
-                                </td>
-                              </tr>
-                            </>
-                          )
-                        })
-                      }
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="openingStock550"
+                                    />
+                                  </div>
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="openingStock330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+                              {/* ======== प्रारम्भिक स्टॉक ========= */}
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      className="smallinput"
+                                      type="number"
+                                      name="infllowPuchase650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="infllowPuchase550"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="infllowPuchase330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+
+                              {/* ======== आमद (खरीद)-दु. ========= */}
+
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="buyeShop650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="buyeShop550"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="buyeShop330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="incomePurchesOut650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="incomePurchesOut550"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="incomePurchesOut330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+
+                              {/* ======== आमद (खरीद)-बा. ========= */}
+
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="buyeRateOut650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="buyeRateOut650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="buyeRateOut330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+
+                              {/*================ खरीद रेट - बा. ==================  */}
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="infllowCradit750"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="infllowCradit650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="infllowCradit330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="send650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="send550"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="send330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+                              {/* ======== भेजान ========= */}
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="sumRemainder650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="sumRemainder550"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="sumRemainder330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+                              {/* ======== योग/शेष ========= */}
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="closingStock650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="closingStock550"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="closingStock330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+                              {/* ======== अन्तिम स्टॉक ========= */}
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="sals650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="sals550"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="sals330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="total650"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="total550"
+                                    />
+                                  </div>
+
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="smallinput"
+                                      name="total330"
+                                    />
+                                  </div>
+                                </div>
+                              </td>
+                              {/* ============= कुल योग ================ */}
+                              <td>
+                                <div className="form-control">
+                                  <input
+                                    type="number"
+                                    className="semiSmallInput"
+                                    name="Amount"
+                                  />
+                                </div>
+                              </td>
+                            </tr>
+                          </>
+                        );
+                      })}
                     </tbody>
                   </table>
 
                   <table className="table commonTable">
                     <thead>
-                      <tr >
+                      <tr>
                         <th>पानी, नमकीन, सिगरेट, पुड़िया आदि</th>
                       </tr>
                       <tr>
@@ -1573,120 +1385,115 @@ const FronteDailyReport = () => {
                     </thead>
 
                     <tbody>
-                      {
-                        beerShopFrontThird.map((beerBarthird, index) => {
-                          return (
-                            <tr
-                              key={index}
-                            >
-                              <th>{index + 1}</th>
-                              <td>
-                                <input
-                                  type="text"
-                                  className="dailyReportInput"
-                                  name="description"
-                                />
-                              </td>
-                              <td>
-                                <div className="flex ">
-                                  <div className="form-control">
-                                    <input
-                                      type="number"
-                                      className="dailyReportInput"
-                                      name="buyingPrice"
-                                    />
-                                  </div>
+                      {beerShopFrontThird.map((beerBarthird, index) => {
+                        return (
+                          <tr key={index}>
+                            <th>{index + 1}</th>
+                            <td>
+                              <input
+                                type="text"
+                                className="dailyReportInput"
+                                name="description"
+                              />
+                            </td>
+                            <td>
+                              <div className="flex ">
+                                <div className="form-control">
+                                  <input
+                                    type="number"
+                                    className="dailyReportInput"
+                                    name="buyingPrice"
+                                  />
                                 </div>
-                              </td>
+                              </div>
+                            </td>
 
-                              {/*================ खरीद रेट - बा. ==================  */}
-                              <td>
-                                <div className="flex ">
-                                  <div className="form-control">
-                                    <input
-                                      type="text"
-                                      className="dailyReportInput"
-                                      name="OpeningStock"
-                                    />
-                                  </div>
+                            {/*================ खरीद रेट - बा. ==================  */}
+                            <td>
+                              <div className="flex ">
+                                <div className="form-control">
+                                  <input
+                                    type="text"
+                                    className="dailyReportInput"
+                                    name="OpeningStock"
+                                  />
                                 </div>
-                              </td>
+                              </div>
+                            </td>
 
-                              <td>
-                                <div className="flex ">
-                                  <div className="form-control">
-                                    <input
-                                      type="number"
-                                      className="dailyReportInput"
-                                      name="infllow"
-                                    />
-                                  </div>
+                            <td>
+                              <div className="flex ">
+                                <div className="form-control">
+                                  <input
+                                    type="number"
+                                    className="dailyReportInput"
+                                    name="infllow"
+                                  />
                                 </div>
-                              </td>
-                              {/* ======== भेजान ========= */}
-                              <td>
-                                <div className="flex ">
-                                  <div className="form-control">
-                                    <input
-                                      type="number"
-                                      className="dailyReportInput"
-                                      name="sum"
-                                    />
-                                  </div>
+                              </div>
+                            </td>
+                            {/* ======== भेजान ========= */}
+                            <td>
+                              <div className="flex ">
+                                <div className="form-control">
+                                  <input
+                                    type="number"
+                                    className="dailyReportInput"
+                                    name="sum"
+                                  />
                                 </div>
-                              </td>
-                              {/* ======== योग/शेष ========= */}
-                              <td>
-                                <div className="flex ">
-                                  <div className="form-control">
-                                    <input
-                                      type="number"
-                                      className="dailyReportInput"
-                                      name="closingStock"
-                                    />
-                                  </div>
+                              </div>
+                            </td>
+                            {/* ======== योग/शेष ========= */}
+                            <td>
+                              <div className="flex ">
+                                <div className="form-control">
+                                  <input
+                                    type="number"
+                                    className="dailyReportInput"
+                                    name="closingStock"
+                                  />
                                 </div>
-                              </td>
-                              {/* ======== अन्तिम स्टॉक ========= */}
-                              <td>
-                                <div className="flex ">
-                                  <div className="form-control">
-                                    <input
-                                      type="number"
-                                      className="dailyReportInput"
-                                      name="sales"
-                                    />
-                                  </div>
+                              </div>
+                            </td>
+                            {/* ======== अन्तिम स्टॉक ========= */}
+                            <td>
+                              <div className="flex ">
+                                <div className="form-control">
+                                  <input
+                                    type="number"
+                                    className="dailyReportInput"
+                                    name="sales"
+                                  />
                                 </div>
-                              </td>
-                              <td>
-                                <div className="flex ">
-                                  <div className="form-control">
-                                    <input
-                                      type="number"
-                                      className="dailyReportInput"
-                                      name="rates"
-                                    />
-                                  </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div className="flex ">
+                                <div className="form-control">
+                                  <input
+                                    type="number"
+                                    className="dailyReportInput"
+                                    name="rates"
+                                  />
                                 </div>
-                              </td>
-                              {/* ============= कुल योग ================ */}
-                              <td>
-                                <div className="flex ">
-                                  <div className="form-control">
-                                    <input
-                                      type="number"
-                                      className="dailyReportInput"
-                                      name="sumreminder"
-                                    />
-                                  </div>
+                              </div>
+                            </td>
+                            {/* ============= कुल योग ================ */}
+                            <td>
+                              <div className="flex ">
+                                <div className="form-control">
+                                  <input
+                                    type="number"
+                                    className="dailyReportInput"
+                                    name="sumreminder"
+                                  />
                                 </div>
-                              </td>
-                            </tr>
-                          )
-                        })
-                      }
-
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
@@ -1695,10 +1502,7 @@ const FronteDailyReport = () => {
           </div>
         </div>
         <div className="flex my-6 ">
-          <button
-            onClick={addOne}
-
-            className="dailyReportBtn mx-4">
+          <button onClick={addOne} className="dailyReportBtn mx-4">
             ADD 1
           </button>
         </div>
