@@ -9,6 +9,11 @@ const UseBeerShopFront = () => {
         OpeningStock180: "",
         OpeningStock30: "",
 
+        avaregRate750: "",
+        avaregRate375: "",
+        avaregRate180: "",
+        avaregRate30: "",
+
         inflowShop750: "",
         inflowShop375: "",
         inflowShop180: "",
@@ -29,29 +34,22 @@ const UseBeerShopFront = () => {
         buyeRateOut180: "",
         buyeRateOut30: "",
 
+        inflowCradite750: "",
+        inflowCradite375: "",
+        inflowCradite180: "",
+        inflowCradite30: "",
+
         send750: "",
         send375: "",
         send180: "",
         send30: "",
 
-        sumRemaining750: "",
-        sumRemaining375: "",
-        sumRemaining180: "",
         sumRemaining30: "",
 
-        closingStock750: "",
-        closingStock375: "",
-        closingStock180: "",
         closingStock30: "",
 
-        salse750: "",
-        salse375: "",
-        salse180: "",
         salse30: "",
 
-        total750: "",
-        total375: "",
-        total180: "",
         total30: "",
 
         grandTotal: "",
@@ -159,7 +157,6 @@ const UseBeerShopFront = () => {
         sumreminder: "",
     }
 
-
     const [beerShopFrontThird, setBeerShopFrontThird] = useState([beerBarThirdFormTamp]);
 
     const thirdFormOnChange = (e, index) => {
@@ -188,6 +185,34 @@ const UseBeerShopFront = () => {
         secondFormAddOne()
     }
 
+    
+    ///////////////////////////////////////////////
+    //                  secorn form              //
+    /////////////////////////////////////////////*/
+    
+    const beerShopMidTemp = {
+        brandName: '',
+    }
+
+    const [beerShopMid, setBeerShopMid] = useState([beerShopMidTemp]);
+
+    const midFormOnChange = (e, index) => {
+        const { name, value } = e.target;
+        const list = [...beerShopMid];
+        list[index][name] = value;
+        setBeerShopMid(list);
+    }
+
+    const midFormAddOne = () => {
+        setBeerShopMid([...beerShopMid, beerShopMidTemp]);
+    }
+    
+    
+    ///////   End of secorn form         ////////
+    
+    
+    
+
 
     return {
         handelFristFormSubmit,
@@ -198,7 +223,9 @@ const UseBeerShopFront = () => {
         beerShopFrontSecond,
         beerShopFrontThird,
         addOne,
-
+        beerShopMid,
+        midFormOnChange,
+        midFormAddOne
     }
 
 };
