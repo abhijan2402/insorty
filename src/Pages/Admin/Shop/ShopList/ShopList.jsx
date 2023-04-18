@@ -12,8 +12,6 @@ const ShopList = () => {
   const token = localStorage.getItem("token");
   const { shopsRefetch, shops, shopsLoaded } = useGetShopsNSubadmins();
 
-  const navigate = useNavigate();
-
   const handelDelete = (id) => {
     console.log(id);
     fetch(`https://insorty-api.onrender.com/admin/deleteShop/${id}`, {

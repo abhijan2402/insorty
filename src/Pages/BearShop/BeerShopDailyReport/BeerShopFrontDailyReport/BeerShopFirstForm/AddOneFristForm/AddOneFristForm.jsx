@@ -1,4 +1,4 @@
-import { Autocomplete, TextField } from "@mui/material";
+// import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 
 const AddOneFristForm = ({ beerFront, index }) => {
@@ -68,7 +68,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput "
-                name="OpeningStock330"
+                name="OpeningStock375"
               />
             </div>
             <div className="form-control">
@@ -78,13 +78,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
                 name="OpeningStock180"
               />
             </div>
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="OpeningStock60"
-              />
-            </div>
+
             <div className="form-control">
               <input
                 type="number"
@@ -109,7 +103,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput"
-                name="inflowShop330"
+                name="inflowShop375"
               />
             </div>
 
@@ -119,9 +113,6 @@ const AddOneFristForm = ({ beerFront, index }) => {
                 className="smallinput"
                 name="inflowShop180"
               />
-            </div>
-            <div className="form-control">
-              <input type="number" className="smallinput" name="inflowShop60" />
             </div>
             <div className="form-control">
               <input type="number" className="smallinput" name="inflowShop30" />
@@ -145,7 +136,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput"
-                name="buyeRateShop330"
+                name="buyeRateShop375"
               />
             </div>
 
@@ -156,13 +147,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
                 name="buyeRateShop180"
               />
             </div>
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="buyeRateShop60"
-              />
-            </div>
+
             <div className="form-control">
               <input
                 type="number"
@@ -187,7 +172,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput"
-                name="incomePurchase330"
+                name="incomePurchase375"
               />
             </div>
 
@@ -198,13 +183,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
                 name="incomePurchase180"
               />
             </div>
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="incomePurchase60"
-              />
-            </div>
+
             <div className="form-control">
               <input
                 type="number"
@@ -231,7 +210,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput"
-                name="buyeRateOut330"
+                name="buyeRateOut375"
               />
             </div>
 
@@ -242,13 +221,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
                 name="buyeRateOut180"
               />
             </div>
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="buyeRateOut60"
-              />
-            </div>
+
             <div className="form-control">
               <input
                 type="number"
@@ -267,15 +240,11 @@ const AddOneFristForm = ({ beerFront, index }) => {
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="send330" />
+              <input type="number" className="smallinput" name="send375" />
             </div>
 
             <div className="form-control">
               <input type="number" className="smallinput" name="send180" />
-            </div>
-
-            <div className="form-control">
-              <input type="number" className="smallinput" name="send60" />
             </div>
 
             <div className="form-control">
@@ -300,7 +269,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput"
-                name="sumRemaining330"
+                name="sumRemaining375"
               />
             </div>
 
@@ -311,13 +280,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
                 name="sumRemaining180"
               />
             </div>
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="sumRemaining60"
-              />
-            </div>
+
             <div className="form-control">
               <input
                 type="number"
@@ -342,7 +305,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput"
-                name="closingStock330"
+                name="closingStock375"
               />
             </div>
 
@@ -353,13 +316,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
                 className="smallinput"
               />
             </div>
-            <div className="form-control">
-              <input
-                type="number"
-                name="closingStock60"
-                className="smallinput"
-              />
-            </div>
+
             <div className="form-control">
               <input
                 type="number"
@@ -377,15 +334,11 @@ const AddOneFristForm = ({ beerFront, index }) => {
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="salse330" />
+              <input type="number" className="smallinput" name="salse375" />
             </div>
 
             <div className="form-control">
               <input type="number" className="smallinput" name="salse180" />
-            </div>
-
-            <div className="form-control">
-              <input type="number" className="smallinput" name="salse60" />
             </div>
 
             <div className="form-control">
@@ -401,15 +354,13 @@ const AddOneFristForm = ({ beerFront, index }) => {
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="total330" />
+              <input type="number" className="smallinput" name="total375" />
             </div>
 
             <div className="form-control">
               <input type="number" className="smallinput" name="total180" />
             </div>
-            <div className="form-control">
-              <input type="number" className="smallinput" name="total60" />
-            </div>
+
             <div className="form-control">
               <input type="number" className="smallinput" name="total30" />
             </div>
