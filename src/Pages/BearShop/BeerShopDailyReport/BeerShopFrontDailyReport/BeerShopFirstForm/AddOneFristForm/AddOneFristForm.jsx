@@ -1,15 +1,19 @@
-// import { Autocomplete, TextField } from "@mui/material";
 import React from "react";
 
-const AddOneFristForm = ({ beerFront, index }) => {
-  //
+const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
+console.log(beerFront.openingStock30)
   return (
     <>
       <tr>
         <th>{index + 1}</th>
         <td>
           <div className="form-control">
-            <input type="text" className="dailyReportInput" name="brandName" />
+            <input
+              onChange={(e) => fristFormOnChange(e, index)}
+              type="text"
+              className="dailyReportInput"
+              name="brandName"
+            />
           </div>
           {/* <Autocomplete
             size="small"
@@ -61,26 +65,34 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput "
-                name="avaregRate750"
+                name="averageRate750"
+                onChange={(e) => fristFormOnChange(e, index)}
               />
             </div>
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput "
-                name="avaregRate375"
+                name="averageRate375"
               />
             </div>
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput "
-                name="avaregRate180"
+                name="averageRate180"
               />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="avaregRate30" />
+              <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                type="number"
+                className="smallinput"
+                name="averageRate30"
+              />
             </div>
           </div>
         </td>
@@ -88,31 +100,41 @@ const AddOneFristForm = ({ beerFront, index }) => {
           <div className="flex ">
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput "
-                name="OpeningStock750"
+                value={beerFront.openingStock750}
+                name="openingStock750"
               />
             </div>
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput "
-                name="OpeningStock375"
+                value={beerFront.openingStock375}                
+                name="openingStock375"
               />
             </div>
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                value={beerFront.openingStock180}
+
                 type="number"
                 className="smallinput "
-                name="OpeningStock180"
+                name="openingStock180"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                value={beerFront.openingStock30}
+
                 type="number"
                 className="smallinput"
-                name="OpeningStock30"
+                name="openingStock30"
               />
             </div>
           </div>
@@ -122,6 +144,8 @@ const AddOneFristForm = ({ beerFront, index }) => {
           <div className="flex ">
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                value={beerFront.inflowShop750}
                 className="smallinput"
                 type="number"
                 name="inflowShop750"
@@ -130,6 +154,9 @@ const AddOneFristForm = ({ beerFront, index }) => {
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                value={beerFront.inflowShop375}
+
                 type="number"
                 className="smallinput"
                 name="inflowShop375"
@@ -138,13 +165,23 @@ const AddOneFristForm = ({ beerFront, index }) => {
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                value={beerFront.inflowShop180}
+
                 type="number"
                 className="smallinput"
                 name="inflowShop180"
               />
             </div>
             <div className="form-control">
-              <input type="number" className="smallinput" name="inflowShop30" />
+              <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                value={beerFront.inflowShop30}
+
+                type="number"
+                className="smallinput"
+                name="inflowShop30"
+              />
             </div>
           </div>
         </td>
@@ -155,33 +192,37 @@ const AddOneFristForm = ({ beerFront, index }) => {
           <div className="flex ">
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="buyeRateShop750"
+                name="buyRateShop750"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="buyeRateShop375"
+                name="buyRateShop375"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="buyeRateShop180"
+                name="buyRateShop180"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="buyeRateShop30"
+                name="buyRateShop30"
               />
             </div>
           </div>
@@ -191,33 +232,37 @@ const AddOneFristForm = ({ beerFront, index }) => {
           <div className="flex ">
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="incomePurchase750"
+                name="inflowOut750"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="incomePurchase375"
+                name="inflowOut375"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="incomePurchase180"
+                name="inflowOut180"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="incomePurchase30"
+                name="inflowOut30"
               />
             </div>
           </div>
@@ -229,33 +274,37 @@ const AddOneFristForm = ({ beerFront, index }) => {
           <div className="flex ">
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="buyeRateOut750"
+                name="buyRateOut750"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="buyeRateOut375"
+                name="buyRateOut375"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="buyeRateOut180"
+                name="buyRateOut180"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="buyeRateOut30"
+                name="buyRateOut30"
               />
             </div>
           </div>
@@ -265,33 +314,37 @@ const AddOneFristForm = ({ beerFront, index }) => {
           <div className="flex ">
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="inflowCradite750"
+                name="inflowCredit750"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="inflowCradite375"
+                name="inflowCredit375"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="inflowCradite180"
+                name="inflowCredit180"
               />
             </div>
 
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
-                name="inflowCradite30"
+                name="inflowCredit30"
               />
             </div>
           </div>
@@ -301,19 +354,39 @@ const AddOneFristForm = ({ beerFront, index }) => {
         <td>
           <div className="flex ">
             <div className="form-control">
-              <input type="number" className="smallinput" name="send750" />
+              <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                type="number"
+                className="smallinput"
+                name="send750"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="send375" />
+              <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                type="number"
+                className="smallinput"
+                name="send375"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="send180" />
+              <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                type="number"
+                className="smallinput"
+                name="send180"
+              />
             </div>
 
             <div className="form-control">
-              <input type="number" className="smallinput" name="send30" />
+              <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                type="number"
+                className="smallinput"
+                name="send30"
+              />
             </div>
           </div>
         </td>
@@ -324,6 +397,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
           <div className="flex ">
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
                 name="sumRemaining30"
@@ -336,6 +410,7 @@ const AddOneFristForm = ({ beerFront, index }) => {
           <div className="flex ">
             <div className="form-control">
               <input
+                onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 name="closingStock30"
                 className="smallinput"
@@ -347,7 +422,12 @@ const AddOneFristForm = ({ beerFront, index }) => {
         <td>
           <div className="flex ">
             <div className="form-control">
-              <input type="number" className="smallinput" name="salse30" />
+              <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                type="number"
+                className="smallinput"
+                name="sales30"
+              />
             </div>
           </div>
         </td>
@@ -355,14 +435,24 @@ const AddOneFristForm = ({ beerFront, index }) => {
         <td>
           <div className="flex ">
             <div className="form-control">
-              <input type="number" className="smallinput" name="total30" />
+              <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                type="number"
+                className="smallinput"
+                name="total30"
+              />
             </div>
           </div>
         </td>
         {/* ============= कुल योग ================ */}
         <td>
           <div className="form-control">
-            <input type="number" className="semiSmallInput" name="grandTotal" />
+            <input
+              onChange={(e) => fristFormOnChange(e, index)}
+              type="number"
+              className="semiSmallInput"
+              name="grandTotal"
+            />
           </div>
         </td>
       </tr>

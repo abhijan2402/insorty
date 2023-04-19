@@ -7,6 +7,7 @@ const FronteDailyReport = () => {
   const {
     handelFristFormSubmit,
     fristFormAddOne,
+    fristFormOnChange,
     beerShopFrontFrist,
     beerShopFrontSecond,
     beerShopFrontThird,
@@ -15,6 +16,8 @@ const FronteDailyReport = () => {
     midFormOnChange,
     midFormAddOne,
   } = UseBeerShopFront();
+
+
 
   return (
     <section className="mx-2">
@@ -320,6 +323,7 @@ const FronteDailyReport = () => {
                         key={index}
                         index={index}
                         beerFront={beerFront}
+                        fristFormOnChange={fristFormOnChange}
                       ></AddOneFristForm>
                     );
                   })}
