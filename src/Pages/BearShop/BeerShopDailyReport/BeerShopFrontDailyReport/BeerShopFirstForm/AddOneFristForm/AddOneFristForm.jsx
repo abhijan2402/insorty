@@ -61,6 +61,35 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput "
+                name="avaregRate750"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput "
+                name="avaregRate375"
+              />
+            </div>
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput "
+                name="avaregRate180"
+              />
+            </div>
+
+            <div className="form-control">
+              <input type="number" className="smallinput" name="avaregRate30" />
+            </div>
+          </div>
+        </td>
+        <td>
+          <div className="flex ">
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput "
                 name="OpeningStock750"
               />
             </div>
@@ -232,6 +261,42 @@ const AddOneFristForm = ({ beerFront, index }) => {
           </div>
         </td>
 
+        <td>
+          <div className="flex ">
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="inflowCradite750"
+              />
+            </div>
+
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="inflowCradite375"
+              />
+            </div>
+
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="inflowCradite180"
+              />
+            </div>
+
+            <div className="form-control">
+              <input
+                type="number"
+                className="smallinput"
+                name="inflowCradite30"
+              />
+            </div>
+          </div>
+        </td>
+
         {/*================ खरीद रेट - बा. ==================  */}
         <td>
           <div className="flex ">
@@ -261,30 +326,6 @@ const AddOneFristForm = ({ beerFront, index }) => {
               <input
                 type="number"
                 className="smallinput"
-                name="sumRemaining750"
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="sumRemaining375"
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="sumRemaining180"
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
                 name="sumRemaining30"
               />
             </div>
@@ -293,30 +334,6 @@ const AddOneFristForm = ({ beerFront, index }) => {
         {/* ======== भेजान ========= */}
         <td>
           <div className="flex ">
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="closingStock750"
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                className="smallinput"
-                name="closingStock375"
-              />
-            </div>
-
-            <div className="form-control">
-              <input
-                type="number"
-                name="closingStock180"
-                className="smallinput"
-              />
-            </div>
-
             <div className="form-control">
               <input
                 type="number"
@@ -330,18 +347,6 @@ const AddOneFristForm = ({ beerFront, index }) => {
         <td>
           <div className="flex ">
             <div className="form-control">
-              <input type="number" className="smallinput" name="salse750" />
-            </div>
-
-            <div className="form-control">
-              <input type="number" className="smallinput" name="salse375" />
-            </div>
-
-            <div className="form-control">
-              <input type="number" className="smallinput" name="salse180" />
-            </div>
-
-            <div className="form-control">
               <input type="number" className="smallinput" name="salse30" />
             </div>
           </div>
@@ -349,18 +354,6 @@ const AddOneFristForm = ({ beerFront, index }) => {
         {/* ======== अन्तिम स्टॉक ========= */}
         <td>
           <div className="flex ">
-            <div className="form-control">
-              <input type="number" className="smallinput" name="total750" />
-            </div>
-
-            <div className="form-control">
-              <input type="number" className="smallinput" name="total375" />
-            </div>
-
-            <div className="form-control">
-              <input type="number" className="smallinput" name="total180" />
-            </div>
-
             <div className="form-control">
               <input type="number" className="smallinput" name="total30" />
             </div>
