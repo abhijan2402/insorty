@@ -192,6 +192,26 @@ const UseBeerShopFront = () => {
     
     const beerShopMidTemp = {
         brandName: '',
+        averageRateOtherMl: '',
+        averageRate30: '',
+        openingStockOtherMl: '',
+        openingStock30: '',
+        inflowPurchaseOtherMl: '',
+        inflowPurchase30: '',
+        purchaseRateBarOtherMl: '',
+        purchaseRateBar30: '',
+        inflowPurchaseFromOutsideOtherMl:'',
+        inflowPurchaseFromOutside30: '',
+        purchaseRateOutOtherMl: '',
+        purchaseRateOut30:'',
+        inflowCreditOtherMl: '',
+        inflowCredit30: '',
+        sending30: '',
+        sumRemainder30: '',
+        closingStock30: '',
+        sale30: '',
+        rate30: '',
+        Yoga: '',
     }
 
     const [beerShopMid, setBeerShopMid] = useState([beerShopMidTemp]);

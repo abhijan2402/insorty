@@ -13,7 +13,7 @@ const FronteDailyReport = () => {
     addOne,
     beerShopMid,
     midFormOnChange,
-    midFormAddOne
+    midFormAddOne,
   } = UseBeerShopFront();
 
   return (
@@ -887,6 +887,15 @@ const FronteDailyReport = () => {
                     </div>
                   </td>
                   <td>
+                    <div className="flex ">
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">30ml</span>
+                        </label>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
                     <div className="form-control"></div>
                   </td>
                 </tr>
@@ -1082,12 +1091,24 @@ const FronteDailyReport = () => {
                               <input
                                 type="number"
                                 className="smallinput"
+                                name="sale30"
+                              />
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="flex ">
+                            <div className="form-control">
+                              <input
+                                type="number"
+                                className="smallinput"
                                 name="rate30"
                               />
                             </div>
                           </div>
                         </td>
                         {/* ============= कुल योग ================ */}
+
                         <td>
                           <div className="form-control">
                             <input
@@ -1103,16 +1124,14 @@ const FronteDailyReport = () => {
                 })}
                 <tr>
                   <th>
-                  <button
-                        className="btn bg-[#AA237A] btn-sm"
-                        onClick={() =>  midFormAddOne()}
-                      >
-                        ADD
-                      </button>
+                    <button
+                      className="btn bg-[#AA237A] btn-sm"
+                      onClick={() => midFormAddOne()}
+                    >
+                      ADD
+                    </button>
                   </th>
-                  <td>
-                    
-                  </td>
+                  <td></td>
                   {/* ======== MRP Input ========= */}
                   <td>
                     <div className="flex ">
@@ -1283,6 +1302,17 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="closingStock30"
+                        />
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="flex ">
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput"
+                          name="sale30"
                         />
                       </div>
                     </div>
