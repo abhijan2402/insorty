@@ -83,12 +83,6 @@ const UseBeerShopFront = () => {
 
     const [beerShopFrontFrist, setBeerShopFrontFrist] = useState([firstFormDataTemplate]);
 
-    // const fristFormOnChange = (e, index) => {
-    //     const { name, value } = e.target;
-    //     const list = [...beerShopFrontFrist];
-    //     list[index][name] = value;
-    //     setBeerShopFrontFrist(list);
-    // }
 
     const fristFormAddOne = () => {
         setBeerShopFrontFrist([...beerShopFrontFrist, firstFormDataTemplate]);
@@ -853,7 +847,8 @@ const UseBeerShopFront = () => {
         addOne,
         beerShopMid,
         midFormOnChange,
-        midFormAddOne
+        midFormAddOne,
+        thirdFormOnChange
     }
 
 };
