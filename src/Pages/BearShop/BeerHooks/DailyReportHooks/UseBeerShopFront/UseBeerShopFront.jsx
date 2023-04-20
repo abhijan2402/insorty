@@ -178,7 +178,7 @@ const UseBeerShopFront = () => {
                 if (index === i) {
                   let obj = Object.assign(returned, { [e.target.name]: e.target.value });
                   if (e.target.name === "buyRateShop750" || e.target.name === "buyRateShop750" || 'buyRateShop375' || e.target.name === "inflowShop750" || e.target.name === "inflowShop180" || 'inflowShop375') {
-                    obj.buyRateShop30 = calStock30(obj.inflowShop750,obj.inflowShop375,obj.inflowShop180,obj.buyRateShop750,obj.buyRateShop375,obj.buyRateShop750);
+                    obj.buyRateShop30 = calPrice30(obj.inflowShop750,obj.inflowShop375,obj.inflowShop180,obj.buyRateShop750,obj.buyRateShop375,obj.buyRateShop750);
                   }
                   return obj;
                 } else return returned;
@@ -191,7 +191,7 @@ const UseBeerShopFront = () => {
                 if (index === i) {
                   let obj = Object.assign(returned, { [e.target.name]: e.target.value });
                   if (e.target.name === "buyRateOut750" || e.target.name === "buyRateOut750" || 'buyRateOut375' || e.target.name === "inflowOut750" || e.target.name === "inflowOut180" || 'inflowOut375') {
-                    obj.buyRateOut30 = calStock30(obj.inflowOut750,obj.inflowOut375,obj.inflowOut180,obj.buyRateOut750,obj.buyRateOut375,obj.buyRateOut750);
+                    obj.buyRateOut30 = calPrice30(obj.inflowOut750,obj.inflowOut375,obj.inflowOut180,obj.buyRateOut750,obj.buyRateOut375,obj.buyRateOut750);
                   }
                   return obj;
                 } else return returned;
