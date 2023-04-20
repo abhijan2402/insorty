@@ -1,7 +1,7 @@
 import React from "react";
 
 const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
-console.log(beerFront.openingStock30)
+  console.log(beerFront.openingStock30);
   return (
     <>
       <tr>
@@ -12,7 +12,10 @@ console.log(beerFront.openingStock30)
               onChange={(e) => fristFormOnChange(e, index)}
               type="text"
               className="dailyReportInput"
+              required
+              min={0}
               name="brandName"
+              value={beerFront.brandName}
             />
           </div>
           {/* <Autocomplete
@@ -38,6 +41,7 @@ console.log(beerFront.openingStock30)
                 addOneFirst.brandName = "";
                 addOneFirst.liquorID = "";
               }
+
               handelFristFormOnChange(event, index);
               console.log(addOneFirst);
             }}
@@ -67,6 +71,9 @@ console.log(beerFront.openingStock30)
                 className="smallinput "
                 name="averageRate750"
                 onChange={(e) => fristFormOnChange(e, index)}
+                required
+                min={0}
+                value={beerFront.averageRate750}
               />
             </div>
             <div className="form-control">
@@ -75,6 +82,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput "
                 name="averageRate375"
+                required
+                min={0}
+                value={beerFront.averageRate375}
               />
             </div>
             <div className="form-control">
@@ -82,7 +92,10 @@ console.log(beerFront.openingStock30)
                 onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput "
+                required
+                min={0}
                 name="averageRate180"
+                value={beerFront.averageRate180}
               />
             </div>
 
@@ -91,7 +104,10 @@ console.log(beerFront.openingStock30)
                 onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
+                required
+                min={0}
                 name="averageRate30"
+                value={beerFront.averageRate30}
               />
             </div>
           </div>
@@ -103,6 +119,8 @@ console.log(beerFront.openingStock30)
                 onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput "
+                required
+                min={0}
                 value={beerFront.openingStock750}
                 name="openingStock750"
               />
@@ -112,29 +130,33 @@ console.log(beerFront.openingStock30)
                 onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput "
-                value={beerFront.openingStock375}                
+                required
+                min={0}
+                value={beerFront.openingStock375}
                 name="openingStock375"
               />
             </div>
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                value={beerFront.openingStock180}
-
+                required
+                min={0}
                 type="number"
                 className="smallinput "
                 name="openingStock180"
+                value={beerFront.openingStock180}
               />
             </div>
 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                value={beerFront.openingStock30}
-
+                required
+                min={0}
                 type="number"
                 className="smallinput"
                 name="openingStock30"
+                value={beerFront.openingStock30}
               />
             </div>
           </div>
@@ -145,42 +167,47 @@ console.log(beerFront.openingStock30)
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                value={beerFront.inflowShop750}
                 className="smallinput"
                 type="number"
                 name="inflowShop750"
+                required
+                min={0}
+                value={beerFront.inflowShop750}
               />
             </div>
 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                value={beerFront.inflowShop375}
-
+                required
+                min={0}
                 type="number"
                 className="smallinput"
                 name="inflowShop375"
+                value={beerFront.inflowShop375}
               />
             </div>
 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                value={beerFront.inflowShop180}
-
+                required
+                min={0}
                 type="number"
                 className="smallinput"
                 name="inflowShop180"
+                value={beerFront.inflowShop180}
               />
             </div>
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                value={beerFront.inflowShop30}
-
+                required
+                min={0}
                 type="number"
                 className="smallinput"
                 name="inflowShop30"
+                value={beerFront.inflowShop30}
               />
             </div>
           </div>
@@ -196,6 +223,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="buyRateShop750"
+                required
+                min={0}
+                value={beerFront.buyRateShop750}
               />
             </div>
 
@@ -205,6 +235,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="buyRateShop375"
+                value={beerFront.buyRateShop375}
+                required
+                min={0}
               />
             </div>
 
@@ -214,6 +247,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="buyRateShop180"
+                value={beerFront.buyRateShop180}
+                required
+                min={0}
               />
             </div>
 
@@ -223,6 +259,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="buyRateShop30"
+                value={beerFront.buyRateShop30}
+                required
+                min={0}
               />
             </div>
           </div>
@@ -236,6 +275,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="inflowOut750"
+                value={beerFront.inflowOut750}
+                required
+                min={0}
               />
             </div>
 
@@ -245,6 +287,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="inflowOut375"
+                value={beerFront.inflowOut375}
+                required
+                min={0}
               />
             </div>
 
@@ -254,6 +299,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="inflowOut180"
+                value={beerFront.inflowOut180}
+                required
+                min={0}
               />
             </div>
 
@@ -263,6 +311,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="inflowOut30"
+                value={beerFront.inflowOut30}
+                required
+                min={0}
               />
             </div>
           </div>
@@ -278,6 +329,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="buyRateOut750"
+                value={beerFront.buyRateOut750}
+                required
+                min={0}
               />
             </div>
 
@@ -287,6 +341,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="buyRateOut375"
+                value={beerFront.buyRateOut375}
+                required
+                min={0}
               />
             </div>
 
@@ -296,6 +353,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="buyRateOut180"
+                value={beerFront.buyRateOut180}
+                required
+                min={0}
               />
             </div>
 
@@ -305,6 +365,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="buyRateOut30"
+                value={beerFront.buyRateOut30}
+                required
+                min={0}
               />
             </div>
           </div>
@@ -318,6 +381,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="inflowCredit750"
+                value={beerFront.inflowCredit750}
+                required
+                min={0}
               />
             </div>
 
@@ -327,6 +393,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="inflowCredit375"
+                value={beerFront.inflowCredit375}
+                required
+                min={0}
               />
             </div>
 
@@ -336,6 +405,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="inflowCredit180"
+                value={beerFront.inflowCredit180}
+                required
+                min={0}
               />
             </div>
 
@@ -345,6 +417,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="inflowCredit30"
+                value={beerFront.inflowCredit30}
+                required
+                min={0}
               />
             </div>
           </div>
@@ -359,6 +434,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="send750"
+                value={beerFront.send750}
+                required
+                min={0}
               />
             </div>
 
@@ -368,6 +446,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="send375"
+                value={beerFront.send375}
+                required
+                min={0}
               />
             </div>
 
@@ -377,6 +458,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="send180"
+                value={beerFront.send180}
+                required
+                min={0}
               />
             </div>
 
@@ -386,6 +470,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="send30"
+                value={beerFront.send30}
+                required
+                min={0}
               />
             </div>
           </div>
@@ -401,6 +488,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="sumRemaining30"
+                value={beerFront.sumRemaining30}
+                required
+                min={0}
               />
             </div>
           </div>
@@ -414,6 +504,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 name="closingStock30"
                 className="smallinput"
+                value={beerFront.closingStock30}
+                required
+                min={0}
               />
             </div>
           </div>
@@ -427,6 +520,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="sales30"
+                value={beerFront.sales30}
+                required
+                min={0}
               />
             </div>
           </div>
@@ -440,6 +536,9 @@ console.log(beerFront.openingStock30)
                 type="number"
                 className="smallinput"
                 name="total30"
+                value={beerFront.total30}
+                required
+                min={0}
               />
             </div>
           </div>
@@ -452,6 +551,9 @@ console.log(beerFront.openingStock30)
               type="number"
               className="semiSmallInput"
               name="grandTotal"
+              value={beerFront.grandTotal}
+              required
+              min={0}
             />
           </div>
         </td>
