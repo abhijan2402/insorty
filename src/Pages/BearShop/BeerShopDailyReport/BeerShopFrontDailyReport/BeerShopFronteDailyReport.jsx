@@ -16,9 +16,9 @@ const FronteDailyReport = () => {
     fristFormAddOne,
     fristFormOnChange,
     beerShopFrontFrist,
-    beerShopFrontSecond,
+
     beerShopFrontThird,
-    addOne,
+  
     beerShopMid,
     midFormOnChange,
     midFormAddOne,
@@ -26,15 +26,6 @@ const FronteDailyReport = () => {
   } = UseBeerShopFront();
 
   const token = localStorage.getItem("token");
-  const first = localStorage.getItem("firstFrontTotal")
-    ? localStorage.getItem("firstFrontTotal")
-    : 0;
-  const second = localStorage.getItem("mlFormTotal")
-    ? localStorage.getItem("mlFormTotal")
-    : 0;
-
-  const { salesMan, setSalesMan, drDate, setDrDate } =
-    useContext(DataContextApi);
 
   const {
     addOneFristFormState,
