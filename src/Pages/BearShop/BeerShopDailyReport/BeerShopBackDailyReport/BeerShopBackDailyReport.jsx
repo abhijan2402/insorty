@@ -672,6 +672,27 @@ const BackDailyReport = () => {
               </div>
             </div>
 
+
+            <div className="py-6">
+              <h1 className="my-4 specialwidth">
+                <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
+              </h1>
+              <div>
+                <textarea
+                  className="textarea textarea-bordered"
+                  placeholder="फाईनल रिपोर्ट"
+                  rows="3"
+                  cols="50"
+                  name="comment"
+                  form="usrform"
+                  height="100px"
+                  width="100px"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          {/* *********************************************************BREAK*********************************************************  */}
+
             <div className="py-6">
               <h1 className="my-4 mx-4">
                 <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
@@ -750,26 +771,6 @@ const BackDailyReport = () => {
                 </div>
               </form>
             </div>
-
-            <div className="py-6">
-              <h1 className="my-4 specialwidth">
-                <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
-              </h1>
-              <div>
-                <textarea
-                  className="textarea textarea-bordered"
-                  placeholder="फाईनल रिपोर्ट"
-                  rows="3"
-                  cols="50"
-                  name="comment"
-                  form="usrform"
-                  height="100px"
-                  width="100px"
-                ></textarea>
-              </div>
-            </div>
-          </div>
-          {/* *********************************************************BREAK*********************************************************  */}
           {/* ************ Submit button ***************** */}
           <div className="flex my-6 mx-4">
             {isLoadingSubmit ? (
