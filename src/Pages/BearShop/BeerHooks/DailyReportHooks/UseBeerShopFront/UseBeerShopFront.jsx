@@ -361,8 +361,23 @@ const UseBeerShopFront = () => {
           if (index === i) {
             let obj = Object.assign(returned, { [e.target.name]: e.target.value });
             if (
-              e.target.name === "openingStock30" ||
+              e.target.name === "openingStock180" ||
+              e.target.name === "inflowShop180" ||
+              e.target.name === "inflowCredit180" ||
+              e.target.name === "inflowOut180" ||
+              e.target.name === "send180"||
+              e.target.name === "openingStock375" ||
+              e.target.name === "inflowShop375" ||
+              e.target.name === "inflowCredit375" ||
+              e.target.name === "inflowOut375" ||
+              e.target.name === "send375" ||
+              e.target.name === "openingStock750" ||
+              e.target.name === "inflowShop750" ||
+              e.target.name === "inflowCredit750" ||
+              e.target.name === "inflowOut750" ||
+              e.target.name === "send750" ||
               e.target.name === "inflowShop30" ||
+              e.target.name === "openingStock30" ||
               e.target.name === "inflowCredit30" ||
               e.target.name === "inflowOut30" ||
               e.target.name === "send30"
@@ -605,15 +620,15 @@ const UseBeerShopFront = () => {
 
     // ==================================================== Third Form ====================================================
     const beerBarThirdFormTamp = {
-        description: "",
-        buyingPrice: "",
-        OpeningStock: "",
-        infllow: "",
-        sum: "",
-        closingStock: "",
-        sales: "",
-        rates: "",
-        sumreminder: "",
+        description: 0,
+        buyingPrice: 0,
+        openingStock: 0,
+        infllow: 0,
+        sum: 0,
+        closingStock: 0,
+        sales: 0,
+        rates: 0,
+        sumreminder: 0,
     }
 
     const [beerShopFrontThird, setBeerShopFrontThird] = useState([beerBarThirdFormTamp]);
@@ -623,6 +638,47 @@ const UseBeerShopFront = () => {
         const list = [...beerShopFrontThird];
         list[index][name] = value;
         setBeerShopFrontThird(list);
+
+        const sumStock = beerShopFrontThird.map((returned, i) => {
+          if (index === i) {
+            let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+            if (e.target.name === "openingStock" || e.target.name === "infllow" 
+             ) {
+              obj.sum = Number(obj.openingStock) + Number(obj.infllow)
+            }
+            return obj;
+          } else return returned;
+        });
+        setBeerShopFrontThird(sumStock);
+
+        const totalSales = beerShopFrontThird.map((returned, i) => {
+          if (index === i) {
+            let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+            if (e.target.name === "openingStock" || e.target.name === "infllow" || e.target.name === "sum" || e.target.name === "closingStock"
+             ) {
+              obj.sales = Number(obj.sum) - Number(obj.closingStock)
+            }
+            console.log(obj)
+            return obj;
+          } else return returned;
+        });
+        setBeerShopFrontThird(totalSales);
+
+        const total = beerShopFrontThird.map((returned, i) => {
+          if (index === i) {
+            let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+            if (e.target.name === "rates" || e.target.name === "closingStock" 
+             ) {
+              obj.sumreminder = Number(obj.rates) * Number(obj.sales)
+            }
+            return obj;
+          } else return returned;
+        });
+        setBeerShopFrontThird(total);
+
+
+
+
     }
 
 
@@ -653,7 +709,7 @@ const UseBeerShopFront = () => {
         brandName: '',
         ml: 90,
         averageRateOtherMl: 0,
-        averageRate30: '',
+        averageRate30: 0,
         initialOtherMl:0,
         initial30:0,
         openingStockOtherMl: 0,
@@ -688,6 +744,10 @@ const UseBeerShopFront = () => {
 
         const pegCount  = (beerShopMid[index].ml / 30)
 
+        const calPegPrice = (a,b,c) =>{
+          const d = Number(a)*Number(b)
+          return Number(d)/Number(c)
+        }
         
 
         const secondFormHandel = beerShopMid.map((returned, i) =>
@@ -704,15 +764,39 @@ const UseBeerShopFront = () => {
               if (e.target.name === "inflowPurchaseOtherMl" || e.target.name === "inflowPurchaseFromOutsideOtherMl" || e.target.name === "inflowCreditOtherMl" ||
                 e.target.name === "sendOtherMl"
                ) {
-                obj.inflowPurchase30 = Number(obj.inflowPurchaseOtherMl) / Number(pegCount);
-                obj.inflowPurchaseFromOutside30 = Number(obj.inflowPurchaseFromOutsideOtherMl) / Number(pegCount);
-                obj.inflowCredit30 = Number(obj.inflowCreditOtherMl) / Number(pegCount);
-                obj.send30 = Number(obj.sendOtherMl) / Number(pegCount);
+                obj.inflowPurchase30 = Number(obj.inflowPurchaseOtherMl) * Number(pegCount);
+                obj.inflowPurchaseFromOutside30 = Number(obj.inflowPurchaseFromOutsideOtherMl) * Number(pegCount);
+                obj.inflowCredit30 = Number(obj.inflowCreditOtherMl) * Number(pegCount);
+                obj.send30 = Number(obj.sendOtherMl) * Number(pegCount);
               }
               return obj;
             } else return returned;
           });
           setBeerShopMid(pegStock);
+
+        const priceShop = beerShopMid.map((returned, i) => {
+            if (index === i) {
+              let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+              if (e.target.name === "inflowPurchaseOtherMl" || e.target.name === "buyRateShopBarOtherMl" || e.target.name === "inflowPurchase30" 
+               ) {
+                obj.buyRateShopBar30 = calPegPrice(obj.inflowPurchaseOtherMl,obj.buyRateShopBarOtherMl,obj.inflowPurchase30)
+              }
+              return obj;
+            } else return returned;
+          });
+          setBeerShopMid(priceShop);
+
+        const priceOut = beerShopMid.map((returned, i) => {
+            if (index === i) {
+              let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+              if (e.target.name === "inflowPurchaseFromOutsideOtherMl" || e.target.name === "buyRateShopOutOtherMl" || e.target.name === "inflowPurchaseFromOutside30" 
+               ) {
+                obj.buyRateShopOut30 = calPegPrice(obj.inflowPurchaseFromOutsideOtherMl,obj.buyRateShopOutOtherMl,obj.inflowPurchaseFromOutside30)
+              }
+              return obj;
+            } else return returned;
+          });
+          setBeerShopMid(priceOut);
     
         const handelavg = beerShopMid.map((returned, i) => {
           if (index === i) {
@@ -752,7 +836,7 @@ const UseBeerShopFront = () => {
               const totalStock = Number(obj.inflowPurchase30) + Number(obj.inflowPurchaseFromOutside30) + Number(obj.openingStock30)
     
               const stock = Number(obj.initial30) * Number(obj.openingStock30)
-              obj.averageRate = (buyShop + buyOut + stock) / totalStock
+              obj.averageRate30 = (buyShop + buyOut + stock) / totalStock
     
             }
             return obj;
@@ -770,7 +854,7 @@ const UseBeerShopFront = () => {
               e.target.name === "inflowPurchaseFromOutsideOtherMl" ||
               e.target.name === "sendOtherMl"
             ) {
-              obj.sumRemainder =
+              obj.sumRemainingOtherML =
                 Number(obj.openingStockOtherMl) +
                 Number(obj.inflowPurchaseOtherMl) +
                 Number(obj.inflowCreditOtherMl) +
@@ -781,6 +865,33 @@ const UseBeerShopFront = () => {
           } else return returned;
         });
         setBeerShopMid(yog);
+
+        const yog30 = beerShopMid.map((returned, i) => {
+          if (index === i) {
+            let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+            if (
+              e.target.name === "openingStockOtherMl" ||
+              e.target.name === "inflowPurchaseOtherMl" ||
+              e.target.name === "inflowCreditOtherMl" ||
+              e.target.name === "inflowPurchaseFromOutsideOtherMl" ||
+              e.target.name === "sendOtherMl"||
+              e.target.name === "openingStock30" ||
+              e.target.name === "inflowPurchase30" ||
+              e.target.name === "inflowCredit30" ||
+              e.target.name === "inflowPurchaseFromOutside30" ||
+              e.target.name === "send30"
+            ) {
+              obj.sumRemaining30 =
+                Number(obj.openingStock30) +
+                Number(obj.inflowPurchase30) +
+                Number(obj.inflowCredit30) +
+                Number(obj.inflowPurchaseFromOutside30) -
+                Number(obj.send30);
+            }
+            return obj;
+          } else return returned;
+        });
+        setBeerShopMid(yog30);
     
         const sales = beerShopMid.map((returned, i) => {
           if (index === i) {
@@ -795,7 +906,7 @@ const UseBeerShopFront = () => {
               e.target.name === "send30"
     
             ) {
-              obj.sales = Number(obj.sumRemaining30) - Number(obj.closingStock30);
+              obj.sale30 = Number(obj.sumRemaining30) - Number(obj.closingStock30);
             }
             return obj;
           } else return returned;

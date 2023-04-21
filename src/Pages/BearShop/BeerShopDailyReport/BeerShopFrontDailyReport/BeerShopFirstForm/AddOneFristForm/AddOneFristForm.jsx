@@ -74,6 +74,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 required
                 min={0}
                 value={beerFront.averageRate750}
+                disabled
               />
             </div>
             <div className="form-control">
@@ -85,6 +86,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 required
                 min={0}
                 value={beerFront.averageRate375}
+                disabled
               />
             </div>
             <div className="form-control">
@@ -96,6 +98,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 min={0}
                 name="averageRate180"
                 value={beerFront.averageRate180}
+                disabled
               />
             </div>
 
@@ -108,6 +111,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 min={0}
                 name="averageRate30"
                 value={beerFront.averageRate30}
+                disabled
               />
             </div>
           </div>
@@ -208,6 +212,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 className="smallinput"
                 name="inflowShop30"
                 value={beerFront.inflowShop30}
+                disabled
               />
             </div>
           </div>
@@ -260,6 +265,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 className="smallinput"
                 name="buyRateShop30"
                 value={beerFront.buyRateShop30}
+                disabled
                 required
                 min={0}
               />
@@ -312,6 +318,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 className="smallinput"
                 name="inflowOut30"
                 value={beerFront.inflowOut30}
+                disabled
                 required
                 min={0}
               />
@@ -366,6 +373,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 className="smallinput"
                 name="buyRateOut30"
                 value={beerFront.buyRateOut30}
+                disabled
                 required
                 min={0}
               />
@@ -418,6 +426,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 className="smallinput"
                 name="inflowCredit30"
                 value={beerFront.inflowCredit30}
+                disabled
                 required
                 min={0}
               />
@@ -471,6 +480,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 className="smallinput"
                 name="send30"
                 value={beerFront.send30}
+                disabled
                 required
                 min={0}
               />
@@ -489,6 +499,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 className="smallinput"
                 name="sumRemaining30"
                 value={beerFront.sumRemaining30}
+                disabled
                 required
                 min={0}
               />
@@ -521,6 +532,23 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 className="smallinput"
                 name="sales30"
                 value={beerFront.sales30}
+                disabled
+                required
+                min={0}
+              />
+            </div>
+          </div>
+        </td>
+
+        <td>
+          <div className="flex ">
+            <div className="form-control">
+              <input
+                onChange={(e) => fristFormOnChange(e, index)}
+                type="number"
+                className="smallinput"
+                name="rate30"
+                value={beerFront.rate30}
                 required
                 min={0}
               />
@@ -537,6 +565,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 className="smallinput"
                 name="total30"
                 value={beerFront.total30}
+                disabled
                 required
                 min={0}
               />
@@ -552,6 +581,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
               className="semiSmallInput"
               name="grandTotal"
               value={beerFront.grandTotal}
+              disabled
               required
               min={0}
             />

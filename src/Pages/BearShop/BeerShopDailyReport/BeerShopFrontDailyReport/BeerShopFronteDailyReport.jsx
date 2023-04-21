@@ -104,6 +104,7 @@ const FronteDailyReport = () => {
                     <th>योग - शेष</th>
                     <th>अन्तिम स्टॉक</th>
                     <th>बिक्री</th>
+                    <th> रेट</th>
                     <th>योग</th>
                     <th>कुल योग</th>
                   </tr>
@@ -358,6 +359,15 @@ const FronteDailyReport = () => {
                         </div>
                       </div>
                     </td>
+                    <td>
+                      <div className="flex ">
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text">30ml</span>
+                          </label>
+                        </div>
+                      </div>
+                    </td>
 
                     <td>
                       <div className="form-control"></div>
@@ -385,40 +395,7 @@ const FronteDailyReport = () => {
                     <td>Total</td>
                     {/* ======== MRP Input ========= */}
                     <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </div>
+                      
                     </td>
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
                     <td>
@@ -428,7 +405,8 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            name="averageRate"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.openingStock750),0)}
+                            name="openingstock"
                           />
                         </div>
                         <div className="form-control">
@@ -436,7 +414,8 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            name="averageRate"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.openingStock375),0)}
+                            name="openingstock"
                           />
                         </div>
                         <div className="form-control">
@@ -444,7 +423,8 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            name="averageRate"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.openingStock180),0)}
+                            name="openingstock"
                           />
                         </div>
                         <div className="form-control">
@@ -452,7 +432,8 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            name="averageRate"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.openingStock30),0)}
+                            name="openingstock"
                           />
                         </div>
                       </div>
@@ -467,6 +448,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowShop750),0)}
                             name="averageRate"
                           />
                         </div>
@@ -475,6 +457,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowShop375),0)}
                             name="averageRate"
                           />
                         </div>
@@ -483,6 +466,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowShop180),0)}
                             name="averageRate"
                           />
                         </div>
@@ -491,6 +475,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowShop30),0)}
                             name="averageRate"
                           />
                         </div>
@@ -498,40 +483,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </div>
+                     
                     </td>
 
                     {/* ======== आमद (खरीद)-बा. ========= */}
@@ -543,6 +495,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowOut750),0)}
                             name="averageRate"
                           />
                         </div>
@@ -551,6 +504,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowOut375),0)}
                             name="averageRate"
                           />
                         </div>
@@ -559,6 +513,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowOut180),0)}
                             name="averageRate"
                           />
                         </div>
@@ -567,6 +522,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowOut30),0)}
                             name="averageRate"
                           />
                         </div>
@@ -575,40 +531,7 @@ const FronteDailyReport = () => {
 
                     {/*================ खरीद रेट - बा. ==================  */}
                     <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="averageRate"
-                          />
-                        </div>
-                      </div>
+                     
                     </td>
 
                     {/* ======== आमद (उधारी) ========= */}
@@ -620,6 +543,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowCredit750),0)}
                             name="averageRate"
                           />
                         </div>
@@ -628,6 +552,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowCredit375),0)}
                             name="averageRate"
                           />
                         </div>
@@ -636,6 +561,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowCredit180),0)}
                             name="averageRate"
                           />
                         </div>
@@ -644,6 +570,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowCredit30),0)}
                             name="averageRate"
                           />
                         </div>
@@ -657,6 +584,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.send750),0)}
                             name="averageRate"
                           />
                         </div>
@@ -665,6 +593,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.send375),0)}
                             name="averageRate"
                           />
                         </div>
@@ -673,6 +602,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.send180),0)}
                             name="averageRate"
                           />
                         </div>
@@ -681,6 +611,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.send30),0)}
                             name="averageRate"
                           />
                         </div>
@@ -694,6 +625,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.sumRemaining30),0)}
                             name="averageRate"
                           />
                         </div>
@@ -707,6 +639,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.closingStock30),0)}
                             name="averageRate"
                           />
                         </div>
@@ -719,6 +652,7 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.sales30),0)}
                             name="averageRate"
                           />
                         </div>
@@ -726,6 +660,9 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
+                     
+                    </td>
+                    <td>
                       <div className="flex ">
                         <div className="form-control">
                           <input
@@ -733,6 +670,7 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="averageRate"
+                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.total30),0)}
                           />
                         </div>
                       </div>
@@ -745,6 +683,7 @@ const FronteDailyReport = () => {
                           disabled
                           className="semiSmallInput"
                           name="grandTotal"
+                          value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.grandTotal),0)}
                         />
                       </div>
                     </td>
@@ -762,6 +701,7 @@ const FronteDailyReport = () => {
                 <tr>
                   <th>क्र. सं.</th>
                   <th>ब्राण्ड</th>
+                  <th>ml</th>
                   <th>एवरेज रेट </th>
                   <th>प्रारम्भिक स्टॉक </th>
                   <th>आमद (खरीद)-बार </th>
@@ -782,6 +722,9 @@ const FronteDailyReport = () => {
                   <th>
                     <div className="form-control"></div>
                   </th>
+                  <td>
+                    <div className="form-control"></div>
+                  </td>
                   <td>
                     <div className="form-control"></div>
                   </td>
@@ -954,14 +897,44 @@ const FronteDailyReport = () => {
                         <td>
                           <input
                             type="text"
-                            name="BrandName"
+                            name="brandName"
                             required
                             min={0}
                             className="dailyReportInput"
-                            value={item.BrandName}
+                            value={item.brandName}
                             onChange={(e) => midFormOnChange(e, index)}
                           />
                         </td>
+
+                        <td>
+          <div className="form-control ">
+            <select
+              className="semiSmallInput wd-9"
+              name="ml"
+              value={item.ml}
+              onChange={(e) => midFormOnChange(e, index)}
+              required
+            >
+
+              <option selected value={750}>
+                750ml
+              </option>
+              <option value={700}>700ml</option>
+              <option value={650}>650ml</option>
+              <option value={550}>550ml</option>
+              <option value={500}>500ml</option>
+              <option value={375}>375ml</option>
+              <option value={330}>330ml</option>
+              <option value={275}>275ml</option>
+              <option value={250}>250ml</option>
+              <option value={200}>200ml</option>
+              <option value={180}>180ml</option>
+              <option selected value={90}>90ml</option>
+              <option value={60}>60ml</option>
+              <option value={50}>50ml</option>
+            </select>
+          </div>
+        </td>
                         {/* ======== MRP Input ========= */}
                         <td>
                           <div className="flex ">
@@ -973,6 +946,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 name="averageRateOtherMl"
                                 value={item.averageRateOtherMl}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -984,6 +958,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 name="averageRate30"
                                 value={item.averageRate30}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1011,6 +986,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 name="openingStock30"
                                 value={item.openingStock30}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1040,6 +1016,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 name="inflowPurchase30"
                                 value={item.inflowPurchase30}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1054,8 +1031,8 @@ const FronteDailyReport = () => {
                                 className="smallinput"
                                 required
                                 min={0}
-                                name="purchaseRateBarOtherMl"
-                                value={item.purchaseRateBarOtherMl}
+                                name="buyRateShopBarOtherMl"
+                                value={item.buyRateShopBarOtherMl}
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1065,8 +1042,9 @@ const FronteDailyReport = () => {
                                 className="smallinput"
                                 required
                                 min={0}
-                                name="purchaseRateBar30"
-                                value={item.purchaseRateBar30}
+                                name="buyRateShopBar30"
+                                value={item.buyRateShopBar30}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1096,6 +1074,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 name="inflowPurchaseFromOutside30"
                                 value={item.inflowPurchaseFromOutside30}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1111,8 +1090,8 @@ const FronteDailyReport = () => {
                                 className="smallinput"
                                 required
                                 min={0}
-                                name="purchaseRateOutOtherMl"
-                                value={item.purchaseRateOutOtherMl}
+                                name="buyRateShopOutOtherMl"
+                                value={item.buyRateShopOutOtherMl}
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1122,8 +1101,9 @@ const FronteDailyReport = () => {
                                 className="smallinput"
                                 required
                                 min={0}
-                                name="purchaseRateOut30"
-                                value={item.purchaseRateOut30}
+                                name="buyRateShopOut30"
+                                value={item.buyRateShopOut30}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1151,6 +1131,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 name="inflowCredit30"
                                 value={item.inflowCredit30}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1165,8 +1146,8 @@ const FronteDailyReport = () => {
                                 className="smallinput"
                                 required
                                 min={0}
-                                name="sending30"
-                                value={item.sending30}
+                                name="send30"
+                                value={item.send30}
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1181,8 +1162,9 @@ const FronteDailyReport = () => {
                                 className="smallinput"
                                 required
                                 min={0}
-                                name="sumRemainder30"
-                                value={item.sumRemainder30}
+                                name="sumRemaining30"
+                                value={item.sumRemaining30}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1214,6 +1196,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 name="sale30"
                                 value={item.sale30}
+                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1243,8 +1226,9 @@ const FronteDailyReport = () => {
                               className="semiSmallInput"
                               required
                               min={0}
-                              name="Yoga"
-                              value={item.Yoga}
+                              name="total"
+                              value={item.total}
+                              disabled
                               onChange={(e) => midFormOnChange(e, index)}
                             />
                           </div>
@@ -1265,22 +1249,10 @@ const FronteDailyReport = () => {
                   <td></td>
                   {/* ======== MRP Input ========= */}
                   <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="averageRateOtherMl"
-                        />
-                      </div>
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="averageRate30"
-                        />
-                      </div>
-                    </div>
+                    
+                  </td>
+                  <td>
+                    
                   </td>
                   {/* ======== प्रारम्भिक स्टॉक ========= */}
                   <td>
@@ -1290,6 +1262,8 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="openingStockOtherMl"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.openingStockOtherMl),0)}
+                          disabled
                         />
                       </div>
                       <div className="form-control">
@@ -1297,6 +1271,8 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="openingStock30"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.openingStock30),0)}
+                          disabled
                         />
                       </div>
                     </div>
@@ -1311,6 +1287,8 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowPurchaseOtherMl"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowPurchaseOtherMl),0)}
+                          disabled
                         />
                       </div>
                       <div className="form-control">
@@ -1318,28 +1296,15 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowPurchase30"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowPurchase30),0)}
+                          disabled
                         />
                       </div>
                     </div>
                   </td>
 
                   <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="purchaseRateBarOtherMl"
-                        />
-                      </div>
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="purchaseRateBar30"
-                        />
-                      </div>
-                    </div>
+                    
                   </td>
 
                   {/* ======== आमद (खरीद)-बा. ========= */}
@@ -1350,7 +1315,10 @@ const FronteDailyReport = () => {
                         <input
                           type="number"
                           className="smallinput"
-                          name="inflowPurchaseFromOutsideOtherMl"
+                          name="inflowPurchaseFromOutsideOtherMl
+                          "
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowPurchaseFromOutsideOtherMl),0)}
+                          disabled
                         />
                       </div>
                       <div className="form-control">
@@ -1358,6 +1326,8 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowPurchaseFromOutside30"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowPurchaseFromOutside30),0)}
+                          disabled
                         />
                       </div>
                     </div>
@@ -1365,22 +1335,7 @@ const FronteDailyReport = () => {
 
                   {/*================ खरीद रेट - बा. ==================  */}
                   <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="purchaseRateOutOtherMl"
-                        />
-                      </div>
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="purchaseRateOut30"
-                        />
-                      </div>
-                    </div>
+                   
                   </td>
 
                   <td>
@@ -1390,6 +1345,8 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowCreditOtherMl"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowCreditOtherMl),0)}
+                          disabled
                         />
                       </div>
                       <div className="form-control">
@@ -1397,6 +1354,8 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowCredit30"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowCredit30),0)}
+                          disabled
                         />
                       </div>
                     </div>
@@ -1409,6 +1368,8 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="sending30"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.send30),0)}
+                          disabled
                         />
                       </div>
                     </div>
@@ -1421,6 +1382,8 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="sumRemainder30"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.sumRemaining30),0)}
+                          disabled
                         />
                       </div>
                     </div>
@@ -1433,6 +1396,8 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="closingStock30"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.closingStock30),0)}
+                          disabled
                         />
                       </div>
                     </div>
@@ -1444,20 +1409,14 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="sale30"
+                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.sale30),0)}
+                          disabled
                         />
                       </div>
                     </div>
                   </td>
                   <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="rate30"
-                        />
-                      </div>
-                    </div>
+                    
                   </td>
                   {/* ============= कुल योग ================ */}
                   <td>
@@ -1465,7 +1424,9 @@ const FronteDailyReport = () => {
                       <input
                         type="number"
                         className="semiSmallInput"
-                        name="Yoga"
+                        name="total"
+                        value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.total),0)}
+                        disabled
                       />
                     </div>
                   </td>
@@ -2454,6 +2415,8 @@ const FronteDailyReport = () => {
 
                   <table className="table commonTable">
                     <thead>
+                      <tr></tr>
+                      <tr></tr>
                       <tr className="col-span-10">
                         <th>पानी, नमकीन, सिगरेट, पुड़िया आदि</th>
                       </tr>
@@ -2513,10 +2476,10 @@ const FronteDailyReport = () => {
                                   <input
                                     type="text"
                                     className="dailyReportInput"
-                                    name="OpeningStock"
+                                    name="openingStock"
                                     required
                                     min={0}
-                                    value={beerBarthird.OpeningStock}
+                                    value={beerBarthird.openingStock}
                                     onChange={(event) =>
                                       thirdFormOnChange(event, index)
                                     }
@@ -2553,6 +2516,7 @@ const FronteDailyReport = () => {
                                     required
                                     min={0}
                                     value={beerBarthird.sum}
+                                    disabled
                                     onChange={(event) =>
                                       thirdFormOnChange(event, index)
                                     }
@@ -2589,6 +2553,7 @@ const FronteDailyReport = () => {
                                     required
                                     min={0}
                                     value={beerBarthird.sales}
+                                    disabled
                                     onChange={(event) =>
                                       thirdFormOnChange(event, index)
                                     }
@@ -2624,6 +2589,7 @@ const FronteDailyReport = () => {
                                     required
                                     min={0}
                                     value={beerBarthird.sumreminder}
+                                    disabled
                                     onChange={(event) =>
                                       thirdFormOnChange(event, index)
                                     }
@@ -2637,22 +2603,10 @@ const FronteDailyReport = () => {
                       <tr>
                         <th></th>
                         <td>
-                          <input
-                            type="text"
-                            className="dailyReportInput"
-                            name="description"
-                          />
+                          
                         </td>
                         <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="dailyReportInput"
-                                name="buyingPrice"
-                              />
-                            </div>
-                          </div>
+                          
                         </td>
 
                         <td>
@@ -2661,7 +2615,9 @@ const FronteDailyReport = () => {
                               <input
                                 type="text"
                                 className="dailyReportInput"
+                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.openingStock),0)}
                                 name="OpeningStock"
+                                disabled
                               />
                             </div>
                           </div>
@@ -2673,7 +2629,9 @@ const FronteDailyReport = () => {
                               <input
                                 type="number"
                                 className="dailyReportInput"
+                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.infllow),0)}
                                 name="infllow"
+                                disabled
                               />
                             </div>
                           </div>
@@ -2685,7 +2643,9 @@ const FronteDailyReport = () => {
                               <input
                                 type="number"
                                 className="dailyReportInput"
+                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.sum),0)}
                                 name="sum"
+                                disabled
                               />
                             </div>
                           </div>
@@ -2698,6 +2658,8 @@ const FronteDailyReport = () => {
                                 type="number"
                                 className="dailyReportInput"
                                 name="closingStock"
+                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.closingStock),0)}
+                                disabled
                               />
                             </div>
                           </div>
@@ -2709,21 +2671,15 @@ const FronteDailyReport = () => {
                               <input
                                 type="number"
                                 className="dailyReportInput"
+                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.sales),0)}
                                 name="sales"
+                                disabled
                               />
                             </div>
                           </div>
                         </td>
                         <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="dailyReportInput"
-                                name="rates"
-                              />
-                            </div>
-                          </div>
+                          
                         </td>
 
                         <td>
@@ -2732,7 +2688,9 @@ const FronteDailyReport = () => {
                               <input
                                 type="number"
                                 className="dailyReportInput"
+                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.sumreminder),0)}
                                 name="sumreminder"
+                                disabled
                               />
                             </div>
                           </div>
