@@ -108,7 +108,7 @@ const useFormulasFristFormFront = () => {
         if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock > 0) {
           const newFormData = { ...addOneFristForm };
           newFormData.brandName = liq[index].brandName;
-          newFormData.liquorID = liq[index]._id;
+          newFormData.liquorID =  liq[index]._id;
           newFormData.startingStock750 = quan750.currentStock;
           newFormData.startingStock330 = quan330.currentStock;
           newFormData.startingStock180 = quan180.currentStock;

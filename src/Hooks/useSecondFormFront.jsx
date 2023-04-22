@@ -55,7 +55,6 @@ const useSecondFormFront = () => {
             item.quantityInML !== 180 &&
             item.currentStock > 0
           ) {
-            console.log(parent);
             const newFormData = { ...addOneSecondForm };
 
             newFormData.brandName = parent.brandName;

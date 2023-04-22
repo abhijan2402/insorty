@@ -17,7 +17,7 @@ function useLiquors() {
         }
       );
       const data = await res.json();
-      // console.log(data.data)
+      console.log(data.data,"all paent liqs")
       return data.data;
     },
   });

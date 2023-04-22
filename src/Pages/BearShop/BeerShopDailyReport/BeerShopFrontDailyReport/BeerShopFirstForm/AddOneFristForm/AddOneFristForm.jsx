@@ -1,29 +1,31 @@
 import React from "react";
+import { Autocomplete, TextField } from "@mui/material";
+import useLiquors from "../../../../../../Hooks/useLiquors";
+import Loader from "../../../../../../Components/Loader/Loader";
+import swal from "sweetalert";
+
 
 const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
-  console.log(beerFront.openingStock30);
+  const { brandsLoaded, liquors } = useLiquors();
+
+  
+if (!brandsLoaded) {
+  console.log(liquors)
+}
+
   return (
     <>
       <tr>
         <th>{index + 1}</th>
         <td>
-          <div className="form-control">
-            <input
-              onChange={(e) => fristFormOnChange(e, index)}
-              type="text"
-              className="dailyReportInput"
-              required
-              min={0}
-              name="brandName"
-              value={beerFront.brandName}
-            />
-          </div>
-          {/* <Autocomplete
+          
+        <Autocomplete
             size="small"
             style={{
               width: "20rem",
             }}
-            options={
+            loading={brandsLoaded}
+            options={liquors &&
               liquors.length > 0
                 ? liquors.filter((brand) => {
                     if (brand.type === "WINE") {
@@ -35,32 +37,30 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
             getOptionLabel={(option) => (option ? option.brandName : "")}
             onChange={(event, value) => {
               if (value) {
-                addOneFirst.brandName = value.brandName;
-                addOneFirst.liquorID = value._id;
+                beerFront.brandName = value.brandName;
+                beerFront.liquorID = value._id;
               } else {
-                addOneFirst.brandName = "";
-                addOneFirst.liquorID = "";
+                beerFront.brandName = "";
+                beerFront.liquorID = "";
               }
-
-              handelFristFormOnChange(event, index);
-              console.log(addOneFirst);
+              fristFormOnChange(event, index);
             }}
             renderInput={(params) => (
               <TextField
                 required
                 size="small"
                 {...params}
-                // value={addOneFirst.brandName}
+                // value={beerFront.brandName}
                 inputProps={{
                   ...params.inputProps,
-                  value: addOneFirst.brandName,
+                  value: beerFront.brandName,
                 }}
                 onChange={(event) => {
-                  addOneFirst.brandName = event.target.value;
+                  beerFront.brandName = event.target.value;
                 }}
               />
             )}
-          /> */}
+          />
         </td>
         {/* ======== MRP Input ========= */}
         <td>

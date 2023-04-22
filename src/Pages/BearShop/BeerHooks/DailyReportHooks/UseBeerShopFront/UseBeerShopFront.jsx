@@ -1,10 +1,13 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
+import useLiquors from '../../../../../Hooks/useLiquors';
 
 const UseBeerShopFront = () => {
+  const { liquors, brandsLoaded } = useLiquors();
+
     const firstFormDataTemplate = {
         brandName: '',
-        id:"",
+        liquorID:"",
         openingStock750: 0,
         openingStock375: 0,
         openingStock180: 0,
@@ -83,6 +86,49 @@ const UseBeerShopFront = () => {
 
     const [beerShopFrontFrist, setBeerShopFrontFrist] = useState([firstFormDataTemplate]);
 
+    const prevdata = JSON.parse(localStorage.getItem('pegForm'))
+
+    useEffect(() => {
+      if (prevdata) {
+        setBeerShopFrontFrist(prevdata);
+      }
+      let firstFormData = beerShopFrontFrist;
+  
+      if (!prevdata && !brandsLoaded && liquors.length > 0) {
+        const liq = liquors.filter((item) => item.type === "WINE");
+        for (let index = 0; index < liq.length; index++) {
+          const quan750 = liq[index].sizes.find(
+            (elem) => elem.quantityInML === 750
+          );
+          const quan330 = liq[index].sizes.find(
+            (elem) => elem.quantityInML === 375
+          );
+          const quan180 = liq[index].sizes.find(
+            (elem) => elem.quantityInML === 180
+          );
+  
+  
+          if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock > 0) {
+            const newFormData = { ...beerShopFrontFrist };
+            newFormData.brandName = liq[index].brandName;
+            newFormData.liquorID = liq[index]._id;
+            newFormData.openingStock750 = quan750.currentStock;
+            newFormData.openingStock375 = quan330.currentStock;
+            newFormData.openingStock180 = quan180.currentStock;
+            newFormData.averageRate750 = quan750.averageRate.$numberDecimal;
+            newFormData.initial750 = quan750.averageRate.$numberDecimal;
+            newFormData.initial375 = quan330.averageRate.$numberDecimal;
+            newFormData.initial180 = quan180.averageRate.$numberDecimal;
+            newFormData.averageRate375 = quan330.averageRate.$numberDecimal;
+            newFormData.averageRate180 = quan180.averageRate.$numberDecimal;
+            firstFormData = [newFormData, ...firstFormData];
+            setBeerShopFrontFrist(firstFormData);
+          }
+        }
+      }
+  
+    }, [brandsLoaded]);
+
 
     const fristFormAddOne = () => {
         setBeerShopFrontFrist([...beerShopFrontFrist, firstFormDataTemplate]);
@@ -132,6 +178,17 @@ const UseBeerShopFront = () => {
           });
       
           setBeerShopFrontFrist(pegInflowShop);
+        const opening = beerShopFrontFrist.map((returned, i) => {
+            if (index === i) {
+              let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+              if (e.target.name === "openingStock750" || e.target.name === "openingStock80" || 'openingStock375') {
+                obj.openingStock30 = calStock30(obj.openingStock750,obj.openingStock375,obj.openingStock180);
+              }
+              return obj;
+            } else return returned;
+          });
+      
+          setBeerShopFrontFrist(opening);
 
 
         const pegInflowOut = beerShopFrontFrist.map((returned, i) => {
@@ -271,6 +328,18 @@ const UseBeerShopFront = () => {
           if (index === i) {
             let obj = Object.assign(returned, { [e.target.name]: e.target.value });
             if (
+              e.target.name === "buyRateShop180" ||
+              e.target.name === "buyRateOut180" ||
+              e.target.name === 'inflowShop180' ||
+              e.target.name === 'inflowOut180'||
+              e.target.name === "buyRateShop375" ||
+              e.target.name === "buyRateOut375" ||
+              e.target.name === 'inflowShop375' ||
+              e.target.name === "buyRateShop750" ||
+              e.target.name === "buyRateOut750" ||
+              e.target.name === 'inflowShop750' ||
+              e.target.name === 'inflowOut750'||
+              e.target.name === 'inflowOut375'||
               e.target.name === "buyRateShop30" ||
               e.target.name === "buyRateOut30" ||
               e.target.name === 'inflowShop30' ||
@@ -543,6 +612,9 @@ const UseBeerShopFront = () => {
         });
     
         setBeerShopFrontFrist(grandT);
+
+        localStorage.setItem('pegForm',JSON.stringify(beerShopFrontFrist))
+        localStorage.setItem('pegFormTotal',JSON.stringify(beerShopFrontFrist.reduce((total,curr)=>total = total + curr.grandTotal)))
     
         
       };
@@ -620,7 +692,7 @@ const UseBeerShopFront = () => {
 
     // ==================================================== Third Form ====================================================
     const beerBarThirdFormTamp = {
-        description: 0,
+        description: '',
         buyingPrice: 0,
         openingStock: 0,
         infllow: 0,
@@ -630,13 +702,28 @@ const UseBeerShopFront = () => {
         rates: 0,
         sumreminder: 0,
     }
-
     const [beerShopFrontThird, setBeerShopFrontThird] = useState([beerBarThirdFormTamp]);
+
+    const barSuplementsPrev = JSON.parse(localStorage.getItem('barSuplements'))
+
+    useEffect(() => {
+      if (barSuplementsPrev) {
+      
+        setBeerShopFrontThird(barSuplementsPrev);
+      }
+  
+      
+      
+  
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
 
     const thirdFormOnChange = (e, index) => {
         const { name, value } = e.target;
         const list = [...beerShopFrontThird];
         list[index][name] = value;
+        console.log(list)
         setBeerShopFrontThird(list);
 
         const sumStock = beerShopFrontThird.map((returned, i) => {
@@ -676,6 +763,8 @@ const UseBeerShopFront = () => {
         });
         setBeerShopFrontThird(total);
 
+        localStorage.setItem('barSuplements',JSON.stringify(beerShopFrontThird))
+        localStorage.setItem('barSuplementsTotal',JSON.stringify(beerShopFrontThird.reduce((total,curr)=>total=total+curr.total)))
 
 
 
@@ -684,6 +773,7 @@ const UseBeerShopFront = () => {
 
     const thirdFormAddOne = () => {
         setBeerShopFrontThird([...beerShopFrontThird, beerBarThirdFormTamp]);
+        console.log("clicked")
     }
 
     const thirdFormAddFive = () => {
@@ -707,6 +797,7 @@ const UseBeerShopFront = () => {
     
     const beerShopMidTemp = {
         brandName: '',
+        liquorID:"",
         ml: 90,
         averageRateOtherMl: 0,
         averageRate30: 0,
@@ -739,6 +830,53 @@ const UseBeerShopFront = () => {
     }
 
     const [beerShopMid, setBeerShopMid] = useState([beerShopMidTemp]);
+
+    const smallPegFormPrev = JSON.parse(localStorage.getItem('smallPegForm'))
+
+    useEffect(() => {
+      if (smallPegFormPrev) {
+        setBeerShopMid(smallPegFormPrev);
+      }
+      
+      else{
+      let firstFormData = beerShopMid;
+  
+      if (!brandsLoaded && liquors.length > 0) {
+        console.log("started");
+        const liq = liquors.filter((item) => {
+          if (item.type === "WINE") {
+            return item;
+          }
+        });
+  
+        liq.map((parent) => {
+          parent.sizes.map((item) => {
+            if (
+              item.quantityInML !== 750 &&
+              item.quantityInML !== 375 &&
+              item.quantityInML !== 180 &&
+              item.quantityInML !== 30 &&
+              item.currentStock > 0
+            ) {
+              const newFormData = { ...beerShopMid };
+  
+              newFormData.brandName = parent.brandName;
+              newFormData.liquorID = parent._id;
+              newFormData.ml = item.quantityInML;
+              newFormData.openingStockOtherMl = item.currentStock;
+              newFormData.averageRateOtherMl = item.averageRate.$numberDecimal;
+              newFormData.initial = item.averageRate.$numberDecimal;
+              firstFormData = [newFormData, ...firstFormData];
+              setBeerShopMid(firstFormData);
+              
+            }
+          });
+        });
+      }
+      }
+  
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [brandsLoaded]);
 
     const midFormOnChange = (e, index) => {
 
@@ -813,7 +951,7 @@ const UseBeerShopFront = () => {
               const totalStock = Number(obj.inflowPurchaseOtherMl) + Number(obj.inflowPurchaseFromOutsideOtherMl) + Number(obj.openingStockOtherMl)
     
               const stock = Number(obj.initialOtherMl) * Number(obj.openingStockOtherMl)
-              obj.averageRate = (buyShop + buyOut + stock) / totalStock
+              obj.averageRateOtherMl = (buyShop + buyOut + stock) / totalStock
     
             }
             return obj;
@@ -929,7 +1067,9 @@ const UseBeerShopFront = () => {
           } else return returned;
         });
         setBeerShopMid(totals);
-    
+        
+        localStorage.setItem('smallPegForm',JSON.stringify(beerShopMid))
+        localStorage.setItem('smallPegFormTotal',JSON.stringify(beerShopMid.reduce((total,curr)=>total=total+curr.total)))
         
     
        
@@ -951,6 +1091,7 @@ const UseBeerShopFront = () => {
         handelFristFormSubmit,
         fristFormAddOne,
         fristFormAddFive,
+        thirdFormAddOne,
         fristFormOnChange,
         beerShopFrontFrist,
         beerShopFrontSecond,
