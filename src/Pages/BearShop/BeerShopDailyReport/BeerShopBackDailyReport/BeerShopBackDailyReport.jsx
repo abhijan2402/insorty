@@ -34,14 +34,14 @@ const BackDailyReport = () => {
     });
     setSixthFormState(sixthFormHandler);
     localStorage.setItem("vegitableAndOther", JSON.stringify(sixthFormState));
-  }
+  };
 
   const addOneSixthForm = () => {
     setSixthFormState([...sixthFormState, sixthFomeDataTemp]);
   };
 
   const { salesMan, setSalesMan, drDate, setDrDate } =
-  useContext(DataContextApi);
+    useContext(DataContextApi);
 
   // ================== Purchase OutSide Form============
   const {
@@ -98,6 +98,33 @@ const BackDailyReport = () => {
   };
 
   const { handleSubmit, isLoadingSubmit } = useBeerShopBackSubmit();
+
+  const addBarCommissionDataTamp = {
+    barandName: "",
+    quantity: 0,
+    amount: 0,
+    comment : ""
+  };
+
+  const [addBarCommissionData, setAddBarCommissionData] = useState([
+    addBarCommissionDataTamp,
+  ]);
+
+  const onChangeBarCommission = (e, index) => {
+    const barCommissionHandler = addBarCommissionData.map((bar, i) => {
+      if (index === i) {
+        return Object.assign(bar, { [e.target.name]: e.target.value });
+      } else {
+        return bar;
+      }
+    });
+    setAddBarCommissionData(barCommissionHandler);
+    localStorage.setItem("barCommission", JSON.stringify(barCommissionHandler));
+  }
+
+  const addOneBarCommisonData = ()=> {
+    setAddBarCommissionData([...addBarCommissionData, addBarCommissionDataTamp])
+  }
 
   return (
     <>
@@ -604,8 +631,8 @@ const BackDailyReport = () => {
                                 type="date"
                                 className="semiSmallInput"
                                 name="theDate"
-                                onChange={(e) => sixthFormOnchange(e, index)} 
-                                value={data.theDate} 
+                                onChange={(e) => sixthFormOnchange(e, index)}
+                                value={data.theDate}
                               />
                             </div>
                           </td>
@@ -615,8 +642,8 @@ const BackDailyReport = () => {
                                 type="number"
                                 className="semiSmallInput"
                                 name="price"
-                                onChange={(e) => sixthFormOnchange(e, index)} 
-                                value={data.price} 
+                                onChange={(e) => sixthFormOnchange(e, index)}
+                                value={data.price}
                               />
                             </div>
                           </td>
@@ -626,8 +653,8 @@ const BackDailyReport = () => {
                                 type="text"
                                 className="semiSmallInput"
                                 name="details"
-                                onChange={(e) => sixthFormOnchange(e, index)} 
-                                value={data.details} 
+                                onChange={(e) => sixthFormOnchange(e, index)}
+                                value={data.details}
                               />
                             </div>
                           </td>
@@ -671,106 +698,205 @@ const BackDailyReport = () => {
                 </table>
               </div>
             </div>
-
-
-            <div className="py-6">
-              <h1 className="my-4 specialwidth">
-                <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
-              </h1>
-              <div>
-                <textarea
-                  className="textarea textarea-bordered"
-                  placeholder="फाईनल रिपोर्ट"
-                  rows="3"
-                  cols="50"
-                  name="comment"
-                  form="usrform"
-                  height="100px"
-                  width="100px"
-                ></textarea>
-              </div>
-            </div>
           </div>
           {/* *********************************************************BREAK*********************************************************  */}
 
-            <div className="py-6">
-              <h1 className="my-4 mx-4">
-                <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
-              </h1>
-              <form action="">
-                <div className="overflow-x-auto">
-                  <table className="table commonTable">
-                    <thead>
+          <div className="py-6">
+            <h1 className="my-4 specialwidth">
+              <span className="font-bold titleText ">बार कमीशन डेटा</span>
+            </h1>
+
+            <div>
+              <table className="table commonTable">
+                <thead>
+                  <tr>
+                    <th> क्र. सं.</th>
+                    <th>BRAND NAME/ ब्राण्ड</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th>Comment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {addBarCommissionData?.map((item, index) => {
+                    return (
                       <tr>
-                        <th> क्र. सं.</th>
-                        <th>Reason / विवरण</th>
-                        <th>रकम</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>अंग्रेजी</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>बीयर</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>देशी/RML</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>कुल बिक्री</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
+                        <td>{index + 1}</td>
                         <td>
-                          पीछे की उधारी में से, ब्रांचों से व अन्य से नकद
-                          प्राप्ति
+                          <div className="form-control">
+                            <input
+                              type="text"
+                              className="semiSmallInput"
+                              name="brandName"
+                              onChange={(e) => onChangeBarCommission(e, index)} 
+                              value={item.brandName}
+                            />
+                          </div>
                         </td>
-                        <td>500</td>
+                        <td>
+                          <div className="form-control">
+                            <input
+                              type="text"
+                              className="semiSmallInput"
+                              name="quantity"
+                              onChange={(e) => onChangeBarCommission(e, index)}
+                              value={item.quantity}
+                            />
+                          </div>
+                        </td>
+                        <td>
+                          <div className="form-control">
+                            <input
+                              type="text"
+                              className="semiSmallInput"
+                              name="amount"
+                              onChange={(e) => onChangeBarCommission(e, index)}
+                              value={item.amount}  
+                            />
+                          </div>
+                        </td>
+                        <td>
+                          <div className="form-control">
+                            <input
+                              type="text"
+                              className="semiSmallInput"
+                              name="comment"
+                              onChange={(e) => onChangeBarCommission(e, index)}
+                              value={item.comment}
+                            />
+                          </div>
+                        </td>
                       </tr>
-                      <tr>
-                        <td>6</td>
-                        <td>खाते में (फोन पे आदि)</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>उधारी/नामे</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>8</td>
-                        <td>कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>9</td>
-                        <td>पिछला बकाया</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>10</td>
-                        <td>आज भुगतान</td>
-                        <td>500</td>
-                      </tr>
-                      <tr>
-                        <td>11</td>
-                        <td>शेष रकम</td>
-                        <td>500</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </form>
+                    );
+                  })}
+
+                  <tr>
+                    <th className="sticky">
+                      {" "}
+                      <button
+                        className="sticky btn bg-[#AA237A] btn-sm"
+                        onClick={() => addOneBarCommisonData()}
+                      >
+                        ADD
+                      </button>
+                    </th>
+                    <td>
+                      <div className="form-control">Total</div>
+                    </td>
+                    <td>
+                      <div className="form-control"></div>
+                    </td>
+                    <td>
+                      <div className="form-control"></div>
+                    </td>
+
+                    <td>
+                      <div className="form-control"></div>
+                    </td>
+                    <td>
+                      <div className="form-control"></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
+          </div>
+
+          <div className="py-6">
+            <h1 className="my-4 mx-4">
+              <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
+            </h1>
+            <form action="">
+              <div className="overflow-x-auto">
+                <table className="table commonTable">
+                  <thead>
+                    <tr>
+                      <th> क्र. सं.</th>
+                      <th>Reason / विवरण</th>
+                      <th>रकम</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>अंग्रेजी</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>बीयर</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>देशी/RML</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>कुल बिक्री</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>
+                        पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
+                      </td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>6</td>
+                      <td>खाते में (फोन पे आदि)</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>7</td>
+                      <td>उधारी/नामे</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>8</td>
+                      <td>कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>9</td>
+                      <td>पिछला बकाया</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>आज भुगतान</td>
+                      <td>500</td>
+                    </tr>
+                    <tr>
+                      <td>11</td>
+                      <td>शेष रकम</td>
+                      <td>500</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+          </div>
+
+          <div className="py-6">
+            <h1 className="my-4 specialwidth">
+              <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
+            </h1>
+            <div>
+              <textarea
+                className="textarea textarea-bordered"
+                placeholder="फाईनल रिपोर्ट"
+                rows="3"
+                cols="50"
+                name="comment"
+                form="usrform"
+                height="100px"
+                width="100px"
+              ></textarea>
+            </div>
+          </div>
           {/* ************ Submit button ***************** */}
           <div className="flex my-6 mx-4">
             {isLoadingSubmit ? (
