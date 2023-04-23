@@ -2,11 +2,14 @@ import { useContext } from "react";
 import { DataContextApi } from "../../../../../Context/DataContext";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../../Components/Loader/Loader";
+import jwtDecode from "jwt-decode";
 
 const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
   const { intoAccountState, setintoAccountState } = useContext(DataContextApi);
   const { paidDues, setPaidDues } = useContext(DataContextApi);
   const token = localStorage.getItem("token");
+  const shopType = jwtDecode(token).shopType
+  console.log(shopType)
 
   localStorage.setItem("beerTotal", JSON.stringify(beerTotal));
   localStorage.setItem("rmlTotal", JSON.stringify(rmlTotal));
@@ -16,9 +19,13 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
   localStorage.setItem("pichlaBakaya", JSON.stringify(0));
 
 
+
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const beerSecond = JSON.parse(localStorage.getItem("beerFormTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
+  const pegTotal = JSON.parse(localStorage.getItem("pegFormTotal"))
+  const smallPegTotal = JSON.parse(localStorage.getItem("smallPegFormTotal"))
+  const barSuplementsTotal = JSON.parse(localStorage.getItem("barSuplementsTotal"))
 
   const { data: leftDues, isLoading } = useQuery({
     queryKey: ["extraData"],
@@ -56,14 +63,20 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
           </thead>
 
           <tbody className="finalTableBody">
-            <tr>
+            <tr className={shopType==="SHOP" ? "" : "displayHidden"}>
               <th>1</th>
               <td>अंग्रेजी</td>
               <td>{firstformData + secondFront}</td>
             </tr>
 
+            <tr className={shopType==="BAR" ? "" : "displayHidden"}>
+              <th>1</th>
+              <td>अंग्रेजी</td>
+              <td>{Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0)}</td>
+            </tr>
+
             {/* 02 */}
-            <tr>
+            <tr >
               <th>2</th>
               <td>बीयर</td>
               <td>
@@ -73,17 +86,24 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             </tr>
 
             {/* 03 */}
-            <tr>
+            <tr className={shopType==="SHOP" ? "" : "displayHidden"}>
               <th>3</th>
               <td>देशी/RML</td>
-              <td>{rmlTotal}</td>
+              <td>{Number(rmlTotal?rmlTotal:0)}</td>
+            </tr>
+            
+
+            <tr className={shopType==="BAR" ? "" : "displayHidden"}>
+              <th>3</th>
+              <td>bar suplements</td>
+              <td>{Number(barSuplementsTotal?barSuplementsTotal:0)}</td>
             </tr>
             {/* 04 */}
             <tr>
               <th>4</th>
               <td>कुल बिक्री</td>
               <td>
-                {rmlTotal +
+                {Number(rmlTotal?rmlTotal:0) +
                   Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   firstformData +
                   secondFront +
@@ -116,13 +136,13 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             <tr>
               <th>7</th>
               <td>उधारी/नामे</td>
-              <td>{udhaariTotal}</td>
+              <td>{Number(udhaariTotal ? udhaariTotal : 0)}</td>
             </tr>
             {/* 08 */}
             <tr>
               <th>8</th>
               <td>कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
-              <td>{commisionTotal}</td>
+              <td>{Number(commisionTotal ? commisionTotal : 0)}</td>
             </tr>
             {/* 09 */}
             <tr>
@@ -132,19 +152,35 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             </tr>
             {/* 10 */}
 
-            <tr>
+            <tr className={shopType==="SHOP" ? "" : "displayHidden"}>
               <th>10</th>
               <td>total</td>
-              <td>
-                {rmlTotal +
+              <td >
+                {Number(rmlTotal?rmlTotal:0) +
                   Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   firstformData +
                   secondFront +
                   beerSecond +
                   Number(localStorage.getItem("totalPaymentsRecieved")) -
                   intoAccountState -
-                  udhaariTotal -
-                  commisionTotal +
+                  Number(udhaariTotal ? udhaariTotal : 0) -
+                  Number(commisionTotal ? commisionTotal : 0) +
+                  pichla}
+              </td>
+            </tr>
+
+            <tr className={shopType==="BAR" ? "" : "displayHidden"}>
+              <th>10</th>
+              <td>total</td>
+              <td >
+                {
+                  Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
+                  Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+                  Number(beerSecond ? beerSecond : 0) +
+                  Number(localStorage.getItem("totalPaymentsRecieved")) -
+                  intoAccountState -
+                  Number(udhaariTotal ? udhaariTotal : 0) -
+                  Number(commisionTotal ? commisionTotal : 0) +
                   pichla}
               </td>
             </tr>
@@ -168,15 +204,15 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
               <th>12</th>
               <td>शेष रकम</td>
               <td>
-                {rmlTotal +
+                {Number(rmlTotal?rmlTotal:0) +
                   Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   firstformData +
                   secondFront +
                   beerSecond +
                   Number(localStorage.getItem("totalPaymentsRecieved")) -
                   Number(intoAccountState) -
-                  udhaariTotal -
-                  commisionTotal +
+                  Number(udhaariTotal ? udhaariTotal : 0) -
+                  Number(commisionTotal ? commisionTotal : 0) +
                   pichla -
                   Number(paidDues)}
               </td>

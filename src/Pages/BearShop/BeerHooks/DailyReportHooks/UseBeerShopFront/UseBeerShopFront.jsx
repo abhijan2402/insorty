@@ -614,7 +614,7 @@ const UseBeerShopFront = () => {
         setBeerShopFrontFrist(grandT);
 
         localStorage.setItem('pegForm',JSON.stringify(beerShopFrontFrist))
-        localStorage.setItem('pegFormTotal',JSON.stringify(beerShopFrontFrist.reduce((total,curr)=>total = total + curr.grandTotal)))
+        localStorage.setItem('pegFormTotal',JSON.stringify(beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.grandTotal),0)))
     
         
       };
@@ -764,7 +764,7 @@ const UseBeerShopFront = () => {
         setBeerShopFrontThird(total);
 
         localStorage.setItem('barSuplements',JSON.stringify(beerShopFrontThird))
-        localStorage.setItem('barSuplementsTotal',JSON.stringify(beerShopFrontThird.reduce((total,curr)=>total=total+curr.total)))
+        localStorage.setItem('barSuplementsTotal',JSON.stringify(beerShopFrontThird.reduce((total,curr)=>(total=total+(curr.sumreminder)),0)))
 
 
 
@@ -1069,7 +1069,7 @@ const UseBeerShopFront = () => {
         setBeerShopMid(totals);
         
         localStorage.setItem('smallPegForm',JSON.stringify(beerShopMid))
-        localStorage.setItem('smallPegFormTotal',JSON.stringify(beerShopMid.reduce((total,curr)=>total=total+curr.total)))
+        localStorage.setItem('smallPegFormTotal',JSON.stringify(beerShopMid.reduce((total,curr)=>(total=total+Number(curr.total)),0)))
         
     
        

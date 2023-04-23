@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import "../Style/DailyReport.scss";
 import { Link } from "react-router-dom";
 import PurchaseOutSideFrom from "../../../Users/DailyReport/BackDailyReport/PurchaseOutSideForm/PurchaseOutSideFrom";
@@ -14,8 +14,13 @@ import useCashReciveAdd from "../../../../Hooks/useCashReciveAdd";
 import useBeerShopBackSubmit from "../../../../Hooks/useBeerShopBackSubmit/useBeerShopBackSubmit";
 import { DataContextApi } from "../../../../Context/DataContext";
 import DatePicker from "react-datepicker";
+import { Autocomplete,TextField } from "@mui/material";
+import useLiquors from "../../../../Hooks/useLiquors";
+import FinalReport from '../../../Users/DailyReport/BackDailyReport/FinalReport/FinalReport'
+
 
 const BackDailyReport = () => {
+  const {liquors,brandsLoaded} = useLiquors()
   const sixthFomeDataTemp = {
     theDate: "",
     price: 0,
@@ -34,6 +39,8 @@ const BackDailyReport = () => {
     });
     setSixthFormState(sixthFormHandler);
     localStorage.setItem("vegitableAndOther", JSON.stringify(sixthFormState));
+    localStorage.setItem("vegitableAndOtherTotal", JSON.stringify(sixthFormState.reduce((total,curr)=>total=total+Number(curr.price),0)));
+
   };
 
   const addOneSixthForm = () => {
@@ -119,12 +126,25 @@ const BackDailyReport = () => {
       }
     });
     setAddBarCommissionData(barCommissionHandler);
-    localStorage.setItem("barCommission", JSON.stringify(barCommissionHandler));
+    localStorage.setItem("barCommission", JSON.stringify(addBarCommissionData));
+    localStorage.setItem("barCommissionTotal", JSON.stringify(addBarCommissionData.reduce((total,curr)=>total=total+Number(curr.amount)),0));
   }
 
   const addOneBarCommisonData = ()=> {
     setAddBarCommissionData([...addBarCommissionData, addBarCommissionDataTamp])
   }
+
+  useEffect(() => {
+    const barCommissionPrev = JSON.parse(localStorage.getItem("barCommission"))
+    const foodVegetablePrev = JSON.parse(localStorage.getItem("vegitableAndOther"))
+    if (barCommissionPrev) {
+      setAddBarCommissionData(barCommissionPrev)
+    }
+    if (foodVegetablePrev) {
+      setSixthFormState(foodVegetablePrev)
+    }
+  }, [])
+  
 
   return (
     <>
@@ -615,7 +635,6 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
-                      <th>दिनांक / Date</th>
                       <th>रकम/ price</th>
                       <th>विवरण/ Details</th>
                     </tr>
@@ -625,17 +644,7 @@ const BackDailyReport = () => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
-                          <td>
-                            <div className="form-control">
-                              <input
-                                type="date"
-                                className="semiSmallInput"
-                                name="theDate"
-                                onChange={(e) => sixthFormOnchange(e, index)}
-                                value={data.theDate}
-                              />
-                            </div>
-                          </td>
+                         
                           <td>
                             <div className="form-control">
                               <input
@@ -682,7 +691,7 @@ const BackDailyReport = () => {
                             name="amount"
                             value={sixthFormState.reduce(
                               (total, currentItem) =>
-                                (total = total + Number(currentItem.amount)),
+                                (total = total + Number(currentItem.price)),
                               0
                             )}
                             disabled
@@ -724,13 +733,46 @@ const BackDailyReport = () => {
                         <td>{index + 1}</td>
                         <td>
                           <div className="form-control">
-                            <input
-                              type="text"
-                              className="semiSmallInput"
-                              name="brandName"
-                              onChange={(e) => onChangeBarCommission(e, index)} 
-                              value={item.brandName}
-                            />
+                          <Autocomplete
+            size="small"
+            style={{
+              width: "20rem",
+            }}
+            loading={brandsLoaded}
+            options={liquors &&
+              liquors.length > 0
+                ? liquors.filter((brand) => {
+                    if (brand.type === "WINE") {
+                      return brand;
+                    }
+                  })
+                : ["no options"]
+            }
+            getOptionLabel={(option) => (option ? option.brandName : "")}
+            onChange={(event, value) => {
+              if (value) {
+                item.brandName = value.brandName;
+              } else {
+                item.brandName = "";
+              }
+              onChangeBarCommission(event, index);
+            }}
+            renderInput={(params) => (
+              <TextField
+                required
+                size="small"
+                {...params}
+                // value={beerFront.brandName}
+                inputProps={{
+                  ...params.inputProps,
+                  value: item.brandName,
+                }}
+                onChange={(event) => {
+                  item.brandName = event.target.value;
+                }}
+              />
+            )}
+          />
                           </div>
                         </td>
                         <td>
@@ -784,10 +826,22 @@ const BackDailyReport = () => {
                       <div className="form-control">Total</div>
                     </td>
                     <td>
-                      <div className="form-control"></div>
+                      <div className="form-control"><input
+                              type="text"
+                              className="semiSmallInput"
+                              name="amount"
+                              disabled
+                              value={addBarCommissionData.reduce((total,curr)=>total = total+ Number(curr.quantity),0)}  
+                            /></div>
                     </td>
                     <td>
-                      <div className="form-control"></div>
+                      <div className="form-control"> <input
+                              type="text"
+                              className="semiSmallInput"
+                              name="amount"
+                              disabled
+                              value={addBarCommissionData.reduce((total,curr)=>total = total+ Number(curr.amount),0)}  
+                            /></div>
                     </td>
 
                     <td>
@@ -808,74 +862,7 @@ const BackDailyReport = () => {
             </h1>
             <form action="">
               <div className="overflow-x-auto">
-                <table className="table commonTable">
-                  <thead>
-                    <tr>
-                      <th> क्र. सं.</th>
-                      <th>Reason / विवरण</th>
-                      <th>रकम</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>अंग्रेजी</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>बीयर</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>देशी/RML</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>कुल बिक्री</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>
-                        पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
-                      </td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>खाते में (फोन पे आदि)</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>उधारी/नामे</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>8</td>
-                      <td>कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>पिछला बकाया</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>10</td>
-                      <td>आज भुगतान</td>
-                      <td>500</td>
-                    </tr>
-                    <tr>
-                      <td>11</td>
-                      <td>शेष रकम</td>
-                      <td>500</td>
-                    </tr>
-                  </tbody>
-                </table>
+               <FinalReport/>
               </div>
             </form>
           </div>
