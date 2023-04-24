@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import { Link } from "react-router-dom";
 import AddOneFristForm from "./BeerShopFirstForm/AddOneFristForm/AddOneFristForm";
 import UseBeerShopFront from "../../BeerHooks/DailyReportHooks/UseBeerShopFront/UseBeerShopFront";
@@ -10,6 +10,7 @@ import AddOneSecondFormBack from "../../../Users/DailyReport/BackDailyReport/Fri
 import useFristFormAdd from "../../../../Hooks/useFristFormAdd";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../Hooks/useLiquors";
+import axios from "axios";
 
 
 const FronteDailyReport = () => {
@@ -29,6 +30,33 @@ const FronteDailyReport = () => {
 
   const token = localStorage.getItem("token");
   const { brandsLoaded, liquors } = useLiquors();
+
+  const [options, setOptions] = useState([])
+
+
+  const fetchOptions = async (query) => {
+    
+   await axios({
+      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
+      method: 'get',
+      headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+   })
+   .then(response => {
+      setOptions(response.data.data)
+   }) 
+   .catch(err => {
+      console.log(err);
+   });
+  
+  };
+
+  const handleInputChange = (event, value) => {
+    fetchOptions(value);
+  };
+
 
 
   const {
@@ -908,47 +936,39 @@ const FronteDailyReport = () => {
                         <th>{index + 1}</th>
                         <td>
                         <Autocomplete
-            size="small"
-            style={{
-              width: "20rem",
+        id="autocomplete"
+        size="small"
+        style={{
+          width: "20rem",
+        }}
+        options={options}
+        getOptionLabel={(option) => option ? option.brandName : ""}
+        onChange={(event, value) => {
+          if (value) {
+            item.brandName = value.brandName;
+            item.liquorID = value._id;
+          } else {
+            item.brandName = "";
+            item.liquorID = "";
+          }
+          midFormOnChange(event, index);
+        }}
+        renderInput={(params) => (
+          <TextField
+          required
+          size="small"
+          {...params}
+          // value={beerFront.brandName}
+          inputProps={{
+            ...params.inputProps,
+            value: item.brandName,
+          }}
+            onChange={(e)=>{handleInputChange(e,e.target.value)
+              item.brandName = e.target.value;
             }}
-            loading={brandsLoaded}
-            options={liquors &&
-              liquors.length > 0
-                ? liquors.filter((brand) => {
-                    if (brand.type === "WINE") {
-                      return brand;
-                    }
-                  })
-                : ["no options"]
-            }
-            getOptionLabel={(option) => (option ? option.brandName : "")}
-            onChange={(event, value) => {
-              if (value) {
-                beerShopMid.brandName = value.brandName;
-                beerShopMid.liquorID = value._id;
-              } else {
-                beerShopMid.brandName = "";
-                beerShopMid.liquorID = "";
-              }
-              fristFormOnChange(event, index);
-            }}
-            renderInput={(params) => (
-              <TextField
-                required
-                size="small"
-                {...params}
-                // value={beerFront.brandName}
-                inputProps={{
-                  ...params.inputProps,
-                  value: beerShopMid.brandName,
-                }}
-                onChange={(event) => {
-                  beerShopMid.brandName = event.target.value;
-                }}
-              />
-            )}
           />
+        )}
+      />
                         </td>
 
                         <td>

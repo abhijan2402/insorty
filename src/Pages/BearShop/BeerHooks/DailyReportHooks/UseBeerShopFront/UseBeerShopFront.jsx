@@ -159,6 +159,8 @@ const UseBeerShopFront = () => {
         //   setMyOptions(myOptions);
         // };
         // getDataFromAPI();
+
+        console.log(beerShopFrontFrist)
     
         const firstFormHandel = beerShopFrontFrist.map((firstFormFront, i) =>
           index === i
@@ -1078,6 +1080,7 @@ const UseBeerShopFront = () => {
 
     const midFormAddOne = () => {
         setBeerShopMid([...beerShopMid, beerShopMidTemp]);
+        
     }
     
     

@@ -648,22 +648,22 @@ const BackDailyReport = () => {
                           <td>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type="text"
                                 className="semiSmallInput"
-                                name="price"
+                                name="details"
                                 onChange={(e) => sixthFormOnchange(e, index)}
-                                value={data.price}
+                                value={data.details}
                               />
                             </div>
                           </td>
                           <td>
                             <div className="form-control">
                               <input
-                                type="text"
+                                type="number"
                                 className="semiSmallInput"
-                                name="details"
+                                name="price"
                                 onChange={(e) => sixthFormOnchange(e, index)}
-                                value={data.details}
+                                value={data.price}
                               />
                             </div>
                           </td>
