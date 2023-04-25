@@ -14,7 +14,6 @@ const WineStockTopData = ({ item, index, total }) => {
 
   return (
     <>
-      <tr>
         <td>{index + 1}</td>
         <td>
           <div className="form-control">{item?.brandName}</div>
@@ -81,7 +80,6 @@ const WineStockTopData = ({ item, index, total }) => {
             </div>
         </td>
         <td>{Number(price330 + price550 + price650).toFixed(2)}</td>
-      </tr>
     </>
   );
 };

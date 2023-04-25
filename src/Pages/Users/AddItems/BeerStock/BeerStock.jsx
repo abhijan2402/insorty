@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useRef } from "react";
+import React, { useRef,useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import BeerStockTopData from "./BeerStockTopData/BeerStockTopData";
@@ -8,11 +8,16 @@ import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
+import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const BeerStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const [beerStock, setBeerStock] = useState([]);
+  const [hasMore,setHasMore] = useState(true)
+  const [page, setPage] = useState(1);
   const front = useRef(null);
   let count = 0
 
@@ -20,24 +25,38 @@ const BeerStock = () => {
     content: () => front.current,
   });
 
-  const { data: beerStock, isLoading } = useQuery({
-    queryKey: ["beerStock"],
-    queryFn: async () => {
-      const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllParentLiquors",
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
-      const data = await res.json();
-      return data.data;
-    },
-  });
+   const fetchData = async () => {
+    await axios({
+      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+      method: 'get',
+      headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+   })
+   .then(response => {
+    setBeerStock(data => [...data, ...response.data.data]);
+    setPage(page => page + 1);
+
+
+   }) 
+   .catch(err => {
+      if(err.response.status===404){
+        setHasMore(false)
+      }
+   });
+  
+console.log(hasMore,'hasmore')
+  };
+
+  useEffect(() => {
+    fetchData();
+    // console.log(page,hasMore,'page ')
+  }, [beerStock]);
+
 
   const total = 0;
 
-  if (isLoading) return <Loader></Loader>;
 
   if (!beerStock.length) {
     return <div>No data found</div>;
@@ -109,6 +128,14 @@ const BeerStock = () => {
           </div>
 
           <div className="overflow-x-auto flex justify-center items-center">
+          <InfiniteScroll
+      dataLength={beerStock.length}
+      next={fetchData}
+      hasMore={hasMore}
+      scrollableTarget="scrollableDiv"
+
+      loader={<h4>Loading...</h4>}
+    >
             <table className="removeCommonWSpace  m-2">
               <thead>
                 <tr>
@@ -204,18 +231,21 @@ const BeerStock = () => {
                   filteredData?.map((item, index) => {
                     return (
                       <>
+                      <tr id="scrollableDiv">
                         <BeerStockTopData
                           key={item._id}
                           index={index}
                           item={item}
                           total={total}
                         ></BeerStockTopData>
+                        </tr>
                       </>
                     );
                   })}
 
               </tbody>
             </table>
+            </InfiniteScroll>
           </div>
 
           <div>
@@ -239,7 +269,7 @@ const BeerStock = () => {
                           {brand.sizes.map((size) => {
                             if (
                               size.quantityInML !== 650 &&
-                              size.quantityInML !== 550 &&
+                              size.quantityInML !== 500 &&
                               size.quantityInML !== 330
                             ) {
                               count++

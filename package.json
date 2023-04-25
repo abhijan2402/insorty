@@ -27,6 +27,7 @@
     "react-dom": "^18.2.0",
     "react-hook-pagination": "^1.0.3",
     "react-icons": "^4.7.1",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-router-dom": "^6.5.0",
     "react-scripts": "5.0.1",
     "react-search-autocomplete": "^8.3.1",
