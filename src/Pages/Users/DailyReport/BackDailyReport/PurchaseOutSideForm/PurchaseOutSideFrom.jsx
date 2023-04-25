@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import useLiquors from "../../../../../Hooks/useLiquors";
 import { Autocomplete, TextField } from "@mui/material";
 import Loader from "../../../../../Components/Loader/Loader";
 import usePartyNames from "../../../../../Hooks/usePartyNames";
 import swal from "sweetalert";
+import axios from "axios";
 
 const PurchaseOutSideFrom = ({
   index,
@@ -14,6 +15,33 @@ const PurchaseOutSideFrom = ({
   const { brands, brandsLoaded, checkLiquor, liquors } = useLiquors();
 
   const { parties, partyLoaded } = usePartyNames();
+
+  const token = localStorage.getItem("token");
+
+  const [options, setOptions] = useState([]);
+
+  const fetchOptions = async (query) => {
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setOptions(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleInputChange = (event, value) => {
+    fetchOptions(value);
+  };
+
+
 
   if (brandsLoaded || partyLoaded) {
     return (
@@ -92,14 +120,14 @@ const PurchaseOutSideFrom = ({
         {/* ======== प्रारम्भिक स्टॉक ========= */}
         <td>
           <div className="form-control">
-            <Autocomplete
+  <Autocomplete
+              id="autocomplete"
               size="small"
               style={{
                 width: "20rem",
               }}
-              options={liquors}
+              options={options}
               getOptionLabel={(option) => (option ? option.brandName : "")}
-              
               onChange={(event, value) => {
                 if (value) {
                   item.brandName = value.brandName;
@@ -109,16 +137,20 @@ const PurchaseOutSideFrom = ({
                   item.liquorID = "";
                 }
                 onChangePurchesOutSide(event, index);
-                console.log(item);
               }}
               renderInput={(params) => (
                 <TextField
                   required
+                  size="small"
                   {...params}
-                  inputProps={{ ...params.inputProps, value: item.brandName }}
-                  onChange={(event) => {
-                    item.brandName = event.target.value;
-                    
+                  // value={item.brandName}
+                  inputProps={{
+                    ...params.inputProps,
+                    value: item.brandName,
+                  }}
+                  onChange={(e) => {
+                    handleInputChange(e, e.target.value);
+                    item.brandName = e.target.value;
                   }}
                 />
               )}

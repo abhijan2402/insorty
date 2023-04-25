@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { DataContextApi } from "../../../../../Context/DataContext";
 import useLiquors from "../../../../../Hooks/useLiquors";
 import useRmlAdd from "../../../../../Hooks/useRmlAdd";
 import Loader from "../../../../../Components/Loader/Loader";
 import swal from "sweetalert";
+import axios from "axios";
 
 const RmlFrom = ({
   index,
@@ -18,6 +19,34 @@ const RmlFrom = ({
   // const { liquors } = useContext(DataContextApi);
   let rmlData = addRmlState;
   const { brandsLoaded, liquors } = useLiquors();
+
+
+  const token = localStorage.getItem("token");
+
+  const [options, setOptions] = useState([]);
+
+  const fetchOptions = async (query) => {
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setOptions(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleInputChange = (event, value) => {
+    fetchOptions(value);
+  };
+
+
 
   if (brandsLoaded) {
     return (
@@ -59,20 +88,13 @@ const RmlFrom = ({
 
         <td>
           <div className="form-control">
-            <Autocomplete
+          <Autocomplete
+              id="autocomplete"
               size="small"
               style={{
                 width: "20rem",
               }}
-              options={
-                liquors.length > 0
-                  ? liquors.filter((brand) => {
-                      if (brand.type === "DESHIRML" || brand.type === "RML") {
-                        return brand;
-                      }
-                    })
-                  : ["no options"]
-              }
+              options={options}
               getOptionLabel={(option) => (option ? option.brandName : "")}
               onChange={(event, value) => {
                 if (value) {
@@ -82,24 +104,21 @@ const RmlFrom = ({
                   item.brandName = "";
                   item.liquorID = "";
                 }
-                setAddRmlState(addRmlState);
                 onChangeRmlHandler(event, index);
-
-                console.log(addRmlState);
               }}
               renderInput={(params) => (
                 <TextField
-                  {...params}
                   required
-                  className="dailyReportInput"
+                  size="small"
+                  {...params}
                   // value={item.brandName}
-                  inputProps={{ ...params.inputProps, value: item.brandName }}
-                  // name='brandName'
-                  onChange={(event) => {
-                    item.brandName = event.target.value;
-                    // item.liquorID = null;
-                    // onChangeRmlHandler(event, index)
-                    // console.log(event.target)
+                  inputProps={{
+                    ...params.inputProps,
+                    value: item.brandName,
+                  }}
+                  onChange={(e) => {
+                    handleInputChange(e, e.target.value);
+                    item.brandName = e.target.value;
                   }}
                 />
               )}
