@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import Loader from "../../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import swal from "sweetalert";
+import axios from "axios";
 
 const AddOneFristFromBack = ({
   index,
@@ -13,8 +14,32 @@ const AddOneFristFromBack = ({
 }) => {
   const SerialNo = index + 1;
 
-  const { brandsLoaded, liquors } = useLiquors();
+  const { brandsLoaded } = useLiquors();
 
+  const token = localStorage.getItem("token");
+
+  const [options, setOptions] = useState([]);
+
+  const fetchOptions = async (query) => {
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setOptions(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleInputChange = (event, value) => {
+    fetchOptions(value);
+  };
 
   if (brandsLoaded) {
     return (
@@ -52,24 +77,16 @@ const AddOneFristFromBack = ({
         >
           X
           <input type="button" value="" autoFocus />
-
         </th>
         <td>
           <div className="form-control">
             <Autocomplete
+              id="autocomplete"
               size="small"
               style={{
                 width: "20rem",
               }}
-              options={
-                liquors.length > 0
-                  ? liquors.filter((brand) => {
-                      if (brand.type === "BEER") {
-                        return brand;
-                      }
-                    })
-                  : ["no options"]
-              }
+              options={options}
               getOptionLabel={(option) => (option ? option.brandName : "")}
               onChange={(event, value) => {
                 if (value) {
@@ -80,17 +97,20 @@ const AddOneFristFromBack = ({
                   item.liquorID = "";
                 }
                 onChangeFristBackFormHandler(event, index);
-                console.log(item);
               }}
               renderInput={(params) => (
                 <TextField
-                  {...params}
                   required
-                  className="dailyReportInput"
-                  inputProps={{ ...params.inputProps, value: item.brandName }}
-                  onChange={(event) => {
-                    item.brandName = event.target.value;
-                   
+                  size="small"
+                  {...params}
+                  // value={item.brandName}
+                  inputProps={{
+                    ...params.inputProps,
+                    value: item.brandName,
+                  }}
+                  onChange={(e) => {
+                    handleInputChange(e, e.target.value);
+                    item.brandName = e.target.value;
                   }}
                 />
               )}

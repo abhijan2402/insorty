@@ -55,6 +55,8 @@ import CashReceiveData from "../Pages/Users/CashReciveData/CashReciveData/CashRe
 import PartnersMarge from "../Pages/Users/MargePartners/MargePartners";
 import WineBill from "../Pages/Users/WineBill/WineBill";
 import ShopParmisson from "../Pages/Admin/ShopParmisson/ShopParmisson/ShopParmisson";
+import BeerFrontDetailsReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopDetailsReports/FullDetailsReport/FrontDetailsReport/FrontDetailsReport/FrontDetailsReport";
+import BeerBackDetailsReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopDetailsReports/FullDetailsReport/BackDetailsReport/BackDetailsReport";
 
 const router = createBrowserRouter([
   {
@@ -308,7 +310,14 @@ const router = createBrowserRouter([
         path: "/user/bearshop/dailyreport/back",
         element: <BeerShopBackDailyReport />,
       },
-
+      {
+        path: "/user/bearshop/details",
+        element: <BeerFrontDetailsReport />,
+      },
+      {
+        path: "/user/bearshop/details/back",
+        element: <BeerBackDetailsReport />,
+      },
 
       {
         path: "/user/bearshop/branch",
