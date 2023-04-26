@@ -1,85 +1,74 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
 
-
 const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
+  const token = localStorage.getItem("token");
 
-  const token = localStorage.getItem("token")
-
-  const [options, setOptions] = useState([])
-
+  const [options, setOptions] = useState([]);
 
   const fetchOptions = async (query) => {
-    
-   await axios({
-      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
-      method: 'get',
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
+      method: "get",
       headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-   })
-   .then(response => {
-      setOptions(response.data.data)
-   }) 
-   .catch(err => {
-      console.log(err);
-   });
-  
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setOptions(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleInputChange = (event, value) => {
     fetchOptions(value);
   };
 
-  
-
-
   return (
     <>
       <tr>
         <th>{index + 1}</th>
         <td>
-          
-        
-
-<Autocomplete
-        id="autocomplete"
-        size="small"
-        style={{
-          width: "20rem",
-        }}
-        options={options}
-        getOptionLabel={(option) => option ? option.brandName : ""}
-        onChange={(event, value) => {
-          if (value) {
-            beerFront.brandName = value.brandName;
-            beerFront.liquorID = value._id;
-          } else {
-            beerFront.brandName = "";
-            beerFront.liquorID = "";
-          }
-          fristFormOnChange(event, index);
-        }}
-        renderInput={(params) => (
-          <TextField
-          required
-          size="small"
-          {...params}
-          // value={beerFront.brandName}
-          inputProps={{
-            ...params.inputProps,
-            value: beerFront.brandName,
-          }}
-            onChange={(e)=>{handleInputChange(e,e.target.value)
-              beerFront.brandName = e.target.value;
+          <Autocomplete
+            id="autocomplete"
+            size="small"
+            style={{
+              width: "20rem",
             }}
+            options={options}
+            getOptionLabel={(option) => (option ? option.brandName : "")}
+            onChange={(event, value) => {
+              if (value) {
+                beerFront.brandName = value.brandName;
+                beerFront.liquorID = value._id;
+              } else {
+                beerFront.brandName = "";
+                beerFront.liquorID = "";
+              }
+              fristFormOnChange(event, index);
+            }}
+            renderInput={(params) => (
+              <TextField
+                required
+                size="small"
+                {...params}
+                // value={beerFront.brandName}
+                inputProps={{
+                  ...params.inputProps,
+                  value: beerFront.brandName,
+                }}
+                onChange={(e) => {
+                  handleInputChange(e, e.target.value);
+                  beerFront.brandName = e.target.value;
+                }}
+              />
+            )}
           />
-        )}
-      />
-
         </td>
         {/* ======== MRP Input ========= */}
         <td>

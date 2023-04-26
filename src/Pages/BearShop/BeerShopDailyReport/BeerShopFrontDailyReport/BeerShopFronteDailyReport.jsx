@@ -1,8 +1,7 @@
-import React, { useContext,useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AddOneFristForm from "./BeerShopFirstForm/AddOneFristForm/AddOneFristForm";
 import UseBeerShopFront from "../../BeerHooks/DailyReportHooks/UseBeerShopFront/UseBeerShopFront";
-import { DataContextApi } from "../../../../Context/DataContext";
 import { useQuery } from "@tanstack/react-query";
 import useFristFormSubmitAPIFront from "../../../../Hooks/useFristFormSubmitAPIFront/useFristFormSubmitAPIFront";
 import AddOneFristFromBack from "../../../Users/DailyReport/BackDailyReport/FristFormBack/AddOneFristFromBack/AddOneFristFromBack";
@@ -12,7 +11,6 @@ import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../Hooks/useLiquors";
 import axios from "axios";
 
-
 const FronteDailyReport = () => {
   const {
     handelFristFormSubmit,
@@ -21,7 +19,7 @@ const FronteDailyReport = () => {
     beerShopFrontFrist,
     thirdFormAddOne,
     beerShopFrontThird,
-  
+
     beerShopMid,
     midFormOnChange,
     midFormAddOne,
@@ -31,50 +29,38 @@ const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
   const { brandsLoaded, liquors } = useLiquors();
 
-  const [options, setOptions] = useState([])
-
+  const [options, setOptions] = useState([]);
 
   const fetchOptions = async (query) => {
-    
-   await axios({
-      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
-      method: 'get',
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
+      method: "get",
       headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-   })
-   .then(response => {
-      setOptions(response.data.data)
-   }) 
-   .catch(err => {
-      console.log(err);
-   });
-  
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setOptions(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleInputChange = (event, value) => {
     fetchOptions(value);
   };
 
-
-
   const {
-   
-    addOneInFristFormHandler,
     fristFormState,
-   
     onChangeFristBackFormHandler,
-    totalState,
-  
- 
     addOneSecondFormState,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
     handleRemoveFieldsBack,
     handleRemoveFieldsBeer,
   } = useFristFormAdd();
-
 
   //=============== add One second form ================
 
@@ -85,8 +71,6 @@ const FronteDailyReport = () => {
   //   handleRemoveFieldsSecond,
   // } = useSecondFormFront();
 
-  const { submitFristFormHandler, isLoadingSubmit } =
-    useFristFormSubmitAPIFront();
 
   const { data: sujestedData, isLoading } = useQuery({
     queryKey: ["sujestedData"],
@@ -434,9 +418,7 @@ const FronteDailyReport = () => {
                     </th>
                     <td>Total</td>
                     {/* ======== MRP Input ========= */}
-                    <td>
-                      
-                    </td>
+                    <td></td>
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
                     <td>
                       <div className="flex ">
@@ -445,7 +427,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.openingStock750),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.openingStock750)),
+                              0
+                            )}
                             name="openingstock"
                           />
                         </div>
@@ -454,7 +440,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.openingStock375),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.openingStock375)),
+                              0
+                            )}
                             name="openingstock"
                           />
                         </div>
@@ -463,7 +453,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.openingStock180),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.openingStock180)),
+                              0
+                            )}
                             name="openingstock"
                           />
                         </div>
@@ -472,7 +466,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.openingStock30),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.openingStock30)),
+                              0
+                            )}
                             name="openingstock"
                           />
                         </div>
@@ -488,7 +486,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowShop750),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowShop750)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -497,7 +499,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowShop375),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowShop375)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -506,7 +512,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowShop180),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowShop180)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -515,16 +525,18 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowShop30),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowShop30)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
                       </div>
                     </td>
 
-                    <td>
-                     
-                    </td>
+                    <td></td>
 
                     {/* ======== आमद (खरीद)-बा. ========= */}
 
@@ -535,7 +547,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowOut750),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowOut750)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -544,7 +560,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowOut375),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowOut375)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -553,7 +573,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowOut180),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowOut180)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -562,7 +586,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowOut30),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowOut30)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -570,9 +598,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     {/*================ खरीद रेट - बा. ==================  */}
-                    <td>
-                     
-                    </td>
+                    <td></td>
 
                     {/* ======== आमद (उधारी) ========= */}
 
@@ -583,7 +609,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowCredit750),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowCredit750)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -592,7 +622,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowCredit375),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowCredit375)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -601,7 +635,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowCredit180),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowCredit180)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -610,7 +648,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.inflowCredit30),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.inflowCredit30)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -624,7 +666,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.send750),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.send750)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -633,7 +679,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.send375),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.send375)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -642,7 +692,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.send180),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.send180)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -651,7 +705,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.send30),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.send30)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -665,7 +723,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.sumRemaining30),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.sumRemaining30)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -679,7 +741,11 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.closingStock30),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.closingStock30)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
@@ -692,16 +758,18 @@ const FronteDailyReport = () => {
                             disabled
                             type="number"
                             className="smallinput"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.sales30),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.sales30)),
+                              0
+                            )}
                             name="averageRate"
                           />
                         </div>
                       </div>
                     </td>
 
-                    <td>
-                     
-                    </td>
+                    <td></td>
                     <td>
                       <div className="flex ">
                         <div className="form-control">
@@ -710,7 +778,11 @@ const FronteDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="averageRate"
-                            value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.total30),0)}
+                            value={beerShopFrontFrist.reduce(
+                              (total, curr) =>
+                                (total = total + Number(curr.total30)),
+                              0
+                            )}
                           />
                         </div>
                       </div>
@@ -723,7 +795,11 @@ const FronteDailyReport = () => {
                           disabled
                           className="semiSmallInput"
                           name="grandTotal"
-                          value={beerShopFrontFrist.reduce((total,curr)=>total = total + Number(curr.grandTotal),0)}
+                          value={beerShopFrontFrist.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.grandTotal)),
+                            0
+                          )}
                         />
                       </div>
                     </td>
@@ -935,71 +1011,75 @@ const FronteDailyReport = () => {
                       <tr key={index}>
                         <th>{index + 1}</th>
                         <td>
-                        <Autocomplete
-        id="autocomplete"
-        size="small"
-        style={{
-          width: "20rem",
-        }}
-        options={options}
-        getOptionLabel={(option) => option ? option.brandName : ""}
-        onChange={(event, value) => {
-          if (value) {
-            item.brandName = value.brandName;
-            item.liquorID = value._id;
-          } else {
-            item.brandName = "";
-            item.liquorID = "";
-          }
-          midFormOnChange(event, index);
-        }}
-        renderInput={(params) => (
-          <TextField
-          required
-          size="small"
-          {...params}
-          // value={beerFront.brandName}
-          inputProps={{
-            ...params.inputProps,
-            value: item.brandName,
-          }}
-            onChange={(e)=>{handleInputChange(e,e.target.value)
-              item.brandName = e.target.value;
-            }}
-          />
-        )}
-      />
+                          <Autocomplete
+                            id="autocomplete"
+                            size="small"
+                            style={{
+                              width: "20rem",
+                            }}
+                            options={options}
+                            getOptionLabel={(option) =>
+                              option ? option.brandName : ""
+                            }
+                            onChange={(event, value) => {
+                              if (value) {
+                                item.brandName = value.brandName;
+                                item.liquorID = value._id;
+                              } else {
+                                item.brandName = "";
+                                item.liquorID = "";
+                              }
+                              midFormOnChange(event, index);
+                            }}
+                            renderInput={(params) => (
+                              <TextField
+                                required
+                                size="small"
+                                {...params}
+                                // value={beerFront.brandName}
+                                inputProps={{
+                                  ...params.inputProps,
+                                  value: item.brandName,
+                                }}
+                                onChange={(e) => {
+                                  handleInputChange(e, e.target.value);
+                                  item.brandName = e.target.value;
+                                }}
+                              />
+                            )}
+                          />
                         </td>
 
                         <td>
-          <div className="form-control ">
-            <select
-              className="semiSmallInput wd-9"
-              name="ml"
-              value={item.ml}
-              onChange={(e) => midFormOnChange(e, index)}
-              required
-            >
-
-              <option selected value={750}>
-                750ml
-              </option>
-              <option value={700}>700ml</option>
-              <option value={650}>650ml</option>
-              <option value={550}>550ml</option>
-              <option value={500}>500ml</option>
-              <option value={375}>375ml</option>
-              <option value={330}>330ml</option>
-              <option value={275}>275ml</option>
-              <option value={250}>250ml</option>
-              <option value={200}>200ml</option>
-              <option value={180}>180ml</option>
-              <option selected value={90}>90ml</option>
-              <option value={60}>60ml</option>
-              <option value={50}>50ml</option>
-            </select>
-          </div>
-        </td>
+                          <div className="form-control ">
+                            <select
+                              className="semiSmallInput wd-9"
+                              name="ml"
+                              value={item.ml}
+                              onChange={(e) => midFormOnChange(e, index)}
+                              required
+                            >
+                              <option selected value={750}>
+                                750ml
+                              </option>
+                              <option value={700}>700ml</option>
+                              <option value={650}>650ml</option>
+                              <option value={550}>550ml</option>
+                              <option value={500}>500ml</option>
+                              <option value={375}>375ml</option>
+                              <option value={330}>330ml</option>
+                              <option value={275}>275ml</option>
+                              <option value={250}>250ml</option>
+                              <option value={200}>200ml</option>
+                              <option value={180}>180ml</option>
+                              <option selected value={90}>
+                                90ml
+                              </option>
+                              <option value={60}>60ml</option>
+                              <option value={50}>50ml</option>
+                            </select>
+                          </div>
+                        </td>
                         {/* ======== MRP Input ========= */}
                         <td>
                           <div className="flex ">
@@ -1313,12 +1393,8 @@ const FronteDailyReport = () => {
                   </th>
                   <td></td>
                   {/* ======== MRP Input ========= */}
-                  <td>
-                    
-                  </td>
-                  <td>
-                    
-                  </td>
+                  <td></td>
+                  <td></td>
                   {/* ======== प्रारम्भिक स्टॉक ========= */}
                   <td>
                     <div className="flex ">
@@ -1327,7 +1403,12 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="openingStockOtherMl"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.openingStockOtherMl),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total =
+                                total + Number(curr.openingStockOtherMl)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1336,7 +1417,11 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="openingStock30"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.openingStock30),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.openingStock30)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1352,7 +1437,12 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowPurchaseOtherMl"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowPurchaseOtherMl),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total =
+                                total + Number(curr.inflowPurchaseOtherMl)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1361,16 +1451,18 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowPurchase30"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowPurchase30),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.inflowPurchase30)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
                     </div>
                   </td>
 
-                  <td>
-                    
-                  </td>
+                  <td></td>
 
                   {/* ======== आमद (खरीद)-बा. ========= */}
 
@@ -1382,7 +1474,13 @@ const FronteDailyReport = () => {
                           className="smallinput"
                           name="inflowPurchaseFromOutsideOtherMl
                           "
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowPurchaseFromOutsideOtherMl),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total =
+                                total +
+                                Number(curr.inflowPurchaseFromOutsideOtherMl)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1391,7 +1489,13 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowPurchaseFromOutside30"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowPurchaseFromOutside30),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total =
+                                total +
+                                Number(curr.inflowPurchaseFromOutside30)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1399,9 +1503,7 @@ const FronteDailyReport = () => {
                   </td>
 
                   {/*================ खरीद रेट - बा. ==================  */}
-                  <td>
-                   
-                  </td>
+                  <td></td>
 
                   <td>
                     <div className="flex ">
@@ -1410,7 +1512,12 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowCreditOtherMl"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowCreditOtherMl),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total =
+                                total + Number(curr.inflowCreditOtherMl)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1419,7 +1526,11 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="inflowCredit30"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.inflowCredit30),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.inflowCredit30)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1433,7 +1544,11 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="sending30"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.send30),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.send30)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1447,7 +1562,11 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="sumRemainder30"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.sumRemaining30),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.sumRemaining30)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1461,7 +1580,11 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="closingStock30"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.closingStock30),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.closingStock30)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
@@ -1474,15 +1597,17 @@ const FronteDailyReport = () => {
                           type="number"
                           className="smallinput"
                           name="sale30"
-                          value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.sale30),0)}
+                          value={beerShopMid.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.sale30)),
+                            0
+                          )}
                           disabled
                         />
                       </div>
                     </div>
                   </td>
-                  <td>
-                    
-                  </td>
+                  <td></td>
                   {/* ============= कुल योग ================ */}
                   <td>
                     <div className="form-control">
@@ -1490,7 +1615,10 @@ const FronteDailyReport = () => {
                         type="number"
                         className="semiSmallInput"
                         name="total"
-                        value={beerShopMid.reduce((total,curr)=>total = total + Number(curr.total),0)}
+                        value={beerShopMid.reduce(
+                          (total, curr) => (total = total + Number(curr.total)),
+                          0
+                        )}
                         disabled
                       />
                     </div>
@@ -1506,935 +1634,977 @@ const FronteDailyReport = () => {
             <>
               <div className="mt-6 ">
                 <div className="overflow-x-auto flex ">
-                <table className="table commonTable">
-                    <thead>
-                      <tr>
-                        <th> क्र. सं.</th>
-                        <th></th>
-                        <th>Brand Name/ ब्राण्ड</th>
-                        <th>Average Rate</th>
-                        <th>प्रारम्भिक स्टॉक</th>
-                        <th>आमद (खरीद)-दु.</th>
-                        <th>खरीद रेट - दु</th>
-                        <th>आमद (खरीद)-बा.</th>
-                        <th>खरीद रेट - बा.</th>
-                        <th>आमद (उधारी)</th>
-                        <th>भेजान</th>
-                        <th>योग/शेष</th>
-                        <th>अन्तिम स्टॉक</th>
-                        <th>बिक्री</th>
-                        <th>रेट</th>
-                        <th>योग</th>
-                        <th>कुल योग</th>
-                      </tr>
-                    </thead>
+                  <div className="py-6">
+                    <h1 className="my-4">
+                      <span className="font-bold titleText">
+                        बिक्री रिपोर्ट
+                      </span>
+                    </h1>
 
-                    <tbody>
-                      <tr>
-                        <th></th>
-                        <td>
-                          <div className="form-control"></div>
-                        </td>
-                        {/* ======== MRP Input ========= */}
-                       <td ></td>
-                        {/* ======== प्रारम्भिक स्टॉक ========= */}
-                        <td>
-                          <div className="flex justify-evenly">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
+                    <table className="table commonTable">
+                      <thead>
+                        <tr>
+                          <th> क्र. सं.</th>
+                          <th></th>
+                          <th>Brand Name/ ब्राण्ड</th>
+                          <th>Average Rate</th>
+                          <th>प्रारम्भिक स्टॉक</th>
+                          <th>आमद (खरीद)-दु.</th>
+                          <th>खरीद रेट - दु</th>
+                          <th>आमद (खरीद)-बा.</th>
+                          <th>खरीद रेट - बा.</th>
+                          <th>आमद (उधारी)</th>
+                          <th>भेजान</th>
+                          <th>योग/शेष</th>
+                          <th>अन्तिम स्टॉक</th>
+                          <th>बिक्री</th>
+                          <th>रेट</th>
+                          <th>योग</th>
+                          <th>कुल योग</th>
+                        </tr>
+                      </thead>
 
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-
-                        <td>
-                          <div className="flex justify-evenly">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-
-                        {/* ============खरीद रेट - बा. =============  */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-
-                        {/* ======== आमद (उधारी) ========= */}
-
-                        <td>
-                          <div className="flex justify-evenly">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-                        {/* ======== भेजान ========= */}
-
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-                        {/* ======== योग/शेष ========= */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-                        {/* ======== अन्तिम स्टॉक ========= */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= बिक्री ================ */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= रेट ================ */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= योग ================ */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <div className="flex justify-evenly ">
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">650ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">550ml</span>
-                              </label>
-                            </div>
-
-                            <div className="form-control">
-                              <label className="label">
-                                <span className="label-text">330ml</span>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= कुल योग ================ */}
-                        <td>
-                          <div className="form-control"></div>
-                        </td>
-                      </tr>
-
-                      {fristFormState.map((item, index) => {
-                        return (
-                          <AddOneFristFromBack
-                            handleRemoveFieldsBack={handleRemoveFieldsBack}
-                            key={index}
-                            onChangeFristBackFormHandler={
-                              onChangeFristBackFormHandler
-                            }
-                            fristFormState={fristFormState}
-                            item={item}
-                            index={index}
-                            brands={liquors}
-                            liquors={liquors}
-                            brandsLoaded={brandsLoaded}
-                          ></AddOneFristFromBack>
-                        );
-                      })}
-
-                      <tr>
-                        <th>
-                          <button
-                            className="btn bg-[#AA237A] btn-sm"
-                            onClick={() => {thirdFormAddOne()}}
-                          >
-                            ADD
-                          </button>
-                        </th>
-                        <td></td>
-                        <td>Total</td>
-                        {/* ======== MRP Input ========= */}
-                        <td>
-                          <div className="flex ">
+                      <tbody>
+                        <tr>
+                          <th></th>
+                          <td>
                             <div className="form-control"></div>
+                          </td>
+                          {/* ======== MRP Input ========= */}
+                          <td></td>
+                          {/* ======== प्रारम्भिक स्टॉक ========= */}
+                          <td>
+                            <div className="flex justify-evenly">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
 
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+
+                          <td>
+                            <div className="flex justify-evenly">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+
+                          {/* ============खरीद रेट - बा. =============  */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+
+                          {/* ======== आमद (उधारी) ========= */}
+
+                          <td>
+                            <div className="flex justify-evenly">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+                          {/* ======== भेजान ========= */}
+
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+                          {/* ======== योग/शेष ========= */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+                          {/* ======== अन्तिम स्टॉक ========= */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+                          {/* ============= बिक्री ================ */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+                          {/* ============= रेट ================ */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+                          {/* ============= योग ================ */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="flex justify-evenly ">
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">650ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">550ml</span>
+                                </label>
+                              </div>
+
+                              <div className="form-control">
+                                <label className="label">
+                                  <span className="label-text">330ml</span>
+                                </label>
+                              </div>
+                            </div>
+                          </td>
+                          {/* ============= कुल योग ================ */}
+                          <td>
                             <div className="form-control"></div>
+                          </td>
+                        </tr>
 
-                            <div className="form-control"></div>
-                          </div>
-                        </td>
-                        {/* ======== प्रारम्भिक स्टॉक ========= */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.startingStock650)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                className="smallinput"
-                                disabled
-                                type="number"
-                                name="startingStock"
-                              />
+                        {fristFormState.map((item, index) => {
+                          return (
+                            <AddOneFristFromBack
+                              handleRemoveFieldsBack={handleRemoveFieldsBack}
+                              key={index}
+                              onChangeFristBackFormHandler={
+                                onChangeFristBackFormHandler
+                              }
+                              fristFormState={fristFormState}
+                              item={item}
+                              index={index}
+                              brands={liquors}
+                              liquors={liquors}
+                              brandsLoaded={brandsLoaded}
+                            ></AddOneFristFromBack>
+                          );
+                        })}
+
+                        <tr>
+                          <th>
+                            <button
+                              className="btn bg-[#AA237A] btn-sm"
+                              onClick={() => {
+                                thirdFormAddOne();
+                              }}
+                            >
+                              ADD
+                            </button>
+                          </th>
+                          <td></td>
+                          <td>Total</td>
+                          {/* ======== MRP Input ========= */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control"></div>
+
+                              <div className="form-control"></div>
+
+                              <div className="form-control"></div>
                             </div>
+                          </td>
+                          {/* ======== प्रारम्भिक स्टॉक ========= */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.startingStock650)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  className="smallinput"
+                                  disabled
+                                  type="number"
+                                  name="startingStock"
+                                />
+                              </div>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.startingStock550)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                disabled
-                                name="startingStock"
-                              />
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.startingStock550)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  disabled
+                                  name="startingStock"
+                                />
+                              </div>
+
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.startingStock330)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  disabled
+                                  name="startingStock"
+                                />
+                              </div>
                             </div>
+                          </td>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.startingStock330)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                disabled
-                                name="startingStock"
-                              />
+                          {/* ======== आमद (खरीद)-दु. ========= */}
+
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(
+                                          currentItem.incomingPurchase650
+                                        )),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  disabled
+                                  className="smallinput"
+                                  name="incomingPurchase"
+                                />
+                              </div>
+
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(
+                                          currentItem.incomingPurchase550
+                                        )),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  disabled
+                                  name="incomingPurchase"
+                                />
+                              </div>
+
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(
+                                          currentItem.incomingPurchase330
+                                        )),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  disabled
+                                  name="incomingPurchase"
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
 
-                        {/* ======== आमद (खरीद)-दु. ========= */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control"></div>
 
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.incomingPurchase650)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                disabled
-                                className="smallinput"
-                                name="incomingPurchase"
-                              />
+                              <div className="form-control"></div>
+
+                              <div className="form-control"></div>
                             </div>
+                          </td>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.incomingPurchase550)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                disabled
-                                name="incomingPurchase"
-                              />
+                          {/* ======== आमद (खरीद)-बा. ========= */}
+
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.incomePurchase650)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="incomePurchase"
+                                  disabled
+                                />
+                              </div>
+
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.incomePurchase550)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  disabled
+                                  name="incomePurchase"
+                                />
+                              </div>
+
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.incomePurchase330)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="incomePurchase"
+                                  disabled
+                                />
+                              </div>
                             </div>
+                          </td>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.incomingPurchase330)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                disabled
-                                name="incomingPurchase"
-                              />
+                          {/*================ खरीद रेट - बा. ==================  */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control"></div>
+
+                              <div className="form-control"></div>
+
+                              <div className="form-control"></div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
 
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control"></div>
+                          {/* ======== आमद (उधारी) ========= */}
 
-                            <div className="form-control"></div>
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.inflowCredit650)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="inflowCredit"
+                                  disabled
+                                />
+                              </div>
 
-                            <div className="form-control"></div>
-                          </div>
-                        </td>
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.inflowCredit550)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="inflowCredit"
+                                  disabled
+                                />
+                              </div>
 
-                        {/* ======== आमद (खरीद)-बा. ========= */}
-
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.incomePurchase650)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="incomePurchase"
-                                disabled
-                              />
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.inflowCredit330)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="inflowCredit"
+                                  disabled
+                                />
+                              </div>
                             </div>
+                          </td>
+                          {/* ======== भेजान ========= */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + Number(currentItem.sending650)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="sending"
+                                  disabled
+                                />
+                              </div>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.incomePurchase550)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                disabled
-                                name="incomePurchase"
-                              />
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + Number(currentItem.sending550)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="sending"
+                                  disabled
+                                />
+                              </div>
+
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + Number(currentItem.sending330)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  disabled
+                                  className="smallinput"
+                                  name="sending"
+                                />
+                              </div>
                             </div>
+                          </td>
+                          {/* ======== योग/शेष ========= */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + currentItem.sumRemainder650),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="sumRemainder"
+                                  disabled
+                                />
+                              </div>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.incomePurchase330)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="incomePurchase"
-                                disabled
-                              />
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + currentItem.sumRemainder550),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="sumRemainder"
+                                  disabled
+                                />
+                              </div>
+
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + currentItem.sumRemainder330),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="sumRemainder"
+                                  disabled
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
+                          {/* ======== अन्तिम स्टॉक ========= */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.closingStock650)),
+                                    0
+                                  )}
+                                  type="number"
+                                  className="smallinput"
+                                  name="closingStock"
+                                  disabled
+                                />
+                              </div>
 
-                        {/*================ खरीद रेट - बा. ==================  */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control"></div>
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.closingStock550)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="closingStock"
+                                  disabled
+                                />
+                              </div>
 
-                            <div className="form-control"></div>
-
-                            <div className="form-control"></div>
-                          </div>
-                        </td>
-
-                        {/* ======== आमद (उधारी) ========= */}
-
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.inflowCredit650)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="inflowCredit"
-                                disabled
-                              />
+                              <div className="form-control">
+                                <input
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.closingStock330)),
+                                    0
+                                  )}
+                                  type="number"
+                                  className="smallinput"
+                                  name="closingStock"
+                                  disabled
+                                />
+                              </div>
                             </div>
+                          </td>
+                          {/* ============= बिक्री ================ */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total = total + currentItem.sales650),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="sales"
+                                  disabled
+                                />
+                              </div>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.inflowCredit550)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="inflowCredit"
-                                disabled
-                              />
-                            </div>
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total = total + currentItem.sales550),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="sales"
+                                  disabled
+                                />
+                              </div>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.inflowCredit330)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="inflowCredit"
-                                disabled
-                              />
+                              <div className="form-control">
+                                <input
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total = total + currentItem.sales330),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                  type="number"
+                                  className="smallinput"
+                                  name="sales"
+                                  disabled
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                        {/* ======== भेजान ========= */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total + Number(currentItem.sending650)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="sending"
-                                disabled
-                              />
-                            </div>
+                          </td>
+                          {/* ============= रेट ================ */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total + Number(currentItem.sending550)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="sending"
-                                disabled
-                              />
-                            </div>
+                              <div className="form-control"></div>
 
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total + Number(currentItem.sending330)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                disabled
-                                className="smallinput"
-                                name="sending"
-                              />
+                              <div className="form-control"></div>
                             </div>
-                          </div>
-                        </td>
-                        {/* ======== योग/शेष ========= */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total + currentItem.sumRemainder650),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="sumRemainder"
-                                disabled
-                              />
+                          </td>
+                          {/* ============= योग ================ */}
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="smallinput wd-6"
+                                  name="total650"
+                                  disabled
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.sales650) *
+                                          Number(currentItem.mainRate650)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                />
+                              </div>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="smallinput wd-6"
+                                  name="total330"
+                                  disabled
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.sales550) *
+                                          Number(currentItem.mainRate550)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                />
+                              </div>
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="smallinput wd-6"
+                                  name="total330"
+                                  disabled
+                                  value={fristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.sales330) *
+                                          Number(currentItem.mainRate330)),
+                                    0
+                                  )}
+                                  onChange={(event) =>
+                                    onChangeFristBackFormHandler(event)
+                                  }
+                                />
+                              </div>
                             </div>
-
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total + currentItem.sumRemainder550),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="sumRemainder"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total + currentItem.sumRemainder330),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="sumRemainder"
-                                disabled
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ======== अन्तिम स्टॉक ========= */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.closingStock650)),
-                                  0
-                                )}
-                                type="number"
-                                className="smallinput"
-                                name="closingStock"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.closingStock550)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="closingStock"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.closingStock330)),
-                                  0
-                                )}
-                                type="number"
-                                className="smallinput"
-                                name="closingStock"
-                                disabled
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= बिक्री ================ */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total = total + currentItem.sales650),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="sales"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total = total + currentItem.sales550),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="sales"
-                                disabled
-                              />
-                            </div>
-
-                            <div className="form-control">
-                              <input
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total = total + currentItem.sales330),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                                type="number"
-                                className="smallinput"
-                                name="sales"
-                                disabled
-                              />
-                            </div>
-                          </div>
-                        </td>
-                        {/* ============= रेट ================ */}
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control"></div>
-
-                            <div className="form-control"></div>
-
-                            <div className="form-control"></div>
-                          </div>
-                        </td>
-                        {/* ============= योग ================ */}
-                        <td>
-                          <div className="flex ">
+                          </td>
+                          {/* ============= कुल योग ================ */}
+                          <td>
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput wd-6"
-                                name="total650"
                                 disabled
+                                className="smallinput wd-7"
+                                name="grandTotal"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
                                     (total =
                                       total +
                                       Number(currentItem.sales650) *
-                                        Number(currentItem.mainRate650)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                              />
-                            </div>
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput wd-6"
-                                name="total330"
-                                disabled
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
+                                        Number(currentItem.mainRate650) +
                                       Number(currentItem.sales550) *
-                                        Number(currentItem.mainRate550)),
-                                  0
-                                )}
-                                onChange={(event) =>
-                                  onChangeFristBackFormHandler(event)
-                                }
-                              />
-                            </div>
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="smallinput wd-6"
-                                name="total330"
-                                disabled
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
+                                        Number(currentItem.mainRate550) +
                                       Number(currentItem.sales330) *
                                         Number(currentItem.mainRate330)),
                                   0
@@ -2444,323 +2614,325 @@ const FronteDailyReport = () => {
                                 }
                               />
                             </div>
-                          </div>
-                        </td>
-                        {/* ============= कुल योग ================ */}
-                        <td>
-                          <div className="form-control">
-                            <input
-                              type="number"
-                              disabled
-                              className="smallinput wd-7"
-                              name="grandTotal"
-                              value={fristFormState.reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    Number(currentItem.sales650) *
-                                      Number(currentItem.mainRate650) +
-                                    Number(currentItem.sales550) *
-                                      Number(currentItem.mainRate550) +
-                                    Number(currentItem.sales330) *
-                                      Number(currentItem.mainRate330)),
-                                0
-                              )}
-                              onChange={(event) =>
-                                onChangeFristBackFormHandler(event)
-                              }
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
 
-                  <table className="table commonTable">
-                    <thead>
-                      <tr></tr>
-                      <tr></tr>
-                      <tr className="col-span-10">
+                  <div className="py-6">
+                    <h1 className="my-4">
+                      <span className="font-bold titleText">
+                        पानी, नमकीन, सिगरेट, पुड़िया आदि
+                      </span>
+                    </h1>
+                    <table className="table commonTable">
+                      <thead>
+                        <tr></tr>
+                        <tr></tr>
+                        {/* <tr className="col-span-10">
                         <th>पानी, नमकीन, सिगरेट, पुड़िया आदि</th>
-                      </tr>
-                      <tr>
-                        <th> क्र. सं.</th>
-                        <th>Description/ सामान का विवरण</th>
-                        <th>Buying price/ खरीद रेट</th>
-                        <th>प्राम्भिक स्टॉक</th>
-                        <th>आमद</th>
-                        <th>योग</th>
-                        <th>अंतिम स्टॉक</th>
-                        <th>बिक्री</th>
-                        <th>रेट</th>
-                        <th>योग</th>
-                      </tr>
-                    </thead>
+                      </tr> */}
+                        <tr>
+                          <th> क्र. सं.</th>
+                          <th>Description/ सामान का विवरण</th>
+                          <th>Buying price/ खरीद रेट</th>
+                          <th>प्राम्भिक स्टॉक</th>
+                          <th>आमद</th>
+                          <th>योग</th>
+                          <th>अंतिम स्टॉक</th>
+                          <th>बिक्री</th>
+                          <th>रेट</th>
+                          <th>योग</th>
+                        </tr>
+                      </thead>
 
-                    <tbody>
-                      {beerShopFrontThird.map((beerBarthird, index) => {
-                        return (
-                          <tr key={index}>
-                            <th>{index + 1}</th>
-                            <td>
-                              <input
-                                type="text"
-                                className="dailyReportInput"
-                                required
-                                min={0}
-                                name="description"
-                                value={beerBarthird.description}
-                                onChange={(event) =>
-                                  thirdFormOnChange(event, index)
-                                }
-                              />
-                            </td>
-                            <td>
-                              <div className="flex ">
-                                <div className="form-control">
-                                  <input
-                                    type="number"
-                                    required
-                                    min={0}
-                                    className="dailyReportInput"
-                                    name="buyingPrice"
-                                    value={beerBarthird.buyingPrice}
-                                    onChange={(event) =>
-                                      thirdFormOnChange(event, index)
-                                    }
-                                  />
+                      <tbody>
+                        {beerShopFrontThird.map((beerBarthird, index) => {
+                          return (
+                            <tr key={index}>
+                              <th>{index + 1}</th>
+                              <td>
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  required
+                                  min={0}
+                                  name="description"
+                                  value={beerBarthird.description}
+                                  onChange={(event) =>
+                                    thirdFormOnChange(event, index)
+                                  }
+                                />
+                              </td>
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      required
+                                      min={0}
+                                      className="dailyReportInput"
+                                      name="buyingPrice"
+                                      value={beerBarthird.buyingPrice}
+                                      onChange={(event) =>
+                                        thirdFormOnChange(event, index)
+                                      }
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
+                              </td>
 
-                            <td>
-                              <div className="flex ">
-                                <div className="form-control">
-                                  <input
-                                    type="text"
-                                    className="dailyReportInput"
-                                    name="openingStock"
-                                    required
-                                    min={0}
-                                    value={beerBarthird.openingStock}
-                                    onChange={(event) =>
-                                      thirdFormOnChange(event, index)
-                                    }
-                                  />
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="text"
+                                      className="dailyReportInput"
+                                      name="openingStock"
+                                      required
+                                      min={0}
+                                      value={beerBarthird.openingStock}
+                                      onChange={(event) =>
+                                        thirdFormOnChange(event, index)
+                                      }
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
+                              </td>
 
-                            <td>
-                              <div className="flex ">
-                                <div className="form-control">
-                                  <input
-                                    type="number"
-                                    className="dailyReportInput"
-                                    name="infllow"
-                                    required
-                                    min={0}
-                                    value={beerBarthird.infllow}
-                                    onChange={(event) =>
-                                      thirdFormOnChange(event, index)
-                                    }
-                                  />
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="dailyReportInput"
+                                      name="infllow"
+                                      required
+                                      min={0}
+                                      value={beerBarthird.infllow}
+                                      onChange={(event) =>
+                                        thirdFormOnChange(event, index)
+                                      }
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
+                              </td>
 
-                            <td>
-                              <div className="flex ">
-                                <div className="form-control">
-                                  <input
-                                    type="number"
-                                    className="dailyReportInput"
-                                    name="sum"
-                                    required
-                                    min={0}
-                                    value={beerBarthird.sum}
-                                    disabled
-                                    onChange={(event) =>
-                                      thirdFormOnChange(event, index)
-                                    }
-                                  />
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="dailyReportInput"
+                                      name="sum"
+                                      required
+                                      min={0}
+                                      value={beerBarthird.sum}
+                                      disabled
+                                      onChange={(event) =>
+                                        thirdFormOnChange(event, index)
+                                      }
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
+                              </td>
 
-                            <td>
-                              <div className="flex ">
-                                <div className="form-control">
-                                  <input
-                                    type="number"
-                                    className="dailyReportInput"
-                                    name="closingStock"
-                                    required
-                                    min={0}
-                                    value={beerBarthird.closingStock}
-                                    onChange={(event) =>
-                                      thirdFormOnChange(event, index)
-                                    }
-                                  />
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="dailyReportInput"
+                                      name="closingStock"
+                                      required
+                                      min={0}
+                                      value={beerBarthird.closingStock}
+                                      onChange={(event) =>
+                                        thirdFormOnChange(event, index)
+                                      }
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
+                              </td>
 
-                            <td>
-                              <div className="flex ">
-                                <div className="form-control">
-                                  <input
-                                    type="number"
-                                    className="dailyReportInput"
-                                    name="sales"
-                                    required
-                                    min={0}
-                                    value={beerBarthird.sales}
-                                    disabled
-                                    onChange={(event) =>
-                                      thirdFormOnChange(event, index)
-                                    }
-                                  />
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="dailyReportInput"
+                                      name="sales"
+                                      required
+                                      min={0}
+                                      value={beerBarthird.sales}
+                                      disabled
+                                      onChange={(event) =>
+                                        thirdFormOnChange(event, index)
+                                      }
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
-                            <td>
-                              <div className="flex ">
-                                <div className="form-control">
-                                  <input
-                                    type="number"
-                                    className="dailyReportInput"
-                                    name="rates"
-                                    required
-                                    min={0}
-                                    value={beerBarthird.rates}
-                                    onChange={(event) =>
-                                      thirdFormOnChange(event, index)
-                                    }
-                                  />
+                              </td>
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="dailyReportInput"
+                                      name="rates"
+                                      required
+                                      min={0}
+                                      value={beerBarthird.rates}
+                                      onChange={(event) =>
+                                        thirdFormOnChange(event, index)
+                                      }
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
+                              </td>
 
-                            <td>
-                              <div className="flex ">
-                                <div className="form-control">
-                                  <input
-                                    type="number"
-                                    className="dailyReportInput"
-                                    name="sumreminder"
-                                    required
-                                    min={0}
-                                    value={beerBarthird.sumreminder}
-                                    disabled
-                                    onChange={(event) =>
-                                      thirdFormOnChange(event, index)
-                                    }
-                                  />
+                              <td>
+                                <div className="flex ">
+                                  <div className="form-control">
+                                    <input
+                                      type="number"
+                                      className="dailyReportInput"
+                                      name="sumreminder"
+                                      required
+                                      min={0}
+                                      value={beerBarthird.sumreminder}
+                                      disabled
+                                      onChange={(event) =>
+                                        thirdFormOnChange(event, index)
+                                      }
+                                    />
+                                  </div>
                                 </div>
-                              </div>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                      <tr>
-                        <th></th>
-                        <td>
-                          
-                        </td>
-                        <td>
-                          
-                        </td>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                        <tr>
+                          <th></th>
+                          <td></td>
+                          <td></td>
 
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                type="text"
-                                className="dailyReportInput"
-                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.openingStock),0)}
-                                name="OpeningStock"
-                                disabled
-                              />
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  type="text"
+                                  className="dailyReportInput"
+                                  value={beerShopFrontThird.reduce(
+                                    (total, curr) =>
+                                      (total =
+                                        total + Number(curr.openingStock)),
+                                    0
+                                  )}
+                                  name="OpeningStock"
+                                  disabled
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
 
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="dailyReportInput"
-                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.infllow),0)}
-                                name="infllow"
-                                disabled
-                              />
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="dailyReportInput"
+                                  value={beerShopFrontThird.reduce(
+                                    (total, curr) =>
+                                      (total = total + Number(curr.infllow)),
+                                    0
+                                  )}
+                                  name="infllow"
+                                  disabled
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
 
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="dailyReportInput"
-                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.sum),0)}
-                                name="sum"
-                                disabled
-                              />
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="dailyReportInput"
+                                  value={beerShopFrontThird.reduce(
+                                    (total, curr) =>
+                                      (total = total + Number(curr.sum)),
+                                    0
+                                  )}
+                                  name="sum"
+                                  disabled
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
 
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="dailyReportInput"
-                                name="closingStock"
-                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.closingStock),0)}
-                                disabled
-                              />
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="dailyReportInput"
+                                  name="closingStock"
+                                  value={beerShopFrontThird.reduce(
+                                    (total, curr) =>
+                                      (total =
+                                        total + Number(curr.closingStock)),
+                                    0
+                                  )}
+                                  disabled
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
+                          </td>
 
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="dailyReportInput"
-                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.sales),0)}
-                                name="sales"
-                                disabled
-                              />
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="dailyReportInput"
+                                  value={beerShopFrontThird.reduce(
+                                    (total, curr) =>
+                                      (total = total + Number(curr.sales)),
+                                    0
+                                  )}
+                                  name="sales"
+                                  disabled
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                        <td>
-                          
-                        </td>
+                          </td>
+                          <td></td>
 
-                        <td>
-                          <div className="flex ">
-                            <div className="form-control">
-                              <input
-                                type="number"
-                                className="dailyReportInput"
-                                value={beerShopFrontThird.reduce((total,curr)=>total = total + Number(curr.sumreminder),0)}
-                                name="sumreminder"
-                                disabled
-                              />
+                          <td>
+                            <div className="flex ">
+                              <div className="form-control">
+                                <input
+                                  type="number"
+                                  className="dailyReportInput"
+                                  value={beerShopFrontThird.reduce(
+                                    (total, curr) =>
+                                      (total =
+                                        total + Number(curr.sumreminder)),
+                                    0
+                                  )}
+                                  name="sumreminder"
+                                  disabled
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </>
@@ -2772,251 +2944,229 @@ const FronteDailyReport = () => {
         <>
           <div className="mt-6">
             <div className="overflow-x-auto">
-            <table className="table commonTable ">
-                        <thead>
-                          <tr>
-                            <th> क्र. सं.</th>
-                            <th></th>
-                            <th>Brand Name/ ब्राण्ड</th>
-                            <th>ml</th>
-                            <th>Average Rate</th>
-                            <th>प्रारम्भिक स्टॉक</th>
-                            <th>आमद (खरीद)-दु.</th>
-                            <th>खरीद रेट - दु</th>
-                            <th>आमद (खरीद)-बा.</th>
-                            <th>खरीद रेट - बा.</th>
-                            <th>आमद (उधारी)</th>
-                            <th>भेजान</th>
-                            <th>योग/शेष</th>
-                            <th>अन्तिम स्टॉक</th>
-                            <th>बिक्री</th>
-                            <th>रेट</th>
-                            <th>योग</th>
-                            {/* <th>कुल योग</th> */}
-                          </tr>
-                        </thead>
+              <table className="table commonTable ">
+                <thead>
+                  <tr>
+                    <th> क्र. सं.</th>
+                    <th></th>
+                    <th>Brand Name/ ब्राण्ड</th>
+                    <th>ml</th>
+                    <th>Average Rate</th>
+                    <th>प्रारम्भिक स्टॉक</th>
+                    <th>आमद (खरीद)-दु.</th>
+                    <th>खरीद रेट - दु</th>
+                    <th>आमद (खरीद)-बा.</th>
+                    <th>खरीद रेट - बा.</th>
+                    <th>आमद (उधारी)</th>
+                    <th>भेजान</th>
+                    <th>योग/शेष</th>
+                    <th>अन्तिम स्टॉक</th>
+                    <th>बिक्री</th>
+                    <th>रेट</th>
+                    <th>योग</th>
+                    {/* <th>कुल योग</th> */}
+                  </tr>
+                </thead>
 
-                        <tbody>
-                          {addOneSecondFormState.map((item, index) => {
-                            return (
-                              <AddOneSecondFormBack
-                                handelSeconFormOnChange={
-                                  handelSeconFormOnChange
-                                }
-                                handleRemoveFieldsBeer={handleRemoveFieldsBeer}
-                                addOneSecondFormState={addOneSecondFormState}
-                                key={index}
-                                index={index}
-                                item={item}
-                              ></AddOneSecondFormBack>
-                            );
-                          })}
+                <tbody>
+                  {addOneSecondFormState.map((item, index) => {
+                    return (
+                      <AddOneSecondFormBack
+                        handelSeconFormOnChange={handelSeconFormOnChange}
+                        handleRemoveFieldsBeer={handleRemoveFieldsBeer}
+                        addOneSecondFormState={addOneSecondFormState}
+                        key={index}
+                        index={index}
+                        item={item}
+                      ></AddOneSecondFormBack>
+                    );
+                  })}
 
-                          <tr>
-                            <th className="sticky">
-                              <button
-                                className="btn bg-[#AA237A] btn-sm"
-                                onClick={() => addOneSecondFormHandler()}
-                              >
-                                ADD
-                              </button>
-                            </th>
-                            <td></td>
-                            <td>TOTAL</td>
-                            <td>
-                              <div className="form-control">
-                              
-                              </div>
-                            </td>
-                            {/* ======== MRP Input ========= */}
-                            <td>
-                              
-                            </td>
-                            <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="smallinput"
-                            disabled
-                                  name="startingStock"
-                                  value={addOneSecondFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.startingStock)),
-                                    0
-                                  )}
-                                  onChange={(e) => handelSeconFormOnChange(e)}
-                                />
-                              </div>
-                            </td>
-                            <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="smallinput"
-                            disabled
-                                  name="incomingPurchase"
-                                  value={addOneSecondFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.incomingPurchase)),
-                                    0
-                                  )}
-                                  onChange={(e) => handelSeconFormOnChange(e)}
-                                />
-                              </div>
-                            </td>
-                            {/* ======== प्रारम्भिक स्टॉक ========= */}
-                            <td>
-                              
-                            </td>
+                  <tr>
+                    <th className="sticky">
+                      <button
+                        className="btn bg-[#AA237A] btn-sm"
+                        onClick={() => addOneSecondFormHandler()}
+                      >
+                        ADD
+                      </button>
+                    </th>
+                    <td></td>
+                    <td>TOTAL</td>
+                    <td>
+                      <div className="form-control"></div>
+                    </td>
+                    {/* ======== MRP Input ========= */}
+                    <td></td>
+                    <td>
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput"
+                          disabled
+                          name="startingStock"
+                          value={addOneSecondFormState.reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total + Number(currentItem.startingStock)),
+                            0
+                          )}
+                          onChange={(e) => handelSeconFormOnChange(e)}
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput"
+                          disabled
+                          name="incomingPurchase"
+                          value={addOneSecondFormState.reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total + Number(currentItem.incomingPurchase)),
+                            0
+                          )}
+                          onChange={(e) => handelSeconFormOnChange(e)}
+                        />
+                      </div>
+                    </td>
+                    {/* ======== प्रारम्भिक स्टॉक ========= */}
+                    <td></td>
 
-                            {/* ======== आमद (खरीद)-दु. ========= */}
+                    {/* ======== आमद (खरीद)-दु. ========= */}
 
-                            <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="smallinput"
-                                  name="incomePurchase"
-                            disabled
-                                  value={addOneSecondFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.incomePurchase)),
-                                    0
-                                  )}
-                                  onChange={(e) => handelSeconFormOnChange(e)}
-                                />
-                              </div>
-                            </td>
-                         
-                            <td>
-                              
-                            </td>
-                       
-                            <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="smallinput"
-                            disabled
-                                  name="inflowCredit"
-                                  value={addOneSecondFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.inflowCredit)),
-                                    0
-                                  )}
-                                  onChange={(e) => handelSeconFormOnChange(e)}
-                                />
-                              </div>
-                            </td>
-                            {/* ======== भेजान ========= */}
-                            <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="smallinput"
-                            disabled
-                                  name="sending"
-                                  value={addOneSecondFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total + Number(currentItem.sending)),
-                                    0
-                                  )}
-                                  onChange={(e) => handelSeconFormOnChange(e)}
-                                />
-                              </div>
-                            </td>
-                            {/* ======== योग/शेष ========= */}
-                            <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="smallinput"
-                                  name="sumRemainder"
-                                  value={addOneSecondFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.sumRemainder)),
-                                    0
-                                  )}
-                                  onChange={(e) => handelSeconFormOnChange(e)}
-                                  disabled
-                                />
-                              </div>
-                            </td>
-                            {/* ======== अन्तिम स्टॉक ========= */}
-                            <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="smallinput"
-                            disabled
-                                  name="closingStock"
-                                  value={addOneSecondFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.closingStock)),
-                                    0
-                                  )}
-                                  onChange={(e) => handelSeconFormOnChange(e)}
-                                />
-                              </div>
-                            </td>
-                            {/* ============= बिक्री ================ */}
-                            <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="smallinput"
-                            disabled
-                                  name="sales"
-                                  value={addOneSecondFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total + Number(currentItem.sales)),
-                                    0
-                                  )}
-                                  onChange={(e) => handelSeconFormOnChange(e)}
-                                  
-                                />
-                              </div>
-                            </td>
-                            {/* ============= रेट ================ */}
-                            <td>
-                              
-                            </td>
-                            {/* ============= योग ================ */}
-                            <td>
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="smallinput wd-7"
-                                  name="total"
-                                  value={addOneSecondFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total + Number(currentItem.total)),
-                                    0
-                                  )}
-                                  onChange={(e) => handelSeconFormOnChange(e)}
-                                  disabled
-                                />
-                              </div>
-                            </td>
-                            {/* ============= कुल योग ================ */}
-                          </tr>
-                        </tbody>
-                      </table>
+                    <td>
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput"
+                          name="incomePurchase"
+                          disabled
+                          value={addOneSecondFormState.reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total + Number(currentItem.incomePurchase)),
+                            0
+                          )}
+                          onChange={(e) => handelSeconFormOnChange(e)}
+                        />
+                      </div>
+                    </td>
+
+                    <td></td>
+
+                    <td>
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput"
+                          disabled
+                          name="inflowCredit"
+                          value={addOneSecondFormState.reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total + Number(currentItem.inflowCredit)),
+                            0
+                          )}
+                          onChange={(e) => handelSeconFormOnChange(e)}
+                        />
+                      </div>
+                    </td>
+                    {/* ======== भेजान ========= */}
+                    <td>
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput"
+                          disabled
+                          name="sending"
+                          value={addOneSecondFormState.reduce(
+                            (total, currentItem) =>
+                              (total = total + Number(currentItem.sending)),
+                            0
+                          )}
+                          onChange={(e) => handelSeconFormOnChange(e)}
+                        />
+                      </div>
+                    </td>
+                    {/* ======== योग/शेष ========= */}
+                    <td>
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput"
+                          name="sumRemainder"
+                          value={addOneSecondFormState.reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total + Number(currentItem.sumRemainder)),
+                            0
+                          )}
+                          onChange={(e) => handelSeconFormOnChange(e)}
+                          disabled
+                        />
+                      </div>
+                    </td>
+                    {/* ======== अन्तिम स्टॉक ========= */}
+                    <td>
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput"
+                          disabled
+                          name="closingStock"
+                          value={addOneSecondFormState.reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total + Number(currentItem.closingStock)),
+                            0
+                          )}
+                          onChange={(e) => handelSeconFormOnChange(e)}
+                        />
+                      </div>
+                    </td>
+                    {/* ============= बिक्री ================ */}
+                    <td>
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput"
+                          disabled
+                          name="sales"
+                          value={addOneSecondFormState.reduce(
+                            (total, currentItem) =>
+                              (total = total + Number(currentItem.sales)),
+                            0
+                          )}
+                          onChange={(e) => handelSeconFormOnChange(e)}
+                        />
+                      </div>
+                    </td>
+                    {/* ============= रेट ================ */}
+                    <td></td>
+                    {/* ============= योग ================ */}
+                    <td>
+                      <div className="form-control">
+                        <input
+                          type="number"
+                          className="smallinput wd-7"
+                          name="total"
+                          value={addOneSecondFormState.reduce(
+                            (total, currentItem) =>
+                              (total = total + Number(currentItem.total)),
+                            0
+                          )}
+                          onChange={(e) => handelSeconFormOnChange(e)}
+                          disabled
+                        />
+                      </div>
+                    </td>
+                    {/* ============= कुल योग ================ */}
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </>

@@ -24,7 +24,9 @@ const DailyReport = () => {
         <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
           Back
         </Link>
-
+        <Link to="/user/bearshop/details" className="commonBtn">
+          Details
+        </Link>
       </div>
     </section>
   );

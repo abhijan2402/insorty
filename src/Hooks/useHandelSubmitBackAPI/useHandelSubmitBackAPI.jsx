@@ -210,9 +210,9 @@ const useHandelSubmitBackAPI = (shopType) => {
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
-  const fourthFront = JSON.parse(localStorage.getItem("rmlTotal"));
-  const fifthFront = JSON.parse(localStorage.getItem("totalPaymentsRecieved"));
-  const sixthFront = JSON.parse(localStorage.getItem("udhaariTotal"));
+  const fourthFront = localStorage.getItem("rmlTotal") ? JSON.parse(localStorage.getItem("rmlTotal")) : null;
+  const fifthFront = localStorage.getItem("totalPaymentsRecieved") ? JSON.parse(localStorage.getItem("totalPaymentsRecieved")) : null;
+  const sixthFront = localStorage.getItem("udhaariTotal") ? JSON.parse(localStorage.getItem("udhaariTotal")) : null;
   const seventhFront = JSON.parse(localStorage.getItem("commisionTotal"));
   const beerFormTotal = JSON.parse(localStorage.getItem("beerFormTotal"));
   const pichlaBakaya = 0;
