@@ -7,6 +7,7 @@ const useSecondFormFront = () => {
   const addOneSecondForm = {
     liquor: "",
     brandName: "",
+    size:[],
     averageRate: 0,
     startingStock: 0,
     incomingPurchase: 0,
@@ -78,7 +79,9 @@ const useSecondFormFront = () => {
   const addOneSecondFormHandler = () => {
     setAddOneSecondFormState([
       ...addOneSecondFormState,
-      {
+      { liquor: "",
+      brandName: "",
+      size:[],
         averageRate: 0,
         startingStock: 0,
         incomingPurchase: 0,

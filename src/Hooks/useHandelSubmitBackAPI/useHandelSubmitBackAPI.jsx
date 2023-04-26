@@ -52,7 +52,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails650.push({
-      liquor: GetLiqId(element.liquorID, 650, "BEER"),
+      liquor: element.size.sizes.find((elem)=>elem.quantityInML===650)._id,
       brandName: element.brandName,
       averageRate: element.averageRate650,
       quantityInML: 650,
@@ -75,10 +75,10 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails550.push({
-      liquor: GetLiqId(element.liquorID, 550, "BEER"),
+      liquor: element.size.sizes.find((elem)=>elem.quantityInML===500)._id,
       brandName: element.brandName,
       averageRate: element.averageRate550,
-      quantityInML: 550,
+      quantityInML: 500,
       openingStock: element.startingStock550,
       purchaseShop: element.incomingPurchase550,
       purchaseShopRate: element.buyRate550,
@@ -98,7 +98,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails330.push({
-      liquor: GetLiqId(element.liquorID, 330, "BEER"),
+      liquor: element.size.sizes.find((elem)=>elem.quantityInML===330)._id,
       brandName: element.brandName,
       averageRate: element.averageRate330,
       quantityInML: 330,
@@ -121,7 +121,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; newBeer ? index < newBeer.length : 0; index++) {
     const element = newBeer[index];
     beerForm.push({
-      liquor: GetLiqId(element.liquorID, element.selectStockVarient, "BEER"),
+      liquor: element.size.sizes.find((elem)=>elem.quantityInML===element.selectStockVarient)._id,
       brandName: element.brandName,
       averageRate: element.averageRate,
       quantityInML: element.selectStockVarient,
@@ -544,6 +544,8 @@ const useHandelSubmitBackAPI = (shopType) => {
         setIsLoading(false);
       }
     }
+
+    
   };
 
   return {

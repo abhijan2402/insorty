@@ -8,6 +8,7 @@ const useFormulasFristFormFront = () => {
   let addOneFristForm = {
     brandName: "",
     liquorID: "",
+    size:[],
     startingStock750: 0,
     startingStock330: 0,
     startingStock180: 0,
@@ -131,7 +132,9 @@ const useFormulasFristFormFront = () => {
       ...addOneFristFormState,
       {
         brandName: "",
+        liquorID: "",
 
+        size:[],
         startingStock750: 0,
         startingStock330: 0,
         startingStock180: 0,
@@ -200,6 +203,8 @@ const useFormulasFristFormFront = () => {
         ...data,
         {
           brandName: "",
+          liquorID: "",
+          size:[],
 
           startingStock750: 0,
           startingStock330: 0,

@@ -3,10 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import useLiquors from "./useLiquors";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../Context/DataContext";
+import axios from "axios";
 
 const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(0);
+  
   let brands;
   const { GetLiqId } = useLiquors();
   const {
@@ -16,11 +19,37 @@ const useFristFormAdd = () => {
   } = useContext(DataContextApi);
   const { liquors, brandsLoaded } = useLiquors();
 
+  const fetchData = async (liquors) => {
+
+    await axios({
+      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+      method: 'get',
+      headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+   })
+   .then(response => {
+    liquors = response.data.data
+    console.log(response.data.data,page,"page")
+    setPage(page => page + 1);
+
+
+   }) 
+   .catch(err => {
+      if(err.response.status===404){
+        console.log(err)
+      }
+   });
+  
+  };
+
   // ======================== add five in frist form ========================
 
   const fristFormObj = {
     liquorID: "",
     brandName: "",
+    size:[],
 
     averageRate650: 0,
     averageRate550: 0,
@@ -90,16 +119,17 @@ const useFristFormAdd = () => {
       setFristFormState(prevdata);
     } else {
       let firstFormData = fristFormState;
+      let liquors = []
+      fetchData(liquors)
 
-      if (!prevdata && !brandsLoaded && liquors.length > 0) {
-        console.log("started");
+      if (!prevdata && liquors.length > 0) {
         const liq = liquors.filter((item) => item.type === "BEER");
         for (let index = 0; index < liq.length; index++) {
           const quan750 = liq[index].sizes.find(
             (elem) => elem.quantityInML === 650
           );
           const quan330 = liq[index].sizes.find(
-            (elem) => elem.quantityInML === 550
+            (elem) => elem.quantityInML === 500
           );
           const quan180 = liq[index].sizes.find(
             (elem) => elem.quantityInML === 330
@@ -137,7 +167,7 @@ const useFristFormAdd = () => {
         }
       }
     }
-  }, [brandsLoaded]);
+  }, [page]);
 
   const addFiveInFristFormHandler = () => {
     let data = fristFormState;
@@ -147,6 +177,8 @@ const useFristFormAdd = () => {
         {
           liquorID: "",
           brandName: "",
+          size:[],
+
 
           averageRate650: 0,
           averageRate550: 0,
@@ -217,6 +249,8 @@ const useFristFormAdd = () => {
       {
         liquorID: "",
         brandName: "",
+        size:[],
+
 
         averageRate650: 0,
         averageRate550: 0,
@@ -1041,6 +1075,7 @@ const useFristFormAdd = () => {
   const addOneSecondForm = {
     liquor: "",
     brandName: "",
+    size:[],
     averageRate: 0,
     startingStock: 0,
     initial: 0,
@@ -1124,6 +1159,8 @@ const useFristFormAdd = () => {
       {
         averageRate: 0,
         startingStock: 0, // openingStock
+        size:[],
+
         incomingPurchase: 0,
         buyRate: 0,
         incomePurchase: 0,

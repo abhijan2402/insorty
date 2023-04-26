@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import Loader from "../../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
+import axios from "axios";
+
 
 const AddOneSecondForm = ({
   index,
@@ -12,15 +14,30 @@ const AddOneSecondForm = ({
 }) => {
   const SerialNo = index + 1;
 
-  const { liquors, brandsLoaded } = useLiquors();
+  const token = localStorage.getItem("token");
 
-  if (brandsLoaded) {
-    return (
-      <div>
-        <Loader></Loader>
-      </div>
-    );
-  }
+  const [options, setOptions] = useState([]);
+
+  const fetchOptions = async (query) => {
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setOptions(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleInputChange = (event, value) => {
+    fetchOptions(value);
+  };
 
   return (
     <>
@@ -58,47 +75,42 @@ const AddOneSecondForm = ({
 
         <td>
           <div className="form-control">
-            <Autocomplete
-              size="small"
-              style={{
-                width: "20rem",
-              }}
-              options={
-                liquors.length > 0
-                  ? liquors.filter((brand) => {
-                      if (brand.type === "WINE") {
-                        return brand;
-                      }
-                    })
-                  : ["no options"]
+          <Autocomplete
+            id="autocomplete"
+            size="small"
+            style={{
+              width: "20rem",
+            }}
+            options={options}
+            getOptionLabel={(option) => (option ? option.brandName : "")}
+            onChange={(event, value) => {
+              if (value) {
+                item.brandName = value.brandName;
+                item.liquorID = value._id;
+                item.size = value
+              } else {
+                item.brandName = "";
+                item.liquorID = "";
               }
-              getOptionLabel={(option) => (option ? option.brandName : "")}
-              onChange={(event, value) => {
-                if (value) {
-                  item.brandName = value.brandName;
-                  item.liquorID = value._id;
-                } else {
-                  item.brandName = "";
-                  item.liquorID = "";
-                }
-                handelSeconFormOnChange(event, index);
-
-                console.log(item);
-              }}
-              renderInput={(params) => (
-                <TextField
-                  required
-                  size="small"
-                  {...params}
-             
-                  inputProps={{ ...params.inputProps, value: item.brandName }}
-                  onChange={(event) => {
-                    item.brandName = event.target.value;
-                    
-                  }}
-                />
-              )}
-            />
+              handelSeconFormOnChange(event, index);
+            }}
+            renderInput={(params) => (
+              <TextField
+                required
+                size="small"
+                {...params}
+                // value={beerFront.brandName}
+                inputProps={{
+                  ...params.inputProps,
+                  value: item.brandName,
+                }}
+                onChange={(e) => {
+                  handleInputChange(e, e.target.value);
+                  item.brandName = e.target.value;
+                }}
+              />
+            )}
+          />
           </div>
         </td>
 

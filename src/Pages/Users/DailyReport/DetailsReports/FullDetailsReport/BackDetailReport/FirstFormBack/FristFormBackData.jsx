@@ -15,7 +15,7 @@ const FristFormBackData = ({ regularData, index }) => {
         console.log(quantityInML650, "4hjui");
 
         const quantityInML550 = page.entries.filter(
-          (entry) => entry.quantityInML === 550
+          (entry) => entry.quantityInML === 500
         );
 
         const quantityInML330 = page.entries.filter(

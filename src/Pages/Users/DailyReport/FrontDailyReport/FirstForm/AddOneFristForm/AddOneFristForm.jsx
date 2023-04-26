@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import Loader from "../../../../../../Components/Loader/Loader";
 import swal from "sweetalert";
+import axios from "axios";
+
 
 const AddOneFristForm = ({
   index,
@@ -18,13 +20,38 @@ const AddOneFristForm = ({
   const SerialNo = index + 1;
   const { brandsLoaded, liquors } = useLiquors();
 
-  if (brandsLoaded) {
-    return (
-      <div>
-        <Loader></Loader>
-      </div>
-    );
-  }
+  const token = localStorage.getItem("token");
+
+  const [options, setOptions] = useState([]);
+
+  const fetchOptions = async (query) => {
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setOptions(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleInputChange = (event, value) => {
+    fetchOptions(value);
+  };
+
+  // if (brandsLoaded) {
+  //   return (
+  //     <div>
+  //       <Loader></Loader>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
@@ -59,25 +86,20 @@ const AddOneFristForm = ({
           </h1>
         </th>
         <td>
+          
           <Autocomplete
+            id="autocomplete"
             size="small"
             style={{
               width: "20rem",
             }}
-            options={
-              liquors.length > 0
-                ? liquors.filter((brand) => {
-                    if (brand.type === "WINE") {
-                      return brand;
-                    }
-                  })
-                : ["no options"]
-            }
+            options={options}
             getOptionLabel={(option) => (option ? option.brandName : "")}
             onChange={(event, value) => {
               if (value) {
                 addOneFirst.brandName = value.brandName;
                 addOneFirst.liquorID = value._id;
+                addOneFirst.size = value
               } else {
                 addOneFirst.brandName = "";
                 addOneFirst.liquorID = "";
@@ -89,13 +111,14 @@ const AddOneFristForm = ({
                 required
                 size="small"
                 {...params}
-                // value={addOneFirst.brandName}
+                // value={beerFront.brandName}
                 inputProps={{
                   ...params.inputProps,
                   value: addOneFirst.brandName,
                 }}
-                onChange={(event) => {
-                  addOneFirst.brandName = event.target.value;
+                onChange={(e) => {
+                  handleInputChange(e, e.target.value);
+                  addOneFirst.brandName = e.target.value;
                 }}
               />
             )}
