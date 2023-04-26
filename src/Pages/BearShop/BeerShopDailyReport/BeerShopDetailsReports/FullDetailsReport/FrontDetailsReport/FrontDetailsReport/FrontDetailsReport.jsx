@@ -6,8 +6,8 @@ const FronteDailyReport = () => {
     <section className="mx-2">
       <div className="flex justify-center items-center flex-col">
         <div className="my-4 flex gap-4 items-center">
-          <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
-          <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
+          <h1 className="font-bold text-2xl">Daily Report Details </h1>
+          <Link to="/user/bearshop/details/back" className="commonBtn">
             Back
           </Link>
         </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState,useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "../Style/DailyReport.scss";
 import { Link } from "react-router-dom";
 import PurchaseOutSideFrom from "../../../Users/DailyReport/BackDailyReport/PurchaseOutSideForm/PurchaseOutSideFrom";
@@ -14,13 +14,12 @@ import useCashReciveAdd from "../../../../Hooks/useCashReciveAdd";
 import useBeerShopBackSubmit from "../../../../Hooks/useBeerShopBackSubmit/useBeerShopBackSubmit";
 import { DataContextApi } from "../../../../Context/DataContext";
 import DatePicker from "react-datepicker";
-import { Autocomplete,TextField } from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../Hooks/useLiquors";
-import FinalReport from '../../../Users/DailyReport/BackDailyReport/FinalReport/FinalReport'
-
+import FinalReport from "../../../Users/DailyReport/BackDailyReport/FinalReport/FinalReport";
 
 const BackDailyReport = () => {
-  const {liquors,brandsLoaded} = useLiquors()
+  const { liquors, brandsLoaded } = useLiquors();
   const sixthFomeDataTemp = {
     theDate: "",
     price: 0,
@@ -39,8 +38,15 @@ const BackDailyReport = () => {
     });
     setSixthFormState(sixthFormHandler);
     localStorage.setItem("vegitableAndOther", JSON.stringify(sixthFormState));
-    localStorage.setItem("vegitableAndOtherTotal", JSON.stringify(sixthFormState.reduce((total,curr)=>total=total+Number(curr.price),0)));
-
+    localStorage.setItem(
+      "vegitableAndOtherTotal",
+      JSON.stringify(
+        sixthFormState.reduce(
+          (total, curr) => (total = total + Number(curr.price)),
+          0
+        )
+      )
+    );
   };
 
   const addOneSixthForm = () => {
@@ -110,7 +116,7 @@ const BackDailyReport = () => {
     barandName: "",
     quantity: 0,
     amount: 0,
-    comment : ""
+    comment: "",
   };
 
   const [addBarCommissionData, setAddBarCommissionData] = useState([
@@ -127,24 +133,36 @@ const BackDailyReport = () => {
     });
     setAddBarCommissionData(barCommissionHandler);
     localStorage.setItem("barCommission", JSON.stringify(addBarCommissionData));
-    localStorage.setItem("barCommissionTotal", JSON.stringify(addBarCommissionData.reduce((total,curr)=>total=total+Number(curr.amount)),0));
-  }
+    localStorage.setItem(
+      "barCommissionTotal",
+      JSON.stringify(
+        addBarCommissionData.reduce(
+          (total, curr) => (total = total + Number(curr.amount))
+        ),
+        0
+      )
+    );
+  };
 
-  const addOneBarCommisonData = ()=> {
-    setAddBarCommissionData([...addBarCommissionData, addBarCommissionDataTamp])
-  }
+  const addOneBarCommisonData = () => {
+    setAddBarCommissionData([
+      ...addBarCommissionData,
+      addBarCommissionDataTamp,
+    ]);
+  };
 
   useEffect(() => {
-    const barCommissionPrev = JSON.parse(localStorage.getItem("barCommission"))
-    const foodVegetablePrev = JSON.parse(localStorage.getItem("vegitableAndOther"))
+    const barCommissionPrev = JSON.parse(localStorage.getItem("barCommission"));
+    const foodVegetablePrev = JSON.parse(
+      localStorage.getItem("vegitableAndOther")
+    );
     if (barCommissionPrev) {
-      setAddBarCommissionData(barCommissionPrev)
+      setAddBarCommissionData(barCommissionPrev);
     }
     if (foodVegetablePrev) {
-      setSixthFormState(foodVegetablePrev)
+      setSixthFormState(foodVegetablePrev);
     }
-  }, [])
-  
+  }, []);
 
   return (
     <>
@@ -644,7 +662,7 @@ const BackDailyReport = () => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
-                         
+
                           <td>
                             <div className="form-control">
                               <input
@@ -733,46 +751,48 @@ const BackDailyReport = () => {
                         <td>{index + 1}</td>
                         <td>
                           <div className="form-control">
-                          <Autocomplete
-            size="small"
-            style={{
-              width: "20rem",
-            }}
-            loading={brandsLoaded}
-            options={liquors &&
-              liquors.length > 0
-                ? liquors.filter((brand) => {
-                    if (brand.type === "WINE") {
-                      return brand;
-                    }
-                  })
-                : ["no options"]
-            }
-            getOptionLabel={(option) => (option ? option.brandName : "")}
-            onChange={(event, value) => {
-              if (value) {
-                item.brandName = value.brandName;
-              } else {
-                item.brandName = "";
-              }
-              onChangeBarCommission(event, index);
-            }}
-            renderInput={(params) => (
-              <TextField
-                required
-                size="small"
-                {...params}
-                // value={beerFront.brandName}
-                inputProps={{
-                  ...params.inputProps,
-                  value: item.brandName,
-                }}
-                onChange={(event) => {
-                  item.brandName = event.target.value;
-                }}
-              />
-            )}
-          />
+                            <Autocomplete
+                              size="small"
+                              style={{
+                                width: "20rem",
+                              }}
+                              loading={brandsLoaded}
+                              options={
+                                liquors && liquors.length > 0
+                                  ? liquors.filter((brand) => {
+                                      if (brand.type === "WINE") {
+                                        return brand;
+                                      }
+                                    })
+                                  : ["no options"]
+                              }
+                              getOptionLabel={(option) =>
+                                option ? option.brandName : ""
+                              }
+                              onChange={(event, value) => {
+                                if (value) {
+                                  item.brandName = value.brandName;
+                                } else {
+                                  item.brandName = "";
+                                }
+                                onChangeBarCommission(event, index);
+                              }}
+                              renderInput={(params) => (
+                                <TextField
+                                  required
+                                  size="small"
+                                  {...params}
+                                  // value={beerFront.brandName}
+                                  inputProps={{
+                                    ...params.inputProps,
+                                    value: item.brandName,
+                                  }}
+                                  onChange={(event) => {
+                                    item.brandName = event.target.value;
+                                  }}
+                                />
+                              )}
+                            />
                           </div>
                         </td>
                         <td>
@@ -793,7 +813,7 @@ const BackDailyReport = () => {
                               className="semiSmallInput"
                               name="amount"
                               onChange={(e) => onChangeBarCommission(e, index)}
-                              value={item.amount}  
+                              value={item.amount}
                             />
                           </div>
                         </td>
@@ -826,22 +846,35 @@ const BackDailyReport = () => {
                       <div className="form-control">Total</div>
                     </td>
                     <td>
-                      <div className="form-control"><input
-                              type="text"
-                              className="semiSmallInput"
-                              name="amount"
-                              disabled
-                              value={addBarCommissionData.reduce((total,curr)=>total = total+ Number(curr.quantity),0)}  
-                            /></div>
+                      <div className="form-control">
+                        <input
+                          type="text"
+                          className="semiSmallInput"
+                          name="amount"
+                          disabled
+                          value={addBarCommissionData.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.quantity)),
+                            0
+                          )}
+                        />
+                      </div>
                     </td>
                     <td>
-                      <div className="form-control"> <input
-                              type="text"
-                              className="semiSmallInput"
-                              name="amount"
-                              disabled
-                              value={addBarCommissionData.reduce((total,curr)=>total = total+ Number(curr.amount),0)}  
-                            /></div>
+                      <div className="form-control">
+                        {" "}
+                        <input
+                          type="text"
+                          className="semiSmallInput"
+                          name="amount"
+                          disabled
+                          value={addBarCommissionData.reduce(
+                            (total, curr) =>
+                              (total = total + Number(curr.amount)),
+                            0
+                          )}
+                        />
+                      </div>
                     </td>
 
                     <td>
@@ -862,7 +895,7 @@ const BackDailyReport = () => {
             </h1>
             <form action="">
               <div className="overflow-x-auto">
-               <FinalReport/>
+                <FinalReport />
               </div>
             </form>
           </div>
