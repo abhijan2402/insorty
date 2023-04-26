@@ -2,7 +2,7 @@ import React from "react";
 
 const BeerStockTopData = ({ item, index, total }) => {
   const quan650 = item.sizes.find((element) => element.quantityInML === 650);
-  const quan550 = item.sizes.find((element) => element.quantityInML === 550);
+  const quan550 = item.sizes.find((element) => element.quantityInML === 500);
   const quan330 = item.sizes.find((element) => element.quantityInML === 330);
 
   console.log(item)
@@ -23,7 +23,6 @@ const BeerStockTopData = ({ item, index, total }) => {
 
   return (
     <>
-      <tr>
         <td>{index + 1}</td>
         <td>
           <div className="form-control">{item?.brandName}</div>
@@ -91,7 +90,6 @@ const BeerStockTopData = ({ item, index, total }) => {
             </div>
         </td>
         <td>{Number(price330 + price550 + price650).toFixed(2)}</td>
-      </tr>
     </>
   );}
 };

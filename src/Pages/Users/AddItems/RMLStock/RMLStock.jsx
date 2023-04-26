@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useRef } from "react";
+import React, { useRef,useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import { useState } from "react";
@@ -7,11 +7,16 @@ import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
+import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const RmlStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const [rmlStock, setRmlStock] = useState([]);
+  const [hasMore,setHasMore] = useState(true)
+  const [page, setPage] = useState(1);
   const front = useRef(null);
   let count = 0
 
@@ -19,22 +24,35 @@ const RmlStock = () => {
     content: () => front.current,
   });
 
-  const { data: rmlStock, isLoading } = useQuery({
-    queryKey: ["rmlStock"],
-    queryFn: async () => {
-      const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllParentLiquors",
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
-      const data = await res.json();
-      return data.data;
-    },
-  });
+  const fetchData = async () => {
+    await axios({
+      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+      method: 'get',
+      headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+   })
+   .then(response => {
+    setRmlStock(data => [...data, ...response.data.data]);
+    setPage(page => page + 1);
 
-  if (isLoading) return <Loader></Loader>;
+
+   }) 
+   .catch(err => {
+      if(err.response.status===404){
+        setHasMore(false)
+      }
+   });
+  
+console.log(hasMore,'hasmore')
+  };
+
+  useEffect(() => {
+    fetchData();
+    // console.log(page,hasMore,'page ')
+  }, [rmlStock]);
+
 
   const rmlStockData = rmlStock?.filter((item) => item.type === "DESHIRML");
   const filteredData = rmlStockData.filter((item) => {
@@ -111,6 +129,14 @@ const RmlStock = () => {
           <div>
             <div className=" gap-4  my-4 ">
               <div>
+              <InfiniteScroll
+      dataLength={rmlStock.length}
+      next={fetchData}
+      hasMore={hasMore}
+      scrollableTarget="scrollableDiv"
+
+      loader={<h4>Loading...</h4>}
+    >
                 <table className="m-2 removeCommonWSpace">
                   <thead>
                     <tr>
@@ -135,7 +161,7 @@ const RmlStock = () => {
                               ) {
                                 count++
                                 return (
-                                  <tr>
+                                  <tr id="scrollableDiv">
                                     <td>{count}</td>
                                     <td>{brand.brandName}</td>
                                     <td>{size.quantityInML}</td>
@@ -187,6 +213,7 @@ const RmlStock = () => {
                     </tr>
                   </tbody>
                 </table>
+                </InfiniteScroll>
               </div>
             </div>
           </div>

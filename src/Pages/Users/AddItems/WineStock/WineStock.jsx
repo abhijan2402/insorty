@@ -1,39 +1,80 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import WineStockTopData from "./WineStockTop/WIneSotckTop";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
+import InfiniteScroll from 'react-infinite-scroll-component';
+import axios from "axios";
+
 
 const WineStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
+  const [wineStock, setWineStock] = useState([]);
+  const [hasMore,setHasMore] = useState(true)
+  const [page, setPage] = useState(1);
+
+
+
   let count = 0;
+
+
+  const fetchData = async () => {
+    await axios({
+      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+      method: 'get',
+      headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+   })
+   .then(response => {
+    setWineStock(data => [...data, ...response.data.data]);
+    setPage(page => page + 1);
+
+
+   }) 
+   .catch(err => {
+      if(err.response.status===404){
+        setHasMore(false)
+      }
+   });
+  
+console.log(hasMore,'hasmore')
+  };
+
+  useEffect(() => {
+    fetchData();
+    // console.log(page,hasMore,'page ')
+  }, [wineStock]);
+
+  
 
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
 
-  const { data: wineStock, isLoading } = useQuery({
-    queryKey: ["beerStock"],
-    queryFn: async () => {
-      const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllParentLiquors",
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
-      const data = await res.json();
-      return data.data;
-    },
-  });
+  // const { data: wineStock, isLoading } = useQuery({
+  //   queryKey: ["beerStock"],
+  //   queryFn: async () => {
+  //     const res = await fetch(
+  //       "https://insorty-api.onrender.com/shop/getAllParentLiquors",
+  //       {
+  //         method: "GET",
+  //         headers: { "Content-Type": "application/json", cookie_token: token },
+  //       }
+  //     );
+  //     const data = await res.json();
+  //     return data.data;
+  //   },
+  // });
 
-  if (isLoading) return <Loader></Loader>;
+  // if (isLoading) return <Loader></Loader>;
 
   if (!wineStock.length) {
     return <div>No data found</div>;
@@ -54,7 +95,7 @@ const WineStock = () => {
     return filterPass;
   });
 
-  if (isLoading) return <Loader></Loader>;
+  // if (isLoading) return <Loader></Loader>;
 
   let three = [];
   filteredData.map((item) => {
@@ -64,30 +105,13 @@ const WineStock = () => {
         brand.quantityInML === 375 ||
         brand.quantityInML === 180
       ) {
-        console.log(brand);
         three.push(brand);
       }
     });
   });
 
-  console.log(three);
 
-  console.log(
-    filteredData.reduce(
-      (total, currentItem) =>
-        (total =
-          total +
-          currentItem.sizes.reduce(
-            (total, currentItem) =>
-              (total =
-                total +
-                currentItem.currentStock *
-                  Number(currentItem.averageRate.$numberDecimal)),
-            0
-          )),
-      0
-    )
-  );
+  
   return (
     <section>
       <div className="title">
@@ -137,6 +161,14 @@ const WineStock = () => {
         </div>
 
         <div className="overflow-x-auto flex justify-center item-center">
+        <InfiniteScroll
+      dataLength={wineStock.length}
+      next={fetchData}
+      hasMore={hasMore}
+      scrollableTarget="scrollableDiv"
+
+      loader={<h4>Loading...</h4>}
+    >
           <table className=" removeCommonWSpace m-2">
             <thead>
               <tr>
@@ -224,19 +256,27 @@ const WineStock = () => {
                 </td>
               </tr>
 
+             
+
+
               {filteredData?.map((item, index) => {
                 return (
                   <>
+                  <tr id="scrollableDiv">
                     <WineStockTopData
                       key={item._id}
                       index={index}
                       item={item}
                     ></WineStockTopData>
+                    </tr>
                   </>
                 );
               })}
+
             </tbody>
           </table>
+          </InfiniteScroll>
+
         </div>
 
         <div>
