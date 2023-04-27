@@ -21,7 +21,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
       const element = firstFront[index];
       dataDetails650.push({
-        liquor: element.size.sizes.find((elem)=>elem.quantityInML===750)._id,
+        liquor: element.size.sizes.find((elem)=>elem.quantityInML===750)?._id,
         brandName: element.brandName,
         averageRate: element.averageRate750,
         quantityInML: 750,
@@ -44,7 +44,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
       const element = firstFront[index];
       dataDetails550.push({
-        liquor: element.size.sizes.find((elem)=>elem.quantityInML===180)._id,
+        liquor: element.size.sizes.find((elem)=>elem.quantityInML===180)?._id,
         brandName: element.brandName,
         averageRate: element.averageRate180,
         quantityInML: 180,
@@ -67,7 +67,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; firstFront ? index < firstFront.length : 0; index++) {
       const element = firstFront[index];
       dataDetails375.push({
-        liquor: element.size.sizes.find((elem)=>elem.quantityInML===375)._id,
+        liquor: element.size.sizes.find((elem)=>elem.quantityInML===375)?._id,
         brandName: element.brandName,
         averageRate: element.averageRate330,
         quantityInML: 375,
@@ -90,7 +90,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; mlForm ? index < mlForm.length : 0; index++) {
       const element = mlForm[index];
       addSecondFormData.push({
-        liquor: element.size.sizes.find((elem)=>elem.quantityInML===element.selectStockVarient)._id,
+        liquor: element.size.sizes.find((elem)=>elem.quantityInML===element.selectStockVarient)?._id,
         brandName: element.brandName,
         quantityInML: element.selectStockVarient,
         averageRate:element.averageRate,

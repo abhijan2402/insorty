@@ -9,6 +9,7 @@ const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(0);
+  const [hasMore,setHasMore]  = useState(true)
   
   let brands;
   const { GetLiqId } = useLiquors();
@@ -19,37 +20,31 @@ const useFristFormAdd = () => {
   } = useContext(DataContextApi);
   const { liquors, brandsLoaded } = useLiquors();
 
-  const fetchData = async (liquors) => {
-
-    await axios({
-      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
-      method: 'get',
-      headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-   })
-   .then(response => {
-    liquors = response.data.data
-    console.log(response.data.data,page,"page")
-    setPage(page => page + 1);
-
-
-   }) 
-   .catch(err => {
-      if(err.response.status===404){
-        console.log(err)
-      }
-   });
-  
-  };
+ 
 
   // ======================== add five in frist form ========================
 
   const fristFormObj = {
     liquorID: "",
     brandName: "",
-    size:[],
+    size:{sizes: [
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 650
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 500
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 330
+      },
+     
+  ],},
 
     averageRate650: 0,
     averageRate550: 0,
@@ -118,54 +113,75 @@ const useFristFormAdd = () => {
     if (prevdata) {
       setFristFormState(prevdata);
     } else {
-      let firstFormData = fristFormState;
-      let liquors = []
-      fetchData(liquors)
+      const fetchOptions = async (query) => {
+        await axios({
+          url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+        })
+          .then((response) => {
+            let firstFormData = fristFormState;
 
-      if (!prevdata && liquors.length > 0) {
-        const liq = liquors.filter((item) => item.type === "BEER");
-        for (let index = 0; index < liq.length; index++) {
-          const quan750 = liq[index].sizes.find(
-            (elem) => elem.quantityInML === 650
-          );
-          const quan330 = liq[index].sizes.find(
-            (elem) => elem.quantityInML === 500
-          );
-          const quan180 = liq[index].sizes.find(
-            (elem) => elem.quantityInML === 330
-          );
+            if (!prevdata && response.data.data.length > 0) {
+              const liq = response.data.data.filter((item) => item.type === "BEER");
+              for (let index = 0; index < liq.length; index++) {
+                const quan750 = liq[index].sizes.find(
+                  (elem) => elem.quantityInML === 650
+                );
+                const quan330 = liq[index].sizes.find(
+                  (elem) => elem.quantityInML === 500
+                );
+                const quan180 = liq[index].sizes.find(
+                  (elem) => elem.quantityInML === 330
+                );
+      
+                if (
+                  quan750 &&
+                  quan330 &&
+                  quan180 &&
+                  quan180.currentStock > 0 &&
+                  quan750.currentStock > 0 &&
+                  quan330.currentStock > 0
+                ) {
+                  const newFormData = { ...fristFormObj };
+                  newFormData.brandName = liq[index].brandName;
+                  newFormData.liquorID = liq[index]._id;
+                  newFormData.size = liq[index];
+                  newFormData.startingStock650 = quan750.currentStock;
+                  newFormData.startingStock550 = quan330.currentStock;
+                  newFormData.startingStock330 = quan180.currentStock;
+                  newFormData.averageRate650 = quan750.averageRate.$numberDecimal;
+                  newFormData.initial650 = quan750.averageRate.$numberDecimal;
+                  newFormData.initial550 = quan330.averageRate.$numberDecimal;
+                  newFormData.initial330 = quan180.averageRate.$numberDecimal;
+                  newFormData.averageRate550 = quan330.averageRate.$numberDecimal;
+                  newFormData.averageRate330 = quan180.averageRate.$numberDecimal;
+                  firstFormData = [newFormData, ...firstFormData];
+                  console.log(firstFormData);
+                  setFristFormState(firstFormData);
+                  localStorage.setItem("firstBack", JSON.stringify(firstFormData));
+                  localStorage.setItem(
+                    "totalFirstBack",
+                    JSON.stringify(totalState.allGrandTotal)
+                  );
+                }
+              }
+            }
+            setPage(page => page + 1);
 
-          if (
-            quan750 &&
-            quan330 &&
-            quan180 &&
-            quan180.currentStock > 0 &&
-            quan750.currentStock > 0 &&
-            quan330.currentStock > 0
-          ) {
-            const newFormData = { ...fristFormObj };
-            newFormData.brandName = liq[index].brandName;
-            newFormData.liquorID = liq[index]._id;
-            newFormData.startingStock650 = quan750.currentStock;
-            newFormData.startingStock550 = quan330.currentStock;
-            newFormData.startingStock330 = quan180.currentStock;
-            newFormData.averageRate650 = quan750.averageRate.$numberDecimal;
-            newFormData.initial650 = quan750.averageRate.$numberDecimal;
-            newFormData.initial550 = quan330.averageRate.$numberDecimal;
-            newFormData.initial330 = quan180.averageRate.$numberDecimal;
-            newFormData.averageRate550 = quan330.averageRate.$numberDecimal;
-            newFormData.averageRate330 = quan180.averageRate.$numberDecimal;
-            firstFormData = [newFormData, ...firstFormData];
-            console.log(firstFormData);
-            setFristFormState(firstFormData);
-            localStorage.setItem("firstBack", JSON.stringify(firstFormData));
-            localStorage.setItem(
-              "totalFirstBack",
-              JSON.stringify(totalState.allGrandTotal)
-            );
-          }
-        }
-      }
+          })
+          .catch((err) => {
+            console.log(err)
+            if(err.response.status===404){
+              setHasMore(false)
+            }
+          });
+      };
+
+      fetchOptions()
     }
   }, [page]);
 
@@ -177,7 +193,24 @@ const useFristFormAdd = () => {
         {
           liquorID: "",
           brandName: "",
-          size:[],
+          size:{sizes: [
+            {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 650
+            },
+            {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 500
+            },
+            {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 330
+            },
+           
+        ],},
 
 
           averageRate650: 0,
@@ -249,7 +282,24 @@ const useFristFormAdd = () => {
       {
         liquorID: "",
         brandName: "",
-        size:[],
+        size:{sizes: [
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 650
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 500
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 330
+          },
+         
+      ],},
 
 
         averageRate650: 0,
@@ -1075,7 +1125,24 @@ const useFristFormAdd = () => {
   const addOneSecondForm = {
     liquor: "",
     brandName: "",
-    size:[],
+    size:{sizes: [
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 650
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 500
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 375
+      },
+     
+  ],},
     averageRate: 0,
     startingStock: 0,
     initial: 0,
@@ -1159,7 +1226,24 @@ const useFristFormAdd = () => {
       {
         averageRate: 0,
         startingStock: 0, // openingStock
-        size:[],
+        size:{sizes: [
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 650
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 500
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 375
+          },
+         
+      ],},
 
         incomingPurchase: 0,
         buyRate: 0,

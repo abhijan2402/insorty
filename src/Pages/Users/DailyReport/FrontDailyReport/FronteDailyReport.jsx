@@ -29,6 +29,7 @@ const FronteDailyReport = () => {
     setAddOneFristFormState,
     myOptions,
     handleRemoveFields,
+    hasMore
   } = useFormulasFristFormFront();
 
   //=============== add One second form ================
@@ -38,6 +39,7 @@ const FronteDailyReport = () => {
     addOneSecondFormHandler,
     handelSeconFormOnChange,
     handleRemoveFieldsSecond,
+    hasMoreSmall
   } = useSecondFormFront();
 
   const { submitFristFormHandler, isLoadingSubmit } =
@@ -1081,6 +1083,8 @@ const FronteDailyReport = () => {
                     </tr>
                   </tbody>
                 </table>
+                <div className={hasMore===true ? '' : 'displayHidden'}>Loadinng data...</div>
+
               </div>
             </>
 
@@ -1326,6 +1330,8 @@ const FronteDailyReport = () => {
                     </tbody>
                   </table>
                 </div>
+                <div className={hasMoreSmall ? '' : 'displayHidden'}>Loadinng data...</div>
+
               </div>
             </>
           </div>

@@ -48,13 +48,7 @@ const RmlFrom = ({
 
 
 
-  if (brandsLoaded) {
-    return (
-      <div>
-        <Loader></Loader>
-      </div>
-    );
-  }
+  
 
   return (
     <>
@@ -100,6 +94,7 @@ const RmlFrom = ({
                 if (value) {
                   item.brandName = value.brandName;
                   item.liquorID = value._id;
+                  item.size = value
                 } else {
                   item.brandName = "";
                   item.liquorID = "";

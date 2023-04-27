@@ -1,13 +1,34 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import useLiquors from '../../../../../Hooks/useLiquors';
+import axios from "axios";
+
 
 const UseBeerShopFront = () => {
-  const { liquors, brandsLoaded } = useLiquors();
-
+  const token = localStorage.getItem("token");
+  const [page,setPage] = useState(0)
+  const [hasMoreSmall,sethasMoreSmall] = useState(true)
     const firstFormDataTemplate = {
         brandName: '',
         liquorID:"",
+        size:{sizes: [
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 750
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 375
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 180
+          },
+         
+      ],},
         openingStock750: 0,
         openingStock375: 0,
         openingStock180: 0,
@@ -92,10 +113,23 @@ const UseBeerShopFront = () => {
       if (prevdata) {
         setBeerShopFrontFrist(prevdata);
       }
-      let firstFormData = beerShopFrontFrist;
+
+      else{
+        const fetchOptions = async () => {
+          await axios({
+            url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          })
+            .then((response) => {
+              console.log(response.data.data)
+              let firstFormData = beerShopFrontFrist;
   
-      if (!prevdata && !brandsLoaded && liquors.length > 0) {
-        const liq = liquors.filter((item) => item.type === "WINE");
+      if (!prevdata && response.data.data.length > 0) {
+        const liq = response.data.data.filter((item) => item.type === "WINE");
         for (let index = 0; index < liq.length; index++) {
           const quan750 = liq[index].sizes.find(
             (elem) => elem.quantityInML === 750
@@ -112,6 +146,7 @@ const UseBeerShopFront = () => {
             const newFormData = { ...beerShopFrontFrist };
             newFormData.brandName = liq[index].brandName;
             newFormData.liquorID = liq[index]._id;
+            newFormData.size = liq[index];
             newFormData.openingStock750 = quan750.currentStock;
             newFormData.openingStock375 = quan330.currentStock;
             newFormData.openingStock180 = quan180.currentStock;
@@ -126,8 +161,37 @@ const UseBeerShopFront = () => {
           }
         }
       }
+          
+              setPage(page => page + 1);
   
-    }, [brandsLoaded]);
+            })
+            .catch((err) => {
+              console.log(err)
+              if(err.response.status===404){
+                sethasMoreSmall(false)
+              }
+            });
+        };
+        fetchOptions()
+      }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+  
+    }, [page]);
 
 
     const fristFormAddOne = () => {
@@ -839,13 +903,22 @@ const UseBeerShopFront = () => {
       if (smallPegFormPrev) {
         setBeerShopMid(smallPegFormPrev);
       }
-      
+
       else{
-      let firstFormData = beerShopMid;
+        const fetchOptions = async () => {
+          await axios({
+            url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          })
+            .then((response) => {
+              let firstFormData = beerShopMid;
   
-      if (!brandsLoaded && liquors.length > 0) {
-        console.log("started");
-        const liq = liquors.filter((item) => {
+      if (!smallPegFormPrev && response.data.data.length > 0) {
+        const liq = response.data.data.filter((item) => {
           if (item.type === "WINE") {
             return item;
           }
@@ -874,11 +947,35 @@ const UseBeerShopFront = () => {
             }
           });
         });
-      }
+      
+              }
+          
+              setPage(page => page + 1);
+  
+            })
+            .catch((err) => {
+              console.log(err)
+              if(err.response.status===404){
+                sethasMoreSmall(false)
+              }
+            });
+        };
+        fetchOptions()
       }
   
+  
+
+
+
+
+
+
+
+      
+      
+  
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [brandsLoaded]);
+    }, [page]);
 
     const midFormOnChange = (e, index) => {
 

@@ -51,8 +51,9 @@ const useHandelSubmitBackAPI = (shopType) => {
 
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
+    console.log(element.size,"size array")
     dataDetails650.push({
-      liquor: element.size.sizes.find((elem)=>elem.quantityInML===650)._id,
+      liquor: element.size && element.size.sizes.find((elem)=>elem.quantityInML===650)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate650,
       quantityInML: 650,
@@ -75,7 +76,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails550.push({
-      liquor: element.size.sizes.find((elem)=>elem.quantityInML===500)._id,
+      liquor: element.size.sizes.find((elem)=>elem.quantityInML===500)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate550,
       quantityInML: 500,
@@ -98,7 +99,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails330.push({
-      liquor: element.size.sizes.find((elem)=>elem.quantityInML===330)._id,
+      liquor: element.size.sizes.find((elem)=>elem.quantityInML===330)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate330,
       quantityInML: 330,
@@ -121,7 +122,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; newBeer ? index < newBeer.length : 0; index++) {
     const element = newBeer[index];
     beerForm.push({
-      liquor: element.size.sizes.find((elem)=>elem.quantityInML===element.selectStockVarient)._id,
+      liquor: element.size.sizes.find((elem)=>elem.quantityInML===element.selectStockVarient)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate,
       quantityInML: element.selectStockVarient,
@@ -149,7 +150,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   ) {
     const element = rmlFieldsData[index];
     addRmlData.push({
-      liquor: GetLiqId(element.liquorID, Number(element.ml), "DESHIRML"), //to be updated
+      liquor: element.size.sizes.find((elem)=>elem.quantityInML===element.ml)?._id, //to be updated
       brandName: element.brandName,
       openingStock: element.openingStock,
       purchaseShop: element.incomingPurchase,

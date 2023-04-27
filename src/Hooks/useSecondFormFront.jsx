@@ -1,13 +1,34 @@
 import { useState, useEffect } from "react";
 import useLiquors from "./useLiquors";
+import axios from "axios";
+
 
 const useSecondFormFront = () => {
-  const { liquors, brandsLoaded } = useLiquors();
-
+  const token = localStorage.getItem("token");
+  const [page,setPage] = useState(0)
+  const [hasMoreSmall,sethasMoreSmall] = useState(true)
   const addOneSecondForm = {
     liquor: "",
     brandName: "",
-    size:[],
+    size:{sizes: [
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 750
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 375
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 180
+      },
+     
+     
+  ],},
     averageRate: 0,
     startingStock: 0,
     incomingPurchase: 0,
@@ -36,52 +57,96 @@ const useSecondFormFront = () => {
     if (prevdata) {
       setAddOneSecondFormState(prevdata);
     }
-    
+
+
     else{
-    let firstFormData = addOneSecondFormState;
+      const fetchOptions = async () => {
+        await axios({
+          url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+        })
+          .then((response) => {
+            console.log(response.data.data)
+            let firstFormData = addOneSecondFormState;
+            if (!prevdata && response.data.data.length > 0) {
+              const liq = response.data.data.filter((item) => {
+                if (item.type === "WINE") {
+                  return item;
+                }
+              });
+        
+              liq.map((parent) => {
+                parent.sizes.map((item) => {
+                  if (
+                    item.quantityInML !== 750 &&
+                    item.quantityInML !== 375 &&
+                    item.quantityInML !== 180 &&
+                    item.currentStock > 0
+                  ) {
+                    const newFormData = { ...addOneSecondForm };
+        
+                    newFormData.brandName = parent.brandName;
+                    newFormData.liquorID = parent._id;
+                    
+                    newFormData.selectStockVarient = item.quantityInML;
+                    newFormData.startingStock = item.currentStock;
+                    newFormData.averageRate = item.averageRate.$numberDecimal;
+                    newFormData.initial = item.averageRate.$numberDecimal;
+                    firstFormData = [newFormData, ...firstFormData];
+                    setAddOneSecondFormState(firstFormData);
+                    
+                  }
+                });
+              });
+            }
+            setPage(page => page + 1);
 
-    if (!brandsLoaded && liquors.length > 0) {
-      console.log("started");
-      const liq = liquors.filter((item) => {
-        if (item.type === "WINE") {
-          return item;
-        }
-      });
-
-      liq.map((parent) => {
-        parent.sizes.map((item) => {
-          if (
-            item.quantityInML !== 750 &&
-            item.quantityInML !== 375 &&
-            item.quantityInML !== 180 &&
-            item.currentStock > 0
-          ) {
-            const newFormData = { ...addOneSecondForm };
-
-            newFormData.brandName = parent.brandName;
-            newFormData.liquorID = parent._id;
-            newFormData.selectStockVarient = item.quantityInML;
-            newFormData.startingStock = item.currentStock;
-            newFormData.averageRate = item.averageRate.$numberDecimal;
-            newFormData.initial = item.averageRate.$numberDecimal;
-            firstFormData = [newFormData, ...firstFormData];
-            setAddOneSecondFormState(firstFormData);
-            
-          }
-        });
-      });
+          })
+          .catch((err) => {
+            console.log(err)
+            if(err.response.status===404){
+              sethasMoreSmall(false)
+            }
+          });
+      };
+      fetchOptions()
     }
-    }
+
+
+
+    
+    
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [brandsLoaded]);
+  }, [page]);
 
   const addOneSecondFormHandler = () => {
     setAddOneSecondFormState([
       ...addOneSecondFormState,
       { liquor: "",
       brandName: "",
-      size:[],
+      size:{sizes: [
+        {
+            _id: null,
+            currentStock: 0,
+            quantityInML: 750
+        },
+        {
+            _id: null,
+            currentStock: 0,
+            quantityInML: 375
+        },
+        {
+            _id: null,
+            currentStock: 0,
+            quantityInML: 180
+        },
+       
+    ],},
         averageRate: 0,
         startingStock: 0,
         incomingPurchase: 0,
@@ -230,6 +295,7 @@ const useSecondFormFront = () => {
     addOneSecondFormHandler,
     handelSeconFormOnChange,
     handleRemoveFieldsSecond,
+    hasMoreSmall
   };
 };
 

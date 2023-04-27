@@ -46,6 +46,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
               if (value) {
                 beerFront.brandName = value.brandName;
                 beerFront.liquorID = value._id;
+                beerFront.size = value
               } else {
                 beerFront.brandName = "";
                 beerFront.liquorID = "";

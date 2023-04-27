@@ -1,14 +1,33 @@
 import { useState, useEffect } from "react";
 import useLiquors from "../useLiquors";
+import axios from "axios";
 
 const useFormulasFristFormFront = () => {
   const token = localStorage.getItem("token");
-  const { liquors, brandsLoaded } = useLiquors();
+  const [page,setPage] = useState(0)
+  const [hasMore,setHasMore] = useState(true)
 
   let addOneFristForm = {
     brandName: "",
     liquorID: "",
-    size:[],
+    size:{sizes: [
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 750
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 375
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 180
+      },
+     
+  ],},
     startingStock750: 0,
     startingStock330: 0,
     startingStock180: 0,
@@ -68,17 +87,6 @@ const useFormulasFristFormFront = () => {
     averageRate180: 0,
   };
 
-  const [myOptions, setMyOptions] = useState([]);
-  const [data, setData] = useState();
-
-  useEffect(() => {
-    fetch("https://insorty-api.onrender.com/shop/getAllLiquors", {
-      method: "GET",
-      headers: { "Content-Type": "application/json", cookie_token: token },
-    })
-      .then((res) => res.json())
-      .then((data) => setData(data));
-  }, [token]);
 
   const [addOneFristFormState, setAddOneFristFormState] = useState([
     addOneFristForm,
@@ -89,43 +97,71 @@ const useFormulasFristFormFront = () => {
   useEffect(() => {
     if (prevdata) {
       setAddOneFristFormState(prevdata);
-    }
-    let firstFormData = addOneFristFormState;
-
-    if (!prevdata && !brandsLoaded && liquors.length > 0) {
-      const liq = liquors.filter((item) => item.type === "WINE");
-      for (let index = 0; index < liq.length; index++) {
-        const quan750 = liq[index].sizes.find(
-          (elem) => elem.quantityInML === 750
-        );
-        const quan330 = liq[index].sizes.find(
-          (elem) => elem.quantityInML === 375
-        );
-        const quan180 = liq[index].sizes.find(
-          (elem) => elem.quantityInML === 180
-        );
-
-
-        if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock > 0) {
-          const newFormData = { ...addOneFristForm };
-          newFormData.brandName = liq[index].brandName;
-          newFormData.liquorID =  liq[index]._id;
-          newFormData.startingStock750 = quan750.currentStock;
-          newFormData.startingStock330 = quan330.currentStock;
-          newFormData.startingStock180 = quan180.currentStock;
-          newFormData.averageRate750 = quan750.averageRate.$numberDecimal;
-          newFormData.initial750 = quan750.averageRate.$numberDecimal;
-          newFormData.initial330 = quan330.averageRate.$numberDecimal;
-          newFormData.initial180 = quan180.averageRate.$numberDecimal;
-          newFormData.averageRate330 = quan330.averageRate.$numberDecimal;
-          newFormData.averageRate180 = quan180.averageRate.$numberDecimal;
-          firstFormData = [newFormData, ...firstFormData];
-          setAddOneFristFormState(firstFormData);
-        }
-      }
+      setHasMore(false)
     }
 
-  }, [brandsLoaded]);
+    else{
+      const fetchOptions = async () => {
+        await axios({
+          url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+        })
+          .then((response) => {
+          //  console.log(response.data.data) 
+            let firstFormData = addOneFristFormState;
+            if (!prevdata && response.data.data.length > 0) {
+              const liq = response.data.data.filter((item) => item.type === "WINE");
+              for (let index = 0; index < liq.length; index++) {
+                const quan750 = liq[index].sizes.find(
+                  (elem) => elem.quantityInML === 750
+                );
+                const quan330 = liq[index].sizes.find(
+                  (elem) => elem.quantityInML === 375
+                );
+                const quan180 = liq[index].sizes.find(
+                  (elem) => elem.quantityInML === 180
+                );
+        
+        
+                if (quan750 && quan330 && quan180 && quan180.currentStock > 0 && quan750.currentStock > 0 && quan330.currentStock > 0) {
+                  const newFormData = { ...addOneFristForm };
+                  newFormData.brandName = liq[index].brandName;
+                  newFormData.liquorID =  liq[index]._id;
+                  newFormData.size =  liq[index];
+                  newFormData.startingStock750 = quan750.currentStock;
+                  newFormData.startingStock330 = quan330.currentStock;
+                  newFormData.startingStock180 = quan180.currentStock;
+                  newFormData.averageRate750 = quan750.averageRate.$numberDecimal;
+                  newFormData.initial750 = quan750.averageRate.$numberDecimal;
+                  newFormData.initial330 = quan330.averageRate.$numberDecimal;
+                  newFormData.initial180 = quan180.averageRate.$numberDecimal;
+                  newFormData.averageRate330 = quan330.averageRate.$numberDecimal;
+                  newFormData.averageRate180 = quan180.averageRate.$numberDecimal;
+                  firstFormData = [newFormData, ...firstFormData];
+                  setAddOneFristFormState(firstFormData);
+                }
+              }
+            }
+            setPage(page => page + 1);
+
+          })
+          .catch((err) => {
+            console.log(err)
+            if(err.response.status===404){
+              setHasMore(false)
+            }
+          });
+      };
+      fetchOptions()
+    }
+    
+
+    
+  }, [page]);
 
   const addOneFristFormHandler = () => {
     setAddOneFristFormState([
@@ -134,7 +170,24 @@ const useFormulasFristFormFront = () => {
         brandName: "",
         liquorID: "",
 
-        size:[],
+        size:{sizes: [
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 750
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 375
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 180
+          },
+         
+      ],},
         startingStock750: 0,
         startingStock330: 0,
         startingStock180: 0,
@@ -204,7 +257,24 @@ const useFormulasFristFormFront = () => {
         {
           brandName: "",
           liquorID: "",
-          size:[],
+          size:{sizes: [
+            {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 750
+            },
+            {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 375
+            },
+            {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 180
+            },
+           
+        ],},
 
           startingStock750: 0,
           startingStock330: 0,
@@ -307,14 +377,7 @@ const useFormulasFristFormFront = () => {
   });
 
   const handelFristFormOnChange = (e, index) => {
-    const getDataFromAPI = () => {
-      const res = data;
-      for (var i = 0; i < res.data.length; i++) {
-        myOptions.push(res.data[i]?.brandName);
-      }
-      setMyOptions(myOptions);
-    };
-    getDataFromAPI();
+   
 
     const firstFormHandel = addOneFristFormState.map((firstFormFront, i) =>
       index === i
@@ -839,8 +902,8 @@ const useFormulasFristFormFront = () => {
     handelFristFormOnChange,
     addOneFristFormHandler,
     addFive,
-    myOptions,
     handleRemoveFields,
+    hasMore,
   };
 };
 

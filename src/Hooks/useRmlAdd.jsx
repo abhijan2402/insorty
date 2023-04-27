@@ -1,14 +1,37 @@
 import { useState, useEffect } from "react";
 import useLiquors from "./useLiquors";
+import axios from "axios";
+
 
 const useRmlAdd = () => {
-  const { liquors, brandsLoaded } = useLiquors();
+  const token = localStorage.getItem("token");
+  const [page,setPage] = useState(0)
+  const [hasMoreSmall,sethasMoreSmall] = useState(true)
 
   const addRmlForm = {
     liquorID: "",
     brandName: "", 
+    size:{sizes: [
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 750
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 375
+      },
+      {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 180
+      },
+     
+  ],},
     ml: 750,
     initial:0,
+
     averageRate: 0,
     openingStock: 0, 
     incomingPurchase: 0, 
@@ -33,37 +56,71 @@ const useRmlAdd = () => {
     if (prevdata) {
       setAddRmlState(prevdata);
     }
-    let firstFormData = addRmlState;
 
-    if (!prevdata && !brandsLoaded && liquors.length > 0) {
-      console.log("started");
-      const liq = liquors.filter((item) => {
-        if (item.type === "RML" || item.type === "DESHIRML") {
-          return item;
-        }
-      });
-      console.log(liq);
-      liq.map((parent) => {
-        parent.sizes.map((item) => {
-          if (item.currentStock > 0){
-          const newFormData = { ...addRmlForm };
-          newFormData.brandName = parent.brandName;
-          newFormData.liquorID = parent._id;
-          newFormData.ml = item.quantityInML;
-            newFormData.openingStock = item.currentStock;
-          newFormData.averageRate = item.averageRate.$numberDecimal
-          newFormData.initial = item.averageRate.$numberDecimal
-          firstFormData = [newFormData, ...firstFormData];
-          setAddRmlState(firstFormData);
-          localStorage.setItem("rml", JSON.stringify(firstFormData));
-        }});
-      });
+
+
+
+    else{
+      const fetchOptions = async () => {
+        await axios({
+          url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+        })
+          .then((response) => {
+            console.log(response.data.data)
+            let firstFormData = addRmlState;
+
+            if (!prevdata && response.data.data.length > 0) {
+              const liq = response.data.data.filter((item) => {
+                if (item.type === "RML" || item.type === "DESHIRML") {
+                  return item;
+                }
+              });
+              liq.map((parent) => {
+                parent.sizes.map((item) => {
+                  if (item.currentStock > 0){
+                  const newFormData = { ...addRmlForm };
+                  newFormData.brandName = parent.brandName;
+                  newFormData.liquorID = parent._id;
+                  newFormData.size = parent;
+
+                  newFormData.ml = item.quantityInML;
+                    newFormData.openingStock = item.currentStock;
+                  newFormData.averageRate = item.averageRate.$numberDecimal
+                  newFormData.initial = item.averageRate.$numberDecimal
+                  firstFormData = [newFormData, ...firstFormData];
+                  setAddRmlState(firstFormData);
+                  localStorage.setItem("rml", JSON.stringify(firstFormData));
+                }});
+              });
+            }
+        
+            setPage(page => page + 1);
+
+          })
+          .catch((err) => {
+            console.log(err)
+            if(err.response.status===404){
+              sethasMoreSmall(false)
+            }
+          });
+      };
+      fetchOptions()
     }
 
 
 
+
+
+    
+
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [brandsLoaded]);
+  }, [page]);
 
   const handelAddFiveInRml = () => {
     let data = addRmlState;
@@ -73,6 +130,24 @@ const useRmlAdd = () => {
         {
           liquorID: "",
           brandName: "",
+          size:{sizes: [
+            {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 750
+            },
+            {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 375
+            },
+            {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 180
+            },
+           
+        ],},
           averageRate: 0,
           ml: 750,
           initial: 0,
@@ -101,6 +176,24 @@ const useRmlAdd = () => {
       {
         liquorID: "",
         brandName: "",
+        size:{sizes: [
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 750
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 375
+          },
+          {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 180
+          },
+         
+      ],},
         averageRate: 0,
         ml: 750,
         initial: 0,

@@ -18,8 +18,6 @@ const AddOneFristForm = ({
   setAddOneFristFormState,
 }) => {
   const SerialNo = index + 1;
-  const { brandsLoaded, liquors } = useLiquors();
-
   const token = localStorage.getItem("token");
 
   const [options, setOptions] = useState([]);
@@ -45,13 +43,7 @@ const AddOneFristForm = ({
     fetchOptions(value);
   };
 
-  // if (brandsLoaded) {
-  //   return (
-  //     <div>
-  //       <Loader></Loader>
-  //     </div>
-  //   );
-  // }
+  
 
   return (
     <>
