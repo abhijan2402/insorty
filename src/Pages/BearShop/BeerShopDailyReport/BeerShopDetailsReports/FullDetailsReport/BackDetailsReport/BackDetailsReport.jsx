@@ -487,7 +487,7 @@ const BackDailyReport = () => {
             </div>
 
             <div className="py-6">
-              <h1 className="my-4 specialwidth">
+              <h1 className="my-4 ">
                 <span className="font-bold titleText text-[1rem]">
                   पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
                 </span>
