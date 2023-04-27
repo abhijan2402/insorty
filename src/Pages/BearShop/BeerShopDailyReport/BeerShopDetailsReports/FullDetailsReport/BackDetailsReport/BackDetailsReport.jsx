@@ -422,79 +422,65 @@ const BackDailyReport = () => {
 
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            required
-                            name="amount"
-                            disabled
-                            className="smallinput wd-7"
-                          />{" "}
+                        <div className="smallinput wd-7"></div>
+                         
                         </div>
                       </td>
 
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-9"
-                            name="amount"
-                            disabled
-                          />
+                        <div  className="smallinput wd-9"></div>
+                          
                         </div>
                       </td>
 
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-9"
-                            name="amount"
-                            disabled
-                          />
+                        <div  className="smallinput wd-9"></div>
+                        
                         </div>
                       </td>
 
                       <td>
                         <div className="form-control">
-                          <input
-                            type="text"
-                            required
-                            className="smallinput wd-30"
-                            name="note"
-                          />
+                        <div  className="smallinput wd-30"></div>
+                          
                         </div>
                       </td>
                     </tr>
 
                     <tr>
-                      <th className="sticky">1</th>
-                      <td>
-                        <div className="form-control">Total</div>
-                      </td>
-
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
+                      <th>1</th>
 
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-9"
-                            name="amount"
-                            disabled
-                          />
+                        <div className="smallinput wd-7"></div>
+                         
                         </div>
                       </td>
 
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">
+                        <div  className="smallinput wd-9"></div>
+                          
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                        <div  className="smallinput wd-9"></div>
+                        
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                        <div  className="smallinput wd-30"></div>
+                          
+                        </div>
                       </td>
                     </tr>
+
                   </tbody>
                 </table>
               </div>
@@ -502,7 +488,7 @@ const BackDailyReport = () => {
 
             <div className="py-6">
               <h1 className="my-4 specialwidth">
-                <span className="font-bold titleText ">
+                <span className="font-bold titleText text-[1rem]">
                   पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
                 </span>
               </h1>
@@ -524,70 +510,56 @@ const BackDailyReport = () => {
                       <th>1</th>
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            required
-                            name="amount"
-                            disabled
-                            className="smallinput wd-7"
-                          />
+                          <div className="smallinput wd-7"></div>
                         </div>
                       </td>
 
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            required
-                            name="amount"
-                            disabled
-                            className="smallinput wd-7"
-                          />
+                          <div className="smallinput wd-7"></div>
                         </div>
                       </td>
 
                       <td>
-                        <input
-                          type="number"
-                          required
-                          name="amount"
-                          disabled
-                          className="smallinput wd-7"
-                        />
+                        <div className="form-control">
+                          <div className="smallinput wd-7"></div>
+                        </div>
                       </td>
                       <td>
-                        <input
-                          required
-                          className="smallinput"
+                        <div
+                          className="smallinput wd-7"
                           style={{
                             width: "240px",
                           }}
-                        />
+                        ></div>
                       </td>
                     </tr>
-
                     <tr>
-                      <th className="sticky">1</th>
+                      <th>1</th>
                       <td>
-                        <div className="form-control">Total</div>
-                      </td>
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-                      <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">
+                          <div className="smallinput wd-7"></div>
+                        </div>
                       </td>
 
                       <td>
-                        <input
-                          type="number"
-                          name="amount"
-                          disabled
-                          className="smallinput wd-7"
-                        />
+                        <div className="form-control">
+                          <div className="smallinput wd-7"></div>
+                        </div>
+                      </td>
+
+                      <td>
+                        <div className="form-control">
+                          <div className="smallinput wd-7"></div>
+                        </div>
                       </td>
                       <td>
-                        <div className="form-control"></div>
+                        <div
+                          className="smallinput wd-7"
+                          style={{
+                            width: "240px",
+                          }}
+                        ></div>
                       </td>
                     </tr>
                   </tbody>
@@ -617,43 +589,28 @@ const BackDailyReport = () => {
 
                       <td>
                         <div className="form-control">
-                          <input
-                            type="text"
-                            className="semiSmallInput"
-                            name="details"
-                            disabled
-                          />
+                          <div className="semiSmallInput"></div>
                         </div>
                       </td>
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            className="semiSmallInput"
-                            name="price"
-                            disabled
-                          />
+                          <div className="semiSmallInput"></div>
                         </div>
                       </td>
                     </tr>
 
                     <tr>
                       <th className="sticky">1</th>
-                      <td>
-                        <div className="form-control">Total</div>
-                      </td>
+
                       <td>
                         <div className="form-control">
-                          <input
-                            type="number"
-                            name="amount"
-                            disabled
-                            className="semiSmallInput"
-                          />
+                          <div className="semiSmallInput"></div>
                         </div>
                       </td>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">
+                          <div className="semiSmallInput"></div>
+                        </div>
                       </td>
                     </tr>
                   </tbody>
@@ -684,38 +641,22 @@ const BackDailyReport = () => {
                     <td>1</td>
                     <td>
                       <div className="form-control">
-                        <input
-                          type="text"
-                          className="semiSmallInput"
-                          disabled
-                        />
+                        <div className="semiSmallInput"></div>
                       </div>
                     </td>
                     <td>
                       <div className="form-control">
-                        <input
-                          type="text"
-                          className="semiSmallInput"
-                          disabled
-                        />
+                        <div className="semiSmallInput"></div>
                       </div>
                     </td>
                     <td>
                       <div className="form-control">
-                        <input
-                          type="text"
-                          className="semiSmallInput"
-                          disabled
-                        />
+                        <div className="semiSmallInput"></div>
                       </div>
                     </td>
                     <td>
                       <div className="form-control">
-                        <input
-                          type="text"
-                          className="semiSmallInput"
-                          disabled
-                        />
+                        <div className="semiSmallInput"></div>
                       </div>
                     </td>
                   </tr>
@@ -727,31 +668,24 @@ const BackDailyReport = () => {
                     </td>
                     <td>
                       <div className="form-control">
-                        <input
-                          type="text"
-                          className="semiSmallInput"
-                          name="amount"
-                          disabled
-                        />
+                        <div className="semiSmallInput"></div>
                       </div>
                     </td>
                     <td>
                       <div className="form-control">
-                        {" "}
-                        <input
-                          type="text"
-                          className="semiSmallInput"
-                          name="amount"
-                          disabled
-                        />
+                        <div className="semiSmallInput"></div>
                       </div>
                     </td>
 
                     <td>
-                      <div className="form-control"></div>
+                      <div className="form-control">
+                        <div className="semiSmallInput"></div>
+                      </div>
                     </td>
                     <td>
-                      <div className="form-control"></div>
+                      <div className="form-control">
+                        <div className="semiSmallInput"></div>
+                      </div>
                     </td>
                   </tr>
                 </tbody>
@@ -890,7 +824,6 @@ const BackDailyReport = () => {
               ></textarea>
             </div>
           </div>
-        
         </form>
       </section>
     </>
