@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import AddOneFristForm from "./BeerShopFirstForm/AddOneFristForm/AddOneFristForm";
 import UseBeerShopFront from "../../BeerHooks/DailyReportHooks/UseBeerShopFront/UseBeerShopFront";
-import { useQuery } from "@tanstack/react-query";
-import useFristFormSubmitAPIFront from "../../../../Hooks/useFristFormSubmitAPIFront/useFristFormSubmitAPIFront";
 import AddOneFristFromBack from "../../../Users/DailyReport/BackDailyReport/FristFormBack/AddOneFristFromBack/AddOneFristFromBack";
 import AddOneSecondFormBack from "../../../Users/DailyReport/BackDailyReport/FristFormBack/AddOneFristFromBack/AddOneSecondFormBack";
 import useFristFormAdd from "../../../../Hooks/useFristFormAdd";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../Hooks/useLiquors";
 import axios from "axios";
+import useHandleSubmiBeerShopFront from "../../BeerShopHooks/SendDailyReportFront/useHandleSubmiBeerShopFront";
+import { DataContextApi } from "../../../../Context/DataContext";
+import DatePicker from "react-datepicker";
+
 
 const FronteDailyReport = () => {
   const {
-    handelFristFormSubmit,
     fristFormAddOne,
     fristFormOnChange,
     beerShopFrontFrist,
@@ -28,6 +29,9 @@ const FronteDailyReport = () => {
 
   const token = localStorage.getItem("token");
   const { brandsLoaded, liquors } = useLiquors();
+  const { salesMan, setSalesMan, drDate, setDrDate } =
+  useContext(DataContextApi);
+
 
   const [options, setOptions] = useState([]);
 
@@ -64,33 +68,7 @@ const FronteDailyReport = () => {
 
   //=============== add One second form ================
 
-  // const {
-  //   addOneSecondFormState,
-  //   addOneSecondFormHandler,
-  //   handelSeconFormOnChange,
-  //   handleRemoveFieldsSecond,
-  // } = useSecondFormFront();
-
-
-  const { data: sujestedData, isLoading } = useQuery({
-    queryKey: ["sujestedData"],
-    queryFn: async () => {
-      const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllLiquors",
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
-      const data = await res.json();
-      return data.data;
-    },
-  });
-
-  // const onSearch = (searchTerm) => {
-  //   setAddOneFristFormState(searchTerm);
-  //   console.log("search ", searchTerm);
-  // };
+  const { handelSubmit, isLoadingSubmit } = useHandleSubmiBeerShopFront();
 
   return (
     <section className="mx-2">
@@ -101,10 +79,35 @@ const FronteDailyReport = () => {
             Back
           </Link>
         </div>
-        <div className="flex gap-4 ">
-          <h1 className="font-bold ">सेल्समेन का नाम</h1>
-          <input type="text" className="semiSmallInput" />
-          <input type="date" name="" id="" className="semiSmallInput" />
+      
+        <div className="flex gap-4 justify-center items-center ">
+          <div className="flex gap-4 justify-center items-center ">
+            <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
+            <input
+              type="text"
+              value={salesMan}
+              onChange={(e) => {
+                setSalesMan(e.target.value);
+                localStorage.setItem("salesMan", e.target.value);
+              }}
+              className="semiSmallInput"
+              style={{ width: "24rem" }}
+            />
+          </div>
+
+          <div>
+            <DatePicker
+              selected={new Date(drDate)}
+              name="year"
+              onChange={(data) => {
+                setDrDate(new Date(data));
+                console.log(data);
+              }}
+              dateFormat="dd/MM/yyyy"
+              className="inputBox date"
+              placeholderText={"dd/mm/yyyy"}
+            />
+          </div>
         </div>
       </div>
 
@@ -1016,7 +1019,7 @@ const FronteDailyReport = () => {
                             size="small"
                             style={{
                               width: "20rem",
-                            }}
+                            }}   
                             options={options}
                             getOptionLabel={(option) =>
                               option ? option.brandName : ""
@@ -1025,6 +1028,7 @@ const FronteDailyReport = () => {
                               if (value) {
                                 item.brandName = value.brandName;
                                 item.liquorID = value._id;
+                                item.size = value
                               } else {
                                 item.brandName = "";
                                 item.liquorID = "";
@@ -3172,14 +3176,46 @@ const FronteDailyReport = () => {
         </>
       </div>
 
-      <div className="mt-4 flex gap-4">
-        <button
-          className="dailyReportBtn"
-          onClick={() => handelFristFormSubmit()}
-          type="submit"
-        >
-          Submit
-        </button>
+      <div className="flex my-6 ">
+        {isLoadingSubmit ? (
+          <>
+            <button
+              type="button"
+              className="inline-flex items-center px-4 py-2 text-sm font-semibold leading-6 text-[#AA237A] transition duration-150 ease-in-out border-2 border-[#AA237A] rounded-md shadow cursor-not-allowed"
+              disabled=""
+            >
+              <svg
+                className="w-5 h-5 mr-3 -ml-1 text-[#AA237A] animate-spin"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              Loading...
+            </button>
+          </>
+        ) : (
+          <>
+            <input
+              type="submit"
+              className="dailyReportBtn"
+              onClick={() => handelSubmit()}
+            />
+          </>
+        )}
       </div>
     </section>
   );

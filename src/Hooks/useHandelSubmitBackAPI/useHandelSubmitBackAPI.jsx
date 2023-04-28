@@ -6,8 +6,7 @@ import useLiquors from "../useLiquors";
 const useHandelSubmitBackAPI = (shopType) => {
   const token = localStorage.getItem("token");
   const [isLoadingSubmit, setIsLoading] = useState(false);
-  const { intoAccountState,  paidDues } =
-    useContext(DataContextApi);
+  const { intoAccountState, paidDues } = useContext(DataContextApi);
   const rmlFieldsData = JSON.parse(localStorage.getItem("rml"));
   const beerTotal = JSON.parse(localStorage.getItem("totalFirstBack"));
   const purchaseOutside = JSON.parse(localStorage.getItem("purchases"));
@@ -48,12 +47,13 @@ const useHandelSubmitBackAPI = (shopType) => {
   }
 
   const dataDetails650 = [];
-
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
-    console.log(element.size,"size array")
+    console.log(element.size, "size array");
     dataDetails650.push({
-      liquor: element.size && element.size.sizes.find((elem)=>elem.quantityInML===650)?._id,
+      liquor:
+        element.size &&
+        element.size.sizes.find((elem) => elem.quantityInML === 650)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate650,
       quantityInML: 650,
@@ -76,7 +76,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails550.push({
-      liquor: element.size.sizes.find((elem)=>elem.quantityInML===500)?._id,
+      liquor: element.size.sizes.find((elem) => elem.quantityInML === 500)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate550,
       quantityInML: 500,
@@ -99,7 +99,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
     dataDetails330.push({
-      liquor: element.size.sizes.find((elem)=>elem.quantityInML===330)?._id,
+      liquor: element.size.sizes.find((elem) => elem.quantityInML === 330)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate330,
       quantityInML: 330,
@@ -122,7 +122,9 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; newBeer ? index < newBeer.length : 0; index++) {
     const element = newBeer[index];
     beerForm.push({
-      liquor: element.size.sizes.find((elem)=>elem.quantityInML===element.selectStockVarient)?._id,
+      liquor: element.size.sizes.find(
+        (elem) => elem.quantityInML === element.selectStockVarient
+      )?._id,
       brandName: element.brandName,
       averageRate: element.averageRate,
       quantityInML: element.selectStockVarient,
@@ -150,7 +152,9 @@ const useHandelSubmitBackAPI = (shopType) => {
   ) {
     const element = rmlFieldsData[index];
     addRmlData.push({
-      liquor: element.size.sizes.find((elem)=>elem.quantityInML===element.ml)?._id, //to be updated
+      liquor: element.size.sizes.find(
+        (elem) => elem.quantityInML === element.ml
+      )?._id, //to be updated
       brandName: element.brandName,
       openingStock: element.openingStock,
       purchaseShop: element.incomingPurchase,
@@ -211,9 +215,15 @@ const useHandelSubmitBackAPI = (shopType) => {
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
-  const fourthFront = localStorage.getItem("rmlTotal") ? JSON.parse(localStorage.getItem("rmlTotal")) : null;
-  const fifthFront = localStorage.getItem("totalPaymentsRecieved") ? JSON.parse(localStorage.getItem("totalPaymentsRecieved")) : null;
-  const sixthFront = localStorage.getItem("udhaariTotal") ? JSON.parse(localStorage.getItem("udhaariTotal")) : null;
+  const fourthFront = localStorage.getItem("rmlTotal")
+    ? JSON.parse(localStorage.getItem("rmlTotal"))
+    : null;
+  const fifthFront = localStorage.getItem("totalPaymentsRecieved")
+    ? JSON.parse(localStorage.getItem("totalPaymentsRecieved"))
+    : null;
+  const sixthFront = localStorage.getItem("udhaariTotal")
+    ? JSON.parse(localStorage.getItem("udhaariTotal"))
+    : null;
   const seventhFront = JSON.parse(localStorage.getItem("commisionTotal"));
   const beerFormTotal = JSON.parse(localStorage.getItem("beerFormTotal"));
   const pichlaBakaya = 0;
@@ -222,12 +232,11 @@ const useHandelSubmitBackAPI = (shopType) => {
   const beer = (Number(beerTotal) || 0) + (Number(beerFormTotal) || 0);
   const rmlData = fourthFront ? fourthFront : 0;
   const totalSell =
-    (Number(fourthFront) ||
-      0) + (Number(beerTotal) ||
-        0) + (Number(firstformData) ||
-          0) + (Number(secondFront) ||
-            0) + (Number(beerFormTotal) ||
-              0);
+    (Number(fourthFront) || 0) +
+    (Number(beerTotal) || 0) +
+    (Number(firstformData) || 0) +
+    (Number(secondFront) || 0) +
+    (Number(beerFormTotal) || 0);
   const borrowedCashReturn = fifthFront ? fifthFront : 0;
   const intoAccount = intoAccountState ? intoAccountState : 0;
   const borrowed = sixthFront ? sixthFront : 0;
@@ -545,8 +554,6 @@ const useHandelSubmitBackAPI = (shopType) => {
         setIsLoading(false);
       }
     }
-
-    
   };
 
   return {
