@@ -4,6 +4,25 @@ const usePurchesOutSideAdd = () => {
   const purchesOutSideAdd = {
     partyId:"",
     liquorID:"",
+    size: {
+      sizes: [
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 750,
+        },
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 375,
+        },
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 180,
+        },
+      ],
+    },
     partyName: "",
     brandName: "",
     theNumber: 0,
@@ -35,6 +54,25 @@ const usePurchesOutSideAdd = () => {
       {
         partyId: "",
         liquorID: "",
+        size: {
+          sizes: [
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 750,
+            },
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 375,
+            },
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 180,
+            },
+          ],
+        },
         partyName: "",
         brandName: "",
         theNumber: 0,
@@ -55,6 +93,25 @@ const usePurchesOutSideAdd = () => {
         {
           partyId: "",
           liquorID: "",
+          size: {
+            sizes: [
+              {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 750,
+              },
+              {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 375,
+              },
+              {
+                _id: null,
+                currentStock: 0,
+                quantityInML: 180,
+              },
+            ],
+          },
           partyName: "",
           brandName: "",
           theNumber: 0,

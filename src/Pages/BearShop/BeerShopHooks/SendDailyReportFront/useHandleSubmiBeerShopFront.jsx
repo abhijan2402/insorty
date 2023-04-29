@@ -114,21 +114,21 @@ const useHandleSubmiBeerShopFront = () => {
     const element = pegForm[index];
     pageFormData750.push({
       liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === element.selectStockVarient
+        (elem) => elem.quantityInML === 750
       )?._id,
       brandName: element.brandName,
-      averageRate: element.averageRate,
-      buyRateOut: element.buyRateOut,
-      buyRateShop: element.buyRateShop,
-      closingStock: element.closingStock,
-      inflowCredit: element.inflowCredit,
-      inflowOut: element.inflowOut,
-      inflowShop: element.inflowShop,
-      initial: element.initial,
-      openingStock: element.openingStock,
-      rate: element.rate,
-      sales: element.sales,
-      send: element.send,
+      averageRate: element.averageRate750,
+      buyRateOut: element.buyRateOut750,
+      buyRateShop: element.buyRateShop750,
+      closingStock: element.closingStock750,
+      inflowCredit: element.inflowCredit750,
+      inflowOut: element.inflowOut750,
+      inflowShop: element.inflowShop750,
+      initial: element.initial750,
+      openingStock: element.openingStock750,
+      rate: element.rate750,
+      sales: element.sales750,
+      send: element.send750,
     });
   }
 
@@ -137,21 +137,21 @@ const useHandleSubmiBeerShopFront = () => {
     const element = pegForm[index];
     pageFormData375.push({
       liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === element.selectStockVarient
+        (elem) => elem.quantityInML === 375
       )?._id,
       brandName: element.brandName,
-      averageRate: element.averageRate,
-      buyRateOut: element.buyRateOut,
-      buyRateShop: element.buyRateShop,
-      closingStock: element.closingStock,
-      inflowCredit: element.inflowCredit,
-      inflowOut: element.inflowOut,
-      inflowShop: element.inflowShop,
-      initial: element.initial,
-      openingStock: element.openingStock,
-      rate: element.rate,
-      sales: element.sales,
-      send: element.send,
+      averageRate: element.averageRate375,
+      buyRateOut: element.buyRateOut375,
+      buyRateShop: element.buyRateShop375,
+      closingStock: element.closingStock375,
+      inflowCredit: element.inflowCredit375,
+      inflowOut: element.inflowOut375,
+      inflowShop: element.inflowShop375,
+      initial: element.initial375,
+      openingStock: element.openingStock375,
+      rate: element.rate375,
+      sales: element.sales375,
+      send: element.send375,
     });
   }
 
@@ -160,21 +160,21 @@ const useHandleSubmiBeerShopFront = () => {
     const element = pegForm[index];
     pageFormData180.push({
       liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === element.selectStockVarient
+        (elem) => elem.quantityInML === 180
       )?._id,
       brandName: element.brandName,
-      averageRate: element.averageRate,
-      buyRateOut: element.buyRateOut,
-      buyRateShop: element.buyRateShop,
-      closingStock: element.closingStock,
-      inflowCredit: element.inflowCredit,
-      inflowOut: element.inflowOut,
-      inflowShop: element.inflowShop,
-      initial: element.initial,
-      openingStock: element.openingStock,
-      rate: element.rate,
-      sales: element.sales,
-      send: element.send,
+      averageRate: element.averageRate180,
+      buyRateOut: element.buyRateOut180,
+      buyRateShop: element.buyRateShop180,
+      closingStock: element.closingStock180,
+      inflowCredit: element.inflowCredit180,
+      inflowOut: element.inflowOut180,
+      inflowShop: element.inflowShop180,
+      initial: element.initial180,
+      openingStock: element.openingStock180,
+      rate: element.rate180,
+      sales: element.sales180,
+      send: element.send180,
     });
   }
 
@@ -183,21 +183,21 @@ const useHandleSubmiBeerShopFront = () => {
     const element = pegForm[index];
     pageFormData30.push({
       liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === element.selectStockVarient
+        (elem) => elem.quantityInML === 30
       )?._id,
       brandName: element.brandName,
-      averageRate: element.averageRate,
-      buyRateOut: element.buyRateOut,
-      buyRateShop: element.buyRateShop,
-      closingStock: element.closingStock,
-      inflowCredit: element.inflowCredit,
-      inflowOut: element.inflowOut,
-      inflowShop: element.inflowShop,
-      initial: element.initial,
-      openingStock: element.openingStock,
-      rate: element.rate,
-      sales: element.sales,
-      send: element.send,
+      averageRate: element.averageRate30,
+      buyRateOut: element.buyRateOut30,
+      buyRateShop: element.buyRateShop30,
+      closingStock: element.closingStock30,
+      inflowCredit: element.inflowCredit30,
+      inflowOut: element.inflowOut30,
+      inflowShop: element.inflowShop30,
+      initial: element.initial30,
+      openingStock: element.openingStock30,
+      rate: element.rate30,
+      sales: element.sales30,
+      send: element.send30,
     });
   }
 
@@ -206,7 +206,7 @@ const useHandleSubmiBeerShopFront = () => {
     const element = smallPegForm[index];
     smallPegFormData.push({
       liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === element.selectStockVarient
+        (elem) => elem.quantityInML === element.ml
       )?._id,
       averageRateOtherMl: element.averageRateOtherMl,
       brandName: element.brandName,
@@ -251,116 +251,120 @@ const useHandleSubmiBeerShopFront = () => {
     });
   }
 
-  console.log(pegForm, "pegForm data loaded +++++++++++++++");
 
   const handelSubmit = () => {
-    if (salesMan === "") {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Enter Salesman",
-      });
-    } else {
-      setIsLoading(true);
-      try {
-        const api1 = fetch(
-          "https://insorty-api.onrender.com/shop/addBackPageReportData",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-            body: JSON.stringify({
-              date: drDate,
-              salesmen: salesMan,
-              entries: [
-                ...dataDetails650,
-                ...dataDetails550,
-                ...dataDetails330,
-                ...beerForm,
-              ],
-            }),
-          }
-        );
+    // if (salesMan === "") {
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: "Enter Salesman",
+    //   });
+    // } else {
+    //   setIsLoading(true);
+    //   try {
+    //     const api1 = fetch(
+    //       "https://insorty-api.onrender.com/shop/addBackPageReportData",
+    //       {
+    //         method: "POST",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           cookie_token: token,
+    //         },
+    //         body: JSON.stringify({
+    //           date: drDate,
+    //           salesmen: salesMan,
+    //           entries: [
+    //             ...dataDetails650,
+    //             ...dataDetails550,
+    //             ...dataDetails330,
+    //             ...beerForm,
+    //           ],
+    //         }),
+    //       }
+    //     );
 
-        const api2 = fetch(
-          "https://insorty-api.onrender.com/shop/addBarFrontPageData",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-            body: JSON.stringify({
-              date: drDate,
-              salesmen: salesMan,
-              entries: [
-                ...pageFormData750,
-                ...pageFormData375,
-                ...pageFormData180,
-                ...pageFormData30,
-                ...smallPegFormData,
-              ],
-            }),
-          }
-        );
+    //     const api2 = fetch(
+    //       "https://insorty-api.onrender.com/shop/addFrontPageData",
+    //       {
+    //         method: "POST",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           cookie_token: token,
+    //         },
+    //         body: JSON.stringify({
+    //           date: drDate,
+    //           salesmen: salesMan,
+    //           shopType:"BAR",
+    //           entries: [
+    //             ...pageFormData750,
+    //             ...pageFormData375,
+    //             ...pageFormData180,
+    //             ...pageFormData30,
+    //             ...smallPegFormData,
+    //           ],
+    //         }),
+    //       }
+    //     );
 
-        const api3 = fetch(
-          "https://insorty-api.onrender.com/shop/addBarSupplementsData",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-            body: JSON.stringify({
-              date: drDate,
-              salesmen: salesMan,
-              entries: [barSuplementsData],
-            }),
-          }
-        );
+    //     const api3 = fetch(
+    //       "https://insorty-api.onrender.com/shop/addBarSupplementsData",
+    //       {
+    //         method: "POST",
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           cookie_token: token,
+    //         },
+    //         body: JSON.stringify({
+    //           date: drDate,
+    //           salesmen: salesMan,
+    //           entries: [barSuplementsData],
+    //         }),
+    //       }
+    //     );
 
-        Promise.all([api1, api2, api3])
-          .then((responses) => Promise.all(responses.map((res) => res.json())))
-          .then((data) => {
-            console.log(data , "foront beer shop");
+    //     Promise.all([api1, api2, api3])
+    //       .then((responses) => Promise.all(responses.map((res) => res.json())))
+    //       .then((data) => {
 
-            if (
-              data[0].success === true &&
-              data[1].success === true &&
-              data[2].success === true
-            ) {
-              Swal.fire({
-                icon: "success",
-                title: "Success",
-                text: "Data Saved Successfully",
-              });
-              localStorage.removeItem("backFirst");
-              localStorage.removeItem("newBeer");
-              localStorage.removeItem("pegForm");
-              localStorage.removeItem("smallPegForm");
-              localStorage.removeItem("barSuplements");
-            } else {
-              Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-              });
-            }
-          });
-      } catch (error) {
-        const errorMessage = error.message;
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: errorMessage,
-        });
-      } finally {
-        setIsLoading(false);
-      }
-    }
+    //         if (
+    //           data[0].success === true &&
+    //           data[1].success === true &&
+    //           data[2].success === true
+    //         ) {
+    //           Swal.fire({
+    //             icon: "success",
+    //             title: "Success",
+    //             text: "Data Saved Successfully",
+    //           });
+    //           localStorage.removeItem("backFirst");
+    //           localStorage.removeItem("newBeer");
+    //           localStorage.removeItem("pegForm");
+    //           localStorage.removeItem("smallPegForm");
+    //           localStorage.removeItem("barSuplements");
+    //         } else {
+    //           Swal.fire({
+    //             icon: "error",
+    //             title: "Oops...",
+    //             text: "Something went wrong!",
+    //           });
+    //         }
+    //       });
+    //   } catch (error) {
+    //     const errorMessage = error.message;
+    //     Swal.fire({
+    //       icon: "error",
+    //       title: "Oops...",
+    //       text: errorMessage,
+    //     });
+    //   } finally {
+    //     setIsLoading(false);
+    //   }
+    // }
+    console.log(pageFormData750)
+    console.log( pageFormData375)
+    console.log( pageFormData180)
+    console.log( pageFormData30)
+    console.log( smallPegFormData)
   };
 
   return {

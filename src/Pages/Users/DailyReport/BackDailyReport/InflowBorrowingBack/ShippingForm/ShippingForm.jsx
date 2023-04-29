@@ -129,6 +129,7 @@ const ShippingForm = ({
                 if (value) {
                   item.brandName = value.brandName;
                   item.liquorID = value._id;
+                  item.size  = value
                 } else {
                   item.brandName = "";
                   item.liquorID = "";

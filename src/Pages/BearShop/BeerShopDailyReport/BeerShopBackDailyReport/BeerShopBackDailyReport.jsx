@@ -114,6 +114,25 @@ const BackDailyReport = () => {
 
   const addBarCommissionDataTamp = {
     barandName: "",
+    size: {
+      sizes: [
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 750,
+        },
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 375,
+        },
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 180,
+        },
+      ],
+    },
     quantity: 0,
     amount: 0,
     comment: "",
@@ -772,6 +791,7 @@ const BackDailyReport = () => {
                               onChange={(event, value) => {
                                 if (value) {
                                   item.brandName = value.brandName;
+                                  item.size = value
                                 } else {
                                   item.brandName = "";
                                 }

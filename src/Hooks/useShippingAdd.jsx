@@ -4,6 +4,25 @@ const useShippingAdd = () => {
   const addShippingForm = {
     liquorId:"",
     partyId:"",
+    size: {
+      sizes: [
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 750,
+        },
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 375,
+        },
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 180,
+        },
+      ],
+    },
     partyName: "",
     brandName: "",
     quantity:750,
@@ -29,6 +48,25 @@ const useShippingAdd = () => {
       data = [...data, {
         liquorId: "",
         partyId: "",
+        size: {
+          sizes: [
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 750,
+            },
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 375,
+            },
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 180,
+            },
+          ],
+        },
         partyName: "",
         brandName: "",
         quantity: 750,
@@ -44,6 +82,25 @@ const useShippingAdd = () => {
     setAddShippingState([...addShippingState, {
       liquorId: "",
       partyId: "",
+      size: {
+        sizes: [
+          {
+            _id: null,
+            currentStock: 0,
+            quantityInML: 750,
+          },
+          {
+            _id: null,
+            currentStock: 0,
+            quantityInML: 375,
+          },
+          {
+            _id: null,
+            currentStock: 0,
+            quantityInML: 180,
+          },
+        ],
+      },
       partyName: "",
       brandName: "",
       quantity: 750,

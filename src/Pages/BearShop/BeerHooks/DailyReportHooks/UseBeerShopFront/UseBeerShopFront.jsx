@@ -148,7 +148,7 @@ const UseBeerShopFront = () => {
                   quan750.currentStock > 0 &&
                   quan330.currentStock > 0
                 ) {
-                  const newFormData = { ...beerShopFrontFrist };
+                  const newFormData = { ...firstFormDataTemplate };
                   newFormData.brandName = liq[index].brandName;
                   newFormData.liquorID = liq[index]._id;
                   newFormData.size = liq[index];
@@ -209,21 +209,13 @@ const UseBeerShopFront = () => {
       Number(stock1) * Number(price1) +
       Number(stock2) * Number(price2) +
       Number(stock3) * Number(price3);
-    const totalStock = Number(stock1) + Number(stock2) + Number(stock3);
+    const totalStock = calStock30(stock1, stock2, stock3);
 
     return Number(total / totalStock).toFixed(2);
   };
 
   const fristFormOnChange = (e, index) => {
-    // const getDataFromAPI = () => {
-    //   const res = data;
-    //   for (var i = 0; i < res.data.length; i++) {
-    //     myOptions.push(res.data[i]?.brandName);
-    //   }
-    //   setMyOptions(myOptions);
-    // };
-    // getDataFromAPI();
-
+    
     console.log(beerShopFrontFrist);
 
     const firstFormHandel = beerShopFrontFrist.map((firstFormFront, i) =>
@@ -1087,6 +1079,7 @@ const UseBeerShopFront = () => {
 
     const calPegPrice = (a, b, c) => {
       const d = Number(a) * Number(b);
+      console.log(d,c,"d and c")
       return Number(d) / Number(c);
     };
 
