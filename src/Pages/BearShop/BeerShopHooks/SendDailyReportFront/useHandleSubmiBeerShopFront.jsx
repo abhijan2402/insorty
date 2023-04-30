@@ -110,12 +110,10 @@ const useHandleSubmiBeerShopFront = () => {
   }
 
   const pageFormData750 = [];
-  for (let index = 0; pegForm ?  index < pegForm.length : 0; index++) {
+  for (let index = 0; pegForm ? index < pegForm.length : 0; index++) {
     const element = pegForm[index];
     pageFormData750.push({
-      liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === 750
-      )?._id,
+      liquor: element.size.sizes.find((elem) => elem.quantityInML === 750)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate750,
       buyRateOut: element.buyRateOut750,
@@ -136,9 +134,7 @@ const useHandleSubmiBeerShopFront = () => {
   for (let index = 0; pegForm ? index < pegForm.length : 0; index++) {
     const element = pegForm[index];
     pageFormData375.push({
-      liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === 375
-      )?._id,
+      liquor: element.size.sizes.find((elem) => elem.quantityInML === 375)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate375,
       buyRateOut: element.buyRateOut375,
@@ -159,9 +155,7 @@ const useHandleSubmiBeerShopFront = () => {
   for (let index = 0; pegForm ? index < pegForm.length : 0; index++) {
     const element = pegForm[index];
     pageFormData180.push({
-      liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === 180
-      )?._id,
+      liquor: element.size.sizes.find((elem) => elem.quantityInML === 180)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate180,
       buyRateOut: element.buyRateOut180,
@@ -182,9 +176,7 @@ const useHandleSubmiBeerShopFront = () => {
   for (let index = 0; pegForm ? index < pegForm.length : 0; index++) {
     const element = pegForm[index];
     pageFormData30.push({
-      liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === 30
-      )?._id,
+      liquor: element.size.sizes.find((elem) => elem.quantityInML === 30)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate30,
       buyRateOut: element.buyRateOut30,
@@ -201,44 +193,94 @@ const useHandleSubmiBeerShopFront = () => {
     });
   }
 
-  const smallPegFormData = [];
+  // const smallPegFormData = [];
+  // for (let index = 0; smallPegForm ? index < smallPegForm.length : 0; index++) {
+  //   const element = smallPegForm[index];
+  //   smallPegFormData.push({
+  //     liquor: element.size.sizes.find(
+  //       (elem) => elem.quantityInML === element.ml
+  //     )?._id,
+  //     averageRateOtherMl: element.averageRateOtherMl,
+  //     brandName: element.brandName,
+  //     buyRateShopBar30: element.buyRateShopBar30,
+  //     buyRateShopBarOtherMl: element.buyRateShopBarOtherMl,
+  //     buyRateShopOut30: element.buyRateShopOut30,
+  //     buyRateShopOutOtherMl: element.buyRateShopOutOtherMl,
+  //     closingStock30: element.closingStock30,
+  //     inflowCredit30: element.inflowCredit30,
+  //     inflowCreditOtherMl: element.inflowCreditOtherMl,
+  //     inflowPurchase30: element.inflowPurchase30,
+  //     inflowPurchaseFromOutside30: element.inflowPurchaseFromOutside30,
+  //     inflowPurchaseFromOutsideOtherMl:
+  //       element.inflowPurchaseFromOutsideOtherMl,
+  //     inflowPurchaseOtherMl: element.inflowPurchaseOtherMl,
+  //     initial: element.initial,
+  //     ml: element.ml,
+  //     openingStockOtherMl: element.openingStockOtherMl,
+  //     rate30: element.rate30,
+  //     sale30: element.sale30,
+  //     send30: element.send30,
+  //     sumRemaining30: element.sumRemaining30,
+  //     sumRemainingOtherML: element.sumRemainingOtherML,
+  //     total: element.total,
+  //   });
+  // }
+
+  const otherMl = [];
+
   for (let index = 0; smallPegForm ? index < smallPegForm.length : 0; index++) {
     const element = smallPegForm[index];
-    smallPegFormData.push({
+    otherMl.push({
       liquor: element.size.sizes.find(
         (elem) => elem.quantityInML === element.ml
       )?._id,
-      averageRateOtherMl: element.averageRateOtherMl,
       brandName: element.brandName,
-      buyRateShopBar30: element.buyRateShopBar30,
+      averageRateOtherMl: element.averageRateOtherMl,
       buyRateShopBarOtherMl: element.buyRateShopBarOtherMl,
-      buyRateShopOut30: element.buyRateShopOut30,
       buyRateShopOutOtherMl: element.buyRateShopOutOtherMl,
-      closingStock30: element.closingStock30,
-      inflowCredit30: element.inflowCredit30,
+      closingStockOtherMl: element.closingStockOtherMl,
       inflowCreditOtherMl: element.inflowCreditOtherMl,
-      inflowPurchase30: element.inflowPurchase30,
-      inflowPurchaseFromOutside30: element.inflowPurchaseFromOutside30,
+      inflowPurchaseOtherMl: element.inflowPurchaseOtherMl,
       inflowPurchaseFromOutsideOtherMl:
         element.inflowPurchaseFromOutsideOtherMl,
-      inflowPurchaseOtherMl: element.inflowPurchaseOtherMl,
-      initial: element.initial,
-      ml: element.ml,
       openingStockOtherMl: element.openingStockOtherMl,
+      rateOtherMl: element.rateOtherMl,
+      saleOtherMl: element.saleOtherMl,
+      sendOtherMl: element.sendOtherMl,
+      sumRemainingOtherML: element.sumRemainingOtherML,
+    });
+  }
+
+  const Ml30Data = [];
+
+  for (let index = 0; smallPegForm ? index < smallPegForm.length : 0; index++) {
+    const element = smallPegForm[index];
+    Ml30Data.push({
+      liquor: element.size.sizes.find((elem) => elem.quantityInML === 30)?._id,
+      brandName: element.brandName,
+      averageRateOtherMl: element.averageRateOtherMl,
+      buyRateShopBar30: element.buyRateShopBar30,
+      buyRateShopOut30: element.buyRateShopOut30,
+      closingStock30: element.closingStock30,
+      inflowCredit30: element.inflowCredit30,
+      inflowPurchase30: element.inflowPurchase30,
+      inflowPurchaseFromOutside30: element.inflowPurchaseFromOutside30,
+      openingStock30: element.openingStock30,
       rate30: element.rate30,
       sale30: element.sale30,
       send30: element.send30,
       sumRemaining30: element.sumRemaining30,
-      sumRemainingOtherML: element.sumRemainingOtherML,
-      total: element.total,
     });
   }
 
   const barSuplementsData = [];
-  for (let index = 0; barSuplements ? index < barSuplements.length : 0; index++) {
+  for (
+    let index = 0;
+    barSuplements ? index < barSuplements.length : 0;
+    index++
+  ) {
     const element = barSuplements[index];
     barSuplementsData.push({
-     
       buyingPrice: element.buyingPrice,
       closingStock: element.closingStock,
       description: element.description,
@@ -251,120 +293,121 @@ const useHandleSubmiBeerShopFront = () => {
     });
   }
 
-
   const handelSubmit = () => {
-    // if (salesMan === "") {
-    //   Swal.fire({
-    //     icon: "error",
-    //     title: "Oops...",
-    //     text: "Enter Salesman",
-    //   });
-    // } else {
-    //   setIsLoading(true);
-    //   try {
-    //     const api1 = fetch(
-    //       "https://insorty-api.onrender.com/shop/addBackPageReportData",
-    //       {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           cookie_token: token,
-    //         },
-    //         body: JSON.stringify({
-    //           date: drDate,
-    //           salesmen: salesMan,
-    //           entries: [
-    //             ...dataDetails650,
-    //             ...dataDetails550,
-    //             ...dataDetails330,
-    //             ...beerForm,
-    //           ],
-    //         }),
-    //       }
-    //     );
+    if (salesMan === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Enter Salesman",
+      });
+    } else {
+      setIsLoading(true);
+      try {
+        const api1 = fetch(
+          "https://insorty-api.onrender.com/shop/addBackPageReportData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              entries: [
+                ...dataDetails650,
+                ...dataDetails550,
+                ...dataDetails330,
+                ...beerForm,
+              ],
+            }),
+          }
+        );
 
-    //     const api2 = fetch(
-    //       "https://insorty-api.onrender.com/shop/addFrontPageData",
-    //       {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           cookie_token: token,
-    //         },
-    //         body: JSON.stringify({
-    //           date: drDate,
-    //           salesmen: salesMan,
-    //           shopType:"BAR",
-    //           entries: [
-    //             ...pageFormData750,
-    //             ...pageFormData375,
-    //             ...pageFormData180,
-    //             ...pageFormData30,
-    //             ...smallPegFormData,
-    //           ],
-    //         }),
-    //       }
-    //     );
+        const api2 = fetch(
+          "https://insorty-api.onrender.com/shop/addFrontPageData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              
+              shopType: "BAR",
+              entries: [
+                ...pageFormData750,
+                ...pageFormData375,
+                ...pageFormData180,
+                ...pageFormData30,
+                ...otherMl,
+                ...Ml30Data,
+              ],
+            }),
+          }
+        );
 
-    //     const api3 = fetch(
-    //       "https://insorty-api.onrender.com/shop/addBarSupplementsData",
-    //       {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           cookie_token: token,
-    //         },
-    //         body: JSON.stringify({
-    //           date: drDate,
-    //           salesmen: salesMan,
-    //           entries: [barSuplementsData],
-    //         }),
-    //       }
-    //     );
+        const api3 = fetch(
+          "https://insorty-api.onrender.com/shop/addBarSupplementsData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              entries: [barSuplementsData],
+            }),
+          }
+        );
 
-    //     Promise.all([api1, api2, api3])
-    //       .then((responses) => Promise.all(responses.map((res) => res.json())))
-    //       .then((data) => {
-
-    //         if (
-    //           data[0].success === true &&
-    //           data[1].success === true &&
-    //           data[2].success === true
-    //         ) {
-    //           Swal.fire({
-    //             icon: "success",
-    //             title: "Success",
-    //             text: "Data Saved Successfully",
-    //           });
-    //           localStorage.removeItem("backFirst");
-    //           localStorage.removeItem("newBeer");
-    //           localStorage.removeItem("pegForm");
-    //           localStorage.removeItem("smallPegForm");
-    //           localStorage.removeItem("barSuplements");
-    //         } else {
-    //           Swal.fire({
-    //             icon: "error",
-    //             title: "Oops...",
-    //             text: "Something went wrong!",
-    //           });
-    //         }
-    //       });
-    //   } catch (error) {
-    //     const errorMessage = error.message;
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Oops...",
-    //       text: errorMessage,
-    //     });
-    //   } finally {
-    //     setIsLoading(false);
-    //   }
-    // }
-    console.log(pageFormData750)
-    console.log( pageFormData375)
-    console.log( pageFormData180)
-    console.log( pageFormData30)
-    console.log( smallPegFormData)
+        Promise.all([api1, api2, api3])
+          .then((responses) => Promise.all(responses.map((res) => res.json())))
+          .then((data) => {
+            if (
+              data[0].success === true &&
+              data[1].success === true &&
+              data[2].success === true
+            ) {
+              Swal.fire({
+                icon: "success",
+                title: "Success",
+                text: "Data Saved Successfully",
+              });
+              localStorage.removeItem("backFirst");
+              localStorage.removeItem("newBeer");
+              localStorage.removeItem("pegForm");
+              localStorage.removeItem("smallPegForm");
+              localStorage.removeItem("barSuplements");
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+              });
+            }
+          });
+      } catch (error) {
+        const errorMessage = error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorMessage,
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    console.log(pageFormData750);
+    console.log(pageFormData375);
+    console.log(pageFormData180);
+    console.log(pageFormData30);
+    console.log(Ml30Data);
+    console.log(otherMl);
   };
 
   return {
