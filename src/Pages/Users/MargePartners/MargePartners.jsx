@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 const MargePartners = () => {
+  const token = jwtDecode(localStorage.getItem("token"));
+  const ShopType = token.shopType;
+
   return (
     <section className="p-4">
       <div>
@@ -14,13 +18,33 @@ const MargePartners = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center">
-          <Link className="commonBtn" to="/user/partners">
-            पार्टनर खाते
-          </Link>
+          {ShopType === "BAR" ? (
+            <Link className="commonBtn" to="/user/bearshop/partners">
+              पार्टनर खाते
+            </Link>
+          ) : (
+            <Link className="commonBtn" to="/user/partners">
+              पार्टनर खाते
+            </Link>
+          )}
 
-          <Link className="commonBtn " to="/user/sendFormat">
+          {/* <Link className="commonBtn" to="/user/partners">
+            पार्टनर खाते
+          </Link> */}
+
+          {ShopType === "BAR" ? (
+            <Link className="commonBtn " to="/user/bearshop/sendFormat">
+              सभी पार्टनर
+            </Link>
+          ) : (
+            <Link className="commonBtn " to="/user/sendFormat">
+              सभी पार्टनर
+            </Link>
+          )}
+
+          {/* <Link className="commonBtn " to="/user/sendFormat">
             सभी पार्टनर
-          </Link>
+          </Link> */}
         </div>
       </div>
     </section>

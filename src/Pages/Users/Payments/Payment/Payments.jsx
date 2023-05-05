@@ -17,6 +17,7 @@ const Payments = () => {
     content: () => front.current,
   });
 
+
   const {
     data: paymentData,
     isLoading,

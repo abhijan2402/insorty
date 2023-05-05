@@ -177,7 +177,7 @@ const SideNav = () => {
 
             <li className="my-4">
               <NavLink
-                to="/user/payments"
+                to="/user/bearshop/payments"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 दुकान पेमेंट
@@ -185,7 +185,7 @@ const SideNav = () => {
             </li>
             <li className="my-4">
               <NavLink
-                to="/user/allItems"
+                to="/user/bearshop/allItems"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Add Items

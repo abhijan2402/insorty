@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useRef,useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import { useState } from "react";
@@ -9,16 +9,20 @@ import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
+import jwtDecode from "jwt-decode";
 
 const RmlStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
   const [rmlStock, setRmlStock] = useState([]);
-  const [hasMore,setHasMore] = useState(true)
+  const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
   const front = useRef(null);
-  let count = 0
+  let count = 0;
+
+  const ShoptToken = jwtDecode(localStorage.getItem("token"));
+  const ShopType = ShoptToken.shopType;
 
   const handlePrint = useReactToPrint({
     content: () => front.current,
@@ -26,33 +30,30 @@ const RmlStock = () => {
 
   const fetchData = async () => {
     await axios({
-      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
-      method: 'get',
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+      method: "get",
       headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-   })
-   .then(response => {
-    setRmlStock(data => [...data, ...response.data.data]);
-    setPage(page => page + 1);
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setRmlStock((data) => [...data, ...response.data.data]);
+        setPage((page) => page + 1);
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          setHasMore(false);
+        }
+      });
 
-
-   }) 
-   .catch(err => {
-      if(err.response.status===404){
-        setHasMore(false)
-      }
-   });
-  
-console.log(hasMore,'hasmore')
+    console.log(hasMore, "hasmore");
   };
 
   useEffect(() => {
     fetchData();
     // console.log(page,hasMore,'page ')
   }, [rmlStock]);
-
 
   const rmlStockData = rmlStock?.filter((item) => item.type === "DESHIRML");
   const filteredData = rmlStockData.filter((item) => {
@@ -80,12 +81,26 @@ console.log(hasMore,'hasmore')
     <section>
       <div className="title">
         <div className="flex gap-4 justify-center items-center">
-          <Link to="/user/winestock" className="commonBtn ">
-            अंग्रेजी
-          </Link>
-          <Link to="/user/beerstock" className="commonBtn ">
-            बीयर
-          </Link>
+          {ShopType === "BAR" ? (
+            <>
+              <Link to="/user/bearshop/winestock" className="commonBtn ">
+                अंग्रेजी
+              </Link>
+              <Link to="/user/bearshop/beerstock" className="commonBtn ">
+                बीयर
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/user/winestock" className="commonBtn ">
+                अंग्रेजी
+              </Link>
+              <Link to="/user/beerstock" className="commonBtn ">
+                बीयर
+              </Link>
+            </>
+          )}
+
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
@@ -129,90 +144,89 @@ console.log(hasMore,'hasmore')
           <div>
             <div className=" gap-4  my-4 ">
               <div>
-              <InfiniteScroll
-      dataLength={rmlStock.length}
-      next={fetchData}
-      hasMore={hasMore}
-      scrollableTarget="scrollableDiv"
-
-      loader={<h4>Loading...</h4>}
-    >
-                <table className="m-2 removeCommonWSpace">
-                  <thead>
-                    <tr>
-                      <th> क्र. सं.</th>
-                      <th>ब्राण्ड </th>
-                      <th>साईज </th>
-                      <th>स्टॉक </th>
-                      <th> रेट</th>
-                      <th> योग</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {filteredData &&
-                      filteredData.map((brand, index) => {
-                        return (
-                          <>
-                            {brand.sizes.map((size) => {
-                              if (
-                                size.quantityInML !== 650 &&
-                                size.quantityInML !== 550 &&
-                                size.quantityInML !== 330
-                              ) {
-                                count++
-                                return (
-                                  <tr id="scrollableDiv">
-                                    <td>{count}</td>
-                                    <td>{brand.brandName}</td>
-                                    <td>{size.quantityInML}</td>
-                                    <td> {size.currentStock}</td>
-                                    <td>
-                                      {" "}
-                                      {Number(
-                                        size.averageRate.$numberDecimal
-                                      ).toFixed(2)}
-                                    </td>
-                                    <td>
-                                      {" "}
-                                      {size.currentStock *
-                                        Number(
+                <InfiniteScroll
+                  dataLength={rmlStock.length}
+                  next={fetchData}
+                  hasMore={hasMore}
+                  scrollableTarget="scrollableDiv"
+                  loader={<h4>Loading...</h4>}
+                >
+                  <table className="m-2 removeCommonWSpace">
+                    <thead>
+                      <tr>
+                        <th> क्र. सं.</th>
+                        <th>ब्राण्ड </th>
+                        <th>साईज </th>
+                        <th>स्टॉक </th>
+                        <th> रेट</th>
+                        <th> योग</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredData &&
+                        filteredData.map((brand, index) => {
+                          return (
+                            <>
+                              {brand.sizes.map((size) => {
+                                if (
+                                  size.quantityInML !== 650 &&
+                                  size.quantityInML !== 550 &&
+                                  size.quantityInML !== 330
+                                ) {
+                                  count++;
+                                  return (
+                                    <tr id="scrollableDiv">
+                                      <td>{count}</td>
+                                      <td>{brand.brandName}</td>
+                                      <td>{size.quantityInML}</td>
+                                      <td> {size.currentStock}</td>
+                                      <td>
+                                        {" "}
+                                        {Number(
                                           size.averageRate.$numberDecimal
                                         ).toFixed(2)}
-                                    </td>
-                                  </tr>
-                                );
-                              }
-                            })}
-                          </>
-                        );
-                      })}
-                    <tr>
-                      <td colSpan="5">कुल योग</td>
-                      <td>
-                        {filteredData &&
-                          filteredData
-                            .reduce(
-                              (total, currentItem) =>
-                                (total =
-                                  total +
-                                  currentItem.sizes.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        currentItem.currentStock *
+                                      </td>
+                                      <td>
+                                        {" "}
+                                        {size.currentStock *
                                           Number(
-                                            currentItem.averageRate
-                                              .$numberDecimal
-                                          )),
-                                    0
-                                  )),
-                              0
-                            )
-                            .toFixed(2)}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                                            size.averageRate.$numberDecimal
+                                          ).toFixed(2)}
+                                      </td>
+                                    </tr>
+                                  );
+                                }
+                              })}
+                            </>
+                          );
+                        })}
+                      <tr>
+                        <td colSpan="5">कुल योग</td>
+                        <td>
+                          {filteredData &&
+                            filteredData
+                              .reduce(
+                                (total, currentItem) =>
+                                  (total =
+                                    total +
+                                    currentItem.sizes.reduce(
+                                      (total, currentItem) =>
+                                        (total =
+                                          total +
+                                          currentItem.currentStock *
+                                            Number(
+                                              currentItem.averageRate
+                                                .$numberDecimal
+                                            )),
+                                      0
+                                    )),
+                                0
+                              )
+                              .toFixed(2)}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </InfiniteScroll>
               </div>
             </div>

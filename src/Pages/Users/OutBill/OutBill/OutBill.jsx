@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import OutBillList from "../OutBillList/OutBillList";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
@@ -9,6 +9,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment/moment";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import jwtDecode from "jwt-decode";
 
 const OutBill = () => {
   const token = localStorage.getItem("token");
@@ -19,6 +20,9 @@ const OutBill = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+
+  const ShopToken = jwtDecode(localStorage.getItem("token"));
+  const ShopType = ShopToken.shopType;
 
   const { data: OutBill, isLoading } = useQuery({
     queryKey: ["OutBill"],
@@ -61,100 +65,102 @@ const OutBill = () => {
     <section>
       <div className="title flex justify-center flex-col items-center py-2">
         <div className="flex gap-4">
-          <button
-            className="commonBtn "
-            onClick={handlePrint}
-          >
+          <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
-          <Link className="commonBtn" to="/user/selfbill">
-            दुकान बिल
-          </Link>
+          {ShopType === "BAR" ? (
+            <Link className="commonBtn" to="/user/bearshop/selfbill">
+              दुकान बिल
+            </Link>
+          ) : (
+            <Link className="commonBtn" to="/user/selfbill">
+              दुकान बिल
+            </Link>
+          )}
         </div>
 
         <div ref={front}>
-        <div>
-
-          <h2 className="font-bold md:text-[1.5rem] text-center">
+          <div>
+            <h2 className="font-bold md:text-[1.5rem] text-center">
               बाहर का बिल
-          </h2>
-        <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">From</h2>
-          <div className="flex gap-2 items-center">
-            <DatePicker
-              selected={StartDate}
-              onChange={(date) => {
-                setStartDate(date);
-                console.log(moment(date).format());
-              }}
-              dateFormat="dd/MM/yyyy"
-              placeholderText={"dd/mm/yyyy"}
-              className="inputBox date"
-            />
+            </h2>
+            <div className="flex gap-4 items-center my-4">
+              <h2 className="font-bold text-[1.5rem]">From</h2>
+              <div className="flex gap-2 items-center">
+                <DatePicker
+                  selected={StartDate}
+                  onChange={(date) => {
+                    setStartDate(date);
+                    console.log(moment(date).format());
+                  }}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText={"dd/mm/yyyy"}
+                  className="inputBox date"
+                />
+              </div>
+
+              <h2 className="font-bold text-[1.5rem]">To</h2>
+              <div className="flex gap-2 items-center">
+                <DatePicker
+                  selected={EndDate}
+                  name="year"
+                  onChange={(data) => setEndDate(data)}
+                  dateFormat="dd/MM/yyyy"
+                  className="inputBox date"
+                  placeholderText={"dd/mm/yyyy"}
+                />
+              </div>
+            </div>
+            <div className="divider my-2"></div>
           </div>
 
-          <h2 className="font-bold text-[1.5rem]">To</h2>
-          <div className="flex gap-2 items-center">
-            <DatePicker
-              selected={EndDate}
-              name="year"
-              onChange={(data) => setEndDate(data)}
-              dateFormat="dd/MM/yyyy"
-              className="inputBox date"
-              placeholderText={"dd/mm/yyyy"}
-            />
-          </div>
-        </div>
-        <div className="divider my-2"></div>
-      </div>
-
-      <div>
-        <div className="overflow-x-auto">
+          <div>
+            <div className="overflow-x-auto">
               <table className="removeCommonWSpace">
-            <thead>
-              <tr>
-                <td> क्र. सं.</td>
+                <thead>
+                  <tr>
+                    <td> क्र. सं.</td>
                     <th>दिनाक</th>
-                <th>ब्राण्ड</th>
-                <th>साईज </th>
-                <th>संख्या</th>
-                <th>रेट</th>
-                <th>रकम</th>
-              </tr>
-            </thead>
-            <tbody>
-              {(filteredData &&
-                filteredData?.map((outBill, index) => {
-                  return (
-                    <OutBillList
-                      key={index}
-                      outBill={outBill}
-                      index={index}
-                    ></OutBillList>
-                  );
-                })) || (
-                <>
-                  <p>
-                    <span className="text-red-500">No Data Found</span>
-                  </p>
-                </>
-              )}
+                    <th>ब्राण्ड</th>
+                    <th>साईज </th>
+                    <th>संख्या</th>
+                    <th>रेट</th>
+                    <th>रकम</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(filteredData &&
+                    filteredData?.map((outBill, index) => {
+                      return (
+                        <OutBillList
+                          key={index}
+                          outBill={outBill}
+                          index={index}
+                        ></OutBillList>
+                      );
+                    })) || (
+                    <>
+                      <p>
+                        <span className="text-red-500">No Data Found</span>
+                      </p>
+                    </>
+                  )}
 
-              <tr>
-                <th></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td className="commonText">Total</td>
-                <td className="price">{Number(totalAmount).toFixed(2)}</td>
-              </tr>
-            </tbody>
-          </table>
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td className="commonText">Total</td>
+                    <td className="price">{Number(totalAmount).toFixed(2)}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
-        </div>
-        </div>
     </section>
   );
 };

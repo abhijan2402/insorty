@@ -4,10 +4,14 @@ import AddPartyName from "./AddPartyName/AddPartyName";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import { FaRegTrashAlt } from "react-icons/fa";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
+import jwtDecode from "jwt-decode";
 
 const PartyName = () => {
   const token = localStorage.getItem("token");
+
+  const ShopToken = jwtDecode(localStorage.getItem("token"));
+  const ShopType = ShopToken.shopType;
 
   const {
     data: PartyNameData,
@@ -33,7 +37,7 @@ const PartyName = () => {
     fetch(`https://insorty-api.onrender.com/shop/deleteParty`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json", cookie_token: token },
-      body: JSON.stringify({ partyId:id }),
+      body: JSON.stringify({ partyId: id }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -43,7 +47,7 @@ const PartyName = () => {
           refetch();
         }
       });
-  }
+  };
 
   if (isLoading) return <Loader></Loader>;
 
@@ -54,16 +58,19 @@ const PartyName = () => {
           <h2 className="font-bold md:text-[1.5rem] text-center">
             पार्टी जोड़ें
           </h2>
-          <Link to="/user/branchname" className="commonBtn ">
-            ब्रांच जोड़ें
-          </Link>
-          
+          {ShopType === "BAR" ? (
+            <Link to="/user/bearshop/branchname" className="commonBtn ">
+              ब्रांच जोड़ें
+            </Link>
+          ) : (
+            <Link to="/user/branchname" className="commonBtn ">
+              ब्रांच जोड़ें
+            </Link>
+          )}
         </div>
         <div className="divider my-2"></div>
       </div>
-      <div
-        className="justify-center flex items-center"
-      >
+      <div className="justify-center flex items-center">
         <table className="table w-4/5 removeCommonWSpace">
           <thead className="text-center">
             <th>
@@ -75,7 +82,6 @@ const PartyName = () => {
             <th>
               <h1>Delete</h1>
             </th>
-            
           </thead>
           <tbody>
             {PartyNameData?.map((item, index) => {
@@ -88,14 +94,14 @@ const PartyName = () => {
                     <h1>{item?.partyName}</h1>
                   </td>
                   <td>
-                      <button
-                        className="font-3xl font-bold"
-                        style={{ color: "#AA237A" }}
-                        onClick={() => handelDelete(item?._id)}
-                      >
-                        <FaRegTrashAlt></FaRegTrashAlt>
-                      </button>
-                    </td>
+                    <button
+                      className="font-3xl font-bold"
+                      style={{ color: "#AA237A" }}
+                      onClick={() => handelDelete(item?._id)}
+                    >
+                      <FaRegTrashAlt></FaRegTrashAlt>
+                    </button>
+                  </td>
                 </tr>
               );
             })}

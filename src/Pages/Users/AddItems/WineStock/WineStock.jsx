@@ -1,50 +1,48 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useState, useRef,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import WineStockTopData from "./WineStockTop/WIneSotckTop";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
-
+import jwtDecode from "jwt-decode";
 
 const WineStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
-  const [hasMore,setHasMore] = useState(true)
+  const [hasMore, setHasMore] = useState(true);
   const [wineStock, setWineStock] = useState([]);
   const [page, setPage] = useState(1);
 
-
+  const ShoptToken = jwtDecode(localStorage.getItem("token"));
+  const ShopType = ShoptToken.shopType;
 
   let count = 0;
 
-
   const fetchData = async () => {
     await axios({
-      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
-      method: 'get',
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+      method: "get",
       headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-   })
-   .then(response => {
-    setWineStock(data => [...data, ...response.data.data]);
-    setPage(page => page + 1);
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setWineStock((data) => [...data, ...response.data.data]);
+        setPage((page) => page + 1);
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          setHasMore(false);
+        }
+      });
 
-
-   }) 
-   .catch(err => {
-      if(err.response.status===404){
-        setHasMore(false)
-      }
-   });
-  
-console.log(hasMore,'hasmore')
+    console.log(hasMore, "hasmore");
   };
 
   useEffect(() => {
@@ -52,14 +50,11 @@ console.log(hasMore,'hasmore')
     // console.log(page,hasMore,'page ')
   }, [wineStock]);
 
-  
-
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
 
-  
   if (!wineStock.length) {
     return <div>No data found</div>;
   }
@@ -94,19 +89,32 @@ console.log(hasMore,'hasmore')
     });
   });
 
-
-  
   return (
     <section>
       <div className="title">
         <div className="flex justify-center gap-4 items-center">
-          <Link to="/user/beerstock" className="commonBtn ">
-            बीयर
-          </Link>
+          {ShopType === "BAR" ? (
+            <>
+              <Link to="/user/bearshop/beerstock" className="commonBtn ">
+                बीयर
+              </Link>
 
-          <Link className="commonBtn" to="/user/rmlstock">
-            देशी
-          </Link>
+              <Link className="commonBtn" to="/user/bearshop/rmlstock">
+                देशी
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/user/beerstock" className="commonBtn ">
+                बीयर
+              </Link>
+
+              <Link className="commonBtn" to="/user/rmlstock">
+                देशी
+              </Link>
+            </>
+          )}
+
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
@@ -145,122 +153,116 @@ console.log(hasMore,'hasmore')
         </div>
 
         <div className="overflow-x-auto flex justify-center item-center">
-        <InfiniteScroll
-      dataLength={wineStock.length}
-      next={fetchData}
-      hasMore={hasMore}
-      scrollableTarget="scrollableDiv"
+          <InfiniteScroll
+            dataLength={wineStock.length}
+            next={fetchData}
+            hasMore={hasMore}
+            scrollableTarget="scrollableDiv"
+            loader={<h4>Loading...</h4>}
+          >
+            <table className=" removeCommonWSpace m-2">
+              <thead>
+                <tr>
+                  <th> क्र. सं.</th>
+                  <th>ब्राण्ड</th>
+                  <th colSpan={3}>स्टॉक </th>
+                  <th colSpan={3}> रेट</th>
+                  <th colSpan={3}> योग</th>
+                  <th>कुल योग</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>
+                    <div className="form-control"></div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">750ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">375ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">180ml</span>
+                      </label>
+                    </div>
+                  </td>
 
-      loader={<h4>Loading...</h4>}
-    >
-          <table className=" removeCommonWSpace m-2">
-            <thead>
-              <tr>
-                <th> क्र. सं.</th>
-                <th>ब्राण्ड</th>
-                <th colSpan={3}>स्टॉक </th>
-                <th colSpan={3}> रेट</th>
-                <th colSpan={3}> योग</th>
-                <th>कुल योग</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td></td>
-                <td>
-                  <div className="form-control"></div>
-                </td>
-                <td>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">750ml</span>
-                    </label>
-                  </div>
-                </td>
-                <td>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">375ml</span>
-                    </label>
-                  </div>
-                </td>
-                <td>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">180ml</span>
-                    </label>
-                  </div>
-                </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">750ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">375ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">180ml</span>
+                      </label>
+                    </div>
+                  </td>
 
-                <td>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">750ml</span>
-                    </label>
-                  </div>
-                </td>
-                <td>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">375ml</span>
-                    </label>
-                  </div>
-                </td>
-                <td>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">180ml</span>
-                    </label>
-                  </div>
-                </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">750ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">375ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control">
+                      <label className="label">
+                        <span className="label-text">180ml</span>
+                      </label>
+                    </div>
+                  </td>
+                  <td>
+                    <div className="form-control"></div>
+                  </td>
+                </tr>
 
-                <td>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">750ml</span>
-                    </label>
-                  </div>
-                </td>
-                <td>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">375ml</span>
-                    </label>
-                  </div>
-                </td>
-                <td>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">180ml</span>
-                    </label>
-                  </div>
-                </td>
-                <td>
-                  <div className="form-control"></div>
-                </td>
-              </tr>
-
-             
-
-
-              {filteredData?.map((item, index) => {
-                return (
-                  <>
-                  <tr id="scrollableDiv">
-                    <WineStockTopData
-                      key={item._id}
-                      index={index}
-                      item={item}
-                    ></WineStockTopData>
-                    </tr>
-                  </>
-                );
-              })}
-
-            </tbody>
-          </table>
+                {filteredData?.map((item, index) => {
+                  return (
+                    <>
+                      <tr id="scrollableDiv">
+                        <WineStockTopData
+                          key={item._id}
+                          index={index}
+                          item={item}
+                        ></WineStockTopData>
+                      </tr>
+                    </>
+                  );
+                })}
+              </tbody>
+            </table>
           </InfiniteScroll>
-
         </div>
 
         <div>

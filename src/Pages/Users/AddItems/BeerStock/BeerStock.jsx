@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useRef,useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import BeerStockTopData from "./BeerStockTopData/BeerStockTopData";
@@ -10,43 +10,45 @@ import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
+import jwtDecode from "jwt-decode";
 
 const BeerStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
   const [beerStock, setBeerStock] = useState([]);
-  const [hasMore,setHasMore] = useState(true)
+  const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(1);
   const front = useRef(null);
-  let count = 0
+  let count = 0;
+
+  const ShoptToken = jwtDecode(localStorage.getItem("token"));
+  const ShopType = ShoptToken.shopType;
 
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
 
-   const fetchData = async () => {
+  const fetchData = async () => {
     await axios({
-      url:  `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
-      method: 'get',
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+      method: "get",
       headers: {
-              "Content-Type": "application/json",
-              cookie_token: token,
-            },
-   })
-   .then(response => {
-    setBeerStock(data => [...data, ...response.data.data]);
-    setPage(page => page + 1);
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setBeerStock((data) => [...data, ...response.data.data]);
+        setPage((page) => page + 1);
+      })
+      .catch((err) => {
+        if (err.response.status === 404) {
+          setHasMore(false);
+        }
+      });
 
-
-   }) 
-   .catch(err => {
-      if(err.response.status===404){
-        setHasMore(false)
-      }
-   });
-  
-console.log(hasMore,'hasmore')
+    console.log(hasMore, "hasmore");
   };
 
   useEffect(() => {
@@ -54,9 +56,7 @@ console.log(hasMore,'hasmore')
     // console.log(page,hasMore,'page ')
   }, [beerStock]);
 
-
   const total = 0;
-
 
   if (!beerStock.length) {
     return <div>No data found</div>;
@@ -83,12 +83,26 @@ console.log(hasMore,'hasmore')
     <section>
       <div className="title">
         <div className="flex gap-4 items-center justify-center">
-          <Link to="/user/winestock" className="commonBtn ">
-            अंग्रेजी
-          </Link>
-          <Link className="commonBtn" to="/user/rmlstock">
-            देशी
-          </Link>
+          {ShopType === "BAR" ? (
+            <>
+              <Link to="/user/bearshop/winestock" className="commonBtn ">
+                अंग्रेजी
+              </Link>
+              <Link className="commonBtn" to="/user/bearshop/rmlstock">
+                देशी
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to="/user/winestock" className="commonBtn ">
+                अंग्रेजी
+              </Link>
+              <Link className="commonBtn" to="/user/rmlstock">
+                देशी
+              </Link>
+            </>
+          )}
+
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
@@ -128,123 +142,121 @@ console.log(hasMore,'hasmore')
           </div>
 
           <div className="overflow-x-auto flex justify-center items-center">
-          <InfiniteScroll
-      dataLength={beerStock.length}
-      next={fetchData}
-      hasMore={hasMore}
-      scrollableTarget="scrollableDiv"
+            <InfiniteScroll
+              dataLength={beerStock.length}
+              next={fetchData}
+              hasMore={hasMore}
+              scrollableTarget="scrollableDiv"
+              loader={<h4>Loading...</h4>}
+            >
+              <table className="removeCommonWSpace  m-2">
+                <thead>
+                  <tr>
+                    <th> क्र. सं.</th>
+                    <th>ब्राण्ड </th>
+                    <th colSpan={3}>स्टॉक </th>
+                    <th colSpan={3}> रेट</th>
+                    <th colSpan={3}>Total </th>
+                    <th>कुल योग</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
 
-      loader={<h4>Loading...</h4>}
-    >
-            <table className="removeCommonWSpace  m-2">
-              <thead>
-                <tr>
-                  <th> क्र. सं.</th>
-                  <th>ब्राण्ड </th>
-                  <th colSpan={3}>स्टॉक </th>
-                  <th colSpan={3}> रेट</th>
-                  <th colSpan={3}>Total </th>
-                  <th>कुल योग</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">650ml</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">650ml</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">550ml</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">550ml</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">330ml</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">330ml</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">650ml</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">650ml</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">550ml</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">550ml</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">330ml</span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">650ml</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">330ml</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">650ml</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">550ml</span>
+                        </label>
+                      </div>
+                    </td>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">550ml</span>
-                      </label>
-                    </div>
-                  </td>
+                    <td>
+                      <div className="form-control">
+                        <label className="label">
+                          <span className="label-text">330ml</span>
+                        </label>
+                      </div>
+                    </td>
+                    <td>
+                      <div className="form-control"></div>
+                    </td>
+                  </tr>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">330ml</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="form-control"></div>
-                  </td>
-                </tr>
-
-                {beerStock.length &&
-                  filteredData?.map((item, index) => {
-                    return (
-                      <>
-                      <tr id="scrollableDiv">
-                        <BeerStockTopData
-                          key={item._id}
-                          index={index}
-                          item={item}
-                          total={total}
-                        ></BeerStockTopData>
-                        </tr>
-                      </>
-                    );
-                  })}
-
-              </tbody>
-            </table>
+                  {beerStock.length &&
+                    filteredData?.map((item, index) => {
+                      return (
+                        <>
+                          <tr id="scrollableDiv">
+                            <BeerStockTopData
+                              key={item._id}
+                              index={index}
+                              item={item}
+                              total={total}
+                            ></BeerStockTopData>
+                          </tr>
+                        </>
+                      );
+                    })}
+                </tbody>
+              </table>
             </InfiniteScroll>
           </div>
 
@@ -272,7 +284,7 @@ console.log(hasMore,'hasmore')
                               size.quantityInML !== 500 &&
                               size.quantityInML !== 330
                             ) {
-                              count++
+                              count++;
                               return (
                                 <tr>
                                   <td>{count}</td>
