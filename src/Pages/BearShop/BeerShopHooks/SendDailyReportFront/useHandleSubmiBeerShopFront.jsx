@@ -116,17 +116,18 @@ const useHandleSubmiBeerShopFront = () => {
       liquor: element.size.sizes.find((elem) => elem.quantityInML === 750)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate750,
-      buyRateOut: element.buyRateOut750,
-      buyRateShop: element.buyRateShop750,
-      closingStock: element.closingStock750,
-      inflowCredit: element.inflowCredit750,
-      inflowOut: element.inflowOut750,
-      inflowShop: element.inflowShop750,
-      initial: element.initial750,
       openingStock: element.openingStock750,
-      rate: element.rate750,
-      sales: element.sales750,
+      purchaseShop: element.inflowShop750,
+      purchaseShopRate: element.buyRateShop750,
+      purchaseOutSide: element.inflowOut750,
+      purchaseOutSideRate: element.buyRateOut750,
+      credits: element.inflowCredit750,
       send: element.send750,
+      remaining: element.sumRemaining750,
+      closingStock: element.closingStock750,
+      sales: element.sales750,
+      sellingRate: element.rate750,
+      total: element.total750,
     });
   }
 
@@ -137,17 +138,18 @@ const useHandleSubmiBeerShopFront = () => {
       liquor: element.size.sizes.find((elem) => elem.quantityInML === 375)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate375,
-      buyRateOut: element.buyRateOut375,
-      buyRateShop: element.buyRateShop375,
-      closingStock: element.closingStock375,
-      inflowCredit: element.inflowCredit375,
-      inflowOut: element.inflowOut375,
-      inflowShop: element.inflowShop375,
-      initial: element.initial375,
       openingStock: element.openingStock375,
-      rate: element.rate375,
-      sales: element.sales375,
+      purchaseShop: element.inflowShop375,
+      purchaseShopRate: element.buyRateShop375,
+      purchaseOutSide: element.inflowOut375,
+      purchaseOutSideRate: element.buyRateOut375,
+      credits: element.inflowCredit375,
       send: element.send375,
+      remaining: element.sumRemaining375,
+      closingStock: element.closingStock375,
+      sales: element.sales375,
+      sellingRate: element.rate375,
+      total: element.total375,
     });
   }
 
@@ -158,17 +160,18 @@ const useHandleSubmiBeerShopFront = () => {
       liquor: element.size.sizes.find((elem) => elem.quantityInML === 180)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate180,
-      buyRateOut: element.buyRateOut180,
-      buyRateShop: element.buyRateShop180,
-      closingStock: element.closingStock180,
-      inflowCredit: element.inflowCredit180,
-      inflowOut: element.inflowOut180,
-      inflowShop: element.inflowShop180,
-      initial: element.initial180,
       openingStock: element.openingStock180,
-      rate: element.rate180,
-      sales: element.sales180,
+      purchaseShop: element.inflowShop180,
+      purchaseShopRate: element.buyRateShop180,
+      purchaseOutSide: element.inflowOut180,
+      purchaseOutSideRate: element.buyRateOut180,
+      credits: element.inflowCredit180,
       send: element.send180,
+      remaining: element.sumRemaining180,
+      closingStock: element.closingStock180,
+      sales: element.sales180,
+      sellingRate: element.rate180,
+      total: element.total180,
     });
   }
 
@@ -179,17 +182,18 @@ const useHandleSubmiBeerShopFront = () => {
       liquor: element.size.sizes.find((elem) => elem.quantityInML === 30)?._id,
       brandName: element.brandName,
       averageRate: element.averageRate30,
-      buyRateOut: element.buyRateOut30,
-      buyRateShop: element.buyRateShop30,
-      closingStock: element.closingStock30,
-      inflowCredit: element.inflowCredit30,
-      inflowOut: element.inflowOut30,
-      inflowShop: element.inflowShop30,
-      initial: element.initial30,
       openingStock: element.openingStock30,
-      rate: element.rate30,
-      sales: element.sales30,
+      purchaseShop: element.inflowShop30,
+      purchaseShopRate: element.buyRateShop30,
+      purchaseOutSide: element.inflowOut30,
+      purchaseOutSideRate: element.buyRateOut30,
+      credits: element.inflowCredit30,
       send: element.send30,
+      remaining: element.sumRemaining30,
+      closingStock: element.closingStock30,
+      sales: element.sales30,
+      sellingRate: element.rate30,
+      total: element.total30,
     });
   }
 
@@ -234,20 +238,19 @@ const useHandleSubmiBeerShopFront = () => {
       liquor: element.size.sizes.find(
         (elem) => elem.quantityInML === element.ml
       )?._id,
-      brandName: element.brandName,
-      averageRateOtherMl: element.averageRateOtherMl,
-      buyRateShopBarOtherMl: element.buyRateShopBarOtherMl,
-      buyRateShopOutOtherMl: element.buyRateShopOutOtherMl,
-      closingStockOtherMl: element.closingStockOtherMl,
-      inflowCreditOtherMl: element.inflowCreditOtherMl,
-      inflowPurchaseOtherMl: element.inflowPurchaseOtherMl,
-      inflowPurchaseFromOutsideOtherMl:
-        element.inflowPurchaseFromOutsideOtherMl,
-      openingStockOtherMl: element.openingStockOtherMl,
-      rateOtherMl: element.rateOtherMl,
-      saleOtherMl: element.saleOtherMl,
-      sendOtherMl: element.sendOtherMl,
-      sumRemainingOtherML: element.sumRemainingOtherML,
+      openingStock: element.openingStockOtherMl,
+      averageRate: element.averageRateOtherMl,
+      purchaseShop: element.inflowPurchaseOtherMl,
+      purchaseShopRate: element.buyRateShopBarOtherMl,
+      purchaseOutSide: element.inflowPurchaseFromOutsideOtherMl,
+      purchaseOutSideRate: element.buyRateShopOutOtherMl,
+      credits: element.inflowCreditOtherMl,
+      send: element.sendOtherMl,
+      remaining: element.sumRemainingOtherML,
+      closingStock: element.closingStock30,
+      sales: 0,
+      sellingRate: element.rate30,
+      total:0
     });
   }
 
@@ -256,20 +259,22 @@ const useHandleSubmiBeerShopFront = () => {
   for (let index = 0; smallPegForm ? index < smallPegForm.length : 0; index++) {
     const element = smallPegForm[index];
     Ml30Data.push({
-      liquor: element.size.sizes.find((elem) => elem.quantityInML === 30)?._id,
-      brandName: element.brandName,
-      averageRateOtherMl: element.averageRateOtherMl,
-      buyRateShopBar30: element.buyRateShopBar30,
-      buyRateShopOut30: element.buyRateShopOut30,
-      closingStock30: element.closingStock30,
-      inflowCredit30: element.inflowCredit30,
-      inflowPurchase30: element.inflowPurchase30,
-      inflowPurchaseFromOutside30: element.inflowPurchaseFromOutside30,
-      openingStock30: element.openingStock30,
-      rate30: element.rate30,
-      sale30: element.sale30,
-      send30: element.send30,
-      sumRemaining30: element.sumRemaining30,
+      liquor: element.size.sizes.find(
+        (elem) => elem.quantityInML === 30
+      )?._id,
+      openingStock: element.openingStock30,
+      averageRate: element.averageRate30,
+      purchaseShop: element.inflowPurchase30,
+      purchaseShopRate: element.buyRateShopBar30,
+      purchaseOutSide: element.inflowPurchaseFromOutside30,
+      purchaseOutSideRate: element.buyRateShopOut30,
+      credits: element.inflowCredit30,
+      send: element.send30,
+      remaining: element.sumRemaining30,
+      closingStock: element.closingStock30,
+      sales: element.sale30,
+      sellingRate: element.rate30,
+      total:0
     });
   }
 
@@ -402,12 +407,12 @@ const useHandleSubmiBeerShopFront = () => {
         setIsLoading(false);
       }
     }
-    console.log(pageFormData750);
-    console.log(pageFormData375);
-    console.log(pageFormData180);
-    console.log(pageFormData30);
-    console.log(Ml30Data);
-    console.log(otherMl);
+    // console.log(pageFormData750);
+    // console.log(pageFormData375);
+    // console.log(pageFormData180);
+    // console.log(pageFormData30);
+    // console.log(Ml30Data);
+    // console.log(otherMl);
   };
 
   return {
