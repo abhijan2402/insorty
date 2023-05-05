@@ -6,6 +6,7 @@ import moment from "moment/moment";
 import useCommision from "../CommisionHooks/useCommision";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import jwtDecode from "jwt-decode";
 
 const Commision = () => {
   const [StartDate, setStartDate] = useState();
@@ -16,67 +17,104 @@ const Commision = () => {
     content: () => front.current,
   });
 
+  const ShopToken = jwtDecode(localStorage.getItem("token"));
+  const ShopType = ShopToken.shopType;
+
   if (isLoading) {
     return <Loader></Loader>;
   }
 
-  const filteredData = commitsonData.length && commitsonData.filter((item) => {
-    let filterPass = true;
-    const date = moment(item.date).format("DD/MM/YYYY");
+  const filteredData =
+    commitsonData.length &&
+    commitsonData.filter((item) => {
+      let filterPass = true;
+      const date = moment(item.date).format("DD/MM/YYYY");
 
-    if (StartDate) {
-      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
-    }
-    if (EndDate) {
-      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
-    }
-    return filterPass;
-  });
+      if (StartDate) {
+        filterPass =
+          filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+      }
+      if (EndDate) {
+        filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+      }
+      return filterPass;
+    });
 
-
-  const totalAmount = commitsonData.length && filteredData.reduce((acc, item) => {
-    return Number(acc) + item.entries.filter((item) => {
-      return item.type === "COMMISSION";
-    }).reduce((acc, item) => {
-      return Number(acc) + Number(item.amount.$numberDecimal);
+  const totalAmount =
+    commitsonData.length &&
+    filteredData.reduce((acc, item) => {
+      return (
+        Number(acc) +
+        item.entries
+          .filter((item) => {
+            return item.type === "COMMISSION";
+          })
+          .reduce((acc, item) => {
+            return Number(acc) + Number(item.amount.$numberDecimal);
+          }, 0)
+      );
     }, 0);
-  }, 0)
-
 
   return (
     <section className="py-4 px-4">
       <div className="title">
-
         <div className="flex item-cnter justify-center flex-wrap">
-          <button
-            className="commonBtn "
-            onClick={handlePrint}
-          >
+          <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
-          <Link className="commonBtn " to="/user/kharcha">
-            खर्चा
-          </Link>
+          {ShopType === "BAR" ? (
+            <>
+              <Link className="commonBtn " to="/user/bearshop/kharcha">
+                खर्चा
+              </Link>
 
-          <Link className="commonBtn " to="/user/fut">
-            फूट
-          </Link>
+              <Link className="commonBtn " to="/user/bearshop/fut">
+                फूट
+              </Link>
 
-          <Link className="commonBtn " to="/user/begar">
-            बेगार
-          </Link>
+              <Link className="commonBtn " to="/user/bearshop/begar">
+                बेगार
+              </Link>
 
-          <Link className="commonBtn " to="/user/monthly">
-            मंथली
-          </Link>
+              <Link className="commonBtn " to="/user/bearshop/monthly">
+                मंथली
+              </Link>
 
-          <Link className="commonBtn " to="/user/penalty">
-            पेनाल्टी
-          </Link>
+              <Link className="commonBtn " to="/user/bearshop/penalty">
+                पेनाल्टी
+              </Link>
 
-          <Link className="commonBtn " to="/user/others">
-            अन्य
-          </Link>
+              <Link className="commonBtn " to="/user/bearshop/others">
+                अन्य
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link className="commonBtn " to="/user/kharcha">
+                खर्चा
+              </Link>
+
+              <Link className="commonBtn " to="/user/fut">
+                फूट
+              </Link>
+
+              <Link className="commonBtn " to="/user/begar">
+                बेगार
+              </Link>
+
+              <Link className="commonBtn " to="/user/monthly">
+                मंथली
+              </Link>
+
+              <Link className="commonBtn " to="/user/penalty">
+                पेनाल्टी
+              </Link>
+
+              <Link className="commonBtn " to="/user/others">
+                अन्य
+              </Link>
+            </>
+          )}
         </div>
 
         <div ref={front}>
@@ -128,15 +166,16 @@ const Commision = () => {
                   </thead>
 
                   <tbody>
-                    {commitsonData.length && filteredData.map((commison, index) => {
-                      return (
-                        <CommisionForm
-                          key={index}
-                          index={index}
-                          commison={commison}
-                        ></CommisionForm>
-                      );
-                    })}
+                    {commitsonData.length &&
+                      filteredData.map((commison, index) => {
+                        return (
+                          <CommisionForm
+                            key={index}
+                            index={index}
+                            commison={commison}
+                          ></CommisionForm>
+                        );
+                      })}
 
                     <tr>
                       <td></td>
@@ -146,10 +185,7 @@ const Commision = () => {
                     text-[#AA237A]
                   "
                       >
-                        Total :
-                        <span className="mx-4">
-                          {totalAmount}
-                        </span>
+                        Total :<span className="mx-4">{totalAmount}</span>
                       </th>
                       <th></th>
                     </tr>

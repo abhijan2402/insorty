@@ -127,7 +127,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/branch/from/:branchId",
-       
+
         element: <BranchFrom />,
       },
       {
@@ -206,7 +206,7 @@ const router = createBrowserRouter([
 
       {
         path: "/user/salary/from/:employeeId",
-       
+
         element: <SalaryForm />,
       },
       {
@@ -289,7 +289,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/sendFormat",
-        element: <SendFormat />
+        element: <SendFormat />,
       },
     ],
   },
@@ -325,7 +325,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/bearshop/branch/from/:branchId",
-       
+
         element: <BranchFrom />,
       },
       {
@@ -404,7 +404,7 @@ const router = createBrowserRouter([
 
       {
         path: "/user/bearshop/salary/from/:employeeId",
-       
+
         element: <SalaryForm />,
       },
       {
@@ -487,7 +487,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/bearshop/sendFormat",
-        element: <SendFormat />
+        element: <SendFormat />,
       },
     ],
   },

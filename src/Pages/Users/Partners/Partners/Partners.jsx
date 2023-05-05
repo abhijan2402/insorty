@@ -1,17 +1,15 @@
 import React, { useState, useRef } from "react";
-import { FaCalendarAlt } from "react-icons/fa";
-// import { Link } from "react-router-dom";
 import PartnerForm from "../PartnerForm/PartnerForm";
 import AddPartner from "../AddPartner/AddPartner";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import jwtDecode from "jwt-decode";
 
 const Partners = ({ isBearShop }) => {
-  const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
   const front = useRef(null);
@@ -19,10 +17,8 @@ const Partners = ({ isBearShop }) => {
     content: () => front.current,
   });
 
-  const { shopType } = useParams();
-  const partnersUrl = isBearShop
-    ? "/user/bearshop/sendFormat"
-    : "/user/sendFormat";
+  const token = jwtDecode(localStorage.getItem("token"));
+  const ShopType = token.shopType;
 
   const handelPartnerSubmit = (e) => {
     e.preventDefault();
@@ -69,16 +65,23 @@ const Partners = ({ isBearShop }) => {
     <section className="py-4">
       <div className="title">
         <div className="flex justify-center items-center gap-4">
-          <Link className="commonBtn" to={partnersUrl}>
-            सभी पार्टनर
-          </Link>
+          {ShopType === "BAR" ? (
+            <Link className="commonBtn" to="/user/bearshop/sendFormat">
+              सभी पार्टनर
+            </Link>
+          ) : (
+            <Link className="commonBtn" to="/user/sendFormat">
+              सभी पार्टनर
+            </Link>
+          )}
+
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
         </div>
         <div>
-            <div className="divider my-4"></div>
-          </div>
+          <div className="divider my-4"></div>
+        </div>
         <div ref={front}>
           <h2 className="font-bold md:text-[1.5rem] text-center">
             पार्टनर खाते{" "}
@@ -112,8 +115,6 @@ const Partners = ({ isBearShop }) => {
               </div>
             </div>
           </div>
-
-  
 
           {/* ************************ all sealy data************** */}
           <div className="flex justify-center items-center">

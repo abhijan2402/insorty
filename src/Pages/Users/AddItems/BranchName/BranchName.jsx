@@ -5,9 +5,16 @@ import Loader from "../../../../Components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import jwtDecode from "jwt-decode";
+
 
 const BranchName = () => {
   const token = localStorage.getItem("token");
+
+  const ShopToken = jwtDecode(localStorage.getItem("token"));
+  const ShopType = ShopToken.shopType;
+
+
 
   const {
     data: BranchNameData,
@@ -57,9 +64,16 @@ const BranchName = () => {
       <div className="title">
         <div className="flex gap-4 justify-center items-center">
           <h2 className="font-bold text-[1.5rem] text-center">ब्रांच जोड़ें</h2>
-          <Link to="/user/partyname" className="commonBtn ">
+
+          {
+            ShopType === "BAR" ?   <Link to="/user/bearshop/partyname" className="commonBtn ">
+            पार्टी जोड़ें
+          </Link> :   <Link to="/user/partyname" className="commonBtn ">
             पार्टी जोड़ें
           </Link>
+          }
+
+        
         </div>
         <div className="divider my-2"></div>
       </div>

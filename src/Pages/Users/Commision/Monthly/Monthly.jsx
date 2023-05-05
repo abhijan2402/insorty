@@ -6,6 +6,7 @@ import moment from "moment/moment";
 import useCommision from "../CommisionHooks/useCommision";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
+import jwtDecode from "jwt-decode";
 
 const Monthly = () => {
   const [StartDate, setStartDate] = useState();
@@ -15,6 +16,10 @@ const Monthly = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+
+  const ShopToken = jwtDecode(localStorage.getItem("token"));
+  const ShopType = ShopToken.shopType;
+
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -52,7 +57,34 @@ const Monthly = () => {
           >
             प्रिंट
           </button>
-          <Link className="commonBtn" to="/user/commisson">
+
+          {
+            ShopType === "BAR" ? <>
+            <Link className="commonBtn" to="/user/bearshop/commisson">
+            कमीशन
+          </Link>
+
+          <Link className="commonBtn " to="/user/bearshop/kharcha">
+            खर्चा
+          </Link>
+
+          <Link className="commonBtn " to="/user/bearshop/fut">
+            फूट
+          </Link>
+
+          <Link className="commonBtn " to="/user/bearshop/begar">
+            बेगार
+          </Link>
+
+          <Link className="commonBtn " to="/user/bearshop/penalty">
+            पेनाल्टी
+          </Link>
+
+          <Link className="commonBtn " to="/user/bearshop/others">
+            अन्य
+          </Link>
+            </> : <>
+            <Link className="commonBtn" to="/user/commisson">
             कमीशन
           </Link>
 
@@ -75,6 +107,11 @@ const Monthly = () => {
           <Link className="commonBtn " to="/user/others">
             अन्य
           </Link>
+            </>
+          }
+
+
+         
         </div>
 
         <div ref={front}>
