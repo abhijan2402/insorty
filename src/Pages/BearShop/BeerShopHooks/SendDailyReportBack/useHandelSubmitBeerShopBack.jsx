@@ -23,7 +23,7 @@ const useHandelSubmitBeerShopBack = () => {
     purchasesData.push({
       liquor:
         element.size &&
-        element.size.sizes.find((elem) => elem.quantityInML === 650)?._id,
+        element.size.sizes.find((elem) => elem.quantityInML === element.quantity)?._id,
       party: element.partyId,
       number: element.theNumber,
       ml: element.quantity,
@@ -42,7 +42,7 @@ const useHandelSubmitBeerShopBack = () => {
         element.size.sizes.find((elem) => elem.quantityInML === 650)?._id,
       party: element.partyId,
       number: element.theNumber,
-      comment: element.reason ? element.reason : "",
+      comment: element.comment ? element.comment : "",
     });
   }
   const expensesData = [];
@@ -60,7 +60,7 @@ const useHandelSubmitBeerShopBack = () => {
     const element = credit[index];
     creditData.push({
       type: element.partyType,
-      from: element.partyName,
+      from: element.partyId,
       amount: element.amount,
       comment: element.note,
     });
@@ -72,7 +72,7 @@ const useHandelSubmitBeerShopBack = () => {
     paymentRecievedData.push({
       cash: element.amount,
       type: element.type,
-      from: element.name,
+      from: element.id,
     });
   }
 
@@ -92,7 +92,7 @@ const useHandelSubmitBeerShopBack = () => {
     barCommissionData.push({
       liquor:
         element.size &&
-        element.size.sizes.find((elem) => elem.quantityInML === 650)?._id,
+        element.size.sizes.find((elem) => elem.quantityInML === element.ml)?._id,
       quantity: element.quantity,
       amount: element.amount,
       comment: element.comment,
@@ -267,6 +267,7 @@ const useHandelSubmitBeerShopBack = () => {
               data[6].success === true &&
               data[7].success === true
             ) {
+              
               Swal.fire({
                 icon: "success",
                 title: "Success",
