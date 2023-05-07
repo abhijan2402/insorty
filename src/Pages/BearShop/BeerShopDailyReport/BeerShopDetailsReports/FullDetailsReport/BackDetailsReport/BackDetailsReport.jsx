@@ -43,159 +43,39 @@ const BackDailyReport = () => {
                 </span>
               </h1>
               <div>
-                <table className="table commonTable">
-                  <thead>
-                    <tr>
-                      <th> क्र. सं.</th>
-                      <td></td>
-                      <th>Party Name/ पार्टी का नाम</th>
-                      <th>Brand Name/ ब्राण्ड</th>
-                      <th>ML</th>
-                      <th>संख्या</th>
-                      <th>रेट</th>
-                      <th>योग</th>
-                      <th>टिप्पणी</th>
-                    </tr>
-                  </thead>
-
+                <table className="table">
                   <tbody>
                     <tr>
-                      <th className="sticky">1</th>
-                      <th className="cross">X</th>
-
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-7"
-                            disabled
-                          />
-                        </div>
-                      </td>
-                      {/* ======== प्रारम्भिक स्टॉक ========= */}
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-7"
-                            disabled
-                          />
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control ">
-                          <select className="smallinput wd-9">
-                            <option selected value={750}>
-                              750ml
-                            </option>
-                            <option value={700}>700ml</option>
-                            <option value={650}>650ml</option>
-                            <option value={550}>550ml</option>
-                            <option value={500}>500ml</option>
-                            <option value={375}>375ml</option>
-                            <option value={330}>330ml</option>
-                            <option value={275}>275ml</option>
-                            <option value={250}>250ml</option>
-                            <option value={200}>200ml</option>
-                            <option value={180}>180ml</option>
-                            <option value={90}>90ml</option>
-                            <option value={60}>60ml</option>
-                            <option value={50}>50ml</option>
-                          </select>
-                        </div>
-                      </td>
-
-                      {/* ======== आमद (खरीद)-दु. ========= */}
-
-                      <td>
-                        <div className="form-control ">
-                          <input
-                            type="number"
-                            className="smallinput wd-7"
-                            disabled
-                          />
-                        </div>
-                      </td>
-                      {/* ======== आमद (खरीद)-बा. ========= */}
-
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-7"
-                            disabled
-                          />
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-7"
-                            disabled
-                          />
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <input type="text" className="smallinput wd-30" />
-                        </div>
-                      </td>
-                      {/* ======== आमद (उधारी) ========= */}
+                      <th colSpan={1}> क्र. सं.</th>
+                      <th colSpan={1}>Party Name/ पार्टी का नाम</th>
+                      <th colSpan={1}>Brand Name/ ब्राण्ड</th>
+                      <th colSpan={1}>ML</th>
+                      <th colSpan={1}>संख्या</th>
+                      <th colSpan={1}>रेट</th>
+                      <th colSpan={1}>योग</th>
+                      <th colSpan={1}>टिप्पणी</th>
                     </tr>
 
                     <tr>
-                      <th className="sticky">1</th>
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-                      {/* ======== प्रारम्भिक स्टॉक ========= */}
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                    </tr>
 
-                      {/* ======== आमद (खरीद)-दु. ========= */}
-
-                      {/* ======== आमद (खरीद)-बा. ========= */}
-
-                      <td>
-                        <div className="form-control "></div>
-                      </td>
-
-                      <td>
-                        <div className="form-control ">
-                          <input
-                            type="number"
-                            className="smallinput"
-                            disabled
-                          />
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-7"
-                            disabled
-                          />
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-                      {/* ======== आमद (उधारी) ========= */}
+                    <tr>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -211,103 +91,33 @@ const BackDailyReport = () => {
 
               <>
                 <div>
-                  <table className="table commonTable">
-                    <thead>
-                      <tr>
-                        <th> क्र. सं.</th>
-                        <th></th>
-                        <th>Party Name/ पार्टी का नाम</th>
-                        <th>Brand Name/ ब्राण्ड</th>
-                        <th>ML</th>
-                        <th>संख्या</th>
-                        <th>टिप्पणी</th>
-                      </tr>
-                    </thead>
+                  <table className="table ">
                     <tbody>
                       <tr>
-                        <th>1</th>
-
-                        <td>
-                          <div className="form-control">
-                            <input
-                              type="number"
-                              required
-                              className="smallinput"
-                              disabled
-                            />
-                          </div>
-                        </td>
-
-                        <td>
-                          <div className="form-control">
-                            <input
-                              type="number"
-                              required
-                              className="smallinput"
-                              disabled
-                            />
-                          </div>
-                        </td>
-
-                        <td>
-                          <div className="form-control">
-                            <input
-                              type="number"
-                              required
-                              className="smallinput"
-                              disabled
-                            />
-                          </div>
-                        </td>
-
-                        <td>
-                          <div className="form-control">
-                            <input
-                              type="number"
-                              required
-                              className="smallinput"
-                              disabled
-                            />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="form-control">
-                            <input
-                              type="text"
-                              disabled
-                              className="smallinput wd-30"
-                            />
-                          </div>
-                        </td>
+                        <th colSpan={1}> क्र. सं.</th>
+                        <th colSpan={1}>Party Name/ पार्टी का नाम</th>
+                        <th colSpan={1}>Brand Name/ ब्राण्ड</th>
+                        <th colSpan={1}>ML</th>
+                        <th colSpan={1}>संख्या</th>
+                        <th colSpan={1}>टिप्पणी</th>
                       </tr>
 
                       <tr>
-                        <th>1</th>
-                        <th>Branad Name</th>
-                        <td>
-                          <div className="form-control"></div>
-                        </td>
+                        <td className="tg-0lax">1</td>
+                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax"></td>
+                      </tr>
 
-                        <td>
-                          <div className="form-control"></div>
-                        </td>
-
-                        <td>
-                          <div className="form-control"></div>
-                        </td>
-
-                        <td>
-                          <div className="form-control">
-                            <input
-                              type="number"
-                              className="smallinput"
-                              name="theNumber"
-                            />
-                          </div>
-                        </td>
-                        <td>
-                          <div className="form-control"></div>
-                        </td>
+                      <tr>
+                        <td className="tg-0lax">1</td>
+                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax"></td>
+                        <td className="tg-0lax"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -322,72 +132,30 @@ const BackDailyReport = () => {
                 </span>
               </h1>
               <div>
-                <table className="table commonTable">
-                  <thead>
-                    <tr>
-                      <th> क्र. सं.</th>
-                      <td></td>
-                      <th>Reason / विवरण</th>
-                      <th>रकम</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
+                <table className="table">
                   <tbody>
                     <tr>
-                      <th>1</th>
-                      <th className="cross">X</th>
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="text"
-                            required
-                            className="smallinput wd-30"
-                            name="desc"
-                            disabled
-                          />
-                        </div>
-                      </td>
-
-                      <td>
-                        <input
-                          type="number"
-                          required
-                          className="smallinput wd-6"
-                          name="amount"
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          required
-                          className="smallinput wd-30"
-                          name="desc"
-                          disabled
-                        />
-                      </td>
+                      <th colSpan={1}> क्र. सं.</th>
+                      <th colSpan={1}></th>
+                      <th colSpan={1}>Reason / विवरण</th>
+                      <th colSpan={1}>रकम</th>
+                      <th colSpan={1}>Description</th>
                     </tr>
 
                     <tr>
-                      <th className="sticky">1</th>
-                      <td>
-                        <div className="form-control">Total</div>
-                      </td>
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                    </tr>
 
-                      <td>
-                        <input
-                          type="number"
-                          className="smallinput wd-6"
-                          name="amount"
-                          disabled
-                          style={{
-                            width: "100%",
-                          }}
-                        />
-                      </td>
-                      <td></td>
+                    <tr>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -404,83 +172,36 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable">
-                  <thead>
-                    <tr>
-                      <th> क्र. सं.</th>
-                      <th></th>
-                      <th>पार्टी का नाम</th>
-                      <th>पार्टी/पार्टनर</th>
-                      <th>रकम</th>
-                      <th>टिप्पणी</th>
-                    </tr>
-                  </thead>
+                <table className="table ">
+                  <thead></thead>
 
                   <tbody>
                     <tr>
-                      <th>1</th>
-
-                      <td>
-                        <div className="form-control">
-                        <div className="smallinput wd-7"></div>
-                         
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                        <div  className="smallinput wd-9"></div>
-                          
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                        <div  className="smallinput wd-9"></div>
-                        
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                        <div  className="smallinput wd-30"></div>
-                          
-                        </div>
-                      </td>
+                      <th colSpan={1}> क्र. सं.</th>
+                      <th colSpan={1}></th>
+                      <th colSpan={1}>पार्टी का नाम</th>
+                      <th colSpan={1}>पार्टी/पार्टनर</th>
+                      <th colSpan={1}>रकम</th>
+                      <th colSpan={1}>टिप्पणी</th>
                     </tr>
 
                     <tr>
-                      <th>1</th>
-
-                      <td>
-                        <div className="form-control">
-                        <div className="smallinput wd-7"></div>
-                         
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                        <div  className="smallinput wd-9"></div>
-                          
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                        <div  className="smallinput wd-9"></div>
-                        
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                        <div  className="smallinput wd-30"></div>
-                          
-                        </div>
-                      </td>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
                     </tr>
 
+                    <tr>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -494,73 +215,31 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable">
-                  <thead>
-                    <tr>
-                      <th> क्र. सं.</th>
-                      <td></td>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>रकम</th>
-                      <th>comment</th>
-                    </tr>
-                  </thead>
+                <table className="table ">
                   <tbody>
                     <tr>
-                      <th>1</th>
-                      <td>
-                        <div className="form-control">
-                          <div className="smallinput wd-7"></div>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <div className="smallinput wd-7"></div>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <div className="smallinput wd-7"></div>
-                        </div>
-                      </td>
-                      <td>
-                        <div
-                          className="smallinput wd-7"
-                          style={{
-                            width: "240px",
-                          }}
-                        ></div>
-                      </td>
+                      <th colSpan={1}> क्र. सं.</th>
+                      <td colSpan={1}></td>
+                      <th colSpan={1}>Name</th>
+                      <th colSpan={1}>Type</th>
+                      <th colSpan={1}>रकम</th>
+                      <th colSpan={1}>comment</th>
                     </tr>
                     <tr>
-                      <th>1</th>
-                      <td>
-                        <div className="form-control">
-                          <div className="smallinput wd-7"></div>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <div className="smallinput wd-7"></div>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <div className="smallinput wd-7"></div>
-                        </div>
-                      </td>
-                      <td>
-                        <div
-                          className="smallinput wd-7"
-                          style={{
-                            width: "240px",
-                          }}
-                        ></div>
-                      </td>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                    </tr>
+                    <tr>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -575,43 +254,25 @@ const BackDailyReport = () => {
               </h1>
 
               <div className="overflow-x-auto">
-                <table className="table commonTable">
+                <table className="table ">
                   <thead>
                     <tr>
-                      <th> क्र. सं.</th>
-                      <th>रकम/ price</th>
-                      <th>विवरण/ Details</th>
+                      <th colSpan={1}> क्र. सं.</th>
+                      <th colSpan={1}>रकम/ price</th>
+                      <th colSpan={1}>विवरण/ Details</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>1</td>
-
-                      <td>
-                        <div className="form-control">
-                          <div className="semiSmallInput"></div>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <div className="semiSmallInput"></div>
-                        </div>
-                      </td>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
                     </tr>
 
                     <tr>
-                      <th className="sticky">1</th>
-
-                      <td>
-                        <div className="form-control">
-                          <div className="semiSmallInput"></div>
-                        </div>
-                      </td>
-                      <td>
-                        <div className="form-control">
-                          <div className="semiSmallInput"></div>
-                        </div>
-                      </td>
+                      <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -626,67 +287,31 @@ const BackDailyReport = () => {
             </h1>
 
             <div>
-              <table className="table commonTable">
+              <table className="table ">
                 <thead>
                   <tr>
-                    <th> क्र. सं.</th>
-                    <th>BRAND NAME/ ब्राण्ड</th>
-                    <th>Quantity</th>
-                    <th>Amount</th>
-                    <th>Comment</th>
+                    <th colSpan={1}> क्र. सं.</th>
+                    <th colSpan={1}>BRAND NAME/ ब्राण्ड</th>
+                    <th colSpan={1}>Quantity</th>
+                    <th colSpan={1}>Amount</th>
+                    <th colSpan={1}>Comment</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1</td>
-                    <td>
-                      <div className="form-control">
-                        <div className="semiSmallInput"></div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="form-control">
-                        <div className="semiSmallInput"></div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="form-control">
-                        <div className="semiSmallInput"></div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="form-control">
-                        <div className="semiSmallInput"></div>
-                      </div>
-                    </td>
+                  <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
                   </tr>
 
                   <tr>
-                    <th className="sticky">1</th>
-                    <td>
-                      <div className="form-control">Total</div>
-                    </td>
-                    <td>
-                      <div className="form-control">
-                        <div className="semiSmallInput"></div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="form-control">
-                        <div className="semiSmallInput"></div>
-                      </div>
-                    </td>
-
-                    <td>
-                      <div className="form-control">
-                        <div className="semiSmallInput"></div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="form-control">
-                        <div className="semiSmallInput"></div>
-                      </div>
-                    </td>
+                  <td className="tg-0lax">1</td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax"></td>
                   </tr>
                 </tbody>
               </table>

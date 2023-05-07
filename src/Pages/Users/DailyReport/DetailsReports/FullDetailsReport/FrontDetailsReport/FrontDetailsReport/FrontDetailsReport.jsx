@@ -288,6 +288,7 @@ const FrontDetailsReport = () => {
                 </td>
               </tr>
             </thead>
+            
             <tbody>
               <tr>
                 <td rowSpan={2}> क्र. सं.</td>
