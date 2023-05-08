@@ -27,6 +27,7 @@ const SelfBill = () => {
 
   const ShopToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShopToken.shopType;
+  const role = ShopToken.role;
 
   const { data: SelfBillData, isLoading } = useQuery({
     queryKey: ["SelfBillData"],
@@ -98,11 +99,11 @@ const SelfBill = () => {
     <section>
       <div className="title flex flex-col justify-center items-center py-2">
         <div className="flex gap-4">
-          {ShopType === "BAR" ? (
+          {role === "SHOP" && ShopType === "BAR" && (
             <Link className="commonBtn " to="/user/bearshop/outbill">
               बाहर का बिल
             </Link>
-          ) : (
+          ) }{role === "SHOP" && ShopType === "SHOP" && (
             <Link className="commonBtn " to="/user/outbill">
               बाहर का बिल
             </Link>

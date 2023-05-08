@@ -23,6 +23,7 @@ const OutBill = () => {
 
   const ShopToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShopToken.shopType;
+  const role = ShopToken.role;
 
   const { data: OutBill, isLoading } = useQuery({
     queryKey: ["OutBill"],
@@ -68,11 +69,11 @@ const OutBill = () => {
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
-          {ShopType === "BAR" ? (
+          {role === "SHOP" && ShopType === "BAR" && (
             <Link className="commonBtn" to="/user/bearshop/selfbill">
               दुकान बिल
             </Link>
-          ) : (
+          ) }{role === "SHOP" && ShopType === "SHOP" && (
             <Link className="commonBtn" to="/user/selfbill">
               दुकान बिल
             </Link>

@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 const Stock = () => {
   const token = jwtDecode(localStorage.getItem("token"));
   const ShopType = token.shopType;
+  const role = token.role;
 
   return (
     <section className="p-4">
@@ -16,7 +17,7 @@ const Stock = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center">
-          {ShopType === "BAR" ? (
+          {role === "SHOP" && ShopType === "BAR" && (
             <>
               <Link to="/user/bearshop/winestock" className="commonBtn ">
                 अंग्रेजी
@@ -29,7 +30,9 @@ const Stock = () => {
                 देशी / RML
               </Link>
             </>
-          ) : (
+          )}
+
+          {role === "SHOP" && ShopType === "SHOP" && (
             <>
               <Link to="/user/winestock" className="commonBtn ">
                 अंग्रेजी

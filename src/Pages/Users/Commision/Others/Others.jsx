@@ -19,6 +19,7 @@ const Others = () => {
 
   const ShopToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShopToken.shopType;
+  const role = ShopToken.role;
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -63,7 +64,7 @@ const Others = () => {
             प्रिंट
           </button>
 
-          {ShopType === "BAR" ? (
+          {role === "SHOP" && ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/commisson">
                 कमीशन
@@ -89,7 +90,8 @@ const Others = () => {
                 पेनाल्टी
               </Link>
             </>
-          ) : (
+          )}
+          {role === "SHOP" && ShopType === "SHOP" && (
             <>
               <Link className="commonBtn" to="/user/commisson">
                 कमीशन

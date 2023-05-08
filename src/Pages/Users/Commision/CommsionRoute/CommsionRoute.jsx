@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 const CommsionRoute = () => {
   const ShopToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShopToken.shopType;
+  const role = ShopToken.role;
 
   return (
     <section className="p-4">
@@ -20,7 +21,7 @@ const CommsionRoute = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center flex-wrap">
-          {ShopType === "BAR" ? (
+          {role === "SHOP" && ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/commisson">
                 कमीशन
@@ -50,7 +51,8 @@ const CommsionRoute = () => {
                 अन्य
               </Link>
             </>
-          ) : (
+          )}
+          {role === "SHOP" && ShopType === "SHOP" && (
             <>
               <Link className="commonBtn" to="/user/commisson">
                 कमीशन

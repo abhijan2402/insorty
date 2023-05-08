@@ -19,6 +19,7 @@ const Partners = ({ isBearShop }) => {
 
   const token = jwtDecode(localStorage.getItem("token"));
   const ShopType = token.shopType;
+  const role = ShopType.role;
 
   const handelPartnerSubmit = (e) => {
     e.preventDefault();
@@ -65,11 +66,11 @@ const Partners = ({ isBearShop }) => {
     <section className="py-4">
       <div className="title">
         <div className="flex justify-center items-center gap-4">
-          {ShopType === "BAR" ? (
+          {role === "SHOP" && ShopType === "BAR" && (
             <Link className="commonBtn" to="/user/bearshop/sendFormat">
               सभी पार्टनर
             </Link>
-          ) : (
+          )} {role === "SHOP" && ShopType === "SHOP" && (
             <Link className="commonBtn" to="/user/sendFormat">
               सभी पार्टनर
             </Link>

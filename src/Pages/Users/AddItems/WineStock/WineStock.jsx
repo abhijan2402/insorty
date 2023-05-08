@@ -20,6 +20,7 @@ const WineStock = () => {
 
   const ShoptToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShoptToken.shopType;
+  const role = ShoptToken.role;
 
   let count = 0;
 
@@ -93,7 +94,7 @@ const WineStock = () => {
     <section>
       <div className="title">
         <div className="flex justify-center gap-4 items-center">
-          {ShopType === "BAR" ? (
+          {role === "SHOP" && ShopType === "BAR" && (
             <>
               <Link to="/user/bearshop/beerstock" className="commonBtn ">
                 बीयर
@@ -103,7 +104,10 @@ const WineStock = () => {
                 देशी
               </Link>
             </>
-          ) : (
+          ) }
+
+          {
+            role === "SHOP" && ShopType === "SHOP" && (
             <>
               <Link to="/user/beerstock" className="commonBtn ">
                 बीयर
@@ -113,7 +117,8 @@ const WineStock = () => {
                 देशी
               </Link>
             </>
-          )}
+          )
+          }
 
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
