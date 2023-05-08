@@ -7,14 +7,12 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import jwtDecode from "jwt-decode";
 
-
 const BranchName = () => {
   const token = localStorage.getItem("token");
 
   const ShopToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShopToken.shopType;
-
-
+  const role = ShopToken.role;
 
   const {
     data: BranchNameData,
@@ -36,7 +34,7 @@ const BranchName = () => {
   });
 
   const handelDelete = (id) => {
-    console.log("delete" , id);
+    console.log("delete", id);
     fetch(`https://insorty-api.onrender.com/shop/deleteBranch`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json", cookie_token: token },
@@ -65,15 +63,17 @@ const BranchName = () => {
         <div className="flex gap-4 justify-center items-center">
           <h2 className="font-bold text-[1.5rem] text-center">ब्रांच जोड़ें</h2>
 
-          {
-            ShopType === "BAR" ?   <Link to="/user/bearshop/partyname" className="commonBtn ">
-            पार्टी जोड़ें
-          </Link> :   <Link to="/user/partyname" className="commonBtn ">
-            पार्टी जोड़ें
-          </Link>
-          }
+          {role === "SHOP" && ShopType === "BAR" && (
+            <Link to="/user/bearshop/partyname" className="commonBtn ">
+              पार्टी जोड़ें
+            </Link>
+          )}
 
-        
+          {role === "SHOP" && ShopType === "SHOP" && (
+            <Link to="/user/partyname" className="commonBtn ">
+              पार्टी जोड़ें
+            </Link>
+          )}
         </div>
         <div className="divider my-2"></div>
       </div>

@@ -24,6 +24,7 @@ const BeerStock = () => {
 
   const ShoptToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShoptToken.shopType;
+  const role = ShopType.role;
 
   const handlePrint = useReactToPrint({
     content: () => front.current,
@@ -83,7 +84,7 @@ const BeerStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center justify-center">
-          {ShopType === "BAR" ? (
+          {role === "SHOP" && ShopType === "BAR" && (
             <>
               <Link to="/user/bearshop/winestock" className="commonBtn ">
                 अंग्रेजी
@@ -92,7 +93,9 @@ const BeerStock = () => {
                 देशी
               </Link>
             </>
-          ) : (
+          )}
+
+          {role === "SHOP" && ShopType === "SHOP" && (
             <>
               <Link to="/user/winestock" className="commonBtn ">
                 अंग्रेजी

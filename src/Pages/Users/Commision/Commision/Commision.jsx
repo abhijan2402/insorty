@@ -19,6 +19,7 @@ const Commision = () => {
 
   const ShopToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShopToken.shopType;
+  const role = ShopToken.role;
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -62,7 +63,7 @@ const Commision = () => {
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
-          {ShopType === "BAR" ? (
+          {role === "SHOP" && ShopType === "BAR" && (
             <>
               <Link className="commonBtn " to="/user/bearshop/kharcha">
                 खर्चा
@@ -88,7 +89,7 @@ const Commision = () => {
                 अन्य
               </Link>
             </>
-          ) : (
+          )} {role === "SHOP" && ShopType === "SHOP" && (
             <>
               <Link className="commonBtn " to="/user/kharcha">
                 खर्चा

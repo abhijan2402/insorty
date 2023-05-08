@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 const MargePartners = () => {
   const token = jwtDecode(localStorage.getItem("token"));
   const ShopType = token.shopType;
+  const role = token.role;
 
   return (
     <section className="p-4">
@@ -18,28 +19,28 @@ const MargePartners = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center">
-          {ShopType === "BAR" ? (
-            <Link className="commonBtn" to="/user/bearshop/partners">
-              पार्टनर खाते
-            </Link>
-          ) : (
-            <Link className="commonBtn" to="/user/partners">
-              पार्टनर खाते
-            </Link>
+          {role === "SHOP" && ShopType === "BAR" && (
+            <>
+              <Link className="commonBtn" to="/user/bearshop/partners">
+                पार्टनर खाते
+              </Link>
+              <Link className="commonBtn " to="/user/bearshop/sendFormat">
+                सभी पार्टनर
+              </Link>
+            </>
           )}
 
-          {/* <Link className="commonBtn" to="/user/partners">
-            पार्टनर खाते
-          </Link> */}
 
-          {ShopType === "BAR" ? (
-            <Link className="commonBtn " to="/user/bearshop/sendFormat">
-              सभी पार्टनर
-            </Link>
-          ) : (
-            <Link className="commonBtn " to="/user/sendFormat">
-              सभी पार्टनर
-            </Link>
+          {role === "SHOP" && ShopType === "SHOP" && (
+            <>
+              <Link className="commonBtn" to="/user/partners">
+                पार्टनर खाते
+              </Link>
+
+              <Link className="commonBtn " to="/user/sendFormat">
+                सभी पार्टनर
+              </Link>
+            </>
           )}
 
           {/* <Link className="commonBtn " to="/user/sendFormat">
