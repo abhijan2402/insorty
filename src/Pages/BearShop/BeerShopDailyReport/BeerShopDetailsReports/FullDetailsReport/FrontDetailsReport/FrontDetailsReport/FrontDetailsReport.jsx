@@ -22,429 +22,219 @@ const FronteDailyReport = () => {
         <div>
           <>
             <div className="overflow-x-auto">
-              <table className="table commonTable">
-                <thead>
-                  <tr>
-                    <th> क्र. सं.</th>
-                    <th>ब्राण्ड</th>
-                    <th>एवरेज रेट</th>
-                    <th>प्रारम्भिक स्टॉक</th>
-                    <th>आमद(खरीद)-दु</th>
-                    <th>खरीद रेट - दुु</th>
-                    <th>/आमद(खरीद)बा</th>
-                    <th>खरीद रेट - बा.</th>
-                    <th>आमद (उधारी)</th>
-                    <th>भेजान</th>
-                    <th>योग - शेष</th>
-                    <th>अन्तिम स्टॉक</th>
-                    <th>बिक्री</th>
-                    <th> रेट</th>
-                    <th>योग</th>
-                    <th>कुल योग</th>
-                  </tr>
-                </thead>
+              <table className="table">
+                <thead></thead>
                 <tbody>
                   <tr>
-                    <th></th>
-                    <td>
-                      <div className="form-control"></div>
-                    </td>
+                    <th rowSpan={2}> क्र. सं.</th>
+                    <th rowSpan={2}>ब्राण्ड</th>
+                    <th colSpan={4}>एवरेज रेट</th>
+                    <th colSpan={4}>प्रारम्भिक स्टॉक</th>
+                    <th colSpan={4}>आमद(खरीद)-दु</th>
+                    <th colSpan={4}>खरीद रेट - दुु</th>
+                    <th colSpan={4}>/आमद(खरीद)बा</th>
+                    <th colSpan={4}>खरीद रेट - बा.</th>
+                    <th colSpan={4}>आमद (उधारी)</th>
+                    <th colSpan={4}>भेजान</th>
+                    <th colSpan={1}>योग - शेष</th>
+                    <th colSpan={1}>अन्तिम स्टॉक</th>
+                    <th colSpan={1}>बिक्री</th>
+                    <th colSpan={1}> रेट</th>
+                    <th colSpan={1}>योग</th>
+                    <th colSpan={1}>कुल योग</th>
+                  </tr>
+
+                  <tr>
                     {/* ======== MRP Input ========= */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>750ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>375ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>180ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>750ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>375ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>180ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>750ml</span>
                     </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>375ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>180ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
+                    </td>
+
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>750ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>375ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>180ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>750ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>375ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>180ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>750ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>375ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>180ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>750ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>375ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>180ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
 
                     {/* ============खरीद रेट - बा. =============  */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>750ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>375ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>180ml</span>
+                    </td>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
 
                     {/* ======== आमद (उधारी) ========= */}
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
                     {/* ======== भेजान ========= */}
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
                     {/* ======== योग/शेष ========= */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
                     {/* ======== अन्तिम स्टॉक ========= */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
+                    <td className="tg-0lax">
+                      <span style={{ fontWeight: "bold" }}>30ml</span>
                     </td>
+                    <td className="tg-0lax"></td>
+                  </tr>
 
-                    <td>
-                      <div className="form-control"></div>
-                    </td>
-                  </tr>
                   <tr>
-                    {/* ===================== addded daynamice data ===== */}
-                  </tr>
-                  <tr>
-                    <th></th>
-                    <td>Total</td>
+                    <td>1</td>
+                    <td>Brand Name</td>
                     {/* ======== MRP Input ========= */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                          />
-                        </div>
-                        <div className="form-control">
-                          <input
-                            disabled
-                            type="number"
-                            className="smallinput"
-                            name="openingstock"
-                          />
-                        </div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
                     {/* ======== आमद (खरीद)-दु. ========= */}
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
 
                     {/* ======== आमद (खरीद)-बा. ========= */}
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
                     {/* ======== भेजान ========= */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
                     {/* ======== योग/शेष ========= */}
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
                     {/* ======== अन्तिम स्टॉक ========= */}
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
 
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control smallinput"></div>
-                      </div>
-                    </td>
+                    <td className="tg-0lax"></td>
                     {/* ============= कुल योग ================ */}
-                    <td>
-                      <div className="form-control semiSmallInput"></div>
-                    </td>
+                    <td className="tg-0lax"></td>
                   </tr>
                 </tbody>
               </table>
@@ -454,446 +244,186 @@ const FronteDailyReport = () => {
 
         <div>
           <div className="overflow-x-auto my-6">
-            <table className="table commonTable">
-              <thead>
-                <tr>
-                  <th>क्र. सं.</th>
-                  <th>ब्राण्ड</th>
-                  <th>ml</th>
-                  <th>एवरेज रेट </th>
-                  <th>प्रारम्भिक स्टॉक </th>
-                  <th>आमद (खरीद)-बार </th>
-                  <th>खरीद रेट-बार </th>
-                  <th>आमद (खरीद)-बाहर से </th>
-                  <th>खरीद रेट बाहर </th>
-                  <th>आमद (उधारी) </th>
-                  <th> भेजान </th>
-                  <th> योग/शेष</th>
-                  <th> अन्तिम स्टॉक</th>
-                  <th> बिक्री</th>
-                  <th> रेट</th>
-                  <th>योग</th>
-                </tr>
-              </thead>
+            <table className="table ">
               <tbody>
                 <tr>
-                  <th>
-                    <div className="form-control"></div>
-                  </th>
-                  <td>
-                    <div className="form-control"></div>
+                  <th rowSpan={2}>क्र. सं.</th>
+                  <th rowSpan={2}>ब्राण्ड</th>
+                  <th rowSpan={2}>ml</th>
+                  <th colSpan={2}>एवरेज रेट </th>
+                  <th colSpan={2}>प्रारम्भिक स्टॉक </th>
+                  <th colSpan={2}>आमद (खरीद)-बार </th>
+                  <th colSpan={2}>खरीद रेट-बार </th>
+                  <th colSpan={2}>आमद (खरीद)-बाहर से </th>
+                  <th colSpan={2}>खरीद रेट बाहर </th>
+                  <th colSpan={2}>आमद (उधारी) </th>
+                  <th colSpan={1}> भेजान </th>
+                  <th colSpan={1}> योग/शेष</th>
+                  <th colSpan={1}> अन्तिम स्टॉक</th>
+                  <th colSpan={1}> बिक्री</th>
+                  <th colSpan={1}> रेट</th>
+                  <th colSpan={1}>योग</th>
+                </tr>
+
+                <tr>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>Other ML</span>
                   </td>
-                  <td>
-                    <div className="form-control"></div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Other ML</span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>Other ML</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Other ML</span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>Other ML</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Other ML</span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>Other ML</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Other ML</span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>Other ML</span>
                   </td>
-
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Other ML</span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
 
                   {/* ============खरीद रेट - बा. =============  */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Other ML</span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>Other ML</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
 
                   {/* ======== आमद (उधारी) ========= */}
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">Other ML</span>
-                        </label>
-                      </div>
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>Other ML</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
                   {/* ======== भेजान ========= */}
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
                   {/* ======== योग/शेष ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
                   {/* ======== अन्तिम स्टॉक ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <label className="label">
-                          <span className="label-text">30ml</span>
-                        </label>
-                      </div>
-                    </div>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>30ml</span>
                   </td>
-                  <td>
-                    <div className="form-control"></div>
-                  </td>
+                  <td className="tg-0lax"></td>
                 </tr>
 
                 {/* ============== daynamic ==================== */}
                 <tr>
-                  <th></th>
+                  <td>1</td>
                   <td>Brand Name</td>
+                  <td>54</td>
 
-                  <td>
-                    <div className="form-control smallinput"></div>
-                  </td>
                   {/* ======== MRP Input ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
                   {/* ======== प्रारम्भिक स्टॉक ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
                   {/* ======== आमद (खरीद)-दु. ========= */}
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
                   {/* ======== आमद (खरीद)-बा. ========= */}
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
                   {/*================ खरीद रेट - बा. ==================  */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
                   {/* ======== भेजान ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
                   {/* ======== योग/शेष ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
                   {/* ======== अन्तिम स्टॉक ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control smallinput"></div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
                   {/* ============= कुल योग ================ */}
-
-                  <td>
-                    <div className="form-control semiSmallInput"></div>
-                  </td>
+                  <td className="tg-0lax"></td>
                 </tr>
+
                 <tr>
-                  <th></th>
-                  <td></td>
+                  <td>1</td>
+                  <td>Brand Name</td>
+                  <td>54</td>
+
                   {/* ======== MRP Input ========= */}
-                  <td></td>
-                  <td></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
                   {/* ======== प्रारम्भिक स्टॉक ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="openingStockOtherMl"
-                        />
-                      </div>
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="openingStock30"
-                        />
-                      </div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
                   {/* ======== आमद (खरीद)-दु. ========= */}
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="inflowPurchaseOtherMl"
-                        />
-                      </div>
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="inflowPurchase30"
-                        />
-                      </div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
-                  <td></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
                   {/* ======== आमद (खरीद)-बा. ========= */}
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="inflowPurchaseFromOutsideOtherMl
-                          "
-                        />
-                      </div>
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="inflowPurchaseFromOutside30"
-                        />
-                      </div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
                   {/*================ खरीद रेट - बा. ==================  */}
-                  <td></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="inflowCreditOtherMl"
-                        />
-                      </div>
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="inflowCredit30"
-                        />
-                      </div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
                   {/* ======== भेजान ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="sending30"
-                        />
-                      </div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
                   {/* ======== योग/शेष ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="sumRemainder30"
-                        />
-                      </div>
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
                   {/* ======== अन्तिम स्टॉक ========= */}
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="closingStock30"
-                        />
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="flex ">
-                      <div className="form-control">
-                        <input
-                          type="number"
-                          className="smallinput"
-                          name="sale30"
-                        />
-                      </div>
-                    </div>
-                  </td>
-                  <td></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
                   {/* ============= कुल योग ================ */}
-                  <td>
-                    <div className="form-control">
-                      <input
-                        type="number"
-                        className="semiSmallInput"
-                        name="total"
-                      />
-                    </div>
-                  </td>
+                  <td className="tg-0lax"></td>
                 </tr>
               </tbody>
             </table>
@@ -912,483 +442,235 @@ const FronteDailyReport = () => {
                       </span>
                     </h1>
 
-                    <table className="table commonTable">
-                      <thead>
-                        <tr>
-                          <th> क्र. सं.</th>
-                          <th>Brand Name/ ब्राण्ड</th>
-                          <th>Average Rate</th>
-                          <th>प्रारम्भिक स्टॉक</th>
-                          <th>आमद (खरीद)-दु.</th>
-                          <th>खरीद रेट - दु</th>
-                          <th>आमद (खरीद)-बा.</th>
-                          <th>खरीद रेट - बा.</th>
-                          <th>आमद (उधारी)</th>
-                          <th>भेजान</th>
-                          <th>योग/शेष</th>
-                          <th>अन्तिम स्टॉक</th>
-                          <th>बिक्री</th>
-                          <th>रेट</th>
-                          <th>योग</th>
-                          <th>कुल योग</th>
-                        </tr>
-                      </thead>
-
+                    <table className="table">
                       <tbody>
                         <tr>
-                          <th></th>
+                          <th rowSpan={2}> क्र. सं.</th>
+                          <th rowSpan={2}>Brand Name/ ब्राण्ड</th>
+                          <th colSpan={3}>Average Rate</th>
+                          <th colSpan={3}>प्रारम्भिक स्टॉक</th>
+                          <th colSpan={3}>आमद (खरीद)-दु.</th>
+                          <th colSpan={3}>खरीद रेट - दु</th>
+                          <th colSpan={3}>आमद (खरीद)-बा.</th>
+                          <th colSpan={3}>खरीद रेट - बा.</th>
+                          <th colSpan={3}>आमद (उधारी)</th>
+                          <th colSpan={3}>भेजान</th>
+                          <th colSpan={3}>योग/शेष</th>
+                          <th colSpan={3}>अन्तिम स्टॉक</th>
+                          <th colSpan={3}>बिक्री</th>
+                          <th colSpan={3}>रेट</th>
+                          <th colSpan={3}>योग</th>
+                          <th colSpan={3}>कुल योग</th>
+                        </tr>
 
-                          {/* ======== MRP Input ========= */}
-                          <td></td>
+                        <tr>
                           {/* ======== प्रारम्भिक स्टॉक ========= */}
-                          <td>
-                            <div className="flex justify-evenly">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
                           </td>
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
                           </td>
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
                           </td>
 
-                          <td>
-                            <div className="flex justify-evenly">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
+                          </td>
 
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
                           </td>
 
                           {/* ============खरीद रेट - बा. =============  */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
                           </td>
-
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
+                          </td>
                           {/* ======== आमद (उधारी) ========= */}
 
-                          <td>
-                            <div className="flex justify-evenly">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
                           </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
+                          </td>
+
                           {/* ======== भेजान ========= */}
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
                           </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
+                          </td>
+
                           {/* ======== योग/शेष ========= */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
                           </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
+                          </td>
+
                           {/* ======== अन्तिम स्टॉक ========= */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
                           </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
+                          </td>
+
                           {/* ============= बिक्री ================ */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
                           </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
+                          </td>
+
                           {/* ============= रेट ================ */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
+                          </td>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
                           </td>
                           {/* ============= योग ================ */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>650ml</span>
                           </td>
-                          <td>
-                            <div className="flex justify-evenly ">
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">650ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">550ml</span>
-                                </label>
-                              </div>
-
-                              <div className="form-control">
-                                <label className="label">
-                                  <span className="label-text">330ml</span>
-                                </label>
-                              </div>
-                            </div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>550ml</span>
                           </td>
-                          {/* ============= कुल योग ================ */}
-                          <td>
-                            <div className="form-control"></div>
+                          <td className="tg-0lax">
+                            <span style={{ fontWeight: "bold" }}>330ml</span>
                           </td>
+
+                          <td className="tg-0lax"></td>
                         </tr>
 
-                        {/* ============================Daynamice data ======================== */}
                         <tr>
-                          <th>1</th>
-                          <td>Brand Name</td>
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
-                          {/* ======== MRP Input ========= */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
                           {/* ======== प्रारम्भिक स्टॉक ========= */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                              <div className="form-control smallinput"></div>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                          {/* ======== आमद (खरीद)-दु. ========= */}
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
-
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
-
-                          {/* ======== आमद (खरीद)-बा. ========= */}
-
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
-
-                          {/*================ खरीद रेट - बा. ==================  */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
-
+                          {/* ============खरीद रेट - बा. =============  */}
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
                           {/* ======== आमद (उधारी) ========= */}
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
                           {/* ======== भेजान ========= */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
 
-                              <div className="form-control smallinput"></div>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
                           {/* ======== योग/शेष ========= */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
                           {/* ======== अन्तिम स्टॉक ========= */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
                           {/* ============= बिक्री ================ */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
                           {/* ============= रेट ================ */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
                           {/* ============= योग ================ */}
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control smallinput"></div>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                              <div className="form-control smallinput"></div>
-
-                              <div className="form-control smallinput"></div>
-                            </div>
-                          </td>
                           {/* ============= कुल योग ================ */}
-                          <td>
-                            <div className="smallinput wd-7"></div>
-                          </td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1400,172 +682,38 @@ const FronteDailyReport = () => {
                         पानी, नमकीन, सिगरेट, पुड़िया आदि
                       </span>
                     </h1>
-                    <table className="table commonTable">
-                      <thead>
-                        <tr></tr>
-                        <tr></tr>
-                        <tr>
-                          <th> क्र. सं.</th>
-                          <th>Description/ सामान का विवरण</th>
-                          <th>Buying price/ खरीद रेट</th>
-                          <th>प्राम्भिक स्टॉक</th>
-                          <th>आमद</th>
-                          <th>योग</th>
-                          <th>अंतिम स्टॉक</th>
-                          <th>बिक्री</th>
-                          <th>रेट</th>
-                          <th>योग</th>
-                        </tr>
-                      </thead>
-
+                    <table className="table">
                       <tbody>
                         <tr>
-                          <th>1</th>
-                          <td>
-                            <input
-                              type="text"
-                              className="dailyReportInput"
-                              required
-                            />
-                          </td>
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="dailyReportInput"
-                                />
-                              </div>
-                            </div>
-                          </td>
-
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <input
-                                  type="text"
-                                  className="dailyReportInput"
-                                  name="openingStock"
-                                />
-                              </div>
-                            </div>
-                          </td>
-
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="dailyReportInput"
-                                  name="infllow"
-                                />
-                              </div>
-                            </div>
-                          </td>
-
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="dailyReportInput"
-                                  name="sum"
-                                />
-                              </div>
-                            </div>
-                          </td>
-
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="dailyReportInput"
-                                  name="closingStock"
-                                  required
-                                />
-                              </div>
-                            </div>
-                          </td>
-
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="dailyReportInput"
-                                  name="sales"
-                                  required
-                                />
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="dailyReportInput"
-                                  name="rates"
-                                />
-                              </div>
-                            </div>
-                          </td>
-
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control">
-                                <input
-                                  type="number"
-                                  className="dailyReportInput"
-                                  name="sumreminder"
-                                />
-                              </div>
-                            </div>
-                          </td>
+                          <th colSpan={1}> क्र. सं.</th>
+                          <th colSpan={1}>Description/ सामान का विवरण</th>
+                          <th colSpan={1}>Buying price/ खरीद रेट</th>
+                          <th colSpan={1}>प्राम्भिक स्टॉक</th>
+                          <th colSpan={1}>आमद</th>
+                          <th colSpan={1}>योग</th>
+                          <th colSpan={1}>अंतिम स्टॉक</th>
+                          <th colSpan={1}>बिक्री</th>
+                          <th colSpan={1}>रेट</th>
+                          <th colSpan={1}>योग</th>
                         </tr>
 
                         <tr>
-                          <th></th>
-                          <td></td>
-                          <td></td>
+                          <th>1</th>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control dailyReportInput"></div>
-                            </div>
-                          </td>
+                          <td className="tg-0lax"></td>
+                          <td className="tg-0lax"></td>
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control dailyReportInput"></div>
-                            </div>
-                          </td>
+                          <td className="tg-0lax"></td>
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control dailyReportInput"></div>
-                            </div>
-                          </td>
+                          <td className="tg-0lax"></td>
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control dailyReportInput"></div>
-                            </div>
-                          </td>
+                          <td className="tg-0lax"></td>
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control dailyReportInput"></div>
-                            </div>
-                          </td>
-                          <td></td>
+                          <td className="tg-0lax"></td>
 
-                          <td>
-                            <div className="flex ">
-                              <div className="form-control dailyReportInput"></div>
-                            </div>
-                          </td>
+                          <td className="tg-0lax"></td>
                         </tr>
                       </tbody>
                     </table>
@@ -1579,150 +727,101 @@ const FronteDailyReport = () => {
 
       <div>
         <>
-          <div className="mt-6">
+          <div className="mt-6 mb-6">
             <div className="overflow-x-auto">
-              <table className="table commonTable ">
-                <thead>
-                  <tr>
-                    <th> क्र. सं.</th>
-                    <th>Brand Name/ ब्राण्ड</th>
-                    <th>ml</th>
-                    <th>Average Rate</th>
-                    <th>प्रारम्भिक स्टॉक</th>
-                    <th>आमद (खरीद)-दु.</th>
-                    <th>खरीद रेट - दु</th>
-                    <th>आमद (खरीद)-बा.</th>
-                    <th>खरीद रेट - बा.</th>
-                    <th>आमद (उधारी)</th>
-                    <th>भेजान</th>
-                    <th>योग/शेष</th>
-                    <th>अन्तिम स्टॉक</th>
-                    <th>बिक्री</th>
-                    <th>रेट</th>
-                    <th>योग</th>
-                    {/* <th>कुल योग</th> */}
-                  </tr>
-                </thead>
-
+              <table className="table">
                 <tbody>
                   {/* ==================== dayamice data */}
-
                   <tr>
-                    <th className="sticky">1</th>
-                    <td>
-                      <div className="form-control">Brand Name</div>
-                    </td>
+                    <th colSpan={1}> क्र. सं.</th>
+                    <th colSpan={1}>Brand Name/ ब्राण्ड</th>
+                    <th colSpan={1}>ml</th>
+                    <th colSpan={1}>Average Rate</th>
+                    <th colSpan={1}>प्रारम्भिक स्टॉक</th>
+                    <th colSpan={1}>आमद (खरीद)-दु.</th>
+                    <th colSpan={1}>खरीद रेट - दु</th>
+                    <th colSpan={1}>आमद (खरीद)-बा.</th>
+                    <th colSpan={1}>खरीद रेट - बा.</th>
+                    <th colSpan={1}>आमद (उधारी)</th>
+                    <th colSpan={1}>भेजान</th>
+                    <th colSpan={1}>योग/शेष</th>
+                    <th colSpan={1}>अन्तिम स्टॉक</th>
+                    <th colSpan={1}>बिक्री</th>
+                    <th colSpan={1}>रेट</th>
+                    <th colSpan={1}>योग</th>
+                  </tr>
+                  <tr>
+                    <td className="tg-0lax">1</td>
+
+                    <td className="tg-0lax"></td>
                     {/* ======== MRP Input ========= */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
+
+                    <td className="tg-0lax"></td>
+
+                    <td className="tg-0lax"></td>
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
 
                     {/* ======== आमद (खरीद)-दु. ========= */}
 
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+                    <td className="tg-0lax"></td>
 
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+                    <td className="tg-0lax"></td>
 
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+                    <td className="tg-0lax"></td>
                     {/* ======== भेजान ========= */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ======== योग/शेष ========= */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ======== अन्तिम स्टॉक ========= */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ============= बिक्री ================ */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ============= रेट ================ */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ============= योग ================ */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ============= कुल योग ================ */}
                   </tr>
 
                   <tr>
-                    <th className="sticky"></th>
-                    <td></td>
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
-                    {/* ======== MRP Input ========= */}
-                    <td></td>
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
-                    {/* ======== प्रारम्भिक स्टॉक ========= */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+                    <td className="tg-0lax">1</td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
 
-                    {/* ======== आमद (खरीद)-दु. ========= */}
-
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
-
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
-
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+                    <td className="tg-0lax"></td>
                     {/* ======== भेजान ========= */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ======== योग/शेष ========= */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ======== अन्तिम स्टॉक ========= */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ============= बिक्री ================ */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ============= रेट ================ */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ============= योग ================ */}
-                    <td>
-                      <div className="smallinput"></div>
-                    </td>
+
+                    <td className="tg-0lax"></td>
                     {/* ============= कुल योग ================ */}
                   </tr>
                 </tbody>
