@@ -197,39 +197,7 @@ const useHandleSubmiBeerShopFront = () => {
     });
   }
 
-  // const smallPegFormData = [];
-  // for (let index = 0; smallPegForm ? index < smallPegForm.length : 0; index++) {
-  //   const element = smallPegForm[index];
-  //   smallPegFormData.push({
-  //     liquor: element.size.sizes.find(
-  //       (elem) => elem.quantityInML === element.ml
-  //     )?._id,
-  //     averageRateOtherMl: element.averageRateOtherMl,
-  //     brandName: element.brandName,
-  //     buyRateShopBar30: element.buyRateShopBar30,
-  //     buyRateShopBarOtherMl: element.buyRateShopBarOtherMl,
-  //     buyRateShopOut30: element.buyRateShopOut30,
-  //     buyRateShopOutOtherMl: element.buyRateShopOutOtherMl,
-  //     closingStock30: element.closingStock30,
-  //     inflowCredit30: element.inflowCredit30,
-  //     inflowCreditOtherMl: element.inflowCreditOtherMl,
-  //     inflowPurchase30: element.inflowPurchase30,
-  //     inflowPurchaseFromOutside30: element.inflowPurchaseFromOutside30,
-  //     inflowPurchaseFromOutsideOtherMl:
-  //       element.inflowPurchaseFromOutsideOtherMl,
-  //     inflowPurchaseOtherMl: element.inflowPurchaseOtherMl,
-  //     initial: element.initial,
-  //     ml: element.ml,
-  //     openingStockOtherMl: element.openingStockOtherMl,
-  //     rate30: element.rate30,
-  //     sale30: element.sale30,
-  //     send30: element.send30,
-  //     sumRemaining30: element.sumRemaining30,
-  //     sumRemainingOtherML: element.sumRemainingOtherML,
-  //     total: element.total,
-  //   });
-  // }
-
+ 
   const otherMl = [];
 
   for (let index = 0; smallPegForm ? index < smallPegForm.length : 0; index++) {
@@ -407,12 +375,7 @@ const useHandleSubmiBeerShopFront = () => {
         setIsLoading(false);
       }
     }
-    // console.log(pageFormData750);
-    // console.log(pageFormData375);
-    // console.log(pageFormData180);
-    // console.log(pageFormData30);
-    // console.log(Ml30Data);
-    // console.log(otherMl);
+
   };
 
   return {

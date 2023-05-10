@@ -5,6 +5,7 @@ import { FaBars } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useState } from "react";
 import "./LayoutStyle.scss";
+import jwtDecode from "jwt-decode";
 
 const DashboardLayout = () => {
   const [side, setSide] = useState(true);
@@ -14,6 +15,13 @@ const DashboardLayout = () => {
     return <Navigate to="/login" replace />;
   }
 
+  if (token) {
+    const decode = jwtDecode(token);
+    if (decode.role === "shop" && decode.shopType==="BAR") {
+      console.log("condition SHOP")
+      return <Navigate to="/login" replace />;
+    }
+  }
 
 
   return (

@@ -5,9 +5,25 @@ import { ImCross } from "react-icons/im";
 import { useState } from "react";
 import "./LayoutStyle.scss";
 import BearShopSideNav from "../Dashoard/BearShopSideNav/BeerShopSideNav";
+import { Navigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 const BearShopLayout = () => {
   const [side, setSide] = useState(true);
+
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to="/login" replace />;
+  }
+
+  if (token) {
+    const decode = jwtDecode(token);
+    if (decode.role === "shop" && decode.shopType==="SHOP") {
+      console.log("condition BAR")
+      return <Navigate to="/login" replace />;
+    }
+  }
 
 
   return (

@@ -43,9 +43,9 @@ const Login = () => {
               navigate("/admin");
             } else if (role === "subadmin") {
               navigate("/subadmin");
-            } else if (response.data.user.shopType === "BAR") {
+            } else if (response.data.data.user.role === "shop" && response.data.data.user.shopType === "BAR") {
               navigate("/user/bearshop");
-            } else if (response.data.user.shopType === "SHOP") {
+            } else if (response.data.data.user.role === "shop" && response.data.data.user.shopType === "SHOP") {
               navigate("/user");
             }
           }
@@ -73,9 +73,9 @@ const Login = () => {
       return <Navigate to="/admin" replace />;
     } else if (tokenData.role === "subadmin") {
       return <Navigate to="/subadmin" replace />;
-    } else if (tokenData.role === "SHOP" && tokenData.shopType === "SHOP") {
+    } else if (tokenData.role === "shop" && tokenData.shopType === "SHOP") {
       return <Navigate to="/user" replace />;
-    } else if (tokenData.role === "SHOP" && tokenData.shopType === "BAR") {
+    } else if (tokenData.role === "shop" && tokenData.shopType === "BAR") {
       return <Navigate to="/user/bearshop" replace />;
     }
   }
