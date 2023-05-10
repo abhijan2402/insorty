@@ -13,7 +13,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { userData, setuserData } = useContext(AuthContext);
-  console.log(userData)
+  console.log(userData);
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -35,18 +35,21 @@ const Login = () => {
         })
         .then((response) => {
           setuserData(response.data);
-          
-          if (response.data.success) {
-            console.log(response.data.data.role);
+
+          if (response.data.data.success) {
+            console.log(response);
             console.log(role);
             if (role === "admin") {
               navigate("/admin");
             } else if (role === "subadmin") {
               navigate("/subadmin");
-            } else if (role === "shop") {
+            } else if (response.data.user.shopType === "BAR") {
+              navigate("/user/bearshop");
+            } else if (response.data.user.shopType === "SHOP") {
               navigate("/user");
             }
           }
+
           localStorage.setItem("token", response.data.data.token);
           Swal.fire("Succesfully Login!", "You clicked the button!", "success");
         });
@@ -70,8 +73,10 @@ const Login = () => {
       return <Navigate to="/admin" replace />;
     } else if (tokenData.role === "subadmin") {
       return <Navigate to="/subadmin" replace />;
-    } else if (tokenData.role === "shop") {
+    } else if (tokenData.role === "SHOP" && tokenData.shopType === "SHOP") {
       return <Navigate to="/user" replace />;
+    } else if (tokenData.role === "SHOP" && tokenData.shopType === "BAR") {
+      return <Navigate to="/user/bearshop" replace />;
     }
   }
 
