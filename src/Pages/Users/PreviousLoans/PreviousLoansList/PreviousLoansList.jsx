@@ -1,24 +1,23 @@
-import React from "react";
-import "../../UserStyle/UserStyle.scss";
-import { Link } from "react-router-dom";
-import { FaRegTrashAlt } from "react-icons/fa";
-import AddNewEmploy from "../AddNewEmploy/AddNewEmploy";
-import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
+import React from "react";
+import { FaRegTrashAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import Loader from "../../../../Components/Loader/Loader";
+import AddPreviusLons from "../AddPreviusLons/AddPreviusLons";
 
-const SalaryList = () => {
+const PreviousLoansList = () => {
   const token = localStorage.getItem("token");
 
   const {
-    data: salaryData,
+    data: prevLoneData,
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["salaryData"],
+    queryKey: ["prevLoneData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllEmployees",
+        "https://insorty-api.onrender.com/shop/getAllPreviousBorroweds",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -30,10 +29,10 @@ const SalaryList = () => {
     },
   });
 
-  const handleDelete = (employeeId) => {
-    fetch(`https://insorty-api.onrender.com/shop/deleteEmployee`, {
+  const handleDelete = (previousBorrowedId) => {
+    fetch(`https://insorty-api.onrender.com/shop/deletePreviousBorrowed`, {
       method: "DELETE",
-      body: JSON.stringify({ employeeId }),
+      body: JSON.stringify({ previousBorrowedId }),
       headers: { "Content-Type": "application/json", cookie_token: token },
     })
       .then((res) => res.json())
@@ -47,20 +46,26 @@ const SalaryList = () => {
       });
   };
 
-  const handelSubmitAddNewEmploy = (e) => {
+  const handelSubmitAddNewPrevLoan = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
-    const mobile = e.target.phoneNumber.value;
+    const financeYear = e.target.financeYear.value;
 
-    fetch("https://insorty-api.onrender.com/shop/addEmployee", {
+    console.log(name, financeYear, "financeYear");
+
+    fetch("https://insorty-api.onrender.com/shop/addPreviousBorrowed", {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
-      body: JSON.stringify({ name, mobile }),
+      body: JSON.stringify({ 
+        name: name, 
+        financeYear: financeYear 
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
-        refetch();
-        if (data.success) {
+        console.log(data, "data");
+        // refetch();
+        if (data.success === true) {
           Swal.fire("Success!", "Your file has been added.", "success");
         } else {
           Swal.fire("Failed!", "Your file has not been added.", "error");
@@ -68,18 +73,18 @@ const SalaryList = () => {
       });
   };
 
-  if (isLoading) {
-    return (
-      <div>
-        <Loader></Loader>
-      </div>
-    );
-  }
+  // if (isLoading) {
+  //   return (
+  //     <div>
+  //       <Loader></Loader>
+  //     </div>
+  //   );
+  // }
 
   return (
     <section className="px-2 py-6">
       <div>
-        <h1 className="titleStyle text-center">कर्मचारी</h1>
+        <h1 className="titleStyle text-center">Previous Loans</h1>
         <div className="divider my-2"></div>
       </div>
 
@@ -97,24 +102,24 @@ const SalaryList = () => {
               </tr>
             </thead>
             <tbody>
-              {(salaryData.length > 0 &&
-                salaryData?.map((salary, index) => {
+              {/* {(prevLoneData && prevLoneData.length  &&
+                prevLoneData?.map((prevLone, index) => {
                   return (
-                    <tr key={salary?._id}>
+                    <tr key={prevLone?._id}>
                       <th>{index + 1}</th>
                       <td>
                         <Link
                           className="font-bold text-[1rem]"
-                          to={`/user/salary/from/${salary?._id}`}
+                          to={`/user/previousloan/details/${prevLone?._id}`}
                         >
-                          {salary?.name}
+                          {prevLone?.name}
                         </Link>
                       </td>
                       <td>
                         <Link
                           className="font-3xl font-bold"
                           style={{ color: "#AA237A" }}
-                          onClick={() => handleDelete(salary?._id)}
+                          onClick={() => handleDelete(prevLone?._id)}
                         >
                           <FaRegTrashAlt></FaRegTrashAlt>
                         </Link>
@@ -127,22 +132,23 @@ const SalaryList = () => {
                     <span className="text-red-500">No Data Found</span>
                   </p>
                 </>
-              )}
+              )} */}
             </tbody>
           </table>
         </div>
         <tr className="py-4 flex justify-center">
-          <label htmlFor="addNewEmploy" className="commonBtn">
-            नया कर्मचारी जोड़ें
+          <label htmlFor="addNewPrevLone" className="commonBtn">
+            Add New
           </label>
         </tr>
       </div>
-      <AddNewEmploy
-        key={salaryData?._id}
-        handelSubmitAddNewEmploy={handelSubmitAddNewEmploy}
-      ></AddNewEmploy>
+
+      <AddPreviusLons
+        handelSubmitAddNewPrevLoan={handelSubmitAddNewPrevLoan}
+        key={prevLoneData?._id}
+      />
     </section>
   );
 };
 
-export default SalaryList;
+export default PreviousLoansList;

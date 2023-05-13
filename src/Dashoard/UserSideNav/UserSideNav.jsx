@@ -190,6 +190,14 @@ const SideNav = () => {
                 Add Items
               </NavLink>
             </li>
+            <li className="my-4">
+              <NavLink
+                to="/user/previousloan"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                Previous Loans
+              </NavLink>
+            </li>
 
             <button
               onClick={() => logout({ returnTo: window.location.origin })}

@@ -57,6 +57,8 @@ import WineBill from "../Pages/Users/WineBill/WineBill";
 import ShopParmisson from "../Pages/Admin/ShopParmisson/ShopParmisson/ShopParmisson";
 import BeerFrontDetailsReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopDetailsReports/FullDetailsReport/FrontDetailsReport/FrontDetailsReport/FrontDetailsReport";
 import BeerBackDetailsReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopDetailsReports/FullDetailsReport/BackDetailsReport/BackDetailsReport";
+import PreviousLoansList from "../Pages/Users/PreviousLoans/PreviousLoansList/PreviousLoansList";
+import PreviousLoansDetails from "../Pages/Users/PreviousLoans/PreviousLoansDetails/PreviousLoansDetails";
 
 const router = createBrowserRouter([
   {
@@ -291,6 +293,15 @@ const router = createBrowserRouter([
         path: "/user/sendFormat",
         element: <SendFormat />,
       },
+      {
+        path: '/user/previousloan',
+        element: <PreviousLoansList />,
+      },
+      {
+        path: '/user/previousloan/details/:loandataId',
+        element: <PreviousLoansDetails />,
+      }
+
     ],
   },
   {
@@ -489,6 +500,11 @@ const router = createBrowserRouter([
         path: "/user/bearshop/sendFormat",
         element: <SendFormat />,
       },
+      {
+        path: '/user/bearshop/previousloan',
+        element: <PreviousLoansList />,
+      }
+      
     ],
   },
 ]);

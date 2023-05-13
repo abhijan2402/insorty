@@ -12,8 +12,10 @@ const DataContext = ({ children }) => {
   const [drDate, setDrDate] = useState(new Date());
   const [salesMan, setSalesMan] = useState("");
 
+  const BasedURL = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
-    fetch("https://insorty-api.onrender.com/shop/getAllLiquors", {
+    fetch(`${BasedURL}/shop/getAllLiquors`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +38,7 @@ const DataContext = ({ children }) => {
     queryKey: ["liquors"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllLiquors",
+        `${BasedURL}/shop/getAllLiquors`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -51,7 +53,7 @@ const DataContext = ({ children }) => {
     queryKey: ["liquors"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllParentLiquors",
+        `${BasedURL}/shop/getAllParentLiquors`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -67,7 +69,7 @@ const DataContext = ({ children }) => {
     queryKey: ["purchaseOutsideData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getPurchaseOutsideData",
+        `${BasedURL}/shop/getPurchaseOutsideData`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -84,7 +86,7 @@ const DataContext = ({ children }) => {
     queryKey: ["totalExpensesData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getTotalExpensesData",
+        `${BasedURL}/shop/getTotalExpensesData`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -100,7 +102,7 @@ const DataContext = ({ children }) => {
     queryKey: ["borrowedCashReturnData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getBorrowedCashReturnData",
+        `${BasedURL}/shop/getBorrowedCashReturnData`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -116,7 +118,7 @@ const DataContext = ({ children }) => {
     queryKey: ["getBackRmlData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getBackPageRMLData",
+        `${BasedURL}/shop/getBackPageRMLData`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

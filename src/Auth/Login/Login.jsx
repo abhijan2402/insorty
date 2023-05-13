@@ -25,10 +25,12 @@ const Login = () => {
     const role = form.select.value;
     const password = form.password.value;
 
+    const BasedURL = process.env.REACT_APP_API_URL;
+
     setIsLoading(true);
     try {
       await axios
-        .post("https://insorty-api.onrender.com/auth/login", {
+        .post(`${BasedURL}/auth/login`, {
           role: role,
           accountId: name,
           password,

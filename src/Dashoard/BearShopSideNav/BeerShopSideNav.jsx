@@ -192,6 +192,15 @@ const SideNav = () => {
               </NavLink>
             </li>
 
+            <li className="my-4">
+              <NavLink
+                to="/user/bearshop/previousloan"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                Previous Loans
+              </NavLink>
+            </li>
+
 
             <button
               onClick={() => logout({ returnTo: window.location.origin })}
