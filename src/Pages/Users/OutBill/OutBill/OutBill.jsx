@@ -69,11 +69,11 @@ const OutBill = () => {
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <Link className="commonBtn" to="/user/bearshop/selfbill">
               दुकान बिल
             </Link>
-          ) }{role === "SHOP" && ShopType === "SHOP" && (
+          ) }{role === "shop" && ShopType === "SHOP" && (
             <Link className="commonBtn" to="/user/selfbill">
               दुकान बिल
             </Link>

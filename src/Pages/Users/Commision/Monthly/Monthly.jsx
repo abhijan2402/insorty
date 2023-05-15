@@ -64,7 +64,7 @@ const Monthly = () => {
             प्रिंट
           </button>
 
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/commisson">
                 कमीशन
@@ -91,7 +91,7 @@ const Monthly = () => {
               </Link>
             </>
           )}
-          {role === "SHOP" && ShopType === "SHOP" && (
+          {role === "shop" && ShopType === "SHOP" && (
             <>
               <Link className="commonBtn" to="/user/commisson">
                 कमीशन

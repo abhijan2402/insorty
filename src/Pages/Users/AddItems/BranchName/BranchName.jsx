@@ -63,13 +63,13 @@ const BranchName = () => {
         <div className="flex gap-4 justify-center items-center">
           <h2 className="font-bold text-[1.5rem] text-center">ब्रांच जोड़ें</h2>
 
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <Link to="/user/bearshop/partyname" className="commonBtn ">
               पार्टी जोड़ें
             </Link>
           )}
 
-          {role === "SHOP" && ShopType === "SHOP" && (
+          {role === "shop" && ShopType === "SHOP" && (
             <Link to="/user/partyname" className="commonBtn ">
               पार्टी जोड़ें
             </Link>

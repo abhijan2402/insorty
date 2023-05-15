@@ -19,7 +19,7 @@ const MargePartners = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center">
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/partners">
                 पार्टनर खाते
@@ -31,7 +31,7 @@ const MargePartners = () => {
           )}
 
 
-          {role === "SHOP" && ShopType === "SHOP" && (
+          {role === "shop" && ShopType === "SHOP" && (
             <>
               <Link className="commonBtn" to="/user/partners">
                 पार्टनर खाते

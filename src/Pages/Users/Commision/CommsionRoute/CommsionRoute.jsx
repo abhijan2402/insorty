@@ -21,7 +21,7 @@ const CommsionRoute = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center flex-wrap">
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/commisson">
                 कमीशन
@@ -52,7 +52,7 @@ const CommsionRoute = () => {
               </Link>
             </>
           )}
-          {role === "SHOP" && ShopType === "SHOP" && (
+          {role === "shop" && ShopType === "SHOP" && (
             <>
               <Link className="commonBtn" to="/user/commisson">
                 कमीशन

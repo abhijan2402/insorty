@@ -63,7 +63,7 @@ const Commision = () => {
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <>
               <Link className="commonBtn " to="/user/bearshop/kharcha">
                 खर्चा
@@ -89,7 +89,7 @@ const Commision = () => {
                 अन्य
               </Link>
             </>
-          )} {role === "SHOP" && ShopType === "SHOP" && (
+          )} {role === "shop" && ShopType === "SHOP" && (
             <>
               <Link className="commonBtn " to="/user/kharcha">
                 खर्चा

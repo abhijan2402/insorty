@@ -5,9 +5,18 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import Loader from "../../../../Components/Loader/Loader";
 import AddPreviusLons from "../AddPreviusLons/AddPreviusLons";
+import jwtDecode from "jwt-decode";
 
 const PreviousLoansList = () => {
   const token = localStorage.getItem("token");
+  const tokenShop = jwtDecode(localStorage.getItem("token"));
+  const ShopType = tokenShop.shopType;
+  const role = tokenShop.role;
+
+  const BasedURL = process.env.REACT_APP_API_URL;
+
+
+  console.log(tokenShop, "tokenShop");
 
   const {
     data: prevLoneData,
@@ -17,20 +26,19 @@ const PreviousLoansList = () => {
     queryKey: ["prevLoneData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllPreviousBorroweds",
+       `${BasedURL}/shop/getAllPreviousBorroweds`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
       const data = await res.json();
-      console.log(data.data);
       return data.data;
     },
   });
 
   const handleDelete = (previousBorrowedId) => {
-    fetch(`https://insorty-api.onrender.com/shop/deletePreviousBorrowed`, {
+    fetch(`${BasedURL}/shop/deletePreviousBorrowed`, {
       method: "DELETE",
       body: JSON.stringify({ previousBorrowedId }),
       headers: { "Content-Type": "application/json", cookie_token: token },
@@ -53,12 +61,12 @@ const PreviousLoansList = () => {
 
     console.log(name, financeYear, "financeYear");
 
-    fetch("https://insorty-api.onrender.com/shop/addPreviousBorrowed", {
+    fetch(`${BasedURL}/shop/addPreviousBorrowed`, {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
-      body: JSON.stringify({ 
-        name: name, 
-        financeYear: financeYear 
+      body: JSON.stringify({
+        name: name,
+        financeYear: financeYear,
       }),
     })
       .then((res) => res.json())
@@ -73,13 +81,13 @@ const PreviousLoansList = () => {
       });
   };
 
-  // if (isLoading) {
-  //   return (
-  //     <div>
-  //       <Loader></Loader>
-  //     </div>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <div>
+        <Loader></Loader>
+      </div>
+    );
+  }
 
   return (
     <section className="px-2 py-6">
@@ -98,23 +106,38 @@ const PreviousLoansList = () => {
               <tr>
                 <th> क्र. सं.</th>
                 <th colSpan={2}>Name</th>
-                <th colSpan={2}>Delete</th>
+                {/* <th colSpan={2}>Delete</th> */}
               </tr>
             </thead>
             <tbody>
-              {/* {(prevLoneData && prevLoneData.length  &&
+              {(prevLoneData &&
+                prevLoneData.length &&
                 prevLoneData?.map((prevLone, index) => {
+                  const id = prevLone?._id
+
                   return (
                     <tr key={prevLone?._id}>
-                      <th>{index + 1}</th>
+                      <td>{index + 1}</td>
                       <td>
-                        <Link
-                          className="font-bold text-[1rem]"
-                          to={`/user/previousloan/details/${prevLone?._id}`}
-                        >
-                          {prevLone?.name}
-                        </Link>
+                        {role === "shop" && ShopType === "SHOP" && (
+                          <Link
+                            className="font-bold text-[1rem]"
+                            to={`/user/previousloan/details/${id}`}
+                          >
+                            {prevLone?.name}
+                          </Link>
+                        )}
+
+                        {role === "shop" && ShopType === "BAR" && (
+                          <Link
+                            className="font-bold text-[1rem]"
+                            to={`/user/bearshop/previousloan/details/${prevLone?._id}`}
+                          >
+                            {prevLone?.name}
+                          </Link>
+                        )}
                       </td>
+
                       <td>
                         <Link
                           className="font-3xl font-bold"
@@ -132,7 +155,7 @@ const PreviousLoansList = () => {
                     <span className="text-red-500">No Data Found</span>
                   </p>
                 </>
-              )} */}
+              )}
             </tbody>
           </table>
         </div>
