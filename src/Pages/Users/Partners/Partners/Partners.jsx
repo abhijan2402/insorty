@@ -66,11 +66,11 @@ const Partners = ({ isBearShop }) => {
     <section className="py-4">
       <div className="title">
         <div className="flex justify-center items-center gap-4">
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <Link className="commonBtn" to="/user/bearshop/sendFormat">
               सभी पार्टनर
             </Link>
-          )} {role === "SHOP" && ShopType === "SHOP" && (
+          )} {role === "shop" && ShopType === "SHOP" && (
             <Link className="commonBtn" to="/user/sendFormat">
               सभी पार्टनर
             </Link>

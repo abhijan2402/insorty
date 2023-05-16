@@ -51,11 +51,11 @@ const SendFormat = ({ isBearShop }) => {
             पार्टनर खाते
           </Link> */}
 
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <Link className="commonBtn" to="/user/bearshop/partners">
               पार्टनर खाते
             </Link>
-          ) }{role === "SHOP" && ShopType === "SHOP" && (
+          ) }{role === "shop" && ShopType === "SHOP" && (
             <Link className="commonBtn" to="/user/partners">
               पार्टनर खाते
             </Link>

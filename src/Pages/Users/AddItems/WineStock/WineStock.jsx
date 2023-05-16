@@ -94,7 +94,7 @@ const WineStock = () => {
     <section>
       <div className="title">
         <div className="flex justify-center gap-4 items-center">
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <>
               <Link to="/user/bearshop/beerstock" className="commonBtn ">
                 बीयर
@@ -107,7 +107,7 @@ const WineStock = () => {
           ) }
 
           {
-            role === "SHOP" && ShopType === "SHOP" && (
+            role === "shop" && ShopType === "SHOP" && (
             <>
               <Link to="/user/beerstock" className="commonBtn ">
                 बीयर

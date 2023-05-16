@@ -82,7 +82,7 @@ const RmlStock = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 justify-center items-center">
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <>
               <Link to="/user/bearshop/winestock" className="commonBtn ">
                 अंग्रेजी
@@ -93,7 +93,7 @@ const RmlStock = () => {
             </>
           )}
 
-          {role === "SHOP" && ShopType === "SHOP" && (
+          {role === "shop" && ShopType === "SHOP" && (
             <>
               <Link to="/user/winestock" className="commonBtn ">
                 अंग्रेजी

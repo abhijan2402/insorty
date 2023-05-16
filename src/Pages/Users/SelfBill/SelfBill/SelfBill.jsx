@@ -99,11 +99,11 @@ const SelfBill = () => {
     <section>
       <div className="title flex flex-col justify-center items-center py-2">
         <div className="flex gap-4">
-          {role === "SHOP" && ShopType === "BAR" && (
+          {role === "shop" && ShopType === "BAR" && (
             <Link className="commonBtn " to="/user/bearshop/outbill">
               बाहर का बिल
             </Link>
-          ) }{role === "SHOP" && ShopType === "SHOP" && (
+          ) }{role === "shop" && ShopType === "SHOP" && (
             <Link className="commonBtn " to="/user/outbill">
               बाहर का बिल
             </Link>

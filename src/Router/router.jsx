@@ -503,6 +503,10 @@ const router = createBrowserRouter([
       {
         path: '/user/bearshop/previousloan',
         element: <PreviousLoansList />,
+      },
+      {
+        path: '/user/bearshop/previousloan/details/:loandataId',
+        element: <PreviousLoansDetails />,
       }
       
     ],

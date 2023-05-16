@@ -59,14 +59,14 @@ const PartyName = () => {
           <h2 className="font-bold md:text-[1.5rem] text-center">
             पार्टी जोड़ें
           </h2>
-          {role === "SHOP" && ShopType === "BAR" &&  (
+          {role === "shop" && ShopType === "BAR" &&  (
             <Link to="/user/bearshop/branchname" className="commonBtn ">
               ब्रांच जोड़ें
             </Link>
           ) }
 
           {
-            role === "SHOP" && ShopType === "SHOP" && (
+            role === "shop" && ShopType === "SHOP" && (
             <Link to="/user/branchname" className="commonBtn ">
               ब्रांच जोड़ें
             </Link>
