@@ -11,7 +11,7 @@ const useSubAdminHooks = () => {
     queryKey: ["Shops"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/subadmin/getMyShops",
+        "https://insorty-backend-clone.vercel.app/subadmin/getMyShops",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

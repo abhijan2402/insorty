@@ -14,7 +14,7 @@ const ShopList = () => {
 
   const handelDelete = (id) => {
     console.log(id);
-    fetch(`https://insorty-api.onrender.com/admin/deleteShop/${id}`, {
+    fetch(`https://insorty-backend-clone.vercel.app/admin/deleteShop/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const ShopList = () => {
     const accountId = from.accountId.value;
     const shopType = from.shopType.value;
 
-    fetch("https://insorty-api.onrender.com/admin/createShop", {
+    fetch("https://insorty-backend-clone.vercel.app/admin/createShop", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

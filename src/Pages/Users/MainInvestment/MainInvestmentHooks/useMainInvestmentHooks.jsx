@@ -22,7 +22,7 @@ const useMainInvestmentHooks = () => {
 
     else{
 
-    fetch("https://insorty-api.onrender.com/shop/getMainInvestmentPage", {
+    fetch("https://insorty-backend-clone.vercel.app/shop/getMainInvestmentPage", {
       method: "GET",
       headers: { "Content-Type": "application/json", cookie_token: token },
     })
@@ -223,7 +223,7 @@ const useMainInvestmentHooks = () => {
  
 
   const handleSave = useCallback(() => {
-    fetch("https://insorty-api.onrender.com/shop/updateMainInvestmentPage", {
+    fetch("https://insorty-backend-clone.vercel.app/shop/updateMainInvestmentPage", {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify(data),

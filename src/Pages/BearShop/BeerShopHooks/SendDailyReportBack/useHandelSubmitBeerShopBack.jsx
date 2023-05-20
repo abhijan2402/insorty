@@ -110,7 +110,7 @@ const useHandelSubmitBeerShopBack = () => {
     } else {
       try {
         const api1 = fetch(
-          "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
+          "https://insorty-backend-clone.vercel.app/shop/addPurchaseOutsideData",
           {
             method: "POST",
             headers: {
@@ -126,7 +126,7 @@ const useHandelSubmitBeerShopBack = () => {
         );
 
         const api2 = fetch(
-          "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
+          "https://insorty-backend-clone.vercel.app/shop/addPurchaseBorrowData",
           {
             method: "POST",
             headers: {
@@ -142,7 +142,7 @@ const useHandelSubmitBeerShopBack = () => {
         );
 
         const api3 = fetch(
-          "https://insorty-api.onrender.com/shop/addTotalExpensesData",
+          "https://insorty-backend-clone.vercel.app/shop/addTotalExpensesData",
           {
             method: "POST",
             headers: {
@@ -158,7 +158,7 @@ const useHandelSubmitBeerShopBack = () => {
         );
 
         const api4 = fetch(
-          "https://insorty-api.onrender.com/shop/addBorrowedData",
+          "https://insorty-backend-clone.vercel.app/shop/addBorrowedData",
           {
             method: "POST",
             headers: {
@@ -174,7 +174,7 @@ const useHandelSubmitBeerShopBack = () => {
         );
 
         const api5 = fetch(
-          "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
+          "https://insorty-backend-clone.vercel.app/shop/addBorrowedCashReturnData",
           {
             method: "POST",
             headers: {
@@ -190,7 +190,7 @@ const useHandelSubmitBeerShopBack = () => {
         );
 
         const api6 = fetch(
-          "https://insorty-api.onrender.com/shop/addFoodVegetableData",
+          "https://insorty-backend-clone.vercel.app/shop/addFoodVegetableData",
           {
             method: "POST",
             headers: {
@@ -206,7 +206,7 @@ const useHandelSubmitBeerShopBack = () => {
         );
 
         const api7 = fetch(
-          "https://insorty-api.onrender.com/shop/addBarCommissionData",
+          "https://insorty-backend-clone.vercel.app/shop/addBarCommissionData",
           {
             method: "POST",
             headers: {
@@ -222,7 +222,7 @@ const useHandelSubmitBeerShopBack = () => {
         );
 
         const api8 = fetch(
-          "https://insorty-api.onrender.com/shop/addFinalReportData",
+          "https://insorty-backend-clone.vercel.app/shop/addFinalReportData",
           {
             method: "POST",
             headers: {

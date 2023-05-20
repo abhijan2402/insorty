@@ -121,7 +121,7 @@ const useFristFormSubmitAPIFront = () => {
 
     try {
       const api1 = await fetch(
-        "https://insorty-api.onrender.com/shop/addFrontPageData",
+        "https://insorty-backend-clone.vercel.app/shop/addFrontPageData",
         {
           method: "POST",
           headers: {

@@ -7,7 +7,7 @@ const useCashRecive = () => {
     queryKey: ["CashReciveData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getBorrowedCashReturnData",
+        "https://insorty-backend-clone.vercel.app/shop/getBorrowedCashReturnData",
         {
           method: "GET",
           headers: {

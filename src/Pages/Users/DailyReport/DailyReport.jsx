@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const DailyReport = () => {
   const token = localStorage.getItem("token")
   const clearData = ()=>{
-    fetch("https://insorty-api.onrender.com/shop/deleteMyData", {
+    fetch("https://insorty-backend-clone.vercel.app/shop/deleteMyData", {
       method: "DELETE",
       headers: { "Content-Type": "application/json", cookie_token: token },
     })

@@ -7,7 +7,7 @@ const useFrontDetailHooks = () => {
     queryKey: ["FrontPageRegularData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getFrontPageRegularSize",
+        "https://insorty-backend-clone.vercel.app/shop/getFrontPageRegularSize",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -22,7 +22,7 @@ const useFrontDetailHooks = () => {
     queryKey: ["FrontPageExceptionalData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getFrontPageExceptionalSize",
+        "https://insorty-backend-clone.vercel.app/shop/getFrontPageExceptionalSize",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

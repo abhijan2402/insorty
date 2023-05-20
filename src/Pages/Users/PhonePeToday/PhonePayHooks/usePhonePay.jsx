@@ -7,7 +7,7 @@ const usePhonePay = () => {
     queryKey: ["phonePayData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getFinalReportData",
+        "https://insorty-backend-clone.vercel.app/shop/getFinalReportData",
         {
           method: "GET",
           headers: {

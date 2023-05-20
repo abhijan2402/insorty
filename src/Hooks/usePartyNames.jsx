@@ -6,7 +6,7 @@ function usePartyNames() {
     queryKey: ["parties"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllParties",
+        "https://insorty-backend-clone.vercel.app/shop/getAllParties",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -21,7 +21,7 @@ function usePartyNames() {
     queryKey: ["partners"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllPartners",
+        "https://insorty-backend-clone.vercel.app/shop/getAllPartners",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -36,7 +36,7 @@ function usePartyNames() {
     queryKey: ["branches"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllBranches",
+        "https://insorty-backend-clone.vercel.app/shop/getAllBranches",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

@@ -23,7 +23,7 @@ const BranchFrom = () => {
     queryKey: ["transactions"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-api.onrender.com/shop/getBranchTransactions?branchId=${branchId}`,
+        `https://insorty-backend-clone.vercel.app/shop/getBranchTransactions?branchId=${branchId}`,
         {
           method: "GET",
           headers: {
