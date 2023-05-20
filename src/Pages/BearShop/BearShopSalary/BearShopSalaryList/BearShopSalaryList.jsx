@@ -18,7 +18,7 @@ const SalaryList = () => {
     queryKey: ["salaryData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllEmployees",
+        "https://insorty-backend-clone.vercel.app/shop/getAllEmployees",
         {
           method: "POST",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -30,7 +30,7 @@ const SalaryList = () => {
   });
 
   const handleDelete = (employeeId) => {
-    fetch(`https://insorty-api.onrender.com/shop/deleteEmployee`, {
+    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteEmployee`, {
       method: "POST",
       body: JSON.stringify({ employeeId }),
       headers: { "Content-Type": "application/json", cookie_token: token },
@@ -51,7 +51,7 @@ const SalaryList = () => {
     const name = e.target.name.value;
     const mobile = e.target.phoneNumber.value;
 
-    fetch("https://insorty-api.onrender.com/shop/addEmployee", {
+    fetch("https://insorty-backend-clone.vercel.app/shop/addEmployee", {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify({ name, mobile }),

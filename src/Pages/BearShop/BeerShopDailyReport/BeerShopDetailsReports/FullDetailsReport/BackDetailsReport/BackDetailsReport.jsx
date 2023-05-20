@@ -223,7 +223,7 @@ const BackDailyReport = () => {
                       <th colSpan={1}>Name</th>
                       <th colSpan={1}>Type</th>
                       <th colSpan={1}>रकम</th>
-                      <th colSpan={1}>comment</th>
+                      <th colSpan={1}> टिप्पणी</th>
                     </tr>
                     <tr>
                       <td className="tg-0lax">1</td>
@@ -292,9 +292,9 @@ const BackDailyReport = () => {
                   <tr>
                     <th colSpan={1}> क्र. सं.</th>
                     <th colSpan={1}>BRAND NAME/ ब्राण्ड</th>
-                    <th colSpan={1}>Quantity</th>
+                    <th colSpan={1}>मात्रा</th>
                     <th colSpan={1}>Amount</th>
-                    <th colSpan={1}>Comment</th>
+                    <th colSpan={1}> टिप्पणी</th>
                   </tr>
                 </thead>
                 <tbody>

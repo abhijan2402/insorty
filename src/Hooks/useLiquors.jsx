@@ -10,7 +10,7 @@ function useLiquors() {
     queryKey: ["liquors"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllParentLiquors",
+        "https://insorty-backend-clone.vercel.app/shop/getAllParentLiquors",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -26,7 +26,7 @@ function useLiquors() {
     queryKey: ["ALlLiquors"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllLiquors",
+        "https://insorty-backend-clone.vercel.app/shop/getAllLiquors",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

@@ -29,7 +29,7 @@ const FristFormBack = ({ filteredRegularData }) => {
             <tr>
               <th rowSpan={3}> क्र. सं.</th>
               <th rowSpan={3}>Brand Name/ ब्राण्ड</th>
-              <th colSpan={3}>Average Rate</th>
+              <th colSpan={3}>औसत दर</th>
               <th colSpan={3}>प्रारम्भिक स्टॉक</th>
               <th colSpan={3}>आमद (खरीद)-दु.</th>
               <th colSpan={3}>खरीद रेट - दु</th>

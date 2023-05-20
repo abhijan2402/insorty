@@ -102,7 +102,7 @@ const token = localStorage.getItem('token')
       )
       
     }
-    fetch("https://insorty-api.onrender.com/admin/assignShopToSubadmin", {
+    fetch("https://insorty-backend-clone.vercel.app/admin/assignShopToSubadmin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

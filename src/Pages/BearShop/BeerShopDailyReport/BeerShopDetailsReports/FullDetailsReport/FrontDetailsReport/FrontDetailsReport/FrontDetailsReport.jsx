@@ -447,7 +447,7 @@ const FronteDailyReport = () => {
                         <tr>
                           <th rowSpan={2}> क्र. सं.</th>
                           <th rowSpan={2}>Brand Name/ ब्राण्ड</th>
-                          <th colSpan={3}>Average Rate</th>
+                          <th colSpan={3}>औसत दर</th>
                           <th colSpan={3}>प्रारम्भिक स्टॉक</th>
                           <th colSpan={3}>आमद (खरीद)-दु.</th>
                           <th colSpan={3}>खरीद रेट - दु</th>
@@ -686,7 +686,7 @@ const FronteDailyReport = () => {
                       <tbody>
                         <tr>
                           <th colSpan={1}> क्र. सं.</th>
-                          <th colSpan={1}>Description/ सामान का विवरण</th>
+                          <th colSpan={1}>विवरण</th>
                           <th colSpan={1}>Buying price/ खरीद रेट</th>
                           <th colSpan={1}>प्राम्भिक स्टॉक</th>
                           <th colSpan={1}>आमद</th>
@@ -736,7 +736,7 @@ const FronteDailyReport = () => {
                     <th colSpan={1}> क्र. सं.</th>
                     <th colSpan={1}>Brand Name/ ब्राण्ड</th>
                     <th colSpan={1}>ml</th>
-                    <th colSpan={1}>Average Rate</th>
+                    <th colSpan={1}>औसत दर</th>
                     <th colSpan={1}>प्रारम्भिक स्टॉक</th>
                     <th colSpan={1}>आमद (खरीद)-दु.</th>
                     <th colSpan={1}>खरीद रेट - दु</th>

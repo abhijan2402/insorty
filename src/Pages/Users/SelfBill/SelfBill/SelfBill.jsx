@@ -33,7 +33,7 @@ const SelfBill = () => {
     queryKey: ["SelfBillData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getSelfBill",
+        "https://insorty-backend-clone.vercel.app/shop/getSelfBill",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

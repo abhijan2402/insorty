@@ -52,7 +52,7 @@ const useCommision = () => {
     queryKey: ["commitsonData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getTotalExpensesData",
+        "https://insorty-backend-clone.vercel.app/shop/getTotalExpensesData",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

@@ -29,7 +29,7 @@ const OutBill = () => {
     queryKey: ["OutBill"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getOutBill",
+        "https://insorty-backend-clone.vercel.app/shop/getOutBill",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

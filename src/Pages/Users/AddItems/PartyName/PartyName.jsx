@@ -22,7 +22,7 @@ const PartyName = () => {
     queryKey: ["PartyNameData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllParties",
+        "https://insorty-backend-clone.vercel.app/shop/getAllParties",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -35,7 +35,7 @@ const PartyName = () => {
 
   const handelDelete = (id) => {
     console.log(id);
-    fetch(`https://insorty-api.onrender.com/shop/deleteParty`, {
+    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteParty`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify({ partyId: id }),

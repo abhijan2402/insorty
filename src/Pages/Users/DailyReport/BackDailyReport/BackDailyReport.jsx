@@ -192,7 +192,7 @@ const BackDailyReport = () => {
                           <th> क्र. सं.</th>
                           <th></th>
                           <th>Brand Name/ ब्राण्ड</th>
-                          <th>Average Rate</th>
+                          <th>औसत दर</th>
                           <th>प्रारम्भिक स्टॉक</th>
                           <th>आमद (खरीद)-दु.</th>
                           <th>खरीद रेट - दु</th>
@@ -1175,7 +1175,7 @@ const BackDailyReport = () => {
                               <th></th>
                               <th>Brand Name/ ब्राण्ड</th>
                               <th>ml</th>
-                              <th>Average Rate</th>
+                              <th>औसत दर</th>
                               <th>प्रारम्भिक स्टॉक</th>
                               <th>आमद (खरीद)-दु.</th>
                               <th>खरीद रेट - दु</th>
@@ -1436,7 +1436,7 @@ const BackDailyReport = () => {
                         <th></th>
                         <th>Brand Name/ ब्राण्ड</th>
                         <th>ml</th>
-                        <th>Average Rate</th>
+                        <th>औसत दर</th>
                         <th>प्रारम्भिक स्टॉक</th>
                         <th>आमद (खरीद)-दु.</th>
                         <th>खरीद रेट - दु</th>
@@ -1794,7 +1794,7 @@ const BackDailyReport = () => {
                       <td></td>
                       <th>Reason / विवरण</th>
                       <th>रकम</th>
-                      <th>Description</th>
+                      <th>विवरण</th>
                     </tr>
                   </thead>
                   <tbody>

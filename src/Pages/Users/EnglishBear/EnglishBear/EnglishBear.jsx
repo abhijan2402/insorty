@@ -13,7 +13,7 @@ const EnglishBear = () => {
     queryKey: ["englishBearData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getAllLiquors",
+        "https://insorty-backend-clone.vercel.app/shop/getAllLiquors",
         {
           method: "POST",
           headers: { "Content-Type": "application/json", cookie_token: token },

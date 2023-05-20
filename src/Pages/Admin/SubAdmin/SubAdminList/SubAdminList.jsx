@@ -16,7 +16,7 @@ const SubAdminList = () => {
 
   const handelDelete = (id) => {
     console.log(id);
-    fetch(`https://insorty-api.onrender.com/admin/deleteSubAdmin/${id}`, {
+    fetch(`https://insorty-backend-clone.vercel.app/admin/deleteSubAdmin/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const SubAdminList = () => {
     const phone = from.phone.value;
     const accountId = from.accountId.value;
 
-    fetch("https://insorty-api.onrender.com/admin/createSubAdmin", {
+    fetch("https://insorty-backend-clone.vercel.app/admin/createSubAdmin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

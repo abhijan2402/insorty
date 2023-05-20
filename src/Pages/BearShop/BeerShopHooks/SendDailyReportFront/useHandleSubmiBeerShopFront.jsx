@@ -277,7 +277,7 @@ const useHandleSubmiBeerShopFront = () => {
       setIsLoading(true);
       try {
         const api1 = fetch(
-          "https://insorty-api.onrender.com/shop/addBackPageReportData",
+          "https://insorty-backend-clone.vercel.app/shop/addBackPageReportData",
           {
             method: "POST",
             headers: {
@@ -298,7 +298,7 @@ const useHandleSubmiBeerShopFront = () => {
         );
 
         const api2 = fetch(
-          "https://insorty-api.onrender.com/shop/addFrontPageData",
+          "https://insorty-backend-clone.vercel.app/shop/addFrontPageData",
           {
             method: "POST",
             headers: {
@@ -323,7 +323,7 @@ const useHandleSubmiBeerShopFront = () => {
         );
 
         const api3 = fetch(
-          "https://insorty-api.onrender.com/shop/addBarSupplementsData",
+          "https://insorty-backend-clone.vercel.app/shop/addBarSupplementsData",
           {
             method: "POST",
             headers: {

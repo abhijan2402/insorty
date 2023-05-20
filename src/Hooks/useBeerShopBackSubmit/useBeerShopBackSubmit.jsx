@@ -127,7 +127,7 @@ const useBeerShopBackSubmit = (shoType) => {
       setIsLoading(true);
       try {
         const api1 = fetch(
-          "https://insorty-api.onrender.com/shop/addTotalExpensesData", 
+          "https://insorty-backend-clone.vercel.app/shop/addTotalExpensesData", 
           {
             method: "POST",
             body: JSON.stringify({
@@ -144,7 +144,7 @@ const useBeerShopBackSubmit = (shoType) => {
         );
 
         const api2 = fetch(
-          "https://insorty-api.onrender.com/shop/addBorrowedData", 
+          "https://insorty-backend-clone.vercel.app/shop/addBorrowedData", 
           {
             method: "POST",
             body: JSON.stringify({
@@ -162,7 +162,7 @@ const useBeerShopBackSubmit = (shoType) => {
 
         //4
         const api3 = fetch(
-          "https://insorty-api.onrender.com/shop/addPurchaseOutsideData", // 4
+          "https://insorty-backend-clone.vercel.app/shop/addPurchaseOutsideData", // 4
           {
             method: "POST",
             body: JSON.stringify({
@@ -179,7 +179,7 @@ const useBeerShopBackSubmit = (shoType) => {
         );
 
         const api4 = fetch(
-          "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData", //5
+          "https://insorty-backend-clone.vercel.app/shop/addBorrowedCashReturnData", //5
           {
             method: "POST",
             body: JSON.stringify({
@@ -196,7 +196,7 @@ const useBeerShopBackSubmit = (shoType) => {
         );
 
         const api5 = fetch(
-          "https://insorty-api.onrender.com/shop/addPurchaseBorrowData", //7
+          "https://insorty-backend-clone.vercel.app/shop/addPurchaseBorrowData", //7
           {
             method: "POST",
             body: JSON.stringify({
@@ -213,7 +213,7 @@ const useBeerShopBackSubmit = (shoType) => {
         );
 
         const api6 = fetch(
-          "https://insorty-api.onrender.com/shop/addExtraThings", 
+          "https://insorty-backend-clone.vercel.app/shop/addExtraThings", 
           {
             method: "POST",
             body: JSON.stringify({
@@ -251,7 +251,7 @@ const useBeerShopBackSubmit = (shoType) => {
                 extraThings: data[5].data._id, //
               };
 
-              fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
+              fetch("https://insorty-backend-clone.vercel.app/shop/addBackPageData", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",
