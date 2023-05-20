@@ -159,7 +159,7 @@ const MainInvestmentList = () => {
       </tr>
       <tr>
         <th>8</th>
-        <td>माल पेटे व रिजर्व रकम/ freight and reserve amount</td>
+        <td>माल पेटे व रिजर्व रकम</td>
         <td>
           <input
             type="date"
@@ -181,7 +181,7 @@ const MainInvestmentList = () => {
       </tr>
       <tr>
         <th>10</th>
-        <td>नकद गल्ले में / cash in hand</td>
+        <td>हाथ में नकद</td>
         <td>
           <input
             type="date"

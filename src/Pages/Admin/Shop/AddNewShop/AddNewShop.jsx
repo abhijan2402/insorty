@@ -18,11 +18,11 @@ const AddNewShop = ({ addNewShop }) => {
             <form onSubmit={addNewShop}>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text">नाम</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Name"
+                  placeholder="नाम"
                   name="name"
                   className="input input-bordered"
                   style={{

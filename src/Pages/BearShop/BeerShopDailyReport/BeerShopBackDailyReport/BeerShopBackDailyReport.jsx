@@ -442,7 +442,7 @@ const BackDailyReport = () => {
                       <td></td>
                       <th>Reason / विवरण</th>
                       <th>रकम</th>
-                      <th>Description</th>
+                      <th>विवरण</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -600,7 +600,7 @@ const BackDailyReport = () => {
                       <th>Name</th>
                       <th>Type</th>
                       <th>रकम</th>
-                      <th>comment</th>
+                      <th> टिप्पणी</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -760,7 +760,7 @@ const BackDailyReport = () => {
                     <th> क्र. सं.</th>
                     <th>BRAND NAME/ ब्राण्ड</th>
                     <th>size/ ब्राण्ड</th>
-                    <th>Quantity</th>
+                    <th>मात्रा</th>
                     <th>Amount</th>
                     <th>Comment</th>
                   </tr>

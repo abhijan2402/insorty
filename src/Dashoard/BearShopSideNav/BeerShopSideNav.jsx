@@ -197,7 +197,7 @@ const SideNav = () => {
                 to="/user/bearshop/previousloan"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Previous Loans
+               पिछले ऋण
               </NavLink>
             </li>
 

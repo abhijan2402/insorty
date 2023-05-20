@@ -45,7 +45,7 @@ const CommissionForm = ({
               name="type"
               className="smallinput wd-30"
             >
-              <option value="COMMISSION">COMMISSION</option>
+              <option value="COMMISSION">कमीशन</option>
               <option value="FUT">FUT</option>
               <option value="KHARCHA">KHARCHA</option>
               <option value="PENALTY">PENALTY</option>

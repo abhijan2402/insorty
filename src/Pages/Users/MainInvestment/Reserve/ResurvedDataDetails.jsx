@@ -17,7 +17,7 @@ const ResurvedDataDetails = () => {
       <input type="checkbox" id="ResurvedData" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box">
-          <h3 className="font-bold text-lg">Reserve Amount Out Of Profit</h3>
+          <h3 className="font-bold text-lg"> संरक्षित राशि</h3>
 
           <div>
             <form action="">

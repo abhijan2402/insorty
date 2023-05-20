@@ -27,7 +27,7 @@ const ExcepctionalData = ({
           <td> क्र. सं.</td>
           <th>Brand Name/ ब्राण्ड</th>
           <th>ml</th>
-          <th>Average Rate</th>
+          <th>औसत दर</th>
           <th>प्रारम्भिक स्टॉक</th>
           <th>आमद (खरीद)-दु.</th>
           <th>खरीद रेट - दु</th>
