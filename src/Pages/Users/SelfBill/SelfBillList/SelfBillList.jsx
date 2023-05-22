@@ -21,7 +21,7 @@ const SelfBillList = ({ index, billsData, isLoading }) => {
       <tr>
         <th>{index + 1}</th>
         <th>{moment(date).format('DD/MM/YYYY')}</th>
-        <td>{getNameByID(liquor?._id)}</td>
+        <td>{liquor?.brandName}</td>
         <td>{liquor?.quantityInML}</td>
         <td>{number}</td>
         <td>{Number(averageRate?.$numberDecimal).toFixed(2)}</td>

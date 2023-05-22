@@ -227,3 +227,17 @@ const SelfBill = () => {
 };
 
 export default SelfBill;
+
+
+
+// .filter((brand)=>{
+//   if (brand.liquor.type==="WINE"){
+//     if(brand.liquor.quantityInML===30){
+//       return brand
+//     }
+//   }
+//   else if(brand.liquor.type==="BEER"){
+//     return brand
+//   }
+//   else return
+// } )

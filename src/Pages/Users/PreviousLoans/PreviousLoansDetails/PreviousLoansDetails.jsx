@@ -6,6 +6,7 @@ import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import AddTranstion from "../AddTranstion/AddTranstion";
+import moment from "moment/moment";
 
 const PreviousLoansDetails = () => {
   const token = localStorage.getItem("token");
@@ -40,15 +41,15 @@ const PreviousLoansDetails = () => {
   const handelSubmit = (e) => {
     e.preventDefault();
 
-    console.log("hell")
+    console.log(prevLoneByIdData)
 
-    fetch(`${BasedURL}shop/shop/addPreviousBorrowedTransaction`, {
+    fetch(`${BasedURL}/shop/addPreviousBorrowedTransaction`, {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify({
         previousBorrowedId: prevLoneByIdData?._id,
-        deposit: e.target.deposit.value,
-        debit: 0,
+        deposit: 0,
+        debit: e.target.deposit.value,
         date: e.target.dateData.value,
       })
     })
@@ -101,11 +102,12 @@ const PreviousLoansDetails = () => {
                   return (
                     <tr key={prevLone?._id}>
                       <td>{index + 1}</td>
-                      <td>
+                      <td colSpan={3}>
                         <Link className="font-bold text-[1rem]">
-                          {prevLone?.date}
+                          {moment(prevLone?.date,).format("DD/MM/YYYY")}
                         </Link>
                       </td>
+                      
 
                       <td>
                         <Link className="font-bold text-[1rem]">

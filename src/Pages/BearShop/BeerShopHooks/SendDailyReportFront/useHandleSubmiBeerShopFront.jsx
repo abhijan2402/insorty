@@ -346,6 +346,7 @@ const useHandleSubmiBeerShopFront = () => {
               data[1].success === true &&
               data[2].success === true
             ) {
+              console.log(data)
               Swal.fire({
                 icon: "success",
                 title: "Success",
