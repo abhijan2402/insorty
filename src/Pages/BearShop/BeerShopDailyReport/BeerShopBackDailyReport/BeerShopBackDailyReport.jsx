@@ -953,7 +953,16 @@ const BackDailyReport = () => {
             </h1>
             <form action="">
               <div className="overflow-x-auto">
-                <FinalReport />
+                <FinalReport udhaariTotal={craditDabitState.reduce(
+                (total, currentItem) =>
+                  (total = total + Number(currentItem.amount)),
+                0
+              )}
+              commisionTotal={commissonState.reduce(
+                (total, currentItem) =>
+                  (total = total + Number(currentItem.amount)),
+                0
+              )}/>
               </div>
             </form>
           </div>

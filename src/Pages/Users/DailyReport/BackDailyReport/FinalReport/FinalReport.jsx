@@ -21,8 +21,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
 
 
   const firstformData = JSON.parse(localStorage.getItem("firstFrontTotal"));
-  const beerSecond = JSON.parse(localStorage.getItem("beerFormTotal"));
   const secondFront = JSON.parse(localStorage.getItem("mlFormTotal"));
+  const beerSecond = JSON.parse(localStorage.getItem("beerFormTotal"));
   const pegTotal = JSON.parse(localStorage.getItem("pegFormTotal"))
   const smallPegTotal = JSON.parse(localStorage.getItem("smallPegFormTotal"))
   const barSuplementsTotal = JSON.parse(localStorage.getItem("barSuplementsTotal"))

@@ -1,7 +1,11 @@
+import jwtDecode from "jwt-decode";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const AddItems = () => {
+  const token = localStorage.getItem("token")
+  const shopType = jwtDecode(token).shopType
+
   return (
     <section className="p-4">
       <div>
@@ -18,11 +22,16 @@ const AddItems = () => {
         <div className="flex items-center justify-center flex-wrap">
        
           
-          <Link className="commonBtn " to="/user/branchname">
+          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branchname">
+            ब्रांच जोड़ें
+          </Link>
+          <Link className = {shopType==="BAR" ? "commonBtn" : "displayHidden"} to="/user/bearshop/branchname">
             ब्रांच जोड़ें
           </Link>
 
-          <Link className="commonBtn " to="/user/partyname">
+          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/partyname">पार्टी जोड़ें
+          </Link>
+          <Link className = {shopType==="BAR" ? "commonBtn" : "displayHidden"} to="/user/bearshop/partyname">
             पार्टी जोड़ें
           </Link>
         </div>

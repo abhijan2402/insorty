@@ -4,81 +4,79 @@ import useLiquors from "../useLiquors";
 import Swal from "sweetalert2";
 
 const useBeerShopBackSubmit = (shoType) => {
-  const { GetLiqId } = useLiquors();
   const token = localStorage.getItem("token");
   const [isLoadingSubmit, setIsLoading] = useState(false);
-
   const { salesMan, drDate } = useContext(DataContextApi);
+  const { paidDues, setPaidDues } = useContext(DataContextApi);
+  const { intoAccountState, setintoAccountState } = useContext(DataContextApi);
+  const udhaariTotal = localStorage.getItem("udhaariTotal")
+  ? JSON.parse(localStorage.getItem("udhaariTotal"))
+  : null;
+const commisionTotal = JSON.parse(localStorage.getItem("commisionTotal"));
+const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
 
-  // purchesOutSideState ======================
-  const purchaseOutside = JSON.parse(localStorage.getItem("purchases"));
-  const borrow = JSON.parse(localStorage.getItem("bhejan"));
-  const expenses = JSON.parse(localStorage.getItem("expenses"));
-  const credit = JSON.parse(localStorage.getItem("credit"));
-  const paymentRecieved = JSON.parse(localStorage.getItem("paymentRecieved"));
+
+
+  const purchases = JSON.parse(localStorage.getItem("purchases")); //1st
+  const bhejan = JSON.parse(localStorage.getItem("bhejan")); //2nd
+  const expenses = JSON.parse(localStorage.getItem("expenses")); //3rd
+  const credit = JSON.parse(localStorage.getItem("credit")); //4th
+  const paymentRecieved = JSON.parse(localStorage.getItem("paymentRecieved")); //5th
   const vegitableAndOther = JSON.parse(
     localStorage.getItem("vegitableAndOther")
-  );
+  ); //6th
+  const barCommission = JSON.parse(localStorage.getItem("barCommission")); //7th
 
-  const purchaseOutSideData = [];
-  for (
-    let index = 0;
-    purchaseOutside ? index < purchaseOutside.length : 0;
-    index++
-  ) {
-    const element = purchaseOutside[index];
-    purchaseOutSideData.push({
-      liquor: GetLiqId(element.liquorID, Number(element.quantity), null), //to be updated
+
+  const beerSecond = JSON.parse(localStorage.getItem("beerFormTotal"));
+  const pegTotal = JSON.parse(localStorage.getItem("pegFormTotal"))
+  const smallPegTotal = JSON.parse(localStorage.getItem("smallPegFormTotal"))
+  const barSuplementsTotal = JSON.parse(localStorage.getItem("barSuplementsTotal"))
+  const vegitableAndOtherTotal = JSON.parse(localStorage.getItem("vegitableAndOtherTotal"))
+  const beerFirst = JSON.parse(localStorage.getItem("totalFirstBack"))
+
+  const purchasesData = [];
+  for (let index = 0; purchases ? index < purchases.length : 0; index++) {
+    const element = purchases[index];
+    purchasesData.push({
+      liquor:
+        element.size &&
+        element.size.sizes.find((elem) => elem.quantityInML === element.quantity)?._id,
       party: element.partyId,
       number: element.theNumber,
       ml: element.quantity,
       rate: element.rate,
       total: element.total,
-      comment: element.reason,
+      comment: element.reason ? element.reason : "",
     });
   }
 
-  const addPurchesBorrowData = [];
-  for (let index = 0; borrow ? index < borrow.length : 0; index++) {
-    const element = borrow[index];
-    addPurchesBorrowData.push({
-      liquor: GetLiqId(element.liquorID, Number(element.quantity), null),
+  const bhejanData = [];
+  for (let index = 0; bhejan ? index < bhejan.length : 0; index++) {
+    const element = bhejan[index];
+    bhejanData.push({
+      liquor:
+        element.size &&
+        element.size.sizes.find((elem) => elem.quantityInML === 650)?._id,
       party: element.partyId,
       number: element.theNumber,
-      comment: element.comment,
+      comment: element.comment ? element.comment : "",
     });
   }
-
-  const addExtrathig = [];
-  for (
-    let index = 0;
-    vegitableAndOther ? index < vegitableAndOther.length : 0;
-    index++
-  ) {
-    const element = vegitableAndOther[index];
-    addExtrathig.push({
-      date: element.theDate,
-      cash: element.price,
-      comments: element.details,
-    });
-  }
-
-  const entriesExpances = [];
-
+  const expensesData = [];
   for (let index = 0; expenses ? index < expenses.length : 0; index++) {
     const element = expenses[index];
-    entriesExpances.push({
+    expensesData.push({
       amount: element.amount,
-      comment: element.desc,
+      description: element.desc,
       type: element.type,
     });
   }
 
-  const entriesBorrow = [];
+  const creditData = [];
   for (let index = 0; credit ? index < credit.length : 0; index++) {
     const element = credit[index];
-
-    entriesBorrow.push({
+    creditData.push({
       type: element.partyType,
       from: element.partyId,
       amount: element.amount,
@@ -86,29 +84,39 @@ const useBeerShopBackSubmit = (shoType) => {
     });
   }
 
-  const borrowCashReturnData = [];
-  for (
-    let index = 0;
-    paymentRecieved ? index < paymentRecieved.length : 0;
-    index++
-  ) {
+  const paymentRecievedData = [];
+  for (let index = 0; paymentRecieved ? index < paymentRecieved.length : 0; index++) {
     const element = paymentRecieved[index];
-
-    if (element.type === "OTHER") {
-      borrowCashReturnData.push({
-        comment: element.comment,
-        cash: element.amount,
-        type: element.type,
-      });
-    } else {
-      borrowCashReturnData.push({
-        comment: element.comment,
-        from: element.id,
-        cash: element.amount,
-        type: element.type,
-      });
-    }
+    paymentRecievedData.push({
+      cash: element.amount,
+      type: element.type,
+      from: element.id,
+    });
   }
+
+  const vegitableAndOtherData = [];
+  for (let index = 0; vegitableAndOther ? index < vegitableAndOther.length : 0; index++) {
+    const element = vegitableAndOther[index];
+    vegitableAndOtherData.push({
+      date: drDate,
+      price: element.price,
+      description: element.details,
+    });
+  }
+
+  const barCommissionData = [];
+  for (let index = 0; barCommission ? index < barCommission.length : 0; index++) {
+    const element = barCommission[index];
+    barCommissionData.push({
+      liquor:
+        element.size &&
+        element.size.sizes.find((elem) => elem.quantityInML === element.ml)?._id,
+      quantity: element.quantity,
+      amount: element.amount,
+      comment: element.comment,
+    });
+  }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -123,109 +131,175 @@ const useBeerShopBackSubmit = (shoType) => {
       setIsLoading(true);
       try {
         const api1 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addTotalExpensesData",
+          "https://insorty-backend-clone.vercel.app/shop/addPurchaseOutsideData",
           {
             method: "POST",
-            body: JSON.stringify({
-              date: drDate,
-              salesmen: salesMan,
-              shopType: "BAR",
-              entries: entriesExpances,
-            }),
             headers: {
               "Content-Type": "application/json",
               cookie_token: token,
             },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "BAR",
+              entries: [...purchasesData],
+            }),
           }
         );
 
         const api2 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBorrowedData",
+          "https://insorty-backend-clone.vercel.app/shop/addPurchaseBorrowData",
           {
             method: "POST",
-            body: JSON.stringify({
-              date: drDate,
-              salesmen: salesMan,
-              shopType: "BAR",
-              entries: entriesBorrow,
-            }),
             headers: {
               "Content-Type": "application/json",
               cookie_token: token,
             },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "BAR",
+              entries: [...bhejanData],
+            }),
           }
         );
 
-        //4
         const api3 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addPurchaseOutsideData", // 4
+          "https://insorty-backend-clone.vercel.app/shop/addTotalExpensesData",
           {
             method: "POST",
-            body: JSON.stringify({
-              date: drDate,
-              shopType: "BAR",
-              salesmen: salesMan,
-              entries: purchaseOutSideData,
-            }),
             headers: {
               "Content-Type": "application/json",
               cookie_token: token,
             },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "BAR",
+              entries: [...expensesData],
+            }),
           }
         );
 
         const api4 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBorrowedCashReturnData", //5
+          "https://insorty-backend-clone.vercel.app/shop/addBorrowedData",
           {
             method: "POST",
-            body: JSON.stringify({
-              date: drDate,
-              salesmen: salesMan,
-              shopType: "BAR",
-              entries: borrowCashReturnData,
-            }),
             headers: {
               "Content-Type": "application/json",
               cookie_token: token,
             },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "BAR",
+              entries: [...creditData],
+            }),
           }
         );
 
         const api5 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addPurchaseBorrowData", //7
+          "https://insorty-backend-clone.vercel.app/shop/addBorrowedCashReturnData",
           {
             method: "POST",
-            body: JSON.stringify({
-              date: drDate,
-              salesmen: salesMan,
-              shopType: "BAR",
-              entries: addPurchesBorrowData,
-            }),
             headers: {
               "Content-Type": "application/json",
               cookie_token: token,
             },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "BAR",
+              entries: [...paymentRecievedData],
+            }),
           }
         );
 
         const api6 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addExtraThings",
+          "https://insorty-backend-clone.vercel.app/shop/addFoodVegetableData",
           {
             method: "POST",
-            body: JSON.stringify({
-              date: drDate,
-              salesmen: salesMan,
-              shopType: "BAR",
-              entries: addExtrathig,
-            }),
             headers: {
               "Content-Type": "application/json",
               cookie_token: token,
             },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "BAR",
+              entries: [...vegitableAndOtherData],
+            }),
           }
         );
 
-        Promise.all([api1, api2, api3, api4, api5, api6])
+        const api7 = fetch(
+          "https://insorty-backend-clone.vercel.app/shop/addBarCommissionData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "BAR",
+              entries: [...barCommissionData],
+            }),
+          }
+        );
+
+        const api8 = fetch(
+          "https://insorty-backend-clone.vercel.app/shop/addFinalReportData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+            body: JSON.stringify({
+              
+                date: drDate,
+                salesmen: salesMan,
+                shopType: "BAR",
+                englishBar: Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0),
+                beerBar: Number(beerFirst ? beerFirst: 0) +
+                Number(beerSecond ? beerSecond : 0),
+                barSupplements: Number(barSuplementsTotal?barSuplementsTotal:0),
+                extraThings: Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0),
+                
+                totalSell: Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+                Number(beerFirst ? beerFirst: 0) +
+                Number(beerSecond ? beerSecond : 0) +
+                Number(barSuplementsTotal?barSuplementsTotal:0) -
+                Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0),
+
+                borrowedCashReturn: Number(localStorage.getItem("totalPaymentsRecieved")),
+                intoAccount: Number(intoAccountState),
+                borrowed: Number(udhaariTotal ? udhaariTotal : 0),
+                commission: Number(commisionTotal ? commisionTotal : 0),
+                previousDues: Number(pichla),
+
+                todaysPayment: Number(paidDues),
+
+                restAmount: Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+                Number(beerFirst ? beerFirst: 0) +
+                Number(beerSecond ? beerSecond : 0) +
+                Number(barSuplementsTotal?barSuplementsTotal:0) -
+                Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0) +
+                Number(localStorage.getItem("totalPaymentsRecieved")) -
+                Number(intoAccountState) -
+                Number(udhaariTotal ? udhaariTotal : 0) -
+                Number(commisionTotal ? commisionTotal : 0) +
+                pichla -
+                Number(paidDues)
+              
+            }),
+          }
+        );
+
+
+        Promise.all([api1, api2, api3, api4, api5, api6, api7, api8])
           .then((responses) => Promise.all(responses.map((res) => res.json())))
           .then((data) => {
             console.log(data);
@@ -236,17 +310,21 @@ const useBeerShopBackSubmit = (shoType) => {
               data[2].success === true &&
               data[3].success === true &&
               data[4].success === true &&
-              data[5].success === true
+              data[5].success === true &&
+              data[6].success === true &&
+              data[7].success === true
             ) {
               let BackPage = {
                 salesmen: salesMan,
                 date: drDate,
-                totalExpense: data[0].data._id,
-                borrowed: data[1].data._id,
-                purchaseOutSide: data[2].data._id, //
-                borrowedCashReturn: data[3].data._id, //
-                purchaseBorrow: data[4].data._id, //
-                extraThings: data[5].data._id, //
+                totalExpense: data[2].data._id,
+                borrowed: data[3].data._id,
+                purchaseOutSide: data[0].data._id, //
+                borrowedCashReturn: data[4].data._id, //
+                purchaseBorrow: data[1].data._id, //
+                foodVegetable: data[5].data._id, //
+                barCommission: data[6].data._id,
+                finalReport : data[7].data._id
               };
 
               fetch(

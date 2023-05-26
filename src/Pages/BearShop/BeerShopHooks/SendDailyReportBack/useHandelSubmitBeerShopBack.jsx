@@ -6,6 +6,15 @@ const useHandelSubmitBeerShopBack = () => {
   const token = localStorage.getItem("token");
   const [isLoadingSubmit, setIsLoading] = useState(false);
   const { salesMan, drDate } = useContext(DataContextApi);
+  const { paidDues, setPaidDues } = useContext(DataContextApi);
+  const { intoAccountState, setintoAccountState } = useContext(DataContextApi);
+  const udhaariTotal = localStorage.getItem("udhaariTotal")
+  ? JSON.parse(localStorage.getItem("udhaariTotal"))
+  : null;
+const commisionTotal = JSON.parse(localStorage.getItem("commisionTotal"));
+const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
+
+
 
   const purchases = JSON.parse(localStorage.getItem("purchases")); //1st
   const bhejan = JSON.parse(localStorage.getItem("bhejan")); //2nd
@@ -16,6 +25,14 @@ const useHandelSubmitBeerShopBack = () => {
     localStorage.getItem("vegitableAndOther")
   ); //6th
   const barCommission = JSON.parse(localStorage.getItem("barCommission")); //7th
+
+
+  const beerSecond = JSON.parse(localStorage.getItem("beerFormTotal"));
+  const pegTotal = JSON.parse(localStorage.getItem("pegFormTotal"))
+  const smallPegTotal = JSON.parse(localStorage.getItem("smallPegFormTotal"))
+  const barSuplementsTotal = JSON.parse(localStorage.getItem("barSuplementsTotal"))
+  const vegitableAndOtherTotal = JSON.parse(localStorage.getItem("vegitableAndOtherTotal"))
+  const beerFirst = JSON.parse(localStorage.getItem("totalFirstBack"))
 
   const purchasesData = [];
   for (let index = 0; index < purchases.length; index++) {
@@ -230,26 +247,42 @@ const useHandelSubmitBeerShopBack = () => {
               cookie_token: token,
             },
             body: JSON.stringify({
-              date: drDate,
-              salesmen: salesMan,
-              shopType: "BAR",
+              
+                date: "2023-01-28T17:28:08.911Z",
+                salesmen: "Samar",
+                shopType: "BAR",
+                englishBar: Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0),
+                beerBar: Number(beerFirst ? beerFirst: 0) +
+                Number(beerSecond ? beerSecond : 0),
+                barSupplements: Number(barSuplementsTotal?barSuplementsTotal:0),
+                extraThings: Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0),
+                
+                totalSell: Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+                Number(beerFirst ? beerFirst: 0) +
+                Number(beerSecond ? beerSecond : 0) +
+                Number(barSuplementsTotal?barSuplementsTotal:0) -
+                Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0),
 
-              englishBar: 500,
-              beerBar: 500,
-              barSupplements: 500,
-              extraThings: 500,
+                borrowedCashReturn: Number(localStorage.getItem("totalPaymentsRecieved")),
+                intoAccount: Number(intoAccountState),
+                borrowed: Number(udhaariTotal ? udhaariTotal : 0),
+                commission: Number(commisionTotal ? commisionTotal : 0),
+                previousDues: Number(pichla),
 
-              english: 500,
-              beer: 500,
-              RML: 500,
-              totalSell: 500,
-              borrowedCashReturn: 500,
-              intoAccount: 500,
-              borrowed: 500,
-              commission: 500,
-              previousDues: 500,
-              todaysPayment: 500,
-              restAmount: 500,
+                todaysPayment: Number(paidDues),
+
+                restAmount: Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+                Number(beerFirst ? beerFirst: 0) +
+                Number(beerSecond ? beerSecond : 0) +
+                Number(barSuplementsTotal?barSuplementsTotal:0) -
+                Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0) +
+                Number(localStorage.getItem("totalPaymentsRecieved")) -
+                Number(intoAccountState) -
+                Number(udhaariTotal ? udhaariTotal : 0) -
+                Number(commisionTotal ? commisionTotal : 0) +
+                pichla -
+                Number(paidDues)
+              
             }),
           }
         );

@@ -347,8 +347,8 @@ const useHandleSubmiBeerShopFront = () => {
               let FrontPageBear = {
                 date: drDate,
                 salesmen: salesMan,
-                wineReport: data[0].data._id,
-                beerReport: data[1].data._id,
+                wineReport: data[1].data._id,
+                beerReport: data[0].data._id,
                 barSupplements: data[2].data._id,
               };
 

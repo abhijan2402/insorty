@@ -493,6 +493,14 @@ const router = createBrowserRouter([
         element: <AllItems />,
       },
       {
+        path: "/user/bearshop/partyname",
+        element: <PartyName />,
+      },
+      {
+        path: "/user/bearshop/branchname",
+        element: <BranchNameData />,
+      },
+      {
         path: "/user/bearshop/stock",
         element: <Stock />,
       },

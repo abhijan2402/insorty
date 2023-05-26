@@ -217,6 +217,10 @@ const SelfBill = () => {
                     </td>
                   </tr>
                 </tbody>
+
+
+
+                
               </table>
             </div>
           </div>
