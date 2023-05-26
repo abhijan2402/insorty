@@ -104,10 +104,9 @@ const WineStock = () => {
                 देशी
               </Link>
             </>
-          ) }
+          )}
 
-          {
-            role === "shop" && ShopType === "SHOP" && (
+          {role === "shop" && ShopType === "SHOP" && (
             <>
               <Link to="/user/beerstock" className="commonBtn ">
                 बीयर
@@ -117,8 +116,7 @@ const WineStock = () => {
                 देशी
               </Link>
             </>
-          )
-          }
+          )}
 
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
@@ -157,7 +155,13 @@ const WineStock = () => {
           </div>
         </div>
 
-        <div className="overflow-x-auto flex justify-center item-center">
+        <div
+          className={`${
+            role === "shop" && ShopType === "BAR"
+              ? "hidden"
+              : " overflow-x-auto flex justify-center item-center"
+          }`}
+        >
           <InfiniteScroll
             dataLength={wineStock.length}
             next={fetchData}
@@ -165,7 +169,8 @@ const WineStock = () => {
             scrollableTarget="scrollableDiv"
             loader={<h4>Loading...</h4>}
           >
-            <table className=" removeCommonWSpace m-2">
+            {/* " removeCommonWSpace m-2" */}
+            <table className="removeCommonWSpace m-2">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>
@@ -271,7 +276,13 @@ const WineStock = () => {
         </div>
 
         <div>
-          <div className=" gap-4 overflow-x-auto my-4 ">
+          <div
+            className={`${
+              role === "shop" && ShopType === "BAR"
+                ? "hidden"
+                : " gap-4 overflow-x-auto my-4 "
+            }`}
+          >
             <div className="flex justify-center item-center">
               <table className="removeCommonWSpace  m-2">
                 <thead>
@@ -294,6 +305,86 @@ const WineStock = () => {
                             size.quantityInML !== 375 &&
                             size.quantityInML !== 180
                           ) {
+                            count++;
+                            return (
+                              <tr>
+                                <td>{count}</td>
+                                <td>{brand.brandName}</td>
+                                <td>{size.quantityInML}</td>
+                                <td> {size.currentStock}</td>
+                                <td>
+                                  {" "}
+                                  {Number(
+                                    size.averageRate.$numberDecimal
+                                  ).toFixed(2)}
+                                </td>
+                                <td>
+                                  {" "}
+                                  {size.currentStock *
+                                    Number(
+                                      size.averageRate.$numberDecimal
+                                    ).toFixed(2)}
+                                </td>
+                              </tr>
+                            );
+                          }
+                        })}
+                      </>
+                    );
+                  })}
+                  <tr>
+                    <td colSpan="5">कुल योग</td>
+                    <td>
+                      {filteredData.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.sizes.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  currentItem.currentStock *
+                                    Number(
+                                      currentItem.averageRate.$numberDecimal
+                                    )),
+                              0
+                            )),
+                        0
+                      )}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div
+            className={`${
+              role === "shop" && ShopType === "SHOP"
+                ? "hidden"
+                : " gap-4 overflow-x-auto my-4 "
+            }`}
+          >
+            <div className="flex justify-center item-center">
+              <table className="removeCommonWSpace  m-2">
+                <thead>
+                  <tr>
+                    <th> क्र. सं.</th>
+                    <th>ब्राण्ड</th>
+                    <th>साईज </th>
+                    <th>स्टॉक</th>
+                    <th> रेट</th>
+                    <th> योग</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredData.map((brand, index) => {
+                    return (
+                      <>
+                        {brand.sizes.map((size) => {
+                          if (size.quantityInML === 30) {
                             count++;
                             return (
                               <tr>

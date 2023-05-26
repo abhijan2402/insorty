@@ -190,12 +190,16 @@ const BackDailyReport = () => {
         <div className="flex justify-center items-center gap-4 ">
           <div className="my-4 flex  items-center">
             <h1 className="font-bold text-2xl">
-              Daily Report / दैनिक रिपोर्ट{" "}
+              दैनिक रिपोर्ट{" "}
             </h1>
 
             <div className="my-4 mx-4">
               <Link to="/user/bearshop/dailyreport/front" className="commonBtn">
                 Front
+              </Link>
+
+              <Link to="/user/bearshop/details/back" className="commonBtn">
+                Details
               </Link>
             </div>
           </div>

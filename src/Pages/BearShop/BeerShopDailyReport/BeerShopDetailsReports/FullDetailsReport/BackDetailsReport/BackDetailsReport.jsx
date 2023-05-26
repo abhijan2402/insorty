@@ -13,6 +13,10 @@ const BackDailyReport = () => {
             </h1>
 
             <div className="my-4 mx-4">
+              <Link to="/user/bearshop/details" className="commonBtn">
+                Details
+              </Link>
+
               <Link to="/user/bearshop/dailyreport/front" className="commonBtn">
                 Front
               </Link>
@@ -299,19 +303,19 @@ const BackDailyReport = () => {
                 </thead>
                 <tbody>
                   <tr>
-                  <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
+                    <td className="tg-0lax">1</td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
                   </tr>
 
                   <tr>
-                  <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
+                    <td className="tg-0lax">1</td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"></td>
                   </tr>
                 </tbody>
               </table>

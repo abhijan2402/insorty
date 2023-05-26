@@ -38,7 +38,6 @@ const useBeerShopBackSubmit = (shoType) => {
     });
   }
 
-
   const addPurchesBorrowData = [];
   for (let index = 0; borrow ? index < borrow.length : 0; index++) {
     const element = borrow[index];
@@ -49,7 +48,6 @@ const useBeerShopBackSubmit = (shoType) => {
       comment: element.comment,
     });
   }
-
 
   const addExtrathig = [];
   for (
@@ -65,7 +63,6 @@ const useBeerShopBackSubmit = (shoType) => {
     });
   }
 
-
   const entriesExpances = [];
 
   for (let index = 0; expenses ? index < expenses.length : 0; index++) {
@@ -76,7 +73,6 @@ const useBeerShopBackSubmit = (shoType) => {
       type: element.type,
     });
   }
-
 
   const entriesBorrow = [];
   for (let index = 0; credit ? index < credit.length : 0; index++) {
@@ -127,7 +123,7 @@ const useBeerShopBackSubmit = (shoType) => {
       setIsLoading(true);
       try {
         const api1 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addTotalExpensesData", 
+          "https://insorty-backend-clone.vercel.app/shop/addTotalExpensesData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -144,7 +140,7 @@ const useBeerShopBackSubmit = (shoType) => {
         );
 
         const api2 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBorrowedData", 
+          "https://insorty-backend-clone.vercel.app/shop/addBorrowedData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -213,7 +209,7 @@ const useBeerShopBackSubmit = (shoType) => {
         );
 
         const api6 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addExtraThings", 
+          "https://insorty-backend-clone.vercel.app/shop/addExtraThings",
           {
             method: "POST",
             body: JSON.stringify({
@@ -243,6 +239,8 @@ const useBeerShopBackSubmit = (shoType) => {
               data[5].success === true
             ) {
               let BackPage = {
+                salesmen: salesMan,
+                date: drDate,
                 totalExpense: data[0].data._id,
                 borrowed: data[1].data._id,
                 purchaseOutSide: data[2].data._id, //
@@ -251,17 +249,20 @@ const useBeerShopBackSubmit = (shoType) => {
                 extraThings: data[5].data._id, //
               };
 
-              fetch("https://insorty-backend-clone.vercel.app/shop/addBackPageData", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  cookie_token: token,
-                },
-                body: JSON.stringify({ BackPage }),
-              })
+              fetch(
+                "https://insorty-backend-clone.vercel.app/shop/addBackPageData",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    cookie_token: token,
+                  },
+                  body: JSON.stringify({ BackPage }),
+                }
+              )
                 .then((res) => res.json())
                 .then((data1) => {
-                  console.log(data1);
+                  console.log(data1, "++++++++++++++++++++++++");
                   if (data1.success === true) {
                     Swal.fire({
                       icon: "success",
