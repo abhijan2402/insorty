@@ -197,7 +197,6 @@ const useHandleSubmiBeerShopFront = () => {
     });
   }
 
- 
   const otherMl = [];
 
   for (let index = 0; smallPegForm ? index < smallPegForm.length : 0; index++) {
@@ -218,7 +217,7 @@ const useHandleSubmiBeerShopFront = () => {
       closingStock: element.closingStock30,
       sales: 0,
       sellingRate: element.rate30,
-      total:0
+      total: 0,
     });
   }
 
@@ -227,9 +226,7 @@ const useHandleSubmiBeerShopFront = () => {
   for (let index = 0; smallPegForm ? index < smallPegForm.length : 0; index++) {
     const element = smallPegForm[index];
     Ml30Data.push({
-      liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === 30
-      )?._id,
+      liquor: element.size.sizes.find((elem) => elem.quantityInML === 30)?._id,
       openingStock: element.openingStock30,
       averageRate: element.averageRate30,
       purchaseShop: element.inflowPurchase30,
@@ -242,7 +239,7 @@ const useHandleSubmiBeerShopFront = () => {
       closingStock: element.closingStock30,
       sales: element.sale30,
       sellingRate: element.rate30,
-      total:0
+      total: 0,
     });
   }
 
@@ -308,7 +305,7 @@ const useHandleSubmiBeerShopFront = () => {
             body: JSON.stringify({
               date: drDate,
               salesmen: salesMan,
-              
+
               shopType: "BAR",
               entries: [
                 ...pageFormData750,
@@ -346,17 +343,42 @@ const useHandleSubmiBeerShopFront = () => {
               data[1].success === true &&
               data[2].success === true
             ) {
-              console.log(data)
-              Swal.fire({
-                icon: "success",
-                title: "Success",
-                text: "Data Saved Successfully",
-              });
-              localStorage.removeItem("backFirst");
-              localStorage.removeItem("newBeer");
-              localStorage.removeItem("pegForm");
-              localStorage.removeItem("smallPegForm");
-              localStorage.removeItem("barSuplements");
+              console.log(data);
+              let FrontPageBear = {
+                date: drDate,
+                salesmen: salesMan,
+                wineReport: data[0].data._id,
+                beerReport: data[1].data._id,
+                barSupplements: data[2].data._id,
+              };
+
+              fetch(
+                "https://insorty-backend-clone.vercel.app/shop/addBarFrontPageData",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    cookie_token: token,
+                  },
+                  body: JSON.stringify(FrontPageBear),
+                }
+              )
+                .then((res) => res.json())
+                .then((data1) => {
+                  console.log(data1, "++++++");
+                  if (data1.success === true) {
+                    Swal.fire({
+                      icon: "success",
+                      title: "Success",
+                      text: "Data Saved Successfully",
+                    });
+                    localStorage.removeItem("backFirst");
+                    localStorage.removeItem("newBeer");
+                    localStorage.removeItem("pegForm");
+                    localStorage.removeItem("smallPegForm");
+                    localStorage.removeItem("barSuplements");
+                  }
+                });
             } else {
               Swal.fire({
                 icon: "error",
@@ -376,7 +398,6 @@ const useHandleSubmiBeerShopFront = () => {
         setIsLoading(false);
       }
     }
-
   };
 
   return {

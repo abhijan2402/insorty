@@ -12,7 +12,6 @@ import useHandleSubmiBeerShopFront from "../../BeerShopHooks/SendDailyReportFron
 import { DataContextApi } from "../../../../Context/DataContext";
 import DatePicker from "react-datepicker";
 
-
 const FronteDailyReport = () => {
   const {
     fristFormAddOne,
@@ -30,8 +29,7 @@ const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
   const { brandsLoaded, liquors } = useLiquors();
   const { salesMan, setSalesMan, drDate, setDrDate } =
-  useContext(DataContextApi);
-
+    useContext(DataContextApi);
 
   const [options, setOptions] = useState([]);
 
@@ -74,12 +72,15 @@ const FronteDailyReport = () => {
     <section className="mx-2">
       <div className="flex justify-center items-center flex-col">
         <div className="my-4 flex gap-4 items-center">
-          <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
+          <h1 className="font-bold text-2xl">दैनिक रिपोर्ट </h1>
           <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
             Back
           </Link>
+          <Link to="/user/bearshop/details" className="commonBtn">
+            Details
+          </Link>
         </div>
-      
+
         <div className="flex gap-4 justify-center items-center ">
           <div className="flex gap-4 justify-center items-center ">
             <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
@@ -1019,7 +1020,7 @@ const FronteDailyReport = () => {
                             size="small"
                             style={{
                               width: "20rem",
-                            }}   
+                            }}
                             options={options}
                             getOptionLabel={(option) =>
                               option ? option.brandName : ""
@@ -1028,7 +1029,7 @@ const FronteDailyReport = () => {
                               if (value) {
                                 item.brandName = value.brandName;
                                 item.liquorID = value._id;
-                                item.size = value
+                                item.size = value;
                               } else {
                                 item.brandName = "";
                                 item.liquorID = "";

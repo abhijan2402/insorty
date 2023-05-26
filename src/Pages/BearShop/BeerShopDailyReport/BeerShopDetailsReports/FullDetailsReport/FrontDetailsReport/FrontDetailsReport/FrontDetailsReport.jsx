@@ -10,6 +10,9 @@ const FronteDailyReport = () => {
           <Link to="/user/bearshop/details/back" className="commonBtn">
             Back
           </Link>
+          <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
+            Back
+          </Link>
         </div>
         <div className="flex gap-4 ">
           <h1 className="font-bold ">सेल्समेन का नाम</h1>
