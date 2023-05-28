@@ -7,17 +7,15 @@ const Borrowed = ({index,item,entries}) => {
   const { getNameByID } = useLiquors()
     return (
         <>
-        {entries.map((entry,index)=>{
-            return(
+       
                 <tr>
                     <td>{index+1}</td>
-                    <td>{entry.type==="PARTY" ? getPartyName(entry.from) : entry.type==="PARTNER" ? getPartnerName(entry.from) : entry.type==="BRANCH" ? getBranchName(entry.from):  ""}</td>
-                    <td>{entry.type}</td>
-                    <td>{entry.amount.$numberDecimal}</td>
-                    <td>{entry.comment}</td>
+                    <td>{item.type==="PARTY" ? getPartyName(item.from) : entries.type==="PARTNER" ? getPartnerName(item.from) : item.type==="BRANCH" ? getBranchName(item.from):  ""}</td>
+                    <td>{item.type}</td>
+                    <td>{item.amount.$numberDecimal}</td>
+                    <td>{item.comment}</td>
                 </tr>
-            )
-        })}
+         
            
         </>
     );

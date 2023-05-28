@@ -1,14 +1,14 @@
-
+import moment from "moment";
 import { useQuery } from "@tanstack/react-query";
 
-function useGetDailyReport() {
+function useGetDailyReport(date) {
   const token = localStorage.getItem("token");
 
   const { data: RMLData, isLoading: RMLLoaded } = useQuery({
     queryKey: ["RMLData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getBackPageRMLData",
+        `https://insorty-backend-clone.vercel.app/shop/getBackPageRMLData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -26,7 +26,7 @@ function useGetDailyReport() {
     queryKey: ["PurchaseOutsideData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getPurchaseOutsideData",
+        `https://insorty-backend-clone.vercel.app/shop/getPurchaseOutsideData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -40,7 +40,7 @@ function useGetDailyReport() {
     queryKey: ["TotalExpensesData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getTotalExpensesData",
+        `https://insorty-backend-clone.vercel.app/shop/getTotalExpensesData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -57,7 +57,7 @@ function useGetDailyReport() {
     queryKey: ["BorrowedCashReturnData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getBorrowedCashReturnData",
+        `https://insorty-backend-clone.vercel.app/shop/getBorrowedCashReturnData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -74,7 +74,7 @@ function useGetDailyReport() {
     queryKey: ["PurchaseBorrowData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getPurchaseBorrowData",
+        `https://insorty-backend-clone.vercel.app/shop/getPurchaseBorrowData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -88,7 +88,7 @@ function useGetDailyReport() {
     queryKey: ["SendData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getSendData",
+        `https://insorty-backend-clone.vercel.app/shop/getSendData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -106,7 +106,7 @@ function useGetDailyReport() {
     queryKey: ["BorrowedData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getBorrowedData",
+        `https://insorty-backend-clone.vercel.app/shop/getBorrowedData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -123,7 +123,7 @@ function useGetDailyReport() {
     queryKey: ["FinalReportData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getFinalReportData",
+        `https://insorty-backend-clone.vercel.app/shop/getFinalReportData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -140,7 +140,7 @@ function useGetDailyReport() {
     queryKey: ["FrontPageData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getFrontPageData",
+        `https://insorty-backend-clone.vercel.app/shop/getFrontPageData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -155,7 +155,7 @@ function useGetDailyReport() {
     queryKey: ["BackPageReportExceptionalSize"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getBackPageReportExceptionalSize",
+        `${process.env.REACT_APP_API_URL}/shop/getBackPageReportExceptionalSize?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -170,7 +170,22 @@ function useGetDailyReport() {
     queryKey: ["BackPageReportRegularSize"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getBackPageReportRegularSize",
+        `${process.env.REACT_APP_API_URL}/shop/getBackPageReportRegularSize?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  const { data: BackPageData, isLoading: BackPageLoading, refetch: backPageRefetch } = useQuery({
+    queryKey: ["BackPageData"],
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/shop/getBackPageData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -203,7 +218,10 @@ function useGetDailyReport() {
     BackPageReportExceptionalSize,
     BackPageReportRegularSize,
     ExceptionalLoading,
-    RegularLoading
+    RegularLoading,
+    backPageRefetch,
+    BackPageLoading,
+    BackPageData
   };
 }
 

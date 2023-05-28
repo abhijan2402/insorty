@@ -18,6 +18,8 @@ import RegularData from "../../FrontDetailsReport/RegularData/RegularData";
 import FristFormDetails from "../../FrontDetailsReport/FristFormDetails/FristFormDetails";
 
 const BackDetailReport = () => {
+  const [filterDate, setFilterData] = useState(new Date());
+
 
   const {
     RMLData,
@@ -40,7 +42,7 @@ const BackDetailReport = () => {
     BackPageReportRegularSize,
     ExceptionalLoading,
     RegularLoading,
-  } = useGetDailyReport();
+  } = useGetDailyReport(filterDate);
 
   const container = useRef(null);
   const [pageId, setPageId] = useState();
@@ -49,7 +51,6 @@ const BackDetailReport = () => {
   let count = 0
 
 
-  const [filterDate, setFilterData] = useState(new Date());
 
   const handlePrint = useReactToPrint({
     content: () => container.current,

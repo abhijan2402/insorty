@@ -21,6 +21,7 @@ const FrontDetailsReport = () => {
     isLoading,
     isLoading2,
     FrontPageExceptionalData,
+    
   } = useFrontDetailHooks();
 
 

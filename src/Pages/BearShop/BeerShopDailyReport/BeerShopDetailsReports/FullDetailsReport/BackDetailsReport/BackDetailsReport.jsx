@@ -1,8 +1,43 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
+import useGetDailyReport from "../../../../../../Hooks/useGetDailyReport";
+import Loader from "../../../../../../Components/Loader/Loader";
+import InfolwRml from "../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/InflowRml/InfolwRml";
+import InflowBorrow from "../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/InflowBorrow/InflowBorrow";
+import CommisonExpence from "../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/CommisonExpence/CommisonExpence";
+import Borrowed from "../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/Borrrowed/Borrowed";
+import FinalReport from "../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/FinalReport/FinalReport";
+import CashReciveData from "../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/CashReciveData/CashReciveData";
+import { tr } from "date-fns/locale";
 
 const BackDailyReport = () => {
+  const [filterDate, setFilterData] = useState(new Date());
+  
+  const [pgNo, setPgNo] = useState(0);
+  let frontSet2 = new Set([]);
+  const {BackPageData,BackPageLoading,backPageRefetch} = useGetDailyReport(filterDate)
+
+  useEffect(() => {
+  
+    backPageRefetch()
+  }, [filterDate]);
+
+  if(BackPageLoading){
+    return <Loader></Loader>
+  }
+  BackPageData.length && BackPageData.map((item) => {
+ 
+      frontSet2.add(item);
+      // setPage(pg.page)
+      return 0;
+ 
+  });
+
+  
+
+
+
   return (
     <>
       <section className="mx-2">
@@ -24,17 +59,35 @@ const BackDailyReport = () => {
           </div>
         </div>
         <div className="flex gap-4 justify-center items-center">
-          <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
-          <input type="text" className="smallinput wd-30" />
+        
 
-          <div className="flex  items-center">
-            <DatePicker
-              name="year"
-              dateFormat="dd/MM/yyyy"
-              className="inputBox date"
-              placeholderText={"dd/mm/yyyy"}
-            />
-          </div>
+          <div className="flex gap-4 items-center my-4">
+        <div className="flex gap-2 items-center">
+          <DatePicker
+            selected={filterDate}
+            onChange={(date) => {
+              setFilterData(date);
+            }}
+            dateFormat="dd/MM/yyyy"
+            placeholderText={"dd/mm/yyyy"}
+            className="inputBox date"
+          />
+        </div>
+        {Array.from(frontSet2)
+          .sort((a, b) => a - b)
+          .map((item, index) => {
+            return (
+              <button
+                className="commonBtn "
+                onClick={() => {
+                  setPgNo(index);
+                }}
+              >
+                {index + 1}
+              </button>
+            );
+          })}
+      </div>
         </div>
 
         {/* *********************************************************BREAK*********************************************************  */}
@@ -50,37 +103,73 @@ const BackDailyReport = () => {
                 <table className="table">
                   <tbody>
                     <tr>
-                      <th colSpan={1}> क्र. सं.</th>
-                      <th colSpan={1}>Party Name/ पार्टी का नाम</th>
-                      <th colSpan={1}>Brand Name/ ब्राण्ड</th>
-                      <th colSpan={1}>ML</th>
-                      <th colSpan={1}>संख्या</th>
-                      <th colSpan={1}>रेट</th>
-                      <th colSpan={1}>योग</th>
-                      <th colSpan={1}>टिप्पणी</th>
+                      <th colSpan={4}> क्र. सं.</th>
+                      <th colSpan={4}>Party Name/ पार्टी का नाम</th>
+                      <th colSpan={4}>Brand Name/ ब्राण्ड</th>
+                      <th colSpan={4}>ML</th>
+                      <th colSpan={4}>संख्या</th>
+                      <th colSpan={4}>रेट</th>
+                      <th colSpan={4}>योग</th>
+                      <th colSpan={4}>टिप्पणी</th>
                     </tr>
 
-                    <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                    </tr>
+                  {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.purchaseOutSide.entries.map((entry,index2)=>{
+                        return(
+                        <InfolwRml
+                        key={index}
+                        outSideData={entry}
+                        index={index2}
+                      ></InfolwRml>)
+                      })
+                    }</>)}
+                  })}
 
-                    <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                    </tr>
+                   <tr>
+                <td className="tg-0lax">Total</td>
+                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax" colSpan={4}></td>
+                <td className="tg-0lax" colSpan={4}>
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
+                      
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.purchaseOutSide.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.number),
+                              0
+                            )),
+                        0
+                      )}
+                </td>
+                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax" colSpan={4}>
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.purchaseOutSide.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.total),
+                              0
+                            )),
+                        0
+                      )}
+                </td>
+              </tr>
+                    
                   </tbody>
                 </table>
               </div>
@@ -106,23 +195,47 @@ const BackDailyReport = () => {
                         <th colSpan={1}>टिप्पणी</th>
                       </tr>
 
-                      <tr>
-                        <td className="tg-0lax">1</td>
-                        <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
-                      </tr>
+                      {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.purchaseBorrow.entries.map((entry,index2)=>{
+                        return(
+                          <InflowBorrow
+                              key={index2}
+                              index={index2}
+                              // PurchaseBorrow={item}
+                              entries={entry}
+                            ></InflowBorrow>
+                        )
+                      })
+                    }</>)}
+                  })}
 
-                      <tr>
-                        <td className="tg-0lax">1</td>
-                        <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
-                        <td className="tg-0lax"></td>
-                      </tr>
+<tr>
+                <td className="tg-0lax" colSpan={2}>
+                  Total
+                </td>
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax">
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.purchaseBorrow.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.number),
+                              0
+                            )),
+                        0
+                      )}
+                </td>
+                <td className="tg-0lax" />
+              </tr>
                     </tbody>
                   </table>
                 </div>
@@ -140,27 +253,51 @@ const BackDailyReport = () => {
                   <tbody>
                     <tr>
                       <th colSpan={1}> क्र. सं.</th>
-                      <th colSpan={1}></th>
-                      <th colSpan={1}>Reason / विवरण</th>
-                      <th colSpan={1}>रकम</th>
-                      <th colSpan={1}>Description</th>
+                      <th colSpan={4}>Reason / विवरण</th>
+                      <th colSpan={4}>रकम</th>
+                      <th colSpan={4}>Description</th>
                     </tr>
 
-                    <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                    </tr>
+                    {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.totalExpense.entries.map((entry,index2)=>{
+                       
+                        return(
+                          <CommisonExpence
+                          key={index2}
+                          index={index2}
+                          expences={entry}
+                        ></CommisonExpence>
+                        )
+                      })
+                    }</>)}
+                  })}
 
-                    <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                    </tr>
+<tr>
+                <td className="tg-0lax">Total</td>
+                <td className="tg-0lax" colSpan={4}></td>
+                <td className="tg-0lax">
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.totalExpense.entries.reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  Number(currentItem.amount.$numberDecimal)),
+                              0
+                            )),
+                        0
+                      )}
+                </td>
+                <td className="tg-0lax" colSpan={4}></td>
+              </tr>
                   </tbody>
                 </table>
               </div>
@@ -182,30 +319,60 @@ const BackDailyReport = () => {
                   <tbody>
                     <tr>
                       <th colSpan={1}> क्र. सं.</th>
-                      <th colSpan={1}></th>
                       <th colSpan={1}>पार्टी का नाम</th>
                       <th colSpan={1}>पार्टी/पार्टनर</th>
                       <th colSpan={1}>रकम</th>
                       <th colSpan={1}>टिप्पणी</th>
                     </tr>
 
-                    <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                    </tr>
+                    {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.borrowed.entries.map((entry,index2)=>{
+                        return(
+                          <Borrowed
+                          key={index2}
+                          index={index2}
+                          item={entry}
+                          
+                        ></Borrowed>
+                        )
+                      })
+                    }</>)}
+                  })}
 
-                    <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                    </tr>
+<tr>
+                <td className="tg-0lax" colSpan={2}>
+                  Total
+                </td>
+                <td className="tg-0lax" />
+                <td className="tg-0lax">
+                  
+                   
+                      {BackPageData &&
+                        BackPageData.length > 0 &&
+                        BackPageData
+                          .slice(pgNo, pgNo + 1)
+                          .reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem.borrowed.entries.reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      Number(
+                                        currentItem.amount.$numberDecimal
+                                      )),
+                                  0
+                                )),
+                            0
+                          )}
+                  
+                  
+                </td>
+                <td className="tg-0lax" />
+              </tr>
                   </tbody>
                 </table>
               </div>
@@ -222,29 +389,57 @@ const BackDailyReport = () => {
                 <table className="table ">
                   <tbody>
                     <tr>
-                      <th colSpan={1}> क्र. सं.</th>
-                      <td colSpan={1}></td>
-                      <th colSpan={1}>Name</th>
-                      <th colSpan={1}>Type</th>
-                      <th colSpan={1}>रकम</th>
-                      <th colSpan={1}> टिप्पणी</th>
+                    <th className="tg-0lax">क्र.सं.</th>
+                <th className="tg-0lax" colSpan={4}>
+                  Name
+                </th>
+                <th className="tg-0lax" colSpan={4}>
+                  Type
+                </th>
+                <th className="tg-0lax" colSpan={4}>
+                  रकम
+                </th>
+                <th className="tg-0lax" colSpan={4}>
+                  विवरण
+                </th>
                     </tr>
+                    {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.borrowedCashReturn.entries.map((entry,index2)=>{
+                        return(
+                          <CashReciveData
+                          key={index2}
+                          index={index2}
+                          borrwedCashReturn={entry}
+                        
+                        ></CashReciveData>
+                        )
+                      })
+                    }</>)}
+                  })}
                     <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                    </tr>
-                    <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                    </tr>
+                <td className="tg-0lax">Total</td>
+                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax">
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.borrowedCashReturn.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem.cash),
+                              0
+                            )),
+                        0
+                      )}
+                </td>
+              </tr>
                   </tbody>
                 </table>
               </div>
@@ -267,15 +462,38 @@ const BackDailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
-                      <td className="tg-0lax"></td>
-                    </tr>
+                  {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.foodVegetable.entries.map((entry,index2)=>{
+                        return(
+                          <tr>
+                          <td className="tg-0lax">{index2+1}</td>
+                          <td className="tg-0lax">{entry?.price?.$numberDecimal}</td>
+                          <td className="tg-0lax">{entry?.description}</td>
+                          </tr>
+                        )
+                      })
+                    }</>)}
+                  })}
 
                     <tr>
-                      <td className="tg-0lax">1</td>
-                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax">Total</td>
+                      <td className="tg-0lax"> {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.foodVegetable.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.price.$numberDecimal)),
+                              0
+                            )),
+                        0
+                      )}</td>
                       <td className="tg-0lax"></td>
                     </tr>
                   </tbody>
@@ -296,25 +514,65 @@ const BackDailyReport = () => {
                   <tr>
                     <th colSpan={1}> क्र. सं.</th>
                     <th colSpan={1}>BRAND NAME/ ब्राण्ड</th>
+                    <th colSpan={1}>Size</th>
                     <th colSpan={1}>मात्रा</th>
                     <th colSpan={1}>Amount</th>
                     <th colSpan={1}> टिप्पणी</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="tg-0lax">1</td>
-                    <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
-                  </tr>
+                {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.barCommission.entries.map((entry,index2)=>{
+                        return(
+                          <tr>
+                         <td className="tg-0lax">{index2+1}</td>
+                    <td className="tg-0lax">{entry?.liquor?.brandName}</td>
+                    <td className="tg-0lax">{entry?.liquor?.quantityInML}</td>
+                    <td className="tg-0lax">{entry?.quantity}</td>
+                    <td className="tg-0lax">{entry?.amount?.$numberDecimal}</td>
+                    <td className="tg-0lax">{entry?.comment}</td>
+                          </tr>
+                        )
+                      })
+                    }</>)}
+                  })}
 
                   <tr>
-                    <td className="tg-0lax">1</td>
+                    <td className="tg-0lax">Total</td>
                     <td className="tg-0lax"></td>
                     <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
+                    <td className="tg-0lax"> {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.barCommission.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem?.quantity)),
+                              0
+                            )),
+                        0
+                      )}</td>
+                    <td className="tg-0lax">{BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.barCommission.entries.reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem?.amount?.$numberDecimal)),
+                              0
+                            )),
+                        0
+                      )}</td>
                     <td className="tg-0lax"></td>
                   </tr>
                 </tbody>
@@ -331,105 +589,18 @@ const BackDailyReport = () => {
                 <section>
                   <div className="overflow-x-auto">
                     {/* <------------------------BAR FINAL REPORT-----------------------> */}
-                    <table className="table">
-                      <thead>
-                        <tr>
-                          <th> क्र. सं.</th>
-                          <th>Reason / विवरण</th>
-                          <th>total</th>
-                        </tr>
-                      </thead>
+                   
 
-                      <tbody className="finalTableBody">
-                        <tr>
-                          <th>1</th>
-                          <td>अंग्रेजी</td>
-                          <td>500</td>
-                        </tr>
+                    
+                     { BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<FinalReport
+                        data={page.finalReport}
+                      ></FinalReport>
+                    )}
+                  })}
 
-                        {/* 02 */}
-                        <tr>
-                          <th>2</th>
-                          <td>बीयर</td>
-                          <td>500</td>
-                        </tr>
-
-                        {/* 03 */}
-
-                        <tr>
-                          <th>3</th>
-                          <td>bar suplements</td>
-                          <td>500</td>
-                        </tr>
-                        <tr>
-                          <th>4</th>
-                          <td>Food/Veg etc</td>
-                          <td>500</td>
-                        </tr>
-                        {/* 04 */}
-                        <tr>
-                          <th>4</th>
-                          <td>कुल बिक्री</td>
-                          <td>500</td>
-                        </tr>
-                        {/* 05 */}
-                        <tr>
-                          <th>5</th>
-                          <td>
-                            पीछे की उधारी में से, ब्रांचों से व अन्य से नकद
-                            प्राप्ति
-                          </td>
-                          <td>
-                            {Number(
-                              localStorage.getItem("totalPaymentsRecieved")
-                            )}
-                          </td>
-                        </tr>
-                        {/* 06 */}
-                        <tr>
-                          <th>6</th>
-                          <td>खाते में (फोन पे आदि)</td>
-                          <td>500</td>
-                        </tr>
-                        {/* 07 */}
-                        <tr>
-                          <th>7</th>
-                          <td>उधारी/नामे</td>
-                          <td>500</td>
-                        </tr>
-                        {/* 08 */}
-                        <tr>
-                          <th>8</th>
-                          <td>कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
-                          <td>500</td>
-                        </tr>
-                        {/* 09 */}
-                        <tr>
-                          <th>9</th>
-                          <td>पिछला बकाया</td>
-                          <td>500</td>
-                        </tr>
-                        {/* 10 */}
-
-                        <tr>
-                          <th>10</th>
-                          <td>total</td>
-                          <td>500</td>
-                        </tr>
-
-                        <tr>
-                          <th>11</th>
-                          <td>आज भुगतान</td>
-                          <td>500</td>
-                        </tr>
-                        {/* 11 */}
-                        <tr>
-                          <th>12</th>
-                          <td>शेष रकम</td>
-                          <td>500</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                     
                   </div>
                 </section>
               </div>

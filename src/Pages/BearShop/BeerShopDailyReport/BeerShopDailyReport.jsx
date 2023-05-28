@@ -1,8 +1,36 @@
 import React from "react";
 import "./Style/DailyReport.scss";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const DailyReport = () => {
+  const token = localStorage.getItem("token")
+  const clearData = ()=>{
+    fetch("https://insorty-backend-clone.vercel.app/shop/deleteMyData", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json", cookie_token: token },
+    })
+      .then((response) => {
+        response.json();
+        console.log(response)
+        if (response.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Data Cleared Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "some error occured",
+           
+          });
+        }
+      })
+    .catch((err)=>console.log(err))
+  }
+
   return (
     <section className="mx-2">
       <div className="flex flex-col justify-center items-center">
@@ -27,6 +55,7 @@ const DailyReport = () => {
         <Link to="/user/bearshop/details" className="commonBtn">
           Details
         </Link>
+        <button className="commonBtn" onClick={()=>clearData()}>Clear Data</button>
       </div>
     </section>
   );

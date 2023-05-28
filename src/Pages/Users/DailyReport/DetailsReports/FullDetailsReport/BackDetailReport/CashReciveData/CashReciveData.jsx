@@ -9,26 +9,26 @@ const CashReciveData = ({ borrwedCashReturn, index, entries }) => {
     <>
 
 
-      {entries?.map((entry, index) => {
-        const { comment, cash,from,type } = entry;
-        return (
+    
+      
+       
           <tr key={index}>
             <td className="tg-0lax">{index + 1}</td>
             <td className="tg-0lax" colSpan={4}>
-            {type==="PARTY" ? getPartyName(from) : type==="PARTNER" ? getPartnerName(from) : type==="BRANCH" ? getBranchName(from):""}
+            {borrwedCashReturn.type==="PARTY" ? getPartyName(borrwedCashReturn.from) : borrwedCashReturn.type==="PARTNER" ? getPartnerName(borrwedCashReturn.from) : borrwedCashReturn.type==="BRANCH" ? getBranchName(borrwedCashReturn.from):""}
             </td>
             <td className="tg-0lax" colSpan={4}>
-              {type}
+              {borrwedCashReturn.type}
             </td>
             <td className="tg-0lax" colSpan={4}>
-              {cash}
+              {borrwedCashReturn.cash}
             </td>
             <td className="tg-0lax" colSpan={4}>
-              {comment}
+              {borrwedCashReturn.comment}
             </td>
           </tr>
-        );
-      })}
+        
+   
     </>
   );
 };

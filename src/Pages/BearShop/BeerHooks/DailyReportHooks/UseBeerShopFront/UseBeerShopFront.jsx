@@ -122,7 +122,6 @@ const UseBeerShopFront = () => {
           },
         })
           .then((response) => {
-            console.log(response.data.data);
             let firstFormData = beerShopFrontFrist;
 
             if (!prevdata && response.data.data.length > 0) {
@@ -216,7 +215,6 @@ const UseBeerShopFront = () => {
 
   const fristFormOnChange = (e, index) => {
     
-    console.log(beerShopFrontFrist);
 
     const firstFormHandel = beerShopFrontFrist.map((firstFormFront, i) =>
       index === i
@@ -872,7 +870,6 @@ const UseBeerShopFront = () => {
     const { name, value } = e.target;
     const list = [...beerShopFrontThird];
     list[index][name] = value;
-    console.log(list);
     setBeerShopFrontThird(list);
 
     const sumStock = beerShopFrontThird.map((returned, i) => {
@@ -897,7 +894,6 @@ const UseBeerShopFront = () => {
         ) {
           obj.sales = Number(obj.sum) - Number(obj.closingStock);
         }
-        console.log(obj);
         return obj;
       } else return returned;
     });
@@ -928,7 +924,6 @@ const UseBeerShopFront = () => {
 
   const thirdFormAddOne = () => {
     setBeerShopFrontThird([...beerShopFrontThird, beerBarThirdFormTamp]);
-    console.log("clicked");
   };
 
   const thirdFormAddFive = () => {
@@ -1044,9 +1039,10 @@ const UseBeerShopFront = () => {
                     item.currentStock > 0
                   ) {
                     const newFormData = { ...beerShopMidTemp };
-
+                  
                     newFormData.brandName = parent.brandName;
                     newFormData.liquorID = parent._id;
+                    newFormData.size = parent
                     newFormData.ml = item.quantityInML;
                     newFormData.openingStockOtherMl = item.currentStock;
                     newFormData.averageRateOtherMl =

@@ -17,14 +17,40 @@ import DatePicker from "react-datepicker";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../Hooks/useLiquors";
 import FinalReport from "../../../Users/DailyReport/BackDailyReport/FinalReport/FinalReport";
+import useGetDailyReport from "../../../../Hooks/useGetDailyReport";
+import axios from "axios";
 
 const BackDailyReport = () => {
   const { liquors, brandsLoaded } = useLiquors();
+  const token = localStorage.getItem('token')
   const sixthFomeDataTemp = {
     theDate: "",
     price: 0,
     details: "",
   };
+  const [options, setOptions] = useState([]);
+
+  const fetchOptions = async (query) => {
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?q=${query}&page=0&pagesize=30`,
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setOptions(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleInputChange = (event, value) => {
+    fetchOptions(value);
+  };
+
 
   const [sixthFormState, setSixthFormState] = useState([sixthFomeDataTemp]);
 
@@ -222,7 +248,6 @@ const BackDailyReport = () => {
               name="year"
               onChange={(data) => {
                 setDrDate(new Date(data));
-                console.log(data);
               }}
               dateFormat="dd/MM/yyyy"
               className="inputBox date"
@@ -776,49 +801,42 @@ const BackDailyReport = () => {
                         <td>{index + 1}</td>
                         <td>
                           <div className="form-control">
-                            <Autocomplete
-                              size="small"
-                              style={{
-                                width: "20rem",
-                              }}
-                              loading={brandsLoaded}
-                              options={
-                                liquors && liquors.length > 0
-                                  ? liquors.filter((brand) => {
-                                      if (brand.type === "WINE") {
-                                        return brand;
-                                      }
-                                    })
-                                  : ["no options"]
-                              }
-                              getOptionLabel={(option) =>
-                                option ? option.brandName : ""
-                              }
-                              onChange={(event, value) => {
-                                if (value) {
-                                  item.brandName = value.brandName;
-                                  item.size = value
-                                } else {
-                                  item.brandName = "";
-                                }
-                                onChangeBarCommission(event, index);
-                              }}
-                              renderInput={(params) => (
-                                <TextField
-                                  required
-                                  size="small"
-                                  {...params}
-                                  // value={beerFront.brandName}
-                                  inputProps={{
-                                    ...params.inputProps,
-                                    value: item.brandName,
-                                  }}
-                                  onChange={(event) => {
-                                    item.brandName = event.target.value;
-                                  }}
-                                />
-                              )}
-                            />
+                          <Autocomplete
+              id="autocomplete"
+              size="small"
+              style={{
+                width: "20rem",
+              }}
+              options={options}
+              getOptionLabel={(option) => (option ? option.brandName : "")}
+              onChange={(event, value) => {
+                if (value) {
+                  item.brandName = value.brandName;
+                  item.liquorID = value._id;
+                  item.size  = value
+                } else {
+                  item.brandName = "";
+                  item.liquorID = "";
+                }
+                onChangeShipping(event, index);
+              }}
+              renderInput={(params) => (
+                <TextField
+                  required
+                  size="small"
+                  {...params}
+                  // value={item.brandName}
+                  inputProps={{
+                    ...params.inputProps,
+                    value: item.brandName,
+                  }}
+                  onChange={(e) => {
+                    handleInputChange(e, e.target.value);
+                    item.brandName = e.target.value;
+                  }}
+                />
+              )}
+            />
                           </div>
                         </td>
 

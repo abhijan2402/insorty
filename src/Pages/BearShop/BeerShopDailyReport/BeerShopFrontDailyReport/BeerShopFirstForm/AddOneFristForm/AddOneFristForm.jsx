@@ -127,39 +127,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
         </td>
         <td>
           <div className="flex ">
-            <div className="form-control">
-              <input
-                onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
-                className="smallinput "
-                required
-                min={0}
-                value={beerFront.openingStock750}
-                name="openingStock750"
-              />
-            </div>
-            <div className="form-control">
-              <input
-                onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
-                className="smallinput "
-                required
-                min={0}
-                value={beerFront.openingStock375}
-                name="openingStock375"
-              />
-            </div>
-            <div className="form-control">
-              <input
-                onChange={(e) => fristFormOnChange(e, index)}
-                required
-                min={0}
-                type="number"
-                className="smallinput "
-                name="openingStock180"
-                value={beerFront.openingStock180}
-              />
-            </div>
+            
 
             <div className="form-control">
               <input
@@ -169,7 +137,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
                 type="number"
                 className="smallinput"
                 name="openingStock30"
-                value={beerFront.openingStock30}
+                value={beerFront.openingStock750}
               />
             </div>
           </div>

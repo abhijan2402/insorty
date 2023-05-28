@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { DataContextApi } from "../../Context/DataContext";
 import useLiquors from "../useLiquors";
 import Swal from "sweetalert2";
+import moment from "moment";
 
 const useBeerShopBackSubmit = (shoType) => {
   const token = localStorage.getItem("token");
@@ -57,7 +58,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
     bhejanData.push({
       liquor:
         element.size &&
-        element.size.sizes.find((elem) => elem.quantityInML === 650)?._id,
+        element.size.sizes.find((elem) => elem.quantityInML === element.quantity)?._id,
       party: element.partyId,
       number: element.theNumber,
       comment: element.comment ? element.comment : "",
@@ -91,6 +92,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
       cash: element.amount,
       type: element.type,
       from: element.id,
+      comment: element.comment
     });
   }
 
@@ -159,7 +161,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
               date: drDate,
               salesmen: salesMan,
               shopType: "BAR",
-              entries: [...bhejanData],
+              entries: bhejanData,
             }),
           }
         );
@@ -316,7 +318,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
             ) {
               let BackPage = {
                 salesmen: salesMan,
-                date: drDate,
+                date: moment(drDate).format('MM-DD-YYYY'),
                 totalExpense: data[2].data._id,
                 borrowed: data[3].data._id,
                 purchaseOutSide: data[0].data._id, //
@@ -326,6 +328,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
                 barCommission: data[6].data._id,
                 finalReport : data[7].data._id
               };
+              console.log(BackPage,'bck')
 
               fetch(
                 "https://insorty-backend-clone.vercel.app/shop/addBackPageData",
@@ -335,7 +338,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
                     "Content-Type": "application/json",
                     cookie_token: token,
                   },
-                  body: JSON.stringify({ BackPage }),
+                  body: JSON.stringify( BackPage ),
                 }
               )
                 .then((res) => res.json())
@@ -347,32 +350,32 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
                       title: "Success",
                       text: "Data Saved Successfully",
                     });
-                    localStorage.removeItem("firstFront");
-                    localStorage.removeItem("firstBack");
-                    localStorage.removeItem("purchases");
-                    localStorage.removeItem("mlForm");
-                    localStorage.removeItem("credit");
-                    localStorage.removeItem("expenses");
-                    localStorage.removeItem("paymentRecieved");
-                    localStorage.removeItem("borrow");
-                    localStorage.removeItem("rml");
-                    localStorage.removeItem("BeerForm");
-                    localStorage.removeItem("bhejan");
-                    localStorage.removeItem("drDate");
-                    localStorage.removeItem("creditTotal");
-                    localStorage.removeItem("salesMan");
-                    localStorage.removeItem("totalExpenses");
-                    localStorage.removeItem("totalFirstBack");
-                    localStorage.removeItem("totalPaymentsRecieved");
-                    localStorage.removeItem("rmlTotal");
-                    localStorage.removeItem("purchasesTotal");
-                    localStorage.removeItem("beerTotal");
-                    localStorage.removeItem("pichlaBakaya");
-                    localStorage.removeItem("commisionTotal");
-                    localStorage.removeItem("totalBorrow");
-                    localStorage.removeItem("beerFormTotal");
-                    localStorage.removeItem("udhaariTotal");
-                    localStorage.removeItem("mlFormTotal");
+                    // localStorage.removeItem("firstFront");
+                    // localStorage.removeItem("firstBack");
+                    // localStorage.removeItem("purchases");
+                    // localStorage.removeItem("mlForm");
+                    // localStorage.removeItem("credit");
+                    // localStorage.removeItem("expenses");
+                    // localStorage.removeItem("paymentRecieved");
+                    // localStorage.removeItem("borrow");
+                    // localStorage.removeItem("rml");
+                    // localStorage.removeItem("BeerForm");
+                    // localStorage.removeItem("bhejan");
+                    // localStorage.removeItem("drDate");
+                    // localStorage.removeItem("creditTotal");
+                    // localStorage.removeItem("salesMan");
+                    // localStorage.removeItem("totalExpenses");
+                    // localStorage.removeItem("totalFirstBack");
+                    // localStorage.removeItem("totalPaymentsRecieved");
+                    // localStorage.removeItem("rmlTotal");
+                    // localStorage.removeItem("purchasesTotal");
+                    // localStorage.removeItem("beerTotal");
+                    // localStorage.removeItem("pichlaBakaya");
+                    // localStorage.removeItem("commisionTotal");
+                    // localStorage.removeItem("totalBorrow");
+                    // localStorage.removeItem("beerFormTotal");
+                    // localStorage.removeItem("udhaariTotal");
+                    // localStorage.removeItem("mlFormTotal");
                   } else {
                     Swal.fire({
                       icon: "error",
@@ -381,7 +384,6 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
                     });
                   }
                 });
-              console.log(BackPage);
             } else {
               Swal.fire({
                 icon: "error",

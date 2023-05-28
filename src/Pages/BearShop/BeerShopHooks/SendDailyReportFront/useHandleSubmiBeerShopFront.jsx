@@ -124,9 +124,9 @@ const useHandleSubmiBeerShopFront = () => {
       credits: element.inflowCredit750,
       send: element.send750,
       remaining: element.sumRemaining750,
-      closingStock: element.closingStock750,
-      sales: element.sales750,
-      sellingRate: element.rate750,
+      closingStock: element.closingStock30,
+      sales: 0,
+      sellingRate: element.rate30,
       total: element.total750,
     });
   }
@@ -146,9 +146,9 @@ const useHandleSubmiBeerShopFront = () => {
       credits: element.inflowCredit375,
       send: element.send375,
       remaining: element.sumRemaining375,
-      closingStock: element.closingStock375,
-      sales: element.sales375,
-      sellingRate: element.rate375,
+      closingStock: element.closingStock30,
+      sales: 0,
+      sellingRate: element.rate30,
       total: element.total375,
     });
   }
@@ -168,9 +168,9 @@ const useHandleSubmiBeerShopFront = () => {
       credits: element.inflowCredit180,
       send: element.send180,
       remaining: element.sumRemaining180,
-      closingStock: element.closingStock180,
-      sales: element.sales180,
-      sellingRate: element.rate180,
+      closingStock: element.closingStock30,
+      sales: 0,
+      sellingRate: element.rate30,
       total: element.total180,
     });
   }
@@ -251,15 +251,16 @@ const useHandleSubmiBeerShopFront = () => {
   ) {
     const element = barSuplements[index];
     barSuplementsData.push({
-      buyingPrice: element.buyingPrice,
+      purchaseRate: element.buyingPrice,
       closingStock: element.closingStock,
       description: element.description,
-      infllow: element.infllow,
+      purchase: element.infllow,
       openingStock: element.openingStock,
       rates: element.rates,
       sales: element.sales,
-      sum: element.sum,
-      sumreminder: element.sumreminder,
+      totalQuantity: element.sum,
+      total: element.sumreminder,
+      sellingRate: element.rates
     });
   }
 
@@ -330,7 +331,7 @@ const useHandleSubmiBeerShopFront = () => {
             body: JSON.stringify({
               date: drDate,
               salesmen: salesMan,
-              entries: [barSuplementsData],
+              entries: barSuplementsData,
             }),
           }
         );
@@ -398,6 +399,13 @@ const useHandleSubmiBeerShopFront = () => {
         setIsLoading(false);
       }
     }
+    // console.log(barSuplementsData)
+    // console.log(barSuplements)
+    // console.log({
+    //             date: drDate,
+    //             salesmen: salesMan,
+    //             entries: barSuplementsData,
+    //           })
   };
 
   return {

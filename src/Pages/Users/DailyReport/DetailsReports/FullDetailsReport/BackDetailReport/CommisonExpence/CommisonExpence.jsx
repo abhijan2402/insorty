@@ -5,23 +5,22 @@ const CommisonExpence = ({ expences, index, entries }) => {
   return (
     <>
 
-      {entries?.map((entry, index) => {
+     
 
-        return (
+       
           <tr key={index}>
             <td className="tg-0lax">{index + 1}</td>
             <td className="tg-0lax" colSpan={4}>
-              {entry?.type}
+              {expences?.type}
             </td>
             <td className="tg-0lax" colSpan={4}>
-              {entry?.comment}
+              {expences?.amount?.$numberDecimal}
             </td>
             <td className="tg-0lax" colSpan={4}>
-              {entry?.amount?.$numberDecimal}
+              {expences?.description}
             </td>
           </tr>
-        );
-      })}
+      
     </>
   );
 };
