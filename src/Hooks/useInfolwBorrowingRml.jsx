@@ -3,6 +3,25 @@ import { useState,useEffect } from "react";
 const useInfolwBorrowingRml = () => {
   const infolwBorrwingForm = {
     liquorId:"",
+    size: {
+      sizes: [
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 750,
+        },
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 375,
+        },
+        {
+          _id: null,
+          currentStock: 0,
+          quantityInML: 180,
+        },
+      ],
+    },
     partyId:"",
     partyName: "",
     brandName: "",
@@ -33,6 +52,25 @@ const useInfolwBorrowingRml = () => {
     for (let i = 0; i < 5; i++) {
       data = [...data, {
         liquorId: "",
+        size: {
+          sizes: [
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 750,
+            },
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 375,
+            },
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 180,
+            },
+          ],
+        },
         partyId: "",
         partyName: "",
         brandName: "",
@@ -52,6 +90,25 @@ const useInfolwBorrowingRml = () => {
       ...infolwBorrwingFormState,
       {
         liquorId: "",
+        size: {
+          sizes: [
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 750,
+            },
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 375,
+            },
+            {
+              _id: null,
+              currentStock: 0,
+              quantityInML: 180,
+            },
+          ],
+        },
         partyId: "",
         partyName: "",
         brandName: "",

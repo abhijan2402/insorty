@@ -25,7 +25,7 @@ const SelfBill = () => {
     content: () => front.current,
   });
 
-  const ShopToken = jwtDecode(localStorage.getItem("token"));
+  const ShopToken = jwtDecode(localStorage.getItem("token")).shopType;
   const ShopType = ShopToken.shopType;
   const role = ShopToken.role;
 
@@ -80,7 +80,19 @@ const SelfBill = () => {
 
   console.log(filteredRefund);
 
-  const totalAmountData = filteredData?.map((item) => {
+  const totalAmountData = ShopToken==="SHOP" ?  filteredData?.map((item) => {
+    return item.total.$numberDecimal;
+  }) : filteredData?.filter((brand)=>{
+    if (brand.liquor.type==="WINE"){
+      if(brand.liquor.quantityInML===30){
+        return brand
+      }
+    }
+    else if(brand.liquor.type==="BEER"){
+      return brand
+    }
+    else return
+  } ).map((item) => {
     return item.total.$numberDecimal;
   });
 
@@ -150,7 +162,7 @@ const SelfBill = () => {
 
           <div>
             <div className="overflow-x-auto">
-              <table className="removeCommonWSpace">
+              <table className={ShopToken==="SHOP" ? 'removeCommonWSpace': 'displayHidden'}>
                 <thead>
                   <tr>
                     <td> क्र. सं.</td>
@@ -222,6 +234,91 @@ const SelfBill = () => {
 
                 
               </table>
+
+
+
+              <table className={ShopToken==="BAR" ? 'removeCommonWSpace': 'displayHidden'}>
+                <thead>
+                  <tr>
+                    <td> क्र. सं.</td>
+                    <th>दिनाक</th>
+                    <th>ब्राण्ड </th>
+                    <th>साईज</th>
+                    <th>संख्या</th>
+                    <th> रेट</th>
+                    <th>रकम</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(filteredData &&
+                    filteredData?.filter((brand)=>{
+                      if (brand.liquor.type==="WINE"){
+                        if(brand.liquor.quantityInML===30){
+                          return brand
+                        }
+                      }
+                      else if(brand.liquor.type==="BEER"){
+                        return brand
+                      }
+                      else return
+                    } ).map((billsData, index) => {
+                      return (
+                        <SelfBillList
+                          key={index}
+                          index={index}
+                          billsData={billsData}
+                          isLoading={isLoading}
+                        ></SelfBillList>
+                      );
+                    })) || (
+                    <>
+                      <p>
+                        <span className="text-red-500">No Data Found</span>
+                      </p>
+                    </>
+                  )}
+
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td className="commonText">Total</td>
+                    <td className="price">{totalAmount}</td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td className="commonText">रिफंड</td>
+                    <td className="price">
+                      {filteredRefund.reduce(
+                        (total, currentItem) =>
+                          (total = total + Number(currentItem.price)),
+                        0
+                      )}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td className="commonText">कुल रकम</td>
+                    <td className="price">
+                      {Number(netPaidAmount).toFixed(2)}
+                    </td>
+                  </tr>
+                </tbody>
+
+
+
+                
+              </table>
             </div>
           </div>
         </div>
@@ -234,14 +331,3 @@ export default SelfBill;
 
 
 
-// .filter((brand)=>{
-//   if (brand.liquor.type==="WINE"){
-//     if(brand.liquor.quantityInML===30){
-//       return brand
-//     }
-//   }
-//   else if(brand.liquor.type==="BEER"){
-//     return brand
-//   }
-//   else return
-// } )

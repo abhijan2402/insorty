@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
@@ -9,9 +9,12 @@ import { useReactToPrint } from "react-to-print";
 import jwtDecode from "jwt-decode";
 
 const Kharcha = () => {
-  const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
-  const { commitsonData, isLoading } = useCommision();
+  const [StartDate, setStartDate] = useState(new Date());
+  const [EndDate, setEndDate] = useState(new Date().setDate(new Date().getDate() + 1));
+  const { commitsonData, isLoading, commisonRefetch } = useCommision(StartDate,EndDate);
+  useEffect(() => {
+    commisonRefetch()
+  }, [StartDate,EndDate])
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,

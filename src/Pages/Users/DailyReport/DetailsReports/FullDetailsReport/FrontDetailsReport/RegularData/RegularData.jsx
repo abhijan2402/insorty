@@ -13,7 +13,7 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
       <>
   
         {
-        pages.map((page, index2) => {
+        pages.sort((a, b) => a.page.localeCompare(b.page)).map((page, index2) => {
   
           const pg = pageId ? pageId : Array.from(frontSet)[0]
   

@@ -151,7 +151,7 @@ function useGetDailyReport(date) {
     },
   });
 
-  const { data: BackPageReportExceptionalSize,   isLoading: ExceptionalLoading } = useQuery({
+  const { data: BackPageReportExceptionalSize,   isLoading: ExceptionalLoading,refetch: ExceptionalRefetch } = useQuery({
     queryKey: ["BackPageReportExceptionalSize"],
     queryFn: async () => {
       const res = await fetch(
@@ -166,7 +166,7 @@ function useGetDailyReport(date) {
     },
   });
 
-  const { data: BackPageReportRegularSize, isLoading: RegularLoading } = useQuery({
+  const { data: BackPageReportRegularSize, isLoading: RegularLoading, refetch: RegularRefetch } = useQuery({
     queryKey: ["BackPageReportRegularSize"],
     queryFn: async () => {
       const res = await fetch(
@@ -185,7 +185,7 @@ function useGetDailyReport(date) {
     queryKey: ["BackPageData"],
     queryFn: async () => {
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/shop/getBackPageData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `${process.env.REACT_APP_API_URL}/shop/getBackPageData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).add(1,'day').format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -221,7 +221,10 @@ function useGetDailyReport(date) {
     RegularLoading,
     backPageRefetch,
     BackPageLoading,
-    BackPageData
+    BackPageData,
+    RegularRefetch,
+    ExceptionalRefetch
+
   };
 }
 

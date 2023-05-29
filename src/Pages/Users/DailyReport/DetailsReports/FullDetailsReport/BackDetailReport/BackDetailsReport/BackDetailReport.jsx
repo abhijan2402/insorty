@@ -1,4 +1,4 @@
-import React, {  useRef, useState } from "react";
+import React, {  useRef, useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import InfolwRml from "../InflowRml/InfolwRml";
 import CommisonExpence from "../CommisonExpence/CommisonExpence";
@@ -16,33 +16,32 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import RegularData from "../../FrontDetailsReport/RegularData/RegularData";
 import FristFormDetails from "../../FrontDetailsReport/FristFormDetails/FristFormDetails";
+import { Backpack } from "@mui/icons-material";
+import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 const BackDetailReport = () => {
   const [filterDate, setFilterData] = useState(new Date());
+  const token = localStorage.getItem('token')
 
 
   const {
-    RMLData,
-    RMLLoaded,
-    PurchaseOutsideData,
-    PurchaseOutsideLoaded,
-    TotalExpensesData,
-    TotalExpensesLoaded,
-    BorrowedCashReturnData,
-    BorrowedCashReturnLoaded,
-    PurchaseBorrowData,
-    PurchaseBorrowLoaded,
-    SendData,
-    SendLoaded,
-    BorrowedData,
-    BorrowedDataLoaded,
-    FinalReportData,
+   
     FinalReportDataLoaded,
     BackPageReportExceptionalSize,
     BackPageReportRegularSize,
     ExceptionalLoading,
     RegularLoading,
   } = useGetDailyReport(filterDate);
+
+  const {BackPageData,BackPageLoading,backPageRefetch} = useGetDailyReport(filterDate)
+
+  useEffect(() => {
+  
+    backPageRefetch()
+  }, [filterDate]);
+
+
 
   const container = useRef(null);
   const [pageId, setPageId] = useState();
@@ -57,23 +56,34 @@ const BackDetailReport = () => {
   });
 
   if (
-    RMLLoaded ||
-    PurchaseOutsideLoaded ||
-    TotalExpensesLoaded ||
-    BorrowedCashReturnLoaded ||
-    PurchaseBorrowLoaded ||
-    SendLoaded ||
-    BorrowedDataLoaded ||
+   
     FinalReportDataLoaded ||
     ExceptionalLoading ||
-    RegularLoading
+    RegularLoading || BackPageLoading
   ) {
     return <Loader></Loader>;
   }
 
-  
-
+  const deletePage = (id) =>{
+    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteBackPageData`, {
+      method: "DELETE",
+      body: JSON.stringify({ backPageId: id }),
+      headers: { "Content-Type": "application/json", cookie_token: token },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.success) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        } else {
+          Swal.fire("Failed!", "Your file has not been deleted.", "error");
+        }
+        window.location.reload()
+      });
+     
+  }
   //
+
 
   const filteredExceptionalData = filterDate
     ? BackPageReportExceptionalSize.filter((item) => {
@@ -114,15 +124,14 @@ const BackDetailReport = () => {
 
   filteredRegularData.map((item) => {
     item.pages.map((page) => {
-      console.log(page)
+      
       const pg = pageId ? pageId : Array.from(frontSet)[0];
-      console.log(frontSet)
+     
       if (page.page === pg) {
         page.entries.map((entry) => {
-          console.log(entry)
           if (entry.quantityInML === 650) {
             quan650.push(entry);
-          } else if (entry.quantityInML === 550) {
+          } else if (entry.quantityInML === 500) {
             quan550.push(entry);
           } else if (entry.quantityInML === 330) {
             quan330.push(entry);
@@ -273,6 +282,23 @@ const BackDetailReport = () => {
             );
           })}
       </div>
+      <button className="commonBtn"  onClick={() => {
+              swal({
+                title: "Are you sure?",
+                text: `Once deleted, you will not be able to recover page
+                `,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              }).then((willDelete) => {
+                if (willDelete) {
+                  deletePage(BackPageData
+                    .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    .slice(pgNo, pgNo + 1)[0]._id);
+                  
+                } 
+              });
+            }}>Delete page</button>
 
       <div className="divider"></div>
 
@@ -423,14 +449,14 @@ const BackDetailReport = () => {
 
               {/* ========================== */}
 
-              {filteredRegularData.map((regularData, index) => {
+              {filteredRegularData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((regularData, index) => {
                 return (
                   <RegularData
                     key={index}
                     regularData={regularData}
                     index={index}
                     quan1={650}
-                    quan2={550}
+                    quan2={500}
                     quan3={330}
                     pageId={pageId}
                     frontSet={frontSet}
@@ -713,7 +739,7 @@ const BackDetailReport = () => {
             </thead>
             <tbody>
               {filteredExceptionalData &&
-                filteredExceptionalData.map((exceptionalData, index) => {
+                filteredExceptionalData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((exceptionalData, index) => {
                   const pg = pageId ? pageId : Array.from(frontSet)[0];
                   if (exceptionalData.page === pg) {
                     count++
@@ -843,49 +869,44 @@ const BackDetailReport = () => {
             </thead>
 
             <tbody>
-              {RMLData &&
-              RMLData.length &&
-              RMLData.filter((item) => {
-                const itemDate = new Date(moment(item.date).format());
-                const selected = filterDate ? new Date(filterDate) : null;
-                if (itemDate.toDateString() === selected.toDateString()) {
-                  return item;
-                } else if (filterDate === "") {
-                  return item;
-                } else if (RMLData === undefined) {
-                  return item;
-                }
-                return false;
-              }).length === 0 ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : (
-                RMLData &&
-                RMLData.length &&
-                RMLData.filter((item) => {
-                  const itemDate = new Date(moment(item.date).format());
-                  const selected = filterDate ? new Date(filterDate) : null;
-                  if (itemDate.toDateString() === selected.toDateString()) {
-                    return item;
-                  } else if (filterDate === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                  .map((RmlData, index) => {
+              {/* { (
+                BackPageData &&
+                BackPageData.length &&
+                BackPageData
+                .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+               
+                  .map((page, index) => {
                     if (index === pgNo) {
-                      return (
+                      return(<>{
+                        page.RML.entries.map((entry,index2)=>{
+                         return (
                         <BackRmlDetailsData
-                          key={index}
-                          index={index}
-                          RmlData={RmlData}
+                          key={index2}
+                          index={index2}
+                          RmlData={entry}
                         ></BackRmlDetailsData>
                       );
+                        })
+                      }</>)
+
+                     
                     } else return false;
                   })
-              )}
+              )} */}
+
+{BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.RML.entries.map((entry,index2)=>{
+                        return(
+                          <BackRmlDetailsData
+                          key={index2}
+                          index={index2}
+                          RmlData={entry}
+                        ></BackRmlDetailsData>)
+                      })
+                    }</>)}
+                  })}
 
               <tr>
                 <td className="tg-0lax" colSpan={2}>
@@ -894,25 +915,16 @@ const BackDetailReport = () => {
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {RMLData &&
-                    RMLData.length &&
-                    RMLData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.RML.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.openingStock),
                               0
@@ -921,25 +933,16 @@ const BackDetailReport = () => {
                       )}
                 </td>
                 <td className="tg-0lax">
-                  {RMLData &&
-                    RMLData.length &&
-                    RMLData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.RML.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.purchaseShop),
                               0
@@ -949,25 +952,16 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {RMLData &&
-                    RMLData.length &&
-                    RMLData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.RML.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.purchaseOutSide),
                               0
@@ -977,25 +971,16 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {RMLData &&
-                    RMLData.length &&
-                    RMLData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.RML.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.credits),
                               0
@@ -1004,25 +989,16 @@ const BackDetailReport = () => {
                       )}
                 </td>
                 <td className="tg-0lax">
-                  {RMLData &&
-                    RMLData.length &&
-                    RMLData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.RML.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.send),
                               0
@@ -1031,25 +1007,16 @@ const BackDetailReport = () => {
                       )}
                 </td>
                 <td className="tg-0lax">
-                  {RMLData &&
-                    RMLData.length &&
-                    RMLData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.RML.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.remaining),
                               0
@@ -1058,25 +1025,16 @@ const BackDetailReport = () => {
                       )}
                 </td>
                 <td className="tg-0lax">
-                  {RMLData &&
-                    RMLData.length &&
-                    RMLData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.RML.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.closingStock),
                               0
@@ -1086,25 +1044,16 @@ const BackDetailReport = () => {
                 </td>
 
                 <td className="tg-0lax">
-                  {RMLData &&
-                    RMLData.length &&
-                    RMLData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.RML.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.sales),
                               0
@@ -1116,24 +1065,16 @@ const BackDetailReport = () => {
                 <td className="tg-0lax"></td>
 
                 <td className="tg-0lax">
-                  {RMLData &&
-                    RMLData.length &&
-                    RMLData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.RML.entries.reduce(
                               (total, currentItem) =>
                                 (total =
                                   total +
@@ -1184,71 +1125,38 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {PurchaseOutsideData &&
-              PurchaseOutsideData.length &&
-              PurchaseOutsideData.filter((item) => {
-                const itemDate = new Date(moment(item.date).format());
-                const selected = filterDate ? new Date(filterDate) : null;
-                if (itemDate.toDateString() === selected.toDateString()) {
-                  return item;
-                } else if (filterDate === "") {
-                  return item;
-                }
-                return false;
-              }).length === 0 ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : (
-                PurchaseOutsideData &&
-                PurchaseOutsideData.length &&
-                PurchaseOutsideData.filter((item) => {
-                  const itemDate = new Date(moment(item.date).format());
-                  const selected = filterDate ? new Date(filterDate) : null;
-                  if (itemDate.toDateString() === selected.toDateString()) {
-                    return item;
-                  } else if (filterDate === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                  .map((outSideData, index) => {
-                    if (index === pgNo) {
-                      return (
-                        <InfolwRml
-                          key={index}
-                          outSideData={outSideData}
-                          index={index}
-                        ></InfolwRml>
-                      );
-                    }
-                  })
-              )}
+             
 
-              <tr>
+{BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.purchaseOutSide.entries.map((entry,index2)=>{
+                        return(
+                        <InfolwRml
+                        key={index}
+                        outSideData={entry}
+                        index={index2}
+                      ></InfolwRml>)
+                      })
+                    }</>)}
+                  })}
+
+<tr>
                 <td className="tg-0lax">Total</td>
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax" colSpan={4}></td>
                 <td className="tg-0lax" colSpan={4}>
-                  {PurchaseOutsideData &&
-                    PurchaseOutsideData.length &&
-                    PurchaseOutsideData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                    })
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.purchaseOutSide.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.number),
                               0
@@ -1256,27 +1164,17 @@ const BackDetailReport = () => {
                         0
                       )}
                 </td>
-                <td className="tg-0lax" colSpan={4}></td>
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4}>
-                  {PurchaseOutsideData &&
-                    PurchaseOutsideData.length &&
-                    PurchaseOutsideData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                    })
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.purchaseOutSide.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.total),
                               0
@@ -1303,82 +1201,43 @@ const BackDetailReport = () => {
                   type
                 </td>
                 <td className="tg-0lax" colSpan={4}>
-                  विवरण
+                  रकम
                 </td>
                 <td className="tg-0lax" colSpan={4}>
-                  रकम
+                  विवरण
                 </td>
               </tr>
             </thead>
             <tbody>
-              {TotalExpensesData &&
-              TotalExpensesData.length &&
-              TotalExpensesData.filter((item) => {
-                const itemDate = new Date(moment(item.date).format());
-                const selected = filterDate ? new Date(filterDate) : null;
-                if (itemDate.toDateString() === selected.toDateString()) {
-                  return item;
-                } else if (filterDate === "") {
-                  return item;
-                }
-                return false;
-              }).length === 0 ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : (
-                TotalExpensesData &&
-                TotalExpensesData.length &&
-                TotalExpensesData.filter((item) => {
-                  const itemDate = new Date(moment(item.date).format());
-                  const selected = filterDate ? new Date(filterDate) : null;
-                  if (itemDate.toDateString() === selected.toDateString()) {
-                    return item;
-                  } else if (filterDate === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                  .map((expences, index) => {
-                    const { entries } = expences;
-                    if (index === pgNo) {
-                      return (
-                        <CommisonExpence
-                          key={index}
-                          entries={entries}
-                          index={index}
-                          expences={expences}
+            {BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.totalExpense.entries.map((entry,index2)=>{
+                       
+                        return(
+                          <CommisonExpence
+                          key={index2}
+                          index={index2}
+                          expences={entry}
                         ></CommisonExpence>
-                      );
-                    }
-                  })
-              )}
+                        )
+                      })
+                    }</>)}
+                  })}
 
-              <tr>
+<tr>
                 <td className="tg-0lax">Total</td>
                 <td className="tg-0lax" colSpan={4}></td>
-                <td className="tg-0lax" colSpan={4}></td>
                 <td className="tg-0lax">
-                  {TotalExpensesData &&
-                    TotalExpensesData.length &&
-                    TotalExpensesData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.totalExpense.entries.reduce(
                               (total, currentItem) =>
                                 (total =
                                   total +
@@ -1388,6 +1247,7 @@ const BackDetailReport = () => {
                         0
                       )}
                 </td>
+                <td className="tg-0lax" colSpan={4}></td>
               </tr>
             </tbody>
           </table>
@@ -1418,66 +1278,35 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {!BorrowedCashReturnData ||
-              BorrowedCashReturnData.length === 0 ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : (
-                <>
-                  {BorrowedCashReturnData &&
-                    BorrowedCashReturnData.length &&
-                    BorrowedCashReturnData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
-                      .sort((a, b) => a._id - b._id)
-                      .map((borrwedCashReturn, index) => {
-                        const { entries } = borrwedCashReturn;
-                        if (index === pgNo) {
-                          return (
-                            <CashReciveData
-                              key={index}
-                              index={index}
-                              borrwedCashReturn={borrwedCashReturn}
-                              entries={entries}
-                            ></CashReciveData>
-                          );
-                        }
-                      })}
-                </>
-              )}
-
-              <tr>
+            {BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.borrowedCashReturn.entries.map((entry,index2)=>{
+                        return(
+                          <CashReciveData
+                          key={index2}
+                          index={index2}
+                          borrwedCashReturn={entry}
+                        
+                        ></CashReciveData>
+                        )
+                      })
+                    }</>)}
+                  })}
+                    <tr>
                 <td className="tg-0lax">Total</td>
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax">
-                  {BorrowedCashReturnData &&
-                    BorrowedCashReturnData.length &&
-                    BorrowedCashReturnData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
-                      .sort((a, b) => a._id - b._id)
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.borrowedCashReturn.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.cash),
                               0
@@ -1511,67 +1340,38 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {!PurchaseBorrowData && PurchaseBorrowData.length === 0 ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : (
-                <>
-                  {PurchaseBorrowData &&
-                    PurchaseBorrowData.length &&
-                    PurchaseBorrowData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                      .map((item, index) => {
-                        const { entries } = item;
-                        if (index === pgNo) {
-                          return (
-                            <InflowBorrow
-                              key={index}
-                              index={index}
-                              PurchaseBorrow={item}
-                              entries={entries}
+            {BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.purchaseBorrow.entries.map((entry,index2)=>{
+                        return(
+                          <InflowBorrow
+                              key={index2}
+                              index={index2}
+                              // PurchaseBorrow={item}
+                              entries={entry}
                             ></InflowBorrow>
-                          );
-                        }
-                      })}
-                </>
-              )}
+                        )
+                      })
+                    }</>)}
+                  })}
 
-              <tr>
+<tr>
                 <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {PurchaseBorrowData &&
-                    PurchaseBorrowData.length &&
-                    PurchaseBorrowData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.purchaseBorrow.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.number),
                               0
@@ -1606,7 +1406,7 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {!SendData || SendData.length === 0 ? (
+              {/* {!SendData || SendData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
@@ -1639,7 +1439,22 @@ const BackDetailReport = () => {
                         }
                       })}
                 </>
-              )}
+              )} */}
+
+{BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.send.entries.map((entry,index2)=>{
+                        return(
+                          <ShippingEnglishBear
+                          key={index2}
+                          index={index2}
+                          item={entry}
+                        ></ShippingEnglishBear>
+                        )
+                      })
+                    }</>)}
+                  })}
 
               <tr>
                 <td className="tg-0lax" colSpan={2}>
@@ -1647,25 +1462,16 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {SendData &&
-                    SendData.length &&
-                    SendData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    })
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.entries.reduce(
+                            currentItem.send.entries.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.number),
                               0
@@ -1676,22 +1482,13 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {SendData &&
-                    SendData.length &&
-                    SendData.filter((item) => {
-                      const itemDate = new Date(moment(item.date).format());
-                      const selected = filterDate ? new Date(filterDate) : null;
-                      if (itemDate.toDateString() === selected.toDateString()) {
-                        return item;
-                      } else if (filterDate === "") {
-                        return item;
-                      }
-                      return false;
-                    }).reduce(
+                  {BackPageData &&
+                    BackPageData.length &&
+                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
-                          currentItem.entries.reduce(
+                          currentItem.send.entries.reduce(
                             (total, currentItem) =>
                               (total = total + currentItem.total),
                             0
@@ -1720,72 +1517,39 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-              {BorrowedData &&
-                BorrowedData.length > 0 &&
-                BorrowedData.filter((item) => {
-                  const itemDate = new Date(moment(item.date).format());
-                  const selected = filterDate ? new Date(filterDate) : null;
-                  if (itemDate.toDateString() === selected.toDateString()) {
-                    return item;
-                  } else if (filterDate === "") {
-                    return item;
-                  }
-                  return false;
-                })
-                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                  .map((item, index) => {
-                    const { entries } = item;
-                    if (index === pgNo) {
-                      return (
-                        <Borrowed
-                          key={index}
-                          index={index}
-                          item={item}
-                          entries={entries}
+            {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<>{
+                      page.borrowed.entries.map((entry,index2)=>{
+                        return(
+                          <Borrowed
+                          key={index2}
+                          index={index2}
+                          item={entry}
+                          
                         ></Borrowed>
-                      );
-                    }
+                        )
+                      })
+                    }</>)}
                   })}
 
-              <tr>
+<tr>
                 <td className="tg-0lax" colSpan={2}>
                   Total
                 </td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {!BorrowedData ||
-                  !BorrowedData.length ||
-                  BorrowedData.length === 0 ? (
-                    <>
-                      <p>No Data Found</p>
-                    </>
-                  ) : (
-                    <>
-                      {BorrowedData &&
-                        BorrowedData.length > 0 &&
-                        BorrowedData.filter((item) => {
-                          const itemDate = new Date(moment(item.date).format());
-                          const selected = filterDate
-                            ? new Date(filterDate)
-                            : null;
-                          if (
-                            itemDate.toDateString() === selected.toDateString()
-                          ) {
-                            return item;
-                          } else if (filterDate === "") {
-                            return item;
-                          }
-                          return false;
-                        })
-                          .sort((a, b) =>
-                            a.createdAt.localeCompare(b.createdAt)
-                          )
+                  
+                   
+                      {BackPageData &&
+                        BackPageData.length > 0 &&
+                        BackPageData
                           .slice(pgNo, pgNo + 1)
                           .reduce(
                             (total, currentItem) =>
                               (total =
                                 total +
-                                currentItem.entries.reduce(
+                                currentItem.borrowed.entries.reduce(
                                   (total, currentItem) =>
                                     (total =
                                       total +
@@ -1796,70 +1560,21 @@ const BackDetailReport = () => {
                                 )),
                             0
                           )}
-                    </>
-                  )}
+                  
+                  
                 </td>
                 <td className="tg-0lax" />
               </tr>
             </tbody>
           </table>
 
-          <table className="table w-full">
-            <thead>
-              <tr>
-                <td className="tg-0lax " colSpan={40}>
-                  <span style={{ fontWeight: "bold" }}>फाईनल रिपोर्ट</span>
-                </td>
-              </tr>
-
-              <tr>
-                <td className="tg-baqh">क्र.सं.</td>
-                <td className="tg-baqh" colSpan={4}>
-                  विवरण
-                </td>
-                <td className="tg-baqh" colSpan={4}>
-                  रकम
-                </td>
-              </tr>
-            </thead>
-            <tbody>
-              {!FinalReportData || !FinalReportData.length ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : FinalReportData &&
-                FinalReportData.length &&
-                FinalReportData.filter((item) => {
-                  const itemDate = new Date(moment(item.date).format());
-                  const selected = filterDate ? new Date(filterDate) : null;
-                  if (itemDate.toDateString() === selected.toDateString()) {
-                    return item;
-                  } else if (filterDate === "") {
-                    return item;
-                  }
-                  return false;
-                }).length === 0 ? (
-                <>
-                  <p>No Data Found</p>
-                </>
-              ) : (
-                <FinalReport
-                  data={FinalReportData.filter((item) => {
-                    const itemDate = new Date(moment(item.date).format());
-                    const selected = filterDate ? new Date(filterDate) : null;
-                    if (itemDate.toDateString() === selected.toDateString()) {
-                      return item;
-                    } else if (filterDate === "") {
-                      return item;
-                    }
-                    return false;
-                  })
-                    .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                    .slice(pgNo, pgNo + 1)}
-                ></FinalReport>
-              )}
-            </tbody>
-          </table>
+          { BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if(index === pgNo){
+                      return(<FinalReport
+                        data={page.finalReport}
+                      ></FinalReport>
+                    )}
+                  })}
 
           <table>
             <thead>

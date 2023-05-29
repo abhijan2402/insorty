@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import moment from "moment";
 
-const useCommision = () => {
+const useCommision = (start,end) => {
   const token = localStorage.getItem("token");
   const commisionFormData = {
     description: "",
@@ -48,17 +49,18 @@ const useCommision = () => {
     console.log(commisionState);
   };
 
-  const { data: commitsonData, isLoading } = useQuery({
+  const { data: commitsonData, isLoading, refetch: commisonRefetch } = useQuery({
     queryKey: ["commitsonData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getTotalExpensesData",
+       `${process.env.REACT_APP_API_URL}/shop/getTotalExpensesData?from=${moment(start).format('DD MMMM YYYY')}&to=${moment(end).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
       const data = await res.json();
+      console.log(data.data,start,end)
       return data.data;
     },
   });
@@ -71,6 +73,7 @@ const useCommision = () => {
     addOneCommision,
     handelOnChangeCommision,
     handelOnSubmitCommision,
+    commisonRefetch
   };
 };
 

@@ -1,13 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
+import moment from "moment";
 
-const useFrontDetailHooks = () => {
+const useFrontDetailHooks = (date) => {
   const token = localStorage.getItem("token");
 
-  const { data: FrontPageRegularData, isLoading } = useQuery({
+  const { data: FrontPageRegularData, isLoading, refetch: refetch1 } = useQuery({
     queryKey: ["FrontPageRegularData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getFrontPageRegularSize",
+        `${process.env.REACT_APP_API_URL}/shop/getFrontPageRegularSize?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -18,11 +19,11 @@ const useFrontDetailHooks = () => {
     },
   });
 
-  const { data: FrontPageExceptionalData, isLoading: isLoading2 } = useQuery({
+  const { data: FrontPageExceptionalData, isLoading: isLoading2, refetch: refetch2 } = useQuery({
     queryKey: ["FrontPageExceptionalData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getFrontPageExceptionalSize",
+        `${process.env.REACT_APP_API_URL}/shop/getFrontPageExceptionalSize?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -38,6 +39,8 @@ const useFrontDetailHooks = () => {
     FrontPageExceptionalData,
     isLoading,
     isLoading2,
+    refetch1,
+    refetch2
   };
 };
 

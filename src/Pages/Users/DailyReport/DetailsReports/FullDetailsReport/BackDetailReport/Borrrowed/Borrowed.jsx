@@ -12,7 +12,7 @@ const Borrowed = ({index,item,entries}) => {
                     <td>{index+1}</td>
                     <td>{item.type==="PARTY" ? getPartyName(item.from) : entries.type==="PARTNER" ? getPartnerName(item.from) : item.type==="BRANCH" ? getBranchName(item.from):  ""}</td>
                     <td>{item.type}</td>
-                    <td>{item.amount.$numberDecimal}</td>
+                    <td>{item?.amount?.$numberDecimal}</td>
                     <td>{item.comment}</td>
                 </tr>
          

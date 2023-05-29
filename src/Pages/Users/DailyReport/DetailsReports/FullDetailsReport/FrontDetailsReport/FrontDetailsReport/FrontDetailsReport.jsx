@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import Loader from "../../../../../../../Components/Loader/Loader";
@@ -10,6 +10,8 @@ import useFrontDetailHooks from "../FrontDetailsHooks/useFrontDetailHooks";
 import RegularData from "../RegularData/RegularData";
 import jwtDecode from "jwt-decode";
 import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
+import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 const FrontDetailsReport = () => {
   const front = useRef(null);
@@ -21,8 +23,17 @@ const FrontDetailsReport = () => {
     isLoading,
     isLoading2,
     FrontPageExceptionalData,
+    refetch1,
+    refetch2
     
-  } = useFrontDetailHooks();
+  } = useFrontDetailHooks(selectedDate);
+
+    useEffect(() => {
+      refetch1()
+      refetch2()
+    }, [selectedDate])
+    
+
 
 
   const { FrontPageData, FrontPageDataLoaded } = useGetDailyReport();
@@ -33,7 +44,6 @@ const FrontDetailsReport = () => {
     content: () => front.current,
   });
 
-  console.log(FrontPageExceptionalData)
 
   const token = localStorage.getItem("token");
 
@@ -43,6 +53,27 @@ const FrontDetailsReport = () => {
 
   if (isLoading2) {
     return <Loader></Loader>;
+  }
+
+ 
+
+  const deletePage = (id) =>{
+    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteFrontPageData`, {
+      method: "DELETE",
+      body: JSON.stringify({ frontPageId: id }),
+      headers: { "Content-Type": "application/json", cookie_token: token },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.success) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        } else {
+          Swal.fire("Failed!", "Your file has not been deleted.", "error");
+        }
+        window.location.reload()
+      });
+     
   }
 
   const filteredRegularData = selectedDate
@@ -256,6 +287,24 @@ const FrontDetailsReport = () => {
           );
         })}
       </div>
+
+      <button className="commonBtn"  onClick={() => {
+              swal({
+                title: "Are you sure?",
+                text: `Once deleted, you will not be able to recover page
+                `,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              }).then((willDelete) => {
+                if (willDelete) {
+                  deletePage(pageId ? pageId : Array.from(frontSet)[0]);
+                  
+                } 
+              });
+            }}>
+     Delete Page
+      </button>
       <div className="divider"></div>
 
       <div ref={front}>

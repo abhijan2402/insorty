@@ -3,11 +3,9 @@ import usePartyNames from "../../../../../../../Hooks/usePartyNames";
 import useLiquors from "../../../../../../../Hooks/useLiquors";
 
 const InfolwRml = ({ outSideData, index }) => {
-  console.log("entered")
   const { getPartyName } = usePartyNames();
   const {  getNameByID, getSize } = useLiquors();
   // const { entries } = outSideData;
-  console.log(outSideData)
 
  
   const { party, number, rate, total, comment, liquor } = outSideData;

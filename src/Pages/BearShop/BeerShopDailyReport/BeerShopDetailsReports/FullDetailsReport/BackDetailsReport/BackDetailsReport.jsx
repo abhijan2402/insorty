@@ -10,9 +10,12 @@ import Borrowed from "../../../../../Users/DailyReport/DetailsReports/FullDetail
 import FinalReport from "../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/FinalReport/FinalReport";
 import CashReciveData from "../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/CashReciveData/CashReciveData";
 import { tr } from "date-fns/locale";
+import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const BackDailyReport = () => {
   const [filterDate, setFilterData] = useState(new Date());
+  const token = localStorage.getItem('token')
   
   const [pgNo, setPgNo] = useState(0);
   let frontSet2 = new Set([]);
@@ -33,6 +36,24 @@ const BackDailyReport = () => {
       return 0;
  
   });
+
+  const deletePage = (id) =>{
+    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteBackPageData`, {
+      method: "DELETE",
+      body: JSON.stringify({ backPageId: id }),
+      headers: { "Content-Type": "application/json", cookie_token: token },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        } else {
+          Swal.fire("Failed!", "Your file has not been deleted.", "error");
+        }
+        window.location.reload()
+      });
+     
+  }
 
   
 
@@ -89,6 +110,28 @@ const BackDailyReport = () => {
           })}
       </div>
         </div>
+      <button className="commonBtn"  onClick={() => {
+              swal({
+                title: "Are you sure?",
+                text: `Once deleted, you will not be able to recover page
+                `,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              }).then((willDelete) => {
+                if (willDelete) {
+                  deletePage( BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    if (index === pgNo) {
+                      return(
+                     page
+                )
+                     
+                    }
+                  })[0]._id);
+                  
+                } 
+              });
+            }}>Delete Page</button>
 
         {/* *********************************************************BREAK*********************************************************  */}
         <form>

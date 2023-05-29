@@ -21,7 +21,7 @@ const OutBill = () => {
     content: () => front.current,
   });
 
-  const ShopToken = jwtDecode(localStorage.getItem("token"));
+  const ShopToken = jwtDecode(localStorage.getItem("token")).shopType;
   const ShopType = ShopToken.shopType;
   const role = ShopToken.role;
 
@@ -57,7 +57,19 @@ const OutBill = () => {
     return filterPass;
   });
 
-  const totalAmountData = filteredData?.map((item) => {
+  const totalAmountData =ShopToken==="SHOP" ?  filteredData?.map((item) => {
+    return Number(item.total.$numberDecimal);
+  }) : filteredData?.filter((brand)=>{
+    if (brand.liquor.type==="WINE"){
+      if(brand.liquor.quantityInML===30){
+        return brand
+      }
+    }
+    else if(brand.liquor.type==="BEER"){
+      return brand
+    }
+    else return
+  } ).map((item) => {
     return Number(item.total.$numberDecimal);
   });
   const totalAmount = totalAmountData?.reduce((a, b) => a + b, 0);
@@ -117,7 +129,7 @@ const OutBill = () => {
 
           <div>
             <div className="overflow-x-auto">
-              <table className="removeCommonWSpace">
+              <table className={ShopToken==="SHOP" ? 'removeCommonWSpace' : 'displayHidden'}>
                 <thead>
                   <tr>
                     <td> क्र. सं.</td>
@@ -132,6 +144,57 @@ const OutBill = () => {
                 <tbody>
                   {(filteredData &&
                     filteredData?.map((outBill, index) => {
+                      return (
+                        <OutBillList
+                          key={index}
+                          outBill={outBill}
+                          index={index}
+                        ></OutBillList>
+                      );
+                    })) || (
+                    <>
+                      <p>
+                        <span className="text-red-500">No Data Found</span>
+                      </p>
+                    </>
+                  )}
+
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td className="commonText">Total</td>
+                    <td className="price">{Number(totalAmount).toFixed(2)}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <table className={ShopToken==="BAR" ? 'removeCommonWSpace' : 'displayHidden'}>
+                <thead>
+                  <tr>
+                    <td> क्र. सं.</td>
+                    <th>दिनाक</th>
+                    <th>ब्राण्ड</th>
+                    <th>साईज </th>
+                    <th>संख्या</th>
+                    <th>रेट</th>
+                    <th>रकम</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(filteredData &&
+                    filteredData?.filter((brand)=>{
+                      if (brand.liquor.type==="WINE"){
+                        if(brand.liquor.quantityInML===30){
+                          return brand
+                        }
+                      }
+                      else if(brand.liquor.type==="BEER"){
+                        return brand
+                      }
+                      else return
+                    } ).map((outBill, index) => {
                       return (
                         <OutBillList
                           key={index}

@@ -10,7 +10,7 @@ const FinalReport = ({ data, date }) => {
  <table className={shopType==="SHOP" ? "table" : "displayHidden"}>
                       <thead>
                         <tr>
-                        <tr>
+                       
                 <td className="tg-baqh">क्र.सं.</td>
                 <td className="tg-baqh" >
                   विवरण
@@ -19,7 +19,7 @@ const FinalReport = ({ data, date }) => {
                   रकम
                 </td>
               </tr>
-                        </tr>
+                      
                       </thead>      <tr>
         <td className="tg-0lax">1</td>
         <td className="tg-0lax" >
@@ -58,10 +58,10 @@ const FinalReport = ({ data, date }) => {
       </tr>
       <tr>
         <td className="tg-0lax">5</td>
-        <td className="tg-0lax" colSpan={4}>
+        <td className="tg-0lax" >
           पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
         </td>
-        <td className="tg-0lax" colSpan={4}>
+        <td className="tg-0lax" >
           {data.borrowedCashReturn}
         </td>
       </tr>
@@ -116,7 +116,7 @@ const FinalReport = ({ data, date }) => {
           शेष रकम
         </td>
         <td className="tg-0lax" >
-          {data.restAmount.$numberDecimal}
+          {data?.restAmount?.$numberDecimal}
         </td>
       </tr>
     </table>
@@ -236,7 +236,7 @@ const FinalReport = ({ data, date }) => {
           शेष रकम
         </td>
         <td className="tg-0lax">
-          {data.restAmount.$numberDecimal}
+          {data?.restAmount?.$numberDecimal}
         </td>
       </tr>
 </table>

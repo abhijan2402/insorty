@@ -7,17 +7,22 @@ import FrontRegularData from "./FrontRegularData";
 import FrontExceptional from "./FrontExceptional";
 import useGetDailyReport from "../../../../../../../Hooks/useGetDailyReport";
 import RegularData from "../../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/FrontDetailsReport/RegularData/RegularData";
+import swal from "sweetalert";
+import Swal from "sweetalert2";
+import moment from "moment";
+import jwtDecode from "jwt-decode";
 import FristFormDetails from "../../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/FrontDetailsReport/FristFormDetails/FristFormDetails";
 
 const FronteDailyReport = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   let dateChange = new Date()
+  const token = localStorage.getItem('token')
   const [pageId, setPageId] = useState();
   const [pgNo,setPgNo] = useState(0)
   const { BackPageReportExceptionalSize,
     BackPageReportRegularSize,
     ExceptionalLoading,
-    RegularLoading} = useGetDailyReport(selectedDate)
+    RegularLoading,RegularRefetch,ExceptionalRefetch} = useGetDailyReport(selectedDate)
   let count = 0
 
   const calStock30 = (stock750, stock375, stock180) => {
@@ -45,6 +50,8 @@ useEffect(() => {
   frontPagerefetch();
   frontRegularrefetch();
   frontExceptrefetch();
+  RegularRefetch();
+  ExceptionalRefetch();
 }, [selectedDate]);
 
 
@@ -71,6 +78,24 @@ FrontPageRegularData.map((item) => {
   let quan650=[]
   let quan500=[]
   let quan330=[]
+
+  const deletePage = (id) =>{
+    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteBarFrontPageData`, {
+      method: "DELETE",
+      body: JSON.stringify({ barFrontPageId: id }),
+      headers: { "Content-Type": "application/json", cookie_token: token },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        } else {
+          Swal.fire("Failed!", "Your file has not been deleted.", "error");
+        }
+        window.location.reload()
+      });
+     
+  }
 
  
 
@@ -149,12 +174,55 @@ FrontPageRegularData.map((item) => {
         })}
       </div>
 
+      <button className="commonBtn"  onClick={() => {
+              swal({
+                title: "Are you sure?",
+                text: `Once deleted, you will not be able to recover page
+                `,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              }).then((willDelete) => {
+                if (willDelete) {
+                  deletePage( FrontPage && FrontPage.length && FrontPage.map((page,index)=>{
+                    if (index === pgNo) {
+                      return(
+                     page
+                )
+                     
+                    }
+                  })[0]._id);
+                  
+                } 
+              });
+            }}>Delete Page</button>
+
       <div className="py-6">
         <div>
           <>
             <div className="overflow-x-auto">
               <table className="table">
-                <thead></thead>
+                <thead>
+                <td className="tg-baqh" colSpan={42}>
+                  दुकान का नाम:- &nbsp;&nbsp;
+                  {jwtDecode(localStorage.getItem("token")).name}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
+                  का नाम :-{" "}
+                  {
+                    FrontPage && FrontPage.length && FrontPage.map((page,index)=>{
+                      if (index === pgNo) {
+                        return(
+                       page.salesmen
+                  )
+                       
+                      }
+                    })
+                  }
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक
+                  :-
+                  {moment(selectedDate).format("DD/MM/YYYY")}
+                </td>
+                </thead>
                 <tbody>
                   <tr>
                     <th rowSpan={2}> क्र. सं.</th>

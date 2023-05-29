@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import usePhonePay from "../PhonePayHooks/usePhonePay";
 import Loader from "../../../../Components/Loader/Loader";
 import { FaCalendarAlt } from "react-icons/fa";
@@ -7,14 +7,19 @@ import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
 
 const PhonePeToday = () => {
-  const { phonePayData, isLoading } = usePhonePay();
-  console.log(phonePayData, "phonePayData");
-  const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
+  const [StartDate, setStartDate] = useState(new Date());
+  const [EndDate, setEndDate] = useState(new Date().setDate(new Date().getDate() + 1));
+  const { phonePayData, isLoading,refetch } = usePhonePay(StartDate,EndDate);
+  
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+
+  useEffect(() => {
+   refetch()
+  }, [StartDate,EndDate])
+  
 
   if (isLoading) {
     return <Loader></Loader>;

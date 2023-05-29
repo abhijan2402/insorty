@@ -5,23 +5,20 @@ import usePartyNames from "../../../../../../../Hooks/usePartyNames";
 
 const ShippingEnglishBear = ({ index, item, entries }) => {
   const { getPartyName } = usePartyNames();
-  const { getNameByID, getSize } = useLiquors();
   return (
     <>
-      {entries.map((entry, index) => {
-        return (
+     
           <tr>
             <td>{index + 1}</td>
-            <td>{getPartyName(entry.party)}</td>
-            <td>{getNameByID(entry.liquor)}</td>
-            <td>{entry.number}</td>
-            <td>{getSize(entry.liquor)}</td>
-            <td>{Number(entry.total) / Number(entry.number)}</td>
-            <td>{entry.total}</td>
-            <td>{entry.comment}</td>
+            <td>{getPartyName(item.party)}</td>
+            <td>{item?.liquor?.brandName}</td>
+            <td>{item.number}</td>
+            <td>{item.liquor?.quantityInML}</td>
+            <td>{Number(item.total) / Number(item.number)}</td>
+            <td>{item.total}</td>
+            <td>{item.comment}</td>
           </tr>
-        );
-      })}
+        
     </>
   );
 };

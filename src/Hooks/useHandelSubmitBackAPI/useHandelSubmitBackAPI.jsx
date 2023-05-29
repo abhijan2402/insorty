@@ -49,7 +49,6 @@ const useHandelSubmitBackAPI = (shopType) => {
   const dataDetails650 = [];
   for (let index = 0; backFirst ? index < backFirst.length : 0; index++) {
     const element = backFirst[index];
-    console.log(element.size, "size array");
     dataDetails650.push({
       liquor:
         element.size &&
@@ -179,7 +178,9 @@ const useHandelSubmitBackAPI = (shopType) => {
   ) {
     const element = purchaseOutside[index];
     purchaseOutSideData.push({
-      liquor: GetLiqId(element.liquorID, Number(element.quantity), null),
+      liquor: element.size.sizes.find(
+        (elem) => elem.quantityInML === element.quantity
+      )?._id,
       party: element.partyId,
       number: element.theNumber,
       ml: element.quantity,
@@ -261,7 +262,9 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; send ? index < send.length : 0; index++) {
     const element = send[index];
     addSendingData.push({
-      liquor: GetLiqId(element.liquorId, Number(element.quantity), null),
+      liquor: element.size.sizes.find(
+        (elem) => elem.quantityInML === element.quantity
+      )?._id,
       party: element.partyId,
       number: element.theNumber,
 
@@ -273,7 +276,9 @@ const useHandelSubmitBackAPI = (shopType) => {
   for (let index = 0; borrow ? index < borrow.length : 0; index++) {
     const element = borrow[index];
     addPurchesBorrowData.push({
-      liquor: GetLiqId(element.liquorID, Number(element.quantity), null),
+      liquor:element.size.sizes.find(
+        (elem) => elem.quantityInML === element.quantity
+      )?._id,
       party: element.partyId,
       number: element.theNumber,
       comment: element.comment,
@@ -554,6 +559,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         setIsLoading(false);
       }
     }
+    
   };
 
   return {

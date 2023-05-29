@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState,useRef,useEffect } from "react";
 import useCashRecive from "../CashReciveHooks/useCashRecive";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
@@ -6,13 +6,19 @@ import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
 
 const CashReciveData = () => {
-  const { CashReciveData, isLoading } = useCashRecive();
-  const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
+  const [StartDate, setStartDate] = useState(new Date());
+  const [EndDate, setEndDate] = useState(new Date().setDate(new Date().getDate() + 1));
+  const { CashReciveData, isLoading,refetch } = useCashRecive(StartDate,EndDate);
+  
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+
+  useEffect(() => {
+    refetch()
+  }, [StartDate,EndDate])
+  
 
   if (isLoading) {
     return <Loader></Loader>;

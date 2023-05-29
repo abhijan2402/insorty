@@ -84,14 +84,14 @@ const SideNav = () => {
               </NavLink>
             </li>
 
-            <li className="my-4">
+            {/* <li className="my-4">
               <NavLink
                 to="/user/bearshop/branch"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 ब्रांच
               </NavLink>
-            </li>
+            </li> */}
 
             <li className="my-4">
               <NavLink
