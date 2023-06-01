@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef,useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
@@ -7,47 +7,67 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import AddTranstion from "../AddTranstion/AddTranstion";
 import moment from "moment/moment";
+import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
+import useMainInvestmentHooks from "../../MainInvestment/MainInvestmentHooks/useMainInvestmentHooks";
 
 const PreviousLoansDetails = () => {
   const token = localStorage.getItem("token");
   const { loandataId } = useParams();
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(0);
+  const [transactions,setTransactions] = useState([])
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+  const {data} = useMainInvestmentHooks()
+
 
   const BasedURL = process.env.REACT_APP_API_URL;
 
-  const {
-    data: prevLoneByIdData,
-    isLoading: prevLoneByIdLoading,
-    refetch: prevLoneByIdRefetch,
-  } = useQuery({
-    queryKey: ["prevLoneByIdData"],
-    queryFn: async () => {
-      const res = await fetch(
-        `${BasedURL}/shop/getPreviousBorrowedTransactions?previousBorrowedId=${loandataId}`,
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: token },
+  const fetchData = async () => {
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getPreviousBorrowedTransactions?previousBorrowedId=${loandataId}&page=${page}&pagesize=30`,
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        console.log(response.data.data.transactions)
+        setTransactions((data) => [...data, ...response.data.data.transactions]);
+        setPage((page) => page + 1);
+        if (response.data.data.transactions.length === 0) {
+          setHasMore(false);
         }
-      );
-      const data = await res.json();
-      console.log(data.data);
-      return data.data;
-    },
-  });
+
+      })
+      .catch((err) => {
+        console.log(err)
+
+       
+          setHasMore(false);
+        
+      });
+
+  
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [transactions]);
 
   const handelSubmit = (e) => {
     e.preventDefault();
 
-    console.log(prevLoneByIdData)
 
     fetch(`${BasedURL}/shop/addPreviousBorrowedTransaction`, {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify({
-        previousBorrowedId: prevLoneByIdData?._id,
+        previousBorrowedId: loandataId,
         deposit: 0,
         debit: e.target.deposit.value,
         date: e.target.dateData.value,
@@ -58,23 +78,44 @@ const PreviousLoansDetails = () => {
         console.log(data, "data");
         if (data.success === true) {
           Swal.fire("Success!", "Your file has been added.", "success");
-          prevLoneByIdRefetch();
+          window.location.reload()
         } else {
           Swal.fire("Failed!", "Your file has not been added.", "error");
         }
       });
   };
 
-  console.log(prevLoneByIdData, "prevLoneByIdData");
 
-  if (prevLoneByIdLoading) {
+  if (data.isLoading) {
     return <Loader></Loader>;
   }
+
+  function isEqual(obj1, obj2) {
+    return JSON.stringify(obj1) === JSON.stringify(obj2);
+  }
+
+  function existsInFilteredArray(entry) {
+    return transactions.some(item => isEqual(item, entry));
+  }
+
+  data.refundRecoveryDetails.entries.map((entry)=>{
+    if(entry.type==="RECOVERY" && entry.partyId===loandataId){
+      const newObj= {previousBorrowed: loandataId,
+      deposit: entry.price,
+      debit: 0,
+      paymentFlow: "DEPOSIT",
+      date: entry.date,}
+
+      if (!existsInFilteredArray(newObj)){
+      transactions.push(newObj)
+    }
+    }
+  })
 
   return (
     <section>
       <div className="title flex justify-center items-center gap-4">
-        <h2 className="font-bold text-[1.5rem]">{prevLoneByIdData?.name}</h2>
+        <h2 className="font-bold text-[1.5rem]">{transactions?.name}</h2>
 
         <button className="commonBtn " onClick={handlePrint}>
           PRINT
@@ -87,32 +128,46 @@ const PreviousLoansDetails = () => {
           className="flex justify-center items-center
         "
         >
+
+<InfiniteScroll
+            dataLength={transactions.length}
+            next={fetchData}
+            hasMore={hasMore}
+            scrollableTarget="scrollableDiv"
+            loader={<h4>Loading...</h4>}
+          >
           <table className="table w-3/4">
             <thead>
               <tr>
                 <th> क्र. सं.</th>
                 <th colSpan={2}>Date</th>
-                <th colSpan={2}>Balance</th>
+                <th colSpan={2}>Debit</th>
+                <th colSpan={2}>Deposit</th>
               </tr>
             </thead>
             <tbody>
-              {(prevLoneByIdData?.transactions &&
-                prevLoneByIdData?.transactions.length &&
-                prevLoneByIdData?.transactions?.map((prevLone, index) => {
+              {(transactions &&
+                transactions.length &&
+                transactions?.map((prevLone, index) => {
                   return (
                     <tr key={prevLone?._id}>
                       <td>{index + 1}</td>
                       <td colSpan={3}>
-                        <Link className="font-bold text-[1rem]">
+                        <p className="font-bold text-[1rem]">
                           {moment(prevLone?.date,).format("DD/MM/YYYY")}
-                        </Link>
+                        </p>
                       </td>
                       
 
                       <td>
-                        <Link className="font-bold text-[1rem]">
+                        <p className="font-bold text-[1rem]">
                           {prevLone?.debit}
-                        </Link>
+                        </p>
+                      </td>
+                      <td>
+                        <p className="font-bold text-[1rem]">
+                          {prevLone?.deposit}
+                        </p>
                       </td>
                     </tr>
                   );
@@ -125,6 +180,8 @@ const PreviousLoansDetails = () => {
               )}
             </tbody>
           </table>
+          </InfiniteScroll>
+
         </div>
         <tr className="py-4 flex justify-center">
           <label htmlFor="addNewTranstion" className="commonBtn">

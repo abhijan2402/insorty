@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import Swal from "sweetalert2";
 
+
 const useMainInvestmentHooks = () => {
   const token = localStorage.getItem("token");
   const [data, setData] = useState({ isLoading: true });
@@ -11,7 +12,7 @@ const useMainInvestmentHooks = () => {
     date: new Date(),
     type: ""
   }
-  const refund = { type: "REFUND", price: 0, date: new Date() };
+  const refund = { type: "REFUND", price: 0, date: new Date(), partyName:"", partyId:'' };
   const reserveAmount = { detail: "", price: 0, month: new Date() };
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const useMainInvestmentHooks = () => {
 
     else{
 
-    fetch("https://insorty-backend-clone.vercel.app/shop/getMainInvestmentPage", {
+    fetch(`${process.env.REACT_APP_API_URL}/shop/getMainInvestmentPage`, {
       method: "GET",
       headers: { "Content-Type": "application/json", cookie_token: token },
     })
@@ -47,6 +48,25 @@ const useMainInvestmentHooks = () => {
         console.error(error);
       });}
   }, []);
+
+  const {
+    data: prevLoansData,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["prevLoansData"],
+    queryFn: async () => {
+      const res = await fetch(
+       `${process.env.REACT_APP_API_URL}/shop/getAllPreviousBorroweds`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json", cookie_token: token },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
 
   const calculateReserveAmount = (data) => {
     const total =
@@ -136,7 +156,7 @@ const useMainInvestmentHooks = () => {
     setData((prevData) => ({
       ...prevData,
       refundRecoveryDetails: {
-        ...prevData.refundRecoveryDetails,
+        ...prevData,
         entries: [...prevData.refundRecoveryDetails.entries, refund],
       },
     }));
@@ -262,7 +282,10 @@ const useMainInvestmentHooks = () => {
     handleRefundRecoveryAdd,
     reserveAmountOnChange,
     refundRecoveryOnChange,
-    handleRemoveFields
+    handleRemoveFields,
+    prevLoansData,
+    isLoading,
+    refetch,
   };
 };
 

@@ -1,10 +1,19 @@
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import swal from "sweetalert";
+import { Autocomplete } from "@mui/material";
+import {TextField} from "@mui/material";
 
 
-const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemoveFields }) => {
+
+const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemoveFields,parties }) => {
   const { type, price } = refundRecovery;
+  console.log(refundRecovery)
+
+  const defaultProps = {
+    options: parties,
+    getOptionLabel: (option) => option.name,
+  }
 
   return (
     <>
@@ -60,7 +69,6 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
             name="month"
             onChange={(month) => {
               refundRecoveryOnChange(name, new Date(month), index, "date");
-              console.log(month);
             }}
             
             dateFormat="dd/MM/yyyy"
@@ -81,6 +89,42 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
             }}
             className="dailyReportInput wd-9"
           />
+        </td>
+        <td>
+        <Autocomplete
+        {...defaultProps}
+        className={refundRecovery.type==="RECOVERY" ? "" :"displayHidden"}
+        id="autocomplete"
+            size="small"
+            style={{
+              width: "20rem",
+            }}
+        value={refundRecovery.partyName}
+        onChange={(event, newValue) => {
+          if (newValue) {
+            refundRecovery.partyName = newValue.name;
+            refundRecovery.partyId = newValue._id;
+          } else {
+            refundRecovery.partyName = "";
+            refundRecovery.partyId = "";
+          }
+          refundRecoveryOnChange(name, newValue.name, index, "partyName");
+          refundRecoveryOnChange(name, newValue._id, index, "partyId");
+        }}
+        renderInput={(params) => (
+          <TextField {...params}
+          // value={beerFront.brandName}
+          inputProps={{
+            ...params.inputProps,
+            value: refundRecovery.partyName,
+          }}
+          onChange={(e) => {
+            // handleInputChange(e, e.target.value);
+            refundRecovery.partyName = e.target.value;
+          }} 
+         />
+        )}
+      />
         </td>
       </tr>
     </>

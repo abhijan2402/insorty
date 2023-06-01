@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 
 const AddTranstion = ({ handelSubmit }) => {
@@ -31,6 +32,7 @@ const AddTranstion = ({ handelSubmit }) => {
                 }}
                 type="date"
                 name="dateData"
+                max={moment(new Date()).format('YYYY-MM-DD')}
                 className="input input-bordered w-full"
                 placeholder="Date"
               />

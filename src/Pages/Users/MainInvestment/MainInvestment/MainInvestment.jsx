@@ -4,6 +4,7 @@ import Reserve from "../Reserve/Reserve";
 import InvestmentForm from "../InvestmentForm/InvestmentForm";
 import useMainInvestmentHooks from "../MainInvestmentHooks/useMainInvestmentHooks";
 import { useReactToPrint } from "react-to-print";
+
 // import { Loader } from "three";
 
 const MainInvestment = () => {
@@ -16,14 +17,17 @@ const MainInvestment = () => {
     handleRefundRecoveryAdd,
     reserveAmountOnChange,
     refundRecoveryOnChange,
-    handleRemoveFields
+    handleRemoveFields,
+    prevLoansData,
+    isLoading,
+    refetch,
   } = useMainInvestmentHooks();
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
 
-  if (data.isLoading) {
+  if (data.isLoading || isLoading) {
     return <div>Loading....</div>;
   }
 
@@ -228,7 +232,7 @@ const MainInvestment = () => {
                         name={"refundRecovery"}
                         refundRecoveryOnChange={refundRecoveryOnChange}
                         handleRemoveFields={handleRemoveFields}
-
+                      parties={prevLoansData.filter((party)=>party.isActive===true)}
                         index={index}
                         refundRecovery={refundRecovery}
                       ></Refund>

@@ -14,9 +14,9 @@ const WineStock = () => {
   const token = localStorage.getItem("token");
   const [StartDate, setStartDate] = useState();
   const [EndDate, setEndDate] = useState();
-  const [hasMore, setHasMore] = useState(true);
   const [wineStock, setWineStock] = useState([]);
-  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(0);
 
   const ShoptToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShoptToken.shopType;
@@ -43,7 +43,7 @@ const WineStock = () => {
         }
       });
 
-    console.log(hasMore, "hasmore");
+  
   };
 
   useEffect(() => {

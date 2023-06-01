@@ -1,41 +1,56 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import Loader from "../../../../Components/Loader/Loader";
 import AddPreviusLons from "../AddPreviusLons/AddPreviusLons";
 import jwtDecode from "jwt-decode";
+import axios from "axios";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const PreviousLoansList = () => {
   const token = localStorage.getItem("token");
   const tokenShop = jwtDecode(localStorage.getItem("token"));
   const ShopType = tokenShop.shopType;
   const role = tokenShop.role;
-
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(0);
+  const [parties,setParties] = useState([])
   const BasedURL = process.env.REACT_APP_API_URL;
 
 
-  console.log(tokenShop, "tokenShop");
 
-  const {
-    data: prevLoneData,
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["prevLoneData"],
-    queryFn: async () => {
-      const res = await fetch(
-       `${BasedURL}/shop/getAllPreviousBorroweds`,
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: token },
+  const fetchData = async () => {
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllPreviousBorroweds?page=${page}&pagesize=30`,
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        setParties((data) => [...data, ...response.data.data]);
+        setPage((page) => page + 1);
+        if (response.data.data.length === 0) {
+          setHasMore(false);
         }
-      );
-      const data = await res.json();
-      return data.data;
-    },
-  });
+
+      })
+      .catch((err) => {
+        console.log(err)
+
+       
+          setHasMore(false);
+        
+      });
+
+  
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [parties]);
 
   const handleDelete = (previousBorrowedId) => {
     fetch(`${BasedURL}/shop/deletePreviousBorrowed`, {
@@ -47,7 +62,7 @@ const PreviousLoansList = () => {
       .then((data) => {
         if (data.success) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          refetch();
+          window.location.reload()
         } else {
           Swal.fire("Failed!", "Your file has not been deleted.", "error");
         }
@@ -59,7 +74,7 @@ const PreviousLoansList = () => {
     const name = e.target.name.value;
     const financeYear = e.target.financeYear.value;
 
-    console.log(name, financeYear, "financeYear");
+    
 
     fetch(`${BasedURL}/shop/addPreviousBorrowed`, {
       method: "POST",
@@ -72,7 +87,7 @@ const PreviousLoansList = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "data");
-        // refetch();
+        window.location.reload()
         if (data.success === true) {
           Swal.fire("Success!", "Your file has been added.", "success");
         } else {
@@ -81,13 +96,7 @@ const PreviousLoansList = () => {
       });
   };
 
-  if (isLoading) {
-    return (
-      <div>
-        <Loader></Loader>
-      </div>
-    );
-  }
+  
 
   return (
     <section className="px-2 py-6">
@@ -101,6 +110,13 @@ const PreviousLoansList = () => {
           className="flex justify-center items-center
         "
         >
+           <InfiniteScroll
+            dataLength={parties.length}
+            next={fetchData}
+            hasMore={hasMore}
+            scrollableTarget="scrollableDiv"
+            loader={<h4>Loading...</h4>}
+          >
           <table className="table w-3/4">
             <thead>
               <tr>
@@ -110,15 +126,15 @@ const PreviousLoansList = () => {
               </tr>
             </thead>
             <tbody>
-              {(prevLoneData &&
-                prevLoneData.length &&
-                prevLoneData?.map((prevLone, index) => {
+              {(parties &&
+                parties.length &&
+                parties?.map((prevLone, index) => {
                   const id = prevLone?._id
 
                   return (
-                    <tr key={prevLone?._id}>
+                    <tr id="scrollableDiv" className={prevLone.isActive===true ? "" : "displayHidden"} key={prevLone?._id}>
                       <td>{index + 1}</td>
-                      <td>
+                      <td >
                         {role === "shop" && ShopType === "SHOP" && (
                           <Link
                             className="font-bold text-[1rem]"
@@ -158,6 +174,7 @@ const PreviousLoansList = () => {
               )}
             </tbody>
           </table>
+          </InfiniteScroll>
         </div>
         <tr className="py-4 flex justify-center">
           <label htmlFor="addNewPrevLone" className="commonBtn">
@@ -168,7 +185,7 @@ const PreviousLoansList = () => {
 
       <AddPreviusLons
         handelSubmitAddNewPrevLoan={handelSubmitAddNewPrevLoan}
-        key={prevLoneData?._id}
+        key={parties?._id}
       />
     </section>
   );
