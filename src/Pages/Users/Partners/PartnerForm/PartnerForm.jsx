@@ -1,9 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 const PartnerForm = ({ partner, StartDate, index, EndDate }) => {
   // get partner name from partner object and store it in
+  const token = jwtDecode(localStorage.getItem("token"));
+  const ShopType = token.shopType;
+  const role = ShopType.role;
 
   let transact = partner.transactions.filter((row) => {
     let filterPass = true;
@@ -36,12 +40,20 @@ const PartnerForm = ({ partner, StartDate, index, EndDate }) => {
           <th>{index + 1}</th>
           <td key={index}>
             <div className="form-control">
-              <Link
-                to={`/user/partners/from/${partnerId}`}
-               
-              >
-                {partner.name}
-              </Link>
+              {role === "shop" && ShopType === "BAR" && (
+                <Link
+                  to={`/user/bearshop/partners/from/${partnerId}`}
+                >
+                  {partner.name}
+                </Link>
+              )}
+              {role === "shop" && ShopType === "SHOP" && (
+                <Link
+                  to={`/user/partners/from/${partnerId}`}
+                >
+                  {partner.name}
+                </Link>
+              )}
             </div>
           </td>
           <td>
@@ -55,10 +67,10 @@ const PartnerForm = ({ partner, StartDate, index, EndDate }) => {
 
           <td>
             <div className="form-control">
-             {transact.reduce(
-                  (total, currentItem) => (total = total + currentItem.deposit),
-                  0
-                )}
+              {transact.reduce(
+                (total, currentItem) => (total = total + currentItem.deposit),
+                0
+              )}
             </div>
           </td>
 
@@ -70,7 +82,7 @@ const PartnerForm = ({ partner, StartDate, index, EndDate }) => {
             </div>
           </td>
         </>
-       
+
       </tr>
     </>
   );

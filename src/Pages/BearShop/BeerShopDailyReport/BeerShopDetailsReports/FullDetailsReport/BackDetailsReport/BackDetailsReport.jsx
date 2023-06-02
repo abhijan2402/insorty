@@ -65,12 +65,12 @@ const BackDailyReport = () => {
         <div className="flex justify-center items-center gap-4 ">
           <div className="my-4 flex  items-center">
             <h1 className="font-bold text-2xl">
-              Daily Report / दैनिक रिपोर्ट{" "}
+            अंग्रेजी
             </h1>
 
             <div className="my-4 mx-4">
               <Link to="/user/bearshop/details" className="commonBtn">
-                Details
+              बीयर
               </Link>
 
               <Link to="/user/bearshop/dailyreport/front" className="commonBtn">

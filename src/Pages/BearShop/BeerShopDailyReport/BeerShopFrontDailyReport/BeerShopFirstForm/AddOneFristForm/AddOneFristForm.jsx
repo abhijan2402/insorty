@@ -3,7 +3,8 @@ import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
 
-const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
+
+const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm }) => {
   const token = localStorage.getItem("token");
 
   const [options, setOptions] = useState([]);
@@ -33,9 +34,35 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
     <>
       <tr>
         <th>{index + 1}</th>
+        <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${
+                index + 1
+              }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                removeFristForm(index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
+          X
+          <input type="button" value="" autoFocus />
+        </th>
         <td>
           <Autocomplete
-         
+
             id="autocomplete"
             size="small"
             style={{
@@ -128,7 +155,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
         </td>
         <td>
           <div className="flex ">
-            
+
 
             <div className="form-control">
               <input

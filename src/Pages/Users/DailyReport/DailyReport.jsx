@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const DailyReport = () => {
   const token = localStorage.getItem("token")
-  const clearData = ()=>{
+  const clearData = () => {
     fetch("https://insorty-backend-clone.vercel.app/shop/deleteMyData", {
       method: "DELETE",
       headers: { "Content-Type": "application/json", cookie_token: token },
@@ -24,11 +24,11 @@ const DailyReport = () => {
           Swal.fire({
             icon: "error",
             title: "some error occured",
-           
+
           });
         }
       })
-    .catch((err)=>console.log(err))
+      .catch((err) => console.log(err))
   }
 
   return (
@@ -61,7 +61,7 @@ const DailyReport = () => {
 
         </Link>
 
-        <button className="commonBtn" onClick={()=>clearData()}>Clear Data</button>
+        <button className="commonBtn" onClick={() => clearData()}>Clear Data</button>
       </div>
     </section>
   );

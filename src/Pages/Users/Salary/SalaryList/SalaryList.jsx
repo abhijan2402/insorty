@@ -6,9 +6,18 @@ import AddNewEmploy from "../AddNewEmploy/AddNewEmploy";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import jwtDecode from "jwt-decode";
 
 const SalaryList = () => {
   const token = localStorage.getItem("token");
+  const ShopToken = jwtDecode(localStorage.getItem("token"));
+
+  const ShopType = ShopToken.shopType;
+  const role = ShopToken.role;
+
+  console.log(role, ShopType, "+++++")
+
+
 
   const {
     data: salaryData,
@@ -92,42 +101,74 @@ const SalaryList = () => {
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                <th colSpan={2}>Name</th>
-                <th colSpan={2}>Delete</th>
+                <th>Name</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
+
               {(salaryData.length > 0 &&
                 salaryData?.map((salary, index) => {
                   return (
-                    <tr key={salary?._id}>
-                      <th>{index + 1}</th>
-                      <td>
-                        <Link
-                          className="font-bold text-[1rem]"
-                          to={`/user/salary/from/${salary?._id}`}
-                        >
-                          {salary?.name}
-                        </Link>
-                      </td>
-                      <td>
-                        <Link
-                          className="font-3xl font-bold"
-                          style={{ color: "#AA237A" }}
-                          onClick={() => handleDelete(salary?._id)}
-                        >
-                          <FaRegTrashAlt></FaRegTrashAlt>
-                        </Link>
-                      </td>
-                    </tr>
+                    <>
+                      {role === "shop" && ShopType === "BAR" && (
+                        <tr key={salary?._id}>
+                          <th>{index + 1}</th>
+                          <td>
+                            <Link
+                              className="font-bold text-[1rem]"
+                              to={`/user/bearshop/salary/from/${salary?._id}`}
+                            >
+                              {salary?.name}
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              className="font-3xl font-bold"
+                              style={{ color: "#AA237A" }}
+                              onClick={() => handleDelete(salary?._id)}
+                            >
+                              <FaRegTrashAlt></FaRegTrashAlt>
+                            </Link>
+                          </td>
+                        </tr>
+
+                      )}
+
+                      {role === "shop" && ShopType === "SHOP" && (
+                        <tr key={salary?._id}>
+                          <th>{index + 1}</th>
+                          <td>
+                            <Link
+                              className="font-bold text-[1rem]"
+                              to={`/user/salary/from/${salary?._id}`}
+                            >
+                              {salary?.name}
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              className="font-3xl font-bold"
+                              style={{ color: "#AA237A" }}
+                              onClick={() => handleDelete(salary?._id)}
+                            >
+                              <FaRegTrashAlt></FaRegTrashAlt>
+                            </Link>
+                          </td>
+                        </tr>
+                      )}
+
+
+
+                    </>
                   );
                 })) || (
-                <>
-                  <p>
-                    <span className="text-red-500">No Data Found</span>
-                  </p>
-                </>
-              )}
+                  <>
+                    <p>
+                      <span className="text-red-500">No Data Found</span>
+                    </p>
+                  </>
+                )}
             </tbody>
           </table>
         </div>

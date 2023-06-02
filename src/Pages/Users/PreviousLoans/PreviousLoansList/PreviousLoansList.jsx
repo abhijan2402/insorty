@@ -20,6 +20,7 @@ const PreviousLoansList = () => {
 
 
 
+
   const fetchData = async () => {
     await axios({
       url: `${process.env.REACT_APP_API_URL}/shop/getAllPreviousBorroweds?page=${page}&pagesize=30`,

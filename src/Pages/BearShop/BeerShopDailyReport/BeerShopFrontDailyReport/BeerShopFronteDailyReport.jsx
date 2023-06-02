@@ -11,19 +11,21 @@ import axios from "axios";
 import useHandleSubmiBeerShopFront from "../../BeerShopHooks/SendDailyReportFront/useHandleSubmiBeerShopFront";
 import { DataContextApi } from "../../../../Context/DataContext";
 import DatePicker from "react-datepicker";
+import swal from "sweetalert";
 
 const FronteDailyReport = () => {
   const {
     fristFormAddOne,
+    removeFristForm,
     fristFormOnChange,
     beerShopFrontFrist,
     thirdFormAddOne,
     beerShopFrontThird,
-
     beerShopMid,
     midFormOnChange,
     midFormAddOne,
     thirdFormOnChange,
+    removeMidForm
   } = UseBeerShopFront();
 
   const token = localStorage.getItem("token");
@@ -72,12 +74,12 @@ const FronteDailyReport = () => {
     <section className="mx-2">
       <div className="flex justify-center items-center flex-col">
         <div className="my-4 flex gap-4 items-center">
-          <h1 className="font-bold text-2xl">दैनिक रिपोर्ट </h1>
+          <h1 className="font-bold text-2xl">अंग्रेजी </h1>
           <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
-            Back
+            बीयर
           </Link>
           <Link to="/user/bearshop/details" className="commonBtn">
-            Details
+            पर्चा
           </Link>
         </div>
 
@@ -120,6 +122,7 @@ const FronteDailyReport = () => {
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
+                    <th></th>
                     <th>ब्राण्ड</th>
                     <th>एवरेज रेट</th>
                     <th>प्रारम्भिक स्टॉक</th>
@@ -139,6 +142,7 @@ const FronteDailyReport = () => {
                 </thead>
                 <tbody>
                   <tr>
+                    <th></th>
                     <th></th>
                     <td>
                       <div className="form-control"></div>
@@ -171,7 +175,7 @@ const FronteDailyReport = () => {
 
                     <td>
                       <div className="flex ">
-                       
+
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">30ml</span>
@@ -394,6 +398,7 @@ const FronteDailyReport = () => {
                         index={index}
                         beerFront={beerFront}
                         fristFormOnChange={fristFormOnChange}
+                        removeFristForm={removeFristForm}
                       ></AddOneFristForm>
                     );
                   })}
@@ -406,6 +411,7 @@ const FronteDailyReport = () => {
                         ADD
                       </button>
                     </th>
+                    <th></th>
                     <td>Total</td>
                     {/* ======== MRP Input ========= */}
                     <td></td>
@@ -767,6 +773,7 @@ const FronteDailyReport = () => {
               <thead>
                 <tr>
                   <th>क्र. सं.</th>
+                  <th></th>
                   <th>ब्राण्ड</th>
                   <th>ml</th>
                   <th>एवरेज रेट </th>
@@ -789,6 +796,10 @@ const FronteDailyReport = () => {
                   <th>
                     <div className="form-control"></div>
                   </th>
+                  <th>
+                    <div className="form-control"></div>
+                  </th>
+
                   <td>
                     <div className="form-control"></div>
                   </td>
@@ -966,6 +977,32 @@ const FronteDailyReport = () => {
                     <>
                       <tr key={index}>
                         <th>{index + 1}</th>
+                        <th
+                          className="cross"
+                          onClick={() => {
+                            swal({
+                              title: "Are you sure?",
+                              text: `Once deleted, you will not be able to recover row ${index + 1
+                                }`,
+                              icon: "warning",
+                              buttons: true,
+                              dangerMode: true,
+                            }).then((willDelete) => {
+                              if (willDelete) {
+                                removeMidForm(index);
+                                swal(`row ${index + 1}  has been deleted!`, {
+                                  icon: "success",
+                                });
+                              } else {
+                                swal("Your row is safe!");
+                              }
+                            });
+                          }}
+                        >
+                          X
+                          <input type="button" value="" autoFocus />
+                        </th>
+
                         <td>
                           <Autocomplete
                             id="autocomplete"
@@ -1240,7 +1277,7 @@ const FronteDailyReport = () => {
                           </div>
                         </td>
                         {/* ======== भेजान ========= */}
-                       
+
                         <td>
                           <div className="flex ">
                             <div className="form-control">
@@ -1374,8 +1411,8 @@ const FronteDailyReport = () => {
                           name="openingStockOtherMl"
                           value={beerShopMid.reduce(
                             (total, curr) =>
-                              (total =
-                                total + Number(curr.openingStockOtherMl)),
+                            (total =
+                              total + Number(curr.openingStockOtherMl)),
                             0
                           )}
                           disabled
@@ -1408,8 +1445,8 @@ const FronteDailyReport = () => {
                           name="inflowPurchaseOtherMl"
                           value={beerShopMid.reduce(
                             (total, curr) =>
-                              (total =
-                                total + Number(curr.inflowPurchaseOtherMl)),
+                            (total =
+                              total + Number(curr.inflowPurchaseOtherMl)),
                             0
                           )}
                           disabled
@@ -1445,9 +1482,9 @@ const FronteDailyReport = () => {
                           "
                           value={beerShopMid.reduce(
                             (total, curr) =>
-                              (total =
-                                total +
-                                Number(curr.inflowPurchaseFromOutsideOtherMl)),
+                            (total =
+                              total +
+                              Number(curr.inflowPurchaseFromOutsideOtherMl)),
                             0
                           )}
                           disabled
@@ -1460,9 +1497,9 @@ const FronteDailyReport = () => {
                           name="inflowPurchaseFromOutside30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
-                              (total =
-                                total +
-                                Number(curr.inflowPurchaseFromOutside30)),
+                            (total =
+                              total +
+                              Number(curr.inflowPurchaseFromOutside30)),
                             0
                           )}
                           disabled
@@ -1483,8 +1520,8 @@ const FronteDailyReport = () => {
                           name="inflowCreditOtherMl"
                           value={beerShopMid.reduce(
                             (total, curr) =>
-                              (total =
-                                total + Number(curr.inflowCreditOtherMl)),
+                            (total =
+                              total + Number(curr.inflowCreditOtherMl)),
                             0
                           )}
                           disabled
@@ -1998,9 +2035,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.startingStock650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.startingStock650)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2017,9 +2054,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.startingStock550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.startingStock550)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2036,9 +2073,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.startingStock330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.startingStock330)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2061,11 +2098,11 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(
-                                          currentItem.incomingPurchase650
-                                        )),
+                                    (total =
+                                      total +
+                                      Number(
+                                        currentItem.incomingPurchase650
+                                      )),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2082,11 +2119,11 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(
-                                          currentItem.incomingPurchase550
-                                        )),
+                                    (total =
+                                      total +
+                                      Number(
+                                        currentItem.incomingPurchase550
+                                      )),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2103,11 +2140,11 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(
-                                          currentItem.incomingPurchase330
-                                        )),
+                                    (total =
+                                      total +
+                                      Number(
+                                        currentItem.incomingPurchase330
+                                      )),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2140,9 +2177,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.incomePurchase650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.incomePurchase650)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2159,9 +2196,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.incomePurchase550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.incomePurchase550)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2178,9 +2215,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.incomePurchase330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.incomePurchase330)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2214,9 +2251,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.inflowCredit650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.inflowCredit650)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2233,9 +2270,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.inflowCredit550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.inflowCredit550)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2252,9 +2289,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.inflowCredit330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.inflowCredit330)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2275,8 +2312,8 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total + Number(currentItem.sending650)),
+                                    (total =
+                                      total + Number(currentItem.sending650)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2293,8 +2330,8 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total + Number(currentItem.sending550)),
+                                    (total =
+                                      total + Number(currentItem.sending550)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2311,8 +2348,8 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total + Number(currentItem.sending330)),
+                                    (total =
+                                      total + Number(currentItem.sending330)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2333,8 +2370,8 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total + currentItem.sumRemainder650),
+                                    (total =
+                                      total + currentItem.sumRemainder650),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2351,8 +2388,8 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total + currentItem.sumRemainder550),
+                                    (total =
+                                      total + currentItem.sumRemainder550),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2369,8 +2406,8 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total + currentItem.sumRemainder330),
+                                    (total =
+                                      total + currentItem.sumRemainder330),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2394,9 +2431,9 @@ const FronteDailyReport = () => {
                                   }
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.closingStock650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.closingStock650)),
                                     0
                                   )}
                                   type="number"
@@ -2410,9 +2447,9 @@ const FronteDailyReport = () => {
                                 <input
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.closingStock550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.closingStock550)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2432,9 +2469,9 @@ const FronteDailyReport = () => {
                                   }
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.closingStock330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.closingStock330)),
                                     0
                                   )}
                                   type="number"
@@ -2521,10 +2558,10 @@ const FronteDailyReport = () => {
                                   disabled
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.sales650) *
-                                          Number(currentItem.mainRate650)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.sales650) *
+                                      Number(currentItem.mainRate650)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2540,10 +2577,10 @@ const FronteDailyReport = () => {
                                   disabled
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.sales550) *
-                                          Number(currentItem.mainRate550)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.sales550) *
+                                      Number(currentItem.mainRate550)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2559,10 +2596,10 @@ const FronteDailyReport = () => {
                                   disabled
                                   value={fristFormState.reduce(
                                     (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.sales330) *
-                                          Number(currentItem.mainRate330)),
+                                    (total =
+                                      total +
+                                      Number(currentItem.sales330) *
+                                      Number(currentItem.mainRate330)),
                                     0
                                   )}
                                   onChange={(event) =>
@@ -2582,14 +2619,14 @@ const FronteDailyReport = () => {
                                 name="grandTotal"
                                 value={fristFormState.reduce(
                                   (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.sales650) *
-                                        Number(currentItem.mainRate650) +
-                                      Number(currentItem.sales550) *
-                                        Number(currentItem.mainRate550) +
-                                      Number(currentItem.sales330) *
-                                        Number(currentItem.mainRate330)),
+                                  (total =
+                                    total +
+                                    Number(currentItem.sales650) *
+                                    Number(currentItem.mainRate650) +
+                                    Number(currentItem.sales550) *
+                                    Number(currentItem.mainRate550) +
+                                    Number(currentItem.sales330) *
+                                    Number(currentItem.mainRate330)),
                                   0
                                 )}
                                 onChange={(event) =>
@@ -2809,8 +2846,8 @@ const FronteDailyReport = () => {
                                   className="dailyReportInput"
                                   value={beerShopFrontThird.reduce(
                                     (total, curr) =>
-                                      (total =
-                                        total + Number(curr.openingStock)),
+                                    (total =
+                                      total + Number(curr.openingStock)),
                                     0
                                   )}
                                   name="OpeningStock"
@@ -2865,8 +2902,8 @@ const FronteDailyReport = () => {
                                   name="closingStock"
                                   value={beerShopFrontThird.reduce(
                                     (total, curr) =>
-                                      (total =
-                                        total + Number(curr.closingStock)),
+                                    (total =
+                                      total + Number(curr.closingStock)),
                                     0
                                   )}
                                   disabled
@@ -2902,8 +2939,8 @@ const FronteDailyReport = () => {
                                   className="dailyReportInput"
                                   value={beerShopFrontThird.reduce(
                                     (total, curr) =>
-                                      (total =
-                                        total + Number(curr.sumreminder)),
+                                    (total =
+                                      total + Number(curr.sumreminder)),
                                     0
                                   )}
                                   name="sumreminder"
@@ -2990,8 +3027,8 @@ const FronteDailyReport = () => {
                           name="startingStock"
                           value={addOneSecondFormState.reduce(
                             (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.startingStock)),
+                            (total =
+                              total + Number(currentItem.startingStock)),
                             0
                           )}
                           onChange={(e) => handelSeconFormOnChange(e)}
@@ -3007,8 +3044,8 @@ const FronteDailyReport = () => {
                           name="incomingPurchase"
                           value={addOneSecondFormState.reduce(
                             (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomingPurchase)),
+                            (total =
+                              total + Number(currentItem.incomingPurchase)),
                             0
                           )}
                           onChange={(e) => handelSeconFormOnChange(e)}
@@ -3029,8 +3066,8 @@ const FronteDailyReport = () => {
                           disabled
                           value={addOneSecondFormState.reduce(
                             (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.incomePurchase)),
+                            (total =
+                              total + Number(currentItem.incomePurchase)),
                             0
                           )}
                           onChange={(e) => handelSeconFormOnChange(e)}
@@ -3049,8 +3086,8 @@ const FronteDailyReport = () => {
                           name="inflowCredit"
                           value={addOneSecondFormState.reduce(
                             (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.inflowCredit)),
+                            (total =
+                              total + Number(currentItem.inflowCredit)),
                             0
                           )}
                           onChange={(e) => handelSeconFormOnChange(e)}
@@ -3083,8 +3120,8 @@ const FronteDailyReport = () => {
                           name="sumRemainder"
                           value={addOneSecondFormState.reduce(
                             (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.sumRemainder)),
+                            (total =
+                              total + Number(currentItem.sumRemainder)),
                             0
                           )}
                           onChange={(e) => handelSeconFormOnChange(e)}
@@ -3102,8 +3139,8 @@ const FronteDailyReport = () => {
                           name="closingStock"
                           value={addOneSecondFormState.reduce(
                             (total, currentItem) =>
-                              (total =
-                                total + Number(currentItem.closingStock)),
+                            (total =
+                              total + Number(currentItem.closingStock)),
                             0
                           )}
                           onChange={(e) => handelSeconFormOnChange(e)}
@@ -3151,9 +3188,9 @@ const FronteDailyReport = () => {
                 </tbody>
               </table>
             </div>
-              <div style={{height: '90px',marginTop:"50px"}}>
-                <p>Beer Total:- {Number(localStorage.getItem('totalFirstBack')) + Number(localStorage.getItem('beerFormTotal'))}</p>
-              </div>
+            <div style={{ height: '90px', marginTop: "50px" }}>
+              <p>Beer Total:- {Number(localStorage.getItem('totalFirstBack')) + Number(localStorage.getItem('beerFormTotal'))}</p>
+            </div>
           </div>
         </>
       </div>

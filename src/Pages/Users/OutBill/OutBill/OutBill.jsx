@@ -21,7 +21,7 @@ const OutBill = () => {
     content: () => front.current,
   });
 
-  const ShopToken = jwtDecode(localStorage.getItem("token")).shopType;
+  const ShopToken = jwtDecode(localStorage.getItem("token"));
   const ShopType = ShopToken.shopType;
   const role = ShopToken.role;
 

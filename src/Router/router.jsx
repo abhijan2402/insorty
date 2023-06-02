@@ -208,7 +208,6 @@ const router = createBrowserRouter([
 
       {
         path: "/user/salary/from/:employeeId",
-
         element: <SalaryForm />,
       },
       {

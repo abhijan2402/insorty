@@ -19,6 +19,7 @@ import useLiquors from "../../../../Hooks/useLiquors";
 import FinalReport from "../../../Users/DailyReport/BackDailyReport/FinalReport/FinalReport";
 import useGetDailyReport from "../../../../Hooks/useGetDailyReport";
 import axios from "axios";
+import swal from "sweetalert";
 
 const BackDailyReport = () => {
   const { liquors, brandsLoaded } = useLiquors();
@@ -197,6 +198,13 @@ const BackDailyReport = () => {
     ]);
   };
 
+  const removeOneBarCommisonData = (index) => {
+    const barCommissionHandler = addBarCommissionData.filter(
+      (item, i) => index !== i
+    );
+    setAddBarCommissionData(barCommissionHandler);
+  }
+
   useEffect(() => {
     const barCommissionPrev = JSON.parse(localStorage.getItem("barCommission"));
     const foodVegetablePrev = JSON.parse(
@@ -216,16 +224,16 @@ const BackDailyReport = () => {
         <div className="flex justify-center items-center gap-4 ">
           <div className="my-4 flex  items-center">
             <h1 className="font-bold text-2xl">
-              दैनिक रिपोर्ट{" "}
+              बीयर
             </h1>
 
             <div className="my-4 mx-4">
               <Link to="/user/bearshop/dailyreport/front" className="commonBtn">
-                Front
+                अंग्रेजी
               </Link>
 
               <Link to="/user/bearshop/details/back" className="commonBtn">
-                Details
+                पर्चा
               </Link>
             </div>
           </div>
@@ -239,7 +247,7 @@ const BackDailyReport = () => {
               setSalesMan(e.target.value);
               localStorage.setItem("salesMan", e.target.value);
             }}
-            className="smallinput wd-30"
+            style={{ width: "24rem" }}
           />
 
           <div className="flex  items-center">
@@ -439,8 +447,8 @@ const BackDailyReport = () => {
                               name="theNumber"
                               value={addShippingState.reduce(
                                 (total, currentItem) =>
-                                  (total =
-                                    total + Number(currentItem.theNumber)),
+                                (total =
+                                  total + Number(currentItem.theNumber)),
                                 0
                               )}
                               disabled
@@ -787,6 +795,7 @@ const BackDailyReport = () => {
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>
+                    <th></th>
                     <th>BRAND NAME/ ब्राण्ड</th>
                     <th>size/ ब्राण्ड</th>
                     <th>मात्रा</th>
@@ -799,76 +808,101 @@ const BackDailyReport = () => {
                     return (
                       <tr>
                         <td>{index + 1}</td>
+                        <th
+                          className="cross"
+                          onClick={() => {
+                            swal({
+                              title: "Are you sure?",
+                              text: `Once deleted, you will not be able to recover row ${index + 1
+                                }`,
+                              icon: "warning",
+                              buttons: true,
+                              dangerMode: true,
+                            }).then((willDelete) => {
+                              if (willDelete) {
+                                removeOneBarCommisonData(index);
+                                swal(`row ${index + 1}  has been deleted!`, {
+                                  icon: "success",
+                                });
+                              } else {
+                                swal("Your row is safe!");
+                              }
+                            });
+                          }}
+                        >
+                          X
+                          <input type="button" value="" autoFocus />
+                        </th>
                         <td>
                           <div className="form-control">
-                          <Autocomplete
-              id="autocomplete"
-              size="small"
-              style={{
-                width: "20rem",
-              }}
-              options={options}
-              getOptionLabel={(option) => (option ? option.brandName : "")}
-              onChange={(event, value) => {
-                if (value) {
-                  item.brandName = value.brandName;
-                  item.liquorID = value._id;
-                  item.size  = value
-                } else {
-                  item.brandName = "";
-                  item.liquorID = "";
-                }
-                onChangeShipping(event, index);
-              }}
-              renderInput={(params) => (
-                <TextField
-                  required
-                  size="small"
-                  {...params}
-                  // value={item.brandName}
-                  inputProps={{
-                    ...params.inputProps,
-                    value: item.brandName,
-                  }}
-                  onChange={(e) => {
-                    handleInputChange(e, e.target.value);
-                    item.brandName = e.target.value;
-                  }}
-                />
-              )}
-            />
+                            <Autocomplete
+                              id="autocomplete"
+                              size="small"
+                              style={{
+                                width: "20rem",
+                              }}
+                              options={options}
+                              getOptionLabel={(option) => (option ? option.brandName : "")}
+                              onChange={(event, value) => {
+                                if (value) {
+                                  item.brandName = value.brandName;
+                                  item.liquorID = value._id;
+                                  item.size = value
+                                } else {
+                                  item.brandName = "";
+                                  item.liquorID = "";
+                                }
+                                onChangeShipping(event, index);
+                              }}
+                              renderInput={(params) => (
+                                <TextField
+                                  required
+                                  size="small"
+                                  {...params}
+                                  // value={item.brandName}
+                                  inputProps={{
+                                    ...params.inputProps,
+                                    value: item.brandName,
+                                  }}
+                                  onChange={(e) => {
+                                    handleInputChange(e, e.target.value);
+                                    item.brandName = e.target.value;
+                                  }}
+                                />
+                              )}
+                            />
                           </div>
                         </td>
 
                         <td>
-          <div className="form-control">
-            <select
-              name="ml"
-              className="smallinput wd-9"
-              required
-              value={item.ml}
-              onChange={(e) => onChangeBarCommission(e, index)}
-            >
+                          <div className="form-control">
+                            <select
+                              name="ml"
+                              className="smallinput wd-9"
+                              required
+                              value={item.ml}
+                              onChange={(e) => onChangeBarCommission(e, index)}
+                            >
 
-              <option selected value={750}>
-                750ml
-              </option>
-              <option value={700}>700ml</option>
-              <option value={650}>650ml</option>
-              <option value={550}>550ml</option>
-              <option value={500}>500ml</option>
-              <option value={375}>375ml</option>
-              <option value={330}>330ml</option>
-              <option value={275}>275ml</option>
-              <option value={250}>250ml</option>
-              <option value={200}>200ml</option>
-              <option value={180}>180ml</option>
-              <option value={90}>90ml</option>
-              <option value={60}>60ml</option>
-              <option value={50}>50ml</option>
-            </select>
-          </div>
-        </td>
+                              <option selected value={750}>
+                                750ml
+                              </option>
+                              <option value={700}>700ml</option>
+                              <option value={650}>650ml</option>
+                              <option value={550}>550ml</option>
+                              <option value={500}>500ml</option>
+                              <option value={375}>375ml</option>
+                              <option value={330}>330ml</option>
+                              <option value={275}>275ml</option>
+                              <option value={250}>250ml</option>
+                              <option value={200}>200ml</option>
+                              <option value={180}>180ml</option>
+                              <option value={90}>90ml</option>
+                              <option value={60}>60ml</option>
+                              <option value={50}>50ml</option>
+                            </select>
+                          </div>
+                        </td>
 
                         <td>
                           <div className="form-control">
@@ -972,15 +1006,15 @@ const BackDailyReport = () => {
             <form action="">
               <div className="overflow-x-auto">
                 <FinalReport udhaariTotal={craditDabitState.reduce(
-                (total, currentItem) =>
-                  (total = total + Number(currentItem.amount)),
-                0
-              )}
-              commisionTotal={commissonState.reduce(
-                (total, currentItem) =>
-                  (total = total + Number(currentItem.amount)),
-                0
-              )}/>
+                  (total, currentItem) =>
+                    (total = total + Number(currentItem.amount)),
+                  0
+                )}
+                  commisionTotal={commissonState.reduce(
+                    (total, currentItem) =>
+                      (total = total + Number(currentItem.amount)),
+                    0
+                  )} />
               </div>
             </form>
           </div>

@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const DailyReport = () => {
   const token = localStorage.getItem("token")
-  const clearData = ()=>{
+  const clearData = () => {
     fetch("https://insorty-backend-clone.vercel.app/shop/deleteMyData", {
       method: "DELETE",
       headers: { "Content-Type": "application/json", cookie_token: token },
@@ -24,22 +24,21 @@ const DailyReport = () => {
           Swal.fire({
             icon: "error",
             title: "some error occured",
-           
+
           });
         }
       })
-    .catch((err)=>console.log(err))
+      .catch((err) => console.log(err))
   }
 
   return (
     <section className="mx-2">
       <div className="flex flex-col justify-center items-center">
         <div className="my-4">
-          <h1 className="font-bold text-2xl">Daily Report / दैनिक रिपोर्ट </h1>
+          <h1 className="font-bold text-2xl">दैनिक रिपोर्ट </h1>
         </div>
         <div className="flex gap-4">
-        <h1 className="font-bold ">सेल्समेन का नाम </h1>
-        <h1 className="font-bold ">12/12/2022 </h1>
+          <h1 className="font-bold ">सेल्समेन का नाम </h1>
         </div>
       </div>
 
@@ -47,15 +46,15 @@ const DailyReport = () => {
 
       <div className="flex gap-4">
         <Link to="/user/bearshop/dailyreport/front" className="commonBtn">
-          Front
+          अंग्रेजी
         </Link>
         <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
-          Back
+          बीयर
         </Link>
         <Link to="/user/bearshop/details" className="commonBtn">
-          Details
+          पर्चा
         </Link>
-        <button className="commonBtn" onClick={()=>clearData()}>Clear Data</button>
+        <button className="commonBtn" onClick={() => clearData()}>Clear Data</button>
       </div>
     </section>
   );

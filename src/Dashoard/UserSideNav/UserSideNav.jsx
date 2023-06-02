@@ -56,7 +56,7 @@ const SideNav = () => {
         </div>
 
         <div className="flex flex-col justify-between flex-1 mt-[12rem] md:mt-[9rem] ">
-          <nav className="text-center	">
+          <nav>
             <li className="my-4">
               <NavLink
                 to="/user/dailyreport"

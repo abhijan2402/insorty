@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import useLiquors from "../../../../../Hooks/useLiquors";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const UseBeerShopFront = () => {
   const token = localStorage.getItem("token");
@@ -185,6 +186,12 @@ const UseBeerShopFront = () => {
   const fristFormAddOne = () => {
     setBeerShopFrontFrist([...beerShopFrontFrist, firstFormDataTemplate]);
   };
+
+  const removeFristForm = (index) => {
+    const values = [...beerShopFrontFrist];
+    values.splice(index, 1);
+    setBeerShopFrontFrist(values);
+  }
 
   const fristFormAddFive = () => {
     setBeerShopFrontFrist([
@@ -1310,6 +1317,12 @@ const UseBeerShopFront = () => {
     setBeerShopMid([...beerShopMid, beerShopMidTemp]);
   };
 
+  const removeMidForm = (index) => {
+    const list = [...beerShopMid];
+    list.splice(index, 1);
+    setBeerShopMid(list);
+  }
+
   ///////   End of secorn form         ////////
 
   return {
@@ -1326,6 +1339,8 @@ const UseBeerShopFront = () => {
     midFormOnChange,
     midFormAddOne,
     thirdFormOnChange,
+    removeFristForm,
+    removeMidForm
   };
 };
 
