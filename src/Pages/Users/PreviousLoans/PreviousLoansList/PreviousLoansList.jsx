@@ -30,11 +30,11 @@ const PreviousLoansList = () => {
       },
     })
       .then((response) => {
-        setParties((data) => [...data, ...response.data.data]);
-        setPage((page) => page + 1);
         if (response.data.data.length === 0) {
           setHasMore(false);
         }
+        setParties((data) => [...data, ...response.data.data]);
+        setPage((page) => page + 1);
 
       })
       .catch((err) => {
@@ -50,7 +50,7 @@ const PreviousLoansList = () => {
 
   useEffect(() => {
     fetchData();
-  }, [parties]);
+  }, [parties.length]);
 
   const handleDelete = (previousBorrowedId) => {
     fetch(`${BasedURL}/shop/deletePreviousBorrowed`, {

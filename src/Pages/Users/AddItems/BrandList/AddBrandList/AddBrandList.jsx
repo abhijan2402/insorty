@@ -70,9 +70,7 @@ const AddBrandList = ({ refetch }) => {
           });
         }
       });
-    console.log(brandName)
-    console.log(typeData)
-    console.log(sizes)
+   
   };
 
   return (

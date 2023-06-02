@@ -1609,6 +1609,7 @@ const FronteDailyReport = () => {
               </tbody>
             </table>
           </div>
+          <div>English Total:- {Number(localStorage.getItem("pegFormTotal")) + Number(localStorage.getItem('smallPegFormTotal'))}</div>
         </div>
 
         <div>
@@ -3150,16 +3151,19 @@ const FronteDailyReport = () => {
                 </tbody>
               </table>
             </div>
+              <div style={{height: '90px',marginTop:"50px"}}>
+                <p>Beer Total:- {Number(localStorage.getItem('totalFirstBack')) + Number(localStorage.getItem('beerFormTotal'))}</p>
+              </div>
           </div>
         </>
       </div>
 
-      <div className="flex my-6 ">
+      <div className="flex my-9 ">
         {isLoadingSubmit ? (
           <>
             <button
               type="button"
-              className="inline-flex items-center px-4 py-2 text-sm font-semibold leading-6 text-[#AA237A] transition duration-150 ease-in-out border-2 border-[#AA237A] rounded-md shadow cursor-not-allowed"
+              className=" inline-flex items-center px-4 py-2 text-sm font-semibold leading-6 text-[#AA237A] transition duration-150 ease-in-out border-2 border-[#AA237A] rounded-md shadow cursor-not-allowed"
               disabled=""
             >
               <svg

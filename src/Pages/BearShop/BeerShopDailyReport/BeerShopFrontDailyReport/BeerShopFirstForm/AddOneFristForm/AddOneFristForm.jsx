@@ -35,6 +35,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange }) => {
         <th>{index + 1}</th>
         <td>
           <Autocomplete
+         
             id="autocomplete"
             size="small"
             style={{

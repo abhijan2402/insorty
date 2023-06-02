@@ -36,12 +36,12 @@ const PreviousLoansDetails = () => {
       },
     })
       .then((response) => {
-        console.log(response.data.data.transactions)
-        setTransactions((data) => [...data, ...response.data.data.transactions]);
-        setPage((page) => page + 1);
         if (response.data.data.transactions.length === 0) {
           setHasMore(false);
         }
+        
+        setTransactions((data) => [...data, ...response.data.data.transactions]);
+        setPage((page) => page + 1);
 
       })
       .catch((err) => {
@@ -56,8 +56,9 @@ const PreviousLoansDetails = () => {
   };
 
   useEffect(() => {
+    
     fetchData();
-  }, [transactions]);
+  }, [transactions.length]);
 
   const handelSubmit = (e) => {
     e.preventDefault();
@@ -75,7 +76,6 @@ const PreviousLoansDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, "data");
         if (data.success === true) {
           Swal.fire("Success!", "Your file has been added.", "success");
           window.location.reload()
@@ -84,6 +84,7 @@ const PreviousLoansDetails = () => {
         }
       });
   };
+
 
 
   if (data.isLoading) {
@@ -146,10 +147,15 @@ const PreviousLoansDetails = () => {
               </tr>
             </thead>
             <tbody>
+              <tr className="font-bold text-[1rem] "  > <td colSpan={6}> Shesh:-
+              {transactions.reduce((total,curr)=>total = (total + Number(curr.debit)),0)-transactions.reduce((total,curr)=>(total = total + Number(curr.deposit)),0)}
+              </td>
+              </tr>
               {(transactions &&
                 transactions.length &&
                 transactions?.map((prevLone, index) => {
                   return (
+                  
                     <tr key={prevLone?._id}>
                       <td>{index + 1}</td>
                       <td colSpan={3}>
@@ -170,6 +176,7 @@ const PreviousLoansDetails = () => {
                         </p>
                       </td>
                     </tr>
+                  
                   );
                 })) || (
                 <>

@@ -133,6 +133,102 @@ FrontPageRegularData.map((item) => {
   })
 
 
+  const openingStock = BackPageReportExceptionalSize
+    .filter((page,index) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (index===pgNo) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { openingStock } = item;
+      return openingStock;
+    });
+
+  const purchaseShop = BackPageReportExceptionalSize
+    .filter((page,index) => {
+    
+      if (index===pgNo) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { purchaseShop } = item;
+      return purchaseShop;
+    });
+
+  const purchaseOutSide = BackPageReportExceptionalSize
+    .filter((page,index) => {
+     
+      if (index===pgNo) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { purchaseOutSide } = item;
+      return purchaseOutSide;
+    });
+
+  const credits = BackPageReportExceptionalSize
+    .filter((page,index) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (index===pgNo) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { credits } = item;
+      return credits;
+    });
+
+  const send = BackPageReportExceptionalSize
+    .filter((page,index) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (index===pgNo) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { send } = item;
+      return send;
+    });
+
+  const remaining = BackPageReportExceptionalSize
+    .filter((page,index) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (index===pgNo) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { remaining } = item;
+      return remaining;
+    });
+
+  const closingStock = BackPageReportExceptionalSize
+    .filter((page,index) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (index===pgNo) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { closingStock } = item;
+      return closingStock;
+    });
+
+  const sales = BackPageReportExceptionalSize
+    .filter((page,index) => {
+      const pg = pageId ? pageId : Array.from(frontSet)[0];
+      if (index===pgNo) {
+        return page;
+      } else return 0;
+    })
+    .map((item) => {
+      const { sales } = item;
+      return sales;
+    });
+
   
 
 
@@ -804,6 +900,35 @@ FrontPageRegularData.map((item) => {
               </tbody>
             </table>
           </div>
+          <div>English Total:- {quan750.reduce(
+                    (total, regularData) =>
+                      total + (Number(regularData.remaining)*25)*Number(regularData.sellingRate?.$numberDecimal),
+                    0
+                  ) + 
+                  quan375.reduce(
+                    (total, regularData) =>
+                      total + (Number(regularData.remaining)*12.5)*Number(regularData.sellingRate?.$numberDecimal),
+                    0
+                  ) +
+                  quan180.reduce(
+                    (total, regularData) =>
+                      total + (Number(regularData.remaining)*6)*Number(regularData.sellingRate?.$numberDecimal),
+                    0
+                  ) - quan750.reduce(
+                    (total, regularData) =>
+                      total + (Number(regularData.closingStock))*Number(regularData.sellingRate?.$numberDecimal),
+                    0
+                  )
+                  +
+                  quanOther.reduce(
+                    (total, regularData) =>
+                      total + (Number(regularData.remaining)*(regularData.liquor.quantityInML/30)*Number(regularData?.sellingRate?.$numberDecimal)),
+                    0
+                  ) - quanOther.reduce(
+                    (total, regularData) =>
+                      total +( Number(regularData.closingStock)*Number(regularData?.sellingRate?.$numberDecimal)),
+                    0
+                  )}</div>
         </div>
 
         <div>
@@ -1363,8 +1488,9 @@ FrontPageRegularData.map((item) => {
                     <th colSpan={1}>योग</th>
                   </tr>
                   {BackPageReportExceptionalSize &&
-                BackPageReportExceptionalSize.map((exceptionalData, index) => {
-                  
+                BackPageReportExceptionalSize.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((exceptionalData, index) => {
+                  if(index===pgNo){
+                    count++
                     return (
                       <FristFormDetails
                         key={index}
@@ -1374,43 +1500,128 @@ FrontPageRegularData.map((item) => {
                         frontSet={frontSet}
                       ></FristFormDetails>
                     );
-                  
+                  }
                 })}
 
-                  <tr>
-                    <td className="tg-0lax">1</td>
-                    <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
-                    <td className="tg-0lax"></td>
+<tr>
+                <td className="tg-0lax" colSpan={2}>
+                  Total
+                </td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {openingStock.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax">
+                  {purchaseShop.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {purchaseOutSide.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax">
+                  {credits.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax">
+                  {send.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax">
+                  {remaining.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
+                <td className="tg-0lax">
+                  {closingStock.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
 
-                    <td className="tg-0lax"></td>
-                    {/* ======== भेजान ========= */}
+                <td className="tg-0lax">
+                  {sales.reduce((acc, item) => {
+                    const total = Number(acc) + Number(item);
+                    return total;
+                  }, 0)}
+                </td>
 
-                    <td className="tg-0lax"></td>
-                    {/* ======== योग/शेष ========= */}
+                <td className="tg-0lax"></td>
 
-                    <td className="tg-0lax"></td>
-                    {/* ======== अन्तिम स्टॉक ========= */}
-
-                    <td className="tg-0lax"></td>
-                    {/* ============= बिक्री ================ */}
-
-                    <td className="tg-0lax"></td>
-                    {/* ============= रेट ================ */}
-
-                    <td className="tg-0lax"></td>
-                    {/* ============= योग ================ */}
-
-                    <td className="tg-0lax"></td>
-                    {/* ============= कुल योग ================ */}
-                  </tr>
+                <td className="tg-0lax"> {BackPageReportExceptionalSize &&
+                  BackPageReportExceptionalSize.length > 0 &&
+                  BackPageReportExceptionalSize
+                    .filter((page,index) => {
+                     
+                      if (index===pgNo) {
+                        return page;
+                      } else return 0;
+                    })
+                    .reduce(
+                      (total, currentItem) =>
+                      (total =
+                        total +
+                        Number(currentItem.sales) *
+                        Number(currentItem.sellingRate.$numberDecimal)),
+                      0
+                    )}</td>
+              </tr>
                 </tbody>
               </table>
             </div>
+            <div className="my-10">Beer Total:- {(BackPageReportExceptionalSize &&
+                  BackPageReportExceptionalSize.length > 0 &&
+                  BackPageReportExceptionalSize
+                    .filter((page,index) => {
+                     
+                      if (index===pgNo) {
+                        return page;
+                      } else return 0;
+                    })
+                    .reduce(
+                      (total, currentItem) =>
+                      (total =
+                        total +
+                        Number(currentItem.sales) *
+                        Number(currentItem.sellingRate.$numberDecimal)),
+                      0
+                    ) || 0) + 
+                    quan650.reduce(
+                      (total, regularData) =>
+                        total +
+                        Number(regularData.sales) *
+                          Number(regularData.sellingRate?.$numberDecimal),
+                      0
+                    ) +
+                      quan500.reduce(
+                        (total, regularData) =>
+                          total +
+                          Number(regularData.sales) *
+                            Number(regularData.sellingRate?.$numberDecimal),
+                        0
+                      ) +
+                      quan330.reduce(
+                        (total, regularData) =>
+                          total +
+                          Number(regularData.sales) *
+                            Number(regularData.sellingRate?.$numberDecimal),
+                        0
+                      )}</div>
           </div>
         </>
       </div>

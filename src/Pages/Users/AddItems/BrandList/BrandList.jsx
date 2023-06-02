@@ -1,29 +1,48 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import "../../../../Pages/Home/Style/Home.scss";
 import AddBrandList from "./AddBrandList/AddBrandList";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import InfiniteScroll from "react-infinite-scroll-component";
+import axios from "axios";
+
 
 const BrandList = () => {
   const token = localStorage.getItem("token");
+  const [wineStock, setWineStock] = useState([]);
+  const [hasMore, setHasMore] = useState(true);
+  const [page, setPage] = useState(0);
 
-  const { data: BrandData, isLoading, refetch } = useQuery({
-    queryKey: ["BrandData"],
-    queryFn: async () => {
-      const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getAllParentLiquors",
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: token },
+  const fetchData = async () => {
+    await axios({
+      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((response) => {
+        console.log(response)
+        setWineStock((data) => [...data, ...response.data.data]);
+        setPage((page) => page + 1);
+      })
+      .catch((err) => {
+        console.log(err)
+        if (err.response.status === 404) {
+          setHasMore(false);
         }
-      );
-      const data = await res.json();
-      return data.data;
-    },
-  });
+      });
 
-  if (isLoading) return <Loader></Loader>;
+  
+  };
+
+  useEffect(() => {
+    fetchData();
+    // console.log(page,hasMore,'page ')
+  }, [wineStock]);
+
 
   return (
     <section className="p-4">
@@ -37,6 +56,13 @@ const BrandList = () => {
         <div className="divider my-2"></div>
       </div>
       <div className="flex justify-center items-center">
+      <InfiniteScroll
+            dataLength={wineStock.length}
+            next={fetchData}
+            hasMore={hasMore}
+            scrollableTarget="scrollableDiv"
+            loader={<h4>Loading...</h4>}
+          >
         <table className="table w-4/5 removeCommonWSpace">
           <thead className="text-center">
             <th>
@@ -54,8 +80,8 @@ const BrandList = () => {
           </thead>
 
           <tbody>
-            {BrandData.length &&
-              BrandData?.map((item, index) => {
+            {wineStock.length &&
+              wineStock?.map((item, index) => {
                 const { sizes } = item;
                 const quantityInML = sizes?.map((item) => item?.quantityInML);
 
@@ -92,6 +118,7 @@ const BrandList = () => {
               })}
           </tbody>
         </table>
+        </InfiniteScroll>
       </div>
       <div className="flex justify-center items-center">
         <div className="my-4">
@@ -101,7 +128,7 @@ const BrandList = () => {
         </div>
       </div>
 
-      <AddBrandList refetch={refetch}></AddBrandList>
+      <AddBrandList ></AddBrandList>
     </section>
   );
 };
