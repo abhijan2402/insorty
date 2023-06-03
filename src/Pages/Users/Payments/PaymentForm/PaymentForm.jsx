@@ -95,13 +95,13 @@ const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
                 </div>
               </td>
               <td>
-                    <button
+                    <p
                       className="font-3xl font-bold"
                       style={{ color: "#AA237A" }}
                       onClick={() => handelDelete(entry?._id)}
                     >
                       <FaRegTrashAlt></FaRegTrashAlt>
-                    </button>
+                    </p>
                   </td>
             </>
           );

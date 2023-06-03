@@ -56,6 +56,7 @@ const useSecondFormFront = () => {
   useEffect(() => {
     if (prevdata) {
       setAddOneSecondFormState(prevdata);
+      sethasMoreSmall(false)
     }
 
 
@@ -70,7 +71,7 @@ const useSecondFormFront = () => {
           },
         })
           .then((response) => {
-            console.log(response.data.data)
+     
             let firstFormData = addOneSecondFormState;
             if (!prevdata && response.data.data.length > 0) {
               const liq = response.data.data.filter((item) => {
@@ -80,6 +81,7 @@ const useSecondFormFront = () => {
               });
         
               liq.map((parent) => {
+                
                 parent.sizes.map((item) => {
                   if (
                     item.quantityInML !== 750 &&
@@ -87,11 +89,12 @@ const useSecondFormFront = () => {
                     item.quantityInML !== 180 &&
                     item.currentStock > 0
                   ) {
+                    console.log(parent)
                     const newFormData = { ...addOneSecondForm };
         
                     newFormData.brandName = parent.brandName;
-                    newFormData.liquorID = parent._id;
-                    
+                    newFormData.liquor = parent._id;
+                    newFormData.size = parent
                     newFormData.selectStockVarient = item.quantityInML;
                     newFormData.startingStock = item.currentStock;
                     newFormData.averageRate = item.averageRate.$numberDecimal;

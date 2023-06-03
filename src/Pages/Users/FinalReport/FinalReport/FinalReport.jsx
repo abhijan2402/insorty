@@ -33,6 +33,8 @@ const FinalReport = () => {
     return <Loader></Loader>;
   }
 
+  console.log(data)
+
   if (data.success === false) {
     return <div>No data found</div>;
   }

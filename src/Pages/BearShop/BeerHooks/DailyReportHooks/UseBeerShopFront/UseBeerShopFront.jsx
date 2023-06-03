@@ -8,6 +8,7 @@ const UseBeerShopFront = () => {
   const token = localStorage.getItem("token");
   const [page, setPage] = useState(0);
   const [hasMoreSmall, sethasMoreSmall] = useState(true);
+  const [hasMoreBig, sethasMoreBig] = useState(true);
   const firstFormDataTemplate = {
     brandName: "",
     liquorID: "",
@@ -139,13 +140,18 @@ const UseBeerShopFront = () => {
                 const quan180 = liq[index].sizes.find(
                   (elem) => elem.quantityInML === 180
                 );
+                const quan30 = liq[index].sizes.find(
+                  (elem) => elem.quantityInML === 30
+                );
 
                 if (
                   quan750 &&
                   quan330 &&
                   quan180 &&
+                  quan30 &&
                   quan180.currentStock > 0 &&
                   quan750.currentStock > 0 &&
+                  quan30.currentStock > 0 &&
                   quan330.currentStock > 0
                 ) {
                   const newFormData = { ...firstFormDataTemplate };
@@ -160,10 +166,13 @@ const UseBeerShopFront = () => {
                   newFormData.initial750 = quan750.averageRate.$numberDecimal;
                   newFormData.initial375 = quan330.averageRate.$numberDecimal;
                   newFormData.initial180 = quan180.averageRate.$numberDecimal;
+                  newFormData.initial30 = quan30.averageRate.$numberDecimal;
                   newFormData.averageRate375 =
                     quan330.averageRate.$numberDecimal;
                   newFormData.averageRate180 =
                     quan180.averageRate.$numberDecimal;
+                  newFormData.averageRate30 =
+                    quan30.averageRate.$numberDecimal;
                   firstFormData = [newFormData, ...firstFormData];
                   setBeerShopFrontFrist(firstFormData);
                 }
@@ -175,7 +184,7 @@ const UseBeerShopFront = () => {
           .catch((err) => {
             console.log(err);
             if (err.response.status === 404) {
-              sethasMoreSmall(false);
+              sethasMoreBig(false);
             }
           });
       };
@@ -191,6 +200,16 @@ const UseBeerShopFront = () => {
     const values = [...beerShopFrontFrist];
     values.splice(index, 1);
     setBeerShopFrontFrist(values);
+    localStorage.setItem("pegForm", JSON.stringify(values));
+    localStorage.setItem(
+      "pegFormTotal",
+      JSON.stringify(
+        values.reduce(
+          (total, curr) => (total = total + Number(curr.grandTotal)),
+          0
+        )
+      )
+    );
   }
 
   const fristFormAddFive = () => {
@@ -254,7 +273,7 @@ const UseBeerShopFront = () => {
         let obj = Object.assign(returned, { [e.target.name]: e.target.value });
         if (
           e.target.name === "openingStock750" ||
-          e.target.name === "openingStock80" ||
+          e.target.name === "openingStock180" ||
           "openingStock375"
         ) {
           obj.openingStock30 = calStock30(
@@ -386,13 +405,13 @@ const UseBeerShopFront = () => {
           e.target.name === "inflowShop750" ||
           e.target.name === "inflowOut750"
         ) {
-          const buyShop = Number(obj.inflowShop750) * Number(obj.buyRateOut750);
-          const buyOut = Number(obj.inflowOut750) * Number(obj.buyRateShop750);
+          const buyShop = Number(obj.inflowShop750  ? obj.inflowShop750 : 0) * Number(obj.buyRateOut750 ? obj.buyRateOut750 : 0);
+          const buyOut = Number(obj.inflowOut750 ? obj.inflowOut750 : 0) * Number(obj.buyRateShop750 ? obj.buyRateShop750 : 0);
           const totalStock =
-            Number(obj.inflowShop750) +
-            Number(obj.inflowOut750) +
-            Number(obj.openingStock750);
-          const stock = Number(obj.initial750) * Number(obj.openingStock750);
+            Number(obj.inflowShop750 ? obj.inflowShop750 : 0) +
+            Number(obj.inflowOut750 ? obj.inflowOut750 : 0) +
+            Number(obj.openingStock750 ? obj.openingStock750 : 0);
+          const stock = Number(obj.initial750 ? obj.initial750 : 0) * Number(obj.openingStock750 ? obj.openingStock750 : 0);
           obj.averageRate750 = (buyShop + buyOut + stock) / totalStock;
         }
         return obj;
@@ -471,14 +490,14 @@ const UseBeerShopFront = () => {
           e.target.name === "inflowShop30" ||
           e.target.name === "inflowOut30"
         ) {
-          const buyShop = Number(obj.inflowShop30) * Number(obj.buyRateOut30);
-          const buyOut = Number(obj.inflowOut30) * Number(obj.buyRateShop30);
+          const buyShop = Number(Number(obj.inflowShop30 ? obj.inflowShop30 : 0) * Number(obj.buyRateShop30 ? obj.buyRateShop30 : 0)) || 0;
+          const buyOut = Number(Number(obj.inflowOut30 ? obj.inflowOut30 : 0) * Number(obj.buyRateOut30? obj.buyRateOut30 : 0)) || 0;
           const totalStock =
-            Number(obj.inflowOut30) +
-            Number(obj.inflowShop30) +
-            Number(obj.openingStock30);
+            Number(obj.inflowOut30 ? obj.inflowOut30 : 0) +
+            Number(obj.inflowShop30 ? obj.inflowShop30 : 0) +
+            Number(obj.openingStock30 ? obj.openingStock30 : 0);
 
-          const stock = Number(obj.initial30) * Number(obj.openingStock30);
+          const stock = Number(obj.initial30 ? obj.initial30 : 0) * Number(obj.openingStock30 ? obj.openingStock30 : 0);
           obj.averageRate30 = (buyShop + buyOut + stock) / totalStock;
         }
         return obj;
@@ -1036,7 +1055,14 @@ const UseBeerShopFront = () => {
                 }
               });
 
+              let quan30
+
+              
+
               liq.map((parent) => {
+                const quan30 = parent.sizes.find(
+                  (elem) => elem.quantityInML === 30
+                );
                 parent.sizes.map((item) => {
                   if (
                     item.quantityInML !== 750 &&
@@ -1052,9 +1078,13 @@ const UseBeerShopFront = () => {
                     newFormData.size = parent
                     newFormData.ml = item.quantityInML;
                     newFormData.openingStockOtherMl = item.currentStock;
+                    newFormData.openingStock30 = Number(item.currentStock)*Number(item.quantityInML/30);
                     newFormData.averageRateOtherMl =
                       item.averageRate.$numberDecimal;
-                    newFormData.initial = item.averageRate.$numberDecimal;
+                    newFormData.averageRate30 =
+                      quan30.averageRate.$numberDecimal;
+                    newFormData.initialOtherMl = item.averageRate.$numberDecimal;
+                    newFormData.initial30 = quan30.averageRate.$numberDecimal;
                     firstFormData = [newFormData, ...firstFormData];
                     setBeerShopMid(firstFormData);
                   }
@@ -1086,6 +1116,10 @@ const UseBeerShopFront = () => {
       return Number(d) / Number(c);
     };
 
+    const calPegs = (a,b)=>{
+      return Number(a)* Number(b)
+    }
+
     const secondFormHandel = beerShopMid.map((returned, i) =>
       index === i
         ? Object.assign(returned, { [e.target.name]: e.target.value })
@@ -1101,7 +1135,8 @@ const UseBeerShopFront = () => {
           e.target.name === "inflowPurchaseOtherMl" ||
           e.target.name === "inflowPurchaseFromOutsideOtherMl" ||
           e.target.name === "inflowCreditOtherMl" ||
-          e.target.name === "sendOtherMl"
+          e.target.name === "sendOtherMl" ||
+          e.target.name === "openingStockOtherMl"
         ) {
           obj.inflowPurchase30 =
             Number(obj.inflowPurchaseOtherMl) * Number(pegCount);
@@ -1110,6 +1145,7 @@ const UseBeerShopFront = () => {
           obj.inflowCredit30 =
             Number(obj.inflowCreditOtherMl) * Number(pegCount);
           obj.send30 = Number(obj.sendOtherMl) * Number(pegCount);
+          obj.openingStock30 = calPegs(obj.openingStockOtherMl,pegCount)
         }
         return obj;
       } else return returned;
@@ -1192,7 +1228,11 @@ const UseBeerShopFront = () => {
           e.target.name === "inflowPurchase30" ||
           e.target.name === "buyRateShopBar30" ||
           e.target.name === "inflowPurchaseFromOutside30" ||
-          e.target.name === "buyRateShopOut30"
+          e.target.name === "buyRateShopOut30" ||
+          e.target.name === "inflowPurchaseOtherMl" ||
+          e.target.name === "buyRateShopBarOtherMl" ||
+          e.target.name === "inflowPurchaseFromOutsideOtherMl" ||
+          e.target.name === "buyRateShopOutOtherMl"
         ) {
           const buyShop =
             Number(obj.inflowPurchase30) * Number(obj.buyRateShopBar30);
@@ -1321,6 +1361,16 @@ const UseBeerShopFront = () => {
     const list = [...beerShopMid];
     list.splice(index, 1);
     setBeerShopMid(list);
+    localStorage.setItem("smallPegForm", JSON.stringify(list));
+    localStorage.setItem(
+      "smallPegFormTotal",
+      JSON.stringify(
+        list.reduce(
+          (total, curr) => (total = total + Number(curr.total)),
+          0
+        )
+      )
+    );
   }
 
   ///////   End of secorn form         ////////
@@ -1340,7 +1390,9 @@ const UseBeerShopFront = () => {
     midFormAddOne,
     thirdFormOnChange,
     removeFristForm,
-    removeMidForm
+    removeMidForm,
+    hasMoreBig,
+    hasMoreSmall
   };
 };
 

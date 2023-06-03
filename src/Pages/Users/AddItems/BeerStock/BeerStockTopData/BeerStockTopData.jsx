@@ -50,13 +50,13 @@ const BeerStockTopData = ({ item, index, total }) => {
 
         <td>
             <div className="form-control">
-            {Number(quan650?.averageRate?.$numberDecimal).toFixed(2)}
+            {Number(isNaN(quan650?.averageRate?.$numberDecimal) ? 0 : quan650?.averageRate?.$numberDecimal)?.toFixed(2) }
             </div>
           </td>
 
           <td>
             <div className="form-control">
-            {Number(quan550?.averageRate?.$numberDecimal).toFixed(2)}
+            {Number(isNaN(quan550?.averageRate?.$numberDecimal) ? 0 : quan650?.averageRate?.$numberDecimal)?.toFixed(2)}
             </div>
 
             </td>
@@ -64,7 +64,7 @@ const BeerStockTopData = ({ item, index, total }) => {
             <td>
 
             <div className="form-control">
-            {Number(quan330?.averageRate?.$numberDecimal).toFixed(2)}
+            {Number(isNaN(quan330?.averageRate?.$numberDecimal) ? 0 : quan650?.averageRate?.$numberDecimal)?.toFixed(2)}
             </div>
         </td>
 

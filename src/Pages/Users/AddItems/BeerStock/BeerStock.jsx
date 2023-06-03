@@ -327,9 +327,7 @@ const BeerStock = () => {
                                     (total =
                                       total +
                                       currentItem.currentStock *
-                                        Number(
-                                          currentItem.averageRate.$numberDecimal
-                                        )),
+                                      Number(isNaN(currentItem?.averageRate?.$numberDecimal) ? 0 : currentItem?.averageRate?.$numberDecimal)),
                                   0
                                 )),
                             0

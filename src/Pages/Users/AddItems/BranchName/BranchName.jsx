@@ -92,7 +92,7 @@ const BranchName = () => {
             </th>
           </thead>
           <tbody>
-            {BranchNameData?.map((item, index) => {
+            {BranchNameData?.filter((prev)=>prev.isActive===true).map((item, index) => {
               return (
                 <tr key={index} className="text-center">
                   <th>

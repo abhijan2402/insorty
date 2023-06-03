@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import PaymentForm from "../PaymentForm/PaymentForm";
 import AddPayment from "../AddPayment/AddPayment";
 import Swal from "sweetalert2";
@@ -12,6 +12,7 @@ const Payments = () => {
   const [paymentDetailsData, setPaymentDetailsData] = React.useState([]);
   const [debitMonth, setDebitMonth] = React.useState("");
   const [depositMonth, setDepositMonth] = React.useState("");
+  const [msg,setMsg] = useState("")
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
@@ -45,7 +46,7 @@ const Payments = () => {
     const from = e.target;
     const debitAmount = from.debitAmount.value;
     const depositAmount = from.depositAmount.value;
-
+console.log(from.description)
     const shopAccount = [
       {
         debit: {
@@ -56,6 +57,7 @@ const Payments = () => {
           cash: depositAmount,
           date: depositMonth,
         },
+        description: msg
       },
     ];
 
@@ -92,33 +94,37 @@ const Payments = () => {
   };
 
   const handelDelete  = async (id) => {
-    const res = await fetch(
-      `https://insorty-backend-clone.vercel.app/shop/deleteShopAccount/${id}`,
+    fetch(
+      `https://insorty-backend-clone.vercel.app/shop/deleteShopAccount`,
       {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           cookie_token: token,
         },
+        body : JSON.stringify({shopAccountPageId: {id}})
       }
-    );
-    const data = await res.json();
-    console.log(data);
-    refetch();
-    if (data.success) {
-      Swal.fire({
-        icon: "success",
-        title: "Payment Deleted Successfully",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: data.message,
-      });
-    }
+    ).then((res)=>{
+      console.log(res)
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Payment Deleted Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        refetch();
+      } 
+    })
+    .catch((err)=>{
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+        });
+      
+    });
+    
   }
 
 
@@ -255,6 +261,8 @@ const Payments = () => {
           setDebitMonth={setDebitMonth}
           depositMonth={depositMonth}
           setDepositMonth={setDepositMonth}
+          msg={msg}
+          setMsg={setMsg}
         ></AddPayment>
       </section>
     </>

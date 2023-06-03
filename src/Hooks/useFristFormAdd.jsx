@@ -9,7 +9,8 @@ const useFristFormAdd = () => {
   const token = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(0);
-  const [hasMore,setHasMore]  = useState(true)
+  const [hasMoreBeer,setHasMoreBeer]  = useState(true)
+  const [hasMoreBeerSmall,setHasMoreBeerSmall]  = useState(true)
   
   let brands;
   const { GetLiqId } = useLiquors();
@@ -112,6 +113,7 @@ const useFristFormAdd = () => {
   useEffect(() => {
     if (prevdata) {
       setFristFormState(prevdata);
+      setHasMoreBeer(false)
     } else {
       const fetchOptions = async (query) => {
         await axios({
@@ -176,7 +178,7 @@ const useFristFormAdd = () => {
           .catch((err) => {
             console.log(err)
             if(err.response.status===404){
-              setHasMore(false)
+              setHasMoreBeer(false)
             }
           });
       };
@@ -1170,52 +1172,78 @@ const useFristFormAdd = () => {
   useEffect(() => {
     if (prevdata2) {
       setAddOneSecondFormState(prevdata2);
-    } else {
-      let firstFormData = addOneSecondFormState;
-
-      if (!brandsLoaded && liquors.length > 0) {
-        console.log("started");
-        const liq = liquors.filter((item) => {
-          if (item.type === "BEER") {
-            return item;
-          }
-        });
-
-        liq.map((parent) => {
-          parent.sizes.map((item) => {
-            if (
-              item.quantityInML !== 650 &&
+      setHasMoreBeerSmall(false)
+    }
+   
+    else{
+      const fetchOptions = async () => {
+        await axios({
+          url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+          method: "get",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+        })
+          .then((response) => {
+     
+            let firstFormData = addOneSecondFormState;
+            if (!prevdata && response.data.data.length > 0) {
+              const liq = response.data.data.filter((item) => {
+                if (item.type === "BEER") {
+                  return item;
+                }
+              });
+        
+              liq.map((parent) => {
+                
+                parent.sizes.map((item) => {
+                  if (
+                    item.quantityInML !== 650 &&
               item.quantityInML !== 550 &&
               item.quantityInML !== 330 &&
               item.currentStock > 0
-            ) {
-              console.log(parent);
-              const newFormData = { ...addOneSecondForm };
+                  ) {
+                    const newFormData = { ...addOneSecondForm };
+        
+                    newFormData.brandName = parent.brandName;
+                    newFormData.size= parent
+                              newFormData.liquorID = parent._id;
+                              newFormData.selectStockVarient = item.quantityInML;
+                              newFormData.startingStock = item.currentStock;
+                              newFormData.averageRate = item.averageRate.$numberDecimal;
+                              newFormData.initial = item.averageRate.$numberDecimal;
+                              firstFormData = [newFormData, ...firstFormData];
+                              setAddOneSecondFormState(firstFormData);
+                              localStorage.setItem("BeerForm", JSON.stringify(firstFormData));
+                              localStorage.setItem(
+                                "beerFormTotal",
+                                JSON.stringify(
+                                  firstFormData.reduce(
+                                    (totals, currentItem) =>
+                                      (totals = totals + Number(currentItem.total)),
+                                    0
+                                  )
+                                )
+                              );
+                    
+                  }
+                });
+              });
+            }
+            setPage(page => page + 1);
 
-              newFormData.brandName = parent.brandName;
-              newFormData.liquorID = parent._id;
-              newFormData.selectStockVarient = item.quantityInML;
-              newFormData.startingStock = item.currentStock;
-              newFormData.averageRate = item.averageRate.$numberDecimal;
-              newFormData.initial = item.averageRate.$numberDecimal;
-              firstFormData = [newFormData, ...firstFormData];
-              setAddOneSecondFormState(firstFormData);
-              localStorage.setItem("BeerForm", JSON.stringify(firstFormData));
-              localStorage.setItem(
-                "beerFormTotal",
-                JSON.stringify(
-                  firstFormData.reduce(
-                    (totals, currentItem) =>
-                      (totals = totals + Number(currentItem.total)),
-                    0
-                  )
-                )
-              );
+          })
+          .catch((err) => {
+            console.log(err)
+            if(err.response.status===404){
+              setHasMoreBeerSmall(false)
             }
           });
-        });
-      }
+      };
+      fetchOptions()
     }
+
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);
@@ -1411,6 +1439,8 @@ const useFristFormAdd = () => {
     handelSeconFormOnChange,
     handleRemoveFieldsBack,
     handleRemoveFieldsBeer,
+    hasMoreBeer,
+    hasMoreBeerSmall
   };
 };
 

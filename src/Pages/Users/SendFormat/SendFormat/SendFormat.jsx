@@ -12,15 +12,15 @@ import swal from "sweetalert";
 
 const SendFormat = ({ isBearShop }) => {
   const { partners, partnerLoaded, refetch } = usePartyNames();
-  // const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token')
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
  
-  const token = jwtDecode(localStorage.getItem("token"));
-  const ShopType = token.shopType;
-  const role = token.role;
+  // const token = jwtDecode(localStorage.getItem("token"));
+  const ShopType = jwtDecode(localStorage.getItem("token")).shopType;
+  const role = jwtDecode(localStorage.getItem("token")).role;
 
   const deletePartner = (id) => {
     fetch(`https://insorty-backend-clone.vercel.app/shop/deletePartner`, {

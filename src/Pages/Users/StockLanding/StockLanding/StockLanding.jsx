@@ -56,7 +56,6 @@ const StockLanding = () => {
               <tr>
                 <th> क्र. सं.</th>
                 <th colSpan={2}>Party Name</th>
-                <th colSpan={2}>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -95,14 +94,7 @@ const StockLanding = () => {
                             {party?.partyName}
                           </Link>
                         </td>
-                        <td>
-                          <Link
-                            className="font-3xl font-bold"
-                            style={{ color: "#AA237A" }}
-                          >
-                            <FaRegTrashAlt></FaRegTrashAlt>
-                          </Link>
-                        </td>
+                       
                       </tr>
                     )}
                   </>

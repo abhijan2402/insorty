@@ -162,7 +162,7 @@ const SelfBill = () => {
 
           <div>
             <div className="overflow-x-auto">
-              <table className={ShopToken==="SHOP" ? 'removeCommonWSpace': 'displayHidden'}>
+              <table className={ShopType==="SHOP" ? 'removeCommonWSpace': 'displayHidden'}>
                 <thead>
                   <tr>
                     <td> क्र. सं.</td>
@@ -237,7 +237,7 @@ const SelfBill = () => {
 
 
 
-              <table className={ShopToken==="BAR" ? 'removeCommonWSpace': 'displayHidden'}>
+              <table className={ShopType==="BAR" ? 'removeCommonWSpace': 'displayHidden'}>
                 <thead>
                   <tr>
                     <td> क्र. सं.</td>

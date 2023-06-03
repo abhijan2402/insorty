@@ -37,9 +37,7 @@ const DailyReport = () => {
         <div className="my-4">
           <h1 className="font-bold text-2xl">दैनिक रिपोर्ट </h1>
         </div>
-        <div className="flex gap-4">
-          <h1 className="font-bold ">सेल्समेन का नाम </h1>
-        </div>
+       
       </div>
 
       <div className="divider"></div>

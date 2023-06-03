@@ -57,9 +57,10 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
               Select-type
             </option>
             <option  value="REFUND">
-              REFUND
+            रिफंड 
+
             </option>
-            <option value="RECOVERY">RECOVERY</option>
+            <option value="RECOVERY">रिकवरी </option>
           </select>
         </td>
         <td>

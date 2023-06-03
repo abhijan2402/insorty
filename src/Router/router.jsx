@@ -338,6 +338,11 @@ const router = createBrowserRouter([
 
         element: <BranchFrom />,
       },
+      
+      {
+        path: "/user/bearshop/borrow/from/:partyId",
+        element: <BorrowDetails />,
+      },
       {
         path: "/user/bearshop/commisionroute",
         element: <CommisionRoute />,
@@ -382,6 +387,12 @@ const router = createBrowserRouter([
       {
         path: "/user/bearshop/borrow/from/:partyId",
         element: <BorrowDetails />,
+        
+      },
+      
+      {
+        path: "/user/bearshop/partners/from/:partnerId",
+        element: <PartnarDetails />,
       },
       {
         path: "/user/bearshop/finalreport",

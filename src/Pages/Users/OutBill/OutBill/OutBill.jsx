@@ -129,7 +129,7 @@ const OutBill = () => {
 
           <div>
             <div className="overflow-x-auto">
-              <table className={ShopToken==="SHOP" ? 'removeCommonWSpace' : 'displayHidden'}>
+              <table className={ShopType==="SHOP" ? 'removeCommonWSpace' : 'displayHidden'}>
                 <thead>
                   <tr>
                     <td> क्र. सं.</td>
@@ -170,7 +170,7 @@ const OutBill = () => {
                   </tr>
                 </tbody>
               </table>
-              <table className={ShopToken==="BAR" ? 'removeCommonWSpace' : 'displayHidden'}>
+              <table className={ShopType==="BAR" ? 'removeCommonWSpace' : 'displayHidden'}>
                 <thead>
                   <tr>
                     <td> क्र. सं.</td>

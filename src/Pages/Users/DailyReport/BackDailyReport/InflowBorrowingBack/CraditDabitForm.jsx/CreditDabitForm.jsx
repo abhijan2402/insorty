@@ -54,10 +54,10 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             onChange={(e) => onChangeCarditDabit(e, index)}
           >
             <option selected value="PARTNER">
-              PARTNER
+            पार्टनर
             </option>
-            <option value="PARTY">PARTY</option>
-            <option value="BRANCH">BRANCH</option>
+            <option value="PARTY">पार्टी</option>
+            <option value="BRANCH">ब्रांच</option>
           </select>
         </div>
       </td>
@@ -70,7 +70,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           style={{
             width: "20rem",
           }}
-            options={parties.length > 0 ? parties : ['no options']}
+            options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ['no options']}
             getOptionLabel={(option) => option ? option.partyName : ""}
             
             className={item.partyType === "PARTY" ? '' : 'displayHidden'}
@@ -143,7 +143,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           style={{
             width: "20rem",
           }}
-            options={branches.length > 0 ? branches : ['no options']}
+            options={branches.length > 0 ? branches.filter((prev)=>prev.isActive===true) : ['no options']}
             getOptionLabel={(option) => option ? option.branchName : ""}
             className={item.partyType === "BRANCH" ? '' : 'displayHidden'}
 

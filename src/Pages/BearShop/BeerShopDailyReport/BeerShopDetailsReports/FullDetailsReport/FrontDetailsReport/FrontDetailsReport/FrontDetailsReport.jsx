@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useRef} from "react";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import useFrontDetails from "../../../../../BeerHooks/DailyReportHooks/UseBeerShopFront/useFrontDetails";
@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 import moment from "moment";
 import jwtDecode from "jwt-decode";
 import FristFormDetails from "../../../../../../Users/DailyReport/DetailsReports/FullDetailsReport/FrontDetailsReport/FristFormDetails/FristFormDetails";
+import { useReactToPrint } from "react-to-print";
 
 const FronteDailyReport = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -19,6 +20,8 @@ const FronteDailyReport = () => {
   const token = localStorage.getItem('token')
   const [pageId, setPageId] = useState();
   const [pgNo,setPgNo] = useState(0)
+  const container = useRef(null);
+
   const { BackPageReportExceptionalSize,
     BackPageReportRegularSize,
     ExceptionalLoading,
@@ -31,6 +34,9 @@ const FronteDailyReport = () => {
     return stock;
   };
 
+  const handlePrint = useReactToPrint({
+    content: () => container.current,
+  });
 
   const {
     FrontPageExceptionalData,
@@ -87,6 +93,7 @@ FrontPageRegularData.map((item) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if (data.success) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         } else {
@@ -236,13 +243,16 @@ FrontPageRegularData.map((item) => {
     <section className="mx-2">
       <div className="flex justify-center items-center flex-col">
         <div className="my-4 flex gap-4 items-center">
-          <h1 className="font-bold text-2xl">Daily Report Details </h1>
+          <h1 className="font-bold text-xl text-gray-800">अंग्रेजी</h1>
           <Link to="/user/bearshop/details/back" className="commonBtn">
-            Back
+          बीयर
           </Link>
-          <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
+          {/* <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
             Back
-          </Link>
+          </Link> */}
+          <button className="commonBtn " onClick={handlePrint}>
+          PRINT
+        </button>
         </div>
         <div className="flex gap-2 items-center">
           <DatePicker
@@ -280,18 +290,14 @@ FrontPageRegularData.map((item) => {
                 dangerMode: true,
               }).then((willDelete) => {
                 if (willDelete) {
-                  deletePage( FrontPage && FrontPage.length && FrontPage.map((page,index)=>{
-                    if (index === pgNo) {
-                      return(
-                     page
-                )
-                     
-                    }
-                  })[0]._id);
+                  deletePage( FrontPage && FrontPage.length && FrontPage.find((page,index)=>index === pgNo)._id);
                   
                 } 
               });
             }}>Delete Page</button>
+
+
+            <div ref={container}>
 
       <div className="py-6">
         <div>
@@ -1624,6 +1630,7 @@ FrontPageRegularData.map((item) => {
                       )}</div>
           </div>
         </>
+      </div>
       </div>
     </section>
   );

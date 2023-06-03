@@ -25,7 +25,9 @@ const FronteDailyReport = () => {
     midFormOnChange,
     midFormAddOne,
     thirdFormOnChange,
-    removeMidForm
+    removeMidForm,
+    hasMoreBig,
+    hasMoreSmall
   } = UseBeerShopFront();
 
   const token = localStorage.getItem("token");
@@ -64,6 +66,8 @@ const FronteDailyReport = () => {
     handelSeconFormOnChange,
     handleRemoveFieldsBack,
     handleRemoveFieldsBeer,
+    hasMoreBeer,
+    hasMoreBeerSmall
   } = useFristFormAdd();
 
   //=============== add One second form ================
@@ -104,7 +108,7 @@ const FronteDailyReport = () => {
               name="year"
               onChange={(data) => {
                 setDrDate(new Date(data));
-                console.log(data);
+              
               }}
               dateFormat="dd/MM/yyyy"
               className="inputBox date"
@@ -763,6 +767,7 @@ const FronteDailyReport = () => {
                   </tr>
                 </tbody>
               </table>
+              <div className={hasMoreBig===true ? '' : 'displayHidden'}>Loadinng data...</div>
             </div>
           </>
         </div>
@@ -1401,6 +1406,7 @@ const FronteDailyReport = () => {
                   {/* ======== MRP Input ========= */}
                   <td></td>
                   <td></td>
+                  <td></td>
                   {/* ======== प्रारम्भिक स्टॉक ========= */}
                   <td>
                     <div className="flex ">
@@ -1645,6 +1651,7 @@ const FronteDailyReport = () => {
                 </tr>
               </tbody>
             </table>
+            <div className={hasMoreSmall===true ? '' : 'displayHidden'}>Loadinng data...</div>
           </div>
           <div>English Total:- {Number(localStorage.getItem("pegFormTotal")) + Number(localStorage.getItem('smallPegFormTotal'))}</div>
         </div>
@@ -1657,7 +1664,7 @@ const FronteDailyReport = () => {
                   <div className="py-6">
                     <h1 className="my-4">
                       <span className="font-bold titleText">
-                        बिक्री रिपोर्ट
+                      बीयर रिपोर्ट
                       </span>
                     </h1>
 
@@ -2638,6 +2645,7 @@ const FronteDailyReport = () => {
                         </tr>
                       </tbody>
                     </table>
+                    <div className={hasMoreBeer===true ? '' : 'displayHidden'}>Loadinng data...</div>
                   </div>
 
                   <div className="py-6">
@@ -3187,6 +3195,7 @@ const FronteDailyReport = () => {
                   </tr>
                 </tbody>
               </table>
+              <div className={hasMoreBeerSmall===true ? '' : 'displayHidden'}>Loadinng data...</div>
             </div>
             <div style={{ height: '90px', marginTop: "50px" }}>
               <p>Beer Total:- {Number(localStorage.getItem('totalFirstBack')) + Number(localStorage.getItem('beerFormTotal'))}</p>

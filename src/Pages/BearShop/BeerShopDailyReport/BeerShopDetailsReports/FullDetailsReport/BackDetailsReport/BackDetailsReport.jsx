@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useRef} from "react";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import useGetDailyReport from "../../../../../../Hooks/useGetDailyReport";
@@ -12,10 +12,16 @@ import CashReciveData from "../../../../../Users/DailyReport/DetailsReports/Full
 import { tr } from "date-fns/locale";
 import swal from "sweetalert";
 import Swal from "sweetalert2";
+import { useReactToPrint } from "react-to-print";
 
 const BackDailyReport = () => {
   const [filterDate, setFilterData] = useState(new Date());
   const token = localStorage.getItem('token')
+  const container = useRef(null);
+  const handlePrint = useReactToPrint({
+    content: () => container.current,
+  });
+
   
   const [pgNo, setPgNo] = useState(0);
   let frontSet2 = new Set([]);
@@ -36,6 +42,8 @@ const BackDailyReport = () => {
       return 0;
  
   });
+
+ 
 
   const deletePage = (id) =>{
     fetch(`https://insorty-backend-clone.vercel.app/shop/deleteBackPageData`, {
@@ -65,17 +73,20 @@ const BackDailyReport = () => {
         <div className="flex justify-center items-center gap-4 ">
           <div className="my-4 flex  items-center">
             <h1 className="font-bold text-2xl">
-            अंग्रेजी
+            बीयर
             </h1>
 
             <div className="my-4 mx-4">
               <Link to="/user/bearshop/details" className="commonBtn">
-              बीयर
+              अंग्रेजी
               </Link>
 
-              <Link to="/user/bearshop/dailyreport/front" className="commonBtn">
+              {/* <Link to="/user/bearshop/dailyreport/front" className="commonBtn">
                 Front
-              </Link>
+              </Link> */}
+              <button className="commonBtn " onClick={handlePrint}>
+          PRINT
+        </button>
             </div>
           </div>
         </div>
@@ -120,21 +131,17 @@ const BackDailyReport = () => {
                 dangerMode: true,
               }).then((willDelete) => {
                 if (willDelete) {
-                  deletePage( BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
-                    if (index === pgNo) {
-                      return(
-                     page
-                )
-                     
-                    }
-                  })[0]._id);
+                 deletePage( BackPageData && BackPageData.length && BackPageData.find((page,index)=>
+                    index === pgNo
+                    
+                  )._id);
                   
                 } 
               });
             }}>Delete Page</button>
 
         {/* *********************************************************BREAK*********************************************************  */}
-        <form>
+        <form ref={container}> 
           <div className="flex  overflow-x-auto">
             <div className="py-6">
               <h1 className="my-4">
@@ -147,8 +154,8 @@ const BackDailyReport = () => {
                   <tbody>
                     <tr>
                       <th colSpan={4}> क्र. सं.</th>
-                      <th colSpan={4}>Party Name/ पार्टी का नाम</th>
-                      <th colSpan={4}>Brand Name/ ब्राण्ड</th>
+                      <th colSpan={4}> पार्टी का नाम</th>
+                      <th colSpan={4}>ब्राण्ड</th>
                       <th colSpan={4}>ML</th>
                       <th colSpan={4}>संख्या</th>
                       <th colSpan={4}>रेट</th>
@@ -231,8 +238,8 @@ const BackDailyReport = () => {
                     <tbody>
                       <tr>
                         <th colSpan={1}> क्र. सं.</th>
-                        <th colSpan={1}>Party Name/ पार्टी का नाम</th>
-                        <th colSpan={1}>Brand Name/ ब्राण्ड</th>
+                        <th colSpan={1}> पार्टी का नाम</th>
+                        <th colSpan={1}> ब्राण्ड</th>
                         <th colSpan={1}>ML</th>
                         <th colSpan={1}>संख्या</th>
                         <th colSpan={1}>टिप्पणी</th>
@@ -296,7 +303,7 @@ const BackDailyReport = () => {
                   <tbody>
                     <tr>
                       <th colSpan={1}> क्र. सं.</th>
-                      <th colSpan={4}>Reason / विवरण</th>
+                      <th colSpan={4}>विवरण</th>
                       <th colSpan={4}>रकम</th>
                       <th colSpan={4}>Description</th>
                     </tr>
@@ -434,10 +441,10 @@ const BackDailyReport = () => {
                     <tr>
                     <th className="tg-0lax">क्र.सं.</th>
                 <th className="tg-0lax" colSpan={4}>
-                  Name
+                पार्टी का नाम	
                 </th>
                 <th className="tg-0lax" colSpan={4}>
-                  Type
+                पार्टी/पार्टनर	
                 </th>
                 <th className="tg-0lax" colSpan={4}>
                   रकम
@@ -491,7 +498,7 @@ const BackDailyReport = () => {
             <div className="py-6">
               <h1 className="my-4">
                 <span className="font-bold titleText ">
-                  Food / vegatable etcc
+                राशन/सब्जी आदि खरीद
                 </span>
               </h1>
 
@@ -500,8 +507,8 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th colSpan={1}> क्र. सं.</th>
-                      <th colSpan={1}>रकम/ price</th>
-                      <th colSpan={1}>विवरण/ Details</th>
+                      <th colSpan={1}>रकम</th>
+                      <th colSpan={1}>विवरण</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -556,10 +563,10 @@ const BackDailyReport = () => {
                 <thead>
                   <tr>
                     <th colSpan={1}> क्र. सं.</th>
-                    <th colSpan={1}>BRAND NAME/ ब्राण्ड</th>
-                    <th colSpan={1}>Size</th>
+                    <th colSpan={1}> ब्राण्ड</th>
+                    <th colSpan={1}>ML</th>
                     <th colSpan={1}>मात्रा</th>
-                    <th colSpan={1}>Amount</th>
+                    <th colSpan={1}>रकम</th>
                     <th colSpan={1}> टिप्पणी</th>
                   </tr>
                 </thead>

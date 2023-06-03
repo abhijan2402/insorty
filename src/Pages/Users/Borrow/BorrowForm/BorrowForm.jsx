@@ -1,21 +1,40 @@
+import jwtDecode from "jwt-decode";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const BorrowForm = ({ index, party }) => {
-  console.log(party, "party +++++++");
-
+const shopType = jwtDecode(localStorage.getItem('token')).shopType
+console.log(shopType)
   const partyId = party?._id;
   return (
     <>
       <tr>
         <td>{index + 1}</td>
 
-        <td>
+        <td className={shopType==="SHOP" ? "form-control" : "displayHidden"}>
           <div className="flex gap-4">
             <div className="form-control">
 
               <Link
                 to={`/user/borrow/from/${partyId}`}
+                style={{
+                  cursor: "pointer",
+                }}
+                
+              >
+                {party.partyName}
+              </Link>
+              
+            </div>
+          </div>
+        </td>
+
+        <td className={shopType==="BAR" ? "form-control" : "displayHidden"}>
+          <div className="flex gap-4">
+            <div className="form-control">
+
+              <Link
+                to={`/user/bearshop/borrow/from/${partyId}`}
                 style={{
                   cursor: "pointer",
                 }}

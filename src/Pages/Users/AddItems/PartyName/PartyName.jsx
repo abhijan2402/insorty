@@ -90,7 +90,7 @@ const PartyName = () => {
             </th>
           </thead>
           <tbody>
-            {PartyNameData?.map((item, index) => {
+            {PartyNameData?.filter((prev)=>prev.isActive===true).map((item, index) => {
               return (
                 <tr key={index}>
                   <th>

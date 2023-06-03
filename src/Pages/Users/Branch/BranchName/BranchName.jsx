@@ -55,6 +55,7 @@ const BranchName = () => {
     );
   }
 
+
   return (
     <section className="py-4">
       <div>
@@ -74,7 +75,7 @@ const BranchName = () => {
           </thead>
             <tbody>
               {branches &&
-                branches.map((branch, index) => (
+                branches.filter((prev)=>prev.isActive===true).map((branch, index) => (
                   <tr>
                     <th>{index + 1}</th>
                     <td>

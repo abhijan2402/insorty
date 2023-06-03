@@ -555,7 +555,7 @@ const useFormulasFristFormFront = () => {
           e.target.name === "sending330"
         ) {
           obj.sales330 =
-            Number(obj.sumRemainder180) - Number(obj.closingStock330);
+            Number(obj.sumRemainder330) - Number(obj.closingStock330);
         }
         return obj;
       } else return returned;

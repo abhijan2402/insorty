@@ -61,7 +61,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
           <thead>
             <tr>
               <th> क्र. सं.</th>
-              <th>Reason / विवरण</th>
+              <th> विवरण</th>
               <th>total</th>
             </tr>
           </thead>
@@ -207,7 +207,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
           <thead>
             <tr>
               <th> क्र. सं.</th>
-              <th>Reason / विवरण</th>
+              <th>विवरण</th>
               <th>total</th>
             </tr>
           </thead>
@@ -237,12 +237,12 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
 
             <tr >
               <th>3</th>
-              <td>bar suplements</td>
+              <td>पानी, नमकीन, सिगरेट, पुड़िया आदि</td>
               <td>{Number(barSuplementsTotal?barSuplementsTotal:0)}</td>
             </tr>
             <tr >
               <th>4</th>
-              <td>Food/Veg etc</td>
+              <td>राशन/सब्जी आदि खरीद</td>
               <td>{Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0)}</td>
             </tr>
             {/* 04 */}

@@ -84,7 +84,7 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control">
             <Autocomplete
-              options={parties.length > 0 ? parties : ["no options"]}
+              options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
               size="small"
               style={{
                 width: "20rem",

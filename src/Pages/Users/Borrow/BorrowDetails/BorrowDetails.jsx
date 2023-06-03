@@ -68,9 +68,9 @@ const BorrowDetails = () => {
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                <th>Debit/ नामे </th>
-                <th>Deposit / जमा</th>
-                <th>Remaining / शेष</th>
+                <th> नामे </th>
+                <th> जमा</th>
+                <th> शेष</th>
               </tr>
             </thead>
             <tbody>

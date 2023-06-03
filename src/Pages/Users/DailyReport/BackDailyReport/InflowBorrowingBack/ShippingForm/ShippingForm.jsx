@@ -86,7 +86,7 @@ const ShippingForm = ({
               style={{
                 width: "20rem",
               }}
-              options={parties.length > 0 ? parties : ["no options"]}
+              options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
               onChange={(event, value) => {
                 if (value) {

@@ -122,7 +122,7 @@ const FronteDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <th></th>
-                      <th>Brand Name/ ब्राण्ड</th>
+                      <th>ब्राण्ड</th>
                       <th>औसत दर</th>
                       <th>प्रारम्भिक स्टॉक</th>
                       <th>आमद (खरीद)-दु.</th>
@@ -1099,7 +1099,7 @@ const FronteDailyReport = () => {
                       <tr>
                         <th> क्र. सं.</th>
                         <th></th>
-                        <th>Brand Name/ ब्राण्ड</th>
+                        <th> ब्राण्ड</th>
                         <th>ml</th>
                         <th>औसत दर</th>
                         <th>प्रारम्भिक स्टॉक</th>

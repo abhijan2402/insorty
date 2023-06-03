@@ -126,7 +126,7 @@ const FinalReport = ({ data, date }) => {
                       <thead>
                         <tr>
                           <th> क्र. सं.</th>
-                          <th>Reason / विवरण</th>
+                          <th> विवरण</th>
                           <th>total</th>
                         </tr>
                       </thead>
@@ -152,7 +152,7 @@ const FinalReport = ({ data, date }) => {
       <tr>
         <td className="tg-0lax">3</td>
         <td className="tg-0lax">
-        barSupplements
+        पानी, नमकीन, सिगरेट, पुड़िया आदि
         </td>
         <td className="tg-0lax">
           {data.barSupplements}
@@ -161,7 +161,7 @@ const FinalReport = ({ data, date }) => {
       <tr>
         <td className="tg-0lax">3</td>
         <td className="tg-0lax">
-        food N vegetable
+        राशन/सब्जी आदि खरीद
         </td>
         <td className="tg-0lax">
           {data.extraThings}

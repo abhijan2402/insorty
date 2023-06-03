@@ -10,6 +10,8 @@ const AddPayment = ({
   setDebitMonth,
   depositMonth,
   setDepositMonth,
+  msg,
+  setMsg
 }) => {
   return (
     <section>
@@ -103,7 +105,9 @@ const AddPayment = ({
                   border: "1px solid #4CAF50",
                 }}
                 type="text"
-                name="details"
+                name="desciption"
+                value={msg}
+                onChange={(e)=>setMsg(e.target.value)}
                 className="input input-bordered w-full"
               />
             </div>

@@ -3,7 +3,6 @@ import useLiquors from "../../../../../Hooks/useLiquors";
 
 const StockFormData = ({ index, stockData }) => {
   const { inflow, inflowComment, liquor, send, sendComment } = stockData;
-  const { getNameByID, getSize } = useLiquors()
 
   const restBalance = Number(inflow - send);
 
@@ -12,14 +11,14 @@ const StockFormData = ({ index, stockData }) => {
       <th>{index + 1}</th>
       <td>
           <div className="form-control">
-          {getNameByID(liquor._id)}
+          {liquor.brandName}
           </div>
           </td>
 
           <td>
 
           <div className="form-control">
-          {getSize(liquor._id)} ml
+          {liquor.quantityInML} ml
           </div>
       </td>
 

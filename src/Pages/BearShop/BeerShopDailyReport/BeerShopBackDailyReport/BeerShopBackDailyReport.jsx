@@ -243,6 +243,7 @@ const BackDailyReport = () => {
           <input
             type="text"
             value={salesMan}
+            className="semiSmallInput"
             onChange={(e) => {
               setSalesMan(e.target.value);
               localStorage.setItem("salesMan", e.target.value);
@@ -279,8 +280,8 @@ const BackDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <td></td>
-                      <th>Party Name/ पार्टी का नाम</th>
-                      <th>Brand Name/ ब्राण्ड</th>
+                      <th> पार्टी का नाम</th>
+                      <th> ब्राण्ड</th>
                       <th>ML</th>
                       <th>संख्या</th>
                       <th>रेट</th>
@@ -394,8 +395,8 @@ const BackDailyReport = () => {
                       <tr>
                         <th> क्र. सं.</th>
                         <th></th>
-                        <th>Party Name/ पार्टी का नाम</th>
-                        <th>Brand Name/ ब्राण्ड</th>
+                        <th> पार्टी का नाम</th>
+                        <th> ब्राण्ड</th>
                         <th>ML</th>
                         <th>संख्या</th>
                         <th>टिप्पणी</th>
@@ -477,9 +478,9 @@ const BackDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <td></td>
-                      <th>Reason / विवरण</th>
+                      <th> विवरण</th>
                       <th>रकम</th>
-                      <th>विवरण</th>
+                      <th>टिप्पणी</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -553,8 +554,8 @@ const BackDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <th></th>
-                      <th>पार्टी का नाम</th>
                       <th>पार्टी/पार्टनर</th>
+                      <th>पार्टी का नाम</th>
                       <th>रकम</th>
                       <th>टिप्पणी</th>
                     </tr>
@@ -634,8 +635,8 @@ const BackDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <td></td>
-                      <th>Name</th>
-                      <th>Type</th>
+                      <th>पार्टी/पार्टनर</th>
+                      <th>पार्टी का नाम</th>
                       <th>रकम</th>
                       <th> टिप्पणी</th>
                     </tr>
@@ -701,7 +702,7 @@ const BackDailyReport = () => {
             <div className="py-6">
               <h1 className="my-4 mx-6">
                 <span className="font-bold titleText ">
-                  Food / vegatable etcc
+                राशन/सब्जी आदि खरीद
                 </span>
               </h1>
 
@@ -710,8 +711,8 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
-                      <th>विवरण/ Details</th>
-                      <th>रकम/ price</th>
+                      <th>विवरण</th>
+                      <th>रकम</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -796,11 +797,11 @@ const BackDailyReport = () => {
                   <tr>
                     <th> क्र. सं.</th>
                     <th></th>
-                    <th>BRAND NAME/ ब्राण्ड</th>
-                    <th>size/ ब्राण्ड</th>
+                    <th> ब्राण्ड</th>
+                    <th>ML</th>
                     <th>मात्रा</th>
-                    <th>Amount</th>
-                    <th>Comment</th>
+                    <th>रकम</th>
+                    <th>टिप्पणी</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -955,6 +956,7 @@ const BackDailyReport = () => {
                       <div className="form-control">Total</div>
                     </td>
                     <td></td>
+                    <td></td>
                     <td>
                       <div className="form-control">
                         <input
@@ -1021,12 +1023,14 @@ const BackDailyReport = () => {
 
           <div className="py-6">
             <h1 className="my-4 specialwidth">
-              <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
+              <span className="font-bold titleText ">रफ जगह
+</span>
             </h1>
             <div>
               <textarea
                 className="textarea textarea-bordered"
-                placeholder="फाईनल रिपोर्ट"
+                placeholder="रफ जगह
+                "
                 rows="3"
                 cols="50"
                 name="comment"

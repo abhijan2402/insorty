@@ -109,6 +109,8 @@ const BackDetailReport = () => {
       })
     : BackPageReportRegularSize;
 
+    console.log(BackPageReportRegularSize)
+
   filteredRegularData.map((item) => {
     item.pages.map((pg) => {
       frontSet.add(pg.page);
@@ -310,7 +312,7 @@ const BackDetailReport = () => {
             <tbody>
               <tr>
                 <td rowSpan={2}> क्र. सं.</td>
-                <th rowSpan={2}>Brand Name/ ब्राण्ड</th>
+                <th rowSpan={2}>ब्राण्ड</th>
                 <th colSpan={3}>औसत दर</th>
                 <th colSpan={3}>प्रारम्भिक स्टॉक</th>
                 <th colSpan={3}>आमद (खरीद)-दु.</th>
@@ -449,7 +451,7 @@ const BackDetailReport = () => {
 
               {/* ========================== */}
 
-              {filteredRegularData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((regularData, index) => {
+              {filteredRegularData && filteredRegularData.length && filteredRegularData.map((regularData, index) => {
                 return (
                   <RegularData
                     key={index}
@@ -720,7 +722,7 @@ const BackDetailReport = () => {
 
               <tr>
                 <td> क्र. सं.</td>
-                <th>Brand Name/ ब्राण्ड</th>
+                <th> ब्राण्ड</th>
                 <th>ml</th>
                 <th>औसत दर</th>
                 <th>प्रारम्भिक स्टॉक</th>
@@ -850,7 +852,7 @@ const BackDetailReport = () => {
 
               <tr>
                 <th> क्र. सं.</th>
-                <th>Brand Name/ ब्राण्ड</th>
+                <th> ब्राण्ड</th>
                 <th>ml</th>
                 <th>औसत दर</th>
                 <th>प्रारम्भिक स्टॉक</th>
@@ -1111,7 +1113,7 @@ const BackDetailReport = () => {
                   संख्या
                 </td>
                 <td className="tg-0lax" colSpan={4}>
-                  Size
+                  ML
                 </td>
                 <td className="tg-0lax" colSpan={4}>
                   Rate
@@ -1198,7 +1200,7 @@ const BackDetailReport = () => {
               <tr>
                 <td className="tg-0lax">क्र.सं.</td>
                 <td className="tg-0lax" colSpan={4}>
-                  type
+                पार्टी/पार्टनर	
                 </td>
                 <td className="tg-0lax" colSpan={4}>
                   रकम
@@ -1264,10 +1266,10 @@ const BackDetailReport = () => {
               <tr>
                 <td className="tg-0lax">क्र.सं.</td>
                 <td className="tg-0lax" colSpan={4}>
-                  Name
+                पार्टी/पार्टनर	
                 </td>
                 <td className="tg-0lax" colSpan={4}>
-                  Type
+                पार्टी का नाम	
                 </td>
                 <td className="tg-0lax" colSpan={4}>
                   रकम
@@ -1332,9 +1334,9 @@ const BackDetailReport = () => {
 
               <tr>
                 <td className="tg-baqh">क्र.सं.</td>
-                <th>Party Name/ पार्टी का नाम</th>
-                <th>Brand Name/ ब्राण्ड</th>
-                <th>Size</th>
+                <th>पार्टी का नाम</th>
+                <th> ब्राण्ड</th>
+                <th>ML</th>
                 <th>संख्या</th>
                 <th>टिप्पणी</th>
               </tr>
@@ -1396,10 +1398,10 @@ const BackDetailReport = () => {
 
               <tr>
                 <td className="tg-baqh">क्र.सं.</td>
-                <th>Party Name/ पार्टी का नाम</th>
-                <th>Brand Name/ ब्राण्ड</th>
+                <th>पार्टी का नाम</th>
+                <th> ब्राण्ड</th>
+                <th>ML</th>
                 <th>संख्या</th>
-                <th>Quantity</th>
                 <th>रेट</th>
                 <th>योग</th>
                 <th>टिप्पणी</th>
@@ -1510,8 +1512,8 @@ const BackDetailReport = () => {
               </tr>
               <tr>
                 <th> क्र. सं.</th>
-                <th>पार्टी का नाम</th>
                 <th>पार्टी/पार्टनर</th>
+                <th>पार्टी का नाम</th>
                 <th>रकम</th>
                 <th>टिप्पणी</th>
               </tr>

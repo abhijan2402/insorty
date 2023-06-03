@@ -191,7 +191,7 @@ const BackDailyReport = () => {
                         <tr>
                           <th> क्र. सं.</th>
                           <th></th>
-                          <th>Brand Name/ ब्राण्ड</th>
+                          <th> ब्राण्ड</th>
                           <th>औसत दर</th>
                           <th>प्रारम्भिक स्टॉक</th>
                           <th>आमद (खरीद)-दु.</th>
@@ -1173,7 +1173,7 @@ const BackDailyReport = () => {
                             <tr>
                               <th> क्र. सं.</th>
                               <th></th>
-                              <th>Brand Name/ ब्राण्ड</th>
+                              <th> ब्राण्ड</th>
                               <th>ml</th>
                               <th>औसत दर</th>
                               <th>प्रारम्भिक स्टॉक</th>
@@ -1434,7 +1434,7 @@ const BackDailyReport = () => {
                       <tr>
                         <th> क्र. सं.</th>
                         <th></th>
-                        <th>Brand Name/ ब्राण्ड</th>
+                        <th> ब्राण्ड</th>
                         <th>ml</th>
                         <th>औसत दर</th>
                         <th>प्रारम्भिक स्टॉक</th>
@@ -1679,8 +1679,8 @@ const BackDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <td></td>
-                      <th>Party Name/ पार्टी का नाम</th>
-                      <th>Brand Name/ ब्राण्ड</th>
+                      <th> पार्टी का नाम</th>
+                      <th>ब्राण्ड</th>
                       <th>ML</th>
                       <th>संख्या</th>
                       <th>रेट</th>
@@ -1792,7 +1792,7 @@ const BackDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <td></td>
-                      <th>Reason / विवरण</th>
+                      <th> विवरण</th>
                       <th>रकम</th>
                       <th>विवरण</th>
                     </tr>
@@ -1866,10 +1866,10 @@ const BackDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <td></td>
-                      <th>Name</th>
-                      <th>Type</th>
+                      <th>प्रकार</th>
+                      <th>पार्टी का नाम</th>
                       <th>रकम</th>
-                      <th>comment</th>
+                      <th>विवरण</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1947,8 +1947,8 @@ const BackDailyReport = () => {
                       <tr>
                         <th> क्र. सं.</th>
                         <th></th>
-                        <th>Party Name/ पार्टी का नाम</th>
-                        <th>Brand Name/ ब्राण्ड</th>
+                        <th>पार्टी का नाम</th>
+                        <th> ब्राण्ड</th>
                         <th>ML</th>
                         <th>संख्या</th>
                         <th>टिप्पणी</th>
@@ -2031,10 +2031,10 @@ const BackDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <th></th>
-                      <th>Party Name/ पार्टी का नाम</th>
-                      <th>Brand Name/ ब्राण्ड</th>
+                      <th> पार्टी का नाम</th>
+                      <th> ब्राण्ड</th>
+                      <th>ML</th>
                       <th>संख्या</th>
-                      <th>Quantity</th>
                       <th>टिप्पणी</th>
                     </tr>
                   </thead>
@@ -2112,8 +2112,8 @@ const BackDailyReport = () => {
                     <tr>
                       <th> क्र. सं.</th>
                       <th></th>
+                      <th>प्रकार</th>
                       <th>पार्टी का नाम</th>
-                      <th>पार्टी/पार्टनर</th>
                       <th>रकम</th>
                       <th>टिप्पणी</th>
                     </tr>

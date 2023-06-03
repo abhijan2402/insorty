@@ -46,13 +46,13 @@ const CommissionForm = ({
               className="smallinput wd-30"
             >
               <option value="COMMISSION">कमीशन</option>
-              <option value="FUT">FUT</option>
-              <option value="KHARCHA">KHARCHA</option>
-              <option value="PENALTY">PENALTY</option>
-              <option value="BEGAAR">BEGAAR</option>
-              <option value="MONTHLY">MONTHLY</option>
-              <option value="OTHERS">OTHERS</option>
-              <option value="SALARY">SALARY</option>
+              <option value="FUT">फूट</option>
+              <option value="KHARCHA">खर्चा</option>
+              <option value="PENALTY">पेनाल्टी</option>
+              <option value="BEGAAR">बेगार</option>
+              <option value="MONTHLY">मंथली</option>
+              <option value="OTHERS">अन्य</option>
+              <option value="SALARY">वेतन</option>
             </select>
           </div>
         </td>

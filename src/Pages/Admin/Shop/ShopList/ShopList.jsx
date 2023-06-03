@@ -13,7 +13,6 @@ const ShopList = () => {
   const { shopsRefetch, shops, shopsLoaded } = useGetShopsNSubadmins();
 
   const handelDelete = (id) => {
-    console.log(id);
     fetch(`https://insorty-backend-clone.vercel.app/admin/deleteShop/${id}`, {
       method: "DELETE",
       headers: {
@@ -23,7 +22,7 @@ const ShopList = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+
       });
   };
 
@@ -50,8 +49,7 @@ const ShopList = () => {
       }
   
       // Log the new token value and the status of the admin privileges
-      console.log(Shoptoken, "token changed");
-      console.log("Admin privileges:", isAdmin);
+
     } else {
       console.log("Token unchanged:", token);
     }
@@ -70,7 +68,7 @@ const ShopList = () => {
     const accountId = from.accountId.value;
     const shopType = from.shopType.value;
 
-    fetch("https://insorty-backend-clone.vercel.app/admin/createShop", {
+    fetch(`${process.env.REACT_APP_API_URL}/admin/createShop`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -90,11 +88,14 @@ const ShopList = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.success) {
           swal("Shop Added Successfully", "", "success");
           shopsRefetch();
         }
+      })
+      .catch((err)=>{
+        console.log(err)
       });
   };
 
@@ -124,7 +125,6 @@ const ShopList = () => {
                 shops.data.map((shop) => {
                   const myShop = shop?.shopId;
                   const myShopId = myShop?._id;
-                  console.log(shop);
 
                   return (
                     <tr className="p-4 text-left">

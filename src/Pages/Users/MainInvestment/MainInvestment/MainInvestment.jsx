@@ -72,7 +72,7 @@ const MainInvestment = () => {
                       className="dailyReportInput wd-30"
                       type="text"
                       name="brandName"
-                      value={"Previous Loans"}
+                      value={"पिछले ऋण"}
                       disabled
                     />
                   </td>
@@ -101,7 +101,7 @@ const MainInvestment = () => {
                       className="dailyReportInput wd-30"
                       type="text"
                       name="brandName"
-                      value={"Cash in Hand"}
+                      value={"शेष नकदी"}
                       disabled
                     />
                   </td>
@@ -155,7 +155,7 @@ const MainInvestment = () => {
                       className="dailyReportInput wd-30"
                       type="text"
                       name="brandName"
-                      value={"Reserve Amount"}
+                      value={"रिजर्व रकम"}
                       disabled
                     />
                   </td>

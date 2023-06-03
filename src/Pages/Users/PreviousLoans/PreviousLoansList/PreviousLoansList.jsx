@@ -129,11 +129,11 @@ const PreviousLoansList = () => {
             <tbody>
               {(parties &&
                 parties.length &&
-                parties?.map((prevLone, index) => {
+                parties?.filter((prev)=>prev.isActive===true).map((prevLone, index) => {
                   const id = prevLone?._id
 
                   return (
-                    <tr id="scrollableDiv" className={prevLone.isActive===true ? "" : "displayHidden"} key={prevLone?._id}>
+                    <tr id="scrollableDiv" >
                       <td>{index + 1}</td>
                       <td >
                         {role === "shop" && ShopType === "SHOP" && (

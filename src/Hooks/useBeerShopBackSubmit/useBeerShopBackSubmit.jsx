@@ -350,32 +350,32 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
                       title: "Success",
                       text: "Data Saved Successfully",
                     });
-                    // localStorage.removeItem("firstFront");
-                    // localStorage.removeItem("firstBack");
-                    // localStorage.removeItem("purchases");
-                    // localStorage.removeItem("mlForm");
-                    // localStorage.removeItem("credit");
-                    // localStorage.removeItem("expenses");
-                    // localStorage.removeItem("paymentRecieved");
-                    // localStorage.removeItem("borrow");
-                    // localStorage.removeItem("rml");
-                    // localStorage.removeItem("BeerForm");
-                    // localStorage.removeItem("bhejan");
-                    // localStorage.removeItem("drDate");
-                    // localStorage.removeItem("creditTotal");
-                    // localStorage.removeItem("salesMan");
-                    // localStorage.removeItem("totalExpenses");
-                    // localStorage.removeItem("totalFirstBack");
-                    // localStorage.removeItem("totalPaymentsRecieved");
-                    // localStorage.removeItem("rmlTotal");
-                    // localStorage.removeItem("purchasesTotal");
-                    // localStorage.removeItem("beerTotal");
-                    // localStorage.removeItem("pichlaBakaya");
-                    // localStorage.removeItem("commisionTotal");
-                    // localStorage.removeItem("totalBorrow");
-                    // localStorage.removeItem("beerFormTotal");
-                    // localStorage.removeItem("udhaariTotal");
-                    // localStorage.removeItem("mlFormTotal");
+                    localStorage.removeItem("firstFront");
+                    localStorage.removeItem("firstBack");
+                    localStorage.removeItem("purchases");
+                    localStorage.removeItem("mlForm");
+                    localStorage.removeItem("credit");
+                    localStorage.removeItem("expenses");
+                    localStorage.removeItem("paymentRecieved");
+                    localStorage.removeItem("borrow");
+                    localStorage.removeItem("rml");
+                    localStorage.removeItem("BeerForm");
+                    localStorage.removeItem("bhejan");
+                    localStorage.removeItem("drDate");
+                    localStorage.removeItem("creditTotal");
+                    localStorage.removeItem("salesMan");
+                    localStorage.removeItem("totalExpenses");
+                    localStorage.removeItem("totalFirstBack");
+                    localStorage.removeItem("totalPaymentsRecieved");
+                    localStorage.removeItem("rmlTotal");
+                    localStorage.removeItem("purchasesTotal");
+                    localStorage.removeItem("beerTotal");
+                    localStorage.removeItem("pichlaBakaya");
+                    localStorage.removeItem("commisionTotal");
+                    localStorage.removeItem("totalBorrow");
+                    localStorage.removeItem("beerFormTotal");
+                    localStorage.removeItem("udhaariTotal");
+                    localStorage.removeItem("mlFormTotal");
                   } else {
                     Swal.fire({
                       icon: "error",
@@ -403,6 +403,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
         setIsLoading(false);
       }
     }
+    
   };
 
   return {

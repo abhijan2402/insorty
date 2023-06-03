@@ -49,7 +49,7 @@ const Partners = ({ isBearShop }) => {
 
   if (isLoading) return <Loader></Loader>;
 
-  const filteredData = partnarData.filter((item) => {
+  const filteredData = partnarData && partnarData.length && partnarData.filter((item) => {
     let filterPass = true;
     const date = moment(item.date).format("DD/MM/YYYY");
 
@@ -179,7 +179,7 @@ const Partners = ({ isBearShop }) => {
                       </td>
                     </tr>
 
-                    {filteredData.map((partner, index) => {
+                    {partnarData && partnarData.length &&  filteredData.map((partner, index) => {
                       return (
                         <PartnerForm
                           key={index}

@@ -342,7 +342,7 @@ const FrontDetailsReport = () => {
             <tbody>
               <tr>
                 <td rowSpan={2}> क्र. सं.</td>
-                <th rowSpan={2}>Brand Name/ ब्राण्ड</th>
+                <th rowSpan={2}> ब्राण्ड</th>
                 <th colSpan={3}>औसत दर</th>
                 <th colSpan={3}>प्रारम्भिक स्टॉक</th>
                 <th colSpan={3}>आमद (खरीद)-दु.</th>
@@ -746,13 +746,13 @@ const FrontDetailsReport = () => {
             <thead>
               <tr>
                 <td className="tg-0lax " colSpan={50}>
-                  <span style={{ fontWeight: "bold" }}>English</span>
+                  <span style={{ fontWeight: "bold" }}>अंग्रेजी </span>
                 </td>
               </tr>
 
               <tr>
                 <td> क्र. सं.</td>
-                <th>Brand Name/ ब्राण्ड</th>
+                <th> ब्राण्ड</th>
                 <th>ml</th>
                 <th>औसत दर</th>
                 <th>प्रारम्भिक स्टॉक</th>

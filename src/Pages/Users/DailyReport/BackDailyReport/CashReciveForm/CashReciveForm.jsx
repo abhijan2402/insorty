@@ -70,10 +70,10 @@ const CashReciveForm = ({
               }}
               id=""
             >
-              <option value="PARTY">Party</option>
-              <option value="PARTNER">Partner</option>
-              <option value="BRANCH">Branch</option>
-              <option value="OTHER">Other</option>
+              <option value="PARTY">पार्टी</option>
+              <option value="PARTNER">पार्टनर</option>
+              <option value="BRANCH">ब्रांच</option>
+              <option value="OTHER">अन्य</option>
             </select>
           </div>
         </td>
@@ -87,7 +87,7 @@ const CashReciveForm = ({
               style={{
                 width: "20rem",
               }}
-              options={parties.length > 0 ? parties : ["no options"]}
+              options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
               className={item.type === "PARTY" ? "" : "displayHidden"}
               onChange={(event, value) => {
@@ -157,7 +157,7 @@ const CashReciveForm = ({
               style={{
                 width: "20rem",
               }}
-              options={branches.length > 0 ? branches : ["no options"]}
+              options={branches.length > 0 ? branches.filter((prev)=>prev.isActive===true) : ["no options"]}
               getOptionLabel={(option) => (option ? option.branchName : "")}
               className={item.type === "BRANCH" ? "" : "displayHidden"}
             
@@ -171,7 +171,6 @@ const CashReciveForm = ({
                   item.id = "";
                 }
 
-                console.log(branches);
               }}
               renderInput={(params) => (
                 <TextField
