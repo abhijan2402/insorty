@@ -546,7 +546,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
                                 (total = total + Number(curr.inflowOut30)),
@@ -737,7 +737,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput wd-8"
+                            className="smallinput wd-9"
                             name="averageRate"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
