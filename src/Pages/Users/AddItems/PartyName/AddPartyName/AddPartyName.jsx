@@ -9,7 +9,7 @@ const AddPartyName = ({refetch}) => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
-    fetch("https://insorty-backend-clone.vercel.app/shop/addParty", {
+    fetch("https://insorty-api.onrender.com/shop/addParty", {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify({ partyName: data.addPartyName }),

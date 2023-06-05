@@ -18,7 +18,7 @@ const FinalReport = () => {
     queryKey: ["monthlyFinalReport", "borrowedBottles", "extraBottles"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getMonthlyFinalReport",
+        "https://insorty-api.onrender.com/shop/getMonthlyFinalReport",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

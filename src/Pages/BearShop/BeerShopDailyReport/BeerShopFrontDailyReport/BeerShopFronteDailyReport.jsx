@@ -1117,6 +1117,7 @@ const FronteDailyReport = () => {
                                 className="smallinput"
                                 required
                                 min={0}
+                                disabled
                                 name="openingStockOtherMl"
                                 value={item.openingStockOtherMl}
                                 onChange={(e) => midFormOnChange(e, index)}
@@ -1128,9 +1129,9 @@ const FronteDailyReport = () => {
                                 className="smallinput"
                                 required
                                 min={0}
+                                disabled
                                 name="openingStock30"
                                 value={item.openingStock30}
-                                disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1302,6 +1303,7 @@ const FronteDailyReport = () => {
                                 className="smallinput"
                                 required
                                 min={0}
+                                disabled
                                 name="send30"
                                 value={item.send30}
                                 onChange={(e) => midFormOnChange(e, index)}

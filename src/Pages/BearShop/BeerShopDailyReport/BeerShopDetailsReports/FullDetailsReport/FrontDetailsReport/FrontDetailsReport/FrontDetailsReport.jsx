@@ -86,7 +86,7 @@ FrontPageRegularData.map((item) => {
   let quan330=[]
 
   const deletePage = (id) =>{
-    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteBarFrontPageData`, {
+    fetch(`https://insorty-api.onrender.com/shop/deleteBarFrontPageData`, {
       method: "DELETE",
       body: JSON.stringify({ barFrontPageId: id }),
       headers: { "Content-Type": "application/json", cookie_token: token },

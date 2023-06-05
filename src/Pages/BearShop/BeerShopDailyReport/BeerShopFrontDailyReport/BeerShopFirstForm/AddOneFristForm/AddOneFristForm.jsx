@@ -166,6 +166,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 className="smallinput"
                 name="openingStock30"
                 value={beerFront.openingStock750}
+                disabled
               />
             </div>
           </div>

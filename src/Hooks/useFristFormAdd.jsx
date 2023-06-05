@@ -1039,7 +1039,7 @@ const useFristFormAdd = () => {
 
     try {
       const api1 = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/addBackPageReportData",
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
         {
           method: "POST",
           headers: {
@@ -1055,7 +1055,7 @@ const useFristFormAdd = () => {
       );
 
       const api2 = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/addBackPageReportData",
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
         {
           method: "POST",
           headers: {
@@ -1070,7 +1070,7 @@ const useFristFormAdd = () => {
         }
       );
       const api3 = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/addBackPageReportData",
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
         {
           method: "POST",
           headers: {
@@ -1085,7 +1085,7 @@ const useFristFormAdd = () => {
         }
       );
       const api4 = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/addBackPageReportData",
+        "https://insorty-api.onrender.com/shop/addBackPageReportData",
         {
           method: "POST",
           headers: {

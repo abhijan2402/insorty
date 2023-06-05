@@ -40,7 +40,7 @@ const AddBrandList = ({ refetch }) => {
       sizes.push(Number(element.sizeOfBottle))
     });
     const token = localStorage.getItem("token");
-    fetch("https://insorty-backend-clone.vercel.app/shop/addLiquor", {
+    fetch("https://insorty-api.onrender.com/shop/addLiquor", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

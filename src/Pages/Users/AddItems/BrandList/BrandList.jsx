@@ -16,7 +16,7 @@ const BrandList = () => {
 
   const fetchData = async () => {
     await axios({
-      url: `${process.env.REACT_APP_API_URL}/shop/getAllParentLiquors?page=${page}&pagesize=30`,
+      url: `${process.env.REACT_APP_API_URL}/admin/getAllGlobalParentLiquors?page=${page}&pagesize=30`,
       method: "get",
       headers: {
         "Content-Type": "application/json",

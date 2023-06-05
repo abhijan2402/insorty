@@ -8,7 +8,7 @@ const AddBranchName = ({ refetch }) => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    fetch("https://insorty-backend-clone.vercel.app/shop/addBranch", {
+    fetch("https://insorty-api.onrender.com/shop/addBranch", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

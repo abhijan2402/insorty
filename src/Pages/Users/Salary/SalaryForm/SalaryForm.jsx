@@ -33,7 +33,7 @@ const SalaryForm = () => {
     queryKey: ["salareyDataList"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getEmployeeSalaryData?employeeId=${employeeId}`,
+        `https://insorty-api.onrender.com/shop/getEmployeeSalaryData?employeeId=${employeeId}`,
         {
           method: "GET",
           headers: {
@@ -72,7 +72,7 @@ const SalaryForm = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/addEmployeeSalaryData",
+        "https://insorty-api.onrender.com/shop/addEmployeeSalaryData",
         {
           method: "POST",
           body: JSON.stringify({

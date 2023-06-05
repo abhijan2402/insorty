@@ -8,7 +8,7 @@ const useGetShopsNSubadmins = () => {
         queryKey: ["Shops"],
         queryFn: async () => {
             const res = await fetch(
-                "https://insorty-backend-clone.vercel.app/admin/getMyShops",
+                "https://insorty-api.onrender.com/admin/getMyShops",
                 {
                     method: "GET",
                     headers: { "Content-Type": "application/json", cookie_token: token },
@@ -24,7 +24,7 @@ const useGetShopsNSubadmins = () => {
         queryKey: ["subAdmins"],
         queryFn: async () => {
             const res = await fetch(
-                "https://insorty-backend-clone.vercel.app/admin/getAllSubAdmins",
+                "https://insorty-api.onrender.com/admin/getAllSubAdmins",
                 {
                     method: "GET",
                     headers: { "Content-Type": "application/json", cookie_token: token },

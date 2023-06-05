@@ -231,12 +231,12 @@ const UseBeerShopFront = () => {
 
   const calPrice30 = (stock1, stock2, stock3, price1, price2, price3) => {
     const total =
-      Number(stock1) * Number(price1) +
-      Number(stock2) * Number(price2) +
-      Number(stock3) * Number(price3);
+     ( Number(Number(stock1 ? stock1 : 0) * Number(price1 ? price1 : 0)) || 0 )+
+      (Number(Number(stock2 ? stock2 : 0) * Number(price2 ? price2 : 0)) || 0) +
+      (Number(Number(stock3 ? stock3 : 0) * Number(price3 ? price3 : 0)) || 0);
     const totalStock = calStock30(stock1, stock2, stock3);
 
-    return Number(total / totalStock).toFixed(2);
+    return (Number(total / totalStock) || 0).toFixed(2);
   };
 
   const fristFormOnChange = (e, index) => {
@@ -412,7 +412,7 @@ const UseBeerShopFront = () => {
             Number(obj.inflowOut750 ? obj.inflowOut750 : 0) +
             Number(obj.openingStock750 ? obj.openingStock750 : 0);
           const stock = Number(obj.initial750 ? obj.initial750 : 0) * Number(obj.openingStock750 ? obj.openingStock750 : 0);
-          obj.averageRate750 = (buyShop + buyOut + stock) / totalStock;
+          obj.averageRate750 = Number((buyShop + buyOut + stock) / totalStock) || 0;
         }
         return obj;
       } else return returned;
@@ -436,7 +436,7 @@ const UseBeerShopFront = () => {
             Number(obj.openingStock375);
 
           const stock = Number(obj.initial375) * Number(obj.openingStock375);
-          obj.averageRate375 = (buyShop + buyOut + stock) / totalStock;
+          obj.averageRate375 = Number((buyShop + buyOut + stock) / totalStock) || 0;
         }
 
         return obj;
@@ -461,7 +461,7 @@ const UseBeerShopFront = () => {
             Number(obj.openingStock180);
 
           const stock = Number(obj.initial180) * Number(obj.openingStock180);
-          obj.averageRate180 = (buyShop + buyOut + stock) / totalStock;
+          obj.averageRate180 = Number((buyShop + buyOut + stock) / totalStock) || 0;
         }
         return obj;
       } else return returned;
@@ -498,7 +498,7 @@ const UseBeerShopFront = () => {
             Number(obj.openingStock30 ? obj.openingStock30 : 0);
 
           const stock = Number(obj.initial30 ? obj.initial30 : 0) * Number(obj.openingStock30 ? obj.openingStock30 : 0);
-          obj.averageRate30 = (buyShop + buyOut + stock) / totalStock;
+          obj.averageRate30 = Number((buyShop + buyOut + stock) / totalStock) || 0;
         }
         return obj;
       } else return returned;
@@ -1111,9 +1111,8 @@ const UseBeerShopFront = () => {
     const pegCount = beerShopMid[index].ml / 30;
 
     const calPegPrice = (a, b, c) => {
-      const d = Number(a) * Number(b);
-      console.log(d,c,"d and c")
-      return Number(d) / Number(c);
+      const d =Number( Number(a) * Number(b)) || 0;
+      return Number(Number(d) / Number(c)) || 0;
     };
 
     const calPegs = (a,b)=>{
@@ -1139,7 +1138,7 @@ const UseBeerShopFront = () => {
           e.target.name === "openingStockOtherMl"
         ) {
           obj.inflowPurchase30 =
-            Number(obj.inflowPurchaseOtherMl) * Number(pegCount);
+            Number(obj.inflowPurchaseOtherMl ? obj.inflowPurchaseOtherMl : 0) * Number(pegCount);
           obj.inflowPurchaseFromOutside30 =
             Number(obj.inflowPurchaseFromOutsideOtherMl) * Number(pegCount);
           obj.inflowCredit30 =
@@ -1201,19 +1200,19 @@ const UseBeerShopFront = () => {
           e.target.name === "buyRateShopOutOtherMl"
         ) {
           const buyShop =
-            Number(obj.inflowPurchaseOtherMl) *
-            Number(obj.buyRateShopBarOtherMl);
+           Number( Number(obj.inflowPurchaseOtherMl ? obj.inflowPurchaseOtherMl : 0) *
+            Number(obj.buyRateShopBarOtherMl ? obj.buyRateShopBarOtherMl : 0)) || 0;
           const buyOut =
-            Number(obj.inflowPurchaseFromOutsideOtherMl) *
-            Number(obj.buyRateShopOutOtherMl);
+            Number(Number(obj.inflowPurchaseFromOutsideOtherMl ? obj.inflowPurchaseFromOutsideOtherMl : 0) *
+            Number(obj.buyRateShopOutOtherMl ? obj.buyRateShopOutOtherMl : 0)) || 0;
           const totalStock =
-            Number(obj.inflowPurchaseOtherMl) +
-            Number(obj.inflowPurchaseFromOutsideOtherMl) +
-            Number(obj.openingStockOtherMl);
+            Number(obj.inflowPurchaseOtherMl ? obj.inflowPurchaseOtherMl : 0) +
+            Number(obj.inflowPurchaseFromOutsideOtherMl ? obj.inflowPurchaseFromOutsideOtherMl : 0) +
+            Number(obj.openingStockOtherMl ? obj.openingStockOtherMl : 0);
 
           const stock =
-            Number(obj.initialOtherMl) * Number(obj.openingStockOtherMl);
-          obj.averageRateOtherMl = (buyShop + buyOut + stock) / totalStock;
+            Number(Number(obj.initialOtherMl ? obj.initialOtherMl : 0) * Number(obj.openingStockOtherMl ? obj.openingStockOtherMl : 0)) || 0;
+          obj.averageRateOtherMl = Number((buyShop + buyOut + stock) / totalStock) || 0;
         }
         return obj;
       } else return returned;
@@ -1235,17 +1234,17 @@ const UseBeerShopFront = () => {
           e.target.name === "buyRateShopOutOtherMl"
         ) {
           const buyShop =
-            Number(obj.inflowPurchase30) * Number(obj.buyRateShopBar30);
+            Number(Number(obj.inflowPurchase30 ? obj.inflowPurchase30 : 0) * Number(obj.buyRateShopBar30 ? obj.buyRateShopBar30 : 0)) || 0;
           const buyOut =
-            Number(obj.inflowPurchaseFromOutside30) *
-            Number(obj.buyRateShopOut30);
+            Number(Number(obj.inflowPurchaseFromOutside30 ? obj.inflowPurchaseFromOutside30 : 0) *
+            Number(obj.buyRateShopOut30 ? obj.buyRateShopOut30 : 0)) || 0;
           const totalStock =
-            Number(obj.inflowPurchase30) +
-            Number(obj.inflowPurchaseFromOutside30) +
-            Number(obj.openingStock30);
+            Number(obj.inflowPurchase30 ? obj.inflowPurchase30 : 0) +
+            Number(obj.inflowPurchaseFromOutside30 ? obj.inflowPurchaseFromOutside30 : 0) +
+            Number(obj.openingStock30 ? obj.openingStock30 : 0);
 
-          const stock = Number(obj.initial30) * Number(obj.openingStock30);
-          obj.averageRate30 = (buyShop + buyOut + stock) / totalStock;
+          const stock = Number(Number(obj.initial30 ? obj.initial30 : 0) * Number(obj.openingStock30 ? obj.openingStock30 : 0)) || 0;
+          obj.averageRate30 = Number((buyShop + buyOut + stock) / totalStock)||0;
         }
         return obj;
       } else return returned;

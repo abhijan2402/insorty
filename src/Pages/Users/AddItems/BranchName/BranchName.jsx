@@ -22,7 +22,7 @@ const BranchName = () => {
     queryKey: ["BranchNameData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getAllBranches",
+        "https://insorty-api.onrender.com/shop/getAllBranches",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -35,7 +35,7 @@ const BranchName = () => {
 
   const handelDelete = (id) => {
     console.log("delete", id);
-    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteBranch`, {
+    fetch(`https://insorty-api.onrender.com/shop/deleteBranch`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify({ branchId: id }),

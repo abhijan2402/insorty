@@ -58,7 +58,7 @@ const FrontDetailsReport = () => {
  
 
   const deletePage = (id) =>{
-    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteFrontPageData`, {
+    fetch(`https://insorty-api.onrender.com/shop/deleteFrontPageData`, {
       method: "DELETE",
       body: JSON.stringify({ frontPageId: id }),
       headers: { "Content-Type": "application/json", cookie_token: token },

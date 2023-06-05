@@ -65,7 +65,7 @@ const BackDetailReport = () => {
   }
 
   const deletePage = (id) =>{
-    fetch(`https://insorty-backend-clone.vercel.app/shop/deleteBackPageData`, {
+    fetch(`https://insorty-api.onrender.com/shop/deleteBackPageData`, {
       method: "DELETE",
       body: JSON.stringify({ backPageId: id }),
       headers: { "Content-Type": "application/json", cookie_token: token },

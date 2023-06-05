@@ -16,7 +16,7 @@ const StockLanding = () => {
     queryKey: ["PartyInfo"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getAllParties",
+        "https://insorty-api.onrender.com/shop/getAllParties",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

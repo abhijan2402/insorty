@@ -13,7 +13,7 @@ const AddSendFormat = () => {
       equity: 0,
     };
 
-    fetch("https://insorty-backend-clone.vercel.app/shop/addPartner", {
+    fetch("https://insorty-api.onrender.com/shop/addPartner", {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify(data),

@@ -36,7 +36,7 @@ const Partners = ({ isBearShop }) => {
     queryKey: ["partnarData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getAllPartners",
+        "https://insorty-api.onrender.com/shop/getAllPartners",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },

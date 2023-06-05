@@ -27,7 +27,7 @@ const Payments = () => {
     queryKey: ["paymentData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getShopAccount",
+        "https://insorty-api.onrender.com/shop/getShopAccount",
         {
           method: "GET",
           headers: {
@@ -61,7 +61,7 @@ console.log(from.description)
       },
     ];
 
-    fetch("https://insorty-backend-clone.vercel.app/shop/addShopAccount", {
+    fetch("https://insorty-api.onrender.com/shop/addShopAccount", {
       method: "POST",
       body: JSON.stringify({
         entries: shopAccount,
@@ -95,7 +95,7 @@ console.log(from.description)
 
   const handelDelete  = async (id) => {
     fetch(
-      `https://insorty-backend-clone.vercel.app/shop/deleteShopAccount`,
+      `https://insorty-api.onrender.com/shop/deleteShopAccount`,
       {
         method: "DELETE",
         headers: {

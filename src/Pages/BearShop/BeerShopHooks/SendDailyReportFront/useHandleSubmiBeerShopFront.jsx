@@ -275,7 +275,7 @@ const useHandleSubmiBeerShopFront = () => {
       setIsLoading(true);
       try {
         const api1 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBackPageReportData",
+          "https://insorty-api.onrender.com/shop/addBackPageReportData",
           {
             method: "POST",
             headers: {
@@ -296,7 +296,7 @@ const useHandleSubmiBeerShopFront = () => {
         );
 
         const api2 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addFrontPageData",
+          "https://insorty-api.onrender.com/shop/addFrontPageData",
           {
             method: "POST",
             headers: {
@@ -321,7 +321,7 @@ const useHandleSubmiBeerShopFront = () => {
         );
 
         const api3 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBarSupplementsData",
+          "https://insorty-api.onrender.com/shop/addBarSupplementsData",
           {
             method: "POST",
             headers: {
@@ -354,7 +354,7 @@ const useHandleSubmiBeerShopFront = () => {
               };
 
               fetch(
-                "https://insorty-backend-clone.vercel.app/shop/addBarFrontPageData",
+                "https://insorty-api.onrender.com/shop/addBarFrontPageData",
                 {
                   method: "POST",
                   headers: {
@@ -378,6 +378,7 @@ const useHandleSubmiBeerShopFront = () => {
                     localStorage.removeItem("pegForm");
                     localStorage.removeItem("smallPegForm");
                     localStorage.removeItem("barSuplements");
+                    
                   }
                 });
             } else {

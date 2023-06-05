@@ -13,7 +13,7 @@ const ShopList = () => {
   const { shopsRefetch, shops, shopsLoaded } = useGetShopsNSubadmins();
 
   const handelDelete = (id) => {
-    fetch(`https://insorty-backend-clone.vercel.app/admin/deleteShop/${id}`, {
+    fetch(`https://insorty-api.onrender.com/admin/deleteShop/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -57,6 +57,7 @@ const ShopList = () => {
   
 
   const addNewShop = (e) => {
+    console.log("clicked")
     e.preventDefault();
     const from = e.target;
 
@@ -86,15 +87,16 @@ const ShopList = () => {
 
       }),
     })
-      .then((res) => res.json())
+     
       .then((data) => {
-        
+        console.log(data)
         if (data.success) {
           swal("Shop Added Successfully", "", "success");
           shopsRefetch();
         }
       })
       .catch((err)=>{
+        swal("some error occurred");
         console.log(err)
       });
   };

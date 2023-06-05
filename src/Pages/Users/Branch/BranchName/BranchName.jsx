@@ -16,7 +16,7 @@ const BranchName = () => {
     queryKey: ["branches"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getAllBranches",
+        "https://insorty-api.onrender.com/shop/getAllBranches",
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -31,7 +31,7 @@ const BranchName = () => {
     e.preventDefault();
     const branchName = e.target.branchName.value;
 
-    fetch("https://insorty-backend-clone.vercel.app/shop/addBranch", {
+    fetch("https://insorty-api.onrender.com/shop/addBranch", {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify({ branchName }),

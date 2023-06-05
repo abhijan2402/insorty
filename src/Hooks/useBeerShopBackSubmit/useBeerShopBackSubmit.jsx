@@ -133,7 +133,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
       setIsLoading(true);
       try {
         const api1 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addPurchaseOutsideData",
+          "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
           {
             method: "POST",
             headers: {
@@ -150,7 +150,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
         );
 
         const api2 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addPurchaseBorrowData",
+          "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
           {
             method: "POST",
             headers: {
@@ -167,7 +167,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
         );
 
         const api3 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addTotalExpensesData",
+          "https://insorty-api.onrender.com/shop/addTotalExpensesData",
           {
             method: "POST",
             headers: {
@@ -184,7 +184,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
         );
 
         const api4 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBorrowedData",
+          "https://insorty-api.onrender.com/shop/addBorrowedData",
           {
             method: "POST",
             headers: {
@@ -201,7 +201,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
         );
 
         const api5 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBorrowedCashReturnData",
+          "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
           {
             method: "POST",
             headers: {
@@ -218,7 +218,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
         );
 
         const api6 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addFoodVegetableData",
+          "https://insorty-api.onrender.com/shop/addFoodVegetableData",
           {
             method: "POST",
             headers: {
@@ -235,7 +235,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
         );
 
         const api7 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBarCommissionData",
+          "https://insorty-api.onrender.com/shop/addBarCommissionData",
           {
             method: "POST",
             headers: {
@@ -252,7 +252,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
         );
 
         const api8 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addFinalReportData",
+          "https://insorty-api.onrender.com/shop/addFinalReportData",
           {
             method: "POST",
             headers: {
@@ -331,7 +331,7 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
               console.log(BackPage,'bck')
 
               fetch(
-                "https://insorty-backend-clone.vercel.app/shop/addBackPageData",
+                "https://insorty-api.onrender.com/shop/addBackPageData",
                 {
                   method: "POST",
                   headers: {
@@ -350,32 +350,32 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
                       title: "Success",
                       text: "Data Saved Successfully",
                     });
-                    localStorage.removeItem("firstFront");
-                    localStorage.removeItem("firstBack");
-                    localStorage.removeItem("purchases");
-                    localStorage.removeItem("mlForm");
-                    localStorage.removeItem("credit");
-                    localStorage.removeItem("expenses");
-                    localStorage.removeItem("paymentRecieved");
-                    localStorage.removeItem("borrow");
-                    localStorage.removeItem("rml");
-                    localStorage.removeItem("BeerForm");
-                    localStorage.removeItem("bhejan");
-                    localStorage.removeItem("drDate");
-                    localStorage.removeItem("creditTotal");
-                    localStorage.removeItem("salesMan");
-                    localStorage.removeItem("totalExpenses");
-                    localStorage.removeItem("totalFirstBack");
-                    localStorage.removeItem("totalPaymentsRecieved");
-                    localStorage.removeItem("rmlTotal");
-                    localStorage.removeItem("purchasesTotal");
-                    localStorage.removeItem("beerTotal");
-                    localStorage.removeItem("pichlaBakaya");
-                    localStorage.removeItem("commisionTotal");
-                    localStorage.removeItem("totalBorrow");
-                    localStorage.removeItem("beerFormTotal");
-                    localStorage.removeItem("udhaariTotal");
-                    localStorage.removeItem("mlFormTotal");
+                    // localStorage.removeItem("firstFront");
+                    // localStorage.removeItem("firstBack");
+                    // localStorage.removeItem("purchases");
+                    // localStorage.removeItem("mlForm");
+                    // localStorage.removeItem("credit");
+                    // localStorage.removeItem("expenses");
+                    // localStorage.removeItem("paymentRecieved");
+                    // localStorage.removeItem("borrow");
+                    // localStorage.removeItem("rml");
+                    // localStorage.removeItem("BeerForm");
+                    // localStorage.removeItem("bhejan");
+                    // localStorage.removeItem("drDate");
+                    // localStorage.removeItem("creditTotal");
+                    // localStorage.removeItem("salesMan");
+                    // localStorage.removeItem("totalExpenses");
+                    // localStorage.removeItem("totalFirstBack");
+                    // localStorage.removeItem("totalPaymentsRecieved");
+                    // localStorage.removeItem("rmlTotal");
+                    // localStorage.removeItem("purchasesTotal");
+                    // localStorage.removeItem("beerTotal");
+                    // localStorage.removeItem("pichlaBakaya");
+                    // localStorage.removeItem("commisionTotal");
+                    // localStorage.removeItem("totalBorrow");
+                    // localStorage.removeItem("beerFormTotal");
+                    // localStorage.removeItem("udhaariTotal");
+                    // localStorage.removeItem("mlFormTotal");
                   } else {
                     Swal.fire({
                       icon: "error",
@@ -403,6 +403,45 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
         setIsLoading(false);
       }
     }
+
+    console.log({
+              
+      date: drDate,
+      salesmen: salesMan,
+      shopType: "BAR",
+      englishBar: Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0),
+      beerBar: Number(beerFirst ? beerFirst: 0) +
+      Number(beerSecond ? beerSecond : 0),
+      barSupplements: Number(barSuplementsTotal?barSuplementsTotal:0),
+      extraThings: Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0),
+      
+      totalSell: Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+      Number(beerFirst ? beerFirst: 0) +
+      Number(beerSecond ? beerSecond : 0) +
+      Number(barSuplementsTotal?barSuplementsTotal:0) -
+      Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0),
+
+      borrowedCashReturn: Number(localStorage.getItem("totalPaymentsRecieved")),
+      intoAccount: Number(intoAccountState),
+      borrowed: Number(udhaariTotal ? udhaariTotal : 0),
+      commission: Number(commisionTotal ? commisionTotal : 0),
+      previousDues: Number(pichla),
+
+      todaysPayment: Number(paidDues),
+
+      restAmount: Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+      Number(beerFirst ? beerFirst: 0) +
+      Number(beerSecond ? beerSecond : 0) +
+      Number(barSuplementsTotal?barSuplementsTotal:0) -
+      Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0) +
+      Number(localStorage.getItem("totalPaymentsRecieved")) -
+      Number(intoAccountState) -
+      Number(udhaariTotal ? udhaariTotal : 0) -
+      Number(commisionTotal ? commisionTotal : 0) +
+      pichla -
+      Number(paidDues)
+    
+  })
     
   };
 

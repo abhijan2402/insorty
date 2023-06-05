@@ -298,7 +298,7 @@ const useHandelSubmitBackAPI = (shopType) => {
       setIsLoading(true);
       try {
         const api2 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBackPageRMLData",
+          "https://insorty-api.onrender.com/shop/addBackPageRMLData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -313,7 +313,7 @@ const useHandelSubmitBackAPI = (shopType) => {
           }
         );
         const api4 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addTotalExpensesData",
+          "https://insorty-api.onrender.com/shop/addTotalExpensesData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -330,7 +330,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api8 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBorrowedData",
+          "https://insorty-api.onrender.com/shop/addBorrowedData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -347,7 +347,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api9 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addFinalReportData",
+          "https://insorty-api.onrender.com/shop/addFinalReportData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -373,7 +373,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api3 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addPurchaseOutsideData",
+          "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -390,7 +390,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api5 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBorrowedCashReturnData",
+          "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -407,7 +407,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api7 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addSendData",
+          "https://insorty-api.onrender.com/shop/addSendData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -423,7 +423,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api6 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addPurchaseBorrowData",
+          "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
           {
             method: "POST",
             body: JSON.stringify({
@@ -440,7 +440,7 @@ const useHandelSubmitBackAPI = (shopType) => {
         );
 
         const api1 = fetch(
-          "https://insorty-backend-clone.vercel.app/shop/addBackPageReportData",
+          "https://insorty-api.onrender.com/shop/addBackPageReportData",
           {
             method: "POST",
             headers: {
@@ -488,7 +488,7 @@ const useHandelSubmitBackAPI = (shopType) => {
                 finalReport: data[8].data._id,
               };
 
-              fetch("https://insorty-backend-clone.vercel.app/shop/addBackPageData", {
+              fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
                 method: "POST",
                 headers: {
                   "Content-Type": "application/json",

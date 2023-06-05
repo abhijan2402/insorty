@@ -14,7 +14,7 @@ const Borrow = () => {
     queryKey: ["parties"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getAllParties",
+        "https://insorty-api.onrender.com/shop/getAllParties",
         {
           method: "GET",
           headers: {

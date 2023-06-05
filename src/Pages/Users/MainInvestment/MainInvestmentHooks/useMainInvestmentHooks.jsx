@@ -243,7 +243,7 @@ const useMainInvestmentHooks = () => {
  
 
   const handleSave = useCallback(() => {
-    fetch("https://insorty-backend-clone.vercel.app/shop/updateMainInvestmentPage", {
+    fetch("https://insorty-api.onrender.com/shop/updateMainInvestmentPage", {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
       body: JSON.stringify(data),

@@ -10,7 +10,7 @@ const Extra = () => {
     queryKey: ["extraData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-backend-clone.vercel.app/shop/getExtraThings",
+        "https://insorty-api.onrender.com/shop/getExtraThings",
         {
           method: "POST",
           headers: { "Content-Type": "application/json", cookie_token: token },

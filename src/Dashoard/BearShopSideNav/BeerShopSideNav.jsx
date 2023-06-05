@@ -61,7 +61,7 @@ const SideNav = () => {
                 to="/user/bearshop/dailyreport"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Daily Report / दैनिक रिपोर्ट
+                 दैनिक रिपोर्ट
               </NavLink>
             </li>
 

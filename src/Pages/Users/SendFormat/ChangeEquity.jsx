@@ -33,7 +33,7 @@ const ChangeEquity = ({ data }) => {
         text: "Check total percentage",
       });
     } else {
-      fetch("https://insorty-backend-clone.vercel.app/shop/updatePartnerEquity", {
+      fetch("https://insorty-api.onrender.com/shop/updatePartnerEquity", {
         method: "POST",
         headers: { "Content-Type": "application/json", cookie_token: token },
         body: JSON.stringify({ partners: listArr }),

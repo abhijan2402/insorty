@@ -23,7 +23,7 @@ const SendFormat = ({ isBearShop }) => {
   const role = jwtDecode(localStorage.getItem("token")).role;
 
   const deletePartner = (id) => {
-    fetch(`https://insorty-backend-clone.vercel.app/shop/deletePartner`, {
+    fetch(`https://insorty-api.onrender.com/shop/deletePartner`, {
       method: "DELETE",
       body: JSON.stringify({ partnerId: id }),
       headers: { "Content-Type": "application/json", cookie_token: token },

@@ -8,7 +8,7 @@ function useGetDailyReport(date) {
     queryKey: ["RMLData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getBackPageRMLData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `https://insorty-api.onrender.com/shop/getBackPageRMLData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -26,7 +26,7 @@ function useGetDailyReport(date) {
     queryKey: ["PurchaseOutsideData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getPurchaseOutsideData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `https://insorty-api.onrender.com/shop/getPurchaseOutsideData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -40,7 +40,7 @@ function useGetDailyReport(date) {
     queryKey: ["TotalExpensesData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getTotalExpensesData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `https://insorty-api.onrender.com/shop/getTotalExpensesData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -57,7 +57,7 @@ function useGetDailyReport(date) {
     queryKey: ["BorrowedCashReturnData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getBorrowedCashReturnData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `https://insorty-api.onrender.com/shop/getBorrowedCashReturnData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -74,7 +74,7 @@ function useGetDailyReport(date) {
     queryKey: ["PurchaseBorrowData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getPurchaseBorrowData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `https://insorty-api.onrender.com/shop/getPurchaseBorrowData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -88,7 +88,7 @@ function useGetDailyReport(date) {
     queryKey: ["SendData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getSendData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `https://insorty-api.onrender.com/shop/getSendData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -106,7 +106,7 @@ function useGetDailyReport(date) {
     queryKey: ["BorrowedData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getBorrowedData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `https://insorty-api.onrender.com/shop/getBorrowedData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -123,7 +123,7 @@ function useGetDailyReport(date) {
     queryKey: ["FinalReportData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getFinalReportData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `https://insorty-api.onrender.com/shop/getFinalReportData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -140,7 +140,7 @@ function useGetDailyReport(date) {
     queryKey: ["FrontPageData"],
     queryFn: async () => {
       const res = await fetch(
-        `https://insorty-backend-clone.vercel.app/shop/getFrontPageData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
+        `https://insorty-api.onrender.com/shop/getFrontPageData?from=${moment(date).format('DD MMMM YYYY')}&to=${moment(date).format('DD MMMM YYYY')}&page=0&pagesize=200`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
