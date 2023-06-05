@@ -426,7 +426,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
                                 (total = total + Number(curr.openingStock750)),
@@ -485,7 +485,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
                                 (total = total + Number(curr.inflowShop30)),
@@ -608,7 +608,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
                                 (total = total + Number(curr.inflowCredit30)),
@@ -665,7 +665,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
                                 (total = total + Number(curr.send30)),
@@ -683,7 +683,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-8"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
                                 (total = total + Number(curr.sumRemaining30)),
@@ -701,7 +701,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-8"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
                                 (total = total + Number(curr.closingStock30)),
@@ -718,7 +718,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-8"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
                                 (total = total + Number(curr.sales30)),
@@ -737,7 +737,7 @@ const FronteDailyReport = () => {
                           <input
                             disabled
                             type="number"
-                            className="smallinput"
+                            className="smallinput wd-8"
                             name="averageRate"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -1114,7 +1114,7 @@ const FronteDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput wd"
                                 required
                                 min={0}
                                 disabled
@@ -1126,7 +1126,7 @@ const FronteDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput  wd-8"
                                 required
                                 min={0}
                                 disabled
@@ -1156,10 +1156,10 @@ const FronteDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput  wd-8"
                                 required
                                 min={0}
-                                name="inflowPurchase30"
+                                name="inflowPurchase30 "
                                 value={item.inflowPurchase30}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
@@ -1214,7 +1214,7 @@ const FronteDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput  wd-8"
                                 required
                                 min={0}
                                 name="inflowPurchaseFromOutside30"
@@ -1271,7 +1271,7 @@ const FronteDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput  wd-8"
                                 required
                                 min={0}
                                 name="inflowCredit30"
@@ -1300,7 +1300,7 @@ const FronteDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput  wd-8"
                                 required
                                 min={0}
                                 disabled
@@ -1317,7 +1317,7 @@ const FronteDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput  wd-8"
                                 required
                                 min={0}
                                 name="sumRemaining30"
@@ -1334,7 +1334,7 @@ const FronteDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput  wd-8"
                                 required
                                 min={0}
                                 name="closingStock30"
@@ -1349,7 +1349,7 @@ const FronteDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="number"
-                                className="smallinput"
+                                className="smallinput  wd-8"
                                 required
                                 min={0}
                                 name="sale30"
@@ -1381,7 +1381,7 @@ const FronteDailyReport = () => {
                           <div className="form-control">
                             <input
                               type="number"
-                              className="semiSmallInput"
+                              className="semiSmallInput  wd-9"
                               required
                               min={0}
                               name="total"
@@ -1429,7 +1429,7 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          className="smallinput"
+                          className="smallinput  wd-8"
                           name="openingStock30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
@@ -1463,7 +1463,7 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          className="smallinput"
+                          className="smallinput  wd-8"
                           name="inflowPurchase30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
@@ -1501,7 +1501,7 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          className="smallinput"
+                          className="smallinput  wd-8"
                           name="inflowPurchaseFromOutside30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
@@ -1538,7 +1538,7 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          className="smallinput"
+                          className="smallinput  wd-8"
                           name="inflowCredit30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
@@ -1569,7 +1569,7 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          className="smallinput"
+                          className="smallinput  wd-8"
                           name="sending30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
@@ -1587,7 +1587,7 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          className="smallinput"
+                          className="smallinput  wd-8"
                           name="sumRemainder30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
@@ -1605,7 +1605,7 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          className="smallinput"
+                          className="smallinput  wd-8"
                           name="closingStock30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
@@ -1622,7 +1622,7 @@ const FronteDailyReport = () => {
                       <div className="form-control">
                         <input
                           type="number"
-                          className="smallinput"
+                          className="smallinput  wd-8"
                           name="sale30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
@@ -1640,7 +1640,7 @@ const FronteDailyReport = () => {
                     <div className="form-control">
                       <input
                         type="number"
-                        className="semiSmallInput"
+                        className="semiSmallInput  wd-9"
                         name="total"
                         value={beerShopMid.reduce(
                           (total, curr) => (total = total + Number(curr.total)),
