@@ -109,7 +109,6 @@ const BackDetailReport = () => {
       })
     : BackPageReportRegularSize;
 
-    console.log(BackPageReportRegularSize)
 
   filteredRegularData.map((item) => {
     item.pages.map((pg) => {
@@ -307,11 +306,11 @@ const BackDetailReport = () => {
       <div ref={container}>
         {/* ====================1==================== */}
 
-        <div className="overflow-x-auto m-4 p-4">
+        <div className="overflow-x-auto m-4 p-4 flex">
           <table className="removeCommonWSpace">
             <tbody>
               <tr>
-                <td rowSpan={2}> क्र. सं.</td>
+                <td rowSpan={2} className="wd-5" style={{ fontWeight: "bold" }}> क्र.सं.</td>
                 <th rowSpan={2}>ब्राण्ड</th>
                 <th colSpan={3}>औसत दर</th>
                 <th colSpan={3}>प्रारम्भिक स्टॉक</th>
@@ -451,7 +450,8 @@ const BackDetailReport = () => {
 
               {/* ========================== */}
 
-              {filteredRegularData && filteredRegularData.length && filteredRegularData.map((regularData, index) => {
+              {filteredRegularData && filteredRegularData.length !== undefined && filteredRegularData.map((regularData, index) => {
+                
                 return (
                   <RegularData
                     key={index}
@@ -472,9 +472,9 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={2}>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total
                 </td>
-                <td className="tg-0lax"> 0</td>
-                <td className="tg-0lax"> 0</td>
-                <td className="tg-0lax"> 0</td>
+                <td className="tg-0lax"> </td>
+                <td className="tg-0lax"> </td>
+                <td className="tg-0lax"> </td>
 
                 <td className="tg-0lax">
                   {quan650.reduce(
@@ -712,13 +712,9 @@ const BackDetailReport = () => {
         </div>
 
         <div className="overflow-x-auto m-4 p-4 flex ">
-          <table className="table w-full">
+          <table className="table  removeCommonWSpace">
             <thead>
-              <tr>
-                <td className="tg-0lax " colSpan={50}>
-                  <span style={{ fontWeight: "bold" }}></span>
-                </td>
-              </tr>
+              
 
               <tr>
                 <td> क्र. सं.</td>
@@ -842,7 +838,7 @@ const BackDetailReport = () => {
         </div>
 
         <div className="overflow-x-auto m-4 p-4 flex ">
-          <table className="table w-full">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <td className="tg-0lax " colSpan={50}>
@@ -1090,7 +1086,7 @@ const BackDetailReport = () => {
             </tbody>
           </table>
 
-          <table className="table w-full">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <td className="tg-0lax" colSpan={40}>
@@ -1188,7 +1184,7 @@ const BackDetailReport = () => {
             </tbody>
           </table>
 
-          <table className="table w-full">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <td className="tg-0lax" colSpan={40}>
@@ -1254,7 +1250,7 @@ const BackDetailReport = () => {
             </tbody>
           </table>
 
-          <table className="table w-full">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <td className="tg-0lax" colSpan={40}>
@@ -1322,7 +1318,7 @@ const BackDetailReport = () => {
         </div>
 
         <div className="overflow-x-auto m-4 p-4 flex ">
-          <table className="table w-full">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <td className="tg-0lax " colSpan={40}>
@@ -1386,7 +1382,7 @@ const BackDetailReport = () => {
             </tbody>
           </table>
 
-          <table className="table w-full">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <td className="tg-0lax " colSpan={40}>
@@ -1503,7 +1499,7 @@ const BackDetailReport = () => {
             </tbody>
           </table>
 
-          <table className="table w-full">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <td className="tg-0lax " colSpan={40}>

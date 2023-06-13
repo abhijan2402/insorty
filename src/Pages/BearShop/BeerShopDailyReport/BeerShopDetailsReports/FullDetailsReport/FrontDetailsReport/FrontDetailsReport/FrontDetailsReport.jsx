@@ -303,7 +303,7 @@ FrontPageRegularData.map((item) => {
         <div>
           <>
             <div className="overflow-x-auto">
-              <table className="table">
+              <table className="table commonTable">
                 <thead>
                 <td className="tg-baqh" colSpan={42}>
                   दुकान का नाम:- &nbsp;&nbsp;
@@ -694,7 +694,7 @@ FrontPageRegularData.map((item) => {
 
         <div>
           <div className="overflow-x-auto my-6">
-            <table className="table ">
+            <table className="table commonTable">
               <tbody>
                 <tr>
                   <th rowSpan={2}>क्र. सं.</th>
@@ -945,11 +945,11 @@ FrontPageRegularData.map((item) => {
                   <div className="py-6">
                     <h1 className="my-4">
                       <span className="font-bold titleText">
-                        बिक्री रिपोर्ट
+                      बीयर रिपोर्ट
                       </span>
                     </h1>
 
-                    <table className="table">
+                    <table className="table commonTable">
                       <tbody>
                         <tr>
                           <th rowSpan={2}> क्र. सं.</th>
@@ -1381,7 +1381,7 @@ FrontPageRegularData.map((item) => {
                         पानी, नमकीन, सिगरेट, पुड़िया आदि
                       </span>
                     </h1>
-                    <table className="table">
+                    <table className="table commonTable">
                       <tbody>
                         <tr>
                           <th colSpan={1}> क्र. सं.</th>
@@ -1472,7 +1472,7 @@ FrontPageRegularData.map((item) => {
         <>
           <div className="mt-6 mb-6">
             <div className="overflow-x-auto">
-              <table className="table">
+              <table className="table commonTable">
                 <tbody>
                   {/* ==================== dayamice data */}
                   <tr>

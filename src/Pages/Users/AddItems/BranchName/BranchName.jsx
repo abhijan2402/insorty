@@ -78,7 +78,7 @@ const BranchName = () => {
         <div className="divider my-2"></div>
       </div>
       <div className="flex justify-center items-center">
-        <table className="table w-4/5 removeCommonWSpace">
+        <table className="table  removeCommonWSpace">
           <thead className="text-center ">
             <th>
               <h1>क्र. सं.</h1>

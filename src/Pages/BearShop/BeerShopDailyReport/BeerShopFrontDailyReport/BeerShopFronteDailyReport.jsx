@@ -153,7 +153,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== MRP Input ========= */}
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around	">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">750ml</span>
@@ -178,7 +178,7 @@ const FronteDailyReport = () => {
                     </td>
 
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around	">
 
                         <div className="form-control">
                           <label className="label">
@@ -206,8 +206,8 @@ const FronteDailyReport = () => {
                           </label>
                         </div>
                         <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
+                          <label className="label ">
+                            <span className="label-text wd-9 text-center">30ml</span>
                           </label>
                         </div>
                       </div>
@@ -217,6 +217,31 @@ const FronteDailyReport = () => {
                       <div className="flex ">
                         <div className="form-control">
                           <label className="label">
+                            <span className="label-text wd-9 text-center">750ml</span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text wd-9 text-center">375ml</span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text wd-8 text-center">180ml</span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text ">30ml</span>
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div className="flex ">
+                        <div className="form-control">
+                          <label className="label">
                             <span className="label-text">750ml</span>
                           </label>
                         </div>
@@ -228,6 +253,31 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">180ml</span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text wd-9 text-center">30ml</span>
+                          </label>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div className="flex ">
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text wd-9 text-center">750ml</span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text wd-9 text-center">375ml</span>
+                          </label>
+                        </div>
+                        <div className="form-control">
+                          <label className="label">
+                            <span className="label-text wd-8 text-center">180ml</span>
                           </label>
                         </div>
                         <div className="form-control">
@@ -257,57 +307,7 @@ const FronteDailyReport = () => {
                         </div>
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
-                    </td>
-
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
-                          </label>
-                        </div>
-                      </div>
-                    </td>
-
-                    <td>
-                      <div className="flex ">
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">750ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">375ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">180ml</span>
-                          </label>
-                        </div>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">30ml</span>
+                            <span className="label-text wd-9 text-center">30ml</span>
                           </label>
                         </div>
                       </div>
@@ -333,7 +333,7 @@ const FronteDailyReport = () => {
                         </div>
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">30ml</span>
+                            <span className="label-text wd-9 text-center">30ml</span>
                           </label>
                         </div>
                       </div>
@@ -342,10 +342,10 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (उधारी) ========= */}
 
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around	">
                         <div className="form-control">
                           <label className="label">
-                            <span className="label-text">30ml</span>
+                            <span className="label-text ">30ml</span>
                           </label>
                         </div>
                       </div>
@@ -353,7 +353,7 @@ const FronteDailyReport = () => {
                     {/* ======== भेजान ========= */}
 
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around	">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">30ml</span>
@@ -363,7 +363,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== योग/शेष ========= */}
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around	">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">30ml</span>
@@ -373,7 +373,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== अन्तिम स्टॉक ========= */}
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around	">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">30ml</span>
@@ -382,7 +382,7 @@ const FronteDailyReport = () => {
                       </div>
                     </td>
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around	 ">
                         <div className="form-control">
                           <label className="label">
                             <span className="label-text">30ml</span>
@@ -3029,7 +3029,7 @@ const FronteDailyReport = () => {
                     {/* ======== MRP Input ========= */}
                     <td></td>
                     <td>
-                      <div className="form-control">
+                      <div className="form-control items-center	">
                         <input
                           type="number"
                           className="smallinput"
@@ -3046,7 +3046,7 @@ const FronteDailyReport = () => {
                       </div>
                     </td>
                     <td>
-                      <div className="form-control">
+                      <div className="form-control items-center	">
                         <input
                           type="number"
                           className="smallinput"
@@ -3068,7 +3068,7 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (खरीद)-दु. ========= */}
 
                     <td>
-                      <div className="form-control">
+                      <div className="form-control items-center	">
                         <input
                           type="number"
                           className="smallinput"
@@ -3088,7 +3088,7 @@ const FronteDailyReport = () => {
                     <td></td>
 
                     <td>
-                      <div className="form-control">
+                      <div className="form-control items-center	">
                         <input
                           type="number"
                           className="smallinput"
@@ -3106,7 +3106,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== भेजान ========= */}
                     <td>
-                      <div className="form-control">
+                      <div className="form-control items-center	">
                         <input
                           type="number"
                           className="smallinput"
@@ -3123,7 +3123,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== योग/शेष ========= */}
                     <td>
-                      <div className="form-control">
+                      <div className="form-control items-center	">
                         <input
                           type="number"
                           className="smallinput"
@@ -3141,7 +3141,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== अन्तिम स्टॉक ========= */}
                     <td>
-                      <div className="form-control">
+                      <div className="form-control items-center	">
                         <input
                           type="number"
                           className="smallinput"
@@ -3159,7 +3159,7 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ============= बिक्री ================ */}
                     <td>
-                      <div className="form-control">
+                      <div className="form-control items-center	">
                         <input
                           type="number"
                           className="smallinput"
@@ -3178,7 +3178,7 @@ const FronteDailyReport = () => {
                     <td></td>
                     {/* ============= योग ================ */}
                     <td>
-                      <div className="form-control">
+                      <div className="form-control items-center	">
                         <input
                           type="number"
                           className="smallinput wd-7"

@@ -7,6 +7,7 @@ import ShopInfo from "../ShopInfo/ShopInfo";
 import useGetShopsNSubadmins from "../../../../Hooks/useGetShopsNSubadmins";
 import Loader from "../../../../Components/Loader/Loader";
 import swal from "sweetalert";
+import axios from "axios";
 
 const ShopList = () => {
   const token = localStorage.getItem("token");
@@ -56,8 +57,7 @@ const ShopList = () => {
   };
   
 
-  const addNewShop = (e) => {
-    console.log("clicked")
+  const addNewShop = async  (e) => {
     e.preventDefault();
     const from = e.target;
 
@@ -68,7 +68,18 @@ const ShopList = () => {
     const address = from.address.value;
     const accountId = from.accountId.value;
     const shopType = from.shopType.value;
+    console.log({
+      name,
+      accountId,
+      address,
+      password,
+      licenceNumber,
+      mobileNumber: phone,
+      shopType
 
+    })
+
+      
     fetch(`${process.env.REACT_APP_API_URL}/admin/createShop`, {
       method: "POST",
       headers: {
@@ -87,10 +98,10 @@ const ShopList = () => {
 
       }),
     })
-     
+    .then((res) => res.json())
       .then((data) => {
         console.log(data)
-        if (data.success) {
+        if (data.success===true) {
           swal("Shop Added Successfully", "", "success");
           shopsRefetch();
         }
@@ -113,7 +124,7 @@ const ShopList = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">Shop List</h2>
+          <h2 className="font-bold text-[1.5rem]">दुकानें और बार</h2>
          
         </div>
         <div className="divider my-2"></div>
@@ -161,12 +172,7 @@ const ShopList = () => {
                             <FaRegTrashAlt className="text-[1.7rem]" />
                           </button>
 
-                          <label
-                            htmlFor="EditShop"
-                            className="text-[1.7rem] cursor-pointer"
-                          >
-                            <FaPencilAlt className="text-[1.7rem]" />
-                          </label>
+                        
                           <label
                             htmlFor={myShopId}
                             className="text-[1.7rem] cursor-pointer"

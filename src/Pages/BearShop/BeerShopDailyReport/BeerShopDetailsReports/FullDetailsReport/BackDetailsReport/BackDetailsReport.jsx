@@ -76,7 +76,6 @@ const BackDailyReport = () => {
             बीयर
             </h1>
 
-            <div className="my-4 mx-4">
               <Link to="/user/bearshop/details" className="commonBtn">
               अंग्रेजी
               </Link>
@@ -89,7 +88,6 @@ const BackDailyReport = () => {
         </button>
             </div>
           </div>
-        </div>
         <div className="flex gap-4 justify-center items-center">
         
 
@@ -150,7 +148,7 @@ const BackDailyReport = () => {
                 </span>
               </h1>
               <div>
-                <table className="table">
+                <table className="table commonTable">
                   <tbody>
                     <tr>
                       <th colSpan={4}> क्र. सं.</th>
@@ -234,7 +232,7 @@ const BackDailyReport = () => {
 
               <>
                 <div>
-                  <table className="table ">
+                  <table className="table commonTable">
                     <tbody>
                       <tr>
                         <th colSpan={1}> क्र. सं.</th>
@@ -299,7 +297,7 @@ const BackDailyReport = () => {
                 </span>
               </h1>
               <div>
-                <table className="table">
+                <table className="table commonTable">
                   <tbody>
                     <tr>
                       <th colSpan={1}> क्र. सं.</th>
@@ -363,7 +361,7 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table ">
+                <table className="table commonTable">
                   <thead></thead>
 
                   <tbody>
@@ -430,13 +428,13 @@ const BackDailyReport = () => {
 
             <div className="py-6">
               <h1 className="my-4 ">
-                <span className="font-bold titleText text-[1rem]">
+                <span className="font-bold titleText flex">
                   पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
                 </span>
               </h1>
 
               <div>
-                <table className="table ">
+                <table className="table commonTable">
                   <tbody>
                     <tr>
                     <th className="tg-0lax">क्र.सं.</th>
@@ -503,7 +501,7 @@ const BackDailyReport = () => {
               </h1>
 
               <div className="overflow-x-auto">
-                <table className="table ">
+                <table className="table commonTable">
                   <thead>
                     <tr>
                       <th colSpan={1}> क्र. सं.</th>
@@ -559,7 +557,7 @@ const BackDailyReport = () => {
             </h1>
 
             <div>
-              <table className="table ">
+              <table className="table commonTable">
                 <thead>
                   <tr>
                     <th colSpan={1}> क्र. सं.</th>
@@ -659,12 +657,14 @@ const BackDailyReport = () => {
 
           <div className="py-6">
             <h1 className="my-4 specialwidth">
-              <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
+              <span className="font-bold titleText ">रफ जगह
+</span>
             </h1>
             <div>
               <textarea
                 className="textarea textarea-bordered"
-                placeholder="फाईनल रिपोर्ट"
+                placeholder="रफ जगह
+                "
                 rows="3"
                 cols="50"
                 name="comment"

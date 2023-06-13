@@ -23,6 +23,7 @@ const BrandList = () => {
         cookie_token: token,
       },
     })
+    
       .then((response) => {
         console.log(response)
         setWineStock((data) => [...data, ...response.data.data]);

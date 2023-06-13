@@ -60,7 +60,7 @@ const AdminSideNav = () => {
               to="/admin/subadminList"
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
-              Subadmin
+              सबएडमिन
             </NavLink>
 
             <li className="my-4">
@@ -68,7 +68,8 @@ const AdminSideNav = () => {
                 to="/admin/shopList"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Shop
+                दुकानें और बार
+
               </NavLink>
             </li>
 
@@ -79,7 +80,8 @@ const AdminSideNav = () => {
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
 
-                Shop Permisson
+          दुकान की अनुमति
+
               </NavLink>
             </li>
             <li className="my-4">
@@ -88,18 +90,14 @@ const AdminSideNav = () => {
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
 
-                Brand List
+ब्रांड सूची
+
               </NavLink>
             </li>
 
             <hr className="mt-4 mb-2" />
 
-            <Link>
-              <div>
-                <h1 className="font-bold text-red-400">Jai Wine Shop</h1>
-                <p>A4 ss colony Merta city Raj. </p>
-              </div>
-            </Link>
+           
 
             <button
               onClick={() => logout({ returnTo: window.location.origin })}

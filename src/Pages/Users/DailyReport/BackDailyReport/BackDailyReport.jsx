@@ -1424,7 +1424,7 @@ const BackDailyReport = () => {
           <div className="flex  overflow-x-auto">
             <div className="py-6">
               <h1 className="my-4">
-                <span className="font-bold titleText">RML / आर.एम.एल</span>
+                <span className="font-bold titleText">आर.एम.एल</span>
               </h1>
 
               <>

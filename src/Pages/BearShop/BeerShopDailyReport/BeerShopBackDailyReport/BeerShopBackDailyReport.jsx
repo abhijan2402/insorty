@@ -227,7 +227,6 @@ const BackDailyReport = () => {
               बीयर
             </h1>
 
-            <div className="my-4 mx-4">
               <Link to="/user/bearshop/dailyreport/front" className="commonBtn">
                 अंग्रेजी
               </Link>
@@ -237,7 +236,6 @@ const BackDailyReport = () => {
               </Link>
             </div>
           </div>
-        </div>
         <div className="flex gap-4 justify-center items-center">
           <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
           <input

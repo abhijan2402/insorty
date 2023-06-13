@@ -53,10 +53,10 @@ const AddBrandList = ({ refetch }) => {
         sizes: sizes,
       }),
     })
-      .then((res) => res.json())
+    .then((res) => res.json())
       .then((data) => {
-        if (data.success) {
-          refetch();
+        console.log(data)
+        if (data.success===true) {
           Swal.fire({
             icon: "success",
             title: "Success",

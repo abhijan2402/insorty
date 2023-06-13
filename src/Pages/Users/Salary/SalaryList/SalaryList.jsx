@@ -97,7 +97,7 @@ const SalaryList = () => {
           className="flex justify-center items-center
         "
         >
-          <table className="table w-3/4">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <th> क्र. सं.</th>
@@ -162,13 +162,7 @@ const SalaryList = () => {
 
                     </>
                   );
-                })) || (
-                  <>
-                    <p>
-                      <span className="text-red-500">No Data Found</span>
-                    </p>
-                  </>
-                )}
+                })) }
             </tbody>
           </table>
         </div>

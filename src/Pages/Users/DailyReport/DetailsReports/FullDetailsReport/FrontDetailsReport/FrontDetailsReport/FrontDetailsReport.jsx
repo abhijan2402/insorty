@@ -309,7 +309,7 @@ const FrontDetailsReport = () => {
 
       <div ref={front}>
         <div className="overflow-x-auto m-4 p-4 flex ">
-          <table className="table w-full">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <td className="tg-baqh" colSpan={42}>
@@ -341,7 +341,7 @@ const FrontDetailsReport = () => {
             
             <tbody>
               <tr>
-                <td rowSpan={2}> क्र. सं.</td>
+                <td rowSpan={2} className="wd-5"> क्र. सं.</td>
                 <th rowSpan={2}> ब्राण्ड</th>
                 <th colSpan={3}>औसत दर</th>
                 <th colSpan={3}>प्रारम्भिक स्टॉक</th>
@@ -742,7 +742,7 @@ const FrontDetailsReport = () => {
         </div>
 
         <div className="overflow-x-auto m-4 p-4 flex ">
-          <table className="table w-full">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <td className="tg-0lax " colSpan={50}>

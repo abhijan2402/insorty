@@ -114,7 +114,8 @@ const SubAdminList = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">Sub Admin List</h2>
+          <h2 className="font-bold text-[1.5rem]">सबएडमिन सूची
+</h2>
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -130,9 +131,8 @@ const SubAdminList = () => {
                 return (
                   <tr className="p-4 text-left" key={subAdmin?._id}>
                     <td className="border px-4 py-2 font-bold">
-                      <Link
-                     onClick={() => onTokenChange(subAdmin.subAdminToken)}
-                      >{subAdmin?.name}</Link>
+                    
+                      {subAdmin?.name}
                     </td>
 
                     <td>
@@ -161,12 +161,7 @@ const SubAdminList = () => {
                           <FaRegTrashAlt className="text-[1.7rem]" />
                         </button>
 
-                        <label
-                          htmlFor="EditSubAdmin"
-                          className="text-[1.7rem] cursor-pointer"
-                        >
-                          <FaPencilAlt className="text-[1.7rem]" />
-                        </label>
+                      
 
                         <label
                           htmlFor={subadminId}

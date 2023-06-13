@@ -15,7 +15,7 @@ const AddNewShop = ({ addNewShop }) => {
           </label>
           <h3 className="text-lg font-bold">Add New Shop</h3>
           <div className="py-4">
-            <form onSubmit={addNewShop}>
+            <form onSubmit={(e)=>addNewShop(e)}>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">नाम</span>

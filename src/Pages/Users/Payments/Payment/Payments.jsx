@@ -222,13 +222,7 @@ console.log(from.description)
 
                       {/* ============= कुल योग ================ */}
                     </tr>
-                    {paymentData && paymentData.length === 0 ? (
-                      <tr>
-                        <td className="font-bold font-2xl text-red-600 text-center">
-                          No Payment Data Found
-                        </td>
-                      </tr>
-                    ) : (
+                    { (
                       paymentData.map((payment, index) => {
                         return (
                           <PaymentForm

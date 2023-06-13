@@ -17,7 +17,7 @@ const Stock = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center">
-          {role === "shop" && ShopType === "BAR" && (
+          { ShopType === "BAR" && (
             <>
               <Link to="/user/bearshop/winestock" className="commonBtn ">
                 अंग्रेजी
@@ -32,7 +32,7 @@ const Stock = () => {
             </>
           )}
 
-          {role === "shop" && ShopType === "SHOP" && (
+          { ShopType === "SHOP" && (
             <>
               <Link to="/user/winestock" className="commonBtn ">
                 अंग्रेजी

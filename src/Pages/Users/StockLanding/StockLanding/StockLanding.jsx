@@ -51,7 +51,7 @@ const StockLanding = () => {
 
       <div>
         <div className="flex justify-center items-center">
-          <table className="table w-2/3">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <th> क्र. सं.</th>

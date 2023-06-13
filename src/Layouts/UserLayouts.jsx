@@ -18,7 +18,6 @@ const DashboardLayout = () => {
   if (token) {
     const decode = jwtDecode(token);
     if (decode.role === "shop" && decode.shopType==="BAR") {
-      console.log("condition SHOP")
       return <Navigate to="/login" replace />;
     }
   }

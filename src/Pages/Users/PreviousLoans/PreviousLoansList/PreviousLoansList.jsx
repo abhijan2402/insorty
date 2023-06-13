@@ -128,7 +128,7 @@ const PreviousLoansList = () => {
             </thead>
             <tbody>
               {(parties &&
-                parties.length &&
+                parties.length!==undefined &&
                 parties?.filter((prev)=>prev.isActive===true).map((prevLone, index) => {
                   const id = prevLone?._id
 
@@ -136,7 +136,7 @@ const PreviousLoansList = () => {
                     <tr id="scrollableDiv" >
                       <td>{index + 1}</td>
                       <td >
-                        {role === "shop" && ShopType === "SHOP" && (
+                        { ShopType === "SHOP" && (
                           <Link
                             className="font-bold text-[1rem]"
                             to={`/user/previousloan/details/${id}`}
@@ -145,7 +145,7 @@ const PreviousLoansList = () => {
                           </Link>
                         )}
 
-                        {role === "shop" && ShopType === "BAR" && (
+                        { ShopType === "BAR" && (
                           <Link
                             className="font-bold text-[1rem]"
                             to={`/user/bearshop/previousloan/details/${prevLone?._id}`}
@@ -166,13 +166,7 @@ const PreviousLoansList = () => {
                       </td>
                     </tr>
                   );
-                })) || (
-                <>
-                  <p>
-                    <span className="text-red-500">No Data Found</span>
-                  </p>
-                </>
-              )}
+                })) }
             </tbody>
           </table>
           </InfiniteScroll>

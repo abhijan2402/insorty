@@ -168,7 +168,7 @@ const AddOneSecondFormBack = ({
           </div>
         </td>
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -182,7 +182,7 @@ const AddOneSecondFormBack = ({
           </div>
         </td>
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -196,7 +196,7 @@ const AddOneSecondFormBack = ({
         </td>
         {/* ======== प्रारम्भिक स्टॉक ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -212,7 +212,7 @@ const AddOneSecondFormBack = ({
         {/* ======== आमद (खरीद)-दु. ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -227,7 +227,7 @@ const AddOneSecondFormBack = ({
         {/* ======== आमद (खरीद)-बा. ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -242,7 +242,7 @@ const AddOneSecondFormBack = ({
         {/* ======== आमद (उधारी) ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -256,7 +256,7 @@ const AddOneSecondFormBack = ({
         </td>
         {/* ======== भेजान ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -270,7 +270,7 @@ const AddOneSecondFormBack = ({
         </td>
         {/* ======== योग/शेष ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -285,7 +285,7 @@ const AddOneSecondFormBack = ({
         </td>
         {/* ======== अन्तिम स्टॉक ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -299,7 +299,7 @@ const AddOneSecondFormBack = ({
         </td>
         {/* ============= बिक्री ================ */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required
@@ -314,7 +314,7 @@ const AddOneSecondFormBack = ({
         </td>
         {/* ============= रेट ================ */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 
@@ -328,7 +328,7 @@ const AddOneSecondFormBack = ({
         </td>
         {/* ============= योग ================ */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center	">
             <input
               type="number"
                 required

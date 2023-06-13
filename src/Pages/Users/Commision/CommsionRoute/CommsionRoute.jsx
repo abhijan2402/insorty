@@ -13,7 +13,7 @@ const CommsionRoute = () => {
         <div className="title">
           <div className="flex gap-4 items-center justify-center  text-center ">
             <h2 className="font-bold md:text-[1.5rem] text-center ">
-              All Commisson
+            कमीशन आदि
             </h2>
           </div>
           <div className="divider my-2"></div>
@@ -21,7 +21,7 @@ const CommsionRoute = () => {
       </div>
       <div className="p-4">
         <div className="flex items-center justify-center flex-wrap">
-          {role === "shop" && ShopType === "BAR" && (
+          { ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/commisson">
                 कमीशन
@@ -52,7 +52,7 @@ const CommsionRoute = () => {
               </Link>
             </>
           )}
-          {role === "shop" && ShopType === "SHOP" && (
+          { ShopType === "SHOP" && (
             <>
               <Link className="commonBtn" to="/user/commisson">
                 कमीशन
