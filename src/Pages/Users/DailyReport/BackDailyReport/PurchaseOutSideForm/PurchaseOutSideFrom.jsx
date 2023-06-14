@@ -88,6 +88,8 @@ const PurchaseOutSideFrom = ({
               size="small"
               style={{
                 width: "20rem",
+                border:"1px solid black",
+              borderRadius:"5px"
               }}
               getOptionLabel={(option) => (option ? option.partyName : "")}
               onChange={(event, value) => {
@@ -125,6 +127,8 @@ const PurchaseOutSideFrom = ({
               size="small"
               style={{
                 width: "20rem",
+                border:"1px solid black",
+              borderRadius:"5px"
               }}
               options={options}
               getOptionLabel={(option) => (option ? option.brandName : "")}

@@ -99,6 +99,8 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
             size="small"
             style={{
               width: "20rem",
+              border:"1px solid black",
+              borderRadius:"5px"
             }}
         value={refundRecovery.partyName}
         onChange={(event, newValue) => {

@@ -187,7 +187,7 @@ const SideNav = () => {
                 to="/user/allItems"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Add Items
+                ब्रांच/पार्टी जोड़ें
               </NavLink>
             </li>
             <li className="my-4">

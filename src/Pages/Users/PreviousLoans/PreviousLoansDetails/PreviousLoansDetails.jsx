@@ -119,7 +119,8 @@ const PreviousLoansDetails = () => {
         <h2 className="font-bold text-[1.5rem]">{transactions?.name}</h2>
 
         <button className="commonBtn " onClick={handlePrint}>
-          PRINT
+        प्रिंट
+
         </button>
       </div>
       <div className="divider my-2"></div>
@@ -137,17 +138,17 @@ const PreviousLoansDetails = () => {
             scrollableTarget="scrollableDiv"
             loader={<h4>Loading...</h4>}
           >
-          <table className="table w-3/4">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                <th colSpan={2}>Date</th>
-                <th colSpan={2}>Debit</th>
-                <th colSpan={2}>Deposit</th>
+                <th colSpan={2}>दिनांक</th>
+                <th colSpan={2}>नामे</th>
+                <th colSpan={2}>जमा</th>
               </tr>
             </thead>
             <tbody>
-              <tr className="font-bold text-[1rem] "  > <td colSpan={6}> Shesh:-
+              <tr className="font-bold text-[1rem] "  > <td colSpan={6}> शेष:-
               {transactions.reduce((total,curr)=>total = (total + Number(curr.debit)),0)-transactions.reduce((total,curr)=>(total = total + Number(curr.deposit)),0)}
               </td>
               </tr>

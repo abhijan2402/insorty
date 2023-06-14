@@ -118,11 +118,11 @@ const PreviousLoansList = () => {
             scrollableTarget="scrollableDiv"
             loader={<h4>Loading...</h4>}
           >
-          <table className="table w-3/4">
+          <table className="table removeCommonWSpace">
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                <th colSpan={2}>Name</th>
+                <th colSpan={2}>नाम</th>
                 {/* <th colSpan={2}>Delete</th> */}
               </tr>
             </thead>
@@ -173,7 +173,7 @@ const PreviousLoansList = () => {
         </div>
         <tr className="py-4 flex justify-center">
           <label htmlFor="addNewPrevLone" className="commonBtn">
-            Add New
+          नया जोड़ें
           </label>
         </tr>
       </div>

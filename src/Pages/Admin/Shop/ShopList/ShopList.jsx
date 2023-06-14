@@ -8,6 +8,7 @@ import useGetShopsNSubadmins from "../../../../Hooks/useGetShopsNSubadmins";
 import Loader from "../../../../Components/Loader/Loader";
 import swal from "sweetalert";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const ShopList = () => {
   const token = localStorage.getItem("token");
@@ -45,8 +46,11 @@ const ShopList = () => {
       // Redirect to the appropriate dashboard based on the user's privileges
       if (isAdmin) {
         window.location.href = "/admin";
-      } else {
+      } else if(jwtDecode(Shoptoken).shopType==="SHOP"){
         window.location.href = "/user";
+      }
+      else if(jwtDecode(Shoptoken).shopType==="BAR"){
+        window.location.href = "/user/bearshop";
       }
   
       // Log the new token value and the status of the admin privileges

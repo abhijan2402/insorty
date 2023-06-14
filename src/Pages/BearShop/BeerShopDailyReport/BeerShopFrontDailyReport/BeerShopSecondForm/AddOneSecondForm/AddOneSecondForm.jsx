@@ -28,6 +28,11 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <Autocomplete
+            style={{
+              width: "20rem",
+              border:"1px solid black",
+              borderRadius:"5px"
+            }}
               options={liquors.length > 0 ? liquors.filter((brand) => {
                 if (brand.type === 'WINE') {
                   return brand

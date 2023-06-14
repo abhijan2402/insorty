@@ -1402,12 +1402,20 @@ const useFristFormAdd = () => {
   const handleRemoveFieldsBack = (index) => {
     const values = [...fristFormState];
     values.splice(index, 1);
-    console.log(index);
     setFristFormState(values);
     localStorage.setItem("firstBack", JSON.stringify(values));
     localStorage.setItem(
       "totalFirstBack",
-      JSON.stringify(totalState.allGrandTotal)
+      JSON.stringify(values.reduce(
+        (total, currentItem) =>
+        (total =
+          total +
+          Number(currentItem.sales650) * Number(currentItem.mainRate650) +
+          Number(currentItem.sales550) * Number(currentItem.mainRate550) +
+          Number(currentItem.sales330) * Number(currentItem.mainRate330)),
+        0
+      ) || 0
+    )
     );
   };
 
@@ -1417,12 +1425,14 @@ const useFristFormAdd = () => {
     console.log(index);
     setAddOneSecondFormState(values);
     localStorage.setItem("BeerForm", JSON.stringify(values));
-    JSON.stringify(
+    localStorage.setItem('beerFormTotal', JSON.stringify(
       values.reduce(
         (totals, currentItem) => (totals = totals + Number(currentItem.total)),
         0
       )
-    );
+    )
+    )
+    
   };
 
   return {

@@ -12,7 +12,8 @@ const AddPreviusLons = ({handelSubmitAddNewPrevLoan}) => {
             >
               ✕
             </label>
-            <h3 className="text-lg font-bold">Add New Loan</h3>
+            <h3 className="text-lg font-bold">नया जोड़ें
+</h3>
             <form action="" onSubmit={handelSubmitAddNewPrevLoan}>
               <div className="flex gap-4 flex-col mt-4">
                 <input
@@ -37,7 +38,7 @@ const AddPreviusLons = ({handelSubmitAddNewPrevLoan}) => {
               </div>
               <div>
                 <button type="submit" className="dailyReportBtn  mt-4">
-                  Add New 
+                जोड़ें
                 </button>
               </div>
             </form>

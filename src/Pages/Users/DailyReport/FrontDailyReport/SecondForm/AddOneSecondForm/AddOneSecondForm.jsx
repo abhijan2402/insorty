@@ -80,6 +80,8 @@ const AddOneSecondForm = ({
             size="small"
             style={{
               width: "20rem",
+              border:"1px solid black",
+              borderRadius:"5px"
             }}
             options={options}
             getOptionLabel={(option) => (option ? option.brandName : "")}

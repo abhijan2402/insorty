@@ -258,7 +258,8 @@ const FrontDetailsReport = () => {
         </Link>
 
         <button className="commonBtn " onClick={handlePrint}>
-          PRINT
+        प्रिंट
+
         </button>
       </div>
 
@@ -323,7 +324,7 @@ const FrontDetailsReport = () => {
               <tr>
                 <td className="tg-baqh" colSpan={42}>
                   दुकान का नाम:- &nbsp;&nbsp;
-                  {jwtDecode(localStorage.getItem("token")).name}
+                  {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
                   का नाम :-{" "}
                   {
@@ -337,9 +338,6 @@ const FrontDetailsReport = () => {
                   {moment(selectedDate).format("DD/MM/YYYY")}
                 </td>
               </tr>
-            </thead>
-            
-            <tbody>
               <tr>
                 <td rowSpan={2} className="wd-5"> क्र. सं.</td>
                 <th rowSpan={2}> ब्राण्ड</th>
@@ -478,6 +476,12 @@ const FrontDetailsReport = () => {
                   <span style={{ fontWeight: "bold" }}>180ml</span>
                 </td>
               </tr>
+            </thead>
+
+          
+            
+            <tbody>
+              
 
               {/* ========================== */}
 

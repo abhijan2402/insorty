@@ -42,7 +42,7 @@ const SideNav = () => {
           <Link>
             <div>
               <h1 className="font-bold text-red-400 text-center uppercase">
-                Name: {jwtDecode(localStorage.getItem("token")).name}
+                Name: {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
               </h1>
               <div>
                 <h1 className="font-bold text-center uppercase mt-2">
@@ -188,7 +188,7 @@ const SideNav = () => {
                 to="/user/bearshop/allItems"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                Add Items
+               ब्रांच/पार्टी जोड़ें
               </NavLink>
             </li>
 
@@ -208,6 +208,16 @@ const SideNav = () => {
             >
               <FaPowerOff />
               <span className="mx-4 font-medium">Logout</span>
+            </button>
+
+            <button
+              className={
+                jwtDecode(localStorage.getItem("token")).role === "admin"
+                  ? "commonBtn flex justify-center items-center"
+                  : "hidden"
+              }
+            >
+              <NavLink to="/admin">To Admin</NavLink>
             </button>
           </nav>
         </div>

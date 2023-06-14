@@ -84,7 +84,8 @@ const BackDailyReport = () => {
                 Front
               </Link> */}
               <button className="commonBtn " onClick={handlePrint}>
-          PRINT
+              प्रिंट
+
         </button>
             </div>
           </div>
@@ -149,8 +150,8 @@ const BackDailyReport = () => {
               </h1>
               <div>
                 <table className="table commonTable">
-                  <tbody>
-                    <tr>
+                  <thead>
+                  <tr>
                       <th colSpan={4}> क्र. सं.</th>
                       <th colSpan={4}> पार्टी का नाम</th>
                       <th colSpan={4}>ब्राण्ड</th>
@@ -160,6 +161,9 @@ const BackDailyReport = () => {
                       <th colSpan={4}>योग</th>
                       <th colSpan={4}>टिप्पणी</th>
                     </tr>
+                  </thead>
+                  <tbody>
+                   
 
                   {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
                     if(index === pgNo){
@@ -225,7 +229,7 @@ const BackDailyReport = () => {
 
             <div className="py-6">
               <h1 className="my-4">
-                <span className="font-bold titleText">
+                <span className="font-bold titleText mx-3">
                   अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
                 </span>
               </h1>
@@ -233,8 +237,8 @@ const BackDailyReport = () => {
               <>
                 <div>
                   <table className="table commonTable">
-                    <tbody>
-                      <tr>
+                    <thead>
+                    <tr>
                         <th colSpan={1}> क्र. सं.</th>
                         <th colSpan={1}> पार्टी का नाम</th>
                         <th colSpan={1}> ब्राण्ड</th>
@@ -242,6 +246,9 @@ const BackDailyReport = () => {
                         <th colSpan={1}>संख्या</th>
                         <th colSpan={1}>टिप्पणी</th>
                       </tr>
+                    </thead>
+                    <tbody>
+                     
 
                       {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
                     if(index === pgNo){
@@ -292,19 +299,22 @@ const BackDailyReport = () => {
 
             <div className="py-6">
               <h1 className="my-4 specialwidth">
-                <span className="font-bold titleText ">
+                <span className="font-bold titleText mx-3">
                   कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
                 </span>
               </h1>
               <div>
                 <table className="table commonTable">
-                  <tbody>
-                    <tr>
+                  <thead>
+                  <tr>
                       <th colSpan={1}> क्र. सं.</th>
                       <th colSpan={4}>विवरण</th>
                       <th colSpan={4}>रकम</th>
                       <th colSpan={4}>Description</th>
                     </tr>
+                  </thead>
+                  <tbody>
+                   
 
                     {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
                     if(index === pgNo){
@@ -362,16 +372,16 @@ const BackDailyReport = () => {
 
               <div>
                 <table className="table commonTable">
-                  <thead></thead>
-
-                  <tbody>
-                    <tr>
+                  <thead> <tr>
                       <th colSpan={1}> क्र. सं.</th>
                       <th colSpan={1}>पार्टी का नाम</th>
                       <th colSpan={1}>पार्टी/पार्टनर</th>
                       <th colSpan={1}>रकम</th>
                       <th colSpan={1}>टिप्पणी</th>
-                    </tr>
+                    </tr></thead>
+
+                  <tbody>
+                   
 
                     {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
                     if(index === pgNo){
@@ -428,15 +438,15 @@ const BackDailyReport = () => {
 
             <div className="py-6">
               <h1 className="my-4 ">
-                <span className="font-bold titleText flex">
+                <span className="font-bold titleText flex mx-3">
                   पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
                 </span>
               </h1>
 
               <div>
                 <table className="table commonTable">
-                  <tbody>
-                    <tr>
+                  <thead>
+                  <tr>
                     <th className="tg-0lax">क्र.सं.</th>
                 <th className="tg-0lax" colSpan={4}>
                 पार्टी का नाम	
@@ -451,6 +461,9 @@ const BackDailyReport = () => {
                   विवरण
                 </th>
                     </tr>
+                  </thead>
+                  <tbody>
+                    
                     {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
                     if(index === pgNo){
                       return(<>{

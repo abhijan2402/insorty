@@ -251,7 +251,8 @@ FrontPageRegularData.map((item) => {
             Back
           </Link> */}
           <button className="commonBtn " onClick={handlePrint}>
-          PRINT
+          प्रिंट
+
         </button>
         </div>
         <div className="flex gap-2 items-center">
@@ -307,7 +308,7 @@ FrontPageRegularData.map((item) => {
                 <thead>
                 <td className="tg-baqh" colSpan={42}>
                   दुकान का नाम:- &nbsp;&nbsp;
-                  {jwtDecode(localStorage.getItem("token")).name}
+                  {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
                   का नाम :-{" "}
                   {
@@ -324,9 +325,7 @@ FrontPageRegularData.map((item) => {
                   :-
                   {moment(selectedDate).format("DD/MM/YYYY")}
                 </td>
-                </thead>
-                <tbody>
-                  <tr>
+                <tr>
                     <th rowSpan={2}> क्र. सं.</th>
                     <th rowSpan={2}>ब्राण्ड</th>
                     <th colSpan={4}>एवरेज रेट</th>
@@ -476,6 +475,9 @@ FrontPageRegularData.map((item) => {
                     </td>
                     {/* <td className="tg-0lax"></td> */}
                   </tr>
+                </thead>
+                <tbody>
+                  
                   { FrontPageRegularData.map((regularData, index) => {
                 return (
                   <FrontRegularData
@@ -695,8 +697,8 @@ FrontPageRegularData.map((item) => {
         <div>
           <div className="overflow-x-auto my-6">
             <table className="table commonTable">
-              <tbody>
-                <tr>
+              <thead>
+              <tr>
                   <th rowSpan={2}>क्र. सं.</th>
                   <th rowSpan={2}>ब्राण्ड</th>
                   <th rowSpan={2}>ml</th>
@@ -791,6 +793,9 @@ FrontPageRegularData.map((item) => {
                   </td>
                   <td className="tg-0lax"></td>
                 </tr>
+              </thead>
+              <tbody>
+              
 
                 {/* ============== daynamic ==================== */}
                 
@@ -950,10 +955,10 @@ FrontPageRegularData.map((item) => {
                     </h1>
 
                     <table className="table commonTable">
-                      <tbody>
-                        <tr>
+                      <thead>
+                      <tr>
                           <th rowSpan={2}> क्र. सं.</th>
-                          <th rowSpan={2}>Brand Name/ ब्राण्ड</th>
+                          <th rowSpan={2}> ब्राण्ड</th>
                           <th colSpan={3}>औसत दर</th>
                           <th colSpan={3}>प्रारम्भिक स्टॉक</th>
                           <th colSpan={3}>आमद (खरीद)-दु.</th>
@@ -1112,6 +1117,9 @@ FrontPageRegularData.map((item) => {
 
                           <td className="tg-0lax"></td>
                         </tr>
+                      </thead>
+                      <tbody>
+                       
 
                         {BackPageReportRegularSize
                         .map((regularData, index) => {
@@ -1382,11 +1390,11 @@ FrontPageRegularData.map((item) => {
                       </span>
                     </h1>
                     <table className="table commonTable">
-                      <tbody>
-                        <tr>
+                      <thead>
+                      <tr>
                           <th colSpan={1}> क्र. सं.</th>
                           <th colSpan={1}>विवरण</th>
-                          <th colSpan={1}>Buying price/ खरीद रेट</th>
+                          <th colSpan={1}>खरीद रेट</th>
                           <th colSpan={1}>प्राम्भिक स्टॉक</th>
                           <th colSpan={1}>आमद</th>
                           <th colSpan={1}>योग</th>
@@ -1395,6 +1403,9 @@ FrontPageRegularData.map((item) => {
                           <th colSpan={1}>रेट</th>
                           <th colSpan={1}>योग</th>
                         </tr>
+                      </thead>
+                      <tbody>
+                       
 
                        
 
@@ -1473,9 +1484,8 @@ FrontPageRegularData.map((item) => {
           <div className="mt-6 mb-6">
             <div className="overflow-x-auto">
               <table className="table commonTable">
-                <tbody>
-                  {/* ==================== dayamice data */}
-                  <tr>
+                <thead>
+                <tr>
                     <th colSpan={1}> क्र. सं.</th>
                     <th colSpan={1}>Brand Name/ ब्राण्ड</th>
                     <th colSpan={1}>ml</th>
@@ -1493,6 +1503,10 @@ FrontPageRegularData.map((item) => {
                     <th colSpan={1}>रेट</th>
                     <th colSpan={1}>योग</th>
                   </tr>
+                </thead>
+                <tbody>
+                  {/* ==================== dayamice data */}
+                  
                   {BackPageReportExceptionalSize &&
                 BackPageReportExceptionalSize.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((exceptionalData, index) => {
                   if(index===pgNo){

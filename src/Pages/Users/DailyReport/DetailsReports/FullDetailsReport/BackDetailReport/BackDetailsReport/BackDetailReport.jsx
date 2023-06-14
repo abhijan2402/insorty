@@ -307,9 +307,22 @@ const BackDetailReport = () => {
         {/* ====================1==================== */}
 
         <div className="overflow-x-auto m-4 p-4 flex">
-          <table className="removeCommonWSpace">
-            <tbody>
+          <table className="table removeCommonWSpace">
+            <thead>
+            <tr>
+                <td className="tg-baqh" colSpan={42}>
+                  <span
+                    style={{ fontWeight: "bold", textDecoration: "underline" }}
+                  >
+                    बीयर
+
+                  </span>
+                </td>
+              </tr>
               <tr>
+               
+              </tr>
+            <tr>
                 <td rowSpan={2} className="wd-5" style={{ fontWeight: "bold" }}> क्र.सं.</td>
                 <th rowSpan={2}>ब्राण्ड</th>
                 <th colSpan={3}>औसत दर</th>
@@ -447,6 +460,9 @@ const BackDetailReport = () => {
                   <span style={{ fontWeight: "bold" }}>330ml</span>
                 </td>
               </tr>
+            </thead>
+            <tbody>
+             
 
               {/* ========================== */}
 

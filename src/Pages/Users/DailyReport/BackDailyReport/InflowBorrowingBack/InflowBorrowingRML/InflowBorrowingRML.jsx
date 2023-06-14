@@ -86,6 +86,8 @@ const InflowBorrowingRML = ({
               size="small"
               style={{
                 width: "20rem",
+                border:"1px solid black",
+              borderRadius:"5px"
               }}
               options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
@@ -123,6 +125,8 @@ const InflowBorrowingRML = ({
               size="small"
               style={{
                 width: "20rem",
+                border:"1px solid black",
+              borderRadius:"5px"
               }}
               options={options}
               getOptionLabel={(option) => (option ? option.brandName : "")}

@@ -12,7 +12,8 @@ const AddItems = () => {
         <div className="title">
           <div className="flex gap-4 items-center">
             <h2 className="font-bold md:text-[1.5rem] text-center">
-              All Items
+            ब्रांच/पार्टी जोड़ें
+
             </h2>
           </div>
           <div className="divider my-2"></div>

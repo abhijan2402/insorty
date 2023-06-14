@@ -165,6 +165,8 @@ const token = localStorage.getItem('token')
             size="small"
             style={{
               width: "20rem",
+              border:"1px solid black",
+              borderRadius:"5px"
             }}
             options={
               subAdmins.data.length > 0
@@ -217,7 +219,8 @@ const token = localStorage.getItem('token')
                   <Autocomplete
                     size="small"
                     style={{
-
+                      border:"1px solid black",
+              borderRadius:"5px",
                       width: "20rem",
                     }}
                     options={
