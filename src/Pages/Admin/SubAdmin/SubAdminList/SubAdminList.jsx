@@ -121,7 +121,7 @@ const SubAdminList = () => {
       </div>
       <div>
         <div className="overflow-x-auto">
-          <table className="table-auto w-3/4">
+          <table className=" removeCommonWSpace">
             <tbody>
               {subAdminListData.map((subAdmin) => {
                 const { _id } = subAdmin;

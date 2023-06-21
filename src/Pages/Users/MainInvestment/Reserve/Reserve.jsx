@@ -41,7 +41,7 @@ const Reserve = ({ reserve, index, reserveAmountOnChange, name, handleRemoveFiel
             onChange={(e) => {
               reserveAmountOnChange(name, e.target.value, index, "details");
             }}
-            className="semiSmallInput wd-30"
+            className="semiSmallInput wd-30 left-text"
           />
         </td>
         <td>
@@ -66,7 +66,7 @@ const Reserve = ({ reserve, index, reserveAmountOnChange, name, handleRemoveFiel
             onChange={(e) => {
               reserveAmountOnChange(name, e.target.value, index, "price");
             }}
-            className="dailyReportInput wd-9"
+            className="dailyReportInput wd-9 left-text"
           />
         </td>
       </tr>

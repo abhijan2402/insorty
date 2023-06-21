@@ -1,13 +1,12 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaPencilAlt, FaRegTrashAlt, FaInfo } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaRegTrashAlt, FaInfo } from "react-icons/fa";
 import AddNewShop from "../AddNewShop/AddNewShop";
 import EditeShop from "../EditeShop/EditeShop";
 import ShopInfo from "../ShopInfo/ShopInfo";
 import useGetShopsNSubadmins from "../../../../Hooks/useGetShopsNSubadmins";
 import Loader from "../../../../Components/Loader/Loader";
 import swal from "sweetalert";
-import axios from "axios";
 import jwtDecode from "jwt-decode";
 
 const ShopList = () => {
@@ -40,7 +39,6 @@ const ShopList = () => {
   
       // Check whether the current user has admin privileges
       const shopToken = localStorage.getItem("token");
-      const userToken = localStorage.getItem("token2");
       const isAdmin = shopToken === adminToken;
   
       // Redirect to the appropriate dashboard based on the user's privileges
@@ -55,9 +53,7 @@ const ShopList = () => {
   
       // Log the new token value and the status of the admin privileges
 
-    } else {
-      console.log("Token unchanged:", token);
-    }
+    } 
   };
   
 
@@ -72,16 +68,7 @@ const ShopList = () => {
     const address = from.address.value;
     const accountId = from.accountId.value;
     const shopType = from.shopType.value;
-    console.log({
-      name,
-      accountId,
-      address,
-      password,
-      licenceNumber,
-      mobileNumber: phone,
-      shopType
-
-    })
+    
 
       
     fetch(`${process.env.REACT_APP_API_URL}/admin/createShop`, {
@@ -104,7 +91,6 @@ const ShopList = () => {
     })
     .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         if (data.success===true) {
           swal("Shop Added Successfully", "", "success");
           shopsRefetch();
@@ -135,7 +121,7 @@ const ShopList = () => {
       </div>
       <div>
         <div className="overflow-x-auto">
-          <table className="table-auto w-3/4">
+          <table className=" removeCommonWSpace">
             <tbody>
               {shops &&
                 shops.data.length &&

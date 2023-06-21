@@ -17,9 +17,8 @@ const Partners = ({ isBearShop }) => {
     content: () => front.current,
   });
 
-  const token = jwtDecode(localStorage.getItem("token"));
-  const ShopType = token.shopType;
-  const role = ShopType.role;
+  const token = localStorage.getItem("token");
+  const ShopType = jwtDecode( token).shopType;
 
   const handelPartnerSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +38,8 @@ const Partners = ({ isBearShop }) => {
         "https://insorty-api.onrender.com/shop/getAllPartners",
         {
           method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: token },
+          headers: { "Content-Type": "application/json", 
+          cookie_token: token },
         }
       );
       const data = await res.json();

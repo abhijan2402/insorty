@@ -138,7 +138,7 @@ const Login = () => {
                       </option>
                       <option value="shop">Shop</option>
                       <option value="admin">Admin</option>
-                      <option value="subadmin">Sub Admin</option>
+                      <option value="subadmin">SubAdmin</option>
                     </select>
                   </div>
 

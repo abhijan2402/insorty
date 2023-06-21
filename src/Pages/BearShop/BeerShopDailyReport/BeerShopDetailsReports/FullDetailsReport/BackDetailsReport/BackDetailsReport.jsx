@@ -152,7 +152,7 @@ const BackDailyReport = () => {
                 <table className="table commonTable">
                   <thead>
                   <tr>
-                      <th colSpan={4}> क्र. सं.</th>
+                      <th > क्र. सं.</th>
                       <th colSpan={4}> पार्टी का नाम</th>
                       <th colSpan={4}>ब्राण्ड</th>
                       <th colSpan={4}>ML</th>

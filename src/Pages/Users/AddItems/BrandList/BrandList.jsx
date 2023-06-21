@@ -1,18 +1,127 @@
 import React,{useState,useEffect} from "react";
-import { Link } from "react-router-dom";
 import "../../../../Pages/Home/Style/Home.scss";
 import AddBrandList from "./AddBrandList/AddBrandList";
-import { useQuery } from "@tanstack/react-query";
-import Loader from "../../../../Components/Loader/Loader";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
-
+import { FaMoneyCheckAlt } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
+import EditBrandPrice from "./EditBrandPrice";
+import Swal from "sweetalert2";
+import { FaPen } from "react-icons/fa";
+import EditBrandName from "./EditBrandName";
+import swal from "sweetalert";
 
 const BrandList = () => {
   const token = localStorage.getItem("token");
   const [wineStock, setWineStock] = useState([]);
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
+  const [selectedObject, setSelectedObject] = useState(null);
+  const [priceList,setPriceList] = useState([])
+
+  const editName=(obj)=>{
+    setSelectedObject(obj)
+  }
+
+  const reInitiate=()=>{
+    setWineStock([])
+    setPriceList([])
+    setPage(0)
+    setHasMore(true)
+    fetchData()
+  }
+
+  const addToPriceList=(obj)=>{
+    const brand={
+      _id: obj._id,
+      fullName: obj.fullName,
+      brandName: obj.brandName,
+      type: obj.type,
+      rate: obj.rate.$numberDecimal,
+      quantityInML: obj.quantityInML
+  }
+  const newArr = [...priceList,brand]
+  setPriceList(newArr)
+  }
+
+  const editPrice = (index,newValue) => {
+    let pl=[...priceList]
+    pl[index].rate = newValue
+    setPriceList(pl)
+  }
+
+  const handleRemove=(index)=>{
+    let pl = [...priceList]
+    pl.splice(index,1)
+    setPriceList(pl)
+  }
+  
+
+  const handlePriceUpdate = () => {
+    fetch("https://insorty-api.onrender.com/admin/updateGlobalLiquorsRate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+
+      body: JSON.stringify({globalLiquors:priceList}),
+    })
+    .then((res) => res.json())
+    .then((data)=>{
+      if (data.success===true) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Brand Added Successfully",
+        });
+        reInitiate()
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Something Went Wrong",
+        });
+      }
+   
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  };
+
+  const deleteBrand=(id)=>{
+    fetch("https://insorty-api.onrender.com/admin/deleteGlobalLiquorFromAllShops", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+
+      body: JSON.stringify({globalParentLiquorId:id}),
+    })
+    .then((res) => res.json())
+    .then((data)=>{
+      if (data.success===true) {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Brand Deleted Successfully",
+        });
+        reInitiate()
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Something Went Wrong",
+        });
+      }
+   
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  }
 
   const fetchData = async () => {
     await axios({
@@ -25,7 +134,6 @@ const BrandList = () => {
     })
     
       .then((response) => {
-        console.log(response)
         setWineStock((data) => [...data, ...response.data.data]);
         setPage((page) => page + 1);
       })
@@ -39,10 +147,11 @@ const BrandList = () => {
   
   };
 
+
   useEffect(() => {
     fetchData();
     // console.log(page,hasMore,'page ')
-  }, [wineStock]);
+  }, [wineStock,selectedObject]);
 
 
   return (
@@ -53,7 +162,21 @@ const BrandList = () => {
             ब्राण्ड सूची
           </h2>
           
+
+          
         </div>
+        <div className="flex justify-center items-center">
+        <div className="my-4">
+          <label htmlFor="AddBrandList" className="commonBtn">
+            Add New
+          </label>
+        </div>
+        <div className="my-4">
+          <label htmlFor="EditBrandPrice" className="commonBtn">
+           Edit Price List
+          </label>
+        </div>
+      </div>
         <div className="divider my-2"></div>
       </div>
       <div className="flex justify-center items-center">
@@ -76,60 +199,91 @@ const BrandList = () => {
               <h1>Type</h1>
             </th>
             <th>
-              <h1>Quantity In ML</h1>
+              <h1>Edit Brand Name</h1>
+            </th>
+            <th>
+              <h1>Delete</h1>
+            </th>
+            <th>
+              <h1>ML</h1>
+            </th>
+            <th>
+              <h1>Price</h1>
+            </th>
+            <th>
+              <h1>Edit Price</h1>
             </th>
           </thead>
 
           <tbody>
-            {wineStock.length &&
-              wineStock?.map((item, index) => {
-                const { sizes } = item;
-                const quantityInML = sizes?.map((item) => item?.quantityInML);
+           
+{wineStock && wineStock.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((item,index) => (
+          <React.Fragment key={item._id}>
+            <tr>
+  <td rowSpan={item.sizes.length+1}>{index+1}</td>
+              <td rowSpan={item.sizes.length+1}>{item.brandName}</td>
+              <td rowSpan={item.sizes.length+1}>{item?.type==="DESHIRML" ? "DESHI/RML" : item?.type}</td>
+              <th className="text-center align-center item-center text-[1.7rem]" rowSpan={item.sizes.length+1}>
+              <label htmlFor="EditBrandName">
+                <FaPen onClick={()=>editName(item)} className="cursor-pointer"/>
+                </label>
+                </th>
+              <th rowSpan={item.sizes.length+1} className="text-[1.7rem] ">
+                
+                <FaTrash onClick={() => {
+              swal({
+                title: "Are you sure?",
+                text: `Once deleted, you will not be able to recover Brand ${
+                  index + 1
+                }`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              }).then((willDelete) => {
+                if (willDelete) {
+                  deleteBrand(item._id);
+                  
+                } else {
+                  swal("Your Brand is safe!");
+                }
+              });
+            }} className="cursor-pointer"/>
+                </th>
+              {/* <td>{item.sizes[0].quantityInML}, {item.sizes[0].rate.$numberDecimal}</td> */}
+              </tr>
 
-                return (
-                  <tr key={index} className="text-center">
-                    <th>
-                      <h1>{index + 1}</h1>
-                    </th>
-                    <td>
-                      <h1>{item?.brandName}</h1>
-                    </td>
-                    <td>{item?.type}</td>
-                    <td>
-                      <h1>
-                        {quantityInML?.map((item, index) => {
-                          return (
-                            <span key={index}>
-                              {item}
-                              {index !== quantityInML?.length - 1 && ", "}
-                            </span>
-                          );
-                        })}
-                      </h1>
-                    </td>
-                    <td>
-                      <Link
-                        className="font-3xl font-bold"
-                        style={{ color: "#AA237A" }}
-                      >
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
+            
+            {item.sizes.map((obj) => {
+              return(
+              <tr key={obj._id}>
+                <td>{obj.quantityInML}</td>
+                <td>{obj.rate.$numberDecimal}</td>
+                <td>
+                  
+                  
+                <FaMoneyCheckAlt className="text-[1.7rem]" style={{cursor:"pointer"}} onClick={() => addToPriceList(obj)}/>
+                </td>
+              </tr>)
+})}
+ 
+    </React.Fragment>
+        ))}
+
+
           </tbody>
+          
         </table>
         </InfiniteScroll>
       </div>
-      <div className="flex justify-center items-center">
-        <div className="my-4">
-          <label htmlFor="AddBrandList" className="commonBtn">
-            Add New
-          </label>
-        </div>
-      </div>
+    
 
-      <AddBrandList ></AddBrandList>
+      <AddBrandList reInitiate={reInitiate}></AddBrandList>
+     {selectedObject && <EditBrandName reInitiate={reInitiate} selectedObject={selectedObject}/>}
+
+      
+<EditBrandPrice priceList={priceList} editPrice={editPrice} handleRemove = {handleRemove} handlePriceUpdate={handlePriceUpdate}></EditBrandPrice>  
+
+
     </section>
   );
 };

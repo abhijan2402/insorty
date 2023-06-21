@@ -69,7 +69,7 @@ const MainInvestment = () => {
                   <td></td>
                   <td>
                     <input
-                      className="dailyReportInput wd-30"
+                      className="dailyReportInput wd-30 left-text" 
                       type="text"
                       name="brandName"
                       value={"पिछले ऋण"}
@@ -81,7 +81,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput wd-9"
+                      className="dailyReportInput wd-9 left-text"
                       defaultValue={data.mainInvest.previousLoan.price}
                       onChange={(event) =>
                         handleInvestmentChange(
@@ -98,7 +98,7 @@ const MainInvestment = () => {
                   <td></td>
                   <td>
                     <input
-                      className="dailyReportInput wd-30"
+                      className="dailyReportInput wd-30 left-text"
                       type="text"
                       name="brandName"
                       value={"शेष नकदी"}
@@ -110,7 +110,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput wd-9"
+                      className="dailyReportInput wd-9 left-text"
                       defaultValue={data.mainInvest.cashInHand.price}
                       onChange={(event) =>
                         handleInvestmentChange("cashInHand", event.target.value)
@@ -152,7 +152,7 @@ const MainInvestment = () => {
                   <td></td>
                   <td>
                     <input
-                      className="dailyReportInput wd-30"
+                      className="dailyReportInput wd-30 left-text"
                       type="text"
                       name="brandName"
                       value={"रिजर्व रकम"}
@@ -164,7 +164,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput wd-9"
+                      className="dailyReportInput wd-9 left-text"
                       value={data.mainInvest.reserveAmount.price}
                       readOnly
                     />
@@ -175,7 +175,7 @@ const MainInvestment = () => {
                   <td></td>
                   <td>
                     <input
-                      className="dailyReportInput wd-30"
+                      className="dailyReportInput wd-30 left-text"
                       type="text"
                       name="brandName"
                       value={"Total"}
@@ -189,7 +189,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
-                      className="dailyReportInput wd-9"
+                      className="dailyReportInput wd-9 left-text"
                       defaultValue={data.mainInvest.total}
                         handleRemoveFields={handleRemoveFields}
 
@@ -220,6 +220,7 @@ const MainInvestment = () => {
                   <th>रिफंड / रिकवरी </th>
                 <th>दिनांक </th>
                 <th>रकम</th>
+                
               </tr>
             </thead>
             <tbody>
@@ -250,9 +251,9 @@ const MainInvestment = () => {
                 <td>
                  
                 </td>
+                <td className="commonText left-text">Total</td>
                 <td></td>
-                <td className="commonText">Total</td>
-                  <td className="price">{data?.refundRecoveryDetails?.total}</td>
+                  <td className="price left-text">{data?.refundRecoveryDetails?.total}</td>
               </tr>
             </tbody>
           </table>
@@ -304,9 +305,9 @@ const MainInvestment = () => {
                 <td>
                  
                 </td>
+                <td className="commonText left-text">Total</td>
                 <td></td>
-                <td className="commonText">Total</td>
-                <td className="price">
+                <td className="price left-text">
                   {data.reserveAmount.entries.length > 0
                     ? data.reserveAmount.entries.reduce(
                         (total, currentItem) =>
@@ -319,8 +320,8 @@ const MainInvestment = () => {
               <tr>
                 <td></td>
                 <td></td>
-                <td className="commonText"></td>
-                  <td className="price">शेष इन्वेस्ट</td>
+                  <td className="price left-text">शेष इन्वेस्ट</td>
+                <td className="commonText left-text"></td>
                   <td>{data.reserveAmount.total}</td>
               </tr>
             </tbody>

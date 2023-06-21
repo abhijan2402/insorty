@@ -46,7 +46,7 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
         <td>
 
           <select
-            className="dailyReportInput"
+            className="dailyReportInput left-text"
             name="type"
             defaultValue={type}
             onChange={(e) => {
@@ -88,19 +88,21 @@ const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemo
             onChange={(e) => {
               refundRecoveryOnChange(name, e.target.value, index, "price");
             }}
-            className="dailyReportInput wd-9"
+            className="dailyReportInput wd-9 left-text"
           />
         </td>
-        <td>
+
+        <td className={refundRecovery.type==="RECOVERY" ? "left-text" :"displayHidden"}>
         <Autocomplete
         {...defaultProps}
-        className={refundRecovery.type==="RECOVERY" ? "" :"displayHidden"}
+        
         id="autocomplete"
             size="small"
             style={{
               width: "20rem",
               border:"1px solid black",
-              borderRadius:"5px"
+              borderRadius:"5px",
+              textAlign: "left"
             }}
         value={refundRecovery.partyName}
         onChange={(event, newValue) => {

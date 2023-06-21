@@ -7,7 +7,7 @@ const FinalReport = ({ data, date }) => {
   
   return (
     <>
- <table className={shopType==="SHOP" ? "table" : "displayHidden"}>
+ <table className={shopType==="SHOP" ? "table commonTable" : "displayHidden"}>
                       <thead>
                         <tr>
                        
@@ -122,7 +122,7 @@ const FinalReport = ({ data, date }) => {
     </table>
 
 
-    <table className={shopType==="BAR" ? "table" : "displayHidden"}>
+    <table className={shopType==="BAR" ? "table commonTable" : "displayHidden"}>
                       <thead>
                         <tr>
                           <th> क्र. सं.</th>

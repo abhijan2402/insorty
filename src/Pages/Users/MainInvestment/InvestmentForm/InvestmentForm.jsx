@@ -41,7 +41,7 @@ const InvestmentForm = ({
           <input
             type="text"
             name="type"
-            className="dailyReportInput wd-30"
+            className="dailyReportInput wd-30 left-text"
             defaultValue={mainInvestment.type}
             onChange={(event) =>
               handelOnChangeMainInvestment(
@@ -71,7 +71,7 @@ const InvestmentForm = ({
           <input
             type="number"
             name="price"
-            className="dailyReportInput wd-9"
+            className="dailyReportInput wd-9 left-text"
             defaultValue={mainInvestment.price}
             onChange={(event) =>
               handelOnChangeMainInvestment(

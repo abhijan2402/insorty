@@ -6,34 +6,31 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
+import { useState } from "react";
+import DatePicker from "react-datepicker";
+import { useEffect } from "react";
+import useFinalReport from "../FinalReportHooks/useFinalReport";
+
 
 const FinalReport = () => {
-  const token = localStorage.getItem("token");
   const front = useRef(null);
+  const [month,setMonth] = useState(new Date())
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+  const {data,isLoading,refetch} = useFinalReport(month)
 
-  const { data, isLoading } = useQuery({
-    queryKey: ["monthlyFinalReport", "borrowedBottles", "extraBottles"],
-    queryFn: async () => {
-      const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getMonthlyFinalReport",
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: token },
-        }
-      );
-      const data = await res.json();
-      console.log(data);
-      return data.data;
-    },
-  });
+  useEffect(() => {
+   refetch()
+  }, [month])
+  
+
+
+ 
   if (isLoading) {
     return <Loader></Loader>;
   }
 
-  console.log(data)
 
   if (data.success === false) {
     return <div>No data found</div>;
@@ -54,7 +51,16 @@ const FinalReport = () => {
         </div>
         <div className="divider my-2"></div>
         <h2 className="font-bold text-[1.5rem]">
-          {data && moment(monthlyFinalReport?.date).format("MM/YYYY")}
+        <DatePicker
+            selected={new Date(month)}
+            name="date"
+            onChange={(date) => {
+              setMonth(moment(date).format('MMMM yyyy'));
+            }}
+            dateFormat="MMMM yyyy"
+            placeholderText={"dd/mm/yyyy"}
+            className="inputBox date"
+          />
         </h2>
         <div>
           <ListOfFinalReport

@@ -38,24 +38,7 @@ const PartnerForm = ({ partner, StartDate, index, EndDate }) => {
       <tr key={index}>
         <>
           <th>{index + 1}</th>
-          <td >
-            <div className="form-control">
-              {ShopType === "BAR" && (
-                <Link
-                  to={`/user/bearshop/partners/from/${partnerId}`}
-                >
-                  {partner.name}
-                </Link>
-              )}
-              {ShopType === "SHOP" && (
-                <Link
-                  to={`/user/partners/from/${partnerId}`}
-                >
-                  {partner.name}
-                </Link>
-              )}
-            </div>
-          </td>
+          
           <td >
             <div className="form-control">
               { ShopType === "BAR" && (
