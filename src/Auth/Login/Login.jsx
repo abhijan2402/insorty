@@ -53,11 +53,10 @@ const Login = () => {
           }
 
           localStorage.setItem("token", response.data.data.token);
-          Swal.fire("Succesfully Login!", "You clicked the button!", "success");
+          Swal.fire("Succesfully Login!", "success");
         });
     } catch (error) {
-      console.log(error.message);
-      const errors = error.message;
+      const errors = error.response.data.message;
       Swal.fire({
         title: "Error!",
         text: errors,
