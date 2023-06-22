@@ -41,8 +41,8 @@ const AdminLayout = () => {
         )}
       </div>
 
-      <div className="md:flex gap-2">
-        <div className={side ? "lg:w-[300px] md:w-48 w-full md:block hidden" : "hidden"}>
+      <div className="flex gap-2">
+        <div className={side ? "lg:w-[300px] md:w-48 w-full" : "hidden"}>
           <AdminSideNav></AdminSideNav>
         </div>
         <div className="md:w-[calc(100%-300px)] w-full DashboardLayoutOutlate ">

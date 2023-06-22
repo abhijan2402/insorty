@@ -179,7 +179,7 @@ const BrandList = () => {
       </div>
         <div className="divider my-2"></div>
       </div>
-      <div className="flex justify-center items-center">
+      <div className=" justify-center items-center">
       <InfiniteScroll
             dataLength={wineStock.length}
             next={fetchData}
@@ -187,8 +187,8 @@ const BrandList = () => {
             scrollableTarget="scrollableDiv"
             loader={<h4>Loading...</h4>}
           >
-        <table className="table w-4/5 removeCommonWSpace">
-          <thead className="text-center">
+        <table className="table overflow-x-auto removeCommonWSpace">
+          <thead className="text-center ">
             <th>
               <h1>Sr. No.</h1>
             </th>
@@ -215,12 +215,12 @@ const BrandList = () => {
             </th>
           </thead>
 
-          <tbody>
+          <tbody >
            
 {wineStock && wineStock.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((item,index) => (
           <React.Fragment key={item._id}>
             <tr>
-  <td rowSpan={item.sizes.length+1}>{index+1}</td>
+  <th rowSpan={item.sizes.length+1}>{index+1}</th>
               <td rowSpan={item.sizes.length+1}>{item.brandName}</td>
               <td rowSpan={item.sizes.length+1}>{item?.type==="DESHIRML" ? "DESHI/RML" : item?.type}</td>
               <th className="text-center align-center item-center text-[1.7rem]" rowSpan={item.sizes.length+1}>

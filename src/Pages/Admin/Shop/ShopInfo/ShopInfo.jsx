@@ -34,7 +34,7 @@ const ShopInfo = ({ myShopId, shop }) => {
             className="py-4"
            
           >
-            <div className="overflow-x-auto flex justify-center items-center  gap-6 flex-wrap"
+            <div className=" flex justify-center items-center  gap-6 flex-wrap"
 
             >
               <div className="form-control">
