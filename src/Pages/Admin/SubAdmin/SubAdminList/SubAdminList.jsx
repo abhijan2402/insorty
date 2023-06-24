@@ -14,6 +14,8 @@ const SubAdminList = () => {
   const subAdminListData = subAdmins?.data;
   const token = localStorage.getItem("token");
 
+  
+
   const handelDelete = (id) => {
     console.log(id);
     fetch(`https://insorty-api.onrender.com/admin/deleteSubAdmin/${id}`, {

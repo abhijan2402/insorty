@@ -97,6 +97,8 @@ const useSecondFormFront = () => {
                     newFormData.size = parent
                     newFormData.selectStockVarient = item.quantityInML;
                     newFormData.startingStock = item.currentStock;
+                    newFormData.sumRemainder = item.currentStock;
+                    newFormData.sales = item.currentStock;
                     newFormData.averageRate = item.averageRate.$numberDecimal;
                     newFormData.initial = item.averageRate.$numberDecimal;
                     firstFormData = [newFormData, ...firstFormData];

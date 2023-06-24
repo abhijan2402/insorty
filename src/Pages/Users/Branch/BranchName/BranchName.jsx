@@ -70,7 +70,7 @@ const BranchName = () => {
           <thead>
             <tr>
               <th> क्र. सं.</th>
-              <th colSpan={2}>Branch Name</th>
+              <th colSpan={2}>नाम</th>
             </tr>
           </thead>
             <tbody>

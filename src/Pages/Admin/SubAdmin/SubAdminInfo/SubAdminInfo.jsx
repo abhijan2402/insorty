@@ -1,7 +1,6 @@
 import React from "react";
 
-const SubAdminInfo = ({ subadminId, subAdmin }) => {
-
+const SubAdminInfo = ({ subadminId, subAdmin, onTokenChange }) => {
   return (
     <section>
       {/* The button to open modal */}

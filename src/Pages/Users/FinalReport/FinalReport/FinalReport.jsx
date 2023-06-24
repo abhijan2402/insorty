@@ -46,7 +46,7 @@ const FinalReport = () => {
       <section ref={front} className="py-4 px-4">
         <div className="title flex justify-center items-center">
           <h2 className="font-bold text-[1.5rem] text-center titleStyle">
-            फाइनल रिपोर्ट
+          अंतिम रिपोर्ट
           </h2>
         </div>
         <div className="divider my-2"></div>

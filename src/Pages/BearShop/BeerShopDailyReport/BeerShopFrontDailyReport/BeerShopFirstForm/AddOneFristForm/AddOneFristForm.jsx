@@ -112,7 +112,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 onChange={(e) => fristFormOnChange(e, index)}
                 required
                 min={0}
-                value={beerFront.averageRate750}
+                value={Number(beerFront.averageRate750).toFixed(2)}
                 disabled
               />
             </div>
@@ -124,7 +124,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 name="averageRate375"
                 required
                 min={0}
-                value={beerFront.averageRate375}
+                value={Number(beerFront.averageRate375).toFixed(2)}
                 disabled
               />
             </div>
@@ -136,7 +136,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 required
                 min={0}
                 name="averageRate180"
-                value={beerFront.averageRate180}
+                value={Number(beerFront.averageRate180).toFixed(2)}
                 disabled
               />
             </div>
@@ -149,7 +149,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 required
                 min={0}
                 name="averageRate30"
-                value={beerFront.averageRate30}
+                value={Number(beerFront.averageRate30).toFixed(2)}
                 disabled
               />
             </div>
@@ -167,7 +167,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-9"
                 name="openingStock30"
-                value={beerFront.openingStock750}
+                value={Number(beerFront.openingStock750).toFixed(2)}
                 disabled
               />
             </div>
@@ -219,7 +219,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-9"
                 name="inflowShop30"
-                value={beerFront.inflowShop30}
+                value={Number(beerFront.inflowShop30).toFixed(2)}
                 disabled
               />
             </div>
@@ -272,7 +272,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput"
                 name="buyRateShop30"
-                value={beerFront.buyRateShop30}
+                value={Number(beerFront.buyRateShop30).toFixed(2)}
                 disabled
                 required
                 min={0}
@@ -325,7 +325,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-9"
                 name="inflowOut30"
-                value={beerFront.inflowOut30}
+                value={Number(beerFront.inflowOut30).toFixed(2)}
                 disabled
                 required
                 min={0}
@@ -380,7 +380,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput"
                 name="buyRateOut30"
-                value={beerFront.buyRateOut30}
+                value={Number(beerFront.buyRateOut30).toFixed(2)}
                 disabled
                 required
                 min={0}
@@ -433,7 +433,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-9"
                 name="inflowCredit30"
-                value={beerFront.inflowCredit30}
+                value={Number(beerFront.inflowCredit30).toFixed(2)}
                 disabled
                 required
                 min={0}
@@ -487,7 +487,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-9"
                 name="send30"
-                value={beerFront.send30}
+                value={Number(beerFront.send30).toFixed(2)}
                 disabled
                 required
                 min={0}
@@ -506,7 +506,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-8"
                 name="sumRemaining30"
-                value={beerFront.sumRemaining30}
+                value={Number(beerFront.sumRemaining30).toFixed(2)}
                 disabled
                 required
                 min={0}
@@ -539,7 +539,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-8"
                 name="sales30"
-                value={beerFront.sales30}
+                value={Number(beerFront.sales30).toFixed(2)}
                 disabled
                 required
                 min={0}
@@ -572,7 +572,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-9"
                 name="total30"
-                value={beerFront.total30}
+                value={Number(beerFront.total30).toFixed(2)}
                 disabled
                 required
                 min={0}
@@ -588,7 +588,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
               type="number"
               className="semiSmallInput"
               name="grandTotal"
-              value={beerFront.grandTotal}
+              value={Number(beerFront.grandTotal).toFixed(2)}
               disabled
               required
               min={0}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegTrashAlt, FaInfo } from "react-icons/fa";
 import AddNewShop from "../AddNewShop/AddNewShop";
@@ -12,6 +12,7 @@ import jwtDecode from "jwt-decode";
 const ShopList = () => {
   const token = localStorage.getItem("token");
   const { shopsRefetch, shops, shopsLoaded } = useGetShopsNSubadmins();
+  const [Loading,setLoading] = useState(false)
 
   const handelDelete = (id) => {
     fetch(`https://insorty-api.onrender.com/admin/deleteShop/${id}`, {
@@ -69,9 +70,9 @@ const ShopList = () => {
     const accountId = from.accountId.value;
     const shopType = from.shopType.value;
     
-
-      
-    fetch(`${process.env.REACT_APP_API_URL}/admin/createShop`, {
+    setLoading(true)
+try{
+    await fetch(`${process.env.REACT_APP_API_URL}/admin/createShop`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -100,6 +101,10 @@ const ShopList = () => {
         swal("some error occurred");
         console.log(err)
       });
+    }
+    finally{
+      setLoading(false)
+    }
   };
 
   if (shopsLoaded) {
@@ -190,7 +195,7 @@ const ShopList = () => {
 
       {/* <ShopInfo></ShopInfo> */}
       <EditeShop></EditeShop>
-      <AddNewShop addNewShop={addNewShop}></AddNewShop>
+      <AddNewShop addNewShop={addNewShop} Loading={Loading}></AddNewShop>
     </section>
   );
 };

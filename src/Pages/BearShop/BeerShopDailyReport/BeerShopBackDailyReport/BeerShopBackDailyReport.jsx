@@ -282,8 +282,7 @@ const BackDailyReport = () => {
                       <th> ब्राण्ड</th>
                       <th>ML</th>
                       <th>संख्या</th>
-                      <th>रेट</th>
-                      <th>योग</th>
+                    
                       <th>टिप्पणी</th>
                     </tr>
                   </thead>
@@ -349,25 +348,7 @@ const BackDailyReport = () => {
                         </div>
                       </td>
 
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-7"
-                            name="total"
-                            value={purchesOutSideState.reduce(
-                              (total, currentItem) =>
-                                (total = total + Number(currentItem.total)),
-                              0
-                            )}
-                            disabled
-                          />
-                        </div>
-                      </td>
+                     
 
                       <td>
                         <div className="form-control"></div>

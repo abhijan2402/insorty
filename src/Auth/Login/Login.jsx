@@ -117,7 +117,7 @@ const Login = () => {
                     <div className="inputFild">
                       <FaUnlock className="registrationIcon"></FaUnlock>
                       <input
-                        type="password"
+                        type="text"
                         placeholder="Password"
                         name="password"
                       />

@@ -1,6 +1,7 @@
 import React from "react";
 import moment from "moment/moment";
 import { FaRegTrashAlt } from "react-icons/fa";
+import swal from "sweetalert";
 
 const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
   // console.log(payment.entries.length);
@@ -98,7 +99,24 @@ const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
                     <p
                       className="font-3xl font-bold"
                       style={{ color: "#AA237A" }}
-                      onClick={() => handelDelete(entry?._id)}
+                      // onClick={() => handelDelete(entry?._id)}
+                      onClick={() => {
+                        swal({
+                          title: "Are you sure?",
+                          text: `Once deleted, you will not be able to recover entry ${index+1}`,
+                          icon: "warning",
+                          buttons: true,
+                          dangerMode: true,
+                        }).then((willDelete) => {
+                          if (willDelete) {
+                            
+                            handelDelete(entry?._id);
+                            
+                          } else {
+                            swal("Your entry is safe!");
+                          }
+                        });
+                      }}
                     >
                       <FaRegTrashAlt></FaRegTrashAlt>
                     </p>

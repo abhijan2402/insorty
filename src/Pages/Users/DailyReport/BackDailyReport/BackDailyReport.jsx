@@ -45,6 +45,8 @@ const BackDailyReport = () => {
     handelSeconFormOnChange,
     handleRemoveFieldsBack,
     handleRemoveFieldsBeer,
+    hasMoreBeer,
+    hasMoreBeerSmall
   } = useFristFormAdd();
 
   // ================== Rml Form============
@@ -139,7 +141,6 @@ const BackDailyReport = () => {
               बीयर
             </h1>
 
-            <div className="my-4">
               <Link to="/user/dailyreport/front" className="commonBtn ">
                 अंग्रेजी
               </Link>
@@ -149,7 +150,6 @@ const BackDailyReport = () => {
               >
                 पर्चा
               </Link>
-            </div>
           </div>
 
           <div className="flex gap-4 justify-center items-center">
@@ -1161,6 +1161,8 @@ const BackDailyReport = () => {
                         </tr>
                       </tbody>
                     </table>
+                    <div className={hasMoreBeer===true ? '' : 'displayHidden'}>Loading data...</div>
+
                   </div>
                 </>
 
@@ -1227,7 +1229,7 @@ const BackDailyReport = () => {
                               {/* ======== MRP Input ========= */}
                               <td></td>
                               <td>
-                                <div className="form-control">
+                                <div className="form-control items-center">
                                   <input
                                     type="number"
                                     className="smallinput"
@@ -1245,7 +1247,7 @@ const BackDailyReport = () => {
                                 </div>
                               </td>
                               <td>
-                                <div className="form-control">
+                                <div className="form-control items-center">
                                   <input
                                     type="number"
                                     className="smallinput"
@@ -1268,7 +1270,7 @@ const BackDailyReport = () => {
                               {/* ======== आमद (खरीद)-दु. ========= */}
 
                               <td>
-                                <div className="form-control">
+                                <div className="form-control items-center">
                                   <input
                                     type="number"
                                     className="smallinput"
@@ -1289,7 +1291,7 @@ const BackDailyReport = () => {
                               <td></td>
 
                               <td>
-                                <div className="form-control">
+                                <div className="form-control items-center">
                                   <input
                                     type="number"
                                     className="smallinput"
@@ -1308,7 +1310,7 @@ const BackDailyReport = () => {
                               </td>
                               {/* ======== भेजान ========= */}
                               <td>
-                                <div className="form-control">
+                                <div className="form-control items-center">
                                   <input
                                     type="number"
                                     className="smallinput"
@@ -1326,7 +1328,7 @@ const BackDailyReport = () => {
                               </td>
                               {/* ======== योग/शेष ========= */}
                               <td>
-                                <div className="form-control">
+                                <div className="form-control items-center">
                                   <input
                                     type="number"
                                     className="smallinput"
@@ -1345,7 +1347,7 @@ const BackDailyReport = () => {
                               </td>
                               {/* ======== अन्तिम स्टॉक ========= */}
                               <td>
-                                <div className="form-control">
+                                <div className="form-control items-center">
                                   <input
                                     type="number"
                                     className="smallinput"
@@ -1364,7 +1366,7 @@ const BackDailyReport = () => {
                               </td>
                               {/* ============= बिक्री ================ */}
                               <td>
-                                <div className="form-control">
+                                <div className="form-control items-center">
                                   <input
                                     type="number"
                                     className="smallinput"
@@ -1384,7 +1386,7 @@ const BackDailyReport = () => {
                               <td></td>
                               {/* ============= योग ================ */}
                               <td>
-                                <div className="form-control">
+                                <div className="form-control items-center">
                                   <input
                                     type="number"
                                     className="smallinput wd-7"
@@ -1404,6 +1406,8 @@ const BackDailyReport = () => {
                             </tr>
                           </tbody>
                         </table>
+                        <div className={hasMoreBeerSmall===true ? '' : 'displayHidden'}>Loading data...</div>
+
                       </div>
                     </div>
                   </>
@@ -1424,7 +1428,7 @@ const BackDailyReport = () => {
           <div className="flex  overflow-x-auto">
             <div className="py-6">
               <h1 className="my-4">
-                <span className="font-bold titleText">आर.एम.एल</span>
+                <span className="font-bold titleText">देशी / RML</span>
               </h1>
 
               <>
@@ -1492,10 +1496,10 @@ const BackDailyReport = () => {
                         </td>
 
                         <td>
-                          <div className="form-control">
+                          <div className="form-control items-center">
                             <input
                               // type="number"
-                              className="smallinput"
+                              className="smallinput wd-5"
                               name="openingStock"
                               value={addRmlState.reduce(
                                 (total, currentItem) =>
@@ -1511,10 +1515,10 @@ const BackDailyReport = () => {
                         {/* ======== आमद (खरीद)-बा. ========= */}
 
                         <td>
-                          <div className="form-control">
+                          <div className="form-control items-center">
                             <input
                               type="number"
-                              className="smallinput"
+                              className="smallinput wd-5"
                               name="incomingPurchase"
                               value={addRmlState.reduce(
                                 (total, currentItem) =>
@@ -1535,10 +1539,10 @@ const BackDailyReport = () => {
                         {/* ======== आमद (उधारी) ========= */}
 
                         <td>
-                          <div className="form-control">
+                          <div className="form-control items-center">
                             <input
                               type="number"
-                              className="smallinput"
+                              className="smallinput wd-5"
                               name="incomePurchase"
                               value={addRmlState.reduce(
                                 (total, currentItem) =>
@@ -1555,10 +1559,10 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== भेजान ========= */}
                         <td>
-                          <div className="form-control">
+                          <div className="form-control items-center">
                             <input
                               type="number"
-                              className="smallinput"
+                              className="smallinput wd-5"
                               name="inflowCredit"
                               value={addRmlState.reduce(
                                 (total, currentItem) =>
@@ -1572,10 +1576,10 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== योग/शेष ========= */}
                         <td>
-                          <div className="form-control">
+                          <div className="form-control items-center">
                             <input
                               type="number"
-                              className="smallinput"
+                              className="smallinput wd-5"
                               name="sending"
                               value={addRmlState.reduce(
                                 (total, currentItem) =>
@@ -1588,10 +1592,10 @@ const BackDailyReport = () => {
                         </td>
                         {/* ======== अन्तिम स्टॉक ========= */}
                         <td>
-                          <div className="form-control">
+                          <div className="form-control items-center">
                             <input
                               type="number"
-                              className="smallinput"
+                              className="smallinput wd-5"
                               name="sumRemainder"
                               value={addRmlState.reduce(
                                 (total, currentItem) =>
@@ -1604,10 +1608,10 @@ const BackDailyReport = () => {
                           </div>
                         </td>
                         <td>
-                          <div className="form-control">
+                          <div className="form-control items-center">
                             <input
                               type="number"
-                              className="smallinput"
+                              className="smallinput wd-5"
                               name="closingStock"
                               value={addRmlState.reduce(
                                 (total, currentItem) =>
@@ -1622,10 +1626,10 @@ const BackDailyReport = () => {
 
                         {/* ============= बिक्री ================ */}
                         <td>
-                          <div className="form-control">
+                          <div className="form-control items-center">
                             <input
                               type="number"
-                              className="smallinput"
+                              className="smallinput wd-5"
                               name="sales"
                               value={addRmlState.reduce(
                                 (total, currentItem) =>
@@ -1642,7 +1646,7 @@ const BackDailyReport = () => {
                         </td>
                         {/* ============= योग ================ */}
                         <td>
-                          <div className="form-control">
+                          <div className="form-control items-center">
                             <input
                               type="number"
                               className="smallinput wd-11"
@@ -1683,8 +1687,7 @@ const BackDailyReport = () => {
                       <th>ब्राण्ड</th>
                       <th>ML</th>
                       <th>संख्या</th>
-                      <th>रेट</th>
-                      <th>योग</th>
+                      
                       <th>टिप्पणी</th>
                     </tr>
                   </thead>
@@ -1750,25 +1753,7 @@ const BackDailyReport = () => {
                         </div>
                       </td>
 
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
-
-                      <td>
-                        <div className="form-control">
-                          <input
-                            type="number"
-                            className="smallinput wd-7"
-                            name="total"
-                            value={purchesOutSideState.reduce(
-                              (total, currentItem) =>
-                                (total = total + Number(currentItem.total)),
-                              0
-                            )}
-                            disabled
-                          />
-                        </div>
-                      </td>
+                     
 
                       <td>
                         <div className="form-control"></div>

@@ -6,6 +6,7 @@ import Loader from "../../../../Components/Loader/Loader";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import jwtDecode from "jwt-decode";
+import swal from "sweetalert";
 
 const PartyName = () => {
   const token = localStorage.getItem("token");
@@ -103,7 +104,24 @@ const PartyName = () => {
                     <button
                       className="font-3xl font-bold"
                       style={{ color: "#AA237A" }}
-                      onClick={() => handelDelete(item?._id)}
+                      // onClick={() => handelDelete(item?._id)}
+                      onClick={() => {
+                        swal({
+                          title: "Are you sure?",
+                          text: `Once deleted, you will not be able to recover party ${item?.partyName}`,
+                          icon: "warning",
+                          buttons: true,
+                          dangerMode: true,
+                        }).then((willDelete) => {
+                          if (willDelete) {
+                            
+                            handelDelete(item?._id);
+                            
+                          } else {
+                            swal("Your party is safe!");
+                          }
+                        });
+                      }}
                     >
                       <FaRegTrashAlt></FaRegTrashAlt>
                     </button>

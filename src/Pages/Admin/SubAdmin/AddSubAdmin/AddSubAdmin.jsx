@@ -26,6 +26,7 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
                   type="text"
                   placeholder="Subadmin Name"
                   name="name"
+                  required
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -41,6 +42,7 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
                   type="text"
                   placeholder="Account Id"
                   name="accountId"
+                  required
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -56,6 +58,7 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
                   type="text"
                   placeholder="Phone Number"
                   name="phone"
+                  required
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -68,9 +71,10 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type="text"
                   placeholder="Password"
                   name="password"
+                  required
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",
@@ -86,6 +90,7 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
                   type="text"
                   placeholder="Address"
                   name="address"
+                  required
                   className="input input-bordered"
                   style={{
                     border: "1px solid #e5e7eb",

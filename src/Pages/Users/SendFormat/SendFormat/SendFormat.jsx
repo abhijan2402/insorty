@@ -72,7 +72,7 @@ const SendFormat = ({ isBearShop }) => {
       <div>
         <section ref={front}>
           <div className="mx-6 flex justify-center flex-col">
-            <h2 className="font-bold md:text-[1.5rem] text-center">
+            <h2 className="font-bold md:text-[1.5rem] text-center my-4">
               सभी पार्टनर
             </h2>
             <div className="flex justify-center items-center flex-col">
@@ -95,7 +95,7 @@ const SendFormat = ({ isBearShop }) => {
                         <td>{item?.equity} %</td>
                         <td>{item?.balance}</td>
                         <td>
-                          <FaRegTrashAlt
+                          <FaRegTrashAlt className="cursor-pointer"
                             onClick={() => {
                               swal({
                                 title: "Are you sure?",

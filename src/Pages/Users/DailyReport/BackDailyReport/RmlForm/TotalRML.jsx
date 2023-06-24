@@ -18,10 +18,10 @@ const TotalRML = () => {
         </td>
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
-              className=""
+              className="wd-5"
               name="averageRate"
               disabled
             />
@@ -29,10 +29,10 @@ const TotalRML = () => {
         </td>
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               // type="number"
-              className=""
+              className="wd-5"
               name="openingStock"
               value={addRmlState.reduce(
                 (total, currentItem) =>
@@ -47,10 +47,10 @@ const TotalRML = () => {
         {/* ======== आमद (खरीद)-बा. ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
-              className=""
+              className="wd-5"
               name="incomingPurchase"
               value={addRmlState.reduce(
                 (total, currentItem) =>
@@ -64,10 +64,10 @@ const TotalRML = () => {
         {/* ======== आमद (खरीद)-बा. ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
-              className=""
+              className="wd-5"
               name="buyRate"
               disabled
             />
@@ -76,10 +76,10 @@ const TotalRML = () => {
         {/* ======== आमद (उधारी) ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
-              className=""
+              className="wd-5"
               name="incomePurchase"
               value={addRmlState.reduce(
                 (total, currentItem) =>
@@ -91,10 +91,10 @@ const TotalRML = () => {
           </div>
         </td>
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
-              className=""
+              className="wd-5"
               name="purchaserRate"
               disabled
             />
@@ -102,10 +102,10 @@ const TotalRML = () => {
         </td>
         {/* ======== भेजान ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
-              className=""
+              className="wd-5"
               name="inflowCredit"
               value={addRmlState.reduce(
                 (total, currentItem) =>

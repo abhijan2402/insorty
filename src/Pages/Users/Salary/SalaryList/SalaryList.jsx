@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import jwtDecode from "jwt-decode";
+import swal from "sweetalert";
 
 const SalaryList = () => {
   const token = localStorage.getItem("token");
@@ -101,7 +102,7 @@ const SalaryList = () => {
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                <th>Name</th>
+                <th>नाम</th>
                 <th>Delete</th>
               </tr>
             </thead>
@@ -111,7 +112,7 @@ const SalaryList = () => {
                 salaryData?.map((salary, index) => {
                   return (
                     <>
-                      {role === "shop" && ShopType === "BAR" && (
+                      { ShopType === "BAR" && (
                         <tr key={salary?._id}>
                           <th>{index + 1}</th>
                           <td>
@@ -135,7 +136,7 @@ const SalaryList = () => {
 
                       )}
 
-                      {role === "shop" && ShopType === "SHOP" && (
+                      {ShopType === "SHOP" && (
                         <tr key={salary?._id}>
                           <th>{index + 1}</th>
                           <td>
@@ -150,7 +151,23 @@ const SalaryList = () => {
                             <Link
                               className="font-3xl font-bold"
                               style={{ color: "#AA237A" }}
-                              onClick={() => handleDelete(salary?._id)}
+                              onClick={() => {
+                                swal({
+                                  title: "Are you sure?",
+                                  text: `Once deleted, you will not be able to recover employee ${salary?.name}`,
+                                  icon: "warning",
+                                  buttons: true,
+                                  dangerMode: true,
+                                }).then((willDelete) => {
+                                  if (willDelete) {
+                                    
+                                    handleDelete(salary?._id);
+                                    
+                                  } else {
+                                    swal("Your Employee is safe!");
+                                  }
+                                });
+                              }}
                             >
                               <FaRegTrashAlt></FaRegTrashAlt>
                             </Link>

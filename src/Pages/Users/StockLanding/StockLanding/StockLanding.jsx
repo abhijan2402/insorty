@@ -23,6 +23,7 @@ const StockLanding = () => {
         }
       );
       const data = await res.json();
+      console.log(data.data)
       return data.data;
     },
   });
@@ -55,14 +56,14 @@ const StockLanding = () => {
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                <th colSpan={2}>Party Name</th>
+                <th colSpan={2}>नाम</th>
               </tr>
             </thead>
             <tbody>
               {PartyInfo?.map((party, index) => {
                 return (
                   <>
-                    {role === "shop" && ShopType === "BAR" && (
+                    { ShopType === "BAR" && (
                       <tr key={party?._id}>
                         <th>{index + 1}</th>
                         <td>
@@ -83,7 +84,7 @@ const StockLanding = () => {
                         </td>
                       </tr>
                     )}
-                    {role === "shop" && ShopType === "SHOP" && (
+                    {ShopType === "SHOP" && (
                       <tr key={party?._id}>
                         <th>{index + 1}</th>
                         <td>

@@ -133,53 +133,9 @@ const Partners = ({ isBearShop }) => {
                   </thead>
 
                   <tbody>
-                    <tr>
-                      <th></th>
 
-                      <td>
-                        <div className="flex gap-2">
-                          <div className="form-control">
-                            <label className="label"></label>
-                          </div>
-                        </div>
-                      </td>
 
-                      <td>
-                        <div className="flex gap-4">
-                          <div className="form-control">
-                            <label className="label"></label>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="flex gap-4">
-                          <div className="form-control">
-                            <label className="label"></label>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td>
-                        <div className="flex gap-4">
-                          <div className="form-control">
-                            {/* <label className="label">नामे </label> */}
-                          </div>
-                          <div className="form-control">
-                            <label className="label"> </label>
-                          </div>
-                          <div className="form-control">
-                            <label className="label"> </label>
-                          </div>
-
-                          <div className="form-control">
-                            {/* <label className="label">शेष</label> */}
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-
-                    {partnarData && partnarData.length &&  filteredData.map((partner, index) => {
+                    {partnarData && partnarData.length!==undefined &&  filteredData.map((partner, index) => {
                       return (
                         <PartnerForm
                           key={index}

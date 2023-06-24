@@ -168,7 +168,7 @@ const RmlFrom = ({
         </td>
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -184,7 +184,7 @@ const RmlFrom = ({
         {/* ======== आमद (खरीद)-बा. ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -199,7 +199,7 @@ const RmlFrom = ({
         {/* ======== आमद (खरीद)-बा. rate ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -214,7 +214,7 @@ const RmlFrom = ({
         {/* ======== khareed bahar ========= */}
 
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -229,7 +229,7 @@ const RmlFrom = ({
 
         {/* ======== khareed rate bahar ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -243,7 +243,7 @@ const RmlFrom = ({
         </td>
         {/* ======== udhari ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -257,7 +257,7 @@ const RmlFrom = ({
         </td>
         {/* ======== bhejan ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -271,7 +271,7 @@ const RmlFrom = ({
         </td>
         {/* ======== योग/शेष ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -286,7 +286,7 @@ const RmlFrom = ({
         </td>
         {/* ======== अन्तिम स्टॉक ========= */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -300,7 +300,7 @@ const RmlFrom = ({
         </td>
         {/* ============= बिक्री ================ */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -315,7 +315,7 @@ const RmlFrom = ({
         </td>
         {/* ============= रेट ================ */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required
@@ -329,7 +329,7 @@ const RmlFrom = ({
         </td>
         {/* ============= योग ================ */}
         <td>
-          <div className="form-control">
+          <div className="form-control items-center">
             <input
               type="number"
                 required

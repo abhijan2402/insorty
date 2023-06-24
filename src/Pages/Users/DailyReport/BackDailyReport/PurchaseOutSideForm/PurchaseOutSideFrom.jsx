@@ -213,34 +213,7 @@ const PurchaseOutSideFrom = ({
         </td>
         {/* ======== आमद (खरीद)-बा. ========= */}
 
-        <td>
-          <div className="form-control">
-            <input
-              type="number"
-                min={0}
-                required
-              className="smallinput"
-              name="rate"
-              value={item.rate}
-              onChange={(e) => onChangePurchesOutSide(e, index)}
-            />
-          </div>
-        </td>
-
-        <td>
-          <div className="form-control">
-            <input
-              type="number"
-                min={0}
-                required
-              className="smallinput wd-7"
-              name="total"
-              disabled
-              value={item.total}
-              onChange={(e) => onChangePurchesOutSide(e, index)}
-            />
-          </div>
-        </td>
+      
 
         <td>
           <div className="form-control">

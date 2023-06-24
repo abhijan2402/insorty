@@ -12,7 +12,7 @@ const AddNewEmploy = ({ handelSubmitAddNewEmploy }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Add New Employ</h3>
+          <h3 className="text-lg font-bold">नया कर्मचारी जोड़ें</h3>
           <form action="" onSubmit={handelSubmitAddNewEmploy}>
             <div className="flex gap-4 flex-col mt-4">
               <input
@@ -20,7 +20,7 @@ const AddNewEmploy = ({ handelSubmitAddNewEmploy }) => {
                   border: "1px solid #4CAF50",
                 }}
                 type="text"
-                placeholder="Employ Name"
+                placeholder="नाम"
                 name="name"
                 className="input input-bordered w-full"
               />
@@ -32,12 +32,13 @@ const AddNewEmploy = ({ handelSubmitAddNewEmploy }) => {
                 type="number"
                 name="phoneNumber"
                 className="input input-bordered w-full"
-                placeholder="Mobile Number"
+                placeholder="फ़ोन नंबर
+                "
               />
             </div>
             <div>
               <button type="submit" className="dailyReportBtn  mt-4">
-                Add New Employ
+              नया कर्मचारी जोड़ें
               </button>
             </div>
           </form>

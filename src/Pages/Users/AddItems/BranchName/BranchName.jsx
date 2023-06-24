@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import jwtDecode from "jwt-decode";
+import swal from "sweetalert";
 
 const BranchName = () => {
   const token = localStorage.getItem("token");
@@ -105,7 +106,24 @@ const BranchName = () => {
                     <button
                       className="font-3xl font-bold"
                       style={{ color: "#AA237A" }}
-                      onClick={() => handelDelete(item?._id)}
+                      // onClick={() => handelDelete(item?._id)}
+                      onClick={() => {
+                        swal({
+                          title: "Are you sure?",
+                          text: `Once deleted, you will not be able to recover branch ${item?.branchName}`,
+                          icon: "warning",
+                          buttons: true,
+                          dangerMode: true,
+                        }).then((willDelete) => {
+                          if (willDelete) {
+                            
+                            handelDelete(item?._id);
+                            
+                          } else {
+                            swal("Your branch is safe!");
+                          }
+                        });
+                      }}
                     >
                       <FaRegTrashAlt></FaRegTrashAlt>
                     </button>

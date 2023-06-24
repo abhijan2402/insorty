@@ -28,13 +28,14 @@ const AdminSideNav = () => {
 
   return (
     <>
-      <div className="flex flex-col w-64 h-screen px-4 py-8 bg-white border-r sidenav">
+      <div className="flex flex-col w-44 h-screen px-4 py-8 bg-white border-r sidenav">
+        
         <div
           style={{
             left: "0",
             zIndex: " 1000",
           }}
-          className="flex-col w-64 fixed px-4 md:mb-10 top-0 md:top-0 bg-white border-r flex "
+          className="flex-col w-44 fixed px-4 md:mb-10 top-0 md:top-0 bg-white border-r flex "
         >
           <div className="text-3xl flex justify-center items-center font-semibold  text-white">
             <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />

@@ -27,7 +27,8 @@ const FronteDailyReport = () => {
     thirdFormOnChange,
     removeMidForm,
     hasMoreBig,
-    hasMoreSmall
+    hasMoreSmall,
+    removeThirdForm
   } = UseBeerShopFront();
 
   const token = localStorage.getItem("token");
@@ -62,6 +63,7 @@ const FronteDailyReport = () => {
     fristFormState,
     onChangeFristBackFormHandler,
     addOneSecondFormState,
+    addOneInFristFormHandler,
     addOneSecondFormHandler,
     handelSeconFormOnChange,
     handleRemoveFieldsBack,
@@ -767,7 +769,7 @@ const FronteDailyReport = () => {
                   </tr>
                 </tbody>
               </table>
-              <div className={hasMoreBig===true ? '' : 'displayHidden'}>Loadinng data...</div>
+              <div className={hasMoreBig===true ? '' : 'displayHidden'}>Loading data...</div>
             </div>
           </>
         </div>
@@ -1091,7 +1093,7 @@ const FronteDailyReport = () => {
                                 required
                                 min={0}
                                 name="averageRateOtherMl"
-                                value={item.averageRateOtherMl}
+                                value={Number(item.averageRateOtherMl).toFixed(2)}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
@@ -1103,7 +1105,7 @@ const FronteDailyReport = () => {
                                 required
                                 min={0}
                                 name="averageRate30"
-                                value={item.averageRate30}
+                                value={Number(item.averageRate30).toFixed(2)}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
@@ -1121,7 +1123,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 disabled
                                 name="openingStockOtherMl"
-                                value={item.openingStockOtherMl}
+                                value={Number(item.openingStockOtherMl).toFixed(2)}
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1133,7 +1135,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 disabled
                                 name="openingStock30"
-                                value={item.openingStock30}
+                                value={Number(item.openingStock30).toFixed(2)}
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1162,7 +1164,7 @@ const FronteDailyReport = () => {
                                 required
                                 min={0}
                                 name="inflowPurchase30 "
-                                value={item.inflowPurchase30}
+                                value={Number(item.inflowPurchase30).toFixed(2)}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
@@ -1190,7 +1192,7 @@ const FronteDailyReport = () => {
                                 required
                                 min={0}
                                 name="buyRateShopBar30"
-                                value={item.buyRateShopBar30}
+                                value={Number(item.buyRateShopBar30).toFixed(2)}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
@@ -1220,7 +1222,7 @@ const FronteDailyReport = () => {
                                 required
                                 min={0}
                                 name="inflowPurchaseFromOutside30"
-                                value={item.inflowPurchaseFromOutside30}
+                                value={Number(item.inflowPurchaseFromOutside30).toFixed(2)}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
@@ -1249,7 +1251,7 @@ const FronteDailyReport = () => {
                                 required
                                 min={0}
                                 name="buyRateShopOut30"
-                                value={item.buyRateShopOut30}
+                                value={Number(item.buyRateShopOut30).toFixed(2)}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
@@ -1277,7 +1279,7 @@ const FronteDailyReport = () => {
                                 required
                                 min={0}
                                 name="inflowCredit30"
-                                value={item.inflowCredit30}
+                                value={Number(item.inflowCredit30).toFixed(2)}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
@@ -1307,7 +1309,7 @@ const FronteDailyReport = () => {
                                 min={0}
                                 disabled
                                 name="send30"
-                                value={item.send30}
+                                value={Number(item.send30).toFixed(2)}
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
                             </div>
@@ -1323,7 +1325,7 @@ const FronteDailyReport = () => {
                                 required
                                 min={0}
                                 name="sumRemaining30"
-                                value={item.sumRemaining30}
+                                value={Number(item.sumRemaining30).toFixed(2)}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
@@ -1355,7 +1357,7 @@ const FronteDailyReport = () => {
                                 required
                                 min={0}
                                 name="sale30"
-                                value={item.sale30}
+                                value={Number(item.sale30).toFixed(2)}
                                 disabled
                                 onChange={(e) => midFormOnChange(e, index)}
                               />
@@ -1387,7 +1389,7 @@ const FronteDailyReport = () => {
                               required
                               min={0}
                               name="total"
-                              value={item.total}
+                              value={Number(item.total).toFixed(2)}
                               disabled
                               onChange={(e) => midFormOnChange(e, index)}
                             />
@@ -1655,7 +1657,7 @@ const FronteDailyReport = () => {
                 </tr>
               </tbody>
             </table>
-            <div className={hasMoreSmall===true ? '' : 'displayHidden'}>Loadinng data...</div>
+            <div className={hasMoreSmall===true ? '' : 'displayHidden'}>Loading data...</div>
           </div>
           <div>English Total:- {Number(localStorage.getItem("pegFormTotal")) + Number(localStorage.getItem('smallPegFormTotal'))}</div>
         </div>
@@ -2021,6 +2023,7 @@ const FronteDailyReport = () => {
                             <button
                               className="btn bg-[#AA237A] btn-sm"
                               onClick={() => {
+                                addOneInFristFormHandler()
                                 thirdFormAddOne();
                               }}
                             >
@@ -2649,7 +2652,7 @@ const FronteDailyReport = () => {
                         </tr>
                       </tbody>
                     </table>
-                    <div className={hasMoreBeer===true ? '' : 'displayHidden'}>Loadinng data...</div>
+                    <div className={hasMoreBeer===true ? '' : 'displayHidden'}>Loading data...</div>
                   </div>
 
                   <div className="py-6">
@@ -2667,8 +2670,9 @@ const FronteDailyReport = () => {
                       </tr> */}
                         <tr>
                           <th> क्र. सं.</th>
-                          <th>Description/ सामान का विवरण</th>
-                          <th>Buying price/ खरीद रेट</th>
+                          <th></th>
+                          <th> सामान का विवरण</th>
+                          <th> खरीद रेट</th>
                           <th>प्राम्भिक स्टॉक</th>
                           <th>आमद</th>
                           <th>योग</th>
@@ -2684,6 +2688,33 @@ const FronteDailyReport = () => {
                           return (
                             <tr key={index}>
                               <th>{index + 1}</th>
+                              
+                              <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${
+                index + 1
+              }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                removeThirdForm(index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
+          X
+        </th>
+
                               <td>
                                 <input
                                   type="text"
@@ -2868,6 +2899,7 @@ const FronteDailyReport = () => {
                               </div>
                             </div>
                           </td>
+                          
 
                           <td>
                             <div className="flex ">
@@ -2981,7 +3013,7 @@ const FronteDailyReport = () => {
                   <tr>
                     <th> क्र. सं.</th>
                     <th></th>
-                    <th>Brand Name/ ब्राण्ड</th>
+                    <th> ब्राण्ड</th>
                     <th>ml</th>
                     <th>औसत दर</th>
                     <th>प्रारम्भिक स्टॉक</th>
@@ -3199,7 +3231,7 @@ const FronteDailyReport = () => {
                   </tr>
                 </tbody>
               </table>
-              <div className={hasMoreBeerSmall===true ? '' : 'displayHidden'}>Loadinng data...</div>
+              <div className={hasMoreBeerSmall===true ? '' : 'displayHidden'}>Loading data...</div>
             </div>
             <div style={{ height: '90px', marginTop: "50px" }}>
               <p>Beer Total:- {Number(localStorage.getItem('totalFirstBack')) + Number(localStorage.getItem('beerFormTotal'))}</p>

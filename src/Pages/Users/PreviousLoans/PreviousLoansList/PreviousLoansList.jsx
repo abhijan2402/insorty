@@ -7,6 +7,7 @@ import AddPreviusLons from "../AddPreviusLons/AddPreviusLons";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
+import swal from "sweetalert";
 
 const PreviousLoansList = () => {
   const token = localStorage.getItem("token");
@@ -159,7 +160,23 @@ const PreviousLoansList = () => {
                         <Link
                           className="font-3xl font-bold"
                           style={{ color: "#AA237A" }}
-                          onClick={() => handleDelete(prevLone?._id)}
+                          onClick={() => {
+                            swal({
+                              title: "Are you sure?",
+                              text: `Once deleted, you will not be able to recover party ${prevLone?.name}`,
+                              icon: "warning",
+                              buttons: true,
+                              dangerMode: true,
+                            }).then((willDelete) => {
+                              if (willDelete) {
+                                
+                                handleDelete(prevLone?._id);
+                                
+                              } else {
+                                swal("Your party is safe!");
+                              }
+                            });
+                          }}
                         >
                           <FaRegTrashAlt></FaRegTrashAlt>
                         </Link>

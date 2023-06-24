@@ -1127,12 +1127,7 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={4}>
                   ML
                 </td>
-                <td className="tg-0lax" colSpan={4}>
-                  Rate
-                </td>
-                <td className="tg-0lax" colSpan={4}>
-                  Total
-                </td>
+               
                 <td className="tg-0lax" colSpan={4}>
                   टिप्पणी
                 </td>
@@ -1178,24 +1173,7 @@ const BackDetailReport = () => {
                         0
                       )}
                 </td>
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4}>
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem.purchaseOutSide.entries.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem.total),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
+               
               </tr>
             </tbody>
           </table>

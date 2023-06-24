@@ -164,6 +164,7 @@ const MainInvestment = () => {
                     <input
                       type="number"
                       name="price"
+                      disabled
                       className="dailyReportInput wd-9 left-text"
                       value={data.mainInvest.reserveAmount.price}
                       readOnly

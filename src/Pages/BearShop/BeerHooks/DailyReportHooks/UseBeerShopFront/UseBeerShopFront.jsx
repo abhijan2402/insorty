@@ -161,6 +161,14 @@ const UseBeerShopFront = () => {
                   newFormData.openingStock750 = quan750.currentStock;
                   newFormData.openingStock375 = quan330.currentStock;
                   newFormData.openingStock180 = quan180.currentStock;
+                  newFormData.sumRemaining750 = quan750.currentStock;
+                  newFormData.sumRemaining375 = quan330.currentStock;
+                  newFormData.sumRemaining180 = quan180.currentStock;
+                  newFormData.sales750 = quan750.currentStock;
+                  newFormData.sales375 = quan330.currentStock;
+                  newFormData.sales180 = quan180.currentStock;
+                  newFormData.sales30 = quan750.currentStock
+                  newFormData.sumRemaining30 = quan750.currentStock
                   newFormData.averageRate750 =
                     quan750.averageRate.$numberDecimal;
                   newFormData.initial750 = quan750.averageRate.$numberDecimal;
@@ -685,6 +693,26 @@ const UseBeerShopFront = () => {
           e.target.name === "inflowShop30" ||
           e.target.name === "inflowCredit30" ||
           e.target.name === "inflowOut30" ||
+          e.target.name === "send30" ||
+          e.target.name === "openingStock180" ||
+          e.target.name === "inflowShop180" ||
+          e.target.name === "inflowCredit180" ||
+          e.target.name === "inflowOut180" ||
+          e.target.name === "send180" ||
+          e.target.name === "openingStock375" ||
+          e.target.name === "inflowShop375" ||
+          e.target.name === "inflowCredit375" ||
+          e.target.name === "inflowOut375" ||
+          e.target.name === "send375" ||
+          e.target.name === "openingStock750" ||
+          e.target.name === "inflowShop750" ||
+          e.target.name === "inflowCredit750" ||
+          e.target.name === "inflowOut750" ||
+          e.target.name === "send750" ||
+          e.target.name === "inflowShop30" ||
+          e.target.name === "openingStock30" ||
+          e.target.name === "inflowCredit30" ||
+          e.target.name === "inflowOut30" ||
           e.target.name === "send30"
         ) {
           obj.sales30 = Number(obj.sumRemaining30) - Number(obj.closingStock30);
@@ -963,9 +991,14 @@ const UseBeerShopFront = () => {
     ]);
   };
 
-  const handelThirdFormSubmit = () => {
-    console.log(beerShopFrontThird);
-  };
+  const removeThirdForm = (index) => {
+    const list = [...beerShopFrontThird];
+    list.splice(index, 1);
+    setBeerShopFrontThird(list);
+    localStorage.setItem("barSuplements", JSON.stringify(list));
+
+    
+  }
 
   const addOne = () => {
     thirdFormAddOne();
@@ -1079,6 +1112,8 @@ const UseBeerShopFront = () => {
                     newFormData.ml = item.quantityInML;
                     newFormData.openingStockOtherMl = item.currentStock;
                     newFormData.openingStock30 = Number(item.currentStock)*Number(item.quantityInML/30);
+                    newFormData.sumRemaining30 = Number(item.currentStock)*Number(item.quantityInML/30);
+                    newFormData.sale30 = Number(item.currentStock)*Number(item.quantityInML/30);
                     newFormData.averageRateOtherMl =
                       item.averageRate.$numberDecimal;
                     newFormData.averageRate30 =
@@ -1310,6 +1345,16 @@ const UseBeerShopFront = () => {
           e.target.name === "inflowPurchase30" ||
           e.target.name === "inflowCredit30" ||
           e.target.name === "inflowPurchaseFromOutside30" ||
+          e.target.name === "send30" ||
+          e.target.name === "openingStockOtherMl" ||
+          e.target.name === "inflowPurchaseOtherMl" ||
+          e.target.name === "inflowCreditOtherMl" ||
+          e.target.name === "inflowPurchaseFromOutsideOtherMl" ||
+          e.target.name === "sendOtherMl" ||
+          e.target.name === "openingStock30" ||
+          e.target.name === "inflowPurchase30" ||
+          e.target.name === "inflowCredit30" ||
+          e.target.name === "inflowPurchaseFromOutside30" ||
           e.target.name === "send30"
         ) {
           obj.sale30 = Number(obj.sumRemaining30) - Number(obj.closingStock30);
@@ -1391,7 +1436,9 @@ const UseBeerShopFront = () => {
     removeFristForm,
     removeMidForm,
     hasMoreBig,
-    hasMoreSmall
+    hasMoreSmall,
+    removeThirdForm
+
   };
 };
 

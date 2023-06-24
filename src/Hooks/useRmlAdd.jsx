@@ -90,6 +90,8 @@ const useRmlAdd = () => {
 
                   newFormData.ml = item.quantityInML;
                     newFormData.openingStock = item.currentStock;
+                    newFormData.sumRemainder = item.currentStock;
+                    newFormData.sales = item.currentStock;
                   newFormData.averageRate = item.averageRate.$numberDecimal
                   newFormData.initial = item.averageRate.$numberDecimal
                   firstFormData = [newFormData, ...firstFormData];

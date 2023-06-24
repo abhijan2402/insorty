@@ -155,6 +155,12 @@ const useFristFormAdd = () => {
                   newFormData.startingStock650 = quan750.currentStock;
                   newFormData.startingStock550 = quan330.currentStock;
                   newFormData.startingStock330 = quan180.currentStock;
+                  newFormData.sumRemainder650 = quan750.currentStock;
+                  newFormData.sumRemainder550 = quan330.currentStock;
+                  newFormData.sumRemainder330 = quan180.currentStock;
+                  newFormData.sales650 = quan750.currentStock;
+                  newFormData.sales550 = quan330.currentStock;
+                  newFormData.sales330 = quan180.currentStock;
                   newFormData.averageRate650 = quan750.averageRate.$numberDecimal;
                   newFormData.initial650 = quan750.averageRate.$numberDecimal;
                   newFormData.initial550 = quan330.averageRate.$numberDecimal;

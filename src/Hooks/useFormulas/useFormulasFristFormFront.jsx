@@ -135,6 +135,12 @@ const useFormulasFristFormFront = () => {
                   newFormData.startingStock750 = quan750.currentStock;
                   newFormData.startingStock330 = quan330.currentStock;
                   newFormData.startingStock180 = quan180.currentStock;
+                  newFormData.sumRemainder750 = quan750.currentStock;
+                  newFormData.sumRemainder330 = quan330.currentStock;
+                  newFormData.sumRemainder180 = quan180.currentStock;
+                  newFormData.sales750 = quan750.currentStock;
+                  newFormData.sales330 = quan330.currentStock;
+                  newFormData.sales180 = quan180.currentStock;
                   newFormData.averageRate750 = quan750.averageRate.$numberDecimal;
                   newFormData.initial750 = quan750.averageRate.$numberDecimal;
                   newFormData.initial330 = quan330.averageRate.$numberDecimal;

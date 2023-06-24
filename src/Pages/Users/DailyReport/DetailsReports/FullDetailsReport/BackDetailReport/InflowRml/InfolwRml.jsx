@@ -30,12 +30,7 @@ const InfolwRml = ({ outSideData, index }) => {
             <td className="tg-0lax" colSpan={4}>
               {number}
             </td>
-            <td className="tg-0lax" colSpan={4}>
-              {rate?.$numberDecimal}
-            </td>
-            <td className="tg-0lax" colSpan={4}>
-              {total}
-            </td>
+           
             <td className="tg-0lax" colSpan={4}>
               {comment}
             </td>
