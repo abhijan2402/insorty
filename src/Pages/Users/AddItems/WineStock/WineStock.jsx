@@ -93,8 +93,11 @@ const WineStock = () => {
   return (
     <section>
       <div className="title">
+      <button className="commonBtn " onClick={handlePrint}>
+            प्रिंट
+          </button>
         <div className="flex justify-center gap-4 items-center">
-          {role === "shop" && ShopType === "BAR" && (
+          {ShopType === "BAR" && (
             <>
               <Link to="/user/bearshop/beerstock" className="commonBtn ">
                 बीयर
@@ -106,7 +109,7 @@ const WineStock = () => {
             </>
           )}
 
-          {role === "shop" && ShopType === "SHOP" && (
+          { ShopType === "SHOP" && (
             <>
               <Link to="/user/beerstock" className="commonBtn ">
                 बीयर
@@ -118,9 +121,7 @@ const WineStock = () => {
             </>
           )}
 
-          <button className="commonBtn " onClick={handlePrint}>
-            प्रिंट
-          </button>
+         
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -296,7 +297,7 @@ const WineStock = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredData.map((brand, index) => {
+                  {filteredData.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((brand, index) => {
                     return (
                       <>
                         {brand.sizes.map((size) => {
@@ -335,7 +336,7 @@ const WineStock = () => {
                   <tr>
                     <td colSpan="5">कुल योग</td>
                     <td>
-                      {filteredData.reduce(
+                      {filteredData.filter((item)=>item.isActive===true).reduce(
                         (total, currentItem) =>
                           (total =
                             total +

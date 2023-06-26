@@ -37,7 +37,7 @@ const StockLanding = () => {
   }
 
   if (!PartyInfo) {
-    return <div>No Stock Landing</div>;
+    return <div>No Stock Lending</div>;
   }
 
   return (

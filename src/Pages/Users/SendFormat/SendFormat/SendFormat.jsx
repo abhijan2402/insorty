@@ -46,10 +46,11 @@ const SendFormat = ({ isBearShop }) => {
   return (
     <section>
       <div className="title">
+      <button className="commonBtn " onClick={handlePrint}>
+            प्रिंट
+          </button>
         <div className="flex gap-4 items-center justify-center">
-          {/* <Link className="commonBtn" to="/user/partners">
-            पार्टनर खाते
-          </Link> */}
+          
 
           { ShopType === "BAR" && (
             <Link className="commonBtn" to="/user/bearshop/partners">
@@ -61,9 +62,7 @@ const SendFormat = ({ isBearShop }) => {
             </Link>
           )}
 
-          <button className="commonBtn " onClick={handlePrint}>
-            प्रिंट
-          </button>
+          
         </div>
 
         <div className="divider my-2"></div>

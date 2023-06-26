@@ -115,13 +115,14 @@ const PreviousLoansDetails = () => {
 
   return (
     <section>
-      <div className="title flex justify-center items-center gap-4">
-        <h2 className="font-bold text-[1.5rem]">{transactions?.name}</h2>
-
-        <button className="commonBtn " onClick={handlePrint}>
+       <button className="commonBtn " onClick={handlePrint}>
         प्रिंट
 
         </button>
+      <div className="title flex justify-center items-center gap-4">
+        <h2 className="font-bold text-[1.5rem]">{transactions?.name}</h2>
+
+       
       </div>
       <div className="divider my-2"></div>
 
@@ -179,13 +180,7 @@ const PreviousLoansDetails = () => {
                     </tr>
                   
                   );
-                })) || (
-                <>
-                  <p>
-                    <span className="text-red-500">No Data Found</span>
-                  </p>
-                </>
-              )}
+                })) }
             </tbody>
           </table>
           </InfiniteScroll>

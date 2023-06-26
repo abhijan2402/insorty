@@ -70,7 +70,6 @@ const BackDailyReport = () => {
   return (
     <>
       <section className="mx-2">
-        <div className="flex justify-center items-center gap-4 ">
           <div className="my-4 flex  items-center">
             <h1 className="font-bold text-2xl">
             बीयर
@@ -88,6 +87,7 @@ const BackDailyReport = () => {
 
         </button>
             </div>
+        <div className="flex justify-center items-center gap-4 ">
           </div>
         <div className="flex gap-4 justify-center items-center">
         

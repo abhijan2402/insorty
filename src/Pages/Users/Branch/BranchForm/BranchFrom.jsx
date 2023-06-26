@@ -43,7 +43,7 @@ const BranchFrom = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center">
+      <div>
         
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट

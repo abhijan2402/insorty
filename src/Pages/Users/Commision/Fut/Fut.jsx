@@ -67,7 +67,7 @@ const Fut = () => {
             प्रिंट
           </button>
 
-          {role === "shop" && ShopType === "BAR" &&  (
+          { ShopType === "BAR" &&  (
             <>
               <Link className="commonBtn" to="/user/bearshop/commisson">
                 कमीशन
@@ -93,7 +93,7 @@ const Fut = () => {
                 अन्य
               </Link>
             </>
-          ) }{role === "shop" && ShopType === "SHOP" && (
+          ) }{ShopType === "SHOP" && (
             <>
               <Link className="commonBtn" to="/user/commisson">
                 कमीशन

@@ -53,7 +53,7 @@ const BorrowDetails = () => {
         className="commonBtn "
         onClick={handlePrint}
       >
-        PRINT
+        प्रिंट
       </button>
     <section ref={front}>
       <div className="title">

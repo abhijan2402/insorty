@@ -64,7 +64,11 @@ const Partners = ({ isBearShop }) => {
 
   return (
     <section className="py-4">
+       
       <div className="title">
+      <button className="commonBtn " onClick={handlePrint}>
+            प्रिंट
+          </button>
         <div className="flex justify-center items-center gap-4">
           { ShopType === "BAR" && (
             <Link className="commonBtn" to="/user/bearshop/sendFormat">
@@ -76,9 +80,7 @@ const Partners = ({ isBearShop }) => {
             </Link>
           )}
 
-          <button className="commonBtn " onClick={handlePrint}>
-            प्रिंट
-          </button>
+        
         </div>
         <div>
           <div className="divider my-4"></div>

@@ -34,14 +34,14 @@ const Borrow = () => {
     <>
       
     <section ref={front} className="py-4">
-      <div className="title flex justify-center items-center">
-        
         <button
         className="commonBtn "
         onClick={handlePrint}
       >
             प्रिंट
       </button>
+      <div className="title flex justify-center items-center">
+        
       </div>
         <div className="divider my-2"></div>
 

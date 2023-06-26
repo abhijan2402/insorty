@@ -241,7 +241,6 @@ FrontPageRegularData.map((item) => {
 
   return (
     <section className="mx-2">
-      <div className="flex justify-center items-center flex-col">
         <div className="my-4 flex gap-4 items-center">
           <h1 className="font-bold text-xl text-gray-800">अंग्रेजी</h1>
           <Link to="/user/bearshop/details/back" className="commonBtn">
@@ -255,6 +254,7 @@ FrontPageRegularData.map((item) => {
 
         </button>
         </div>
+      <div className="flex justify-center items-center flex-col">
         <div className="flex gap-2 items-center">
           <DatePicker
             selected={selectedDate}

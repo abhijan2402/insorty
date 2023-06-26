@@ -76,11 +76,12 @@ const OutBill = () => {
 
   return (
     <section>
-      <div className="title flex justify-center flex-col items-center py-2">
-        <div className="flex gap-4">
-          <button className="commonBtn " onClick={handlePrint}>
+      <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
+      <div className="title flex justify-center flex-col items-center py-2">
+        <div className="flex gap-4">
+          
           {role === "shop" && ShopType === "BAR" && (
             <Link className="commonBtn" to="/user/bearshop/selfbill">
               दुकान बिल

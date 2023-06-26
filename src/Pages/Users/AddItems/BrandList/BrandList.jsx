@@ -196,6 +196,9 @@ const BrandList = () => {
               <h1>Brand Name</h1>
             </th>
             <th>
+              <h1>Full Name</h1>
+            </th>
+            <th>
               <h1>Type</h1>
             </th>
             <th>
@@ -222,6 +225,7 @@ const BrandList = () => {
             <tr>
   <th rowSpan={item.sizes.length+1}>{index+1}</th>
               <td rowSpan={item.sizes.length+1}>{item.brandName}</td>
+              <td className="whitespace-pre-wrap" rowSpan={item.sizes.length+1}>{item.fullName}</td>
               <td rowSpan={item.sizes.length+1}>{item?.type==="DESHIRML" ? "DESHI/RML" : item?.type}</td>
               <th className="text-center align-center item-center text-[1.7rem]" rowSpan={item.sizes.length+1}>
               <label htmlFor="EditBrandName">

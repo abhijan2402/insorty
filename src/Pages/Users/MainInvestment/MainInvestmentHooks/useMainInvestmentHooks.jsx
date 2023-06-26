@@ -98,7 +98,7 @@ const useMainInvestmentHooks = () => {
       (total, currentItem) => (total = total + Number(currentItem.price)),
       0
     ) : 0
-    const total = data.mainInvest.total  - refundTotal - reserveTotal
+    const total = data.mainInvest.total  - refundTotal + reserveTotal
 
     return total
   }

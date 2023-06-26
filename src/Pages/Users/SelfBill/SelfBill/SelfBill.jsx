@@ -109,7 +109,11 @@ const SelfBill = () => {
 
   return (
     <section>
+       <button className="commonBtn " onClick={handlePrint}>
+            प्रिंट
+          </button>
       <div className="title flex flex-col justify-center items-center py-2">
+        
         <div className="flex gap-4">
           {role === "shop" && ShopType === "BAR" && (
             <Link className="commonBtn " to="/user/bearshop/outbill">
@@ -121,9 +125,7 @@ const SelfBill = () => {
             </Link>
           )}
 
-          <button className="commonBtn " onClick={handlePrint}>
-            प्रिंट
-          </button>
+         
         </div>
 
         <div ref={front}>

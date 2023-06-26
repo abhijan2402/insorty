@@ -50,7 +50,7 @@ const FinalReport = () => {
           </h2>
         </div>
         <div className="divider my-2"></div>
-        <h2 className="font-bold text-[1.5rem]">
+        <div className="title flex justify-center items-center text-center my-4">
         <DatePicker
             selected={new Date(month)}
             name="date"
@@ -61,7 +61,7 @@ const FinalReport = () => {
             placeholderText={"dd/mm/yyyy"}
             className="inputBox date"
           />
-        </h2>
+        </div>
         <div>
           <ListOfFinalReport
             monthlyFinalReport={monthlyFinalReport}

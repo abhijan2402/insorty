@@ -11,7 +11,8 @@ const Stock = () => {
     <section className="p-4">
       <div className="title">
         <div className="flex gap-4 justify-center items-center">
-          <h2 className="font-bold md:text-[1.5rem] text-center">All Stock</h2>
+          <h2 className="font-bold md:text-[1.5rem] text-center">स्टॉक
+</h2>
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -47,16 +48,7 @@ const Stock = () => {
             </>
           )}
 
-          {/* <Link to="/user/winestock" className="commonBtn ">
-            अंग्रेजी
-          </Link>
-          <Link to="/user/beerstock" className="commonBtn ">
-            बीयर
-          </Link>
-
-          <Link className="commonBtn" to="/user/rmlstock">
-            देशी / RML
-          </Link> */}
+          
         </div>
       </div>
     </section>

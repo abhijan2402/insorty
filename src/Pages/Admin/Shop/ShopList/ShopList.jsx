@@ -13,6 +13,7 @@ const ShopList = () => {
   const token = localStorage.getItem("token");
   const { shopsRefetch, shops, shopsLoaded } = useGetShopsNSubadmins();
   const [Loading,setLoading] = useState(false)
+  const [filter, setFilter] = useState("noFilter")
 
   const handelDelete = (id) => {
     fetch(`https://insorty-api.onrender.com/admin/deleteShop/${id}`, {
@@ -120,8 +121,14 @@ try{
       <div className="title">
         <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">दुकानें और बार</h2>
-         
         </div>
+          <div className="flex item-center justify-center text-center">
+         <select className="semiSmallInput " onChange={(e)=>{setFilter(e.target.value); console.log(filter)}} name="filter" >
+          <option selected value="noFilter">No-Filter</option>
+          <option value="SHOP">Filter Shops</option>
+          <option value="BAR">Filter Bars</option>
+         </select>
+         </div>
         <div className="divider my-2"></div>
       </div>
       <div>
@@ -129,8 +136,22 @@ try{
           <table className=" removeCommonWSpace">
             <tbody>
               {shops &&
-                shops.data.length &&
-                shops.data.map((shop) => {
+                shops.data.length!==undefined &&
+                shops.data.filter((shop)=>{
+                  if (filter==="SHOP") {
+                    if (shop?.shopId?.shopType==="SHOP") {
+                      return shop
+                    }
+                  }
+                  else if(filter==="BAR"){
+                    if (shop?.shopId?.shopType==="BAR") {
+                      return shop
+                    }
+                  }
+                  else{
+                    return shop
+                  }
+                }).map((shop) => {
                   const myShop = shop?.shopId;
                   const myShopId = myShop?._id;
 

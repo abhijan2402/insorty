@@ -3016,15 +3016,15 @@ const FronteDailyReport = () => {
                     <th> ब्राण्ड</th>
                     <th>ml</th>
                     <th>औसत दर</th>
-                    <th>प्रारम्भिक स्टॉक</th>
-                    <th>आमद (खरीद)-दु.</th>
-                    <th>खरीद रेट - दु</th>
-                    <th>आमद (खरीद)-बा.</th>
-                    <th>खरीद रेट - बा.</th>
-                    <th>आमद (उधारी)</th>
+                    <th className="whitespace-pre-wrap">प्रारम्भिक स्टॉक</th>
+                    <th className="whitespace-pre-wrap">आमद (खरीद)-दु.</th>
+                    <th className="whitespace-pre-wrap">खरीद रेट - दु</th>
+                    <th className="whitespace-pre-wrap">आमद (खरीद)-बा.</th>
+                    <th className="whitespace-pre-wrap">खरीद रेट - बा.</th>
+                    <th className="whitespace-pre-wrap">आमद (उधारी)</th>
                     <th>भेजान</th>
                     <th>योग/शेष</th>
-                    <th>अन्तिम स्टॉक</th>
+                    <th className="whitespace-pre-wrap">अन्तिम स्टॉक</th>
                     <th>बिक्री</th>
                     <th>रेट</th>
                     <th>योग</th>

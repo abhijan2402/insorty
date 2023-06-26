@@ -81,8 +81,11 @@ const RmlStock = () => {
   return (
     <section>
       <div className="title">
+      <button className="commonBtn " onClick={handlePrint}>
+            प्रिंट
+          </button>
         <div className="flex gap-4 justify-center items-center">
-          {role === "shop" && ShopType === "BAR" && (
+          {ShopType === "BAR" && (
             <>
               <Link to="/user/bearshop/winestock" className="commonBtn ">
                 अंग्रेजी
@@ -93,7 +96,7 @@ const RmlStock = () => {
             </>
           )}
 
-          {role === "shop" && ShopType === "SHOP" && (
+          {ShopType === "SHOP" && (
             <>
               <Link to="/user/winestock" className="commonBtn ">
                 अंग्रेजी
@@ -104,9 +107,7 @@ const RmlStock = () => {
             </>
           )}
 
-          <button className="commonBtn " onClick={handlePrint}>
-            प्रिंट
-          </button>
+         
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -167,7 +168,7 @@ const RmlStock = () => {
                     </thead>
                     <tbody>
                       {filteredData &&
-                        filteredData.map((brand, index) => {
+                        filteredData.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((brand, index) => {
                           return (
                             <>
                               {brand.sizes.map((size) => {

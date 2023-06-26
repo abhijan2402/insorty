@@ -251,7 +251,7 @@ const BackDetailReport = () => {
         </Link>
 
         <button className="commonBtn " onClick={handlePrint}>
-          PRINT
+        प्रिंट
         </button>
       </div>
 
