@@ -149,7 +149,7 @@ const token = localStorage.getItem('token')
     <section>
       <div className="title">
         <div className="flex gap-4 shopParmissons-center my-4">
-          <h2 className="font-bold text-[1.5rem]">दुकान की अनुमति
+          <h2 className="font-bold text-[1.5rem]">दुकान/बार  की अनुमति
 </h2>
         </div>
         <div className="divider my-2"></div>

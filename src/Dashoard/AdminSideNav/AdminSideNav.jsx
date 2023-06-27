@@ -69,7 +69,7 @@ const AdminSideNav = () => {
                 to="/admin/shopList"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                दुकानें और बार
+                दुकान/बार 
 
               </NavLink>
             </li>
@@ -81,7 +81,7 @@ const AdminSideNav = () => {
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
 
-          दुकान की अनुमति
+दुकान/बार  की अनुमति
 
               </NavLink>
             </li>

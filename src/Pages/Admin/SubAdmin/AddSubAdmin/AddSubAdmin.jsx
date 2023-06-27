@@ -36,11 +36,11 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Account Id</span>
+                  <span className="label-text">Username</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Account Id"
+                  placeholder="Username"
                   name="accountId"
                   required
                   className="input input-bordered"

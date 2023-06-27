@@ -7,6 +7,7 @@ import EditUser from "../EditShop/EditShop";
 import InfoShop from "../InfoShop/InfoShop";
 import Loader from "../../../../Components/Loader/Loader";
 import swal from "sweetalert";
+import jwtDecode from "jwt-decode";
 
 
 const ShopList = () => {
@@ -70,29 +71,27 @@ const ShopList = () => {
 
 
   const onTokenChange = (Shoptoken) => {
-    const token = localStorage.getItem("token");
-    const subAdminToken = localStorage.getItem("token2");
- 
-    if (Shoptoken !== token) {
+    console.log(Shoptoken)
+    // Get the current values of "token" and "token2" from localStorage
+  
+      
+      // Update the "token" and "token2" values in localStorage
       localStorage.setItem("token", Shoptoken);
-      localStorage.setItem("token2", subAdminToken);
   
-      const shopToken = localStorage.getItem("token");
-      const userToken = localStorage.getItem("token2");
-      const isSubAdmin = shopToken === subAdminToken;
+      // Check whether the current user has admin privileges
+      
   
-      if (isSubAdmin) {
-        window.location.href = "/subadmin";
-      } else {
+      // Redirect to the appropriate dashboard based on the user's privileges
+       if(jwtDecode(Shoptoken).shopType==="SHOP"){
         window.location.href = "/user";
       }
+      else if(jwtDecode(Shoptoken).shopType==="BAR"){
+        window.location.href = "/user/bearshop";
+      }
   
-      console.log(Shoptoken, "token changed");
-      console.log("Admin privileges:", isSubAdmin);
-    } else {
-      console.log("Token unchanged:", token);
-    }
-  };
+      // Log the new token value and the status of the admin privileges
+
+    } 
   
 
   if (shopsLoaded) {
@@ -109,7 +108,7 @@ const ShopList = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">Shop List</h2>
+          <h2 className="font-bold text-[1.5rem]">दुकान/बार </h2>
          
         </div>
         <div className="divider my-2"></div>
@@ -119,7 +118,7 @@ const ShopList = () => {
           <table className="table-auto w-3/4">
             <tbody>
               {shops &&
-                shops.data.length && shops.data.length>0 &&
+                shops.data.length!==undefined && shops.data.length>0 &&
                 shops.data.map((shop) => {
                   const myShop = shop?.shopId;
                   const myShopId = myShop?._id;
@@ -128,7 +127,7 @@ const ShopList = () => {
                   return (
                     <tr className="p-4 text-left">
                       <td className="border px-4 py-2 font-bold">
-                        <Link
+                        <Link 
                          onClick={() => onTokenChange(shop.shopToken)}
                         >{shop?.shopId?.name} </Link>
                       </td>
@@ -158,12 +157,7 @@ const ShopList = () => {
                             <FaRegTrashAlt className="text-[1.7rem]" />
                           </button>
 
-                          <label
-                            htmlFor="EditShop"
-                            className="text-[1.7rem] cursor-pointer"
-                          >
-                            <FaPencilAlt className="text-[1.7rem]" />
-                          </label>
+                        
                           <label
                             htmlFor={myShopId}
                             className="text-[1.7rem] cursor-pointer"

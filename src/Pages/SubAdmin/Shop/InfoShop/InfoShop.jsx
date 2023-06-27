@@ -62,7 +62,7 @@ const InfoShop = ({ myShopId, shop }) => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Account Id</span>
+                  <span className="label-text">Username</span>
                 </label>
                 <input
                   type="text"
@@ -86,7 +86,7 @@ const InfoShop = ({ myShopId, shop }) => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Licence Number</span>
+                  <span className="label-text">License Number</span>
                 </label>
                 <input
                   type="text"

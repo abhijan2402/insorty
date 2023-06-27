@@ -35,6 +35,7 @@ const ShopList = () => {
     const adminToken = localStorage.getItem("token2");
   
     if (Shoptoken !== token) {
+      
       // Update the "token" and "token2" values in localStorage
       localStorage.setItem("token", Shoptoken);
       localStorage.setItem("token2", adminToken);
@@ -120,7 +121,7 @@ try{
     <section>
       <div className="title">
         <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">दुकानें और बार</h2>
+          <h2 className="font-bold text-[1.5rem]">दुकान/बार </h2>
         </div>
           <div className="flex item-center justify-center text-center">
          <select className="semiSmallInput " onChange={(e)=>{setFilter(e.target.value); console.log(filter)}} name="filter" >

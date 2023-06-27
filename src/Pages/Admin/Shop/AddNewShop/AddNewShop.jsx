@@ -83,11 +83,11 @@ const AddNewShop = ({ addNewShop,Loading }) => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Account Id</span>
+                  <span className="label-text">Username</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Account Id"
+                  placeholder="Username"
                   name="accountId"
                   className="input input-bordered"
                   required
@@ -99,11 +99,11 @@ const AddNewShop = ({ addNewShop,Loading }) => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Licence Number</span>
+                  <span className="label-text">License Number</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Licence Number"
+                  placeholder="License Number"
                   name="licenceNumber"
                   className="input input-bordered"
                   required

@@ -56,21 +56,14 @@ const SubAdminSideNav = () => {
 
       <div className="flex flex-col justify-between  flex-1 mt-[10rem]">
         <nav>
-          <li className="my-4">
-            <NavLink
-              to="/subadmin/createuser"
-              style={({ isActive }) => (isActive ? activeStyle : undefined)}
-            >
-              Create User
-            </NavLink>
-          </li>
+         
 
           <li className="my-4">
             <NavLink
               to="/subadmin/manegshop"
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
-              Manage Shop
+              दुकान/बार 
             </NavLink>
           </li>
 
