@@ -56,6 +56,28 @@ const SubAdminInfo = ({ subadminId, subAdmin, onTokenChange }) => {
               </div>
             </div>
           </div>
+              <table className="table my-3 mx-auto">
+                <thead>
+                  <td>Shop Name</td>
+                  <td>GET</td>
+                  <td>POST</td>
+                  <td>PUT</td>
+                  <td>DELETE</td>
+                </thead>
+                <tbody>
+                  {subAdmin && subAdmin.permissions.map((shop)=>{
+                    return(
+                      <tr>
+                      <td>{shop?.shopId?.name}</td>
+                      <td>{shop?.permissionSet?.GET===true ? " ✔ " :"✖	"}</td>
+                      <td>{shop?.permissionSet?.POST===true ? " ✔ " :"✖	"}</td>
+                      <td>{shop?.permissionSet?.PUT===true ? " ✔ " :"✖	"}</td>
+                      <td>{shop?.permissionSet?.DELETE===true ? " ✔ " :"✖	"}</td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
         </div>
       </div>
     </section>

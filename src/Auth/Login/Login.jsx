@@ -53,7 +53,7 @@ const Login = () => {
           }
 
           localStorage.setItem("token", response.data.data.token);
-          Swal.fire("Succesfully Login!", "success");
+          Swal.fire("Successfully Logged in!", "success");
         });
     } catch (error) {
       const errors = error.response.data.message;

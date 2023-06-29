@@ -156,7 +156,7 @@ const BrandList = () => {
 
   return (
     <section className="p-4">
-      <div className="title">
+      <div className="title sticky top-0 z-20	 bg-white">
         <div className="flex gap-4 justify-center items-center">
           <h2 className="font-bold md:text-[1.5rem] text-center">
             ब्राण्ड सूची

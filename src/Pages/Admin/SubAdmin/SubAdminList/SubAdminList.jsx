@@ -36,7 +36,6 @@ const SubAdminList = () => {
     const from = event.target;
     const name = from.name.value;
     const password = from.password.value;
-    const address = from.address.value;
     const phone = from.phone.value;
     const accountId = from.accountId.value;
 
@@ -49,7 +48,7 @@ const SubAdminList = () => {
       body: JSON.stringify({
         name: name,
         accountId: accountId,
-        address: address,
+        address: "null",
         password: password,
         mobileNumber: phone,
       }),
@@ -99,11 +98,7 @@ const SubAdminList = () => {
         window.location.href = "/subadmin";
       }
   
-      console.log(subAdminToken, "token changed");
-      console.log("Admin privileges:", isAdmin);
-    } else {
-      console.log("Token unchanged:", token);
-    }
+    } 
   };
   
 

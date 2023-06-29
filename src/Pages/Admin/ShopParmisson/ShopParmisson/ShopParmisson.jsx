@@ -155,7 +155,7 @@ const token = localStorage.getItem('token')
         <div className="divider my-2"></div>
       </div>
 
-      <div className="w-2/3 mx-auto border shadow-lg p-6">
+      <div className=" mx-auto border shadow-lg p-6">
         <div className="form-control mb-2">
           <label className="label">
            Sub Admin Name

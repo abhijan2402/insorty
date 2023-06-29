@@ -23,6 +23,7 @@ const AddTranstion = ({ handelSubmit }) => {
                 type="text"
                 placeholder="Deposite"
                 name="deposit"
+                required
                 className="input input-bordered w-full"
               />
 
@@ -35,6 +36,7 @@ const AddTranstion = ({ handelSubmit }) => {
                 max={moment(new Date()).format('YYYY-MM-DD')}
                 className="input input-bordered w-full"
                 placeholder="Date"
+                required
               />
             </div>
             <div>

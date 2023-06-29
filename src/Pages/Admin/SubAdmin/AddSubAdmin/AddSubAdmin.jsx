@@ -82,21 +82,7 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
                 />
               </div>
 
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Address</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Address"
-                  name="address"
-                  required
-                  className="input input-bordered"
-                  style={{
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              </div>
+              
              
 
               <div>

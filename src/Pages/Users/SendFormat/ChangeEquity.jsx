@@ -85,9 +85,9 @@ const ChangeEquity = ({ data }) => {
                         </label>
                         <input
                           type="text"
-                          placeholder="Partner Name"
                           name="partnerName"
                           value={data[index].name}
+                          disabled
                           className="input input-bordered"
                           style={{
                             width: "100%",
@@ -105,6 +105,7 @@ const ChangeEquity = ({ data }) => {
                           placeholder="Balance"
                           name="balance"
                           value={partner.equity}
+                          required
                           className="input input-bordered"
                           onChange={(e) => onChange(e.target.value, index)}
                         />

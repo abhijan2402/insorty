@@ -63,6 +63,7 @@ const AddSendFormat = () => {
                   type="text"
                   name="partnerName"
                   className="input input-bordered"
+                  required
                   style={{
                     width: "100%",
                     border: "1px solid #e5e7eb",

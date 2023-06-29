@@ -70,7 +70,7 @@ const EditBrandName = ({ selectedObject, reInitiate}) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Edit Brand Name:- {selectedObject?._id}</h3>
+          <h3 className="text-lg font-bold">Edit Brand Name</h3>
           <div className="divider my-2"></div>
           <div>
             <>
