@@ -167,6 +167,9 @@ const useFristFormAdd = () => {
                   newFormData.initial330 = quan180.averageRate.$numberDecimal;
                   newFormData.averageRate550 = quan330.averageRate.$numberDecimal;
                   newFormData.averageRate330 = quan180.averageRate.$numberDecimal;
+                  newFormData.buyRate650 = quan750.rate;
+                  newFormData.buyRate550 = quan330.rate;
+                  newFormData.buyRate330 = quan180.rate;
                   firstFormData = [newFormData, ...firstFormData];
                   console.log(firstFormData);
                   setFristFormState(firstFormData);
@@ -415,6 +418,8 @@ const useFristFormAdd = () => {
         : returned
     );
     setFristFormState(firstFormHandel);
+
+
 
     const handelavg650 = fristFormState.map((returned, i) => {
       if (index === i) {
@@ -1214,14 +1219,15 @@ const useFristFormAdd = () => {
         
                     newFormData.brandName = parent.brandName;
                     newFormData.size= parent
-                              newFormData.liquorID = parent._id;
-                              newFormData.selectStockVarient = item.quantityInML;
-                              newFormData.startingStock = item.currentStock;
-                              newFormData.averageRate = item.averageRate.$numberDecimal;
-                              newFormData.initial = item.averageRate.$numberDecimal;
+                              newFormData.liquorID = parent?._id;
+                              newFormData.selectStockVarient = item?.quantityInML;
+                              newFormData.startingStock = item?.currentStock;
+                              newFormData.averageRate = item?.averageRate.$numberDecimal;
+                              newFormData.initial = item?.averageRate.$numberDecimal;
+                              newFormData.buyRate = item?.rate;
                               firstFormData = [newFormData, ...firstFormData];
+
                               setAddOneSecondFormState(firstFormData);
-                              localStorage.setItem("BeerForm", JSON.stringify(firstFormData));
                               localStorage.setItem(
                                 "beerFormTotal",
                                 JSON.stringify(
@@ -1304,6 +1310,22 @@ const useFristFormAdd = () => {
         : returned
     );
     setAddOneSecondFormState(secondFormHandel);
+
+    const handelPrice = addOneSecondFormState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+
+        if (
+          e.target.name === "brandName" ||
+          e.target.name === "selectStockVarient" 
+        ) {
+          obj.buyRate = obj.size.sizes.find((brand)=>brand.quantityInML===Number(obj.selectStockVarient)).rate
+
+        }
+        return obj;
+      } else return returned;
+    });
+    setAddOneSecondFormState(handelPrice);
 
     const handelavg = addOneSecondFormState.map((returned, i) => {
       if (index === i) {

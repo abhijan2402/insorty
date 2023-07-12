@@ -88,13 +88,16 @@ const AddOneFristFromBack = ({
                 border:"1px solid black",
               borderRadius:"5px"
               }}
-              options={options}
+              options={options.filter((brand)=>brand.type==='BEER')}
               getOptionLabel={(option) => (option ? option.brandName : "")}
               onChange={(event, value) => {
                 if (value) {
                   item.brandName = value.brandName;
                   item.liquorID = value._id;
                   item.size =  value;
+                  item.buyRate650 = value.sizes.find((brand)=>brand.quantityInML===650).rate
+                item.buyRate550 = value.sizes.find((brand)=>brand.quantityInML===500).rate
+                item.buyRate1330 = value.sizes.find((brand)=>brand.quantityInML===330).rate
                 } else {
                   item.brandName = "";
                   item.liquorID = "";
@@ -249,6 +252,7 @@ const AddOneFristFromBack = ({
               <input
                 type="number"
                 required
+                disabled
                 min={0}
                 className="smallinput  wd-7 "
                 name="buyRate650"
@@ -261,6 +265,7 @@ const AddOneFristFromBack = ({
               <input
                 type="number"
                 required
+                disabled
                 min={0}
                 className="smallinput wd-6 "
                 name="buyRate550"
@@ -274,6 +279,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
+                disabled
                 className="smallinput wd-6"
                 name="buyRate330"
                 value={item.buyRate330}
@@ -667,7 +673,7 @@ const AddOneFristFromBack = ({
               disabled
               className="smallinput wd-7"
               name="grandTotal"
-              value={item.grandTotal}
+              value={Number(item.grandTotal) || 0}
               onChange={(event) => onChangeFristBackFormHandler(event, index)}
             />
           </div>

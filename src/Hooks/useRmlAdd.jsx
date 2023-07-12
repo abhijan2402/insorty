@@ -93,7 +93,9 @@ const useRmlAdd = () => {
                     newFormData.sumRemainder = item.currentStock;
                     newFormData.sales = item.currentStock;
                   newFormData.averageRate = item.averageRate.$numberDecimal
+                  newFormData.buyRate = item.rate
                   newFormData.initial = item.averageRate.$numberDecimal
+
                   firstFormData = [newFormData, ...firstFormData];
                   setAddRmlState(firstFormData);
                   localStorage.setItem("rml", JSON.stringify(firstFormData));
@@ -234,6 +236,22 @@ const useRmlAdd = () => {
     const list = [...addRmlState];
     list[index][name] = value;
     setAddRmlState(list);
+
+    const handelPrice = addRmlState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+
+        if (
+          e.target.name === "brandName" ||
+          e.target.name === "ml" 
+        ) {
+          obj.buyRate = obj.size.sizes.find((brand)=>brand.quantityInML===Number(obj.ml)).rate
+
+        }
+        return obj;
+      } else return returned;
+    });
+    setAddRmlState(handelPrice);
 
     const handelavg = addRmlState.map((returned, i) => {
       if (index === i) {

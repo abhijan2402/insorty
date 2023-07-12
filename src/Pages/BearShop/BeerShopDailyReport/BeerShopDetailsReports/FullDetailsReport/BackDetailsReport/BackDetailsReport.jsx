@@ -130,7 +130,7 @@ const BackDailyReport = () => {
                 dangerMode: true,
               }).then((willDelete) => {
                 if (willDelete) {
-                 deletePage( BackPageData && BackPageData.length && BackPageData.find((page,index)=>
+                 deletePage( BackPageData && BackPageData?.length && BackPageData?.find((page,index)=>
                     index === pgNo
                     
                   )._id);
@@ -164,10 +164,10 @@ const BackDailyReport = () => {
                   <tbody>
                    
 
-                  {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                  {BackPageData && BackPageData?.length && BackPageData?.map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.purchaseOutSide.entries.map((entry,index2)=>{
+                      page?.purchaseOutSide?.entries?.map((entry,index2)=>{
                         return(
                         <InfolwRml
                         key={index}
@@ -185,17 +185,17 @@ const BackDailyReport = () => {
                 <td className="tg-0lax" colSpan={4}></td>
                 <td className="tg-0lax" colSpan={4}>
                   {BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData
                       
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
+                      ?.slice(pgNo, pgNo + 1)
+                      ?.reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.purchaseOutSide.entries.reduce(
+                            currentItem?.purchaseOutSide?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.number),
+                                (total = total + currentItem?.number),
                               0
                             )),
                         0
@@ -232,10 +232,10 @@ const BackDailyReport = () => {
                     <tbody>
                      
 
-                      {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                      {BackPageData && BackPageData?.length && BackPageData?.map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.purchaseBorrow.entries.map((entry,index2)=>{
+                      page?.purchaseBorrow?.entries?.map((entry,index2)=>{
                         return(
                           <InflowBorrow
                               key={index2}
@@ -256,16 +256,16 @@ const BackDailyReport = () => {
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
                   {BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
+                      ?.slice(pgNo, pgNo + 1)
+                      ?.reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.purchaseBorrow.entries.reduce(
+                            currentItem?.purchaseBorrow?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.number),
+                                (total = total + currentItem?.number),
                               0
                             )),
                         0
@@ -298,10 +298,10 @@ const BackDailyReport = () => {
                   <tbody>
                    
 
-                    {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    {BackPageData && BackPageData?.length && BackPageData?.map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.totalExpense.entries.map((entry,index2)=>{
+                      page?.totalExpense?.entries?.map((entry,index2)=>{
                        
                         return(
                           <CommisonExpence
@@ -319,18 +319,18 @@ const BackDailyReport = () => {
                 <td className="tg-0lax" colSpan={4}></td>
                 <td className="tg-0lax">
                   {BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.totalExpense.entries.reduce(
+                            currentItem?.totalExpense?.entries?.reduce(
                               (total, currentItem) =>
                                 (total =
                                   total +
-                                  Number(currentItem.amount.$numberDecimal)),
+                                  Number(currentItem?.amount?.$numberDecimal)),
                               0
                             )),
                         0
@@ -365,10 +365,10 @@ const BackDailyReport = () => {
                   <tbody>
                    
 
-                    {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    {BackPageData && BackPageData?.length && BackPageData?.map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.borrowed.entries.map((entry,index2)=>{
+                      page?.borrowed?.entries?.map((entry,index2)=>{
                         return(
                           <Borrowed
                           key={index2}
@@ -390,19 +390,19 @@ const BackDailyReport = () => {
                   
                    
                       {BackPageData &&
-                        BackPageData.length > 0 &&
+                        BackPageData?.length > 0 &&
                         BackPageData
                           .slice(pgNo, pgNo + 1)
                           .reduce(
                             (total, currentItem) =>
                               (total =
                                 total +
-                                currentItem.borrowed.entries.reduce(
+                                currentItem?.borrowed?.entries?.reduce(
                                   (total, currentItem) =>
                                     (total =
                                       total +
                                       Number(
-                                        currentItem.amount.$numberDecimal
+                                        currentItem?.amount?.$numberDecimal
                                       )),
                                   0
                                 )),
@@ -446,10 +446,10 @@ const BackDailyReport = () => {
                   </thead>
                   <tbody>
                     
-                    {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                    {BackPageData && BackPageData?.length && BackPageData.map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.borrowedCashReturn.entries.map((entry,index2)=>{
+                      page?.borrowedCashReturn?.entries?.map((entry,index2)=>{
                         return(
                           <CashReciveData
                           key={index2}
@@ -467,16 +467,16 @@ const BackDailyReport = () => {
                 <td className="tg-0lax" colSpan={4} />
                 <td className="tg-0lax">
                   {BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.borrowedCashReturn.entries.reduce(
+                            currentItem?.borrowedCashReturn?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.cash),
+                                (total = total + currentItem?.cash),
                               0
                             )),
                         0
@@ -505,10 +505,10 @@ const BackDailyReport = () => {
                     </tr>
                   </thead>
                   <tbody>
-                  {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                  {BackPageData && BackPageData?.length && BackPageData?.map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.foodVegetable.entries.map((entry,index2)=>{
+                      page?.foodVegetable?.entries?.map((entry,index2)=>{
                         return(
                           <tr>
                           <td className="tg-0lax">{index2+1}</td>
@@ -523,16 +523,16 @@ const BackDailyReport = () => {
                     <tr>
                       <td className="tg-0lax">Total</td>
                       <td className="tg-0lax"> {BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.foodVegetable.entries.reduce(
+                            currentItem?.foodVegetable?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + Number(currentItem.price.$numberDecimal)),
+                                (total = total + Number(currentItem?.price?.$numberDecimal)),
                               0
                             )),
                         0
@@ -564,10 +564,10 @@ const BackDailyReport = () => {
                   </tr>
                 </thead>
                 <tbody>
-                {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                {BackPageData && BackPageData?.length && BackPageData?.map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.barCommission.entries.map((entry,index2)=>{
+                      page?.barCommission?.entries.map((entry,index2)=>{
                         return(
                           <tr>
                          <td className="tg-0lax">{index2+1}</td>
@@ -587,14 +587,14 @@ const BackDailyReport = () => {
                     <td className="tg-0lax"></td>
                     <td className="tg-0lax"></td>
                     <td className="tg-0lax"> {BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.barCommission.entries.reduce(
+                            currentItem?.barCommission?.entries?.reduce(
                               (total, currentItem) =>
                                 (total = total + Number(currentItem?.quantity)),
                               0
@@ -602,14 +602,14 @@ const BackDailyReport = () => {
                         0
                       )}</td>
                     <td className="tg-0lax">{BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.barCommission.entries.reduce(
+                            currentItem?.barCommission?.entries?.reduce(
                               (total, currentItem) =>
                                 (total = total + Number(currentItem?.amount?.$numberDecimal)),
                               0
@@ -635,10 +635,10 @@ const BackDailyReport = () => {
                    
 
                     
-                     { BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+                     { BackPageData && BackPageData?.length && BackPageData?.map((page,index)=>{
                     if(index === pgNo){
                       return(<FinalReport
-                        data={page.finalReport}
+                        data={page?.finalReport}
                       ></FinalReport>
                     )}
                   })}

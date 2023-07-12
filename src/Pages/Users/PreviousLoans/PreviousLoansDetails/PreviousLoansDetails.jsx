@@ -18,6 +18,7 @@ const PreviousLoansDetails = () => {
   const [page, setPage] = useState(0);
   const [transactions,setTransactions] = useState([])
   const front = useRef(null);
+  const [partyName,setPartyName] = useState("")
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
@@ -39,7 +40,7 @@ const PreviousLoansDetails = () => {
         if (response.data.data.transactions.length === 0) {
           setHasMore(false);
         }
-        
+        setPartyName(response.data.data.name)
         setTransactions((data) => [...data, ...response.data.data.transactions]);
         setPage((page) => page + 1);
 
@@ -120,7 +121,7 @@ const PreviousLoansDetails = () => {
 
         </button>
       <div className="title flex justify-center items-center gap-4">
-        <h2 className="font-bold text-[1.5rem]">{transactions?.name}</h2>
+        <h2 className="font-bold text-[1.5rem]">नाम:- {partyName}</h2>
 
        
       </div>

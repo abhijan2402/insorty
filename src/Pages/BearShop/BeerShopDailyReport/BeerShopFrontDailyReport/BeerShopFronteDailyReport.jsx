@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useRef } from "react";
 import { Link } from "react-router-dom";
 import AddOneFristForm from "./BeerShopFirstForm/AddOneFristForm/AddOneFristForm";
 import UseBeerShopFront from "../../BeerHooks/DailyReportHooks/UseBeerShopFront/UseBeerShopFront";
@@ -12,6 +12,8 @@ import useHandleSubmiBeerShopFront from "../../BeerShopHooks/SendDailyReportFron
 import { DataContextApi } from "../../../../Context/DataContext";
 import DatePicker from "react-datepicker";
 import swal from "sweetalert";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../../Components/Loader/Loader";
 
 const FronteDailyReport = () => {
   const {
@@ -35,6 +37,12 @@ const FronteDailyReport = () => {
   const { brandsLoaded, liquors } = useLiquors();
   const { salesMan, setSalesMan, drDate, setDrDate } =
     useContext(DataContextApi);
+
+    const barSupplementsRef = useRef(null)
+
+  const scrollToComponent = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"start" });
+  };
 
   const [options, setOptions] = useState([]);
 
@@ -76,6 +84,30 @@ const FronteDailyReport = () => {
 
   const { handelSubmit, isLoadingSubmit } = useHandleSubmiBeerShopFront();
 
+  const {
+    data: salaryData,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["salaryData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllEmployees",
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json", cookie_token: localStorage.getItem('token') },
+        }
+      );
+      const data = await res.json();
+      console.log(data.data);
+      return data.data;
+    },
+  });
+
+  if(isLoading){
+    return <Loader/>
+  }
+
   return (
     <section className="mx-2">
       <div className="flex justify-center items-center flex-col">
@@ -92,16 +124,38 @@ const FronteDailyReport = () => {
         <div className="flex gap-4 justify-center items-center ">
           <div className="flex gap-4 justify-center items-center ">
             <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
-            <input
-              type="text"
-              value={salesMan}
-              onChange={(e) => {
-                setSalesMan(e.target.value);
-                localStorage.setItem("salesMan", e.target.value);
-              }}
-              className="semiSmallInput"
-              style={{ width: "24rem" }}
-            />
+            <Autocomplete
+          size="small"
+          style={{
+            width: "20rem",
+            border:"1px solid black",
+              borderRadius:"5px"
+          }}
+            options={salaryData?.length > 0 ? salaryData.filter((prev)=>prev.isActive===true) : ['no options']}
+            getOptionLabel={(option) => option ? option.name : ""}
+            
+            onChange={(event, value) => {
+              if (value) {
+                setSalesMan(value.name)
+              } else {
+                setSalesMan("")
+              }
+
+            }}
+            renderInput={(params) => (
+              <TextField
+                required
+                {...params}
+                className="dailyReportInput"
+                inputProps={{ ...params.inputProps, value: salesMan }}
+
+                onChange={(event) => {
+                  setSalesMan(event.target.value)
+                  
+                }}
+              />
+            )}
+          />
           </div>
 
           <div>
@@ -1019,7 +1073,7 @@ const FronteDailyReport = () => {
                               border:"1px solid black",
               borderRadius:"5px"
                             }}
-                            options={options}
+                            options={options.filter((brand)=>brand.type==="WINE")}
                             getOptionLabel={(option) =>
                               option ? option.brandName : ""
                             }
@@ -1028,7 +1082,10 @@ const FronteDailyReport = () => {
                                 item.brandName = value.brandName;
                                 item.liquorID = value._id;
                                 item.size = value;
+                                item.buyRateShopBarOtherMl = value.sizes.find((brand)=>brand.quantityInML===item.ml).rate
+               
                               } else {
+
                                 item.brandName = "";
                                 item.liquorID = "";
                               }
@@ -1058,28 +1115,20 @@ const FronteDailyReport = () => {
                             <select
                               className="semiSmallInput wd-9"
                               name="ml"
-                              value={item.ml}
+                              value={Number(item.ml)}
                               onChange={(e) => midFormOnChange(e, index)}
                               required
                             >
-                              <option selected value={750}>
-                                750ml
-                              </option>
-                              <option value={700}>700ml</option>
-                              <option value={650}>650ml</option>
-                              <option value={550}>550ml</option>
-                              <option value={500}>500ml</option>
-                              <option value={375}>375ml</option>
-                              <option value={330}>330ml</option>
-                              <option value={275}>275ml</option>
-                              <option value={250}>250ml</option>
-                              <option value={200}>200ml</option>
-                              <option value={180}>180ml</option>
-                              <option selected value={90}>
-                                90ml
-                              </option>
-                              <option value={60}>60ml</option>
-                              <option value={50}>50ml</option>
+                             <option value={1000}>1000ml</option>
+              <option value={700}>700ml</option>
+              <option value={500}>500ml</option>
+              <option value={375}>375ml</option>
+              <option value={330}>330ml</option>
+              <option value={275}>275ml</option>
+              <option value={250}>250ml</option>
+              <option value={200}>200ml</option>
+              <option selected value={90}>90ml</option>
+              <option value={60}>60ml</option>
                             </select>
                           </div>
                         </td>
@@ -1679,7 +1728,7 @@ const FronteDailyReport = () => {
                         <tr>
                           <th> क्र. सं.</th>
                           <th></th>
-                          <th>Brand Name/ ब्राण्ड</th>
+                          <th>ब्राण्ड</th>
                           <th>औसत दर</th>
                           <th>प्रारम्भिक स्टॉक</th>
                           <th>आमद (खरीद)-दु.</th>
@@ -1716,7 +1765,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1738,7 +1787,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1760,7 +1809,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1782,7 +1831,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1805,7 +1854,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1829,7 +1878,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1852,7 +1901,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1874,7 +1923,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1918,7 +1967,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1940,7 +1989,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1962,7 +2011,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1983,7 +2032,7 @@ const FronteDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -2661,7 +2710,7 @@ const FronteDailyReport = () => {
                         पानी, नमकीन, सिगरेट, पुड़िया आदि
                       </span>
                     </h1>
-                    <table className="table commonTable">
+                    <table className="table commonTable" ref={barSupplementsRef} onFocus={()=>scrollToComponent(barSupplementsRef)}>
                       <thead>
                         <tr></tr>
                         <tr></tr>

@@ -911,7 +911,7 @@ const BackDetailReport = () => {
 {BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.RML.entries.map((entry,index2)=>{
+                      page?.RML?.entries?.map((entry,index2)=>{
                         return(
                           <BackRmlDetailsData
                           key={index2}
@@ -934,11 +934,11 @@ const BackDetailReport = () => {
                     BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
-                      .reduce(
+                      ?.reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.RML.entries.reduce(
+                            currentItem?.RML?.entries?.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.openingStock),
                               0
@@ -956,7 +956,7 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.RML.entries.reduce(
+                            currentItem?.RML?.entries?.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem.purchaseShop),
                               0
@@ -975,9 +975,9 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.RML.entries.reduce(
+                            currentItem?.RML?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.purchaseOutSide),
+                                (total = total + currentItem?.purchaseOutSide),
                               0
                             )),
                         0
@@ -994,9 +994,9 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.RML.entries.reduce(
+                            currentItem?.RML?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.credits),
+                                (total = total + currentItem?.credits),
                               0
                             )),
                         0
@@ -1012,9 +1012,9 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.RML.entries.reduce(
+                            currentItem?.RML?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.send),
+                                (total = total + currentItem?.send),
                               0
                             )),
                         0
@@ -1030,9 +1030,9 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.RML.entries.reduce(
+                            currentItem?.RML?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.remaining),
+                                (total = total + currentItem?.remaining),
                               0
                             )),
                         0
@@ -1040,17 +1040,17 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax">
                   {BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      ?.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.RML.entries.reduce(
+                            currentItem?.RML?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.closingStock),
+                                (total = total + currentItem?.closingStock),
                               0
                             )),
                         0
@@ -1067,9 +1067,9 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.RML.entries.reduce(
+                            currentItem?.RML?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.sales),
+                                (total = total + currentItem?.sales),
                               0
                             )),
                         0
@@ -1088,7 +1088,7 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.RML.entries.reduce(
+                            currentItem?.RML?.entries?.reduce(
                               (total, currentItem) =>
                                 (total =
                                   total +
@@ -1136,10 +1136,10 @@ const BackDetailReport = () => {
             <tbody>
              
 
-{BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+{BackPageData && BackPageData?.length && BackPageData?.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.purchaseOutSide.entries.map((entry,index2)=>{
+                      page?.purchaseOutSide?.entries?.map((entry,index2)=>{
                         return(
                         <InfolwRml
                         key={index}
@@ -1157,7 +1157,7 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" colSpan={4}></td>
                 <td className="tg-0lax" colSpan={4}>
                   {BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       
                       .slice(pgNo, pgNo + 1)
@@ -1165,9 +1165,9 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.purchaseOutSide.entries.reduce(
+                            currentItem?.purchaseOutSide?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.number),
+                                (total = total + currentItem?.number),
                               0
                             )),
                         0
@@ -1201,10 +1201,10 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-            {BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+            {BackPageData && BackPageData?.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.totalExpense.entries.map((entry,index2)=>{
+                      page?.totalExpense?.entries?.map((entry,index2)=>{
                        
                         return(
                           <CommisonExpence
@@ -1229,11 +1229,11 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.totalExpense.entries.reduce(
+                            currentItem?.totalExpense?.entries?.reduce(
                               (total, currentItem) =>
                                 (total =
                                   total +
-                                  Number(currentItem.amount.$numberDecimal)),
+                                  Number(currentItem?.amount?.$numberDecimal)),
                               0
                             )),
                         0
@@ -1270,10 +1270,10 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-            {BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+            {BackPageData && BackPageData?.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.borrowedCashReturn.entries.map((entry,index2)=>{
+                      page?.borrowedCashReturn?.entries?.map((entry,index2)=>{
                         return(
                           <CashReciveData
                           key={index2}
@@ -1298,9 +1298,9 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.borrowedCashReturn.entries.reduce(
+                            currentItem?.borrowedCashReturn?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.cash),
+                                (total = total + currentItem?.cash),
                               0
                             )),
                         0
@@ -1332,10 +1332,10 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-            {BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+            {BackPageData && BackPageData?.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.purchaseBorrow.entries.map((entry,index2)=>{
+                      page?.purchaseBorrow?.entries?.map((entry,index2)=>{
                         return(
                           <InflowBorrow
                               key={index2}
@@ -1363,9 +1363,9 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.purchaseBorrow.entries.reduce(
+                            currentItem?.purchaseBorrow?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.number),
+                                (total = total + currentItem?.number),
                               0
                             )),
                         0
@@ -1433,10 +1433,10 @@ const BackDetailReport = () => {
                 </>
               )} */}
 
-{BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
+{BackPageData && BackPageData?.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.send.entries.map((entry,index2)=>{
+                      page?.send?.entries?.map((entry,index2)=>{
                         return(
                           <ShippingEnglishBear
                           key={index2}
@@ -1463,9 +1463,9 @@ const BackDetailReport = () => {
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.send.entries.reduce(
+                            currentItem?.send?.entries?.reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem.number),
+                                (total = total + currentItem?.number),
                               0
                             )),
                         0
@@ -1475,14 +1475,14 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
                   {BackPageData &&
-                    BackPageData.length &&
+                    BackPageData?.length &&
                     BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).reduce(
                       (total, currentItem) =>
                         (total =
                           total +
-                          currentItem.send.entries.reduce(
+                          currentItem?.send?.entries?.reduce(
                             (total, currentItem) =>
-                              (total = total + currentItem.total),
+                              (total = total + currentItem?.total),
                             0
                           )),
                       0
@@ -1509,10 +1509,10 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-            {BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+            {BackPageData && BackPageData?.length && BackPageData.map((page,index)=>{
                     if(index === pgNo){
                       return(<>{
-                      page.borrowed.entries.map((entry,index2)=>{
+                      page?.borrowed?.entries?.map((entry,index2)=>{
                         return(
                           <Borrowed
                           key={index2}
@@ -1534,19 +1534,19 @@ const BackDetailReport = () => {
                   
                    
                       {BackPageData &&
-                        BackPageData.length > 0 &&
+                        BackPageData?.length > 0 &&
                         BackPageData
                           .slice(pgNo, pgNo + 1)
                           .reduce(
                             (total, currentItem) =>
                               (total =
                                 total +
-                                currentItem.borrowed.entries.reduce(
+                                currentItem?.borrowed?.entries?.reduce(
                                   (total, currentItem) =>
                                     (total =
                                       total +
                                       Number(
-                                        currentItem.amount.$numberDecimal
+                                        currentItem?.amount?.$numberDecimal
                                       )),
                                   0
                                 )),
@@ -1560,10 +1560,10 @@ const BackDetailReport = () => {
             </tbody>
           </table>
 
-          { BackPageData && BackPageData.length && BackPageData.map((page,index)=>{
+          { BackPageData && BackPageData?.length && BackPageData.map((page,index)=>{
                     if(index === pgNo){
                       return(<FinalReport
-                        data={page.finalReport}
+                        data={page?.finalReport}
                       ></FinalReport>
                     )}
                   })}

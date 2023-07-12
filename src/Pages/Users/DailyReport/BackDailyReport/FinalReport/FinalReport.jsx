@@ -9,10 +9,9 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
   const { paidDues, setPaidDues } = useContext(DataContextApi);
   const token = localStorage.getItem("token");
   const shopType = jwtDecode(token).shopType
-  console.log(shopType)
 
-  localStorage.setItem("beerTotal", JSON.stringify(beerTotal));
-  localStorage.setItem("rmlTotal", JSON.stringify(rmlTotal));
+  shopType==="SHOP" ? localStorage.setItem("beerTotal", JSON.stringify(beerTotal)): localStorage.setItem("beerTotal", JSON.stringify(0));
+  shopType==="SHOP" ? localStorage.setItem("rmlTotal", JSON.stringify(rmlTotal)) : localStorage.setItem("rmlTotal", JSON.stringify(0));
 
   localStorage.setItem("udhaariTotal", JSON.stringify(udhaariTotal));
   localStorage.setItem("commisionTotal", JSON.stringify(commisionTotal));

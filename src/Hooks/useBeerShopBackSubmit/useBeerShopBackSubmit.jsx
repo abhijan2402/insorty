@@ -328,7 +328,6 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
                 barCommission: data[6].data._id,
                 finalReport : data[7].data._id
               };
-              console.log(BackPage,'bck')
 
               fetch(
                 "https://insorty-api.onrender.com/shop/addBackPageData",
@@ -343,7 +342,6 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
               )
                 .then((res) => res.json())
                 .then((data1) => {
-                  console.log(data1, "++++++++++++++++++++++++");
                   if (data1.success === true) {
                     Swal.fire({
                       icon: "success",
@@ -376,20 +374,83 @@ const pichla = JSON.parse(localStorage.getItem("pichlaBakaya"));
                     localStorage.removeItem("beerFormTotal");
                     localStorage.removeItem("udhaariTotal");
                     localStorage.removeItem("mlFormTotal");
-                  } else {
+                  } 
+                  
+                  else {
                     Swal.fire({
                       icon: "error",
                       title: "Oops...",
                       text: "Something went wrong!",
                     });
                   }
+                })
+                .catch((err)=>{
+                  const errorMessage = err.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorMessage,
+        });
                 });
             } else {
-              Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-              });
+              let error = []
+              data.map((err)=>{
+                if(err.success===false){
+
+                  error.push(err.error.message)
+                  
+
+                }
+                return null
+              })
+              
+              if (error.length > 0) {
+                Swal.fire({
+                  title: "Error",
+                  html: error.map((err,index)=>{return `<p><b>${index+1}. </b> ${err} </p>`}),
+                  icon: "error",
+                });
+
+                let BackPage = {
+                  salesmen: salesMan,
+                  date: moment(drDate).format('MM-DD-YYYY'),
+                  totalExpense: data[2].data._id,
+                  borrowed: data[3].data._id,
+                  purchaseOutSide: data[0].data._id, //
+                  borrowedCashReturn: data[4].data._id, //
+                  purchaseBorrow: data[1].data._id, //
+                  foodVegetable: data[5].data._id, //
+                  barCommission: data[6].data._id,
+                  finalReport : data[7].data._id
+                };
+               
+  
+  
+  
+                fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    cookie_token: token,
+                  },
+                  body: JSON.stringify(BackPage),
+                })
+                  .then((res) => res.json())
+                  .then((data1) => {
+                    if (data1.success === true) {
+                      console.log(data1.success)
+                      
+                    } 
+                  })
+                  .catch((err)=>{
+                    const errorMessage = err.message;
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: errorMessage,
+          });
+                  });
+              }
             }
           });
       } catch (error) {

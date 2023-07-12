@@ -9,6 +9,8 @@ import useFristFormSubmitAPIFront from "../../../../Hooks/useFristFormSubmitAPIF
 import Loader from "../../../../Components/Loader/Loader";
 import { DataContextApi } from "../../../../Context/DataContext";
 import DatePicker from "react-datepicker";
+import { Autocomplete } from "@mui/material";
+import {TextField} from "@mui/material";
 
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
@@ -65,7 +67,27 @@ const FronteDailyReport = () => {
     console.log("search ", searchTerm);
   };
 
-  if (isLoading) {
+  const {
+    data: salaryData,
+    salaryLoading,
+  } = useQuery({
+    queryKey: ["salaryData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllEmployees",
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json", cookie_token: localStorage.getItem('token') },
+        }
+      );
+      const data = await res.json();
+      return data.data;
+    },
+  });
+
+  
+
+  if (isLoading || salaryLoading) {
     return <Loader></Loader>;
   }
 
@@ -86,16 +108,38 @@ const FronteDailyReport = () => {
         <div className="flex gap-4 justify-center items-center ">
           <div className="flex gap-4 justify-center items-center ">
             <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
-            <input
-              type="text"
-              value={salesMan}
-              onChange={(e) => {
-                setSalesMan(e.target.value);
-                localStorage.setItem("salesMan", e.target.value);
-              }}
-              className="semiSmallInput"
-              style={{ width: "24rem" }}
-            />
+            <Autocomplete
+          size="small"
+          style={{
+            width: "20rem",
+            border:"1px solid black",
+              borderRadius:"5px"
+          }}
+            options={salaryData?.length === undefined ? ['no options'] : salaryData?.length!==undefined && salaryData?.filter((prev)=>prev.isActive===true) }
+            getOptionLabel={(option) => option ? option.name : ""}
+            
+            onChange={(event, value) => {
+              if (value) {
+                setSalesMan(value.name)
+              } else {
+                setSalesMan("")
+              }
+
+            }}
+            renderInput={(params) => (
+              <TextField
+                required
+                {...params}
+                className="dailyReportInput"
+                inputProps={{ ...params.inputProps, value: salesMan }}
+
+                onChange={(event) => {
+                  setSalesMan(event.target.value)
+                  
+                }}
+              />
+            )}
+          />
           </div>
 
           <div>
@@ -1343,7 +1387,7 @@ const FronteDailyReport = () => {
           </div>
 
           <div className="flex my-6 ">
-            {isLoadingSubmit ? (
+            {isLoadingSubmit===true ? (
               <>
                 <button
                   type="button"

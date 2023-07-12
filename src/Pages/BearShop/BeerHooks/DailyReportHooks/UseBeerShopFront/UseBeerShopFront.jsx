@@ -124,6 +124,7 @@ const UseBeerShopFront = () => {
           },
         })
           .then((response) => {
+            console.log(response)
             let firstFormData = beerShopFrontFrist;
 
             if (!prevdata && response.data.data.length > 0) {
@@ -151,7 +152,6 @@ const UseBeerShopFront = () => {
                   quan30 &&
                   quan180.currentStock > 0 &&
                   quan750.currentStock > 0 &&
-                  quan30.currentStock > 0 &&
                   quan330.currentStock > 0
                 ) {
                   const newFormData = { ...firstFormDataTemplate };
@@ -175,6 +175,11 @@ const UseBeerShopFront = () => {
                   newFormData.initial375 = quan330.averageRate.$numberDecimal;
                   newFormData.initial180 = quan180.averageRate.$numberDecimal;
                   newFormData.initial30 = quan30.averageRate.$numberDecimal;
+                  
+                  newFormData.buyRateShop750 = quan750.rate;
+                  newFormData.buyRateShop375 = quan330.rate;
+                  newFormData.buyRateShop180 = quan180.rate;
+
                   newFormData.averageRate375 =
                     quan330.averageRate.$numberDecimal;
                   newFormData.averageRate180 =
@@ -256,6 +261,8 @@ const UseBeerShopFront = () => {
         : firstFormFront
     );
     setBeerShopFrontFrist(firstFormHandel);
+
+
 
     const pegInflowShop = beerShopFrontFrist.map((returned, i) => {
       if (index === i) {
@@ -1088,7 +1095,6 @@ const UseBeerShopFront = () => {
                 }
               });
 
-              let quan30
 
               
 
@@ -1119,6 +1125,7 @@ const UseBeerShopFront = () => {
                     newFormData.averageRate30 =
                       quan30.averageRate.$numberDecimal;
                     newFormData.initialOtherMl = item.averageRate.$numberDecimal;
+                    newFormData.buyRateShopBarOtherMl = item.rate;
                     newFormData.initial30 = quan30.averageRate.$numberDecimal;
                     firstFormData = [newFormData, ...firstFormData];
                     setBeerShopMid(firstFormData);
@@ -1160,6 +1167,23 @@ const UseBeerShopFront = () => {
         : returned
     );
     setBeerShopMid(secondFormHandel);
+
+    const handelInitialPrice = beerShopMid.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+
+        if (
+          e.target.name === "brandName" ||
+          e.target.name === "ml" 
+        ) {
+          obj.buyRateShopBarOtherMl = obj.size.sizes.find((brand)=>brand.quantityInML===Number(obj.ml)).rate
+          
+
+        }
+        return obj;
+      } else return returned;
+    });
+    setBeerShopMid(handelInitialPrice);
     // **********************formula******************
 
     const pegStock = beerShopMid.map((returned, i) => {

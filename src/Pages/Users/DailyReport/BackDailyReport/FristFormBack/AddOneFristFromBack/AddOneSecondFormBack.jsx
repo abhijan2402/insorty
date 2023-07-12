@@ -93,13 +93,15 @@ const AddOneSecondFormBack = ({
               border:"1px solid black",
               borderRadius:"5px"
             }}
-            options={options}
+            options={options.filter((brand)=>brand.type==='BEER')}
             getOptionLabel={(option) => (option ? option.brandName : "")}
             onChange={(event, value) => {
               if (value) {
                 item.brandName = value.brandName;
                 item.liquorID = value._id;
                 item.size = value
+                item.buyRate = value.sizes.find((brand)=>brand.quantityInML===Number(item.selectStockVarient)).rate
+
               } else {
                 item.brandName = "";
                 item.liquorID = "";
@@ -203,6 +205,7 @@ const AddOneSecondFormBack = ({
               type="number"
                 required
                 min={0}
+                disabled
               className="smallinput wd-7"
               name="buyRate"
               value={item.buyRate}

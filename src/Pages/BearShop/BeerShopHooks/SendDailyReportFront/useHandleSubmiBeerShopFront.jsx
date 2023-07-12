@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../../../../Context/DataContext";
+import { error } from "daisyui/src/colors";
 
 const useHandleSubmiBeerShopFront = () => {
   const token = localStorage.getItem("token");
@@ -203,7 +204,7 @@ const useHandleSubmiBeerShopFront = () => {
     const element = smallPegForm[index];
     otherMl.push({
       liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === element.ml
+        (elem) => elem.quantityInML === Number(element.ml)
       )?._id,
       openingStock: element.openingStockOtherMl,
       averageRate: element.averageRateOtherMl,
@@ -339,12 +340,12 @@ const useHandleSubmiBeerShopFront = () => {
         Promise.all([api1, api2, api3])
           .then((responses) => Promise.all(responses.map((res) => res.json())))
           .then((data) => {
+            console.log(data)
             if (
               data[0].success === true &&
               data[1].success === true &&
               data[2].success === true
             ) {
-              console.log(data);
               let FrontPageBear = {
                 date: drDate,
                 salesmen: salesMan,
@@ -366,7 +367,6 @@ const useHandleSubmiBeerShopFront = () => {
               )
                 .then((res) => res.json())
                 .then((data1) => {
-                  console.log(data1, "++++++");
                   if (data1.success === true) {
                     Swal.fire({
                       icon: "success",
@@ -382,12 +382,27 @@ const useHandleSubmiBeerShopFront = () => {
                   }
                 });
             } else {
-              Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-              });
+              let error = []
+              data.map((err)=>{
+                if(err.success===false){
+
+                  error.push(err.message)
+                  
+
+                }
+                return null
+              })
+              
+              if (error.length > 0) {
+                Swal.fire({
+                  title: "Error",
+                  html: error.map((err,index)=>{return `<p><b>${index+1}. </b> ${err} </p>`}),
+                  icon: "error",
+                });
             }
+          
+              
+          }
           });
       } catch (error) {
         const errorMessage = error.message;
@@ -400,13 +415,7 @@ const useHandleSubmiBeerShopFront = () => {
         setIsLoading(false);
       }
     }
-    // console.log(barSuplementsData)
-    // console.log(barSuplements)
-    // console.log({
-    //             date: drDate,
-    //             salesmen: salesMan,
-    //             entries: barSuplementsData,
-    //           })
+   
   };
 
   return {

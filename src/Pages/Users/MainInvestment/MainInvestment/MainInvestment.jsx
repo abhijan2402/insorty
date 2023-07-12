@@ -101,7 +101,7 @@ const MainInvestment = () => {
                       className="dailyReportInput wd-30 left-text"
                       type="text"
                       name="brandName"
-                      value={"शेष नकदी"}
+                      value={"नकद गल्ले में"}
                       disabled
                     />
                   </td>
@@ -323,7 +323,7 @@ const MainInvestment = () => {
                 <td></td>
                   <td className="price left-text">शेष इन्वेस्ट</td>
                 <td className="commonText left-text"></td>
-                  <td>{data.reserveAmount.total}</td>
+                  <td>{data.restInvest}</td>
               </tr>
             </tbody>
           </table>

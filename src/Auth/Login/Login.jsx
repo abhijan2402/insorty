@@ -9,11 +9,13 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthProvider";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { userData, setuserData } = useContext(AuthContext);
-  console.log(userData);
+  const [showPassword,setShowPassword] = useState(false)
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -102,7 +104,7 @@ const Login = () => {
 
                   <div className="form-control loginFromControl">
                     <label className="label">
-                      <span className="label-text font-bold">User Name</span>
+                      <span className="label-text font-bold">Username</span>
                     </label>
                     <div className="inputFild">
                       <FaUserAlt className="registrationIcon"></FaUserAlt>
@@ -117,10 +119,12 @@ const Login = () => {
                     <div className="inputFild">
                       <FaUnlock className="registrationIcon"></FaUnlock>
                       <input
-                        type="text"
+                        type={showPassword===true ?  "text" : "password"}
                         placeholder="Password"
                         name="password"
                       />
+                      <FaEye className={showPassword===false ?  "cursor-pointer" : "displayHidden"} onClick={(e)=>setShowPassword(true)}></FaEye>
+                      <FaEyeSlash className={showPassword===true ?  "cursor-pointer" : "displayHidden"} onClick={(e)=>setShowPassword(false)}></FaEyeSlash>
                     </div>
                   </div>
 

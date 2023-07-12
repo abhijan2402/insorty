@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../../Context/DataContext";
-import useLiquors from "../useLiquors";
 
 const useFristFormSubmitAPIFront = () => {
   const token = localStorage.getItem("token");
@@ -9,12 +8,11 @@ const useFristFormSubmitAPIFront = () => {
   const firstFront = JSON.parse(localStorage.getItem("firstFront"));
   const mlForm = JSON.parse(localStorage.getItem("mlForm"));
 
-  const { GetLiqId } = useLiquors();
 
   const { salesMan, drDate } = useContext(DataContextApi);
 
   const submitFristFormHandler = async (e) => {
-    // setIsLoadingSubmit(true);
+    setIsLoadingSubmit(true);
     e.preventDefault() 
     
     const dataDetails650 = [];
@@ -90,7 +88,7 @@ const useFristFormSubmitAPIFront = () => {
     for (let index = 0; mlForm ? index < mlForm.length : 0; index++) {
       const element = mlForm[index];
       addSecondFormData.push({
-        liquor: element.size.sizes.find((elem)=>elem.quantityInML===element.selectStockVarient)?._id,
+        liquor: element.size.sizes.find((elem)=>elem.quantityInML===Number(element.selectStockVarient))?._id,
         brandName: element.brandName,
         quantityInML: element.selectStockVarient,
         averageRate:element.averageRate,
@@ -153,6 +151,14 @@ const useFristFormSubmitAPIFront = () => {
               text: "Data Added Successfully",
             });
           }
+        })
+        .catch((err)=>{
+          const errorMessage = err.message;
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: errorMessage,
+      });
         });
     } catch (error) {
       const errorMessage = error.message;
@@ -164,17 +170,9 @@ const useFristFormSubmitAPIFront = () => {
     } finally {
       setIsLoadingSubmit(false);
     }
-    console.log(mlForm);
-    console.log(addSecondFormData);
-    console.log(
-      [
-        ...dataDetails650,
-        ...dataDetails550,
-        ...dataDetails375,
-        ...addSecondFormData,
-      ],
-      "++++++++++++++++++++"
-    );
+
+    console.log(addSecondFormData)
+    
     }
   };
 

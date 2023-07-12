@@ -147,6 +147,9 @@ const useFormulasFristFormFront = () => {
                   newFormData.initial180 = quan180.averageRate.$numberDecimal;
                   newFormData.averageRate330 = quan330.averageRate.$numberDecimal;
                   newFormData.averageRate180 = quan180.averageRate.$numberDecimal;
+                  newFormData.buyRate750 = quan750.rate;
+                  newFormData.buyRate330 = quan330.rate;
+                  newFormData.buyRate180 = quan180.rate;
                   firstFormData = [newFormData, ...firstFormData];
                   setAddOneFristFormState(firstFormData);
                 }
@@ -391,6 +394,7 @@ const useFormulasFristFormFront = () => {
         : firstFormFront
     );
     setAddOneFristFormState(firstFormHandel);
+    
 
 
     const handelavg750 = addOneFristFormState.map((returned, i) => {

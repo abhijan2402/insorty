@@ -70,13 +70,16 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
               border:"1px solid black",
               borderRadius:"5px"
             }}
-            options={options}
+            options={options.filter((brand)=>brand.type==="WINE")}
             getOptionLabel={(option) => (option ? option.brandName : "")}
             onChange={(event, value) => {
               if (value) {
                 beerFront.brandName = value.brandName;
                 beerFront.liquorID = value._id;
                 beerFront.size = value
+                beerFront.buyRateShop750 = value.sizes.find((brand)=>brand.quantityInML===750).rate
+                beerFront.buyRateShop375 = value.sizes.find((brand)=>brand.quantityInML===375).rate
+                beerFront.buyRateShop180 = value.sizes.find((brand)=>brand.quantityInML===180).rate
               } else {
                 beerFront.brandName = "";
                 beerFront.liquorID = "";
@@ -236,6 +239,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-9"
                 name="buyRateShop750"
+                disabled
                 required
                 min={0}
                 value={beerFront.buyRateShop750}
@@ -248,6 +252,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput wd-9"
                 name="buyRateShop375"
+                disabled
                 value={beerFront.buyRateShop375}
                 required
                 min={0}
@@ -258,6 +263,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
+                disabled
                 className="smallinput wd-8"
                 name="buyRateShop180"
                 value={beerFront.buyRateShop180}

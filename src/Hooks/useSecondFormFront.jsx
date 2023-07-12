@@ -101,6 +101,8 @@ const useSecondFormFront = () => {
                     newFormData.sales = item.currentStock;
                     newFormData.averageRate = item.averageRate.$numberDecimal;
                     newFormData.initial = item.averageRate.$numberDecimal;
+                    newFormData.buyRate = item.rate;
+
                     firstFormData = [newFormData, ...firstFormData];
                     setAddOneSecondFormState(firstFormData);
                     
@@ -179,6 +181,24 @@ const useSecondFormFront = () => {
         : returned
     );
     setAddOneSecondFormState(secondFormHandel);
+
+
+    const handelPrice = addOneSecondFormState.map((returned, i) => {
+      if (index === i) {
+        let obj = Object.assign(returned, { [e.target.name]: e.target.value });
+
+        if (
+          e.target.name === "brandName" ||
+          e.target.name === "selectStockVarient" 
+        ) {
+          obj.buyRate = obj.size.sizes.find((brand)=>brand.quantityInML===Number(obj.selectStockVarient)).rate
+
+        }
+        return obj;
+      } else return returned;
+    });
+    setAddOneSecondFormState(handelPrice);
+
     // **********************formula******************
 
     const handelavg = addOneSecondFormState.map((returned, i) => {

@@ -88,6 +88,14 @@ const useMainInvestmentHooks = () => {
     return total
   }
 
+  const calReserveTotal=(data)=>{
+    let reserveTotal = data.reserveAmount.entries.length > 0 ? data.reserveAmount.entries.reduce(
+      (total, currentItem) => (total = total + Number(currentItem.price)),
+      0
+    ) : 0
+    return reserveTotal
+  }
+
   const calAllTotal=(data)=>{
     let refundTotal = data.refundRecoveryDetails.entries.length>0 ? data.refundRecoveryDetails.entries.reduce(
       (total, currentItem) => (total = total + Number(currentItem.price)),
@@ -119,7 +127,8 @@ const useMainInvestmentHooks = () => {
       // else if(field === 'refundRecovery')
       _data.mainInvest.reserveAmount.price = calculateReserveAmount(_data);
       _data.refundRecoveryDetails.total = calRefundTotal(_data)
-      _data.reserveAmount.total = calAllTotal(_data)
+      _data.reserveAmount.total = calReserveTotal(_data)
+      _data.restInvest = calAllTotal(_data)
 
       // calculateReserveAmount()
 
@@ -185,7 +194,8 @@ const useMainInvestmentHooks = () => {
     let _data = { ...data };
       _data.refundRecoveryDetails.entries[index][subfield] = newValue;
     _data.refundRecoveryDetails.total = calRefundTotal(_data)
-    _data.reserveAmount.total = calAllTotal(_data)
+    _data.reserveAmount.total = calReserveTotal(_data)
+    _data.restInvest = calAllTotal(_data)
 
    
     setData(_data);
@@ -203,20 +213,20 @@ const useMainInvestmentHooks = () => {
     let _data = { ...data };
       _data.reserveAmount.entries[index][subfield] = newValue;
     _data.refundRecoveryDetails.total = calRefundTotal(_data)
-    _data.reserveAmount.total = calAllTotal(_data)
+    _data.reserveAmount.total = calReserveTotal(_data)
+      _data.restInvest = calAllTotal(_data)
     setData(_data);
     localStorage.setItem('mainInvest', JSON.stringify(_data))
   };
 
   const handleRemoveFields = (field,index) => {
-    console.log('fired')
     const values = { ...data }
-    console.log(values)
     if(field==='fees'){
     values.mainInvest.fees.splice(index, 1);
       values.mainInvest.reserveAmount.price = calculateReserveAmount(values);
       values.refundRecoveryDetails.total = calRefundTotal(values)
-      values.reserveAmount.total = calAllTotal(values)
+      values.reserveAmount.total = calReserveTotal(values)
+      values.restInvest = calAllTotal(values)
       setData(values);
       localStorage.setItem('mainInvest', JSON.stringify(values))
    }
@@ -225,7 +235,8 @@ const useMainInvestmentHooks = () => {
       values.refundRecoveryDetails.entries.splice(index, 1)
       values.mainInvest.reserveAmount.price = calculateReserveAmount(values);
       values.refundRecoveryDetails.total = calRefundTotal(values)
-      values.reserveAmount.total = calAllTotal(values)
+      values.reserveAmount.total = calReserveTotal(values)
+      values.restInvest = calAllTotal(values)
       setData(values);
       localStorage.setItem('mainInvest', JSON.stringify(values))
    }
@@ -233,7 +244,8 @@ const useMainInvestmentHooks = () => {
       values.reserveAmount.entries.splice(index, 1)
       values.mainInvest.reserveAmount.price = calculateReserveAmount(values);
       values.refundRecoveryDetails.total = calRefundTotal(values)
-      values.reserveAmount.total = calAllTotal(values)
+      values.reserveAmount.total = calReserveTotal(values)
+      values.restInvest = calAllTotal(values)
       setData(values);
       localStorage.setItem('mainInvest', JSON.stringify(values))
    }

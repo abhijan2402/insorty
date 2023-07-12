@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useRef } from "react";
 import "../Style/DailyReport.scss";
 import RmlFrom from "./RmlForm/RmlFrom";
 import { Link } from "react-router-dom";
@@ -24,10 +24,24 @@ import { DataContextApi } from "../../../../Context/DataContext";
 import useHandelSubmitBackAPI from "../../../../Hooks/useHandelSubmitBackAPI/useHandelSubmitBackAPI";
 import AddOneSecondFormBack from "./FristFormBack/AddOneFristFromBack/AddOneSecondFormBack";
 import DatePicker from "react-datepicker";
-import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { TextField } from "@mui/material";
+import {Autocomplete} from "@mui/material";
+import Loader from "../../../../Components/Loader/Loader";
 
 const BackDailyReport = () => {
   const { handleSubmit, isLoadingSubmit } = useHandelSubmitBackAPI();
+  const purchaseOutsideRef = useRef(null)
+  const commissionRef = useRef(null)
+  const cashReturnRef = useRef(null)
+  const purchaseBorrowRef = useRef(null)
+  const sendingRef = useRef(null)
+  const BorrowingRef = useRef(null)
+
+  const scrollToComponent = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"start" });
+  };
+
 
   // ================== Frist Form============
   const {
@@ -130,6 +144,31 @@ const BackDailyReport = () => {
   const { salesMan, setSalesMan, drDate, setDrDate } =
     useContext(DataContextApi);
 
+
+    const {
+      data: salaryData,
+      isLoading,
+      refetch,
+    } = useQuery({
+      queryKey: ["salaryData"],
+      queryFn: async () => {
+        const res = await fetch(
+          "https://insorty-api.onrender.com/shop/getAllEmployees",
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json", cookie_token: localStorage.getItem('token') },
+          }
+        );
+        const data = await res.json();
+        console.log(data.data);
+        return data.data;
+      },
+    });
+
+    if(isLoading){
+      return <Loader/>
+    }
+
   // ********************************* submit mulitple api in handelSubmit  *********************************
 
   return (
@@ -154,16 +193,39 @@ const BackDailyReport = () => {
 
           <div className="flex gap-4 justify-center items-center">
             <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
-            <input
-              type="text"
-              value={salesMan}
-              onChange={(e) => {
-                setSalesMan(e.target.value);
-                localStorage.setItem("salesMan", e.target.value);
-              }}
-              className="semiSmallInput"
-              style={{ width: "24rem" }}
-            />
+           
+            <Autocomplete
+          size="small"
+          style={{
+            width: "20rem",
+            border:"1px solid black",
+              borderRadius:"5px"
+          }}
+            options={salaryData.length > 0 ? salaryData.filter((prev)=>prev.isActive===true) : ['no options']}
+            getOptionLabel={(option) => option ? option.name : ""}
+            
+            onChange={(event, value) => {
+              if (value) {
+                setSalesMan(value.name)
+              } else {
+                setSalesMan("")
+              }
+
+            }}
+            renderInput={(params) => (
+              <TextField
+                required
+                {...params}
+                className="dailyReportInput"
+                inputProps={{ ...params.inputProps, value: salesMan }}
+
+                onChange={(event) => {
+                  setSalesMan(event.target.value)
+                  
+                }}
+              />
+            )}
+          />
 
             <div className="flex  items-center">
               <DatePicker
@@ -228,7 +290,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -250,7 +312,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -272,7 +334,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -294,7 +356,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -317,7 +379,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -341,7 +403,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -364,7 +426,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -386,7 +448,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -408,7 +470,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -430,7 +492,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -452,7 +514,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -474,7 +536,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -495,7 +557,7 @@ const BackDailyReport = () => {
 
                               <div className="form-control">
                                 <label className="label">
-                                  <span className="label-text">550ml</span>
+                                  <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
@@ -1678,7 +1740,7 @@ const BackDailyReport = () => {
                 </span>
               </h1>
               <div>
-                <table className="table commonTable">
+                <table className="table commonTable" ref={purchaseOutsideRef} onFocus={()=>scrollToComponent(purchaseOutsideRef)}>
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -1772,7 +1834,7 @@ const BackDailyReport = () => {
                 </span>
               </h1>
               <div>
-                <table className="table commonTable">
+                <table className="table commonTable" ref={commissionRef} onFocus={()=>scrollToComponent(commissionRef)}>
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -1846,7 +1908,7 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable">
+                <table className="table commonTable" ref={cashReturnRef} onFocus={()=>scrollToComponent(cashReturnRef)}>
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -1927,7 +1989,7 @@ const BackDailyReport = () => {
 
               <>
                 <div>
-                  <table className="table commonTable">
+                  <table className="table commonTable" ref={purchaseBorrowRef} onFocus={()=>scrollToComponent(purchaseBorrowRef)}>
                     <thead>
                       <tr>
                         <th> क्र. सं.</th>
@@ -2011,7 +2073,7 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable">
+                <table className="table commonTable" ref={sendingRef} onFocus={()=>scrollToComponent(sendingRef)}>
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -2092,7 +2154,7 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable">
+                <table className="table commonTable" ref={BorrowingRef} onFocus={()=>scrollToComponent(BorrowingRef)}>
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>

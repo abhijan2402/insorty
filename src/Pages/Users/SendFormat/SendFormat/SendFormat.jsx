@@ -92,7 +92,7 @@ const SendFormat = ({ isBearShop }) => {
                         <th>{index + 1}</th>
                         <td>{item?.name}</td>
                         <td>{item?.equity} %</td>
-                        <td>{item?.balance}</td>
+                        <td>{Number(item?.balance)}</td>
                         <td>
                           <FaRegTrashAlt className="cursor-pointer"
                             onClick={() => {

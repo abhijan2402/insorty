@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import useFormulasFristFormFront from "../Hooks/useFormulas/useFormulasFristFormFront";
 import { useQuery } from "@tanstack/react-query";
+import moment from "moment";
 export const DataContextApi = createContext();
 
 const DataContext = ({ children }) => {
@@ -32,7 +33,23 @@ const DataContext = ({ children }) => {
       setDrDate(localStorage.getItem("drDate"));
     }
     console.log(localStorage.getItem("drDate"));
-  }, []);
+
+    fetch(`${BasedURL}/shop/getBackPageData?from=${moment(drDate).subtract(1,'days').format('DD MMMM YYYY')}&to=${moment(drDate).subtract(1,'days').format('DD MMMM YYYY')}&page=0&pagesize=200`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.success===true){
+          setSalesMan(data.data[data.data.length-1].salesmen)
+        }
+      });
+
+    
+  }, [drDate]);
 
   const { data: liquors, isLoading: brandsLoaded, refetch } = useQuery({
     queryKey: ["liquors"],
@@ -48,6 +65,10 @@ const DataContext = ({ children }) => {
       return data.data;
     },
   });
+
+
+
+  
 
   const { data: liquorsParentData } = useQuery({
     queryKey: ["liquors"],
@@ -149,7 +170,8 @@ const DataContext = ({ children }) => {
     setSalesMan,
     drDate,
     setDrDate,
-    RMLloading
+    RMLloading,
+    
   };
 
   return (

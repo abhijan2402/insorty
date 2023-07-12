@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect,useRef } from "react";
 import "../Style/DailyReport.scss";
 import { Link } from "react-router-dom";
 import PurchaseOutSideFrom from "../../../Users/DailyReport/BackDailyReport/PurchaseOutSideForm/PurchaseOutSideFrom";
@@ -15,14 +15,14 @@ import useBeerShopBackSubmit from "../../../../Hooks/useBeerShopBackSubmit/useBe
 import { DataContextApi } from "../../../../Context/DataContext";
 import DatePicker from "react-datepicker";
 import { Autocomplete, TextField } from "@mui/material";
-import useLiquors from "../../../../Hooks/useLiquors";
 import FinalReport from "../../../Users/DailyReport/BackDailyReport/FinalReport/FinalReport";
 import useGetDailyReport from "../../../../Hooks/useGetDailyReport";
 import axios from "axios";
 import swal from "sweetalert";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../../Components/Loader/Loader"; 
 
 const BackDailyReport = () => {
-  const { liquors, brandsLoaded } = useLiquors();
   const token = localStorage.getItem('token')
   const sixthFomeDataTemp = {
     theDate: "",
@@ -30,6 +30,15 @@ const BackDailyReport = () => {
     details: "",
   };
   const [options, setOptions] = useState([]);
+
+  const purchaseBorrowRef = useRef(null)
+  const commissionRef = useRef(null)
+  const cashReturnRef = useRef(null)
+  const extraRef = useRef(null)
+
+  const scrollToComponent = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"start" });
+  };
 
   const fetchOptions = async (query) => {
     await axios({
@@ -82,6 +91,8 @@ const BackDailyReport = () => {
 
   const { salesMan, setSalesMan, drDate, setDrDate } =
     useContext(DataContextApi);
+
+    
 
   // ================== Purchase OutSide Form============
   const {
@@ -216,7 +227,32 @@ const BackDailyReport = () => {
     if (foodVegetablePrev) {
       setSixthFormState(foodVegetablePrev);
     }
+
   }, []);
+
+  const {
+    data: salaryData,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["salaryData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllEmployees",
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json", cookie_token: localStorage.getItem('token') },
+        }
+      );
+      const data = await res.json();
+      console.log(data.data);
+      return data.data;
+    },
+  });
+
+  if(isLoading){
+    return <Loader/>
+  }
 
   return (
     <>
@@ -238,15 +274,37 @@ const BackDailyReport = () => {
           </div>
         <div className="flex gap-4 justify-center items-center">
           <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
-          <input
-            type="text"
-            value={salesMan}
-            className="semiSmallInput"
-            onChange={(e) => {
-              setSalesMan(e.target.value);
-              localStorage.setItem("salesMan", e.target.value);
+          <Autocomplete
+          size="small"
+          style={{
+            width: "20rem",
+            border:"1px solid black",
+              borderRadius:"5px"
+          }}
+            options={salaryData.length > 0 ? salaryData.filter((prev)=>prev.isActive===true) : ['no options']}
+            getOptionLabel={(option) => option ? option.name : ""}
+            
+            onChange={(event, value) => {
+              if (value) {
+                setSalesMan(value.name)
+              } else {
+                setSalesMan("")
+              }
+
             }}
-            style={{ width: "24rem" }}
+            renderInput={(params) => (
+              <TextField
+                required
+                {...params}
+                className="dailyReportInput"
+                inputProps={{ ...params.inputProps, value: salesMan }}
+
+                onChange={(event) => {
+                  setSalesMan(event.target.value)
+                  
+                }}
+              />
+            )}
           />
 
           <div className="flex  items-center">
@@ -369,7 +427,7 @@ const BackDailyReport = () => {
 
               <>
                 <div>
-                  <table className="table commonTable">
+                  <table className="table commonTable" ref={purchaseBorrowRef} onFocus={()=>scrollToComponent(purchaseBorrowRef)}>
                     <thead>
                       <tr>
                         <th> क्र. सं.</th>
@@ -452,7 +510,7 @@ const BackDailyReport = () => {
                 </span>
               </h1>
               <div>
-                <table className="table commonTable">
+                <table className="table commonTable" ref={commissionRef} onFocus={()=>scrollToComponent(commissionRef)}>
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -528,7 +586,7 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable">
+                <table className="table commonTable" >
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -609,7 +667,7 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable">
+                <table className="table commonTable"  ref={cashReturnRef} onFocus={()=>scrollToComponent(cashReturnRef)}>
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -686,7 +744,7 @@ const BackDailyReport = () => {
               </h1>
 
               <div className="overflow-x-auto">
-                <table className="table commonTable">
+                <table className="table commonTable" ref={extraRef} onFocus={()=>scrollToComponent(extraRef)}>
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>

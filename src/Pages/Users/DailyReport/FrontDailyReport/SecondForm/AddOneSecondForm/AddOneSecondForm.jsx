@@ -83,13 +83,15 @@ const AddOneSecondForm = ({
               border:"1px solid black",
               borderRadius:"5px"
             }}
-            options={options}
+            options={options.filter((brand)=>brand.type==='WINE')}
             getOptionLabel={(option) => (option ? option.brandName : "")}
             onChange={(event, value) => {
               if (value) {
                 item.brandName = value.brandName;
                 item.liquorID = value._id;
                 item.size = value
+                item.buyRate = value.sizes.find((brand)=>brand.quantityInML===item.selectStockVarient).rate
+                
               } else {
                 item.brandName = "";
                 item.liquorID = "";
@@ -126,22 +128,17 @@ const AddOneSecondForm = ({
               required
             >
 
-              <option selected value={750}>
-                750ml
-              </option>
+              
+              <option value={1000}>1000ml</option>
               <option value={700}>700ml</option>
-              <option value={650}>650ml</option>
-              <option value={550}>550ml</option>
               <option value={500}>500ml</option>
               <option value={375}>375ml</option>
               <option value={330}>330ml</option>
               <option value={275}>275ml</option>
               <option value={250}>250ml</option>
               <option value={200}>200ml</option>
-              <option value={180}>180ml</option>
               <option selected value={90}>90ml</option>
               <option value={60}>60ml</option>
-              <option value={50}>50ml</option>
             </select>
           </div>
         </td>
@@ -196,6 +193,7 @@ const AddOneSecondForm = ({
               min={0}
               className="smallinput wd-9"
               name="buyRate"
+              disabled
               value={item.buyRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
             />

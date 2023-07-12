@@ -39,6 +39,8 @@ const CommissionForm = ({
         <td>
           <div className="form-control">
             <select
+              onBlur={()=>item.type.scrollIntoView({ behavior: 'smooth', block:"start", inline: 'start' })}
+
               value={item.type}
               required
               onChange={(e) => onChangeCommison(e, index)}

@@ -90,13 +90,14 @@ const RmlFrom = ({
                 border:"1px solid black",
               borderRadius:"5px"
               }}
-              options={options}
+              options={options.filter((brand)=>brand.type==='DESHIRML')}
               getOptionLabel={(option) => (option ? option.brandName : "")}
               onChange={(event, value) => {
                 if (value) {
                   item.brandName = value.brandName;
                   item.liquorID = value._id;
                   item.size = value
+                  item.buyRate = value.sizes.find((brand)=>brand.quantityInML===item.ml).rate
                 } else {
                   item.brandName = "";
                   item.liquorID = "";
@@ -206,6 +207,7 @@ const RmlFrom = ({
                 min={0}
               className="smallinput"
               name="buyRate"
+              disabled
               value={item.buyRate}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />

@@ -86,6 +86,7 @@ const PurchaseOutSideFrom = ({
             <Autocomplete
               options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
               size="small"
+              
               style={{
                 width: "20rem",
                 border:"1px solid black",
@@ -147,6 +148,7 @@ const PurchaseOutSideFrom = ({
                 <TextField
                   required
                   size="small"
+                  
                   {...params}
                   // value={item.brandName}
                   inputProps={{

@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../../Context/DataContext";
-import useLiquors from "../useLiquors";
 
 const useHandelSubmitBackAPI = (shopType) => {
   const token = localStorage.getItem("token");
@@ -17,8 +16,8 @@ const useHandelSubmitBackAPI = (shopType) => {
   const backFirst = JSON.parse(localStorage.getItem("firstBack"));
   const newBeer = JSON.parse(localStorage.getItem("BeerForm"));
   const credit = JSON.parse(localStorage.getItem("credit"));
+  const [errors,setErrors] = useState([])
 
-  const { GetLiqId } = useLiquors();
 
   const { salesMan, drDate } = useContext(DataContextApi);
 
@@ -122,7 +121,7 @@ const useHandelSubmitBackAPI = (shopType) => {
     const element = newBeer[index];
     beerForm.push({
       liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === element.selectStockVarient
+        (elem) => elem.quantityInML === Number(element.selectStockVarient)
       )?._id,
       brandName: element.brandName,
       averageRate: element.averageRate,
@@ -152,8 +151,8 @@ const useHandelSubmitBackAPI = (shopType) => {
     const element = rmlFieldsData[index];
     addRmlData.push({
       liquor: element.size.sizes.find(
-        (elem) => elem.quantityInML === element.ml
-      )?._id, //to be updated
+        (elem) => elem.quantityInML === Number(element.ml)
+      )?._id, 
       brandName: element.brandName,
       openingStock: element.openingStock,
       purchaseShop: element.incomingPurchase,
@@ -477,8 +476,8 @@ const useHandelSubmitBackAPI = (shopType) => {
               data[8].success === true
             ) {
               let BackPage = {
-                dailyReport: data[0].data._id,
-                RML: data[1].data._id,
+                dailyReport: data[0]?.data?._id,
+                RML: data[1]?.data?._id,
                 purchaseOutSide: data[2].data._id,
                 totalExpense: data[3].data._id,
                 borrowedCashReturn: data[4].data._id,
@@ -487,6 +486,9 @@ const useHandelSubmitBackAPI = (shopType) => {
                 borrowed: data[7].data._id,
                 finalReport: data[8].data._id,
               };
+             
+
+
 
               fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
                 method: "POST",
@@ -498,7 +500,6 @@ const useHandelSubmitBackAPI = (shopType) => {
               })
                 .then((res) => res.json())
                 .then((data1) => {
-                  console.log(data1);
                   if (data1.success === true) {
                     Swal.fire({
                       icon: "success",
@@ -531,22 +532,78 @@ const useHandelSubmitBackAPI = (shopType) => {
                     localStorage.removeItem("beerFormTotal");
                     localStorage.removeItem("udhaariTotal");
                     localStorage.removeItem("mlFormTotal");
-                  } else {
-                    Swal.fire({
-                      icon: "error",
-                      title: "Oops...",
-                      text: "Something went wrong!",
-                    });
-                  }
+                  } 
+                })
+                .catch((err)=>{
+                  const errorMessage = err.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorMessage,
+        });
                 });
-              console.log(BackPage);
-            } else {
-              Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Something went wrong!",
-              });
+            } 
+            else{
+              let error = [...errors]
+              data.map((err)=>{
+                if(err.success===false){
+
+                  error.push(err.error.message)
+                  
+
+                }
+                return null
+              })
+              
+              setErrors(error)
+              if (error.length > 0) {
+                Swal.fire({
+                  title: "Error",
+                  html: error.map((err,index)=>{return `<p><b>${index+1}. </b> ${err} </p>`}),
+                  icon: "error",
+                });
+
+                let BackPage = {
+                  dailyReport:data[0].success===true ? data[0]?.data?._id : "",
+                  RML:data[0].success===true ?  data[1]?.data?._id : "",
+                  purchaseOutSide: data[0].success===true ? data[2].data._id : "",
+                  totalExpense: data[0].success===true ? data[3].data._id : "",
+                  borrowedCashReturn: data[0].success===true ? data[4].data._id : "",
+                  purchaseBorrow: data[0].success===true ? data[5].data._id : "",
+                  send: data[0].success===true ? data[6].data._id : "",
+                  borrowed: data[0].success===true ? data[7].data._id : "",
+                  finalReport: data[0].success===true ?  data[8].data._id : "",
+                };
+               
+  
+  
+  
+                fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    cookie_token: token,
+                  },
+                  body: JSON.stringify(BackPage),
+                })
+                  .then((res) => res.json())
+                  .then((data1) => {
+                    if (data1.success === true) {
+                      console.log(data1.success)
+                      
+                    } 
+                  })
+                  .catch((err)=>{
+                    const errorMessage = err.message;
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: errorMessage,
+          });
+                  });
+              }
             }
+           
           });
       } catch (error) {
         const errorMessage = error.message;
@@ -556,6 +613,7 @@ const useHandelSubmitBackAPI = (shopType) => {
           text: errorMessage,
         });
       } finally {
+        
         setIsLoading(false);
       }
     }

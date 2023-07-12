@@ -57,7 +57,7 @@ const OutBill = () => {
     return filterPass;
   });
 
-  const totalAmountData =ShopToken==="SHOP" ?  filteredData?.map((item) => {
+  const totalAmountData =ShopType==="SHOP" ?  filteredData?.map((item) => {
     return Number(item.total.$numberDecimal);
   }) : filteredData?.filter((brand)=>{
     if (brand.liquor.type==="WINE"){
@@ -82,11 +82,11 @@ const OutBill = () => {
       <div className="title flex justify-center flex-col items-center py-2">
         <div className="flex gap-4">
           
-          {role === "shop" && ShopType === "BAR" && (
+          { ShopType === "BAR" && (
             <Link className="commonBtn" to="/user/bearshop/selfbill">
               दुकान बिल
             </Link>
-          ) }{role === "shop" && ShopType === "SHOP" && (
+          ) }{ShopType === "SHOP" && (
             <Link className="commonBtn" to="/user/selfbill">
               दुकान बिल
             </Link>

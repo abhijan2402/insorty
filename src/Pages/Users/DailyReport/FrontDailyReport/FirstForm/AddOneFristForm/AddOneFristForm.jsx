@@ -87,13 +87,17 @@ const AddOneFristForm = ({
               border:"1px solid black",
               borderRadius:"5px"
             }}
-            options={options}
+            options={options.filter((brand)=>brand.type==='WINE')}
             getOptionLabel={(option) => (option ? option.brandName : "")}
             onChange={(event, value) => {
               if (value) {
                 addOneFirst.brandName = value.brandName;
                 addOneFirst.liquorID = value._id;
                 addOneFirst.size = value
+                addOneFirst.buyRate750 = value.sizes.find((brand)=>brand.quantityInML===750).rate
+                addOneFirst.buyRate330 = value.sizes.find((brand)=>brand.quantityInML===375).rate
+                addOneFirst.buyRate180 = value.sizes.find((brand)=>brand.quantityInML===180).rate
+                console.log(value)
               } else {
                 addOneFirst.brandName = "";
                 addOneFirst.liquorID = "";
@@ -123,6 +127,7 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
+              type="number"
                 className="smallinput wd-9"
                 required
                 min={0}
@@ -254,6 +259,7 @@ const AddOneFristForm = ({
                 className="smallinput wd-9"
                 required
                 min={0}
+                disabled
                 name="buyRate750"
                 value={addOneFirst.buyRate750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -265,6 +271,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput wd-9"
                 required
+                disabled
                 min={0}
                 name="buyRate330"
                 value={addOneFirst.buyRate330}
@@ -277,6 +284,7 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput wd-8"
                 required
+                disabled
                 min={0}
                 name="buyRate180"
                 value={addOneFirst.buyRate180}
