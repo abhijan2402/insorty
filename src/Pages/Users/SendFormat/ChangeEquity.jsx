@@ -15,7 +15,7 @@ const ChangeEquity = ({ data }) => {
 
   const onChange = (value, index) => {
     let equityData = [...listArr];
-    equityData[index].equity = Number(value);
+    equityData[index].equity = (value);
     setListArr([...equityData]);
   };
 

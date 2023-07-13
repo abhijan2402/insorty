@@ -37,7 +37,7 @@ const SideNav = () => {
           className="flex-col w-64 fixed px-4 md:mb-14 top-0 md:top-0 bg-white border-r flex "
         >
           <div className="text-3xl flex justify-center items-center font-semibold  text-white">
-            <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />
+            <img src={Logo} alt="Instory Logo" style={{ width: "33%" }} />
           </div>
           <Link>
             <div>
@@ -218,9 +218,7 @@ const SideNav = () => {
                   : "hidden"
               }
             >
-              <NavLink onClick={()=>{
-                
-              }} to="/admin">To Admin</NavLink>
+              <NavLink to="/admin">To Admin</NavLink>
             </button>
             <button
               className={
@@ -229,9 +227,7 @@ const SideNav = () => {
                   : "hidden"
               }
             >
-              <NavLink onClick={()=>{
-                
-              }} to="/subadmin">To Subadmin</NavLink>
+              <NavLink to="/subadmin">To Subadmin</NavLink>
             </button>
           </nav>
         </div>
