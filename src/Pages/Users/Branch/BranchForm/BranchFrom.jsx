@@ -102,7 +102,7 @@ const BranchFrom = () => {
                     <th>दिनांक</th>
                     <th>नामे </th>
                     <th>जमा</th>
-                    <th>चालू शेष जमा</th>
+                    <th>चालू शेष नामे</th>
                   </tr>
                 </thead>
 
@@ -124,6 +124,7 @@ const BranchFrom = () => {
                       })
                       .map(
                         ((current_sum) => (transaction, index) => {
+                          console.log(transaction)
                           return (
                             <BranchFormData
                               key={index}
@@ -131,7 +132,7 @@ const BranchFrom = () => {
                               transaction={{
                                 ...transaction,
                                 current_balance: (current_sum +=
-                                  transaction.deposit - transaction.debit),
+                                  transaction.debit - transaction.deposit),
                               }}
                             ></BranchFormData>
                           );

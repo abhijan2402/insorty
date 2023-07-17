@@ -39,7 +39,7 @@ const BorrowDetails = () => {
 
   const totalDepositeData = deposite?.reduce((a, b) => a + b, 0);
   const totalDebitData = debit?.reduce((a, b) => a + b, 0);
-  const totalRemainingData = totalDepositeData - totalDebitData;
+  const totalRemainingData = totalDebitData -totalDepositeData;
 
   console.log(borrowTranstion, "1+++++++");
 
@@ -70,13 +70,13 @@ const BorrowDetails = () => {
                 <th> क्र. सं.</th>
                 <th> नामे </th>
                 <th> जमा</th>
-                <th> शेष</th>
+                <th> चालू शेष नामे</th>
               </tr>
             </thead>
             <tbody>
               {borrowTranstion?.transactions?.map((item, index) => {
                 const { debit, deposit } = item;
-                const remaining = Number(deposit) - Number(debit);
+                const remaining = Number(debit) - Number(deposit);
 
                 return (
                   <tr key={index}>

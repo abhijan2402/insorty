@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
@@ -6,6 +6,13 @@ import axios from "axios";
 
 const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm }) => {
   const token = localStorage.getItem("token");
+
+  const ip = useRef(null)
+  const ip2 = useRef(null)
+
+  const scrollToComponent = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"center" });
+  };
 
   const [options, setOptions] = useState([]);
 
@@ -402,6 +409,8 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 onChange={(e) => fristFormOnChange(e, index)}
                 type="number"
                 className="smallinput"
+                ref={ip}
+                onFocus={()=>scrollToComponent(ip)}
                 name="inflowCredit750"
                 value={beerFront.inflowCredit750}
                 required
@@ -457,6 +466,7 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 className="smallinput"
                 name="send750"
+                
                 value={beerFront.send750}
                 required
                 min={0}
@@ -529,6 +539,8 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 type="number"
                 name="closingStock30"
                 className="smallinput wd-8"
+                ref={ip2}
+                onFocus={()=>scrollToComponent(ip2)}
                 value={beerFront.closingStock30}
                 required
                 min={0}

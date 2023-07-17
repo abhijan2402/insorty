@@ -162,7 +162,7 @@ console.log(from.description)
                       <th rowSpan={2}> क्र. सं.</th>
                       <th colSpan={2}> नामे</th>
                       <th colSpan={2}> जमा </th>
-                      <th rowSpan={2}> शेष </th>
+                      <th rowSpan={2}> चालू शेष नामे </th>
                       <th rowSpan={2}>विवरण</th>
                       <th rowSpan={2}>Delete</th>
                     </tr>

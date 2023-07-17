@@ -58,7 +58,7 @@ const Borrow = () => {
                   <th> पार्टी का नाम</th>
                   <th>नामे </th>
                   <th>जमा </th>
-                  <th>चालू शेष</th>
+                  <th>चालू शेष नामे</th>
                 </tr>
               </thead>
 
@@ -73,7 +73,7 @@ const Borrow = () => {
                           party={{
                             ...party,
                             current_balance: (cur_sum +=
-                              party.deposits - party.debits),
+                              party.debits - party.deposits),
                           }}
                         ></BorrowForm>
                       );

@@ -366,7 +366,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneBtnHandler()}
+                          onClick={() => handelAddOnePurchesOutSide()}
                         >
                           ADD
                         </button>
@@ -459,7 +459,7 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={() => addOneBtnHandler()}
+                            onClick={() => handelAddOneShipping()}
                           >
                             ADD
                           </button>
@@ -541,7 +541,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneBtnHandler()}
+                          onClick={() => handelAddOneCommison()}
                         >
                           ADD
                         </button>
@@ -617,7 +617,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneShippingBtnHandler()}
+                          onClick={() => handelAddOneCarditDabit()}
                         >
                           ADD
                         </button>
@@ -699,7 +699,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneShippingBtnHandler()}
+                          onClick={() => handelAddOneCashRecive()}
                         >
                           ADD
                         </button>
@@ -789,7 +789,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneShippingBtnHandler()}
+                          onClick={() => addOneSixthForm()}
                         >
                           ADD
                         </button>

@@ -44,7 +44,6 @@ const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
       0
     );
 
-  console.log(shesh, totalPaid);
   return (
     <>
       <tr>
@@ -55,7 +54,7 @@ const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
             <>
               <td>
                   <div className="form-control">
-                    {shesh - totalPaid + entry.debit.cash}
+                    { entry.debit.cash}
                   </div>
                   </td>
 
@@ -83,7 +82,7 @@ const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
               <td>
                 <div className="form-control">
                   {
-                    - shesh + totalPaid - entry.deposit.cash + entry.debit.cash
+                     shesh - totalPaid - entry.deposit.cash + entry.debit.cash
                   }
                 </div>
               </td>

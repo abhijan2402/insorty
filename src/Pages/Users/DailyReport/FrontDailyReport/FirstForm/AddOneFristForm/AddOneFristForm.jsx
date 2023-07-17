@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useRef} from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import Loader from "../../../../../../Components/Loader/Loader";
@@ -21,6 +21,13 @@ const AddOneFristForm = ({
   const token = localStorage.getItem("token");
 
   const [options, setOptions] = useState([]);
+  const ip = useRef(null)
+  const ip2 = useRef(null)
+  const ip3 = useRef(null)
+
+  const scrollToComponent = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"center" });
+  };
 
   const fetchOptions = async (query) => {
     await axios({
@@ -303,6 +310,8 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput"
                 required
+                ref={ip}
+                onFocus={()=>scrollToComponent(ip)}
                 min={0}
                 name="incomePurchase750"
                 value={addOneFirst.incomePurchase750}
@@ -428,6 +437,8 @@ const AddOneFristForm = ({
                 className="smallinput "
                 required
                 min={0}
+                ref={ip2}
+                onFocus={()=>scrollToComponent(ip2)}
                 name="sending750"
                 value={addOneFirst.sending750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -593,6 +604,8 @@ const AddOneFristForm = ({
                 type="number"
                 className="smallinput wd-6"
                 required
+                ref={ip3}
+                onFocus={()=>scrollToComponent(ip3)}
                 min={0}
                 name="mainRate750"
                 value={addOneFirst.mainRate750}

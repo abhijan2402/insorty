@@ -49,13 +49,13 @@ console.log(shopType)
 
         <td>
           <div className="flex gap-4">
-            <div className="form-control">{party.deposits}</div>
+            <div className="form-control">{party.debits}</div>
           </div>
         </td>
 
         <td>
           <div className="flex gap-4">
-            <div className="form-control">{party.debits}</div>
+            <div className="form-control">{party.deposits}</div>
           </div>
         </td>
         <td>

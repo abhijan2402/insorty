@@ -150,10 +150,7 @@ const PreviousLoansDetails = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="font-bold text-[1rem] "  > <td colSpan={6}> शेष:-
-              {transactions.reduce((total,curr)=>total = (total + Number(curr.debit)),0)-transactions.reduce((total,curr)=>(total = total + Number(curr.deposit)),0)}
-              </td>
-              </tr>
+              
               {(transactions &&
                 transactions.length &&
                 transactions?.map((prevLone, index) => {
@@ -179,9 +176,17 @@ const PreviousLoansDetails = () => {
                         </p>
                       </td>
                     </tr>
+
+                    
                   
                   );
                 })) }
+                <tr className="font-bold text-[1rem] "  > 
+                <td colSpan={5}> चालू शेष नामे </td>
+                <td>
+              {transactions.reduce((total,curr)=>total = (total + Number(curr.debit)),0)-transactions.reduce((total,curr)=>(total = total + Number(curr.deposit)),0)}
+              </td>
+              </tr>
             </tbody>
           </table>
           </InfiniteScroll>

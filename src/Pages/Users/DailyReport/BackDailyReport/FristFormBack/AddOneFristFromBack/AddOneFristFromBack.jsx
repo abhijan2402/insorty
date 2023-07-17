@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import Loader from "../../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
@@ -13,6 +13,16 @@ const AddOneFristFromBack = ({
   handleRemoveFieldsBack,
 }) => {
   const SerialNo = index + 1;
+
+  const ip = useRef(null)
+  const ip2 = useRef(null)
+  const ip3 = useRef(null)
+
+  const scrollToComponent = (ref) => {
+    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"center" });
+  };
+
+
 
   const { brandsLoaded } = useLiquors();
 
@@ -213,6 +223,8 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
+                ref={ip}
+                onFocus={()=>scrollToComponent(ip)}
                 className="smallinput"
                 name="incomingPurchase650"
                 value={item.incomingPurchase650}
@@ -339,6 +351,8 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
+                ref={ip2}
+                onFocus={()=>scrollToComponent(ip2)}
                 className="smallinput wd-7"
                 name="purchaseRate650"
                 value={item.purchaseRate650}
@@ -505,6 +519,8 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
+                ref={ip3}
+                onFocus={()=>scrollToComponent(ip3)}
                 className="smallinput"
                 name="closingStock650"
                 value={item.closingStock650}
@@ -517,6 +533,7 @@ const AddOneFristFromBack = ({
                 type="number"
                 required
                 min={0}
+               
                 className="smallinput"
                 name="closingStock550"
                 value={item.closingStock550}

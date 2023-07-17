@@ -37,6 +37,8 @@ const BackDailyReport = () => {
   const purchaseBorrowRef = useRef(null)
   const sendingRef = useRef(null)
   const BorrowingRef = useRef(null)
+  const RMLRef = useRef(null)
+  
 
   const scrollToComponent = (ref) => {
     ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"start" });
@@ -256,7 +258,7 @@ const BackDailyReport = () => {
                           <th> ब्राण्ड</th>
                           <th>औसत दर</th>
                           <th>प्रारम्भिक स्टॉक</th>
-                          <th>आमद (खरीद)-दु.</th>
+                          <th >आमद (खरीद)-दु.</th>
                           <th>खरीद रेट - दु</th>
                           <th>आमद (खरीद)-बा.</th>
                           <th>खरीद रेट - बा.</th>
@@ -325,7 +327,7 @@ const BackDailyReport = () => {
                           </td>
 
                           <td>
-                            <div className="flex ">
+                            <div className="flex " >
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -588,6 +590,7 @@ const BackDailyReport = () => {
                               brands={brands}
                               liquors={liquors}
                               brandsLoaded={brandsLoaded}
+                             
                             ></AddOneFristFromBack>
                           );
                         })}
@@ -1495,7 +1498,7 @@ const BackDailyReport = () => {
 
               <>
                 <div>
-                  <table className="table commonTable">
+                  <table className="table commonTable" ref={RMLRef} onFocus={()=>scrollToComponent(RMLRef)}>
                     <thead>
                       <tr>
                         <th> क्र. सं.</th>
@@ -1539,7 +1542,7 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={() => addOneBtnHandler()}
+                            onClick={() => handelAddOneInRml()}
                           >
                             ADD
                           </button>
@@ -1775,7 +1778,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneBtnHandler()}
+                          onClick={() => handelAddOnePurchesOutSide()}
                         >
                           ADD
                         </button>
@@ -1865,7 +1868,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneBtnHandler()}
+                          onClick={() => handelAddOneCommison()}
                         >
                           ADD
                         </button>
@@ -1940,7 +1943,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneBtnHandler()}
+                          onClick={() => handelAddOneCashRecive()}
                         >
                           ADD
                         </button>
@@ -2021,7 +2024,7 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={() => addOneShippingBtnHandler()}
+                            onClick={() => handelAddOneShipping()}
                           >
                             ADD
                           </button>
@@ -2105,7 +2108,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneShippingBtnHandler()}
+                          onClick={() => handelAddOneBorrowingRml()}
                         >
                           ADD
                         </button>
@@ -2185,7 +2188,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneShippingBtnHandler()}
+                          onClick={() => handelAddOneCarditDabit()}
                         >
                           ADD
                         </button>

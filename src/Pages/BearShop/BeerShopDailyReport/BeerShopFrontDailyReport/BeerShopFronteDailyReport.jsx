@@ -2073,7 +2073,6 @@ const FronteDailyReport = () => {
                               className="btn bg-[#AA237A] btn-sm"
                               onClick={() => {
                                 addOneInFristFormHandler()
-                                thirdFormAddOne();
                               }}
                             >
                               ADD
@@ -2710,7 +2709,7 @@ const FronteDailyReport = () => {
                         पानी, नमकीन, सिगरेट, पुड़िया आदि
                       </span>
                     </h1>
-                    <table className="table commonTable" ref={barSupplementsRef} onFocus={()=>scrollToComponent(barSupplementsRef)}>
+                    <table className="table commonTable" >
                       <thead>
                         <tr></tr>
                         <tr></tr>
@@ -2718,7 +2717,7 @@ const FronteDailyReport = () => {
                         <th>पानी, नमकीन, सिगरेट, पुड़िया आदि</th>
                       </tr> */}
                         <tr>
-                          <th> क्र. सं.</th>
+                          <th > क्र. सं.</th>
                           <th></th>
                           <th> सामान का विवरण</th>
                           <th> खरीद रेट</th>
@@ -2732,7 +2731,7 @@ const FronteDailyReport = () => {
                         </tr>
                       </thead>
 
-                      <tbody>
+                      <tbody >
                         {beerShopFrontThird.map((beerBarthird, index) => {
                           return (
                             <tr key={index}>
@@ -2763,6 +2762,7 @@ const FronteDailyReport = () => {
         >
           X
         </th>
+        
 
                               <td>
                                 <input
@@ -2927,7 +2927,16 @@ const FronteDailyReport = () => {
                         })}
                         <tr>
                           <th></th>
-                          <td></td>
+                          <th>
+                            <button
+                              className="btn bg-[#AA237A] btn-sm"
+                              onClick={() => {
+                                thirdFormAddOne();
+                              }}
+                            >
+                              ADD
+                            </button>
+                          </th>
                           <td></td>
 
                           <td>
