@@ -33,10 +33,20 @@ const ChangeEquity = ({ data }) => {
         text: "Check total percentage",
       });
     } else {
+
+      let equityData = [...listArr];
+      // equityData[index].equity = (value);
+      // setListArr([...equityData]);
+      equityData.map((partner)=>{
+        partner.equity = Number(partner.equity) || 0
+
+      })
+
+      
       fetch("https://insorty-api.onrender.com/shop/updatePartnerEquity", {
         method: "POST",
         headers: { "Content-Type": "application/json", cookie_token: token },
-        body: JSON.stringify({ partners: listArr }),
+        body: JSON.stringify({ partners: equityData }),
       })
         .then((res) => res.json())
         .then((data) => {

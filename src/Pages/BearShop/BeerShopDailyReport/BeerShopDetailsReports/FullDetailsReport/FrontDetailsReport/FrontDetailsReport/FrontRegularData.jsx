@@ -21,7 +21,7 @@ function FrontRegularData({ regularData, index,quan1,quan2,quan3,pageId,frontSet
 
   const calAvg = (a,b,c,d) => {
     const totalStockRate = (a*b) + (c*d)
-    return totalStockRate/(a+c)
+    return (totalStockRate/(a+c)).toFixed(2)
   }
 
   return (

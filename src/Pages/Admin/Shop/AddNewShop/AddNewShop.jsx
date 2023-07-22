@@ -127,11 +127,9 @@ const AddNewShop = ({ addNewShop,Loading }) => {
                     border: "1px solid #e5e7eb",
                   }}
                 >
-                  <option disabled selected>
-                    Select Shop Type
-                  </option>
-                  <option value={"BAR"}>BAR</option>
-                  <option value={"SHOP"}>SHOP</option>
+                 
+                  <option  value={"BAR"}>BAR</option>
+                  <option selected value={"SHOP"}>SHOP</option>
                 </select>
               </div>
 

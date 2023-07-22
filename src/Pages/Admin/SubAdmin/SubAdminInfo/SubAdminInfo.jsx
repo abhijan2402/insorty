@@ -45,7 +45,7 @@ const SubAdminInfo = ({ subadminId, subAdmin, onTokenChange }) => {
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Account Id</span>
+                  <span className="label-text">Username</span>
                 </label>
                 <input
                   type="text"
