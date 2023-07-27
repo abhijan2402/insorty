@@ -29,6 +29,10 @@ const WineBill = () => {
               <Link className="commonBtn " to="/user/bearshop/outbill">
                 बाहर का बिल
               </Link>
+
+              <Link className="commonBtn" to="/user/bearshop/partyOutBill">
+            पार्टी बिल
+            </Link>
             </>
           )}{" "}
           { ShopType === "SHOP" && (
@@ -40,6 +44,9 @@ const WineBill = () => {
               <Link className="commonBtn " to="/user/outbill">
                 बाहर का बिल
               </Link>
+              <Link className="commonBtn" to="/user/partyOutBill">
+            पार्टी बिल
+            </Link>
             </>
           )}
         </div>

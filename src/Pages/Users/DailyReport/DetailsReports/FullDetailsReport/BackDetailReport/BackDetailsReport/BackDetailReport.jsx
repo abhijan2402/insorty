@@ -1112,7 +1112,7 @@ const BackDetailReport = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax" colSpan={4}>
+                <td className="tg-0lax">
                   क्र.सं.
                 </td>
                 <td className="tg-0lax" colSpan={4}>
@@ -1122,10 +1122,16 @@ const BackDetailReport = () => {
                   ब्राण्ड
                 </td>
                 <td className="tg-0lax" colSpan={4}>
+                  ML
+                </td>
+                <td className="tg-0lax" colSpan={4}>
                   संख्या
                 </td>
                 <td className="tg-0lax" colSpan={4}>
-                  ML
+                रेट
+                </td>
+                <td className="tg-0lax" colSpan={4}>
+                रकम
                 </td>
                
                 <td className="tg-0lax" colSpan={4}>
@@ -1168,6 +1174,27 @@ const BackDetailReport = () => {
                             currentItem?.purchaseOutSide?.entries?.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem?.number),
+                              0
+                            )),
+                        0
+                      )}
+                </td>
+                <td className="tg-0lax" colSpan={4}>
+                  
+                </td>
+                <td className="tg-0lax" colSpan={4}>
+                  {BackPageData &&
+                    BackPageData?.length &&
+                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                      
+                      .slice(pgNo, pgNo + 1)
+                      .reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem?.purchaseOutSide?.entries?.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem?.total),
                               0
                             )),
                         0

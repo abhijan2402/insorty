@@ -56,13 +56,13 @@ const BorrowDetails = () => {
         प्रिंट
       </button>
     <section ref={front}>
-      <div className="title">
+      <div className="title text-center">
         <h2 className="font-bold text-[1.5rem]">
-          {borrowTranstion?.partyName}
+        पार्टी का नाम	:-  {borrowTranstion?.partyName}
         </h2>
         <div className="divider my-2"></div>
       </div>
-      <div className="partner-details">
+      <div className="partner-details flex justify-center">
         <div className="overflow-x-auto">
             <table className="removeCommonWSpace ">
             <thead>

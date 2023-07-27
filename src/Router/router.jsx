@@ -59,6 +59,7 @@ import BeerFrontDetailsReport from "../Pages/BearShop/BeerShopDailyReport/BeerSh
 import BeerBackDetailsReport from "../Pages/BearShop/BeerShopDailyReport/BeerShopDetailsReports/FullDetailsReport/BackDetailsReport/BackDetailsReport";
 import PreviousLoansList from "../Pages/Users/PreviousLoans/PreviousLoansList/PreviousLoansList";
 import PreviousLoansDetails from "../Pages/Users/PreviousLoans/PreviousLoansDetails/PreviousLoansDetails";
+import PartyOutBill from "../Pages/Users/OutBill/PartyOutBill/PartyOutBill";
 
 const router = createBrowserRouter([
   {
@@ -217,6 +218,10 @@ const router = createBrowserRouter([
       {
         path: "/user/selfbill",
         element: <SelfBill />,
+      },
+      {
+        path: "/user/partyOutbill",
+        element: <PartyOutBill />,
       },
 
       {
@@ -435,6 +440,10 @@ const router = createBrowserRouter([
       {
         path: "/user/bearshop/selfbill",
         element: <SelfBill />,
+      },
+      {
+        path: "/user/bearshop/partyOutBill",
+        element: <PartyOutBill />,
       },
 
       {

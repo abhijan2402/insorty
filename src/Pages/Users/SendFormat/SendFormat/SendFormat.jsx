@@ -44,7 +44,7 @@ const SendFormat = ({ isBearShop }) => {
   if (partnerLoaded) return <Loader></Loader>;
 
   return (
-    <section>
+    <section className="py-4">
       <div className="title">
       <button className="commonBtn " onClick={handlePrint}>
             प्रिंट

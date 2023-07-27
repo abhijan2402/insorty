@@ -18,11 +18,16 @@ $primaryColor: #aa237a;
   border-radius: 8px;
 }
 
+.h-fix{
+  height: 100vh!important;
+}
 .commonText {
   font-size: 16px;
   font-weight: bold;
   color: #000000;
 }
+
+
 
 .price {
   font-size: 16px;
@@ -62,6 +67,9 @@ $primaryColor: #aa237a;
 th,td{
   border: 1px solid black!important;
   background-color: white!important;
+}
+.clr-dif{
+  background-color: rgb(219, 219, 219)!important;
 }
 
 .date{

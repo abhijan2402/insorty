@@ -1,7 +1,6 @@
 import React, { useState, useRef,useEffect } from "react";
 import usePhonePay from "../PhonePayHooks/usePhonePay";
 import Loader from "../../../../Components/Loader/Loader";
-import { FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";

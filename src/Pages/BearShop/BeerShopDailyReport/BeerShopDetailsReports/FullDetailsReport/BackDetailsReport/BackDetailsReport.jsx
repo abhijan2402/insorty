@@ -157,6 +157,8 @@ const BackDailyReport = () => {
                       <th colSpan={4}>ब्राण्ड</th>
                       <th colSpan={4}>ML</th>
                       <th colSpan={4}>संख्या</th>
+                      <th colSpan={4}>रेट</th>
+                      <th colSpan={4}>संख्या</th>
                       
                       <th colSpan={4}>टिप्पणी</th>
                     </tr>
@@ -196,6 +198,27 @@ const BackDailyReport = () => {
                             currentItem?.purchaseOutSide?.entries?.reduce(
                               (total, currentItem) =>
                                 (total = total + currentItem?.number),
+                              0
+                            )),
+                        0
+                      )}
+                </td>
+                <td className="tg-0lax" colSpan={4}>
+                  
+                </td>
+                <td className="tg-0lax" colSpan={4}>
+                  {BackPageData &&
+                    BackPageData?.length &&
+                    BackPageData
+                      
+                      ?.slice(pgNo, pgNo + 1)
+                      ?.reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem?.purchaseOutSide?.entries?.reduce(
+                              (total, currentItem) =>
+                                (total = total + currentItem?.total),
                               0
                             )),
                         0

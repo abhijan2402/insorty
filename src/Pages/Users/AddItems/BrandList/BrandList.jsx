@@ -186,34 +186,36 @@ const BrandList = () => {
             hasMore={hasMore}
             scrollableTarget="scrollableDiv"
             loader={<h4>Loading...</h4>}
+            className="h-fix"
           >
         <table className="table overflow-x-auto removeCommonWSpace">
-          <thead className="text-center ">
-            <th>
+          <thead className="text-center sticky top-0 ">
+            
+            <th className="clr-dif">
               <h1>Sr. No.</h1>
             </th>
-            <th>
+            <th className="clr-dif">
               <h1>Brand Name</h1>
             </th>
-            <th>
+            <th className="clr-dif">
               <h1>Full Name</h1>
             </th>
-            <th>
+            <th className="clr-dif">
               <h1>Type</h1>
             </th>
-            <th>
+            <th className="clr-dif">
               <h1>Edit Brand Name</h1>
             </th>
-            <th>
+            <th className="clr-dif">
               <h1>Delete</h1>
             </th>
-            <th>
+            <th className="clr-dif">
               <h1>ML</h1>
             </th>
-            <th>
+            <th className="clr-dif">
               <h1>Price</h1>
             </th>
-            <th>
+            <th className="clr-dif">
               <h1>Edit Price</h1>
             </th>
           </thead>
@@ -223,7 +225,7 @@ const BrandList = () => {
 {wineStock && wineStock.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((item,index) => (
           <React.Fragment key={item._id}>
             <tr>
-  <th rowSpan={item.sizes.length+1}>{index+1}</th>
+  <th  rowSpan={item.sizes.length+1}>{index+1}</th>
               <td rowSpan={item.sizes.length+1}>{item.brandName}</td>
               <td className="whitespace-pre-wrap" rowSpan={item.sizes.length+1}>{item.fullName}</td>
               <td rowSpan={item.sizes.length+1}>{item?.type==="DESHIRML" ? "DESHI/RML" : item?.type}</td>

@@ -83,13 +83,23 @@ const OutBill = () => {
         <div className="flex gap-4">
           
           { ShopType === "BAR" && (
+            <>
             <Link className="commonBtn" to="/user/bearshop/selfbill">
               दुकान बिल
             </Link>
+            <Link className="commonBtn" to="/user/bearshop/partyOutBill">
+              दुकान बिल
+            </Link>
+            </>
           ) }{ShopType === "SHOP" && (
+            <>
             <Link className="commonBtn" to="/user/selfbill">
               दुकान बिल
             </Link>
+            <Link className="commonBtn" to="/user/partyOutBill">
+            पार्टी बिल
+            </Link>
+            </>
           )}
         </div>
 
