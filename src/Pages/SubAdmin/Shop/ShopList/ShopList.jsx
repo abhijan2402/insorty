@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { FaInfo, FaPencilAlt, FaRegTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useSubAdminHooks from "../../SubAdminHooks/useSubAdminHooks";
@@ -8,16 +8,19 @@ import InfoShop from "../InfoShop/InfoShop";
 import Loader from "../../../../Components/Loader/Loader";
 import swal from "sweetalert";
 import jwtDecode from "jwt-decode";
+import AddNewShop from "../../../Admin/Shop/AddNewShop/AddNewShop";
 
 
 const ShopList = () => {
   const token = localStorage.getItem("token");
   const { shops, shopsLoaded, shopsRefetch } = useSubAdminHooks();
+  const [Loading,setLoading] = useState(false)
+  const [filter, setFilter] = useState("noFilter")
 
   console.log(shops , "shops")
 
   const handelDelete = (id) => {
-    console.log(id);
+   
     fetch(`https://insorty-api.onrender.com/subadmin/deleteShop/${id}`, {
       method: "DELETE",
       headers: {
@@ -31,7 +34,7 @@ const ShopList = () => {
       });
   };
 
-  const addNewShop = (e) => {
+  const addNewShop = async  (e) => {
     e.preventDefault();
     const from = e.target;
 
@@ -41,8 +44,11 @@ const ShopList = () => {
     const licenceNumber = from.licenceNumber.value;
     const address = from.address.value;
     const accountId = from.accountId.value;
-
-    fetch("https://insorty-api.onrender.com/subadmin/createShop", {
+    const shopType = from.shopType.value;
+    
+    setLoading(true)
+try{
+    await fetch(`${process.env.REACT_APP_API_URL}/admin/createShop`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,16 +62,25 @@ const ShopList = () => {
         password,
         licenceNumber,
         mobileNumber: phone,
+        shopType
+
       }),
     })
-      .then((res) => res.json())
+    .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.success) {
+        if (data.success===true) {
           swal("Shop Added Successfully", "", "success");
           shopsRefetch();
         }
+      })
+      .catch((err)=>{
+        swal("some error occurred");
+        console.log(err)
       });
+    }
+    finally{
+      setLoading(false)
+    }
   };
 
 
@@ -184,10 +199,9 @@ const ShopList = () => {
         </div>
       </div>
 
-      <AddShop
-      addNewShop={addNewShop}
-      ></AddShop>
+      
       <EditUser></EditUser>
+      <AddNewShop addNewShop={addNewShop} Loading={Loading}></AddNewShop>
      
     </section>
   );

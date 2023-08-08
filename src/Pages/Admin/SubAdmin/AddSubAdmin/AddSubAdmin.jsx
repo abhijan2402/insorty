@@ -1,6 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const AddSubAdmin = ({ addNewSubAdmin }) => {
+  const [showPassword,setShowPassword] = useState(false)
+
   return (
     <section>
       {/* The button to open modal */}
@@ -67,20 +71,22 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
               </div>
 
               <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Password"
-                  name="password"
-                  required
-                  className="input input-bordered"
-                  style={{
-                    border: "1px solid #e5e7eb",
-                  }}
-                />
-              </div>
+                    <label className="label">
+                      <span className="label-text">Password</span>
+                    </label>
+                    <div className="inputFild input input-bordered" >
+                      <input
+                        type={showPassword===true ?  "text" : "password"}
+                        placeholder="Password"
+                        name="password"
+                        required
+
+                        
+                      />
+                      <FaEye className={showPassword===false ?  "cursor-pointer" : "displayHidden"} onClick={(e)=>setShowPassword(true)}></FaEye>
+                      <FaEyeSlash className={showPassword===true ?  "cursor-pointer" : "displayHidden"} onClick={(e)=>setShowPassword(false)}></FaEyeSlash>
+                    </div>
+                  </div>
 
               
              
