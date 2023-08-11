@@ -1,7 +1,8 @@
 import React from "react";
 
 const SubAdminInfo = ({ subadminId, subAdmin, onTokenChange }) => {
-  return (
+  console.log(subAdmin)
+    return (
     <section>
       {/* The button to open modal */}
 
@@ -66,15 +67,19 @@ const SubAdminInfo = ({ subadminId, subAdmin, onTokenChange }) => {
                 </thead>
                 <tbody>
                   {subAdmin && subAdmin.permissions.map((shop)=>{
-                    return(
-                      <tr>
-                      <td>{shop?.shopId?.name}</td>
-                      <td>{shop?.permissionSet?.GET===true ? " ✔ " :"✖	"}</td>
-                      <td>{shop?.permissionSet?.POST===true ? " ✔ " :"✖	"}</td>
-                      <td>{shop?.permissionSet?.PUT===true ? " ✔ " :"✖	"}</td>
-                      <td>{shop?.permissionSet?.DELETE===true ? " ✔ " :"✖	"}</td>
-                      </tr>
-                    )
+
+                    if (shop.shopId) {
+                      return(
+                        <tr>
+                        <td>{shop?.shopId?.name}</td>
+                        <td>{shop?.permissionSet?.GET===true ? " ✔ " :"✖	"}</td>
+                        <td>{shop?.permissionSet?.POST===true ? " ✔ " :"✖	"}</td>
+                        <td>{shop?.permissionSet?.PUT===true ? " ✔ " :"✖	"}</td>
+                        <td>{shop?.permissionSet?.DELETE===true ? " ✔ " :"✖	"}</td>
+                        </tr>
+                      )
+                      
+                    }
                   })}
                 </tbody>
               </table>
