@@ -174,7 +174,9 @@ const useRmlAdd = () => {
     setAddRmlState(data);
   };
 
-  const handelAddOneInRml = () => {
+  const handelAddOneInRml = (e) => {
+    e.preventDefault()
+
     setAddRmlState([
       ...addRmlState,
       {

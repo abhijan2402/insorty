@@ -102,7 +102,7 @@ const router = createBrowserRouter([
         element: <CreateUserSubAdmin />,
       },
       {
-        path: "/subadmin/manegshop",
+        path: "/subadmin/manageshop",
         element: <SubAdminShopList />,
       },
       {},

@@ -48,7 +48,9 @@ const usePurchesOutSideAdd = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handelAddOnePurchesOutSide = () => {
+  const handelAddOnePurchesOutSide = (e) => {
+    e.preventDefault()
+
     setPurchesOutSideState([
       ...purchesOutSideState,
       {

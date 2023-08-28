@@ -5,7 +5,6 @@ const BeerStockTopData = ({ item, index, total }) => {
   const quan550 = item.sizes.find((element) => element.quantityInML === 500);
   const quan330 = item.sizes.find((element) => element.quantityInML === 330);
 
-  console.log(item)
 
   total +=
     quan650?.currentStock * Number(quan650?.averageRate.$numberDecimal) +

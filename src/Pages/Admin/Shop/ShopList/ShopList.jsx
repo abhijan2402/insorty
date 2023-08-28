@@ -117,6 +117,7 @@ try{
     return <div>{shops.message}</div>;
   }
 
+
   return (
     <section>
       <div className="title">
@@ -138,7 +139,7 @@ try{
             <tbody>
               {shops &&
                 shops.data.length!==undefined &&
-                shops.data.filter((shop)=>{
+                shops.data.sort((a, b) => a?.shopId.name?.localeCompare(b?.shopId?.name)).filter((shop)=>{
                   if (filter==="SHOP") {
                     if (shop?.shopId?.shopType==="SHOP") {
                       return shop
@@ -152,7 +153,7 @@ try{
                   else{
                     return shop
                   }
-                }).map((shop) => {
+                }).filter((shop)=>shop.shopId.isActive===true).map((shop) => {
                   const myShop = shop?.shopId;
                   const myShopId = myShop?._id;
 

@@ -106,7 +106,6 @@ console.log(from.description)
         body : JSON.stringify({shopAccountPageId: {id}})
       }
     ).then((res)=>{
-      console.log(res)
       if (res.status === 200) {
         Swal.fire({
           icon: "success",

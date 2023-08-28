@@ -131,7 +131,9 @@ const useSecondFormFront = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  const addOneSecondFormHandler = () => {
+  const addOneSecondFormHandler = (e) => {
+    e.preventDefault()
+
     setAddOneSecondFormState([
       ...addOneSecondFormState,
       { liquor: "",

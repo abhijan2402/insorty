@@ -131,29 +131,30 @@ const AddOneSecondFormBack = ({
         <td>
           <div className="form-control ">
             <select
-              className="smallinput wd-9"
-              name="selectStockVarient"
-              value={item.selectStockVarient}
-              onChange={(e) => handelSeconFormOnChange(e, index)}
-              required
+            
+            className="semiSmallInput wd-9"
+            name="selectStockVarient"
+            value={item.selectStockVarient}
+            onChange={(e) => handelSeconFormOnChange(e, index)}
+            required
             >
-              <option value={750}>
-                750ml
-              </option>
-              <option value={700}>700ml</option>
-              <option value={650}>650ml</option>
-              <option value={550}>550ml</option>
-              <option value={500}>500ml</option>
-              <option value={375}>375ml</option>
-              <option value={330}>330ml</option>
-              <option value={275}>275ml</option>
-              <option value={250}>250ml</option>
-              <option value={200}>200ml</option>
-              <option value={180}>180ml</option>
-              <option value={90}>90ml</option>
-              <option value={60}>60ml</option>
-              <option value={50}>50ml</option>
+              {
+            item.size.sizes.filter((size)=> size.quantityInML!==650 && size.quantityInML!==500 && size.quantityInML!==330).map((size)=>{
+              if( item.brandName && item.brandName!=="" && size.quantityInML!==650 && size.quantityInML!==500 && size.quantityInML!==330){
+              return(
+                <option value={size.quantityInML}>{size.quantityInML}ml</option>
+              )}
+              else{
+                return (
+                  <option disabled>please-select-brand</option>
+                )
+              }
+            })
+          }
+              
+              
             </select>
+            
           </div>
         </td>
         {/* ======== MRP Input ========= */}

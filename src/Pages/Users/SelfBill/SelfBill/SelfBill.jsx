@@ -123,6 +123,15 @@ const SelfBill = () => {
               बाहर का बिल
             </Link>
           )}
+          { ShopType === "BAR" && (
+            <Link className="commonBtn " to="/user/bearshop/partyOutBill">
+              बाहर का बिल
+            </Link>
+          ) }{ ShopType === "SHOP" && (
+            <Link className="commonBtn" to="/user/partyOutBill">
+            पार्टी बिल
+            </Link>
+          )}
 
          
         </div>

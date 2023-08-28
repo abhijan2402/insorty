@@ -4,9 +4,7 @@ const SubAdminInfo = ({ subadminId, subAdmin, onTokenChange }) => {
   console.log(subAdmin)
     return (
     <section>
-      {/* The button to open modal */}
-
-      {/* Put this part before </body> tag */}
+     
       <input type="checkbox" id={subadminId} className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative" style={{ maxWidth: "700px" }}>

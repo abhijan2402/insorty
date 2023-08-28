@@ -5,14 +5,18 @@ import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
 import { useQuery } from "@tanstack/react-query";
 import InfolwRml from "../../DailyReport/DetailsReports/FullDetailsReport/BackDetailReport/InflowRml/InfolwRml";
+import jwtDecode from "jwt-decode";
+import { Link } from "react-router-dom";
 
 const PartyOutBill = () => {
   const [StartDate, setStartDate] = useState(new Date());
   const [EndDate, setEndDate] = useState(
     new Date().setDate(new Date().getDate() + 1)
   );
-
+   
+  
   const token = localStorage.getItem("token");
+  const ShopType =jwtDecode( token).shopType;
 
   const {
     data: purchaseOutSide,
@@ -53,7 +57,6 @@ const PartyOutBill = () => {
     return <Loader></Loader>;
   }
 
-  console.log(purchaseOutSide);
 
   const filteredData =
     purchaseOutSide.length &&
@@ -76,11 +79,43 @@ const PartyOutBill = () => {
       <button className="commonBtn " onClick={handlePrint}>
         प्रिंट
       </button>
+
+      
       <section ref={front}>
         <div className="title flex justify-center items-center flex-col">
+
+        <div className="flex gap-4">
+        { ShopType === "BAR" && (
+            <>
+              <Link className="commonBtn" to="/user/bearshop/selfbill">
+                दुकान बिल
+              </Link>
+
+              <Link className="commonBtn " to="/user/bearshop/outbill">
+                बाहर का बिल
+              </Link>
+
+              
+            </>
+          )}{" "}
+          { ShopType === "SHOP" && (
+            <>
+              <Link className="commonBtn" to="/user/selfbill">
+                दुकान बिल
+              </Link>
+
+              <Link className="commonBtn " to="/user/outbill">
+                बाहर का बिल
+              </Link>
+              
+            </>
+          )}
+        </div>
           <h2 className="font-bold md:text-[1.5rem] text-center">
           पार्टी बिल
           </h2>
+
+          
 
           <div className="flex gap-4 items-center my-4 z-10">
             <h2 className="font-bold text-[1.5rem]">From</h2>

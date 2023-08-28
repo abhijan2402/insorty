@@ -599,7 +599,7 @@ const BackDailyReport = () => {
                           <th>
                             <button
                               className="btn bg-[#AA237A] btn-sm"
-                              onClick={() => addOneInFristFormHandler()}
+                              onClick={(e) => addOneInFristFormHandler(e)}
                             >
                               ADD
                             </button>
@@ -1281,7 +1281,7 @@ const BackDailyReport = () => {
                               <th className="sticky">
                                 <button
                                   className="btn bg-[#AA237A] btn-sm"
-                                  onClick={() => addOneSecondFormHandler()}
+                                  onClick={(e) => addOneSecondFormHandler(e)}
                                 >
                                   ADD
                                 </button>
@@ -1542,7 +1542,7 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={() => handelAddOneInRml()}
+                            onClick={(e) => handelAddOneInRml(e)}
                           >
                             ADD
                           </button>
@@ -1780,7 +1780,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => handelAddOnePurchesOutSide()}
+                          onClick={(e) => handelAddOnePurchesOutSide(e)}
                         >
                           ADD
                         </button>
@@ -1888,7 +1888,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => handelAddOneCommison()}
+                          onClick={(e) => handelAddOneCommison(e)}
                         >
                           ADD
                         </button>
@@ -1963,7 +1963,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => handelAddOneCashRecive()}
+                          onClick={(e) => handelAddOneCashRecive(e)}
                         >
                           ADD
                         </button>
@@ -2044,7 +2044,7 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={() => handelAddOneShipping()}
+                            onClick={(e) => handelAddOneShipping(e)}
                           >
                             ADD
                           </button>
@@ -2128,7 +2128,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
-                          onClick={() => handelAddOneBorrowingRml()}
+                          onClick={(e) => handelAddOneBorrowingRml(e)}
                         >
                           ADD
                         </button>
@@ -2208,7 +2208,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
-                          onClick={() => handelAddOneCarditDabit()}
+                          onClick={(e) => handelAddOneCarditDabit(e)}
                         >
                           ADD
                         </button>
@@ -2328,7 +2328,7 @@ const BackDailyReport = () => {
               </>
             ) : (
               <>
-                <input type="submit" className="dailyReportBtn" />
+                <input type="submit" className="btn commonBtn" />
               </>
             )}
           </div>

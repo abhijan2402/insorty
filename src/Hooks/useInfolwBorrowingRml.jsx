@@ -85,7 +85,9 @@ const useInfolwBorrowingRml = () => {
     setInfolwBorrwingFormState(data)
   };
 
-  const handelAddOneBorrowingRml = () => {
+  const handelAddOneBorrowingRml = (e) => {
+    e.preventDefault()
+
     setInfolwBorrwingFormState([
       ...infolwBorrwingFormState,
       {

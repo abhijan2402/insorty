@@ -172,8 +172,10 @@ const useFormulasFristFormFront = () => {
     
   }, [page]);
 
-  const addOneFristFormHandler = () => {
+  const addOneFristFormHandler = (e) => {
+    e.preventDefault()
     setAddOneFristFormState([
+
       ...addOneFristFormState,
       {
         brandName: "",

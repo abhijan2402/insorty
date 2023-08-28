@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { FaPowerOff } from "react-icons/fa";
 import jwtDecode from "jwt-decode";
 import Swal from "sweetalert2";
+import swal from "sweetalert";
 
 const SubAdminSideNav = () => {
   let activeStyle = {
@@ -60,7 +61,7 @@ const SubAdminSideNav = () => {
 
           <li className="my-4">
             <NavLink
-              to="/subadmin/manegshop"
+              to="/subadmin/manageshop"
               style={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
               दुकान/बार 
@@ -68,7 +69,22 @@ const SubAdminSideNav = () => {
           </li>
 
           <button
-              onClick={() => logout({ returnTo: window.location.origin })}
+              onClick={() => {
+                swal({
+                  title: "Are you sure?",
+                  text: `You will be logged out from the session`,
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+                }).then((willDelete) => {
+                  if (willDelete) {
+                    logout({ returnTo: window.location.origin });
+                   
+                  } else {
+                    swal("you haven't logged out");
+                  }
+                });
+              }}
               className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
             >
               <FaPowerOff />

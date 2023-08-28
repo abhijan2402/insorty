@@ -86,6 +86,7 @@ const AddOneSecondForm = ({
             options={options.filter((brand)=>brand.type==='WINE')}
             getOptionLabel={(option) => (option ? option.brandName : "")}
             onChange={(event, value) => {
+              console.log(value)
               if (value) {
                 item.brandName = value.brandName;
                 item.liquorID = value._id;
@@ -121,25 +122,30 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control ">
             <select
-              className="semiSmallInput wd-9"
-              name="selectStockVarient"
-              value={item.selectStockVarient}
-              onChange={(e) => handelSeconFormOnChange(e, index)}
-              required
+            
+            className="semiSmallInput wd-9"
+            name="selectStockVarient"
+            value={item.selectStockVarient}
+            onChange={(e) => handelSeconFormOnChange(e, index)}
+            required
             >
-
+              {
+            item.size.sizes.filter((size)=> size.quantityInML!==750 && size.quantityInML!==375 && size.quantityInML!==180).map((size)=>{
+              if( item.brandName && item.brandName!=="" ){
+              return(
+                <option value={size.quantityInML}>{size.quantityInML}ml</option>
+              )}
+              else{
+                return (
+                  <option disabled>please-select-brand</option>
+                )
+              }
+            })
+          }
               
-              <option value={1000}>1000ml</option>
-              <option value={700}>700ml</option>
-              <option value={500}>500ml</option>
-              <option value={375}>375ml</option>
-              <option value={330}>330ml</option>
-              <option value={275}>275ml</option>
-              <option value={250}>250ml</option>
-              <option value={200}>200ml</option>
-              <option selected value={90}>90ml</option>
-              <option value={60}>60ml</option>
+              
             </select>
+            
           </div>
         </td>
         {/* ======== MRP Input ========= */}

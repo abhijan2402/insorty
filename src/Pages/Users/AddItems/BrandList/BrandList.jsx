@@ -18,6 +18,8 @@ const BrandList = () => {
   const [page, setPage] = useState(0);
   const [selectedObject, setSelectedObject] = useState(null);
   const [priceList,setPriceList] = useState([])
+  const [filter, setFilter] = useState("noFilter")
+
 
   const editName=(obj)=>{
     setSelectedObject(obj)
@@ -176,6 +178,12 @@ const BrandList = () => {
            Edit Price List
           </label>
         </div>
+        <select className="semiSmallInput " onChange={(e)=>{setFilter(e.target.value); console.log(filter)}} name="filter" >
+          <option selected value="noFilter">No-Filter</option>
+          <option value="WINE">WINE</option>
+          <option value="BEER">BEER</option>
+          <option value="DESHIRML">DESHI/RML</option>
+         </select>
       </div>
         <div className="divider my-2"></div>
       </div>
@@ -222,7 +230,26 @@ const BrandList = () => {
 
           <tbody >
            
-{wineStock && wineStock.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((item,index) => (
+{wineStock && wineStock.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).filter((item)=>{
+                  if (filter==="WINE") {
+                    if (item?.type==="WINE") {
+                      return item
+                    }
+                  }
+                  else if(filter==="BEER"){
+                    if (item?.type==="BEER") {
+                      return item
+                    }
+                  }
+                  else if(filter==="DESHIRML"){
+                    if (item?.type==="DESHIRML") {
+                      return item
+                    }
+                  }
+                  else{
+                    return item
+                  }
+                }).map((item,index) => (
           <React.Fragment key={item._id}>
             <tr>
   <th  rowSpan={item.sizes.length+1}>{index+1}</th>

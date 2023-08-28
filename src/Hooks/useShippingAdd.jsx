@@ -78,7 +78,9 @@ const useShippingAdd = () => {
     setAddShippingState(data)
   };
 
-  const handelAddOneShipping = () => {
+  const handelAddOneShipping = (e) => {
+    e.preventDefault()
+
     setAddShippingState([...addShippingState, {
       liquorId: "",
       partyId: "",

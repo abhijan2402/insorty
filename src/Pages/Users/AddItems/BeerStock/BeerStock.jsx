@@ -245,7 +245,9 @@ const BeerStock = () => {
                   </tr>
 
                   {beerStock.length &&
-                    filteredData?.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName))?.map((item, index) => {
+                    filteredData?.filter((item)=>item.isActive===true).filter((item)=>item.isActive===true).filter(brand =>
+                      brand.sizes.some(size => size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0)
+                    ).sort((a, b) => a.brandName.localeCompare(b.brandName))?.map((item, index) => {
                       return (
                         <>
                           <tr id="scrollableDiv">
@@ -282,7 +284,7 @@ const BeerStock = () => {
                     {filteredData.map((brand, index) => {
                       return (
                         <>
-                          {brand.sizes.map((size) => {
+                          {brand.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).map((size) => {
                             if (
                               size.quantityInML !== 650 &&
                               size.quantityInML !== 500 &&

@@ -225,7 +225,7 @@ const token = localStorage.getItem('token')
                     }}
                     options={
                       shops.data.length > 0
-                        ? shops?.data
+                        ? shops?.data.filter((shop)=>shop.shopId.isActive===true)
                         : ["no options"]
                     }
                     getOptionLabel={(option) => (option ? option?.shopId?.name : "")}
@@ -258,29 +258,7 @@ const token = localStorage.getItem('token')
                 </div>
 
 
-                {/* <div className="form-control">
-                  <select
-                    className="select w-full"
-                    name="shopParmisson"
-                    value={shopParmisson.shopParmisson}
-                    onChange={(event) => onChange(event, index)}
-                    style={{
-                      width: "100%",
-                      height: "2.8rem",
-                      borderRadius: "0.5rem",
-                      border: "1px solid #e2e8f0",
-                    }}
-                  >
-                    <option disabled selected>
-                      Set Shop Parmisson
-                    </option>
-                    <option value={"GET"}>GET</option>
-                    <option value={"POST"}>POST</option>
-                    <option value={"DELETE"}>DELETE</option>
-                    <option value={"PUT"}>PUT</option>
-                  </select>
-
-                </div> */}
+              
 
                 <div className="form-control w-52">
                   <label className="cursor-pointer label">

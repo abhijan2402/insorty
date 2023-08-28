@@ -258,7 +258,9 @@ const WineStock = () => {
                   </td>
                 </tr>
 
-                {filteredData?.map((item, index) => {
+                {filteredData?.filter((item)=>item.isActive===true).filter(brand =>
+  brand.sizes.some(size => size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0)
+).map((item, index) => {
                   return (
                     <>
                       <tr id="scrollableDiv">
@@ -300,7 +302,7 @@ const WineStock = () => {
                   {filteredData.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((brand, index) => {
                     return (
                       <>
-                        {brand.sizes.map((size) => {
+                        {brand.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).map((size) => {
                           if (
                             size.quantityInML !== 750 &&
                             size.quantityInML !== 375 &&
@@ -351,7 +353,7 @@ const WineStock = () => {
                               0
                             )),
                         0
-                      )}
+                      ).toFixed(2)}
                     </td>
                   </tr>
                 </tbody>
@@ -363,7 +365,7 @@ const WineStock = () => {
         <div>
           <div
             className={`${
-              role === "shop" && ShopType === "SHOP"
+               ShopType === "SHOP"
                 ? "hidden"
                 : " gap-4 overflow-x-auto my-4 "
             }`}
@@ -384,7 +386,7 @@ const WineStock = () => {
                   {filteredData.map((brand, index) => {
                     return (
                       <>
-                        {brand.sizes.map((size) => {
+                        {brand.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).map((size) => {
                           if (size.quantityInML === 30) {
                             count++;
                             return (

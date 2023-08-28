@@ -38,7 +38,9 @@ const useCarditDabit = () => {
     setCraditDabitState(data);
   };
 
-  const handelAddOneCarditDabit = () => {
+  const handelAddOneCarditDabit = (e) => {
+    e.preventDefault()
+
     setCraditDabitState([
       ...craditDabitState,
       {

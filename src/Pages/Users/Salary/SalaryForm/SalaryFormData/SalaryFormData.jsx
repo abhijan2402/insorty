@@ -1,9 +1,11 @@
 import React from "react";
 import Loader from "../../../../../Components/Loader/Loader";
 import moment from "moment/moment";
+import swal from "sweetalert";
+import { FaRegTrashAlt } from "react-icons/fa";
 
-const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList }) => {
-  const { salary: salaryData, payment, comment } = salary;
+const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList,handelDelete }) => {
+  const { salary: salaryData, payment, comment,_id } = salary;
 
   if (salareyDataLoading) {
     return <Loader></Loader>;
@@ -31,7 +33,7 @@ const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList }) =
             <td>
 
             <div className="form-control">
-              {shesh - totalPaid + salaryData?.price}
+              {salaryData?.price}
             </div>
         </td>
 
@@ -60,6 +62,33 @@ const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList }) =
             </div>
           </div>
         </td>
+
+        <td>
+                    <p
+                      className="font-3xl font-bold"
+                      style={{ color: "#AA237A" }}
+                      // onClick={() => handelDelete(entry?._id)}
+                      onClick={() => {
+                        swal({
+                          title: "Are you sure?",
+                          text: `Once deleted, you will not be able to recover entry ${index+1}`,
+                          icon: "warning",
+                          buttons: true,
+                          dangerMode: true,
+                        }).then((willDelete) => {
+                          if (willDelete) {
+                            
+                            handelDelete(_id);
+                            
+                          } else {
+                            swal("Your entry is safe!");
+                          }
+                        });
+                      }}
+                    >
+                      <FaRegTrashAlt></FaRegTrashAlt>
+                    </p>
+                  </td>
       </tr>
     </>
   );

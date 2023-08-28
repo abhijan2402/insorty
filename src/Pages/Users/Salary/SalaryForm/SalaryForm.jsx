@@ -23,7 +23,6 @@ const SalaryForm = () => {
     content: () => front.current,
   });
 
-  console.log(employeeId)
 
   const {
     data: salareyDataList,
@@ -44,7 +43,6 @@ const SalaryForm = () => {
         }
       );
       const data = await res.json();
-        console.log(data)
       return data.data;
     },
   });
@@ -92,7 +90,6 @@ const SalaryForm = () => {
           title: "Success",
           text: data.message,
         });
-        console.log(data);
         refetch();
       } else {
         Swal.fire({
@@ -107,6 +104,39 @@ const SalaryForm = () => {
       setIsLoading(false);
     }
   };
+
+  const handelDelete  = async (id) => {
+    fetch(
+      `https://insorty-api.onrender.com/shop/deleteEmployeeSalaryData`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          cookie_token: token,
+        },
+        body : JSON.stringify({salaryIds: [id]})
+      }
+    ).then((res)=>{
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "Salary Deleted Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        refetch();
+      } 
+    })
+    .catch((err)=>{
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+        });
+      
+    });
+    
+  }
 
   if (isLoading || salareyDataLoading) {
     return <Loader></Loader>;
@@ -221,7 +251,6 @@ const SalaryForm = () => {
                         }
                       })
                       ?.map((salary, index) => {
-                        console.log(salary, ":salary+++++++++++++");
 
                         return (
                           <SalaryFormData
@@ -230,6 +259,7 @@ const SalaryForm = () => {
                             salareyDataList={salareyDataList.salaryData}
                             salary={salary}
                             index={index}
+                            handelDelete={handelDelete}
                           ></SalaryFormData>
                         );
                       })) || (

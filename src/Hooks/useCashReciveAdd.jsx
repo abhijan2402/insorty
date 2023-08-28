@@ -38,7 +38,9 @@ const useCashReciveAdd = () => {
     setCashReciveState(data);
   };
 
-  const handelAddOneCashRecive = () => {
+  const handelAddOneCashRecive = (e) => {
+    e.preventDefault()
+
     setCashReciveState([
       ...cashReciveState,
       {

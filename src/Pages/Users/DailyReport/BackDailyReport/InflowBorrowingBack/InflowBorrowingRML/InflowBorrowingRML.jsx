@@ -162,36 +162,35 @@ const InflowBorrowingRML = ({
           </div>
         </td>
 
-        <td>
+       
+
+<td>
           <div className="form-control ">
             <select
-
-              className="smallinput wd-9"
-              name="quantity"
-              value={item.quantity}
-              required
-              onChange={(e) => {
-                onChangeBorrowingRml(e, index);
-              }}
+            
+            className="semiSmallInput wd-9"
+            name="quantity"
+            value={item.quantity}
+            onChange={(e) => onChangeBorrowingRml(e, index)}
+            required
             >
-             
-              <option selected value={750}>
-                750ml
-              </option>
-              <option value={700}>700ml</option>
-              <option value={650}>650ml</option>
-              <option value={550}>550ml</option>
-              <option value={500}>500ml</option>
-              <option value={375}>375ml</option>
-              <option value={330}>330ml</option>
-              <option value={275}>275ml</option>
-              <option value={250}>250ml</option>
-              <option value={200}>200ml</option>
-              <option value={180}>180ml</option>
-              <option value={90}>90ml</option>
-              <option value={60}>60ml</option>
-              <option value={50}>50ml</option>
+              {
+            item.size.sizes.map((size)=>{
+              if( item.brandName && item.brandName!=="" ){
+              return(
+                <option value={size.quantityInML}>{size.quantityInML}ml</option>
+              )}
+              else{
+                return (
+                  <option disabled>please-select-brand</option>
+                )
+              }
+            })
+          }
+              
+              
             </select>
+            
           </div>
         </td>
 

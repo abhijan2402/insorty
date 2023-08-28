@@ -518,7 +518,7 @@ const FronteDailyReport = () => {
                         <div>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={() => addOneFristFormHandler()}
+                            onClick={(e) => addOneFristFormHandler(e)}
                           >
                             ADD
                           </button>
@@ -1180,7 +1180,7 @@ const FronteDailyReport = () => {
                           <div>
                             <button
                               className="btn bg-[#AA237A] btn-sm"
-                              onClick={() => addOneSecondFormHandler()}
+                              onClick={(e) => addOneSecondFormHandler(e)}
                             >
                               ADD
                             </button>
@@ -1420,7 +1420,7 @@ const FronteDailyReport = () => {
             ) : (
               <>
     
-                <input type="submit" className="dailyReportBtn" />
+                <input type="submit" className="btn commonBtn " />
               </>
             )}
           </div>

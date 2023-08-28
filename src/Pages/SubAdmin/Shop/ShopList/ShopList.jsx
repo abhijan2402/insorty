@@ -17,7 +17,6 @@ const ShopList = () => {
   const [Loading,setLoading] = useState(false)
   const [filter, setFilter] = useState("noFilter")
 
-  console.log(shops , "shops")
 
   const handelDelete = (id) => {
    
@@ -30,7 +29,7 @@ const ShopList = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        shopsRefetch()
       });
   };
 
@@ -86,7 +85,6 @@ try{
 
 
   const onTokenChange = (Shoptoken) => {
-    console.log(Shoptoken)
     // Get the current values of "token" and "token2" from localStorage
   
       
@@ -122,19 +120,39 @@ try{
   return (
     <section>
       <div className="title">
-        <div className="flex gap-4 items-center my-4">
+      <div className="flex gap-4 items-center my-4">
           <h2 className="font-bold text-[1.5rem]">दुकान/बार </h2>
-         
         </div>
+          <div className="flex item-center justify-center text-center">
+         <select className="semiSmallInput " onChange={(e)=>{setFilter(e.target.value); }} name="filter" >
+          <option selected value="noFilter">No-Filter</option>
+          <option value="SHOP">Filter Shops</option>
+          <option value="BAR">Filter Bars</option>
+         </select>
+         </div>
         <div className="divider my-2"></div>
       </div>
       <div>
         <div className="overflow-x-auto">
-          <table className="table-auto w-3/4">
+          <table className="removeCommonWSpace">
             <tbody>
               {shops &&
                 shops.data.length!==undefined && shops.data.length>0 &&
-                shops.data.map((shop) => {
+                shops.data.sort((a, b) => a?.shopId.name?.localeCompare(b?.shopId?.name)).filter((shop)=>{
+                  if (filter==="SHOP") {
+                    if (shop?.shopId?.shopType==="SHOP") {
+                      return shop
+                    }
+                  }
+                  else if(filter==="BAR"){
+                    if (shop?.shopId?.shopType==="BAR") {
+                      return shop
+                    }
+                  }
+                  else{
+                    return shop
+                  }
+                }).filter((shop)=>shop.shopId.isActive===true).map((shop) => {
                   const myShop = shop?.shopId;
                   const myShopId = myShop?._id;
 
@@ -188,6 +206,7 @@ try{
                       </td>
                     </tr>
                   );}
+                  else return false;
                 })}
             </tbody>
           </table>

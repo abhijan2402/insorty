@@ -64,10 +64,10 @@ const Commision = () => {
   return (
     <section className="py-4 px-4">
       <div className="title">
-        <div className="flex item-cnter justify-center flex-wrap">
           <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
+        <div className="flex item-cnter justify-center flex-wrap">
           { ShopType === "BAR" && (
             <>
               <Link className="commonBtn " to="/user/bearshop/kharcha">
@@ -184,15 +184,14 @@ const Commision = () => {
                       })}
 
                     <tr>
-                      <td></td>
-                      <th></th>
                       <th
-                        className="flex items-center justify-center
-                    text-[#AA237A]
-                  "
+                        
+                  colSpan={2}
                       >
-                        Total :<span className="mx-4">{totalAmount}</span>
+                        कुल योग
+ 
                       </th>
+                      <td>{totalAmount}</td>
                       <th></th>
                     </tr>
                   </tbody>

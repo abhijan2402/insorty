@@ -107,7 +107,7 @@ const AddOneFristFromBack = ({
                   item.size =  value;
                   item.buyRate650 = value.sizes.find((brand)=>brand.quantityInML===650).rate
                 item.buyRate550 = value.sizes.find((brand)=>brand.quantityInML===500).rate
-                item.buyRate1330 = value.sizes.find((brand)=>brand.quantityInML===330).rate
+                item.buyRate330 = value.sizes.find((brand)=>brand.quantityInML===330).rate
                 } else {
                   item.brandName = "";
                   item.liquorID = "";

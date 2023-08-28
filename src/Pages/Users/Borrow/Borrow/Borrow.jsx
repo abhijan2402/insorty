@@ -43,6 +43,9 @@ const Borrow = () => {
       <div className="title flex justify-center items-center">
         
       </div>
+      
+        <h1 className="titleStyle text-center">पार्टी सूची</h1>
+       
         <div className="divider my-2"></div>
 
       <div>

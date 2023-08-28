@@ -1,4 +1,4 @@
-import React, { useState, useRef,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import Loader from "../../../../Components/Loader/Loader";
 import DatePicker from "react-datepicker";
@@ -10,11 +10,16 @@ import jwtDecode from "jwt-decode";
 
 const Kharcha = () => {
   const [StartDate, setStartDate] = useState(new Date());
-  const [EndDate, setEndDate] = useState(new Date().setDate(new Date().getDate() + 1));
-  const { commitsonData, isLoading, commisonRefetch } = useCommision(StartDate,EndDate);
+  const [EndDate, setEndDate] = useState(
+    new Date().setDate(new Date().getDate() + 1)
+  );
+  const { commitsonData, isLoading, commisonRefetch } = useCommision(
+    StartDate,
+    EndDate
+  );
   useEffect(() => {
-    commisonRefetch()
-  }, [StartDate,EndDate])
+    commisonRefetch();
+  }, [StartDate, EndDate]);
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
@@ -62,11 +67,10 @@ const Kharcha = () => {
   return (
     <section className="py-4 px-4">
       <div className="title">
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
+        </button>
         <div className="flex items-center justify-center flex-wrap">
-          <button className="commonBtn " onClick={handlePrint}>
-            प्रिंट
-          </button>
-
           {ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/commisson">
@@ -188,7 +192,8 @@ const Kharcha = () => {
                               const { amount, comment } = item;
                               const dateData = burger?.date;
 
-                              const changeDateFormet = dateData?.split("T")[0];
+                              const changeDateFormet =
+                                moment(dateData).format("DD/MM/YYYY");
 
                               return (
                                 <tr key={index}>
@@ -218,15 +223,8 @@ const Kharcha = () => {
                       })}
 
                     <tr>
-                      <td></td>
-                      <th></th>
-                      <th
-                        className="flex items-center justify-center
-                    text-[#AA237A]
-                  "
-                      >
-                        Total :<span className="mx-4">{totalAmount}</span>
-                      </th>
+                      <th colSpan={2}>कुल योग</th>
+                      <td>{totalAmount}</td>
                       <th></th>
                     </tr>
                   </tbody>

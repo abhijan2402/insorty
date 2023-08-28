@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 
 const CommisionForm = ({ index, commison }) => {
@@ -17,7 +18,7 @@ const CommisionForm = ({ index, commison }) => {
         const { amount, comment } = item;
         const dateData = commison?.date;
 
-        const changeDateFormet = dateData?.split("T")[0];
+        const changeDateFormet = moment(dateData).format('DD/MM/YYYY');
 
         return (
           <tr key={index}>

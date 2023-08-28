@@ -69,7 +69,6 @@ const CashReciveData = () => {
               selected={StartDate}
               onChange={(date) => {
                 setStartDate(date);
-                console.log(moment(date).format());
               }}
               dateFormat="dd/MM/yyyy"
               placeholderText={"dd/mm/yyyy"}
@@ -123,11 +122,10 @@ const CashReciveData = () => {
                 );
               })}
               <tr>
-                <td>
+                <td colSpan={3}>
                     <h2 className="font-bold">कुल योग</h2>
                 </td>
-                <td></td>
-                <td></td>
+                
                 <td>
                     {CashReciveData.length && filteredData.reduce((acc, item) =>
                       acc + item.reduce((acc, item) =>

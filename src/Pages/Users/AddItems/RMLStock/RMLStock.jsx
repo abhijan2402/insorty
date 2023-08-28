@@ -171,12 +171,8 @@ const RmlStock = () => {
                         filteredData.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((brand, index) => {
                           return (
                             <>
-                              {brand.sizes.map((size) => {
-                                if (
-                                  size.quantityInML !== 650 &&
-                                  size.quantityInML !== 550 &&
-                                  size.quantityInML !== 330
-                                ) {
+                              {brand.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).map((size) => 
+                                 {
                                   count++;
                                   return (
                                     <tr id="scrollableDiv">
@@ -199,7 +195,7 @@ const RmlStock = () => {
                                       </td>
                                     </tr>
                                   );
-                                }
+                                
                               })}
                             </>
                           );

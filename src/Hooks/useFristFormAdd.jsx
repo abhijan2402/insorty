@@ -287,7 +287,9 @@ const useFristFormAdd = () => {
     setFristFormState(data);
   };
 
-  const addOneInFristFormHandler = () => {
+  const addOneInFristFormHandler = (e) => {
+    e.preventDefault()
+
     setFristFormState([
       ...fristFormState,
       {
@@ -1260,7 +1262,9 @@ const useFristFormAdd = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brandsLoaded]);
 
-  const addOneSecondFormHandler = () => {
+  const addOneSecondFormHandler = (e) => {
+    e.preventDefault()
+
     setAddOneSecondFormState([
       ...addOneSecondFormState,
       {

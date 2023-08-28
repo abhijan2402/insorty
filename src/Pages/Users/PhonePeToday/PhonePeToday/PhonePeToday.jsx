@@ -107,11 +107,10 @@ const PhonePeToday = () => {
                   );
                 })}
                 <tr>
-                  <td>
+                  <td colSpan={3}>
                     <h2 className="font-bold">कुल योग</h2>
                   </td>
-                  <td></td>
-                  <td></td>
+                  
                   <td>
                     {phonePayData.length && filteredData.reduce((acc, item) => {
                       return acc + item.intoAccount;

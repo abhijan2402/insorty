@@ -34,7 +34,9 @@ const useCommissonAdd = () => {
     setCommissonState(data);
   };
 
-  const handelAddOneCommison = () => {
+  const handelAddOneCommison = (e) => {
+    e.preventDefault()
+
     setCommissonState([
       ...commissonState,
       {
