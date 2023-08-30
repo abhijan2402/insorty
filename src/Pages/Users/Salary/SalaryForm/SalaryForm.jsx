@@ -177,68 +177,38 @@ const SalaryForm = () => {
               <table className="removeCommonWSpace ">
                 <thead>
                   <tr>
-                    <th> क्र. सं.</th>
+                    <th rowSpan={2}> क्र. सं.</th>
                     <th colSpan={2}> वेतन</th>
                     <th colSpan={2}> भुगतान</th>
-                    <th>शेष </th>
-                    <th>टिप्पणी</th>
+                    <th rowSpan={2}>चालू शेष </th>
+                    <th rowSpan={2}>टिप्पणी</th>
+                  </tr>
+                  <tr>
+
+                    <th>
+                        दिनांक
+                        </th>
+
+
+                      
+                        <th>
+                         रकम
+                    </th>
+
+                    <th>
+                        दिनांक
+                        </th>
+                  
+                        <th>
+                        रकम
+                    </th>
+
+                   
+                    {/* ============= कुल योग ================ */}
                   </tr>
                 </thead>
 
                 <tbody>
-                  <tr>
-                    <th></th>
-
-                    <td>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">दिनांक</span>
-                          </label>
-                        </div>
-                        </td>
-
-
-                      
-                        <td>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text"> रकम</span>
-                          </label>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">दिनांक</span>
-                          </label>
-                        </div>
-                        </td>
-                  
-                        <td>
-                        <div className="form-control">
-                          <label className="label">
-                            <span className="label-text">रकम</span>
-                          </label>
-                        </div>
-                    </td>
-
-                    <td>
-                      <div className="flex gap-4">
-                        <div className="form-control">
-                          <label className="label"></label>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex gap-4">
-                        <div className="form-control">
-                          <label className="label"></label>
-                        </div>
-                      </div>
-                    </td>
-                    {/* ============= कुल योग ================ */}
-                  </tr>
 
                   {(salareyDataList &&
                     salareyDataList.salaryData

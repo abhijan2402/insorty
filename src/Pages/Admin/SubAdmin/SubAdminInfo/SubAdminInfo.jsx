@@ -64,8 +64,8 @@ const SubAdminInfo = ({ subadminId, subAdmin, onTokenChange }) => {
                   <td>DELETE</td>
                 </thead>
                 <tbody>
-                  {subAdmin && subAdmin.permissions.map((shop)=>{
-
+                  {subAdmin && subAdmin.permissions.filter((shop)=>shop?.shopId?.isActive===true).map((shop)=>{
+                    console.log(shop)
                     if (shop.shopId) {
                       return(
                         <tr>

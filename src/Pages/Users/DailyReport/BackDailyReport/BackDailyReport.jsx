@@ -1498,7 +1498,7 @@ const BackDailyReport = () => {
 
               <>
                 <div>
-                  <table className="table commonTable" ref={RMLRef} onFocus={()=>scrollToComponent(RMLRef)}>
+                  <table className="table commonTable" >
                     <thead>
                       <tr>
                         <th> क्र. सं.</th>

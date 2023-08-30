@@ -65,7 +65,7 @@ const SalaryFormData = ({ index, salary, salareyDataLoading,salareyDataList,hand
 
         <td>
                     <p
-                      className="font-3xl font-bold"
+                      className="font-3xl font-bold cursor-pointer"
                       style={{ color: "#AA237A" }}
                       // onClick={() => handelDelete(entry?._id)}
                       onClick={() => {
