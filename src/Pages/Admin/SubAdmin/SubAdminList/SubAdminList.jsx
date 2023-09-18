@@ -17,7 +17,6 @@ const SubAdminList = () => {
   
 
   const handelDelete = (id) => {
-    console.log(id);
     fetch(`https://insorty-api.onrender.com/admin/deleteSubAdmin/${id}`, {
       method: "DELETE",
       headers: {
@@ -27,7 +26,7 @@ const SubAdminList = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        subAdminRefetch()
       });
   };
 
@@ -120,7 +119,7 @@ const SubAdminList = () => {
         <div className="overflow-x-auto">
           <table className=" removeCommonWSpace">
             <tbody>
-              {subAdminListData.map((subAdmin) => {
+              {subAdminListData.filter((subadmin)=> subadmin.isActive===true).map((subAdmin) => {
                 const { _id } = subAdmin;
 
                 const subadminId = _id;

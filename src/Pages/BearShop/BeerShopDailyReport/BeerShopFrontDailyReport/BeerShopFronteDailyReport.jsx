@@ -1,5 +1,6 @@
-import React, { useContext, useState,useRef } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import AddOneFristForm from "./BeerShopFirstForm/AddOneFristForm/AddOneFristForm";
 import UseBeerShopFront from "../../BeerHooks/DailyReportHooks/UseBeerShopFront/UseBeerShopFront";
 import AddOneFristFromBack from "../../../Users/DailyReport/BackDailyReport/FristFormBack/AddOneFristFromBack/AddOneFristFromBack";
@@ -38,12 +39,14 @@ const FronteDailyReport = () => {
   const { salesMan, setSalesMan, drDate, setDrDate } =
     useContext(DataContextApi);
 
-    const barSupplementsRef = useRef(null)
+    
+    const { pathname } = useLocation();
 
-  const scrollToComponent = (ref) => {
-    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"start" });
-  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
+    
   const [options, setOptions] = useState([]);
 
   const fetchOptions = async (query) => {
@@ -173,6 +176,8 @@ const FronteDailyReport = () => {
           </div>
         </div>
       </div>
+
+      <form onSubmit={handelSubmit}>
 
       <div className="py-6">
         <div>
@@ -3334,11 +3339,13 @@ const FronteDailyReport = () => {
             <input
               type="submit"
               className="dailyReportBtn"
-              onClick={() => handelSubmit()}
+              
             />
           </>
         )}
       </div>
+      </form>
+
     </section>
   );
 };

@@ -170,7 +170,7 @@ const token = localStorage.getItem('token')
             }}
             options={
               subAdmins.data.length > 0
-                ? subAdmins?.data
+                ? subAdmins?.data.filter((subadmin)=> subadmin.isActive===true)
                 : ["no options"]
             }
             getOptionLabel={(option) => (option ? option?.name : "")}
@@ -184,7 +184,6 @@ const token = localStorage.getItem('token')
                 sub.subAdminId = "";
               }
               setSubAdminName(sub)
-              console.log(subAdminName)
             }}
             renderInput={(params) => (
               <TextField
