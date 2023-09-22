@@ -294,7 +294,8 @@ const BrandList = () => {
                 <td>
                   
                   
-                <FaMoneyCheckAlt className="text-[1.7rem]" style={{cursor:"pointer"}} onClick={() => addToPriceList(obj)}/>
+                {/* <FaMoneyCheckAlt className="text-[1.7rem]" style={{cursor:"pointer"}} onClick={() => addToPriceList(obj)}/> */}
+                <p className="text-[1.7rem]" style={{cursor:"pointer"}} onClick={() => addToPriceList(obj)}>₹</p>
                 </td>
               </tr>)
 })}

@@ -255,7 +255,7 @@ const SalaryForm = () => {
 
           <Link
             to="/user/salary"
-            className="dailyReportBtn text-center flex justify-center items-center"
+            className="commonBtn"
           >
             सूची
           </Link>

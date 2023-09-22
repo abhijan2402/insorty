@@ -127,7 +127,23 @@ const SalaryList = () => {
                             <Link
                               className="font-3xl font-bold"
                               style={{ color: "#AA237A" }}
-                              onClick={() => handleDelete(salary?._id)}
+                              onClick={() => {
+                                swal({
+                                  title: "Are you sure?",
+                                  text: `Once deleted, you will not be able to recover employee ${salary?.name}`,
+                                  icon: "warning",
+                                  buttons: true,
+                                  dangerMode: true,
+                                }).then((willDelete) => {
+                                  if (willDelete) {
+                                    
+                                    handleDelete(salary?._id);
+                                    
+                                  } else {
+                                    swal("Your Employee is safe!");
+                                  }
+                                });
+                              }}
                             >
                               <FaRegTrashAlt></FaRegTrashAlt>
                             </Link>
@@ -169,7 +185,7 @@ const SalaryList = () => {
                                 });
                               }}
                             >
-                              <FaRegTrashAlt></FaRegTrashAlt>
+                              <FaRegTrashAlt ></FaRegTrashAlt>
                             </Link>
                           </td>
                         </tr>
