@@ -62,15 +62,13 @@ const StockLandingForm = () => {
               <table className="removeCommonWSpace">
                 <thead>
                   <tr>
-                    <th> क्र. सं.</th>
+                    <th rowSpan={2}> क्र. सं.</th>
                     <th colSpan={2}>ब्राण्ड</th>
                     <th colSpan={2}>आमद</th>
                     <th colSpan={2}>भेजान </th>
                     <th colSpan={2}>शेष</th>
                   </tr>
-                </thead>
-
-                <tbody>
+                
                   <tr>
                     <th></th>
 
@@ -138,6 +136,10 @@ const StockLandingForm = () => {
 
                     {/* ============= कुल योग ================ */}
                   </tr>
+
+                  </thead>
+
+                <tbody>
                   {partyData.length === 0 && partyData ? (
                     <>
                      

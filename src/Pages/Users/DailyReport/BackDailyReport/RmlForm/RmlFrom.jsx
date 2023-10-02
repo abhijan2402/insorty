@@ -135,8 +135,8 @@ const RmlFrom = ({
             <select
             
             className="semiSmallInput wd-9"
-            name="selectStockVarient"
-            value={item.selectStockVarient}
+            name="ml"
+            value={item.ml}
             onChange={(e) => onChangeRmlHandler(e, index)}
             required
             >

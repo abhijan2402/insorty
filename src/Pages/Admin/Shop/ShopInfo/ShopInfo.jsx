@@ -1,7 +1,30 @@
 import React from "react";
+import Loader from "../../../../Components/Loader/Loader";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import { useState } from "react";
 
-const ShopInfo = ({ myShopId, shop }) => {
+const ShopInfo = ({ myShopId, shop,token }) => {
   const { name, accountId, address, licenceNumber, mobileNumber,shopType } = shop;
+  const [shopSubs, setShopSubs] = useState([])
+
+  useEffect(() => {
+    fetch(`https://insorty-api.onrender.com/shop/getSubAdminsWithMyPermissions`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+    })
+    .then((res) => res.json())
+      .then((data) => setShopSubs(data))
+    
+    .catch((err)=>console.log(err))
+  }, [token])
+  
+ 
+
+
   return (
     <section>
       {/* The button to open modal */}
@@ -108,6 +131,31 @@ const ShopInfo = ({ myShopId, shop }) => {
               </div>
             </div>
           </div>
+          <table className="table my-3 mx-auto">
+                <thead>
+                  <td>SubAdmin Name</td>
+                  <td>GET</td>
+                  <td>POST</td>
+                  <td>PUT</td>
+                  <td>DELETE</td>
+                </thead>
+                <tbody>
+                  {shopSubs && shopSubs?.data?.map((shop)=>{
+                    
+                      return(
+                        <tr>
+                        <td>{shop?.name}</td>
+                        <td>{shop?.permissionSet?.GET===true ? " ✔ " :"✖	"}</td>
+                        <td>{shop?.permissionSet?.POST===true ? " ✔ " :"✖	"}</td>
+                        <td>{shop?.permissionSet?.PUT===true ? " ✔ " :"✖	"}</td>
+                        <td>{shop?.permissionSet?.DELETE===true ? " ✔ " :"✖	"}</td>
+                        </tr>
+                      )
+                      
+                    
+                  })}
+                </tbody>
+              </table>
         </div>
       </div>
     </section>

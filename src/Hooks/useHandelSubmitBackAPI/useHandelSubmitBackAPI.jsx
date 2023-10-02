@@ -532,6 +532,7 @@ const useHandelSubmitBackAPI = (shopType) => {
                     localStorage.removeItem("beerFormTotal");
                     localStorage.removeItem("udhaariTotal");
                     localStorage.removeItem("mlFormTotal");
+                    localStorage.removeItem("firstFrontTotal");
                   } 
                 })
                 .catch((err)=>{

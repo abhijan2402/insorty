@@ -248,7 +248,7 @@ const useRmlAdd = () => {
           e.target.name === "ml" 
         ) {
           obj.buyRate = obj.size.sizes.find((brand)=>brand.quantityInML===Number(obj.ml)).rate
-
+          
         }
         return obj;
       } else return returned;

@@ -35,6 +35,7 @@ const useGetShopsNSubadmins = () => {
         },
     });
 
+   
 
   return {
     subAdmins,
@@ -42,7 +43,8 @@ const useGetShopsNSubadmins = () => {
     subAdminRefetch,
     shops,
     shopsLoaded,
-    shopsRefetch
+    shopsRefetch,
+    
   }
 }
 

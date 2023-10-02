@@ -194,7 +194,7 @@ const useSecondFormFront = () => {
           e.target.name === "selectStockVarient" 
         ) {
           obj.buyRate = obj.size.sizes.find((brand)=>brand.quantityInML===Number(obj.selectStockVarient)).rate
-
+          
         }
         return obj;
       } else return returned;

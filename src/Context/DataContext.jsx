@@ -34,7 +34,7 @@ const DataContext = ({ children }) => {
     }
     console.log(localStorage.getItem("drDate"));
 
-    fetch(`${BasedURL}/shop/getBackPageData?from=${moment(drDate).subtract(1,'days').format('DD MMMM YYYY')}&to=${moment(drDate).subtract(1,'days').format('DD MMMM YYYY')}&page=0&pagesize=200`, {
+    fetch(`${BasedURL}/shop/getBackPageData?from=${moment(drDate).subtract(1,'days').format('DD MMMM YYYY')}&to=${moment(drDate).format('DD MMMM YYYY')}&page=0&pagesize=200`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -43,8 +43,13 @@ const DataContext = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if(data.success===true){
-          setSalesMan(data.data[data.data.length-1].salesmen)
+          
+          setSalesMan(data?.data[data.data.length-1]?.dailyReport?.salesmen)
+        }
+        else{
+          setSalesMan("")
         }
       });
 

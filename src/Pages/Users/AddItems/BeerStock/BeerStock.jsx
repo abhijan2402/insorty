@@ -156,18 +156,16 @@ const BeerStock = () => {
               <table className="removeCommonWSpace  m-2">
                 <thead>
                   <tr>
-                    <th> क्र. सं.</th>
-                    <th>ब्राण्ड </th>
+                    <th rowSpan={2}> क्र. सं.</th>
+                    <th rowSpan={2}>ब्राण्ड </th>
                     <th colSpan={3}>स्टॉक </th>
                     <th colSpan={3}> रेट</th>
                     <th colSpan={3}>Total </th>
-                    <th>कुल योग</th>
+                    <th rowSpan={2}>कुल योग</th>
                   </tr>
-                </thead>
-                <tbody>
+                
                   <tr>
-                    <td></td>
-                    <td></td>
+                    
 
                     <td>
                       <div className="form-control">
@@ -239,10 +237,11 @@ const BeerStock = () => {
                         </label>
                       </div>
                     </td>
-                    <td>
-                      <div className="form-control"></div>
-                    </td>
+                   
                   </tr>
+
+                  </thead>
+                <tbody>
 
                   {beerStock.length &&
                     filteredData?.filter((item)=>item.isActive===true).filter((item)=>item.isActive===true).filter(brand =>
@@ -261,6 +260,27 @@ const BeerStock = () => {
                         </>
                       );
                     })}
+                    <tr>
+                    <td colSpan="11">कुल योग</td>
+                    <td>
+                      {filteredData.filter((item)=>item.isActive===true).reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.sizes.filter((brand)=>brand.quantityInML===650 || brand.quantityInML===500 || brand.quantityInML===330).reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  currentItem.currentStock *
+                                    Number(
+                                      currentItem.averageRate.$numberDecimal
+                                    )),
+                              0
+                            )),
+                        0
+                      ).toFixed(2)}
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </InfiniteScroll>
@@ -295,7 +315,7 @@ const BeerStock = () => {
                                 <tr>
                                   <td>{count}</td>
                                   <td>{brand.brandName}</td>
-                                  <td>{size.quantityInML}</td>
+                                  <td>{size.quantityInML} ML</td>
                                   <td> {size.currentStock}</td>
                                   <td>
                                     {" "}

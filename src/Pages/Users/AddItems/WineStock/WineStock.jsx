@@ -174,89 +174,49 @@ const WineStock = () => {
             <table className="removeCommonWSpace m-2">
               <thead>
                 <tr>
-                  <th> क्र. सं.</th>
-                  <th>ब्राण्ड</th>
+                  <th rowSpan={2}> क्र. सं.</th>
+                  <th rowSpan={2}>ब्राण्ड</th>
                   <th colSpan={3}>स्टॉक </th>
                   <th colSpan={3}> रेट</th>
                   <th colSpan={3}> योग</th>
-                  <th>कुल योग</th>
+                  <th rowSpan={2}>कुल योग</th>
                 </tr>
-              </thead>
-              <tbody>
+             
                 <tr>
-                  <td></td>
-                  <td>
-                    <div className="form-control"></div>
-                  </td>
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">750ml</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">375ml</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">180ml</span>
-                      </label>
-                    </div>
-                  </td>
+                 
+                  <th>
+                    750ml
+                  </th>
+                  <th>
+                   375ml
+                  </th>
+                  <th>
+                    180ml
+                  </th>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">750ml</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">375ml</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">180ml</span>
-                      </label>
-                    </div>
-                  </td>
+                  <th>
+                    750ml
+                  </th>
+                  <th>
+                    375ml
+                  </th>
+                  <th>
+                    180ml
+                  </th>
 
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">750ml</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">375ml</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text">180ml</span>
-                      </label>
-                    </div>
-                  </td>
-                  <td>
-                    <div className="form-control"></div>
-                  </td>
+                  <th>
+                    750ml
+                  </th>
+                  <th>
+                    375ml
+                  </th>
+                  <th>
+                    180ml
+                  </th>
+                  
                 </tr>
+                </thead>
+              <tbody>
 
                 {filteredData?.filter((item)=>item.isActive===true).filter(brand =>
   brand.sizes.some(size => size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0)
@@ -273,6 +233,27 @@ const WineStock = () => {
                     </>
                   );
                 })}
+                 <tr>
+                    <td colSpan="11">कुल योग</td>
+                    <td>
+                      {filteredData.filter((item)=>item.isActive===true).reduce(
+                        (total, currentItem) =>
+                          (total =
+                            total +
+                            currentItem.sizes.filter((brand)=>brand.quantityInML===750 || brand.quantityInML===375 || brand.quantityInML===180).reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  currentItem.currentStock *
+                                    Number(
+                                      currentItem.averageRate.$numberDecimal
+                                    )),
+                              0
+                            )),
+                        0
+                      ).toFixed(2)}
+                    </td>
+                  </tr>
               </tbody>
             </table>
           </InfiniteScroll>
@@ -313,7 +294,7 @@ const WineStock = () => {
                               <tr>
                                 <td>{count}</td>
                                 <td>{brand.brandName}</td>
-                                <td>{size.quantityInML}</td>
+                                <td>{size.quantityInML} ML</td>
                                 <td> {size.currentStock}</td>
                                 <td>
                                   {" "}

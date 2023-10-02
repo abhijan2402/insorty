@@ -76,7 +76,6 @@ const SubAdminList = () => {
         console.log(err);
       });
 
-    console.log("add new sub admin");
   };
 
  const onTokenChange = (subAdminToken) => {

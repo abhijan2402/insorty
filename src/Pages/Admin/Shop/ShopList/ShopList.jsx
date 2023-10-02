@@ -59,6 +59,7 @@ const ShopList = () => {
     } 
   };
   
+  
 
   const addNewShop = async  (e) => {
     e.preventDefault();
@@ -125,7 +126,7 @@ try{
           <h2 className="font-bold text-[1.5rem]">दुकान/बार </h2>
         </div>
           <div className="flex item-center justify-center text-center">
-         <select className="semiSmallInput " onChange={(e)=>{setFilter(e.target.value); console.log(filter)}} name="filter" >
+         <select className="semiSmallInput " onChange={(e)=>{setFilter(e.target.value); }} name="filter" >
           <option selected value="noFilter">No-Filter</option>
           <option value="SHOP">Filter Shops</option>
           <option value="BAR">Filter Bars</option>
@@ -200,6 +201,7 @@ try{
                           <ShopInfo
                             myShopId={myShopId}
                             shop={myShop}
+                            token={shop.shopToken}
                           ></ShopInfo>
                         </div>
                       </td>

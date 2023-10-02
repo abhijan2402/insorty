@@ -227,6 +227,7 @@ const PurchaseOutSideFrom = ({
           <div className="form-control ">
             <input
               type="number"
+              disabled
                 min={0}
                 required
               className="smallinput"

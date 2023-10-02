@@ -37,12 +37,16 @@ const BackDailyReport = () => {
   const purchaseBorrowRef = useRef(null)
   const sendingRef = useRef(null)
   const BorrowingRef = useRef(null)
-  const RMLRef = useRef(null)
+  const tableContainer = useRef(null)
+  const containerBottom = useRef(null)
   
 
   const scrollToComponent = (ref) => {
     ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"start" });
   };
+
+ 
+
 
 
   // ================== Frist Form============
@@ -171,6 +175,26 @@ const BackDailyReport = () => {
       return <Loader/>
     }
 
+
+    const scrollToTable = (e,tableId,tablesContainer) => {
+      e.preventDefault()
+      if (tablesContainer.current) {
+        const container = tablesContainer.current;
+  
+        // Get the target table based on the provided tableId
+        const targetTable = document.getElementById(tableId);
+  
+        if (container && targetTable) {
+          // Calculate the scroll position to center the target table
+          const containerWidth = container.clientWidth;
+          const tableWidth = targetTable.clientWidth;
+          const scrollPosition = (tableWidth - containerWidth) / 2;
+  
+          // Scroll the container to the target table
+          container.scrollLeft = targetTable.offsetLeft - container.offsetLeft - scrollPosition;
+        }
+      }
+    };
   // ********************************* submit mulitple api in handelSubmit  *********************************
 
   return (
@@ -1490,7 +1514,7 @@ const BackDailyReport = () => {
           </div>
 
           {/* *********************************************************BREAK*********************************************************  */}
-          <div className="flex  overflow-x-auto">
+          <div className="flex  overflow-x-auto" ref={tableContainer}>
             <div className="py-6">
               <h1 className="my-4">
                 <span className="font-bold titleText">देशी / RML</span>
@@ -1742,7 +1766,7 @@ const BackDailyReport = () => {
                   अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
                 </span>
               </h1>
-              <div>
+              <div id="purchaseOutsideTable">
                 <table className="table commonTable" ref={purchaseOutsideRef} onFocus={()=>scrollToComponent(purchaseOutsideRef)}>
                   <thead>
                     <tr>
@@ -1780,7 +1804,9 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={(e) => handelAddOnePurchesOutSide(e)}
+                          onClick={(e) => {
+                            scrollToTable(e,'purchaseOutsideTable',tableContainer)
+                            handelAddOnePurchesOutSide(e)}}
                         >
                           ADD
                         </button>
@@ -2002,7 +2028,7 @@ const BackDailyReport = () => {
           </div>
           {/* *********************************************************BREAK*********************************************************  */}
 
-          <div className="flex overflow-x-auto ">
+          <div className="flex overflow-x-auto " ref={containerBottom}>
             <div className="py-6">
               <h1 className="my-4">
                 <span className="font-bold titleText">
@@ -2012,7 +2038,7 @@ const BackDailyReport = () => {
 
               <>
                 <div>
-                  <table className="table commonTable" ref={purchaseBorrowRef} onFocus={()=>scrollToComponent(purchaseBorrowRef)}>
+                  <table id="borrowedStock" className="table commonTable" ref={purchaseBorrowRef} onFocus={()=>scrollToComponent(purchaseBorrowRef)}>
                     <thead>
                       <tr>
                         <th> क्र. सं.</th>
@@ -2044,7 +2070,11 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={(e) => handelAddOneShipping(e)}
+                            onClick={(e) => 
+                              {
+                                scrollToTable(e,"borrowedStock",containerBottom)
+                              handelAddOneShipping(e)}
+                              }
                           >
                             ADD
                           </button>
@@ -2096,7 +2126,7 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable" ref={sendingRef} onFocus={()=>scrollToComponent(sendingRef)}>
+                <table id="sending" className="table commonTable" ref={sendingRef} onFocus={()=>scrollToComponent(sendingRef)}>
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
@@ -2128,7 +2158,11 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
-                          onClick={(e) => handelAddOneBorrowingRml(e)}
+                          onClick={(e) => {
+                            scrollToTable(e,"sending",containerBottom)
+                            handelAddOneBorrowingRml(e)
+                            }
+                          }
                         >
                           ADD
                         </button>
