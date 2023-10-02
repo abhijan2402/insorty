@@ -1522,7 +1522,7 @@ const BackDailyReport = () => {
 
               <>
                 <div>
-                  <table className="table commonTable" >
+                  <table className="table commonTable" id="rmlTable">
                     <thead>
                       <tr>
                         <th> क्र. सं.</th>
@@ -1566,7 +1566,13 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={(e) => handelAddOneInRml(e)}
+                           onClick={(e) =>
+                            {
+                              scrollToTable(e,'rmlTable',tableContainer)
+                                handelAddOneInRml(e)
+                            }
+                              }
+
                           >
                             ADD
                           </button>

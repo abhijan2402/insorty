@@ -64,7 +64,6 @@ const FronteDailyReport = () => {
 
   const onSearch = (searchTerm) => {
     setAddOneFristFormState(searchTerm);
-    console.log("search ", searchTerm);
   };
 
   const {
