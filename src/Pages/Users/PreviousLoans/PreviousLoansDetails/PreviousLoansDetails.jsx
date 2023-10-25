@@ -10,6 +10,8 @@ import moment from "moment/moment";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useMainInvestmentHooks from "../../MainInvestment/MainInvestmentHooks/useMainInvestmentHooks";
+import swal from "sweetalert";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const PreviousLoansDetails = () => {
   const token = localStorage.getItem("token");
@@ -92,27 +94,23 @@ const PreviousLoansDetails = () => {
     return <Loader></Loader>;
   }
 
-  function isEqual(obj1, obj2) {
-    return JSON.stringify(obj1) === JSON.stringify(obj2);
-  }
-
-  function existsInFilteredArray(entry) {
-    return transactions.some(item => isEqual(item, entry));
-  }
-
-  data.refundRecoveryDetails.entries.map((entry)=>{
-    if(entry.type==="RECOVERY" && entry.partyId===loandataId){
-      const newObj= {previousBorrowed: loandataId,
-      deposit: entry.price,
-      debit: 0,
-      paymentFlow: "DEPOSIT",
-      date: entry.date,}
-
-      if (!existsInFilteredArray(newObj)){
-      transactions.push(newObj)
-    }
-    }
-  })
+  const handleDelete = (previousBorrowedTransactionId) => {
+    fetch(`${BasedURL}/shop/deletePreviousBorrowedTransaction`, {
+      method: "DELETE",
+      body: JSON.stringify({ previousBorrowedTransactionId }),
+      headers: { "Content-Type": "application/json", cookie_token: token },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if (data.success) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+          window.location.reload()
+        } else {
+          Swal.fire("Failed!", "Your file has not been deleted.", "error");
+        }
+      });
+  };
 
   return (
     <section>
@@ -146,7 +144,8 @@ const PreviousLoansDetails = () => {
                 <th> क्र. सं.</th>
                 <th colSpan={2}>दिनांक</th>
                 <th colSpan={2}>नामे</th>
-                <th colSpan={2}>जमा</th>
+                <th >जमा</th>
+                <th colSpan={2}></th>
               </tr>
             </thead>
             <tbody>
@@ -175,6 +174,31 @@ const PreviousLoansDetails = () => {
                           {prevLone?.deposit}
                         </p>
                       </td>
+                      <td>
+                        <Link
+                          className="font-3xl font-bold"
+                          style={{ color: "#AA237A" }}
+                          onClick={() => {
+                            swal({
+                              title: "Are you sure?",
+                              text: `Once deleted, you will not be able to recover transaction ${index+1}`,
+                              icon: "warning",
+                              buttons: true,
+                              dangerMode: true,
+                            }).then((willDelete) => {
+                              if (willDelete) {
+                                
+                                handleDelete(prevLone?._id);
+                                
+                              } else {
+                                swal("Your party is safe!");
+                              }
+                            });
+                          }}
+                        >
+                          <FaRegTrashAlt></FaRegTrashAlt>
+                        </Link>
+                        </td>
                     </tr>
 
                     

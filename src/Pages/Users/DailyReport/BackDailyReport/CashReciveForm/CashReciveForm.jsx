@@ -198,7 +198,13 @@ const CashReciveForm = ({
 
         <td>
           <input
-            type="number"
+            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
             required
             name="amount"
             min={0}

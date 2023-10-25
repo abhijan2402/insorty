@@ -7,6 +7,7 @@ import jwtDecode from "jwt-decode";
 const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
   const { intoAccountState, setintoAccountState } = useContext(DataContextApi);
   const { paidDues, setPaidDues } = useContext(DataContextApi);
+  const { food, setFood } = useContext(DataContextApi);
   const token = localStorage.getItem("token");
   const shopType = jwtDecode(token).shopType
 
@@ -69,7 +70,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             <tr>
               <th>1</th>
               <td>अंग्रेजी</td>
-              <td>{firstformData + secondFront}</td>
+              <td>{Number(firstformData + secondFront).toFixed(2)}</td>
             </tr>
 
            
@@ -79,8 +80,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
               <th>2</th>
               <td>बीयर</td>
               <td>
-                {Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
-                  beerSecond}
+                {Number(Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
+                  beerSecond).toFixed(2)}
               </td>
             </tr>
 
@@ -88,7 +89,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             <tr >
               <th>3</th>
               <td>देशी/RML</td>
-              <td>{Number(rmlTotal?rmlTotal:0)}</td>
+              <td>{Number(rmlTotal?rmlTotal:0).toFixed(2)}</td>
             </tr>
             
 
@@ -98,18 +99,18 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
               <th>4</th>
               <td>कुल बिक्री</td>
               <td>
-                {Number(rmlTotal?rmlTotal:0) +
+                {Number(Number(rmlTotal?rmlTotal:0) +
                   Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   firstformData +
                   secondFront +
-                  beerSecond}
+                  beerSecond).toFixed(2)}
               </td>
             </tr>
             {/* 05 */}
             <tr>
               <th>5</th>
               <td>पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति</td>
-              <td>{Number(localStorage.getItem("totalPaymentsRecieved"))}</td>
+              <td>{Number(localStorage.getItem("totalPaymentsRecieved")).toFixed(2)}</td>
             </tr>
             {/* 06 */}
             <tr>
@@ -117,7 +118,13 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
               <td>खाते में (फोन पे आदि)</td>
               <td>
                 <input
-                  type="number"
+                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                   className="commonSmallForm"
                   name="intoAccountState"
                   required
@@ -131,13 +138,13 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             <tr>
               <th>7</th>
               <td>उधारी/नामे</td>
-              <td>{Number(udhaariTotal ? udhaariTotal : 0)}</td>
+              <td>{Number(udhaariTotal ? udhaariTotal : 0).toFixed(2)}</td>
             </tr>
             {/* 08 */}
             <tr>
               <th>8</th>
               <td>कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
-              <td>{Number(commisionTotal ? commisionTotal : 0)}</td>
+              <td>{Number(commisionTotal ? commisionTotal : 0).toFixed(2)}</td>
             </tr>
             {/* 09 */}
             <tr>
@@ -151,7 +158,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
               <th>10</th>
               <td>total</td>
               <td >
-                {Number(rmlTotal?rmlTotal:0) +
+                {Number(Number(rmlTotal?rmlTotal:0) +
                   Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   firstformData +
                   secondFront +
@@ -160,7 +167,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
                   intoAccountState -
                   Number(udhaariTotal ? udhaariTotal : 0) -
                   Number(commisionTotal ? commisionTotal : 0) +
-                  pichla}
+                  pichla).toFixed(2)}
               </td>
             </tr>
 
@@ -170,7 +177,13 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
               <td>आज भुगतान</td>
               <td>
                 <input
-                  type="number"
+                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                   required
                   min={0}
                   className="commonSmallForm"
@@ -185,7 +198,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
               <th>12</th>
               <td>शेष रकम</td>
               <td>
-                {Number(rmlTotal?rmlTotal:0) +
+                {Number(Number(rmlTotal?rmlTotal:0) +
                   Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   firstformData +
                   secondFront +
@@ -195,7 +208,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
                   Number(udhaariTotal ? udhaariTotal : 0) -
                   Number(commisionTotal ? commisionTotal : 0) +
                   pichla -
-                  Number(paidDues)}
+                  Number(paidDues)).toFixed(2)}
               </td>
             </tr>
           </tbody>
@@ -217,7 +230,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             <tr>
               <th>1</th>
               <td>अंग्रेजी</td>
-              <td>{Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0)}</td>
+              <td>{Number(Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0)).toFixed(2)}</td>
             </tr>
 
             {/* 02 */}
@@ -225,8 +238,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
               <th>2</th>
               <td>बीयर</td>
               <td>
-                {Number(beerFirst ? beerFirst: 0) +
-                  Number(beerSecond ? beerSecond : 0)}
+                {Number(Number(beerFirst ? beerFirst: 0) +
+                  Number(beerSecond ? beerSecond : 0)).toFixed(2)}
               </td>
             </tr>
 
@@ -236,39 +249,67 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
 
             <tr >
               <th>3</th>
-              <td>पानी, नमकीन, सिगरेट, पुड़िया आदि</td>
-              <td>{Number(barSuplementsTotal?barSuplementsTotal:0)}</td>
+              <td>खाना आदि</td>
+              <td><input
+                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
+                  className="commonSmallForm"
+                  name="food"
+                  required
+                  min={0}
+                  value={food}
+                  onChange={(e) => {setFood(e.target.value)
+                  localStorage.setItem('food',JSON.stringify(e.target.value))
+                  }}
+                /></td>
             </tr>
+
             <tr >
               <th>4</th>
-              <td>राशन/सब्जी आदि खरीद</td>
-              <td>{Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0)}</td>
+              <td>पानी, नमकीन, सिगरेट, पुड़िया आदि</td>
+              <td>{Number(barSuplementsTotal?barSuplementsTotal:0).toFixed(2)}</td>
             </tr>
-            {/* 04 */}
-            <tr>
-              <th>4</th>
-              <td>कुल बिक्री</td>
-              <td>
-                {Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
-                  Number(beerFirst ? beerFirst: 0) +
-                  Number(beerSecond ? beerSecond : 0) +
-                  Number(barSuplementsTotal?barSuplementsTotal:0) -
-                  Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0)}
-              </td>
-            </tr>
-            {/* 05 */}
+
             <tr>
               <th>5</th>
+              <td>कुल बिक्री</td>
+              <td>
+                {Number(Number(food ? food : 0 ) + Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+                  Number(beerFirst ? beerFirst: 0) +
+                  Number(beerSecond ? beerSecond : 0) +
+                  Number(barSuplementsTotal?barSuplementsTotal:0) 
+                  ).toFixed(2)}
+              </td>
+            </tr>
+
+
+           
+            {/* 04 */}
+           
+            {/* 05 */}
+            <tr>
+              <th>6</th>
               <td>पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति</td>
-              <td>{Number(localStorage.getItem("totalPaymentsRecieved"))}</td>
+              <td>{Number(localStorage.getItem("totalPaymentsRecieved")).toFixed(2)}</td>
             </tr>
             {/* 06 */}
             <tr>
-              <th>6</th>
+              <th>7</th>
               <td>खाते में (फोन पे आदि)</td>
               <td>
                 <input
-                  type="number"
+                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                   className="commonSmallForm"
                   name="intoAccountState"
                   required
@@ -280,32 +321,39 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             </tr>
             {/* 07 */}
             <tr>
-              <th>7</th>
+              <th>8</th>
               <td>उधारी/नामे</td>
-              <td>{Number(udhaariTotal ? udhaariTotal : 0)}</td>
+              <td>{Number(udhaariTotal ? udhaariTotal : 0).toFixed(2)}</td>
             </tr>
             {/* 08 */}
             <tr>
-              <th>8</th>
+              <th>9</th>
               <td>कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
-              <td>{Number(commisionTotal ? commisionTotal : 0)}</td>
+              <td>{Number(commisionTotal ? commisionTotal : 0).toFixed(2)}</td>
             </tr>
+
+            <tr >
+              <th>10</th>
+              <td>राशन/सब्जी आदि खरीद</td>
+              <td>{Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0).toFixed(2)}</td>
+            </tr>
+
             {/* 09 */}
             <tr>
-              <th>9</th>
+              <th>11</th>
               <td>पिछला बकाया</td>
-              <td>{pichla}</td>
+              <td>{Number(pichla).toFixed(2)}</td>
             </tr>
             {/* 10 */}
 
             
 
             <tr >
-              <th>10</th>
+              <th>12</th>
               <td>total</td>
               <td >
                 {
-                  Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+                 Number( Number(food ? food : 0 ) + Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
                   Number(beerFirst ? beerFirst: 0) +
                   Number(beerSecond ? beerSecond : 0) +
                   Number(barSuplementsTotal?barSuplementsTotal:0) -
@@ -314,16 +362,22 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
                   intoAccountState -
                   Number(udhaariTotal ? udhaariTotal : 0) -
                   Number(commisionTotal ? commisionTotal : 0) +
-                  pichla}
+                  pichla).toFixed(2)}
               </td>
             </tr>
 
             <tr>
-              <th>11</th>
+              <th>13</th>
               <td>आज भुगतान</td>
               <td>
                 <input
-                  type="number"
+                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                   required
                   min={0}
                   className="commonSmallForm"
@@ -335,10 +389,10 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             </tr>
             {/* 11 */}
             <tr>
-              <th>12</th>
+              <th>14</th>
               <td>शेष रकम</td>
               <td>
-                {Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
+                {Number(Number(food ? food : 0 ) + Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
                   Number(beerFirst ? beerFirst: 0) +
                   Number(beerSecond ? beerSecond : 0) +
                   Number(barSuplementsTotal?barSuplementsTotal:0) -
@@ -348,7 +402,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
                   Number(udhaariTotal ? udhaariTotal : 0) -
                   Number(commisionTotal ? commisionTotal : 0) +
                   pichla -
-                  Number(paidDues)}
+                  Number(paidDues)).toFixed(2)}
               </td>
             </tr>
           </tbody>

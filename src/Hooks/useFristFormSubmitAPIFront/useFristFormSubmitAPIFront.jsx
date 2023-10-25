@@ -1,12 +1,16 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../../Context/DataContext";
+import moment from "moment";
+import swal from "sweetalert";
 
 const useFristFormSubmitAPIFront = () => {
   const token = localStorage.getItem("token");
   const [isLoadingSubmit, setIsLoadingSubmit] = useState(false);
   const firstFront = JSON.parse(localStorage.getItem("firstFront"));
   const mlForm = JSON.parse(localStorage.getItem("mlForm"));
+  const BasedURL = process.env.REACT_APP_API_URL;
+
 
 
   const { salesMan, drDate } = useContext(DataContextApi);
@@ -115,64 +119,143 @@ const useFristFormSubmitAPIFront = () => {
       });
     }
 
-    else{
+    else {
 
-    try {
-      const api1 = await fetch(
-        "https://insorty-api.onrender.com/shop/addFrontPageData",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            cookie_token: token,
-          },
-          body: JSON.stringify({
-            date: drDate,
-            salesmen: salesMan,
-            entries: [
-              ...dataDetails650,
-              ...dataDetails550,
-              ...dataDetails375,
-              ...addSecondFormData,
-            ],
-          }),
-        }
-      );
-
-      
-      Promise.all([api1])
-        .then((responses) => Promise.all(responses.map((res) => res.json())))
+      fetch(`${BasedURL}/shop/getFrontPageData?from=${moment(drDate).format('DD MMMM YYYY')}&to=${moment(drDate).format('DD MMMM YYYY')}&page=0&pagesize=200`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          cookie_token: token,
+        },
+      })
+        .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          if (data[0].success) {
-            Swal.fire({
-              icon: "success",
-              title: "Success",
-              text: "Data Added Successfully",
+          if(data.success===true){
+            
+            swal({
+              title: "Are you sure?",
+              text: `Data already present for same date`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                try {
+                  const api1 =  fetch(
+                    "https://insorty-api.onrender.com/shop/addFrontPageData",
+                    {
+                      method: "POST",
+                      headers: {
+                        "Content-Type": "application/json",
+                        cookie_token: token,
+                      },
+                      body: JSON.stringify({
+                        date: drDate,
+                        salesmen: salesMan,
+                        entries: [
+                          ...dataDetails650,
+                          ...dataDetails550,
+                          ...dataDetails375,
+                          ...addSecondFormData,
+                        ],
+                      }),
+                    }
+                  );
+                
+                  
+                  Promise.all([api1])
+                    .then((responses) => Promise.all(responses.map((res) => res.json())))
+                    .then((data) => {
+                      console.log(data);
+                      if (data[0].success) {
+                        Swal.fire({
+                          icon: "success",
+                          title: "Success",
+                          text: "Data Added Successfully",
+                        });
+                      }
+                    })
+                    .catch((err)=>{
+                      const errorMessage = err.message;
+                  Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: errorMessage,
+                  });
+                    });
+                } catch (error) {
+                  const errorMessage = error.message;
+                  Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: errorMessage,
+                  });
+                } finally {
+                  setIsLoadingSubmit(false);
+                }
+              } else {
+                setIsLoadingSubmit(false);
+                swal("not submitted");
+                
+              }
             });
           }
-        })
-        .catch((err)=>{
-          const errorMessage = err.message;
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: errorMessage,
-      });
+          else{
+            try {
+              const api1 =  fetch(
+                "https://insorty-api.onrender.com/shop/addFrontPageData",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    cookie_token: token,
+                  },
+                  body: JSON.stringify({
+                    date: drDate,
+                    salesmen: salesMan,
+                    entries: [
+                      ...dataDetails650,
+                      ...dataDetails550,
+                      ...dataDetails375,
+                      ...addSecondFormData,
+                    ],
+                  }),
+                }
+              );
+            
+              
+              Promise.all([api1])
+                .then((responses) => Promise.all(responses.map((res) => res.json())))
+                .then((data) => {
+                  console.log(data);
+                  if (data[0].success) {
+                    Swal.fire({
+                      icon: "success",
+                      title: "Success",
+                      text: "Data Added Successfully",
+                    });
+                  }
+                })
+                .catch((err)=>{
+                  const errorMessage = err.message;
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: errorMessage,
+              });
+                });
+            } catch (error) {
+              const errorMessage = error.message;
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: errorMessage,
+              });
+            } finally {
+              setIsLoadingSubmit(false);
+            }
+          }
         });
-    } catch (error) {
-      const errorMessage = error.message;
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: errorMessage,
-      });
-    } finally {
-      setIsLoadingSubmit(false);
-    }
-
-    console.log(addSecondFormData)
-    
     }
   };
 
@@ -183,3 +266,4 @@ const useFristFormSubmitAPIFront = () => {
 };
 
 export default useFristFormSubmitAPIFront;
+

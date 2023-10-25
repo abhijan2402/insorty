@@ -59,7 +59,7 @@ const FinalReport = () => {
             }}
             dateFormat="MMMM yyyy"
             placeholderText={"dd/mm/yyyy"}
-            className="inputBox date"
+            className="inputBox"
           />
         </div>
         <div>

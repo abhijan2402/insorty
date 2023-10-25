@@ -60,6 +60,7 @@ import BeerBackDetailsReport from "../Pages/BearShop/BeerShopDailyReport/BeerSho
 import PreviousLoansList from "../Pages/Users/PreviousLoans/PreviousLoansList/PreviousLoansList";
 import PreviousLoansDetails from "../Pages/Users/PreviousLoans/PreviousLoansDetails/PreviousLoansDetails";
 import PartyOutBill from "../Pages/Users/OutBill/PartyOutBill/PartyOutBill";
+import BranchNParty from "../Pages/Users/BranchNParty/BranchNParty";
 
 const router = createBrowserRouter([
   {
@@ -173,6 +174,10 @@ const router = createBrowserRouter([
       {
         path: "/user/borrow",
         element: <Borrow />,
+      },
+      {
+        path: "/user/branchNparty",
+        element: <BranchNParty/>,
       },
       {
         path: "/user/borrow/from/:partyId",
@@ -315,6 +320,10 @@ const router = createBrowserRouter([
       {
         path: "/user/bearshop/dailyreport",
         element: <BearShopDailyReport />,
+      },
+      {
+        path: "/user/bearshop/branchNparty",
+        element: <BranchNParty />,
       },
 
       {

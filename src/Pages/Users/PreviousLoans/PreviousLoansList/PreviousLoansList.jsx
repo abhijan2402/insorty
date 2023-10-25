@@ -8,6 +8,7 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 import InfiniteScroll from "react-infinite-scroll-component";
 import swal from "sweetalert";
+import { tr } from "date-fns/locale";
 
 const PreviousLoansList = () => {
   const token = localStorage.getItem("token");
@@ -32,6 +33,7 @@ const PreviousLoansList = () => {
       },
     })
       .then((response) => {
+        
         if (response.data.data.length === 0) {
           setHasMore(false);
         }
@@ -123,7 +125,11 @@ const PreviousLoansList = () => {
             <thead>
               <tr>
                 <th> क्र. सं.</th>
-                <th colSpan={2}>नाम</th>
+                <th >नाम</th>
+                <th >नामे</th>
+                <th >जमा</th>
+                <th >चालू शेष नामे</th>
+                <th ></th>
                 {/* <th colSpan={2}>Delete</th> */}
               </tr>
             </thead>
@@ -139,7 +145,7 @@ const PreviousLoansList = () => {
                       <td >
                         { ShopType === "SHOP" && (
                           <Link
-                            className="font-bold text-[1rem]"
+                            
                             to={`/user/previousloan/details/${id}`}
                           >
                             {prevLone?.name}
@@ -148,13 +154,17 @@ const PreviousLoansList = () => {
 
                         { ShopType === "BAR" && (
                           <Link
-                            className="font-bold text-[1rem]"
+                            
                             to={`/user/bearshop/previousloan/details/${prevLone?._id}`}
                           >
                             {prevLone?.name}
                           </Link>
                         )}
                       </td>
+
+                      <td >{Number(prevLone?.totalDebits) || 0}</td>
+                      <td>{Number(prevLone?.totalDeposits) || 0}</td>
+                      <td>{(Number(prevLone?.totalDebits) || 0)- (Number(prevLone?.totalDeposits) || 0)}</td>
 
                       <td>
                         <Link
@@ -182,8 +192,20 @@ const PreviousLoansList = () => {
                         </Link>
                       </td>
                     </tr>
+                    
                   );
+                  
                 })) }
+
+                <tr>
+                  <td colSpan={2} className="font-bold text-center">Total</td>
+                  <td>{ parties &&
+                parties.length!==undefined && parties?.filter((prev)=>prev.isActive===true).reduce((total,curr)=>total = (total + Number(curr.totalDebits)),0)}</td>
+                  <td>{ parties &&
+                parties.length!==undefined && parties?.filter((prev)=>prev.isActive===true).reduce((total,curr)=>total = (total + Number(curr.totalDeposits || 0)),0)}</td>
+                  <td>{ parties &&
+                parties.length!==undefined && parties?.filter((prev)=>prev.isActive===true).reduce((total,curr)=>total = (total + (Number(curr.totalDebits || 0)  - Number(curr.totalDeposits || 0))),0)}</td>
+                </tr>
             </tbody>
           </table>
           </InfiniteScroll>

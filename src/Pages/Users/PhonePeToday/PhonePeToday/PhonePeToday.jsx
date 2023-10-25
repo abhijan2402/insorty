@@ -38,6 +38,8 @@ const PhonePeToday = () => {
     return filterPass;
   });
 
+  console.log(phonePayData)
+
   return (
     <>
       <button className="commonBtn " onClick={handlePrint}>

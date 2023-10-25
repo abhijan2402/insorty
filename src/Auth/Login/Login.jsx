@@ -139,7 +139,7 @@ const Login = () => {
                       <option disabled selected>
                         Select Your Role
                       </option>
-                      <option value="shop">Shop</option>
+                      <option value="shop">Shop/Bar</option>
                       <option value="admin">Admin</option>
                       <option value="subadmin">SubAdmin</option>
                     </select>

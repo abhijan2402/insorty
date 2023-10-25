@@ -27,9 +27,7 @@ const Stock = () => {
                 बीयर
               </Link>
 
-              <Link className="commonBtn" to="/user/bearshop/rmlstock">
-                देशी / RML
-              </Link>
+              
             </>
           )}
 

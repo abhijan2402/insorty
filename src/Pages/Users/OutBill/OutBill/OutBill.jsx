@@ -88,13 +88,13 @@ const OutBill = () => {
               दुकान बिल
             </Link>
             <Link className="commonBtn" to="/user/bearshop/partyOutBill">
-              दुकान बिल
+            पार्टी बिल
             </Link>
             </>
           ) }{ShopType === "SHOP" && (
             <>
             <Link className="commonBtn" to="/user/selfbill">
-              दुकान बिल
+            दुकान बिल
             </Link>
             <Link className="commonBtn" to="/user/partyOutBill">
             पार्टी बिल
@@ -154,7 +154,7 @@ const OutBill = () => {
                 </thead>
                 <tbody>
                   {(filteredData &&
-                    filteredData?.map((outBill, index) => {
+                    filteredData?.sort((a, b) => a?.liquor.brandName?.localeCompare(b?.liquor.brandName))?.map((outBill, index) => {
                       return (
                         <OutBillList
                           key={index}

@@ -5,30 +5,30 @@ function FrontRegularData({ regularData, index,quan1,quan2,quan3,pageId,frontSet
   let count = 0 
 
   const pegCount = (a,b,c)=>{
-    return ((Number(a)*25) + (Number(b)*12.5) + (Number(c)*6))
+    return (((Number(a)*25) || 0) + ((Number(b)*12.5) || 0) + ((Number(c)*6) || 0))
   }
 
   const calPrice30 = (stock1, stock2, stock3, price1, price2, price3) => {
     const total =
-      Number(stock1) * Number(price1) +
-      Number(stock2) * Number(price2) +
-      Number(stock3) * Number(price3);
+      (Number(stock1) || 0) * (Number(price1) || 0) +
+      (Number(stock2) || 0) * (Number(price2) || 0) +
+      (Number(stock3) || 0) * (Number(price3) || 0);
      
     const totalStock = pegCount(stock1, stock2, stock3);
 
-    return Number(total / totalStock).toFixed(2);
+    return (Number(total / totalStock) || 0).toFixed(2);
   };
 
   const calAvg = (a,b,c,d) => {
-    const totalStockRate = (a*b) + (c*d)
-    return (totalStockRate/(a+c)).toFixed(2)
+    const totalStockRate = ((Number(a) || 0)*(Number(b) || 0)) + ((Number(c) || 0)*(Number(d)|| 0))
+    return Number((totalStockRate/((Number(a) || 0)+(Number(c) || 0))) || 0).toFixed(2)
   }
 
   return (
 
     <>
     
-    {pages.map((page, index2) => {
+    {pages.sort((a, b) => b.page.localeCompare(a.page)).map((page, index2) => {
 
 const pg = pageId ? pageId : Array.from(frontSet)[0]
 

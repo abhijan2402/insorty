@@ -87,21 +87,21 @@ const SideNav = () => {
               </NavLink>
             </li>
 
-            <li className="my-4">
+            {/* <li className="my-4">
               <NavLink
                 to="/user/branch"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 ब्रांच
               </NavLink>
-            </li>
+            </li> */}
 
             <li className="my-4">
               <NavLink
-                to="/user/borrow"
+                to="/user/branchNparty"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                पार्टी
+                ब्रांच और पार्टी 
               </NavLink>
             </li>
 
@@ -185,14 +185,14 @@ const SideNav = () => {
                 दुकान पेमेंट
               </NavLink>
             </li>
-            <li className="my-4">
+            {/* <li className="my-4">
               <NavLink
                 to="/user/allItems"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 ब्रांच/पार्टी जोड़ें
               </NavLink>
-            </li>
+            </li> */}
             <li className="my-4">
               <NavLink
                 to="/user/previousloan"

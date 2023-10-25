@@ -200,7 +200,13 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control ">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 min={0}
                 required
               className="smallinput"
@@ -213,7 +219,13 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control ">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 min={0}
                 required
               className="smallinput"
@@ -226,7 +238,13 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control ">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               disabled
                 min={0}
                 required

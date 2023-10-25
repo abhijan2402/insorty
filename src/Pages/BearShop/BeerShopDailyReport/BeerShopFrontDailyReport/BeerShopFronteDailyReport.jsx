@@ -102,7 +102,6 @@ const FronteDailyReport = () => {
         }
       );
       const data = await res.json();
-      console.log(data.data);
       return data.data;
     },
   });
@@ -184,34 +183,29 @@ const FronteDailyReport = () => {
           <>
             <div className="overflow-x-auto">
               <table className="table commonTable">
-                <thead>
-                  <tr>
-                    <th> क्र. सं.</th>
-                    <th></th>
-                    <th>ब्राण्ड</th>
-                    <th>एवरेज रेट</th>
-                    <th>प्रारम्भिक स्टॉक</th>
-                    <th>आमद(खरीद)-दु</th>
-                    <th>खरीद रेट - दुु</th>
-                    <th>/आमद(खरीद)बा</th>
-                    <th>खरीद रेट - बा.</th>
-                    <th>आमद (उधारी)</th>
-                    <th>भेजान</th>
-                    <th>योग - शेष</th>
-                    <th>अन्तिम स्टॉक</th>
-                    <th>बिक्री</th>
-                    <th> रेट</th>
-                    <th>योग</th>
-                    <th>कुल योग</th>
+              <tbody>
+                  <tr className="text-xs	">
+                    <th className="text-xs	" rowSpan={2}> क्र. सं.</th>
+                    <th className="text-xs	" rowSpan={2}></th>
+                    <th className="text-xs	" rowSpan={2}> ब्राण्ड</th>
+                    <th className="text-xs	">एवरेज रेट</th>
+                    <th className="text-xs	">प्रारम्भिक स्टॉक</th>
+                    <th className="text-xs	">आमद(खरीद)-दु</th>
+                    <th className="text-xs	">खरीद रेट - दुु</th>
+                    <th className="text-xs	">आमद(खरीद)बा</th>
+                    <th className="text-xs	">खरीद रेट - बा.</th>
+                    <th className="text-xs	">आमद (उधारी)</th>
+                    <th className="text-xs	">भेजान</th>
+                    <th className="text-xs	">योग - शेष</th>
+                    <th className="text-xs	">अन्तिम स्टॉक</th>
+                    <th className="text-xs	">बिक्री</th>
+                    <th className="text-xs	"> रेट</th>
+                    <th className="text-xs	">योग</th>
+                    <th className="text-xs	" rowSpan={2}>कुल योग</th>
                   </tr>
-                </thead>
-                <tbody>
+                
                   <tr>
-                    <th></th>
-                    <th></th>
-                    <td>
-                      <div className="form-control"></div>
-                    </td>
+                    
                     {/* ======== MRP Input ========= */}
                     <td>
                       <div className="flex justify-around	">
@@ -452,10 +446,10 @@ const FronteDailyReport = () => {
                       </div>
                     </td>
 
-                    <td>
-                      <div className="form-control"></div>
-                    </td>
+                   
                   </tr>
+                  
+             
                   {beerShopFrontFrist.map((beerFront, index) => {
                     return (
                       <AddOneFristForm
@@ -482,11 +476,17 @@ const FronteDailyReport = () => {
                     <td></td>
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around">
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -502,11 +502,17 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (खरीद)-दु. ========= */}
 
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around">
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -519,7 +525,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -532,7 +544,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -545,7 +563,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -563,11 +587,17 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (खरीद)-बा. ========= */}
 
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around">
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -580,7 +610,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -593,7 +629,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -606,7 +648,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -625,11 +673,17 @@ const FronteDailyReport = () => {
                     {/* ======== आमद (उधारी) ========= */}
 
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around">
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -642,7 +696,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -655,7 +715,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -668,7 +734,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -682,11 +754,17 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== भेजान ========= */}
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around">
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -699,7 +777,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -712,7 +796,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -725,7 +815,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-9"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -739,11 +835,17 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== योग/शेष ========= */}
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around">
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-8"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -757,11 +859,17 @@ const FronteDailyReport = () => {
                     </td>
                     {/* ======== अन्तिम स्टॉक ========= */}
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around">
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-8"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -778,7 +886,13 @@ const FronteDailyReport = () => {
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-8"
                             value={beerShopFrontFrist.reduce(
                               (total, curr) =>
@@ -793,11 +907,17 @@ const FronteDailyReport = () => {
 
                     <td></td>
                     <td>
-                      <div className="flex ">
+                      <div className="flex justify-around">
                         <div className="form-control">
                           <input
                             disabled
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-9"
                             name="averageRate"
                             value={beerShopFrontFrist.reduce(
@@ -813,7 +933,13 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           disabled
                           className="semiSmallInput"
                           name="grandTotal"
@@ -836,43 +962,29 @@ const FronteDailyReport = () => {
         <div>
           <div className="overflow-x-auto my-6">
             <table className="table commonTable">
-              <thead>
-                <tr>
-                  <th>क्र. सं.</th>
-                  <th></th>
-                  <th>ब्राण्ड</th>
-                  <th>ml</th>
-                  <th>एवरेज रेट </th>
-                  <th>प्रारम्भिक स्टॉक </th>
-                  <th>आमद (खरीद)-बार </th>
-                  <th>खरीद रेट-बार </th>
-                  <th>आमद (खरीद)-बाहर से </th>
-                  <th>खरीद रेट बाहर </th>
-                  <th>आमद (उधारी) </th>
-                  <th > भेजान </th>
-                  <th> योग/शेष</th>
-                  <th> अन्तिम स्टॉक</th>
-                  <th> बिक्री</th>
-                  <th> रेट</th>
-                  <th>योग</th>
-                </tr>
-              </thead>
               <tbody>
                 <tr>
-                  <th>
-                    <div className="form-control"></div>
-                  </th>
-                  <th>
-                    <div className="form-control"></div>
-                  </th>
-
-                  <td>
-                    <div className="form-control"></div>
-                  </td>
-                  <td>
-                    <div className="form-control"></div>
-                  </td>
-
+                  <th className="text-xs	" rowSpan={2}>क्र. सं.</th>
+                  <th className="text-xs	" rowSpan={2}></th>
+                  <th rowSpan={2} className="text-xs	">ब्राण्ड</th>
+                  <th rowSpan={2} className="text-xs	">ML</th>
+                  <th className="text-xs	" >एवरेज रेट </th>
+                  <th className="text-xs	" >प्रारम्भिक स्टॉक </th>
+                  <th className="text-xs	" >आमद (खरीद)-बार </th>
+                  <th className="text-xs	" >खरीद रेट-बार </th>
+                  <th className="text-xs	" >आमद (खरीद)-बाहर से </th>
+                  <th className="text-xs	" >खरीद रेट बाहर </th>
+                  <th className="text-xs	" >आमद (उधारी) </th>
+                  <th  className="text-xs	" > भेजान </th>
+                  <th className="text-xs	" > योग/शेष</th>
+                  <th className="text-xs	" > अन्तिम स्टॉक</th>
+                  <th className="text-xs	" > बिक्री</th>
+                  <th className="text-xs	" > रेट</th>
+                  <th className="text-xs	" rowSpan={2}>योग</th>
+                </tr>
+              
+                
+                       <tr>     
                   <td>
                     <div className="flex ">
                       <div className="form-control">
@@ -1034,10 +1146,10 @@ const FronteDailyReport = () => {
                       </div>
                     </div>
                   </td>
-                  <td>
-                    <div className="form-control"></div>
-                  </td>
+                  
                 </tr>
+
+               
                 {beerShopMid.map((item, index) => {
                   return (
                     <>
@@ -1139,10 +1251,16 @@ const FronteDailyReport = () => {
                         </td>
                         {/* ======== MRP Input ========= */}
                         <td>
-                          <div className="flex ">
+                          <div className="flex justify-between">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1154,7 +1272,13 @@ const FronteDailyReport = () => {
                             </div>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1171,7 +1295,13 @@ const FronteDailyReport = () => {
                           <div className="flex ">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput wd"
                                 required
                                 min={0}
@@ -1183,7 +1313,13 @@ const FronteDailyReport = () => {
                             </div>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput  wd-8"
                                 required
                                 min={0}
@@ -1202,7 +1338,13 @@ const FronteDailyReport = () => {
                           <div className="flex ">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1213,7 +1355,13 @@ const FronteDailyReport = () => {
                             </div>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput  wd-8"
                                 required
                                 min={0}
@@ -1227,10 +1375,16 @@ const FronteDailyReport = () => {
                         </td>
 
                         <td>
-                          <div className="flex ">
+                          <div className="flex justify-between">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1241,7 +1395,13 @@ const FronteDailyReport = () => {
                             </div>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1260,7 +1420,13 @@ const FronteDailyReport = () => {
                           <div className="flex ">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1271,7 +1437,13 @@ const FronteDailyReport = () => {
                             </div>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput  wd-8"
                                 required
                                 min={0}
@@ -1286,10 +1458,16 @@ const FronteDailyReport = () => {
 
                         {/*================ खरीद रेट - बा. ==================  */}
                         <td>
-                          <div className="flex ">
+                          <div className="flex justify-between">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1300,7 +1478,13 @@ const FronteDailyReport = () => {
                             </div>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1317,7 +1501,13 @@ const FronteDailyReport = () => {
                           <div className="flex ">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1328,7 +1518,13 @@ const FronteDailyReport = () => {
                             </div>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput  wd-8"
                                 required
                                 min={0}
@@ -1346,7 +1542,13 @@ const FronteDailyReport = () => {
                           <div className="flex ">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1357,7 +1559,13 @@ const FronteDailyReport = () => {
                             </div>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput  wd-8"
                                 required
                                 min={0}
@@ -1374,7 +1582,13 @@ const FronteDailyReport = () => {
                           <div className="flex ">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput  wd-8"
                                 required
                                 min={0}
@@ -1391,7 +1605,13 @@ const FronteDailyReport = () => {
                           <div className="flex ">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput  wd-8"
                                 required
                                 min={0}
@@ -1406,7 +1626,13 @@ const FronteDailyReport = () => {
                           <div className="flex ">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput  wd-8"
                                 required
                                 min={0}
@@ -1422,7 +1648,13 @@ const FronteDailyReport = () => {
                           <div className="flex ">
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="smallinput"
                                 required
                                 min={0}
@@ -1438,7 +1670,13 @@ const FronteDailyReport = () => {
                         <td>
                           <div className="form-control">
                             <input
-                              type="number"
+                              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                               className="semiSmallInput  wd-9"
                               required
                               min={0}
@@ -1472,7 +1710,13 @@ const FronteDailyReport = () => {
                     <div className="flex ">
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           name="openingStockOtherMl"
                           value={beerShopMid.reduce(
@@ -1480,20 +1724,26 @@ const FronteDailyReport = () => {
                             (total =
                               total + Number(curr.openingStockOtherMl)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                         />
                       </div>
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput  wd-8"
                           name="openingStock30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
                               (total = total + Number(curr.openingStock30)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                         />
                       </div>
@@ -1506,7 +1756,13 @@ const FronteDailyReport = () => {
                     <div className="flex ">
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           name="inflowPurchaseOtherMl"
                           value={beerShopMid.reduce(
@@ -1520,14 +1776,20 @@ const FronteDailyReport = () => {
                       </div>
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput  wd-8"
                           name="inflowPurchase30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
                               (total = total + Number(curr.inflowPurchase30)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                         />
                       </div>
@@ -1542,7 +1804,13 @@ const FronteDailyReport = () => {
                     <div className="flex ">
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           name="inflowPurchaseFromOutsideOtherMl
                           "
@@ -1558,7 +1826,13 @@ const FronteDailyReport = () => {
                       </div>
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput  wd-8"
                           name="inflowPurchaseFromOutside30"
                           value={beerShopMid.reduce(
@@ -1567,7 +1841,7 @@ const FronteDailyReport = () => {
                               total +
                               Number(curr.inflowPurchaseFromOutside30)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                         />
                       </div>
@@ -1581,7 +1855,13 @@ const FronteDailyReport = () => {
                     <div className="flex ">
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           name="inflowCreditOtherMl"
                           value={beerShopMid.reduce(
@@ -1595,14 +1875,20 @@ const FronteDailyReport = () => {
                       </div>
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput  wd-8"
                           name="inflowCredit30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
                               (total = total + Number(curr.inflowCredit30)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                         />
                       </div>
@@ -1613,7 +1899,13 @@ const FronteDailyReport = () => {
                     <div className="flex ">
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           name="sending30"
                           value={beerShopMid.reduce(
@@ -1626,14 +1918,20 @@ const FronteDailyReport = () => {
                       </div>
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput  wd-8"
                           name="sending30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
                               (total = total + Number(curr.send30)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                         />
                       </div>
@@ -1644,14 +1942,20 @@ const FronteDailyReport = () => {
                     <div className="flex ">
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput  wd-8"
                           name="sumRemainder30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
                               (total = total + Number(curr.sumRemaining30)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                         />
                       </div>
@@ -1662,14 +1966,20 @@ const FronteDailyReport = () => {
                     <div className="flex ">
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput  wd-8"
                           name="closingStock30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
                               (total = total + Number(curr.closingStock30)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                         />
                       </div>
@@ -1679,14 +1989,20 @@ const FronteDailyReport = () => {
                     <div className="flex ">
                       <div className="form-control">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput  wd-8"
                           name="sale30"
                           value={beerShopMid.reduce(
                             (total, curr) =>
                               (total = total + Number(curr.sale30)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                         />
                       </div>
@@ -1697,13 +2013,19 @@ const FronteDailyReport = () => {
                   <td>
                     <div className="form-control">
                       <input
-                        type="number"
+                        type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                         className="semiSmallInput  wd-9"
                         name="total"
                         value={beerShopMid.reduce(
                           (total, curr) => (total = total + Number(curr.total)),
                           0
-                        )}
+                        ).toFixed(2)}
                         disabled
                       />
                     </div>
@@ -1713,7 +2035,7 @@ const FronteDailyReport = () => {
             </table>
             <div className={hasMoreSmall===true ? '' : 'displayHidden'}>Loading data...</div>
           </div>
-          <div>English Total:- {Number(localStorage.getItem("pegFormTotal")) + Number(localStorage.getItem('smallPegFormTotal'))}</div>
+          <div>English Total:- {Number(Number(localStorage.getItem("pegFormTotal")) + Number(localStorage.getItem('smallPegFormTotal'))).toFixed(2)}</div>
         </div>
 
         <div>
@@ -1729,36 +2051,31 @@ const FronteDailyReport = () => {
                     </h1>
 
                     <table className="table commonTable">
-                      <thead>
+                    <tbody>
                         <tr>
-                          <th> क्र. सं.</th>
-                          <th></th>
-                          <th>ब्राण्ड</th>
-                          <th>औसत दर</th>
-                          <th>प्रारम्भिक स्टॉक</th>
-                          <th>आमद (खरीद)-दु.</th>
-                          <th>खरीद रेट - दु</th>
-                          <th>आमद (खरीद)-बा.</th>
-                          <th>खरीद रेट - बा.</th>
-                          <th>आमद (उधारी)</th>
-                          <th>भेजान</th>
-                          <th>योग/शेष</th>
-                          <th>अन्तिम स्टॉक</th>
-                          <th>बिक्री</th>
-                          <th>रेट</th>
-                          <th>योग</th>
-                          <th>कुल योग</th>
+                          <th className="text-xs	" rowSpan={2}> क्र. सं.</th>
+                          <th className="text-xs	" rowSpan={2}></th>
+                          <th className="text-xs	" rowSpan={2}>ब्राण्ड</th>
+                          <th className="text-xs	">औसत दर</th>
+                          <th className="text-xs	">प्रारम्भिक स्टॉक</th>
+                          <th className="text-xs	">आमद (खरीद)-दु.</th>
+                          <th className="text-xs	">खरीद रेट - दु</th>
+                          <th className="text-xs	">आमद (खरीद)-बा.</th>
+                          <th className="text-xs	">खरीद रेट - बा.</th>
+                          <th className="text-xs	">आमद (उधारी)</th>
+                          <th className="text-xs	">भेजान</th>
+                          <th className="text-xs	">योग/शेष</th>
+                          <th className="text-xs	">अन्तिम स्टॉक</th>
+                          <th className="text-xs	">बिक्री</th>
+                          <th className="text-xs	">रेट</th>
+                          <th className="text-xs	">योग</th>
+                          <th className="text-xs	" rowSpan={2}>कुल योग</th>
                         </tr>
-                      </thead>
+                      
 
-                      <tbody>
+                     
                         <tr>
-                          <th></th>
-                          <td>
-                            <div className="form-control"></div>
-                          </td>
-                          {/* ======== MRP Input ========= */}
-                          <td></td>
+                          
                           {/* ======== प्रारम्भिक स्टॉक ========= */}
                           <td>
                             <div className="flex justify-evenly">
@@ -2049,9 +2366,7 @@ const FronteDailyReport = () => {
                             </div>
                           </td>
                           {/* ============= कुल योग ================ */}
-                          <td>
-                            <div className="form-control"></div>
-                          </td>
+                          
                         </tr>
 
                         {fristFormState.map((item, index) => {
@@ -2076,8 +2391,8 @@ const FronteDailyReport = () => {
                           <th>
                             <button
                               className="btn bg-[#AA237A] btn-sm"
-                              onClick={() => {
-                                addOneInFristFormHandler()
+                              onClick={(e) => {
+                                addOneInFristFormHandler(e)
                               }}
                             >
                               ADD
@@ -2112,7 +2427,13 @@ const FronteDailyReport = () => {
                                   }
                                   className="smallinput"
                                   disabled
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   name="startingStock"
                                 />
                               </div>
@@ -2129,7 +2450,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   disabled
                                   name="startingStock"
@@ -2148,7 +2475,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   disabled
                                   name="startingStock"
@@ -2175,7 +2508,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   disabled
                                   className="smallinput"
                                   name="incomingPurchase"
@@ -2196,7 +2535,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   disabled
                                   name="incomingPurchase"
@@ -2217,7 +2562,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   disabled
                                   name="incomingPurchase"
@@ -2252,7 +2603,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="incomePurchase"
                                   disabled
@@ -2271,7 +2628,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   disabled
                                   name="incomePurchase"
@@ -2290,7 +2653,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="incomePurchase"
                                   disabled
@@ -2326,7 +2695,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="inflowCredit"
                                   disabled
@@ -2345,7 +2720,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="inflowCredit"
                                   disabled
@@ -2364,7 +2745,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="inflowCredit"
                                   disabled
@@ -2386,7 +2773,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="sending"
                                   disabled
@@ -2404,7 +2797,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="sending"
                                   disabled
@@ -2422,7 +2821,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   disabled
                                   className="smallinput"
                                   name="sending"
@@ -2444,7 +2849,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="sumRemainder"
                                   disabled
@@ -2462,7 +2873,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="sumRemainder"
                                   disabled
@@ -2480,7 +2897,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="sumRemainder"
                                   disabled
@@ -2503,7 +2926,13 @@ const FronteDailyReport = () => {
                                       Number(currentItem.closingStock650)),
                                     0
                                   )}
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="closingStock"
                                   disabled
@@ -2522,7 +2951,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="closingStock"
                                   disabled
@@ -2541,7 +2976,13 @@ const FronteDailyReport = () => {
                                       Number(currentItem.closingStock330)),
                                     0
                                   )}
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="closingStock"
                                   disabled
@@ -2562,7 +3003,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="sales"
                                   disabled
@@ -2579,7 +3026,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="sales"
                                   disabled
@@ -2596,7 +3049,13 @@ const FronteDailyReport = () => {
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput"
                                   name="sales"
                                   disabled
@@ -2619,7 +3078,13 @@ const FronteDailyReport = () => {
                             <div className="flex ">
                               <div className="form-control">
                                 <input
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput wd-6"
                                   name="total650"
                                   disabled
@@ -2630,7 +3095,7 @@ const FronteDailyReport = () => {
                                       Number(currentItem.sales650) *
                                       Number(currentItem.mainRate650)),
                                     0
-                                  )}
+                                  ).toFixed(2)}
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
@@ -2638,7 +3103,13 @@ const FronteDailyReport = () => {
                               </div>
                               <div className="form-control">
                                 <input
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput wd-6"
                                   name="total330"
                                   disabled
@@ -2649,7 +3120,7 @@ const FronteDailyReport = () => {
                                       Number(currentItem.sales550) *
                                       Number(currentItem.mainRate550)),
                                     0
-                                  )}
+                                  ).toFixed(2)}
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
@@ -2657,7 +3128,13 @@ const FronteDailyReport = () => {
                               </div>
                               <div className="form-control">
                                 <input
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="smallinput wd-6"
                                   name="total330"
                                   disabled
@@ -2668,7 +3145,7 @@ const FronteDailyReport = () => {
                                       Number(currentItem.sales330) *
                                       Number(currentItem.mainRate330)),
                                     0
-                                  )}
+                                  ).toFixed(2)}
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
@@ -2680,7 +3157,13 @@ const FronteDailyReport = () => {
                           <td>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 disabled
                                 className="smallinput wd-7"
                                 name="grandTotal"
@@ -2695,7 +3178,7 @@ const FronteDailyReport = () => {
                                     Number(currentItem.sales330) *
                                     Number(currentItem.mainRate330)),
                                   0
-                                )}
+                                ).toFixed(2)}
                                 onChange={(event) =>
                                   onChangeFristBackFormHandler(event)
                                 }
@@ -2786,7 +3269,13 @@ const FronteDailyReport = () => {
                                 <div className="flex ">
                                   <div className="form-control">
                                     <input
-                                      type="number"
+                                      type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                       required
                                       min={0}
                                       className="dailyReportInput"
@@ -2822,7 +3311,13 @@ const FronteDailyReport = () => {
                                 <div className="flex ">
                                   <div className="form-control">
                                     <input
-                                      type="number"
+                                      type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                       className="dailyReportInput"
                                       name="infllow"
                                       required
@@ -2840,7 +3335,13 @@ const FronteDailyReport = () => {
                                 <div className="flex ">
                                   <div className="form-control">
                                     <input
-                                      type="number"
+                                      type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                       className="dailyReportInput"
                                       name="sum"
                                       required
@@ -2859,7 +3360,13 @@ const FronteDailyReport = () => {
                                 <div className="flex ">
                                   <div className="form-control">
                                     <input
-                                      type="number"
+                                      type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                       className="dailyReportInput"
                                       name="closingStock"
                                       required
@@ -2877,7 +3384,13 @@ const FronteDailyReport = () => {
                                 <div className="flex ">
                                   <div className="form-control">
                                     <input
-                                      type="number"
+                                      type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                       className="dailyReportInput"
                                       name="sales"
                                       required
@@ -2895,7 +3408,13 @@ const FronteDailyReport = () => {
                                 <div className="flex ">
                                   <div className="form-control">
                                     <input
-                                      type="number"
+                                      type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                       className="dailyReportInput"
                                       name="rates"
                                       required
@@ -2913,12 +3432,18 @@ const FronteDailyReport = () => {
                                 <div className="flex ">
                                   <div className="form-control">
                                     <input
-                                      type="number"
+                                      type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                       className="dailyReportInput"
                                       name="sumreminder"
                                       required
                                       min={0}
-                                      value={beerBarthird.sumreminder}
+                                      value={(beerBarthird.sumreminder).toFixed(2)}
                                       disabled
                                       onChange={(event) =>
                                         thirdFormOnChange(event, index)
@@ -2935,14 +3460,19 @@ const FronteDailyReport = () => {
                           <th>
                             <button
                               className="btn bg-[#AA237A] btn-sm"
-                              onClick={() => {
-                                thirdFormAddOne();
+                              onClick={(e) => {
+                                thirdFormAddOne(e);
                               }}
                             >
                               ADD
                             </button>
                           </th>
                           <td></td>
+
+                          
+                          
+
+                         <td></td>
 
                           <td>
                             <div className="flex ">
@@ -2962,13 +3492,18 @@ const FronteDailyReport = () => {
                               </div>
                             </div>
                           </td>
-                          
 
                           <td>
                             <div className="flex ">
                               <div className="form-control">
                                 <input
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="dailyReportInput"
                                   value={beerShopFrontThird.reduce(
                                     (total, curr) =>
@@ -2986,7 +3521,13 @@ const FronteDailyReport = () => {
                             <div className="flex ">
                               <div className="form-control">
                                 <input
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="dailyReportInput"
                                   value={beerShopFrontThird.reduce(
                                     (total, curr) =>
@@ -3004,7 +3545,13 @@ const FronteDailyReport = () => {
                             <div className="flex ">
                               <div className="form-control">
                                 <input
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="dailyReportInput"
                                   name="closingStock"
                                   value={beerShopFrontThird.reduce(
@@ -3023,7 +3570,13 @@ const FronteDailyReport = () => {
                             <div className="flex ">
                               <div className="form-control">
                                 <input
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="dailyReportInput"
                                   value={beerShopFrontThird.reduce(
                                     (total, curr) =>
@@ -3042,14 +3595,20 @@ const FronteDailyReport = () => {
                             <div className="flex ">
                               <div className="form-control">
                                 <input
-                                  type="number"
+                                  type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                   className="dailyReportInput"
                                   value={beerShopFrontThird.reduce(
                                     (total, curr) =>
                                     (total =
                                       total + Number(curr.sumreminder)),
                                     0
-                                  )}
+                                  ).toFixed(2)}
                                   name="sumreminder"
                                   disabled
                                 />
@@ -3113,7 +3672,7 @@ const FronteDailyReport = () => {
                     <th className="sticky">
                       <button
                         className="btn bg-[#AA237A] btn-sm"
-                        onClick={() => addOneSecondFormHandler()}
+                        onClick={(e) => addOneSecondFormHandler(e)}
                       >
                         ADD
                       </button>
@@ -3128,7 +3687,13 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control items-center	">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           disabled
                           name="startingStock"
@@ -3145,7 +3710,13 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control items-center	">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           disabled
                           name="incomingPurchase"
@@ -3167,7 +3738,13 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control items-center	">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           name="incomePurchase"
                           disabled
@@ -3187,7 +3764,13 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control items-center	">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           disabled
                           name="inflowCredit"
@@ -3205,7 +3788,13 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control items-center	">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           disabled
                           name="sending"
@@ -3222,7 +3811,13 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control items-center	">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           name="sumRemainder"
                           value={addOneSecondFormState.reduce(
@@ -3240,7 +3835,13 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control items-center	">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           disabled
                           name="closingStock"
@@ -3258,7 +3859,13 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control items-center	">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput"
                           disabled
                           name="sales"
@@ -3277,14 +3884,20 @@ const FronteDailyReport = () => {
                     <td>
                       <div className="form-control items-center	">
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput wd-7"
                           name="total"
                           value={addOneSecondFormState.reduce(
                             (total, currentItem) =>
                               (total = total + Number(currentItem.total)),
                             0
-                          )}
+                          ).toFixed(2)}
                           onChange={(e) => handelSeconFormOnChange(e)}
                           disabled
                         />
@@ -3297,7 +3910,7 @@ const FronteDailyReport = () => {
               <div className={hasMoreBeerSmall===true ? '' : 'displayHidden'}>Loading data...</div>
             </div>
             <div style={{ height: '90px', marginTop: "50px" }}>
-              <p>Beer Total:- {Number(localStorage.getItem('totalFirstBack')) + Number(localStorage.getItem('beerFormTotal'))}</p>
+              <p>Beer Total:- {Number(Number(localStorage.getItem('totalFirstBack') )|| 0 + Number(localStorage.getItem('beerFormTotal') || 0)) || 0}</p>
             </div>
           </div>
         </>
@@ -3308,7 +3921,7 @@ const FronteDailyReport = () => {
           <>
             <button
               type="button"
-              className=" inline-flex items-center px-4 py-2 text-sm font-semibold leading-6 text-[#AA237A] transition duration-150 ease-in-out border-2 border-[#AA237A] rounded-md shadow cursor-not-allowed"
+              className=" inline-flex items-center px-4 py-2 text-xs font-semibold leading-6 text-[#AA237A] transition duration-150 ease-in-out border-2 border-[#AA237A] rounded-md shadow cursor-not-allowed"
               disabled=""
             >
               <svg
@@ -3338,7 +3951,7 @@ const FronteDailyReport = () => {
           <>
             <input
               type="submit"
-              className="dailyReportBtn"
+              className="btn commonBtn"
               
             />
           </>

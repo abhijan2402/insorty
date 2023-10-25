@@ -16,8 +16,6 @@ function useFrontDetails(date) {
         }
       );
       const data = await res.json();
-      console.log(data.data,"regular")
-      console.log(moment(date).format('DD MMMM YYYY'))
       return data.data;
     },
   });
@@ -33,7 +31,6 @@ function useFrontDetails(date) {
         }
       );
       const data = await res.json();
-      console.log(data.data,"except")
 
       return data.data;
     },
@@ -84,7 +81,6 @@ function useFrontDetails(date) {
         }
       );
       const data = await res.json();
-      console.log(data.data,"front")
 
       return data.data;
     },

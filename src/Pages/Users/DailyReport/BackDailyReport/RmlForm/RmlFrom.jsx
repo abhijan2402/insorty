@@ -162,7 +162,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput"
@@ -177,7 +183,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
                 disabled
@@ -193,7 +205,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput wd-5"
@@ -208,7 +226,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput"
@@ -224,7 +248,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput wd-5"
@@ -239,7 +269,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput"
@@ -253,7 +289,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput wd-5"
@@ -267,7 +309,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput wd-5"
@@ -281,7 +329,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput wd-5"
@@ -296,7 +350,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput wd-5"
@@ -310,7 +370,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput wd-5"
@@ -325,7 +391,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput wd-8"
@@ -341,7 +413,13 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 required
                 min={0}
               className="smallinput wd-11"

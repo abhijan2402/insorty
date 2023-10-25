@@ -3,9 +3,13 @@ import BorrowForm from "../BorrowForm/BorrowForm";
 import { useQuery } from "@tanstack/react-query";
 import { Loader } from "react-bootstrap-typeahead";
 import { useReactToPrint } from "react-to-print";
+import { Link } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 const Borrow = () => {
   const token = localStorage.getItem("token");
+  
+  const shopType = jwtDecode(token).shopType
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
@@ -42,9 +46,26 @@ const Borrow = () => {
       </button>
       <div className="title flex justify-center items-center">
         
+        <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branchname">
+            ब्रांच जोड़ें
+          </Link>
+
+          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/partyname">पार्टी जोड़ें
+          </Link>
+          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branch">ब्रांच
+          </Link>
+         
+
+          
+          <Link className = {shopType==="BAR" ? "commonBtn" : "displayHidden"} to="/user/bearshop/partyname">
+            पार्टी जोड़ें
+          </Link>
+          
+        
       </div>
       
         <h1 className="titleStyle text-center">पार्टी सूची</h1>
+
        
         <div className="divider my-2"></div>
 

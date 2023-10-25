@@ -29,6 +29,7 @@ const FronteDailyReport = () => {
   let count = 0
 
   const calStock30 = (stock750, stock375, stock180) => {
+    
     const stock =
       25 * Number(stock750) + 12.5 * Number(stock375) + 6 * Number(stock180);
     return stock;
@@ -70,8 +71,8 @@ if(isLoading2 || isLoading || FrontisLoading2 || ExceptionalLoading ||
 let frontSet = new Set([]);
 
 FrontPageRegularData?.map((item) => {
-    item?.pages?.map((pg) => {
-      frontSet?.add(pg?.page);
+  item?.pages?.sort((a, b) => b?.page?.localeCompare(a?.page)).map((pg) => {
+    frontSet?.add(pg?.page);
       return 0;
     });
     return 0;
@@ -93,7 +94,7 @@ FrontPageRegularData?.map((item) => {
     })
       ?.then((res) => res?.json())
       ?.then((data) => {
-        console?.log(data)
+        
         if (data?.success) {
           Swal?.fire("Deleted!", "Your file has been deleted?.", "success");
         } else {
@@ -106,9 +107,10 @@ FrontPageRegularData?.map((item) => {
 
  
 
-  FrontPage && FrontPage?.length && FrontPage?.map((page,index)=>{
+  FrontPage && FrontPage?.length && FrontPage?.sort((a, b) => b?._id.localeCompare(a?._id)).map((page,index)=>{
+    console.log(page)
     if (index === pgNo) {
-      page?.wineReport?.entries?.map((entry)=>{
+                page?.wineReport?.entries?.map((entry)=>{
         if (entry?.liquor?.quantityInML===750) {
           quan750?.push(entry)
         }
@@ -236,6 +238,74 @@ FrontPageRegularData?.map((item) => {
       return sales;
     });
 
+   const yog = calStock30(quan750.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.purchaseShop),
+    0
+  ),
+  quan375.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.purchaseShop),
+    0
+  ),
+  quan180.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.purchaseShop),
+    0
+  )
+  ) +
+  calStock30(quan750.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.purchaseOutSide),
+    0
+  ),
+  quan375.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.purchaseOutSide),
+    0
+  ),
+  quan180.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.purchaseOutSide),
+    0
+  )
+  ) +
+  calStock30(quan750.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.credits),
+    0
+  ),
+  quan375.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.credits),
+    0
+  ),
+  quan180.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.credits),
+    0
+  )
+  ) -
+  calStock30(quan750.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.send),
+    0
+  ),
+  quan375.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.send),
+    0
+  ),
+  quan180.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.send),
+    0
+  )
+  ) + quan750.reduce(
+    (total, regularData) =>
+      total + Number(regularData?.openingStock),
+    0
+  )
   
 
 
@@ -254,7 +324,7 @@ FrontPageRegularData?.map((item) => {
 
         </button>
         </div>
-      <div className="flex justify-center items-center flex-col">
+      <div className="flex justify-center items-center flex-row">
         <div className="flex gap-2 items-center">
           <DatePicker
             selected={selectedDate}
@@ -291,7 +361,7 @@ FrontPageRegularData?.map((item) => {
                 dangerMode: true,
               })?.then((willDelete) => {
                 if (willDelete) {
-                  deletePage( FrontPage && FrontPage?.length && FrontPage?.find((page,index)=>index === pgNo)?._id);
+                  deletePage( FrontPage && FrontPage?.length && FrontPage?.sort((a, b) => b.date?.localeCompare(a.date)).find((page,index)=>index === pgNo)?._id);
                   
                 } 
               });
@@ -312,7 +382,7 @@ FrontPageRegularData?.map((item) => {
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
                   का नाम :-{" "}
                   {
-                    FrontPage && FrontPage?.length && FrontPage?.map((page,index)=>{
+                    FrontPage && FrontPage?.length && FrontPage?.sort((a, b) => b?._id?.localeCompare(a?._id))?.map((page,index)=>{
                       if (index === pgNo) {
                         return(
                        page?.salesmen
@@ -478,7 +548,8 @@ FrontPageRegularData?.map((item) => {
                 </thead>
                 <tbody>
                   
-                  { FrontPageRegularData?.map((regularData, index) => {
+                  {FrontPage && FrontPageRegularData &&  FrontPageRegularData.sort((a, b) => b.createdAt?.localeCompare(a.createdAt))?.map((regularData, index) => {
+                    
                 return (
                   <FrontRegularData
                     key={index}
@@ -625,59 +696,37 @@ FrontPageRegularData?.map((item) => {
                       total + Number(regularData?.send),
                     0
                   ))}</td>
-                <td>{calStock30(quan750?.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData?.remaining),
-                    0
-                  ),quan375?.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData?.remaining),
-                    0
-                  ),quan180?.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData?.remaining),
-                    0
-                  ))}</td>
+                <td>{yog}</td>
+
+                   
                 <td>{quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.closingStock),
                     0
                   )}</td>
 
-                  
-                <td>{calStock30(quan750?.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData?.remaining),
-                    0
-                  ),quan375?.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData?.remaining),
-                    0
-                  ),quan180?.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData?.remaining),
-                    0
-                  ))-quan750?.reduce(
+                <td>{yog-quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.closingStock),
                     0
                   )}</td>
-                <td></td>
+
+                  <td></td>
 
 
                 <td>{quan750?.reduce(
                     (total, regularData) =>
-                      total + (Number(regularData?.remaining)*25)*Number(regularData?.sellingRate?.$numberDecimal),
+                      total + (Number(regularData?.remaining)*25 - Number(regularData?.openingStock)*25  + Number(regularData?.openingStock))*Number(regularData?.sellingRate?.$numberDecimal),
                     0
                   ) + 
                   quan375?.reduce(
                     (total, regularData) =>
-                      total + (Number(regularData?.remaining)*12.5)*Number(regularData?.sellingRate?.$numberDecimal),
+                      total + (Number(regularData?.remaining)*12.5 - Number(regularData?.openingStock)*12.5)*Number(regularData?.sellingRate?.$numberDecimal),
                     0
                   ) +
                   quan180?.reduce(
                     (total, regularData) =>
-                      total + (Number(regularData?.remaining)*6)*Number(regularData?.sellingRate?.$numberDecimal),
+                      total + (Number(regularData?.remaining)*6 - Number(regularData?.openingStock)*6)*Number(regularData?.sellingRate?.$numberDecimal),
                     0
                   ) - quan750?.reduce(
                     (total, regularData) =>
@@ -802,7 +851,7 @@ FrontPageRegularData?.map((item) => {
 
                 {FrontPageExceptionalData &&
                 FrontPageExceptionalData?.length > 0 &&
-                FrontPageExceptionalData?.filter((size)=>size?.quantityInML !== 30)?.map((exceptionalData, index) => {
+                FrontPageExceptionalData?.filter((size)=>size?.quantityInML !== 30)?.sort((a, b) => b?.page?.localeCompare(a?.page)).map((exceptionalData, index) => {
                   const pg = pageId ? pageId : Array?.from(frontSet)[0];
                   if (exceptionalData?.page === pg) {
                     count++
@@ -913,17 +962,17 @@ FrontPageRegularData?.map((item) => {
           </div>
           <div>English Total:- {quan750?.reduce(
                     (total, regularData) =>
-                      total + (Number(regularData?.remaining)*25)*Number(regularData?.sellingRate?.$numberDecimal),
+                      total + (Number(regularData?.remaining)*25 - Number(regularData?.openingStock)*25  + Number(regularData?.openingStock))*Number(regularData?.sellingRate?.$numberDecimal),
                     0
                   ) + 
                   quan375?.reduce(
                     (total, regularData) =>
-                      total + (Number(regularData?.remaining)*12.5)*Number(regularData?.sellingRate?.$numberDecimal),
+                      total + (Number(regularData?.remaining)*12.5 - Number(regularData?.openingStock)*12.5)*Number(regularData?.sellingRate?.$numberDecimal),
                     0
                   ) +
                   quan180?.reduce(
                     (total, regularData) =>
-                      total + (Number(regularData?.remaining)*6)*Number(regularData?.sellingRate?.$numberDecimal),
+                      total + (Number(regularData?.remaining)*6 - Number(regularData?.openingStock)*6)*Number(regularData?.sellingRate?.$numberDecimal),
                     0
                   ) - quan750?.reduce(
                     (total, regularData) =>
@@ -948,14 +997,17 @@ FrontPageRegularData?.map((item) => {
               <div className="mt-6 ">
                 <div className="overflow-x-auto flex ">
                   <div className="py-6">
-                    <h1 className="my-4">
+                    {/* <h1 className="my-4">
                       <span className="font-bold titleText">
                       बीयर रिपोर्ट
                       </span>
-                    </h1>
+                    </h1> */}
 
                     <table className="table commonTable">
                       <thead>
+                        <tr>
+                          <td colSpan={22}> बीयर रिपोर्ट</td>
+                        </tr>
                       <tr>
                           <th rowSpan={2}> क्र?. सं?.</th>
                           <th rowSpan={2}> ब्राण्ड</th>
@@ -1384,13 +1436,12 @@ FrontPageRegularData?.map((item) => {
                   </div>
 
                   <div className="py-6">
-                    <h1 className="my-4">
-                      <span className="font-bold titleText">
-                        पानी, नमकीन, सिगरेट, पुड़िया आदि
-                      </span>
-                    </h1>
+                    
                     <table className="table commonTable">
                       <thead>
+                        <tr>
+                          <td colSpan={22}>पानी, नमकीन, सिगरेट, पुड़िया आदि</td>
+                        </tr>
                       <tr>
                           <th colSpan={1}> क्र?. सं?.</th>
                           <th colSpan={1}>विवरण</th>
@@ -1410,7 +1461,7 @@ FrontPageRegularData?.map((item) => {
                        
 
                       {FrontPage?.length && FrontPage?.sort((a, b) => b?.createdAt?.localeCompare(a?.createdAt))?.map((page,index)=>{
-                        console?.log(page)
+                       
                         if (pgNo===index) {
                           return(
                           page?.barSupplements?.entries?.map((entry,index2)=>{

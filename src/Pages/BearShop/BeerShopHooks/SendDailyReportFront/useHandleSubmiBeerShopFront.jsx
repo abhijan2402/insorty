@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../../../../Context/DataContext";
 import { error } from "daisyui/src/colors";
+import moment from "moment";
+import swal from "sweetalert";
 
 const useHandleSubmiBeerShopFront = () => {
   const token = localStorage.getItem("token");
@@ -10,6 +12,8 @@ const useHandleSubmiBeerShopFront = () => {
   const pegForm = JSON.parse(localStorage.getItem("pegForm")); //1st
   const smallPegForm = JSON.parse(localStorage.getItem("smallPegForm")); //2nd
   const barSuplements = JSON.parse(localStorage.getItem("barSuplements")); // 4th
+  const BasedURL = process.env.REACT_APP_API_URL;
+
 
   const [isLoadingSubmit, setIsLoading] = useState(false);
   const { salesMan, drDate } = useContext(DataContextApi);
@@ -265,7 +269,8 @@ const useHandleSubmiBeerShopFront = () => {
     });
   }
 
-  const handelSubmit = () => {
+  const handelSubmit = (e) => {
+    e.preventDefault()
     if (salesMan === "") {
       Swal.fire({
         icon: "error",
@@ -273,7 +278,28 @@ const useHandleSubmiBeerShopFront = () => {
         text: "Enter Salesman",
       });
     } else {
-      setIsLoading(true);
+
+      fetch(`${BasedURL}/shop/getBarFrontPageData?from=${moment(drDate).format('DD MMMM YYYY')}&to=${moment(drDate).add(1,'days').format('DD MMMM YYYY')}&page=0&pagesize=200`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          cookie_token: token,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
+          if(data.success===true){
+            
+            swal({
+              title: "Are you sure?",
+              text: `Data already present for same date`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                setIsLoading(true);
       try {
         const api1 = fetch(
           "https://insorty-api.onrender.com/shop/addBackPageReportData",
@@ -414,6 +440,155 @@ const useHandleSubmiBeerShopFront = () => {
       } finally {
         setIsLoading(false);
       }
+              } else {
+                swal("not submitted");
+              }
+            });
+          }
+          else{
+            setIsLoading(true);
+      try {
+        const api1 = fetch(
+          "https://insorty-api.onrender.com/shop/addBackPageReportData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              entries: [
+                ...dataDetails650,
+                ...dataDetails550,
+                ...dataDetails330,
+                ...beerForm,
+              ],
+            }),
+          }
+        );
+
+        const api2 = fetch(
+          "https://insorty-api.onrender.com/shop/addFrontPageData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+
+              shopType: "BAR",
+              entries: [
+                ...pageFormData750,
+                ...pageFormData375,
+                ...pageFormData180,
+                ...pageFormData30,
+                ...otherMl,
+                ...Ml30Data,
+              ],
+            }),
+          }
+        );
+
+        const api3 = fetch(
+          "https://insorty-api.onrender.com/shop/addBarSupplementsData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              entries: barSuplementsData,
+            }),
+          }
+        );
+
+        Promise.all([api1, api2, api3])
+          .then((responses) => Promise.all(responses.map((res) => res.json())))
+          .then((data) => {
+            console.log(data)
+            if (
+              data[0].success === true &&
+              data[1].success === true &&
+              data[2].success === true
+            ) {
+              let FrontPageBear = {
+                date: drDate,
+                salesmen: salesMan,
+                wineReport: data[1].data._id,
+                beerReport: data[0].data._id,
+                barSupplements: data[2].data._id,
+              };
+
+              fetch(
+                "https://insorty-api.onrender.com/shop/addBarFrontPageData",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    cookie_token: token,
+                  },
+                  body: JSON.stringify(FrontPageBear),
+                }
+              )
+                .then((res) => res.json())
+                .then((data1) => {
+                  if (data1.success === true) {
+                    Swal.fire({
+                      icon: "success",
+                      title: "Success",
+                      text: "Data Saved Successfully",
+                    });
+                    localStorage.removeItem("backFirst");
+                    localStorage.removeItem("newBeer");
+                    localStorage.removeItem("pegForm");
+                    localStorage.removeItem("smallPegForm");
+                    localStorage.removeItem("barSuplements");
+                    
+                  }
+                });
+            } else {
+              let error = []
+              data.map((err)=>{
+                if(err.success===false){
+
+                  error.push(err.message)
+                  
+
+                }
+                return null
+              })
+              
+              if (error.length > 0) {
+                Swal.fire({
+                  title: "Error",
+                  html: error.map((err,index)=>{return `<p><b>${index+1}. </b> ${err} </p>`}),
+                  icon: "error",
+                });
+            }
+          
+              
+          }
+          });
+      } catch (error) {
+        const errorMessage = error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorMessage,
+        });
+      } finally {
+        setIsLoading(false);
+      }
+          }
+        });
     }
    
   };
@@ -425,3 +600,4 @@ const useHandleSubmiBeerShopFront = () => {
 };
 
 export default useHandleSubmiBeerShopFront;
+

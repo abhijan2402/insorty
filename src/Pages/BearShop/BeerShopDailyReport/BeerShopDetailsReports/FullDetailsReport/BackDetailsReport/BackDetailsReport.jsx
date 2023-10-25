@@ -143,14 +143,15 @@ const BackDailyReport = () => {
         <form ref={container}> 
           <div className="flex  overflow-x-auto">
             <div className="py-6">
-              <h1 className="my-4">
-                <span className="font-bold titleText">
-                  अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
-                </span>
-              </h1>
+             
               <div>
                 <table className="table commonTable">
                   <thead>
+                    <tr >
+                      <td colSpan={26}>
+                      अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
+                      </td>
+                    </tr>
                   <tr>
                       <th > क्र. सं.</th>
                       <th colSpan={4}> पार्टी का नाम</th>
@@ -233,16 +234,16 @@ const BackDailyReport = () => {
             </div>
 
             <div className="py-6">
-              <h1 className="my-4">
-                <span className="font-bold titleText mx-3">
-                  अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
-                </span>
-              </h1>
-
+              
               <>
                 <div>
                   <table className="table commonTable">
                     <thead>
+                    <tr >
+                      <td colSpan={26}>
+                      अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
+                      </td>
+                    </tr>
                     <tr>
                         <th colSpan={1}> क्र. सं.</th>
                         <th colSpan={1}> पार्टी का नाम</th>
@@ -303,14 +304,15 @@ const BackDailyReport = () => {
             </div>
 
             <div className="py-6">
-              <h1 className="my-4 specialwidth">
-                <span className="font-bold titleText mx-3">
-                  कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
-                </span>
-              </h1>
+              
               <div>
                 <table className="table commonTable">
                   <thead>
+                <tr >
+                      <td colSpan={26}>
+                      कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
+                      </td>
+                    </tr>
                   <tr>
                       <th colSpan={1}> क्र. सं.</th>
                       <th colSpan={4}>विवरण</th>
@@ -371,13 +373,19 @@ const BackDailyReport = () => {
           {/* *********************************************************BREAK*********************************************************  */}
           <div className="flex  overflow-x-auto">
             <div className="py-6">
-              <h1 className="my-4">
-                <span className="font-bold titleText">उधारी/नामे</span>
-              </h1>
+             
 
               <div>
                 <table className="table commonTable">
-                  <thead> <tr>
+                  <thead> 
+
+                  <tr >
+                      <td colSpan={26}>
+                      उधारी/नामे
+                      </td>
+                    </tr> 
+                    
+                    <tr>
                       <th colSpan={1}> क्र. सं.</th>
                       <th colSpan={1}>पार्टी का नाम</th>
                       <th colSpan={1}>पार्टी/पार्टनर</th>
@@ -442,15 +450,16 @@ const BackDailyReport = () => {
             </div>
 
             <div className="py-6">
-              <h1 className="my-4 ">
-                <span className="font-bold titleText flex mx-3">
-                  पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
-                </span>
-              </h1>
+              
 
               <div>
                 <table className="table commonTable">
                   <thead>
+                  <tr >
+                      <td colSpan={26}>
+                      पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
+                      </td>
+                    </tr>
                   <tr>
                     <th className="tg-0lax">क्र.सं.</th>
                 <th className="tg-0lax" colSpan={4}>
@@ -512,15 +521,16 @@ const BackDailyReport = () => {
             </div>
 
             <div className="py-6">
-              <h1 className="my-4">
-                <span className="font-bold titleText ">
-                राशन/सब्जी आदि खरीद
-                </span>
-              </h1>
+             
 
               <div className="overflow-x-auto">
                 <table className="table commonTable">
                   <thead>
+                  <tr >
+                      <td colSpan={26}>
+                      राशन/सब्जी आदि खरीद
+                      </td>
+                    </tr>
                     <tr>
                       <th colSpan={1}> क्र. सं.</th>
                       <th colSpan={1}>रकम</th>
@@ -570,13 +580,16 @@ const BackDailyReport = () => {
           {/* *********************************************************BREAK*********************************************************  */}
 
           <div className="py-6">
-            <h1 className="my-4 specialwidth">
-              <span className="font-bold titleText ">बार कमीशन डेटा</span>
-            </h1>
+            
 
             <div>
               <table className="table commonTable">
                 <thead>
+                <tr >
+                      <td colSpan={26}>
+                      बार कमीशन डेटा
+                      </td>
+                    </tr>
                   <tr>
                     <th colSpan={1}> क्र. सं.</th>
                     <th colSpan={1}> ब्राण्ड</th>
@@ -647,9 +660,7 @@ const BackDailyReport = () => {
           </div>
 
           <div className="py-6">
-            <h1 className="my-4 mx-4">
-              <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
-            </h1>
+           
             <form action="">
               <div className="overflow-x-auto">
                 <section>

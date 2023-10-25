@@ -983,7 +983,8 @@ const UseBeerShopFront = () => {
     );
   };
 
-  const thirdFormAddOne = () => {
+  const thirdFormAddOne = (e) => {
+    e.preventDefault()
     setBeerShopFrontThird([...beerShopFrontThird, beerBarThirdFormTamp]);
   };
 

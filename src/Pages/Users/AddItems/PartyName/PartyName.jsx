@@ -12,8 +12,7 @@ const PartyName = () => {
   const token = localStorage.getItem("token");
 
   const ShopToken = jwtDecode(localStorage.getItem("token"));
-  const ShopType = ShopToken.shopType;
-  const role = ShopToken.role;
+  const shopType = ShopToken.shopType;
 
   const {
     data: PartyNameData,
@@ -54,27 +53,33 @@ const PartyName = () => {
   if (isLoading) return <Loader></Loader>;
 
   return (
-    <section>
+    <section className="py-4">
       <div className="title">
+        
         <div className="flex gap-4 justify-center items-center">
-          <h2 className="font-bold md:text-[1.5rem] text-center">
-            पार्टी जोड़ें
-          </h2>
-          {role === "shop" && ShopType === "BAR" &&  (
-            <Link to="/user/bearshop/branchname" className="commonBtn ">
-              ब्रांच जोड़ें
-            </Link>
-          ) }
+          
+        <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branchname">
+            ब्रांच जोड़ें
+          </Link>
 
-          {
-            role === "shop" && ShopType === "SHOP" && (
-            <Link to="/user/branchname" className="commonBtn ">
-              ब्रांच जोड़ें
-            </Link>
-          )
-          }  
+         
+          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branch">ब्रांच
+          </Link>
+          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/borrow">पार्टी 
+          </Link>
+
+          
+          
+          
+          <Link className = {shopType==="BAR" ? "commonBtn" : "displayHidden"} to="/user/bearshop/borrow">
+            पार्टी 
+          </Link>
 
         </div>
+        <div>
+        <h1 className="titleStyle text-center">पार्टी जोड़ें</h1>
+        
+      </div>
         <div className="divider my-2"></div>
       </div>
       <div className="justify-center flex items-center">

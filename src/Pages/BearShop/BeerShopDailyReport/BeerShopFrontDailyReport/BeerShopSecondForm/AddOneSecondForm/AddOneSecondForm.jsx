@@ -83,7 +83,13 @@ const AddOneSecondForm = ({
 
 
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               value={item.selectStockVarient}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               className="SmallInput"
@@ -96,7 +102,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               value={item.averageRate}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               className="semiSmallInput"
@@ -108,7 +120,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="startingStock"
               value={item.startingStock}
@@ -119,7 +137,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="incomingPurchase"
               value={item.incomingPurchase}
@@ -131,7 +155,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="buyRate"
               value={item.buyRate}
@@ -145,7 +175,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="incomePurchase"
               value={item.incomePurchase}
@@ -158,7 +194,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="purchaseRate"
               value={item.purchaseRate}
@@ -171,7 +213,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="inflowCredit"
               value={item.inflowCredit}
@@ -183,7 +231,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="sending"
               value={item.sending}
@@ -195,7 +249,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="sumRemainder"
               value={item.sumRemainder}
@@ -208,7 +268,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="closingStock"
               value={item.closingStock}
@@ -220,7 +286,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="sales"
               value={item.sales}
@@ -233,7 +305,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="mainRate"
               value={item.mainRate}
@@ -245,7 +323,13 @@ const AddOneSecondForm = ({
         <td>
           <div className="form-control">
             <input
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="total"
               value={item.total}

@@ -97,7 +97,7 @@ const SideNav = () => {
 
             <li className="my-4">
               <NavLink
-                to="/user/bearshop/borrow"
+                to="/user/bearshop/branchNparty"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 पार्टी
@@ -185,14 +185,14 @@ const SideNav = () => {
                 बार पेमेंट
               </NavLink>
             </li>
-            <li className="my-4">
+            {/* <li className="my-4">
               <NavLink
                 to="/user/bearshop/allItems"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                ब्रांच/पार्टी जोड़ें
               </NavLink>
-            </li>
+            </li> */}
 
             <li className="my-4">
               <NavLink

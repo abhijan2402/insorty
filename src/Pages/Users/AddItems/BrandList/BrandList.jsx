@@ -252,7 +252,7 @@ const BrandList = () => {
                 }).map((item,index) => (
           <React.Fragment key={item._id}>
             <tr>
-  <th  rowSpan={item.sizes.length+1}>{index+1}</th>
+  <td  rowSpan={item.sizes.length+1}>{index+1}</td>
               <td rowSpan={item.sizes.length+1}>{item.brandName}</td>
               <td className="whitespace-pre-wrap" rowSpan={item.sizes.length+1}>{item.fullName}</td>
               <td rowSpan={item.sizes.length+1}>{item?.type==="DESHIRML" ? "DESHI/RML" : item?.type}</td>

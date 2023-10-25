@@ -125,7 +125,7 @@ const SelfBill = () => {
           )}
           { ShopType === "BAR" && (
             <Link className="commonBtn " to="/user/bearshop/partyOutBill">
-              बाहर का बिल
+              पार्टी बिल
             </Link>
           ) }{ ShopType === "SHOP" && (
             <Link className="commonBtn" to="/user/partyOutBill">
@@ -186,7 +186,7 @@ const SelfBill = () => {
                 </thead>
                 <tbody>
                   {(filteredData &&
-                    filteredData?.map((billsData, index) => {
+                    filteredData?.sort((a, b) => a?.liquor.brandName?.localeCompare(b?.liquor.brandName))?.map((billsData, index) => {
                       return (
                         <SelfBillList
                           key={index}

@@ -275,36 +275,29 @@ const BackDailyReport = () => {
                 <>
                   <div className="overflow-x-auto">
                     <table className="table commonTable">
-                      <thead>
-                        <tr>
-                          <th> क्र. सं.</th>
-                          <th></th>
-                          <th> ब्राण्ड</th>
-                          <th>औसत दर</th>
-                          <th>प्रारम्भिक स्टॉक</th>
-                          <th >आमद (खरीद)-दु.</th>
-                          <th>खरीद रेट - दु</th>
-                          <th>आमद (खरीद)-बा.</th>
-                          <th>खरीद रेट - बा.</th>
-                          <th>आमद (उधारी)</th>
-                          <th>भेजान</th>
-                          <th>योग/शेष</th>
-                          <th>अन्तिम स्टॉक</th>
-                          <th>बिक्री</th>
-                          <th>रेट</th>
-                          <th>योग</th>
-                          <th>कुल योग</th>
-                        </tr>
-                      </thead>
-
                       <tbody>
                         <tr>
-                          <th></th>
-                          <td>
-                            <div className="form-control"></div>
-                          </td>
-                          {/* ======== MRP Input ========= */}
-                          <td></td>
+                          <th className="text-xs" rowSpan={2}> क्र. सं.</th>
+                          <th className="text-xs" rowSpan={2}></th>
+                          <th className="text-xs" rowSpan={2}> ब्राण्ड</th>
+                          <th className="text-xs" >औसत दर</th>
+                          <th className="text-xs" >प्रारम्भिक स्टॉक</th>
+                          <th className="text-xs"  >आमद (खरीद)-दु.</th>
+                          <th className="text-xs" >खरीद रेट - दु</th>
+                          <th className="text-xs" >आमद (खरीद)-बा.</th>
+                          <th className="text-xs" >खरीद रेट - बा.</th>
+                          <th className="text-xs" >आमद (उधारी)</th>
+                          <th className="text-xs" >भेजान</th>
+                          <th className="text-xs" >योग/शेष</th>
+                          <th className="text-xs" >अन्तिम स्टॉक</th>
+                          <th className="text-xs" >बिक्री</th>
+                          <th className="text-xs" >रेट</th>
+                          <th className="text-xs" >योग</th>
+                          <th className="text-xs" rowSpan={2}>कुल योग</th>
+                        </tr>
+                     
+                        <tr>
+                          
                           {/* ======== प्रारम्भिक स्टॉक ========= */}
                           <td>
                             <div className="flex justify-evenly">
@@ -595,9 +588,7 @@ const BackDailyReport = () => {
                             </div>
                           </td>
                           {/* ============= कुल योग ================ */}
-                          <td>
-                            <div className="form-control"></div>
-                          </td>
+                          
                         </tr>
 
                         {fristFormState.map((item, index) => {

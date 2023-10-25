@@ -113,10 +113,16 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         </td>
         {/* ======== MRP Input ========= */}
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput  wd-9"
                 name="averageRate750"
                 onChange={(e) => fristFormOnChange(e, index)}
@@ -129,7 +135,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="averageRate375"
                 required
@@ -141,7 +153,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 required
                 min={0}
@@ -154,7 +172,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 required
                 min={0}
@@ -174,7 +198,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 onChange={(e) => fristFormOnChange(e, index)}
                 required
                 min={0}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="openingStock30"
                 value={Number(beerFront.openingStock750).toFixed(2)}
@@ -185,12 +215,18 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         </td>
         {/* ======== प्रारम्भिक स्टॉक ========= */}
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
                 className="smallinput"
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 name="inflowShop750"
                 required
                 min={0}
@@ -203,7 +239,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 onChange={(e) => fristFormOnChange(e, index)}
                 required
                 min={0}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="inflowShop375"
                 value={beerFront.inflowShop375}
@@ -215,7 +257,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 onChange={(e) => fristFormOnChange(e, index)}
                 required
                 min={0}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="inflowShop180"
                 value={beerFront.inflowShop180}
@@ -226,7 +274,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
                 onChange={(e) => fristFormOnChange(e, index)}
                 required
                 min={0}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="inflowShop30"
                 value={Number(beerFront.inflowShop30).toFixed(2)}
@@ -239,11 +293,17 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         {/* ======== आमद (खरीद)-दु. ========= */}
 
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="buyRateShop750"
                 disabled
@@ -256,7 +316,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="buyRateShop375"
                 disabled
@@ -269,7 +335,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 disabled
                 className="smallinput wd-8"
                 name="buyRateShop180"
@@ -282,7 +354,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="buyRateShop30"
                 value={Number(beerFront.buyRateShop30).toFixed(2)}
@@ -295,11 +373,17 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         </td>
 
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="inflowOut750"
                 value={beerFront.inflowOut750}
@@ -311,7 +395,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="inflowOut375"
                 value={beerFront.inflowOut375}
@@ -323,7 +413,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="inflowOut180"
                 value={beerFront.inflowOut180}
@@ -335,7 +431,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="inflowOut30"
                 value={Number(beerFront.inflowOut30).toFixed(2)}
@@ -350,11 +452,17 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         {/* ======== आमद (खरीद)-बा. ========= */}
 
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="buyRateOut750"
                 value={beerFront.buyRateOut750}
@@ -366,7 +474,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="buyRateOut375"
                 value={beerFront.buyRateOut375}
@@ -378,7 +492,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-8"
                 name="buyRateOut180"
                 value={beerFront.buyRateOut180}
@@ -390,7 +510,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="buyRateOut30"
                 value={Number(beerFront.buyRateOut30).toFixed(2)}
@@ -403,11 +529,17 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         </td>
 
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 ref={ip}
                 onFocus={()=>scrollToComponent(ip)}
@@ -421,7 +553,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="inflowCredit375"
                 value={beerFront.inflowCredit375}
@@ -433,7 +571,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="inflowCredit180"
                 value={beerFront.inflowCredit180}
@@ -445,7 +589,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="inflowCredit30"
                 value={Number(beerFront.inflowCredit30).toFixed(2)}
@@ -459,11 +609,17 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
 
         {/*================ खरीद रेट - बा. ==================  */}
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="send750"
                 
@@ -476,7 +632,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="send375"
                 value={beerFront.send375}
@@ -488,7 +650,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="send180"
                 value={beerFront.send180}
@@ -500,7 +668,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="send30"
                 value={Number(beerFront.send30).toFixed(2)}
@@ -515,11 +689,17 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         {/* ======== आमद (उधारी) ========= */}
 
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-8"
                 name="sumRemaining30"
                 value={Number(beerFront.sumRemaining30).toFixed(2)}
@@ -536,7 +716,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 name="closingStock30"
                 className="smallinput wd-8"
                 ref={ip2}
@@ -550,11 +736,17 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         </td>
         {/* ======== योग/शेष ========= */}
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-8"
                 name="sales30"
                 value={Number(beerFront.sales30).toFixed(2)}
@@ -567,11 +759,17 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         </td>
 
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput"
                 name="rate30"
                 value={beerFront.rate30}
@@ -583,11 +781,17 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
         </td>
         {/* ======== अन्तिम स्टॉक ========= */}
         <td>
-          <div className="flex ">
+          <div className="flex justify-around">
             <div className="form-control">
               <input
                 onChange={(e) => fristFormOnChange(e, index)}
-                type="number"
+                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                 className="smallinput wd-9"
                 name="total30"
                 value={Number(beerFront.total30).toFixed(2)}
@@ -603,7 +807,13 @@ const AddOneFristForm = ({ beerFront, index, fristFormOnChange, removeFristForm 
           <div className="form-control">
             <input
               onChange={(e) => fristFormOnChange(e, index)}
-              type="number"
+              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
               className="semiSmallInput"
               name="grandTotal"
               value={Number(beerFront.grandTotal).toFixed(2)}

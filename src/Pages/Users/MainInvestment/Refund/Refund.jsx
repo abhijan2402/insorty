@@ -8,7 +8,6 @@ import {TextField} from "@mui/material";
 
 const Refund = ({ refundRecovery, index, refundRecoveryOnChange, name,handleRemoveFields,parties }) => {
   const { type, price } = refundRecovery;
-  console.log(refundRecovery)
 
   const defaultProps = {
     options: parties,

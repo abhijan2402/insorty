@@ -61,7 +61,13 @@ const CommissionForm = ({
 
         <td>
           <input
-            type="number"
+            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
             required
             className="smallinput wd-6"
             name="amount"

@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../../Context/DataContext";
+import moment from "moment";
+import swal from "sweetalert";
 
 const useHandelSubmitBackAPI = (shopType) => {
   const token = localStorage.getItem("token");
@@ -17,6 +19,8 @@ const useHandelSubmitBackAPI = (shopType) => {
   const newBeer = JSON.parse(localStorage.getItem("BeerForm"));
   const credit = JSON.parse(localStorage.getItem("credit"));
   const [errors,setErrors] = useState([])
+  const BasedURL = process.env.REACT_APP_API_URL;
+
 
 
   const { salesMan, drDate } = useContext(DataContextApi);
@@ -293,8 +297,30 @@ const useHandelSubmitBackAPI = (shopType) => {
         title: "Oops...",
         text: "Enter Salesman",
       });
-    } else {
-      setIsLoading(true);
+    } 
+      else {
+
+        fetch(`${BasedURL}/shop/getBackPageData?from=${moment(drDate).format('DD MMMM YYYY')}&to=${moment(drDate).add(1,'days').format('DD MMMM YYYY')}&page=0&pagesize=200`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: token,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data)
+            if(data.success===true){
+              
+              swal({
+                title: "Are you sure?",
+                text: `Data already present for same date`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+              }).then((willDelete) => {
+                if (willDelete) {
+                  setIsLoading(true);
       try {
         const api2 = fetch(
           "https://insorty-api.onrender.com/shop/addBackPageRMLData",
@@ -617,7 +643,340 @@ const useHandelSubmitBackAPI = (shopType) => {
         
         setIsLoading(false);
       }
-    }
+                } else {
+                  setIsLoading(false)
+                  swal("not submitted");
+                }
+              });
+            }
+            else{
+              setIsLoading(true);
+      try {
+        const api2 = fetch(
+          "https://insorty-api.onrender.com/shop/addBackPageRMLData",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              entries: addRmlData,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }
+        );
+        const api4 = fetch(
+          "https://insorty-api.onrender.com/shop/addTotalExpensesData",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "SHOP",
+              entries: entriesExpances,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }
+        );
+
+        const api8 = fetch(
+          "https://insorty-api.onrender.com/shop/addBorrowedData",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "SHOP",
+              entries: entriesBorrow,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }
+        );
+
+        const api9 = fetch(
+          "https://insorty-api.onrender.com/shop/addFinalReportData",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              english: english,
+              beer: beer,
+              RML: rmlData,
+              totalSell: totalSell,
+              borrowedCashReturn: borrowedCashReturn,
+              intoAccount: intoAccount,
+              borrowed: borrowed,
+              commission: commission,
+              previousDues: previousDues,
+              todaysPayment: todaysPayment,
+              restAmount: restAmount,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }
+        );
+
+        const api3 = fetch(
+          "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              date: drDate,
+              shopType: "SHOP",
+              salesmen: salesMan,
+              entries: purchaseOutSideData,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }
+        );
+
+        const api5 = fetch(
+          "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              shopType: "SHOP",
+              entries: borrowCashReturnData,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }
+        );
+
+        const api7 = fetch(
+          "https://insorty-api.onrender.com/shop/addSendData",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              entries: addSendingData,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }
+        );
+
+        const api6 = fetch(
+          "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              entries: addPurchesBorrowData,
+              shopType: "SHOP",
+            }),
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+          }
+        );
+
+        const api1 = fetch(
+          "https://insorty-api.onrender.com/shop/addBackPageReportData",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              cookie_token: token,
+            },
+            body: JSON.stringify({
+              date: drDate,
+              salesmen: salesMan,
+              entries: [
+                ...dataDetails650,
+                ...dataDetails550,
+                ...dataDetails330,
+                ...beerForm,
+              ],
+            }),
+          }
+        );
+
+        Promise.all([api1, api2, api3, api4, api5, api6, api7, api8, api9])
+          .then((responses) => Promise.all(responses.map((res) => res.json())))
+          .then((data) => {
+            console.log(data);
+
+            if (
+              data[0].success === true &&
+              data[1].success === true &&
+              data[2].success === true &&
+              data[3].success === true &&
+              data[4].success === true &&
+              data[5].success === true &&
+              data[6].success === true &&
+              data[7].success === true &&
+              data[8].success === true
+            ) {
+              let BackPage = {
+                dailyReport: data[0]?.data?._id,
+                RML: data[1]?.data?._id,
+                purchaseOutSide: data[2].data._id,
+                totalExpense: data[3].data._id,
+                borrowedCashReturn: data[4].data._id,
+                purchaseBorrow: data[5].data._id,
+                send: data[6].data._id,
+                borrowed: data[7].data._id,
+                finalReport: data[8].data._id,
+              };
+             
+
+
+
+              fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  cookie_token: token,
+                },
+                body: JSON.stringify(BackPage),
+              })
+                .then((res) => res.json())
+                .then((data1) => {
+                  if (data1.success === true) {
+                    Swal.fire({
+                      icon: "success",
+                      title: "Success",
+                      text: "Data Saved Successfully",
+                    });
+                    localStorage.removeItem("firstFront");
+                    localStorage.removeItem("firstBack");
+                    localStorage.removeItem("purchases");
+                    localStorage.removeItem("mlForm");
+                    localStorage.removeItem("credit");
+                    localStorage.removeItem("expenses");
+                    localStorage.removeItem("paymentRecieved");
+                    localStorage.removeItem("borrow");
+                    localStorage.removeItem("rml");
+                    localStorage.removeItem("BeerForm");
+                    localStorage.removeItem("bhejan");
+                    localStorage.removeItem("drDate");
+                    localStorage.removeItem("creditTotal");
+                    localStorage.removeItem("salesMan");
+                    localStorage.removeItem("totalExpenses");
+                    localStorage.removeItem("totalFirstBack");
+                    localStorage.removeItem("totalPaymentsRecieved");
+                    localStorage.removeItem("rmlTotal");
+                    localStorage.removeItem("purchasesTotal");
+                    localStorage.removeItem("beerTotal");
+                    localStorage.removeItem("pichlaBakaya");
+                    localStorage.removeItem("commisionTotal");
+                    localStorage.removeItem("totalBorrow");
+                    localStorage.removeItem("beerFormTotal");
+                    localStorage.removeItem("udhaariTotal");
+                    localStorage.removeItem("mlFormTotal");
+                    localStorage.removeItem("firstFrontTotal");
+                  } 
+                })
+                .catch((err)=>{
+                  const errorMessage = err.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorMessage,
+        });
+                });
+            } 
+            else{
+              let error = [...errors]
+              data.map((err)=>{
+                if(err.success===false){
+
+                  error.push(err.error.message)
+                  
+
+                }
+                return null
+              })
+              
+              setErrors(error)
+              if (error.length > 0) {
+                Swal.fire({
+                  title: "Error",
+                  html: error.map((err,index)=>{return `<p><b>${index+1}. </b> ${err} </p>`}),
+                  icon: "error",
+                });
+
+                let BackPage = {
+                  dailyReport:data[0].success===true ? data[0]?.data?._id : "",
+                  RML:data[0].success===true ?  data[1]?.data?._id : "",
+                  purchaseOutSide: data[0].success===true ? data[2].data._id : "",
+                  totalExpense: data[0].success===true ? data[3].data._id : "",
+                  borrowedCashReturn: data[0].success===true ? data[4].data._id : "",
+                  purchaseBorrow: data[0].success===true ? data[5].data._id : "",
+                  send: data[0].success===true ? data[6].data._id : "",
+                  borrowed: data[0].success===true ? data[7].data._id : "",
+                  finalReport: data[0].success===true ?  data[8].data._id : "",
+                };
+               
+  
+  
+  
+                fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    cookie_token: token,
+                  },
+                  body: JSON.stringify(BackPage),
+                })
+                  .then((res) => res.json())
+                  .then((data1) => {
+                    if (data1.success === true) {
+                      console.log(data1.success)
+                      
+                    } 
+                  })
+                  .catch((err)=>{
+                    const errorMessage = err.message;
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: errorMessage,
+          });
+                  });
+              }
+            }
+           
+          });
+      } catch (error) {
+        const errorMessage = error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorMessage,
+        });
+      } finally {
+        
+        setIsLoading(false);
+      }
+            }
+          });
+      }
+    
     
   };
 
@@ -628,3 +987,327 @@ const useHandelSubmitBackAPI = (shopType) => {
 };
 
 export default useHandelSubmitBackAPI;
+
+// setIsLoading(true);
+//       try {
+//         const api2 = fetch(
+//           "https://insorty-api.onrender.com/shop/addBackPageRMLData",
+//           {
+//             method: "POST",
+//             body: JSON.stringify({
+//               date: drDate,
+//               salesmen: salesMan,
+//               entries: addRmlData,
+//             }),
+//             headers: {
+//               "Content-Type": "application/json",
+//               cookie_token: token,
+//             },
+//           }
+//         );
+//         const api4 = fetch(
+//           "https://insorty-api.onrender.com/shop/addTotalExpensesData",
+//           {
+//             method: "POST",
+//             body: JSON.stringify({
+//               date: drDate,
+//               salesmen: salesMan,
+//               shopType: "SHOP",
+//               entries: entriesExpances,
+//             }),
+//             headers: {
+//               "Content-Type": "application/json",
+//               cookie_token: token,
+//             },
+//           }
+//         );
+
+//         const api8 = fetch(
+//           "https://insorty-api.onrender.com/shop/addBorrowedData",
+//           {
+//             method: "POST",
+//             body: JSON.stringify({
+//               date: drDate,
+//               salesmen: salesMan,
+//               shopType: "SHOP",
+//               entries: entriesBorrow,
+//             }),
+//             headers: {
+//               "Content-Type": "application/json",
+//               cookie_token: token,
+//             },
+//           }
+//         );
+
+//         const api9 = fetch(
+//           "https://insorty-api.onrender.com/shop/addFinalReportData",
+//           {
+//             method: "POST",
+//             body: JSON.stringify({
+//               date: drDate,
+//               salesmen: salesMan,
+//               english: english,
+//               beer: beer,
+//               RML: rmlData,
+//               totalSell: totalSell,
+//               borrowedCashReturn: borrowedCashReturn,
+//               intoAccount: intoAccount,
+//               borrowed: borrowed,
+//               commission: commission,
+//               previousDues: previousDues,
+//               todaysPayment: todaysPayment,
+//               restAmount: restAmount,
+//             }),
+//             headers: {
+//               "Content-Type": "application/json",
+//               cookie_token: token,
+//             },
+//           }
+//         );
+
+//         const api3 = fetch(
+//           "https://insorty-api.onrender.com/shop/addPurchaseOutsideData",
+//           {
+//             method: "POST",
+//             body: JSON.stringify({
+//               date: drDate,
+//               shopType: "SHOP",
+//               salesmen: salesMan,
+//               entries: purchaseOutSideData,
+//             }),
+//             headers: {
+//               "Content-Type": "application/json",
+//               cookie_token: token,
+//             },
+//           }
+//         );
+
+//         const api5 = fetch(
+//           "https://insorty-api.onrender.com/shop/addBorrowedCashReturnData",
+//           {
+//             method: "POST",
+//             body: JSON.stringify({
+//               date: drDate,
+//               salesmen: salesMan,
+//               shopType: "SHOP",
+//               entries: borrowCashReturnData,
+//             }),
+//             headers: {
+//               "Content-Type": "application/json",
+//               cookie_token: token,
+//             },
+//           }
+//         );
+
+//         const api7 = fetch(
+//           "https://insorty-api.onrender.com/shop/addSendData",
+//           {
+//             method: "POST",
+//             body: JSON.stringify({
+//               date: drDate,
+//               salesmen: salesMan,
+//               entries: addSendingData,
+//             }),
+//             headers: {
+//               "Content-Type": "application/json",
+//               cookie_token: token,
+//             },
+//           }
+//         );
+
+//         const api6 = fetch(
+//           "https://insorty-api.onrender.com/shop/addPurchaseBorrowData",
+//           {
+//             method: "POST",
+//             body: JSON.stringify({
+//               date: drDate,
+//               salesmen: salesMan,
+//               entries: addPurchesBorrowData,
+//               shopType: "SHOP",
+//             }),
+//             headers: {
+//               "Content-Type": "application/json",
+//               cookie_token: token,
+//             },
+//           }
+//         );
+
+//         const api1 = fetch(
+//           "https://insorty-api.onrender.com/shop/addBackPageReportData",
+//           {
+//             method: "POST",
+//             headers: {
+//               "Content-Type": "application/json",
+//               cookie_token: token,
+//             },
+//             body: JSON.stringify({
+//               date: drDate,
+//               salesmen: salesMan,
+//               entries: [
+//                 ...dataDetails650,
+//                 ...dataDetails550,
+//                 ...dataDetails330,
+//                 ...beerForm,
+//               ],
+//             }),
+//           }
+//         );
+
+//         Promise.all([api1, api2, api3, api4, api5, api6, api7, api8, api9])
+//           .then((responses) => Promise.all(responses.map((res) => res.json())))
+//           .then((data) => {
+//             console.log(data);
+
+//             if (
+//               data[0].success === true &&
+//               data[1].success === true &&
+//               data[2].success === true &&
+//               data[3].success === true &&
+//               data[4].success === true &&
+//               data[5].success === true &&
+//               data[6].success === true &&
+//               data[7].success === true &&
+//               data[8].success === true
+//             ) {
+//               let BackPage = {
+//                 dailyReport: data[0]?.data?._id,
+//                 RML: data[1]?.data?._id,
+//                 purchaseOutSide: data[2].data._id,
+//                 totalExpense: data[3].data._id,
+//                 borrowedCashReturn: data[4].data._id,
+//                 purchaseBorrow: data[5].data._id,
+//                 send: data[6].data._id,
+//                 borrowed: data[7].data._id,
+//                 finalReport: data[8].data._id,
+//               };
+             
+
+
+
+//               fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
+//                 method: "POST",
+//                 headers: {
+//                   "Content-Type": "application/json",
+//                   cookie_token: token,
+//                 },
+//                 body: JSON.stringify(BackPage),
+//               })
+//                 .then((res) => res.json())
+//                 .then((data1) => {
+//                   if (data1.success === true) {
+//                     Swal.fire({
+//                       icon: "success",
+//                       title: "Success",
+//                       text: "Data Saved Successfully",
+//                     });
+//                     localStorage.removeItem("firstFront");
+//                     localStorage.removeItem("firstBack");
+//                     localStorage.removeItem("purchases");
+//                     localStorage.removeItem("mlForm");
+//                     localStorage.removeItem("credit");
+//                     localStorage.removeItem("expenses");
+//                     localStorage.removeItem("paymentRecieved");
+//                     localStorage.removeItem("borrow");
+//                     localStorage.removeItem("rml");
+//                     localStorage.removeItem("BeerForm");
+//                     localStorage.removeItem("bhejan");
+//                     localStorage.removeItem("drDate");
+//                     localStorage.removeItem("creditTotal");
+//                     localStorage.removeItem("salesMan");
+//                     localStorage.removeItem("totalExpenses");
+//                     localStorage.removeItem("totalFirstBack");
+//                     localStorage.removeItem("totalPaymentsRecieved");
+//                     localStorage.removeItem("rmlTotal");
+//                     localStorage.removeItem("purchasesTotal");
+//                     localStorage.removeItem("beerTotal");
+//                     localStorage.removeItem("pichlaBakaya");
+//                     localStorage.removeItem("commisionTotal");
+//                     localStorage.removeItem("totalBorrow");
+//                     localStorage.removeItem("beerFormTotal");
+//                     localStorage.removeItem("udhaariTotal");
+//                     localStorage.removeItem("mlFormTotal");
+//                     localStorage.removeItem("firstFrontTotal");
+//                   } 
+//                 })
+//                 .catch((err)=>{
+//                   const errorMessage = err.message;
+//         Swal.fire({
+//           icon: "error",
+//           title: "Oops...",
+//           text: errorMessage,
+//         });
+//                 });
+//             } 
+//             else{
+//               let error = [...errors]
+//               data.map((err)=>{
+//                 if(err.success===false){
+
+//                   error.push(err.error.message)
+                  
+
+//                 }
+//                 return null
+//               })
+              
+//               setErrors(error)
+//               if (error.length > 0) {
+//                 Swal.fire({
+//                   title: "Error",
+//                   html: error.map((err,index)=>{return `<p><b>${index+1}. </b> ${err} </p>`}),
+//                   icon: "error",
+//                 });
+
+//                 let BackPage = {
+//                   dailyReport:data[0].success===true ? data[0]?.data?._id : "",
+//                   RML:data[0].success===true ?  data[1]?.data?._id : "",
+//                   purchaseOutSide: data[0].success===true ? data[2].data._id : "",
+//                   totalExpense: data[0].success===true ? data[3].data._id : "",
+//                   borrowedCashReturn: data[0].success===true ? data[4].data._id : "",
+//                   purchaseBorrow: data[0].success===true ? data[5].data._id : "",
+//                   send: data[0].success===true ? data[6].data._id : "",
+//                   borrowed: data[0].success===true ? data[7].data._id : "",
+//                   finalReport: data[0].success===true ?  data[8].data._id : "",
+//                 };
+               
+  
+  
+  
+//                 fetch("https://insorty-api.onrender.com/shop/addBackPageData", {
+//                   method: "POST",
+//                   headers: {
+//                     "Content-Type": "application/json",
+//                     cookie_token: token,
+//                   },
+//                   body: JSON.stringify(BackPage),
+//                 })
+//                   .then((res) => res.json())
+//                   .then((data1) => {
+//                     if (data1.success === true) {
+//                       console.log(data1.success)
+                      
+//                     } 
+//                   })
+//                   .catch((err)=>{
+//                     const errorMessage = err.message;
+//           Swal.fire({
+//             icon: "error",
+//             title: "Oops...",
+//             text: errorMessage,
+//           });
+//                   });
+//               }
+//             }
+           
+//           });
+//       } catch (error) {
+//         const errorMessage = error.message;
+//         Swal.fire({
+//           icon: "error",
+//           title: "Oops...",
+//           text: errorMessage,
+//         });
+//       } finally {
+        
+//         setIsLoading(false);
+//       }

@@ -23,8 +23,8 @@ function FrontExceptional({ exceptionalData, index,pageId,frontSet }) {
       const pegInOne = exceptionalData.quantityInML/30
       const yog =Number(openingStock) + Number(purchaseOutSide) + Number(purchaseShop) + Number(credits) - Number(send)
       const calAvg = (a,b,c,d) => {
-        const totalStockRate = (a*b) + (c*d)
-        return (totalStockRate/(a+c)).toFixed(2)
+        const totalStockRate = ((Number(a) || 0)*(Number(b) || 0)) + ((Number(c) || 0)*(Number(d) || 0))
+        return Number((totalStockRate/(a+c)) || 0).toFixed(2)
       }
 
   return (

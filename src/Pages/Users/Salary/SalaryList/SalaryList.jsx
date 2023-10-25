@@ -62,6 +62,21 @@ const SalaryList = () => {
     const name = e.target.name.value;
     const mobile = e.target.phoneNumber.value;
 
+    const testName = name.toLowerCase()
+
+    const test = salaryData.length >0 ? salaryData.some((emp)=>emp?.name.toLowerCase()===testName) : []
+
+    if (test===true) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: 'Salesman name already present',
+      });
+    
+    }
+
+    else{
+
     fetch("https://insorty-api.onrender.com/shop/addEmployee", {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
@@ -76,6 +91,7 @@ const SalaryList = () => {
           Swal.fire("Failed!", "Your file has not been added.", "error");
         }
       });
+    }
   };
 
   if (isLoading) {

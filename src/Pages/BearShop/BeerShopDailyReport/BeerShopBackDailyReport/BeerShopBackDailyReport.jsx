@@ -85,8 +85,25 @@ const BackDailyReport = () => {
     );
   };
 
-  const addOneSixthForm = () => {
+  const addOneSixthForm = (e) => {
+    e.preventDefault()
     setSixthFormState([...sixthFormState, sixthFomeDataTemp]);
+  };
+
+  const handleRemoveSixthForm = index => {
+    const values = [...sixthFormState];
+    values.splice(index, 1);
+    setSixthFormState(values);
+    localStorage.setItem("vegitableAndOther", JSON.stringify(values))
+    localStorage.setItem(
+      "vegitableAndOther",
+      JSON.stringify(
+        values.reduce(
+          (total, currentItem) => (total = total + Number(currentItem.price)),
+          0
+        )
+      )
+    );
   };
 
   const { salesMan, setSalesMan, drDate, setDrDate } =
@@ -202,7 +219,8 @@ const BackDailyReport = () => {
     );
   };
 
-  const addOneBarCommisonData = () => {
+  const addOneBarCommisonData = (e) => {
+    e.preventDefault()
     setAddBarCommissionData([
       ...addBarCommissionData,
       addBarCommissionDataTamp,
@@ -327,7 +345,7 @@ const BackDailyReport = () => {
             <div className="py-6">
               <h1 className="my-4">
                 <span className="font-bold titleText">
-                  अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से)
+                  अंग्रेजी/बीयर की आमद (खरीद बाहर से)
                 </span>
               </h1>
               <div>
@@ -368,7 +386,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => handelAddOnePurchesOutSide()}
+                          onClick={(e) => handelAddOnePurchesOutSide(e)}
                         >
                           ADD
                         </button>
@@ -395,7 +413,13 @@ const BackDailyReport = () => {
                       <td>
                         <div className="form-control ">
                           <input
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             name="theNumber"
                             value={purchesOutSideState.reduce(
@@ -413,7 +437,13 @@ const BackDailyReport = () => {
                       <td>
                         <div className="form-control ">
                           <input
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput"
                             name="theNumber"
                             value={purchesOutSideState.reduce(
@@ -441,7 +471,7 @@ const BackDailyReport = () => {
             <div className="py-6">
               <h1 className="my-4">
                 <span className="font-bold titleText">
-                  अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
+                  अंग्रेजी/बीयर की आमद (उधारी)
                 </span>
               </h1>
 
@@ -479,7 +509,7 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={() => handelAddOneShipping()}
+                            onClick={(e) => handelAddOneShipping(e)}
                           >
                             ADD
                           </button>
@@ -500,7 +530,13 @@ const BackDailyReport = () => {
                         <td>
                           <div className="form-control">
                             <input
-                              type="number"
+                              type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                               className="smallinput"
                               name="theNumber"
                               value={addShippingState.reduce(
@@ -561,7 +597,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => handelAddOneCommison()}
+                          onClick={(e) => handelAddOneCommison(e)}
                         >
                           ADD
                         </button>
@@ -575,7 +611,13 @@ const BackDailyReport = () => {
 
                       <td>
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           className="smallinput wd-6"
                           name="amount"
                           value={commissonState.reduce(
@@ -637,7 +679,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
-                          onClick={() => handelAddOneCarditDabit()}
+                          onClick={(e) => handelAddOneCarditDabit(e)}
                         >
                           ADD
                         </button>
@@ -657,7 +699,13 @@ const BackDailyReport = () => {
                       <td>
                         <div className="form-control">
                           <input
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             className="smallinput wd-9"
                             name="amount"
                             value={craditDabitState.reduce(
@@ -682,7 +730,7 @@ const BackDailyReport = () => {
             <div className="py-6">
               <h1 className="my-4 specialwidth">
                 <span className="font-bold titleText ">
-                  पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
+                  पीछे की उधारी में से व अन्य से नकद प्राप्ति
                 </span>
               </h1>
 
@@ -719,7 +767,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => handelAddOneCashRecive()}
+                          onClick={(e) => handelAddOneCashRecive(e)}
                         >
                           ADD
                         </button>
@@ -736,7 +784,13 @@ const BackDailyReport = () => {
 
                       <td>
                         <input
-                          type="number"
+                          type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                           name="amount"
                           value={cashReciveState.reduce(
                             (total, currentItem) =>
@@ -768,6 +822,7 @@ const BackDailyReport = () => {
                   <thead>
                     <tr>
                       <th> क्र. सं.</th>
+                      <th></th>
                       <th>विवरण</th>
                       <th>रकम</th>
                     </tr>
@@ -777,6 +832,32 @@ const BackDailyReport = () => {
                       return (
                         <tr key={index}>
                           <td>{index + 1}</td>
+
+                          <th
+          className="cross"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover row ${
+                index + 1
+              }`,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                handleRemoveSixthForm(index);
+                swal(`row ${index + 1}  has been deleted!`, {
+                  icon: "success",
+                });
+              } else {
+                swal("Your row is safe!");
+              }
+            });
+          }}
+        >
+          X
+        </th>
 
                           <td>
                             <div className="form-control">
@@ -792,7 +873,13 @@ const BackDailyReport = () => {
                           <td>
                             <div className="form-control">
                               <input
-                                type="number"
+                                type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                                 className="semiSmallInput"
                                 name="price"
                                 onChange={(e) => sixthFormOnchange(e, index)}
@@ -809,7 +896,7 @@ const BackDailyReport = () => {
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
-                          onClick={() => addOneSixthForm()}
+                          onClick={(e) => addOneSixthForm(e)}
                         >
                           ADD
                         </button>
@@ -818,9 +905,18 @@ const BackDailyReport = () => {
                         <div className="form-control">Total</div>
                       </td>
                       <td>
+                       
+                      </td>
+                      <td>
                         <div className="form-control">
                           <input
-                            type="number"
+                            type = "number"
+ onKeyDown={(e) => {
+                  // Prevent the default behavior of arrow keys
+                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                    e.preventDefault();
+                  }
+                }} 
                             name="amount"
                             value={sixthFormState.reduce(
                               (total, currentItem) =>
@@ -832,9 +928,7 @@ const BackDailyReport = () => {
                           />
                         </div>
                       </td>
-                      <td>
-                        <div className="form-control"></div>
-                      </td>
+                      
                     </tr>
                   </tbody>
                 </table>
@@ -1006,7 +1100,7 @@ const BackDailyReport = () => {
                       {" "}
                       <button
                         className="sticky btn bg-[#AA237A] btn-sm"
-                        onClick={() => addOneBarCommisonData()}
+                        onClick={(e) => addOneBarCommisonData(e)}
                       >
                         ADD
                       </button>
@@ -1051,9 +1145,7 @@ const BackDailyReport = () => {
                     <td>
                       <div className="form-control"></div>
                     </td>
-                    <td>
-                      <div className="form-control"></div>
-                    </td>
+                    
                   </tr>
                 </tbody>
               </table>
@@ -1136,7 +1228,7 @@ const BackDailyReport = () => {
                 {/* <button className="dailyReportBtn" onClick={() => handleSubmit()}>
                 Submit
               </button> */}
-                <input type="submit" className="dailyReportBtn" />
+                <input type="submit" className="btn commonBtn" />
               </>
             )}
           </div>

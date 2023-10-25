@@ -4,9 +4,12 @@ import AddNewBranch from "../AddNewBranch/AddNewBranch";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
+import jwtDecode from "jwt-decode";
 
 const BranchName = () => {
   const token = localStorage.getItem("token");
+  
+  const shopType = jwtDecode(token).shopType
 
   const {
     data: branches,
@@ -58,6 +61,27 @@ const BranchName = () => {
 
   return (
     <section className="py-4">
+
+<div className="flex item-cnter justify-center flex-wrap">
+<Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branchname">
+            ब्रांच जोड़ें
+          </Link>
+
+          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/partyname">पार्टी जोड़ें
+          </Link>
+         
+          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/borrow">पार्टी 
+          </Link>
+
+          
+          <Link className = {shopType==="BAR" ? "commonBtn" : "displayHidden"} to="/user/bearshop/partyname">
+            पार्टी जोड़ें
+          </Link>
+          
+          <Link className = {shopType==="BAR" ? "commonBtn" : "displayHidden"} to="/user/bearshop/borrow">
+            पार्टी 
+          </Link>
+</div>
       <div>
         <h1 className="titleStyle text-center">ब्रांच सूची</h1>
         <div className="divider my-2"></div>
