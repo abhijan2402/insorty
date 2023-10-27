@@ -8,6 +8,7 @@ import useGetShopsNSubadmins from "../../../../Hooks/useGetShopsNSubadmins";
 import Loader from "../../../../Components/Loader/Loader";
 import swal from "sweetalert";
 import jwtDecode from "jwt-decode";
+import Swal from "sweetalert2";
 
 const ShopList = () => {
   const token = localStorage.getItem("token");
@@ -25,7 +26,7 @@ const ShopList = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-
+        
       });
   };
 
@@ -99,9 +100,23 @@ try{
           swal("Shop Added Successfully", "", "success");
           shopsRefetch();
         }
+        else{
+          Swal.fire({
+            icon: "error",
+            title: `${data?.message ? data?.message : "some server error occurred"}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       })
       .catch((err)=>{
-        swal("some error occurred");
+        Swal.fire({
+          icon: "error",
+          title: `${err?.message ? err?.message : "some server error occurred"}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      
         console.log(err)
       });
     }
