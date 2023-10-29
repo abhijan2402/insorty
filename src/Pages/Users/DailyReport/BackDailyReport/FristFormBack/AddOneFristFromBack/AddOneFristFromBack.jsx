@@ -5,6 +5,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import swal from "sweetalert";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const AddOneFristFromBack = ({
   index,
@@ -13,20 +14,24 @@ const AddOneFristFromBack = ({
   handleRemoveFieldsBack,
 }) => {
   const SerialNo = index + 1;
+  const token = localStorage.getItem("token");
+  const shopType = jwtDecode(localStorage.getItem("token")).shopType;
+ 
 
   const ip = useRef(null)
   const ip2 = useRef(null)
   const ip3 = useRef(null)
 
   const scrollToComponent = (ref) => {
+    if(shopType==="SHOP"){
     ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"center" });
+  }
   };
 
 
 
   const { brandsLoaded } = useLiquors();
 
-  const token = localStorage.getItem("token");
 
   const [options, setOptions] = useState([]);
 
@@ -86,7 +91,7 @@ const AddOneFristFromBack = ({
           }}
         >
           X
-          <input type="button" value="" autoFocus />
+          <input type="button" value="" autoFocus={shopType==="SHOP" ? true : false} />
         </th>
         <td>
           <div className="form-control">

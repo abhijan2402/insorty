@@ -14,6 +14,8 @@ const DailyReport = () => {
         response.json();
         console.log(response)
         if (response.status === 200) {
+          localStorage.clear()
+         localStorage.setItem('token',token)
           Swal.fire({
             icon: "success",
             title: "Data Cleared Successfully",

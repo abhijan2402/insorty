@@ -5,6 +5,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
 import { useState } from "react";
+import jwtDecode from "jwt-decode";
 
 const AddOneSecondFormBack = ({
   index,
@@ -17,6 +18,9 @@ const AddOneSecondFormBack = ({
   const {  brandsLoaded } = useLiquors();
 
   const token = localStorage.getItem("token")
+  const shopType = jwtDecode(localStorage.getItem("token")).shopType;
+
+  
 
   const [options, setOptions] = useState([])
   const fetchOptions = async (query) => {
@@ -79,7 +83,7 @@ const AddOneSecondFormBack = ({
           }}
         >
           X
-          <input type="button" value="" autoFocus />
+          <input type="button" value="" autoFocus={shopType==="SHOP" ? true : false} />
 
         </th>
 
