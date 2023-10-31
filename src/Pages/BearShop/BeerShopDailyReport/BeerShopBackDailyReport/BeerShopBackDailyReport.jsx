@@ -450,7 +450,7 @@ const BackDailyReport = () => {
                               (total, currentItem) =>
                                 (total = total + Number(currentItem?.total)),
                               0
-                            )}
+                            ).toFixed(2)}
                             disabled
                           />
                         </div>
@@ -624,7 +624,7 @@ const BackDailyReport = () => {
                             (total, currentItem) =>
                               (total = total + Number(currentItem.amount)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                           style={{
                             width: "100%",
@@ -712,7 +712,7 @@ const BackDailyReport = () => {
                               (total, currentItem) =>
                                 (total = total + Number(currentItem.amount)),
                               0
-                            )}
+                            ).toFixed(2)}
                             disabled
                           />
                         </div>
@@ -796,7 +796,7 @@ const BackDailyReport = () => {
                             (total, currentItem) =>
                               (total = total + Number(currentItem.amount)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                           className="smallinput wd-7"
                         />
@@ -922,7 +922,7 @@ const BackDailyReport = () => {
                               (total, currentItem) =>
                                 (total = total + Number(currentItem.price)),
                               0
-                            )}
+                            ).toFixed(2)}
                             disabled
                             className="semiSmallInput"
                           />
@@ -1137,7 +1137,7 @@ const BackDailyReport = () => {
                             (total, curr) =>
                               (total = total + Number(curr.amount)),
                             0
-                          )}
+                          ).toFixed(2)}
                         />
                       </div>
                     </td>

@@ -575,7 +575,7 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + Number(regularData?.openingStock),
                     0
-                  )}</td>
+                  ).toFixed(2)}</td>
                 <td>{quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.purchaseShop),
@@ -590,8 +590,8 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + Number(regularData?.purchaseShop),
                     0
-                  )}</td>
-                <td>{calStock30(quan750?.reduce(
+                  ).toFixed(2)}</td>
+                <td>{Number(calStock30(quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.purchaseShop),
                     0
@@ -603,7 +603,7 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + Number(regularData?.purchaseShop),
                     0
-                  ))}</td>
+                  ))).toFixed(2)}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -623,7 +623,7 @@ FrontPageRegularData?.map((item) => {
                       total + Number(regularData?.purchaseOutSide),
                     0
                   )}</td>
-                <td>{calStock30(quan750?.reduce(
+                <td>{Number(calStock30(quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.purchaseOutSide),
                     0
@@ -635,7 +635,7 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + Number(regularData?.purchaseOutSide),
                     0
-                  ))}</td>
+                  ))).toFixed(2)}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -655,7 +655,7 @@ FrontPageRegularData?.map((item) => {
                       total + Number(regularData?.credits),
                     0
                   )}</td>
-                <td>{calStock30(quan750?.reduce(
+                <td>{Number(calStock30(quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.credits),
                     0
@@ -667,7 +667,7 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + Number(regularData?.credits),
                     0
-                  ))}</td>
+                  ))).toFixed(2)}</td>
                 <td>{quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.send),
@@ -683,7 +683,7 @@ FrontPageRegularData?.map((item) => {
                       total + Number(regularData?.send),
                     0
                   )}</td>
-                <td>{calStock30(quan750?.reduce(
+                <td>{Number(calStock30(quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.send),
                     0
@@ -695,26 +695,26 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + Number(regularData?.send),
                     0
-                  ))}</td>
-                <td>{yog}</td>
+                  ))).toFixed(2)}</td>
+                <td>{Number(yog).toFixed(2)}</td>
 
                    
                 <td>{quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.closingStock),
                     0
-                  )}</td>
+                  ).toFixed(2)}</td>
 
-                <td>{yog-quan750?.reduce(
+                <td>{Number(Number(yog)-quan750?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.closingStock),
                     0
-                  )}</td>
+                  )).toFixed(2)}</td>
 
                   <td></td>
 
 
-                <td>{quan750?.reduce(
+                <td>{Number(quan750?.reduce(
                     (total, regularData) =>
                       total + (Number(regularData?.remaining)*25 - Number(regularData?.openingStock)*25  + Number(regularData?.openingStock))*Number(regularData?.sellingRate?.$numberDecimal),
                     0
@@ -733,7 +733,7 @@ FrontPageRegularData?.map((item) => {
                       total + (Number(regularData?.closingStock))*Number(regularData?.sellingRate?.$numberDecimal),
                     0
                   )
-                  }</td>
+                  ).toFixed(2)}</td>
               </tr>
 
                  
@@ -879,7 +879,7 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + Number(regularData?.openingStock),
                     0
-                  )}</td>
+                  ).toFixed(2)}</td>
                   <td></td>
                   <td>{quanOther?.reduce(
                     (total, regularData) =>
@@ -891,7 +891,7 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + (Number(regularData?.purchaseShop)*(regularData?.liquor?.quantityInML/30)),
                     0
-                  )}</td>
+                  ).toFixed(2)}</td>
                   <td></td>
                   <td></td>
                   <td>{quanOther?.reduce(
@@ -903,7 +903,7 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + (Number(regularData?.purchaseOutSide)*(regularData?.liquor?.quantityInML/30)),
                     0
-                  )}</td>
+                  ).toFixed(2)}</td>
                   <td></td>
                   <td></td>
                   <td>{quanOther?.reduce(
@@ -915,7 +915,7 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + (Number(regularData?.credits)*(regularData?.liquor?.quantityInML/30)),
                     0
-                  )}</td>
+                  ).toFixed(2)}</td>
                   <td>{quanOther?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.send),
@@ -925,18 +925,18 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + (Number(regularData?.send)*(regularData?.liquor?.quantityInML/30)),
                     0
-                  )}</td>
+                  ).toFixed(2)}</td>
                   <td>{quanOther?.reduce(
                     (total, regularData) =>
                       total + (Number(regularData?.remaining)*(regularData?.liquor?.quantityInML/30)),
                     0
-                  )}</td>
+                  ).toFixed(2)}</td>
                   <td>{quanOther?.reduce(
                     (total, regularData) =>
                       total + Number(regularData?.closingStock),
                     0
                   )}</td>
-                  <td>{quanOther?.reduce(
+                  <td>{Number(quanOther?.reduce(
                     (total, regularData) =>
                       total + (Number(regularData?.remaining)*(regularData?.liquor?.quantityInML/30)),
                     0
@@ -944,9 +944,9 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total + Number(regularData?.closingStock),
                     0
-                  )}</td>
+                  )).toFixed(2)}</td>
                   <td></td>
-                  <td>{quanOther?.reduce(
+                  <td>{Number(quanOther?.reduce(
                     (total, regularData) =>
                       total + (Number(regularData?.remaining)*(regularData?.liquor?.quantityInML/30)*Number(regularData?.sellingRate?.$numberDecimal)),
                     0
@@ -954,13 +954,13 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total +( Number(regularData?.closingStock)*Number(regularData?.sellingRate?.$numberDecimal)),
                     0
-                  )}</td>
+                  )).toFixed(2)}</td>
                 </tr>
 
               </tbody>
             </table>
           </div>
-          <div>English Total:- {quan750?.reduce(
+          <div>English Total:- {Number(quan750?.reduce(
                     (total, regularData) =>
                       total + (Number(regularData?.remaining)*25 - Number(regularData?.openingStock)*25  + Number(regularData?.openingStock))*Number(regularData?.sellingRate?.$numberDecimal),
                     0
@@ -988,7 +988,7 @@ FrontPageRegularData?.map((item) => {
                     (total, regularData) =>
                       total +( Number(regularData?.closingStock)*Number(regularData?.sellingRate?.$numberDecimal)),
                     0
-                  )}</div>
+                  )).toFixed(2)}</div>
         </div>
 
         <div>
@@ -1385,7 +1385,7 @@ FrontPageRegularData?.map((item) => {
                       Number(regularData?.sales) *
                         Number(regularData?.sellingRate?.$numberDecimal),
                     0
-                  )}
+                  ).toFixed(2)}
                 </td>
                 <td className="tg-0lax">
                   {quan500?.reduce(
@@ -1394,7 +1394,7 @@ FrontPageRegularData?.map((item) => {
                       Number(regularData?.sales) *
                         Number(regularData?.sellingRate?.$numberDecimal),
                     0
-                  )}
+                  ).toFixed(2)}
                 </td>
                 <td className="tg-0lax">
                   {quan330?.reduce(
@@ -1403,11 +1403,11 @@ FrontPageRegularData?.map((item) => {
                       Number(regularData?.sales) *
                         Number(regularData?.sellingRate?.$numberDecimal),
                     0
-                  )}
+                  ).toFixed(2)}
                 </td>
 
                 <td>
-                  {quan650?.reduce(
+                  {Number(quan650?.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData?.sales) *
@@ -1427,7 +1427,7 @@ FrontPageRegularData?.map((item) => {
                         Number(regularData?.sales) *
                           Number(regularData?.sellingRate?.$numberDecimal),
                       0
-                    )}
+                    )).toFixed(2)}
                 </td>
               </tr>
 
@@ -1480,9 +1480,9 @@ FrontPageRegularData?.map((item) => {
   
                           <td className="tg-0lax">{entry?.sales}</td>
   
-                          <td className="tg-0lax">{entry?.sellingRate?.$numberDecimal}</td>
+                          <td className="tg-0lax">{Number(entry?.sellingRate?.$numberDecimal).toFixed(2)}</td>
   
-                          <td className="tg-0lax">{entry?.total?.$numberDecimal}</td>
+                          <td className="tg-0lax">{Number(entry?.total?.$numberDecimal).toFixed(2)}</td>
                         </tr>
                             )
                           }))
@@ -1517,7 +1517,7 @@ FrontPageRegularData?.map((item) => {
                         <td>{FrontPage?.length && FrontPage?.sort((a, b) => b?.createdAt?.localeCompare(a?.createdAt))[pgNo]?.barSupplements?.entries?.reduce(
                             (total, regularData) => total + (Number(regularData?.closingStock)*Number(regularData?.sellingRate?.$numberDecimal)),
                             0
-                          )}</td>
+                          ).toFixed(2)}</td>
                       </tr>
                         
                       </tbody>
@@ -1650,12 +1650,12 @@ FrontPageRegularData?.map((item) => {
                         Number(currentItem?.sales) *
                         Number(currentItem?.sellingRate?.$numberDecimal)),
                       0
-                    )}</td>
+                    ).toFixed(2)}</td>
               </tr>
                 </tbody>
               </table>
             </div>
-            <div className="my-10">Beer Total:- {(BackPageReportExceptionalSize &&
+            <div className="my-10">Beer Total:- {Number((BackPageReportExceptionalSize &&
                   BackPageReportExceptionalSize?.length > 0 &&
                   BackPageReportExceptionalSize
                     ?.filter((page,index) => {
@@ -1692,7 +1692,7 @@ FrontPageRegularData?.map((item) => {
                           Number(regularData?.sales) *
                             Number(regularData?.sellingRate?.$numberDecimal),
                         0
-                      )}</div>
+                      )).toFixed(2)}</div>
           </div>
         </>
       </div>

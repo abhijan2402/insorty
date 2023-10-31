@@ -251,7 +251,7 @@ const FronteDailyReport = () => {
                           </div>
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text">375ml</span>
+                              <span className="label-text margin-6">375ml</span>
                             </label>
                           </div>
                           <div className="form-control">
@@ -304,12 +304,12 @@ const FronteDailyReport = () => {
                         <div className="flex ">
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text">750ml</span>
+                              <span className="label-text ">750ml</span>
                             </label>
                           </div>
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text">375ml</span>
+                              <span className="label-text margin-6">375ml</span>
                             </label>
                           </div>
                           <div className="form-control">
@@ -367,7 +367,7 @@ const FronteDailyReport = () => {
                           </div>
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text">375ml</span>
+                              <span className="label-text margin-6">375ml</span>
                             </label>
                           </div>
                           <div className="form-control">
@@ -395,7 +395,7 @@ const FronteDailyReport = () => {
                           </div>
                           <div className="form-control">
                             <label className="label">
-                              <span className="label-text">375ml</span>
+                              <span className="label-text margin-6">375ml</span>
                             </label>
                           </div>
                           <div className="form-control">
@@ -1981,7 +1981,7 @@ const FronteDailyReport = () => {
                                 (total =
                                   total + Number(curr.inflowPurchaseOtherMl)),
                               0
-                            )}
+                            ).toFixed(2)}
                             disabled
                           />
                         </div>
@@ -2042,7 +2042,7 @@ const FronteDailyReport = () => {
                                     curr.inflowPurchaseFromOutsideOtherMl
                                   )),
                               0
-                            )}
+                            ).toFixed(2)}
                             disabled
                           />
                         </div>
@@ -2099,7 +2099,7 @@ const FronteDailyReport = () => {
                                 (total =
                                   total + Number(curr.inflowCreditOtherMl)),
                               0
-                            )}
+                            ).toFixed(2)}
                             disabled
                           />
                         </div>
@@ -2150,7 +2150,7 @@ const FronteDailyReport = () => {
                               (total, curr) =>
                                 (total = total + Number(curr.sendOtherMl)),
                               0
-                            )}
+                            ).toFixed(2)}
                             disabled
                           />
                         </div>
@@ -2693,7 +2693,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.startingStock650)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -2721,7 +2721,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.startingStock550)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -2749,7 +2749,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.startingStock330)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -2785,7 +2785,7 @@ const FronteDailyReport = () => {
                                             currentItem.incomingPurchase650
                                           )),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -2815,7 +2815,7 @@ const FronteDailyReport = () => {
                                             currentItem.incomingPurchase550
                                           )),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -2845,7 +2845,7 @@ const FronteDailyReport = () => {
                                             currentItem.incomingPurchase330
                                           )),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -2891,7 +2891,7 @@ const FronteDailyReport = () => {
                                             currentItem.incomePurchase650
                                           )),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -2921,7 +2921,7 @@ const FronteDailyReport = () => {
                                             currentItem.incomePurchase550
                                           )),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -2951,7 +2951,7 @@ const FronteDailyReport = () => {
                                             currentItem.incomePurchase330
                                           )),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -2996,7 +2996,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.inflowCredit650)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3024,7 +3024,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.inflowCredit550)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3052,7 +3052,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.inflowCredit330)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3084,7 +3084,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.sending650)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3112,7 +3112,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.sending550)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3140,7 +3140,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.sending330)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3171,7 +3171,7 @@ const FronteDailyReport = () => {
                                         (total =
                                           total + currentItem.sumRemainder650),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3198,7 +3198,7 @@ const FronteDailyReport = () => {
                                         (total =
                                           total + currentItem.sumRemainder550),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3225,7 +3225,7 @@ const FronteDailyReport = () => {
                                         (total =
                                           total + currentItem.sumRemainder330),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3260,7 +3260,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.closingStock650)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     type="number"
                                     onKeyDown={(e) => {
                                       // Prevent the default behavior of arrow keys
@@ -3285,7 +3285,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.closingStock550)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3316,7 +3316,7 @@ const FronteDailyReport = () => {
                                           total +
                                           Number(currentItem.closingStock330)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     type="number"
                                     onKeyDown={(e) => {
                                       // Prevent the default behavior of arrow keys
@@ -3343,7 +3343,7 @@ const FronteDailyReport = () => {
                                       (total, currentItem) =>
                                         (total = total + currentItem.sales650),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3369,7 +3369,7 @@ const FronteDailyReport = () => {
                                       (total, currentItem) =>
                                         (total = total + currentItem.sales550),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3395,7 +3395,7 @@ const FronteDailyReport = () => {
                                       (total, currentItem) =>
                                         (total = total + currentItem.sales330),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(event) =>
                                       onChangeFristBackFormHandler(event)
                                     }
@@ -3789,7 +3789,7 @@ const FronteDailyReport = () => {
                                         name="sales"
                                         required
                                         min={0}
-                                        value={beerBarthird.sales}
+                                        value={(beerBarthird.sales)}
                                         disabled
                                         onChange={(event) =>
                                           thirdFormOnChange(event, index)
@@ -4121,7 +4121,7 @@ const FronteDailyReport = () => {
                                 (total =
                                   total + Number(currentItem.startingStock)),
                               0
-                            )}
+                            ).toFixed(2)}
                             onChange={(e) => handelSeconFormOnChange(e)}
                           />
                         </div>
@@ -4147,7 +4147,7 @@ const FronteDailyReport = () => {
                                 (total =
                                   total + Number(currentItem.incomingPurchase)),
                               0
-                            )}
+                            ).toFixed(2)}
                             onChange={(e) => handelSeconFormOnChange(e)}
                           />
                         </div>
@@ -4178,7 +4178,7 @@ const FronteDailyReport = () => {
                                 (total =
                                   total + Number(currentItem.incomePurchase)),
                               0
-                            )}
+                            ).toFixed(2)}
                             onChange={(e) => handelSeconFormOnChange(e)}
                           />
                         </div>
@@ -4207,7 +4207,7 @@ const FronteDailyReport = () => {
                                 (total =
                                   total + Number(currentItem.inflowCredit)),
                               0
-                            )}
+                            ).toFixed(2)}
                             onChange={(e) => handelSeconFormOnChange(e)}
                           />
                         </div>
@@ -4233,7 +4233,7 @@ const FronteDailyReport = () => {
                               (total, currentItem) =>
                                 (total = total + Number(currentItem.sending)),
                               0
-                            )}
+                            ).toFixed(2)}
                             onChange={(e) => handelSeconFormOnChange(e)}
                           />
                         </div>
@@ -4259,7 +4259,7 @@ const FronteDailyReport = () => {
                                 (total =
                                   total + Number(currentItem.sumRemainder)),
                               0
-                            )}
+                            ).toFixed(2)}
                             onChange={(e) => handelSeconFormOnChange(e)}
                             disabled
                           />
@@ -4287,7 +4287,7 @@ const FronteDailyReport = () => {
                                 (total =
                                   total + Number(currentItem.closingStock)),
                               0
-                            )}
+                            ).toFixed(2)}
                             onChange={(e) => handelSeconFormOnChange(e)}
                           />
                         </div>
@@ -4313,7 +4313,7 @@ const FronteDailyReport = () => {
                               (total, currentItem) =>
                                 (total = total + Number(currentItem.sales)),
                               0
-                            )}
+                            ).toFixed(2)}
                             onChange={(e) => handelSeconFormOnChange(e)}
                           />
                         </div>

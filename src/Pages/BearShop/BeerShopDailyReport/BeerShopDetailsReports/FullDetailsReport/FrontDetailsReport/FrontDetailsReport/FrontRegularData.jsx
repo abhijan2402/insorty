@@ -5,7 +5,7 @@ function FrontRegularData({ regularData, index,quan1,quan2,quan3,pageId,frontSet
   let count = 0 
 
   const pegCount = (a,b,c)=>{
-    return (((Number(a)*25) || 0) + ((Number(b)*12.5) || 0) + ((Number(c)*6) || 0))
+    return Number((((Number(a)*25) || 0) + ((Number(b)*12.5) || 0) + ((Number(c)*6) || 0)).toFixed(2))
   }
 
   const calPrice30 = (stock1, stock2, stock3, price1, price2, price3) => {

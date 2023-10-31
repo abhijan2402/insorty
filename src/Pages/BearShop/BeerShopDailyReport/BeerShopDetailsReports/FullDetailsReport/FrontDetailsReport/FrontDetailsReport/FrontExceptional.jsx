@@ -20,11 +20,11 @@ function FrontExceptional({ exceptionalData, index,pageId,frontSet }) {
     
       const amount = send * purchaseShopRate.$numberDecimal;
 
-      const pegInOne = exceptionalData.quantityInML/30
-      const yog =Number(openingStock) + Number(purchaseOutSide) + Number(purchaseShop) + Number(credits) - Number(send)
+      const pegInOne = Number((exceptionalData.quantityInML/30).toFixed(2))
+      const yog =Number((Number(openingStock) + Number(purchaseOutSide) + Number(purchaseShop) + Number(credits) - Number(send)).toFixed(2))
       const calAvg = (a,b,c,d) => {
         const totalStockRate = ((Number(a) || 0)*(Number(b) || 0)) + ((Number(c) || 0)*(Number(d) || 0))
-        return Number((totalStockRate/(a+c)) || 0).toFixed(2)
+        return Number(Number((totalStockRate/(a+c)) || 0).toFixed(2))
       }
 
   return (
@@ -43,7 +43,7 @@ function FrontExceptional({ exceptionalData, index,pageId,frontSet }) {
     {/* ======== आमद (खरीद)-दु. ========= */}
 
     <td className="tg-0lax">{purchaseShop}</td>
-    <td className="tg-0lax">{Number(purchaseShop)*pegInOne}</td>
+    <td className="tg-0lax">{Number(Number(purchaseShop)*pegInOne).toFixed(2)}</td>
 
     <td className="tg-0lax">{purchaseShopRate.$numberDecimal || 0}</td>
     <td className="tg-0lax">{((Number(purchaseShop)*Number(purchaseShopRate.$numberDecimal || 0))/(Number(purchaseShop)*pegInOne)).toFixed(2)}</td>
@@ -51,25 +51,25 @@ function FrontExceptional({ exceptionalData, index,pageId,frontSet }) {
     {/* ======== आमद (खरीद)-बा. ========= */}
 
     <td className="tg-0lax">{purchaseOutSide}</td>
-    <td className="tg-0lax">{Number(purchaseOutSide)*pegInOne}</td>
+    <td className="tg-0lax">{Number(Number(purchaseOutSide)*pegInOne).toFixed(2)}</td>
 
     {/*================ खरीद रेट - बा. ==================  */}
     <td className="tg-0lax">{purchaseOutSideRate.$numberDecimal || 0}</td>
     <td className="tg-0lax">{((Number(purchaseOutSide)*Number(purchaseOutSideRate.$numberDecimal || 0))/(Number(purchaseOutSide)*pegInOne)).toFixed(2)}</td>
 
     <td className="tg-0lax">{credits}</td>
-    <td className="tg-0lax">{Number(credits)*pegInOne}</td>
+    <td className="tg-0lax">{Number(Number(credits)*pegInOne).toFixed(2)}</td>
     {/* ======== भेजान ========= */}
     <td className="tg-0lax">{send}</td>
     {/* ======== योग/शेष ========= */}
-    <td className="tg-0lax">{Number(send)*pegInOne}</td>
+    <td className="tg-0lax">{Number(Number(send)*pegInOne).toFixed(2)}</td>
     {/* ======== अन्तिम स्टॉक ========= */}
-    <td className="tg-0lax">{Number(remaining)*pegInOne}</td>
+    <td className="tg-0lax">{Number(Number(remaining)*pegInOne).toFixed(2)}</td>
     <td className="tg-0lax">{closingStock}</td>
-    <td className="tg-0lax">{(Number(remaining)*pegInOne-Number(closingStock))}</td>
+    <td className="tg-0lax">{((Number(remaining)*pegInOne-Number(closingStock))).toFixed(2)}</td>
     {/* ============= कुल योग ================ */}
-    <td className="tg-0lax">{sellingRate.$numberDecimal}</td>
-    <td className="tg-0lax">{((Number(remaining)*pegInOne-Number(closingStock)))*Number(sellingRate.$numberDecimal)}</td>
+    <td className="tg-0lax">{Number(sellingRate.$numberDecimal).toFixed(2)}</td>
+    <td className="tg-0lax">{Number(((Number(remaining)*pegInOne-Number(closingStock)))*Number(sellingRate.$numberDecimal)).toFixed(2)}</td>
   </tr>
   )
 }
