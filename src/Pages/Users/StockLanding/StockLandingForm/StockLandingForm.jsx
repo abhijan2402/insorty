@@ -6,6 +6,7 @@ import usePartyNames from "../../../../Hooks/usePartyNames";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import { useReactToPrint } from "react-to-print";
+import jwtDecode from "jwt-decode";
 
 const StockLandingForm = () => {
   const token = localStorage.getItem("token");
@@ -16,6 +17,7 @@ const StockLandingForm = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+  const shopType = jwtDecode(token).shopType 
 
   const { data: partyData, isLoading } = useQuery({
     queryKey: ["partyData"],
@@ -32,7 +34,7 @@ const StockLandingForm = () => {
     },
   });
 
-  console.log(partyData);
+
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -43,6 +45,22 @@ const StockLandingForm = () => {
       <button className="commonBtn " onClick={handlePrint}>
         प्रिंट
       </button>
+      {shopType==="SHOP" && ( <Link
+            to="/user/stocklanding"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
+     {shopType==="BAR" && ( <Link
+            to="/user/bearshop/stocklanding"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
       <section ref={front} className="px-2 py-6">
         <div className="title flex justify-center items-center">
           <h2 className="font-bold text-[1.5rem]">
@@ -70,7 +88,7 @@ const StockLandingForm = () => {
                   </tr>
                 
                   <tr>
-                    <th></th>
+                    
 
                     <td>
                       <div className="form-control">
@@ -169,12 +187,7 @@ const StockLandingForm = () => {
         </div>
         
       </section>
-      <Link
-        to="/user/stocklanding"
-        className="dailyReportBtn text-center flex justify-center items-center"
-      >
-        सूची
-      </Link>
+      
     </>
   );
 };

@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import moment from "moment/moment";
 import { useReactToPrint } from "react-to-print";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const BranchFrom = () => {
   const token = localStorage.getItem("token");
@@ -48,6 +49,14 @@ const BranchFrom = () => {
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट
         </button>
+        <Link
+            to="/user/branch"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>
       </div>
       <section ref={front} className="p-4">
         <div className="flex justify-center items-center">

@@ -19,7 +19,7 @@ const AddBranchName = ({ refetch }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.success) {
+        if (data.success===true) {
           refetch();
           Swal.fire({
             icon: "success",

@@ -227,7 +227,7 @@ const useFristFormSubmitAPIFront = () => {
               Promise.all([api1])
                 .then((responses) => Promise.all(responses.map((res) => res.json())))
                 .then((data) => {
-                  console.log(data);
+                  
                   if (data[0].success) {
                     Swal.fire({
                       icon: "success",
@@ -235,6 +235,8 @@ const useFristFormSubmitAPIFront = () => {
                       text: "Data Added Successfully",
                     });
                   }
+                  localStorage.removeItem('firstFront')
+                  localStorage.removeItem('mlForm')
                 })
                 .catch((err)=>{
                   const errorMessage = err.message;

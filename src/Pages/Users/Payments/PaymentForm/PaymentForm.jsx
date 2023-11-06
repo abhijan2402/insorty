@@ -62,7 +62,7 @@ const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
                   <td>
 
                   <div className="form-control">
-                    {moment(entry.debit.date).format("DD/MM/YYYY")}
+                    {entry?.debit?.date ? moment(entry.debit.date).format("DD/MM/YYYY") : ''}
                   </div>
               </td>
 
@@ -75,7 +75,7 @@ const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
                   <td>
 
                   <div className="form-control">
-                  {moment(entry.deposit.date).format("DD/MM/YYYY")}
+                  {entry?.deposit?.date ? moment(entry.deposit.date).format("DD/MM/YYYY") : ""}
                   </div>
               </td>
 
@@ -109,7 +109,7 @@ const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
                         }).then((willDelete) => {
                           if (willDelete) {
                             
-                            handelDelete(entry?._id);
+                            handelDelete(payment?._id);
                             
                           } else {
                             swal("Your entry is safe!");

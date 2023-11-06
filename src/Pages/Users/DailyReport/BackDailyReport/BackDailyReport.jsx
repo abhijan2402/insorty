@@ -1166,7 +1166,7 @@ const BackDailyReport = () => {
                                         Number(currentItem.sales650) *
                                           Number(currentItem.mainRate650)),
                                     0
-                                  )}
+                                  ).toFixed(2)}
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
@@ -1185,7 +1185,7 @@ const BackDailyReport = () => {
                                         Number(currentItem.sales550) *
                                           Number(currentItem.mainRate550)),
                                     0
-                                  )}
+                                  ).toFixed(2)}
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
@@ -1204,7 +1204,7 @@ const BackDailyReport = () => {
                                         Number(currentItem.sales330) *
                                           Number(currentItem.mainRate330)),
                                     0
-                                  )}
+                                  ).toFixed(2)}
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
@@ -1231,7 +1231,7 @@ const BackDailyReport = () => {
                                       Number(currentItem.sales330) *
                                         Number(currentItem.mainRate330)),
                                   0
-                                )}
+                                ).toFixed(2)}
                                 onChange={(event) =>
                                   onChangeFristBackFormHandler(event)
                                 }
@@ -1302,7 +1302,7 @@ const BackDailyReport = () => {
                                 </button>
                               </th>
                               <td></td>
-                              <td>TOTAL</td>
+                              <td>Total</td>
                               <td>
                                 <div className="form-control"></div>
                               </td>
@@ -1476,7 +1476,7 @@ const BackDailyReport = () => {
                                         (total =
                                           total + Number(currentItem.total)),
                                       0
-                                    )}
+                                    ).toFixed(2)}
                                     onChange={(e) => handelSeconFormOnChange(e)}
                                     disabled
                                   />
@@ -1492,12 +1492,12 @@ const BackDailyReport = () => {
                     </div>
                   </>
                 </div>
-                <div className="my-8  leading-6">
+                <div className="mt-3 leading-6">
                   <h4 className="text-[#AA237A] font-bold ">
                     Total:{" "}
                     {Number(
                       JSON.parse(localStorage.getItem("totalFirstBack"))
-                    ) + Number(localStorage.getItem("beerFormTotal"))}
+                    ) + Number(localStorage.getItem("beerFormTotal")).toFixed(2)}
                   </h4>
                 </div>
               </div>
@@ -1506,7 +1506,7 @@ const BackDailyReport = () => {
 
           {/* *********************************************************BREAK*********************************************************  */}
           <div className="flex  overflow-x-auto" ref={tableContainer}>
-            <div className="py-6">
+            <div className="">
               <h1 className="my-4">
                 <span className="font-bold titleText">देशी / RML</span>
               </h1>
@@ -1741,7 +1741,7 @@ const BackDailyReport = () => {
                                 (total, currentItem) =>
                                   (total = total + Number(currentItem.cost)),
                                 0
-                              )}
+                              ).toFixed(2)}
                               disabled
                             />
                           </div>
@@ -1809,10 +1809,10 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
                       {/* ======== प्रारम्भिक स्टॉक ========= */}
                       <td>
@@ -1855,7 +1855,7 @@ const BackDailyReport = () => {
                               (total, currentItem) =>
                                 (total = total + Number(currentItem.total)),
                               0
-                            )}
+                            ).toFixed(2)}
                             disabled
                           />
                         </div>
@@ -1917,10 +1917,10 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
 
                       <td>
@@ -1932,7 +1932,7 @@ const BackDailyReport = () => {
                             (total, currentItem) =>
                               (total = total + Number(currentItem.amount)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                           style={{
                             width: "100%",
@@ -1992,10 +1992,10 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
                       <td>
                         <div className="form-control"></div>
@@ -2009,7 +2009,7 @@ const BackDailyReport = () => {
                             (total, currentItem) =>
                               (total = total + Number(currentItem.amount)),
                             0
-                          )}
+                          ).toFixed(2)}
                           disabled
                           className="smallinput wd-7"
                         />
@@ -2076,9 +2076,9 @@ const BackDailyReport = () => {
                             ADD
                           </button>
                         </th>
-                        <th>Total</th>
+                        <td></td>
                         <td>
-                          <div className="form-control"></div>
+                          <div className="form-control">Total</div>
                         </td>
 
                         <td>
@@ -2165,10 +2165,10 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
 
                       <td>
@@ -2245,11 +2245,11 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
 
                       <td>
@@ -2266,7 +2266,7 @@ const BackDailyReport = () => {
                               (total, currentItem) =>
                                 (total = total + Number(currentItem.amount)),
                               0
-                            )}
+                            ).toFixed(2)}
                             disabled
                           />
                         </div>

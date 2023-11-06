@@ -104,7 +104,7 @@ const WineStock = () => {
               </Link>
 
               <Link className="commonBtn" to="/user/bearshop/rmlstock">
-                देशी
+              देशी / RML
               </Link>
             </>
           )}
@@ -116,7 +116,7 @@ const WineStock = () => {
               </Link>
 
               <Link className="commonBtn" to="/user/rmlstock">
-                देशी
+              देशी / RML
               </Link>
             </>
           )}
@@ -284,6 +284,7 @@ const WineStock = () => {
                     return (
                       <>
                         {brand.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).map((size) => {
+                          
                           if (
                             size.quantityInML !== 750 &&
                             size.quantityInML !== 375 &&

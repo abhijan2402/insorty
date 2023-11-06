@@ -424,7 +424,7 @@ const RmlFrom = ({
                 min={0}
               className="smallinput wd-11"
               name="cost"
-              value={item.cost}
+              value={Number(item.cost).toFixed(2)}
               onChange={(e) => onChangeRmlHandler(e, index)}
               disabled
             />

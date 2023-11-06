@@ -71,7 +71,7 @@ const CommissionForm = ({
             required
             className="smallinput wd-6"
             name="amount"
-            value={item.amount}
+            value={(item.amount)}
 
             min={0}
             onChange={(e) => onChangeCommison(e, index)}

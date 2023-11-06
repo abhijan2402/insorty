@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import { DataContextApi } from "../../../../Context/DataContext";
 
-const AddSendFormat = () => {
+const AddSendFormat = ({partners}) => {
   const token = localStorage.getItem("token");
   const { refetch } = useContext(DataContextApi);
   const handelSubmit = (e) => {
@@ -12,6 +12,23 @@ const AddSendFormat = () => {
       name: form.partnerName.value,
       equity: 0,
     };
+
+    
+
+    const testName = form.partnerName.value.toLowerCase()
+
+    const test = partners.length >0 ? partners.some((emp)=>emp?.name.toLowerCase()===testName) : []
+
+    if (test===true) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: 'Partner name already present',
+      });
+    
+    }
+
+    else{
 
     fetch("https://insorty-api.onrender.com/shop/addPartner", {
       method: "POST",
@@ -37,6 +54,7 @@ const AddSendFormat = () => {
           });
         }
       });
+    }
   };
 
   return (

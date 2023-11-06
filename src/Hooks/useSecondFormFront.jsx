@@ -81,7 +81,7 @@ const useSecondFormFront = () => {
               });
         
               liq.map((parent) => {
-                
+                console.log(parent)
                 parent.sizes.map((item) => {
                   if (
                     item.quantityInML !== 750 &&

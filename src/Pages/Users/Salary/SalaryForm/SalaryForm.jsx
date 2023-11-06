@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
 import { useReactToPrint } from "react-to-print";
 import { useParams } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 
 const SalaryForm = () => {
@@ -23,7 +24,7 @@ const SalaryForm = () => {
     content: () => front.current,
   });
 
-
+const shopType = jwtDecode(token).shopType
   const {
     data: salareyDataList,
     isLoading: salareyDataLoading,
@@ -147,6 +148,22 @@ const SalaryForm = () => {
       <button className="commonBtn " onClick={handlePrint}>
         प्रिंट
       </button>
+      {shopType==="SHOP" && ( <Link
+            to="/user/salary"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
+     {shopType==="BAR" && ( <Link
+            to="/user/bearshop/salary"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
       <div ref={front}>
         <div className="flex justify-center items-center">
           <div className="title">
@@ -253,12 +270,7 @@ const SalaryForm = () => {
             लेन-देन जोड़ें
           </label>
 
-          <Link
-            to="/user/salary"
-            className="commonBtn"
-          >
-            सूची
-          </Link>
+         
         </div>
       </div>
       {/* ************************ all sealy data************** */}

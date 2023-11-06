@@ -250,7 +250,7 @@ const PurchaseOutSideFrom = ({
                 required
               className="smallinput"
               name="total"
-              value={item.total}
+              value={Number(item.total).toFixed(2)}
               onChange={(e) => onChangePurchesOutSide(e, index)}
             />
           </div>

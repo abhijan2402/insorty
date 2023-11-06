@@ -146,7 +146,7 @@ const PartyName = () => {
         </div>
       </div>
 
-      <AddPartyName refetch={refetch}></AddPartyName>
+      <AddPartyName refetch={refetch} names={PartyNameData}></AddPartyName>
     </section>
   );
 };

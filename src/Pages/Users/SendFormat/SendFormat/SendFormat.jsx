@@ -20,7 +20,7 @@ const SendFormat = ({ isBearShop }) => {
  
   // const token = jwtDecode(localStorage.getItem("token"));
   const ShopType = jwtDecode(localStorage.getItem("token")).shopType;
-  const role = jwtDecode(localStorage.getItem("token")).role;
+  
 
   const deletePartner = (id) => {
     fetch(`https://insorty-api.onrender.com/shop/deletePartner`, {
@@ -137,7 +137,7 @@ const SendFormat = ({ isBearShop }) => {
             </label>
           </div>
         </div>
-        <AddSendFormat></AddSendFormat>
+        <AddSendFormat partners={partners}></AddSendFormat>
         <ChangeEquity data={partners}></ChangeEquity>
       </div>
     </section>

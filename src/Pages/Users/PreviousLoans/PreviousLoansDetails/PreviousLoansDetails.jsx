@@ -12,6 +12,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import useMainInvestmentHooks from "../../MainInvestment/MainInvestmentHooks/useMainInvestmentHooks";
 import swal from "sweetalert";
 import { FaRegTrashAlt } from "react-icons/fa";
+import jwtDecode from "jwt-decode";
 
 const PreviousLoansDetails = () => {
   const token = localStorage.getItem("token");
@@ -25,6 +26,7 @@ const PreviousLoansDetails = () => {
     content: () => front.current,
   });
   const {data} = useMainInvestmentHooks()
+  const shopType = jwtDecode(token).shopType
 
 
   const BasedURL = process.env.REACT_APP_API_URL;
@@ -118,6 +120,24 @@ const PreviousLoansDetails = () => {
         प्रिंट
 
         </button>
+
+        {shopType==="SHOP" && ( <Link
+            to="/user/previousloan"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
+     {shopType==="BAR" && ( <Link
+            to="/user/bearshop/previousloan"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
+
       <div className="title flex justify-center items-center gap-4">
         <h2 className="font-bold text-[1.5rem]">नाम:- {partyName}</h2>
 

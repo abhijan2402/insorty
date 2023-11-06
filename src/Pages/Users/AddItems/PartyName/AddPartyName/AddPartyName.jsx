@@ -1,14 +1,30 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const AddPartyName = ({refetch}) => {
+const AddPartyName = ({refetch,names}) => {
   const token = localStorage.getItem("token");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
+    
+
+    const testName = data.addPartyName.toLowerCase()
+
+    const test = names.length >0 ? names.some((emp)=>emp?.partyName.toLowerCase()===testName) : []
+
+    if (test===true) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: 'Party name already present',
+      });
+    
+    }
+    else{
+
+  
     fetch("https://insorty-api.onrender.com/shop/addParty", {
       method: "POST",
       headers: { "Content-Type": "application/json", cookie_token: token },
@@ -34,6 +50,7 @@ const AddPartyName = ({refetch}) => {
           });
         }
       });
+    }
   };
 
   return (

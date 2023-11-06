@@ -38,6 +38,7 @@ const Payments = () => {
         }
       );
       const data = await res.json();
+      console.log(data)
       return data?.data;
     },
   });
@@ -47,7 +48,7 @@ const Payments = () => {
     const from = e.target;
     const debitAmount = from.debitAmount.value;
     const depositAmount = from.depositAmount.value;
-console.log(from.description)
+
     const shopAccount = [
       {
         debit: {
@@ -75,7 +76,7 @@ console.log(from.description)
       .then((res) => res.json())
       .then((data) => {
         setPaymentDetailsData(data?.data);
-        console.log(data);
+        
         refetch();
         if (data.success) {
           Swal.fire({
@@ -95,6 +96,8 @@ console.log(from.description)
   };
 
   const handelDelete  = async (id) => {
+   
+ 
     fetch(
       `https://insorty-api.onrender.com/shop/deleteShopAccount`,
       {
@@ -103,7 +106,7 @@ console.log(from.description)
           "Content-Type": "application/json",
           cookie_token: token,
         },
-        body : JSON.stringify({shopAccountPageId: {id}})
+        body : JSON.stringify({shopAccountPageId: id})
       }
     ).then((res)=>{
       if (res.status === 200) {

@@ -187,11 +187,11 @@ const RmlStock = () => {
                                         ).toFixed(2)}
                                       </td>
                                       <td>
-                                        {" "}
-                                        {size.currentStock *
+                                        
+                                        {Number(size.currentStock *
                                           Number(
                                             size.averageRate.$numberDecimal
-                                          ).toFixed(2)}
+                                          )).toFixed(2)}
                                       </td>
                                     </tr>
                                   );
@@ -221,8 +221,8 @@ const RmlStock = () => {
                                       0
                                     )),
                                 0
-                              )
-                              .toFixed(2)}
+                              ).toFixed(2)
+                             }
                         </td>
                       </tr>
                     </tbody>

@@ -54,7 +54,7 @@ const DataContext = ({ children }) => {
             setSalesMan(data?.data[data.data.length-1]?.dailyReport?.salesmen)
           }
           else{
-            setSalesMan("")
+            localStorage.getItem("salesMan") ? setSalesMan(localStorage.getItem("salesMan")) : setSalesMan("")
           }
         });
     }

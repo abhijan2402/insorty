@@ -208,7 +208,7 @@ const CashReciveForm = ({
             required
             name="amount"
             min={0}
-            value={item.amount}
+            value={(item.amount)}
             onChange={(e) => onChangeCashRecive(e, index)}
             className="smallinput wd-7"
             

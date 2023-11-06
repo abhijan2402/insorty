@@ -49,7 +49,7 @@ const BeerStock = () => {
         }
       });
 
-    console.log(hasMore, "hasmore");
+
   };
 
   useEffect(() => {
@@ -93,7 +93,7 @@ const BeerStock = () => {
                 अंग्रेजी
               </Link>
               <Link className="commonBtn" to="/user/bearshop/rmlstock">
-                देशी
+              देशी / RML
               </Link>
             </>
           )}
@@ -104,7 +104,7 @@ const BeerStock = () => {
                 अंग्रेजी
               </Link>
               <Link className="commonBtn" to="/user/rmlstock">
-                देशी
+              देशी / RML
               </Link>
             </>
           )}

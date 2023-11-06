@@ -21,10 +21,16 @@ const AddOneFristFromBack = ({
   const ip = useRef(null)
   const ip2 = useRef(null)
   const ip3 = useRef(null)
+  const ip4 = useRef(null)
 
   const scrollToComponent = (ref) => {
     if(shopType==="SHOP"){
     ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"center" });
+  }
+  };
+  const scrollToStart = (ref) => {
+    if(shopType==="SHOP"){
+    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"start" });
   }
   };
 
@@ -814,6 +820,8 @@ const AddOneFristFromBack = ({
                 }} 
                 required
                 min={0}
+                ref={ip4}
+                onFocus={()=>scrollToStart(ip4)}
                 className="smallinput"
                 name="mainRate650"
                 value={item.mainRate650}
@@ -869,7 +877,7 @@ const AddOneFristFromBack = ({
                 className="smallinput wd-6"
                 name="total650"
                 disabled
-                value={item.total650}
+                value={Number(item.total650).toFixed(2)}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
@@ -882,7 +890,7 @@ const AddOneFristFromBack = ({
                 className="smallinput wd-6"
                 name="total550"
                 disabled
-                value={item.total550}
+                value={Number(item.total550).toFixed(2)}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
@@ -895,7 +903,7 @@ const AddOneFristFromBack = ({
                 className="smallinput wd-6"
                 name="total330"
                 disabled
-                value={item.total330}
+                value={Number(item.total330).toFixed(2)}
                 onChange={(event) => onChangeFristBackFormHandler(event, index)}
               />
             </div>
@@ -911,7 +919,7 @@ const AddOneFristFromBack = ({
               disabled
               className="smallinput wd-7"
               name="grandTotal"
-              value={Number(item.grandTotal) || 0}
+              value={(Number(item.grandTotal) || 0).toFixed(2)}
               onChange={(event) => onChangeFristBackFormHandler(event, index)}
             />
           </div>

@@ -5,6 +5,7 @@ import useLiquors from "../../../../../../Hooks/useLiquors";
 import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const ShippingForm = ({
   index,
@@ -19,6 +20,10 @@ const ShippingForm = ({
   const token = localStorage.getItem("token");
 
   const [options, setOptions] = useState([]);
+
+  const shopType = jwtDecode(localStorage.getItem('token')).shopType
+
+  
 
   const fetchOptions = async (query) => {
     await axios({
@@ -78,6 +83,7 @@ const ShippingForm = ({
           }}
         >
           X
+           <input type="button" value=""  autoFocus={shopType==="SHOP" ? true : false}/>
         </th>
         <td>
           <div className="form-control">

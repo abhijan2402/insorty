@@ -3,6 +3,7 @@ import Loader from "../../../../../../Components/Loader/Loader";
 import usePartyNames from "../../../../../../Hooks/usePartyNames";
 import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
+import jwtDecode from "jwt-decode";
 
 
 const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsCredit }) => {
@@ -12,6 +13,9 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
     partnerLoaded,
     branches,
     branchLoaded } = usePartyNames()
+
+    const shopType = jwtDecode(localStorage.getItem('token')).shopType
+
 
   if (partyLoaded || partnerLoaded || branchLoaded) {
     return (
@@ -41,7 +45,9 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
               swal("Your row is safe!");
             }
           });
-      }}>X</th>
+      }}>X
+       <input type="button" value=""  autoFocus={shopType==="SHOP" ? true : false}/>
+      </th>
 
       <td>
         <div className="form-control">

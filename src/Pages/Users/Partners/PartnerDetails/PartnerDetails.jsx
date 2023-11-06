@@ -3,11 +3,15 @@ import { useParams } from "react-router-dom";
 import usePartyNames from "../../../../Hooks/usePartyNames";
 import Loader from "../../../../Components/Loader/Loader";
 import { useReactToPrint } from "react-to-print";
-
+import { Link } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 const PartnerDetails = () => {
   const { partners, partnerLoaded } = usePartyNames();
   let { partnerId } = useParams();
+  const shopType = jwtDecode(localStorage.getItem('token')).shopType
+
+
 
   const partner = partners?.find((item) => {
     if (item._id === partnerId) {
@@ -45,6 +49,23 @@ const PartnerDetails = () => {
       >
         प्रिंट
       </button>
+     {shopType==="SHOP" &&( <Link
+            to="/user/partners"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
+     {shopType==="BAR" &&( <Link
+            to="/user/bearshop/partners"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
+      
     <section ref={front}>
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">{partner?.name}</h2>

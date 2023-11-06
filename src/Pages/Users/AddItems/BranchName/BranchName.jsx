@@ -63,9 +63,7 @@ const BranchName = () => {
         <div className="flex gap-4 justify-center items-center">
          
 
-        <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branchname">
-            ब्रांच जोड़ें
-          </Link>
+       
 
           <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/partyname">पार्टी जोड़ें
           </Link>

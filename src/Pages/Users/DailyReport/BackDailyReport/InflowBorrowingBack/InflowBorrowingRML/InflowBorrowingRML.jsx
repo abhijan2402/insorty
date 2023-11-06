@@ -5,6 +5,7 @@ import useLiquors from "../../../../../../Hooks/useLiquors";
 import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 const InflowBorrowingRML = ({
   index,
@@ -17,6 +18,9 @@ const InflowBorrowingRML = ({
   const { parties, partyLoaded } = usePartyNames();
 
   const token = localStorage.getItem("token");
+
+  const shopType = jwtDecode(localStorage.getItem('token')).shopType
+
 
   const [options, setOptions] = useState([]);
 
@@ -78,6 +82,7 @@ const InflowBorrowingRML = ({
           }}
         >
           X
+          <input type="button" value=""  autoFocus={shopType==="SHOP" ? true : false}/>
         </th>
 
         <td>

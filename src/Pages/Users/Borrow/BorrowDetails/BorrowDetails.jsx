@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import Loader from "../../../../Components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import { useReactToPrint } from "react-to-print";
+import { Link } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 const BorrowDetails = () => {
   const token = localStorage.getItem("token");
@@ -10,6 +12,8 @@ const BorrowDetails = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
+
+  const shopType = jwtDecode(localStorage.getItem("token")).shopType
 
   const { partyId } = useParams();
 
@@ -41,7 +45,7 @@ const BorrowDetails = () => {
   const totalDebitData = debit?.reduce((a, b) => a + b, 0);
   const totalRemainingData = totalDebitData -totalDepositeData;
 
-  console.log(borrowTranstion, "1+++++++");
+
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -55,6 +59,22 @@ const BorrowDetails = () => {
       >
         प्रिंट
       </button>
+     {shopType==="SHOP" && ( <Link
+            to="/user/borrow"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
+     {shopType==="BAR" && ( <Link
+            to="/user/bearshop/borrow"
+           
+          >
+            <button className="commonBtn">
+            सूची
+            </button>
+      </Link>)}
     <section ref={front}>
       <div className="title text-center">
         <h2 className="font-bold text-[1.5rem]">

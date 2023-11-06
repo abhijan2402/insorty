@@ -25,7 +25,7 @@ const AddPayment = ({
             ✕
           </label>
           <h3 className="text-lg font-bold">लेन-देन जोड़ें</h3>
-          <form action="" onSubmit={handelAddPayment}>
+          <form action="" onSubmit={(e)=>handelAddPayment(e)}>
             <div className="flex gap-4 flex-col mt-4">
               <div className="form-control">
                 <label className="label">

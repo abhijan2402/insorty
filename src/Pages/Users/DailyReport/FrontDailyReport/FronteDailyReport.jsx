@@ -14,12 +14,7 @@ import {TextField} from "@mui/material";
 
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
-  const first = localStorage.getItem("firstFrontTotal")
-    ? localStorage.getItem("firstFrontTotal")
-    : 0;
-  const second = localStorage.getItem("mlFormTotal")
-    ? localStorage.getItem("mlFormTotal")
-    : 0;
+ 
 
   const { salesMan, setSalesMan, drDate, setDrDate } =
     useContext(DataContextApi);
@@ -84,6 +79,24 @@ const FronteDailyReport = () => {
     },
   });
 
+  const first = addOneFristFormState.reduce(
+    (total, currentItem) =>
+      (total =
+        total +
+        Number(currentItem.sales750) *
+          Number(currentItem.mainRate750) +
+        Number(currentItem.sales330) *
+          Number(currentItem.mainRate330) +
+        Number(currentItem.sales180) *
+          Number(currentItem.mainRate180)),
+    0
+  );
+const second = addOneSecondFormState.reduce(
+  (total, currentItem) =>
+    (total = total + Number(currentItem.total)),
+  0
+);
+
   
 
   if (isLoading || salaryLoading) {
@@ -120,6 +133,7 @@ const FronteDailyReport = () => {
             onChange={(event, value) => {
               if (value) {
                 setSalesMan(value.name)
+                localStorage.setItem("salesMan",value.name)
               } else {
                 setSalesMan("")
               }
@@ -1171,7 +1185,7 @@ const FronteDailyReport = () => {
                           </div>
                         </th>
                         <td></td>
-                        <td>TOTAL</td>
+                        <td>Total</td>
                         <td>
                           <div className="form-control"></div>
                         </td>
