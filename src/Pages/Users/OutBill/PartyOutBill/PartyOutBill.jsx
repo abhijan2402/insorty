@@ -11,12 +11,11 @@ import { Link } from "react-router-dom";
 const PartyOutBill = () => {
   const [StartDate, setStartDate] = useState(new Date());
   const [EndDate, setEndDate] = useState(
-    new Date().setDate(new Date().getDate() + 1)
-  );
+    new Date());
    
   
   const token = localStorage.getItem("token");
-  const ShopType =jwtDecode( token).shopType;
+  const ShopType =jwtDecode(token).shopType;
 
   const {
     data: purchaseOutSide,
@@ -30,7 +29,7 @@ const PartyOutBill = () => {
           process.env.REACT_APP_API_URL
         }/shop/getPurchaseOutsideData?from=${moment(StartDate).format(
           "DD MMMM YYYY"
-        )}&to=${moment(EndDate).format("DD MMMM YYYY")}&page=0&pagesize=200`,
+        )}&to=${moment(EndDate).format("DD MMMM YYYY")}`,
         {
           method: "GET",
           headers: {
@@ -58,21 +57,21 @@ const PartyOutBill = () => {
   }
 
 
-  const filteredData =
-    purchaseOutSide.length &&
-    purchaseOutSide?.filter((item) => {
-      let filterPass = true;
-      const date = moment(item.date).format("DD/MM/YYYY");
+  // const filteredData =
+  //   purchaseOutSide.length &&
+  //   purchaseOutSide?.filter((item) => {
+  //     let filterPass = true;
+  //     const date = moment(item.date).format("DD/MM/YYYY");
 
-      if (StartDate) {
-        filterPass =
-          filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
-      }
-      if (EndDate) {
-        filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
-      }
-      return filterPass;
-    });
+  //     if (StartDate) {
+  //       filterPass =
+  //         filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+  //     }
+  //     if (EndDate) {
+  //       filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+  //     }
+  //     return filterPass;
+  //   });
 
   return (
     <>
@@ -155,27 +154,27 @@ const PartyOutBill = () => {
               <thead>
                
                 <tr>
-                  <td className="tg-0lax">क्र.सं.</td>
-                  <td className="tg-0lax" colSpan={4}>
+                  <td className="text-xs">क्र.सं.</td>
+                  <td className="text-xs" colSpan={4}>
                     पार्टी का नाम
                   </td>
-                  <td className="tg-0lax" colSpan={4}>
+                  <td className="text-xs" colSpan={4}>
                     ब्राण्ड
                   </td>
-                  <td className="tg-0lax" colSpan={4}>
+                  <td className="text-xs" colSpan={4}>
                     ML
                   </td>
-                  <td className="tg-0lax" colSpan={4}>
+                  <td className="text-xs" colSpan={4}>
                     संख्या
                   </td>
-                  <td className="tg-0lax" colSpan={4}>
+                  <td className="text-xs" colSpan={4}>
                     रेट
                   </td>
-                  <td className="tg-0lax" colSpan={4}>
+                  <td className="text-xs" colSpan={4}>
                     रकम
                   </td>
 
-                  <td className="tg-0lax" colSpan={4}>
+                  <td className="text-xs" colSpan={4}>
                     टिप्पणी
                   </td>
                 </tr>

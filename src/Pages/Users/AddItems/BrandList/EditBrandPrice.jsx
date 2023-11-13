@@ -32,10 +32,10 @@ const EditBrandPrice = ({ priceList,editPrice,handleRemove, handlePriceUpdate })
             <>
               <table className="removeCommonWspace">
                 <thead>
-                    <th>Brand</th>
-                    <th>ML</th>
-                    <th>Price</th>
-                    <th>Delete</th>
+                    <th className="text-xs">Brand</th>
+                    <th className="text-xs">ML</th>
+                    <th className="text-xs">Price</th>
+                    <th className="text-xs">Delete</th>
                 </thead>
           <tbody>
          { priceList.map((item,index)=>{

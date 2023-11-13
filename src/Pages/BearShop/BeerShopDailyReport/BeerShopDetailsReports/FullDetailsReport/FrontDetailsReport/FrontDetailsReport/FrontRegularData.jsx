@@ -21,7 +21,7 @@ function FrontRegularData({ regularData, index,quan1,quan2,quan3,pageId,frontSet
 
   const calAvg = (a,b,c,d) => {
     const totalStockRate = ((Number(a) || 0)*(Number(b) || 0)) + ((Number(c) || 0)*(Number(d)|| 0))
-    return Number((totalStockRate/((Number(a) || 0)+(Number(c) || 0))) || 0).toFixed(2)
+    return Number((totalStockRate/((Number(a) || 0)+(Number(c) || 0))) || 0)
   }
 
   return (
@@ -99,7 +99,7 @@ return (
             <td className="tg-0lax">{quantityInML180.map((item, index) => {
               return Number(item?.averageRate?.$numberDecimal).toFixed(2);
             })}</td>
-                    <td className="tg-0lax">{calAvg(pegCount(quantityInML750.map((item, index) => {
+                    <td className="tg-0lax">{(calAvg(pegCount(quantityInML750.map((item, index) => {
                 return item.purchaseShop;
               }),quantityInML375.map((item, index) => {
                 return item.purchaseShop;
@@ -150,13 +150,13 @@ return (
                 return item.purchaseOutSideRate?.$numberDecimal;
               })
               )
-              )}</td>
+              )).toFixed(2)}</td>
 
 
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
                     <td className="tg-0lax">
               {quantityInML750.map((item, index) => {
-                return item.openingStock;
+                return Number(item.openingStock).toFixed(2);
               })}
             </td>
             {/* <td className="tg-0lax">
@@ -194,30 +194,30 @@ return (
                 return item.purchaseShop;
               })}
             </td>
-                   <td className="tg-0lax">{pegCount(quantityInML750.map((item, index) => {
+                   <td className="tg-0lax">{Number(pegCount(quantityInML750.map((item, index) => {
                 return item.purchaseShop;
               }),quantityInML375.map((item, index) => {
                 return item.purchaseShop;
               }),quantityInML180.map((item, index) => {
                 return item.purchaseShop;
-              }))}</td> 
+              }))).toFixed(2)}</td> 
                     {/* ======== आमद (खरीद)-दु. ========= */}
 
 
 
                    <td className="tg-0lax">
               {quantityInML750.map((item, index) => {
-                return item.purchaseShopRate?.$numberDecimal;
+                return Number(item.purchaseShopRate?.$numberDecimal).toFixed(2);
               })}
             </td>
             <td className="tg-0lax">
               {quantityInML375.map((item, index) => {
-                return item.purchaseShopRate?.$numberDecimal;
+                return Number(item.purchaseShopRate?.$numberDecimal).toFixed(2);
               })}
             </td>
             <td className="tg-0lax">
               {quantityInML180.map((item, index) => {
-                return item.purchaseShopRate?.$numberDecimal;
+                return Number(item.purchaseShopRate?.$numberDecimal).toFixed(2);
               })}
             </td>
             <td className="tg-0lax">{calPrice30(quantityInML750.map((item, index) => {
@@ -257,13 +257,13 @@ return (
                 return item.purchaseOutSide;
               })}
             </td>
-            <td className="tg-0lax">{pegCount(quantityInML750.map((item, index) => {
+            <td className="tg-0lax">{Number(pegCount(quantityInML750.map((item, index) => {
                 return item.purchaseOutSide;
               }),quantityInML375.map((item, index) => {
                 return item.purchaseOutSide;
               }),quantityInML180.map((item, index) => {
                 return item.purchaseOutSide;
-              }))}</td> 
+              }))).toFixed(2)}</td> 
 
 
 
@@ -284,7 +284,7 @@ return (
                 return item.purchaseOutSideRate?.$numberDecimal;
               })}
             </td>
-                    <td className="tg-0lax">{calPrice30(quantityInML750.map((item, index) => {
+                    <td className="tg-0lax">{Number(calPrice30(quantityInML750.map((item, index) => {
                 return item.purchaseOutSide;
               }),
               quantityInML375.map((item, index) => {
@@ -302,7 +302,7 @@ return (
               quantityInML180.map((item, index) => {
                 return item.purchaseOutSideRate?.$numberDecimal;
               })
-              )}</td>
+              )).toFixed(2)}</td>
 
 
 
@@ -321,13 +321,13 @@ return (
                 return item.credits;
               })}
             </td>
-            <td className="tg-0lax">{pegCount(quantityInML750.map((item, index) => {
+            <td className="tg-0lax">{Number(pegCount(quantityInML750.map((item, index) => {
                 return item.credits;
               }),quantityInML375.map((item, index) => {
                 return item.credits;
               }),quantityInML180.map((item, index) => {
                 return item.credits;
-              }))}</td> 
+              }))).toFixed(2)}</td> 
 
 
                     {/* ======== भेजान ========= */}
@@ -346,47 +346,47 @@ return (
                 return item.send;
               })}
             </td>
-            <td className="tg-0lax">{pegCount(quantityInML750.map((item, index) => {
+            <td className="tg-0lax">{Number(pegCount(quantityInML750.map((item, index) => {
                 return item.send;
               }),quantityInML375.map((item, index) => {
                 return item.send;
               }),quantityInML180.map((item, index) => {
                 return item.send;
-              }))}</td> 
+              }))).toFixed(2)}</td> 
                     {/* ======== योग/शेष ========= */}
 
 
 
-                    <td className="tg-0lax">{yog}  </td>
+                    <td className="tg-0lax">{Number(yog).toFixed(2)}  </td>
                  
                     {/* ======== अन्तिम स्टॉक ========= */}
-                    <td className="tg-0lax">{quantityInML750.length > 0
+                    <td className="tg-0lax">{Number(quantityInML750.length > 0
                 ? quantityInML750.map((item, index) => {
                     return item.closingStock;
                   })
-                : 0}</td>
+                : 0).toFixed(2)}</td>
 
-                    <td className="tg-0lax">{yog - (quantityInML750.length > 0
+                    <td className="tg-0lax">{Number(yog - (quantityInML750.length > 0
               ? quantityInML750.map((item, index) => {
                   return item.closingStock;
                 })
-              : 0)}   </td>
+              : 0)).toFixed(2)}   </td>
 
               <td>{quantityInML750.length > 0
               ? quantityInML750.map((item, index) => {
-                  return item.sellingRate.$numberDecimal;
+                  return Number(item.sellingRate.$numberDecimal).toFixed(2);
                 })
               : 0}</td>
 
-                    <td className="tg-0lax">{(yog - (quantityInML750.length > 0
+                    <td className="tg-0lax">{Number((yog - (quantityInML750.length > 0
               ? quantityInML750.map((item, index) => {
-                  return item.closingStock;
+                  return Number(item.closingStock);
                 })
               : 0)) * (quantityInML750.length > 0
               ? quantityInML750.map((item, index) => {
-                  return item.sellingRate.$numberDecimal;
+                  return Number(item.sellingRate.$numberDecimal);
                 })
-              : 0)}   </td>
+              : 0)).toFixed(2)}   </td>
                     {/* ============= कुल योग ================ */}
                     {/* <td className="tg-0lax">3</td> */}
                   </tr>

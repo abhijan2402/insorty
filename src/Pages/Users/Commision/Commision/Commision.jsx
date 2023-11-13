@@ -164,10 +164,10 @@ const Commision = () => {
                 <table className="removeCommonWSpace">
                   <thead>
                     <tr>
-                      <td> क्र. सं.</td>
-                      <th>विवरण</th>
-                      <th>रकम</th>
-                      <th>टिप्पणी</th>
+                    <th className="text-xs"> क्र. सं.</th>
+                      <th className="text-xs">विवरण</th>
+                      <th className="text-xs">रकम</th>
+                      <th className="text-xs">टिप्पणी</th>
                     </tr>
                   </thead>
 

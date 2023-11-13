@@ -55,11 +55,11 @@ const MainInvestment = () => {
             <table className=" removeCommonWSpace">
               <thead>
                 <tr className="text-center">
-                  <th> क्र. सं.</th>
+                  <th className="text-xs"> क्र. सं.</th>
                   <th></th>
-                    <th>विवरण</th>
-                  <th>दिनांक </th>
-                  <th>रकम</th>
+                    <th className="text-xs">विवरण</th>
+                  <th className="text-xs">दिनांक </th>
+                  <th className="text-xs">रकम</th>
                 </tr>
               </thead>
 

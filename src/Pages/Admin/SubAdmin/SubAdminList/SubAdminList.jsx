@@ -54,7 +54,7 @@ const SubAdminList = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) {
+        if (data.success===true) {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -64,9 +64,10 @@ const SubAdminList = () => {
           });
           subAdminRefetch();
         } else {
+         
           Swal.fire({
             icon: "error",
-            title: "Something went wrong",
+            title: `${data?.message ? data?.message : "something Went Wrong"}`,
             showConfirmButton: false,
             timer: 1500,
           });

@@ -24,22 +24,22 @@ const ExcepctionalData = ({
         </tr>
 
         <tr>
-          <td> क्र. सं.</td>
-          <th>Brand Name/ ब्राण्ड</th>
-          <th>ml</th>
-          <th>औसत दर</th>
-          <th>प्रारम्भिक स्टॉक</th>
-          <th>आमद (खरीद)-दु.</th>
-          <th>खरीद रेट - दु</th>
-          <th>आमद (खरीद)-बा.</th>
-          <th>खरीद रेट - बा.</th>
-          <th>आमद (उधारी)</th>
-          <th>भेजान</th>
-          <th>योग/शेष</th>
-          <th>अन्तिम स्टॉक </th>
-          <th>बिक्री</th>
-          <th>रेट</th>
-          <th>रकम</th>
+          <td className="text-xs"> क्र. सं.</td>
+          <th className="text-xs"> ब्राण्ड</th>
+          <th className="text-xs">ml</th>
+          <th className="text-xs">औसत दर</th>
+          <th className="text-xs">प्रारम्भिक स्टॉक</th>
+          <th className="text-xs">आमद (खरीद)-दु.</th>
+          <th className="text-xs">खरीद रेट - दु</th>
+          <th className="text-xs">आमद (खरीद)-बा.</th>
+          <th className="text-xs">खरीद रेट - बा.</th>
+          <th className="text-xs">आमद (उधारी)</th>
+          <th className="text-xs">भेजान</th>
+          <th className="text-xs">योग/शेष</th>
+          <th className="text-xs">अन्तिम स्टॉक </th>
+          <th className="text-xs">बिक्री</th>
+          <th className="text-xs">रेट</th>
+          <th className="text-xs">रकम</th>
         </tr>
       </thead>
       <tbody>

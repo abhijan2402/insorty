@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListOfFinalReport = ({ monthlyFinalReport }) => {
+const  ListOfFinalReport = ({ monthlyFinalReport }) => {
   const {
     openingStock,
     bought,
@@ -28,9 +28,9 @@ const ListOfFinalReport = ({ monthlyFinalReport }) => {
         <table className="removeCommonWSpace">
           <thead>
             <tr>
-              <th> क्र. सं. </th>
-              <th>विवरण</th>
-              <th>रकम</th>
+              <th className="text-xs"> क्र. सं. </th>
+              <th className="text-xs">विवरण</th>
+              <th className="text-xs">रकम</th>
             </tr>
           </thead>
           <tbody>

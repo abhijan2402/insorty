@@ -503,8 +503,9 @@ const FrontDetailsReport = () => {
               {/* ========================== */}
 
               <tr>
-                <td className="tg-0lax" colSpan={2}>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total
+                <td></td>
+                <td className="tg-0lax">
+              Total
                 </td>
                 <td className="tg-0lax"> </td>
                 <td className="tg-0lax"> </td>
@@ -795,7 +796,8 @@ const FrontDetailsReport = () => {
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
               <tr>
-                <td className="tg-0lax" colSpan={2}>
+                <td></td>
+                <td className="tg-0lax">
                   Total
                 </td>
                 <td className="tg-0lax"></td>

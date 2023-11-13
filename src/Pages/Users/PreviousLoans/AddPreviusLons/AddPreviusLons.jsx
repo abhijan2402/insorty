@@ -37,7 +37,7 @@ const AddPreviusLons = ({handelSubmitAddNewPrevLoan}) => {
                 />
               </div>
               <div>
-                <button type="submit" className="dailyReportBtn  mt-4">
+                <button type="submit" className="btn commonBtn ">
                 जोड़ें
                 </button>
               </div>

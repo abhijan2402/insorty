@@ -161,28 +161,28 @@ const Payments = () => {
 
                   <tbody>
                   <tr>
-                      <th rowSpan={2}> क्र. सं.</th>
-                      <th colSpan={2}> नामे</th>
-                      <th colSpan={2}> जमा </th>
-                      <th rowSpan={2}> चालू शेष नामे </th>
-                      <th rowSpan={2}>विवरण</th>
-                      <th rowSpan={2}>Delete</th>
+                      <th className="text-xs" rowSpan={2}> क्र. सं.</th>
+                      <th className="text-xs" colSpan={2}> नामे</th>
+                      <th className="text-xs" colSpan={2}> जमा </th>
+                      <th className="text-xs" rowSpan={2}> चालू शेष नामे </th>
+                      <th className="text-xs" rowSpan={2}>विवरण</th>
+                      <th className="text-xs" rowSpan={2}>Delete</th>
                     </tr>
                     <tr>
 
-                      <th>
+                      <th className="text-xs">
                             रकम
                       </th>
 
-                      <th>
+                      <th className="text-xs">
                            दिनाक
                       </th>
 
-                      <th>
+                      <th className="text-xs">
                         रकम
                       </th>
 
-                      <th>
+                      <th className="text-xs">
                         दिनाक
                       </th>
 

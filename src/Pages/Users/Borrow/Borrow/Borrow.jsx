@@ -78,11 +78,11 @@ const Borrow = () => {
               <table className="removeCommonWSpace ">
               <thead>
                 <tr>
-                  <th> क्र. सं.</th>
-                  <th> पार्टी का नाम</th>
-                  <th>नामे </th>
-                  <th>जमा </th>
-                  <th>चालू शेष नामे</th>
+                  <th  className="text-xs"> क्र. सं.</th>
+                  <th className="text-xs"> पार्टी का नाम</th>
+                  <th className="text-xs">नामे </th>
+                  <th className="text-xs">जमा </th>
+                  <th className="text-xs">चालू शेष नामे</th>
                 </tr>
               </thead>
 

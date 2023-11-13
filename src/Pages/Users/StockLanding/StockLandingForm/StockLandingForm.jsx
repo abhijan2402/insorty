@@ -80,11 +80,11 @@ const StockLandingForm = () => {
               <table className="removeCommonWSpace">
                 <thead>
                   <tr>
-                    <th rowSpan={2}> क्र. सं.</th>
-                    <th colSpan={2}>ब्राण्ड</th>
-                    <th colSpan={2}>आमद</th>
-                    <th colSpan={2}>भेजान </th>
-                    <th colSpan={2}>शेष</th>
+                    <th className="text-xs"  rowSpan={2}> क्र. सं.</th>
+                    <th className="text-xs"  colSpan={2}>ब्राण्ड</th>
+                    <th className="text-xs"  colSpan={2}>आमद</th>
+                    <th className="text-xs"  colSpan={2}>भेजान </th>
+                    <th className="text-xs" colSpan={2}>शेष</th>
                   </tr>
                 
                   <tr>

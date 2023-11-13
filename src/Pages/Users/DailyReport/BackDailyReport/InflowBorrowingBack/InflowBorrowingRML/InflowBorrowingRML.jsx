@@ -6,6 +6,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import Swal from "sweetalert2";
 
 const InflowBorrowingRML = ({
   index,
@@ -82,7 +83,7 @@ const InflowBorrowingRML = ({
           }}
         >
           X
-          <input type="button" value=""  autoFocus={shopType==="SHOP" ? true : false}/>
+          <input type="button" value=""  />
         </th>
 
         <td>
@@ -96,6 +97,15 @@ const InflowBorrowingRML = ({
               }}
               options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
+              onBlur={() => {
+                if (item.partyId === "" || item.partyId===null || item.partyId===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Party Name from Options',
+                  });
+                }
+              }}
               onChange={(event, value) => {
                 if (value) {
                   item.partyName = value.partyName;
@@ -135,6 +145,15 @@ const InflowBorrowingRML = ({
               }}
               options={options}
               getOptionLabel={(option) => (option ? option.brandName : "")}
+              onBlur={() => {
+                if (item.liquorID === "" || item.liquorID===null || item.liquorID===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Party Name from Options',
+                  });
+                }
+              }}
               onChange={(event, value) => {
                 if (value) {
                   item.brandName = value.brandName;
@@ -180,7 +199,7 @@ const InflowBorrowingRML = ({
             required
             >
               {
-            item.size.sizes.map((size)=>{
+            item.size.sizes.filter((size)=> size.quantityInML!==30).map((size)=>{
               if( item.brandName && item.brandName!=="" ){
               return(
                 <option value={size.quantityInML}>{size.quantityInML}ml</option>

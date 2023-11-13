@@ -289,6 +289,7 @@ const useHandelSubmitBackAPI = (shopType) => {
   }
 
   const handleSubmit = (e) => {
+    setIsLoading(true);
     e.preventDefault();
 
     if (salesMan === "") {
@@ -832,6 +833,7 @@ const useHandelSubmitBackAPI = (shopType) => {
               data[8].success === true
             ) {
               let BackPage = {
+                date: drDate,
                 dailyReport: data[0]?.data?._id,
                 RML: data[1]?.data?._id,
                 purchaseOutSide: data[2].data._id,
@@ -857,6 +859,7 @@ const useHandelSubmitBackAPI = (shopType) => {
                 .then((res) => res.json())
                 .then((data1) => {
                   if (data1.success === true) {
+                    console.log(data1)
                     Swal.fire({
                       icon: "success",
                       title: "Success",
@@ -896,6 +899,7 @@ const useHandelSubmitBackAPI = (shopType) => {
                 });
 
                 let BackPage = {
+                  date: drDate,
                   dailyReport:data[0].success===true ? data[0]?.data?._id : "",
                   RML:data[0].success===true ?  data[1]?.data?._id : "",
                   purchaseOutSide: data[0].success===true ? data[2].data._id : "",

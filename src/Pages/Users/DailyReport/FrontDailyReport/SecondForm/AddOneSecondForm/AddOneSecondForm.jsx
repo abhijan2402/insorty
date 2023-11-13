@@ -4,6 +4,7 @@ import Loader from "../../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const AddOneSecondForm = ({
@@ -85,8 +86,17 @@ const AddOneSecondForm = ({
             }}
             options={options.filter((brand)=>brand.type==='WINE')}
             getOptionLabel={(option) => (option ? option.brandName : "")}
+            onBlur={() => {
+              if (item.liquorID === "" || item.liquorID===null || item.liquorID===undefined) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Please choose Brand Name from Options',
+                });
+              }
+            }}
             onChange={(event, value) => {
-              console.log(value)
+              
               if (value) {
                 item.brandName = value.brandName;
                 item.liquorID = value._id;
@@ -130,7 +140,7 @@ const AddOneSecondForm = ({
             required
             >
               {
-            item.size.sizes.filter((size)=> size.quantityInML!==750 && size.quantityInML!==375 && size.quantityInML!==180).map((size)=>{
+            item.size.sizes.filter((size)=> size.quantityInML!==750 && size.quantityInML!==375 && size.quantityInML!==180 && size.quantityInML!==30).map((size)=>{
               if( item.brandName && item.brandName!=="" ){
               return(
                 <option value={size.quantityInML}>{size.quantityInML}ml</option>

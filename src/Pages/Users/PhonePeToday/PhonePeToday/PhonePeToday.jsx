@@ -89,11 +89,11 @@ const PhonePeToday = () => {
             <table className="removeCommonWSpace">
               <thead>
                 <tr>
-                  <td> क्र. सं.</td>
-                  <th>दिनांक</th>
-                  <th>सेल्समैन का नाम</th>
-                  <th>खाते में</th>
-                  <th>आज भुगतान</th>
+                  <th className="text-xs"> क्र. सं.</th>
+                  <th className="text-xs">दिनांक</th>
+                  <th className="text-xs">सेल्समैन का नाम</th>
+                  <th className="text-xs">खाते में</th>
+                  <th className="text-xs">आज भुगतान</th>
                 </tr>
               </thead>
               <tbody>

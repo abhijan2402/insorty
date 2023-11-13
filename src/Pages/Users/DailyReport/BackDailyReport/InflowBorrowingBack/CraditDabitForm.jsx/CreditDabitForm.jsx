@@ -4,6 +4,7 @@ import usePartyNames from "../../../../../../Hooks/usePartyNames";
 import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import jwtDecode from "jwt-decode";
+import Swal from "sweetalert2";
 
 
 const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsCredit }) => {
@@ -46,7 +47,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             }
           });
       }}>X
-       <input type="button" value=""  autoFocus={shopType==="SHOP" ? true : false}/>
+       <input type="button" value=""  />
       </th>
 
       <td>
@@ -57,7 +58,9 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             className="smallinput wd-30"
             name="partyType"
             value={item.partyType}
-            onChange={(e) => onChangeCarditDabit(e, index)}
+            onChange={(e) =>{
+              item.partyId=""
+              onChangeCarditDabit(e, index)}}
           >
             <option selected value="PARTNER">
             पार्टनर
@@ -82,6 +85,15 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             getOptionLabel={(option) => option ? option.partyName : ""}
             
             className={item.partyType === "PARTY" ? '' : 'displayHidden'}
+            onBlur={() => {
+              if (item.partyId === "" || item.partyId===null || item.partyId===undefined) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Please choose Party Name from Options',
+                });
+              }
+            }}
             onChange={(event, value) => {
               if (value) {
                 item.partyName = value.partyName
@@ -92,7 +104,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
               }
 
               onChangeCarditDabit(event, index)
-              console.log(item)
+              
             }}
             renderInput={(params) => (
               <TextField
@@ -119,8 +131,16 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             options={partners.length > 0 ? partners : ['no options']}
             getOptionLabel={(option) => option ? option.name : ""}
             className={item.partyType === "PARTNER" ? '' : 'displayHidden'}
-            
-
+            onBlur={() => {
+              if (item.partyId === "" || item.partyId===null || item.partyId===undefined) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Please choose Party Name from Options',
+                });
+              }
+            }}
+          
             onChange={(event, value) => {
               if (value) {
                 item.partyName = value.name
@@ -158,7 +178,15 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
             options={branches.length > 0 ? branches.filter((prev)=>prev.isActive===true) : ['no options']}
             getOptionLabel={(option) => option ? option.branchName : ""}
             className={item.partyType === "BRANCH" ? '' : 'displayHidden'}
-
+            onBlur={() => {
+              if (item.partyId === "" || item.partyId===null || item.partyId===undefined) {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Please choose Party Name from Options',
+                });
+              }
+            }}
             onChange={(event, value) => {
               if (value) {
                 item.partyName = value.branchName

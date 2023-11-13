@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef ,useEffect } from "react";
 import { FaCalendarAlt } from "react-icons/fa";
 import SelfBillList from "../SelfBillList/SelfBillList";
 import { useQuery } from "@tanstack/react-query";
@@ -17,8 +17,8 @@ const SelfBill = () => {
   const token = localStorage.getItem("token");
   // const [liquorsParentData, setLiquorsParentData] = React.useState([]);
   const { brandsLoaded } = useLiquors();
-  const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
+  const [StartDate, setStartDate] = useState(new Date());
+  const [EndDate, setEndDate] = useState(new Date());
   const { data } = useMainInvestmentHooks();
   const front = useRef(null);
   const handlePrint = useReactToPrint({
@@ -29,38 +29,33 @@ const SelfBill = () => {
   const ShopType = ShopToken.shopType;
   const role = ShopToken.role;
 
-  const { data: SelfBillData, isLoading } = useQuery({
+  const { data: SelfBillData, isLoading, refetch } = useQuery({
     queryKey: ["SelfBillData"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getSelfBill",
+        `https://insorty-api.onrender.com/shop/getSelfBill?from=${moment(StartDate).format('DD MMMM YYYY')}&to=${moment(EndDate).format('DD MMMM YYYY')}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
         }
       );
       const data = await res.json();
+     
       return data.data;
     },
   });
+
+  useEffect(() => {
+    refetch()
+   }, [StartDate,EndDate])
 
   if (isLoading || brandsLoaded || data.isLoading) {
     return <Loader></Loader>;
   }
 
-  const filteredData = SelfBillData.filter((item) => {
-    let filterPass = true;
-    const date = moment(item.date).format("DD/MM/YYYY");
+  
 
-    if (StartDate) {
-      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
-    }
-    if (EndDate) {
-      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
-    }
-    //if filterPass comes back `false` the row is filtered out
-    return filterPass;
-  });
+  
   const filteredRefund = data?.refundRecoveryDetails?.entries
     .filter((entry) => entry.type === "REFUND")
     .filter((item) => {
@@ -79,9 +74,9 @@ const SelfBill = () => {
     });
 
 
-  const totalAmountData = ShopType==="SHOP" ?  filteredData?.map((item) => {
+  const totalAmountData = ShopType==="SHOP" ?  SelfBillData?.map((item) => {
     return item.total.$numberDecimal;
-  }) : filteredData?.filter((brand)=>{
+  }) : SelfBillData?.filter((brand)=>{
     if (brand.liquor.type==="WINE"){
       if(brand.liquor.quantityInML===30){
         return brand
@@ -175,18 +170,18 @@ const SelfBill = () => {
               <table className={ShopType==="SHOP" ? 'removeCommonWSpace': 'displayHidden'}>
                 <thead>
                   <tr>
-                    <td> क्र. सं.</td>
-                    <th>दिनाक</th>
-                    <th>ब्राण्ड </th>
-                    <th>साईज</th>
-                    <th>संख्या</th>
-                    <th> रेट</th>
-                    <th>रकम</th>
+                    <th className="text-xs"> क्र. सं.</th>
+                    <th className="text-xs">दिनाक</th>
+                    <th className="text-xs">ब्राण्ड </th>
+                    <th className="text-xs">साईज</th>
+                    <th className="text-xs">संख्या</th>
+                    <th className="text-xs"> रेट</th>
+                    <th className="text-xs">रकम</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {(filteredData &&
-                    filteredData?.sort((a, b) => a?.liquor.brandName?.localeCompare(b?.liquor.brandName))?.map((billsData, index) => {
+                  {(SelfBillData &&
+                    SelfBillData?.sort((a, b) => a?.liquor.brandName?.localeCompare(b?.liquor.brandName))?.map((billsData, index) => {
                       return (
                         <SelfBillList
                           key={index}
@@ -250,18 +245,18 @@ const SelfBill = () => {
               <table className={ShopType==="BAR" ? 'removeCommonWSpace': 'displayHidden'}>
                 <thead>
                   <tr>
-                    <td> क्र. सं.</td>
-                    <th>दिनाक</th>
-                    <th>ब्राण्ड </th>
-                    <th>साईज</th>
-                    <th>संख्या</th>
-                    <th> रेट</th>
-                    <th>रकम</th>
+                    <td className="text-xs"> क्र. सं.</td>
+                    <th className="text-xs">दिनाक</th>
+                    <th className="text-xs">ब्राण्ड </th>
+                    <th className="text-xs">साईज</th>
+                    <th className="text-xs">संख्या</th>
+                    <th className="text-xs"> रेट</th>
+                    <th className="text-xs">रकम</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {(filteredData &&
-                    filteredData?.filter((brand)=>{
+                  {(SelfBillData &&
+                    SelfBillData?.filter((brand)=>{
                       if (brand.liquor.type==="WINE"){
                         if(brand.liquor.quantityInML===30){
                           return brand

@@ -90,7 +90,7 @@ const AddSendFormat = ({partners}) => {
               </div>
 
               <div>
-                <button className="btn bg-[#AA237A] my-4 px-6" type="submit">
+                <button className="btn commonBtn " type="submit">
                   Save
                 </button>
               </div>

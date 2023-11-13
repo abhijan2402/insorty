@@ -158,12 +158,12 @@ const RmlStock = () => {
                   <table className="m-2 removeCommonWSpace">
                     <thead>
                       <tr>
-                        <th> क्र. सं.</th>
-                        <th>ब्राण्ड </th>
-                        <th>साईज </th>
-                        <th>स्टॉक </th>
-                        <th> रेट</th>
-                        <th> योग</th>
+                        <th className="text-xs"> क्र. सं.</th>
+                        <th className="text-xs">ब्राण्ड </th>
+                        <th className="text-xs">साईज </th>
+                        <th className="text-xs">स्टॉक </th>
+                        <th className="text-xs"> रेट</th>
+                        <th className="text-xs"> योग</th>
                       </tr>
                     </thead>
                     <tbody>

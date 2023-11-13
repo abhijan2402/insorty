@@ -5,6 +5,7 @@ import Loader from "../../../../../Components/Loader/Loader";
 import usePartyNames from "../../../../../Hooks/usePartyNames";
 import swal from "sweetalert";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const PurchaseOutSideFrom = ({
   index,
@@ -93,6 +94,15 @@ const PurchaseOutSideFrom = ({
               borderRadius:"5px"
               }}
               getOptionLabel={(option) => (option ? option.partyName : "")}
+              onBlur={() => {
+                if (item.partyId === "" || item.partyId===null || item.partyId===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Party Name from Options',
+                  });
+                }
+              }}
               onChange={(event, value) => {
                 if (value) {
                   item.partyName = value.partyName;
@@ -133,6 +143,15 @@ const PurchaseOutSideFrom = ({
               }}
               options={options}
               getOptionLabel={(option) => (option ? option.brandName : "")}
+              onBlur={() => {
+                if (item.liquorID === "" || item.liquorID===null || item.liquorID===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Brand Name from Options',
+                  });
+                }
+              }}
               onChange={(event, value) => {
                 if (value) {
                   item.brandName = value.brandName;
@@ -176,7 +195,7 @@ const PurchaseOutSideFrom = ({
             required
             >
               {
-            item.size.sizes.map((size)=>{
+            item.size.sizes.filter((size)=> size.quantityInML!==30).map((size)=>{
               if( item.brandName && item.brandName!=="" ){
               return(
                 <option value={size.quantityInML}>{size.quantityInML}ml</option>

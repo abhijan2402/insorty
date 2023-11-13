@@ -1253,23 +1253,23 @@ const BackDailyReport = () => {
                         <table className="table commonTable ">
                           <thead>
                             <tr>
-                              <th> क्र. सं.</th>
-                              <th></th>
-                              <th> ब्राण्ड</th>
-                              <th>ml</th>
-                              <th>औसत दर</th>
-                              <th className="whitespace-pre-wrap">प्रारम्भिक स्टॉक</th>
-                              <th className="whitespace-pre-wrap">आमद (खरीद)-दु.</th>
-                              <th className="whitespace-pre-wrap">खरीद रेट - दु</th>
-                              <th className="whitespace-pre-wrap">आमद (खरीद)-बा.</th>
-                              <th className="whitespace-pre-wrap">खरीद रेट - बा.</th>
-                              <th className="whitespace-pre-wrap">आमद (उधारी)</th>
-                              <th>भेजान</th>
-                              <th>योग/शेष</th>
-                              <th className="whitespace-pre-wrap">अन्तिम स्टॉक</th>
-                              <th>बिक्री</th>
-                              <th>रेट</th>
-                              <th>योग</th>
+                              <th className="text-xs"> क्र. सं.</th>
+                              <th className="text-xs"></th>
+                              <th className=" text-xs"> ब्राण्ड</th>
+                              <th className="text-xs">ml</th>
+                              <th className="text-xs">औसत दर</th>
+                              <th className="whitespace-pre-wrap text-xs">प्रारम्भिक स्टॉक</th>
+                              <th className="whitespace-pre-wrap  text-xs">आमद (खरीद)-दु.</th>
+                              <th className="whitespace-pre-wrap  text-xs">खरीद रेट - दु</th>
+                              <th className="whitespace-pre-wrap  text-xs">आमद (खरीद)-बा.</th>
+                              <th className="whitespace-pre-wrap  text-xs">खरीद रेट - बा.</th>
+                              <th className="whitespace-pre-wrap  text-xs">आमद (उधारी)</th>
+                              <th className="text-xs">भेजान</th>
+                              <th className=" text-xs">योग/शेष</th>
+                              <th className="whitespace-pre-wrap text-xs">अन्तिम स्टॉक</th>
+                              <th className="text-xs">बिक्री</th>
+                              <th className="text-xs">रेट</th>
+                              <th className="text-xs">योग</th>
                               {/* <th>कुल योग</th> */}
                             </tr>
                           </thead>
@@ -1516,23 +1516,23 @@ const BackDailyReport = () => {
                   <table className="table commonTable" id="rmlTable">
                     <thead>
                       <tr>
-                        <th> क्र. सं.</th>
-                        <th></th>
-                        <th> ब्राण्ड</th>
-                        <th>ml</th>
-                        <th>औसत दर</th>
-                        <th className="whitespace-pre-wrap">प्रारम्भिक स्टॉक</th>
-                        <th className="whitespace-pre-wrap">आमद (खरीद)-दु.</th>
-                        <th className="whitespace-pre-wrap">खरीद रेट - दु</th>
-                        <th className="whitespace-pre-wrap">आमद (खरीद)-बा.</th>
-                        <th className="whitespace-pre-wrap">खरीद रेट - बा.</th>
-                        <th className="whitespace-pre-wrap">आमद (उधारी)</th>
-                        <th>भेजान</th>
-                        <th>योग/शेष</th>
-                        <th className="whitespace-pre-wrap">अन्तिम स्टॉक </th>
-                        <th>बिक्री</th>
-                        <th>रेट</th>
-                        <th>रकम</th>
+                        <th className="text-xs"> क्र. सं.</th>
+                        <th className="text-xs"></th>
+                        <th className="text-xs"> ब्राण्ड</th>
+                        <th className="text-xs">ml</th>
+                        <th className="text-xs">औसत दर</th>
+                        <th className="whitespace-pre-wrap text-xs">प्रारम्भिक स्टॉक</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद)-दु.</th>
+                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - दु</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद)-बा.</th>
+                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - बा.</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (उधारी)</th>
+                        <th className="text-xs">भेजान</th>
+                        <th className="text-xs">योग/शेष</th>
+                        <th className="whitespace-pre-wrap text-xs">अन्तिम स्टॉक </th>
+                        <th className="text-xs">बिक्री</th>
+                        <th className="text-xs">रेट</th>
+                        <th className="text-xs">रकम</th>
                       </tr>
                     </thead>
 
@@ -1767,16 +1767,16 @@ const BackDailyReport = () => {
                 <table className="table commonTable" ref={purchaseOutsideRef} onFocus={()=>scrollToComponent(purchaseOutsideRef)}>
                   <thead>
                     <tr>
-                      <th> क्र. सं.</th>
+                      <th className="text-xs"> क्र. सं.</th>
                       <td></td>
-                      <th> पार्टी का नाम</th>
-                      <th>ब्राण्ड</th>
-                      <th>ML</th>
-                      <th>संख्या</th>
-                      <th>रेट</th>
-                      <th>रकम</th>
+                      <th className="text-xs"> पार्टी का नाम</th>
+                      <th className="text-xs">ब्राण्ड</th>
+                      <th className="text-xs">ML</th>
+                      <th className="text-xs">संख्या</th>
+                      <th className="text-xs">रेट</th>
+                      <th className="text-xs">रकम</th>
                       
-                      <th>टिप्पणी</th>
+                      <th className="text-xs">टिप्पणी</th>
                     </tr>
                   </thead>
 
@@ -1883,11 +1883,11 @@ const BackDailyReport = () => {
                 <table className="table commonTable" ref={commissionRef} onFocus={()=>scrollToComponent(commissionRef)}>
                   <thead>
                     <tr>
-                      <th> क्र. सं.</th>
-                      <td></td>
-                      <th> विवरण</th>
-                      <th>रकम</th>
-                      <th>विवरण</th>
+                      <th className="text-xs"> क्र. सं.</th>
+                      <td className="text-xs"></td>
+                      <th className="text-xs"> विवरण</th>
+                      <th className="text-xs">रकम</th>
+                      <th className="text-xs">विवरण</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1957,12 +1957,12 @@ const BackDailyReport = () => {
                 <table className="table commonTable" ref={cashReturnRef} onFocus={()=>scrollToComponent(cashReturnRef)}>
                   <thead>
                     <tr>
-                      <th> क्र. सं.</th>
-                      <td></td>
-                      <th>प्रकार</th>
-                      <th>पार्टी का नाम</th>
-                      <th>रकम</th>
-                      <th>विवरण</th>
+                      <th className="text-xs"> क्र. सं.</th>
+                      <td className="text-xs"></td>
+                      <th className="text-xs">प्रकार</th>
+                      <th className="text-xs">पार्टी का नाम</th>
+                      <th className="text-xs">रकम</th>
+                      <th className="text-xs">विवरण</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -2038,13 +2038,13 @@ const BackDailyReport = () => {
                   <table id="borrowedStock" className="table commonTable" ref={purchaseBorrowRef} onFocus={()=>scrollToComponent(purchaseBorrowRef)}>
                     <thead>
                       <tr>
-                        <th> क्र. सं.</th>
-                        <th></th>
-                        <th>पार्टी का नाम</th>
-                        <th> ब्राण्ड</th>
-                        <th>ML</th>
-                        <th>संख्या</th>
-                        <th>टिप्पणी</th>
+                        <th className="text-xs"> क्र. सं.</th>
+                        <th className="text-xs"></th>
+                        <th className="text-xs">पार्टी का नाम</th>
+                        <th className="text-xs"> ब्राण्ड</th>
+                        <th className="text-xs">ML</th>
+                        <th className="text-xs">संख्या</th>
+                        <th className="text-xs">टिप्पणी</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -2069,7 +2069,7 @@ const BackDailyReport = () => {
                             className="btn bg-[#AA237A] btn-sm"
                             onClick={(e) => 
                               {
-                                scrollToTable(e,"borrowedStock",containerBottom)
+                                
                               handelAddOneShipping(e)}
                               }
                           >
@@ -2126,13 +2126,13 @@ const BackDailyReport = () => {
                 <table id="sending" className="table commonTable" ref={sendingRef} onFocus={()=>scrollToComponent(sendingRef)}>
                   <thead>
                     <tr>
-                      <th> क्र. सं.</th>
+                      <th className="text-xs"> क्र. सं.</th>
                       <th></th>
-                      <th> पार्टी का नाम</th>
-                      <th> ब्राण्ड</th>
-                      <th>ML</th>
-                      <th>संख्या</th>
-                      <th>टिप्पणी</th>
+                      <th className="text-xs"> पार्टी का नाम</th>
+                      <th className="text-xs"> ब्राण्ड</th>
+                      <th className="text-xs">ML</th>
+                      <th className="text-xs">संख्या</th>
+                      <th className="text-xs">टिप्पणी</th>
                     </tr>
                   </thead>
 
@@ -2156,7 +2156,7 @@ const BackDailyReport = () => {
                         <button
                           className="btn bg-[#AA237A] btn-sm"
                           onClick={(e) => {
-                            scrollToTable(e,"sending",containerBottom)
+                            
                             handelAddOneBorrowingRml(e)
                             }
                           }
@@ -2211,12 +2211,12 @@ const BackDailyReport = () => {
                 <table className="table commonTable" ref={BorrowingRef} onFocus={()=>scrollToComponent(BorrowingRef)}>
                   <thead>
                     <tr>
-                      <th> क्र. सं.</th>
+                      <th className="text-xs"> क्र. सं.</th>
                       <th></th>
-                      <th>प्रकार</th>
-                      <th>पार्टी का नाम</th>
-                      <th>रकम</th>
-                      <th>टिप्पणी</th>
+                      <th className="text-xs">प्रकार</th>
+                      <th className="text-xs">पार्टी का नाम</th>
+                      <th className="text-xs">रकम</th>
+                      <th className="text-xs">टिप्पणी</th>
                     </tr>
                   </thead>
 
@@ -2327,7 +2327,7 @@ const BackDailyReport = () => {
 
           {/* ************ Submit button ***************** */}
           <div className="flex my-6 mx-4">
-            {isLoadingSubmit ? (
+            {isLoadingSubmit===true ? (
               <>
                 <button
                   type="button"

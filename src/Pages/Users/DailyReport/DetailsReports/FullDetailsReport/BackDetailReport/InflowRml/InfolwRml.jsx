@@ -17,27 +17,27 @@ const InfolwRml = ({ outSideData, index }) => {
      
           <tr key={index}>
             <td className="tg-0lax">{index + 1}</td>
-            <td className="tg-0lax" colSpan={4}>
+            <td className="tg-0lax" >
               {partyName}
             </td>
 
-            <td className="tg-0lax" colSpan={4}>
+            <td className="tg-0lax" >
               {liquor?.brandName}
             </td>
-            <td className="tg-0lax" colSpan={4}>
+            <td className="tg-0lax" >
               {liquor?.quantityInML}
             </td>
-            <td className="tg-0lax" colSpan={4}>
+            <td className="tg-0lax"  >
               {number}
             </td>
-            <td className="tg-0lax" colSpan={4}>
+            <td className="tg-0lax"  >
               {rate.$numberDecimal}
             </td>
-            <td className="tg-0lax" colSpan={4}>
-              {total}
+            <td className="tg-0lax"  >
+              {(total)}
             </td>
            
-            <td className="tg-0lax" colSpan={4}>
+            <td className="tg-0lax"  >
               {comment}
             </td>
           </tr>

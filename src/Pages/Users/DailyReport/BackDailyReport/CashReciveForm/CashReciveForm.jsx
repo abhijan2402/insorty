@@ -3,6 +3,7 @@ import usePartyNames from "../../../../../Hooks/usePartyNames";
 import Loader from "../../../../../Components/Loader/Loader";
 import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const CashReciveForm = ({
   index,
@@ -66,6 +67,7 @@ const CashReciveForm = ({
               required
               value={item.type}
               onChange={(e) => {
+                item.id = ""
                 onChangeCashRecive(e, index);
               }}
               id=""
@@ -92,6 +94,15 @@ const CashReciveForm = ({
               options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
               className={item.type === "PARTY" ? "" : "displayHidden"}
+              onBlur={() => {
+                if (item.id === "" || item.id===null || item.id===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Party Name from Options',
+                  });
+                }
+              }}
               onChange={(event, value) => {
                 if (value) {
                   item.name = value.partyName;
@@ -128,7 +139,15 @@ const CashReciveForm = ({
               options={partners.length > 0 ? partners : ["no options"]}
               getOptionLabel={(option) => (option ? option.name : "")}
               className={item.type === "PARTNER" ? "" : "displayHidden"}
-              
+              onBlur={() => {
+                if (item.id === "" || item.id===null || item.id===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Party Name from Options',
+                  });
+                }
+              }}
 
               onChange={(event, value) => {
                 if (value) {
@@ -166,7 +185,16 @@ const CashReciveForm = ({
               options={branches.length > 0 ? branches.filter((prev)=>prev.isActive===true) : ["no options"]}
               getOptionLabel={(option) => (option ? option.branchName : "")}
               className={item.type === "BRANCH" ? "" : "displayHidden"}
-            
+              onBlur={() => {
+                if (item.id === "" || item.id===null || item.id===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Party Name from Options',
+                  });
+                }
+              }}
+              
 
               onChange={(event, value) => {
                 if (value) {

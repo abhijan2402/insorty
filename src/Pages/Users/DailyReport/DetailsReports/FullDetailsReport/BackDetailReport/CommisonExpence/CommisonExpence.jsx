@@ -10,13 +10,13 @@ const CommisonExpence = ({ expences, index, entries }) => {
        
           <tr key={index}>
             <td className="tg-0lax">{index + 1}</td>
-            <td className="tg-0lax" colSpan={4}>
+            <td className="tg-0lax"  >
               {expences?.type}
             </td>
-            <td className="tg-0lax" colSpan={4}>
+            <td className="tg-0lax"  >
               {expences?.amount?.$numberDecimal}
             </td>
-            <td className="tg-0lax" colSpan={4}>
+            <td className="tg-0lax"  >
               {expences?.description}
             </td>
           </tr>

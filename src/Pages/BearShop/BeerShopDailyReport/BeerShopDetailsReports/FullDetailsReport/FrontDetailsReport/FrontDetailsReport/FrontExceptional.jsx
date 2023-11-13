@@ -37,8 +37,8 @@ function FrontExceptional({ exceptionalData, index,pageId,frontSet }) {
     <td className="tg-0lax"> {Number(averageRate?.$numberDecimal).toFixed(2)}</td>
     <td className="tg-0lax">{calAvg(Number(purchaseShop)*pegInOne,((Number(purchaseShop)*Number(purchaseShopRate.$numberDecimal || 0))/(Number(purchaseShop)*pegInOne)),Number(purchaseOutSide)*pegInOne, ((Number(purchaseOutSide)*Number(purchaseOutSideRate.$numberDecimal || 0))/(Number(purchaseOutSide)*pegInOne)))}</td>
     {/* ======== प्रारम्भिक स्टॉक ========= */}
-    <td className="tg-0lax">{openingStock}</td>
-    <td className="tg-0lax">{Number(openingStock)*pegInOne}</td>
+    <td className="tg-0lax">{Number(openingStock).toFixed(2)}</td>
+    <td className="tg-0lax">{Number(Number(openingStock)*pegInOne).toFixed(2)}</td>
 
     {/* ======== आमद (खरीद)-दु. ========= */}
 
@@ -46,7 +46,7 @@ function FrontExceptional({ exceptionalData, index,pageId,frontSet }) {
     <td className="tg-0lax">{Number(Number(purchaseShop)*pegInOne).toFixed(2)}</td>
 
     <td className="tg-0lax">{purchaseShopRate.$numberDecimal || 0}</td>
-    <td className="tg-0lax">{((Number(purchaseShop)*Number(purchaseShopRate.$numberDecimal || 0))/(Number(purchaseShop)*pegInOne)).toFixed(2)}</td>
+    <td className="tg-0lax">{Number((Number(purchaseShop)*Number(purchaseShopRate.$numberDecimal || 0))/(Number(purchaseShop)*pegInOne)).toFixed(2)}</td>
 
     {/* ======== आमद (खरीद)-बा. ========= */}
 

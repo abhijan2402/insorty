@@ -1900,7 +1900,7 @@ const FronteDailyReport = () => {
                     </th>
                     <td></td>
                     {/* ======== MRP Input ========= */}
-                    <td></td>
+                    <td>Total</td>
                     <td></td>
                     <td></td>
                     {/* ======== प्रारम्भिक स्टॉक ========= */}
@@ -3869,7 +3869,7 @@ const FronteDailyReport = () => {
                                 ADD
                               </button>
                             </th>
-                            <td></td>
+                            <td>Total</td>
 
                             <td></td>
 
@@ -4094,7 +4094,7 @@ const FronteDailyReport = () => {
                         </button>
                       </th>
                       <td></td>
-                      <td>TOTAL</td>
+                      <td>Total</td>
                       <td>
                         <div className="form-control"></div>
                       </td>

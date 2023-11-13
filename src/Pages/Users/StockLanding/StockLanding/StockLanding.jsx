@@ -55,8 +55,8 @@ const StockLanding = () => {
           <table className="table removeCommonWSpace">
             <thead>
               <tr>
-                <th> क्र. सं.</th>
-                <th colSpan={2}>नाम</th>
+                <th className="text-xs"> क्र. सं.</th>
+                <th className="text-xs" colSpan={2}>नाम</th>
               </tr>
             </thead>
             <tbody>

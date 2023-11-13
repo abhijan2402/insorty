@@ -396,7 +396,7 @@ FrontPageRegularData?.map((item) => {
                   {moment(selectedDate)?.format("DD/MM/YYYY")}
                 </td>
                 <tr>
-                    <th rowSpan={2}> क्र?. सं?.</th>
+                    <th rowSpan={2}> क्र. सं.</th>
                     <th rowSpan={2}>ब्राण्ड</th>
                     <th colSpan={4}>एवरेज रेट</th>
                     <th >प्रारम्भिक स्टॉक</th>
@@ -748,7 +748,7 @@ FrontPageRegularData?.map((item) => {
             <table className="table commonTable">
               <thead>
               <tr>
-                  <th rowSpan={2}>क्र?. सं?.</th>
+                  <th rowSpan={2}>क्र. सं.</th>
                   <th rowSpan={2}>ब्राण्ड</th>
                   <th rowSpan={2}>ml</th>
                   <th colSpan={2}>एवरेज रेट </th>
@@ -1009,7 +1009,7 @@ FrontPageRegularData?.map((item) => {
                           <td colSpan={22}> बीयर रिपोर्ट</td>
                         </tr>
                       <tr>
-                          <th rowSpan={2}> क्र?. सं?.</th>
+                          <th rowSpan={2}> क्र. सं.</th>
                           <th rowSpan={2}> ब्राण्ड</th>
                           <th colSpan={3}>औसत दर</th>
                           <th colSpan={3}>प्रारम्भिक स्टॉक</th>
@@ -1192,12 +1192,13 @@ FrontPageRegularData?.map((item) => {
               })}
 
 <tr>
-                <td className="tg-0lax" colSpan={2}>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total
+  <td></td>
+                <td className="tg-0lax">
+                  Total
                 </td>
-                <td className="tg-0lax"> 0</td>
-                <td className="tg-0lax"> 0</td>
-                <td className="tg-0lax"> 0</td>
+                <td className="tg-0lax"> </td>
+                <td className="tg-0lax"> </td>
+                <td className="tg-0lax"> </td>
 
                 <td className="tg-0lax">
                   {quan650?.reduce(
@@ -1443,7 +1444,7 @@ FrontPageRegularData?.map((item) => {
                           <td colSpan={22}>पानी, नमकीन, सिगरेट, पुड़िया आदि</td>
                         </tr>
                       <tr>
-                          <th colSpan={1}> क्र?. सं?.</th>
+                          <th colSpan={1}> क्र. सं.</th>
                           <th colSpan={1}>विवरण</th>
                           <th colSpan={1}>खरीद रेट</th>
                           <th colSpan={1}>प्राम्भिक स्टॉक</th>
@@ -1490,8 +1491,8 @@ FrontPageRegularData?.map((item) => {
                       })}
 
                       <tr>
-                        <td>Total</td>
                         <td></td>
+                        <td>Total</td>
                         <td></td>
                         <td>{FrontPage?.length && FrontPage?.sort((a, b) => b?.createdAt?.localeCompare(a?.createdAt))[pgNo]?.barSupplements?.entries?.reduce(
                             (total, regularData) => total + Number(regularData?.openingStock),
@@ -1537,7 +1538,7 @@ FrontPageRegularData?.map((item) => {
               <table className="table commonTable">
                 <thead>
                 <tr>
-                    <th colSpan={1}> क्र?. सं?.</th>
+                    <th colSpan={1}> क्र. सं.</th>
                     <th colSpan={1}>Brand Name/ ब्राण्ड</th>
                     <th colSpan={1}>ml</th>
                     <th colSpan={1}>औसत दर</th>
@@ -1575,7 +1576,8 @@ FrontPageRegularData?.map((item) => {
                 })}
 
 <tr>
-                <td className="tg-0lax" colSpan={2}>
+  <td></td>
+                <td className="tg-0lax">
                   Total
                 </td>
                 <td className="tg-0lax"></td>

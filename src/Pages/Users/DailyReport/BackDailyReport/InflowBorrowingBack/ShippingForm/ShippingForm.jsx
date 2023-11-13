@@ -6,6 +6,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import swal from "sweetalert";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import Swal from "sweetalert2";
 
 const ShippingForm = ({
   index,
@@ -58,7 +59,7 @@ const ShippingForm = ({
   return (
     <>
       <tr>
-        <th>{index + 1}</th>
+        <th>{index + 1} </th>
         <th
           className="cross"
           onClick={() => {
@@ -83,7 +84,7 @@ const ShippingForm = ({
           }}
         >
           X
-           <input type="button" value=""  autoFocus={shopType==="SHOP" ? true : false}/>
+           
         </th>
         <td>
           <div className="form-control">
@@ -96,6 +97,15 @@ const ShippingForm = ({
               }}
               options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
               getOptionLabel={(option) => (option ? option.partyName : "")}
+              onBlur={() => {
+                if (item.partyId === "" || item.partyId===null || item.partyId===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Party Name from Options',
+                  });
+                }
+              }}
               onChange={(event, value) => {
                 if (value) {
                   item.partyName = value.partyName;
@@ -135,6 +145,15 @@ const ShippingForm = ({
               }}
               options={options}
               getOptionLabel={(option) => (option ? option.brandName : "")}
+              onBlur={() => {
+                if (item.liquorID === "" || item.liquorID===null || item.liquorID===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Brand Name from Options',
+                  });
+                }
+              }}
               onChange={(event, value) => {
                 if (value) {
                   item.brandName = value.brandName;
@@ -178,7 +197,7 @@ const ShippingForm = ({
             required
             >
               {
-            item.size.sizes.map((size)=>{
+            item.size.sizes.filter((size)=> size.quantityInML!==30).map((size)=>{
               if( item.brandName && item.brandName!=="" ){
               return(
                 <option value={size.quantityInML}>{size.quantityInML}ml</option>

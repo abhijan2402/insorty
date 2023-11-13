@@ -1139,23 +1139,23 @@ const second = addOneSecondFormState.reduce(
                   <table className="table commonTable">
                     <thead>
                       <tr>
-                        <th> क्र. सं.</th>
-                        <th></th>
-                        <th> ब्राण्ड</th>
-                        <th>ml</th>
-                        <th>औसत दर</th>
-                        <th className="whitespace-pre-wrap">प्रारम्भिक स्टॉक</th>
-                        <th className="whitespace-pre-wrap">आमद (खरीद)-दु.</th>
-                        <th className="whitespace-pre-wrap">खरीद रेट - दु</th>
-                        <th className="whitespace-pre-wrap">आमद (खरीद)-बा.</th>
-                        <th className="whitespace-pre-wrap">खरीद रेट - बा.</th>
-                        <th className="whitespace-pre-wrap">आमद (उधारी)</th>
-                        <th>भेजान</th>
-                        <th>योग/शेष</th>
-                        <th className="whitespace-pre-wrap">अन्तिम स्टॉक</th>
-                        <th>बिक्री</th>
-                        <th>रेट</th>
-                        <th>योग</th>
+                        <th className="text-xs"> क्र. सं.</th>
+                        <th className="text-xs"></th>
+                        <th className="text-xs"> ब्राण्ड</th>
+                        <th className="text-xs">ml</th>
+                        <th className="text-xs">औसत दर</th>
+                        <th className="whitespace-pre-wrap text-xs">प्रारम्भिक स्टॉक</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद)-दु.</th>
+                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - दु</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद)-बा.</th>
+                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - बा.</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (उधारी)</th>
+                        <th className="text-xs">भेजान</th>
+                        <th className="text-xs">योग/शेष</th>
+                        <th className="whitespace-pre-wrap text-xs">अन्तिम स्टॉक</th>
+                        <th className="text-xs">बिक्री</th>
+                        <th className="text-xs">रेट</th>
+                        <th className="text-xs">योग</th>
                       </tr>
                     </thead>
 
@@ -1380,7 +1380,7 @@ const second = addOneSecondFormState.reduce(
 
           <div className="my-8  leading-6">
             <h4 className="text-[#AA237A] font-bold ">
-              Total: {Number(first) + Number(second)}
+              Total: {Number(Number(first) + Number(second)).toFixed(2)}
             </h4>
           </div>
 

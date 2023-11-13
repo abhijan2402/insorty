@@ -37,7 +37,7 @@ const AddNewEmploy = ({ handelSubmitAddNewEmploy }) => {
               />
             </div>
             <div>
-              <button type="submit" className="dailyReportBtn  mt-4">
+              <button type="submit" className="btn commonBtn ">
               नया कर्मचारी जोड़ें
               </button>
             </div>

@@ -78,10 +78,10 @@ const SendFormat = ({ isBearShop }) => {
               <table className="removeCommonWSpace ">
                 <thead>
                   <tr>
-                    <th> क्र. सं.</th>
-                    <th>पार्टनर नाम</th>
-                    <th>हिस्सा</th>
-                    <th>खाते में शेष</th>
+                    <th className="text-xs"> क्र. सं.</th>
+                    <th className="text-xs">पार्टनर नाम</th>
+                    <th className="text-xs">हिस्सा</th>
+                    <th className="text-xs">खाते में शेष</th>
                     <th></th>
                   </tr>
                 </thead>

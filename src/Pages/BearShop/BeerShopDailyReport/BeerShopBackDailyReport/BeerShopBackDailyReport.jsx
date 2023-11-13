@@ -392,10 +392,10 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
                       {/* ======== प्रारम्भिक स्टॉक ========= */}
                       <td>
@@ -514,9 +514,9 @@ const BackDailyReport = () => {
                             ADD
                           </button>
                         </th>
-                        <th>Total</th>
+                        <th></th>
                         <td>
-                          <div className="form-control"></div>
+                          <div className="form-control">Total</div>
                         </td>
 
                         <td>
@@ -603,10 +603,10 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
 
                       <td>
@@ -685,11 +685,11 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
 
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
 
                       <td>
@@ -773,10 +773,10 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control"></div>
+                        <div className="form-control">Total</div>
                       </td>
                       <td>
                         <div className="form-control"></div>
@@ -902,10 +902,10 @@ const BackDailyReport = () => {
                         </button>
                       </th>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control"></div>
                       </td>
                       <td>
-                       
+                      Total
                       </td>
                       <td>
                         <div className="form-control">
@@ -1106,9 +1106,9 @@ const BackDailyReport = () => {
                       </button>
                     </th>
                     <td>
-                      <div className="form-control">Total</div>
+                      <div className="form-control"></div>
                     </td>
-                    <td></td>
+                    <td>Total</td>
                     <td></td>
                     <td>
                       <div className="form-control">

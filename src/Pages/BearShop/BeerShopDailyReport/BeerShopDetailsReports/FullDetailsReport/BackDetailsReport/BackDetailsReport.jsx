@@ -154,14 +154,14 @@ const BackDailyReport = () => {
                     </tr>
                   <tr>
                       <th > क्र. सं.</th>
-                      <th colSpan={4}> पार्टी का नाम</th>
-                      <th colSpan={4}>ब्राण्ड</th>
-                      <th colSpan={4}>ML</th>
-                      <th colSpan={4}>संख्या</th>
-                      <th colSpan={4}>रेट</th>
-                      <th colSpan={4}>संख्या</th>
+                      <th > पार्टी का नाम</th>
+                      <th >ब्राण्ड</th>
+                      <th >ML</th>
+                      <th >संख्या</th>
+                      <th >रेट</th>
+                      <th >रकम</th>
                       
-                      <th colSpan={4}>टिप्पणी</th>
+                      <th >टिप्पणी</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -182,11 +182,11 @@ const BackDailyReport = () => {
                   })}
 
                    <tr>
-                <td className="tg-0lax">Total</td>
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4}></td>
-                <td className="tg-0lax" colSpan={4}>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax"  >Total</td>
+                <td className="tg-0lax"  />
+                <td className="tg-0lax" ></td>
+                <td className="tg-0lax" >
                   {BackPageData &&
                     BackPageData?.length &&
                     BackPageData
@@ -204,10 +204,10 @@ const BackDailyReport = () => {
                         0
                       )}
                 </td>
-                <td className="tg-0lax" colSpan={4}>
+                <td className="tg-0lax" >
                   
                 </td>
-                <td className="tg-0lax" colSpan={4}>
+                <td className="tg-0lax" >
                   {BackPageData &&
                     BackPageData?.length &&
                     BackPageData
@@ -272,8 +272,9 @@ const BackDailyReport = () => {
                     }</>)}
                   })}
 
-<tr>
-                <td className="tg-0lax" colSpan={2}>
+<tr>  
+  <td></td>
+                <td className="tg-0lax" >
                   Total
                 </td>
                 <td className="tg-0lax" />
@@ -315,9 +316,9 @@ const BackDailyReport = () => {
                     </tr>
                   <tr>
                       <th colSpan={1}> क्र. सं.</th>
-                      <th colSpan={4}>विवरण</th>
-                      <th colSpan={4}>रकम</th>
-                      <th colSpan={4}>Description</th>
+                      <th >विवरण</th>
+                      <th >रकम</th>
+                      <th >विवरण</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -340,8 +341,8 @@ const BackDailyReport = () => {
                   })}
 
 <tr>
-                <td className="tg-0lax">Total</td>
-                <td className="tg-0lax" colSpan={4}></td>
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax" >Total</td>
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData?.length &&
@@ -361,7 +362,7 @@ const BackDailyReport = () => {
                         0
                       )}
                 </td>
-                <td className="tg-0lax" colSpan={4}></td>
+                <td className="tg-0lax" ></td>
               </tr>
                   </tbody>
                 </table>
@@ -413,7 +414,8 @@ const BackDailyReport = () => {
                   })}
 
 <tr>
-                <td className="tg-0lax" colSpan={2}>
+  <td></td>
+                <td className="tg-0lax" >
                   Total
                 </td>
                 <td className="tg-0lax" />
@@ -462,16 +464,16 @@ const BackDailyReport = () => {
                     </tr>
                   <tr>
                     <th className="tg-0lax">क्र.सं.</th>
-                <th className="tg-0lax" colSpan={4}>
+                <th className="tg-0lax" >
                 पार्टी का नाम	
                 </th>
-                <th className="tg-0lax" colSpan={4}>
+                <th className="tg-0lax" >
                 पार्टी/पार्टनर	
                 </th>
-                <th className="tg-0lax" colSpan={4}>
+                <th className="tg-0lax" >
                   रकम
                 </th>
-                <th className="tg-0lax" colSpan={4}>
+                <th className="tg-0lax" >
                   विवरण
                 </th>
                     </tr>
@@ -494,9 +496,9 @@ const BackDailyReport = () => {
                     }</>)}
                   })}
                     <tr>
-                <td className="tg-0lax">Total</td>
-                <td className="tg-0lax" colSpan={4} />
-                <td className="tg-0lax" colSpan={4} />
+                <td className="tg-0lax"></td>
+                <td className="tg-0lax"  >Total</td>
+                <td className="tg-0lax"  />
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData?.length &&
@@ -619,8 +621,8 @@ const BackDailyReport = () => {
                   })}
 
                   <tr>
-                    <td className="tg-0lax">Total</td>
                     <td className="tg-0lax"></td>
+                    <td className="tg-0lax">Total</td>
                     <td className="tg-0lax"></td>
                     <td className="tg-0lax"> {BackPageData &&
                     BackPageData?.length &&

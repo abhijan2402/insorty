@@ -126,11 +126,11 @@ const Partners = ({ isBearShop }) => {
                 <table className=" removeCommonWSpace">
                   <thead>
                     <tr>
-                      <th> क्र. सं.</th>
-                      <th>पार्टनर नाम</th>
-                      <th>नामे </th>
-                      <th>जमा</th>
-                      <th>शेष</th>
+                      <th className="text-xs"> क्र. सं.</th>
+                      <th className="text-xs">पार्टनर नाम</th>
+                      <th className="text-xs">नामे </th>
+                      <th className="text-xs">जमा</th>
+                      <th className="text-xs">शेष</th>
                     </tr>
                   </thead>
 

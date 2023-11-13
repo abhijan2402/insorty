@@ -174,12 +174,12 @@ const WineStock = () => {
             <table className="removeCommonWSpace m-2">
               <thead>
                 <tr>
-                  <th rowSpan={2}> क्र. सं.</th>
-                  <th rowSpan={2}>ब्राण्ड</th>
-                  <th colSpan={3}>स्टॉक </th>
-                  <th colSpan={3}> रेट</th>
-                  <th colSpan={3}> योग</th>
-                  <th rowSpan={2}>कुल योग</th>
+                  <th className="text-xs" rowSpan={2}> क्र. सं.</th>
+                  <th className="text-xs" rowSpan={2}>ब्राण्ड</th>
+                  <th className="text-xs" colSpan={3}>स्टॉक </th>
+                  <th className="text-xs" colSpan={3}> रेट</th>
+                  <th className="text-xs" colSpan={3}> योग</th>
+                  <th className="text-xs" rowSpan={2}>कुल योग</th>
                 </tr>
              
                 <tr>
@@ -262,7 +262,7 @@ const WineStock = () => {
         <div>
           <div
             className={`${
-              role === "shop" && ShopType === "BAR"
+               ShopType === "BAR"
                 ? "hidden"
                 : " gap-4 overflow-x-auto my-4 "
             }`}
@@ -271,12 +271,12 @@ const WineStock = () => {
               <table className="removeCommonWSpace  m-2">
                 <thead>
                   <tr>
-                    <th> क्र. सं.</th>
-                    <th>ब्राण्ड</th>
-                    <th>साईज </th>
-                    <th>स्टॉक</th>
-                    <th> रेट</th>
-                    <th> योग</th>
+                    <th className="text-xs"> क्र. सं.</th>
+                    <th className="text-xs">ब्राण्ड</th>
+                    <th className="text-xs">साईज </th>
+                    <th className="text-xs">स्टॉक</th>
+                    <th className="text-xs"> रेट</th>
+                    <th className="text-xs"> योग</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -356,12 +356,12 @@ const WineStock = () => {
               <table className="removeCommonWSpace  m-2">
                 <thead>
                   <tr>
-                    <th> क्र. सं.</th>
-                    <th>ब्राण्ड</th>
-                    <th>साईज </th>
-                    <th>स्टॉक</th>
-                    <th> रेट</th>
-                    <th> योग</th>
+                    <th className="text-xs"> क्र. सं.</th>
+                    <th className="text-xs">ब्राण्ड</th>
+                    <th className="text-xs">साईज </th>
+                    <th className="text-xs">स्टॉक</th>
+                    <th className="text-xs"> रेट</th>
+                    <th className="text-xs"> योग</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -415,7 +415,7 @@ const WineStock = () => {
                               0
                             )),
                         0
-                      )}
+                      ).toFixed(2)}
                     </td>
                   </tr>
                 </tbody>

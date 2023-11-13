@@ -4,6 +4,7 @@ import useLiquors from "../../../../../../Hooks/useLiquors";
 import Loader from "../../../../../../Components/Loader/Loader";
 import swal from "sweetalert";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const AddOneFristForm = ({
@@ -96,6 +97,15 @@ const AddOneFristForm = ({
             }}
             options={options.filter((brand)=>brand.type==='WINE')}
             getOptionLabel={(option) => (option ? option.brandName : "")}
+             onBlur={() => {
+          if (addOneFirst.liquorID === "") {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Please choose Brand Name from Options',
+            });
+          }
+        }}
             onChange={(event, value) => {
               if (value) {
                 addOneFirst.brandName = value.brandName;

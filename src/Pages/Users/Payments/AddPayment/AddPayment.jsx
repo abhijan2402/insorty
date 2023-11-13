@@ -113,7 +113,7 @@ const AddPayment = ({
             </div>
 
             <div>
-              <button type="submit" className="dailyReportBtn  mt-4">
+              <button type="submit" className="btn commonBtn ">
                 लेन-देन जोड़ें
               </button>
             </div>

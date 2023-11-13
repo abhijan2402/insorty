@@ -6,6 +6,7 @@ import useRmlAdd from "../../../../../Hooks/useRmlAdd";
 import Loader from "../../../../../Components/Loader/Loader";
 import swal from "sweetalert";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const RmlFrom = ({
   index,
@@ -98,6 +99,15 @@ const RmlFrom = ({
               }}
               options={options.filter((brand)=>brand.type==='DESHIRML')}
               getOptionLabel={(option) => (option ? option.brandName : "")}
+              onBlur={() => {
+                if (item.liquorID === "" || item.liquorID===null || item.liquorID===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Brand Name from Options',
+                  });
+                }
+              }}
               onChange={(event, value) => {
                 if (value) {
                   item.brandName = value.brandName;

@@ -172,7 +172,7 @@ const SalaryModal = ({
                   </>
                 ) : (
                   <button
-                    className="dailyReportBtnSubmit"
+                    className="btn commonBtn "
                     onClick={() => handelSalaryOnSubmit()}
                     type="submit"
                   >

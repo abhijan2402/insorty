@@ -6,6 +6,7 @@ import useLiquors from "../../../../../../Hooks/useLiquors";
 import swal from "sweetalert";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import Swal from "sweetalert2";
 
 const AddOneFristFromBack = ({
   index,
@@ -110,6 +111,15 @@ const AddOneFristFromBack = ({
               borderRadius:"5px"
               }}
               options={options.filter((brand)=>brand.type==='BEER')}
+              onBlur={() => {
+                if (item.liquorID === "" || item.liquorID===null || item.liquorID===undefined) {
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Please choose Brand Name from Options',
+                  });
+                }
+              }}
               getOptionLabel={(option) => (option ? option.brandName : "")}
               onChange={(event, value) => {
                 if (value) {

@@ -80,11 +80,11 @@ const FinalReport = () => {
                 <table className="removeCommonWSpace">
                   <thead>
                     <tr>
-                      <th> क्र. सं.</th>
-                      <th>पार्टी का नाम</th>
-                      <th> ब्राण्ड</th>
-                      <th>साईज</th>
-                      <th>संख्या</th>
+                      <th className="text-xs"> क्र. सं.</th>
+                      <th className="text-xs">पार्टी का नाम</th>
+                      <th className="text-xs"> ब्राण्ड</th>
+                      <th className="text-xs">साईज</th>
+                      <th className="text-xs">संख्या</th>
                     </tr>
                   </thead>
 
@@ -116,11 +116,11 @@ const FinalReport = () => {
                 <table className="removeCommonWSpace">
                   <thead>
                     <tr>
-                      <th> क्र. सं.</th>
-                      <th>पार्टी का नाम</th>
-                      <th> ब्राण्ड</th>
-                      <th>साईज</th>
-                      <th>संख्या</th>
+                      <th className="text-xs"> क्र. सं.</th>
+                      <th className="text-xs">पार्टी का नाम</th>
+                      <th className="text-xs"> ब्राण्ड</th>
+                      <th className="text-xs">साईज</th>
+                      <th className="text-xs">संख्या</th>
                     </tr>
                   </thead>
 

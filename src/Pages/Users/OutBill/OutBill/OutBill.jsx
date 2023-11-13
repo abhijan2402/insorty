@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import OutBillList from "../OutBillList/OutBillList";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
@@ -14,8 +14,8 @@ import jwtDecode from "jwt-decode";
 const OutBill = () => {
   const token = localStorage.getItem("token");
   const { brandsLoaded } = useLiquors();
-  const [StartDate, setStartDate] = useState();
-  const [EndDate, setEndDate] = useState();
+  const [StartDate, setStartDate] = useState(new Date());
+  const [EndDate, setEndDate] = useState(new Date());
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
@@ -25,11 +25,11 @@ const OutBill = () => {
   const ShopType = ShopToken.shopType;
   const role = ShopToken.role;
 
-  const { data: OutBill, isLoading } = useQuery({
+  const { data: OutBill, isLoading,refetch } = useQuery({
     queryKey: ["OutBill"],
     queryFn: async () => {
       const res = await fetch(
-        "https://insorty-api.onrender.com/shop/getOutBill",
+        `https://insorty-api.onrender.com/shop/getOutBill?from=${moment(StartDate).format('DD MMMM YYYY')}&to=${moment(EndDate).format('DD MMMM YYYY')}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json", cookie_token: token },
@@ -40,26 +40,30 @@ const OutBill = () => {
     },
   });
 
+  useEffect(() => {
+    refetch()
+   }, [StartDate,EndDate])
+
   if (isLoading || brandsLoaded) {
     return <Loader></Loader>;
   }
 
-  const filteredData = OutBill.filter((item) => {
-    let filterPass = true;
-    const date = moment(item.date).format("DD/MM/YYYY");
+  // const filteredData = OutBill.filter((item) => {
+  //   let filterPass = true;
+  //   const date = moment(item.date).format("DD/MM/YYYY");
 
-    if (StartDate) {
-      filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
-    }
-    if (EndDate) {
-      filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
-    }
-    return filterPass;
-  });
+  //   if (StartDate) {
+  //     filterPass = filterPass && moment(StartDate).format("DD/MM/YYYY") <= date;
+  //   }
+  //   if (EndDate) {
+  //     filterPass = filterPass && moment(EndDate).format("DD/MM/YYYY") >= date;
+  //   }
+  //   return filterPass;
+  // });
 
-  const totalAmountData =ShopType==="SHOP" ?  filteredData?.map((item) => {
+  const totalAmountData =ShopType==="SHOP" ?  OutBill?.map((item) => {
     return Number(item.total.$numberDecimal);
-  }) : filteredData?.filter((brand)=>{
+  }) : OutBill?.filter((brand)=>{
     if (brand.liquor.type==="WINE"){
       if(brand.liquor.quantityInML===30){
         return brand
@@ -143,18 +147,18 @@ const OutBill = () => {
               <table className={ShopType==="SHOP" ? 'removeCommonWSpace' : 'displayHidden'}>
                 <thead>
                   <tr>
-                    <td> क्र. सं.</td>
-                    <th>दिनाक</th>
-                    <th>ब्राण्ड</th>
-                    <th>साईज </th>
-                    <th>संख्या</th>
-                    <th>रेट</th>
-                    <th>रकम</th>
+                    <td className="text-xs"> क्र. सं.</td>
+                    <th className="text-xs">दिनाक</th>
+                    <th className="text-xs">ब्राण्ड</th>
+                    <th className="text-xs">साईज </th>
+                    <th className="text-xs">संख्या</th>
+                    <th className="text-xs">रेट</th>
+                    <th className="text-xs">रकम</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {(filteredData &&
-                    filteredData?.sort((a, b) => a?.liquor.brandName?.localeCompare(b?.liquor.brandName))?.map((outBill, index) => {
+                  {(OutBill &&
+                    OutBill?.sort((a, b) => a?.liquor.brandName?.localeCompare(b?.liquor.brandName))?.map((outBill, index) => {
                       return (
                         <OutBillList
                           key={index}
@@ -184,18 +188,18 @@ const OutBill = () => {
               <table className={ShopType==="BAR" ? 'removeCommonWSpace' : 'displayHidden'}>
                 <thead>
                   <tr>
-                    <td> क्र. सं.</td>
-                    <th>दिनाक</th>
-                    <th>ब्राण्ड</th>
-                    <th>साईज </th>
-                    <th>संख्या</th>
-                    <th>रेट</th>
-                    <th>रकम</th>
+                    <th className="text-xs"> क्र. सं.</th>
+                    <th className="text-xs">दिनाक</th>
+                    <th className="text-xs">ब्राण्ड</th>
+                    <th className="text-xs">साईज </th>
+                    <th className="text-xs">संख्या</th>
+                    <th className="text-xs">रेट</th>
+                    <th className="text-xs">रकम</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {(filteredData &&
-                    filteredData?.filter((brand)=>{
+                  {(OutBill &&
+                    OutBill?.filter((brand)=>{
                       if (brand.liquor.type==="WINE"){
                         if(brand.liquor.quantityInML===30){
                           return brand
