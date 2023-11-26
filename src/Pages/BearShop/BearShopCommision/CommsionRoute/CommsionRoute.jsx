@@ -37,7 +37,7 @@ const CommsionRoute = () => {
           </Link>
 
           <Link className="commonBtn " to="/user/bearshop/penalty">
-            पेनाल्टी
+            पेनल्टी
           </Link>
 
           <Link className="commonBtn " to="/user/bearshop/others">

@@ -132,7 +132,7 @@ const FinalReport = ({ data, date }) => {
                         <tr>
                           <th> क्र. सं.</th>
                           <th> विवरण</th>
-                          <th>total</th>
+                          <th>Total</th>
                         </tr>
                       </thead>
     

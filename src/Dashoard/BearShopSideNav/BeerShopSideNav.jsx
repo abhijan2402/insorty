@@ -43,7 +43,7 @@ const SideNav = () => {
           <Link>
             <div>
               <h1 className="font-bold text-red-400 text-center uppercase">
-                Name: {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
+                Name:- {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
               </h1>
               <h1 className="font-bold text-center uppercase mt-2"> Type:- BAR</h1>
               <div>
@@ -199,7 +199,7 @@ const SideNav = () => {
                 to="/user/bearshop/previousloan"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-               पिछले ऋण
+               पिछली उधारी
               </NavLink>
             </li>
 

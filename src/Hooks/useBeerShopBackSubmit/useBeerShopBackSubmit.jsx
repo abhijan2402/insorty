@@ -126,6 +126,7 @@ const BasedURL = process.env.REACT_APP_API_URL;
 
 
   const handleSubmit = (e) => {
+    setIsLoading(true)
     e.preventDefault();
 
     if (salesMan === "") {

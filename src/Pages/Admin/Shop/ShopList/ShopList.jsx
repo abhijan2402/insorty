@@ -97,7 +97,7 @@ try{
     .then((res) => res.json())
       .then((data) => {
         if (data.success===true) {
-          swal("Shop Added Successfully", "", "success");
+          swal(`${(shopType).charAt(0).toUpperCase() + shopType.slice(1).toLowerCase()} Added Successfully", "", "success`);
           shopsRefetch();
         }
         else{
@@ -142,7 +142,7 @@ try{
         </div>
           <div className="flex item-center justify-center text-center">
          <select className="semiSmallInput " onChange={(e)=>{setFilter(e.target.value); }} name="filter" >
-          <option selected value="noFilter">No-Filter</option>
+          <option selected value="noFilter">No Filter</option>
           <option value="SHOP">Filter Shops</option>
           <option value="BAR">Filter Bars</option>
          </select>
@@ -181,7 +181,7 @@ try{
                         </Link>
                       </td>
                       <td>
-                        <div className="flex gap-4 items-center justify-end">
+                        <div className="flex items-center justify-end">
                           <button
                             onClick={() => {
                               swal({

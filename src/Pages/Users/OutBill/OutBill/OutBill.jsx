@@ -108,7 +108,7 @@ const OutBill = () => {
         </div>
 
         <div ref={front}>
-          <div>
+          <div className="flex justify-center items-center flex-col">
             <h2 className="font-bold md:text-[1.5rem] text-center">
               बाहर का बिल
             </h2>
@@ -142,13 +142,13 @@ const OutBill = () => {
             <div className="divider my-2"></div>
           </div>
 
-          <div>
+          <div className="flex justify-center items-center">
             <div className="overflow-x-auto">
               <table className={ShopType==="SHOP" ? 'removeCommonWSpace' : 'displayHidden'}>
                 <thead>
                   <tr>
                     <td className="text-xs"> क्र. सं.</td>
-                    <th className="text-xs">दिनाक</th>
+                    <th className="text-xs">दिनांक </th>
                     <th className="text-xs">ब्राण्ड</th>
                     <th className="text-xs">साईज </th>
                     <th className="text-xs">संख्या</th>
@@ -189,7 +189,7 @@ const OutBill = () => {
                 <thead>
                   <tr>
                     <th className="text-xs"> क्र. सं.</th>
-                    <th className="text-xs">दिनाक</th>
+                    <th className="text-xs">दिनांक </th>
                     <th className="text-xs">ब्राण्ड</th>
                     <th className="text-xs">साईज </th>
                     <th className="text-xs">संख्या</th>

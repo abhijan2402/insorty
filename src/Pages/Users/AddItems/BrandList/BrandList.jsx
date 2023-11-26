@@ -179,10 +179,10 @@ const BrandList = () => {
           </label>
         </div>
         <select className="semiSmallInput " onChange={(e)=>{setFilter(e.target.value); console.log(filter)}} name="filter" >
-          <option selected value="noFilter">No-Filter</option>
-          <option value="WINE">WINE</option>
-          <option value="BEER">BEER</option>
-          <option value="DESHIRML">DESHI/RML</option>
+          <option selected value="noFilter">No Filter</option>
+          <option value="WINE">Wine</option>
+          <option value="BEER">Beer</option>
+          <option value="DESHIRML">Deshi/Rml</option>
          </select>
       </div>
         <div className="divider my-2"></div>
@@ -252,7 +252,7 @@ const BrandList = () => {
                 }).map((item,index) => (
           <React.Fragment key={item._id}>
             <tr>
-  <td  rowSpan={item.sizes.length+1}>{index+1}</td>
+  <th className="text-center"  rowSpan={item.sizes.length+1}>{index+1}</th>
               <td rowSpan={item.sizes.length+1}>{item.brandName}</td>
               <td className="whitespace-pre-wrap" rowSpan={item.sizes.length+1}>{item.fullName}</td>
               <td rowSpan={item.sizes.length+1}>{item?.type==="DESHIRML" ? "DESHI/RML" : item?.type}</td>
@@ -292,8 +292,6 @@ const BrandList = () => {
                 <td>{obj.quantityInML}</td>
                 <td>{obj.rate.$numberDecimal}</td>
                 <td>
-                  
-                  
                 {/* <FaMoneyCheckAlt className="text-[1.7rem]" style={{cursor:"pointer"}} onClick={() => addToPriceList(obj)}/> */}
                 <p className="text-[1.7rem]" style={{cursor:"pointer"}} onClick={() => addToPriceList(obj)}>₹</p>
                 </td>

@@ -400,10 +400,10 @@ FrontPageRegularData?.map((item) => {
                     <th rowSpan={2}>ब्राण्ड</th>
                     <th colSpan={4}>एवरेज रेट</th>
                     <th >प्रारम्भिक स्टॉक</th>
-                    <th colSpan={4}>आमद(खरीद)-दु</th>
-                    <th colSpan={4}>खरीद रेट - दुु</th>
-                    <th colSpan={4}>/आमद(खरीद)बा</th>
-                    <th colSpan={4}>खरीद रेट - बा?.</th>
+                    <th colSpan={4}>आमद(खरीद) - दु.</th>
+                    <th colSpan={4}>आमद(खरीद) - दु.</th>
+                    <th colSpan={4}>/आमद(खरीद) - बा.	</th>
+                    <th colSpan={4}>खरीद रेट - बा.</th>
                     <th colSpan={4}>आमद (उधारी)</th>
                     <th colSpan={4}>भेजान</th>
                     <th colSpan={1}>योग - शेष</th>
@@ -753,10 +753,10 @@ FrontPageRegularData?.map((item) => {
                   <th rowSpan={2}>ml</th>
                   <th colSpan={2}>एवरेज रेट </th>
                   <th colSpan={2}>प्रारम्भिक स्टॉक </th>
-                  <th colSpan={2}>आमद (खरीद)-बार </th>
-                  <th colSpan={2}>खरीद रेट-बार </th>
-                  <th colSpan={2}>आमद (खरीद)-बाहर से </th>
-                  <th colSpan={2}>खरीद रेट बाहर </th>
+                  <th colSpan={2}>आमद(खरीद) - दु. </th>
+                  <th colSpan={2}>आमद(खरीद) - दु. </th>
+                  <th colSpan={2}>आमद (खरीद) - बा.</th>
+                  <th colSpan={2}>खरीद रेट - बा. </th>
                   <th colSpan={2}>आमद (उधारी) </th>
                   <th colSpan={2}> भेजान </th>
                   <th colSpan={1}> योग/शेष</th>
@@ -960,7 +960,7 @@ FrontPageRegularData?.map((item) => {
               </tbody>
             </table>
           </div>
-          <div>English Total:- {Number(quan750?.reduce(
+          <div>Total:- {Number(quan750?.reduce(
                     (total, regularData) =>
                       total + (Number(regularData?.remaining)*25 - Number(regularData?.openingStock)*25  + Number(regularData?.openingStock))*Number(regularData?.sellingRate?.$numberDecimal),
                     0
@@ -1013,10 +1013,10 @@ FrontPageRegularData?.map((item) => {
                           <th rowSpan={2}> ब्राण्ड</th>
                           <th colSpan={3}>औसत दर</th>
                           <th colSpan={3}>प्रारम्भिक स्टॉक</th>
-                          <th colSpan={3}>आमद (खरीद)-दु?.</th>
-                          <th colSpan={3}>खरीद रेट - दु</th>
-                          <th colSpan={3}>आमद (खरीद)-बा?.</th>
-                          <th colSpan={3}>खरीद रेट - बा?.</th>
+                          <th colSpan={3}>आमद (खरीद) - दु.</th>
+                          <th colSpan={3}>खरीद रेट - दु.</th>
+                          <th colSpan={3}>आमद (खरीद) - बा.</th>
+                          <th colSpan={3}>खरीद रेट - बा.</th>
                           <th colSpan={3}>आमद (उधारी)</th>
                           <th colSpan={3}>भेजान</th>
                           <th colSpan={3}>योग/शेष</th>
@@ -1539,14 +1539,14 @@ FrontPageRegularData?.map((item) => {
                 <thead>
                 <tr>
                     <th colSpan={1}> क्र. सं.</th>
-                    <th colSpan={1}>Brand Name/ ब्राण्ड</th>
+                    <th colSpan={1}> ब्राण्ड</th>
                     <th colSpan={1}>ml</th>
                     <th colSpan={1}>औसत दर</th>
                     <th colSpan={1}>प्रारम्भिक स्टॉक</th>
-                    <th colSpan={1}>आमद (खरीद)-दु?.</th>
-                    <th colSpan={1}>खरीद रेट - दु</th>
-                    <th colSpan={1}>आमद (खरीद)-बा?.</th>
-                    <th colSpan={1}>खरीद रेट - बा?.</th>
+                    <th colSpan={1}>आमद (खरीद) - दु.</th>
+                    <th colSpan={1}>खरीद रेट - दु.</th>
+                    <th colSpan={1}>आमद (खरीद) - बा.</th>
+                    <th colSpan={1}>खरीद रेट - बा.</th>
                     <th colSpan={1}>आमद (उधारी)</th>
                     <th colSpan={1}>भेजान</th>
                     <th colSpan={1}>योग/शेष</th>

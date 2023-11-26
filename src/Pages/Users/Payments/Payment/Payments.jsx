@@ -144,7 +144,7 @@ const Payments = () => {
         <div ref={front}>
           <div className="title flex justify-center items-center">
            {jwtDecode(token).shopType==="SHOP"?( <h2 className="font-bold md:text-[1.5rem] text-center">
-              दुकान पेमेंट
+              सर्विस पेमेंट
             </h2>):
             ( <h2 className="font-bold md:text-[1.5rem] text-center">
             बार पेमेंट
@@ -175,7 +175,7 @@ const Payments = () => {
                       </th>
 
                       <th className="text-xs">
-                           दिनाक
+                           दिनांक 
                       </th>
 
                       <th className="text-xs">
@@ -183,7 +183,7 @@ const Payments = () => {
                       </th>
 
                       <th className="text-xs">
-                        दिनाक
+                        दिनांक 
                       </th>
 
                       

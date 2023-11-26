@@ -80,7 +80,7 @@ const PartyOutBill = () => {
       </button>
 
       
-      <section ref={front}>
+      <section >
         <div className="title flex justify-center items-center flex-col">
 
         <div className="flex gap-4">
@@ -110,13 +110,16 @@ const PartyOutBill = () => {
             </>
           )}
         </div>
+
+        <div ref={front}>
+          <div className="flex justify-center items-center flex-col">
           <h2 className="font-bold md:text-[1.5rem] text-center">
           पार्टी बिल
           </h2>
 
           
 
-          <div className="flex gap-4 items-center my-4 z-10">
+          <div  className="flex gap-4 items-center my-4 z-10">
             <h2 className="font-bold text-[1.5rem]">From</h2>
             <div className="flex gap-2 items-center">
               <DatePicker
@@ -154,29 +157,29 @@ const PartyOutBill = () => {
               <thead>
                
                 <tr>
-                  <td className="text-xs">क्र.सं.</td>
-                  <td className="text-xs" colSpan={4}>
+                  <th className="text-xs">क्र.सं.</th>
+                  <th className="text-xs" >
                     पार्टी का नाम
-                  </td>
-                  <td className="text-xs" colSpan={4}>
+                  </th>
+                  <th className="text-xs" >
                     ब्राण्ड
-                  </td>
-                  <td className="text-xs" colSpan={4}>
+                  </th>
+                  <th className="text-xs" >
                     ML
-                  </td>
-                  <td className="text-xs" colSpan={4}>
+                  </th>
+                  <th className="text-xs" >
                     संख्या
-                  </td>
-                  <td className="text-xs" colSpan={4}>
+                  </th>
+                  <th className="text-xs" >
                     रेट
-                  </td>
-                  <td className="text-xs" colSpan={4}>
+                  </th>
+                  <th className="text-xs" >
                     रकम
-                  </td>
+                  </th>
 
-                  <td className="text-xs" colSpan={4}>
+                  <th className="text-xs" >
                     टिप्पणी
-                  </td>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -202,10 +205,10 @@ const PartyOutBill = () => {
 
                 <tr>
                   <td className="tg-0lax">Total</td>
-                  <td className="tg-0lax" colSpan={4} />
-                  <td className="tg-0lax" colSpan={4} />
-                  <td className="tg-0lax" colSpan={4}></td>
-                  <td className="tg-0lax" colSpan={4}>
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax"  />
+                  <td className="tg-0lax" ></td>
+                  <td className="tg-0lax" >
                     {purchaseOutSide &&
                       purchaseOutSide?.length &&
                       purchaseOutSide.reduce(
@@ -220,8 +223,8 @@ const PartyOutBill = () => {
                         0
                       )}
                   </td>
-                  <td className="tg-0lax" colSpan={4}></td>
-                  <td className="tg-0lax" colSpan={4}>
+                  <td className="tg-0lax" ></td>
+                  <td className="tg-0lax" >
                     {purchaseOutSide &&
                       purchaseOutSide?.length &&
                       purchaseOutSide
@@ -243,6 +246,8 @@ const PartyOutBill = () => {
               </tbody>
             </table>
           </div>
+        </div>
+        </div>
         </div>
       </section>
     </>

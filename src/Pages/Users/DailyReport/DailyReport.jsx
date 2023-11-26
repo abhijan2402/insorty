@@ -52,7 +52,7 @@ const DailyReport = () => {
           to="/user/dailyreport/back"
           className="commonBtn"
         >
-          बीयर
+          बीयर ओर अन्य
         </Link>
 
         <Link

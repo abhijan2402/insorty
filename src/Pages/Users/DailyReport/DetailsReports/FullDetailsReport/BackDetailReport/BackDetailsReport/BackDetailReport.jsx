@@ -295,7 +295,7 @@ const BackDetailReport = () => {
             );
           })}
       </div>
-      <button className="commonBtn"  onClick={() => {
+      <button className="commonBtn2"  onClick={() => {
               swal({
                 title: "Are you sure?",
                 text: `Once deleted, you will not be able to recover page
@@ -318,7 +318,7 @@ const BackDetailReport = () => {
       <div ref={container}>
         {/* ====================1==================== */}
 
-        <div className="overflow-x-auto m-4 p-4 flex">
+        <div className="overflow-x-auto my-4 py-4 flex">
           <table className="table removeCommonWSpace">
             <thead>
             <tr>
@@ -337,11 +337,11 @@ const BackDetailReport = () => {
             <tr>
                 <td rowSpan={2} className="wd-5" style={{ fontWeight: "bold" }}> क्र.सं.</td>
                 <th rowSpan={2}>ब्राण्ड</th>
-                <th colSpan={3}>औसत दर</th>
+                <th colSpan={3}>औसत रेट</th>
                 <th colSpan={3}>प्रारम्भिक स्टॉक</th>
-                <th colSpan={3}>आमद (खरीद)-दु.</th>
-                <th colSpan={3}>खरीद रेट - दु</th>
-                <th colSpan={3}>आमद (खरीद)-बा.</th>
+                <th colSpan={3}>आमद (खरीद) - दु.</th>
+                <th colSpan={3}>खरीद रेट - दु.</th>
+                <th colSpan={3}>आमद (खरीद) - बा.</th>
                 <th colSpan={3}>खरीद रेट - बा.</th>
                 <th colSpan={3}>आमद (उधारी)</th>
                 <th colSpan={3}>भेजान</th>
@@ -740,7 +740,7 @@ const BackDetailReport = () => {
           </table>
         </div>
 
-        <div className="overflow-x-auto m-4 p-4 flex ">
+        <div className="overflow-x-auto my-4 py-4 flex ">
           <table className="table  removeCommonWSpace">
             <thead>
               
@@ -749,11 +749,11 @@ const BackDetailReport = () => {
                 <td className="text-xs"> क्र. सं.</td>
                 <th className="text-xs"> ब्राण्ड</th>
                 <th className="text-xs">ml</th>
-                <th className="text-xs">औसत दर</th>
+                <th className="text-xs">औसत रेट</th>
                 <th className="text-xs">प्रारम्भिक स्टॉक</th>
-                <th className="text-xs">आमद (खरीद)-दु.</th>
-                <th className="text-xs">खरीद रेट - दु</th>
-                <th className="text-xs">आमद (खरीद)-बा.</th>
+                <th className="text-xs">आमद (खरीद) - दु.</th>
+                <th className="text-xs">खरीद रेट - दु.</th>
+                <th className="text-xs">आमद (खरीद) - बा.</th>
                 <th className="text-xs">खरीद रेट - बा.</th>
                 <th className="text-xs">आमद (उधारी)</th>
                 <th className="text-xs">भेजान</th>
@@ -867,7 +867,7 @@ const BackDetailReport = () => {
           </table>
         </div>
 
-        <div className="overflow-x-auto m-4 p-4 flex ">
+        <div className="overflow-x-auto my-4 py-4 flex ">
           <table className="table removeCommonWSpace">
             <thead>
               <tr>
@@ -880,11 +880,11 @@ const BackDetailReport = () => {
                 <th> क्र. सं.</th>
                 <th> ब्राण्ड</th>
                 <th>ml</th>
-                <th>औसत दर</th>
+                <th>औसत रेट</th>
                 <th>प्रारम्भिक स्टॉक</th>
-                <th>आमद (खरीद)-दु.</th>
-                <th>खरीद रेट - दु</th>
-                <th>आमद (खरीद)-बा.</th>
+                <th>आमद (खरीद) - दु.</th>
+                <th>खरीद रेट - दु.</th>
+                <th>आमद (खरीद) - बा.</th>
                 <th>खरीद रेट - बा.</th>
                 <th>आमद (उधारी)</th>
                 <th>भेजान</th>
@@ -1233,7 +1233,7 @@ const BackDetailReport = () => {
               <tr>
                 <td className="tg-0lax">क्र.सं.</td>
                 <td className="tg-0lax" >
-                पार्टी/पार्टनर	
+                प्रकार
                 </td>
                 <td className="tg-0lax" >
                   रकम
@@ -1300,7 +1300,7 @@ const BackDetailReport = () => {
               <tr>
                 <td className="tg-0lax">क्र.सं.</td>
                 <td className="tg-0lax" >
-                पार्टी/पार्टनर	
+                प्रकार
                 </td>
                 <td className="tg-0lax" >
                 पार्टी का नाम	
@@ -1355,7 +1355,7 @@ const BackDetailReport = () => {
           </table>
         </div>
 
-        <div className="overflow-x-auto m-4 p-4 flex ">
+        <div className="overflow-x-auto my-4 py-4 flex ">
           <table className="table removeCommonWSpace">
             <thead>
               <tr>
@@ -1548,7 +1548,7 @@ const BackDetailReport = () => {
               </tr>
               <tr>
                 <th> क्र. सं.</th>
-                <th>पार्टी/पार्टनर</th>
+                <th>प्रकार</th>
                 <th>पार्टी का नाम</th>
                 <th>रकम</th>
                 <th>टिप्पणी</th>

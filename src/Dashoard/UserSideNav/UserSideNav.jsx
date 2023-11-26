@@ -44,7 +44,7 @@ const SideNav = () => {
           <Link>
             <div>
               <h1 className="font-bold text-red-400 text-center uppercase">
-                Name: {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
+                Name:- {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
                 
               </h1>
               <h1 className="font-bold text-center uppercase mt-2">Type:- SHOP</h1>
@@ -110,7 +110,7 @@ const SideNav = () => {
                 to="/user/salary"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                वेतन
+                कर्मचारी
               </NavLink>
             </li>
 
@@ -146,7 +146,7 @@ const SideNav = () => {
                 to="/user/commisionroute"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                कमीशन आदि
+                खर्चा आदि
               </NavLink>
             </li>
 
@@ -155,7 +155,7 @@ const SideNav = () => {
                 to="/user/phonePay"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                फोन पे और आज भुगतान
+                खाते में और आज भुगतान
               </NavLink>
             </li>
 
@@ -182,7 +182,7 @@ const SideNav = () => {
                 to="/user/payments"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                दुकान पेमेंट
+                सर्विस पेमेंट
               </NavLink>
             </li>
             {/* <li className="my-4">
@@ -198,7 +198,7 @@ const SideNav = () => {
                 to="/user/previousloan"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-              पिछले ऋण
+              पिछली उधारी
               </NavLink>
             </li>
 
@@ -219,7 +219,7 @@ const SideNav = () => {
                   }
                 });
               }}
-              className="flex items-center px-4 py-2 mt-5 text-gray-600 transition-colors duration-300 transform rounded-md   hover:bg-gray-800 hover:text-gray-200 "
+              className="commonBtn flex justify-center items-center "
             >
               <FaPowerOff />
               <span className="mx-4 font-medium">Logout</span>

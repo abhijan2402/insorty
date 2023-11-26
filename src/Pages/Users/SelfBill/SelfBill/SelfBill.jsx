@@ -132,7 +132,9 @@ const SelfBill = () => {
         </div>
 
         <div ref={front}>
-          <div>
+
+        <div >
+          <div className="flex flex-col justify-center items-center">
             <h2 className="font-bold md:text-[1.5rem] text-center">
               दुकान बिल
             </h2>
@@ -165,13 +167,13 @@ const SelfBill = () => {
             <div className="divider my-2"></div>
           </div>
 
-          <div>
+          <div className="flex justify-center items-center">
             <div className="overflow-x-auto">
               <table className={ShopType==="SHOP" ? 'removeCommonWSpace': 'displayHidden'}>
                 <thead>
                   <tr>
                     <th className="text-xs"> क्र. सं.</th>
-                    <th className="text-xs">दिनाक</th>
+                    <th className="text-xs">दिनांक </th>
                     <th className="text-xs">ब्राण्ड </th>
                     <th className="text-xs">साईज</th>
                     <th className="text-xs">संख्या</th>
@@ -246,7 +248,7 @@ const SelfBill = () => {
                 <thead>
                   <tr>
                     <td className="text-xs"> क्र. सं.</td>
-                    <th className="text-xs">दिनाक</th>
+                    <th className="text-xs">दिनांक </th>
                     <th className="text-xs">ब्राण्ड </th>
                     <th className="text-xs">साईज</th>
                     <th className="text-xs">संख्या</th>
@@ -327,6 +329,7 @@ const SelfBill = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );

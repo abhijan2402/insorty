@@ -37,7 +37,7 @@ const Borrow = () => {
   return (
     <>
       
-    <section ref={front} className="py-4">
+    <section  className="py-4">
         <button
         className="commonBtn "
         onClick={handlePrint}
@@ -63,6 +63,8 @@ const Borrow = () => {
           
         
       </div>
+
+      <div ref={front}>
       
         <h1 className="titleStyle text-center">पार्टी सूची</h1>
 
@@ -115,6 +117,7 @@ const Borrow = () => {
             </table>
           </div>
         </form>
+      </div>
       </div>
     </section>
     </>

@@ -87,7 +87,7 @@ const Commision = () => {
               </Link>
 
               <Link className="commonBtn " to="/user/bearshop/penalty">
-                पेनाल्टी
+                पेनल्टी
               </Link>
 
               <Link className="commonBtn " to="/user/bearshop/others">
@@ -113,7 +113,7 @@ const Commision = () => {
               </Link>
 
               <Link className="commonBtn " to="/user/penalty">
-                पेनाल्टी
+                पेनल्टी
               </Link>
 
               <Link className="commonBtn " to="/user/others">
@@ -188,7 +188,7 @@ const Commision = () => {
                         
                   colSpan={2}
                       >
-                        कुल योग
+                        Total
  
                       </th>
                       <td>{totalAmount}</td>

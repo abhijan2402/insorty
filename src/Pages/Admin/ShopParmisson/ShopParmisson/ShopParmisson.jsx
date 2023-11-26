@@ -261,7 +261,7 @@ const token = localStorage.getItem('token')
 
                 <div className="form-control w-52">
                   <label className="cursor-pointer label">
-                    <span className="label-text">GET</span>
+                    <span className="label-text">Get</span>
                     <input name="GET" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.GET}
                     onChange={(event) => onChange("permissions" , event, index)}  style={{
                       border: "1px solid black",
@@ -270,7 +270,7 @@ const token = localStorage.getItem('token')
                 </div>
                 <div className="form-control w-52">
                   <label className="cursor-pointer label">
-                    <span className="label-text">POST</span>
+                    <span className="label-text">Post</span>
                     <input name="POST" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.POST}
                     onChange={(event) => onChange("permissions" , event, index)}  style={{
                       border: "1px solid black",
@@ -279,7 +279,7 @@ const token = localStorage.getItem('token')
                 </div>
                 <div className="form-control w-52">
                   <label className="cursor-pointer label">
-                    <span className="label-text">DELETE</span>
+                    <span className="label-text">Delete</span>
                     <input name="DELETE" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.DELETE}
                     onChange={(event) => onChange("permissions" , event, index)}  style={{
                       border: "1px solid black",
@@ -288,7 +288,7 @@ const token = localStorage.getItem('token')
                 </div>
                 <div className="form-control w-52">
                   <label className="cursor-pointer label">
-                    <span className="label-text">PUT</span>
+                    <span className="label-text">Put</span>
                     <input name="PUT" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.PUT}
                     onChange={(event) => onChange("permissions" , event, index)}  style={{
                       border: "1px solid black",

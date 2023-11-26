@@ -46,6 +46,30 @@
     }
 }
 
+.commonBtn2 {
+    background-color: #f5f5f5;
+    border: 1px solid $primaryColor;
+    border-radius: 5px;
+    color: $primaryColor;
+    width: 180px;
+    text-align: center;
+    height: 50px;
+    font-size:1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: #000;
+        color: #fff;
+    }
+    &:focus{
+        background-color: #000;
+        color: #fff;
+    }
+}
+
 .logoutBtn {
     color: $primaryColor;
 }

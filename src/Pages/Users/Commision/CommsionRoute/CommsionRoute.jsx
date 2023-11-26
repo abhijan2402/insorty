@@ -20,7 +20,7 @@ const CommsionRoute = () => {
         </div>
       </div>
       <div className="p-4">
-        <div className="flex items-center justify-center flex-wrap">
+        <div className="flex items-center justify-center flex-wrap gap-4">
           { ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/commisson">
@@ -44,7 +44,7 @@ const CommsionRoute = () => {
               </Link>
 
               <Link className="commonBtn " to="/user/bearshop/penalty">
-                पेनाल्टी
+                पेनल्टी
               </Link>
 
               <Link className="commonBtn " to="/user/bearshop/others">
@@ -75,7 +75,7 @@ const CommsionRoute = () => {
               </Link>
 
               <Link className="commonBtn " to="/user/penalty">
-                पेनाल्टी
+                पेनल्टी
               </Link>
 
               <Link className="commonBtn " to="/user/others">

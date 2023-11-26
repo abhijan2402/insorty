@@ -45,7 +45,7 @@ const AddPayment = ({
                   className="input input-bordered w-full"
                 />
                 <label className="label">
-                  <span className="label-text font-bold">दिनाक</span>
+                  <span className="label-text font-bold">दिनांक </span>
                 </label>
 
         
@@ -81,7 +81,7 @@ const AddPayment = ({
                   className="input input-bordered w-full"
                 />
                 <label className="label">
-                  <span className="label-text font-bold">दिनाक</span>
+                  <span className="label-text font-bold">दिनांक </span>
                 </label>
 
                 <DatePicker

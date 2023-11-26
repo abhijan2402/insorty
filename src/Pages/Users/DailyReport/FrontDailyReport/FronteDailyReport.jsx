@@ -109,7 +109,7 @@ const second = addOneSecondFormState.reduce(
         <div className="my-4 flex gap-4 items-center justify-center">
           <h1 className="font-bold md:text-2xl text-center">अंग्रेजी </h1>
           <Link to="/user/dailyreport/back" className="commonBtn ">
-            बीयर
+          बीयर ओर अन्य
           </Link>
 
           <Link to="/user/frontdailyreport/details" className="commonBtn ">
@@ -180,11 +180,11 @@ const second = addOneSecondFormState.reduce(
                       <th  className="text-xs" rowSpan={2}> क्र. सं.</th>
                       <th className="text-xs" rowSpan={2}></th>
                       <th className="text-xs" rowSpan={2}>ब्राण्ड</th>
-                      <th className="text-xs" >औसत दर</th>
+                      <th className="text-xs" >औसत रेट</th>
                       <th className="text-xs" >प्रारम्भिक स्टॉक</th>
-                      <th className="text-xs" >आमद (खरीद)-दु.</th>
-                      <th className="text-xs" >खरीद रेट - दु</th>
-                      <th className="text-xs" >आमद (खरीद)-बा.</th>
+                      <th className="text-xs" >आमद (खरीद) - दु.</th>
+                      <th className="text-xs" >खरीद रेट - दु.</th>
+                      <th className="text-xs" >आमद (खरीद) - बा.</th>
                       <th className="text-xs" >खरीद रेट - बा.</th>
                       <th className="text-xs" >आमद (उधारी)</th>
                       <th className="text-xs" >भेजान</th>
@@ -1125,7 +1125,7 @@ const second = addOneSecondFormState.reduce(
                     </tr>
                   </tbody>
                 </table>
-                <div className={hasMore===true ? '' : 'displayHidden'}>Loadinng data...</div>
+                <div className={hasMore===true ? '' : 'displayHidden'}>Loading data...</div>
 
               </div>
             </>
@@ -1143,11 +1143,11 @@ const second = addOneSecondFormState.reduce(
                         <th className="text-xs"></th>
                         <th className="text-xs"> ब्राण्ड</th>
                         <th className="text-xs">ml</th>
-                        <th className="text-xs">औसत दर</th>
+                        <th className="text-xs">औसत रेट</th>
                         <th className="whitespace-pre-wrap text-xs">प्रारम्भिक स्टॉक</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद)-दु.</th>
-                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - दु</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद)-बा.</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद) - दु.</th>
+                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - दु.</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद) - बा.</th>
                         <th className="whitespace-pre-wrap text-xs">खरीद रेट - बा.</th>
                         <th className="whitespace-pre-wrap text-xs">आमद (उधारी)</th>
                         <th className="text-xs">भेजान</th>

@@ -234,7 +234,7 @@ const WineStock = () => {
                   );
                 })}
                  <tr>
-                    <td colSpan="11">कुल योग</td>
+                    <td colSpan="11">Total</td>
                     <td>
                       {filteredData.filter((item)=>item.isActive===true).reduce(
                         (total, currentItem) =>
@@ -318,7 +318,7 @@ const WineStock = () => {
                     );
                   })}
                   <tr>
-                    <td colSpan="5">कुल योग</td>
+                    <td colSpan="5">Total</td>
                     <td>
                       {filteredData.filter((item)=>item.isActive===true).reduce(
                         (total, currentItem) =>
@@ -398,7 +398,7 @@ const WineStock = () => {
                     );
                   })}
                   <tr>
-                    <td colSpan="5">कुल योग</td>
+                    <td colSpan="5">Total</td>
                     <td>
                       {filteredData.reduce(
                         (total, currentItem) =>

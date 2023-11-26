@@ -19,12 +19,12 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">New Subadmin</h3>
+          <h3 className="text-lg font-bold">New Sub Admin</h3>
           <div className="py-4">
             <form onSubmit={addNewSubAdmin}>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Subadmin Name</span>
+                  <span className="label-text">Sub Admin Name</span>
                 </label>
                 <input
                   type="text"

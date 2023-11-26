@@ -178,7 +178,7 @@ const RmlStock = () => {
                                     <tr id="scrollableDiv">
                                       <td>{count}</td>
                                       <td>{brand.brandName}</td>
-                                      <td>{size.quantityInML}</td>
+                                      <td>{size.quantityInML} ML</td>
                                       <td> {size.currentStock}</td>
                                       <td>
                                         {" "}
@@ -201,7 +201,7 @@ const RmlStock = () => {
                           );
                         })}
                       <tr>
-                        <td colSpan="5">कुल योग</td>
+                        <td colSpan="5">Total</td>
                         <td>
                           {filteredData &&
                             filteredData

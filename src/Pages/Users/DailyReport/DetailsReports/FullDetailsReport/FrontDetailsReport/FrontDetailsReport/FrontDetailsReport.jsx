@@ -17,6 +17,7 @@ const FrontDetailsReport = () => {
   const front = useRef(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [pageId, setPageId] = useState();
+  const { FrontPageData, FrontPageDataLoaded, FrontDataRefetch } = useGetDailyReport(selectedDate);
 
   const {
     FrontPageRegularData,
@@ -31,12 +32,12 @@ const FrontDetailsReport = () => {
     useEffect(() => {
       refetch1()
       refetch2()
+      FrontDataRefetch()
     }, [selectedDate])
     
 
 
 
-  const { FrontPageData, FrontPageDataLoaded } = useGetDailyReport();
   let count = 0
 
 
@@ -65,7 +66,6 @@ const FrontDetailsReport = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         if (data.success) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         } else {
@@ -242,6 +242,8 @@ const FrontDetailsReport = () => {
       return sales;
     });
 
+   
+
   
   return (
     <section className="my-4">
@@ -289,7 +291,7 @@ const FrontDetailsReport = () => {
         })}
       </div>
 
-      <button className="commonBtn"  onClick={() => {
+      <button className="commonBtn2"  onClick={() => {
               swal({
                 title: "Are you sure?",
                 text: `Once deleted, you will not be able to recover page
@@ -309,7 +311,7 @@ const FrontDetailsReport = () => {
       <div className="divider"></div>
 
       <div ref={front}>
-        <div className="overflow-x-auto m-4 p-4 flex ">
+        <div className="overflow-x-auto my-4 py-4 flex ">
           <table className="table removeCommonWSpace">
             <thead>
               <tr>
@@ -325,27 +327,23 @@ const FrontDetailsReport = () => {
                 <td className="tg-baqh" colSpan={42}>
                   दुकान का नाम:- &nbsp;&nbsp;
                   {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
-                  का नाम :-{" "}
-                  {
-                    frontPage.length && frontPage.find((entry) => {
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन:- {
+                    FrontPageData && frontPage.length!==undefined && frontPage.find((entry) => {
                       const pg = pageId ? pageId : Array.from(frontSet)[0];
                       return entry._id === pg;
-                    }).salesmen
+                    })?.salesmen
                   }
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक
-                  :-
-                  {moment(selectedDate).format("DD/MM/YYYY")}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक:- {moment(selectedDate).format("DD/MM/YYYY")}
                 </td>
               </tr>
               <tr>
                 <td rowSpan={2} className="wd-5"> क्र. सं.</td>
                 <th rowSpan={2}> ब्राण्ड</th>
-                <th colSpan={3}>औसत दर</th>
+                <th colSpan={3}>औसत रेट</th>
                 <th colSpan={3}>प्रारम्भिक स्टॉक</th>
-                <th colSpan={3}>आमद (खरीद)-दु.</th>
-                <th colSpan={3}>खरीद रेट - दु</th>
-                <th colSpan={3}>आमद (खरीद)-बा.</th>
+                <th colSpan={3}>आमद (खरीद) - दु.</th>
+                <th colSpan={3}>खरीद रेट - दु.</th>
+                <th colSpan={3}>आमद (खरीद) - बा.</th>
                 <th colSpan={3}>खरीद रेट - बा.</th>
                 <th colSpan={3}>आमद (उधारी)</th>
                 <th colSpan={3}>भेजान</th>
@@ -746,7 +744,7 @@ const FrontDetailsReport = () => {
           </table>
         </div>
 
-        <div className="overflow-x-auto m-4 p-4 flex ">
+        <div className="overflow-x-auto my-4 py-4 flex ">
           <table className="table removeCommonWSpace">
             <thead>
               <tr>
@@ -759,11 +757,11 @@ const FrontDetailsReport = () => {
                 <td> क्र. सं.</td>
                 <th> ब्राण्ड</th>
                 <th>ml</th>
-                <th>औसत दर</th>
+                <th>औसत रेट</th>
                 <th>प्रारम्भिक स्टॉक</th>
-                <th>आमद (खरीद)-दु.</th>
-                <th>खरीद रेट - दु</th>
-                <th>आमद (खरीद)-बा.</th>
+                <th>आमद (खरीद) - दु.</th>
+                <th>खरीद रेट - दु.</th>
+                <th>आमद (खरीद) - बा.</th>
                 <th>खरीद रेट - बा.</th>
                 <th>आमद (उधारी)</th>
                 <th>भेजान</th>
@@ -895,7 +893,7 @@ const FrontDetailsReport = () => {
             </tbody>
           </table>
         </div>
-        <div className="my-8 mx-8 leading-6">
+        <div className="my-8 leading-6">
           <h4 className="text-[#AA237A] font-bold ">
             Total: {filteredExceptionalData &&
               filteredExceptionalData.length > 0 &&

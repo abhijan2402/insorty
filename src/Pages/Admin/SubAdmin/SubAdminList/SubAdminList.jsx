@@ -110,7 +110,7 @@ const SubAdminList = () => {
     <section>
       <div className="title">
         <div className="flex gap-4 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">सबएडमिन सूची
+          <h2 className="font-bold text-[1.5rem]">सब एडमिन सूची
 </h2>
         </div>
         <div className="divider my-2"></div>
@@ -132,7 +132,7 @@ const SubAdminList = () => {
                     </td>
 
                     <td>
-                      <div className="flex gap-4 items-center justify-end">
+                      <div className="flex items-center justify-end">
                         <button
                           onClick={() => {
                             swal({
@@ -178,7 +178,7 @@ const SubAdminList = () => {
           </table>
           <div className="py-4 my-4">
             <label htmlFor="addNewSubAdmin" className="commonBtn ">
-              ADD NEW
+              Add New
             </label>
           </div>
         </div>

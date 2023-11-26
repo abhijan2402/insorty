@@ -72,7 +72,7 @@ const MainInvestment = () => {
                       className="dailyReportInput wd-30 left-text" 
                       type="text"
                       name="brandName"
-                      value={"पिछले ऋण"}
+                      value={"पिछली उधारी"}
                       disabled
                     />
                   </td>

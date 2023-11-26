@@ -62,7 +62,7 @@ const CashReciveForm = ({
         <td>
           <div className="form-control">
             <select
-              className="smallinput wd-30"
+              className="smallinput wd-9"
               name="type"
               required
               value={item.type}

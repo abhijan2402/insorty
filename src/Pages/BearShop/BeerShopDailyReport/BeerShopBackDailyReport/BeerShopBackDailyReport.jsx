@@ -395,7 +395,7 @@ const BackDailyReport = () => {
                         <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control total-wd">Total</div>
                       </td>
                       {/* ======== प्रारम्भिक स्टॉक ========= */}
                       <td>
@@ -516,7 +516,7 @@ const BackDailyReport = () => {
                         </th>
                         <th></th>
                         <td>
-                          <div className="form-control">Total</div>
+                          <div className="form-control total-wd">Total</div>
                         </td>
 
                         <td>
@@ -606,7 +606,7 @@ const BackDailyReport = () => {
                         <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control total-wd">Total</div>
                       </td>
 
                       <td>
@@ -689,7 +689,7 @@ const BackDailyReport = () => {
                       </td>
 
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control total-wd">Total</div>
                       </td>
 
                       <td>
@@ -776,7 +776,7 @@ const BackDailyReport = () => {
                         <div className="form-control"></div>
                       </td>
                       <td>
-                        <div className="form-control">Total</div>
+                        <div className="form-control total-wd">Total</div>
                       </td>
                       <td>
                         <div className="form-control"></div>
@@ -863,7 +863,7 @@ const BackDailyReport = () => {
                             <div className="form-control">
                               <input
                                 type="text"
-                                className="semiSmallInput"
+                                className="semiSmallInput wd-30"
                                 name="details"
                                 onChange={(e) => sixthFormOnchange(e, index)}
                                 value={data.details}
@@ -880,7 +880,7 @@ const BackDailyReport = () => {
                     e.preventDefault();
                   }
                 }} 
-                                className="semiSmallInput"
+                                className="semiSmallInput wd-9"
                                 name="price"
                                 onChange={(e) => sixthFormOnchange(e, index)}
                                 value={data.price}
@@ -904,7 +904,7 @@ const BackDailyReport = () => {
                       <td>
                         <div className="form-control"></div>
                       </td>
-                      <td>
+                      <td className="total-wd">
                       Total
                       </td>
                       <td>
@@ -924,7 +924,7 @@ const BackDailyReport = () => {
                               0
                             ).toFixed(2)}
                             disabled
-                            className="semiSmallInput"
+                            className="semiSmallInput wd-9"
                           />
                         </div>
                       </td>
@@ -1062,7 +1062,7 @@ const BackDailyReport = () => {
                           <div className="form-control">
                             <input
                               type="text"
-                              className="semiSmallInput"
+                              className="semiSmallInput wd-5"
                               name="quantity"
                               onChange={(e) => onChangeBarCommission(e, index)}
                               value={item.quantity}
@@ -1073,7 +1073,7 @@ const BackDailyReport = () => {
                           <div className="form-control">
                             <input
                               type="text"
-                              className="semiSmallInput"
+                              className="semiSmallInput wd-9"
                               name="amount"
                               onChange={(e) => onChangeBarCommission(e, index)}
                               value={item.amount}
@@ -1084,7 +1084,7 @@ const BackDailyReport = () => {
                           <div className="form-control">
                             <input
                               type="text"
-                              className="semiSmallInput"
+                              className="semiSmallInput wd-30"
                               name="comment"
                               onChange={(e) => onChangeBarCommission(e, index)}
                               value={item.comment}
@@ -1108,13 +1108,13 @@ const BackDailyReport = () => {
                     <td>
                       <div className="form-control"></div>
                     </td>
-                    <td>Total</td>
+                    <td className="total-wd">Total</td>
                     <td></td>
                     <td>
                       <div className="form-control">
                         <input
                           type="text"
-                          className="semiSmallInput"
+                          className="semiSmallInput wd-5"
                           name="amount"
                           disabled
                           value={addBarCommissionData.reduce(
@@ -1130,7 +1130,7 @@ const BackDailyReport = () => {
                         {" "}
                         <input
                           type="text"
-                          className="semiSmallInput"
+                          className="semiSmallInput wd-9"
                           name="amount"
                           disabled
                           value={addBarCommissionData.reduce(
@@ -1157,7 +1157,7 @@ const BackDailyReport = () => {
               <span className="font-bold titleText ">फाईनल रिपोर्ट</span>
             </h1>
             <form action="">
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto ">
                 <FinalReport udhaariTotal={craditDabitState.reduce(
                   (total, currentItem) =>
                     (total = total + Number(currentItem.amount)),

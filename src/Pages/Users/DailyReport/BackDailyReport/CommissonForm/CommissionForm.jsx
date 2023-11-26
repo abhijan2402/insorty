@@ -45,12 +45,12 @@ const CommissionForm = ({
               required
               onChange={(e) => onChangeCommison(e, index)}
               name="type"
-              className="smallinput wd-30"
+              className="smallinput wd-9"
             >
               <option value="COMMISSION">कमीशन</option>
               <option value="FUT">फूट</option>
               <option value="KHARCHA">खर्चा</option>
-              <option value="PENALTY">पेनाल्टी</option>
+              <option value="PENALTY">पेनल्टी</option>
               <option value="BEGAAR">बेगार</option>
               <option value="MONTHLY">मंथली</option>
               <option value="OTHERS">अन्य</option>

@@ -136,6 +136,7 @@ function useGetDailyReport(date) {
   const {
     data: FrontPageData,
     isLoading: FrontPageDataLoaded,
+    refetch:FrontDataRefetch
   } = useQuery({
     queryKey: ["FrontPageData"],
     queryFn: async () => {
@@ -147,6 +148,7 @@ function useGetDailyReport(date) {
         }
       );
       const data = await res.json();
+      
       return data.data;
     },
   });
@@ -223,7 +225,8 @@ function useGetDailyReport(date) {
     BackPageLoading,
     BackPageData,
     RegularRefetch,
-    ExceptionalRefetch
+    ExceptionalRefetch,
+    FrontDataRefetch
 
   };
 }

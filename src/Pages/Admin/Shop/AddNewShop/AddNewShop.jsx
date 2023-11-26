@@ -18,7 +18,7 @@ const AddNewShop = ({ addNewShop,Loading }) => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Add New Shop</h3>
+          <h3 className="text-lg font-bold">Add New Shop/Bar</h3>
           <div className="py-4">
             <form onSubmit={(e)=>addNewShop(e)}>
               <div className="form-control">
@@ -128,8 +128,8 @@ const AddNewShop = ({ addNewShop,Loading }) => {
                   }}
                 >
                  
-                  <option  value={"BAR"}>BAR</option>
-                  <option selected value={"SHOP"}>SHOP</option>
+                  <option  value={"BAR"}>Bar</option>
+                  <option selected value={"SHOP"}>Shop</option>
                 </select>
               </div>
 

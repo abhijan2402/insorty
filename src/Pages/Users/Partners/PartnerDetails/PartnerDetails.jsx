@@ -67,6 +67,7 @@ const PartnerDetails = () => {
       </Link>)}
       
     <section ref={front}>
+      <div className="flex justify-center flex-col items-center">
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">{partner?.name}</h2>
         <div className="divider my-2"></div>
@@ -108,6 +109,7 @@ const PartnerDetails = () => {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     </section>
     </>

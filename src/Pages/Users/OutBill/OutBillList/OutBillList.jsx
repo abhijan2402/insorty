@@ -15,9 +15,9 @@ const OutBillList = ({ outBill, index }) => {
     <>
       <tr>
         <th>{index + 1}</th>
-        <th>{moment(date).format("DD/MM/YYYY")}</th>
+        <td>{moment(date).format("DD/MM/YYYY")}</td>
         <td>{liquor?.brandName}</td>
-        <td>{liquor?.quantityInML}</td>
+        <td>{liquor?.quantityInML} ML</td>
         <td>{number}</td>
         <td>{Number(averageRate?.$numberDecimal).toFixed(2)}</td>
         <td>{Number(total?.$numberDecimal).toFixed(2)}</td>

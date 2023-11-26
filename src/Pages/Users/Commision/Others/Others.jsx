@@ -94,7 +94,7 @@ const Others = () => {
               </Link>
 
               <Link className="commonBtn " to="/user/bearshop/penalty">
-                पेनाल्टी
+                पेनल्टी
               </Link>
             </>
           )}
@@ -121,7 +121,7 @@ const Others = () => {
               </Link>
 
               <Link className="commonBtn " to="/user/penalty">
-                पेनाल्टी
+                पेनल्टी
               </Link>
             </>
           )}
@@ -225,7 +225,7 @@ const Others = () => {
                       })}
 
                     <tr>
-                      <th colSpan={2}>कुल योग</th>
+                      <th colSpan={2}>Total</th>
                       <td>{totalAmount}</td>
                       <th></th>
                     </tr>

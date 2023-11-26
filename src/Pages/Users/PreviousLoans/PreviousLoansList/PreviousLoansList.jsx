@@ -105,7 +105,7 @@ const PreviousLoansList = () => {
   return (
     <section className="px-2 py-6">
       <div>
-        <h1 className="titleStyle text-center">पिछले ऋण</h1>
+        <h1 className="titleStyle text-center">पिछली उधारी</h1>
         <div className="divider my-2"></div>
       </div>
 

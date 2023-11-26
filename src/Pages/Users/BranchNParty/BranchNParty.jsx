@@ -14,7 +14,7 @@ function BranchNParty() {
       </div>
 
       <div>
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center gap-4">
         <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branchname">
             ब्रांच जोड़ें
           </Link>

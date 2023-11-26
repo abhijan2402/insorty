@@ -55,7 +55,7 @@ const CreditDabitForm = ({ item, index, onChangeCarditDabit, handleRemoveFieldsC
           <select
             type="text"
             required
-            className="smallinput wd-30"
+            className="smallinput wd-9"
             name="partyType"
             value={item.partyType}
             onChange={(e) =>{

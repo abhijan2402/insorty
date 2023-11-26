@@ -56,7 +56,7 @@ $primaryColor: #aa237a;
   width: 32px!important;
 }
 .wd-30{
-  width: 240px!important;
+  width: 255px!important;
 }
 .wd-100{
   width: 100%!important;
@@ -75,6 +75,10 @@ th,td{
 .date{
   width: 120px!important;
 }
+.label{
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+}
 
 .center-txt{
   text-align: center!important;
@@ -82,4 +86,25 @@ th,td{
 
 .left-text{
   text-align: left!important;
+}
+
+td{
+  font-size: 13px!important;
+  text-align: left!important;
+}
+
+th{
+  text-align: center!important;
+}
+
+td input{
+  font-size: 15.7px!important;
+}
+td select,option{
+  font-size: 15.7px!important;
+}
+
+.total-wd{
+  font-size: 15.7px!important;
+
 }

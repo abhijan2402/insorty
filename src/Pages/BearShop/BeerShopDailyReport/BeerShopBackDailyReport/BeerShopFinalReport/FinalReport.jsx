@@ -58,7 +58,7 @@ const FinalReport = ({
             <tr>
               <th> क्र. सं.</th>
               <th>Reason / विवरण</th>
-              <th>total</th>
+              <th>Total</th>
             </tr>
           </thead>
 
@@ -136,7 +136,7 @@ const FinalReport = ({
 
             <tr>
               <th>10</th>
-              <td>total</td>
+              <td>Total</td>
               <td>{rmlTotal + Number(JSON.parse(localStorage.getItem('totalFirstBack'))) + firstformData + secondFront + Number(localStorage.getItem('totalPaymentsRecieved')) - intoAccountState - udhaariTotal - commisionTotal + pichla}</td>
             </tr>
             <tr>

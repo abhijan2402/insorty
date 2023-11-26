@@ -123,7 +123,7 @@ const CashReciveData = () => {
               })}
               <tr>
                 <td colSpan={3}>
-                    <h2 className="font-bold">कुल योग</h2>
+                    <h2 className="font-bold">Total</h2>
                 </td>
                 
                 <td>

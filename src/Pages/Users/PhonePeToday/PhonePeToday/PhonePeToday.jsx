@@ -48,7 +48,7 @@ const PhonePeToday = () => {
       <section ref={front}>
         <div className="title flex justify-center items-center flex-col">
           <h2 className="font-bold md:text-[1.5rem] text-center">
-            फोन पे और आज भुगतान
+          खाते में और आज भुगतान
           </h2>
          
 
@@ -110,7 +110,7 @@ const PhonePeToday = () => {
                 })}
                 <tr>
                   <td colSpan={3}>
-                    <h2 className="font-bold">कुल योग</h2>
+                    <h2 className="font-bold">Total</h2>
                   </td>
                   
                   <td>

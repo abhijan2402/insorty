@@ -131,7 +131,7 @@ const Penalty = () => {
           <div>
             <h2 className="font-bold md:text-[1.5rem] text-center">
               {" "}
-              पेनाल्टी
+              पेनल्टी
             </h2>
 
             <div className="flex gap-4 justify-center items-center my-4">
@@ -228,7 +228,7 @@ const Penalty = () => {
                       })}
 
                     <tr>
-                      <th colSpan={2}>कुल योग</th>
+                      <th colSpan={2}>Total</th>
                       <td>{totalAmount}</td>
                       <th></th>
                     </tr>

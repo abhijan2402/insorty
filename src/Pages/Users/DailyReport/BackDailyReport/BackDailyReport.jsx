@@ -203,7 +203,7 @@ const BackDailyReport = () => {
         <form onSubmit={handleSubmit}>
           <div className="my-4 flex gap-4 items-center justify-center">
             <h1 className="font-bold md:text-2xl sm:text-sm text-center">
-              बीयर
+            बीयर ओर अन्य
             </h1>
 
               <Link to="/user/dailyreport/front" className="commonBtn ">
@@ -280,11 +280,11 @@ const BackDailyReport = () => {
                           <th className="text-xs" rowSpan={2}> क्र. सं.</th>
                           <th className="text-xs" rowSpan={2}></th>
                           <th className="text-xs" rowSpan={2}> ब्राण्ड</th>
-                          <th className="text-xs" >औसत दर</th>
+                          <th className="text-xs" >औसत रेट</th>
                           <th className="text-xs" >प्रारम्भिक स्टॉक</th>
-                          <th className="text-xs"  >आमद (खरीद)-दु.</th>
-                          <th className="text-xs" >खरीद रेट - दु</th>
-                          <th className="text-xs" >आमद (खरीद)-बा.</th>
+                          <th className="text-xs"  >आमद (खरीद) - दु.</th>
+                          <th className="text-xs" >खरीद रेट - दु.</th>
+                          <th className="text-xs" >आमद (खरीद) - बा.</th>
                           <th className="text-xs" >खरीद रेट - बा.</th>
                           <th className="text-xs" >आमद (उधारी)</th>
                           <th className="text-xs" >भेजान</th>
@@ -301,19 +301,19 @@ const BackDailyReport = () => {
                           {/* ======== प्रारम्भिक स्टॉक ========= */}
                           <td>
                             <div className="flex justify-evenly">
-                              <div className="form-control">
+                              <div >
                                 <label className="label">
                                   <span className="label-text">650ml</span>
                                 </label>
                               </div>
 
-                              <div className="form-control">
+                              <div >
                                 <label className="label">
                                   <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
-                              <div className="form-control">
+                              <div >
                                 <label className="label">
                                   <span className="label-text">330ml</span>
                                 </label>
@@ -1257,11 +1257,11 @@ const BackDailyReport = () => {
                               <th className="text-xs"></th>
                               <th className=" text-xs"> ब्राण्ड</th>
                               <th className="text-xs">ml</th>
-                              <th className="text-xs">औसत दर</th>
+                              <th className="text-xs">औसत रेट</th>
                               <th className="whitespace-pre-wrap text-xs">प्रारम्भिक स्टॉक</th>
-                              <th className="whitespace-pre-wrap  text-xs">आमद (खरीद)-दु.</th>
-                              <th className="whitespace-pre-wrap  text-xs">खरीद रेट - दु</th>
-                              <th className="whitespace-pre-wrap  text-xs">आमद (खरीद)-बा.</th>
+                              <th className="whitespace-pre-wrap  text-xs">आमद (खरीद) - दु.</th>
+                              <th className="whitespace-pre-wrap  text-xs">खरीद रेट - दु.</th>
+                              <th className="whitespace-pre-wrap  text-xs">आमद (खरीद) - बा.</th>
                               <th className="whitespace-pre-wrap  text-xs">खरीद रेट - बा.</th>
                               <th className="whitespace-pre-wrap  text-xs">आमद (उधारी)</th>
                               <th className="text-xs">भेजान</th>
@@ -1506,7 +1506,7 @@ const BackDailyReport = () => {
 
           {/* *********************************************************BREAK*********************************************************  */}
           <div className="flex  overflow-x-auto" ref={tableContainer}>
-            <div className="">
+            <div className="py-6">
               <h1 className="my-4">
                 <span className="font-bold titleText">देशी / RML</span>
               </h1>
@@ -1520,11 +1520,11 @@ const BackDailyReport = () => {
                         <th className="text-xs"></th>
                         <th className="text-xs"> ब्राण्ड</th>
                         <th className="text-xs">ml</th>
-                        <th className="text-xs">औसत दर</th>
+                        <th className="text-xs">औसत रेट</th>
                         <th className="whitespace-pre-wrap text-xs">प्रारम्भिक स्टॉक</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद)-दु.</th>
-                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - दु</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद)-बा.</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद) - दु.</th>
+                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - दु.</th>
+                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद) - बा.</th>
                         <th className="whitespace-pre-wrap text-xs">खरीद रेट - बा.</th>
                         <th className="whitespace-pre-wrap text-xs">आमद (उधारी)</th>
                         <th className="text-xs">भेजान</th>
@@ -1874,7 +1874,7 @@ const BackDailyReport = () => {
             </div>
 
             <div className="py-6">
-              <h1 className="my-4 specialwidth">
+              <h1 className="my-4">
                 <span className="font-bold titleText ">
                   कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
                 </span>

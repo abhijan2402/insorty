@@ -18,7 +18,7 @@ const MargePartners = () => {
         </div>
       </div>
       <div className="p-4">
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center gap-4">
           { ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/partners">

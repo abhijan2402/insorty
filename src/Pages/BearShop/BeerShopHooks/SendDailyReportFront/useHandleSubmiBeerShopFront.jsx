@@ -270,6 +270,7 @@ const useHandleSubmiBeerShopFront = () => {
   }
 
   const handelSubmit = (e) => {
+    setIsLoading(true)
     e.preventDefault()
     if (salesMan === "") {
       Swal.fire({
