@@ -113,6 +113,7 @@ const UseBeerShopFront = () => {
   useEffect(() => {
     if (prevdata) {
       setBeerShopFrontFrist(prevdata);
+      sethasMoreBig(false)
     } else {
       const fetchOptions = async () => {
         await axios({
@@ -1076,6 +1077,7 @@ const UseBeerShopFront = () => {
   useEffect(() => {
     if (smallPegFormPrev) {
       setBeerShopMid(smallPegFormPrev);
+      sethasMoreSmall(false)
     } else {
       const fetchOptions = async () => {
         await axios({

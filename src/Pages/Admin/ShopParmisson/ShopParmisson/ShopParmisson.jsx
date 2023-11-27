@@ -259,7 +259,7 @@ const token = localStorage.getItem('token')
 
               
 
-                <div className="form-control w-52">
+                <div className="form-control w-52 my-2">
                   <label className="cursor-pointer label">
                     <span className="label-text">Get</span>
                     <input name="GET" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.GET}
@@ -268,7 +268,7 @@ const token = localStorage.getItem('token')
                     }} />
                   </label>
                 </div>
-                <div className="form-control w-52">
+                <div className="form-control w-52 my-2">
                   <label className="cursor-pointer label">
                     <span className="label-text">Post</span>
                     <input name="POST" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.POST}
@@ -277,7 +277,7 @@ const token = localStorage.getItem('token')
                     }} />
                   </label>
                 </div>
-                <div className="form-control w-52">
+                <div className="form-control w-52 my-2">
                   <label className="cursor-pointer label">
                     <span className="label-text">Delete</span>
                     <input name="DELETE" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.DELETE}
@@ -286,7 +286,7 @@ const token = localStorage.getItem('token')
                     }} />
                   </label>
                 </div>
-                <div className="form-control w-52">
+                <div className="form-control w-52 my-2">
                   <label className="cursor-pointer label">
                     <span className="label-text">Put</span>
                     <input name="PUT" type="checkbox" className="toggle toggle-secondary" checked={shop.ShopPermission.PUT}

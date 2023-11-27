@@ -98,7 +98,7 @@ const BranchName = () => {
             </th>
 
             <th>
-              <h1>Delete</h1>
+              
             </th>
           </thead>
           <tbody>

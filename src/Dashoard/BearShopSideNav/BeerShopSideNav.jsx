@@ -109,7 +109,7 @@ const SideNav = () => {
                 to="/user/bearshop/salary"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                वेतन
+                कर्मचारी
               </NavLink>
             </li>
 
@@ -146,7 +146,7 @@ const SideNav = () => {
                 to="/user/bearshop/commisionroute"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                कमीशन आदि
+                खर्चा आदि
               </NavLink>
             </li>
 
@@ -155,7 +155,7 @@ const SideNav = () => {
                 to="/user/bearshop/phonePay"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                फोन पे और आज भुगतान
+                खाते में और आज भुगतान
               </NavLink>
             </li>
 
@@ -182,7 +182,7 @@ const SideNav = () => {
                 to="/user/bearshop/payments"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                बार पेमेंट
+                सर्विस पेमेंट
               </NavLink>
             </li>
             {/* <li className="my-4">

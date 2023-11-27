@@ -119,7 +119,7 @@ const SalaryList = () => {
               <tr>
                 <th> क्र. सं.</th>
                 <th>नाम</th>
-                <th>Delete</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
