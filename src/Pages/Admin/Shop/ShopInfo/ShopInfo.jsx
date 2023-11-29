@@ -131,13 +131,13 @@ const ShopInfo = ({ myShopId, shop,token }) => {
               </div>
             </div>
           </div>
-          <table className="table my-3 mx-auto">
-                <thead>
-                  <td>SubAdmin Name</td>
-                  <td>GET</td>
-                  <td>POST</td>
-                  <td>PUT</td>
-                  <td>DELETE</td>
+          <table className=" my-3 mx-auto">
+                <thead className="font-bold">
+                  <td>Sub Admin Name</td>
+                  <td>Get</td>
+                  <td>Post</td>
+                  <td>Put</td>
+                  <td>Delete</td>
                 </thead>
                 <tbody>
                   {shopSubs && shopSubs?.data?.map((shop)=>{

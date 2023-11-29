@@ -226,7 +226,7 @@ const Monthly = () => {
                       })}
 
                     <tr>
-                      <th colSpan={2}>Total</th>
+                      <td colSpan={2}>Total</td>
                       <td>{totalAmount}</td>
                       <th></th>
                     </tr>

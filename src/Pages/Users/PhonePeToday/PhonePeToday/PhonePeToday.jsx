@@ -100,7 +100,7 @@ const PhonePeToday = () => {
                 {phonePayData.length && filteredData.map((item, index) => {
                   return (
                     <tr>
-                      <td>{index + 1}</td>
+                      <th>{index + 1}</th>
                       <td>{moment(item.date).format("DD/MM/YYYY")}</td>
                       <td>{item.salesmen}</td>
                       <td>{item.intoAccount}</td>

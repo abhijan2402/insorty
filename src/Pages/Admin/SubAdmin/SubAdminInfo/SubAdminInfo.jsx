@@ -55,13 +55,13 @@ const SubAdminInfo = ({ subadminId, subAdmin, onTokenChange }) => {
               </div>
             </div>
           </div>
-              <table className="table my-3 mx-auto">
-                <thead>
+              <table className=" my-3 mx-auto">
+                <thead className="font-bold">
                   <td>Shop Name</td>
-                  <td>GET</td>
-                  <td>POST</td>
-                  <td>PUT</td>
-                  <td>DELETE</td>
+                  <td>Get</td>
+                  <td>Post</td>
+                  <td>Put</td>
+                  <td>Delete</td>
                 </thead>
                 <tbody>
                   {subAdmin && subAdmin.permissions.filter((shop)=>shop?.shopId?.isActive===true).map((shop)=>{

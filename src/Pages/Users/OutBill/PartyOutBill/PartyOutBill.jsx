@@ -225,7 +225,7 @@ const PartyOutBill = () => {
                   </td>
                   <td className="tg-0lax" ></td>
                   <td className="tg-0lax" >
-                    {purchaseOutSide &&
+                    {(Number(purchaseOutSide &&
                       purchaseOutSide?.length &&
                       purchaseOutSide
                         .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
@@ -240,7 +240,7 @@ const PartyOutBill = () => {
                                 0
                               )),
                           0
-                        )}
+                        ))||0).toFixed(2)}
                   </td>
                 </tr>
               </tbody>

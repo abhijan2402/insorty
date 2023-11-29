@@ -72,7 +72,8 @@ const BackDailyReport = () => {
       <section className="mx-2">
           <div className="my-4 flex  items-center">
             <h1 className="font-bold text-2xl">
-            बीयर
+            बीयर ओर अन्य
+
             </h1>
 
               <Link to="/user/bearshop/details" className="commonBtn">
@@ -137,7 +138,7 @@ const BackDailyReport = () => {
                   
                 } 
               });
-            }}>Delete Page</button>
+            }}>डिलीट</button>
 
         {/* *********************************************************BREAK*********************************************************  */}
         <form ref={container}> 
@@ -182,12 +183,12 @@ const BackDailyReport = () => {
                   })}
 
                    <tr>
-                <td className="tg-0lax"></td>
                 <td className="tg-0lax"  >Total</td>
+                <td className="tg-0lax"></td>
                 <td className="tg-0lax"  />
                 <td className="tg-0lax" ></td>
                 <td className="tg-0lax" >
-                  {BackPageData &&
+                  {(BackPageData &&
                     BackPageData?.length &&
                     BackPageData
                       
@@ -202,13 +203,13 @@ const BackDailyReport = () => {
                               0
                             )),
                         0
-                      )}
+                      ) || 0)}
                 </td>
                 <td className="tg-0lax" >
                   
                 </td>
                 <td className="tg-0lax" >
-                  {BackPageData &&
+                  {Number(BackPageData &&
                     BackPageData?.length &&
                     BackPageData
                       
@@ -223,7 +224,7 @@ const BackDailyReport = () => {
                               0
                             )),
                         0
-                      )}
+                      ) || 0).toFixed(2)}
                 </td>
                
               </tr>
@@ -273,10 +274,10 @@ const BackDailyReport = () => {
                   })}
 
 <tr>  
-  <td></td>
                 <td className="tg-0lax" >
                   Total
                 </td>
+  <td></td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
@@ -341,10 +342,10 @@ const BackDailyReport = () => {
                   })}
 
 <tr>
-                <td className="tg-0lax"></td>
                 <td className="tg-0lax" >Total</td>
+                <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {BackPageData &&
+                  {(BackPageData &&
                     BackPageData?.length &&
                     BackPageData
                       .slice(pgNo, pgNo + 1)
@@ -360,7 +361,7 @@ const BackDailyReport = () => {
                               0
                             )),
                         0
-                      )}
+                      ) || 0).toFixed(2)}
                 </td>
                 <td className="tg-0lax" ></td>
               </tr>
@@ -414,15 +415,15 @@ const BackDailyReport = () => {
                   })}
 
 <tr>
-  <td></td>
                 <td className="tg-0lax" >
                   Total
                 </td>
+  <td></td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
                   
                    
-                      {BackPageData &&
+                      {Number(BackPageData &&
                         BackPageData?.length > 0 &&
                         BackPageData
                           .slice(pgNo, pgNo + 1)
@@ -440,7 +441,7 @@ const BackDailyReport = () => {
                                   0
                                 )),
                             0
-                          )}
+                          )|| 0).toFixed(2)}
                   
                   
                 </td>
@@ -496,11 +497,11 @@ const BackDailyReport = () => {
                     }</>)}
                   })}
                     <tr>
-                <td className="tg-0lax"></td>
                 <td className="tg-0lax"  >Total</td>
+                <td className="tg-0lax"></td>
                 <td className="tg-0lax"  />
                 <td className="tg-0lax">
-                  {BackPageData &&
+                  {Number(BackPageData &&
                     BackPageData?.length &&
                     BackPageData
                       .slice(pgNo, pgNo + 1)
@@ -514,7 +515,7 @@ const BackDailyReport = () => {
                               0
                             )),
                         0
-                      )}
+                      ) || 0).toFixed(2)}
                 </td>
               </tr>
                   </tbody>
@@ -546,8 +547,8 @@ const BackDailyReport = () => {
                       page?.foodVegetable?.entries?.map((entry,index2)=>{
                         return(
                           <tr>
-                          <td className="tg-0lax">{index2+1}</td>
-                          <td className="tg-0lax">{entry?.price?.$numberDecimal}</td>
+                          <th className="tg-0lax">{index2+1}</th>
+                          <td className="tg-0lax">{(Number(entry?.price?.$numberDecimal)||0).toFixed(2)}</td>
                           <td className="tg-0lax">{entry?.description}</td>
                           </tr>
                         )
@@ -557,7 +558,7 @@ const BackDailyReport = () => {
 
                     <tr>
                       <td className="tg-0lax">Total</td>
-                      <td className="tg-0lax"> {BackPageData &&
+                      <td className="tg-0lax"> {Number(BackPageData &&
                     BackPageData?.length &&
                     BackPageData
                       .slice(pgNo, pgNo + 1)
@@ -571,7 +572,7 @@ const BackDailyReport = () => {
                               0
                             )),
                         0
-                      )}</td>
+                      ) || 0).toFixed(2)}</td>
                       <td className="tg-0lax"></td>
                     </tr>
                   </tbody>
@@ -608,11 +609,11 @@ const BackDailyReport = () => {
                       page?.barCommission?.entries.map((entry,index2)=>{
                         return(
                           <tr>
-                         <td className="tg-0lax">{index2+1}</td>
+                         <th className="tg-0lax">{index2+1}</th>
                     <td className="tg-0lax">{entry?.liquor?.brandName}</td>
                     <td className="tg-0lax">{entry?.liquor?.quantityInML}</td>
                     <td className="tg-0lax">{entry?.quantity}</td>
-                    <td className="tg-0lax">{entry?.amount?.$numberDecimal}</td>
+                    <td className="tg-0lax">{(Number(entry?.amount?.$numberDecimal) || 0).toFixed(2)}</td>
                     <td className="tg-0lax">{entry?.comment}</td>
                           </tr>
                         )
@@ -621,8 +622,8 @@ const BackDailyReport = () => {
                   })}
 
                   <tr>
-                    <td className="tg-0lax"></td>
                     <td className="tg-0lax">Total</td>
+                    <td className="tg-0lax"></td>
                     <td className="tg-0lax"></td>
                     <td className="tg-0lax"> {BackPageData &&
                     BackPageData?.length &&
@@ -639,7 +640,7 @@ const BackDailyReport = () => {
                             )),
                         0
                       )}</td>
-                    <td className="tg-0lax">{BackPageData &&
+                    <td className="tg-0lax">{Number(BackPageData &&
                     BackPageData?.length &&
                     BackPageData
                       .slice(pgNo, pgNo + 1)
@@ -653,7 +654,7 @@ const BackDailyReport = () => {
                               0
                             )),
                         0
-                      )}</td>
+                      ) || 0).toFixed(2)}</td>
                     <td className="tg-0lax"></td>
                   </tr>
                 </tbody>

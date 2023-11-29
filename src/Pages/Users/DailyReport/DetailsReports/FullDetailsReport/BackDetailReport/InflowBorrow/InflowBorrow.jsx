@@ -12,7 +12,7 @@ const InflowBorrow = ({index, PurchaseBorrow, entries}) => {
     
      
           <tr>
-           <td>{index+1}</td>
+           <th>{index+1}</th>
       <td>{getPartyName(entries.party)}</td>
       <td>{entries?.liquor?.brandName}</td>
       <td>{entries?.liquor?.quantityInML}</td>

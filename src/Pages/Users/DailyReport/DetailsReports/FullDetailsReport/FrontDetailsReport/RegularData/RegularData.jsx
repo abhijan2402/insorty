@@ -35,7 +35,7 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
   
           return (
             <tr>
-              <td className="tg-0lax">{index+1}</td>
+              <th className="tg-0lax">{index+1}</th>
               <td className="tg-0lax">{brandName}</td>
   
              
@@ -86,17 +86,17 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
               {/* buy rate */}
               <td className="tg-0lax">
                 {quantityInML750.map((item, index) => {
-                  return item.purchaseShopRate?.$numberDecimal;
+                  return (Number(item.purchaseShopRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML375.map((item, index) => {
-                  return item.purchaseShopRate?.$numberDecimal;
+                  return (Number(item.purchaseShopRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML180.map((item, index) => {
-                  return item.purchaseShopRate?.$numberDecimal;
+                  return (Number(item.purchaseShopRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
   
@@ -120,17 +120,17 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
               {/* Purchase Rate - Ba */}
               <td className="tg-0lax">
                 {quantityInML750.map((item, index) => {
-                  return item.purchaseOutSideRate?.$numberDecimal;
+                  return (Number(item.purchaseOutSideRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML375.map((item, index) => {
-                  return item.purchaseOutSideRate?.$numberDecimal;
+                  return (Number(item.purchaseOutSideRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML180.map((item, index) => {
-                  return item.purchaseOutSideRate?.$numberDecimal;
+                  return (Number(item.purchaseOutSideRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
   
@@ -240,49 +240,49 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
               {/* rate */}
               <td className="tg-0lax">
                 {quantityInML750.map((item, index) => {
-                  return item.sellingRate?.$numberDecimal;
+                  return (Number(item.sellingRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML375.map((item, index) => {
-                  return item.sellingRate?.$numberDecimal;
+                  return (Number(item.sellingRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML180.map((item, index) => {
-                  return item.sellingRate?.$numberDecimal;
+                  return (Number(item.sellingRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
   
               {/* sum */}
               <td className="tg-0lax">
-                {quantityInML750.length > 0
+                {(Number(quantityInML750.length > 0
                   ? quantityInML750.map((item, index) => {
                       return (
                         Number(item.sellingRate?.$numberDecimal)*Number(item.sales)
                       );
                     })
-                  : 0}
+                  : 0)||0).toFixed(2)}
               </td>
               <td className="tg-0lax">
-                {quantityInML375.length > 0
+                {(Number(quantityInML375.length > 0
                   ? quantityInML375.map((item, index) => {
                       return (
                         Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
                       );
                     })
-                  : 0}
+                  : 0)||0).toFixed(2)}
               </td>
               <td className="tg-0lax">
-                {quantityInML180.length > 0
+                {(Number(quantityInML180.length > 0
                   ? quantityInML180.map((item, index) => {
                       return (
                         Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
                       );
                     })
-                  : 0}
+                  : 0)||0).toFixed(2)}
               </td>
-              <td> {Number(quantityInML750.length > 0
+              <td> {(Number(Number(quantityInML750.length > 0
                 ? quantityInML750.map((item, index) => {
                   return (
                     Number(item.sellingRate?.$numberDecimal) * Number(item.sales)
@@ -304,7 +304,7 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
                       );
                     })
                     : 0
-                )}</td>
+                ))||0).toFixed(2)}</td>
             </tr>
           );}
         })}
@@ -337,7 +337,7 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
                 
                 return (
             <tr>
-              <td className="tg-0lax">{index+1}</td>
+              <th className="tg-0lax">{index+1}</th>
               <td className="tg-0lax">{brandName}</td>
   
              
@@ -388,17 +388,17 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
               {/* buy rate */}
               <td className="tg-0lax">
                 {quantityInML750.map((item, index) => {
-                  return item.purchaseShopRate?.$numberDecimal;
+                  return (Number(item.purchaseShopRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML375.map((item, index) => {
-                  return item.purchaseShopRate?.$numberDecimal;
+                  return (Number(item.purchaseShopRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML180.map((item, index) => {
-                  return item.purchaseShopRate?.$numberDecimal;
+                  return (Number(item.purchaseShopRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
   
@@ -422,17 +422,17 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
               {/* Purchase Rate - Ba */}
               <td className="tg-0lax">
                 {quantityInML750.map((item, index) => {
-                  return item.purchaseOutSideRate?.$numberDecimal;
+                  return (Number(item.purchaseOutSideRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML375.map((item, index) => {
-                  return item.purchaseOutSideRate?.$numberDecimal;
+                  return (Number(item.purchaseOutSideRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML180.map((item, index) => {
-                  return item.purchaseOutSideRate?.$numberDecimal;
+                  return (Number(item.purchaseOutSideRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
   
@@ -542,17 +542,17 @@ const RegularData = ({ regularData, index,quan1,quan2,quan3,pageId,frontSet,pgNo
               {/* rate */}
               <td className="tg-0lax">
                 {quantityInML750.map((item, index) => {
-                  return item.sellingRate?.$numberDecimal;
+                  return (Number(item.sellingRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML375.map((item, index) => {
-                  return item.sellingRate?.$numberDecimal;
+                  return (Number(item.sellingRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
               <td className="tg-0lax">
                 {quantityInML180.map((item, index) => {
-                  return item.sellingRate?.$numberDecimal;
+                  return (Number(item.sellingRate?.$numberDecimal)||0).toFixed(2);
                 })}
               </td>
   

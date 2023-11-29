@@ -13,7 +13,7 @@ const EditSubAdmin = () => {
           >
             ✕
           </label>
-          <h3 className="text-lg font-bold">Edit Subadmin Info</h3>
+          <h3 className="text-lg font-bold">Edit Sub Admin Info</h3>
           <p className="py-4">
             You've been selected for a chance to get one year of subscription to
             use Wikipedia for free!

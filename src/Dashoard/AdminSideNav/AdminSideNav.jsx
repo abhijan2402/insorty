@@ -44,7 +44,7 @@ const AdminSideNav = () => {
           <Link>
             <div>
               <h1 className="font-bold text-red-400 text-center uppercase">
-                Name:- {jwtDecode(localStorage.getItem("token")).name}
+                Name :-   {jwtDecode(localStorage.getItem("token")).name}
               </h1>
               <div>
                 <h1 className="font-bold text-center uppercase mt-2">

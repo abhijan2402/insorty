@@ -207,7 +207,7 @@ const SelfBill = () => {
                     <td></td>
                     <td></td>
                     <td className="commonText">Total</td>
-                    <td className="price">{totalAmount}</td>
+                    <td className="price">{(Number(totalAmount)||0).toFixed(2)}</td>
                   </tr>
                   <tr>
                     <th></th>
@@ -217,11 +217,11 @@ const SelfBill = () => {
                     <td></td>
                     <td className="commonText">रिफंड</td>
                     <td className="price">
-                      {filteredRefund.reduce(
+                      {(Number(filteredRefund.reduce(
                         (total, currentItem) =>
                           (total = total + Number(currentItem.price)),
                         0
-                      )}
+                      ))||0).toFixed(2)}
                     </td>
                   </tr>
                   <tr>

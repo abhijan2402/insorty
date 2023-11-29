@@ -30,7 +30,7 @@ const BackRmlDetailsData = ({RmlData, index}) => {
 
         return (
           <tr key={index}>
-            <td>{index + 1}</td>
+            <th>{index + 1}</th>
             <td>{getNameByID(entry.liquor?._id)}</td>
             <td>{entry.liquor?.quantityInML || 0}</td>
             <td>{(Number(entry.purchaseShopRate.$numberDecimal) +

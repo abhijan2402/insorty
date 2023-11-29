@@ -9,7 +9,7 @@ const ShippingEnglishBear = ({ index, item, entries }) => {
     <>
      
           <tr>
-            <td>{index + 1}</td>
+            <th>{index + 1}</th>
             <td>{getPartyName(item.party)}</td>
             <td>{item?.liquor?.brandName}</td>
             <td>{item.number}</td>

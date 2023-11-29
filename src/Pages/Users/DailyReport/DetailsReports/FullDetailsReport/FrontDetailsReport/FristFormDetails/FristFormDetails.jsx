@@ -23,7 +23,7 @@ const FristFormDetails = ({ exceptionalData, index,pageId,frontSet }) => {
   return (
     <>
       <tr key={index}>
-        <td>{index }</td>
+        <th>{index }</th>
         <td>{brandName}</td>
         <td>{quantityInML}</td>
         <td>
@@ -31,16 +31,16 @@ const FristFormDetails = ({ exceptionalData, index,pageId,frontSet }) => {
         </td>
         <td>{openingStock}</td>
         <td>{purchaseShop}</td>
-        <td>{purchaseShopRate.$numberDecimal || 0}</td>
+        <td>{(Number(purchaseShopRate.$numberDecimal || 0)||0).toFixed(2)}</td>
         <td>{purchaseOutSide}</td>
-        <td>{purchaseOutSideRate.$numberDecimal || 0}</td>
+        <td>{(Number(purchaseOutSideRate.$numberDecimal || 0)||0).toFixed(2)}</td>
         <td>{credits}</td>
         <td>{send}</td>
         <td>{remaining}</td>
         <td>{closingStock}</td>
         <td>{sales}</td>
-        <td>{sellingRate?.$numberDecimal}</td>
-        <td>{Number(sellingRate?.$numberDecimal) * Number(sales)}</td>
+        <td>{(Number(sellingRate?.$numberDecimal)||0).toFixed(2)}</td>
+        <td>{(Number(Number(sellingRate?.$numberDecimal) * Number(sales))||0).toFixed(2)}</td>
       </tr>
     </>
   );

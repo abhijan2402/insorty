@@ -147,7 +147,7 @@ const Payments = () => {
               सर्विस पेमेंट
             </h2>):
             ( <h2 className="font-bold md:text-[1.5rem] text-center">
-            बार पेमेंट
+            सर्विस पेमेंट
           </h2>)
              }
           </div>
@@ -166,7 +166,7 @@ const Payments = () => {
                       <th className="text-xs" colSpan={2}> जमा </th>
                       <th className="text-xs" rowSpan={2}> चालू शेष नामे </th>
                       <th className="text-xs" rowSpan={2}>विवरण</th>
-                      <th className="text-xs" rowSpan={2}>Delete</th>
+                      <th className="text-xs" rowSpan={2}>डिलीट</th>
                     </tr>
                     <tr>
 

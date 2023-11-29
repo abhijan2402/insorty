@@ -9,12 +9,12 @@ const CommisonExpence = ({ expences, index, entries }) => {
 
        
           <tr key={index}>
-            <td className="tg-0lax">{index + 1}</td>
+            <th className="tg-0lax">{index + 1}</th>
             <td className="tg-0lax"  >
               {expences?.type}
             </td>
             <td className="tg-0lax"  >
-              {expences?.amount?.$numberDecimal}
+              {(Number(expences?.amount?.$numberDecimal) || 0).toFixed(2)}
             </td>
             <td className="tg-0lax"  >
               {expences?.description}

@@ -78,7 +78,7 @@ const BorrowDetails = () => {
     <section ref={front}>
       <div className="title text-center">
         <h2 className="font-bold text-[1.5rem]">
-        पार्टी का नाम	:-  {borrowTranstion?.partyName}
+        पार्टी का नाम :- {borrowTranstion?.partyName}
         </h2>
         <div className="divider my-2"></div>
       </div>

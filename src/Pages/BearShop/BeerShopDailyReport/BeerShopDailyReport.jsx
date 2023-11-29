@@ -48,7 +48,8 @@ const DailyReport = () => {
           अंग्रेजी
         </Link>
         <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
-          बीयर
+        बीयर ओर अन्य
+
         </Link>
         <Link to="/user/bearshop/details" className="commonBtn">
           पर्चा

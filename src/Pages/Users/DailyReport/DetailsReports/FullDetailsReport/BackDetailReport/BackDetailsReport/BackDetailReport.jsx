@@ -256,7 +256,7 @@ const BackDetailReport = () => {
     <section className="my-4">
       <div className="flex gap-6 items-center ">
         <h2 className="font-bold text-xl text-gray-800">
-          बीयर
+        बीयर ओर अन्य
         </h2>
         <Link to="/user/frontdailyreport/details" className="commonBtn">
           अंग्रेजी
@@ -311,7 +311,7 @@ const BackDetailReport = () => {
                   
                 } 
               });
-            }}>Delete page</button>
+            }}>डिलीट</button>
 
       <div className="divider"></div>
 
@@ -497,10 +497,10 @@ const BackDetailReport = () => {
               {/* ========================== */}
 
               <tr>
-                <td></td>
                 <td className="tg-0lax">
                  Total
                 </td>
+                <td></td>
                 <td className="tg-0lax"> </td>
                 <td className="tg-0lax"> </td>
                 <td className="tg-0lax"> </td>
@@ -685,35 +685,35 @@ const BackDetailReport = () => {
                 <td className="tg-0lax"></td>
 
                 <td className="tg-0lax">
-                  {quan650.reduce(
+                  {(Number(quan650.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
                         Number(regularData.sellingRate?.$numberDecimal),
                     0
-                  )}
+                  ))||0).toFixed(2)}
                 </td>
                 <td className="tg-0lax">
-                  {quan550.reduce(
+                  {(Number(quan550.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
                         Number(regularData.sellingRate?.$numberDecimal),
                     0
-                  )}
+                  ))||0).toFixed(2)}
                 </td>
                 <td className="tg-0lax">
-                  {quan330.reduce(
+                  {(Number(quan330.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
                         Number(regularData.sellingRate?.$numberDecimal),
                     0
-                  )}
+                  ))||0).toFixed(2)}
                 </td>
 
                 <td>
-                  {quan650.reduce(
+                  {(Number(quan650.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
@@ -733,7 +733,7 @@ const BackDetailReport = () => {
                         Number(regularData.sales) *
                           Number(regularData.sellingRate?.$numberDecimal),
                       0
-                    )}
+                    ))||0).toFixed(2)}
                 </td>
               </tr>
             </tbody>
@@ -785,10 +785,10 @@ const BackDetailReport = () => {
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
               <tr>
-                <td></td>
                 <td className="tg-0lax">
                   Total
                 </td>
+                <td></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
@@ -845,7 +845,7 @@ const BackDetailReport = () => {
 
                 <td className="tg-0lax"></td>
 
-                <td className="tg-0lax"> {filteredExceptionalData &&
+                <td className="tg-0lax"> {(Number(filteredExceptionalData &&
                   filteredExceptionalData.length > 0 &&
                   filteredExceptionalData
                     .filter((page) => {
@@ -861,7 +861,7 @@ const BackDetailReport = () => {
                         Number(currentItem.sales) *
                         Number(currentItem.sellingRate.$numberDecimal)),
                       0
-                    )}</td>
+                    ))||0).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
@@ -937,10 +937,10 @@ const BackDetailReport = () => {
                   })}
 
               <tr>
-                <td></td>
                 <td className="tg-0lax">
                   Total
                 </td>
+                <td></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
@@ -1094,7 +1094,7 @@ const BackDetailReport = () => {
                 <td className="tg-0lax"></td>
 
                 <td className="tg-0lax">
-                  {BackPageData &&
+                  {(Number(BackPageData &&
                     BackPageData.length &&
                     BackPageData
                       .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
@@ -1111,7 +1111,7 @@ const BackDetailReport = () => {
                               0
                             )),
                         0
-                      )}
+                      ))||0).toFixed(2)}
                 </td>
               </tr>
             </tbody>
@@ -1172,8 +1172,8 @@ const BackDetailReport = () => {
                   })}
 
 <tr>
-                  <td></td>
                 <td className="tg-0lax">Total</td>
+                  <td></td>
                 <td className="tg-0lax"  />
                 <td className="tg-0lax"  />
                 <td className="tg-0lax" >
@@ -1196,7 +1196,7 @@ const BackDetailReport = () => {
                 </td>
                 <td className="tg-0lax" ></td>
                 <td className="tg-0lax">
-                  {BackPageData &&
+                  {((BackPageData &&
                     BackPageData?.length &&
                     BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       
@@ -1211,7 +1211,7 @@ const BackDetailReport = () => {
                               0
                             )),
                         0
-                      )}
+                      ))||0).toFixed(2)}
                 </td>
                 <td className="tg-0lax" >
                   
@@ -1261,10 +1261,10 @@ const BackDetailReport = () => {
                   })}
 
 <tr>
-                  <td></td>
                 <td className="tg-0lax">Total</td>
+                  <td></td>
                 <td className="tg-0lax">
-                  {BackPageData &&
+                  {((BackPageData &&
                     BackPageData.length &&
                     BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
@@ -1280,7 +1280,7 @@ const BackDetailReport = () => {
                               0
                             )),
                         0
-                      )}
+                      ))||0).toFixed(2)}
                 </td>
                 <td className="tg-0lax" ></td>
                 
@@ -1330,11 +1330,11 @@ const BackDetailReport = () => {
                     }</>)}
                   })}
                     <tr>
-                <td className="tg-0lax"></td>
                 <td className="tg-0lax"  >Total</td>
+                <td className="tg-0lax"></td>
                 <td className="tg-0lax"  />
                 <td className="tg-0lax">
-                  {BackPageData &&
+                  {(Number(BackPageData &&
                     BackPageData.length &&
                     BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
                       .slice(pgNo, pgNo + 1)
@@ -1348,7 +1348,7 @@ const BackDetailReport = () => {
                               0
                             )),
                         0
-                      )}
+                      ))||0).toFixed(2)}
                 </td>
               </tr>
             </tbody>
@@ -1393,10 +1393,10 @@ const BackDetailReport = () => {
                   })}
 
 <tr>  
-                  <td></td>
                 <td className="tg-0lax" >
                   Total
                 </td>
+                  <td></td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
@@ -1494,10 +1494,10 @@ const BackDetailReport = () => {
                   })}
 
               <tr>
-                <td></td>
                 <td className="tg-0lax" >
                   Total
                 </td>
+                <td></td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
                   {BackPageData &&
@@ -1520,7 +1520,7 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {BackPageData &&
+                  {(Number(BackPageData &&
                     BackPageData?.length &&
                     BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).reduce(
                       (total, currentItem) =>
@@ -1532,7 +1532,7 @@ const BackDetailReport = () => {
                             0
                           )),
                       0
-                    )}
+                    ))||0).toFixed(2)}
                 </td>
                 <td className="tg-0lax" />
               </tr>
@@ -1572,15 +1572,15 @@ const BackDetailReport = () => {
                   })}
 
 <tr>
-                  <td></td>
                 <td className="tg-0lax">
                   Total
                 </td>
+                  <td></td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
                   
                    
-                      {BackPageData &&
+                      {(Number(BackPageData &&
                         BackPageData?.length > 0 &&
                         BackPageData
                           .slice(pgNo, pgNo + 1)
@@ -1598,7 +1598,7 @@ const BackDetailReport = () => {
                                   0
                                 )),
                             0
-                          )}
+                          ))||0).toFixed(2)}
                   
                   
                 </td>

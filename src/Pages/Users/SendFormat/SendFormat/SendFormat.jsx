@@ -82,7 +82,7 @@ const SendFormat = ({ isBearShop }) => {
                     <th className="text-xs">पार्टनर नाम</th>
                     <th className="text-xs">हिस्सा</th>
                     <th className="text-xs">खाते में शेष</th>
-                    <th></th>
+                    <th className="text-xs">डिलीट</th>
                   </tr>
                 </thead>
                 <tbody>

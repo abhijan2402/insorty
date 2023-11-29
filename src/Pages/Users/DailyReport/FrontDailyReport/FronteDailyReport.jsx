@@ -119,7 +119,7 @@ const second = addOneSecondFormState.reduce(
         </div>
         <div className="flex gap-4 justify-center items-center ">
           <div className="flex gap-4 justify-center items-center ">
-            <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
+            <h1 className="font-bold ">सेल्समेन :-   </h1>
             <Autocomplete
           size="small"
           style={{

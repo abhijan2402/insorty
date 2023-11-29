@@ -314,7 +314,8 @@ FrontPageRegularData?.map((item) => {
         <div className="my-4 flex gap-4 items-center">
           <h1 className="font-bold text-xl text-gray-800">अंग्रेजी</h1>
           <Link to="/user/bearshop/details/back" className="commonBtn">
-          बीयर
+          बीयर ओर अन्य
+
           </Link>
           {/* <Link to="/user/bearshop/dailyreport/back" className="commonBtn">
             Back
@@ -365,7 +366,7 @@ FrontPageRegularData?.map((item) => {
                   
                 } 
               });
-            }}>Delete Page</button>
+            }}>डिलीट</button>
 
 
             <div ref={container}>
@@ -377,11 +378,9 @@ FrontPageRegularData?.map((item) => {
               <table className="table commonTable">
                 <thead>
                 <td className="tg-baqh" colSpan={42}>
-                  दुकान का नाम:- &nbsp;&nbsp;
-                  {jwtDecode(localStorage?.getItem("token"))?.role === "admin" ?  jwtDecode(localStorage?.getItem("token"))?.shopName : jwtDecode(localStorage?.getItem("token"))?.role ==='subadmin' ? jwtDecode(localStorage?.getItem("token"))?.shopName : jwtDecode(localStorage?.getItem("token"))?.name }
+                  दुकान का नाम :- {jwtDecode(localStorage?.getItem("token"))?.role === "admin" ?  jwtDecode(localStorage?.getItem("token"))?.shopName : jwtDecode(localStorage?.getItem("token"))?.role ==='subadmin' ? jwtDecode(localStorage?.getItem("token"))?.shopName : jwtDecode(localStorage?.getItem("token"))?.name }
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
-                  का नाम :-{" "}
-                  {
+                  का नाम :- {
                     FrontPage && FrontPage?.length && FrontPage?.sort((a, b) => b?._id?.localeCompare(a?._id))?.map((page,index)=>{
                       if (index === pgNo) {
                         return(
@@ -391,14 +390,12 @@ FrontPageRegularData?.map((item) => {
                       }
                     })
                   }
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक
-                  :-
-                  {moment(selectedDate)?.format("DD/MM/YYYY")}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक :- {moment(selectedDate)?.format("DD/MM/YYYY")}
                 </td>
                 <tr>
                     <th rowSpan={2}> क्र. सं.</th>
                     <th rowSpan={2}>ब्राण्ड</th>
-                    <th colSpan={4}>एवरेज रेट</th>
+                    <th colSpan={4}>औसत रेट</th>
                     <th >प्रारम्भिक स्टॉक</th>
                     <th colSpan={4}>आमद(खरीद) - दु.</th>
                     <th colSpan={4}>आमद(खरीद) - दु.</th>
@@ -565,8 +562,8 @@ FrontPageRegularData?.map((item) => {
               })}
 
               <tr>
-                <td></td>
                 <td>Total</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -751,7 +748,7 @@ FrontPageRegularData?.map((item) => {
                   <th rowSpan={2}>क्र. सं.</th>
                   <th rowSpan={2}>ब्राण्ड</th>
                   <th rowSpan={2}>ml</th>
-                  <th colSpan={2}>एवरेज रेट </th>
+                  <th colSpan={2}>औसत रेट </th>
                   <th colSpan={2}>प्रारम्भिक स्टॉक </th>
                   <th colSpan={2}>आमद(खरीद) - दु. </th>
                   <th colSpan={2}>आमद(खरीद) - दु. </th>
@@ -870,8 +867,8 @@ FrontPageRegularData?.map((item) => {
                 })}
 
                 <tr>
-                  <td></td>
                   <td>Total</td>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -960,7 +957,7 @@ FrontPageRegularData?.map((item) => {
               </tbody>
             </table>
           </div>
-          <div>Total:- {Number(quan750?.reduce(
+          <div>Total :-   {Number(quan750?.reduce(
                     (total, regularData) =>
                       total + (Number(regularData?.remaining)*25 - Number(regularData?.openingStock)*25  + Number(regularData?.openingStock))*Number(regularData?.sellingRate?.$numberDecimal),
                     0
@@ -1011,7 +1008,7 @@ FrontPageRegularData?.map((item) => {
                       <tr>
                           <th rowSpan={2}> क्र. सं.</th>
                           <th rowSpan={2}> ब्राण्ड</th>
-                          <th colSpan={3}>औसत दर</th>
+                          <th colSpan={3}>औसत रेट</th>
                           <th colSpan={3}>प्रारम्भिक स्टॉक</th>
                           <th colSpan={3}>आमद (खरीद) - दु.</th>
                           <th colSpan={3}>खरीद रेट - दु.</th>
@@ -1192,10 +1189,10 @@ FrontPageRegularData?.map((item) => {
               })}
 
 <tr>
-  <td></td>
                 <td className="tg-0lax">
                   Total
                 </td>
+  <td></td>
                 <td className="tg-0lax"> </td>
                 <td className="tg-0lax"> </td>
                 <td className="tg-0lax"> </td>
@@ -1491,8 +1488,8 @@ FrontPageRegularData?.map((item) => {
                       })}
 
                       <tr>
-                        <td></td>
                         <td>Total</td>
+                        <td></td>
                         <td></td>
                         <td>{FrontPage?.length && FrontPage?.sort((a, b) => b?.createdAt?.localeCompare(a?.createdAt))[pgNo]?.barSupplements?.entries?.reduce(
                             (total, regularData) => total + Number(regularData?.openingStock),
@@ -1541,7 +1538,7 @@ FrontPageRegularData?.map((item) => {
                     <th colSpan={1}> क्र. सं.</th>
                     <th colSpan={1}> ब्राण्ड</th>
                     <th colSpan={1}>ml</th>
-                    <th colSpan={1}>औसत दर</th>
+                    <th colSpan={1}>औसत रेट</th>
                     <th colSpan={1}>प्रारम्भिक स्टॉक</th>
                     <th colSpan={1}>आमद (खरीद) - दु.</th>
                     <th colSpan={1}>खरीद रेट - दु.</th>
@@ -1576,10 +1573,10 @@ FrontPageRegularData?.map((item) => {
                 })}
 
 <tr>
-  <td></td>
                 <td className="tg-0lax">
                   Total
                 </td>
+  <td></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
@@ -1657,7 +1654,7 @@ FrontPageRegularData?.map((item) => {
                 </tbody>
               </table>
             </div>
-            <div className="my-10">Beer Total:- {Number((BackPageReportExceptionalSize &&
+            <div className="my-10">Total :-   {Number((BackPageReportExceptionalSize &&
                   BackPageReportExceptionalSize?.length > 0 &&
                   BackPageReportExceptionalSize
                     ?.filter((page,index) => {

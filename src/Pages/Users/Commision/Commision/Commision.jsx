@@ -184,13 +184,13 @@ const Commision = () => {
                       })}
 
                     <tr>
-                      <th
+                      <td
                         
                   colSpan={2}
                       >
                         Total
  
-                      </th>
+                      </td>
                       <td>{totalAmount}</td>
                       <th></th>
                     </tr>

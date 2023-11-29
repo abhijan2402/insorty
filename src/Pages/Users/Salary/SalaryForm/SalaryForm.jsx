@@ -168,7 +168,7 @@ const shopType = jwtDecode(token).shopType
         <div className="flex justify-center items-center">
           <div className="title">
             <h2 className="font-bold text-[1.5rem]">
-              कर्माचीरी का नाम :- {" "}
+              कर्माचीरी का नाम  :-    {" "}
               <span className="titleStyle">{salareyDataList.name}</span>
             </h2>
 
@@ -199,6 +199,7 @@ const shopType = jwtDecode(token).shopType
                     <th colSpan={2}> भुगतान</th>
                     <th rowSpan={2}>चालू शेष </th>
                     <th rowSpan={2}>टिप्पणी</th>
+                    <th rowSpan={2}>डिलीट</th>
                   </tr>
                   <tr>
 

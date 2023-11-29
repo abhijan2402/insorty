@@ -31,10 +31,10 @@ const InfolwRml = ({ outSideData, index }) => {
               {number}
             </td>
             <td className="tg-0lax"  >
-              {rate.$numberDecimal}
+              {(Number(rate.$numberDecimal) || 0).toFixed(2)}
             </td>
             <td className="tg-0lax"  >
-              {(total)}
+              {(Number(total) || 0).toFixed(2)}
             </td>
            
             <td className="tg-0lax"  >

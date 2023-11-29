@@ -256,7 +256,8 @@ const FrontDetailsReport = () => {
           to="/user/dailyreport/details"
           className="commonBtn"
         >
-          बीयर
+          बीयर ओर अन्य
+
         </Link>
 
         <button className="commonBtn " onClick={handlePrint}>
@@ -306,7 +307,7 @@ const FrontDetailsReport = () => {
                 } 
               });
             }}>
-     Delete Page
+     डिलीट
       </button>
       <div className="divider"></div>
 
@@ -325,15 +326,15 @@ const FrontDetailsReport = () => {
               </tr>
               <tr>
                 <td className="tg-baqh" colSpan={42}>
-                  दुकान का नाम:- &nbsp;&nbsp;
+                  दुकान का नाम :-   &nbsp;&nbsp;
                   {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन:- {
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन :-   {
                     FrontPageData && frontPage.length!==undefined && frontPage.find((entry) => {
                       const pg = pageId ? pageId : Array.from(frontSet)[0];
                       return entry._id === pg;
                     })?.salesmen
                   }
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक:- {moment(selectedDate).format("DD/MM/YYYY")}
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक :-   {moment(selectedDate).format("DD/MM/YYYY")}
                 </td>
               </tr>
               <tr>
@@ -501,10 +502,10 @@ const FrontDetailsReport = () => {
               {/* ========================== */}
 
               <tr>
-                <td></td>
                 <td className="tg-0lax">
               Total
                 </td>
+                <td></td>
                 <td className="tg-0lax"> </td>
                 <td className="tg-0lax"> </td>
                 <td className="tg-0lax"> </td>
@@ -689,35 +690,35 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"></td>
 
                 <td className="tg-0lax">
-                  {quan750.reduce(
+                  {(Number(quan750.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
                         Number(regularData.sellingRate?.$numberDecimal),
                     0
-                  )}
+                  ))||0).toFixed(2)}
                 </td>
                 <td className="tg-0lax">
-                  {quan375.reduce(
+                  {(Number(quan375.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
                         Number(regularData.sellingRate?.$numberDecimal),
                     0
-                  )}
+                  ))||0).toFixed(2)}
                 </td>
                 <td className="tg-0lax">
-                  {quan180.reduce(
+                  {(Number(quan180.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
                         Number(regularData.sellingRate?.$numberDecimal),
                     0
-                  )}
+                  ))||0).toFixed(2)}
                 </td>
 
                 <td>
-                  {quan180.reduce(
+                  {(Number(quan180.reduce(
                     (total, regularData) =>
                       total +
                       Number(regularData.sales) *
@@ -737,7 +738,7 @@ const FrontDetailsReport = () => {
                         Number(regularData.sales) *
                           Number(regularData.sellingRate?.$numberDecimal),
                       0
-                    )}
+                    ))||0).toFixed(2)}
                 </td>
               </tr>
             </tbody>
@@ -794,10 +795,10 @@ const FrontDetailsReport = () => {
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
               <tr>
-                <td></td>
                 <td className="tg-0lax">
                   Total
                 </td>
+                <td></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
@@ -871,7 +872,7 @@ const FrontDetailsReport = () => {
                 <td className="tg-0lax"></td>
 
                 <td className="tg-0lax">
-                  {filteredExceptionalData &&
+                  {(Number(filteredExceptionalData &&
                     filteredExceptionalData.length > 0 &&
                     filteredExceptionalData
                       .filter((page) => {
@@ -887,7 +888,7 @@ const FrontDetailsReport = () => {
                             Number(currentItem.sales) *
                               Number(currentItem.sellingRate.$numberDecimal)),
                         0
-                      )}
+                      ))||0).toFixed(2)}
                 </td>
               </tr>
             </tbody>
@@ -895,7 +896,7 @@ const FrontDetailsReport = () => {
         </div>
         <div className="my-8 leading-6">
           <h4 className="text-[#AA237A] font-bold ">
-            Total: {filteredExceptionalData &&
+            Total: {(Number(filteredExceptionalData &&
               filteredExceptionalData.length > 0 &&
               filteredExceptionalData
                 .filter((page) => {
@@ -931,7 +932,7 @@ const FrontDetailsReport = () => {
                 Number(regularData.sales) *
                 Number(regularData.sellingRate?.$numberDecimal),
               0
-            ) }
+            ) )||0).toFixed(2)}
           </h4>
         </div>
       </div>

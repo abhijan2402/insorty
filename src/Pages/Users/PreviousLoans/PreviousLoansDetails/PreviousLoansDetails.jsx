@@ -139,7 +139,7 @@ const PreviousLoansDetails = () => {
       </Link>)}
 
       <div className="title flex justify-center items-center gap-4">
-        <h2 className="font-bold text-[1.5rem]">नाम:- {partyName}</h2>
+        <h2 className="font-bold text-[1.5rem]">नाम :-   {partyName}</h2>
 
        
       </div>
@@ -165,7 +165,7 @@ const PreviousLoansDetails = () => {
                 <th colSpan={2}>दिनांक</th>
                 <th colSpan={2}>नामे</th>
                 <th >जमा</th>
-                <th colSpan={2}></th>
+                <th colSpan={2}>डिलीट</th>
               </tr>
             </thead>
             <tbody>
@@ -176,7 +176,7 @@ const PreviousLoansDetails = () => {
                   return (
                   
                     <tr key={prevLone?._id}>
-                      <td>{index + 1}</td>
+                      <th>{index + 1}</th>
                       <td colSpan={3}>
                         <p className="font-bold text-[1rem]">
                           {moment(prevLone?.date,).format("DD/MM/YYYY")}

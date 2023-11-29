@@ -3,7 +3,7 @@ import React from "react";
 const CashReciveData = ({ borrwedCashReturn, index, entries }) => {
   return (
     // <tr>
-    //   <td className="tg-0lax">{index + 1}</td>
+    //   <th className="tg-0lax">{index + 1}</th>
     //   <td className="tg-0lax" colSpan={4}>
     //     {/* {description} */}
     //   </td>
@@ -14,7 +14,7 @@ const CashReciveData = ({ borrwedCashReturn, index, entries }) => {
 
     <>
       {/* <tr>
-        <td>{index + 1}</td>
+        <th>{index + 1}</th>
         <td colSpan={8}>{borrwedCashReturn?.salesmen}</td>
       </tr> */}
 
@@ -22,7 +22,7 @@ const CashReciveData = ({ borrwedCashReturn, index, entries }) => {
         const { description, cash } = entry;
         return (
           <tr key={index}>
-            <td className="tg-0lax">{index + 1}</td>
+            <th className="tg-0lax">{index + 1}</th>
             <td className="tg-0lax" colSpan={4}>
             Name
             </td>

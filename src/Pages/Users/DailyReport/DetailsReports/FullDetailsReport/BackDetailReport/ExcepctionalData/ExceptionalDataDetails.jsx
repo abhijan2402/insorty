@@ -21,7 +21,7 @@ const ExceptionalDataDetails = ({ exceptionalData, index }) => {
   return (
     <>
       <tr key={index}>
-        <td>{index + 1}</td>
+        <th>{index + 1}</th>
         <td>{brandName}</td>
         <td>{quantityInML}</td>
         <td>

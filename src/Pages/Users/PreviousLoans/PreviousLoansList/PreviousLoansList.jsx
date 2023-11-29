@@ -129,7 +129,7 @@ const PreviousLoansList = () => {
                 <th >नामे</th>
                 <th >जमा</th>
                 <th >चालू शेष नामे</th>
-                <th ></th>
+                <th >डिलीट</th>
                 {/* <th colSpan={2}>Delete</th> */}
               </tr>
             </thead>
@@ -141,7 +141,7 @@ const PreviousLoansList = () => {
 
                   return (
                     <tr id="scrollableDiv" >
-                      <td>{index + 1}</td>
+                      <th>{index + 1}</th>
                       <td >
                         { ShopType === "SHOP" && (
                           <Link

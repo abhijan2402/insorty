@@ -13,7 +13,7 @@ const CashReciveData = ({ borrwedCashReturn, index, entries }) => {
       
        
           <tr key={index}>
-            <td className="tg-0lax">{index + 1}</td>
+            <th className="tg-0lax">{index + 1}</th>
             <td className="tg-0lax" >
               {borrwedCashReturn.type}
             </td>
@@ -21,7 +21,7 @@ const CashReciveData = ({ borrwedCashReturn, index, entries }) => {
             {borrwedCashReturn.type==="PARTY" ? getPartyName(borrwedCashReturn.from) : borrwedCashReturn.type==="PARTNER" ? getPartnerName(borrwedCashReturn.from) : borrwedCashReturn.type==="BRANCH" ? getBranchName(borrwedCashReturn.from):""}
             </td>
             <td className="tg-0lax" >
-              {borrwedCashReturn.cash}
+              {(Number(borrwedCashReturn.cash) || 0).toFixed(2)}
             </td>
             <td className="tg-0lax" >
               {borrwedCashReturn.comment}

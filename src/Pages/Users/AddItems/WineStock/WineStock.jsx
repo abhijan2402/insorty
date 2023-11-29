@@ -293,7 +293,7 @@ const WineStock = () => {
                             count++;
                             return (
                               <tr>
-                                <td>{count}</td>
+                                <th>{count}</th>
                                 <td>{brand.brandName}</td>
                                 <td>{size.quantityInML} ML</td>
                                 <td> {size.currentStock}</td>
@@ -373,7 +373,7 @@ const WineStock = () => {
                             count++;
                             return (
                               <tr>
-                                <td>{count}</td>
+                                <th>{count}</th>
                                 <td>{brand.brandName}</td>
                                 <td>{size.quantityInML}</td>
                                 <td> {size.currentStock}</td>

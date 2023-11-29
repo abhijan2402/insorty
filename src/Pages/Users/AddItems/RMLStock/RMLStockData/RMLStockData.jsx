@@ -20,7 +20,7 @@ const RMLStockData = ({ item, index, total }) => {
   return (
     <>
       <tr>
-        <td>{index + 1}</td>
+        <th>{index + 1}</th>
         <td>
           <div className="form-control">{item?.brandName}</div>
         </td>

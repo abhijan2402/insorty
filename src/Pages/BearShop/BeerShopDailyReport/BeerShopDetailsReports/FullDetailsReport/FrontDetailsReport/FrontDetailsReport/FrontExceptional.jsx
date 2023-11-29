@@ -29,7 +29,7 @@ function FrontExceptional({ exceptionalData, index,pageId,frontSet }) {
 
   return (
     <tr>
-    <td>{index}</td>
+    <th>{index}</th>
     <td>{brandName}</td>
     <td>{quantityInML}</td>
 

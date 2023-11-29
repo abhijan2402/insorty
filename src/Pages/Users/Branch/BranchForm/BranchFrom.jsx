@@ -66,7 +66,7 @@ const BranchFrom = () => {
 
             
               <h2 className="font-bold md:text-[1.5rem] text-center">
-                ब्रांच नाम:-
+                ब्रांच नाम :- 
                 <span className="titleStyle"> {transactions.branchName}</span>
               </h2>
 

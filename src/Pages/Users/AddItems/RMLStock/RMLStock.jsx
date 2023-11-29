@@ -176,7 +176,7 @@ const RmlStock = () => {
                                   count++;
                                   return (
                                     <tr id="scrollableDiv">
-                                      <td>{count}</td>
+                                      <th>{count}</th>
                                       <td>{brand.brandName}</td>
                                       <td>{size.quantityInML} ML</td>
                                       <td> {size.currentStock}</td>

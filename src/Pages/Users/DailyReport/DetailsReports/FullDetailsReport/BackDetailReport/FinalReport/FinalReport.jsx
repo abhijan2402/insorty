@@ -21,102 +21,102 @@ const FinalReport = ({ data, date }) => {
               </tr>
                       
                       </thead>      <tr>
-        <td className="tg-0lax">1</td>
+        <th className="tg-0lax">1</th>
         <td className="tg-0lax" >
           अंग्रेजी
         </td>
         <td className="tg-0lax" >
-          {data.english}
+          {(Number(data.english) || 0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">2</td>
+        <th className="tg-0lax">2</th>
         <td className="tg-0lax" >
           बीयर
         </td>
         <td className="tg-0lax" >
-          {data.beer}
+          {(Number(data.beer) || 0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">3</td>
+        <th className="tg-0lax">3</th>
         <td className="tg-0lax" >
           देशी/RML
         </td>
         <td className="tg-0lax" >
-          {data.RML}
+          {(Number(data.RML)|| 0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">4</td>
+        <th className="tg-0lax">4</th>
         <td className="tg-0lax" >
           कुल बिक्री
         </td>
         <td className="tg-0lax" >
-          {data.totalSell}
+          {(Number(data.totalSell)||0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">5</td>
+        <th className="tg-0lax">5</th>
         <td className="tg-0lax" >
           पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
         </td>
         <td className="tg-0lax" >
-          {data.borrowedCashReturn}
+          {(Number(data.borrowedCashReturn)||0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">6</td>
+        <th className="tg-0lax">6</th>
         <td className="tg-0lax" >
           खाते में (फोन पे आदि)
         </td>
         <td className="tg-0lax" >
-          {data.intoAccount}
+          {(Number(data.intoAccount) || 0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">7</td>
+        <th className="tg-0lax">7</th>
         <td className="tg-0lax" >
           उधारी/नामे
         </td>
         <td className="tg-0lax" >
-          {data.borrowed}
+          {(Number(data.borrowed)||0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">8</td>
+        <th className="tg-0lax">8</th>
         <td className="tg-0lax" >
           कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
         </td>
         <td className="tg-0lax" >
-          {data.commission}
+          {(Number(data.commission)||0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">9</td>
+        <th className="tg-0lax">9</th>
         <td className="tg-0lax" >
           पिछला बकाया
         </td>
         <td className="tg-0lax" >
-          {data.previousDues}
+          {(Number(data.previousDues)||0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">10</td>
+        <th className="tg-0lax">10</th>
         <td className="tg-0lax" >
           आज भुगतान
         </td>
         <td className="tg-0lax" >
-          {data.todaysPayment}
+          {(Number(data.todaysPayment)||0).toFixed(2)}
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">11</td>
+        <th className="tg-0lax">11</th>
         <td className="tg-0lax" >
           शेष रकम
         </td>
         <td className="tg-0lax" >
-          {data?.restAmount?.$numberDecimal}
+          {(Number(data?.restAmount?.$numberDecimal)||0).toFixed(2)}
         </td>
       </tr>
     </table>
@@ -137,7 +137,7 @@ const FinalReport = ({ data, date }) => {
                       </thead>
     
       <tr>
-        <td className="tg-0lax">1</td>
+        <th className="tg-0lax">1</th>
         <td className="tg-0lax">
           अंग्रेजी
         </td>
@@ -146,7 +146,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">2</td>
+        <th className="tg-0lax">2</th>
         <td className="tg-0lax">
           बीयर
         </td>
@@ -155,7 +155,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">3</td>
+        <th className="tg-0lax">3</th>
         <td className="tg-0lax">
         खाना आदि
         </td>
@@ -164,7 +164,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">4</td>
+        <th className="tg-0lax">4</th>
         <td className="tg-0lax">
         पानी, नमकीन, सिगरेट, पुड़िया आदि
         </td>
@@ -174,7 +174,7 @@ const FinalReport = ({ data, date }) => {
       </tr>
      
       <tr>
-        <td className="tg-0lax">5</td>
+        <th className="tg-0lax">5</th>
         <td className="tg-0lax">
           कुल बिक्री
         </td>
@@ -183,7 +183,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">6</td>
+        <th className="tg-0lax">6</th>
         <td className="tg-0lax">
           पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
         </td>
@@ -192,7 +192,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">7</td>
+        <th className="tg-0lax">7</th>
         <td className="tg-0lax">
           खाते में (फोन पे आदि)
         </td>
@@ -201,7 +201,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">8</td>
+        <th className="tg-0lax">8</th>
         <td className="tg-0lax">
           उधारी/नामे
         </td>
@@ -210,7 +210,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">9</td>
+        <th className="tg-0lax">9</th>
         <td className="tg-0lax">
           कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
         </td>
@@ -219,7 +219,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">10</td>
+        <th className="tg-0lax">10</th>
         <td className="tg-0lax">
         राशन/सब्जी आदि खरीद
         </td>
@@ -228,7 +228,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">11</td>
+        <th className="tg-0lax">11</th>
         <td className="tg-0lax">
           पिछला बकाया
         </td>
@@ -237,7 +237,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">12</td>
+        <th className="tg-0lax">12</th>
         <td className="tg-0lax">
           आज भुगतान
         </td>
@@ -246,7 +246,7 @@ const FinalReport = ({ data, date }) => {
         </td>
       </tr>
       <tr>
-        <td className="tg-0lax">13</td>
+        <th className="tg-0lax">13</th>
         <td className="tg-0lax">
           शेष रकम
         </td>

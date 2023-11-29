@@ -193,7 +193,7 @@ try{
                               }).then((willDelete) => {
                                 if (willDelete) {
                                   handelDelete(myShopId);
-                                  swal(`Subadmin has been deleted!`, {
+                                  swal(`Sub Admin has been deleted!`, {
                                     icon: "success",
                                   });
                                   shopsRefetch();

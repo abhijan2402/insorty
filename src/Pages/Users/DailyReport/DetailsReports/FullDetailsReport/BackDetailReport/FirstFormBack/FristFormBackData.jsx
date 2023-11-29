@@ -24,7 +24,7 @@ const FristFormBackData = ({ regularData, index }) => {
 
         return (
           <tr>
-            <td className="tg-0lax">{index + 1}</td>
+            <th className="tg-0lax">{index + 1}</th>
             <td className="tg-0lax">{brandName}</td>
 
       

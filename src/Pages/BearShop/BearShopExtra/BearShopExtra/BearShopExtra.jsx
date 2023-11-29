@@ -33,7 +33,7 @@ const Extra = () => {
       <div className="title">
         <h2 className="font-bold text-[1.5rem]">Extra /राशन सब्जी आदि खरीद</h2>
         <div className="flex gap-8 items-center my-4">
-          <h2 className="font-bold text-[1.5rem]">सेल्समेन का नाम</h2>
+          <h2 className="font-bold text-[1.5rem]">सेल्समेन</h2>
           <h2 className="font-bold text-[1.5rem]">
             <input
               type="text"

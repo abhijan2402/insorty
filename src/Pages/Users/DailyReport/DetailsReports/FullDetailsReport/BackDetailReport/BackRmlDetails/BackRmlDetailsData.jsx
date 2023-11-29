@@ -15,26 +15,26 @@ const BackRmlDetailsData = ({RmlData, index}) => {
 
        
           <tr key={index}>
-            <td>{index + 1}</td>
+            <th>{index + 1}</th>
             <td>{(RmlData.liquor?.brandName)}</td>
             <td>{RmlData.liquor?.quantityInML || 0}</td>
-            <td>{(Number(RmlData.purchaseShopRate.$numberDecimal) +
-              Number(RmlData.purchaseOutSideRate.$numberDecimal))/2}</td>
+            <td>{((Number(RmlData.purchaseShopRate.$numberDecimal) +
+              Number(RmlData.purchaseOutSideRate.$numberDecimal))/2).toFixed(2)}</td>
             <td>{RmlData.openingStock}</td>
             <td>{RmlData.purchaseShop}</td>
-            <td>{RmlData.purchaseShopRate.$numberDecimal || 0}</td>
+            <td>{(Number(RmlData.purchaseShopRate.$numberDecimal || 0)||0).toFixed(2)}</td>
             <td>{RmlData.purchaseOutSide}</td>
-            <td>{RmlData.purchaseOutSideRate.$numberDecimal || 0}</td>
+            <td>{(Number(RmlData.purchaseOutSideRate.$numberDecimal || 0)||0).toFixed(2)}</td>
             <td>{RmlData.credits}</td>
             <td>{RmlData.send}</td>
             <td>{RmlData.remaining}</td>
             <td>{RmlData.closingStock}</td>
             <td>{RmlData.sales}</td>
             <td>
-              {Number(RmlData.amount ? RmlData.amount.$numberDecimal : 0)/RmlData.sales}
+              {(Number(Number(RmlData.amount ? RmlData.amount.$numberDecimal : 0)/RmlData.sales)||0).toFixed(2)}
              
             </td>
-            <td>{RmlData.amount ? RmlData.amount.$numberDecimal : 0}</td>
+            <td>{(Number(RmlData.amount ? RmlData.amount.$numberDecimal : 0)||0).toFixed(2)}</td>
           </tr>
         
     

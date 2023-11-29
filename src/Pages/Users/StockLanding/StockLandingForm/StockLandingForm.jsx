@@ -64,8 +64,7 @@ const StockLandingForm = () => {
       <section ref={front} className="px-2 py-6">
         <div className="title flex justify-center items-center">
           <h2 className="font-bold text-[1.5rem]">
-            पार्टी का नाम:- 
-            <span className="titleStyle">{getPartyName(id.partyId)}</span>
+            पार्टी का नाम :- <span className="titleStyle">{getPartyName(id.partyId)}</span>
           </h2>
         
         </div>

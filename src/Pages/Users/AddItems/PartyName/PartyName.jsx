@@ -92,7 +92,7 @@ const PartyName = () => {
               <h1>पार्टी नाम</h1>
             </th>
             <th>
-              
+            डिलीट
             </th>
           </thead>
           <tbody>

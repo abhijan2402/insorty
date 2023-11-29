@@ -278,7 +278,7 @@ const BackDailyReport = () => {
         <div className="flex justify-center items-center gap-4 ">
           <div className="my-4 flex  items-center">
             <h1 className="font-bold text-2xl">
-              बीयर
+            बीयर ओर अन्य
             </h1>
 
               <Link to="/user/bearshop/dailyreport/front" className="commonBtn">
@@ -291,7 +291,7 @@ const BackDailyReport = () => {
             </div>
           </div>
         <div className="flex gap-4 justify-center items-center">
-          <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
+          <h1 className="font-bold ">सेल्समेन :-   </h1>
           <Autocomplete
           size="small"
           style={{
@@ -831,7 +831,7 @@ const BackDailyReport = () => {
                     {sixthFormState.map((data, index) => {
                       return (
                         <tr key={index}>
-                          <td>{index + 1}</td>
+                          <th>{index + 1}</th>
 
                           <th
           className="cross"
@@ -959,7 +959,7 @@ const BackDailyReport = () => {
                   {addBarCommissionData?.map((item, index) => {
                     return (
                       <tr>
-                        <td>{index + 1}</td>
+                        <th>{index + 1}</th>
                         <th
                           className="cross"
                           onClick={() => {

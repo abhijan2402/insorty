@@ -47,7 +47,7 @@ const PaymentForm = ({ index, payment, paymentData,handelDelete }) => {
   return (
     <>
       <tr>
-        <td>{index + 1}</td>
+        <th>{index + 1}</th>
 
         {payment.entries.map((entry) => {
           return (

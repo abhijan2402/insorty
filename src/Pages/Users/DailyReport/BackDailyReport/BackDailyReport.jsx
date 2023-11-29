@@ -218,7 +218,7 @@ const BackDailyReport = () => {
           </div>
 
           <div className="flex gap-4 justify-center items-center">
-            <h1 className="font-bold ">सेल्समेन का नाम:- </h1>
+            <h1 className="font-bold ">सेल्समेन :-   </h1>
            
             <Autocomplete
           size="small"
@@ -322,7 +322,7 @@ const BackDailyReport = () => {
                           </td>
 
                           <td>
-                            <div className="flex ">
+                            <div className="flex justify-around	">
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -344,7 +344,7 @@ const BackDailyReport = () => {
                           </td>
 
                           <td>
-                            <div className="flex " >
+                            <div className="flex justify-around	" >
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -389,7 +389,7 @@ const BackDailyReport = () => {
 
                           {/* ============खरीद रेट - बा. =============  */}
                           <td>
-                            <div className="flex ">
+                            <div className="flex justify-around	">
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -436,7 +436,7 @@ const BackDailyReport = () => {
                           {/* ======== भेजान ========= */}
 
                           <td>
-                            <div className="flex ">
+                            <div className="flex justify-around	">
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -458,7 +458,7 @@ const BackDailyReport = () => {
                           </td>
                           {/* ======== योग/शेष ========= */}
                           <td>
-                            <div className="flex ">
+                            <div className="flex justify-around	">
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -480,7 +480,7 @@ const BackDailyReport = () => {
                           </td>
                           {/* ======== अन्तिम स्टॉक ========= */}
                           <td>
-                            <div className="flex ">
+                            <div className="flex justify-around	">
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -502,7 +502,7 @@ const BackDailyReport = () => {
                           </td>
                           {/* ============= बिक्री ================ */}
                           <td>
-                            <div className="flex ">
+                            <div className="flex justify-around	">
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -524,7 +524,7 @@ const BackDailyReport = () => {
                           </td>
                           {/* ============= रेट ================ */}
                           <td>
-                            <div className="flex ">
+                            <div className="flex justify-around	">
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -546,7 +546,7 @@ const BackDailyReport = () => {
                           </td>
                           {/* ============= योग ================ */}
                           <td>
-                            <div className="flex ">
+                            <div className="flex justify-around	">
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>

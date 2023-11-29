@@ -19,15 +19,15 @@ code {
 }
 
 thead {
-  text-align: center !important;
+  text-align: center!important;
 }
 
 th {
-  text-align: center !important;
+  text-align: center!important;
 }
 
 td {
-  text-align: center !important;
+  text-align: left!important;
   margin: 0 auto;
 }
 
@@ -221,7 +221,9 @@ td {
 
 .table th:first-child{
   border: 1px solid black!important;
+  
 }
+
 
 
 

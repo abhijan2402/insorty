@@ -10,10 +10,10 @@ const Borrowed = ({index,item,entries}) => {
         <>
        
                 <tr>
-                    <td>{index+1}</td>
+                    <th>{index+1}</th>
                     <td>{item.type}</td>
                     <td>{item?.type==="PARTY" ? getPartyName(item.from) : item.type==="PARTNER" ? getPartnerName(item.from) : item.type==="BRANCH" ? getBranchName(item.from):  ""}</td>
-                    <td>{item?.amount?.$numberDecimal}</td>
+                    <td>{(Number(item?.amount?.$numberDecimal)||0).toFixed(2)}</td>
                     <td>{item.comment}</td>
                 </tr>
          

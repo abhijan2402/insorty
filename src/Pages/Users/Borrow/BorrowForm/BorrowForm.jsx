@@ -9,9 +9,9 @@ console.log(shopType)
   return (
     <>
       <tr>
-        <td>{index + 1}</td>
+        <th>{index + 1}</th>
 
-        <td className={shopType==="SHOP" ? "form-control" : "displayHidden"}>
+        <td className={shopType==="SHOP" ? "" : "displayHidden"}>
           <div className="flex gap-4">
             <div className="form-control">
 
@@ -29,7 +29,7 @@ console.log(shopType)
           </div>
         </td>
 
-        <td className={shopType==="BAR" ? "form-control" : "displayHidden"}>
+        <td className={shopType==="BAR" ? "" : "displayHidden"}>
           <div className="flex gap-4">
             <div className="form-control">
 
