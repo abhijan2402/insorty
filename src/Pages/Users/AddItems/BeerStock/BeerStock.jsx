@@ -59,9 +59,7 @@ const BeerStock = () => {
 
   const total = 0;
 
-  if (!beerStock.length) {
-    return <div>No data found</div>;
-  }
+ 
 
   const beerStockData = beerStock?.filter((item) => item.type === "BEER");
 
@@ -124,7 +122,7 @@ const BeerStock = () => {
                 selected={StartDate}
                 onChange={(date) => {
                   setStartDate(date);
-                  console.log(moment(date).format());
+                  
                 }}
                 dateFormat="dd/MM/yyyy"
                 placeholderText={"dd/mm/yyyy"}
@@ -153,18 +151,25 @@ const BeerStock = () => {
               scrollableTarget="scrollableDiv"
               loader={<h4>Loading...</h4>}
             >
-              <table className="removeCommonWSpace  m-2">
+              <table className="table removeCommonWSpace  m-2">
                 <thead>
                   <tr>
                     <th className="text-xs" rowSpan={2}> क्र. सं.</th>
                     <th className="text-xs" rowSpan={2}>ब्राण्ड </th>
                     <th className="text-xs" colSpan={3}>स्टॉक </th>
                     <th className="text-xs" colSpan={3}> रेट</th>
-                    <th className="text-xs" colSpan={3}>Total </th>
+                    <th className="text-xs" colSpan={3}>योग </th>
                     <th className="text-xs" rowSpan={2}>कुल योग</th>
                   </tr>
                 
-                  <tr>
+                  
+                  </thead>
+                <tbody>
+
+                <tr>
+
+                  <td></td>
+                  <td></td>
                     
 
                     <td>
@@ -240,10 +245,8 @@ const BeerStock = () => {
                    
                   </tr>
 
-                  </thead>
-                <tbody>
 
-                  {beerStock.length &&
+                  {beerStock.length!==undefined &&
                     filteredData?.filter((item)=>item.isActive===true).filter((item)=>item.isActive===true).filter(brand =>
                       brand.sizes.some(size => size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0)
                     ).sort((a, b) => a.brandName.localeCompare(b.brandName))?.map((item, index) => {

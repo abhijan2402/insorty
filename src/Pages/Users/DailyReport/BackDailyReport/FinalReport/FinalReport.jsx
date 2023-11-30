@@ -66,10 +66,10 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             </tr>
           </thead>
 
-          <tbody className="finalTableBody ">
+          <tbody className="">
             <tr>
               <th>1</th>
-              <td className="total-wd">अंग्रेजी</td>
+              <td  >अंग्रेजी</td>
               <td>{Number(firstformData + secondFront).toFixed(2)}</td>
             </tr>
 
@@ -78,8 +78,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             {/* 02 */}
             <tr >
               <th>2</th>
-              <td className="total-wd">बीयर</td>
-              <td className="total-wd">
+              <td  >बीयर</td>
+              <td  >
                 {Number(Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   beerSecond).toFixed(2)}
               </td>
@@ -88,8 +88,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             {/* 03 */}
             <tr >
               <th>3</th>
-              <td className="total-wd">देशी/RML</td>
-              <td className="total-wd">{Number(rmlTotal?rmlTotal:0).toFixed(2)}</td>
+              <td  >देशी/RML</td>
+              <td  >{Number(rmlTotal?rmlTotal:0).toFixed(2)}</td>
             </tr>
             
 
@@ -97,8 +97,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             {/* 04 */}
             <tr>
               <th>4</th>
-              <td className="total-wd">कुल बिक्री</td>
-              <td className="total-wd">
+              <td  >कुल बिक्री</td>
+              <td  >
                 {Number(Number(rmlTotal?rmlTotal:0) +
                   Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   firstformData +
@@ -109,13 +109,13 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             {/* 05 */}
             <tr>
               <th>5</th>
-              <td className="total-wd">पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति</td>
+              <td  >पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति</td>
               <td>{Number(localStorage.getItem("totalPaymentsRecieved")).toFixed(2)}</td>
             </tr>
             {/* 06 */}
             <tr>
               <th>6</th>
-              <td className="total-wd">खाते में (फोन पे आदि)</td>
+              <td  >खाते में (फोन पे आदि)</td>
               <td>
                 <input
                   type = "number"
@@ -137,27 +137,27 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             {/* 07 */}
             <tr>
               <th>7</th>
-              <td className="total-wd">उधारी/नामे</td>
-              <td className="total-wd">{Number(udhaariTotal ? udhaariTotal : 0).toFixed(2)}</td>
+              <td  >उधारी/नामे</td>
+              <td  >{Number(udhaariTotal ? udhaariTotal : 0).toFixed(2)}</td>
             </tr>
             {/* 08 */}
             <tr>
               <th>8</th>
-              <td className="total-wd">कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
-              <td className="total-wd">{Number(commisionTotal ? commisionTotal : 0).toFixed(2)}</td>
+              <td  >कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
+              <td  >{Number(commisionTotal ? commisionTotal : 0).toFixed(2)}</td>
             </tr>
             {/* 09 */}
             <tr>
               <th>9</th>
-              <td className="total-wd">पिछला बकाया</td>
-              <td className="total-wd">{pichla}</td>
+              <td  >पिछला बकाया</td>
+              <td  >{pichla}</td>
             </tr>
             {/* 10 */}
 
             <tr >
               <th>10</th>
-              <td className="total-wd">Total</td>
-              <td className="total-wd" >
+              <td  >Total</td>
+              <td   >
                 {Number(Number(rmlTotal?rmlTotal:0) +
                   Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   firstformData +
@@ -174,7 +174,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
            
             <tr>
               <th>11</th>
-              <td className="total-wd">आज भुगतान</td>
+              <td  >आज भुगतान</td>
               <td>
                 <input
                   type = "number"
@@ -196,8 +196,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             {/* 11 */}
             <tr>
               <th>12</th>
-              <td className="total-wd">शेष रकम</td>
-              <td className="total-wd">
+              <td  >शेष रकम</td>
+              <td  >
                 {Number(Number(rmlTotal?rmlTotal:0) +
                   Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
                   firstformData +
@@ -224,20 +224,20 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             </tr>
           </thead>
 
-          <tbody className="finalTableBody">
+          <tbody className="">
             
 
             <tr>
               <th>1</th>
-              <td className="total-wd">अंग्रेजी</td>
-              <td className="total-wd">{Number(Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0)).toFixed(2)}</td>
+              <td  >अंग्रेजी</td>
+              <td  >{Number(Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0)).toFixed(2)}</td>
             </tr>
 
             {/* 02 */}
             <tr >
               <th>2</th>
-              <td className="total-wd">बीयर</td>
-              <td className="total-wd">
+              <td  >बीयर</td>
+              <td  >
                 {Number(Number(beerFirst ? beerFirst: 0) +
                   Number(beerSecond ? beerSecond : 0)).toFixed(2)}
               </td>
@@ -249,7 +249,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
 
             <tr >
               <th>3</th>
-              <td className="total-wd">खाना आदि</td>
+              <td  >खाना आदि</td>
               <td><input
                   type = "number"
  onKeyDown={(e) => {
@@ -271,14 +271,14 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
 
             <tr >
               <th>4</th>
-              <td className="total-wd">पानी, नमकीन, सिगरेट, पुड़िया आदि</td>
-              <td className="total-wd">{Number(barSuplementsTotal?barSuplementsTotal:0).toFixed(2)}</td>
+              <td  >पानी, नमकीन, सिगरेट, पुड़िया आदि</td>
+              <td  >{Number(barSuplementsTotal?barSuplementsTotal:0).toFixed(2)}</td>
             </tr>
 
             <tr>
               <th>5</th>
-              <td className="total-wd">कुल बिक्री</td>
-              <td className="total-wd">
+              <td  >कुल बिक्री</td>
+              <td  >
                 {Number(Number(food ? food : 0 ) + Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
                   Number(beerFirst ? beerFirst: 0) +
                   Number(beerSecond ? beerSecond : 0) +
@@ -294,13 +294,13 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             {/* 05 */}
             <tr>
               <th>6</th>
-              <td className="total-wd">पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति</td>
-              <td className="total-wd">{Number(localStorage.getItem("totalPaymentsRecieved")).toFixed(2)}</td>
+              <td  >पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति</td>
+              <td  >{Number(localStorage.getItem("totalPaymentsRecieved")).toFixed(2)}</td>
             </tr>
             {/* 06 */}
             <tr>
               <th>7</th>
-              <td className="total-wd">खाते में (फोन पे आदि)</td>
+              <td  >खाते में (फोन पे आदि)</td>
               <td>
                 <input
                   type = "number"
@@ -322,27 +322,27 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             {/* 07 */}
             <tr>
               <th>8</th>
-              <td className="total-wd">उधारी/नामे</td>
-              <td className="total-wd">{Number(udhaariTotal ? udhaariTotal : 0).toFixed(2)}</td>
+              <td  >उधारी/नामे</td>
+              <td  >{Number(udhaariTotal ? udhaariTotal : 0).toFixed(2)}</td>
             </tr>
             {/* 08 */}
             <tr>
               <th>9</th>
-              <td className="total-wd">कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
-              <td className="total-wd">{Number(commisionTotal ? commisionTotal : 0).toFixed(2)}</td>
+              <td  >कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि</td>
+              <td  >{Number(commisionTotal ? commisionTotal : 0).toFixed(2)}</td>
             </tr>
 
             <tr >
               <th>10</th>
-              <td className="total-wd">राशन/सब्जी आदि खरीद</td>
-              <td className="total-wd">{Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0).toFixed(2)}</td>
+              <td  >राशन/सब्जी आदि खरीद</td>
+              <td  >{Number(vegitableAndOtherTotal ? vegitableAndOtherTotal : 0).toFixed(2)}</td>
             </tr>
 
             {/* 09 */}
             <tr>
               <th>11</th>
-              <td className="total-wd">पिछला बकाया</td>
-              <td className="total-wd">{Number(pichla).toFixed(2)}</td>
+              <td  >पिछला बकाया</td>
+              <td  >{Number(pichla).toFixed(2)}</td>
             </tr>
             {/* 10 */}
 
@@ -350,8 +350,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
 
             <tr >
               <th>12</th>
-              <td className="total-wd">Total</td>
-              <td  className="total-wd">
+              <td  >Total</td>
+              <td   >
                 {
                  Number( Number(food ? food : 0 ) + Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
                   Number(beerFirst ? beerFirst: 0) +
@@ -368,7 +368,7 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
 
             <tr>
               <th>13</th>
-              <td className="total-wd">आज भुगतान</td>
+              <td  >आज भुगतान</td>
               <td>
                 <input
                   type = "number"
@@ -390,8 +390,8 @@ const FinalReport = ({ beerTotal, rmlTotal, udhaariTotal, commisionTotal }) => {
             {/* 11 */}
             <tr>
               <th>14</th>
-              <td className="total-wd">शेष रकम</td>
-              <td className="total-wd">
+              <td  >शेष रकम</td>
+              <td  >
                 {Number(Number(food ? food : 0 ) + Number(pegTotal? pegTotal : 0) + Number(smallPegTotal ? smallPegTotal : 0) +
                   Number(beerFirst ? beerFirst: 0) +
                   Number(beerSecond ? beerSecond : 0) +

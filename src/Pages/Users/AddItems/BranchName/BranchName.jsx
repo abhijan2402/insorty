@@ -109,7 +109,7 @@ const BranchName = () => {
                     <h1>{index + 1}</h1>
                   </th>
                   <td>
-                    <h1>{item?.branchName}</h1>
+                    {item?.branchName}
                   </td>
                   <td>
                     <button

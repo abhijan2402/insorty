@@ -104,7 +104,7 @@ const BranchName = () => {
                     <th>{index + 1}</th>
                     <td>
                       <Link
-                        className="font-bold text-[1rem]"
+                        className="text-[1rem]"
                         to={`/user/branch/from/${branch._id}`}
                       >
                         {branch.branchName}

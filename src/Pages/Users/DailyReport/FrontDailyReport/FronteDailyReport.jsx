@@ -1045,14 +1045,14 @@ const second = addOneSecondFormState.reduce(
                               className="smallinput wd-6"
                               name="total750"
                               disabled
-                              value={addOneFristFormState.reduce(
+                              value={(Number(addOneFristFormState.reduce(
                                 (total, currentItem) =>
                                   (total =
                                     total +
                                     Number(currentItem.sales750) *
                                       Number(currentItem.mainRate750)),
                                 0
-                              )}
+                              ))||0).toFixed(2)}
                               onChange={(event) =>
                                 handelFristFormOnChange(event)
                               }
@@ -1064,14 +1064,14 @@ const second = addOneSecondFormState.reduce(
                               className="smallinput wd-6"
                               name="total375"
                               disabled
-                              value={addOneFristFormState.reduce(
+                              value={(Number(addOneFristFormState.reduce(
                                 (total, currentItem) =>
                                   (total =
                                     total +
                                     Number(currentItem.sales330) *
                                       Number(currentItem.mainRate330)),
                                 0
-                              )}
+                              ))||0).toFixed(2)}
                               onChange={(event) =>
                                 handelFristFormOnChange(event)
                               }
@@ -1083,14 +1083,14 @@ const second = addOneSecondFormState.reduce(
                               className="smallinput wd-6"
                               name="total180"
                               disabled
-                              value={addOneFristFormState.reduce(
+                              value={(Number(addOneFristFormState.reduce(
                                 (total, currentItem) =>
                                   (total =
                                     total +
                                     Number(currentItem.sales180) *
                                       Number(currentItem.mainRate180)),
                                 0
-                              )}
+                              ))||0).toFixed(2)}
                               onChange={(event) =>
                                 handelFristFormOnChange(event)
                               }
@@ -1106,7 +1106,7 @@ const second = addOneSecondFormState.reduce(
                             disabled
                             className="smallinput wd-7"
                             name="grandTotal"
-                            value={addOneFristFormState.reduce(
+                            value={(Number(addOneFristFormState.reduce(
                               (total, currentItem) =>
                                 (total =
                                   total +
@@ -1117,7 +1117,7 @@ const second = addOneSecondFormState.reduce(
                                   Number(currentItem.sales180) *
                                     Number(currentItem.mainRate180)),
                               0
-                            )}
+                            ))||0).toFixed(2)}
                             onChange={(event) => handelFristFormOnChange(event)}
                           />
                         </div>
@@ -1357,11 +1357,11 @@ const second = addOneSecondFormState.reduce(
                               type="number"
                               className="smallinput wd-7"
                               name="total"
-                              value={addOneSecondFormState.reduce(
+                              value={(Number(addOneSecondFormState.reduce(
                                 (total, currentItem) =>
                                   (total = total + Number(currentItem.total)),
                                 0
-                              )}
+                              ))||0).toFixed(2)}
                               onChange={(e) => handelSeconFormOnChange(e)}
                               disabled
                             />

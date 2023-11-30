@@ -877,7 +877,7 @@ const AddOneFristForm = ({
                 name="total750"
                 disabled
                 value={
-                  Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750)
+                  (Number(Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750))||0).toFixed(2)
                 }
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -891,7 +891,7 @@ const AddOneFristForm = ({
                 min={0}
                 name="total330"
                 value={
-                  Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330)
+                  (Number(Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330))||0).toFixed(2)
                 }
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -905,7 +905,7 @@ const AddOneFristForm = ({
                 min={0}
                 disabled
                 value={
-                  Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180)
+                  (Number(Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180))||0).toFixed(2)
                 }
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
@@ -926,9 +926,9 @@ const AddOneFristForm = ({
               name="grandTotal"
               disabled
               value={
-                Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750) +
+                (Number(Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750) +
                 Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330) +
-                Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180)
+                Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180))||0).toFixed(2)
               }
               onChange={(event) => handelFristFormOnChange(event, index)}
             />

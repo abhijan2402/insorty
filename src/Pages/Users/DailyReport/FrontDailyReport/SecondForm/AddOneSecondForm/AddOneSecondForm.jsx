@@ -402,7 +402,7 @@ const AddOneSecondForm = ({
               min={0}
               className="smallinput wd-7"
               name="total"
-              value={item.total}
+              value={(Number(item.total)||0).toFixed(2)}
               onChange={(e) => handelSeconFormOnChange(e, index)}
               disabled
             />

@@ -80,9 +80,7 @@ const EnglishBear = () => {
                   ></EnglishBearForm>
                 );
               })) || (
-              <p>
-                <span className="text-red-500">No Data Found</span>
-              </p>
+              <p>No Data Found</p>
             )}
 
             <tr>

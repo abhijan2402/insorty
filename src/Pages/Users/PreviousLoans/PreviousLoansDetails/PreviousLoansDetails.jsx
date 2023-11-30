@@ -139,13 +139,13 @@ const PreviousLoansDetails = () => {
       </Link>)}
 
       <div className="title flex justify-center items-center gap-4">
-        <h2 className="font-bold text-[1.5rem]">नाम :-   {partyName}</h2>
 
        
       </div>
       <div className="divider my-2"></div>
 
       <div ref={front}>
+        <h2 className="text-center font-bold text-[1.5rem]">नाम :-   {partyName}</h2>
         <div
           className="flex justify-center items-center
         "

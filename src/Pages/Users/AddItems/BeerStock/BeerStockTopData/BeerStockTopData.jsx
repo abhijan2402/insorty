@@ -24,7 +24,7 @@ const BeerStockTopData = ({ item, index, total }) => {
     <>
         <th>{index + 1}</th>
         <td>
-          <div className="form-control">{item?.brandName}</div>
+         {item?.brandName}
         </td>
         <td>
             <div className="form-control">

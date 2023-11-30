@@ -56,9 +56,9 @@ const WineStock = () => {
     content: () => front.current,
   });
 
-  if (!wineStock.length) {
-    return <div>No data found</div>;
-  }
+  // if (!wineStock.length) {
+  //   return <div>No data found</div>;
+  // }
 
   const wineStockData = wineStock?.filter((item) => item.type === "WINE");
 
@@ -89,6 +89,8 @@ const WineStock = () => {
       }
     });
   });
+
+  
 
   return (
     <section>
@@ -158,7 +160,7 @@ const WineStock = () => {
 
         <div
           className={`${
-            role === "shop" && ShopType === "BAR"
+             ShopType === "BAR"
               ? "hidden"
               : " overflow-x-auto flex justify-center item-center"
           }`}
@@ -171,7 +173,7 @@ const WineStock = () => {
             loader={<h4>Loading...</h4>}
           >
             {/* " removeCommonWSpace m-2" */}
-            <table className="removeCommonWSpace m-2">
+            <table className="table removeCommonWSpace m-2">
               <thead>
                 <tr>
                   <th className="text-xs" rowSpan={2}> क्र. सं.</th>
@@ -182,41 +184,45 @@ const WineStock = () => {
                   <th className="text-xs" rowSpan={2}>कुल योग</th>
                 </tr>
              
-                <tr>
-                 
-                  <th>
-                    750ml
-                  </th>
-                  <th>
-                   375ml
-                  </th>
-                  <th>
-                    180ml
-                  </th>
-
-                  <th>
-                    750ml
-                  </th>
-                  <th>
-                    375ml
-                  </th>
-                  <th>
-                    180ml
-                  </th>
-
-                  <th>
-                    750ml
-                  </th>
-                  <th>
-                    375ml
-                  </th>
-                  <th>
-                    180ml
-                  </th>
-                  
-                </tr>
+               
                 </thead>
               <tbody>
+
+              <tr>
+                <td></td>
+                <td></td>
+                 
+                 <td>
+                   750ml
+                 </td>
+                 <td>
+                  375ml
+                 </td>
+                 <td>
+                   180ml
+                 </td>
+
+                 <td>
+                   750ml
+                 </td>
+                 <td>
+                   375ml
+                 </td>
+                 <td>
+                   180ml
+                 </td>
+
+                 <td>
+                   750ml
+                 </td>
+                 <td>
+                   375ml
+                 </td>
+                 <td>
+                   180ml
+                 </td>
+                 
+               </tr>
 
                 {filteredData?.filter((item)=>item.isActive===true).filter(brand =>
   brand.sizes.some(size => size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0)
@@ -268,7 +274,7 @@ const WineStock = () => {
             }`}
           >
             <div className="flex justify-center item-center">
-              <table className="removeCommonWSpace  m-2">
+              <table className="removeCommonWSpace m-2">
                 <thead>
                   <tr>
                     <th className="text-xs"> क्र. सं.</th>
@@ -369,7 +375,7 @@ const WineStock = () => {
                     return (
                       <>
                         {brand.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).map((size) => {
-                          if (size.quantityInML === 30) {
+                          if (size.quantityInML) {
                             count++;
                             return (
                               <tr>
@@ -400,11 +406,11 @@ const WineStock = () => {
                   <tr>
                     <td colSpan="5">Total</td>
                     <td>
-                      {filteredData.reduce(
+                      {filteredData.filter((item)=>item.isActive===true).reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.sizes.reduce(
+                            currentItem.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).reduce(
                               (total, currentItem) =>
                                 (total =
                                   total +

@@ -144,7 +144,7 @@ const SubAdminList = () => {
                             }).then((willDelete) => {
                               if (willDelete) {
                                 handelDelete(subAdmin._id);
-                                swal(`Sub admin has been deleted!`, {
+                                swal(`Sub Admin has been deleted!`, {
                                   icon: "success",
                                 });
                                 subAdminRefetch();

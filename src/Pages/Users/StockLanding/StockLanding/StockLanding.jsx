@@ -68,7 +68,7 @@ const StockLanding = () => {
                         <th>{index + 1}</th>
                         <td>
                           <Link
-                            className="font-bold text-[1rem]"
+                            className="text-[1rem]"
                             to={`/user/bearshop/stocklanding/form/${party?._id}`}
                           >
                             {party?.partyName}
@@ -89,7 +89,7 @@ const StockLanding = () => {
                         <th>{index + 1}</th>
                         <td>
                           <Link
-                            className="font-bold text-[1rem]"
+                            className=" text-[1rem]"
                             to={`/user/stocklanding/form/${party?._id}`}
                           >
                             {party?.partyName}

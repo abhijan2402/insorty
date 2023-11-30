@@ -125,7 +125,7 @@ const ShopInfo = ({ myShopId, shop,token }) => {
                 <input
                   type="text"
                   className="commonDataInput"
-                  defaultValue={shopType}
+                  defaultValue={shopType==="SHOP" ? "Shop" : "Bar"}
                   disabled
                 />
               </div>

@@ -133,7 +133,7 @@ const SalaryList = () => {
                           <th>{index + 1}</th>
                           <td>
                             <Link
-                              className="font-bold text-[1rem]"
+                              className=" text-[1rem]"
                               to={`/user/bearshop/salary/from/${salary?._id}`}
                             >
                               {salary?.name}
@@ -173,7 +173,7 @@ const SalaryList = () => {
                           <th>{index + 1}</th>
                           <td>
                             <Link
-                              className="font-bold text-[1rem]"
+                              className=" text-[1rem]"
                               to={`/user/salary/from/${salary?._id}`}
                             >
                               {salary?.name}

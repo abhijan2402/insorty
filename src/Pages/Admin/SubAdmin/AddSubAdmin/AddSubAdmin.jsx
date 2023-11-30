@@ -28,7 +28,7 @@ const AddSubAdmin = ({ addNewSubAdmin }) => {
                 </label>
                 <input
                   type="text"
-                  placeholder="Sub admin Name"
+                  placeholder="Sub Admin Name"
                   name="name"
                   required
                   className="input input-bordered"

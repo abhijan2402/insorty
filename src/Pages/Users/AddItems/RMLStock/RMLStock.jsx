@@ -70,13 +70,13 @@ const RmlStock = () => {
     return filterPass;
   });
 
-  if (!rmlStockData.length) {
-    return <h1>No Data Found</h1>;
-  }
+  // if (!rmlStockData.length) {
+  //   return <h1>No Data Found</h1>;
+  // }
 
-  if (!filteredData.length) {
-    return <h1>No Data Found</h1>;
-  }
+  // if (!filteredData.length) {
+  //   return <h1>No Data Found</h1>;
+  // }
 
   return (
     <section>
