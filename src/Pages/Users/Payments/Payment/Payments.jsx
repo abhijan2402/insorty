@@ -164,7 +164,7 @@ const Payments = () => {
                       <th className="text-xs" rowSpan={2}> क्र. सं.</th>
                       <th className="text-xs" colSpan={2}> नामे</th>
                       <th className="text-xs" colSpan={2}> जमा </th>
-                      <th className="text-xs" rowSpan={2}> चालू शेष नामे </th>
+                      <th className="text-xs wd-5" rowSpan={2}> चालू शेष नामे </th>
                       <th className="text-xs" rowSpan={2}>विवरण</th>
                       <th className="text-xs" rowSpan={2}>डिलीट</th>
                     </tr>
