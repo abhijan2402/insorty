@@ -213,7 +213,7 @@ const token = localStorage.getItem('token')
 
                 <div className="form-control mb-2">
                   <label className="label">
-                    Shop Name
+                    Shop/Bar Name
                   </label>
                   <Autocomplete
                     size="small"
