@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/insorty/static/css/main.3887e17f.css",
+    "main.js": "/insorty/static/js/main.1ae94a02.js",
+    "static/media/insorty.png": "/insorty/static/media/insorty.4c84daec7703522aeb98.png",
+    "index.html": "/insorty/index.html",
+    "main.3887e17f.css.map": "/insorty/static/css/main.3887e17f.css.map",
+    "main.1ae94a02.js.map": "/insorty/static/js/main.1ae94a02.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3887e17f.css",
+    "static/js/main.1ae94a02.js"
+  ]
+}
