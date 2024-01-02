@@ -11,26 +11,21 @@ import DatePicker from "react-datepicker";
 import { useEffect } from "react";
 import useFinalReport from "../FinalReportHooks/useFinalReport";
 
-
 const FinalReport = () => {
   const front = useRef(null);
-  const [month,setMonth] = useState(new Date())
+  const [month, setMonth] = useState(new Date());
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
-  const {data,isLoading,refetch} = useFinalReport(month)
+  const { data, isLoading, refetch } = useFinalReport(month);
 
   useEffect(() => {
-   refetch()
-  }, [month])
-  
+    refetch();
+  }, [month]);
 
-
- 
   if (isLoading) {
     return <Loader></Loader>;
   }
-
 
   if (data.success === false) {
     return <div>No data found</div>;
@@ -40,22 +35,24 @@ const FinalReport = () => {
 
   return (
     <>
-      <button className="commonBtn " onClick={handlePrint}>
-        प्रिंट
-      </button>
-      <section ref={front} className="py-4 px-4">
+      <div className="py-0 sticky top-0 bg-gray-50 z-5000">
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
+        </button>
         <div className="title flex justify-center items-center">
           <h2 className="font-bold text-[1.5rem] text-center titleStyle">
-          अंतिम रिपोर्ट
+            अंतिम रिपोर्ट
           </h2>
         </div>
         <div className="divider my-2"></div>
-        <div className="title flex justify-center items-center text-center my-4">
-        <DatePicker
+      </div>
+      <section ref={front} className="py-4 px-4">
+        <div className="title flex justify-center items-center text-center my-4 bg-white-800 z-1">
+          <DatePicker
             selected={new Date(month)}
             name="date"
             onChange={(date) => {
-              setMonth(moment(date).format('MMMM yyyy'));
+              setMonth(moment(date).format("MMMM yyyy"));
             }}
             dateFormat="MMMM yyyy"
             placeholderText={"dd/mm/yyyy"}

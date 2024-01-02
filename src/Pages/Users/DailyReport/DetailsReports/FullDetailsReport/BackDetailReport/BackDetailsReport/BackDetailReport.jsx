@@ -1,4 +1,4 @@
-import React, {  useRef, useState,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import InfolwRml from "../InflowRml/InfolwRml";
 import CommisonExpence from "../CommisonExpence/CommisonExpence";
@@ -22,61 +22,53 @@ import swal from "sweetalert";
 
 const BackDetailReport = () => {
   const [filterDate, setFilterData] = useState(new Date());
-  const token = localStorage.getItem('token')
-
+  const token = localStorage.getItem("token");
 
   const {
-   
     FinalReportDataLoaded,
     BackPageReportExceptionalSize,
     BackPageReportRegularSize,
     ExceptionalLoading,
     RegularLoading,
     RegularRefetch,
-    ExceptionalRefetch
+    ExceptionalRefetch,
   } = useGetDailyReport(filterDate);
 
-  const {BackPageData,BackPageLoading,backPageRefetch} = useGetDailyReport(filterDate)
-
+  const { BackPageData, BackPageLoading, backPageRefetch } =
+    useGetDailyReport(filterDate);
+  console.log("====================================");
+  console.log(BackPageData, "BACKPAGES");
+  console.log("====================================");
   useEffect(() => {
-  
-    backPageRefetch()
-    RegularRefetch()
-    ExceptionalRefetch()
-
+    backPageRefetch();
+    RegularRefetch();
+    ExceptionalRefetch();
   }, [filterDate]);
-
-
 
   const container = useRef(null);
   const [pageId, setPageId] = useState();
   const [pgNo, setPgNo] = useState(0);
   let frontSet = new Set([]);
-  let count = 0
-
-
+  let count = 0;
 
   const handlePrint = useReactToPrint({
     content: () => container.current,
   });
 
   if (BackPageLoading) {
-    console.log(BackPageLoading)
+    console.log(BackPageLoading);
   }
 
   if (
-   
     FinalReportDataLoaded ||
     ExceptionalLoading ||
-    RegularLoading || BackPageLoading
+    RegularLoading ||
+    BackPageLoading
   ) {
     return <Loader></Loader>;
   }
 
-  
-
-
-  const deletePage = (id) =>{
+  const deletePage = (id) => {
     fetch(`https://insorty-api.onrender.com/shop/deleteBackPageData`, {
       method: "DELETE",
       body: JSON.stringify({ backPageId: id }),
@@ -84,18 +76,16 @@ const BackDetailReport = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (data.success) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
         } else {
           Swal.fire("Failed!", "Your file has not been deleted.", "error");
         }
-        window.location.reload()
+        window.location.reload();
       });
-     
-  }
+  };
   //
-
 
   const filteredExceptionalData = filterDate
     ? BackPageReportExceptionalSize.filter((item) => {
@@ -121,7 +111,6 @@ const BackDetailReport = () => {
       })
     : BackPageReportRegularSize;
 
-
   filteredRegularData.map((item) => {
     item.pages.map((pg) => {
       frontSet.add(pg.page);
@@ -137,9 +126,8 @@ const BackDetailReport = () => {
 
   filteredRegularData.map((item) => {
     item.pages.map((page) => {
-      
       const pg = pageId ? pageId : Array.from(frontSet)[0];
-     
+
       if (page.page === pg) {
         page.entries.map((entry) => {
           if (entry.quantityInML === 650) {
@@ -153,8 +141,6 @@ const BackDetailReport = () => {
       }
     });
   });
-
-  
 
   const openingStock = filteredExceptionalData
     .filter((page) => {
@@ -255,15 +241,13 @@ const BackDetailReport = () => {
   return (
     <section className="my-4">
       <div className="flex gap-6 items-center ">
-        <h2 className="font-bold text-xl text-gray-800">
-        बीयर ओर अन्य
-        </h2>
+        <h2 className="font-bold text-xl text-gray-800">बीयर ओर अन्य</h2>
         <Link to="/user/frontdailyreport/details" className="commonBtn">
           अंग्रेजी
         </Link>
 
         <button className="commonBtn " onClick={handlePrint}>
-        प्रिंट
+          प्रिंट
         </button>
       </div>
 
@@ -295,23 +279,29 @@ const BackDetailReport = () => {
             );
           })}
       </div>
-      <button className="commonBtn2"  onClick={() => {
-              swal({
-                title: "Are you sure?",
-                text: `Once deleted, you will not be able to recover page
+      <button
+        className="commonBtn2"
+        onClick={() => {
+          swal({
+            title: "Are you sure?",
+            text: `Once deleted, you will not be able to recover page
                 `,
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-              }).then((willDelete) => {
-                if (willDelete) {
-                  deletePage(BackPageData
-                    .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                    .slice(pgNo, pgNo + 1)[0]._id);
-                  
-                } 
-              });
-            }}>डिलीट</button>
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          }).then((willDelete) => {
+            if (willDelete) {
+              deletePage(
+                BackPageData.sort((a, b) =>
+                  a.createdAt.localeCompare(b.createdAt)
+                ).slice(pgNo, pgNo + 1)[0]._id
+              );
+            }
+          });
+        }}
+      >
+        डिलीट
+      </button>
 
       <div className="divider"></div>
 
@@ -321,21 +311,21 @@ const BackDetailReport = () => {
         <div className="overflow-x-auto my-4 py-4 flex">
           <table className="table removeCommonWSpace">
             <thead>
-            <tr>
+              <tr>
                 <td className="tg-baqh" colSpan={42}>
                   <span
                     style={{ fontWeight: "bold", textDecoration: "underline" }}
                   >
                     बीयर
-
                   </span>
                 </td>
               </tr>
+              <tr></tr>
               <tr>
-               
-              </tr>
-            <tr>
-                <td rowSpan={2} className="wd-5" style={{ fontWeight: "bold" }}> क्र.सं.</td>
+                <td rowSpan={2} className="wd-5" style={{ fontWeight: "bold" }}>
+                  {" "}
+                  क्र.सं.
+                </td>
                 <th rowSpan={2}>ब्राण्ड</th>
                 <th colSpan={3}>औसत रेट</th>
                 <th colSpan={3}>प्रारम्भिक स्टॉक</th>
@@ -474,32 +464,29 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-             
-
               {/* ========================== */}
 
-              { filteredRegularData && filteredRegularData.length !== undefined && filteredRegularData.map((regularData, index) => {
-                
-                return (
-                  <RegularData
-                    key={index}
-                    regularData={regularData}
-                    index={index}
-                    quan1={650}
-                    quan2={500}
-                    quan3={330}
-                    pageId={pageId}
-                    frontSet={frontSet}
-                  ></RegularData>
-                );
-              })}
+              {filteredRegularData &&
+                filteredRegularData.length !== undefined &&
+                filteredRegularData.map((regularData, index) => {
+                  return (
+                    <RegularData
+                      key={index}
+                      regularData={regularData}
+                      index={index}
+                      quan1={650}
+                      quan2={500}
+                      quan3={330}
+                      pageId={pageId}
+                      frontSet={frontSet}
+                    ></RegularData>
+                  );
+                })}
 
               {/* ========================== */}
 
               <tr>
-                <td className="tg-0lax">
-                 Total
-                </td>
+                <td className="tg-0lax">Total</td>
                 <td></td>
                 <td className="tg-0lax"> </td>
                 <td className="tg-0lax"> </td>
@@ -685,55 +672,71 @@ const BackDetailReport = () => {
                 <td className="tg-0lax"></td>
 
                 <td className="tg-0lax">
-                  {(Number(quan650.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ))||0).toFixed(2)}
+                  {(
+                    Number(
+                      quan650.reduce(
+                        (total, regularData) =>
+                          total +
+                          Number(regularData.sales) *
+                            Number(regularData.sellingRate?.$numberDecimal),
+                        0
+                      )
+                    ) || 0
+                  ).toFixed(2)}
                 </td>
                 <td className="tg-0lax">
-                  {(Number(quan550.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ))||0).toFixed(2)}
+                  {(
+                    Number(
+                      quan550.reduce(
+                        (total, regularData) =>
+                          total +
+                          Number(regularData.sales) *
+                            Number(regularData.sellingRate?.$numberDecimal),
+                        0
+                      )
+                    ) || 0
+                  ).toFixed(2)}
                 </td>
                 <td className="tg-0lax">
-                  {(Number(quan330.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ))||0).toFixed(2)}
+                  {(
+                    Number(
+                      quan330.reduce(
+                        (total, regularData) =>
+                          total +
+                          Number(regularData.sales) *
+                            Number(regularData.sellingRate?.$numberDecimal),
+                        0
+                      )
+                    ) || 0
+                  ).toFixed(2)}
                 </td>
 
                 <td>
-                  {(Number(quan650.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ) +
-                    quan550.reduce(
-                      (total, regularData) =>
-                        total +
-                        Number(regularData.sales) *
-                          Number(regularData.sellingRate?.$numberDecimal),
-                      0
-                    ) +
-                    quan330.reduce(
-                      (total, regularData) =>
-                        total +
-                        Number(regularData.sales) *
-                          Number(regularData.sellingRate?.$numberDecimal),
-                      0
-                    ))||0).toFixed(2)}
+                  {(
+                    Number(
+                      quan650.reduce(
+                        (total, regularData) =>
+                          total +
+                          Number(regularData.sales) *
+                            Number(regularData.sellingRate?.$numberDecimal),
+                        0
+                      ) +
+                        quan550.reduce(
+                          (total, regularData) =>
+                            total +
+                            Number(regularData.sales) *
+                              Number(regularData.sellingRate?.$numberDecimal),
+                          0
+                        ) +
+                        quan330.reduce(
+                          (total, regularData) =>
+                            total +
+                            Number(regularData.sales) *
+                              Number(regularData.sellingRate?.$numberDecimal),
+                          0
+                        )
+                    ) || 0
+                  ).toFixed(2)}
                 </td>
               </tr>
             </tbody>
@@ -743,8 +746,6 @@ const BackDetailReport = () => {
         <div className="overflow-x-auto my-4 py-4 flex ">
           <table className="table  removeCommonWSpace">
             <thead>
-              
-
               <tr>
                 <td className="text-xs"> क्र. सं.</td>
                 <th className="text-xs"> ब्राण्ड</th>
@@ -766,28 +767,28 @@ const BackDetailReport = () => {
             </thead>
             <tbody>
               {filteredExceptionalData &&
-                filteredExceptionalData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((exceptionalData, index) => {
-                  const pg = pageId ? pageId : Array.from(frontSet)[0];
-                  if (exceptionalData.page === pg) {
-                    count++
-                    return (
-                      <FristFormDetails
-                        key={index}
-                        index={count}
-                        exceptionalData={exceptionalData}
-                        pageId={pageId}
-                        frontSet={frontSet}
-                      ></FristFormDetails>
-                    );
-                  }
-                })}
+                filteredExceptionalData
+                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                  .map((exceptionalData, index) => {
+                    const pg = pageId ? pageId : Array.from(frontSet)[0];
+                    if (exceptionalData.page === pg) {
+                      count++;
+                      return (
+                        <FristFormDetails
+                          key={index}
+                          index={count}
+                          exceptionalData={exceptionalData}
+                          pageId={pageId}
+                          frontSet={frontSet}
+                        ></FristFormDetails>
+                      );
+                    }
+                  })}
 
               {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
               <tr>
-                <td className="tg-0lax">
-                  Total
-                </td>
+                <td className="tg-0lax">Total</td>
                 <td></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
@@ -845,23 +846,34 @@ const BackDetailReport = () => {
 
                 <td className="tg-0lax"></td>
 
-                <td className="tg-0lax"> {(Number(filteredExceptionalData &&
-                  filteredExceptionalData.length > 0 &&
-                  filteredExceptionalData
-                    .filter((page) => {
-                      const pg = pageId ? pageId : Array.from(frontSet)[0];
-                      if (page.page === pg) {
-                        return page;
-                      } else return 0;
-                    })
-                    .reduce(
-                      (total, currentItem) =>
-                      (total =
-                        total +
-                        Number(currentItem.sales) *
-                        Number(currentItem.sellingRate.$numberDecimal)),
-                      0
-                    ))||0).toFixed(2)}</td>
+                <td className="tg-0lax">
+                  {" "}
+                  {(
+                    Number(
+                      filteredExceptionalData &&
+                        filteredExceptionalData.length > 0 &&
+                        filteredExceptionalData
+                          .filter((page) => {
+                            const pg = pageId
+                              ? pageId
+                              : Array.from(frontSet)[0];
+                            if (page.page === pg) {
+                              return page;
+                            } else return 0;
+                          })
+                          .reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                Number(currentItem.sales) *
+                                  Number(
+                                    currentItem.sellingRate.$numberDecimal
+                                  )),
+                            0
+                          )
+                    ) || 0
+                  ).toFixed(2)}
+                </td>
               </tr>
             </tbody>
           </table>
@@ -922,32 +934,39 @@ const BackDetailReport = () => {
                   })
               )} */}
 
-{BackPageData && BackPageData.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
-                    if(index === pgNo){
-                      return(<>{
-                      page?.RML?.entries?.map((entry,index2)=>{
-                        return(
-                          <BackRmlDetailsData
-                          key={index2}
-                          index={index2}
-                          RmlData={entry}
-                        ></BackRmlDetailsData>)
-                      })
-                    }</>)}
-                  })}
+              {BackPageData &&
+                BackPageData.length &&
+                BackPageData.sort((a, b) =>
+                  a.createdAt.localeCompare(b.createdAt)
+                ).map((page, index) => {
+                  if (index === pgNo) {
+                    return (
+                      <>
+                        {page?.RML?.entries?.map((entry, index2) => {
+                          return (
+                            <BackRmlDetailsData
+                              key={index2}
+                              index={index2}
+                              RmlData={entry}
+                            ></BackRmlDetailsData>
+                          );
+                        })}
+                      </>
+                    );
+                  }
+                })}
 
               <tr>
-                <td className="tg-0lax">
-                  Total
-                </td>
+                <td className="tg-0lax">Total</td>
                 <td></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax"></td>
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData.length &&
-                    BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       ?.reduce(
                         (total, currentItem) =>
@@ -964,8 +983,9 @@ const BackDetailReport = () => {
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData.length &&
-                    BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -983,8 +1003,9 @@ const BackDetailReport = () => {
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData.length &&
-                    BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -1002,8 +1023,9 @@ const BackDetailReport = () => {
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData.length &&
-                    BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -1020,8 +1042,9 @@ const BackDetailReport = () => {
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData.length &&
-                    BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -1038,8 +1061,9 @@ const BackDetailReport = () => {
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData.length &&
-                    BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -1056,8 +1080,9 @@ const BackDetailReport = () => {
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData?.length &&
-                    BackPageData
-                      ?.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData?.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -1075,8 +1100,9 @@ const BackDetailReport = () => {
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData.length &&
-                    BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -1094,24 +1120,31 @@ const BackDetailReport = () => {
                 <td className="tg-0lax"></td>
 
                 <td className="tg-0lax">
-                  {(Number(BackPageData &&
-                    BackPageData.length &&
-                    BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.RML?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total =
-                                  total +
-                                  Number(currentItem?.amount?.$numberDecimal)),
-                              0
-                            )),
-                        0
-                      ))||0).toFixed(2)}
+                  {(
+                    Number(
+                      BackPageData &&
+                        BackPageData.length &&
+                        BackPageData.sort((a, b) =>
+                          a.createdAt.localeCompare(b.createdAt)
+                        )
+                          .slice(pgNo, pgNo + 1)
+                          .reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem?.RML?.entries?.reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      Number(
+                                        currentItem?.amount?.$numberDecimal
+                                      )),
+                                  0
+                                )),
+                            0
+                          )
+                    ) || 0
+                  ).toFixed(2)}
                 </td>
               </tr>
             </tbody>
@@ -1127,60 +1160,54 @@ const BackDetailReport = () => {
                 </td>
               </tr>
               <tr>
-                <td className="tg-0lax">
-                  क्र.सं.
-                </td>
-                <td className="tg-0lax" >
-                  पार्टी का नाम
-                </td>
-                <td className="tg-0lax" >
-                  ब्राण्ड
-                </td>
-                <td className="tg-0lax" >
-                  ML
-                </td>
-                <td className="tg-0lax" >
-                  संख्या
-                </td>
-                <td className="tg-0lax" >
-                रेट
-                </td>
-                <td className="tg-0lax" >
-                रकम
-                </td>
-               
-                <td className="tg-0lax" >
-                  टिप्पणी
-                </td>
+                <td className="tg-0lax">क्र.सं.</td>
+                <td className="tg-0lax">पार्टी का नाम</td>
+                <td className="tg-0lax">ब्राण्ड</td>
+                <td className="tg-0lax">ML</td>
+                <td className="tg-0lax">संख्या</td>
+                <td className="tg-0lax">रेट</td>
+                <td className="tg-0lax">रकम</td>
+
+                <td className="tg-0lax">टिप्पणी</td>
               </tr>
             </thead>
             <tbody>
-             
+              {BackPageData &&
+                BackPageData?.length &&
+                BackPageData?.sort((a, b) =>
+                  a.createdAt.localeCompare(b.createdAt)
+                ).map((page, index) => {
+                  if (index === pgNo) {
+                    return (
+                      <>
+                        {page?.purchaseOutSide?.entries?.map(
+                          (entry, index2) => {
+                            return (
+                              <InfolwRml
+                                key={index}
+                                outSideData={entry}
+                                index={index2}
+                              ></InfolwRml>
+                            );
+                          }
+                        )}
+                      </>
+                    );
+                  }
+                })}
 
-{BackPageData && BackPageData?.length && BackPageData?.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
-                    if(index === pgNo){
-                      return(<>{
-                      page?.purchaseOutSide?.entries?.map((entry,index2)=>{
-                        return(
-                        <InfolwRml
-                        key={index}
-                        outSideData={entry}
-                        index={index2}
-                      ></InfolwRml>)
-                      })
-                    }</>)}
-                  })}
-
-<tr>
+              <tr>
                 <td className="tg-0lax">Total</td>
-                  <td></td>
-                <td className="tg-0lax"  />
-                <td className="tg-0lax"  />
-                <td className="tg-0lax" >
+                <td></td>
+                <td className="tg-0lax" />
+                <td className="tg-0lax" />
+                <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData?.length &&
-                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                      
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
+
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -1194,29 +1221,31 @@ const BackDetailReport = () => {
                         0
                       )}
                 </td>
-                <td className="tg-0lax" ></td>
+                <td className="tg-0lax"></td>
                 <td className="tg-0lax">
-                  {((BackPageData &&
-                    BackPageData?.length &&
-                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                      
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.purchaseOutSide?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.total),
-                              0
-                            )),
-                        0
-                      ))||0).toFixed(2)}
+                  {(
+                    (BackPageData &&
+                      BackPageData?.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.purchaseOutSide?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem?.total),
+                                0
+                              )),
+                          0
+                        )) ||
+                    0
+                  ).toFixed(2)}
                 </td>
-                <td className="tg-0lax" >
-                  
-                </td>
-               
+                <td className="tg-0lax"></td>
               </tr>
             </tbody>
           </table>
@@ -1232,58 +1261,64 @@ const BackDetailReport = () => {
               </tr>
               <tr>
                 <td className="tg-0lax">क्र.सं.</td>
-                <td className="tg-0lax" >
-                प्रकार
-                </td>
-                <td className="tg-0lax" >
-                  रकम
-                </td>
-                <td className="tg-0lax" >
-                  विवरण
-                </td>
+                <td className="tg-0lax">प्रकार</td>
+                <td className="tg-0lax">रकम</td>
+                <td className="tg-0lax">विवरण</td>
               </tr>
             </thead>
             <tbody>
-            {BackPageData && BackPageData?.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
-                    if(index === pgNo){
-                      return(<>{
-                      page?.totalExpense?.entries?.map((entry,index2)=>{
-                       
-                        return(
-                          <CommisonExpence
-                          key={index2}
-                          index={index2}
-                          expences={entry}
-                        ></CommisonExpence>
-                        )
-                      })
-                    }</>)}
-                  })}
+              {BackPageData &&
+                BackPageData?.length &&
+                BackPageData.sort((a, b) =>
+                  a.createdAt.localeCompare(b.createdAt)
+                ).map((page, index) => {
+                  if (index === pgNo) {
+                    return (
+                      <>
+                        {page?.totalExpense?.entries?.map((entry, index2) => {
+                          return (
+                            <CommisonExpence
+                              key={index2}
+                              index={index2}
+                              expences={entry}
+                            ></CommisonExpence>
+                          );
+                        })}
+                      </>
+                    );
+                  }
+                })}
 
-<tr>
+              <tr>
                 <td className="tg-0lax">Total</td>
-                  <td></td>
+                <td></td>
                 <td className="tg-0lax">
-                  {((BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.totalExpense?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total =
-                                  total +
-                                  Number(currentItem?.amount?.$numberDecimal)),
-                              0
-                            )),
-                        0
-                      ))||0).toFixed(2)}
+                  {(
+                    (BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.totalExpense?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total =
+                                    total +
+                                    Number(
+                                      currentItem?.amount?.$numberDecimal
+                                    )),
+                                0
+                              )),
+                          0
+                        )) ||
+                    0
+                  ).toFixed(2)}
                 </td>
-                <td className="tg-0lax" ></td>
-                
+                <td className="tg-0lax"></td>
               </tr>
             </tbody>
           </table>
@@ -1299,56 +1334,62 @@ const BackDetailReport = () => {
               </tr>
               <tr>
                 <td className="tg-0lax">क्र.सं.</td>
-                <td className="tg-0lax" >
-                प्रकार
-                </td>
-                <td className="tg-0lax" >
-                पार्टी का नाम	
-                </td>
-                <td className="tg-0lax" >
-                  रकम
-                </td>
-                <td className="tg-0lax" >
-                  विवरण
-                </td>
+                <td className="tg-0lax">प्रकार</td>
+                <td className="tg-0lax">पार्टी का नाम</td>
+                <td className="tg-0lax">रकम</td>
+                <td className="tg-0lax">विवरण</td>
               </tr>
             </thead>
             <tbody>
-            {BackPageData && BackPageData?.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
-                    if(index === pgNo){
-                      return(<>{
-                      page?.borrowedCashReturn?.entries?.map((entry,index2)=>{
-                        return(
-                          <CashReciveData
-                          key={index2}
-                          index={index2}
-                          borrwedCashReturn={entry}
-                        
-                        ></CashReciveData>
-                        )
-                      })
-                    }</>)}
-                  })}
-                    <tr>
-                <td className="tg-0lax"  >Total</td>
+              {BackPageData &&
+                BackPageData?.length &&
+                BackPageData.sort((a, b) =>
+                  a.createdAt.localeCompare(b.createdAt)
+                ).map((page, index) => {
+                  if (index === pgNo) {
+                    return (
+                      <>
+                        {page?.borrowedCashReturn?.entries?.map(
+                          (entry, index2) => {
+                            return (
+                              <CashReciveData
+                                key={index2}
+                                index={index2}
+                                borrwedCashReturn={entry}
+                              ></CashReciveData>
+                            );
+                          }
+                        )}
+                      </>
+                    );
+                  }
+                })}
+              <tr>
+                <td className="tg-0lax">Total</td>
                 <td className="tg-0lax"></td>
-                <td className="tg-0lax"  />
+                <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {(Number(BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.borrowedCashReturn?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.cash),
-                              0
-                            )),
-                        0
-                      ))||0).toFixed(2)}
+                  {(
+                    Number(
+                      BackPageData &&
+                        BackPageData.length &&
+                        BackPageData.sort((a, b) =>
+                          a.createdAt.localeCompare(b.createdAt)
+                        )
+                          .slice(pgNo, pgNo + 1)
+                          .reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem?.borrowedCashReturn?.entries?.reduce(
+                                  (total, currentItem) =>
+                                    (total = total + currentItem?.cash),
+                                  0
+                                )),
+                            0
+                          )
+                    ) || 0
+                  ).toFixed(2)}
                 </td>
               </tr>
             </tbody>
@@ -1376,33 +1417,40 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-            {BackPageData && BackPageData?.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
-                    if(index === pgNo){
-                      return(<>{
-                      page?.purchaseBorrow?.entries?.map((entry,index2)=>{
-                        return(
-                          <InflowBorrow
+              {BackPageData &&
+                BackPageData?.length &&
+                BackPageData.sort((a, b) =>
+                  a.createdAt.localeCompare(b.createdAt)
+                ).map((page, index) => {
+                  if (index === pgNo) {
+                    return (
+                      <>
+                        {page?.purchaseBorrow?.entries?.map((entry, index2) => {
+                          return (
+                            <InflowBorrow
                               key={index2}
                               index={index2}
                               // PurchaseBorrow={item}
                               entries={entry}
                             ></InflowBorrow>
-                        )
-                      })
-                    }</>)}
-                  })}
+                          );
+                        })}
+                      </>
+                    );
+                  }
+                })}
 
-<tr>  
-                <td className="tg-0lax" >
-                  Total
-                </td>
-                  <td></td>
+              <tr>
+                <td className="tg-0lax">Total</td>
+                <td></td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData.length &&
-                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -1478,32 +1526,38 @@ const BackDetailReport = () => {
                 </>
               )} */}
 
-{BackPageData && BackPageData?.length && BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).map((page,index)=>{
-                    if(index === pgNo){
-                      return(<>{
-                      page?.send?.entries?.map((entry,index2)=>{
-                        return(
-                          <ShippingEnglishBear
-                          key={index2}
-                          index={index2}
-                          item={entry}
-                        ></ShippingEnglishBear>
-                        )
-                      })
-                    }</>)}
-                  })}
+              {BackPageData &&
+                BackPageData?.length &&
+                BackPageData.sort((a, b) =>
+                  a.createdAt.localeCompare(b.createdAt)
+                ).map((page, index) => {
+                  if (index === pgNo) {
+                    return (
+                      <>
+                        {page?.send?.entries?.map((entry, index2) => {
+                          return (
+                            <ShippingEnglishBear
+                              key={index2}
+                              index={index2}
+                              item={entry}
+                            ></ShippingEnglishBear>
+                          );
+                        })}
+                      </>
+                    );
+                  }
+                })}
 
               <tr>
-                <td className="tg-0lax" >
-                  Total
-                </td>
+                <td className="tg-0lax">Total</td>
                 <td></td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
                   {BackPageData &&
                     BackPageData.length &&
-                    BackPageData
-                      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    BackPageData.sort((a, b) =>
+                      a.createdAt.localeCompare(b.createdAt)
+                    )
                       .slice(pgNo, pgNo + 1)
                       .reduce(
                         (total, currentItem) =>
@@ -1520,19 +1574,25 @@ const BackDetailReport = () => {
                 <td className="tg-0lax" />
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  {(Number(BackPageData &&
-                    BackPageData?.length &&
-                    BackPageData.sort((a, b) => a.createdAt.localeCompare(b.createdAt)).reduce(
-                      (total, currentItem) =>
-                        (total =
-                          total +
-                          currentItem?.send?.entries?.reduce(
-                            (total, currentItem) =>
-                              (total = total + currentItem?.total),
-                            0
-                          )),
-                      0
-                    ))||0).toFixed(2)}
+                  {(
+                    Number(
+                      BackPageData &&
+                        BackPageData?.length &&
+                        BackPageData.sort((a, b) =>
+                          a.createdAt.localeCompare(b.createdAt)
+                        ).reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.send?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem?.total),
+                                0
+                              )),
+                          0
+                        )
+                    ) || 0
+                  ).toFixed(2)}
                 </td>
                 <td className="tg-0lax" />
               </tr>
@@ -1555,65 +1615,65 @@ const BackDetailReport = () => {
               </tr>
             </thead>
             <tbody>
-            {BackPageData && BackPageData?.length && BackPageData.map((page,index)=>{
-                    if(index === pgNo){
-                      return(<>{
-                      page?.borrowed?.entries?.map((entry,index2)=>{
-                        return(
-                          <Borrowed
-                          key={index2}
-                          index={index2}
-                          item={entry}
-                          
-                        ></Borrowed>
-                        )
-                      })
-                    }</>)}
-                  })}
+              {BackPageData &&
+                BackPageData?.length &&
+                BackPageData.map((page, index) => {
+                  if (index === pgNo) {
+                    return (
+                      <>
+                        {page?.borrowed?.entries?.map((entry, index2) => {
+                          return (
+                            <Borrowed
+                              key={index2}
+                              index={index2}
+                              item={entry}
+                            ></Borrowed>
+                          );
+                        })}
+                      </>
+                    );
+                  }
+                })}
 
-<tr>
-                <td className="tg-0lax">
-                  Total
-                </td>
-                  <td></td>
+              <tr>
+                <td className="tg-0lax">Total</td>
+                <td></td>
                 <td className="tg-0lax" />
                 <td className="tg-0lax">
-                  
-                   
-                      {(Number(BackPageData &&
+                  {(
+                    Number(
+                      BackPageData &&
                         BackPageData?.length > 0 &&
-                        BackPageData
-                          .slice(pgNo, pgNo + 1)
-                          .reduce(
-                            (total, currentItem) =>
-                              (total =
-                                total +
-                                currentItem?.borrowed?.entries?.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(
-                                        currentItem?.amount?.$numberDecimal
-                                      )),
-                                  0
-                                )),
-                            0
-                          ))||0).toFixed(2)}
-                  
-                  
+                        BackPageData.slice(pgNo, pgNo + 1).reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.borrowed?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total =
+                                    total +
+                                    Number(
+                                      currentItem?.amount?.$numberDecimal
+                                    )),
+                                0
+                              )),
+                          0
+                        )
+                    ) || 0
+                  ).toFixed(2)}
                 </td>
                 <td className="tg-0lax" />
               </tr>
             </tbody>
           </table>
 
-          { BackPageData && BackPageData?.length && BackPageData.map((page,index)=>{
-                    if(index === pgNo){
-                      return(<FinalReport
-                        data={page?.finalReport}
-                      ></FinalReport>
-                    )}
-                  })}
+          {BackPageData &&
+            BackPageData?.length &&
+            BackPageData.map((page, index) => {
+              if (index === pgNo) {
+                return <FinalReport data={page?.finalReport}></FinalReport>;
+              }
+            })}
 
           <table>
             <thead>

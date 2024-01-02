@@ -42,8 +42,6 @@ const WineStock = () => {
           setHasMore(false);
         }
       });
-
-  
   };
 
   useEffect(() => {
@@ -90,14 +88,12 @@ const WineStock = () => {
     });
   });
 
-  
-
   return (
     <section>
       <div className="title">
-      <button className="commonBtn " onClick={handlePrint}>
-            प्रिंट
-          </button>
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
+        </button>
         <div className="flex justify-center gap-4 items-center">
           {ShopType === "BAR" && (
             <>
@@ -106,24 +102,22 @@ const WineStock = () => {
               </Link>
 
               <Link className="commonBtn" to="/user/bearshop/rmlstock">
-              देशी / RML
+                देशी / RML
               </Link>
             </>
           )}
 
-          { ShopType === "SHOP" && (
+          {ShopType === "SHOP" && (
             <>
               <Link to="/user/beerstock" className="commonBtn ">
                 बीयर
               </Link>
 
               <Link className="commonBtn" to="/user/rmlstock">
-              देशी / RML
+                देशी / RML
               </Link>
             </>
           )}
-
-         
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -160,7 +154,7 @@ const WineStock = () => {
 
         <div
           className={`${
-             ShopType === "BAR"
+            ShopType === "BAR"
               ? "hidden"
               : " overflow-x-auto flex justify-center item-center"
           }`}
@@ -176,90 +170,100 @@ const WineStock = () => {
             <table className="table removeCommonWSpace m-2">
               <thead>
                 <tr>
-                  <th className="text-xs" rowSpan={2}> क्र. सं.</th>
-                  <th className="text-xs" rowSpan={2}>ब्राण्ड</th>
-                  <th className="text-xs" colSpan={3}>स्टॉक </th>
-                  <th className="text-xs" colSpan={3}> रेट</th>
-                  <th className="text-xs" colSpan={3}> योग</th>
-                  <th className="text-xs" rowSpan={2}>कुल योग</th>
+                  <th className="text-xs" rowSpan={2}>
+                    {" "}
+                    क्र. सं.
+                  </th>
+                  <th className="text-xs" rowSpan={2}>
+                    ब्राण्ड
+                  </th>
+                  <th className="text-xs" colSpan={3}>
+                    स्टॉक{" "}
+                  </th>
+                  <th className="text-xs" colSpan={3}>
+                    {" "}
+                    रेट
+                  </th>
+                  <th className="text-xs" colSpan={3}>
+                    {" "}
+                    योग
+                  </th>
+                  <th className="text-xs" rowSpan={2}>
+                    कुल योग
+                  </th>
                 </tr>
-             
-               
-                </thead>
+              </thead>
               <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
 
-              <tr>
-                <td></td>
-                <td></td>
-                 
-                 <td>
-                   750ml
-                 </td>
-                 <td>
-                  375ml
-                 </td>
-                 <td>
-                   180ml
-                 </td>
+                  <td>750ml</td>
+                  <td>375ml</td>
+                  <td>180ml</td>
 
-                 <td>
-                   750ml
-                 </td>
-                 <td>
-                   375ml
-                 </td>
-                 <td>
-                   180ml
-                 </td>
+                  <td>750ml</td>
+                  <td>375ml</td>
+                  <td>180ml</td>
 
-                 <td>
-                   750ml
-                 </td>
-                 <td>
-                   375ml
-                 </td>
-                 <td>
-                   180ml
-                 </td>
-                 
-               </tr>
+                  <td>750ml</td>
+                  <td>375ml</td>
+                  <td>180ml</td>
+                </tr>
 
-                {filteredData?.filter((item)=>item.isActive===true).filter(brand =>
-  brand.sizes.some(size => size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0)
-).map((item, index) => {
-                  return (
-                    <>
-                      <tr id="scrollableDiv">
-                        <WineStockTopData
-                          key={item._id}
-                          index={index}
-                          item={item}
-                        ></WineStockTopData>
-                      </tr>
-                    </>
-                  );
-                })}
-                 <tr>
-                    <td colSpan="11">Total</td>
-                    <td>
-                      {filteredData.filter((item)=>item.isActive===true).reduce(
+                {filteredData
+                  ?.filter((item) => item.isActive === true)
+                  .filter((brand) =>
+                    brand.sizes.some(
+                      (size) =>
+                        size.currentStock > 0 ||
+                        Number(size.averageRate.$numberDecimal) > 0
+                    )
+                  )
+                  .map((item, index) => {
+                    return (
+                      <>
+                        <tr id="scrollableDiv">
+                          <WineStockTopData
+                            key={item._id}
+                            index={index}
+                            item={item}
+                          ></WineStockTopData>
+                        </tr>
+                      </>
+                    );
+                  })}
+                <tr>
+                  <td colSpan="11">Total</td>
+                  <td>
+                    {filteredData
+                      .filter((item) => item.isActive === true)
+                      .reduce(
                         (total, currentItem) =>
                           (total =
                             total +
-                            currentItem.sizes.filter((brand)=>brand.quantityInML===750 || brand.quantityInML===375 || brand.quantityInML===180).reduce(
-                              (total, currentItem) =>
-                                (total =
-                                  total +
-                                  currentItem.currentStock *
-                                    Number(
-                                      currentItem.averageRate.$numberDecimal
-                                    )),
-                              0
-                            )),
+                            currentItem.sizes
+                              .filter(
+                                (brand) =>
+                                  brand.quantityInML === 750 ||
+                                  brand.quantityInML === 375 ||
+                                  brand.quantityInML === 180
+                              )
+                              .reduce(
+                                (total, currentItem) =>
+                                  (total =
+                                    total +
+                                    currentItem.currentStock *
+                                      Number(
+                                        currentItem.averageRate.$numberDecimal
+                                      )),
+                                0
+                              )),
                         0
-                      ).toFixed(2)}
-                    </td>
-                  </tr>
+                      )
+                      .toFixed(2)}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </InfiniteScroll>
@@ -268,9 +272,7 @@ const WineStock = () => {
         <div>
           <div
             className={`${
-               ShopType === "BAR"
-                ? "hidden"
-                : " gap-4 overflow-x-auto my-4 "
+              ShopType === "BAR" ? "hidden" : " gap-4 overflow-x-auto my-4 "
             }`}
           >
             <div className="flex justify-center item-center">
@@ -286,62 +288,73 @@ const WineStock = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredData.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((brand, index) => {
-                    return (
-                      <>
-                        {brand.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).map((size) => {
-                          
-                          if (
-                            size.quantityInML !== 750 &&
-                            size.quantityInML !== 375 &&
-                            size.quantityInML !== 180
-                          ) {
-                            count++;
-                            return (
-                              <tr>
-                                <th>{count}</th>
-                                <td>{brand.brandName}</td>
-                                <td>{size.quantityInML} ML</td>
-                                <td> {size.currentStock}</td>
-                                <td>
-                                  {" "}
-                                  {Number(
-                                    size.averageRate.$numberDecimal
-                                  ).toFixed(2)}
-                                </td>
-                                <td>
-                                  {" "}
-                                  {size.currentStock *
-                                    Number(
-                                      size.averageRate.$numberDecimal
-                                    ).toFixed(2)}
-                                </td>
-                              </tr>
-                            );
-                          }
-                        })}
-                      </>
-                    );
-                  })}
+                  {filteredData
+                    .filter((item) => item.isActive === true)
+                    .sort((a, b) => a.brandName.localeCompare(b.brandName))
+                    .map((brand, index) => {
+                      return (
+                        <>
+                          {brand.sizes
+                            .filter(
+                              (size) =>
+                                size.currentStock > 0 ||
+                                Number(size.averageRate.$numberDecimal) > 0
+                            )
+                            .map((size) => {
+                              if (
+                                size.quantityInML !== 750 &&
+                                size.quantityInML !== 375 &&
+                                size.quantityInML !== 180
+                              ) {
+                                count++;
+                                return (
+                                  <tr>
+                                    <th>{count}</th>
+                                    <td>{brand.brandName}</td>
+                                    <td>{size.quantityInML} ML</td>
+                                    <td> {size.currentStock}</td>
+                                    <td>
+                                      {" "}
+                                      {Number(
+                                        size.averageRate.$numberDecimal
+                                      ).toFixed(2)}
+                                    </td>
+                                    <td>
+                                      {" "}
+                                      {size.currentStock *
+                                        Number(
+                                          size.averageRate.$numberDecimal
+                                        ).toFixed(2)}
+                                    </td>
+                                  </tr>
+                                );
+                              }
+                            })}
+                        </>
+                      );
+                    })}
                   <tr>
                     <td colSpan="5">Total</td>
                     <td>
-                      {filteredData.filter((item)=>item.isActive===true).reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem.sizes.reduce(
-                              (total, currentItem) =>
-                                (total =
-                                  total +
-                                  currentItem.currentStock *
-                                    Number(
-                                      currentItem.averageRate.$numberDecimal
-                                    )),
-                              0
-                            )),
-                        0
-                      ).toFixed(2)}
+                      {filteredData
+                        .filter((item) => item.isActive === true)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem.sizes.reduce(
+                                (total, currentItem) =>
+                                  (total =
+                                    total +
+                                    currentItem.currentStock *
+                                      Number(
+                                        currentItem.averageRate.$numberDecimal
+                                      )),
+                                0
+                              )),
+                          0
+                        )
+                        .toFixed(2)}
                     </td>
                   </tr>
                 </tbody>
@@ -353,9 +366,7 @@ const WineStock = () => {
         <div>
           <div
             className={`${
-               ShopType === "SHOP"
-                ? "hidden"
-                : " gap-4 overflow-x-auto my-4 "
+              ShopType === "SHOP" ? "hidden" : " gap-4 overflow-x-auto my-4 "
             }`}
           >
             <div className="flex justify-center item-center">
@@ -374,54 +385,69 @@ const WineStock = () => {
                   {filteredData.map((brand, index) => {
                     return (
                       <>
-                        {brand.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).map((size) => {
-                          if (size.quantityInML) {
-                            count++;
-                            return (
-                              <tr>
-                                <th>{count}</th>
-                                <td>{brand.brandName}</td>
-                                <td>{size.quantityInML}</td>
-                                <td> {size.currentStock}</td>
-                                <td>
-                                  {" "}
-                                  {Number(
-                                    size.averageRate.$numberDecimal
-                                  ).toFixed(2)}
-                                </td>
-                                <td>
-                                  {" "}
-                                  {size.currentStock *
-                                    Number(
+                        {brand.sizes
+                          .filter(
+                            (size) =>
+                              size.currentStock > 0 ||
+                              Number(size.averageRate.$numberDecimal) > 0
+                          )
+                          .map((size) => {
+                            if (size.quantityInML) {
+                              count++;
+                              return (
+                                <tr>
+                                  <th>{count}</th>
+                                  <td>{brand.brandName}</td>
+                                  <td>{size.quantityInML}</td>
+                                  <td> {size.currentStock}</td>
+                                  <td>
+                                    {" "}
+                                    {Number(
                                       size.averageRate.$numberDecimal
                                     ).toFixed(2)}
-                                </td>
-                              </tr>
-                            );
-                          }
-                        })}
+                                  </td>
+                                  <td>
+                                    {" "}
+                                    {size.currentStock *
+                                      Number(
+                                        size.averageRate.$numberDecimal
+                                      ).toFixed(2)}
+                                  </td>
+                                </tr>
+                              );
+                            }
+                          })}
                       </>
                     );
                   })}
                   <tr>
                     <td colSpan="5">Total</td>
                     <td>
-                      {filteredData.filter((item)=>item.isActive===true).reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).reduce(
-                              (total, currentItem) =>
-                                (total =
-                                  total +
-                                  currentItem.currentStock *
-                                    Number(
-                                      currentItem.averageRate.$numberDecimal
-                                    )),
-                              0
-                            )),
-                        0
-                      ).toFixed(2)}
+                      {filteredData
+                        .filter((item) => item.isActive === true)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem.sizes
+                                .filter(
+                                  (size) =>
+                                    size.currentStock > 0 ||
+                                    Number(size.averageRate.$numberDecimal) > 0
+                                )
+                                .reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      currentItem.currentStock *
+                                        Number(
+                                          currentItem.averageRate.$numberDecimal
+                                        )),
+                                  0
+                                )),
+                          0
+                        )
+                        .toFixed(2)}
                     </td>
                   </tr>
                 </tbody>

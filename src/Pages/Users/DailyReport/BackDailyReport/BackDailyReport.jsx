@@ -1,4 +1,4 @@
-import React, { useContext, useState,useRef } from "react";
+import React, { useContext, useState, useRef } from "react";
 import "../Style/DailyReport.scss";
 import RmlFrom from "./RmlForm/RmlFrom";
 import { Link } from "react-router-dom";
@@ -26,28 +26,27 @@ import AddOneSecondFormBack from "./FristFormBack/AddOneFristFromBack/AddOneSeco
 import DatePicker from "react-datepicker";
 import { useQuery } from "@tanstack/react-query";
 import { TextField } from "@mui/material";
-import {Autocomplete} from "@mui/material";
+import { Autocomplete } from "@mui/material";
 import Loader from "../../../../Components/Loader/Loader";
 
 const BackDailyReport = () => {
   const { handleSubmit, isLoadingSubmit } = useHandelSubmitBackAPI();
-  const purchaseOutsideRef = useRef(null)
-  const commissionRef = useRef(null)
-  const cashReturnRef = useRef(null)
-  const purchaseBorrowRef = useRef(null)
-  const sendingRef = useRef(null)
-  const BorrowingRef = useRef(null)
-  const tableContainer = useRef(null)
-  const containerBottom = useRef(null)
-  
+  const purchaseOutsideRef = useRef(null);
+  const commissionRef = useRef(null);
+  const cashReturnRef = useRef(null);
+  const purchaseBorrowRef = useRef(null);
+  const sendingRef = useRef(null);
+  const BorrowingRef = useRef(null);
+  const tableContainer = useRef(null);
+  const containerBottom = useRef(null);
 
   const scrollToComponent = (ref) => {
-    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"start" });
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "start",
+    });
   };
-
- 
-
-
 
   // ================== Frist Form============
   const {
@@ -66,7 +65,7 @@ const BackDailyReport = () => {
     handleRemoveFieldsBack,
     handleRemoveFieldsBeer,
     hasMoreBeer,
-    hasMoreBeerSmall
+    hasMoreBeerSmall,
   } = useFristFormAdd();
 
   // ================== Rml Form============
@@ -150,51 +149,53 @@ const BackDailyReport = () => {
   const { salesMan, setSalesMan, drDate, setDrDate } =
     useContext(DataContextApi);
 
-
-    const {
-      data: salaryData,
-      isLoading,
-      refetch,
-    } = useQuery({
-      queryKey: ["salaryData"],
-      queryFn: async () => {
-        const res = await fetch(
-          "https://insorty-api.onrender.com/shop/getAllEmployees",
-          {
-            method: "GET",
-            headers: { "Content-Type": "application/json", cookie_token: localStorage.getItem('token') },
-          }
-        );
-        const data = await res.json();
-        console.log(data.data);
-        return data.data;
-      },
-    });
-
-    if(isLoading){
-      return <Loader/>
-    }
-
-
-    const scrollToTable = (e,tableId,tablesContainer) => {
-      e.preventDefault()
-      if (tablesContainer.current) {
-        const container = tablesContainer.current;
-  
-        // Get the target table based on the provided tableId
-        const targetTable = document.getElementById(tableId);
-  
-        if (container && targetTable) {
-          // Calculate the scroll position to center the target table
-          const containerWidth = container.clientWidth;
-          const tableWidth = targetTable.clientWidth;
-          const scrollPosition = (tableWidth - containerWidth) / 2;
-  
-          // Scroll the container to the target table
-          container.scrollLeft = targetTable.offsetLeft - container.offsetLeft - scrollPosition;
+  const {
+    data: salaryData,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["salaryData"],
+    queryFn: async () => {
+      const res = await fetch(
+        "https://insorty-api.onrender.com/shop/getAllEmployees",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: localStorage.getItem("token"),
+          },
         }
+      );
+      const data = await res.json();
+      console.log(data.data);
+      return data.data;
+    },
+  });
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  const scrollToTable = (e, tableId, tablesContainer) => {
+    e.preventDefault();
+    if (tablesContainer.current) {
+      const container = tablesContainer.current;
+
+      // Get the target table based on the provided tableId
+      const targetTable = document.getElementById(tableId);
+
+      if (container && targetTable) {
+        // Calculate the scroll position to center the target table
+        const containerWidth = container.clientWidth;
+        const tableWidth = targetTable.clientWidth;
+        const scrollPosition = (tableWidth - containerWidth) / 2;
+
+        // Scroll the container to the target table
+        container.scrollLeft =
+          targetTable.offsetLeft - container.offsetLeft - scrollPosition;
       }
-    };
+    }
+  };
   // ********************************* submit mulitple api in handelSubmit  *********************************
 
   return (
@@ -203,55 +204,55 @@ const BackDailyReport = () => {
         <form onSubmit={handleSubmit}>
           <div className="my-4 flex gap-4 items-center justify-center">
             <h1 className="font-bold md:text-2xl sm:text-sm text-center">
-            बीयर ओर अन्य
+              बीयर ओर अन्य
             </h1>
 
-              <Link to="/user/dailyreport/front" className="commonBtn ">
-                अंग्रेजी
-              </Link>
-              <Link
-                to="/user/frontdailyreport/details"
-                className="commonBtn  mx-4"
-              >
-                पर्चा
-              </Link>
+            <Link to="/user/dailyreport/front" className="commonBtn ">
+              अंग्रेजी
+            </Link>
+            <Link
+              to="/user/frontdailyreport/details"
+              className="commonBtn  mx-4"
+            >
+              पर्चा
+            </Link>
           </div>
 
           <div className="flex gap-4 justify-center items-center">
-            <h1 className="font-bold ">सेल्समेन :-   </h1>
-           
+            <h1 className="font-bold ">सेल्समेन :- </h1>
+
             <Autocomplete
-          size="small"
-          style={{
-            width: "20rem",
-            border:"1px solid black",
-              borderRadius:"5px"
-          }}
-            options={salaryData.length > 0 ? salaryData.filter((prev)=>prev.isActive===true) : ['no options']}
-            getOptionLabel={(option) => option ? option.name : ""}
-            
-            onChange={(event, value) => {
-              if (value) {
-                setSalesMan(value.name)
-              } else {
-                setSalesMan("")
+              size="small"
+              style={{
+                width: "20rem",
+                border: "1px solid black",
+                borderRadius: "5px",
+              }}
+              options={
+                salaryData.length > 0
+                  ? salaryData.filter((prev) => prev.isActive === true)
+                  : ["no options"]
               }
-
-            }}
-            renderInput={(params) => (
-              <TextField
-                required
-                {...params}
-                className="dailyReportInput"
-                inputProps={{ ...params.inputProps, value: salesMan }}
-
-                onChange={(event) => {
-                  setSalesMan(event.target.value)
-                  
-                }}
-              />
-            )}
-          />
+              getOptionLabel={(option) => (option ? option.name : "")}
+              onChange={(event, value) => {
+                if (value) {
+                  setSalesMan(value.name);
+                } else {
+                  setSalesMan("");
+                }
+              }}
+              renderInput={(params) => (
+                <TextField
+                  required
+                  {...params}
+                  className="dailyReportInput"
+                  inputProps={{ ...params.inputProps, value: salesMan }}
+                  onChange={(event) => {
+                    setSalesMan(event.target.value);
+                  }}
+                />
+              )}
+            />
 
             <div className="flex  items-center">
               <DatePicker
@@ -277,43 +278,50 @@ const BackDailyReport = () => {
                     <table className="table commonTable">
                       <tbody>
                         <tr>
-                          <th className="text-xs" rowSpan={2}> क्र. सं.</th>
+                          <th className="text-xs" rowSpan={2}>
+                            {" "}
+                            क्र. सं.
+                          </th>
                           <th className="text-xs" rowSpan={2}></th>
-                          <th className="text-xs" rowSpan={2}> ब्राण्ड</th>
-                          <th className="text-xs" >औसत रेट</th>
-                          <th className="text-xs" >प्रारम्भिक स्टॉक</th>
-                          <th className="text-xs"  >आमद (खरीद) - दु.</th>
-                          <th className="text-xs" >खरीद रेट - दु.</th>
-                          <th className="text-xs" >आमद (खरीद) - बा.</th>
-                          <th className="text-xs" >खरीद रेट - बा.</th>
-                          <th className="text-xs" >आमद (उधारी)</th>
-                          <th className="text-xs" >भेजान</th>
-                          <th className="text-xs" >योग/शेष</th>
-                          <th className="text-xs" >अन्तिम स्टॉक</th>
-                          <th className="text-xs" >बिक्री</th>
-                          <th className="text-xs" >रेट</th>
-                          <th className="text-xs" >योग</th>
-                          <th className="text-xs" rowSpan={2}>कुल योग</th>
+                          <th className="text-xs" rowSpan={2}>
+                            {" "}
+                            ब्राण्ड
+                          </th>
+                          <th className="text-xs">औसत रेट</th>
+                          <th className="text-xs">प्रारम्भिक स्टॉक</th>
+                          <th className="text-xs">आमद (खरीद) - दु.</th>
+                          <th className="text-xs">खरीद रेट - दु.</th>
+                          <th className="text-xs">आमद (खरीद) - बा.</th>
+                          <th className="text-xs">खरीद रेट - बा.</th>
+                          <th className="text-xs">आमद (उधारी)</th>
+                          <th className="text-xs">भेजान</th>
+                          <th className="text-xs">योग/शेष</th>
+                          <th className="text-xs">अन्तिम स्टॉक</th>
+                          <th className="text-xs">बिक्री</th>
+                          <th className="text-xs">रेट</th>
+                          <th className="text-xs">योग</th>
+                          <th className="text-xs" rowSpan={2}>
+                            कुल योग
+                          </th>
                         </tr>
-                     
+
                         <tr>
-                          
                           {/* ======== प्रारम्भिक स्टॉक ========= */}
                           <td>
                             <div className="flex justify-evenly">
-                              <div >
+                              <div>
                                 <label className="label">
                                   <span className="label-text">650ml</span>
                                 </label>
                               </div>
 
-                              <div >
+                              <div>
                                 <label className="label">
                                   <span className="label-text">500ml</span>
                                 </label>
                               </div>
 
-                              <div >
+                              <div>
                                 <label className="label">
                                   <span className="label-text">330ml</span>
                                 </label>
@@ -344,7 +352,7 @@ const BackDailyReport = () => {
                           </td>
 
                           <td>
-                            <div className="flex justify-around	" >
+                            <div className="flex justify-around	">
                               <div className="form-control">
                                 <label className="label">
                                   <span className="label-text">650ml</span>
@@ -588,7 +596,6 @@ const BackDailyReport = () => {
                             </div>
                           </td>
                           {/* ============= कुल योग ================ */}
-                          
                         </tr>
 
                         {fristFormState.map((item, index) => {
@@ -605,7 +612,6 @@ const BackDailyReport = () => {
                               brands={brands}
                               liquors={liquors}
                               brandsLoaded={brandsLoaded}
-                             
                             ></AddOneFristFromBack>
                           );
                         })}
@@ -1159,14 +1165,16 @@ const BackDailyReport = () => {
                                   className="smallinput wd-6"
                                   name="total650"
                                   disabled
-                                  value={fristFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.sales650) *
-                                          Number(currentItem.mainRate650)),
-                                    0
-                                  ).toFixed(2)}
+                                  value={fristFormState
+                                    .reduce(
+                                      (total, currentItem) =>
+                                        (total =
+                                          total +
+                                          Number(currentItem.sales650) *
+                                            Number(currentItem.mainRate650)),
+                                      0
+                                    )
+                                    .toFixed(2)}
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
@@ -1178,14 +1186,16 @@ const BackDailyReport = () => {
                                   className="smallinput wd-6"
                                   name="total330"
                                   disabled
-                                  value={fristFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.sales550) *
-                                          Number(currentItem.mainRate550)),
-                                    0
-                                  ).toFixed(2)}
+                                  value={fristFormState
+                                    .reduce(
+                                      (total, currentItem) =>
+                                        (total =
+                                          total +
+                                          Number(currentItem.sales550) *
+                                            Number(currentItem.mainRate550)),
+                                      0
+                                    )
+                                    .toFixed(2)}
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
@@ -1197,14 +1207,16 @@ const BackDailyReport = () => {
                                   className="smallinput wd-6"
                                   name="total330"
                                   disabled
-                                  value={fristFormState.reduce(
-                                    (total, currentItem) =>
-                                      (total =
-                                        total +
-                                        Number(currentItem.sales330) *
-                                          Number(currentItem.mainRate330)),
-                                    0
-                                  ).toFixed(2)}
+                                  value={fristFormState
+                                    .reduce(
+                                      (total, currentItem) =>
+                                        (total =
+                                          total +
+                                          Number(currentItem.sales330) *
+                                            Number(currentItem.mainRate330)),
+                                      0
+                                    )
+                                    .toFixed(2)}
                                   onChange={(event) =>
                                     onChangeFristBackFormHandler(event)
                                   }
@@ -1220,18 +1232,20 @@ const BackDailyReport = () => {
                                 disabled
                                 className="smallinput wd-7"
                                 name="grandTotal"
-                                value={fristFormState.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(currentItem.sales650) *
-                                        Number(currentItem.mainRate650) +
-                                      Number(currentItem.sales550) *
-                                        Number(currentItem.mainRate550) +
-                                      Number(currentItem.sales330) *
-                                        Number(currentItem.mainRate330)),
-                                  0
-                                ).toFixed(2)}
+                                value={fristFormState
+                                  .reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.sales650) *
+                                          Number(currentItem.mainRate650) +
+                                        Number(currentItem.sales550) *
+                                          Number(currentItem.mainRate550) +
+                                        Number(currentItem.sales330) *
+                                          Number(currentItem.mainRate330)),
+                                    0
+                                  )
+                                  .toFixed(2)}
                                 onChange={(event) =>
                                   onChangeFristBackFormHandler(event)
                                 }
@@ -1241,8 +1255,11 @@ const BackDailyReport = () => {
                         </tr>
                       </tbody>
                     </table>
-                    <div className={hasMoreBeer===true ? '' : 'displayHidden'}>Loading data...</div>
-
+                    <div
+                      className={hasMoreBeer === true ? "" : "displayHidden"}
+                    >
+                      Loading data...
+                    </div>
                   </div>
                 </>
 
@@ -1258,15 +1275,29 @@ const BackDailyReport = () => {
                               <th className=" text-xs"> ब्राण्ड</th>
                               <th className="text-xs">ml</th>
                               <th className="text-xs">औसत रेट</th>
-                              <th className="whitespace-pre-wrap text-xs">प्रारम्भिक स्टॉक</th>
-                              <th className="whitespace-pre-wrap  text-xs">आमद (खरीद) - दु.</th>
-                              <th className="whitespace-pre-wrap  text-xs">खरीद रेट - दु.</th>
-                              <th className="whitespace-pre-wrap  text-xs">आमद (खरीद) - बा.</th>
-                              <th className="whitespace-pre-wrap  text-xs">खरीद रेट - बा.</th>
-                              <th className="whitespace-pre-wrap  text-xs">आमद (उधारी)</th>
+                              <th className="whitespace-pre-wrap text-xs">
+                                प्रारम्भिक स्टॉक
+                              </th>
+                              <th className="whitespace-pre-wrap  text-xs">
+                                आमद (खरीद) - दु.
+                              </th>
+                              <th className="whitespace-pre-wrap  text-xs">
+                                खरीद रेट - दु.
+                              </th>
+                              <th className="whitespace-pre-wrap  text-xs">
+                                आमद (खरीद) - बा.
+                              </th>
+                              <th className="whitespace-pre-wrap  text-xs">
+                                खरीद रेट - बा.
+                              </th>
+                              <th className="whitespace-pre-wrap  text-xs">
+                                आमद (उधारी)
+                              </th>
                               <th className="text-xs">भेजान</th>
                               <th className=" text-xs">योग/शेष</th>
-                              <th className="whitespace-pre-wrap text-xs">अन्तिम स्टॉक</th>
+                              <th className="whitespace-pre-wrap text-xs">
+                                अन्तिम स्टॉक
+                              </th>
                               <th className="text-xs">बिक्री</th>
                               <th className="text-xs">रेट</th>
                               <th className="text-xs">योग</th>
@@ -1471,12 +1502,14 @@ const BackDailyReport = () => {
                                     type="number"
                                     className="smallinput wd-7"
                                     name="total"
-                                    value={addOneSecondFormState.reduce(
-                                      (total, currentItem) =>
-                                        (total =
-                                          total + Number(currentItem.total)),
-                                      0
-                                    ).toFixed(2)}
+                                    value={addOneSecondFormState
+                                      .reduce(
+                                        (total, currentItem) =>
+                                          (total =
+                                            total + Number(currentItem.total)),
+                                        0
+                                      )
+                                      .toFixed(2)}
                                     onChange={(e) => handelSeconFormOnChange(e)}
                                     disabled
                                   />
@@ -1486,8 +1519,13 @@ const BackDailyReport = () => {
                             </tr>
                           </tbody>
                         </table>
-                        <div className={hasMoreBeerSmall===true ? '' : 'displayHidden'}>Loading data...</div>
-
+                        <div
+                          className={
+                            hasMoreBeerSmall === true ? "" : "displayHidden"
+                          }
+                        >
+                          Loading data...
+                        </div>
                       </div>
                     </div>
                   </>
@@ -1497,7 +1535,8 @@ const BackDailyReport = () => {
                     Total:{" "}
                     {Number(
                       JSON.parse(localStorage.getItem("totalFirstBack"))
-                    ) + Number(localStorage.getItem("beerFormTotal")).toFixed(2)}
+                    ) +
+                      Number(localStorage.getItem("beerFormTotal")).toFixed(2)}
                   </h4>
                 </div>
               </div>
@@ -1517,19 +1556,33 @@ const BackDailyReport = () => {
                     <thead>
                       <tr>
                         <th className="text-xs"> क्र. सं.</th>
-                        <th className="text-xs"></th>
+                        <th className="text-xs h-14"></th>
                         <th className="text-xs"> ब्राण्ड</th>
                         <th className="text-xs">ml</th>
                         <th className="text-xs">औसत रेट</th>
-                        <th className="whitespace-pre-wrap text-xs">प्रारम्भिक स्टॉक</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद) - दु.</th>
-                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - दु.</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद) - बा.</th>
-                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - बा.</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (उधारी)</th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          प्रारम्भिक स्टॉक
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          आमद (खरीद) - दु.
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          खरीद रेट - दु.
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          आमद (खरीद) - बा.
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          खरीद रेट - बा.
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          आमद (उधारी)
+                        </th>
                         <th className="text-xs">भेजान</th>
                         <th className="text-xs">योग/शेष</th>
-                        <th className="whitespace-pre-wrap text-xs">अन्तिम स्टॉक </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          अन्तिम स्टॉक{" "}
+                        </th>
                         <th className="text-xs">बिक्री</th>
                         <th className="text-xs">रेट</th>
                         <th className="text-xs">रकम</th>
@@ -1557,13 +1610,10 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                           onClick={(e) =>
-                            {
-                              scrollToTable(e,'rmlTable',tableContainer)
-                                handelAddOneInRml(e)
-                            }
-                              }
-
+                            onClick={(e) => {
+                              scrollToTable(e, "rmlTable", tableContainer);
+                              handelAddOneInRml(e);
+                            }}
                           >
                             ADD
                           </button>
@@ -1737,11 +1787,13 @@ const BackDailyReport = () => {
                               type="number"
                               className="smallinput wd-11"
                               name="cost"
-                              value={addRmlState.reduce(
-                                (total, currentItem) =>
-                                  (total = total + Number(currentItem.cost)),
-                                0
-                              ).toFixed(2)}
+                              value={addRmlState
+                                .reduce(
+                                  (total, currentItem) =>
+                                    (total = total + Number(currentItem.cost)),
+                                  0
+                                )
+                                .toFixed(2)}
                               disabled
                             />
                           </div>
@@ -1764,18 +1816,26 @@ const BackDailyReport = () => {
                 </span>
               </h1>
               <div id="purchaseOutsideTable">
-                <table className="table commonTable" ref={purchaseOutsideRef} onFocus={()=>scrollToComponent(purchaseOutsideRef)}>
+                <table
+                  className="table commonTable"
+                  ref={purchaseOutsideRef}
+                  onFocus={() => scrollToComponent(purchaseOutsideRef)}
+                >
                   <thead>
                     <tr>
-                      <th className="text-xs"> क्र. सं.</th>
+                      <th className="text-s" style={{ margin: "15px" }}>
+                        {" "}
+                        क्र. सं.
+                      </th>
+
                       <td></td>
-                      <th className="text-xs"> पार्टी का नाम</th>
-                      <th className="text-xs">ब्राण्ड</th>
+                      <th className="text-xs h-14"> पार्टी का नाम</th>
+                      <th className="text-xs p-4">ब्राण्ड</th>
                       <th className="text-xs">ML</th>
                       <th className="text-xs">संख्या</th>
                       <th className="text-xs">रेट</th>
                       <th className="text-xs">रकम</th>
-                      
+
                       <th className="text-xs">टिप्पणी</th>
                     </tr>
                   </thead>
@@ -1802,8 +1862,13 @@ const BackDailyReport = () => {
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
                           onClick={(e) => {
-                            scrollToTable(e,'purchaseOutsideTable',tableContainer)
-                            handelAddOnePurchesOutSide(e)}}
+                            scrollToTable(
+                              e,
+                              "purchaseOutsideTable",
+                              tableContainer
+                            );
+                            handelAddOnePurchesOutSide(e);
+                          }}
                         >
                           ADD
                         </button>
@@ -1851,17 +1916,17 @@ const BackDailyReport = () => {
                             type="number"
                             className="smallinput"
                             name="total"
-                            value={purchesOutSideState.reduce(
-                              (total, currentItem) =>
-                                (total = total + Number(currentItem.total)),
-                              0
-                            ).toFixed(2)}
+                            value={purchesOutSideState
+                              .reduce(
+                                (total, currentItem) =>
+                                  (total = total + Number(currentItem.total)),
+                                0
+                              )
+                              .toFixed(2)}
                             disabled
                           />
                         </div>
                       </td>
-
-                     
 
                       <td>
                         <div className="form-control"></div>
@@ -1880,10 +1945,14 @@ const BackDailyReport = () => {
                 </span>
               </h1>
               <div>
-                <table className="table commonTable" ref={commissionRef} onFocus={()=>scrollToComponent(commissionRef)}>
+                <table
+                  className="table commonTable"
+                  ref={commissionRef}
+                  onFocus={() => scrollToComponent(commissionRef)}
+                >
                   <thead>
                     <tr>
-                      <th className="text-xs"> क्र. सं.</th>
+                      <th className="text-xs h-14"> क्र. सं.</th>
                       <td className="text-xs"></td>
                       <th className="text-xs"> विवरण</th>
                       <th className="text-xs">रकम</th>
@@ -1928,11 +1997,13 @@ const BackDailyReport = () => {
                           type="number"
                           className="smallinput wd-6"
                           name="amount"
-                          value={commissonState.reduce(
-                            (total, currentItem) =>
-                              (total = total + Number(currentItem.amount)),
-                            0
-                          ).toFixed(2)}
+                          value={commissonState
+                            .reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.amount)),
+                              0
+                            )
+                            .toFixed(2)}
                           disabled
                           style={{
                             width: "100%",
@@ -1954,12 +2025,16 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable" ref={cashReturnRef} onFocus={()=>scrollToComponent(cashReturnRef)}>
+                <table
+                  className="table commonTable"
+                  ref={cashReturnRef}
+                  onFocus={() => scrollToComponent(cashReturnRef)}
+                >
                   <thead>
                     <tr>
                       <th className="text-xs"> क्र. सं.</th>
                       <td className="text-xs"></td>
-                      <th className="text-xs">प्रकार</th>
+                      <th className="text-xs h-14">प्रकार</th>
                       <th className="text-xs">पार्टी का नाम</th>
                       <th className="text-xs">रकम</th>
                       <th className="text-xs">विवरण</th>
@@ -2005,11 +2080,13 @@ const BackDailyReport = () => {
                         <input
                           type="number"
                           name="amount"
-                          value={cashReciveState.reduce(
-                            (total, currentItem) =>
-                              (total = total + Number(currentItem.amount)),
-                            0
-                          ).toFixed(2)}
+                          value={cashReciveState
+                            .reduce(
+                              (total, currentItem) =>
+                                (total = total + Number(currentItem.amount)),
+                              0
+                            )
+                            .toFixed(2)}
                           disabled
                           className="smallinput wd-7"
                         />
@@ -2035,7 +2112,12 @@ const BackDailyReport = () => {
 
               <>
                 <div>
-                  <table id="borrowedStock" className="table commonTable" ref={purchaseBorrowRef} onFocus={()=>scrollToComponent(purchaseBorrowRef)}>
+                  <table
+                    id="borrowedStock"
+                    className="table commonTable"
+                    ref={purchaseBorrowRef}
+                    onFocus={() => scrollToComponent(purchaseBorrowRef)}
+                  >
                     <thead>
                       <tr>
                         <th className="text-xs"> क्र. सं.</th>
@@ -2067,11 +2149,9 @@ const BackDailyReport = () => {
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
-                            onClick={(e) => 
-                              {
-                                
-                              handelAddOneShipping(e)}
-                              }
+                            onClick={(e) => {
+                              handelAddOneShipping(e);
+                            }}
                           >
                             ADD
                           </button>
@@ -2123,7 +2203,12 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table id="sending" className="table commonTable" ref={sendingRef} onFocus={()=>scrollToComponent(sendingRef)}>
+                <table
+                  id="sending"
+                  className="table commonTable"
+                  ref={sendingRef}
+                  onFocus={() => scrollToComponent(sendingRef)}
+                >
                   <thead>
                     <tr>
                       <th className="text-xs"> क्र. सं.</th>
@@ -2156,10 +2241,8 @@ const BackDailyReport = () => {
                         <button
                           className="btn bg-[#AA237A] btn-sm"
                           onClick={(e) => {
-                            
-                            handelAddOneBorrowingRml(e)
-                            }
-                          }
+                            handelAddOneBorrowingRml(e);
+                          }}
                         >
                           ADD
                         </button>
@@ -2208,7 +2291,11 @@ const BackDailyReport = () => {
               </h1>
 
               <div>
-                <table className="table commonTable" ref={BorrowingRef} onFocus={()=>scrollToComponent(BorrowingRef)}>
+                <table
+                  className="table commonTable"
+                  ref={BorrowingRef}
+                  onFocus={() => scrollToComponent(BorrowingRef)}
+                >
                   <thead>
                     <tr>
                       <th className="text-xs"> क्र. सं.</th>
@@ -2262,11 +2349,13 @@ const BackDailyReport = () => {
                             type="number"
                             className="smallinput wd-9"
                             name="amount"
-                            value={craditDabitState.reduce(
-                              (total, currentItem) =>
-                                (total = total + Number(currentItem.amount)),
-                              0
-                            ).toFixed(2)}
+                            value={craditDabitState
+                              .reduce(
+                                (total, currentItem) =>
+                                  (total = total + Number(currentItem.amount)),
+                                0
+                              )
+                              .toFixed(2)}
                             disabled
                           />
                         </div>
@@ -2327,7 +2416,7 @@ const BackDailyReport = () => {
 
           {/* ************ Submit button ***************** */}
           <div className="flex my-6 mx-4">
-            {isLoadingSubmit===true ? (
+            {isLoadingSubmit === true ? (
               <>
                 <button
                   type="button"

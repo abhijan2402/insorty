@@ -30,16 +30,16 @@ const DataContext = ({ children }) => {
       .then((res) => res.json())
       .then((data) => setLiquerState(data));
 
-    if (localStorage.getItem("salesMan")) {
+    if (localStorage?.getItem("salesMan")) {
       setSalesMan(localStorage.getItem("salesMan"));
     }
-    if (localStorage.getItem("drDate")) {
+    if (localStorage?.getItem("drDate")) {
       setDrDate(localStorage.getItem("drDate"));
     }
 
-    if (token && jwtDecode(localStorage.getItem("token")).shopType==="SHOP") {
-      
-      fetch(`${BasedURL}/shop/getBackPageData?from=${moment(drDate).subtract(1,'days').format('DD MMMM YYYY')}&to=${moment(drDate).format('DD MMMM YYYY')}&page=0&pagesize=200`, {
+    if (token && jwtDecode(localStorage.getItem("token")).shopType === "SHOP") {
+
+      fetch(`${BasedURL}/shop/getBackPageData?from=${moment(drDate).subtract(1, 'days').format('DD MMMM YYYY')}&to=${moment(drDate).format('DD MMMM YYYY')}&page=0&pagesize=200`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -49,18 +49,18 @@ const DataContext = ({ children }) => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
-          if(data.success===true){
-            
-            setSalesMan(data?.data[data.data.length-1]?.dailyReport?.salesmen)
+          if (data.success === true) {
+
+            setSalesMan(data?.data[data.data.length - 1]?.dailyReport?.salesmen)
           }
-          else{
+          else {
             localStorage.getItem("salesMan") ? setSalesMan(localStorage.getItem("salesMan")) : setSalesMan("")
           }
         });
     }
 
-    if (token && jwtDecode(localStorage.getItem("token")).shopType==="BAR") {
-      fetch(`${BasedURL}/shop/getBarFrontPageData?from=${moment(drDate).subtract(1,'days').format('DD MMMM YYYY')}&to=${moment(drDate).format('DD MMMM YYYY')}&page=0&pagesize=200`, {
+    if (token && jwtDecode(localStorage.getItem("token")).shopType === "BAR") {
+      fetch(`${BasedURL}/shop/getBarFrontPageData?from=${moment(drDate).subtract(1, 'days').format('DD MMMM YYYY')}&to=${moment(drDate).format('DD MMMM YYYY')}&page=0&pagesize=200`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -70,18 +70,18 @@ const DataContext = ({ children }) => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data)
-          if(data.success===true){
-            
-            setSalesMan(data?.data[data.data.length-1]?.salesmen)
+          if (data.success === true) {
+
+            setSalesMan(data?.data[data.data.length - 1]?.salesmen)
           }
-          else{
+          else {
             setSalesMan("")
           }
         });
     }
 
 
-    
+
   }, [drDate]);
 
   const { data: liquors, isLoading: brandsLoaded, refetch } = useQuery({
@@ -101,7 +101,7 @@ const DataContext = ({ children }) => {
 
 
 
-  
+
 
   const { data: liquorsParentData } = useQuery({
     queryKey: ["liquors"],
@@ -134,7 +134,7 @@ const DataContext = ({ children }) => {
     },
   });
 
-  
+
 
   const { data: totalExpensesData, isLoading } = useQuery({
     queryKey: ["totalExpensesData"],
@@ -151,7 +151,7 @@ const DataContext = ({ children }) => {
     },
   });
 
-  
+
   const { data: borrowedCashReturnData } = useQuery({
     queryKey: ["borrowedCashReturnData"],
     queryFn: async () => {
@@ -204,9 +204,9 @@ const DataContext = ({ children }) => {
     drDate,
     setDrDate,
     RMLloading,
-    food, 
+    food,
     setFood
-    
+
   };
 
   return (

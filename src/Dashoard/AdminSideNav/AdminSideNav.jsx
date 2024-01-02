@@ -30,7 +30,6 @@ const AdminSideNav = () => {
   return (
     <>
       <div className="flex flex-col w-48 h-screen px-4 py-8 bg-white border-r sidenav">
-        
         <div
           style={{
             left: "0",
@@ -43,11 +42,11 @@ const AdminSideNav = () => {
           </div>
           <Link>
             <div>
-              <h1 className="font-bold text-red-400 text-center uppercase">
-                Name :-   {jwtDecode(localStorage.getItem("token")).name}
+              <h1 className="font-bold text-red-400 text-center capitalize ">
+                Name :- {jwtDecode(localStorage.getItem("token")).name}
               </h1>
               <div>
-                <h1 className="font-bold text-center uppercase mt-2">
+                <h1 className="font-bold text-center mt-2 capitalize">
                   {jwtDecode(localStorage.getItem("token")).role}
                 </h1>
               </div>
@@ -70,20 +69,16 @@ const AdminSideNav = () => {
                 to="/admin/shopList"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                दुकान/बार 
-
+                दुकान/बार
               </NavLink>
             </li>
-
 
             <li className="my-4">
               <NavLink
                 to="/admin/shopParmisson"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-
-दुकान/बार  की अनुमति
-
+                दुकान/बार की अनुमति
               </NavLink>
             </li>
             <li className="my-4">
@@ -91,15 +86,11 @@ const AdminSideNav = () => {
                 to="/admin/brandlist"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-
-ब्रांड सूची
-
+                ब्रांड सूची
               </NavLink>
             </li>
 
             <hr className="mt-4 mb-2" />
-
-           
 
             <button
               onClick={() => {
@@ -112,7 +103,6 @@ const AdminSideNav = () => {
                 }).then((willDelete) => {
                   if (willDelete) {
                     logout({ returnTo: window.location.origin });
-                   
                   } else {
                     swal("you haven't logged out");
                   }

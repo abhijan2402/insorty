@@ -17,15 +17,15 @@ const DashboardLayout = () => {
 
   if (token) {
     const decode = jwtDecode(token);
-    if (decode.role === "shop" && decode.shopType==="BAR") {
+    if (decode.role === "shop" && decode.shopType === "BAR") {
       return <Navigate to="/login" replace />;
     }
   }
 
-
   return (
     <>
-      <div className="md:hidden block"
+      <div
+        className="md:hidden block"
         style={{
           position: "fixed",
           zIndex: "99999999999999999999",

@@ -43,13 +43,19 @@ const SideNav = () => {
           </div>
           <Link>
             <div>
-              <h1 className="font-bold text-red-400 text-center uppercase">
-                Name :-   {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
-                
+              <h1 className="font-bold text-red-400 text-center capitalize">
+                Name :-{" "}
+                {jwtDecode(localStorage.getItem("token")).role === "admin"
+                  ? jwtDecode(localStorage.getItem("token")).shopName
+                  : jwtDecode(localStorage.getItem("token")).role === "subadmin"
+                  ? jwtDecode(localStorage.getItem("token")).shopName
+                  : jwtDecode(localStorage.getItem("token")).name}
               </h1>
-              <h1 className="font-bold text-center uppercase mt-2">Type :-   SHOP</h1>
+              <h1 className="font-bold text-center capitalize mt-2">
+                Type :- Shop
+              </h1>
               <div>
-                <h1 className="font-bold text-center uppercase mt-2">
+                <h1 className="font-bold text-center capitalize mt-2">
                   {jwtDecode(localStorage.getItem("token")).role}
                 </h1>
               </div>
@@ -101,7 +107,7 @@ const SideNav = () => {
                 to="/user/branchNparty"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-                ब्रांच और पार्टी 
+                ब्रांच और पार्टी
               </NavLink>
             </li>
 
@@ -198,12 +204,12 @@ const SideNav = () => {
                 to="/user/previousloan"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
-              पिछली उधारी
+                पिछली उधारी
               </NavLink>
             </li>
 
             <button
-               onClick={() => {
+              onClick={() => {
                 swal({
                   title: "Are you sure?",
                   text: `You will be logged out from the session`,
@@ -213,7 +219,6 @@ const SideNav = () => {
                 }).then((willDelete) => {
                   if (willDelete) {
                     logout({ returnTo: window.location.origin });
-                   
                   } else {
                     swal("you haven't logged out");
                   }
@@ -232,7 +237,7 @@ const SideNav = () => {
                   : "hidden"
               }
             >
-              <NavLink  to="/admin">To Admin</NavLink>
+              <NavLink to="/admin">To Admin</NavLink>
             </button>
             <button
               className={
@@ -241,7 +246,7 @@ const SideNav = () => {
                   : "hidden"
               }
             >
-              <NavLink  to="/subadmin">To Sub Admin</NavLink>
+              <NavLink to="/subadmin">To Sub Admin</NavLink>
             </button>
           </nav>
         </div>
