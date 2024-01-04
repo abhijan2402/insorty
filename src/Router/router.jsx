@@ -64,7 +64,7 @@ import BranchNParty from "../Pages/Users/BranchNParty/BranchNParty";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/insorty",
     element: <Login />,
   },
   {
@@ -177,7 +177,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/user/branchNparty",
-        element: <BranchNParty/>,
+        element: <BranchNParty />,
       },
       {
         path: "/user/borrow/from/:partyId",
@@ -303,14 +303,13 @@ const router = createBrowserRouter([
         element: <SendFormat />,
       },
       {
-        path: '/user/previousloan',
+        path: "/user/previousloan",
         element: <PreviousLoansList />,
       },
       {
-        path: '/user/previousloan/details/:loandataId',
+        path: "/user/previousloan/details/:loandataId",
         element: <PreviousLoansDetails />,
-      }
-
+      },
     ],
   },
   {
@@ -352,7 +351,7 @@ const router = createBrowserRouter([
 
         element: <BranchFrom />,
       },
-      
+
       {
         path: "/user/bearshop/borrow/from/:partyId",
         element: <BorrowDetails />,
@@ -401,9 +400,8 @@ const router = createBrowserRouter([
       {
         path: "/user/bearshop/borrow/from/:partyId",
         element: <BorrowDetails />,
-        
       },
-      
+
       {
         path: "/user/bearshop/partners/from/:partnerId",
         element: <PartnarDetails />,
@@ -537,14 +535,13 @@ const router = createBrowserRouter([
         element: <SendFormat />,
       },
       {
-        path: '/user/bearshop/previousloan',
+        path: "/user/bearshop/previousloan",
         element: <PreviousLoansList />,
       },
       {
-        path: '/user/bearshop/previousloan/details/:loandataId',
+        path: "/user/bearshop/previousloan/details/:loandataId",
         element: <PreviousLoansDetails />,
-      }
-      
+      },
     ],
   },
 ]);

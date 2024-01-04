@@ -11,7 +11,6 @@ const CashReciveForm = ({
   item,
   handleRemoveFieldsCashBack,
 }) => {
-
   const {
     parties,
     partyLoaded,
@@ -32,7 +31,7 @@ const CashReciveForm = ({
   return (
     <>
       <tr>
-      <th>{index+1}</th>
+        <th className="h-12">{index + 1}</th>
         <th
           className="cross"
           onClick={() => {
@@ -67,7 +66,7 @@ const CashReciveForm = ({
               required
               value={item.type}
               onChange={(e) => {
-                item.id = ""
+                item.id = "";
                 onChangeCashRecive(e, index);
               }}
               id=""
@@ -82,164 +81,176 @@ const CashReciveForm = ({
 
         <td>
           <div className="form-control">
-         
-            {item.type==="PARTY" ?(
-            <Autocomplete
-              size="small"
-              style={{
-                width: "20rem",
-                border:"1px solid black",
-              borderRadius:"5px"
-              }}
-              options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
-              getOptionLabel={(option) => (option ? option.partyName : "")}
-              className={item.type === "PARTY" ? "" : "displayHidden"}
-              onBlur={() => {
-                if (item.id === "" || item.id===null || item.id===undefined) {
-                  Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please choose Party Name from Options',
-                  });
+            {item.type === "PARTY" ? (
+              <Autocomplete
+                size="small"
+                style={{
+                  width: "20rem",
+                  border: "1px solid black",
+                  borderRadius: "5px",
+                }}
+                options={
+                  parties.length > 0
+                    ? parties.filter((prev) => prev.isActive === true)
+                    : ["no options"]
                 }
-              }}
-              onChange={(event, value) => {
-                if (value) {
-                  item.name = value.partyName;
-                  item.id = value._id;
-                } else {
-                  item.name = "";
-                  item.id = "";
+                getOptionLabel={(option) => (option ? option.partyName : "")}
+                className={item.type === "PARTY" ? "" : "displayHidden"}
+                onBlur={() => {
+                  if (
+                    item.id === "" ||
+                    item.id === null ||
+                    item.id === undefined
+                  ) {
+                    Swal.fire({
+                      icon: "error",
+                      title: "Error",
+                      text: "Please choose Party Name from Options",
+                    });
+                  }
+                }}
+                onChange={(event, value) => {
+                  if (value) {
+                    item.name = value.partyName;
+                    item.id = value._id;
+                  } else {
+                    item.name = "";
+                    item.id = "";
+                  }
+
+                  onChangeCashRecive(event, index);
+                  console.log(item);
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    required
+                    className="dailyReportInput"
+                    inputProps={{ ...params.inputProps, value: item.name }}
+                    onChange={(event) => {
+                      item.name = event.target.value;
+                    }}
+                  />
+                )}
+              />
+            ) : item.type === "PARTNER" ? (
+              <Autocomplete
+                size="small"
+                style={{
+                  width: "20rem",
+                  border: "1px solid black",
+                  borderRadius: "5px",
+                }}
+                options={partners.length > 0 ? partners : ["no options"]}
+                getOptionLabel={(option) => (option ? option.name : "")}
+                className={item.type === "PARTNER" ? "" : "displayHidden"}
+                onBlur={() => {
+                  if (
+                    item.id === "" ||
+                    item.id === null ||
+                    item.id === undefined
+                  ) {
+                    Swal.fire({
+                      icon: "error",
+                      title: "Error",
+                      text: "Please choose Party Name from Options",
+                    });
+                  }
+                }}
+                onChange={(event, value) => {
+                  if (value) {
+                    item.name = value.name;
+                    item.id = value._id;
+                  } else {
+                    item.name = "";
+                    item.id = "";
+                  }
+
+                  onChangeCashRecive(event, index);
+                  console.log(item);
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    required
+                    className="dailyReportInput"
+                    inputProps={{ ...params.inputProps, value: item.name }}
+                    onChange={(event) => {
+                      item.name = event.target.value;
+                    }}
+                  />
+                )}
+              />
+            ) : item.type === "BRANCH" ? (
+              <Autocomplete
+                size="small"
+                style={{
+                  width: "20rem",
+                  border: "1px solid black",
+                  borderRadius: "5px",
+                }}
+                options={
+                  branches.length > 0
+                    ? branches.filter((prev) => prev.isActive === true)
+                    : ["no options"]
                 }
-
-                onChangeCashRecive(event, index);
-                console.log(item);
-              }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  required
-                  className="dailyReportInput"
-                  inputProps={{ ...params.inputProps, value: item.name }}
-                  onChange={(event) => {
-                    item.name = event.target.value;
-                   
-                  }}
-                />
-              )}
-            />) : item.type==="PARTNER" ?(
-
-            <Autocomplete
-              size="small"
-              style={{
-                width: "20rem",
-                border:"1px solid black",
-              borderRadius:"5px"
-              }}
-              options={partners.length > 0 ? partners : ["no options"]}
-              getOptionLabel={(option) => (option ? option.name : "")}
-              className={item.type === "PARTNER" ? "" : "displayHidden"}
-              onBlur={() => {
-                if (item.id === "" || item.id===null || item.id===undefined) {
-                  Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please choose Party Name from Options',
-                  });
-                }
-              }}
-
-              onChange={(event, value) => {
-                if (value) {
-                  item.name = value.name;
-                  item.id = value._id;
-                } else {
-                  item.name = "";
-                  item.id = "";
-                }
-
-                onChangeCashRecive(event, index);
-                console.log(item);
-              }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  required
-                  className="dailyReportInput"
-                  inputProps={{ ...params.inputProps, value: item.name }}
-                  onChange={(event) => {
-                    item.name = event.target.value;
-                  
-                  }}
-                />
-              )}
-            />) : item.type==="BRANCH" ?(
-
-            <Autocomplete
-              size="small"
-              style={{
-                width: "20rem",
-                border:"1px solid black",
-              borderRadius:"5px"
-              }}
-              options={branches.length > 0 ? branches.filter((prev)=>prev.isActive===true) : ["no options"]}
-              getOptionLabel={(option) => (option ? option.branchName : "")}
-              className={item.type === "BRANCH" ? "" : "displayHidden"}
-              onBlur={() => {
-                if (item.id === "" || item.id===null || item.id===undefined) {
-                  Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please choose Party Name from Options',
-                  });
-                }
-              }}
-              
-
-              onChange={(event, value) => {
-                if (value) {
-                  item.name = value.branchName;
-                  item.id = value._id;
-                } else {
-                  item.name = "";
-                  item.id = "";
-                }
-
-              }}
-              renderInput={(params) => (
-                <TextField
-                  required
-                  {...params}
-                  className="dailyReportInput"
-                  inputProps={{ ...params.inputProps, value: item.name }}
-                  onChange={(event) => {
-                    item.name = event.target.value;
-            
-                  }}
-                />
-              )}
-            />) : <div></div>}
+                getOptionLabel={(option) => (option ? option.branchName : "")}
+                className={item.type === "BRANCH" ? "" : "displayHidden"}
+                onBlur={() => {
+                  if (
+                    item.id === "" ||
+                    item.id === null ||
+                    item.id === undefined
+                  ) {
+                    Swal.fire({
+                      icon: "error",
+                      title: "Error",
+                      text: "Please choose Party Name from Options",
+                    });
+                  }
+                }}
+                onChange={(event, value) => {
+                  if (value) {
+                    item.name = value.branchName;
+                    item.id = value._id;
+                  } else {
+                    item.name = "";
+                    item.id = "";
+                  }
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    required
+                    {...params}
+                    className="dailyReportInput"
+                    inputProps={{ ...params.inputProps, value: item.name }}
+                    onChange={(event) => {
+                      item.name = event.target.value;
+                    }}
+                  />
+                )}
+              />
+            ) : (
+              <div></div>
+            )}
           </div>
         </td>
 
-        
-
         <td>
           <input
-            type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
+            type="number"
+            onKeyDown={(e) => {
+              // Prevent the default behavior of arrow keys
+              if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                e.preventDefault();
+              }
+            }}
             required
             name="amount"
             min={0}
-            value={(item.amount)}
+            value={item.amount}
             onChange={(e) => onChangeCashRecive(e, index)}
             className="smallinput wd-7"
-            
           />
         </td>
         <td>

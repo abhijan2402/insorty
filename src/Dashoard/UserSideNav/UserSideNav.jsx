@@ -30,41 +30,47 @@ const SideNav = () => {
 
   return (
     <>
-      <div className="flex flex-col w-56 h-screen px-4 py-8 bg-white border-r sticky  left-0 sidenav">
-        <div
-          style={{
-            left: "0",
-            zIndex: " 1000",
-          }}
-          className="flex-col w-56 fixed px-4 md:mb-14 top-0 md:top-0 bg-white border-r flex "
-        >
-          <div className="text-3xl flex justify-center items-center font-semibold  text-white">
-            <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />
-          </div>
-          <Link>
-            <div>
-              <h1 className="font-bold text-red-400 text-center capitalize">
-                Name :-{" "}
-                {jwtDecode(localStorage.getItem("token")).role === "admin"
-                  ? jwtDecode(localStorage.getItem("token")).shopName
-                  : jwtDecode(localStorage.getItem("token")).role === "subadmin"
-                  ? jwtDecode(localStorage.getItem("token")).shopName
-                  : jwtDecode(localStorage.getItem("token")).name}
-              </h1>
-              <h1 className="font-bold text-center capitalize mt-2">
-                Type :- Shop
-              </h1>
-              <div>
-                <h1 className="font-bold text-center capitalize mt-2">
-                  {jwtDecode(localStorage.getItem("token")).role}
-                </h1>
-              </div>
-            </div>
-          </Link>
-          <hr className="mt-4 mb-2" />
+      <div
+        style={{
+          left: "0",
+          zIndex: " 100",
+          height: "100px",
+        }}
+        className="flex-col w-56 fixed px-4 md:mb-14 top-0 md:top-0 bg-white border-r flex "
+      >
+        <div className="text-3xl flex justify-center items-center font-semibold  text-white">
+          <img src={Logo} alt="Instory Logo" style={{ width: "40%" }} />
         </div>
-
-        <div className="flex flex-col justify-between flex-1 mt-[12rem] md:mt-[9rem] ">
+        <Link>
+          <div>
+            <h1 className="font-bold text-red-400 text-center capitalize">
+              Name :-{" "}
+              {jwtDecode(localStorage.getItem("token")).role === "admin"
+                ? jwtDecode(localStorage.getItem("token")).shopName
+                : jwtDecode(localStorage.getItem("token")).role === "subadmin"
+                ? jwtDecode(localStorage.getItem("token")).shopName
+                : jwtDecode(localStorage.getItem("token")).name}
+            </h1>
+            <h1 className="font-bold text-center capitalize mt-2">
+              Type :- Shop
+            </h1>
+            <div>
+              <h1 className="font-bold text-center capitalize mt-2">
+                {jwtDecode(localStorage.getItem("token")).role}
+              </h1>
+            </div>
+          </div>
+        </Link>
+        <hr className="mt-4 mb-2" />
+      </div>
+      <div
+        style={{
+          marginTop: "180px",
+          height: "30.5rem",
+        }}
+        className="flex flex-col w-56	 px-4  bg-white border-r sticky  left-0 sidenav"
+      >
+        <div className="flex flex-col justify-between flex-1  ">
           <nav>
             <li className="my-4">
               <NavLink

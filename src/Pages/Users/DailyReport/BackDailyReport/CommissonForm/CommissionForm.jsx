@@ -10,7 +10,7 @@ const CommissionForm = ({
   return (
     <>
       <tr>
-      <th>{index+1}</th>
+        <th className="h-12">{index + 1}</th>
         <th
           className="cross"
           onClick={() => {
@@ -39,8 +39,13 @@ const CommissionForm = ({
         <td>
           <div className="form-control">
             <select
-              onBlur={()=>item.type.scrollIntoView({ behavior: 'smooth', block:"start", inline: 'start' })}
-
+              onBlur={() =>
+                item.type.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                  inline: "start",
+                })
+              }
               value={item.type}
               required
               onChange={(e) => onChangeCommison(e, index)}
@@ -61,18 +66,17 @@ const CommissionForm = ({
 
         <td>
           <input
-            type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
+            type="number"
+            onKeyDown={(e) => {
+              // Prevent the default behavior of arrow keys
+              if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                e.preventDefault();
+              }
+            }}
             required
             className="smallinput wd-6"
             name="amount"
-            value={(item.amount)}
-
+            value={item.amount}
             min={0}
             onChange={(e) => onChangeCommison(e, index)}
             style={{

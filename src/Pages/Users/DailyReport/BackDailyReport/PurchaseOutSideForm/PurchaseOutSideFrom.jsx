@@ -42,8 +42,6 @@ const PurchaseOutSideFrom = ({
     fetchOptions(value);
   };
 
-
-
   if (brandsLoaded || partyLoaded) {
     return (
       <div>
@@ -55,7 +53,7 @@ const PurchaseOutSideFrom = ({
   return (
     <>
       <tr>
-      <th className="sticky">{index+1}</th>
+        <th className="sticky h-12">{index + 1}</th>
         <th
           className="cross"
           onClick={() => {
@@ -85,21 +83,28 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control">
             <Autocomplete
-              options={parties.length > 0 ? parties.filter((prev)=>prev.isActive===true) : ["no options"]}
+              options={
+                parties.length > 0
+                  ? parties.filter((prev) => prev.isActive === true)
+                  : ["no options"]
+              }
               size="small"
-              
               style={{
                 width: "20rem",
-                border:"1px solid black",
-              borderRadius:"5px"
+                border: "1px solid black",
+                borderRadius: "5px",
               }}
               getOptionLabel={(option) => (option ? option.partyName : "")}
               onBlur={() => {
-                if (item.partyId === "" || item.partyId===null || item.partyId===undefined) {
+                if (
+                  item.partyId === "" ||
+                  item.partyId === null ||
+                  item.partyId === undefined
+                ) {
                   Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please choose Party Name from Options',
+                    icon: "error",
+                    title: "Error",
+                    text: "Please choose Party Name from Options",
                   });
                 }
               }}
@@ -123,7 +128,6 @@ const PurchaseOutSideFrom = ({
                   inputProps={{ ...params.inputProps, value: item.partyName }}
                   onChange={(event) => {
                     item.partyName = event.target.value;
-                    
                   }}
                 />
               )}
@@ -133,22 +137,26 @@ const PurchaseOutSideFrom = ({
         {/* ======== प्रारम्भिक स्टॉक ========= */}
         <td>
           <div className="form-control">
-  <Autocomplete
+            <Autocomplete
               id="autocomplete"
               size="small"
               style={{
                 width: "20rem",
-                border:"1px solid black",
-              borderRadius:"5px"
+                border: "1px solid black",
+                borderRadius: "5px",
               }}
               options={options}
               getOptionLabel={(option) => (option ? option.brandName : "")}
               onBlur={() => {
-                if (item.liquorID === "" || item.liquorID===null || item.liquorID===undefined) {
+                if (
+                  item.liquorID === "" ||
+                  item.liquorID === null ||
+                  item.liquorID === undefined
+                ) {
                   Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please choose Brand Name from Options',
+                    icon: "error",
+                    title: "Error",
+                    text: "Please choose Brand Name from Options",
                   });
                 }
               }}
@@ -156,7 +164,7 @@ const PurchaseOutSideFrom = ({
                 if (value) {
                   item.brandName = value.brandName;
                   item.liquorID = value._id;
-                  item.size = value
+                  item.size = value;
                 } else {
                   item.brandName = "";
                   item.liquorID = "";
@@ -167,7 +175,6 @@ const PurchaseOutSideFrom = ({
                 <TextField
                   required
                   size="small"
-                  
                   {...params}
                   // value={item.brandName}
                   inputProps={{
@@ -187,30 +194,26 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control ">
             <select
-            
-            className="semiSmallInput wd-9"
-            name="quantity"
-            value={item.quantity}
-            onChange={(e) => onChangePurchesOutSide(e, index)}
-            required
+              className="semiSmallInput wd-9"
+              name="quantity"
+              value={item.quantity}
+              onChange={(e) => onChangePurchesOutSide(e, index)}
+              required
             >
-              {
-            item.size.sizes.filter((size)=> size.quantityInML!==30).map((size)=>{
-              if( item.brandName && item.brandName!=="" ){
-              return(
-                <option value={size.quantityInML}>{size.quantityInML}ml</option>
-              )}
-              else{
-                return (
-                  <option disabled>please-select-brand</option>
-                )
-              }
-            })
-          }
-              
-              
+              {item.size.sizes
+                .filter((size) => size.quantityInML !== 30)
+                .map((size) => {
+                  if (item.brandName && item.brandName !== "") {
+                    return (
+                      <option value={size.quantityInML}>
+                        {size.quantityInML}ml
+                      </option>
+                    );
+                  } else {
+                    return <option disabled>please-select-brand</option>;
+                  }
+                })}
             </select>
-            
           </div>
         </td>
 
@@ -219,15 +222,15 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control ">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                min={0}
-                required
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              min={0}
+              required
               className="smallinput"
               name="theNumber"
               value={item.theNumber}
@@ -238,15 +241,15 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control ">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                min={0}
-                required
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              min={0}
+              required
               className="smallinput"
               name="rate"
               value={item.rate}
@@ -257,16 +260,16 @@ const PurchaseOutSideFrom = ({
         <td>
           <div className="form-control ">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
               disabled
-                min={0}
-                required
+              min={0}
+              required
               className="smallinput"
               name="total"
               value={Number(item.total).toFixed(2)}
@@ -276,13 +279,11 @@ const PurchaseOutSideFrom = ({
         </td>
         {/* ======== आमद (खरीद)-बा. ========= */}
 
-      
-
         <td>
           <div className="form-control">
             <input
               type="text"
-                required
+              required
               className="smallinput wd-30"
               name="reason"
               value={item.reason}

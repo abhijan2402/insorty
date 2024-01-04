@@ -1,4 +1,4 @@
-import React, { useContext, useState,useRef } from "react";
+import React, { useContext, useState, useRef } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { DataContextApi } from "../../../../../Context/DataContext";
 import useLiquors from "../../../../../Hooks/useLiquors";
@@ -18,15 +18,18 @@ const RmlFrom = ({
   const serialNo = index + 1;
   const { setAddRmlState } = useRmlAdd();
 
-  const ip = useRef(null)
+  const ip = useRef(null);
   const scrollToComponent = (ref) => {
-    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"center" });
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
   };
 
   // const { liquors } = useContext(DataContextApi);
   let rmlData = addRmlState;
   const { brandsLoaded, liquors } = useLiquors();
-
 
   const token = localStorage.getItem("token");
 
@@ -53,14 +56,10 @@ const RmlFrom = ({
     fetchOptions(value);
   };
 
-
-
-  
-
   return (
     <>
       <tr>
-        <th >{serialNo}</th>
+        <th className="h-12">{serialNo}</th>
         <th
           className="cross"
           onClick={() => {
@@ -89,22 +88,26 @@ const RmlFrom = ({
 
         <td>
           <div className="form-control">
-          <Autocomplete
+            <Autocomplete
               id="autocomplete"
               size="small"
               style={{
                 width: "20rem",
-                border:"1px solid black",
-              borderRadius:"5px"
+                border: "1px solid black",
+                borderRadius: "5px",
               }}
-              options={options.filter((brand)=>brand.type==='DESHIRML')}
+              options={options.filter((brand) => brand.type === "DESHIRML")}
               getOptionLabel={(option) => (option ? option.brandName : "")}
               onBlur={() => {
-                if (item.liquorID === "" || item.liquorID===null || item.liquorID===undefined) {
+                if (
+                  item.liquorID === "" ||
+                  item.liquorID === null ||
+                  item.liquorID === undefined
+                ) {
                   Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Please choose Brand Name from Options',
+                    icon: "error",
+                    title: "Error",
+                    text: "Please choose Brand Name from Options",
                   });
                 }
               }}
@@ -112,8 +115,10 @@ const RmlFrom = ({
                 if (value) {
                   item.brandName = value.brandName;
                   item.liquorID = value._id;
-                  item.size = value
-                  item.buyRate = value.sizes.find((brand)=>brand.quantityInML===item.ml).rate
+                  item.size = value;
+                  item.buyRate = value.sizes.find(
+                    (brand) => brand.quantityInML === item.ml
+                  ).rate;
                 } else {
                   item.brandName = "";
                   item.liquorID = "";
@@ -143,44 +148,38 @@ const RmlFrom = ({
         <td>
           <div className="form-control ">
             <select
-            
-            className="semiSmallInput wd-9"
-            name="ml"
-            value={item.ml}
-            onChange={(e) => onChangeRmlHandler(e, index)}
-            required
+              className="semiSmallInput wd-9"
+              name="ml"
+              value={item.ml}
+              onChange={(e) => onChangeRmlHandler(e, index)}
+              required
             >
-              {
-            item.size.sizes.map((size)=>{
-              if( item.brandName && item.brandName!=="" ){
-              return(
-                <option value={size.quantityInML}>{size.quantityInML}ml</option>
-              )}
-              else{
-                return (
-                  <option disabled>please-select-brand</option>
-                )
-              }
-            })
-          }
-              
-              
+              {item.size.sizes.map((size) => {
+                if (item.brandName && item.brandName !== "") {
+                  return (
+                    <option value={size.quantityInML}>
+                      {size.quantityInML}ml
+                    </option>
+                  );
+                } else {
+                  return <option disabled>please-select-brand</option>;
+                }
+              })}
             </select>
-            
           </div>
         </td>
         <td>
           <div className="form-control">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-7"
               name="averageRate"
               value={Number(item.averageRate).toFixed(2)}
@@ -193,16 +192,16 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
-                disabled
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
+              disabled
               className="smallinput wd-5"
               name="openingStock"
               value={item.openingStock}
@@ -215,15 +214,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-5"
               name="incomingPurchase"
               value={item.incomingPurchase}
@@ -236,15 +235,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput"
               name="buyRate"
               disabled
@@ -258,15 +257,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-5"
               name="incomePurchase"
               value={item.incomePurchase}
@@ -279,15 +278,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput"
               name="purchaseRate"
               value={item.purchaseRate}
@@ -299,15 +298,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-5"
               name="inflowCredit"
               value={item.inflowCredit}
@@ -319,15 +318,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-5"
               name="sending"
               value={item.sending}
@@ -339,15 +338,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-5"
               name="sumRemainder"
               value={item.sumRemainder}
@@ -360,15 +359,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-5"
               name="closingStock"
               value={item.closingStock}
@@ -380,15 +379,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-5"
               name="sales"
               value={item.sales}
@@ -401,19 +400,19 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-8"
               name="rate"
               ref={ip}
-                onFocus={()=>scrollToComponent(ip)}
+              onFocus={() => scrollToComponent(ip)}
               value={item.rate}
               onChange={(e) => onChangeRmlHandler(e, index)}
             />
@@ -423,15 +422,15 @@ const RmlFrom = ({
         <td>
           <div className="form-control items-center">
             <input
-              type = "number"
- onKeyDown={(e) => {
-                  // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
-                    e.preventDefault();
-                  }
-                }} 
-                required
-                min={0}
+              type="number"
+              onKeyDown={(e) => {
+                // Prevent the default behavior of arrow keys
+                if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                  e.preventDefault();
+                }
+              }}
+              required
+              min={0}
               className="smallinput wd-11"
               name="cost"
               value={Number(item.cost).toFixed(2)}

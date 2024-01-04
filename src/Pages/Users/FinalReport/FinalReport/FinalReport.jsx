@@ -35,7 +35,7 @@ const FinalReport = () => {
 
   return (
     <>
-      <div className="py-0 sticky top-0 bg-gray-50 z-5000">
+      <div className="py-0 sticky top-0 bg-gray-50 z-1000">
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट
         </button>
@@ -44,10 +44,19 @@ const FinalReport = () => {
             अंतिम रिपोर्ट
           </h2>
         </div>
-        <div className="divider my-2"></div>
-      </div>
-      <section ref={front} className="py-4 px-4">
-        <div className="title flex justify-center items-center text-center my-4 bg-white-800 z-1">
+        <div
+          ref={front}
+          className="flex gap-2 mx-auto w-auto"
+          style={{
+            margin: "auto",
+            width: "auto",
+            width: "10%",
+            alignItems: "center",
+            marginTop: "20px",
+          }}
+          //  flex justify-center items-center self-center w-full bg-red-500 text-center"
+          // className="title flex justify-center items-center text-center my-4  bg-white-800 z-1 border-2 w-50"
+        >
           <DatePicker
             selected={new Date(month)}
             name="date"
@@ -56,9 +65,12 @@ const FinalReport = () => {
             }}
             dateFormat="MMMM yyyy"
             placeholderText={"dd/mm/yyyy"}
-            className="inputBox"
+            className="inputBox date"
           />
         </div>
+        <div className="divider my-2"></div>
+      </div>
+      <section ref={front} className="py-4 px-4">
         <div>
           <ListOfFinalReport
             monthlyFinalReport={monthlyFinalReport}

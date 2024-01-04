@@ -1606,7 +1606,7 @@ const BackDailyReport = () => {
                         );
                       })}
 
-                      <tr>
+                      <tr className="border-2">
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
@@ -1823,7 +1823,7 @@ const BackDailyReport = () => {
                 >
                   <thead>
                     <tr>
-                      <th className="text-s" style={{ margin: "15px" }}>
+                      <th className="text-s" style={{}}>
                         {" "}
                         क्र. सं.
                       </th>
@@ -1857,7 +1857,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky">
+                      <th className="sticky border-2">
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
@@ -1976,7 +1976,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky">
+                      <th className="sticky border-2">
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
@@ -2057,10 +2057,10 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky">
+                      <th className="sticky border-1">
                         {" "}
                         <button
-                          className="sticky btn bg-[#AA237A] btn-sm"
+                          className="sticky btn bg-[#AA237A] btn-sm "
                           onClick={(e) => handelAddOneCashRecive(e)}
                         >
                           ADD
