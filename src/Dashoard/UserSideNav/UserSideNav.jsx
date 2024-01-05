@@ -33,8 +33,9 @@ const SideNav = () => {
       <div
         style={{
           left: "0",
-          zIndex: " 100",
-          height: "100px",
+          zIndex: "100",
+          // height: "100px",
+          // height: "800px",
         }}
         className="flex-col w-56 fixed px-4 md:mb-14 top-0 md:top-0 bg-white border-r flex "
       >
@@ -62,44 +63,47 @@ const SideNav = () => {
           </div>
         </Link>
         <hr className="mt-4 mb-2" />
-      </div>
-      <div
-        style={{
-          marginTop: "180px",
-          height: "30.5rem",
-        }}
-        className="flex flex-col w-56	 px-4  bg-white border-r sticky  left-0 sidenav"
-      >
-        <div className="flex flex-col justify-between flex-1  ">
-          <nav>
-            <li className="my-4">
-              <NavLink
-                to="/user/dailyreport"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                दैनिक रिपोर्ट
-              </NavLink>
-            </li>
+        <div
+          style={{
+            // marginTop: "180px",
+            height: "30rem",
+            // zIndex: "10",
+            // height: "450px",
+            // left: "0",
+            width: "110%",
+          }}
+          className="flex flex-col w-55	fixed  bg-white border-r sticky  left-0 sidenav"
+        >
+          <div className="flex flex-col justify-between flex-1  ">
+            <nav>
+              <li className="my-4">
+                <NavLink
+                  to="/user/dailyreport"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  दैनिक रिपोर्ट
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/partnersMarge"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                पार्टनर
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/partnersMarge"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  पार्टनर
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/maininvestment"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                मुख्य इन्वेस्ट
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/maininvestment"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  मुख्य इन्वेस्ट
+                </NavLink>
+              </li>
 
-            {/* <li className="my-4">
+              {/* <li className="my-4">
               <NavLink
                 to="/user/branch"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -108,96 +112,96 @@ const SideNav = () => {
               </NavLink>
             </li> */}
 
-            <li className="my-4">
-              <NavLink
-                to="/user/branchNparty"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                ब्रांच और पार्टी
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/branchNparty"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  ब्रांच और पार्टी
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/salary"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                कर्मचारी
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/salary"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  कर्मचारी
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/stock"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                स्टॉक
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/stock"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  स्टॉक
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/stocklanding"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                स्टॉक जमा नामे
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/stocklanding"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  स्टॉक जमा नामे
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/winebill"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                शराब बिल
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/winebill"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  शराब बिल
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/commisionroute"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                खर्चा आदि
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/commisionroute"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  खर्चा आदि
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/phonePay"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                खाते में और आज भुगतान
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/phonePay"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  खाते में और आज भुगतान
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/cashReceive"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                अन्य से नकद प्राप्ति
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/cashReceive"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  अन्य से नकद प्राप्ति
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/finalreport"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                अंतिम रिपोर्ट
-              </NavLink>
-            </li>
+              <li className="my-4">
+                <NavLink
+                  to="/user/finalreport"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  अंतिम रिपोर्ट
+                </NavLink>
+              </li>
 
-            <li className="my-4">
-              <NavLink
-                to="/user/payments"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-              >
-                सर्विस पेमेंट
-              </NavLink>
-            </li>
-            {/* <li className="my-4">
+              <li className="my-4">
+                <NavLink
+                  to="/user/payments"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  सर्विस पेमेंट
+                </NavLink>
+              </li>
+              {/* <li className="my-4">
               <NavLink
                 to="/user/allItems"
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -205,56 +209,57 @@ const SideNav = () => {
                 ब्रांच/पार्टी जोड़ें
               </NavLink>
             </li> */}
-            <li className="my-4">
-              <NavLink
-                to="/user/previousloan"
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              <li className="my-4">
+                <NavLink
+                  to="/user/previousloan"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                >
+                  पिछली उधारी
+                </NavLink>
+              </li>
+
+              <button
+                onClick={() => {
+                  swal({
+                    title: "Are you sure?",
+                    text: `You will be logged out from the session`,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                  }).then((willDelete) => {
+                    if (willDelete) {
+                      logout({ returnTo: window.location.origin });
+                    } else {
+                      swal("you haven't logged out");
+                    }
+                  });
+                }}
+                className="commonBtn flex justify-center items-center "
               >
-                पिछली उधारी
-              </NavLink>
-            </li>
+                <FaPowerOff />
+                <span className="mx-4 font-medium">Logout</span>
+              </button>
 
-            <button
-              onClick={() => {
-                swal({
-                  title: "Are you sure?",
-                  text: `You will be logged out from the session`,
-                  icon: "warning",
-                  buttons: true,
-                  dangerMode: true,
-                }).then((willDelete) => {
-                  if (willDelete) {
-                    logout({ returnTo: window.location.origin });
-                  } else {
-                    swal("you haven't logged out");
-                  }
-                });
-              }}
-              className="commonBtn flex justify-center items-center "
-            >
-              <FaPowerOff />
-              <span className="mx-4 font-medium">Logout</span>
-            </button>
-
-            <button
-              className={
-                jwtDecode(localStorage.getItem("token")).role === "admin"
-                  ? "commonBtn flex justify-center items-center"
-                  : "hidden"
-              }
-            >
-              <NavLink to="/admin">To Admin</NavLink>
-            </button>
-            <button
-              className={
-                jwtDecode(localStorage.getItem("token")).role === "subadmin"
-                  ? "commonBtn flex justify-center items-center"
-                  : "hidden"
-              }
-            >
-              <NavLink to="/subadmin">To Sub Admin</NavLink>
-            </button>
-          </nav>
+              <button
+                className={
+                  jwtDecode(localStorage.getItem("token")).role === "admin"
+                    ? "commonBtn flex justify-center items-center"
+                    : "hidden"
+                }
+              >
+                <NavLink to="/admin">To Admin</NavLink>
+              </button>
+              <button
+                className={
+                  jwtDecode(localStorage.getItem("token")).role === "subadmin"
+                    ? "commonBtn flex justify-center items-center"
+                    : "hidden"
+                }
+              >
+                <NavLink to="/subadmin">To Sub Admin</NavLink>
+              </button>
+            </nav>
+          </div>
         </div>
       </div>
     </>

@@ -1606,7 +1606,7 @@ const BackDailyReport = () => {
                         );
                       })}
 
-                      <tr className="border-2">
+                      <tr className="border-2 border-black">
                         <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
@@ -1857,7 +1857,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky border-2">
+                      <th className="sticky border-2 border-black">
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
@@ -1976,7 +1976,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky border-2">
+                      <th className="sticky border-2 border-black">
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm"
@@ -2057,7 +2057,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky border-1">
+                      <th className="sticky border-2 border-black">
                         {" "}
                         <button
                           className="sticky btn bg-[#AA237A] btn-sm "
