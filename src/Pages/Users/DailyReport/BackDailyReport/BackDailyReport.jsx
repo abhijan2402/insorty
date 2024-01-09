@@ -1607,7 +1607,7 @@ const BackDailyReport = () => {
                       })}
 
                       <tr className="border-2 border-black">
-                        <th>
+                        <th className="border-2 border-black">
                           <button
                             className="btn bg-[#AA237A] btn-sm"
                             onClick={(e) => {
@@ -2120,7 +2120,10 @@ const BackDailyReport = () => {
                   >
                     <thead>
                       <tr>
-                        <th className="text-xs"> क्र. सं.</th>
+                        <th className="text-xs border-2 border-black">
+                          {" "}
+                          क्र. सं.
+                        </th>
                         <th className="text-xs"></th>
                         <th className="text-xs">पार्टी का नाम</th>
                         <th className="text-xs"> ब्राण्ड</th>
