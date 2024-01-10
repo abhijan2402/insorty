@@ -1324,7 +1324,7 @@ const BackDailyReport = () => {
                             })}
 
                             <tr>
-                              <th className="sticky">
+                              <th className="">
                                 <button
                                   className="btn bg-[#AA237A] btn-sm"
                                   onClick={(e) => addOneSecondFormHandler(e)}
@@ -1606,8 +1606,8 @@ const BackDailyReport = () => {
                         );
                       })}
 
-                      <tr className="border-2 border-black">
-                        <th className="border-2 border-black">
+                      <tr>
+                        <th>
                           <button
                             className="btn bg-[#AA237A] btn-sm"
                             onClick={(e) => {
@@ -1857,10 +1857,10 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky border-2 border-black">
+                      <th className=" border-2 border-black">
                         {" "}
                         <button
-                          className="sticky btn bg-[#AA237A] btn-sm"
+                          className=" btn bg-[#AA237A] btn-sm"
                           onClick={(e) => {
                             scrollToTable(
                               e,
@@ -1976,10 +1976,10 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky border-2 border-black">
+                      <th className=" border-2 border-black">
                         {" "}
                         <button
-                          className="sticky btn bg-[#AA237A] btn-sm"
+                          className=" btn bg-[#AA237A] btn-sm"
                           onClick={(e) => handelAddOneCommison(e)}
                         >
                           ADD
@@ -2057,10 +2057,10 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky border-2 border-black">
+                      <th className=" border-2 border-black">
                         {" "}
                         <button
-                          className="sticky btn bg-[#AA237A] btn-sm "
+                          className=" btn bg-[#AA237A] btn-sm "
                           onClick={(e) => handelAddOneCashRecive(e)}
                         >
                           ADD
@@ -2239,7 +2239,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky">
+                      <th className="">
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
@@ -2325,7 +2325,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="sticky">
+                      <th className="">
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
