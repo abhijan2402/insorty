@@ -202,7 +202,7 @@ const BackDailyReport = () => {
     <>
       <section className="mx-2">
         <form onSubmit={handleSubmit}>
-          <div className="my-4 flex gap-4 items-center justify-center">
+          <div className="my-4 flex gap-4 items-center justify-center border-black">
             <h1 className="font-bold md:text-2xl sm:text-sm text-center">
               बीयर ओर अन्य
             </h1>
@@ -1324,7 +1324,7 @@ const BackDailyReport = () => {
                             })}
 
                             <tr>
-                              <th className="">
+                              <th className="sticky">
                                 <button
                                   className="btn bg-[#AA237A] btn-sm"
                                   onClick={(e) => addOneSecondFormHandler(e)}
@@ -1857,10 +1857,10 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className=" border-2 border-black">
+                      <th className="sticky border-2 border-black">
                         {" "}
                         <button
-                          className=" btn bg-[#AA237A] btn-sm"
+                          className="sticky btn bg-[#AA237A] btn-sm"
                           onClick={(e) => {
                             scrollToTable(
                               e,
@@ -1976,10 +1976,10 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className=" border-2 border-black">
+                      <th className="sticky border-2 border-black">
                         {" "}
                         <button
-                          className=" btn bg-[#AA237A] btn-sm"
+                          className="sticky btn bg-[#AA237A] btn-sm"
                           onClick={(e) => handelAddOneCommison(e)}
                         >
                           ADD
@@ -2057,10 +2057,10 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className=" border-2 border-black">
+                      <th className="sticky border-2 border-black">
                         {" "}
                         <button
-                          className=" btn bg-[#AA237A] btn-sm "
+                          className="sticky btn bg-[#AA237A] btn-sm "
                           onClick={(e) => handelAddOneCashRecive(e)}
                         >
                           ADD
@@ -2239,7 +2239,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="">
+                      <th className="sticky">
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
@@ -2325,7 +2325,7 @@ const BackDailyReport = () => {
                     })}
 
                     <tr>
-                      <th className="">
+                      <th className="sticky">
                         {" "}
                         <button
                           className="btn bg-[#AA237A] btn-sm"
