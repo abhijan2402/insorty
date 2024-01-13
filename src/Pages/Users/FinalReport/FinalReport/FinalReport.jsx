@@ -35,7 +35,7 @@ const FinalReport = () => {
 
   return (
     <>
-      <div className="py-0 sticky top-0 bg-gray-50 z-1000">
+      <div className="py-0 sticky top-0 bg-white z-1000">
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट
         </button>

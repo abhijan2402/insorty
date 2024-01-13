@@ -10,11 +10,10 @@ import Loader from "../../../../Components/Loader/Loader";
 import { DataContextApi } from "../../../../Context/DataContext";
 import DatePicker from "react-datepicker";
 import { Autocomplete } from "@mui/material";
-import {TextField} from "@mui/material";
+import { TextField } from "@mui/material";
 
 const FronteDailyReport = () => {
   const token = localStorage.getItem("token");
- 
 
   const { salesMan, setSalesMan, drDate, setDrDate } =
     useContext(DataContextApi);
@@ -26,7 +25,7 @@ const FronteDailyReport = () => {
     setAddOneFristFormState,
     myOptions,
     handleRemoveFields,
-    hasMore
+    hasMore,
   } = useFormulasFristFormFront();
 
   //=============== add One second form ================
@@ -36,7 +35,7 @@ const FronteDailyReport = () => {
     addOneSecondFormHandler,
     handelSeconFormOnChange,
     handleRemoveFieldsSecond,
-    hasMoreSmall
+    hasMoreSmall,
   } = useSecondFormFront();
 
   const { submitFristFormHandler, isLoadingSubmit } =
@@ -61,17 +60,17 @@ const FronteDailyReport = () => {
     setAddOneFristFormState(searchTerm);
   };
 
-  const {
-    data: salaryData,
-    salaryLoading,
-  } = useQuery({
+  const { data: salaryData, salaryLoading } = useQuery({
     queryKey: ["salaryData"],
     queryFn: async () => {
       const res = await fetch(
         "https://insorty-api.onrender.com/shop/getAllEmployees",
         {
           method: "GET",
-          headers: { "Content-Type": "application/json", cookie_token: localStorage.getItem('token') },
+          headers: {
+            "Content-Type": "application/json",
+            cookie_token: localStorage.getItem("token"),
+          },
         }
       );
       const data = await res.json();
@@ -83,21 +82,15 @@ const FronteDailyReport = () => {
     (total, currentItem) =>
       (total =
         total +
-        Number(currentItem.sales750) *
-          Number(currentItem.mainRate750) +
-        Number(currentItem.sales330) *
-          Number(currentItem.mainRate330) +
-        Number(currentItem.sales180) *
-          Number(currentItem.mainRate180)),
+        Number(currentItem.sales750) * Number(currentItem.mainRate750) +
+        Number(currentItem.sales330) * Number(currentItem.mainRate330) +
+        Number(currentItem.sales180) * Number(currentItem.mainRate180)),
     0
   );
-const second = addOneSecondFormState.reduce(
-  (total, currentItem) =>
-    (total = total + Number(currentItem.total)),
-  0
-);
-
-  
+  const second = addOneSecondFormState.reduce(
+    (total, currentItem) => (total = total + Number(currentItem.total)),
+    0
+  );
 
   if (isLoading || salaryLoading) {
     return <Loader></Loader>;
@@ -109,50 +102,50 @@ const second = addOneSecondFormState.reduce(
         <div className="my-4 flex gap-4 items-center justify-center">
           <h1 className="font-bold md:text-2xl text-center">अंग्रेजी </h1>
           <Link to="/user/dailyreport/back" className="commonBtn ">
-          बीयर ओर अन्य
+            बीयर ओर अन्य
           </Link>
 
           <Link to="/user/frontdailyreport/details" className="commonBtn ">
             पर्चा
-
           </Link>
         </div>
         <div className="flex gap-4 justify-center items-center ">
           <div className="flex gap-4 justify-center items-center ">
-            <h1 className="font-bold ">सेल्समेन :-   </h1>
+            <h1 className="font-bold ">सेल्समेन :- </h1>
             <Autocomplete
-          size="small"
-          style={{
-            width: "20rem",
-            border:"1px solid black",
-              borderRadius:"5px"
-          }}
-            options={salaryData?.length === undefined ? ['no options'] : salaryData?.length!==undefined && salaryData?.filter((prev)=>prev.isActive===true) }
-            getOptionLabel={(option) => option ? option.name : ""}
-            
-            onChange={(event, value) => {
-              if (value) {
-                setSalesMan(value.name)
-                localStorage.setItem("salesMan",value.name)
-              } else {
-                setSalesMan("")
+              size="small"
+              style={{
+                width: "20rem",
+                border: "1px solid black",
+                borderRadius: "5px",
+              }}
+              options={
+                salaryData?.length === undefined
+                  ? ["no options"]
+                  : salaryData?.length !== undefined &&
+                    salaryData?.filter((prev) => prev.isActive === true)
               }
-
-            }}
-            renderInput={(params) => (
-              <TextField
-                required
-                {...params}
-                className="dailyReportInput"
-                inputProps={{ ...params.inputProps, value: salesMan }}
-
-                onChange={(event) => {
-                  setSalesMan(event.target.value)
-                  
-                }}
-              />
-            )}
-          />
+              getOptionLabel={(option) => (option ? option.name : "")}
+              onChange={(event, value) => {
+                if (value) {
+                  setSalesMan(value.name);
+                  localStorage.setItem("salesMan", value.name);
+                } else {
+                  setSalesMan("");
+                }
+              }}
+              renderInput={(params) => (
+                <TextField
+                  required
+                  {...params}
+                  className="dailyReportInput"
+                  inputProps={{ ...params.inputProps, value: salesMan }}
+                  onChange={(event) => {
+                    setSalesMan(event.target.value);
+                  }}
+                />
+              )}
+            />
           </div>
 
           <div>
@@ -177,27 +170,33 @@ const second = addOneSecondFormState.reduce(
                 <table className="table commonTable">
                   <tbody>
                     <tr>
-                      <th  className="text-xs" rowSpan={2}> क्र. सं.</th>
+                      <th className="text-xs" rowSpan={2}>
+                        {" "}
+                        क्र. सं.
+                      </th>
                       <th className="text-xs" rowSpan={2}></th>
-                      <th className="text-xs" rowSpan={2}>ब्राण्ड</th>
-                      <th className="text-xs" >औसत रेट</th>
-                      <th className="text-xs" >प्रारम्भिक स्टॉक</th>
-                      <th className="text-xs" >आमद (खरीद) - दु.</th>
-                      <th className="text-xs" >खरीद रेट - दु.</th>
-                      <th className="text-xs" >आमद (खरीद) - बा.</th>
-                      <th className="text-xs" >खरीद रेट - बा.</th>
-                      <th className="text-xs" >आमद (उधारी)</th>
-                      <th className="text-xs" >भेजान</th>
-                      <th className="text-xs" >योग/शेष</th>
-                      <th className="text-xs" >अन्तिम स्टॉक</th>
-                      <th className="text-xs" >बिक्री</th>
-                      <th className="text-xs" >रेट</th>
-                      <th className="text-xs" >योग</th>
-                      <th className="text-xs" rowSpan={2}>कुल योग</th>
+                      <th className="text-xs" rowSpan={2}>
+                        ब्राण्ड
+                      </th>
+                      <th className="text-xs">औसत रेट</th>
+                      <th className="text-xs">प्रारम्भिक स्टॉक</th>
+                      <th className="text-xs">आमद (खरीद) - दु.</th>
+                      <th className="text-xs">खरीद रेट - दु.</th>
+                      <th className="text-xs">आमद (खरीद) - बा.</th>
+                      <th className="text-xs">खरीद रेट - बा.</th>
+                      <th className="text-xs">आमद (उधारी)</th>
+                      <th className="text-xs">भेजान</th>
+                      <th className="text-xs">योग/शेष</th>
+                      <th className="text-xs">अन्तिम स्टॉक</th>
+                      <th className="text-xs">बिक्री</th>
+                      <th className="text-xs">रेट</th>
+                      <th className="text-xs">योग</th>
+                      <th className="text-xs" rowSpan={2}>
+                        कुल योग
+                      </th>
                     </tr>
 
                     <tr>
-                     
                       <td>
                         <div className="flex  justify-evenly">
                           <div className="form-control">
@@ -488,7 +487,6 @@ const second = addOneSecondFormState.reduce(
                       </td>
 
                       {/* ============= कुल योग ================ */}
-                     
                     </tr>
 
                     {/* ============ ============== */}
@@ -1045,14 +1043,18 @@ const second = addOneSecondFormState.reduce(
                               className="smallinput wd-6"
                               name="total750"
                               disabled
-                              value={(Number(addOneFristFormState.reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    Number(currentItem.sales750) *
-                                      Number(currentItem.mainRate750)),
-                                0
-                              ))||0).toFixed(2)}
+                              value={(
+                                Number(
+                                  addOneFristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.sales750) *
+                                          Number(currentItem.mainRate750)),
+                                    0
+                                  )
+                                ) || 0
+                              ).toFixed(2)}
                               onChange={(event) =>
                                 handelFristFormOnChange(event)
                               }
@@ -1064,14 +1066,18 @@ const second = addOneSecondFormState.reduce(
                               className="smallinput wd-6"
                               name="total375"
                               disabled
-                              value={(Number(addOneFristFormState.reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    Number(currentItem.sales330) *
-                                      Number(currentItem.mainRate330)),
-                                0
-                              ))||0).toFixed(2)}
+                              value={(
+                                Number(
+                                  addOneFristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.sales330) *
+                                          Number(currentItem.mainRate330)),
+                                    0
+                                  )
+                                ) || 0
+                              ).toFixed(2)}
                               onChange={(event) =>
                                 handelFristFormOnChange(event)
                               }
@@ -1083,14 +1089,18 @@ const second = addOneSecondFormState.reduce(
                               className="smallinput wd-6"
                               name="total180"
                               disabled
-                              value={(Number(addOneFristFormState.reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    Number(currentItem.sales180) *
-                                      Number(currentItem.mainRate180)),
-                                0
-                              ))||0).toFixed(2)}
+                              value={(
+                                Number(
+                                  addOneFristFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(currentItem.sales180) *
+                                          Number(currentItem.mainRate180)),
+                                    0
+                                  )
+                                ) || 0
+                              ).toFixed(2)}
                               onChange={(event) =>
                                 handelFristFormOnChange(event)
                               }
@@ -1106,18 +1116,22 @@ const second = addOneSecondFormState.reduce(
                             disabled
                             className="smallinput wd-7"
                             name="grandTotal"
-                            value={(Number(addOneFristFormState.reduce(
-                              (total, currentItem) =>
-                                (total =
-                                  total +
-                                  Number(currentItem.sales750) *
-                                    Number(currentItem.mainRate750) +
-                                  Number(currentItem.sales330) *
-                                    Number(currentItem.mainRate330) +
-                                  Number(currentItem.sales180) *
-                                    Number(currentItem.mainRate180)),
-                              0
-                            ))||0).toFixed(2)}
+                            value={(
+                              Number(
+                                addOneFristFormState.reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      Number(currentItem.sales750) *
+                                        Number(currentItem.mainRate750) +
+                                      Number(currentItem.sales330) *
+                                        Number(currentItem.mainRate330) +
+                                      Number(currentItem.sales180) *
+                                        Number(currentItem.mainRate180)),
+                                  0
+                                )
+                              ) || 0
+                            ).toFixed(2)}
                             onChange={(event) => handelFristFormOnChange(event)}
                           />
                         </div>
@@ -1125,11 +1139,11 @@ const second = addOneSecondFormState.reduce(
                     </tr>
                   </tbody>
                 </table>
-                <div className={hasMore===true ? '' : 'displayHidden'}>Loading data...</div>
-
+                <div className={hasMore === true ? "" : "displayHidden"}>
+                  Loading data...
+                </div>
               </div>
             </>
-
           </div>
 
           <div>
@@ -1144,15 +1158,29 @@ const second = addOneSecondFormState.reduce(
                         <th className="text-xs"> ब्राण्ड</th>
                         <th className="text-xs">ml</th>
                         <th className="text-xs">औसत रेट</th>
-                        <th className="whitespace-pre-wrap text-xs">प्रारम्भिक स्टॉक</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद) - दु.</th>
-                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - दु.</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (खरीद) - बा.</th>
-                        <th className="whitespace-pre-wrap text-xs">खरीद रेट - बा.</th>
-                        <th className="whitespace-pre-wrap text-xs">आमद (उधारी)</th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          प्रारम्भिक स्टॉक
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          आमद (खरीद) - दु.
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          खरीद रेट - दु.
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          आमद (खरीद) - बा.
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          खरीद रेट - बा.
+                        </th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          आमद (उधारी)
+                        </th>
                         <th className="text-xs">भेजान</th>
                         <th className="text-xs">योग/शेष</th>
-                        <th className="whitespace-pre-wrap text-xs">अन्तिम स्टॉक</th>
+                        <th className="whitespace-pre-wrap text-xs">
+                          अन्तिम स्टॉक
+                        </th>
                         <th className="text-xs">बिक्री</th>
                         <th className="text-xs">रेट</th>
                         <th className="text-xs">योग</th>
@@ -1357,11 +1385,16 @@ const second = addOneSecondFormState.reduce(
                               type="number"
                               className="smallinput wd-7"
                               name="total"
-                              value={(Number(addOneSecondFormState.reduce(
-                                (total, currentItem) =>
-                                  (total = total + Number(currentItem.total)),
-                                0
-                              ))||0).toFixed(2)}
+                              value={(
+                                Number(
+                                  addOneSecondFormState.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total + Number(currentItem.total)),
+                                    0
+                                  )
+                                ) || 0
+                              ).toFixed(2)}
                               onChange={(e) => handelSeconFormOnChange(e)}
                               disabled
                             />
@@ -1372,20 +1405,21 @@ const second = addOneSecondFormState.reduce(
                     </tbody>
                   </table>
                 </div>
-                <div className={hasMoreSmall ? '' : 'displayHidden'}>Loading data...</div>
-
+                <div className={hasMoreSmall ? "" : "displayHidden"}>
+                  Loading data...
+                </div>
               </div>
             </>
           </div>
 
-          <div className="my-8  leading-6">
+          <div className="my-8  leading-6 border-black">
             <h4 className="text-[#AA237A] font-bold ">
               Total: {Number(Number(first) + Number(second)).toFixed(2)}
             </h4>
           </div>
 
           <div className="flex my-6 ">
-            {isLoadingSubmit===true ? (
+            {isLoadingSubmit === true ? (
               <>
                 <button
                   type="button"
@@ -1417,7 +1451,6 @@ const second = addOneSecondFormState.reduce(
               </>
             ) : (
               <>
-    
                 <input type="submit" className="btn commonBtn " />
               </>
             )}

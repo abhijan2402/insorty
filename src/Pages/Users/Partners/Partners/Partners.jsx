@@ -67,7 +67,7 @@ const Partners = ({ isBearShop }) => {
 
   return (
     <>
-      <div className="py-0 sticky top-0 bg-gray-100 z-5000">
+      <div className="py-0 sticky top-0 bg-white z-5000">
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट
         </button>
@@ -121,6 +121,7 @@ const Partners = ({ isBearShop }) => {
                     dateFormat="dd/MM/yyyy"
                     placeholderText={"dd/mm/yyyy"}
                     className="inputBox date"
+                    autoComplete="off"
                   />
                 </div>
 
@@ -133,6 +134,7 @@ const Partners = ({ isBearShop }) => {
                     dateFormat="dd/MM/yyyy"
                     className="inputBox date"
                     placeholderText={"dd/mm/yyyy"}
+                    autoComplete="off"
                   />
                 </div>
               </div>

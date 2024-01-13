@@ -16,9 +16,7 @@ const SalaryList = () => {
   const ShopType = ShopToken.shopType;
   const role = ShopToken.role;
 
-  console.log(role, ShopType, "+++++")
-
-
+  console.log(role, ShopType, "+++++");
 
   const {
     data: salaryData,
@@ -35,7 +33,7 @@ const SalaryList = () => {
         }
       );
       const data = await res.json();
-    
+
       return data.data;
     },
   });
@@ -62,35 +60,34 @@ const SalaryList = () => {
     const name = e.target.name.value;
     const mobile = e.target.phoneNumber.value;
 
-    const testName = name.toLowerCase()
+    const testName = name.toLowerCase();
 
-    const test = salaryData.length >0 ? salaryData.some((emp)=>emp?.name.toLowerCase()===testName) : []
+    const test =
+      salaryData.length > 0
+        ? salaryData.some((emp) => emp?.name.toLowerCase() === testName)
+        : [];
 
-    if (test===true) {
+    if (test === true) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: 'Salesman name already present',
+        text: "Salesman name already present",
       });
-    
-    }
-
-    else{
-
-    fetch("https://insorty-api.onrender.com/shop/addEmployee", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", cookie_token: token },
-      body: JSON.stringify({ name, mobile }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        refetch();
-        if (data.success) {
-          Swal.fire("Success!", "Your file has been added.", "success");
-        } else {
-          Swal.fire("Failed!", "Your file has not been added.", "error");
-        }
-      });
+    } else {
+      fetch("https://insorty-api.onrender.com/shop/addEmployee", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", cookie_token: token },
+        body: JSON.stringify({ name, mobile }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          refetch();
+          if (data.success) {
+            Swal.fire("Success!", "Your file has been added.", "success");
+          } else {
+            Swal.fire("Failed!", "Your file has not been added.", "error");
+          }
+        });
     }
   };
 
@@ -103,129 +100,123 @@ const SalaryList = () => {
   }
 
   return (
-    <section className="px-2 py-6">
-      <div>
-        <h1 className="titleStyle text-center">कर्मचारी</h1>
-        <div className="divider my-2"></div>
-      </div>
-
-      <div>
-        <div
-          className="flex justify-center items-center
-        "
-        >
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <th> क्र. सं.</th>
-                <th>नाम</th>
-                <th>डिलीट</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              {(salaryData.length > 0 &&
-                salaryData?.map((salary, index) => {
-                  return (
-                    <>
-                      { ShopType === "BAR" && (
-                        <tr key={salary?._id}>
-                          <th>{index + 1}</th>
-                          <td>
-                            <Link
-                              className=" text-[1rem]"
-                              to={`/user/bearshop/salary/from/${salary?._id}`}
-                            >
-                              {salary?.name}
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              className="font-3xl font-bold"
-                              style={{ color: "#AA237A" }}
-                              onClick={() => {
-                                swal({
-                                  title: "Are you sure?",
-                                  text: `Once deleted, you will not be able to recover employee ${salary?.name}`,
-                                  icon: "warning",
-                                  buttons: true,
-                                  dangerMode: true,
-                                }).then((willDelete) => {
-                                  if (willDelete) {
-                                    
-                                    handleDelete(salary?._id);
-                                    
-                                  } else {
-                                    swal("Your Employee is safe!");
-                                  }
-                                });
-                              }}
-                            >
-                              <FaRegTrashAlt></FaRegTrashAlt>
-                            </Link>
-                          </td>
-                        </tr>
-
-                      )}
-
-                      {ShopType === "SHOP" && (
-                        <tr key={salary?._id}>
-                          <th>{index + 1}</th>
-                          <td>
-                            <Link
-                              className=" text-[1rem]"
-                              to={`/user/salary/from/${salary?._id}`}
-                            >
-                              {salary?.name}
-                            </Link>
-                          </td>
-                          <td>
-                            <Link
-                              className="font-3xl font-bold"
-                              style={{ color: "#AA237A" }}
-                              onClick={() => {
-                                swal({
-                                  title: "Are you sure?",
-                                  text: `Once deleted, you will not be able to recover employee ${salary?.name}`,
-                                  icon: "warning",
-                                  buttons: true,
-                                  dangerMode: true,
-                                }).then((willDelete) => {
-                                  if (willDelete) {
-                                    
-                                    handleDelete(salary?._id);
-                                    
-                                  } else {
-                                    swal("Your Employee is safe!");
-                                  }
-                                });
-                              }}
-                            >
-                              <FaRegTrashAlt ></FaRegTrashAlt>
-                            </Link>
-                          </td>
-                        </tr>
-                      )}
-
-
-
-                    </>
-                  );
-                })) }
-            </tbody>
-          </table>
+    <>
+      <div className="py-0 sticky top-0 bg-white z-5000">
+        <div>
+          <h1 className="titleStyle text-center">कर्मचारी</h1>
+          <div className="divider my-2"></div>
         </div>
-        <tr className="py-4 flex justify-center">
-          <label htmlFor="addNewEmploy" className="commonBtn">
-            नया कर्मचारी जोड़ें
-          </label>
-        </tr>
       </div>
-      <AddNewEmploy
-        key={salaryData?._id}
-        handelSubmitAddNewEmploy={handelSubmitAddNewEmploy}
-      ></AddNewEmploy>
-    </section>
+      <section className="px-2 py-6">
+        <div>
+          <div
+            className="flex justify-center items-center
+        "
+          >
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <th> क्र. सं.</th>
+                  <th>नाम</th>
+                  <th>डिलीट</th>
+                </tr>
+              </thead>
+              <tbody>
+                {salaryData.length > 0 &&
+                  salaryData?.map((salary, index) => {
+                    return (
+                      <>
+                        {ShopType === "BAR" && (
+                          <tr key={salary?._id}>
+                            <th>{index + 1}</th>
+                            <td>
+                              <Link
+                                className=" text-[1rem]"
+                                to={`/user/bearshop/salary/from/${salary?._id}`}
+                              >
+                                {salary?.name}
+                              </Link>
+                            </td>
+                            <td>
+                              <Link
+                                className="font-3xl font-bold"
+                                style={{ color: "#AA237A" }}
+                                onClick={() => {
+                                  swal({
+                                    title: "Are you sure?",
+                                    text: `Once deleted, you will not be able to recover employee ${salary?.name}`,
+                                    icon: "warning",
+                                    buttons: true,
+                                    dangerMode: true,
+                                  }).then((willDelete) => {
+                                    if (willDelete) {
+                                      handleDelete(salary?._id);
+                                    } else {
+                                      swal("Your Employee is safe!");
+                                    }
+                                  });
+                                }}
+                              >
+                                <FaRegTrashAlt></FaRegTrashAlt>
+                              </Link>
+                            </td>
+                          </tr>
+                        )}
+
+                        {ShopType === "SHOP" && (
+                          <tr key={salary?._id}>
+                            <th>{index + 1}</th>
+                            <td>
+                              <Link
+                                className=" text-[1rem]"
+                                to={`/user/salary/from/${salary?._id}`}
+                              >
+                                {salary?.name}
+                              </Link>
+                            </td>
+                            <td>
+                              <Link
+                                className="font-3xl font-bold"
+                                style={{ color: "#AA237A" }}
+                                onClick={() => {
+                                  swal({
+                                    title: "Are you sure?",
+                                    text: `Once deleted, you will not be able to recover employee ${salary?.name}`,
+                                    icon: "warning",
+                                    buttons: true,
+                                    dangerMode: true,
+                                  }).then((willDelete) => {
+                                    if (willDelete) {
+                                      handleDelete(salary?._id);
+                                    } else {
+                                      swal("Your Employee is safe!");
+                                    }
+                                  });
+                                }}
+                              >
+                                <FaRegTrashAlt></FaRegTrashAlt>
+                              </Link>
+                            </td>
+                          </tr>
+                        )}
+                      </>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
+          <tr className="py-4 flex justify-center">
+            <label htmlFor="addNewEmploy" className="commonBtn">
+              नया कर्मचारी जोड़ें
+            </label>
+          </tr>
+        </div>
+        <AddNewEmploy
+          key={salaryData?._id}
+          handelSubmitAddNewEmploy={handelSubmitAddNewEmploy}
+        ></AddNewEmploy>
+      </section>
+    </>
   );
 };
 

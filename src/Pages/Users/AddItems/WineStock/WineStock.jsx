@@ -89,8 +89,8 @@ const WineStock = () => {
   });
 
   return (
-    <section>
-      <div className="title">
+    <>
+      <div className=" py-0  bg-white z-5000">
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट
         </button>
@@ -121,177 +121,268 @@ const WineStock = () => {
         </div>
         <div className="divider my-2"></div>
       </div>
+      <section>
+        <div ref={front}>
+          <h2 className="font-bold md:text-[1.5rem] text-center"> अंग्रेजी</h2>
+          <div className="flex gap-4 items-center justify-center my-4">
+            <h2 className="font-bold text-[1.5rem]">From</h2>
+            <div className="flex gap-2 items-center z-1000">
+              <DatePicker
+                selected={StartDate}
+                onChange={(date) => {
+                  setStartDate(date);
+                  console.log(moment(date).format());
+                }}
+                dateFormat="dd/MM/yyyy"
+                placeholderText={"dd/mm/yyyy"}
+                className="inputBox date "
+              />
+            </div>
 
-      <div ref={front}>
-        <h2 className="font-bold md:text-[1.5rem] text-center"> अंग्रेजी</h2>
-        <div className="flex gap-4 items-center justify-center my-4">
-          <h2 className="font-bold text-[1.5rem]">From</h2>
-          <div className="flex gap-2 items-center">
-            <DatePicker
-              selected={StartDate}
-              onChange={(date) => {
-                setStartDate(date);
-                console.log(moment(date).format());
-              }}
-              dateFormat="dd/MM/yyyy"
-              placeholderText={"dd/mm/yyyy"}
-              className="inputBox date "
-            />
+            <h2 className="font-bold text-[1.5rem]">To</h2>
+            <div className="flex gap-2 items-center z-1000">
+              <DatePicker
+                selected={EndDate}
+                name="year"
+                onChange={(data) => setEndDate(data)}
+                dateFormat="dd/MM/yyyy"
+                className="inputBox date"
+                placeholderText={"dd/mm/yyyy"}
+              />
+            </div>
           </div>
 
-          <h2 className="font-bold text-[1.5rem]">To</h2>
-          <div className="flex gap-2 items-center">
-            <DatePicker
-              selected={EndDate}
-              name="year"
-              onChange={(data) => setEndDate(data)}
-              dateFormat="dd/MM/yyyy"
-              className="inputBox date"
-              placeholderText={"dd/mm/yyyy"}
-            />
-          </div>
-        </div>
-
-        <div
-          className={`${
-            ShopType === "BAR"
-              ? "hidden"
-              : " overflow-x-auto flex justify-center item-center"
-          }`}
-        >
-          <InfiniteScroll
-            dataLength={wineStock.length}
-            next={fetchData}
-            hasMore={hasMore}
-            scrollableTarget="scrollableDiv"
-            loader={<h4>Loading...</h4>}
-          >
-            {/* " removeCommonWSpace m-2" */}
-            <table className="table removeCommonWSpace m-2">
-              <thead>
-                <tr>
-                  <th className="text-xs" rowSpan={2}>
-                    {" "}
-                    क्र. सं.
-                  </th>
-                  <th className="text-xs" rowSpan={2}>
-                    ब्राण्ड
-                  </th>
-                  <th className="text-xs" colSpan={3}>
-                    स्टॉक{" "}
-                  </th>
-                  <th className="text-xs" colSpan={3}>
-                    {" "}
-                    रेट
-                  </th>
-                  <th className="text-xs" colSpan={3}>
-                    {" "}
-                    योग
-                  </th>
-                  <th className="text-xs" rowSpan={2}>
-                    कुल योग
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-
-                  <td>750ml</td>
-                  <td>375ml</td>
-                  <td>180ml</td>
-
-                  <td>750ml</td>
-                  <td>375ml</td>
-                  <td>180ml</td>
-
-                  <td>750ml</td>
-                  <td>375ml</td>
-                  <td>180ml</td>
-                </tr>
-
-                {filteredData
-                  ?.filter((item) => item.isActive === true)
-                  .filter((brand) =>
-                    brand.sizes.some(
-                      (size) =>
-                        size.currentStock > 0 ||
-                        Number(size.averageRate.$numberDecimal) > 0
-                    )
-                  )
-                  .map((item, index) => {
-                    return (
-                      <>
-                        <tr id="scrollableDiv">
-                          <WineStockTopData
-                            key={item._id}
-                            index={index}
-                            item={item}
-                          ></WineStockTopData>
-                        </tr>
-                      </>
-                    );
-                  })}
-                <tr>
-                  <td colSpan="11">Total</td>
-                  <td>
-                    {filteredData
-                      .filter((item) => item.isActive === true)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem.sizes
-                              .filter(
-                                (brand) =>
-                                  brand.quantityInML === 750 ||
-                                  brand.quantityInML === 375 ||
-                                  brand.quantityInML === 180
-                              )
-                              .reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    currentItem.currentStock *
-                                      Number(
-                                        currentItem.averageRate.$numberDecimal
-                                      )),
-                                0
-                              )),
-                        0
-                      )
-                      .toFixed(2)}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </InfiniteScroll>
-        </div>
-
-        <div>
           <div
             className={`${
-              ShopType === "BAR" ? "hidden" : " gap-4 overflow-x-auto my-4 "
+              ShopType === "BAR"
+                ? "hidden"
+                : " overflow-x-auto flex justify-center item-center"
             }`}
           >
-            <div className="flex justify-center item-center">
-              <table className="removeCommonWSpace m-2">
+            <InfiniteScroll
+              dataLength={wineStock.length}
+              next={fetchData}
+              hasMore={hasMore}
+              scrollableTarget="scrollableDiv"
+              loader={<h4>Loading...</h4>}
+            >
+              {/* " removeCommonWSpace m-2" */}
+              <table className="table removeCommonWSpace m-2 z-1000">
                 <thead>
                   <tr>
-                    <th className="text-xs"> क्र. सं.</th>
-                    <th className="text-xs">ब्राण्ड</th>
-                    <th className="text-xs">साईज </th>
-                    <th className="text-xs">स्टॉक</th>
-                    <th className="text-xs"> रेट</th>
-                    <th className="text-xs"> योग</th>
+                    <th className="text-xs" rowSpan={2}>
+                      {" "}
+                      क्र. सं.
+                    </th>
+                    <th className="text-xs" rowSpan={2}>
+                      ब्राण्ड
+                    </th>
+                    <th className="text-xs" colSpan={3}>
+                      स्टॉक{" "}
+                    </th>
+                    <th className="text-xs" colSpan={3}>
+                      {" "}
+                      रेट
+                    </th>
+                    <th className="text-xs" colSpan={3}>
+                      {" "}
+                      योग
+                    </th>
+                    <th className="text-xs" rowSpan={2}>
+                      कुल योग
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
+                  <tr>
+                    <td></td>
+                    <td></td>
+
+                    <td>750ml</td>
+                    <td>375ml</td>
+                    <td>180ml</td>
+
+                    <td>750ml</td>
+                    <td>375ml</td>
+                    <td>180ml</td>
+
+                    <td>750ml</td>
+                    <td>375ml</td>
+                    <td>180ml</td>
+                  </tr>
+
                   {filteredData
-                    .filter((item) => item.isActive === true)
-                    .sort((a, b) => a.brandName.localeCompare(b.brandName))
-                    .map((brand, index) => {
+                    ?.filter((item) => item.isActive === true)
+                    .filter((brand) =>
+                      brand.sizes.some(
+                        (size) =>
+                          size.currentStock > 0 ||
+                          Number(size.averageRate.$numberDecimal) > 0
+                      )
+                    )
+                    .map((item, index) => {
+                      return (
+                        <>
+                          <tr id="scrollableDiv">
+                            <WineStockTopData
+                              key={item._id}
+                              index={index}
+                              item={item}
+                            ></WineStockTopData>
+                          </tr>
+                        </>
+                      );
+                    })}
+                  <tr>
+                    <td colSpan="11">Total</td>
+                    <td>
+                      {filteredData
+                        .filter((item) => item.isActive === true)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem.sizes
+                                .filter(
+                                  (brand) =>
+                                    brand.quantityInML === 750 ||
+                                    brand.quantityInML === 375 ||
+                                    brand.quantityInML === 180
+                                )
+                                .reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      currentItem.currentStock *
+                                        Number(
+                                          currentItem.averageRate.$numberDecimal
+                                        )),
+                                  0
+                                )),
+                          0
+                        )
+                        .toFixed(2)}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </InfiniteScroll>
+          </div>
+
+          <div>
+            <div
+              className={`${
+                ShopType === "BAR" ? "hidden" : " gap-4 overflow-x-auto my-4 "
+              }`}
+            >
+              <div className="flex justify-center item-center">
+                <table className="removeCommonWSpace m-2">
+                  <thead>
+                    <tr>
+                      <th className="text-xs"> क्र. सं.</th>
+                      <th className="text-xs">ब्राण्ड</th>
+                      <th className="text-xs">साईज </th>
+                      <th className="text-xs">स्टॉक</th>
+                      <th className="text-xs"> रेट</th>
+                      <th className="text-xs"> योग</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredData
+                      .filter((item) => item.isActive === true)
+                      .sort((a, b) => a.brandName.localeCompare(b.brandName))
+                      .map((brand, index) => {
+                        return (
+                          <>
+                            {brand.sizes
+                              .filter(
+                                (size) =>
+                                  size.currentStock > 0 ||
+                                  Number(size.averageRate.$numberDecimal) > 0
+                              )
+                              .map((size) => {
+                                if (
+                                  size.quantityInML !== 750 &&
+                                  size.quantityInML !== 375 &&
+                                  size.quantityInML !== 180
+                                ) {
+                                  count++;
+                                  return (
+                                    <tr>
+                                      <th>{count}</th>
+                                      <td>{brand.brandName}</td>
+                                      <td>{size.quantityInML} ML</td>
+                                      <td> {size.currentStock}</td>
+                                      <td>
+                                        {" "}
+                                        {Number(
+                                          size.averageRate.$numberDecimal
+                                        ).toFixed(2)}
+                                      </td>
+                                      <td>
+                                        {" "}
+                                        {size.currentStock *
+                                          Number(
+                                            size.averageRate.$numberDecimal
+                                          ).toFixed(2)}
+                                      </td>
+                                    </tr>
+                                  );
+                                }
+                              })}
+                          </>
+                        );
+                      })}
+                    <tr>
+                      <td colSpan="5">Total</td>
+                      <td>
+                        {filteredData
+                          .filter((item) => item.isActive === true)
+                          .reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem.sizes.reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      currentItem.currentStock *
+                                        Number(
+                                          currentItem.averageRate.$numberDecimal
+                                        )),
+                                  0
+                                )),
+                            0
+                          )
+                          .toFixed(2)}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div
+              className={`${
+                ShopType === "SHOP" ? "hidden" : " gap-4 overflow-x-auto my-4 "
+              }`}
+            >
+              <div className="flex justify-center item-center">
+                <table className="removeCommonWSpace  m-2">
+                  <thead>
+                    <tr>
+                      <th className="text-xs"> क्र. सं.</th>
+                      <th className="text-xs">ब्राण्ड</th>
+                      <th className="text-xs">साईज </th>
+                      <th className="text-xs">स्टॉक</th>
+                      <th className="text-xs"> रेट</th>
+                      <th className="text-xs"> योग</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredData.map((brand, index) => {
                       return (
                         <>
                           {brand.sizes
@@ -301,17 +392,13 @@ const WineStock = () => {
                                 Number(size.averageRate.$numberDecimal) > 0
                             )
                             .map((size) => {
-                              if (
-                                size.quantityInML !== 750 &&
-                                size.quantityInML !== 375 &&
-                                size.quantityInML !== 180
-                              ) {
+                              if (size.quantityInML) {
                                 count++;
                                 return (
                                   <tr>
                                     <th>{count}</th>
                                     <td>{brand.brandName}</td>
-                                    <td>{size.quantityInML} ML</td>
+                                    <td>{size.quantityInML}</td>
                                     <td> {size.currentStock}</td>
                                     <td>
                                       {" "}
@@ -333,130 +420,46 @@ const WineStock = () => {
                         </>
                       );
                     })}
-                  <tr>
-                    <td colSpan="5">Total</td>
-                    <td>
-                      {filteredData
-                        .filter((item) => item.isActive === true)
-                        .reduce(
-                          (total, currentItem) =>
-                            (total =
-                              total +
-                              currentItem.sizes.reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    currentItem.currentStock *
-                                      Number(
-                                        currentItem.averageRate.$numberDecimal
-                                      )),
-                                0
-                              )),
-                          0
-                        )
-                        .toFixed(2)}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div
-            className={`${
-              ShopType === "SHOP" ? "hidden" : " gap-4 overflow-x-auto my-4 "
-            }`}
-          >
-            <div className="flex justify-center item-center">
-              <table className="removeCommonWSpace  m-2">
-                <thead>
-                  <tr>
-                    <th className="text-xs"> क्र. सं.</th>
-                    <th className="text-xs">ब्राण्ड</th>
-                    <th className="text-xs">साईज </th>
-                    <th className="text-xs">स्टॉक</th>
-                    <th className="text-xs"> रेट</th>
-                    <th className="text-xs"> योग</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredData.map((brand, index) => {
-                    return (
-                      <>
-                        {brand.sizes
-                          .filter(
-                            (size) =>
-                              size.currentStock > 0 ||
-                              Number(size.averageRate.$numberDecimal) > 0
+                    <tr>
+                      <td colSpan="5">Total</td>
+                      <td>
+                        {filteredData
+                          .filter((item) => item.isActive === true)
+                          .reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem.sizes
+                                  .filter(
+                                    (size) =>
+                                      size.currentStock > 0 ||
+                                      Number(size.averageRate.$numberDecimal) >
+                                        0
+                                  )
+                                  .reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        currentItem.currentStock *
+                                          Number(
+                                            currentItem.averageRate
+                                              .$numberDecimal
+                                          )),
+                                    0
+                                  )),
+                            0
                           )
-                          .map((size) => {
-                            if (size.quantityInML) {
-                              count++;
-                              return (
-                                <tr>
-                                  <th>{count}</th>
-                                  <td>{brand.brandName}</td>
-                                  <td>{size.quantityInML}</td>
-                                  <td> {size.currentStock}</td>
-                                  <td>
-                                    {" "}
-                                    {Number(
-                                      size.averageRate.$numberDecimal
-                                    ).toFixed(2)}
-                                  </td>
-                                  <td>
-                                    {" "}
-                                    {size.currentStock *
-                                      Number(
-                                        size.averageRate.$numberDecimal
-                                      ).toFixed(2)}
-                                  </td>
-                                </tr>
-                              );
-                            }
-                          })}
-                      </>
-                    );
-                  })}
-                  <tr>
-                    <td colSpan="5">Total</td>
-                    <td>
-                      {filteredData
-                        .filter((item) => item.isActive === true)
-                        .reduce(
-                          (total, currentItem) =>
-                            (total =
-                              total +
-                              currentItem.sizes
-                                .filter(
-                                  (size) =>
-                                    size.currentStock > 0 ||
-                                    Number(size.averageRate.$numberDecimal) > 0
-                                )
-                                .reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      currentItem.currentStock *
-                                        Number(
-                                          currentItem.averageRate.$numberDecimal
-                                        )),
-                                  0
-                                )),
-                          0
-                        )
-                        .toFixed(2)}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                          .toFixed(2)}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

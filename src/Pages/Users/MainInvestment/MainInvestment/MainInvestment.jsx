@@ -33,20 +33,25 @@ const MainInvestment = () => {
 
   return (
     <>
+      <div className="py-0 sticky top-0 bg-white z-5000">
       <button
         className="commonBtn "
         onClick={handlePrint}
       >
         प्रिंट
       </button>
-
-    <section ref={front} className="my-2">
       <div className="title flex justify-center items-center">
         <h2 className="font-bold md:text-[1.5rem] text-center">
           मुख्य इन्वेस्ट
         </h2>
        
       </div>
+       
+      </div>
+     
+
+    <section ref={front} className="my-2">
+      
         <div className="divider my-2"></div>
 
       <div>

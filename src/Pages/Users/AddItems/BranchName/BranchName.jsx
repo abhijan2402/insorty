@@ -58,101 +58,113 @@ const BranchName = () => {
   if (isLoading) return <Loader></Loader>;
 
   return (
-    <section className="py-4">
-      <div className="title">
-        <div className="flex gap-4 justify-center items-center">
-         
+    <>
+      <div className="py-0 sticky top-0 bg-white z-5000">
+        <div className="title">
+          <div className="flex gap-4 justify-center items-center">
+            <Link
+              className={shopType === "SHOP" ? "commonBtn" : "displayHidden"}
+              to="/user/partyname"
+            >
+              पार्टी जोड़ें
+            </Link>
+            <Link
+              className={shopType === "SHOP" ? "commonBtn" : "displayHidden"}
+              to="/user/branch"
+            >
+              ब्रांच
+            </Link>
+            <Link
+              className={shopType === "SHOP" ? "commonBtn" : "displayHidden"}
+              to="/user/borrow"
+            >
+              पार्टी
+            </Link>
 
-       
+            <Link
+              className={shopType === "BAR" ? "commonBtn" : "displayHidden"}
+              to="/user/bearshop/partyname"
+            >
+              पार्टी जोड़ें
+            </Link>
 
-          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/partyname">पार्टी जोड़ें
-          </Link>
-          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branch">ब्रांच
-          </Link>
-          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/borrow">पार्टी 
-          </Link>
-
-          
-          <Link className = {shopType==="BAR" ? "commonBtn" : "displayHidden"} to="/user/bearshop/partyname">
-            पार्टी जोड़ें
-          </Link>
-          
-          <Link className = {shopType==="BAR" ? "commonBtn" : "displayHidden"} to="/user/bearshop/borrow">
-            पार्टी 
-          </Link>
-        </div>
-        <div>
-        <h1 className="titleStyle text-center">ब्रांच जोड़ें</h1>
-       
-      </div>
-        <div className="divider my-2"></div>
-      </div>
-      <div className="flex justify-center items-center">
-        <table className="table  removeCommonWSpace">
-          <thead className="text-center ">
-            <th>
-              <h1>क्र. सं.</h1>
-            </th>
-            <th>
-              <h1>ब्रांच नाम</h1>
-            </th>
-
-            <th>
-            डिलीट
-            </th>
-          </thead>
-          <tbody>
-            {BranchNameData?.filter((prev)=>prev.isActive===true).map((item, index) => {
-              return (
-                <tr key={index} className="text-center">
-                  <th>
-                    <h1>{index + 1}</h1>
-                  </th>
-                  <td>
-                    {item?.branchName}
-                  </td>
-                  <td>
-                    <button
-                      className="font-3xl font-bold"
-                      style={{ color: "#AA237A" }}
-                      // onClick={() => handelDelete(item?._id)}
-                      onClick={() => {
-                        swal({
-                          title: "Are you sure?",
-                          text: `Once deleted, you will not be able to recover branch ${item?.branchName}`,
-                          icon: "warning",
-                          buttons: true,
-                          dangerMode: true,
-                        }).then((willDelete) => {
-                          if (willDelete) {
-                            
-                            handelDelete(item?._id);
-                            
-                          } else {
-                            swal("Your branch is safe!");
-                          }
-                        });
-                      }}
-                    >
-                      <FaRegTrashAlt></FaRegTrashAlt>
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      <div className="flex justify-center">
-        <div className="my-4">
-          <label htmlFor="AddPartyName" className="commonBtn">
-            नई ब्रांच जोड़ें
-          </label>
+            <Link
+              className={shopType === "BAR" ? "commonBtn" : "displayHidden"}
+              to="/user/bearshop/borrow"
+            >
+              पार्टी
+            </Link>
+          </div>
+          <div>
+            <h1 className="titleStyle text-center">ब्रांच जोड़ें</h1>
+          </div>
+          <div className="divider my-2"></div>
         </div>
       </div>
+      <section className="py-4">
+        <div className="flex justify-center items-center">
+          <table className="table  removeCommonWSpace">
+            <thead className="text-center ">
+              <th>
+                <h1>क्र. सं.</h1>
+              </th>
+              <th>
+                <h1>ब्रांच नाम</h1>
+              </th>
 
-      <AddBranchName refetch={refetch}></AddBranchName>
-    </section>
+              <th>डिलीट</th>
+            </thead>
+            <tbody>
+              {BranchNameData?.filter((prev) => prev.isActive === true).map(
+                (item, index) => {
+                  return (
+                    <tr key={index} className="text-center">
+                      <th>
+                        <h1>{index + 1}</h1>
+                      </th>
+                      <td>{item?.branchName}</td>
+                      <td>
+                        <button
+                          className="font-3xl font-bold"
+                          style={{ color: "#AA237A" }}
+                          // onClick={() => handelDelete(item?._id)}
+                          onClick={() => {
+                            swal({
+                              title: "Are you sure?",
+                              text: `Once deleted, you will not be able to recover branch ${item?.branchName}`,
+                              icon: "warning",
+                              buttons: true,
+                              dangerMode: true,
+                            }).then((willDelete) => {
+                              if (willDelete) {
+                                handelDelete(item?._id);
+                              } else {
+                                swal("Your branch is safe!");
+                              }
+                            });
+                          }}
+                        >
+                          <FaRegTrashAlt></FaRegTrashAlt>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                }
+              )}
+            </tbody>
+          </table>
+        </div>
+        <div className="flex justify-center">
+          <div className="my-4">
+            <label htmlFor="AddPartyName" className="commonBtn">
+              नई ब्रांच जोड़ें
+            </label>
+          </div>
+        </div>
+
+        <AddBranchName refetch={refetch}></AddBranchName>
+      </section>
+    </>
   );
 };
 
