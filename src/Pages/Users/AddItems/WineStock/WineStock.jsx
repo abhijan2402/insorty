@@ -128,6 +128,7 @@ const WineStock = () => {
             <h2 className="font-bold text-[1.5rem]">From</h2>
             <div className="flex gap-2 items-center z-1000">
               <DatePicker
+                autoComplete="off"
                 selected={StartDate}
                 onChange={(date) => {
                   setStartDate(date);
@@ -142,6 +143,7 @@ const WineStock = () => {
             <h2 className="font-bold text-[1.5rem]">To</h2>
             <div className="flex gap-2 items-center z-1000">
               <DatePicker
+                autoComplete="off"
                 selected={EndDate}
                 name="year"
                 onChange={(data) => setEndDate(data)}

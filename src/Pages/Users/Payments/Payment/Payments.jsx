@@ -13,12 +13,11 @@ const Payments = () => {
   const [paymentDetailsData, setPaymentDetailsData] = React.useState([]);
   const [debitMonth, setDebitMonth] = React.useState("");
   const [depositMonth, setDepositMonth] = React.useState("");
-  const [msg,setMsg] = useState("")
+  const [msg, setMsg] = useState("");
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
-
 
   const {
     data: paymentData,
@@ -38,7 +37,7 @@ const Payments = () => {
         }
       );
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       return data?.data;
     },
   });
@@ -59,7 +58,7 @@ const Payments = () => {
           cash: depositAmount,
           date: depositMonth,
         },
-        description: msg
+        description: msg,
       },
     ];
 
@@ -76,7 +75,7 @@ const Payments = () => {
       .then((res) => res.json())
       .then((data) => {
         setPaymentDetailsData(data?.data);
-        
+
         refetch();
         if (data.success) {
           Swal.fire({
@@ -95,41 +94,34 @@ const Payments = () => {
       });
   };
 
-  const handelDelete  = async (id) => {
-   
- 
-    fetch(
-      `https://insorty-api.onrender.com/shop/deleteShopAccount`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          cookie_token: token,
-        },
-        body : JSON.stringify({shopAccountPageId: id})
-      }
-    ).then((res)=>{
-      if (res.status === 200) {
-        Swal.fire({
-          icon: "success",
-          title: "Payment Deleted Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        refetch();
-      } 
+  const handelDelete = async (id) => {
+    fetch(`https://insorty-api.onrender.com/shop/deleteShopAccount`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+      body: JSON.stringify({ shopAccountPageId: id }),
     })
-    .catch((err)=>{
+      .then((res) => {
+        if (res.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Payment Deleted Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+        }
+      })
+      .catch((err) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: err.message,
         });
-      
-    });
-    
-  }
-
+      });
+  };
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -137,72 +129,79 @@ const Payments = () => {
 
   return (
     <>
-      <button className="commonBtn " onClick={handlePrint}>
-        प्रिंट
-      </button>
+      <div className="py-0 sticky top-0 bg-white z-5000">
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
+        </button>
+        <div className="title flex justify-center items-center">
+          {jwtDecode(token).shopType === "SHOP" ? (
+            <h2 className="font-bold md:text-[1.5rem] text-center">
+              सर्विस पेमेंट
+            </h2>
+          ) : (
+            <h2 className="font-bold md:text-[1.5rem] text-center">
+              सर्विस पेमेंट
+            </h2>
+          )}
+        </div>
+        <div className="divider my-2"></div>
+      </div>
+
       <section>
         <div ref={front}>
-          <div className="title flex justify-center items-center">
-           {jwtDecode(token).shopType==="SHOP"?( <h2 className="font-bold md:text-[1.5rem] text-center">
-              सर्विस पेमेंट
-            </h2>):
-            ( <h2 className="font-bold md:text-[1.5rem] text-center">
-            सर्विस पेमेंट
-          </h2>)
-             }
-          </div>
-          <div className="divider my-2"></div>
+          {/* <div className="divider my-2"></div> */}
 
           <div>
             <form action="">
               <div className="justify-center flex items-center">
                 <table className="removeCommonWSpace self-center	">
-                  
-
                   <tbody>
-                  <tr>
-                      <th className="text-xs" rowSpan={2}> क्र. सं.</th>
-                      <th className="text-xs" colSpan={2}> नामे</th>
-                      <th className="text-xs" colSpan={2}> जमा </th>
-                      <th className="text-xs wd-5" rowSpan={2}> चालू शेष नामे </th>
-                      <th className="text-xs" rowSpan={2}>विवरण</th>
-                      <th className="text-xs" rowSpan={2}>डिलीट</th>
+                    <tr>
+                      <th className="text-xs" rowSpan={2}>
+                        {" "}
+                        क्र. सं.
+                      </th>
+                      <th className="text-xs" colSpan={2}>
+                        {" "}
+                        नामे
+                      </th>
+                      <th className="text-xs" colSpan={2}>
+                        {" "}
+                        जमा{" "}
+                      </th>
+                      <th className="text-xs wd-5" rowSpan={2}>
+                        {" "}
+                        चालू शेष नामे{" "}
+                      </th>
+                      <th className="text-xs" rowSpan={2}>
+                        विवरण
+                      </th>
+                      <th className="text-xs" rowSpan={2}>
+                        डिलीट
+                      </th>
                     </tr>
                     <tr>
+                      <th className="text-xs">रकम</th>
 
-                      <th className="text-xs">
-                            रकम
-                      </th>
+                      <th className="text-xs">दिनांक</th>
 
-                      <th className="text-xs">
-                           दिनांक 
-                      </th>
+                      <th className="text-xs">रकम</th>
 
-                      <th className="text-xs">
-                        रकम
-                      </th>
-
-                      <th className="text-xs">
-                        दिनांक 
-                      </th>
-
-                      
+                      <th className="text-xs">दिनांक</th>
 
                       {/* ============= कुल योग ================ */}
                     </tr>
-                    { (
-                      paymentData.map((payment, index) => {
-                        return (
-                          <PaymentForm
-                            key={index}
-                            index={index}
-                            paymentData={paymentData}
-                            payment={payment}
-                            handelDelete ={handelDelete }
-                          ></PaymentForm>
-                        );
-                      })
-                    )}
+                    {paymentData.map((payment, index) => {
+                      return (
+                        <PaymentForm
+                          key={index}
+                          index={index}
+                          paymentData={paymentData}
+                          payment={payment}
+                          handelDelete={handelDelete}
+                        ></PaymentForm>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>

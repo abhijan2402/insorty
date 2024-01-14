@@ -10,12 +10,10 @@ import { Link } from "react-router-dom";
 
 const PartyOutBill = () => {
   const [StartDate, setStartDate] = useState(new Date());
-  const [EndDate, setEndDate] = useState(
-    new Date());
-   
-  
+  const [EndDate, setEndDate] = useState(new Date());
+
   const token = localStorage.getItem("token");
-  const ShopType =jwtDecode(token).shopType;
+  const ShopType = jwtDecode(token).shopType;
 
   const {
     data: purchaseOutSide,
@@ -56,7 +54,6 @@ const PartyOutBill = () => {
     return <Loader></Loader>;
   }
 
-
   // const filteredData =
   //   purchaseOutSide.length &&
   //   purchaseOutSide?.filter((item) => {
@@ -75,16 +72,12 @@ const PartyOutBill = () => {
 
   return (
     <>
-      <button className="commonBtn " onClick={handlePrint}>
-        प्रिंट
-      </button>
-
-      
-      <section >
-        <div className="title flex justify-center items-center flex-col">
-
-        <div className="flex gap-4">
-        { ShopType === "BAR" && (
+      <div className="py-0 sticky top-0 bg-white z-5000">
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
+        </button>
+        <div className="flex gap-2 justify-center items-center">
+          {ShopType === "BAR" && (
             <>
               <Link className="commonBtn" to="/user/bearshop/selfbill">
                 दुकान बिल
@@ -93,11 +86,9 @@ const PartyOutBill = () => {
               <Link className="commonBtn " to="/user/bearshop/outbill">
                 बाहर का बिल
               </Link>
-
-              
             </>
           )}{" "}
-          { ShopType === "SHOP" && (
+          {ShopType === "SHOP" && (
             <>
               <Link className="commonBtn" to="/user/selfbill">
                 दुकान बिल
@@ -106,148 +97,143 @@ const PartyOutBill = () => {
               <Link className="commonBtn " to="/user/outbill">
                 बाहर का बिल
               </Link>
-              
             </>
           )}
         </div>
+        <div>
+          <div className="flex flex-col justify-center items-center">
+            <h2 className="font-bold md:text-[1.5rem] text-center">
+              पार्टी बिल
+            </h2>
+            <div className="flex gap-4 items-center my-4 z-10">
+              <h2 className="font-bold text-[1.5rem]">From</h2>
+              <div className="flex gap-2 items-center">
+                <DatePicker
+                  selected={StartDate}
+                  onChange={(date) => {
+                    setStartDate(date);
+                    console.log(moment(date).format());
+                  }}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText={"dd/mm/yyyy"}
+                  className="inputBox date"
+                />
+              </div>
 
-        <div ref={front}>
-          <div className="flex justify-center items-center flex-col">
-          <h2 className="font-bold md:text-[1.5rem] text-center">
-          पार्टी बिल
-          </h2>
-
-          
-
-          <div  className="flex gap-4 items-center my-4 z-10">
-            <h2 className="font-bold text-[1.5rem]">From</h2>
-            <div className="flex gap-2 items-center">
-              <DatePicker
-                selected={StartDate}
-                onChange={(date) => {
-                  setStartDate(date);
-                  console.log(moment(date).format());
-                }}
-                dateFormat="dd/MM/yyyy"
-                placeholderText={"dd/mm/yyyy"}
-                className="inputBox date"
-              />
+              <h2 className="font-bold text-[1.5rem]">To</h2>
+              <div className="flex gap-2 items-center">
+                <DatePicker
+                  selected={EndDate}
+                  name="year"
+                  onChange={(data) => setEndDate(data)}
+                  dateFormat="dd/MM/yyyy"
+                  className="inputBox date"
+                  placeholderText={"dd/mm/yyyy"}
+                />
+              </div>
             </div>
-
-            <h2 className="font-bold text-[1.5rem]">To</h2>
-            <div className="flex gap-2 items-center">
-              <DatePicker
-                selected={EndDate}
-                name="year"
-                onChange={(data) => setEndDate(data)}
-                dateFormat="dd/MM/yyyy"
-                className="inputBox date"
-                placeholderText={"dd/mm/yyyy"}
-              />
-            </div>
+            <div className="divider my-2"></div>
           </div>
         </div>
-        <div className="divider my-2"></div>
+      </div>
 
-        {/* ************************ all sealy data************** */}
+      <section>
+        <div className="title flex justify-center items-center flex-col">
+          {/* <div className="flex gap-4"> */}
 
-        <div>
-          <div className="flex justify-center items-center m-6">
-            <table className="table removeCommonWSpace">
-              <thead>
-               
-                <tr>
-                  <th className="text-xs">क्र.सं.</th>
-                  <th className="text-xs" >
-                    पार्टी का नाम
-                  </th>
-                  <th className="text-xs" >
-                    ब्राण्ड
-                  </th>
-                  <th className="text-xs" >
-                    ML
-                  </th>
-                  <th className="text-xs" >
-                    संख्या
-                  </th>
-                  <th className="text-xs" >
-                    रेट
-                  </th>
-                  <th className="text-xs" >
-                    रकम
-                  </th>
+          <div ref={front}>
+            <div className="flex justify-center items-center flex-col"></div>
 
-                  <th className="text-xs" >
-                    टिप्पणी
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {purchaseOutSide &&
-                  purchaseOutSide?.length &&
-                  purchaseOutSide
-                    ?.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                    .map((page, index) => {
-                      return (
-                        <>
-                          {page?.entries?.map((entry, index2) => {
-                            return (
-                              <InfolwRml
-                                key={index}
-                                outSideData={entry}
-                                index={index2 + index}
-                              ></InfolwRml>
-                            );
-                          })}
-                        </>
-                      );
-                    })}
+            {/* ************************ all sealy data************** */}
 
-                <tr>
-                  <td className="tg-0lax">Total</td>
-                  <td className="tg-0lax" />
-                  <td className="tg-0lax"  />
-                  <td className="tg-0lax" ></td>
-                  <td className="tg-0lax" >
+            <div>
+              <div className="flex justify-center items-center m-6">
+                <table className="table removeCommonWSpace">
+                  <thead>
+                    <tr>
+                      <th className="text-xs">क्र.सं.</th>
+                      <th className="text-xs">पार्टी का नाम</th>
+                      <th className="text-xs">ब्राण्ड</th>
+                      <th className="text-xs">ML</th>
+                      <th className="text-xs">संख्या</th>
+                      <th className="text-xs">रेट</th>
+                      <th className="text-xs">रकम</th>
+
+                      <th className="text-xs">टिप्पणी</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                     {purchaseOutSide &&
                       purchaseOutSide?.length &&
-                      purchaseOutSide.reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.number),
-                              0
-                            )),
-                        0
-                      )}
-                  </td>
-                  <td className="tg-0lax" ></td>
-                  <td className="tg-0lax" >
-                    {(Number(purchaseOutSide &&
-                      purchaseOutSide?.length &&
                       purchaseOutSide
-                        .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                        ?.sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                        .map((page, index) => {
+                          return (
+                            <>
+                              {page?.entries?.map((entry, index2) => {
+                                return (
+                                  <InfolwRml
+                                    key={index}
+                                    outSideData={entry}
+                                    index={index2 + index}
+                                  ></InfolwRml>
+                                );
+                              })}
+                            </>
+                          );
+                        })}
 
-                        .reduce(
-                          (total, currentItem) =>
-                            (total =
-                              total +
-                              currentItem?.entries?.reduce(
-                                (total, currentItem) =>
-                                  (total = total + currentItem?.total),
-                                0
-                              )),
-                          0
-                        ))||0).toFixed(2)}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    <tr>
+                      <td className="tg-0lax">Total</td>
+                      <td className="tg-0lax" />
+                      <td className="tg-0lax" />
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax">
+                        {purchaseOutSide &&
+                          purchaseOutSide?.length &&
+                          purchaseOutSide.reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem?.entries?.reduce(
+                                  (total, currentItem) =>
+                                    (total = total + currentItem?.number),
+                                  0
+                                )),
+                            0
+                          )}
+                      </td>
+                      <td className="tg-0lax"></td>
+                      <td className="tg-0lax">
+                        {(
+                          Number(
+                            purchaseOutSide &&
+                              purchaseOutSide?.length &&
+                              purchaseOutSide
+                                .sort((a, b) =>
+                                  a.createdAt.localeCompare(b.createdAt)
+                                )
+
+                                .reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      currentItem?.entries?.reduce(
+                                        (total, currentItem) =>
+                                          (total = total + currentItem?.total),
+                                        0
+                                      )),
+                                  0
+                                )
+                          ) || 0
+                        ).toFixed(2)}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
-        </div>
-        </div>
         </div>
       </section>
     </>

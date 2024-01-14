@@ -12,15 +12,14 @@ import swal from "sweetalert";
 
 const SendFormat = ({ isBearShop }) => {
   const { partners, partnerLoaded, refetch } = usePartyNames();
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
   const front = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
- 
+
   // const token = jwtDecode(localStorage.getItem("token"));
   const ShopType = jwtDecode(localStorage.getItem("token")).shopType;
-  
 
   const deletePartner = (id) => {
     fetch(`https://insorty-api.onrender.com/shop/deletePartner`, {
@@ -44,103 +43,104 @@ const SendFormat = ({ isBearShop }) => {
   if (partnerLoaded) return <Loader></Loader>;
 
   return (
-    <section className="py-4">
-      <div className="title">
-      <button className="commonBtn " onClick={handlePrint}>
+    <>
+      <div className="py-2 sticky top-0 bg-white z-5000">
+        <div className="title">
+          <button className="commonBtn " onClick={handlePrint}>
             प्रिंट
           </button>
-        <div className="flex gap-4 items-center justify-center">
-          
-
-          { ShopType === "BAR" && (
-            <Link className="commonBtn" to="/user/bearshop/partners">
-              पार्टनर खाते
-            </Link>
-          ) }{ ShopType === "SHOP" && (
-            <Link className="commonBtn" to="/user/partners">
-              पार्टनर खाते
-            </Link>
-          )}
-
-          
-        </div>
-
-        <div className="divider my-2"></div>
-      </div>
-
-      <div>
-        <section ref={front}>
-          <div className="mx-6 flex justify-center flex-col">
-            <h2 className="font-bold md:text-[1.5rem] text-center my-4">
-              सभी पार्टनर
-            </h2>
-            <div className="flex justify-center items-center flex-col">
-              <table className="removeCommonWSpace ">
-                <thead>
-                  <tr>
-                    <th className="text-xs"> क्र. सं.</th>
-                    <th className="text-xs">पार्टनर नाम</th>
-                    <th className="text-xs">हिस्सा</th>
-                    <th className="text-xs">खाते में शेष</th>
-                    <th className="text-xs">डिलीट</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {partners.map((item, index) => {
-                    return (
-                      <tr>
-                        <th>{index + 1}</th>
-                        <td>{item?.name}</td>
-                        <td>{item?.equity} %</td>
-                        <td>{Number(item?.balance).toFixed(2)}</td>
-                        <td>
-                          <FaRegTrashAlt className="cursor-pointer"
-                            onClick={() => {
-                              swal({
-                                title: "Are you sure?",
-                                text: `Once deleted, you will not be able to recover partner ${item?.name}`,
-                                icon: "warning",
-                                buttons: true,
-                                dangerMode: true,
-                              }).then((willDelete) => {
-                                if (willDelete) {
-                                  if (item.equity !== 0) {
-                                    swal(`Please Change Equity to 0%`, {
-                                      icon: "error",
-                                    });
-                                  } else {
-                                    deletePartner(item._id);
-                                  }
-                                } else {
-                                  swal("Your partner is safe!");
-                                }
-                              });
-                            }}
-                          ></FaRegTrashAlt>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>{" "}
-        </section>
-
-        <div>
-          <div className="flex justify-center ">
-            <label htmlFor="addFormat" className="btn bg-[#AA237A] my-4 mx-4">
-              नया पार्टनर जोड़ें
-            </label>
-            <label htmlFor="changeShare" className="btn bg-[#AA237A] my-4">
-              शेयर बदलें
-            </label>
+          <div className="flex gap-4 items-center justify-center">
+            {ShopType === "BAR" && (
+              <Link className="commonBtn" to="/user/bearshop/partners">
+                पार्टनर खाते
+              </Link>
+            )}
+            {ShopType === "SHOP" && (
+              <Link className="commonBtn" to="/user/partners">
+                पार्टनर खाते
+              </Link>
+            )}
           </div>
+
+          <div className="divider my-2"></div>
         </div>
-        <AddSendFormat partners={partners}></AddSendFormat>
-        <ChangeEquity data={partners}></ChangeEquity>
       </div>
-    </section>
+      <section className="py-0">
+        <div>
+          <section ref={front}>
+            <div className="mx-6 flex justify-center flex-col">
+              <h2 className="font-bold md:text-[1.5rem] text-center my-4">
+                सभी पार्टनर
+              </h2>
+              <div className="flex justify-center items-center flex-col">
+                <table className="removeCommonWSpace ">
+                  <thead>
+                    <tr>
+                      <th className="text-xs"> क्र. सं.</th>
+                      <th className="text-xs">पार्टनर नाम</th>
+                      <th className="text-xs">हिस्सा</th>
+                      <th className="text-xs">खाते में शेष</th>
+                      <th className="text-xs">डिलीट</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {partners.map((item, index) => {
+                      return (
+                        <tr>
+                          <th>{index + 1}</th>
+                          <td>{item?.name}</td>
+                          <td>{item?.equity} %</td>
+                          <td>{Number(item?.balance).toFixed(2)}</td>
+                          <td>
+                            <FaRegTrashAlt
+                              className="cursor-pointer"
+                              onClick={() => {
+                                swal({
+                                  title: "Are you sure?",
+                                  text: `Once deleted, you will not be able to recover partner ${item?.name}`,
+                                  icon: "warning",
+                                  buttons: true,
+                                  dangerMode: true,
+                                }).then((willDelete) => {
+                                  if (willDelete) {
+                                    if (item.equity !== 0) {
+                                      swal(`Please Change Equity to 0%`, {
+                                        icon: "error",
+                                      });
+                                    } else {
+                                      deletePartner(item._id);
+                                    }
+                                  } else {
+                                    swal("Your partner is safe!");
+                                  }
+                                });
+                              }}
+                            ></FaRegTrashAlt>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>{" "}
+          </section>
+
+          <div>
+            <div className="flex justify-center ">
+              <label htmlFor="addFormat" className="btn bg-[#AA237A] my-4 mx-4">
+                नया पार्टनर जोड़ें
+              </label>
+              <label htmlFor="changeShare" className="btn bg-[#AA237A] my-4">
+                शेयर बदलें
+              </label>
+            </div>
+          </div>
+          <AddSendFormat partners={partners}></AddSendFormat>
+          <ChangeEquity data={partners}></ChangeEquity>
+        </div>
+      </section>
+    </>
   );
 };
 

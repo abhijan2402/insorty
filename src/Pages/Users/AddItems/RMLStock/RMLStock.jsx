@@ -81,9 +81,9 @@ const RmlStock = () => {
   return (
     <section>
       <div className="title">
-      <button className="commonBtn " onClick={handlePrint}>
-            प्रिंट
-          </button>
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
+        </button>
         <div className="flex gap-4 justify-center items-center">
           {ShopType === "BAR" && (
             <>
@@ -106,8 +106,6 @@ const RmlStock = () => {
               </Link>
             </>
           )}
-
-         
         </div>
         <div className="divider my-2"></div>
       </div>
@@ -122,6 +120,7 @@ const RmlStock = () => {
             <h2 className="font-bold text-[1.5rem]">From</h2>
             <div className="flex gap-2 items-center">
               <DatePicker
+                autoComplete="off"
                 selected={StartDate}
                 onChange={(date) => {
                   setStartDate(date);
@@ -136,6 +135,7 @@ const RmlStock = () => {
             <h2 className="font-bold text-[1.5rem]">To</h2>
             <div className="flex gap-2 items-center">
               <DatePicker
+                autoComplete="off"
                 selected={EndDate}
                 name="year"
                 onChange={(data) => setEndDate(data)}
@@ -168,38 +168,49 @@ const RmlStock = () => {
                     </thead>
                     <tbody>
                       {filteredData &&
-                        filteredData.filter((item)=>item.isActive===true).sort((a, b) => a.brandName.localeCompare(b.brandName)).map((brand, index) => {
-                          return (
-                            <>
-                              {brand.sizes.filter((size)=>size.currentStock>0 || Number(size.averageRate.$numberDecimal)>0).map((size) => 
-                                 {
-                                  count++;
-                                  return (
-                                    <tr id="scrollableDiv">
-                                      <th>{count}</th>
-                                      <td>{brand.brandName}</td>
-                                      <td>{size.quantityInML} ML</td>
-                                      <td> {size.currentStock}</td>
-                                      <td>
-                                        {" "}
-                                        {Number(
-                                          size.averageRate.$numberDecimal
-                                        ).toFixed(2)}
-                                      </td>
-                                      <td>
-                                        
-                                        {Number(size.currentStock *
-                                          Number(
+                        filteredData
+                          .filter((item) => item.isActive === true)
+                          .sort((a, b) =>
+                            a.brandName.localeCompare(b.brandName)
+                          )
+                          .map((brand, index) => {
+                            return (
+                              <>
+                                {brand.sizes
+                                  .filter(
+                                    (size) =>
+                                      size.currentStock > 0 ||
+                                      Number(size.averageRate.$numberDecimal) >
+                                        0
+                                  )
+                                  .map((size) => {
+                                    count++;
+                                    return (
+                                      <tr id="scrollableDiv">
+                                        <th>{count}</th>
+                                        <td>{brand.brandName}</td>
+                                        <td>{size.quantityInML} ML</td>
+                                        <td> {size.currentStock}</td>
+                                        <td>
+                                          {" "}
+                                          {Number(
                                             size.averageRate.$numberDecimal
-                                          )).toFixed(2)}
-                                      </td>
-                                    </tr>
-                                  );
-                                
-                              })}
-                            </>
-                          );
-                        })}
+                                          ).toFixed(2)}
+                                        </td>
+                                        <td>
+                                          {Number(
+                                            size.currentStock *
+                                              Number(
+                                                size.averageRate.$numberDecimal
+                                              )
+                                          ).toFixed(2)}
+                                        </td>
+                                      </tr>
+                                    );
+                                  })}
+                              </>
+                            );
+                          })}
                       <tr>
                         <td colSpan="5">Total</td>
                         <td>
@@ -221,8 +232,8 @@ const RmlStock = () => {
                                       0
                                     )),
                                 0
-                              ).toFixed(2)
-                             }
+                              )
+                              .toFixed(2)}
                         </td>
                       </tr>
                     </tbody>

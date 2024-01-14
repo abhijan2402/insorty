@@ -23,7 +23,7 @@ const StockLanding = () => {
         }
       );
       const data = await res.json();
-      console.log(data.data)
+      console.log(data.data);
       return data.data;
     },
   });
@@ -41,71 +41,72 @@ const StockLanding = () => {
   }
 
   return (
-    <section className="p-6">
-      <div>
-        <h1 className="titleStyle text-center">पार्टी का नाम</h1>
-        <div className="flex gap-10 font-bold">
-
-        </div>
-        <div className="divider my-2"></div>
-      </div>
-
-      <div>
-        <div className="flex justify-center items-center">
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <th className="text-xs"> क्र. सं.</th>
-                <th className="text-xs" colSpan={2}>नाम</th>
-              </tr>
-            </thead>
-            <tbody>
-              {PartyInfo?.map((party, index) => {
-                return (
-                  <>
-                    { ShopType === "BAR" && (
-                      <tr key={party?._id}>
-                        <th>{index + 1}</th>
-                        <td>
-                          <Link
-                            className="text-[1rem]"
-                            to={`/user/bearshop/stocklanding/form/${party?._id}`}
-                          >
-                            {party?.partyName}
-                          </Link>
-                        </td>
-                        <td>
-                          <Link
-                            className="font-3xl font-bold"
-                            style={{ color: "#AA237A" }}
-                          >
-                            <FaRegTrashAlt></FaRegTrashAlt>
-                          </Link>
-                        </td>
-                      </tr>
-                    )}
-                    {ShopType === "SHOP" && (
-                      <tr key={party?._id}>
-                        <th>{index + 1}</th>
-                        <td>
-                          <Link
-                            className=" text-[1rem]"
-                            to={`/user/stocklanding/form/${party?._id}`}
-                          >
-                            {party?.partyName}
-                          </Link>
-                        </td>
-                       
-                      </tr>
-                    )}
-                  </>
-                );
-              })}
-            </tbody>
-          </table>
+    <>
+      <div className="py-2 sticky top-0 bg-white z-5000">
+        <div>
+          <h1 className="titleStyle text-center">पार्टी का नाम</h1>
+          <div className="divider my-2"></div>
         </div>
       </div>
-    </section>
+      <section className="p-6">
+        <div>
+          <div className="flex justify-center items-center">
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <th className="text-xs"> क्र. सं.</th>
+                  <th className="text-xs" colSpan={2}>
+                    नाम
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {PartyInfo?.map((party, index) => {
+                  return (
+                    <>
+                      {ShopType === "BAR" && (
+                        <tr key={party?._id}>
+                          <th>{index + 1}</th>
+                          <td>
+                            <Link
+                              className="text-[1rem]"
+                              to={`/user/bearshop/stocklanding/form/${party?._id}`}
+                            >
+                              {party?.partyName}
+                            </Link>
+                          </td>
+                          <td>
+                            <Link
+                              className="font-3xl font-bold"
+                              style={{ color: "#AA237A" }}
+                            >
+                              <FaRegTrashAlt></FaRegTrashAlt>
+                            </Link>
+                          </td>
+                        </tr>
+                      )}
+                      {ShopType === "SHOP" && (
+                        <tr key={party?._id}>
+                          <th>{index + 1}</th>
+                          <td>
+                            <Link
+                              className=" text-[1rem]"
+                              to={`/user/stocklanding/form/${party?._id}`}
+                            >
+                              {party?.partyName}
+                            </Link>
+                          </td>
+                        </tr>
+                      )}
+                    </>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 

@@ -41,7 +41,7 @@ const SalaryModal = ({
                   <span className="label-text">Month Year</span>
                 </label>
 
-                <div className="input-group">
+                <div className="">
                   <DatePicker
                     name="salary_monthYear"
                     selected={slaryDate}
@@ -50,7 +50,6 @@ const SalaryModal = ({
                     placeholderText={"dd/MM/yyyy"}
                     className="inputBox date"
                   />
-                 
                 </div>
               </div>
 
@@ -96,7 +95,6 @@ const SalaryModal = ({
                     placeholderText={"dd/MM/yyyy"}
                     className="inputBox date"
                   />
-             
                 </div>
               </div>
               <div className="form-control">

@@ -11,7 +11,7 @@ const AddPayment = ({
   depositMonth,
   setDepositMonth,
   msg,
-  setMsg
+  setMsg,
 }) => {
   return (
     <section>
@@ -25,7 +25,7 @@ const AddPayment = ({
             ✕
           </label>
           <h3 className="text-lg font-bold">लेन-देन जोड़ें</h3>
-          <form action="" onSubmit={(e)=>handelAddPayment(e)}>
+          <form action="" onSubmit={(e) => handelAddPayment(e)}>
             <div className="flex gap-4 flex-col mt-4">
               <div className="form-control">
                 <label className="label">
@@ -48,11 +48,9 @@ const AddPayment = ({
                   <span className="label-text font-bold">दिनांक </span>
                 </label>
 
-        
-
                 <DatePicker
                   name="debitMonth"
-                 
+                  autoComplete="off"
                   selected={debitMonth}
                   onChange={(date) => setDebitMonth(date)}
                   dateFormat="dd/MM/yyyy"
@@ -91,12 +89,12 @@ const AddPayment = ({
                   dateFormat="dd/MM/yyyy"
                   placeholderText={"dd/MM/yyyy"}
                   className="inputBox wd-100"
+                  autoComplete="off"
                 />
               </div>
             </div>
 
             <div className="mt-4">
-        
               <label className="label">
                 <span className="label-text font-bold">विवरणे</span>
               </label>
@@ -107,7 +105,7 @@ const AddPayment = ({
                 type="text"
                 name="desciption"
                 value={msg}
-                onChange={(e)=>setMsg(e.target.value)}
+                onChange={(e) => setMsg(e.target.value)}
                 className="input input-bordered w-full"
               />
             </div>
