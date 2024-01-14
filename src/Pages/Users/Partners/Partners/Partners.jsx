@@ -83,6 +83,43 @@ const Partners = ({ isBearShop }) => {
             </Link>
           )}
         </div>
+        <div>
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            पार्टनर खाते{" "}
+          </h2>
+          <div className="flex justify-center items-center">
+            <div className="flex gap-4 items-center my-4">
+              <h2 className="font-bold text-[1.5rem]">From</h2>
+              <div className="flex gap-2 items-center">
+                <DatePicker
+                  selected={StartDate}
+                  onChange={(date) => {
+                    setStartDate(date);
+                    console.log(moment(date).format());
+                  }}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText={"dd/mm/yyyy"}
+                  className="inputBox date"
+                  autoComplete="off"
+                />
+              </div>
+
+              <h2 className="font-bold text-[1.5rem]">To</h2>
+              <div className="flex gap-2 items-center">
+                <DatePicker
+                  selected={EndDate}
+                  name="year"
+                  onChange={(data) => setEndDate(data)}
+                  dateFormat="dd/MM/yyyy"
+                  className="inputBox date"
+                  placeholderText={"dd/mm/yyyy"}
+                  autoComplete="off"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="divider my-2"></div>
+        </div>
       </div>
       <section className="py-4">
         <div className="title">
@@ -101,45 +138,8 @@ const Partners = ({ isBearShop }) => {
               </Link>
             )}
           </div> */}
-          <div>
-            <div className="divider my-4"></div>
-          </div>
+
           <div ref={front}>
-            <h2 className="font-bold md:text-[1.5rem] text-center">
-              पार्टनर खाते{" "}
-            </h2>
-            <div className="flex justify-center items-center">
-              <div className="flex gap-4 items-center my-4">
-                <h2 className="font-bold text-[1.5rem]">From</h2>
-                <div className="flex gap-2 items-center">
-                  <DatePicker
-                    selected={StartDate}
-                    onChange={(date) => {
-                      setStartDate(date);
-                      console.log(moment(date).format());
-                    }}
-                    dateFormat="dd/MM/yyyy"
-                    placeholderText={"dd/mm/yyyy"}
-                    className="inputBox date"
-                    autoComplete="off"
-                  />
-                </div>
-
-                <h2 className="font-bold text-[1.5rem]">To</h2>
-                <div className="flex gap-2 items-center">
-                  <DatePicker
-                    selected={EndDate}
-                    name="year"
-                    onChange={(data) => setEndDate(data)}
-                    dateFormat="dd/MM/yyyy"
-                    className="inputBox date"
-                    placeholderText={"dd/mm/yyyy"}
-                    autoComplete="off"
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* ************************ all sealy data************** */}
             <div className="flex justify-center items-center">
               <form action="">
