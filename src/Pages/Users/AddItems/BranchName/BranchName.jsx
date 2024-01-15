@@ -103,7 +103,7 @@ const BranchName = () => {
       </div>
       <section className="py-4">
         <div className="flex justify-center items-center">
-          <table className="table  removeCommonWSpace">
+          <table className="  removeCommonWSpace">
             <thead className="text-center ">
               <th>
                 <h1>क्र. सं.</h1>

@@ -72,11 +72,11 @@ const Borrow = () => {
             पार्टी जोड़ें
           </Link>
         </div>
+        <h1 className="titleStyle text-center">पार्टी सूची</h1>
+        <div className="divider my-2"></div>
       </div>
       <section className="py-4 scroll-y">
         <div ref={front}>
-          <h1 className="titleStyle text-center">पार्टी सूची</h1>
-          <div className="divider my-2"></div>
           <div>
             <h2 className="font-bold md:text-[1.5rem] text-center">
               उधारी (माल व नकद) नामे व जमा
