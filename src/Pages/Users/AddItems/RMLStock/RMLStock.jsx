@@ -79,8 +79,8 @@ const RmlStock = () => {
   // }
 
   return (
-    <section>
-      <div className="title">
+    <>
+      <div className="py-0 sticky top-0 bg-white z-5000">
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट
         </button>
@@ -107,144 +107,146 @@ const RmlStock = () => {
             </>
           )}
         </div>
+        <h2 className="font-bold md:text-[1.5rem] text-center"> देशी / RML</h2>
+        <div className="flex gap-4 items-center my-4 flex justify-center items-center">
+          <h2 className="font-bold text-[1.5rem]">From</h2>
+          <div className="flex gap-2 items-center">
+            <DatePicker
+              autoComplete="off"
+              selected={StartDate}
+              onChange={(date) => {
+                setStartDate(date);
+                console.log(moment(date).format());
+              }}
+              dateFormat="dd/MM/yyyy"
+              placeholderText={"dd/mm/yyyy"}
+              className="inputBox date"
+            />
+          </div>
+
+          <h2 className="font-bold text-[1.5rem]">To</h2>
+          <div className="flex gap-2 items-center">
+            <DatePicker
+              autoComplete="off"
+              selected={EndDate}
+              name="year"
+              onChange={(data) => setEndDate(data)}
+              dateFormat="dd/MM/yyyy"
+              className="inputBox date"
+              placeholderText={"dd/mm/yyyy"}
+            />
+          </div>
+        </div>
         <div className="divider my-2"></div>
       </div>
+      <section>
+        <div className="title"></div>
 
-      <div ref={front} className="flex justify-center items-center">
-        <div>
-          <h2 className="font-bold md:text-[1.5rem] text-center">
-            {" "}
-            देशी / RML
-          </h2>
-          <div className="flex gap-4 items-center my-4">
-            <h2 className="font-bold text-[1.5rem]">From</h2>
-            <div className="flex gap-2 items-center">
-              <DatePicker
-                autoComplete="off"
-                selected={StartDate}
-                onChange={(date) => {
-                  setStartDate(date);
-                  console.log(moment(date).format());
-                }}
-                dateFormat="dd/MM/yyyy"
-                placeholderText={"dd/mm/yyyy"}
-                className="inputBox date"
-              />
-            </div>
-
-            <h2 className="font-bold text-[1.5rem]">To</h2>
-            <div className="flex gap-2 items-center">
-              <DatePicker
-                autoComplete="off"
-                selected={EndDate}
-                name="year"
-                onChange={(data) => setEndDate(data)}
-                dateFormat="dd/MM/yyyy"
-                className="inputBox date"
-                placeholderText={"dd/mm/yyyy"}
-              />
-            </div>
-          </div>
+        <div ref={front} className="flex justify-center items-center">
           <div>
-            <div className=" gap-4  my-4 ">
-              <div>
-                <InfiniteScroll
-                  dataLength={rmlStock.length}
-                  next={fetchData}
-                  hasMore={hasMore}
-                  scrollableTarget="scrollableDiv"
-                  loader={<h4>Loading...</h4>}
-                >
-                  <table className="m-2 removeCommonWSpace">
-                    <thead>
-                      <tr>
-                        <th className="text-xs"> क्र. सं.</th>
-                        <th className="text-xs">ब्राण्ड </th>
-                        <th className="text-xs">साईज </th>
-                        <th className="text-xs">स्टॉक </th>
-                        <th className="text-xs"> रेट</th>
-                        <th className="text-xs"> योग</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filteredData &&
-                        filteredData
-                          .filter((item) => item.isActive === true)
-                          .sort((a, b) =>
-                            a.brandName.localeCompare(b.brandName)
-                          )
-                          .map((brand, index) => {
-                            return (
-                              <>
-                                {brand.sizes
-                                  .filter(
-                                    (size) =>
-                                      size.currentStock > 0 ||
-                                      Number(size.averageRate.$numberDecimal) >
-                                        0
-                                  )
-                                  .map((size) => {
-                                    count++;
-                                    return (
-                                      <tr id="scrollableDiv">
-                                        <th>{count}</th>
-                                        <td>{brand.brandName}</td>
-                                        <td>{size.quantityInML} ML</td>
-                                        <td> {size.currentStock}</td>
-                                        <td>
-                                          {" "}
-                                          {Number(
-                                            size.averageRate.$numberDecimal
-                                          ).toFixed(2)}
-                                        </td>
-                                        <td>
-                                          {Number(
-                                            size.currentStock *
+            <div>
+              <div className=" gap-4  my-4 ">
+                <div>
+                  <InfiniteScroll
+                    dataLength={rmlStock.length}
+                    next={fetchData}
+                    hasMore={hasMore}
+                    scrollableTarget="scrollableDiv"
+                    loader={<h4>Loading...</h4>}
+                  >
+                    <table className="m-2 removeCommonWSpace">
+                      <thead>
+                        <tr>
+                          <th className="text-xs"> क्र. सं.</th>
+                          <th className="text-xs">ब्राण्ड </th>
+                          <th className="text-xs">साईज </th>
+                          <th className="text-xs">स्टॉक </th>
+                          <th className="text-xs"> रेट</th>
+                          <th className="text-xs"> योग</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filteredData &&
+                          filteredData
+                            .filter((item) => item.isActive === true)
+                            .sort((a, b) =>
+                              a.brandName.localeCompare(b.brandName)
+                            )
+                            .map((brand, index) => {
+                              return (
+                                <>
+                                  {brand.sizes
+                                    .filter(
+                                      (size) =>
+                                        size.currentStock > 0 ||
+                                        Number(
+                                          size.averageRate.$numberDecimal
+                                        ) > 0
+                                    )
+                                    .map((size) => {
+                                      count++;
+                                      return (
+                                        <tr id="scrollableDiv">
+                                          <th>{count}</th>
+                                          <td>{brand.brandName}</td>
+                                          <td>{size.quantityInML} ML</td>
+                                          <td> {size.currentStock}</td>
+                                          <td>
+                                            {" "}
+                                            {Number(
+                                              size.averageRate.$numberDecimal
+                                            ).toFixed(2)}
+                                          </td>
+                                          <td>
+                                            {Number(
+                                              size.currentStock *
+                                                Number(
+                                                  size.averageRate
+                                                    .$numberDecimal
+                                                )
+                                            ).toFixed(2)}
+                                          </td>
+                                        </tr>
+                                      );
+                                    })}
+                                </>
+                              );
+                            })}
+                        <tr>
+                          <td colSpan="5">Total</td>
+                          <td>
+                            {filteredData &&
+                              filteredData
+                                .reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      currentItem.sizes.reduce(
+                                        (total, currentItem) =>
+                                          (total =
+                                            total +
+                                            currentItem.currentStock *
                                               Number(
-                                                size.averageRate.$numberDecimal
-                                              )
-                                          ).toFixed(2)}
-                                        </td>
-                                      </tr>
-                                    );
-                                  })}
-                              </>
-                            );
-                          })}
-                      <tr>
-                        <td colSpan="5">Total</td>
-                        <td>
-                          {filteredData &&
-                            filteredData
-                              .reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    currentItem.sizes.reduce(
-                                      (total, currentItem) =>
-                                        (total =
-                                          total +
-                                          currentItem.currentStock *
-                                            Number(
-                                              currentItem.averageRate
-                                                .$numberDecimal
-                                            )),
-                                      0
-                                    )),
-                                0
-                              )
-                              .toFixed(2)}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </InfiniteScroll>
+                                                currentItem.averageRate
+                                                  .$numberDecimal
+                                              )),
+                                        0
+                                      )),
+                                  0
+                                )
+                                .toFixed(2)}
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </InfiniteScroll>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

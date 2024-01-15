@@ -90,7 +90,7 @@ const WineStock = () => {
 
   return (
     <>
-      <div className=" py-0  bg-white z-5000">
+      <div className="py-0 sticky top-0 bg-white z-5000">
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट
         </button>
@@ -119,41 +119,40 @@ const WineStock = () => {
             </>
           )}
         </div>
+        <h2 className="font-bold md:text-[1.5rem] text-center"> अंग्रेजी</h2>
+        <div className="flex gap-4 items-center justify-center my-4">
+          <h2 className="font-bold text-[1.5rem]">From</h2>
+          <div className="flex gap-2 items-center z-1000">
+            <DatePicker
+              autoComplete="off"
+              selected={StartDate}
+              onChange={(date) => {
+                setStartDate(date);
+                console.log(moment(date).format());
+              }}
+              dateFormat="dd/MM/yyyy"
+              placeholderText={"dd/mm/yyyy"}
+              className="inputBox date "
+            />
+          </div>
+
+          <h2 className="font-bold text-[1.5rem]">To</h2>
+          <div className="flex gap-2 items-center z-1000">
+            <DatePicker
+              autoComplete="off"
+              selected={EndDate}
+              name="year"
+              onChange={(data) => setEndDate(data)}
+              dateFormat="dd/MM/yyyy"
+              className="inputBox date"
+              placeholderText={"dd/mm/yyyy"}
+            />
+          </div>
+        </div>
         <div className="divider my-2"></div>
       </div>
       <section>
         <div ref={front}>
-          <h2 className="font-bold md:text-[1.5rem] text-center"> अंग्रेजी</h2>
-          <div className="flex gap-4 items-center justify-center my-4">
-            <h2 className="font-bold text-[1.5rem]">From</h2>
-            <div className="flex gap-2 items-center z-1000">
-              <DatePicker
-                autoComplete="off"
-                selected={StartDate}
-                onChange={(date) => {
-                  setStartDate(date);
-                  console.log(moment(date).format());
-                }}
-                dateFormat="dd/MM/yyyy"
-                placeholderText={"dd/mm/yyyy"}
-                className="inputBox date "
-              />
-            </div>
-
-            <h2 className="font-bold text-[1.5rem]">To</h2>
-            <div className="flex gap-2 items-center z-1000">
-              <DatePicker
-                autoComplete="off"
-                selected={EndDate}
-                name="year"
-                onChange={(data) => setEndDate(data)}
-                dateFormat="dd/MM/yyyy"
-                className="inputBox date"
-                placeholderText={"dd/mm/yyyy"}
-              />
-            </div>
-          </div>
-
           <div
             className={`${
               ShopType === "BAR"
@@ -169,7 +168,7 @@ const WineStock = () => {
               loader={<h4>Loading...</h4>}
             >
               {/* " removeCommonWSpace m-2" */}
-              <table className="table removeCommonWSpace m-2 z-1000">
+              <table className=" removeCommonWSpace m-2">
                 <thead>
                   <tr>
                     <th className="text-xs" rowSpan={2}>
