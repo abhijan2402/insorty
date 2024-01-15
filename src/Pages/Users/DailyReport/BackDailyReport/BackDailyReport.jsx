@@ -48,6 +48,11 @@ const BackDailyReport = () => {
     });
   };
 
+  console.log(
+    Number(JSON.parse(localStorage.getItem("totalFirstBack"))) +
+      Number(localStorage.getItem("beerFormTotal")).toFixed(2),
+    "I_AM_FINALLLLLLLL"
+  );
   // ================== Frist Form============
   const {
     addOneInFristFormHandler,
@@ -1535,8 +1540,8 @@ const BackDailyReport = () => {
                     Total:{" "}
                     {Number(
                       JSON.parse(localStorage.getItem("totalFirstBack"))
-                    ) +
-                      Number(localStorage.getItem("beerFormTotal")).toFixed(2)}
+                    ) + Number(localStorage.getItem("beerFormTotal"))}
+                    .00
                   </h4>
                 </div>
               </div>
