@@ -165,37 +165,10 @@ const SelfBill = () => {
             </div>
             <div className="divider my-2"></div>
           </div>
-          <div className="divider my-2"></div>
         </div>
       </div>
       <section>
-        {/* <button className="commonBtn " onClick={handlePrint}>
-          प्रिंट
-        </button> */}
         <div className="title flex flex-col justify-center items-center py-2">
-          {/* <div className="flex gap-4">
-            {ShopType === "BAR" && (
-              <Link className="commonBtn " to="/user/bearshop/outbill">
-                बाहर का बिल
-              </Link>
-            )}
-            {ShopType === "SHOP" && (
-              <Link className="commonBtn " to="/user/outbill">
-                बाहर का बिल
-              </Link>
-            )}
-            {ShopType === "BAR" && (
-              <Link className="commonBtn " to="/user/bearshop/partyOutBill">
-                पार्टी बिल
-              </Link>
-            )}
-            {ShopType === "SHOP" && (
-              <Link className="commonBtn" to="/user/partyOutBill">
-                पार्टी बिल
-              </Link>
-            )}
-          </div> */}
-
           <div ref={front}>
             <div>
               <div className="flex justify-center items-center">

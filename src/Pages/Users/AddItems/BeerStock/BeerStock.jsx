@@ -145,7 +145,7 @@ const BeerStock = () => {
                 scrollableTarget="scrollableDiv"
                 loader={<h4>Loading...</h4>}
               >
-                <table className="table removeCommonWSpace  m-2">
+                <table className=" removeCommonWSpace  m-2">
                   <thead>
                     <tr>
                       <th className="text-xs" rowSpan={2}>

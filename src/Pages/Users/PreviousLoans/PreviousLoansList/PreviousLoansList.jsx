@@ -110,7 +110,7 @@ const PreviousLoansList = () => {
               scrollableTarget="scrollableDiv"
               loader={<h4>Loading...</h4>}
             >
-              <table className="table removeCommonWSpace">
+              <table className=" removeCommonWSpace">
                 <thead>
                   <tr>
                     <th> क्र. सं.</th>

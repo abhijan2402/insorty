@@ -53,101 +53,109 @@ const PartyName = () => {
   if (isLoading) return <Loader></Loader>;
 
   return (
-    <section className="py-4">
-      <div className="title">
-        
-        <div className="flex gap-4 justify-center items-center">
-          
-        <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branchname">
-            ब्रांच जोड़ें
-          </Link>
+    <>
+      <div className="py-0 sticky top-0 bg-white z-5000">
+        <div className="title">
+          <div className="flex gap-4 justify-center items-center">
+            <Link
+              className={shopType === "SHOP" ? "commonBtn" : "displayHidden"}
+              to="/user/branchname"
+            >
+              ब्रांच जोड़ें
+            </Link>
 
-         
-          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/branch">ब्रांच
-          </Link>
-          <Link className = {shopType==="SHOP" ? "commonBtn" : "displayHidden"} to="/user/borrow">पार्टी 
-          </Link>
+            <Link
+              className={shopType === "SHOP" ? "commonBtn" : "displayHidden"}
+              to="/user/branch"
+            >
+              ब्रांच
+            </Link>
+            <Link
+              className={shopType === "SHOP" ? "commonBtn" : "displayHidden"}
+              to="/user/borrow"
+            >
+              पार्टी
+            </Link>
 
-          
-          
-          
-          <Link className = {shopType==="BAR" ? "commonBtn" : "displayHidden"} to="/user/bearshop/borrow">
-            पार्टी 
-          </Link>
-
-        </div>
-        <div>
-        <h1 className="titleStyle text-center">पार्टी जोड़ें</h1>
-        
-      </div>
-        <div className="divider my-2"></div>
-      </div>
-      <div className="justify-center flex items-center">
-        <table className="table  removeCommonWSpace">
-          <thead className="text-center">
-            <th>
-              <h1>क्र. सं.</h1>
-            </th>
-            <th>
-              <h1>पार्टी नाम</h1>
-            </th>
-            <th>
-            डिलीट
-            </th>
-          </thead>
-          <tbody>
-            {PartyNameData?.filter((prev)=>prev.isActive===true).map((item, index) => {
-              return (
-                <tr key={index}>
-                  <th>
-                    <h1>{index + 1}</h1>
-                  </th>
-                  <td>
-                    <h1>{item?.partyName}</h1>
-                  </td>
-                  <td>
-                    <button
-                      className="font-3xl font-bold"
-                      style={{ color: "#AA237A" }}
-                      // onClick={() => handelDelete(item?._id)}
-                      onClick={() => {
-                        swal({
-                          title: "Are you sure?",
-                          text: `Once deleted, you will not be able to recover party ${item?.partyName}`,
-                          icon: "warning",
-                          buttons: true,
-                          dangerMode: true,
-                        }).then((willDelete) => {
-                          if (willDelete) {
-                            
-                            handelDelete(item?._id);
-                            
-                          } else {
-                            swal("Your party is safe!");
-                          }
-                        });
-                      }}
-                    >
-                      <FaRegTrashAlt></FaRegTrashAlt>
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-
-      <div className="flex justify-center items-center">
-        <div className="my-4">
-          <label htmlFor="AddPartyName" className="commonBtn">
-            नई पार्टी जोड़ें
-          </label>
+            <Link
+              className={shopType === "BAR" ? "commonBtn" : "displayHidden"}
+              to="/user/bearshop/borrow"
+            >
+              पार्टी
+            </Link>
+          </div>
+          <div>
+            <h1 className="titleStyle text-center">पार्टी जोड़ें</h1>
+          </div>
+          <div className="divider my-2"></div>
         </div>
       </div>
+      <section className="py-4">
+        <div className="justify-center flex items-center">
+          <table className=" removeCommonWSpace">
+            <thead className="text-center">
+              <th>
+                <h1>क्र. सं.</h1>
+              </th>
+              <th>
+                <h1>पार्टी नाम</h1>
+              </th>
+              <th>डिलीट</th>
+            </thead>
+            <tbody>
+              {PartyNameData?.filter((prev) => prev.isActive === true).map(
+                (item, index) => {
+                  return (
+                    <tr key={index}>
+                      <th>
+                        <h1>{index + 1}</h1>
+                      </th>
+                      <td>
+                        <h1>{item?.partyName}</h1>
+                      </td>
+                      <td>
+                        <button
+                          className="font-3xl font-bold"
+                          style={{ color: "#AA237A" }}
+                          // onClick={() => handelDelete(item?._id)}
+                          onClick={() => {
+                            swal({
+                              title: "Are you sure?",
+                              text: `Once deleted, you will not be able to recover party ${item?.partyName}`,
+                              icon: "warning",
+                              buttons: true,
+                              dangerMode: true,
+                            }).then((willDelete) => {
+                              if (willDelete) {
+                                handelDelete(item?._id);
+                              } else {
+                                swal("Your party is safe!");
+                              }
+                            });
+                          }}
+                        >
+                          <FaRegTrashAlt></FaRegTrashAlt>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                }
+              )}
+            </tbody>
+          </table>
+        </div>
 
-      <AddPartyName refetch={refetch} names={PartyNameData}></AddPartyName>
-    </section>
+        <div className="flex justify-center items-center">
+          <div className="my-4">
+            <label htmlFor="AddPartyName" className="commonBtn">
+              नई पार्टी जोड़ें
+            </label>
+          </div>
+        </div>
+
+        <AddPartyName refetch={refetch} names={PartyNameData}></AddPartyName>
+      </section>
+    </>
   );
 };
 

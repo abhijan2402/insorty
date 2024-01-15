@@ -61,7 +61,9 @@ const SendFormat = ({ isBearShop }) => {
               </Link>
             )}
           </div>
-
+          <h2 className="font-bold md:text-[1.5rem] text-center my-2">
+            सभी पार्टनर
+          </h2>
           <div className="divider my-2"></div>
         </div>
       </div>
@@ -69,9 +71,6 @@ const SendFormat = ({ isBearShop }) => {
         <div>
           <section ref={front}>
             <div className="mx-6 flex justify-center flex-col">
-              <h2 className="font-bold md:text-[1.5rem] text-center my-4">
-                सभी पार्टनर
-              </h2>
               <div className="flex justify-center items-center flex-col">
                 <table className="removeCommonWSpace ">
                   <thead>

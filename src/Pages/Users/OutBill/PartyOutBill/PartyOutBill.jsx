@@ -105,9 +105,9 @@ const PartyOutBill = () => {
             <h2 className="font-bold md:text-[1.5rem] text-center">
               पार्टी बिल
             </h2>
-            <div className="flex gap-4 items-center my-4 z-10">
+            <div className="flex gap-4 items-center my-4">
               <h2 className="font-bold text-[1.5rem]">From</h2>
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center z-1000">
                 <DatePicker
                   selected={StartDate}
                   onChange={(date) => {
@@ -138,17 +138,11 @@ const PartyOutBill = () => {
       </div>
 
       <section>
-        <div className="title flex justify-center items-center flex-col">
-          {/* <div className="flex gap-4"> */}
-
+        <div className="title flex flex-col justify-center items-center py-2">
           <div ref={front}>
-            <div className="flex justify-center items-center flex-col"></div>
-
-            {/* ************************ all sealy data************** */}
-
             <div>
               <div className="flex justify-center items-center m-6">
-                <table className="table removeCommonWSpace">
+                <table className=" removeCommonWSpace">
                   <thead>
                     <tr>
                       <th className="text-xs">क्र.सं.</th>
