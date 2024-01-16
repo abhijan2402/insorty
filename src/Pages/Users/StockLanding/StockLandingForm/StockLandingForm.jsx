@@ -17,7 +17,7 @@ const StockLandingForm = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
-  const shopType = jwtDecode(token).shopType 
+  const shopType = jwtDecode(token).shopType;
 
   const { data: partyData, isLoading } = useQuery({
     queryKey: ["partyData"],
@@ -34,40 +34,35 @@ const StockLandingForm = () => {
     },
   });
 
-
-
   if (isLoading) {
     return <Loader></Loader>;
   }
 
   return (
     <>
-      <button className="commonBtn " onClick={handlePrint}>
-        प्रिंट
-      </button>
-      {shopType==="SHOP" && ( <Link
-            to="/user/stocklanding"
-           
-          >
-            <button className="commonBtn">
-            सूची
-            </button>
-      </Link>)}
-     {shopType==="BAR" && ( <Link
-            to="/user/bearshop/stocklanding"
-           
-          >
-            <button className="commonBtn">
-            सूची
-            </button>
-      </Link>)}
-      <section ref={front} className="px-2 py-6">
+      <div className="py-0 sticky top-0 bg-white z-5000">
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
+        </button>
+        {shopType === "SHOP" && (
+          <Link to="/user/stocklanding">
+            <button className="commonBtn">सूची</button>
+          </Link>
+        )}
+        {shopType === "BAR" && (
+          <Link to="/user/bearshop/stocklanding">
+            <button className="commonBtn">सूची</button>
+          </Link>
+        )}
         <div className="title flex justify-center items-center">
           <h2 className="font-bold text-[1.5rem]">
-            पार्टी का नाम :- <span className="titleStyle">{getPartyName(id.partyId)}</span>
+            पार्टी का नाम :-{" "}
+            <span className="titleStyle">{getPartyName(id.partyId)}</span>
           </h2>
-        
         </div>
+        <div className="divider my-2"></div>
+      </div>
+      <section ref={front} className="px-2 py-6">
         {/* ************************ all sealy data************** */}
 
         <div>
@@ -79,16 +74,25 @@ const StockLandingForm = () => {
               <table className="removeCommonWSpace">
                 <thead>
                   <tr>
-                    <th className="text-xs"  rowSpan={2}> क्र. सं.</th>
-                    <th className="text-xs"  colSpan={2}>ब्राण्ड</th>
-                    <th className="text-xs"  colSpan={2}>आमद</th>
-                    <th className="text-xs"  colSpan={2}>भेजान </th>
-                    <th className="text-xs" colSpan={2}>शेष</th>
+                    <th className="text-xs" rowSpan={2}>
+                      {" "}
+                      क्र. सं.
+                    </th>
+                    <th className="text-xs" colSpan={2}>
+                      ब्राण्ड
+                    </th>
+                    <th className="text-xs" colSpan={2}>
+                      आमद
+                    </th>
+                    <th className="text-xs" colSpan={2}>
+                      भेजान{" "}
+                    </th>
+                    <th className="text-xs" colSpan={2}>
+                      शेष
+                    </th>
                   </tr>
-                
-                  <tr>
-                    
 
+                  <tr>
                     <td>
                       <div className="form-control">
                         <label className="label">
@@ -153,14 +157,11 @@ const StockLandingForm = () => {
 
                     {/* ============= कुल योग ================ */}
                   </tr>
-
-                  </thead>
+                </thead>
 
                 <tbody>
                   {partyData.length === 0 && partyData ? (
-                    <>
-                     
-                    </>
+                    <></>
                   ) : (
                     <>
                       {partyData.map((stockData, index) => {
@@ -179,14 +180,10 @@ const StockLandingForm = () => {
             </div>
           </form>{" "}
           <div>
-            <div className="mt-4 flex justify-center gap-4">
-            
-            </div>
+            <div className="mt-4 flex justify-center gap-4"></div>
           </div>
         </div>
-        
       </section>
-      
     </>
   );
 };

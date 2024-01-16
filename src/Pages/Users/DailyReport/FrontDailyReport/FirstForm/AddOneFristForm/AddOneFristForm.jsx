@@ -1,11 +1,10 @@
-import React,{useState,useRef} from "react";
+import React, { useState, useRef } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import useLiquors from "../../../../../../Hooks/useLiquors";
 import Loader from "../../../../../../Components/Loader/Loader";
 import swal from "sweetalert";
 import axios from "axios";
 import Swal from "sweetalert2";
-
 
 const AddOneFristForm = ({
   index,
@@ -22,12 +21,16 @@ const AddOneFristForm = ({
   const token = localStorage.getItem("token");
 
   const [options, setOptions] = useState([]);
-  const ip = useRef(null)
-  const ip2 = useRef(null)
-  const ip3 = useRef(null)
+  const ip = useRef(null);
+  const ip2 = useRef(null);
+  const ip3 = useRef(null);
 
   const scrollToComponent = (ref) => {
-    ref.current.scrollIntoView({ behavior: 'smooth',block:"center",inline:"center" });
+    ref.current.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+      inline: "center",
+    });
   };
 
   const fetchOptions = async (query) => {
@@ -50,8 +53,6 @@ const AddOneFristForm = ({
   const handleInputChange = (event, value) => {
     fetchOptions(value);
   };
-
-  
 
   return (
     <>
@@ -82,39 +83,45 @@ const AddOneFristForm = ({
             }}
           >
             X
-            <input type="button" value="" autoFocus/>
+            <input type="button" value="" autoFocus />
           </h1>
         </th>
         <td>
-          
           <Autocomplete
             id="autocomplete"
             size="small"
             style={{
               width: "20rem",
-              border:"1px solid black",
-              borderRadius:"5px"
+              border: "1px solid black",
+              borderRadius: "5px",
+              zindex: 0,
             }}
-            options={options.filter((brand)=>brand.type==='WINE')}
+            options={options.filter((brand) => brand.type === "WINE")}
             getOptionLabel={(option) => (option ? option.brandName : "")}
-             onBlur={() => {
-          if (addOneFirst.liquorID === "") {
-            Swal.fire({
-              icon: 'error',
-              title: 'Error',
-              text: 'Please choose Brand Name from Options',
-            });
-          }
-        }}
+            onBlur={() => {
+              if (addOneFirst.liquorID === "") {
+                Swal.fire({
+                  icon: "error",
+                  title: "Error",
+                  text: "Please choose Brand Name from Options",
+                });
+              }
+            }}
             onChange={(event, value) => {
               if (value) {
                 addOneFirst.brandName = value.brandName;
                 addOneFirst.liquorID = value._id;
-                addOneFirst.size = value
-                addOneFirst.buyRate750 = value.sizes.find((brand)=>brand.quantityInML===750).rate
-                addOneFirst.buyRate330 = value.sizes.find((brand)=>brand.quantityInML===375).rate
-                addOneFirst.buyRate180 = value.sizes.find((brand)=>brand.quantityInML===180).rate
-                console.log(value)
+                addOneFirst.size = value;
+                addOneFirst.buyRate750 = value.sizes.find(
+                  (brand) => brand.quantityInML === 750
+                ).rate;
+                addOneFirst.buyRate330 = value.sizes.find(
+                  (brand) => brand.quantityInML === 375
+                ).rate;
+                addOneFirst.buyRate180 = value.sizes.find(
+                  (brand) => brand.quantityInML === 180
+                ).rate;
+                console.log(value);
               } else {
                 addOneFirst.brandName = "";
                 addOneFirst.liquorID = "";
@@ -144,13 +151,13 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-              type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput wd-9"
                 required
                 min={0}
@@ -163,13 +170,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput wd-9"
                 required
                 min={0}
@@ -182,13 +189,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput wd-9"
                 required
                 min={0}
@@ -205,13 +212,13 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -224,13 +231,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -243,13 +250,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -268,32 +275,31 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
                 name="incomingPurchase750"
                 value={addOneFirst.incomingPurchase750}
-                        
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -305,13 +311,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -327,13 +333,13 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput wd-9"
                 required
                 min={0}
@@ -346,13 +352,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput wd-9"
                 required
                 disabled
@@ -365,13 +371,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput wd-8"
                 required
                 disabled
@@ -390,17 +396,17 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 ref={ip}
-                onFocus={()=>scrollToComponent(ip)}
+                onFocus={() => scrollToComponent(ip)}
                 min={0}
                 name="incomePurchase750"
                 value={addOneFirst.incomePurchase750}
@@ -410,13 +416,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -428,13 +434,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -451,13 +457,13 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput  wd-9"
                 required
                 min={0}
@@ -469,13 +475,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput  wd-9"
                 required
                 min={0}
@@ -487,13 +493,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput  wd-8"
                 required
                 min={0}
@@ -511,13 +517,13 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -529,13 +535,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -547,13 +553,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -570,18 +576,18 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput "
                 required
                 min={0}
                 ref={ip2}
-                onFocus={()=>scrollToComponent(ip2)}
+                onFocus={() => scrollToComponent(ip2)}
                 name="sending750"
                 value={addOneFirst.sending750}
                 onChange={(event) => handelFristFormOnChange(event, index)}
@@ -590,13 +596,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput "
                 required
                 min={0}
@@ -608,13 +614,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput "
                 required
                 min={0}
@@ -630,13 +636,13 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -649,13 +655,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -668,13 +674,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -691,13 +697,13 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -709,13 +715,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -727,13 +733,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -749,13 +755,13 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -768,13 +774,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -787,13 +793,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput"
                 required
                 min={0}
@@ -810,17 +816,17 @@ const AddOneFristForm = ({
           <div className="flex ">
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput wd-6"
                 required
                 ref={ip3}
-                onFocus={()=>scrollToComponent(ip3)}
+                onFocus={() => scrollToComponent(ip3)}
                 min={0}
                 name="mainRate750"
                 value={addOneFirst.mainRate750}
@@ -830,13 +836,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput wd-5"
                 required
                 min={0}
@@ -848,13 +854,13 @@ const AddOneFristForm = ({
 
             <div className="form-control">
               <input
-                type = "number"
- onKeyDown={(e) => {
+                type="number"
+                onKeyDown={(e) => {
                   // Prevent the default behavior of arrow keys
-                  if (e.key === 'ArrowUp' || e.key === 'ArrowDown')  {
+                  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
                     e.preventDefault();
                   }
-                }} 
+                }}
                 className="smallinput wd-5"
                 required
                 min={0}
@@ -876,9 +882,12 @@ const AddOneFristForm = ({
                 min={0}
                 name="total750"
                 disabled
-                value={
-                  (Number(Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750))||0).toFixed(2)
-                }
+                value={(
+                  Number(
+                    Number(addOneFirst.sales750) *
+                      Number(addOneFirst.mainRate750)
+                  ) || 0
+                ).toFixed(2)}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
@@ -890,9 +899,12 @@ const AddOneFristForm = ({
                 disabled
                 min={0}
                 name="total330"
-                value={
-                  (Number(Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330))||0).toFixed(2)
-                }
+                value={(
+                  Number(
+                    Number(addOneFirst.sales330) *
+                      Number(addOneFirst.mainRate330)
+                  ) || 0
+                ).toFixed(2)}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
@@ -904,9 +916,12 @@ const AddOneFristForm = ({
                 required
                 min={0}
                 disabled
-                value={
-                  (Number(Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180))||0).toFixed(2)
-                }
+                value={(
+                  Number(
+                    Number(addOneFirst.sales180) *
+                      Number(addOneFirst.mainRate180)
+                  ) || 0
+                ).toFixed(2)}
                 onChange={(event) => handelFristFormOnChange(event, index)}
               />
             </div>
@@ -925,11 +940,16 @@ const AddOneFristForm = ({
               min={0}
               name="grandTotal"
               disabled
-              value={
-                (Number(Number(addOneFirst.sales750) * Number(addOneFirst.mainRate750) +
-                Number(addOneFirst.sales330) * Number(addOneFirst.mainRate330) +
-                Number(addOneFirst.sales180) * Number(addOneFirst.mainRate180))||0).toFixed(2)
-              }
+              value={(
+                Number(
+                  Number(addOneFirst.sales750) *
+                    Number(addOneFirst.mainRate750) +
+                    Number(addOneFirst.sales330) *
+                      Number(addOneFirst.mainRate330) +
+                    Number(addOneFirst.sales180) *
+                      Number(addOneFirst.mainRate180)
+                ) || 0
+              ).toFixed(2)}
               onChange={(event) => handelFristFormOnChange(event, index)}
             />
           </div>

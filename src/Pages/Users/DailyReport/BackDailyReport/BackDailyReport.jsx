@@ -205,75 +205,77 @@ const BackDailyReport = () => {
 
   return (
     <>
+      <div
+        className="py-0 sticky top-0 bg-white z-5000"
+        style={{ zIndex: 1000 }}
+      >
+        <div className="flex gap-4 items-center justify-center border-black">
+          <h1 className="font-bold md:text-2xl sm:text-sm text-center">
+            बीयर ओर अन्य
+          </h1>
+
+          <Link to="/user/dailyreport/front" className="commonBtn ">
+            अंग्रेजी
+          </Link>
+          <Link to="/user/frontdailyreport/details" className="commonBtn  mx-4">
+            पर्चा
+          </Link>
+        </div>
+
+        <div className="flex gap-4 justify-center items-center">
+          <h1 className="font-bold ">सेल्समेन :- </h1>
+
+          <Autocomplete
+            size="small"
+            style={{
+              width: "20rem",
+              border: "1px solid black",
+              borderRadius: "5px",
+            }}
+            options={
+              salaryData.length > 0
+                ? salaryData.filter((prev) => prev.isActive === true)
+                : ["no options"]
+            }
+            getOptionLabel={(option) => (option ? option.name : "")}
+            onChange={(event, value) => {
+              if (value) {
+                setSalesMan(value.name);
+              } else {
+                setSalesMan("");
+              }
+            }}
+            renderInput={(params) => (
+              <TextField
+                required
+                {...params}
+                className="dailyReportInput"
+                inputProps={{ ...params.inputProps, value: salesMan }}
+                onChange={(event) => {
+                  setSalesMan(event.target.value);
+                }}
+              />
+            )}
+          />
+
+          <div className="flex  items-center">
+            <DatePicker
+              selected={new Date(drDate)}
+              name="year"
+              onChange={(data) => {
+                setDrDate(new Date(data));
+                console.log(data);
+              }}
+              dateFormat="dd/MM/yyyy"
+              className="inputBox date"
+              placeholderText={"dd/mm/yyyy"}
+            />
+          </div>
+        </div>
+        <div className="divider my-2"></div>
+      </div>
       <section className="mx-2">
         <form onSubmit={handleSubmit}>
-          <div className="my-4 flex gap-4 items-center justify-center border-black">
-            <h1 className="font-bold md:text-2xl sm:text-sm text-center">
-              बीयर ओर अन्य
-            </h1>
-
-            <Link to="/user/dailyreport/front" className="commonBtn ">
-              अंग्रेजी
-            </Link>
-            <Link
-              to="/user/frontdailyreport/details"
-              className="commonBtn  mx-4"
-            >
-              पर्चा
-            </Link>
-          </div>
-
-          <div className="flex gap-4 justify-center items-center">
-            <h1 className="font-bold ">सेल्समेन :- </h1>
-
-            <Autocomplete
-              size="small"
-              style={{
-                width: "20rem",
-                border: "1px solid black",
-                borderRadius: "5px",
-              }}
-              options={
-                salaryData.length > 0
-                  ? salaryData.filter((prev) => prev.isActive === true)
-                  : ["no options"]
-              }
-              getOptionLabel={(option) => (option ? option.name : "")}
-              onChange={(event, value) => {
-                if (value) {
-                  setSalesMan(value.name);
-                } else {
-                  setSalesMan("");
-                }
-              }}
-              renderInput={(params) => (
-                <TextField
-                  required
-                  {...params}
-                  className="dailyReportInput"
-                  inputProps={{ ...params.inputProps, value: salesMan }}
-                  onChange={(event) => {
-                    setSalesMan(event.target.value);
-                  }}
-                />
-              )}
-            />
-
-            <div className="flex  items-center">
-              <DatePicker
-                selected={new Date(drDate)}
-                name="year"
-                onChange={(data) => {
-                  setDrDate(new Date(data));
-                  console.log(data);
-                }}
-                dateFormat="dd/MM/yyyy"
-                className="inputBox date"
-                placeholderText={"dd/mm/yyyy"}
-              />
-            </div>
-          </div>
-
           {/* *********************************************************BREAK*********************************************************  */}
           <div>
             <div className="py-6">

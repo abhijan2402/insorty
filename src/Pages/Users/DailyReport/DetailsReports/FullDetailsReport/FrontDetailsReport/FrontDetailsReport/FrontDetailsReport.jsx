@@ -1,4 +1,4 @@
-import React, { useRef, useState,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import Loader from "../../../../../../../Components/Loader/Loader";
@@ -17,7 +17,8 @@ const FrontDetailsReport = () => {
   const front = useRef(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [pageId, setPageId] = useState();
-  const { FrontPageData, FrontPageDataLoaded, FrontDataRefetch } = useGetDailyReport(selectedDate);
+  const { FrontPageData, FrontPageDataLoaded, FrontDataRefetch } =
+    useGetDailyReport(selectedDate);
 
   const {
     FrontPageRegularData,
@@ -25,26 +26,20 @@ const FrontDetailsReport = () => {
     isLoading2,
     FrontPageExceptionalData,
     refetch1,
-    refetch2
-    
+    refetch2,
   } = useFrontDetailHooks(selectedDate);
 
-    useEffect(() => {
-      refetch1()
-      refetch2()
-      FrontDataRefetch()
-    }, [selectedDate])
-    
+  useEffect(() => {
+    refetch1();
+    refetch2();
+    FrontDataRefetch();
+  }, [selectedDate]);
 
-
-
-  let count = 0
-
+  let count = 0;
 
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
-
 
   const token = localStorage.getItem("token");
 
@@ -56,9 +51,7 @@ const FrontDetailsReport = () => {
     return <Loader></Loader>;
   }
 
- 
-
-  const deletePage = (id) =>{
+  const deletePage = (id) => {
     fetch(`https://insorty-api.onrender.com/shop/deleteFrontPageData`, {
       method: "DELETE",
       body: JSON.stringify({ frontPageId: id }),
@@ -71,10 +64,9 @@ const FrontDetailsReport = () => {
         } else {
           Swal.fire("Failed!", "Your file has not been deleted.", "error");
         }
-        window.location.reload()
+        window.location.reload();
       });
-     
-  }
+  };
 
   const filteredRegularData = selectedDate
     ? FrontPageRegularData.filter((item) => {
@@ -98,7 +90,6 @@ const FrontDetailsReport = () => {
     });
     return 0;
   });
-
 
   let quan750 = [];
   let quan375 = [];
@@ -242,637 +233,698 @@ const FrontDetailsReport = () => {
       return sales;
     });
 
-   
-
-  
   return (
-    <section className="my-4">
-      <div className="flex gap-6 items-center my-4">
-        <h2 className="font-bold text-xl text-gray-800">
-          अंग्रेजी
-        </h2>
+    <>
+      <div
+        className="py-0 sticky top-0 bg-white z-5000"
+        style={{ zIndex: 1000 }}
+      >
+        <div className="flex gap-6 items-center my-4">
+          <h2 className="font-bold text-xl text-gray-800">अंग्रेजी</h2>
 
-        <Link
-          to="/user/dailyreport/details"
-          className="commonBtn"
-        >
-          बीयर ओर अन्य
+          <Link to="/user/dailyreport/details" className="commonBtn">
+            बीयर ओर अन्य
+          </Link>
 
-        </Link>
-
-        <button className="commonBtn " onClick={handlePrint}>
-        प्रिंट
-
-        </button>
-      </div>
-
-      <div className="flex gap-4 items-center my-4">
-        <div className="flex gap-2 items-center">
-          <DatePicker
-            selected={selectedDate}
-            onChange={(date) => {
-              setSelectedDate(date);
-            }}
-            dateFormat="dd/MM/yyyy"
-            placeholderText={"dd/mm/yyyy"}
-            className="inputBox date"
-          />
+          <button className="commonBtn " onClick={handlePrint}>
+            प्रिंट
+          </button>
         </div>
-        {Array.from(frontSet).map((item, index) => {
-          return (
-            <button
-              className="commonBtn "
-              onClick={() => {
-                setPageId(item);
+
+        <div className="flex gap-4 items-center my-4">
+          <div className="flex gap-2 items-center">
+            <DatePicker
+              selected={selectedDate}
+              onChange={(date) => {
+                setSelectedDate(date);
               }}
-            >
-              {index + 1}
-            </button>
-          );
-        })}
-      </div>
-
-      <button className="commonBtn2"  onClick={() => {
-              swal({
-                title: "Are you sure?",
-                text: `Once deleted, you will not be able to recover page
-                `,
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-              }).then((willDelete) => {
-                if (willDelete) {
-                  deletePage(pageId ? pageId : Array.from(frontSet)[0]);
-                  
-                } 
-              });
-            }}>
-     डिलीट
-      </button>
-      <div className="divider"></div>
-
-      <div ref={front}>
-        <div className="overflow-x-auto my-4 py-4 flex ">
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-baqh" colSpan={42}>
-                  <span
-                    style={{ fontWeight: "bold", textDecoration: "underline" }}
-                  >
-                    अंग्रेजी शराब
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-baqh" colSpan={42}>
-                  दुकान का नाम :-   &nbsp;&nbsp;
-                  {jwtDecode(localStorage.getItem("token")).role === "admin" ?  jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).role ==='subadmin' ? jwtDecode(localStorage.getItem("token")).shopName : jwtDecode(localStorage.getItem("token")).name }
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन :-   {
-                    FrontPageData && frontPage.length!==undefined && frontPage.find((entry) => {
-                      const pg = pageId ? pageId : Array.from(frontSet)[0];
-                      return entry._id === pg;
-                    })?.salesmen
-                  }
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक :-   {moment(selectedDate).format("DD/MM/YYYY")}
-                </td>
-              </tr>
-              <tr>
-                <td rowSpan={2} className="wd-5"> क्र. सं.</td>
-                <th rowSpan={2}> ब्राण्ड</th>
-                <th colSpan={3}>औसत रेट</th>
-                <th colSpan={3}>प्रारम्भिक स्टॉक</th>
-                <th colSpan={3}>आमद (खरीद) - दु.</th>
-                <th colSpan={3}>खरीद रेट - दु.</th>
-                <th colSpan={3}>आमद (खरीद) - बा.</th>
-                <th colSpan={3}>खरीद रेट - बा.</th>
-                <th colSpan={3}>आमद (उधारी)</th>
-                <th colSpan={3}>भेजान</th>
-                <th colSpan={3}>योग/शेष</th>
-                <th colSpan={3}>अन्तिम स्टॉक</th>
-                <th colSpan={3}>बिक्री</th>
-                <th colSpan={3}>रेट</th>
-                <th colSpan={3}>योग</th>
-                <th rowSpan={2}>कुल योग</th>
-              </tr>
-
-              <tr>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>750ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>375ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>180ml</span>
-                </td>
-              </tr>
-            </thead>
-
-          
-            
-            <tbody>
-              
-
-              {/* ========================== */}
-
-              { filteredRegularData.map((regularData, index) => {
-                return (
-                  <RegularData
-                    key={index}
-                    regularData={regularData}
-                    index={index}
-                    quan1={750}
-                    quan2={375}
-                    quan3={180}
-                    pageId={pageId}
-                    frontSet={frontSet}
-                  ></RegularData>
-                );
-              })}
-
-              {/* ========================== */}
-
-              <tr>
-                <td className="tg-0lax">
-              Total
-                </td>
-                <td></td>
-                <td className="tg-0lax"> </td>
-                <td className="tg-0lax"> </td>
-                <td className="tg-0lax"> </td>
-
-                <td className="tg-0lax">
-                  {quan750.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.openingStock),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan375.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.openingStock),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan180.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.openingStock),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax">
-                  {quan750.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseShop),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan375.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseShop),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan180.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseShop),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-
-                <td className="tg-0lax">
-                  {quan750.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseOutSide),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan375.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseOutSide),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan180.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseOutSide),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-
-                <td className="tg-0lax">
-                  {quan750.reduce(
-                    (total, regularData) => total + Number(regularData.credits),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan375.reduce(
-                    (total, regularData) => total + Number(regularData.credits),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan180.reduce(
-                    (total, regularData) => total + Number(regularData.credits),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax">
-                  {quan750.reduce(
-                    (total, regularData) => total + Number(regularData.send),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan375.reduce(
-                    (total, regularData) => total + Number(regularData.send),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan180.reduce(
-                    (total, regularData) => total + Number(regularData.send),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax">
-                  {quan750.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.remaining),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan375.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.remaining),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan180.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.remaining),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax">
-                  {quan750.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.closingStock),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan375.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.closingStock),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan180.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.closingStock),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax">
-                  {quan750.reduce(
-                    (total, regularData) => total + Number(regularData.sales),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan375.reduce(
-                    (total, regularData) => total + Number(regularData.sales),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan180.reduce(
-                    (total, regularData) => total + Number(regularData.sales),
-                    0
-                  )}
-                </td>
-
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-
-                <td className="tg-0lax">
-                  {(Number(quan750.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ))||0).toFixed(2)}
-                </td>
-                <td className="tg-0lax">
-                  {(Number(quan375.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ))||0).toFixed(2)}
-                </td>
-                <td className="tg-0lax">
-                  {(Number(quan180.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ))||0).toFixed(2)}
-                </td>
-
-                <td>
-                  {(Number(quan180.reduce(
-                    (total, regularData) =>
-                      total +
-                      Number(regularData.sales) *
-                        Number(regularData.sellingRate?.$numberDecimal),
-                    0
-                  ) +
-                    quan375.reduce(
-                      (total, regularData) =>
-                        total +
-                        Number(regularData.sales) *
-                          Number(regularData.sellingRate?.$numberDecimal),
-                      0
-                    ) +
-                    quan750.reduce(
-                      (total, regularData) =>
-                        total +
-                        Number(regularData.sales) *
-                          Number(regularData.sellingRate?.$numberDecimal),
-                      0
-                    ))||0).toFixed(2)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              dateFormat="dd/MM/yyyy"
+              placeholderText={"dd/mm/yyyy"}
+              className="inputBox date"
+            />
+          </div>
+          {Array.from(frontSet).map((item, index) => {
+            return (
+              <button
+                className="commonBtn "
+                onClick={() => {
+                  setPageId(item);
+                }}
+              >
+                {index + 1}
+              </button>
+            );
+          })}
         </div>
 
-        <div className="overflow-x-auto my-4 py-4 flex ">
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-0lax " colSpan={50}>
-                  <span style={{ fontWeight: "bold" }}>अंग्रेजी </span>
-                </td>
-              </tr>
+        <button
+          className="commonBtn2"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover page
+                `,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                deletePage(pageId ? pageId : Array.from(frontSet)[0]);
+              }
+            });
+          }}
+        >
+          डिलीट
+        </button>
+        <div className="divider"></div>
+      </div>
 
-              <tr>
-                <td> क्र. सं.</td>
-                <th> ब्राण्ड</th>
-                <th>ml</th>
-                <th>औसत रेट</th>
-                <th>प्रारम्भिक स्टॉक</th>
-                <th>आमद (खरीद) - दु.</th>
-                <th>खरीद रेट - दु.</th>
-                <th>आमद (खरीद) - बा.</th>
-                <th>खरीद रेट - बा.</th>
-                <th>आमद (उधारी)</th>
-                <th>भेजान</th>
-                <th>योग/शेष</th>
-                <th>अन्तिम स्टॉक </th>
-                <th>बिक्री</th>
-                <th>रेट</th>
-                <th>रकम</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredExceptionalData &&
-                filteredExceptionalData.length > 0 &&
-                filteredExceptionalData.map((exceptionalData, index) => {
-                  const pg = pageId ? pageId : Array.from(frontSet)[0];
-                  if (exceptionalData.page === pg) {
-                    count++
-                    return (
-                      <FristFormDetails
-                        key={index}
-                        index={count}
-                        exceptionalData={exceptionalData}
-                        pageId={pageId}
-                        frontSet={frontSet}
-                      ></FristFormDetails>
-                    );
-                  }
+      <section className="my-4">
+        <div ref={front}>
+          <div className="overflow-x-auto my-4 py-4 flex ">
+            <table className="removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td
+                    className="tg-baqh border-black items-center"
+                    colSpan={42}
+                  >
+                    <span
+                      style={{
+                        fontWeight: "bold",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      अंग्रेजी शराब
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="tg-baqh" colSpan={42}>
+                    दुकान का नाम :- &nbsp;&nbsp;
+                    {jwtDecode(localStorage.getItem("token")).role === "admin"
+                      ? jwtDecode(localStorage.getItem("token")).shopName
+                      : jwtDecode(localStorage.getItem("token")).role ===
+                        "subadmin"
+                      ? jwtDecode(localStorage.getItem("token")).shopName
+                      : jwtDecode(localStorage.getItem("token")).name}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;सेल्समेन
+                    :-{" "}
+                    {FrontPageData &&
+                      frontPage.length !== undefined &&
+                      frontPage.find((entry) => {
+                        const pg = pageId ? pageId : Array.from(frontSet)[0];
+                        return entry._id === pg;
+                      })?.salesmen}
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;दिनांक
+                    :- {moment(selectedDate).format("DD/MM/YYYY")}
+                  </td>
+                </tr>
+                <tr>
+                  <td rowSpan={2} className="wd-5">
+                    {" "}
+                    क्र. सं.
+                  </td>
+                  <th rowSpan={2}> ब्राण्ड</th>
+                  <th colSpan={3}>औसत रेट</th>
+                  <th colSpan={3}>प्रारम्भिक स्टॉक</th>
+                  <th colSpan={3}>आमद (खरीद) - दु.</th>
+                  <th colSpan={3}>खरीद रेट - दु.</th>
+                  <th colSpan={3}>आमद (खरीद) - बा.</th>
+                  <th colSpan={3}>खरीद रेट - बा.</th>
+                  <th colSpan={3}>आमद (उधारी)</th>
+                  <th colSpan={3}>भेजान</th>
+                  <th colSpan={3}>योग/शेष</th>
+                  <th colSpan={3}>अन्तिम स्टॉक</th>
+                  <th colSpan={3}>बिक्री</th>
+                  <th colSpan={3}>रेट</th>
+                  <th colSpan={3}>योग</th>
+                  <th rowSpan={2}>कुल योग</th>
+                </tr>
+
+                <tr>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>750ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>375ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>180ml</span>
+                  </td>
+                </tr>
+              </thead>
+
+              <tbody>
+                {/* ========================== */}
+
+                {filteredRegularData.map((regularData, index) => {
+                  return (
+                    <RegularData
+                      key={index}
+                      regularData={regularData}
+                      index={index}
+                      quan1={750}
+                      quan2={375}
+                      quan3={180}
+                      pageId={pageId}
+                      frontSet={frontSet}
+                    ></RegularData>
+                  );
                 })}
 
-              {/* <BackRmlDetailsData></BackRmlDetailsData> */}
+                {/* ========================== */}
 
-              <tr>
-                <td className="tg-0lax">
-                  Total
-                </td>
-                <td></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {filteredExceptionalData &&
-                    filteredExceptionalData.length > 0 &&
-                    openingStock.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item);
-                      return total;
-                    }, 0)}
-                </td>
-                <td className="tg-0lax">
-                  {filteredExceptionalData &&
-                    filteredExceptionalData.length > 0 &&
-                    purchaseShop.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item);
-                      return total;
-                    }, 0)}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {filteredExceptionalData &&
-                    filteredExceptionalData.length > 0 &&
-                    purchaseOutSide.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item);
-                      return total;
-                    }, 0)}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {filteredExceptionalData &&
-                    filteredExceptionalData.length > 0 &&
-                    credits.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item);
-                      return total;
-                    }, 0)}
-                </td>
-                <td className="tg-0lax">
-                  {filteredExceptionalData &&
-                    filteredExceptionalData.length > 0 &&
-                    send.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item);
-                      return total;
-                    }, 0)}
-                </td>
-                <td className="tg-0lax">
-                  {filteredExceptionalData &&
-                    filteredExceptionalData.length > 0 &&
-                    remaining.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item);
-                      return total;
-                    }, 0)}
-                </td>
-                <td className="tg-0lax">
-                  {filteredExceptionalData &&
-                    filteredExceptionalData.length > 0 &&
-                    closingStock.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item);
-                      return total;
-                    }, 0)}
-                </td>
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax"> </td>
+                  <td className="tg-0lax"> </td>
+                  <td className="tg-0lax"> </td>
 
-                <td className="tg-0lax">
-                  {filteredExceptionalData &&
-                    filteredExceptionalData.length > 0 &&
-                    sales.reduce((acc, item) => {
-                      const total = Number(acc) + Number(item);
-                      return total;
-                    }, 0)}
-                </td>
+                  <td className="tg-0lax">
+                    {quan750.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.openingStock),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan375.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.openingStock),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan180.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.openingStock),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {quan750.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseShop),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan375.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseShop),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan180.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseShop),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax">
-                  {(Number(filteredExceptionalData &&
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+
+                  <td className="tg-0lax">
+                    {quan750.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseOutSide),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan375.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseOutSide),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan180.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseOutSide),
+                      0
+                    )}
+                  </td>
+
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+
+                  <td className="tg-0lax">
+                    {quan750.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.credits),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan375.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.credits),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan180.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.credits),
+                      0
+                    )}
+                  </td>
+
+                  <td className="tg-0lax">
+                    {quan750.reduce(
+                      (total, regularData) => total + Number(regularData.send),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan375.reduce(
+                      (total, regularData) => total + Number(regularData.send),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan180.reduce(
+                      (total, regularData) => total + Number(regularData.send),
+                      0
+                    )}
+                  </td>
+
+                  <td className="tg-0lax">
+                    {quan750.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.remaining),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan375.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.remaining),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan180.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.remaining),
+                      0
+                    )}
+                  </td>
+
+                  <td className="tg-0lax">
+                    {quan750.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.closingStock),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan375.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.closingStock),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan180.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.closingStock),
+                      0
+                    )}
+                  </td>
+
+                  <td className="tg-0lax">
+                    {quan750.reduce(
+                      (total, regularData) => total + Number(regularData.sales),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan375.reduce(
+                      (total, regularData) => total + Number(regularData.sales),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan180.reduce(
+                      (total, regularData) => total + Number(regularData.sales),
+                      0
+                    )}
+                  </td>
+
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+
+                  <td className="tg-0lax">
+                    {(
+                      Number(
+                        quan750.reduce(
+                          (total, regularData) =>
+                            total +
+                            Number(regularData.sales) *
+                              Number(regularData.sellingRate?.$numberDecimal),
+                          0
+                        )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                  <td className="tg-0lax">
+                    {(
+                      Number(
+                        quan375.reduce(
+                          (total, regularData) =>
+                            total +
+                            Number(regularData.sales) *
+                              Number(regularData.sellingRate?.$numberDecimal),
+                          0
+                        )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                  <td className="tg-0lax">
+                    {(
+                      Number(
+                        quan180.reduce(
+                          (total, regularData) =>
+                            total +
+                            Number(regularData.sales) *
+                              Number(regularData.sellingRate?.$numberDecimal),
+                          0
+                        )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+
+                  <td>
+                    {(
+                      Number(
+                        quan180.reduce(
+                          (total, regularData) =>
+                            total +
+                            Number(regularData.sales) *
+                              Number(regularData.sellingRate?.$numberDecimal),
+                          0
+                        ) +
+                          quan375.reduce(
+                            (total, regularData) =>
+                              total +
+                              Number(regularData.sales) *
+                                Number(regularData.sellingRate?.$numberDecimal),
+                            0
+                          ) +
+                          quan750.reduce(
+                            (total, regularData) =>
+                              total +
+                              Number(regularData.sales) *
+                                Number(regularData.sellingRate?.$numberDecimal),
+                            0
+                          )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="overflow-x-auto my-4 py-4 flex ">
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="tg-0lax " colSpan={50}>
+                    <span style={{ fontWeight: "bold" }}>अंग्रेजी </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td> क्र. सं.</td>
+                  <th> ब्राण्ड</th>
+                  <th>ml</th>
+                  <th>औसत रेट</th>
+                  <th>प्रारम्भिक स्टॉक</th>
+                  <th>आमद (खरीद) - दु.</th>
+                  <th>खरीद रेट - दु.</th>
+                  <th>आमद (खरीद) - बा.</th>
+                  <th>खरीद रेट - बा.</th>
+                  <th>आमद (उधारी)</th>
+                  <th>भेजान</th>
+                  <th>योग/शेष</th>
+                  <th>अन्तिम स्टॉक </th>
+                  <th>बिक्री</th>
+                  <th>रेट</th>
+                  <th>रकम</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredExceptionalData &&
+                  filteredExceptionalData.length > 0 &&
+                  filteredExceptionalData.map((exceptionalData, index) => {
+                    const pg = pageId ? pageId : Array.from(frontSet)[0];
+                    if (exceptionalData.page === pg) {
+                      count++;
+                      return (
+                        <FristFormDetails
+                          key={index}
+                          index={count}
+                          exceptionalData={exceptionalData}
+                          pageId={pageId}
+                          frontSet={frontSet}
+                        ></FristFormDetails>
+                      );
+                    }
+                  })}
+
+                {/* <BackRmlDetailsData></BackRmlDetailsData> */}
+
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {filteredExceptionalData &&
+                      filteredExceptionalData.length > 0 &&
+                      openingStock.reduce((acc, item) => {
+                        const total = Number(acc) + Number(item);
+                        return total;
+                      }, 0)}
+                  </td>
+                  <td className="tg-0lax">
+                    {filteredExceptionalData &&
+                      filteredExceptionalData.length > 0 &&
+                      purchaseShop.reduce((acc, item) => {
+                        const total = Number(acc) + Number(item);
+                        return total;
+                      }, 0)}
+                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {filteredExceptionalData &&
+                      filteredExceptionalData.length > 0 &&
+                      purchaseOutSide.reduce((acc, item) => {
+                        const total = Number(acc) + Number(item);
+                        return total;
+                      }, 0)}
+                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {filteredExceptionalData &&
+                      filteredExceptionalData.length > 0 &&
+                      credits.reduce((acc, item) => {
+                        const total = Number(acc) + Number(item);
+                        return total;
+                      }, 0)}
+                  </td>
+                  <td className="tg-0lax">
+                    {filteredExceptionalData &&
+                      filteredExceptionalData.length > 0 &&
+                      send.reduce((acc, item) => {
+                        const total = Number(acc) + Number(item);
+                        return total;
+                      }, 0)}
+                  </td>
+                  <td className="tg-0lax">
+                    {filteredExceptionalData &&
+                      filteredExceptionalData.length > 0 &&
+                      remaining.reduce((acc, item) => {
+                        const total = Number(acc) + Number(item);
+                        return total;
+                      }, 0)}
+                  </td>
+                  <td className="tg-0lax">
+                    {filteredExceptionalData &&
+                      filteredExceptionalData.length > 0 &&
+                      closingStock.reduce((acc, item) => {
+                        const total = Number(acc) + Number(item);
+                        return total;
+                      }, 0)}
+                  </td>
+
+                  <td className="tg-0lax">
+                    {filteredExceptionalData &&
+                      filteredExceptionalData.length > 0 &&
+                      sales.reduce((acc, item) => {
+                        const total = Number(acc) + Number(item);
+                        return total;
+                      }, 0)}
+                  </td>
+
+                  <td className="tg-0lax"></td>
+
+                  <td className="tg-0lax">
+                    {(
+                      Number(
+                        filteredExceptionalData &&
+                          filteredExceptionalData.length > 0 &&
+                          filteredExceptionalData
+                            .filter((page) => {
+                              const pg = pageId
+                                ? pageId
+                                : Array.from(frontSet)[0];
+                              if (page.page === pg) {
+                                return page;
+                              } else return 0;
+                            })
+                            .reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  Number(currentItem.sales) *
+                                    Number(
+                                      currentItem.sellingRate.$numberDecimal
+                                    )),
+                              0
+                            )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div className="my-8 leading-6">
+            <h4 className="text-[#AA237A] font-bold ">
+              Total:{" "}
+              {(
+                Number(
+                  filteredExceptionalData &&
                     filteredExceptionalData.length > 0 &&
                     filteredExceptionalData
                       .filter((page) => {
@@ -888,55 +940,35 @@ const FrontDetailsReport = () => {
                             Number(currentItem.sales) *
                               Number(currentItem.sellingRate.$numberDecimal)),
                         0
-                      ))||0).toFixed(2)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                      ) +
+                      quan180.reduce(
+                        (total, regularData) =>
+                          total +
+                          Number(regularData.sales) *
+                            Number(regularData.sellingRate?.$numberDecimal),
+                        0
+                      ) +
+                      quan375.reduce(
+                        (total, regularData) =>
+                          total +
+                          Number(regularData.sales) *
+                            Number(regularData.sellingRate?.$numberDecimal),
+                        0
+                      ) +
+                      quan750.reduce(
+                        (total, regularData) =>
+                          total +
+                          Number(regularData.sales) *
+                            Number(regularData.sellingRate?.$numberDecimal),
+                        0
+                      )
+                ) || 0
+              ).toFixed(2)}
+            </h4>
+          </div>
         </div>
-        <div className="my-8 leading-6">
-          <h4 className="text-[#AA237A] font-bold ">
-            Total: {(Number(filteredExceptionalData &&
-              filteredExceptionalData.length > 0 &&
-              filteredExceptionalData
-                .filter((page) => {
-                  const pg = pageId ? pageId : Array.from(frontSet)[0];
-                  if (page.page === pg) {
-                    return page;
-                  } else return 0;
-                })
-                .reduce(
-                  (total, currentItem) =>
-                  (total =
-                    total +
-                    Number(currentItem.sales) *
-                    Number(currentItem.sellingRate.$numberDecimal)),
-                  0
-            ) + quan180.reduce(
-              (total, regularData) =>
-                total +
-                Number(regularData.sales) *
-                Number(regularData.sellingRate?.$numberDecimal),
-              0
-            ) +
-            quan375.reduce(
-              (total, regularData) =>
-                total +
-                Number(regularData.sales) *
-                Number(regularData.sellingRate?.$numberDecimal),
-              0
-            ) +
-            quan750.reduce(
-              (total, regularData) =>
-                total +
-                Number(regularData.sales) *
-                Number(regularData.sellingRate?.$numberDecimal),
-              0
-            ) )||0).toFixed(2)}
-          </h4>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

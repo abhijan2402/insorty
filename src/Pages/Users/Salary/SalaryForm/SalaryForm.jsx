@@ -10,10 +10,9 @@ import { useReactToPrint } from "react-to-print";
 import { useParams } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
-
 const SalaryForm = () => {
   const token = localStorage.getItem("token");
-  const { employeeId } = useParams()
+  const { employeeId } = useParams();
   const [year, setYear] = useState("");
   const salaryData = useLoaderData();
   const employeeData = salaryData?.data;
@@ -24,7 +23,7 @@ const SalaryForm = () => {
     content: () => front.current,
   });
 
-const shopType = jwtDecode(token).shopType
+  const shopType = jwtDecode(token).shopType;
   const {
     data: salareyDataList,
     isLoading: salareyDataLoading,
@@ -40,7 +39,6 @@ const shopType = jwtDecode(token).shopType
             "Content-Type": "application/json",
             cookie_token: token,
           },
-          
         }
       );
       const data = await res.json();
@@ -106,186 +104,162 @@ const shopType = jwtDecode(token).shopType
     }
   };
 
-  const handelDelete  = async (id) => {
-    fetch(
-      `https://insorty-api.onrender.com/shop/deleteEmployeeSalaryData`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          cookie_token: token,
-        },
-        body : JSON.stringify({salaryIds: [id]})
-      }
-    ).then((res)=>{
-      if (res.status === 200) {
-        Swal.fire({
-          icon: "success",
-          title: "Salary Deleted Successfully",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        refetch();
-      } 
+  const handelDelete = async (id) => {
+    fetch(`https://insorty-api.onrender.com/shop/deleteEmployeeSalaryData`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        cookie_token: token,
+      },
+      body: JSON.stringify({ salaryIds: [id] }),
     })
-    .catch((err)=>{
+      .then((res) => {
+        if (res.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Salary Deleted Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          refetch();
+        }
+      })
+      .catch((err) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: err.message,
         });
-      
-    });
-    
-  }
+      });
+  };
 
   if (isLoading || salareyDataLoading) {
     return <Loader></Loader>;
   }
 
   return (
-    <section className="px-2 py-6">
-      <button className="commonBtn " onClick={handlePrint}>
-        प्रिंट
-      </button>
-      {shopType==="SHOP" && ( <Link
-            to="/user/salary"
-           
-          >
-            <button className="commonBtn">
-            सूची
-            </button>
-      </Link>)}
-     {shopType==="BAR" && ( <Link
-            to="/user/bearshop/salary"
-           
-          >
-            <button className="commonBtn">
-            सूची
-            </button>
-      </Link>)}
-      <div ref={front}>
+    <>
+      <div className="py-0 sticky top-0 bg-white z-5000">
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
+        </button>
+        {shopType === "SHOP" && (
+          <Link to="/user/salary">
+            <button className="commonBtn">सूची</button>
+          </Link>
+        )}
+        {shopType === "BAR" && (
+          <Link to="/user/bearshop/salary">
+            <button className="commonBtn">सूची</button>
+          </Link>
+        )}
         <div className="flex justify-center items-center">
           <div className="title">
             <h2 className="font-bold text-[1.5rem]">
-              कर्माचीरी का नाम  :-    {" "}
+              कर्मचारी का नाम :-{" "}
               <span className="titleStyle">{salareyDataList.name}</span>
             </h2>
 
             <div className="flex gap-4 items-center my-4">
               <h2 className="font-bold text-[1.5rem]">वर्ष</h2>
+
               <input
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
                 type="text"
                 className="semiSmallInput"
               />
-
-
             </div>
-          
           </div>
         </div>
+        <div className="divider my-2"></div>
+      </div>
+      <section className="px-2 py-6">
+        <div ref={front}>
+          {/* ************************ all sealy data************** */}
+          <div>
+            <form action="">
+              <div className="flex justify-center items-center">
+                <table className="removeCommonWSpace ">
+                  <thead>
+                    <tr>
+                      <th rowSpan={2}> क्र. सं.</th>
+                      <th colSpan={2}> वेतन</th>
+                      <th colSpan={2}> भुगतान</th>
+                      <th rowSpan={2}>चालू शेष </th>
+                      <th rowSpan={2}>टिप्पणी</th>
+                      <th rowSpan={2}>डिलीट</th>
+                    </tr>
+                    <tr>
+                      <th>दिनांक</th>
 
-        {/* ************************ all sealy data************** */}
+                      <th>रकम</th>
+
+                      <th>दिनांक</th>
+
+                      <th>रकम</th>
+
+                      {/* ============= कुल योग ================ */}
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {(salareyDataList &&
+                      salareyDataList.salaryData
+                        .filter((item) => {
+                          if (
+                            item.salary.month.toString().includes(year) &&
+                            item.payment.date.toString().includes(year)
+                          ) {
+                            return item;
+                          }
+                        })
+                        ?.map((salary, index) => {
+                          return (
+                            <SalaryFormData
+                              key={index}
+                              salareyDataLoading={salareyDataLoading}
+                              salareyDataList={salareyDataList.salaryData}
+                              salary={salary}
+                              index={index}
+                              handelDelete={handelDelete}
+                            ></SalaryFormData>
+                          );
+                        })) || (
+                      <>
+                        <tr>
+                          <td>
+                            <span className="text-red-500">No Data Found</span>
+                          </td>
+                        </tr>
+                      </>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            </form>{" "}
+          </div>
+        </div>
         <div>
-          <form action="">
-            <div className="flex justify-center items-center">
-              <table className="removeCommonWSpace ">
-                <thead>
-                  <tr>
-                    <th rowSpan={2}> क्र. सं.</th>
-                    <th colSpan={2}> वेतन</th>
-                    <th colSpan={2}> भुगतान</th>
-                    <th rowSpan={2}>चालू शेष </th>
-                    <th rowSpan={2}>टिप्पणी</th>
-                    <th rowSpan={2}>डिलीट</th>
-                  </tr>
-                  <tr>
-
-                    <th>
-                        दिनांक
-                        </th>
-
-
-                      
-                        <th>
-                         रकम
-                    </th>
-
-                    <th>
-                        दिनांक
-                        </th>
-                  
-                        <th>
-                        रकम
-                    </th>
-
-                   
-                    {/* ============= कुल योग ================ */}
-                  </tr>
-                </thead>
-
-                <tbody>
-
-                  {(salareyDataList &&
-                    salareyDataList.salaryData
-                      .filter((item) => {
-                        if (
-                          item.salary.month.toString().includes(year) &&
-                          item.payment.date.toString().includes(year)
-                        ) {
-                          return item;
-                        }
-                      })
-                      ?.map((salary, index) => {
-
-                        return (
-                          <SalaryFormData
-                            key={index}
-                            salareyDataLoading={salareyDataLoading}
-                            salareyDataList={salareyDataList.salaryData}
-                            salary={salary}
-                            index={index}
-                            handelDelete={handelDelete}
-                          ></SalaryFormData>
-                        );
-                      })) || (
-                    <>
-                      <tr>
-                        <td>
-                          <span className="text-red-500">No Data Found</span>
-                        </td>
-                      </tr>
-                    </>
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </form>{" "}
+          <div className="mt-4 flex justify-center items-center gap-4">
+            <label htmlFor="addData" className="commonBtn">
+              लेन-देन जोड़ें
+            </label>
+          </div>
         </div>
-      </div>
-      <div>
-        <div className="mt-4 flex justify-center items-center gap-4">
-          <label htmlFor="addData" className="commonBtn">
-            लेन-देन जोड़ें
-          </label>
-
-         
-        </div>
-      </div>
-      {/* ************************ all sealy data************** */}
-      <SalaryModal
-        salaryState={salaryState}
-        isLoading={isLoading}
-        slaryDate={slaryDate}
-        setSalaryDate={setSalaryDate}
-        paymentDate={paymentDate}
-        setPaymentDate={setPaymentDate}
-        handelSalaryOnSubmit={handelSalaryOnSubmit}
-        handelSelaryOnChange={handelSelaryOnChange}
-      ></SalaryModal>
-    </section>
+        {/* ************************ all sealy data************** */}
+        <SalaryModal
+          salaryState={salaryState}
+          isLoading={isLoading}
+          slaryDate={slaryDate}
+          setSalaryDate={setSalaryDate}
+          paymentDate={paymentDate}
+          setPaymentDate={setPaymentDate}
+          handelSalaryOnSubmit={handelSalaryOnSubmit}
+          handelSelaryOnChange={handelSelaryOnChange}
+        ></SalaryModal>
+      </section>
+    </>
   );
 };
 

@@ -239,495 +239,482 @@ const BackDetailReport = () => {
     });
 
   return (
-    <section className="my-4">
-      <div className="flex gap-6 items-center ">
-        <h2 className="font-bold text-xl text-gray-800">बीयर ओर अन्य</h2>
-        <Link to="/user/frontdailyreport/details" className="commonBtn">
-          अंग्रेजी
-        </Link>
-
-        <button className="commonBtn " onClick={handlePrint}>
-          प्रिंट
-        </button>
-      </div>
-
-      <div className="flex gap-4 items-center my-4">
-        <div className="flex gap-2 items-center">
-          <DatePicker
-            selected={filterDate}
-            onChange={(date) => {
-              setFilterData(date);
-            }}
-            dateFormat="dd/MM/yyyy"
-            placeholderText={"dd/mm/yyyy"}
-            className="inputBox date"
-          />
-        </div>
-        {Array.from(frontSet)
-          .sort((a, b) => a - b)
-          .map((item, index) => {
-            return (
-              <button
-                className="commonBtn "
-                onClick={() => {
-                  setPageId(item);
-                  setPgNo(index);
-                }}
-              >
-                {index + 1}
-              </button>
-            );
-          })}
-      </div>
-      <button
-        className="commonBtn2"
-        onClick={() => {
-          swal({
-            title: "Are you sure?",
-            text: `Once deleted, you will not be able to recover page
-                `,
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-          }).then((willDelete) => {
-            if (willDelete) {
-              deletePage(
-                BackPageData.sort((a, b) =>
-                  a.createdAt.localeCompare(b.createdAt)
-                ).slice(pgNo, pgNo + 1)[0]._id
-              );
-            }
-          });
-        }}
+    <>
+      <div
+        className="py-0 sticky top-0 bg-white z-5000"
+        style={{ zIndex: 1000 }}
       >
-        डिलीट
-      </button>
+        <div className="flex gap-6 items-center ">
+          <h2 className="font-bold text-xl text-gray-800">बीयर ओर अन्य</h2>
+          <Link to="/user/frontdailyreport/details" className="commonBtn">
+            अंग्रेजी
+          </Link>
 
-      <div className="divider"></div>
+          <button className="commonBtn " onClick={handlePrint}>
+            प्रिंट
+          </button>
+        </div>
 
-      <div ref={container}>
-        {/* ====================1==================== */}
+        <div className="flex gap-4 items-center my-4">
+          <div className="flex gap-2 items-center">
+            <DatePicker
+              selected={filterDate}
+              onChange={(date) => {
+                setFilterData(date);
+              }}
+              dateFormat="dd/MM/yyyy"
+              placeholderText={"dd/mm/yyyy"}
+              className="inputBox date"
+            />
+          </div>
+          {Array.from(frontSet)
+            .sort((a, b) => a - b)
+            .map((item, index) => {
+              return (
+                <button
+                  className="commonBtn "
+                  onClick={() => {
+                    setPageId(item);
+                    setPgNo(index);
+                  }}
+                >
+                  {index + 1}
+                </button>
+              );
+            })}
+        </div>
+        <button
+          className="commonBtn2"
+          onClick={() => {
+            swal({
+              title: "Are you sure?",
+              text: `Once deleted, you will not be able to recover page
+                `,
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+            }).then((willDelete) => {
+              if (willDelete) {
+                deletePage(
+                  BackPageData.sort((a, b) =>
+                    a.createdAt.localeCompare(b.createdAt)
+                  ).slice(pgNo, pgNo + 1)[0]._id
+                );
+              }
+            });
+          }}
+        >
+          डिलीट
+        </button>
 
-        <div className="overflow-x-auto my-4 py-4 flex">
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-baqh" colSpan={42}>
-                  <span
-                    style={{ fontWeight: "bold", textDecoration: "underline" }}
+        <div className="divider"></div>
+      </div>
+      <section className="my-4">
+        <div ref={container}>
+          {/* ====================1==================== */}
+
+          <div className="overflow-x-auto my-4 py-4 flex">
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="tg-baqh" colSpan={42}>
+                    <span
+                      style={{
+                        fontWeight: "bold",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      बीयर
+                    </span>
+                  </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                  <td
+                    rowSpan={2}
+                    className="wd-5"
+                    style={{ fontWeight: "bold" }}
                   >
-                    बीयर
-                  </span>
-                </td>
-              </tr>
-              <tr></tr>
-              <tr>
-                <td rowSpan={2} className="wd-5" style={{ fontWeight: "bold" }}>
-                  {" "}
-                  क्र.सं.
-                </td>
-                <th rowSpan={2}>ब्राण्ड</th>
-                <th colSpan={3}>औसत रेट</th>
-                <th colSpan={3}>प्रारम्भिक स्टॉक</th>
-                <th colSpan={3}>आमद (खरीद) - दु.</th>
-                <th colSpan={3}>खरीद रेट - दु.</th>
-                <th colSpan={3}>आमद (खरीद) - बा.</th>
-                <th colSpan={3}>खरीद रेट - बा.</th>
-                <th colSpan={3}>आमद (उधारी)</th>
-                <th colSpan={3}>भेजान</th>
-                <th colSpan={3}>योग/शेष</th>
-                <th colSpan={3}>अन्तिम स्टॉक</th>
-                <th colSpan={3}>बिक्री</th>
-                <th colSpan={3}>रेट</th>
-                <th colSpan={3}>योग</th>
-                <th rowSpan={2}>कुल योग</th>
-              </tr>
+                    {" "}
+                    क्र.सं.
+                  </td>
+                  <th rowSpan={2}>ब्राण्ड</th>
+                  <th colSpan={3}>औसत रेट</th>
+                  <th colSpan={3}>प्रारम्भिक स्टॉक</th>
+                  <th colSpan={3}>आमद (खरीद) - दु.</th>
+                  <th colSpan={3}>खरीद रेट - दु.</th>
+                  <th colSpan={3}>आमद (खरीद) - बा.</th>
+                  <th colSpan={3}>खरीद रेट - बा.</th>
+                  <th colSpan={3}>आमद (उधारी)</th>
+                  <th colSpan={3}>भेजान</th>
+                  <th colSpan={3}>योग/शेष</th>
+                  <th colSpan={3}>अन्तिम स्टॉक</th>
+                  <th colSpan={3}>बिक्री</th>
+                  <th colSpan={3}>रेट</th>
+                  <th colSpan={3}>योग</th>
+                  <th rowSpan={2}>कुल योग</th>
+                </tr>
 
-              <tr>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>650ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>550ml</span>
-                </td>
-                <td className="tg-0lax">
-                  <span style={{ fontWeight: "bold" }}>330ml</span>
-                </td>
-              </tr>
-            </thead>
-            <tbody>
-              {/* ========================== */}
+                <tr>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>650ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>550ml</span>
+                  </td>
+                  <td className="tg-0lax">
+                    <span style={{ fontWeight: "bold" }}>330ml</span>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                {/* ========================== */}
 
-              {filteredRegularData &&
-                filteredRegularData.length !== undefined &&
-                filteredRegularData.map((regularData, index) => {
-                  return (
-                    <RegularData
-                      key={index}
-                      regularData={regularData}
-                      index={index}
-                      quan1={650}
-                      quan2={500}
-                      quan3={330}
-                      pageId={pageId}
-                      frontSet={frontSet}
-                    ></RegularData>
-                  );
-                })}
+                {filteredRegularData &&
+                  filteredRegularData.length !== undefined &&
+                  filteredRegularData.map((regularData, index) => {
+                    return (
+                      <RegularData
+                        key={index}
+                        regularData={regularData}
+                        index={index}
+                        quan1={650}
+                        quan2={500}
+                        quan3={330}
+                        pageId={pageId}
+                        frontSet={frontSet}
+                      ></RegularData>
+                    );
+                  })}
 
-              {/* ========================== */}
+                {/* ========================== */}
 
-              <tr>
-                <td className="tg-0lax">Total</td>
-                <td></td>
-                <td className="tg-0lax"> </td>
-                <td className="tg-0lax"> </td>
-                <td className="tg-0lax"> </td>
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax"> </td>
+                  <td className="tg-0lax"> </td>
+                  <td className="tg-0lax"> </td>
 
-                <td className="tg-0lax">
-                  {quan650.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.openingStock),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan550.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.openingStock),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan330.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.openingStock),
-                    0
-                  )}
-                </td>
+                  <td className="tg-0lax">
+                    {quan650.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.openingStock),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan550.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.openingStock),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan330.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.openingStock),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax">
-                  {quan650.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseShop),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan550.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseShop),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan330.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseShop),
-                    0
-                  )}
-                </td>
+                  <td className="tg-0lax">
+                    {quan650.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseShop),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan550.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseShop),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan330.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseShop),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
-                <td className="tg-0lax">
-                  {quan650.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseOutSide),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan550.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseOutSide),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan330.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.purchaseOutSide),
-                    0
-                  )}
-                </td>
+                  <td className="tg-0lax">
+                    {quan650.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseOutSide),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan550.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseOutSide),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan330.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.purchaseOutSide),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
-                <td className="tg-0lax">
-                  {quan650.reduce(
-                    (total, regularData) => total + Number(regularData.credits),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan550.reduce(
-                    (total, regularData) => total + Number(regularData.credits),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan330.reduce(
-                    (total, regularData) => total + Number(regularData.credits),
-                    0
-                  )}
-                </td>
+                  <td className="tg-0lax">
+                    {quan650.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.credits),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan550.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.credits),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan330.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.credits),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax">
-                  {quan650.reduce(
-                    (total, regularData) => total + Number(regularData.send),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan550.reduce(
-                    (total, regularData) => total + Number(regularData.send),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan330.reduce(
-                    (total, regularData) => total + Number(regularData.send),
-                    0
-                  )}
-                </td>
+                  <td className="tg-0lax">
+                    {quan650.reduce(
+                      (total, regularData) => total + Number(regularData.send),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan550.reduce(
+                      (total, regularData) => total + Number(regularData.send),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan330.reduce(
+                      (total, regularData) => total + Number(regularData.send),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax">
-                  {quan650.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.remaining),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan550.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.remaining),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan330.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.remaining),
-                    0
-                  )}
-                </td>
+                  <td className="tg-0lax">
+                    {quan650.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.remaining),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan550.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.remaining),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan330.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.remaining),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax">
-                  {quan650.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.closingStock),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan550.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.closingStock),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan330.reduce(
-                    (total, regularData) =>
-                      total + Number(regularData.closingStock),
-                    0
-                  )}
-                </td>
+                  <td className="tg-0lax">
+                    {quan650.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.closingStock),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan550.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.closingStock),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan330.reduce(
+                      (total, regularData) =>
+                        total + Number(regularData.closingStock),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax">
-                  {quan650.reduce(
-                    (total, regularData) => total + Number(regularData.sales),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan550.reduce(
-                    (total, regularData) => total + Number(regularData.sales),
-                    0
-                  )}
-                </td>
-                <td className="tg-0lax">
-                  {quan330.reduce(
-                    (total, regularData) => total + Number(regularData.sales),
-                    0
-                  )}
-                </td>
+                  <td className="tg-0lax">
+                    {quan650.reduce(
+                      (total, regularData) => total + Number(regularData.sales),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan550.reduce(
+                      (total, regularData) => total + Number(regularData.sales),
+                      0
+                    )}
+                  </td>
+                  <td className="tg-0lax">
+                    {quan330.reduce(
+                      (total, regularData) => total + Number(regularData.sales),
+                      0
+                    )}
+                  </td>
 
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
 
-                <td className="tg-0lax">
-                  {(
-                    Number(
-                      quan650.reduce(
-                        (total, regularData) =>
-                          total +
-                          Number(regularData.sales) *
-                            Number(regularData.sellingRate?.$numberDecimal),
-                        0
-                      )
-                    ) || 0
-                  ).toFixed(2)}
-                </td>
-                <td className="tg-0lax">
-                  {(
-                    Number(
-                      quan550.reduce(
-                        (total, regularData) =>
-                          total +
-                          Number(regularData.sales) *
-                            Number(regularData.sellingRate?.$numberDecimal),
-                        0
-                      )
-                    ) || 0
-                  ).toFixed(2)}
-                </td>
-                <td className="tg-0lax">
-                  {(
-                    Number(
-                      quan330.reduce(
-                        (total, regularData) =>
-                          total +
-                          Number(regularData.sales) *
-                            Number(regularData.sellingRate?.$numberDecimal),
-                        0
-                      )
-                    ) || 0
-                  ).toFixed(2)}
-                </td>
-
-                <td>
-                  {(
-                    Number(
-                      quan650.reduce(
-                        (total, regularData) =>
-                          total +
-                          Number(regularData.sales) *
-                            Number(regularData.sellingRate?.$numberDecimal),
-                        0
-                      ) +
+                  <td className="tg-0lax">
+                    {(
+                      Number(
+                        quan650.reduce(
+                          (total, regularData) =>
+                            total +
+                            Number(regularData.sales) *
+                              Number(regularData.sellingRate?.$numberDecimal),
+                          0
+                        )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                  <td className="tg-0lax">
+                    {(
+                      Number(
                         quan550.reduce(
                           (total, regularData) =>
                             total +
                             Number(regularData.sales) *
                               Number(regularData.sellingRate?.$numberDecimal),
                           0
-                        ) +
+                        )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                  <td className="tg-0lax">
+                    {(
+                      Number(
                         quan330.reduce(
                           (total, regularData) =>
                             total +
@@ -735,181 +722,209 @@ const BackDetailReport = () => {
                               Number(regularData.sellingRate?.$numberDecimal),
                           0
                         )
-                    ) || 0
-                  ).toFixed(2)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
 
-        <div className="overflow-x-auto my-4 py-4 flex ">
-          <table className="table  removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="text-xs"> क्र. सं.</td>
-                <th className="text-xs"> ब्राण्ड</th>
-                <th className="text-xs">ml</th>
-                <th className="text-xs">औसत रेट</th>
-                <th className="text-xs">प्रारम्भिक स्टॉक</th>
-                <th className="text-xs">आमद (खरीद) - दु.</th>
-                <th className="text-xs">खरीद रेट - दु.</th>
-                <th className="text-xs">आमद (खरीद) - बा.</th>
-                <th className="text-xs">खरीद रेट - बा.</th>
-                <th className="text-xs">आमद (उधारी)</th>
-                <th className="text-xs">भेजान</th>
-                <th className="text-xs">योग/शेष</th>
-                <th className="text-xs">अन्तिम स्टॉक </th>
-                <th className="text-xs">बिक्री</th>
-                <th className="text-xs">रेट</th>
-                <th className="text-xs">रकम</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredExceptionalData &&
-                filteredExceptionalData
-                  .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-                  .map((exceptionalData, index) => {
-                    const pg = pageId ? pageId : Array.from(frontSet)[0];
-                    if (exceptionalData.page === pg) {
-                      count++;
-                      return (
-                        <FristFormDetails
-                          key={index}
-                          index={count}
-                          exceptionalData={exceptionalData}
-                          pageId={pageId}
-                          frontSet={frontSet}
-                        ></FristFormDetails>
-                      );
-                    }
-                  })}
-
-              {/* <BackRmlDetailsData></BackRmlDetailsData> */}
-
-              <tr>
-                <td className="tg-0lax">Total</td>
-                <td></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {openingStock.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
-                </td>
-                <td className="tg-0lax">
-                  {purchaseShop.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {purchaseOutSide.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {credits.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
-                </td>
-                <td className="tg-0lax">
-                  {send.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
-                </td>
-                <td className="tg-0lax">
-                  {remaining.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
-                </td>
-                <td className="tg-0lax">
-                  {closingStock.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
-                </td>
-
-                <td className="tg-0lax">
-                  {sales.reduce((acc, item) => {
-                    const total = Number(acc) + Number(item);
-                    return total;
-                  }, 0)}
-                </td>
-
-                <td className="tg-0lax"></td>
-
-                <td className="tg-0lax">
-                  {" "}
-                  {(
-                    Number(
-                      filteredExceptionalData &&
-                        filteredExceptionalData.length > 0 &&
-                        filteredExceptionalData
-                          .filter((page) => {
-                            const pg = pageId
-                              ? pageId
-                              : Array.from(frontSet)[0];
-                            if (page.page === pg) {
-                              return page;
-                            } else return 0;
-                          })
-                          .reduce(
-                            (total, currentItem) =>
-                              (total =
-                                total +
-                                Number(currentItem.sales) *
-                                  Number(
-                                    currentItem.sellingRate.$numberDecimal
-                                  )),
+                  <td>
+                    {(
+                      Number(
+                        quan650.reduce(
+                          (total, regularData) =>
+                            total +
+                            Number(regularData.sales) *
+                              Number(regularData.sellingRate?.$numberDecimal),
+                          0
+                        ) +
+                          quan550.reduce(
+                            (total, regularData) =>
+                              total +
+                              Number(regularData.sales) *
+                                Number(regularData.sellingRate?.$numberDecimal),
+                            0
+                          ) +
+                          quan330.reduce(
+                            (total, regularData) =>
+                              total +
+                              Number(regularData.sales) *
+                                Number(regularData.sellingRate?.$numberDecimal),
                             0
                           )
-                    ) || 0
-                  ).toFixed(2)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-        <div className="overflow-x-auto my-4 py-4 flex ">
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-0lax " colSpan={50}>
-                  <span style={{ fontWeight: "bold" }}>देशी/RML </span>
-                </td>
-              </tr>
+          <div className="overflow-x-auto my-4 py-4 flex ">
+            <table className="table  removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="text-xs"> क्र. सं.</td>
+                  <th className="text-xs"> ब्राण्ड</th>
+                  <th className="text-xs">ml</th>
+                  <th className="text-xs">औसत रेट</th>
+                  <th className="text-xs">प्रारम्भिक स्टॉक</th>
+                  <th className="text-xs">आमद (खरीद) - दु.</th>
+                  <th className="text-xs">खरीद रेट - दु.</th>
+                  <th className="text-xs">आमद (खरीद) - बा.</th>
+                  <th className="text-xs">खरीद रेट - बा.</th>
+                  <th className="text-xs">आमद (उधारी)</th>
+                  <th className="text-xs">भेजान</th>
+                  <th className="text-xs">योग/शेष</th>
+                  <th className="text-xs">अन्तिम स्टॉक </th>
+                  <th className="text-xs">बिक्री</th>
+                  <th className="text-xs">रेट</th>
+                  <th className="text-xs">रकम</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredExceptionalData &&
+                  filteredExceptionalData
+                    .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
+                    .map((exceptionalData, index) => {
+                      const pg = pageId ? pageId : Array.from(frontSet)[0];
+                      if (exceptionalData.page === pg) {
+                        count++;
+                        return (
+                          <FristFormDetails
+                            key={index}
+                            index={count}
+                            exceptionalData={exceptionalData}
+                            pageId={pageId}
+                            frontSet={frontSet}
+                          ></FristFormDetails>
+                        );
+                      }
+                    })}
 
-              <tr>
-                <th> क्र. सं.</th>
-                <th> ब्राण्ड</th>
-                <th>ml</th>
-                <th>औसत रेट</th>
-                <th>प्रारम्भिक स्टॉक</th>
-                <th>आमद (खरीद) - दु.</th>
-                <th>खरीद रेट - दु.</th>
-                <th>आमद (खरीद) - बा.</th>
-                <th>खरीद रेट - बा.</th>
-                <th>आमद (उधारी)</th>
-                <th>भेजान</th>
-                <th>योग/शेष</th>
-                <th>अन्तिम स्टॉक </th>
-                <th>बिक्री</th>
-                <th>रेट</th>
-                <th>रकम</th>
-              </tr>
-            </thead>
+                {/* <BackRmlDetailsData></BackRmlDetailsData> */}
 
-            <tbody>
-              {/* { (
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {openingStock.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
+                  </td>
+                  <td className="tg-0lax">
+                    {purchaseShop.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
+                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {purchaseOutSide.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
+                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {credits.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
+                  </td>
+                  <td className="tg-0lax">
+                    {send.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
+                  </td>
+                  <td className="tg-0lax">
+                    {remaining.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
+                  </td>
+                  <td className="tg-0lax">
+                    {closingStock.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
+                  </td>
+
+                  <td className="tg-0lax">
+                    {sales.reduce((acc, item) => {
+                      const total = Number(acc) + Number(item);
+                      return total;
+                    }, 0)}
+                  </td>
+
+                  <td className="tg-0lax"></td>
+
+                  <td className="tg-0lax">
+                    {" "}
+                    {(
+                      Number(
+                        filteredExceptionalData &&
+                          filteredExceptionalData.length > 0 &&
+                          filteredExceptionalData
+                            .filter((page) => {
+                              const pg = pageId
+                                ? pageId
+                                : Array.from(frontSet)[0];
+                              if (page.page === pg) {
+                                return page;
+                              } else return 0;
+                            })
+                            .reduce(
+                              (total, currentItem) =>
+                                (total =
+                                  total +
+                                  Number(currentItem.sales) *
+                                    Number(
+                                      currentItem.sellingRate.$numberDecimal
+                                    )),
+                              0
+                            )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="overflow-x-auto my-4 py-4 flex ">
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="tg-0lax " colSpan={50}>
+                    <span style={{ fontWeight: "bold" }}>देशी/RML </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <th> क्र. सं.</th>
+                  <th> ब्राण्ड</th>
+                  <th>ml</th>
+                  <th>औसत रेट</th>
+                  <th>प्रारम्भिक स्टॉक</th>
+                  <th>आमद (खरीद) - दु.</th>
+                  <th>खरीद रेट - दु.</th>
+                  <th>आमद (खरीद) - बा.</th>
+                  <th>खरीद रेट - बा.</th>
+                  <th>आमद (उधारी)</th>
+                  <th>भेजान</th>
+                  <th>योग/शेष</th>
+                  <th>अन्तिम स्टॉक </th>
+                  <th>बिक्री</th>
+                  <th>रेट</th>
+                  <th>रकम</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {/* { (
                 BackPageData &&
                 BackPageData.length &&
                 BackPageData
@@ -934,297 +949,276 @@ const BackDetailReport = () => {
                   })
               )} */}
 
-              {BackPageData &&
-                BackPageData.length &&
-                BackPageData.sort((a, b) =>
-                  a.createdAt.localeCompare(b.createdAt)
-                ).map((page, index) => {
-                  if (index === pgNo) {
-                    return (
-                      <>
-                        {page?.RML?.entries?.map((entry, index2) => {
-                          return (
-                            <BackRmlDetailsData
-                              key={index2}
-                              index={index2}
-                              RmlData={entry}
-                            ></BackRmlDetailsData>
-                          );
-                        })}
-                      </>
-                    );
-                  }
-                })}
-
-              <tr>
-                <td className="tg-0lax">Total</td>
-                <td></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      ?.reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.RML?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem.openingStock),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.RML?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem.purchaseShop),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.RML?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.purchaseOutSide),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.RML?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.credits),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.RML?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.send),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.RML?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.remaining),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData?.length &&
-                    BackPageData?.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.RML?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.closingStock),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
-
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.RML?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.sales),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
-
-                <td className="tg-0lax"></td>
-
-                <td className="tg-0lax">
-                  {(
-                    Number(
-                      BackPageData &&
-                        BackPageData.length &&
-                        BackPageData.sort((a, b) =>
-                          a.createdAt.localeCompare(b.createdAt)
-                        )
-                          .slice(pgNo, pgNo + 1)
-                          .reduce(
-                            (total, currentItem) =>
-                              (total =
-                                total +
-                                currentItem?.RML?.entries?.reduce(
-                                  (total, currentItem) =>
-                                    (total =
-                                      total +
-                                      Number(
-                                        currentItem?.amount?.$numberDecimal
-                                      )),
-                                  0
-                                )),
-                            0
-                          )
-                    ) || 0
-                  ).toFixed(2)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-0lax" colSpan={40}>
-                  <span style={{ fontWeight: "bold" }}>
-                    अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से){" "}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax">क्र.सं.</td>
-                <td className="tg-0lax">पार्टी का नाम</td>
-                <td className="tg-0lax">ब्राण्ड</td>
-                <td className="tg-0lax">ML</td>
-                <td className="tg-0lax">संख्या</td>
-                <td className="tg-0lax">रेट</td>
-                <td className="tg-0lax">रकम</td>
-
-                <td className="tg-0lax">टिप्पणी</td>
-              </tr>
-            </thead>
-            <tbody>
-              {BackPageData &&
-                BackPageData?.length &&
-                BackPageData?.sort((a, b) =>
-                  a.createdAt.localeCompare(b.createdAt)
-                ).map((page, index) => {
-                  if (index === pgNo) {
-                    return (
-                      <>
-                        {page?.purchaseOutSide?.entries?.map(
-                          (entry, index2) => {
+                {BackPageData &&
+                  BackPageData.length &&
+                  BackPageData.sort((a, b) =>
+                    a.createdAt.localeCompare(b.createdAt)
+                  ).map((page, index) => {
+                    if (index === pgNo) {
+                      return (
+                        <>
+                          {page?.RML?.entries?.map((entry, index2) => {
                             return (
-                              <InfolwRml
-                                key={index}
-                                outSideData={entry}
+                              <BackRmlDetailsData
+                                key={index2}
                                 index={index2}
-                              ></InfolwRml>
+                                RmlData={entry}
+                              ></BackRmlDetailsData>
                             );
-                          }
+                          })}
+                        </>
+                      );
+                    }
+                  })}
+
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        ?.reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.RML?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem.openingStock),
+                                0
+                              )),
+                          0
                         )}
-                      </>
-                    );
-                  }
-                })}
+                  </td>
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.RML?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem.purchaseShop),
+                                0
+                              )),
+                          0
+                        )}
+                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.RML?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total =
+                                    total + currentItem?.purchaseOutSide),
+                                0
+                              )),
+                          0
+                        )}
+                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.RML?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem?.credits),
+                                0
+                              )),
+                          0
+                        )}
+                  </td>
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.RML?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem?.send),
+                                0
+                              )),
+                          0
+                        )}
+                  </td>
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.RML?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem?.remaining),
+                                0
+                              )),
+                          0
+                        )}
+                  </td>
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData?.length &&
+                      BackPageData?.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.RML?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem?.closingStock),
+                                0
+                              )),
+                          0
+                        )}
+                  </td>
 
-              <tr>
-                <td className="tg-0lax">Total</td>
-                <td></td>
-                <td className="tg-0lax" />
-                <td className="tg-0lax" />
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData?.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.RML?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem?.sales),
+                                0
+                              )),
+                          0
+                        )}
+                  </td>
 
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.purchaseOutSide?.entries?.reduce(
+                  <td className="tg-0lax"></td>
+
+                  <td className="tg-0lax">
+                    {(
+                      Number(
+                        BackPageData &&
+                          BackPageData.length &&
+                          BackPageData.sort((a, b) =>
+                            a.createdAt.localeCompare(b.createdAt)
+                          )
+                            .slice(pgNo, pgNo + 1)
+                            .reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem?.number),
+                                (total =
+                                  total +
+                                  currentItem?.RML?.entries?.reduce(
+                                    (total, currentItem) =>
+                                      (total =
+                                        total +
+                                        Number(
+                                          currentItem?.amount?.$numberDecimal
+                                        )),
+                                    0
+                                  )),
                               0
-                            )),
-                        0
-                      )}
-                </td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax">
-                  {(
-                    (BackPageData &&
+                            )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="tg-0lax" colSpan={40}>
+                    <span style={{ fontWeight: "bold" }}>
+                      अंग्रेजी/बीयर/देशी/RML की आमद (खरीद बाहर से){" "}
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="tg-0lax">क्र.सं.</td>
+                  <td className="tg-0lax">पार्टी का नाम</td>
+                  <td className="tg-0lax">ब्राण्ड</td>
+                  <td className="tg-0lax">ML</td>
+                  <td className="tg-0lax">संख्या</td>
+                  <td className="tg-0lax">रेट</td>
+                  <td className="tg-0lax">रकम</td>
+
+                  <td className="tg-0lax">टिप्पणी</td>
+                </tr>
+              </thead>
+              <tbody>
+                {BackPageData &&
+                  BackPageData?.length &&
+                  BackPageData?.sort((a, b) =>
+                    a.createdAt.localeCompare(b.createdAt)
+                  ).map((page, index) => {
+                    if (index === pgNo) {
+                      return (
+                        <>
+                          {page?.purchaseOutSide?.entries?.map(
+                            (entry, index2) => {
+                              return (
+                                <InfolwRml
+                                  key={index}
+                                  outSideData={entry}
+                                  index={index2}
+                                ></InfolwRml>
+                              );
+                            }
+                          )}
+                        </>
+                      );
+                    }
+                  })}
+
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax">
+                    {BackPageData &&
                       BackPageData?.length &&
                       BackPageData.sort((a, b) =>
                         a.createdAt.localeCompare(b.createdAt)
@@ -1237,141 +1231,86 @@ const BackDetailReport = () => {
                               total +
                               currentItem?.purchaseOutSide?.entries?.reduce(
                                 (total, currentItem) =>
-                                  (total = total + currentItem?.total),
+                                  (total = total + currentItem?.number),
                                 0
                               )),
                           0
-                        )) ||
-                    0
-                  ).toFixed(2)}
-                </td>
-                <td className="tg-0lax"></td>
-              </tr>
-            </tbody>
-          </table>
+                        )}
+                  </td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax">
+                    {(
+                      (BackPageData &&
+                        BackPageData?.length &&
+                        BackPageData.sort((a, b) =>
+                          a.createdAt.localeCompare(b.createdAt)
+                        )
 
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-0lax" colSpan={40}>
-                  <span style={{ fontWeight: "bold" }}>
-                    कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax">क्र.सं.</td>
-                <td className="tg-0lax">प्रकार</td>
-                <td className="tg-0lax">रकम</td>
-                <td className="tg-0lax">विवरण</td>
-              </tr>
-            </thead>
-            <tbody>
-              {BackPageData &&
-                BackPageData?.length &&
-                BackPageData.sort((a, b) =>
-                  a.createdAt.localeCompare(b.createdAt)
-                ).map((page, index) => {
-                  if (index === pgNo) {
-                    return (
-                      <>
-                        {page?.totalExpense?.entries?.map((entry, index2) => {
-                          return (
-                            <CommisonExpence
-                              key={index2}
-                              index={index2}
-                              expences={entry}
-                            ></CommisonExpence>
-                          );
-                        })}
-                      </>
-                    );
-                  }
-                })}
+                          .slice(pgNo, pgNo + 1)
+                          .reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem?.purchaseOutSide?.entries?.reduce(
+                                  (total, currentItem) =>
+                                    (total = total + currentItem?.total),
+                                  0
+                                )),
+                            0
+                          )) ||
+                      0
+                    ).toFixed(2)}
+                  </td>
+                  <td className="tg-0lax"></td>
+                </tr>
+              </tbody>
+            </table>
 
-              <tr>
-                <td className="tg-0lax">Total</td>
-                <td></td>
-                <td className="tg-0lax">
-                  {(
-                    (BackPageData &&
-                      BackPageData.length &&
-                      BackPageData.sort((a, b) =>
-                        a.createdAt.localeCompare(b.createdAt)
-                      )
-                        .slice(pgNo, pgNo + 1)
-                        .reduce(
-                          (total, currentItem) =>
-                            (total =
-                              total +
-                              currentItem?.totalExpense?.entries?.reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    Number(
-                                      currentItem?.amount?.$numberDecimal
-                                    )),
-                                0
-                              )),
-                          0
-                        )) ||
-                    0
-                  ).toFixed(2)}
-                </td>
-                <td className="tg-0lax"></td>
-              </tr>
-            </tbody>
-          </table>
-
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-0lax" colSpan={40}>
-                  <span style={{ fontWeight: "bold" }}>
-                    पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td className="tg-0lax">क्र.सं.</td>
-                <td className="tg-0lax">प्रकार</td>
-                <td className="tg-0lax">पार्टी का नाम</td>
-                <td className="tg-0lax">रकम</td>
-                <td className="tg-0lax">विवरण</td>
-              </tr>
-            </thead>
-            <tbody>
-              {BackPageData &&
-                BackPageData?.length &&
-                BackPageData.sort((a, b) =>
-                  a.createdAt.localeCompare(b.createdAt)
-                ).map((page, index) => {
-                  if (index === pgNo) {
-                    return (
-                      <>
-                        {page?.borrowedCashReturn?.entries?.map(
-                          (entry, index2) => {
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="tg-0lax" colSpan={40}>
+                    <span style={{ fontWeight: "bold" }}>
+                      कमीशन/खर्चा/फूट/बेगार/मंथली/पेनल्टी आदि
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="tg-0lax">क्र.सं.</td>
+                  <td className="tg-0lax">प्रकार</td>
+                  <td className="tg-0lax">रकम</td>
+                  <td className="tg-0lax">विवरण</td>
+                </tr>
+              </thead>
+              <tbody>
+                {BackPageData &&
+                  BackPageData?.length &&
+                  BackPageData.sort((a, b) =>
+                    a.createdAt.localeCompare(b.createdAt)
+                  ).map((page, index) => {
+                    if (index === pgNo) {
+                      return (
+                        <>
+                          {page?.totalExpense?.entries?.map((entry, index2) => {
                             return (
-                              <CashReciveData
+                              <CommisonExpence
                                 key={index2}
                                 index={index2}
-                                borrwedCashReturn={entry}
-                              ></CashReciveData>
+                                expences={entry}
+                              ></CommisonExpence>
                             );
-                          }
-                        )}
-                      </>
-                    );
-                  }
-                })}
-              <tr>
-                <td className="tg-0lax">Total</td>
-                <td className="tg-0lax"></td>
-                <td className="tg-0lax" />
-                <td className="tg-0lax">
-                  {(
-                    Number(
-                      BackPageData &&
+                          })}
+                        </>
+                      );
+                    }
+                  })}
+
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax">
+                    {(
+                      (BackPageData &&
                         BackPageData.length &&
                         BackPageData.sort((a, b) =>
                           a.createdAt.localeCompare(b.createdAt)
@@ -1381,117 +1320,196 @@ const BackDetailReport = () => {
                             (total, currentItem) =>
                               (total =
                                 total +
-                                currentItem?.borrowedCashReturn?.entries?.reduce(
+                                currentItem?.totalExpense?.entries?.reduce(
                                   (total, currentItem) =>
-                                    (total = total + currentItem?.cash),
+                                    (total =
+                                      total +
+                                      Number(
+                                        currentItem?.amount?.$numberDecimal
+                                      )),
                                   0
                                 )),
                             0
+                          )) ||
+                      0
+                    ).toFixed(2)}
+                  </td>
+                  <td className="tg-0lax"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="tg-0lax" colSpan={40}>
+                    <span style={{ fontWeight: "bold" }}>
+                      पीछे की उधारी में से, ब्रांचों से व अन्य से नकद प्राप्ति
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="tg-0lax">क्र.सं.</td>
+                  <td className="tg-0lax">प्रकार</td>
+                  <td className="tg-0lax">पार्टी का नाम</td>
+                  <td className="tg-0lax">रकम</td>
+                  <td className="tg-0lax">विवरण</td>
+                </tr>
+              </thead>
+              <tbody>
+                {BackPageData &&
+                  BackPageData?.length &&
+                  BackPageData.sort((a, b) =>
+                    a.createdAt.localeCompare(b.createdAt)
+                  ).map((page, index) => {
+                    if (index === pgNo) {
+                      return (
+                        <>
+                          {page?.borrowedCashReturn?.entries?.map(
+                            (entry, index2) => {
+                              return (
+                                <CashReciveData
+                                  key={index2}
+                                  index={index2}
+                                  borrwedCashReturn={entry}
+                                ></CashReciveData>
+                              );
+                            }
+                          )}
+                        </>
+                      );
+                    }
+                  })}
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td className="tg-0lax"></td>
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax">
+                    {(
+                      Number(
+                        BackPageData &&
+                          BackPageData.length &&
+                          BackPageData.sort((a, b) =>
+                            a.createdAt.localeCompare(b.createdAt)
                           )
-                    ) || 0
-                  ).toFixed(2)}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="overflow-x-auto my-4 py-4 flex ">
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-0lax " colSpan={40}>
-                  <span style={{ fontWeight: "bold" }}>
-                    अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
-                  </span>
-                </td>
-              </tr>
-
-              <tr>
-                <td className="tg-baqh">क्र.सं.</td>
-                <th>पार्टी का नाम</th>
-                <th> ब्राण्ड</th>
-                <th>ML</th>
-                <th>संख्या</th>
-                <th>टिप्पणी</th>
-              </tr>
-            </thead>
-            <tbody>
-              {BackPageData &&
-                BackPageData?.length &&
-                BackPageData.sort((a, b) =>
-                  a.createdAt.localeCompare(b.createdAt)
-                ).map((page, index) => {
-                  if (index === pgNo) {
-                    return (
-                      <>
-                        {page?.purchaseBorrow?.entries?.map((entry, index2) => {
-                          return (
-                            <InflowBorrow
-                              key={index2}
-                              index={index2}
-                              // PurchaseBorrow={item}
-                              entries={entry}
-                            ></InflowBorrow>
-                          );
-                        })}
-                      </>
-                    );
-                  }
-                })}
-
-              <tr>
-                <td className="tg-0lax">Total</td>
-                <td></td>
-                <td className="tg-0lax" />
-                <td className="tg-0lax" />
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.purchaseBorrow?.entries?.reduce(
+                            .slice(pgNo, pgNo + 1)
+                            .reduce(
                               (total, currentItem) =>
-                                (total = total + currentItem?.number),
+                                (total =
+                                  total +
+                                  currentItem?.borrowedCashReturn?.entries?.reduce(
+                                    (total, currentItem) =>
+                                      (total = total + currentItem?.cash),
+                                    0
+                                  )),
                               0
-                            )),
-                        0
-                      )}
-                </td>
-                <td className="tg-0lax" />
-              </tr>
-            </tbody>
-          </table>
+                            )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-0lax " colSpan={40}>
-                  <span style={{ fontWeight: "bold" }}>
-                    अंग्रेजी/बीयर/देशी/RML का भेजान
-                  </span>
-                </td>
-              </tr>
+          <div className="overflow-x-auto my-4 py-4 flex ">
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="tg-0lax " colSpan={40}>
+                    <span style={{ fontWeight: "bold" }}>
+                      अंग्रेजी/बीयर/देशी/RML की आमद (उधारी)
+                    </span>
+                  </td>
+                </tr>
 
-              <tr>
-                <td className="tg-baqh">क्र.सं.</td>
-                <th>पार्टी का नाम</th>
-                <th> ब्राण्ड</th>
-                <th>ML</th>
-                <th>संख्या</th>
-                <th>रेट</th>
-                <th>योग</th>
-                <th>टिप्पणी</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* {!SendData || SendData.length === 0 ? (
+                <tr>
+                  <td className="tg-baqh">क्र.सं.</td>
+                  <th>पार्टी का नाम</th>
+                  <th> ब्राण्ड</th>
+                  <th>ML</th>
+                  <th>संख्या</th>
+                  <th>टिप्पणी</th>
+                </tr>
+              </thead>
+              <tbody>
+                {BackPageData &&
+                  BackPageData?.length &&
+                  BackPageData.sort((a, b) =>
+                    a.createdAt.localeCompare(b.createdAt)
+                  ).map((page, index) => {
+                    if (index === pgNo) {
+                      return (
+                        <>
+                          {page?.purchaseBorrow?.entries?.map(
+                            (entry, index2) => {
+                              return (
+                                <InflowBorrow
+                                  key={index2}
+                                  index={index2}
+                                  // PurchaseBorrow={item}
+                                  entries={entry}
+                                ></InflowBorrow>
+                              );
+                            }
+                          )}
+                        </>
+                      );
+                    }
+                  })}
+
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
+                          (total, currentItem) =>
+                            (total =
+                              total +
+                              currentItem?.purchaseBorrow?.entries?.reduce(
+                                (total, currentItem) =>
+                                  (total = total + currentItem?.number),
+                                0
+                              )),
+                          0
+                        )}
+                  </td>
+                  <td className="tg-0lax" />
+                </tr>
+              </tbody>
+            </table>
+
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="tg-0lax " colSpan={40}>
+                    <span style={{ fontWeight: "bold" }}>
+                      अंग्रेजी/बीयर/देशी/RML का भेजान
+                    </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td className="tg-baqh">क्र.सं.</td>
+                  <th>पार्टी का नाम</th>
+                  <th> ब्राण्ड</th>
+                  <th>ML</th>
+                  <th>संख्या</th>
+                  <th>रेट</th>
+                  <th>योग</th>
+                  <th>टिप्पणी</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* {!SendData || SendData.length === 0 ? (
                 <>
                   <p>No Data Found</p>
                 </>
@@ -1526,174 +1544,175 @@ const BackDetailReport = () => {
                 </>
               )} */}
 
-              {BackPageData &&
-                BackPageData?.length &&
-                BackPageData.sort((a, b) =>
-                  a.createdAt.localeCompare(b.createdAt)
-                ).map((page, index) => {
-                  if (index === pgNo) {
-                    return (
-                      <>
-                        {page?.send?.entries?.map((entry, index2) => {
-                          return (
-                            <ShippingEnglishBear
-                              key={index2}
-                              index={index2}
-                              item={entry}
-                            ></ShippingEnglishBear>
-                          );
-                        })}
-                      </>
-                    );
-                  }
-                })}
+                {BackPageData &&
+                  BackPageData?.length &&
+                  BackPageData.sort((a, b) =>
+                    a.createdAt.localeCompare(b.createdAt)
+                  ).map((page, index) => {
+                    if (index === pgNo) {
+                      return (
+                        <>
+                          {page?.send?.entries?.map((entry, index2) => {
+                            return (
+                              <ShippingEnglishBear
+                                key={index2}
+                                index={index2}
+                                item={entry}
+                              ></ShippingEnglishBear>
+                            );
+                          })}
+                        </>
+                      );
+                    }
+                  })}
 
-              <tr>
-                <td className="tg-0lax">Total</td>
-                <td></td>
-                <td className="tg-0lax" />
-                <td className="tg-0lax">
-                  {BackPageData &&
-                    BackPageData.length &&
-                    BackPageData.sort((a, b) =>
-                      a.createdAt.localeCompare(b.createdAt)
-                    )
-                      .slice(pgNo, pgNo + 1)
-                      .reduce(
-                        (total, currentItem) =>
-                          (total =
-                            total +
-                            currentItem?.send?.entries?.reduce(
-                              (total, currentItem) =>
-                                (total = total + currentItem?.number),
-                              0
-                            )),
-                        0
-                      )}
-                </td>
-                <td className="tg-0lax" />
-                <td className="tg-0lax" />
-                <td className="tg-0lax">
-                  {(
-                    Number(
-                      BackPageData &&
-                        BackPageData?.length &&
-                        BackPageData.sort((a, b) =>
-                          a.createdAt.localeCompare(b.createdAt)
-                        ).reduce(
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax">
+                    {BackPageData &&
+                      BackPageData.length &&
+                      BackPageData.sort((a, b) =>
+                        a.createdAt.localeCompare(b.createdAt)
+                      )
+                        .slice(pgNo, pgNo + 1)
+                        .reduce(
                           (total, currentItem) =>
                             (total =
                               total +
                               currentItem?.send?.entries?.reduce(
                                 (total, currentItem) =>
-                                  (total = total + currentItem?.total),
+                                  (total = total + currentItem?.number),
                                 0
                               )),
                           0
-                        )
-                    ) || 0
-                  ).toFixed(2)}
-                </td>
-                <td className="tg-0lax" />
-              </tr>
-            </tbody>
-          </table>
+                        )}
+                  </td>
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax">
+                    {(
+                      Number(
+                        BackPageData &&
+                          BackPageData?.length &&
+                          BackPageData.sort((a, b) =>
+                            a.createdAt.localeCompare(b.createdAt)
+                          ).reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem?.send?.entries?.reduce(
+                                  (total, currentItem) =>
+                                    (total = total + currentItem?.total),
+                                  0
+                                )),
+                            0
+                          )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                  <td className="tg-0lax" />
+                </tr>
+              </tbody>
+            </table>
 
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <td className="tg-0lax " colSpan={40}>
-                  <span style={{ fontWeight: "bold" }}>उधारी/नामे</span>
-                </td>
-              </tr>
-              <tr>
-                <th> क्र. सं.</th>
-                <th>प्रकार</th>
-                <th>पार्टी का नाम</th>
-                <th>रकम</th>
-                <th>टिप्पणी</th>
-              </tr>
-            </thead>
-            <tbody>
-              {BackPageData &&
-                BackPageData?.length &&
-                BackPageData.map((page, index) => {
-                  if (index === pgNo) {
-                    return (
-                      <>
-                        {page?.borrowed?.entries?.map((entry, index2) => {
-                          return (
-                            <Borrowed
-                              key={index2}
-                              index={index2}
-                              item={entry}
-                            ></Borrowed>
-                          );
-                        })}
-                      </>
-                    );
-                  }
-                })}
+            <table className="table removeCommonWSpace">
+              <thead>
+                <tr>
+                  <td className="tg-0lax " colSpan={40}>
+                    <span style={{ fontWeight: "bold" }}>उधारी/नामे</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th> क्र. सं.</th>
+                  <th>प्रकार</th>
+                  <th>पार्टी का नाम</th>
+                  <th>रकम</th>
+                  <th>टिप्पणी</th>
+                </tr>
+              </thead>
+              <tbody>
+                {BackPageData &&
+                  BackPageData?.length &&
+                  BackPageData.map((page, index) => {
+                    if (index === pgNo) {
+                      return (
+                        <>
+                          {page?.borrowed?.entries?.map((entry, index2) => {
+                            return (
+                              <Borrowed
+                                key={index2}
+                                index={index2}
+                                item={entry}
+                              ></Borrowed>
+                            );
+                          })}
+                        </>
+                      );
+                    }
+                  })}
 
-              <tr>
-                <td className="tg-0lax">Total</td>
-                <td></td>
-                <td className="tg-0lax" />
-                <td className="tg-0lax">
-                  {(
-                    Number(
-                      BackPageData &&
-                        BackPageData?.length > 0 &&
-                        BackPageData.slice(pgNo, pgNo + 1).reduce(
-                          (total, currentItem) =>
-                            (total =
-                              total +
-                              currentItem?.borrowed?.entries?.reduce(
-                                (total, currentItem) =>
-                                  (total =
-                                    total +
-                                    Number(
-                                      currentItem?.amount?.$numberDecimal
-                                    )),
-                                0
-                              )),
-                          0
-                        )
-                    ) || 0
-                  ).toFixed(2)}
-                </td>
-                <td className="tg-0lax" />
-              </tr>
-            </tbody>
-          </table>
+                <tr>
+                  <td className="tg-0lax">Total</td>
+                  <td></td>
+                  <td className="tg-0lax" />
+                  <td className="tg-0lax">
+                    {(
+                      Number(
+                        BackPageData &&
+                          BackPageData?.length > 0 &&
+                          BackPageData.slice(pgNo, pgNo + 1).reduce(
+                            (total, currentItem) =>
+                              (total =
+                                total +
+                                currentItem?.borrowed?.entries?.reduce(
+                                  (total, currentItem) =>
+                                    (total =
+                                      total +
+                                      Number(
+                                        currentItem?.amount?.$numberDecimal
+                                      )),
+                                  0
+                                )),
+                            0
+                          )
+                      ) || 0
+                    ).toFixed(2)}
+                  </td>
+                  <td className="tg-0lax" />
+                </tr>
+              </tbody>
+            </table>
 
-          {BackPageData &&
-            BackPageData?.length &&
-            BackPageData.map((page, index) => {
-              if (index === pgNo) {
-                return <FinalReport data={page?.finalReport}></FinalReport>;
-              }
-            })}
+            {BackPageData &&
+              BackPageData?.length &&
+              BackPageData.map((page, index) => {
+                if (index === pgNo) {
+                  return <FinalReport data={page?.finalReport}></FinalReport>;
+                }
+              })}
 
-          <table>
-            <thead>
-              <tr>
-                <td className="tg-0lax " colSpan={40}>
-                  <span style={{ fontWeight: "bold" }}>रफ जगह</span>
-                </td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="tg-0lax" colSpan={4}>
-                  Comments Data
-                </td>
-              </tr>
-            </tbody>
-          </table>
+            <table>
+              <thead>
+                <tr>
+                  <td className="tg-0lax " colSpan={40}>
+                    <span style={{ fontWeight: "bold" }}>रफ जगह</span>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="tg-0lax" colSpan={4}>
+                    Comments Data
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

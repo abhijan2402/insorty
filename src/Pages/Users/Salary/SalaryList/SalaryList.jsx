@@ -113,7 +113,7 @@ const SalaryList = () => {
             className="flex justify-center items-center
         "
           >
-            <table className="table removeCommonWSpace">
+            <table className=" removeCommonWSpace">
               <thead>
                 <tr>
                   <th> क्र. सं.</th>

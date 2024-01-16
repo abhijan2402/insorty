@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React, { useRef } from "react";
 import Refund from "../Refund/Refund";
 import Reserve from "../Reserve/Reserve";
 import InvestmentForm from "../InvestmentForm/InvestmentForm";
@@ -34,308 +34,311 @@ const MainInvestment = () => {
   return (
     <>
       <div className="py-0 sticky top-0 bg-white z-5000">
-      <button
-        className="commonBtn "
-        onClick={handlePrint}
-      >
-        प्रिंट
-      </button>
-      <div className="title flex justify-center items-center">
-        <h2 className="font-bold md:text-[1.5rem] text-center">
-          मुख्य इन्वेस्ट
-        </h2>
-       
-      </div>
-       
-      </div>
-     
-
-    <section ref={front} className="my-2">
-      
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
+        </button>
+        <div className="title flex justify-center items-center">
+          <h2 className="font-bold md:text-[1.5rem] text-center">
+            मुख्य इन्वेस्ट
+          </h2>
+        </div>
         <div className="divider my-2"></div>
+      </div>
 
-      <div>
-        <form>
-          <div className="justify-center flex items-center">
+      <section ref={front} className="my-2">
+        <div>
+          <form>
+            <div className="justify-center flex items-center">
+              <table className=" removeCommonWSpace">
+                <thead>
+                  <tr className="text-center">
+                    <th className="text-xs"> क्र. सं.</th>
+                    <th></th>
+                    <th className="text-xs">विवरण</th>
+                    <th className="text-xs">दिनांक </th>
+                    <th className="text-xs">रकम</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <th>1</th>
+                    <td></td>
+                    <td>
+                      <input
+                        className="dailyReportInput wd-30 left-text"
+                        type="text"
+                        name="brandName"
+                        value={"पिछली उधारी"}
+                        disabled
+                      />
+                    </td>
+                    <td></td>
+                    <td>
+                      <input
+                        type="number"
+                        name="price"
+                        className="dailyReportInput wd-9 left-text"
+                        defaultValue={data.mainInvest.previousLoan.price}
+                        onChange={(event) =>
+                          handleInvestmentChange(
+                            "previousLoan",
+                            event.target.value
+                          )
+                        }
+                      />
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th>2</th>
+                    <td></td>
+                    <td>
+                      <input
+                        className="dailyReportInput wd-30 left-text"
+                        type="text"
+                        name="brandName"
+                        value={"नकद गल्ले में"}
+                        disabled
+                      />
+                    </td>
+                    <td></td>
+                    <td>
+                      <input
+                        type="number"
+                        name="price"
+                        className="dailyReportInput wd-9 left-text"
+                        defaultValue={data.mainInvest.cashInHand.price}
+                        onChange={(event) =>
+                          handleInvestmentChange(
+                            "cashInHand",
+                            event.target.value
+                          )
+                        }
+                      />
+                    </td>
+                  </tr>
+
+                  {data.mainInvest.fees.map((mainInvestment, index) => {
+                    return (
+                      <InvestmentForm
+                        key={index}
+                        index={index}
+                        name={"fees"}
+                        handleRemoveFields={handleRemoveFields}
+                        mainInvestment={mainInvestment}
+                        handelOnChangeMainInvestment={handleInvestmentChange}
+                      ></InvestmentForm>
+                    );
+                  })}
+
+                  <tr>
+                    <button
+                      style={{
+                        textAlign: "center",
+                        paddingTop: 3,
+                        marginTop: 7,
+                        marginBottom: 7,
+                      }}
+                      className="btn bg-[#AA237A] btn-sm"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleFeesAdd();
+                      }}
+                    >
+                      ADD
+                    </button>
+                  </tr>
+
+                  <tr>
+                    <th>{data.mainInvest.fees.length + 3}</th>
+                    <td></td>
+                    <td>
+                      <input
+                        className="dailyReportInput wd-30 left-text"
+                        type="text"
+                        name="brandName"
+                        value={"रिजर्व रकम"}
+                        disabled
+                      />
+                    </td>
+                    <td></td>
+                    <td>
+                      <input
+                        type="number"
+                        name="price"
+                        disabled
+                        className="dailyReportInput wd-9 left-text"
+                        value={data.mainInvest.reserveAmount.price}
+                        readOnly
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th></th>
+                    <td></td>
+                    <td>
+                      <input
+                        className="dailyReportInput wd-30 left-text"
+                        type="text"
+                        name="brandName"
+                        value={"Total"}
+                        disabled
+                      />
+                    </td>
+                    <td></td>
+                    <td>
+                      <input
+                        type="number"
+                        name="price"
+                        className="dailyReportInput wd-9 left-text"
+                        defaultValue={data.mainInvest.total}
+                        handleRemoveFields={handleRemoveFields}
+                        onChange={(event) =>
+                          handleInvestmentChange("total", event.target.value)
+                        }
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <div className="p-2">
+            <h2 className="font-bold text-[1.5rem] text-center my-2">
+              रिफंड / रिकवरी विवरण
+            </h2>
+          </div>
+          <div className="justify-center flex items-center my-6">
             <table className=" removeCommonWSpace">
               <thead>
                 <tr className="text-center">
-                  <th className="text-xs"> क्र. सं.</th>
+                  <th> क्र. सं.</th>
                   <th></th>
-                    <th className="text-xs">विवरण</th>
-                  <th className="text-xs">दिनांक </th>
-                  <th className="text-xs">रकम</th>
+                  <th>रिफंड / रिकवरी </th>
+                  <th>दिनांक </th>
+                  <th>रकम</th>
                 </tr>
               </thead>
-
               <tbody>
-                <tr>
-                  <th>1</th>
-                  <td></td>
-                  <td>
-                    <input
-                      className="dailyReportInput wd-30 left-text" 
-                      type="text"
-                      name="brandName"
-                      value={"पिछली उधारी"}
-                      disabled
-                    />
-                  </td>
-                  <td></td>
-                  <td>
-                    <input
-                      type="number"
-                      name="price"
-                      className="dailyReportInput wd-9 left-text"
-                      defaultValue={data.mainInvest.previousLoan.price}
-                      onChange={(event) =>
-                        handleInvestmentChange(
-                          "previousLoan",
-                          event.target.value
-                        )
-                      }
-                    />
-                  </td>
-                </tr>
+                {data &&
+                  data?.refundRecoveryDetails?.entries.map(
+                    (refundRecovery, index) => {
+                      return (
+                        <Refund
+                          key={index}
+                          name={"refundRecovery"}
+                          refundRecoveryOnChange={refundRecoveryOnChange}
+                          handleRemoveFields={handleRemoveFields}
+                          parties={prevLoansData.filter(
+                            (party) => party.isActive === true
+                          )}
+                          index={index}
+                          refundRecovery={refundRecovery}
+                        ></Refund>
+                      );
+                    }
+                  )}
 
                 <tr>
-                  <th>2</th>
-                  <td></td>
                   <td>
-                    <input
-                      className="dailyReportInput wd-30 left-text"
-                      type="text"
-                      name="brandName"
-                      value={"नकद गल्ले में"}
-                      disabled
-                    />
-                  </td>
-                  <td></td>
-                  <td>
-                    <input
-                      type="number"
-                      name="price"
-                      className="dailyReportInput wd-9 left-text"
-                      defaultValue={data.mainInvest.cashInHand.price}
-                      onChange={(event) =>
-                        handleInvestmentChange("cashInHand", event.target.value)
-                      }
-                    />
-                  </td>
-                </tr>
-
-                {data.mainInvest.fees.map((mainInvestment, index) => {
-                  return (
-                    <InvestmentForm
-                      key={index}
-                      index={index}
-                      name={"fees"}
-                      handleRemoveFields={handleRemoveFields}
-                      mainInvestment={mainInvestment}
-                      handelOnChangeMainInvestment={handleInvestmentChange}
-                    ></InvestmentForm>
-                  );
-                })}
-
-                <tr>
-                  <button
-                    style={{
-                      textAlign: "center",
-                      paddingTop: 3,
-                      marginTop: 7,
-                      marginBottom: 7,
-                    }}
-                    className="btn bg-[#AA237A] btn-sm"
-                    onClick={(e) => {e.preventDefault(); handleFeesAdd()}}
-                  >
-                    ADD
-                  </button>
-                </tr>
-
-                <tr>
-                  <th>{data.mainInvest.fees.length + 3}</th>
-                  <td></td>
-                  <td>
-                    <input
-                      className="dailyReportInput wd-30 left-text"
-                      type="text"
-                      name="brandName"
-                      value={"रिजर्व रकम"}
-                      disabled
-                    />
-                  </td>
-                  <td></td>
-                  <td>
-                    <input
-                      type="number"
-                      name="price"
-                      disabled
-                      className="dailyReportInput wd-9 left-text"
-                      value={data.mainInvest.reserveAmount.price}
-                      readOnly
-                    />
-                  </td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td></td>
-                  <td>
-                    <input
-                      className="dailyReportInput wd-30 left-text"
-                      type="text"
-                      name="brandName"
-                      value={"Total"}
-                      disabled
-                    />
-                  </td>
-                  <td>
-                   
-                  </td>
-                  <td>
-                    <input
-                      type="number"
-                      name="price"
-                      className="dailyReportInput wd-9 left-text"
-                      defaultValue={data.mainInvest.total}
-                        handleRemoveFields={handleRemoveFields}
-
-                      onChange={(event) =>
-                        handleInvestmentChange("total", event.target.value)
-                      }
-                    />
-                  </td>
-                </tr>
-
-                
-              </tbody>
-            </table>
-          </div>
-        </form>
-      </div>
-
-      <div>
-        <div className="p-2">
-          <h2 className="font-bold text-[1.5rem] text-center my-2">रिफंड / रिकवरी विवरण</h2>
-        </div>
-        <div className="justify-center flex items-center my-6">
-            <table className=" removeCommonWSpace">
-            <thead>
-              <tr className="text-center">
-                <th> क्र. सं.</th>
-                <th></th>
-                  <th>रिफंड / रिकवरी </th>
-                <th>दिनांक </th>
-                <th>रकम</th>
-                
-              </tr>
-            </thead>
-            <tbody>
-              {data &&
-                data?.refundRecoveryDetails?.entries.map(
-                  (refundRecovery, index) => {
-                    return (
-                      <Refund
-                        key={index}
-                        name={"refundRecovery"}
-                        refundRecoveryOnChange={refundRecoveryOnChange}
-                        handleRemoveFields={handleRemoveFields}
-                      parties={prevLoansData.filter((party)=>party.isActive===true)}
-                        index={index}
-                        refundRecovery={refundRecovery}
-                      ></Refund>
-                    );
-                  }
-                )}
-
-              <tr>
-                  <td><button
-                    className="btn bg-[#AA237A] btn-sm"
-                    onClick={(e) => { e.preventDefault(); handleRefundRecoveryAdd() }}
-                  >
-                    Add
-                  </button></td>
-                <td>
-                 
-                </td>
-                <td className="commonText left-text">Total</td>
-                <td></td>
-                  <td className="price left-text">{data?.refundRecoveryDetails?.total}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <div>
-        <div>
-          <h2 className="font-bold text-center text-[1.5rem] my-2 p-2">
-            लाभ में से रिजर्व रकम
-          </h2>
-        </div>
-        <div className="justify-center flex items-center my-6">
-          <table className=" removeCommonWSpace">
-            <thead>
-              <tr className="text-center">
-                <th className="text-center"> क्र. सं.</th>
-                <th></th>
-                <th className="text-center">विवरण</th>
-                <th className="text-center">माह</th>
-                <th className="text-center">रकम</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data &&
-                data?.reserveAmount?.entries.map((reserve, index) => {
-                  return (
-                    <Reserve
-                      key={index}
-                      name={"reserve"}
-                      index={index}
-                      handleRemoveFields={handleRemoveFields}
-
-                      reserve={reserve}
-                      reserveAmountOnChange={reserveAmountOnChange}
-                    ></Reserve>
-                  );
-                })}
-
-              <tr>
-                  <td> <div>
                     <button
                       className="btn bg-[#AA237A] btn-sm"
-                      onClick={(e) => { e.preventDefault(); handleReserveAmountAdd() }}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleRefundRecoveryAdd();
+                      }}
                     >
                       Add
                     </button>
-                  </div></td>
-                <td>
-                 
-                </td>
-                <td className="commonText left-text">Total</td>
-                <td></td>
-                <td className="price left-text">
-                  {data.reserveAmount.entries.length > 0
-                    ? data.reserveAmount.entries.reduce(
-                        (total, currentItem) =>
-                          (total = total + Number(currentItem.price)),
-                        0
-                      )
-                    : 0}
-                </td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                  <td className="price left-text">शेष इन्वेस्ट</td>
-                <td className="commonText left-text"></td>
-                  <td>{data.restInvest}</td>
-              </tr>
-            </tbody>
-          </table>
+                  </td>
+                  <td></td>
+                  <td className="commonText left-text">Total</td>
+                  <td></td>
+                  <td className="price left-text">
+                    {data?.refundRecoveryDetails?.total}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-     
-    </section>
+
+        <div>
+          <div>
+            <h2 className="font-bold text-center text-[1.5rem] my-2 p-2">
+              लाभ में से रिजर्व रकम
+            </h2>
+          </div>
+          <div className="justify-center flex items-center my-6">
+            <table className=" removeCommonWSpace">
+              <thead>
+                <tr className="text-center">
+                  <th className="text-center"> क्र. सं.</th>
+                  <th></th>
+                  <th className="text-center">विवरण</th>
+                  <th className="text-center">माह</th>
+                  <th className="text-center">रकम</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data &&
+                  data?.reserveAmount?.entries.map((reserve, index) => {
+                    return (
+                      <Reserve
+                        key={index}
+                        name={"reserve"}
+                        index={index}
+                        handleRemoveFields={handleRemoveFields}
+                        reserve={reserve}
+                        reserveAmountOnChange={reserveAmountOnChange}
+                      ></Reserve>
+                    );
+                  })}
+
+                <tr>
+                  <td>
+                    {" "}
+                    <div>
+                      <button
+                        className="btn bg-[#AA237A] btn-sm"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleReserveAmountAdd();
+                        }}
+                      >
+                        Add
+                      </button>
+                    </div>
+                  </td>
+                  <td></td>
+                  <td className="commonText left-text">Total</td>
+                  <td></td>
+                  <td className="price left-text">
+                    {data.reserveAmount.entries.length > 0
+                      ? data.reserveAmount.entries.reduce(
+                          (total, currentItem) =>
+                            (total = total + Number(currentItem.price)),
+                          0
+                        )
+                      : 0}
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td className="price left-text">शेष इन्वेस्ट</td>
+                  <td className="commonText left-text"></td>
+                  <td>{data.restInvest}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
       <div className="my-4 flex justify-center  items-center gap-4">
         <button
           className="commonBtn"

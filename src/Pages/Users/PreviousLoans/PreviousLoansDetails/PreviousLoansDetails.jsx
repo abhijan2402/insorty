@@ -1,4 +1,4 @@
-import React, { useRef,useState,useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../../../Components/Loader/Loader";
@@ -19,15 +19,14 @@ const PreviousLoansDetails = () => {
   const { loandataId } = useParams();
   const [hasMore, setHasMore] = useState(true);
   const [page, setPage] = useState(0);
-  const [transactions,setTransactions] = useState([])
+  const [transactions, setTransactions] = useState([]);
   const front = useRef(null);
-  const [partyName,setPartyName] = useState("")
+  const [partyName, setPartyName] = useState("");
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
-  const {data} = useMainInvestmentHooks()
-  const shopType = jwtDecode(token).shopType
-
+  const { data } = useMainInvestmentHooks();
+  const shopType = jwtDecode(token).shopType;
 
   const BasedURL = process.env.REACT_APP_API_URL;
 
@@ -44,30 +43,26 @@ const PreviousLoansDetails = () => {
         if (response.data.data.transactions.length === 0) {
           setHasMore(false);
         }
-        setPartyName(response.data.data.name)
-        setTransactions((data) => [...data, ...response.data.data.transactions]);
+        setPartyName(response.data.data.name);
+        setTransactions((data) => [
+          ...data,
+          ...response.data.data.transactions,
+        ]);
         setPage((page) => page + 1);
-
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err);
 
-       
-          setHasMore(false);
-        
+        setHasMore(false);
       });
-
-  
   };
 
   useEffect(() => {
-    
     fetchData();
   }, [transactions.length]);
 
   const handelSubmit = (e) => {
     e.preventDefault();
-
 
     fetch(`${BasedURL}/shop/addPreviousBorrowedTransaction`, {
       method: "POST",
@@ -77,20 +72,18 @@ const PreviousLoansDetails = () => {
         deposit: 0,
         debit: e.target.deposit.value,
         date: e.target.dateData.value,
-      })
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.success === true) {
           Swal.fire("Success!", "Your file has been added.", "success");
-          window.location.reload()
+          window.location.reload();
         } else {
           Swal.fire("Failed!", "Your file has not been added.", "error");
         }
       });
   };
-
-
 
   if (data.isLoading) {
     return <Loader></Loader>;
@@ -104,10 +97,10 @@ const PreviousLoansDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (data.success) {
           Swal.fire("Deleted!", "Your file has been deleted.", "success");
-          window.location.reload()
+          window.location.reload();
         } else {
           Swal.fire("Failed!", "Your file has not been deleted.", "error");
         }
@@ -115,136 +108,132 @@ const PreviousLoansDetails = () => {
   };
 
   return (
-    <section>
-       <button className="commonBtn " onClick={handlePrint}>
-        प्रिंट
-
+    <>
+      <div className="py-0 sticky top-0 bg-white z-5000">
+        <button className="commonBtn " onClick={handlePrint}>
+          प्रिंट
         </button>
 
-        {shopType==="SHOP" && ( <Link
-            to="/user/previousloan"
-           
-          >
-            <button className="commonBtn">
-            सूची
-            </button>
-      </Link>)}
-     {shopType==="BAR" && ( <Link
-            to="/user/bearshop/previousloan"
-           
-          >
-            <button className="commonBtn">
-            सूची
-            </button>
-      </Link>)}
+        {shopType === "SHOP" && (
+          <Link to="/user/previousloan">
+            <button className="commonBtn">सूची</button>
+          </Link>
+        )}
+        {shopType === "BAR" && (
+          <Link to="/user/bearshop/previousloan">
+            <button className="commonBtn">सूची</button>
+          </Link>
+        )}
 
-      <div className="title flex justify-center items-center gap-4">
-
-       
+        <div className="title flex justify-center items-center gap-4"></div>
+        <h2 className="text-center font-bold text-[1.5rem]">
+          नाम :- {partyName}
+        </h2>
+        <div className="divider my-2"></div>
       </div>
-      <div className="divider my-2"></div>
 
-      <div ref={front}>
-        <h2 className="text-center font-bold text-[1.5rem]">नाम :-   {partyName}</h2>
-        <div
-          className="flex justify-center items-center
+      <section>
+        <div ref={front}>
+          <div
+            className="flex justify-center items-center
         "
-        >
-
-<InfiniteScroll
-            dataLength={transactions.length}
-            next={fetchData}
-            hasMore={hasMore}
-            scrollableTarget="scrollableDiv"
-            loader={<h4>Loading...</h4>}
           >
-          <table className="table removeCommonWSpace">
-            <thead>
-              <tr>
-                <th> क्र. सं.</th>
-                <th colSpan={2}>दिनांक</th>
-                <th colSpan={2}>नामे</th>
-                <th >जमा</th>
-                <th colSpan={2}>डिलीट</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-              {(transactions &&
-                transactions.length &&
-                transactions?.map((prevLone, index) => {
-                  return (
-                  
-                    <tr key={prevLone?._id}>
-                      <th>{index + 1}</th>
-                      <td colSpan={3}>
-                        <p className="font-bold text-[1rem]">
-                          {moment(prevLone?.date,).format("DD/MM/YYYY")}
-                        </p>
-                      </td>
-                      
+            <InfiniteScroll
+              dataLength={transactions.length}
+              next={fetchData}
+              hasMore={hasMore}
+              scrollableTarget="scrollableDiv"
+              loader={<h4>Loading...</h4>}
+            >
+              <table className="table removeCommonWSpace">
+                <thead>
+                  <tr>
+                    <th> क्र. सं.</th>
+                    <th colSpan={2}>दिनांक</th>
+                    <th colSpan={2}>नामे</th>
+                    <th>जमा</th>
+                    <th colSpan={2}>डिलीट</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {transactions &&
+                    transactions.length &&
+                    transactions?.map((prevLone, index) => {
+                      return (
+                        <tr key={prevLone?._id}>
+                          <th>{index + 1}</th>
+                          <td colSpan={3}>
+                            <p className="font-bold text-[1rem]">
+                              {moment(prevLone?.date).format("DD/MM/YYYY")}
+                            </p>
+                          </td>
 
-                      <td>
-                        <p className="font-bold text-[1rem]">
-                          {prevLone?.debit}
-                        </p>
-                      </td>
-                      <td>
-                        <p className="font-bold text-[1rem]">
-                          {prevLone?.deposit}
-                        </p>
-                      </td>
-                      <td>
-                        <Link
-                          className="font-3xl font-bold"
-                          style={{ color: "#AA237A" }}
-                          onClick={() => {
-                            swal({
-                              title: "Are you sure?",
-                              text: `Once deleted, you will not be able to recover transaction ${index+1}`,
-                              icon: "warning",
-                              buttons: true,
-                              dangerMode: true,
-                            }).then((willDelete) => {
-                              if (willDelete) {
-                                
-                                handleDelete(prevLone?._id);
-                                
-                              } else {
-                                swal("Your party is safe!");
-                              }
-                            });
-                          }}
-                        >
-                          <FaRegTrashAlt></FaRegTrashAlt>
-                        </Link>
-                        </td>
-                    </tr>
-
-                    
-                  
-                  );
-                })) }
-                <tr className="font-bold text-[1rem] "  > 
-                <td colSpan={5}> चालू शेष नामे </td>
-                <td>
-              {transactions.reduce((total,curr)=>total = (total + Number(curr.debit)),0)-transactions.reduce((total,curr)=>(total = total + Number(curr.deposit)),0)}
-              </td>
-              </tr>
-            </tbody>
-          </table>
-          </InfiniteScroll>
-
+                          <td>
+                            <p className="font-bold text-[1rem]">
+                              {prevLone?.debit}
+                            </p>
+                          </td>
+                          <td>
+                            <p className="font-bold text-[1rem]">
+                              {prevLone?.deposit}
+                            </p>
+                          </td>
+                          <td>
+                            <Link
+                              className="font-3xl font-bold"
+                              style={{ color: "#AA237A" }}
+                              onClick={() => {
+                                swal({
+                                  title: "Are you sure?",
+                                  text: `Once deleted, you will not be able to recover transaction ${
+                                    index + 1
+                                  }`,
+                                  icon: "warning",
+                                  buttons: true,
+                                  dangerMode: true,
+                                }).then((willDelete) => {
+                                  if (willDelete) {
+                                    handleDelete(prevLone?._id);
+                                  } else {
+                                    swal("Your party is safe!");
+                                  }
+                                });
+                              }}
+                            >
+                              <FaRegTrashAlt></FaRegTrashAlt>
+                            </Link>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  <tr className="font-bold text-[1rem] ">
+                    <td colSpan={5}> चालू शेष नामे </td>
+                    <td>
+                      {transactions.reduce(
+                        (total, curr) => (total = total + Number(curr.debit)),
+                        0
+                      ) -
+                        transactions.reduce(
+                          (total, curr) =>
+                            (total = total + Number(curr.deposit)),
+                          0
+                        )}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </InfiniteScroll>
+          </div>
+          <tr className="py-4 flex justify-center">
+            <label htmlFor="addNewTranstion" className="commonBtn">
+              Add New
+            </label>
+          </tr>
         </div>
-        <tr className="py-4 flex justify-center">
-          <label htmlFor="addNewTranstion" className="commonBtn">
-            Add New
-          </label>
-        </tr>
-      </div>
 
-      <AddTranstion handelSubmit={handelSubmit} />
-    </section>
+        <AddTranstion handelSubmit={handelSubmit} />
+      </section>
+    </>
   );
 };
 
