@@ -16,9 +16,9 @@ const BranchFrom = () => {
   const handlePrint = useReactToPrint({
     content: () => front.current,
   });
-  const { branchId } = useParams()
+  const { branchId } = useParams();
 
-  console.log(branchId)
+  console.log(branchId);
 
   const { data: transactions, isLoading: branchDataLoading } = useQuery({
     queryKey: ["transactions"],
@@ -45,35 +45,26 @@ const BranchFrom = () => {
   return (
     <>
       <div>
-        
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट
         </button>
-        <Link
-            to="/user/branch"
-           
-          >
-            <button className="commonBtn">
-            सूची
-            </button>
-      </Link>
+        <Link to="/user/branch">
+          <button className="commonBtn">सूची</button>
+        </Link>
       </div>
       <section ref={front} className="p-4">
         <div className="flex justify-center items-center">
           <div className="title">
-            
-
-
-            
-              <h2 className="font-bold md:text-[1.5rem] text-center">
-                ब्रांच नाम :- 
-                <span className="titleStyle"> {transactions.branchName}</span>
-              </h2>
+            <h2 className="font-bold md:text-[1.5rem] text-center">
+              ब्रांच नाम :-
+              <span className="titleStyle"> {transactions.branchName}</span>
+            </h2>
 
             <div className="flex gap-4 justify-center items-center my-4 z-10">
               <h2 className="font-bold text-[1.5rem]">From</h2>
               <div className="flex gap-2 items-center">
                 <DatePicker
+                  autoComplete="off"
                   selected={StartDate}
                   onChange={(date) => {
                     setStartDate(date);
@@ -81,13 +72,14 @@ const BranchFrom = () => {
                   }}
                   dateFormat="dd/MM/yyyy"
                   placeholderText={"dd/mm/yyyy"}
-                  className="inputBox date" 
+                  className="inputBox date"
                 />
               </div>
 
               <h2 className="font-bold text-[1.5rem]">To</h2>
               <div className="flex gap-2 items-center">
                 <DatePicker
+                  autoComplete="off"
                   selected={EndDate}
                   name="year"
                   onChange={(data) => setEndDate(data)}
@@ -133,7 +125,7 @@ const BranchFrom = () => {
                       })
                       .map(
                         ((current_sum) => (transaction, index) => {
-                          console.log(transaction)
+                          console.log(transaction);
                           return (
                             <BranchFormData
                               key={index}

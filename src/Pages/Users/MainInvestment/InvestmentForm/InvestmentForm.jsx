@@ -7,7 +7,7 @@ const InvestmentForm = ({
   index,
   name,
   handelOnChangeMainInvestment,
-  handleRemoveFields
+  handleRemoveFields,
 }) => {
   return (
     <>
@@ -18,14 +18,15 @@ const InvestmentForm = ({
           onClick={() => {
             swal({
               title: "Are you sure?",
-              text: `Once deleted, you will not be able to recover row ${index + 1
-                }`,
+              text: `Once deleted, you will not be able to recover row ${
+                index + 1
+              }`,
               icon: "warning",
               buttons: true,
               dangerMode: true,
             }).then((willDelete) => {
               if (willDelete) {
-                handleRemoveFields('fees',index);
+                handleRemoveFields("fees", index);
                 swal(`row ${index + 1}  has been deleted!`, {
                   icon: "success",
                 });
@@ -54,8 +55,9 @@ const InvestmentForm = ({
           />
         </td>
         <td>
-         
           <DatePicker
+            // popoverAttachment="bottom right"
+            // popoverTargetAttachment="top right"
             selected={new Date(mainInvestment.date)}
             name="date"
             onChange={(date) => {

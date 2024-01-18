@@ -33,7 +33,10 @@ const MainInvestment = () => {
 
   return (
     <>
-      <div className="py-0 sticky top-0 bg-white z-5000">
+      <div
+        className="py-0 sticky top-0 bg-white z-5000"
+        style={{ zIndex: 1000 }}
+      >
         <button className="commonBtn " onClick={handlePrint}>
           प्रिंट
         </button>
